@@ -6,48 +6,147 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\usepackage{etoolbox}
+
+%\newcommand*{\@Dashv}[2]{%
+%  \reflectbox{$\m@th#1#2$}%
+%}
+\newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
+  \{#1\in #2: #3\}
+}
+
+% https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
+%  \\mathcal\{T\} |---> \topology
+%  \\mathcal\{([^\}]*)\}   |--->  $1
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\interior}{\mbox{int}}
+\newcommand{\closure}{\mbox{cl}}
+\newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\topology}{\mathcal{T}}
+\newcommand{\union}{\bigcup}
+\newcommand{\functional}{\mbox{ functional}}
+\newcommand{\injective}{\mbox{ }}
+\newcommand{\total}{\mbox{ total on }}
+\newcommand{\surjective}{\mbox{ surjective on}}
+\newcommand{\countable}{\mbox{ countable}}
+\newcommand{\converges}{\longrightarrow}
+\newcommand{\AND}{\ \&\ }
+\newcommand{\IMPLIES}{\ \Rightarrow\ }
+\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
+\newcommand{\Done}{\noindent \textbf{Done.}\\}
+% local commands
+%\preto\section{\undef\blipo} %etoolbox
+\preto\subsection{\undef\blipo} %etoolbox
+% https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
 \begin{document}
 %qwertyuio
 \noindent
-The aim of this document is to provide perfect proofs of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with a interactive proof assistant is tedious and platform-dependent.\\
+
+The aim of this document is to provide perfect proofs of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform-dependent.\\
+%\noindent
+% elements are small letters, sets are uppercase latin letters, sets of sets are mathcal latin letters
+% the code should be comprehensive: use meaning of symbols
 \noindent
+\section{Goals}
 Interesting targets:
 \begin{itemize}
 \item sequential criterion
 \item completion of a metric space
 \end{itemize}
+\section{Set theory}
+\begin{definition}
+$$y\in f[A] \Leftrightarrow \exists x\in A: \langle x,y\rangle\in f$$
+\end{definition}
+\begin{definition}
+$$y\in f\langle A\rangle \Leftrightarrow \forall x\in A: \langle x,y\rangle\in f$$
+\end{definition}
+\begin{theorem}
+$$X\subseteq \power Y \Leftrightarrow \union X \subseteq Y$$
+\end{theorem}
+\begin{theorem}
+$$g\functional \AND M \countable \IMPLIES g[M] \countable$$
+\end{theorem}
+\begin{theorem}
+$$f^\leftarrow \functional$$
+\end{theorem}
 
-%\begin{theorem}{dff}
-\noindent Definition:
-Set of neighbourhoods\\
-$\mathcal{N_T}(x) = \{S \subseteq \bigcup \mathcal{T} : \exists\  \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V \}$\\
-\noindent Definition:
-Interior of a set V in a topology $\mathcal{T}$.\\
-$\mbox{int}_\mathcal{T}(V) = \bigcup \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$\\
-%\end{theorem}
-%\end{definition}
-\noindent Lemma:
-$$V\in\mathcal{N_T}(x) \Leftrightarrow x\in \mbox{int}_\mathcal{T}(V)$$
-Proof.\\
+\begin{theorem}
+$$f\injective \IMPLIES f\left[\union M\right] = \union f^{\rightarrow}\left[M\right]$$
+\end{theorem}
+
+\begin{theorem}
+$$f\functional \IMPLIES f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]$$
+\end{theorem}
+
+\section{Real analysis}
+\begin{theorem}
+$$a:\mathbb{N}\rightarrow \real, \{a_n\}_n \mbox{bdd above in }\real, (a_n)_n\mbox{ non-decreasing} \Rightarrow a \converges \sup \{a_n\}_n$$
+\end{theorem}
+\section{Topology}
+\begin{definition}
+$$\mbox{Segm} = \{[-\infty;\beta):\beta\in\real\}\cup \{(\alpha;+\infty]:\alpha\in\real\}\cup \{(\alpha;\beta):\alpha\in\real,\beta\in\real\}$$
+\end{definition}
+\begin{definition}
+$$\topology_{[-\infty;+\infty]} = \mbox{Segm}_\sigma$$
+\end{definition}
+\begin{definition}
+Set of neighbourhoods
+$$\nghbset_\topology(x) = \{S \subseteq \union \topology : \exists  U\in \topology: x\in U \subseteq S \}$$
+\end{definition}
+\begin{definition}
+Interior of a set V in a topology $\topology$.
+$$\interior_\topology(V) = \union
+\separation{W}{\topology}{W\subseteq V}$$
+\end{definition}
+\begin{theorem}
+$$(\interior = \nghbset^{-1})\AND(\nghbset=\interior^{-1})$$
+\end{theorem}
+\begin{theorem}
+$$V\in \nghbset_\topology\langle A\rangle \Leftrightarrow A \subseteq \interior(V) $$
+\end{theorem}
+\begin{theorem}
+$$\closure \dashv \mbox{id} \dashv \interior$$
+\end{theorem}
+
+\newcommand*{\blipo}{\separation{W}{\topology}{W\subseteq V}}
+% \{W\in\topology|W\subseteq V\}
+%\noindent Lemma:
+\begin{theorem}
+$$V\in\nghbset_\topology(x) \Leftrightarrow x\in \interior_\topology(V)$$
+\end{theorem}
+\Proof
 $(\Rightarrow)\\
-V\in \mathcal{N_T}(x) \Rightarrow \exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V$ by definition of $\mathcal{N_T}(x)$, then union elim.
+V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb-elim, union-elim).
 \\
-$\mathcal{U}\in\mathcal{T}\ \&\ \mathcal{U}\subseteq V \Rightarrow \mathcal{U} \in \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$ by specification intro.
+$U\in\topology\AND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification-intro).
 \\
-$x\in \mathcal{U} \ \&\ \mathcal{U} \in \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\} \Rightarrow x\in\bigcup \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$ by union intro.
+$x\in U \AND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union-intro).
 \\
-Therefore $x\in \mbox{int}_\mathcal{T}(V)$.
+$x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior-intro).
 \\
 $(\Leftarrow)$
 \\
-$x\in \mbox{int}_\mathcal{T}(V) \Rightarrow \exists W\in  \{\mathcal{U}\in\mathcal{T}|\mathcal{U}\subseteq V\}.\ x\in\mathcal{W}$ by def then union elim.
+$x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior-elim, union-elim).
 \\
-$W\in  \{\mathcal{U}\in\mathcal{T}|\mathcal{U}\subseteq V\} \Rightarrow \mathcal{W}\in\mathcal{T}\ \&\ \mathcal{W}\subseteq V$ by specification elim.
+$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\AND W\subseteq V$\hfill(specification-elim).
 \\
-$x\in\mathcal{W}\ \&\ \mathcal{W}\in\mathcal{T}\ \&\ \mathcal{W}\subseteq V \Rightarrow \exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V$ by and- then exists-intros
+$x\in W\AND W\in\topology\AND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and-intro, exists-intro).
 \\
-$(\exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V) \Rightarrow V\in \mathcal{N_T}(x)$ by exists-elim and def-intro.
+$(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists-elim, nghb-intro).
 \\
-Done.
-\\
+\Done
+\section{Measure theory}
+\section{Functional analysis}
+% $\blipo$ should give error
+\section{Probability theory}
+\section{Category theory}
 \end{document}\\
