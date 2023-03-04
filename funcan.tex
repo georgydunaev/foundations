@@ -20,18 +20,34 @@ Interesting targets:
 %\begin{theorem}{dff}
 \noindent Definition:
 Set of neighbourhoods\\
-$\mathcal{N_T}(x) = \{S \subseteq \bigcup T : \exists\  \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V \}$\\
+$\mathcal{N_T}(x) = \{S \subseteq \bigcup \mathcal{T} : \exists\  \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V \}$\\
 \noindent Definition:
 Interior of a set V in a topology $\mathcal{T}$.\\
-$\mbox{int}_\mathcal{T}(V) = $\\
-
-fffffff\\
+$\mbox{int}_\mathcal{T}(V) = \bigcup \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$\\
 %\end{theorem}
 %\end{definition}
 \noindent Lemma:
 $$V\in\mathcal{N_T}(x) \Leftrightarrow x\in \mbox{int}_\mathcal{T}(V)$$
 Proof.\\
-$(\Rightarrow) V\in \mathcal{N_T}(x) \Rightarrow \exists\  \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V$.(by definition of $\mathcal{N_T}(x)$)\\
+$(\Rightarrow)\\
+V\in \mathcal{N_T}(x) \Rightarrow \exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V$ by definition of $\mathcal{N_T}(x)$, then union elim.
 \\
-NotDone.\\
+$\mathcal{U}\in\mathcal{T}\ \&\ \mathcal{U}\subseteq V \Rightarrow \mathcal{U} \in \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$ by specification intro.
+\\
+$x\in \mathcal{U} \ \&\ \mathcal{U} \in \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\} \Rightarrow x\in\bigcup \{\mathcal{W}\in\mathcal{T}|\mathcal{W}\subseteq V\}$ by union intro.
+\\
+Therefore $x\in \mbox{int}_\mathcal{T}(V)$.
+\\
+$(\Leftarrow)$
+\\
+$x\in \mbox{int}_\mathcal{T}(V) \Rightarrow \exists W\in  \{\mathcal{U}\in\mathcal{T}|\mathcal{U}\subseteq V\}.\ x\in\mathcal{W}$ by def then union elim.
+\\
+$W\in  \{\mathcal{U}\in\mathcal{T}|\mathcal{U}\subseteq V\} \Rightarrow \mathcal{W}\in\mathcal{T}\ \&\ \mathcal{W}\subseteq V$ by specification elim.
+\\
+$x\in\mathcal{W}\ \&\ \mathcal{W}\in\mathcal{T}\ \&\ \mathcal{W}\subseteq V \Rightarrow \exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V$ by and- then exists-intros
+\\
+$(\exists\ \mathcal{U}\in \mathcal{T}: x\in \mathcal{U} \subseteq V) \Rightarrow V\in \mathcal{N_T}(x)$ by exists-elim and def-intro.
+\\
+Done.
+\\
 \end{document}\\
