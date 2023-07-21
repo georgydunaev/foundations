@@ -7,6 +7,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+%\usepackage{stix-type1}%\turnediota
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
@@ -62,7 +63,97 @@ Interesting targets:
 \item sequential criterion
 \item completion of a metric space
 \end{itemize}
-\section{Set theory}
+\newpage
+\section{Logic}
+Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
+``A Set Theory with Support for Partial Functions''.\\
+For simplicity of understanding by the reader, the notation from the article is used here.\\
+\begin{definition} Value of a function.
+$$f(x) \simeq \big(\iota y: \langle x,y\rangle\in f\big)$$
+\end{definition}
+
+\begin{theorem} If $f$ is univocal, then
+$$\big(f(x)\simeq y\big)\Leftrightarrow \big(\langle x,y\rangle\in f\big)$$
+\end{theorem}
+\Proof
+($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
+$$
+(\iota x:\varphi)\downarrow
+\quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
+(\exists!x:\varphi)
+$$
+So the proof is the following:
+$$
+\big(\langle x,y\rangle\in f\big)
+\quad\overset{\exists\mbox{-intro}}{\Longrightarrow}\quad
+\big(\exists w: \langle x,w\rangle\in f\big)
+$$
+$$
+f\mbox{ univocal}
+\quad\overset{\mbox{def}}{\Longleftrightarrow}\quad
+\big(! w: \langle x,w\rangle\in f\big)
+$$
+$$
+\big(\exists w: \langle x,w\rangle\in f\big)
+\quad\&\quad
+\big(! w: \langle x,w\rangle\in f\big)
+\quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
+\big(\exists! w: \langle x,w\rangle\in f\big)
+$$
+$$
+\big(\exists! w: \langle x,w\rangle\in f\big)
+\quad\overset{\mbox{PFOL10}'}{\Longrightarrow}\quad
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow
+$$
+$$
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+$$
+$$
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\quad\&\quad
+\big(\langle x,y\rangle\in f\big)
+\quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f) \simeq y
+$$
+$$
+f(x) \simeq y
+$$
+%\big(! w: \langle x,w\rangle\in f\big)
+%$$
+%\big(\iota w: \langle x,w\rangle\in f\big)\downarrow
+
+%$$
+\noindent($\Rightarrow$)
+$$(y\downarrow)\quad\mbox{(by PFOL8)}$$
+$$
+(y\downarrow)\quad\&\quad((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f)\downarrow $$
+$$
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+$$
+$$
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\quad\&\quad
+\big((\iota w: \langle x,w\rangle\in f)\simeq y\big)
+\quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+\big(\langle x, y\rangle\in f\big)
+$$
+\\
+\Done
+\section{Set \& class theory}
+\begin{definition} Identity.
+$$I = \{(x,x)|\}$$
+\end{definition}
+
+\begin{definition} "F on X".
+$$\mbox{"F on X"} = F\restriction X $$
+\end{definition}
+
+
 \begin{definition}
 $$y\in f[A] \Leftrightarrow \exists x\in A: \langle x,y\rangle\in f$$
 \end{definition}
@@ -86,6 +177,15 @@ $$f\injective \IMPLIES f\left[\union M\right] = \union f^{\rightarrow}\left[M\ri
 \begin{theorem}
 $$f\functional \IMPLIES f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]$$
 \end{theorem}
+\section{Linear algebra}
+\begin{definition}Matrix over a set S.
+$$\mbox{"A is a matrix over a set S"} \Leftrightarrow \exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \to S $$
+\end{definition}
+
+\begin{definition}
+$$\mbox{combine}(f_1,f_2) := \{(((m,k),(m,v)),(m,(k,v)))| (m,k)\in f_1 \land (m,v)\in f_2\}$$
+\end{definition}
+(A combination is a product of morphisms in the category sets and functions.)
 
 \section{Real analysis}
 \begin{theorem}
