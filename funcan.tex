@@ -24,6 +24,9 @@
 % https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
+\newcommand{\set}{\mathrm{\ set}}
+\newcommand{\univocal}{\mathrm{\ univocal}}
+\newcommand{\singleton}{\mathrm{\ singleton}}
 \newcommand{\complex}{\mathbb{C}}
 \newcommand{\real}{\mathbb{R}}
 \newcommand{\power}{\mathcal{P}}
@@ -34,16 +37,20 @@
 \newcommand{\semialgebra}{\mathcal{S}}
 \newcommand{\topology}{\mathcal{T}}
 \newcommand{\union}{\bigcup}
-\newcommand{\functional}{\mbox{ functional}}
+\newcommand{\functional}{\mbox{\ functional}}
 \newcommand{\injective}{\mbox{ }}
-\newcommand{\total}{\mbox{ total on }}
-\newcommand{\surjective}{\mbox{ surjective on}}
-\newcommand{\countable}{\mbox{ countable}}
+\newcommand{\total}{\mbox{\ total on }}
+\newcommand{\surjective}{\mbox{\ surjective on}}
+\newcommand{\countable}{\mbox{\ countable}}
 \newcommand{\converges}{\longrightarrow}
 \newcommand{\AND}{\ \&\ }
 \newcommand{\IMPLIES}{\ \Rightarrow\ }
 \newcommand{\Proof}{\noindent \textbf{Proof.}\\}
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
+\newcommand{\UB}{\mathrm{UB}}
+\newcommand{\LB}{\mathrm{LB}}
+\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\Inf}{\mathrm{Inf}}
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -65,6 +72,79 @@ Interesting targets:
 \end{itemize}
 \newpage
 \section{Logic}
+$\mathcal{A}$ Alphabet
+
+
+
+\subsection{Syntax}
+Basic notion of the system is "class".
+\subsubsection{Terms}
+Terms ::= \\
+
+\subsubsection{Formulas}
+\begin{definition}
+Fm ::=\\
+\end{definition}
+
+\begin{definition}
+$$M(Z) \Leftrightarrow \exists C: Z\in C$$
+\end{definition}
+
+G\"odel notation:\\
+
+\subsection{Axioms}
+interpretation is denoted by I here.
+
+Usually assignment is an univocal correspondence between variables and sets.
+In our case assignment is an univocal correspondence between variables and conglomerate-singletons of classes.\\
+
+There are several possible ways of interpreting "in" relation: 
+Assume X and Y are some terms(sic! not just variables).
+1) Weak
+$X\in Y$ is valid iff for any assignment any class-element of I(X) is in any class-element of I(Y).\\
+
+Hypothesis:
+$$A(\varepsilon x: A)\Leftrightarrow \exists x: A(x)$$
+
+
+
+
+Axiom schema
+
+
+
+Following class existence metatheorem for NBG, we can introduce an axiom schema.\\
+To begin with let's introduce recursive function on formulas: it substitutes class variables with set variables.
+
+
+The resulting formula contain only set variables.
+
+
+
+If $\varphi$ contains only set variables, then 
+$\{x | \varphi\}$ is defined.
+$$(\varphi\in\mathrm{setify}[\mathrm{Fm}])\stackrel{meta}{\Longrightarrow} ( \vdash (\{x | \varphi\}\downarrow)) $$
+
+\subsection{Semantics}
+"super-large" model.\\
+$K$ - conglomerate of all classes.\\
+
+Assignment:\\
+$$A:\mbox{Var}\to \power(K)$$
+
+$$I^{\mathrm{Fm}}_A(S\downarrow) \Leftrightarrow (I^{\mathrm{Term}}_A(S)\neq\emptyset)$$
+
+Definiton of truth:
+$$\mbox{Bool} := \{\mbox{False}, \mbox{True}\}$$
+$$M,A\vDash \varphi \stackrel{meta}{\Longleftrightarrow} I_A(\varphi)=\mbox{True}$$
+
+$$(M\vDash \varphi) \stackrel{meta}{\Longleftrightarrow} (\forall A\in \mbox{Assignment}: M,A\vDash \varphi)$$
+
+%I_A(\varphi)=\mbox{True}
+\subsection{Extension by definitions}
+
+
+\subsection{Example of a proof (FARMER'S CALCULUS)}
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
 ``A Set Theory with Support for Partial Functions''.\\
 For simplicity of understanding by the reader, the notation from the article is used here.\\
@@ -144,7 +224,157 @@ $$
 $$
 \\
 \Done
+\pagebreak
+\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
+
+\begin{definition} Simultaneous substitution.
+$$\varphi[Z/W]$$
+\end{definition}
+
+\begin{definition} Set.
+$$(X\set)\ \Leftrightarrow\ (\exists Y:X\in Y)$$
+\end{definition}
+
+\begin{definition} Class.
+$$Y\in\{x|\varphi[x/W]\} \Leftrightarrow (Y\set)\ \&\ (\varphi[Y/W])$$
+%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\ \&\ (\varphi[Y/x])$$
+%(or maybe
+%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\ \&\ (\varphi)$$
+%we need to find one expression for both cases.
+%)
+\end{definition}
+
+
+\begin{definition} Universal class.
+$$V=\{x|\top\}$$
+\end{definition}
+
+
+\begin{theorem}
+$$(X\set)\ \Leftrightarrow\ (X\in V)$$
+\end{theorem}
+\Proof
+\noindent($\Leftarrow$) Assume $(X\in V)$.
+$$(X\in V)\ \Longrightarrow\ (\exists W: X\in W).$$
+$$(\exists W: X\in W)\ \Longrightarrow\ (X\set).$$
+\noindent($\Rightarrow$) Assume $(X\set)$.
+%$$(X\set)\ \Longrightarrow\ (\exists W: X\in W))$$
+$$(X\set)\ \&\ \top[X/W]\ \Longrightarrow\ (X\in \{x|\top[x/W]\})$$
+$$(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\ \Longrightarrow\ x\in V$$
+%$$(a\in\{a\})\ \&\ (\{a\}=\{w\})\ \Longrightarrow\ (a\in\{w\})$$
+\Done
+\begin{theorem}
+$$A=B\ \Longrightarrow\ (t[A/W]=t[B/W])$$
+\end{theorem}
+\Proof
+By induction on term construction...\\
+\Done
+
+\begin{theorem}
+$$A=B\ \Longrightarrow\ (\varphi[A/W]\ \Longleftrightarrow\ \varphi[B/W])$$
+\end{theorem}
+\Proof
+By induction on formula construction...\\
+\Done
+
+\begin{definition} Epsilon operator.
+$$(\varepsilon y: \varphi) = c\big(\{y|\varphi\}\big)$$
+\end{definition}
+
+\begin{definition} Iota operator.
+$$(\iota y: \varphi) = \bigcap \{y|\varphi \land (!Y:\varphi)\}$$
+\end{definition}
+
+\begin{definition} Lambda operator.
+$$(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}$$
+\end{definition}
+
+
+%\Leftrightarrow
+\begin{definition} Value of a function.
+$$F(x) = \big(\iota y: \langle x,y\rangle\in F\big)$$
+\end{definition}
+
+
+\begin{definition} Singleton.
+$$(A\singleton) \Longleftrightarrow (\exists!a:a\in A)$$
+\end{definition}
+
+\begin{theorem}
+$$(w\in A)\land (!a:a\in A) \longrightarrow \{w\}=A$$
+\end{theorem}
+\Proof
+\noindent($\subseteq$) Assume $(q\in \{w\})$.
+$$(q\in \{w\})\ \Longrightarrow\ (q=w).$$
+$$(w\in A)\ \&\ (q=w)\ \Longrightarrow\ (q\in A).$$
+\noindent($\supseteq$) Assume $(a\in A)$.
+$$(!a:a\in A)\ \&\ (a\in A)\ \&\ (w\in A)\ \Longrightarrow\ (a=w).$$
+$$(a=w)\ \Longrightarrow\ (\{a\}=\{w\})$$
+$$(a\in\{a\})\ \&\ (\{a\}=\{w\})\ \Longrightarrow\ (a\in\{w\})$$
+\Done
+
+\begin{theorem}
+$$\big(\bigcap\{w\}=w\big)$$
+\end{theorem}
+\Proof
+\Done
+\begin{theorem}
+$$(A \singleton) \longrightarrow \big(\big(\bigcap A\big)\in A\big)$$
+\end{theorem}
+\Proof
+$$(A\singleton)\ \Longrightarrow\ (\exists!w:w\in A)$$
+$$(w\in A)\ \&\ (!a:a\in A)\ \Longrightarrow\ \{w\}=A\quad\mbox{(by the previous theorem)}$$
+$$(\{w\}=A)\ \Longrightarrow\ \big(\bigcap\{w\}=\bigcap A\big).$$
+$$\big(\bigcap\{w\}=w\big)\ \&\ \big(\bigcap\{w\}=\bigcap A\big)\ \Longrightarrow\ \big(\bigcap A=w\big)$$
+$$\big(\bigcap A=w\big)\ \&\ (w\in A)\ \Longrightarrow\ \big(\bigcap A\in A\big)$$
+\Done
+
+
+
+\begin{theorem} If $F$ is univocal, then
+$$\big(F(x)=y\big)\ \Longleftrightarrow\ \big(\langle x,y\rangle\in F\big)$$
+\end{theorem}
+\Proof
+($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
+$$.$$
+($\Rightarrow$) Assume $(F(x)=y)$.
+$$(F(x)=y)\ \Longrightarrow\ \big(\iota y: \langle x,y\rangle\in F\big)=y.$$
+$$\big(\iota y: \langle x,y\rangle\in F\big)=y\ \Longrightarrow\ \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y.$$
+$$(F\univocal)
+\ \Longrightarrow\ 
+(\forall x:\ !y : \langle x,y\rangle \in F)
+$$
+$$
+(\forall x:\ !y : \langle x,y\rangle \in F)
+\ \Longrightarrow\ 
+(!y : \langle x,y\rangle \in F)
+$$
+$$
+(y\set)
+\ \&\ 
+\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
+\ \Longrightarrow\ 
+(\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\set)
+$$
+
+$$
+\big(\{y: \langle x,y\rangle\in F\}\singleton\big)
+\ \Longrightarrow\ 
+\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
+\in
+\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\quad(\mbox{by ...}).$$
+\Done
+
+\section{Singleton-Semantics}
+\subsection{•}
+$$((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)$$
+
+$$((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]$$
 \section{Set \& class theory}
+Notation:\\
+
+Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi-equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
+
 \begin{definition} Identity.
 $$I = \{(x,x)|\}$$
 \end{definition}
@@ -188,6 +418,61 @@ $$\mbox{combine}(f_1,f_2) := \{(((m,k),(m,v)),(m,(k,v)))| (m,k)\in f_1 \land (m,
 (A combination is a product of morphisms in the category sets and functions.)
 
 \section{Real analysis}
+\begin{definition}
+$$\UB_R(S) = R[S]$$
+\end{definition}
+\begin{definition}
+$$\LB_R(S) = R^{-1}[S]$$
+\end{definition}
+
+Context and notation:\\
+Here by $\leq$ we denote the standard relation "less or equal to" on real numbers.
+$\leq$ for inequalities of numbers\\
+$\leqslant$ for inequalities of sets of numbers\\
+$R := \leq$\\
+$\leq = \geq^{-1}$\\
+$\geq = \leq^{-1}$\\
+
+\noindent
+
+\begin{definition}
+$$A \leqslant B \Longleftrightarrow \forall a\in A \forall b\in B: a\leq b$$
+\end{definition}
+\begin{definition}
+$$\UB(S) = \leq [S]$$
+\end{definition}
+\begin{definition}
+$$\LB(S) = \geq [S]$$
+\end{definition}
+
+\begin{theorem}
+$A\leqslant B \Longleftrightarrow B\subseteq \UB(A)$\\
+\end{theorem}
+\begin{theorem}
+$A\leqslant B \Longleftrightarrow A\subseteq \LB(B)$\\
+\end{theorem}
+
+\begin{definition}
+$$\Sup(S) = \UB(S)\cap \LB(\UB(S))$$
+\end{definition}
+\begin{definition}
+$$\Inf(S) = \LB(S)\cap \UB(\LB(S))$$
+\end{definition}
+
+
+\begin{definition}
+$$\mbox{sup}(S) = (\iota x: x\in \mathrm{Sup}(S))$$
+\end{definition}
+\begin{definition}
+$$\mbox{inf}(S) = (\iota x: x\in \mathrm{Inf}(S))$$
+\end{definition}
+
+
+\begin{theorem}
+$$A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B$$
+\end{theorem}
+
+
 \begin{theorem}
 $$a:\mathbb{N}\rightarrow \real, \{a_n\}_n \mbox{bdd above in }\real, (a_n)_n\mbox{ non-decreasing} \Rightarrow a \converges \sup \{a_n\}_n$$
 \end{theorem}
