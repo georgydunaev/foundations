@@ -190,6 +190,18 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 $$V:=\{x|\top\}$$
 \end{definition}
 \begin{theorem}
+$$C\subseteq V$$
+\end{theorem}
+\Proof
+%$$\forall x\in C:x\in V$$
+...
+Fix $x$. Assume $x\in C$.
+
+$$\forall x\in C:x\in V$$
+$$C\subseteq V$$
+\Done
+
+\begin{theorem}
 $$(X\set)\ \Leftrightarrow\ (X\in V)$$
 \end{theorem}
 \Proof
@@ -262,7 +274,7 @@ $$\neg (\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$$
 \noindent By contradiction, assume $(\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
 Set Q:=W.\\
-Therefore $W\in W \leftrightarrow W\notin W.$\\
+Therefore $W\in W \leftrightarrow W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
 From \ref{double neg LEM} where $P:=(W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
@@ -281,15 +293,90 @@ $W\in W \leftrightarrow W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumptio
 
 
 
-\begin{theorem} In classical and even in intuitionistic logic, the following holds:
+\begin{theorem}
+\label{thm:not in itself}
+In classical and even in intuitionistic logic, the following holds:
 $$ \forall Y: Y\notin Y$$
 \end{theorem}
 \Proof
-\noindent Fix Y.\\
-By Russel's paradox(\ref{Russel's Paradox}), 
-$\neg (\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
-$\forall W(\neg \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
-$W:=Y$.\\
+\noindent %Fix Y.\\
+Let $C:=\{W|W\notin W\}$.\\
+Goal $\power C\subseteq C$.\\
+Fix class $B$. Assume $B\in \power C$.\\
+$(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
+Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
+$(b\in B)\ \&\ (B\subseteq C) \Longrightarrow (b\in C)$.\\
+$(b\in C) \Longrightarrow (b\notin b)$.\\
+Claim: $B\notin B$.\\
+Assume opposite $B\in B$ and derive a contradiction.\\
+$(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
+%$(B\in B)\ \&\ (B\subseteq C) \Longrightarrow (B\in C)$.\\
+%$(B\in C) \Longrightarrow (B\notin B)$.\\
+$(B\in B)\ \&\ (B\notin B) \Longrightarrow \bot$.\\
+Contradiction obtained, so the claim  $B\notin B$ is proven.\\
+%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
+%Значит B не принадлежит себе.
+$(B\set)\ \&\ (B\notin B) \Longrightarrow (B\in C)$.\\
+%Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
+%Доказали PC⊆C.
+We are done proving the goal $\power C\subseteq C$.\\
+$\power C\subseteq C \Longrightarrow V\subseteq C$ (by axiom of regularity).\\
+%Значит из аксиомы следует, что A=V.
+%Значит для любого множества W, W∉W.
+%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
+%Значит любой класс не принадлежит сам себе.
+Goal: $ \forall Y: Y\notin Y$.\\
+Fix $Y$.\\
+Case 1: $(Y\set)$.\\
+$(Y\set)\Longrightarrow (Y\in V)$.\\
+$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
+$(Y\in C)\Longrightarrow (Y\notin Y)$.\\
+Case 2: $\neg(Y\set)$.\\
+$\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
+$\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
+$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)\\
+\Done
+
+\begin{theorem}
+\label{thm:powerset not a subset}
+In classical and even in intuitionistic logic, the following holds:
+$$ \forall (Y\set): \neg(\power Y \subseteq Y)$$
+\end{theorem}
+\Proof
+\noindent %Fix Y.\\
+$$C:=\{w|\neg(\power w \subseteq w)\}$$
+Claim $\power C \subseteq C$:\\
+Fix $B\in \power C$. To show: $B\in C$\\
+$(B\in \power C)\Longrightarrow (B\set)\land(B\subseteq C)$.\\
+Assume opposite: $B\notin C$, and derive a contradiction.\\
+$(B\notin C) \Longrightarrow (\neg(B\set))\lor (\neg\neg(\power w\subseteq w))$.\\
+$(B\set), (\neg(B\set))\lor (\neg\neg(\power B\subseteq B)) \Longrightarrow \neg\neg(\power B\subseteq B)$.\\
+$\neg\neg(\power B\subseteq B)  \Longrightarrow (\power B\subseteq B)$.\\
+$ (\power B\subseteq B) \land (B\subseteq C) \Longrightarrow (\power B\subseteq C)$.\\
+$(B\in \power B)$.\\
+$(B\in \power B)\land (\power B\subseteq C) \Longrightarrow (B\in C)$.\\
+$(B\in C) \land (B\notin C)  \Longrightarrow \bot$\\
+Contradiction obtained, so the claim $\power C \subseteq C$ is proven.\\
+$(\power C \subseteq C)\Longrightarrow (V\subseteq C)$ (by regularity axiom).\\
+Fix $(Y\set)$.\\
+$(Y\set)\Longrightarrow (Y\in V)$.\\
+$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
+$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
+%By Russel's paradox(\ref{Russel's Paradox}), 
+%$\neg (\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
+%$\forall W(\neg \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
+%$W:=Y$.\\
+\Done
+
+\begin{theorem}{A conglomerate of all classes is not a class.}
+$$\neg (\exists W \forall Q: Q\in W)$$
+$$(\forall W \exists Q: Q\notin W)$$
+\end{theorem}
+\Proof
+Fix W.\\
+Set $Q:=W$.\\
+By \ref{thm:not in itself}, $W\notin W$.\\
+So $Q\notin W$.\\
 \Done
 
 \begin{definition} Epsilon operator.
