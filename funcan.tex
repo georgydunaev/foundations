@@ -49,28 +49,32 @@
 \newcommand{\converges}{\longrightarrow}
 \newcommand{\countable}{\mbox{\ countable}}
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
-\newcommand{\Term}{\mathrm{Term}}
-\newcommand{\set}{\mathrm{\ set}}
-\newcommand{\relation}{\mathrm{\ relation}}
 \newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
-\newcommand{\IMPLIES}{\ \Rightarrow\ }
+\renewcommand{\implies}{\ \longrightarrow\ }
+\newcommand{\IMPLIES}{\ \Longrightarrow\ }
 \newcommand{\Inf}{\mathrm{Inf}}
 \newcommand{\injective}{\mbox{\ injective}}
 \newcommand{\injection}{\mbox{\ injection}}
 \newcommand{\interior}{\mbox{int}}
 \newcommand{\intersection}{\bigcap}
+\newcommand{\isempty}{\mathrm{\ empty}}
 \newcommand{\LB}{\mathrm{LB}}
 \newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\nonempty}{\mathrm{\ nonempty}}
 \newcommand{\power}{\mathcal{P}}
 \newcommand{\Proof}{\noindent \textbf{Proof.}\\}
 \newcommand{\real}{\mathbb{R}}
+\newcommand{\relation}{\mathrm{\ relation}}
+\newcommand{\set}{\mathrm{\ set}}
 \newcommand{\singleton}{\mathrm{\ singleton}}
 \newcommand{\semialgebra}{\mathcal{S}}
 \newcommand{\Sup}{\mathrm{Sup}}
 \newcommand{\surjective}{\mbox{\ surjective\ on\ }}
+\newcommand{\Term}{\mathrm{Term}}
 \newcommand{\topology}{\mathcal{T}}
 \newcommand{\total}{\mbox{\ total\ on\ }}
+\newcommand{\transitive}{\mathrm{\ transitive}}
 \newcommand{\union}{\bigcup}
 \newcommand{\univocal}{\mathrm{\ univocal}}
 \newcommand{\UB}{\mathrm{UB}}
@@ -126,7 +130,7 @@ Therefore $t[A/W]=t[B/W]$, so we are done.\\
 \Done
 
 \begin{theorem}
-$$A=B\ \Longrightarrow\ (\varphi[A/W]\ \Longleftrightarrow\ \varphi[B/W])$$
+$$A=B\IMPLIES(\varphi[A/W]\ \Longleftrightarrow\ \varphi[B/W])$$
 \end{theorem}
 \Proof
 By induction on formula construction.\\
@@ -140,17 +144,17 @@ By induction on formula construction.\\
 \begin{theorem}
 \label{thm:ILMorgan}
 In intuitionistic logic:\\
-$\neg (A\lor B) \to (\neg A\land\neg B)$
+$\neg (A\lor B) \implies (\neg A\land\neg B)$
 \end{theorem}
 \Proof
 Using deduction theorem it is enought to show (backward reasoning):\\
 $\neg (A\lor B) \vdash (\neg A\land\neg B)$ (by OR-elim).\\
 Subgoal 1: $\neg (A\lor B) \vdash \neg A$ (by deduction)\\
-$\neg (A\lor B), A \vdash \bot$ (by MP $(A\lor B)\to\bot$)\\
+$\neg (A\lor B), A \vdash \bot$ (by MP $(A\lor B)\implies\bot$)\\
 $\neg (A\lor B), A \vdash (A\lor B)$ (by OR-intro)\\
 $\neg (A\lor B), A \vdash A$ (by assumption).\\
 Subgoal 2: $\neg (A\lor B) \vdash \neg B$ (by deduction).\\
-$\neg (A\lor B), B \vdash \bot$ (by MP $(A\lor B)\to\bot$).\\
+$\neg (A\lor B), B \vdash \bot$ (by MP $(A\lor B)\implies\bot$).\\
 $\neg (A\lor B), B \vdash (A\lor B)$(OR-intro).\\
 $\neg (A\lor B), B \vdash B$ (by assumption).\\
 \Done
@@ -163,7 +167,7 @@ $\neg\neg (P\lor\neg P)$
 Using deduction theorem it is enought to show (backward reasoning):\\
 $\neg (P\lor\neg P) \vdash \bot$ (cut rule with \ref{thm:ILMorgan})\\
 $\neg P\land\neg\neg P \vdash \bot$ (by Left\_AND\_Intro)\\
-$\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \to \bot$).\\
+$\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
 $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 \Done
 
@@ -185,6 +189,7 @@ If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
 \begin{definition} Subclass predicate.
 $$(A\subseteq B)\leftrightarrow(\forall x\in A:x\in B)$$
 \end{definition}
+If the variant of logic being used doesn't have equality, then add the following constructor and definition.
 \begin{constructor}Equality.\\
 If $A$ and $B$ are classes, then $(A=B)$ is a formula.
 \end{constructor}
@@ -208,10 +213,10 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 (It is Mosrse-Kelley set theory, since there are no restrictions on $\varphi$.)
 \end{constructor}
 \begin{axiom} Class comprehension.
-$$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\ \&\ (\varphi[Y/W]))$$
-%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\ \&\ (\varphi[Y/x])$$
+$$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\AND(\varphi[Y/W]))$$
+%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\AND(\varphi[Y/x])$$
 %(or maybe
-%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\ \&\ (\varphi)$$
+%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\AND(\varphi)$$
 %we need to find one expression for both cases.
 %)
 \end{axiom}
@@ -254,18 +259,18 @@ $$
 Assume $(x\in\emptyset)$.
 $$
 (x\in\emptyset)
-\ \Longrightarrow\ 
+\IMPLIES
 \bot
 $$
 $$
 \bot
-\ \Longrightarrow\ 
+\IMPLIES
 (x\in A)
 $$
 Claim is proven.
 $$
 (\forall x\in \emptyset: x\in A)
-\ \Longrightarrow\ 
+\IMPLIES
 (\emptyset\subseteq A)
 $$
 \Done
@@ -274,7 +279,7 @@ $$
 \begin{theorem}
 $$
 \neg\exists w: w\in A
-\ \longrightarrow\ 
+\IMPLIES
 (A=\emptyset)
 $$
 \end{theorem}
@@ -285,7 +290,7 @@ $(\supseteq)$\\
 $(\subseteq)$\\
 %$$
 %\neg\exists w: w\in A
-%\ \longrightarrow\ 
+%\IMPLIES
 %(A=\emptyset)
 %$$
 \Done
@@ -312,17 +317,17 @@ $$(X\set)\ \Leftrightarrow\ (X\in V)$$
 \end{theorem}
 \Proof
 \noindent($\Leftarrow$) Assume $(X\in V)$.
-$$(X\in V)\ \Longrightarrow\ (\exists W: X\in W).$$
-$$(\exists W: X\in W)\ \Longrightarrow\ (X\set).$$
+$$(X\in V)\IMPLIES(\exists W: X\in W).$$
+$$(\exists W: X\in W)\IMPLIES(X\set).$$
 \noindent($\Rightarrow$) Assume $(X\set)$.
-%$$(X\set)\ \Longrightarrow\ (\exists W: X\in W))$$
-$$(X\set)\ \&\ \top[X/W]\ \Longrightarrow\ (X\in \{x|\top[x/W]\})$$
-$$(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\ \Longrightarrow\ x\in V$$
-%$$(a\in\{a\})\ \&\ (\{a\}=\{w\})\ \Longrightarrow\ (a\in\{w\})$$
+%$$(X\set)\IMPLIES(\exists W: X\in W))$$
+$$(X\set)\AND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})$$
+$$(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V$$
+%$$(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})$$
 \Done
 
 \begin{definition} Powerclass. (by class comprehension)
-$$\power X := \{x|x\subseteq X\}$$
+$$\power X = \{x|x\subseteq X\}$$
 \end{definition}
 
 
@@ -336,11 +341,11 @@ $$(A\set) \rightarrow (\power A\set)$$
 \end{axiom}
 
 %\begin{axiom} $\in$-induction. (variant that uses formulas)
-%$$\big(\forall X: (\forall Y\in X: P(Y))\to P(X)\big)\to (\forall X: P(X))$$
+%$$\big(\forall X: (\forall Y\in X: P(Y))\implies P(X)\big)\implies (\forall X: P(X))$$
 %\end{axiom}
 \begin{axiom} $\in$-induction. %(variant that uses classes)
-%$$(\forall x: x\in \power\Psi \to x\in\Psi )\to (V\subseteq\Psi)$$
-$$(\power\Psi\subseteq\Psi)\to(V\subseteq\Psi)$$
+%$$(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)$$
+$$(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)$$
 \end{axiom}
 
 %Регулярность:
@@ -402,18 +407,18 @@ Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 $(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
 Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
-$(b\in B)\ \&\ (B\subseteq C) \Longrightarrow (b\in C)$.\\
+$(b\in B)\AND(B\subseteq C) \Longrightarrow (b\in C)$.\\
 $(b\in C) \Longrightarrow (b\notin b)$.\\
 Claim: $B\notin B$.\\
 Assume opposite $B\in B$ and derive a contradiction.\\
 $(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
-%$(B\in B)\ \&\ (B\subseteq C) \Longrightarrow (B\in C)$.\\
+%$(B\in B)\AND(B\subseteq C) \Longrightarrow (B\in C)$.\\
 %$(B\in C) \Longrightarrow (B\notin B)$.\\
-$(B\in B)\ \&\ (B\notin B) \Longrightarrow \bot$.\\
+$(B\in B)\AND(B\notin B) \Longrightarrow \bot$.\\
 Contradiction obtained, so the claim  $B\notin B$ is proven.\\
 %Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
 %Значит B не принадлежит себе.
-$(B\set)\ \&\ (B\notin B) \Longrightarrow (B\in C)$.\\
+$(B\set)\AND(B\notin B) \Longrightarrow (B\in C)$.\\
 %Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
 %Доказали PC⊆C.
 We are done proving the goal $\power C\subseteq C$.\\
@@ -509,24 +514,24 @@ $$\{w\} = \{x|x=w\}$$
 \end{definition}
 
 \begin{definition} Singleton (predicate symbol).
-$$(A\singleton) \Longleftrightarrow (\exists!a:a\in A)$$
+$$(A\singleton) \longleftrightarrow (\exists!a:a\in A)$$
 \end{definition}
 
 \begin{theorem}
-$$(w\in A)\land (!a:a\in A) \longrightarrow \{w\}=A$$
+$$(w\in A)\land (!a:a\in A) \implies \{w\}=A$$
 \end{theorem}
 \Proof
 \noindent($\subseteq$) Assume $(q\in \{w\})$.
-$$(q\in \{w\})\ \Longrightarrow\ (q=w).$$
-$$(w\in A)\ \&\ (q=w)\ \Longrightarrow\ (q\in A).$$
+$$(q\in \{w\})\IMPLIES(q=w).$$
+$$(w\in A)\AND(q=w)\IMPLIES(q\in A).$$
 \noindent($\supseteq$) Assume $(a\in A)$.
-$$(!a:a\in A)\ \&\ (a\in A)\ \&\ (w\in A)\ \Longrightarrow\ (a=w).$$
-$$(a=w)\ \Longrightarrow\ (\{a\}=\{w\})$$
-$$(a\in\{a\})\ \&\ (\{a\}=\{w\})\ \Longrightarrow\ (a\in\{w\})$$
+$$(!a:a\in A)\AND(a\in A)\AND(w\in A)\IMPLIES(a=w).$$
+$$(a=w)\IMPLIES(\{a\}=\{w\})$$
+$$(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})$$
 \Done
 
 \begin{theorem}
-$$(A \subseteq B)\land (B\subseteq A) \to (A=B)$$
+$$(A \subseteq B)\land (B\subseteq A) \implies (A=B)$$
 \end{theorem}
 \Proof
 \Done
@@ -536,35 +541,93 @@ $$\big(\bigcap\{w\}=w\big)$$
 \end{theorem}
 \Proof
 $(\subseteq)$\\
-$(x\in\intersection \{w\})\ \Longrightarrow\ (\forall m\in\{w\}:x\in m)$.\\
-$(\forall m\in\{w\}:x\in m)\ \&\ (w\in \{w\})\ \Longrightarrow\ (x\in w).$\\
+$(x\in\intersection \{w\})\IMPLIES(\forall m\in\{w\}:x\in m)$.\\
+$(\forall m\in\{w\}:x\in m)\AND(w\in \{w\})\IMPLIES(x\in w).$\\
 $(\supseteq)$\\
 Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
-$(x\in w)\ \Longrightarrow\ (x\set)$.\\
+$(x\in w)\IMPLIES(x\set)$.\\
 Claim: $(\forall m\in\{w\}:x\in m).$\\
 Fix m. Assume $m\in\{w\}$.\\
-$(m\in\{w\})\ \Longrightarrow\ (m=w)$.\\
-$(x\in w)\ \&\ (m=w)\ \Longrightarrow\ (x\in m)$\\
+$(m\in\{w\})\IMPLIES(m=w)$.\\
+$(x\in w)\AND(m=w)\IMPLIES(x\in m)$\\
 The claim is proven.\\
-$(x\set)\ \&\ (\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
+$(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
 \Done
-\begin{theorem}{Intersection of a singleton is in it.}
-\label{intersection of singleton}%
-$$(A \singleton) \longrightarrow \big(\big(\bigcap A\big)\in A\big)$$
+
+\begin{definition}
+$$(A \transitive)\leftrightarrow (A\subseteq \power A)$$
+\end{definition}
+\begin{theorem}
+$$(A \transitive)\leftrightarrow (\union A\subseteq A)$$
 \end{theorem}
 \Proof
-$$(A\singleton)\ \Longrightarrow\ (\exists!w:w\in A)$$
-$$(w\in A)\ \&\ (!a:a\in A)\ \Longrightarrow\ \{w\}=A\quad\mbox{(by the previous theorem)}$$
-$$(\{w\}=A)\ \Longrightarrow\ \big(\bigcap\{w\}=\bigcap A\big).$$
-$$\big(\bigcap\{w\}=w\big)\ \&\ \big(\bigcap\{w\}=\bigcap A\big)\ \Longrightarrow\ \big(\bigcap A=w\big)$$
-$$\big(\bigcap A=w\big)\ \&\ (w\in A)\ \Longrightarrow\ \big(\bigcap A\in A\big)$$
+\Done
+\begin{theorem}
+$$(B\in A) \rightarrow \big(B \subseteq \union A\big)$$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}
+$$(B\in A) \rightarrow \big(\intersection A\big)\subseteq B$$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}
+$$(A \nonempty) \rightarrow \big(\big(\intersection A\big)\subseteq \big(\union A\big)\big)$$
+\end{theorem}
+\Proof
+$$
+(A \nonempty)
+\IMPLIES
+(\exists B:B\in A)
+$$
+$$
+(B\in A)
+\IMPLIES
+\big(\intersection A\big)\subseteq B
+$$
+$$
+(B\in A)
+\IMPLIES
+\big(B \subseteq \union A\big)
+$$
+
+$$
+\big(\intersection A\big)\subseteq B
+\AND
+\big(B \subseteq \union A\big)
+\IMPLIES
+\big(\intersection A \subseteq \union A\big)
+$$
+
+\Done
+
+\begin{theorem}{}
+%\label{intersection of singleton}%
+$$(A \transitive) \rightarrow \big(\big(\bigcap A\big)\subseteq A\big)$$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}{Intersection of a singleton is in it.}
+\label{intersection of singleton}%
+$$(A \singleton) \rightarrow \big(\big(\bigcap A\big)\in A\big)$$
+\end{theorem}
+\Proof
+$$(A\singleton)\IMPLIES(\exists!w:w\in A)$$
+$$(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}$$
+$$(\{w\}=A)\IMPLIES\big(\bigcap\{w\}=\bigcap A\big).$$
+$$\big(\bigcap\{w\}=w\big)\AND\big(\bigcap\{w\}=\bigcap A\big)\IMPLIES\big(\bigcap A=w\big)$$
+$$\big(\bigcap A=w\big)\AND(w\in A)\IMPLIES\big(\bigcap A\in A\big)$$
 \Done
 
 
 \begin{theorem}
 $$
 (\big(\bigcap A\big)\set)
-\ \Longrightarrow\ 
+\IMPLIES
 (\exists w: w\in A)
 $$
 %\quad\mbox{(by lemma ... )}
@@ -573,19 +636,19 @@ $$
 New goal:
 $$
 \neg\exists w: w\in A
-\ \longrightarrow\ 
+\IMPLIES
 \neg(\big(\bigcap A\big)\set)
 $$
 
 Proof of claim:
 $$
 \neg\exists w: w\in A
-\ \Longrightarrow\ 
+\IMPLIES
 (A=\emptyset)
 $$
 $$
 (A=\emptyset)
-\ \Longrightarrow\ 
+\IMPLIES
 (\intersection A\big) = (\intersection \emptyset\big)
 $$
 $$
@@ -593,9 +656,9 @@ $$
 $$
 $$
 (\intersection A\big) = (\intersection \emptyset\big)
-\ \&\ 
+\AND
 (\intersection \emptyset\big) = V
-\ \Longrightarrow\ 
+\IMPLIES
 (\intersection A\big) = V
 $$
 $$
@@ -604,28 +667,28 @@ $$
 $$
 $$
 (V\notin V)
-\ \Longrightarrow\ 
+\IMPLIES
 \neg(V\set)
 \quad\mbox{(by \ref{thm:sets are in V})}
 $$
 
 $$
 (\intersection A\big) = V
-\ \&\ 
+\AND
 \neg(V\set)
-\ \Longrightarrow\ 
+\IMPLIES
 \neg((\intersection A\big) \set)
 $$
 The claim is proven.
 $$
 (\big(\bigcap A\big)\set)
-\ \Longrightarrow\ 
+\IMPLIES
 (\exists w: w\in A)
 \quad\mbox{(from claim by contraposition)}
 $$
 %$$
 %(\big(\bigcap A\big)\set)
-%\ \Longrightarrow\ 
+%\IMPLIES
 %\exists Q: \big(\bigcap A\big)\in Q
 %$$
 \Done
@@ -641,34 +704,34 @@ $$\big(F(x)=y\big)\ \Longleftrightarrow\ \big(\langle x,y\rangle\in F\big)$$
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
 $$
 (F\univocal)
-\ \Longrightarrow\ 
+\IMPLIES
 (\forall x:\ !y : \langle x,y\rangle \in F)
 $$
 $$
 (\forall x:\ !y : \langle x,y\rangle \in F)
-\ \Longrightarrow\ 
+\IMPLIES
 (!y : \langle x,y\rangle \in F)
 $$
 $$
 (\langle x,y\rangle\in F)
-\ \Longrightarrow\ 
+\IMPLIES
 (\exists y : \langle x,y\rangle \in F)
 $$
 $$
 (\exists y : \langle x,y\rangle \in F)
-\ \&\ 
+\AND
 (!y : \langle x,y\rangle \in F)
-\ \Longrightarrow\ 
+\IMPLIES
 (\exists! y : \langle x,y\rangle \in F)
 $$
 $$
 (\exists! y : \langle x,y\rangle \in F)
-\ \Longrightarrow\ 
+\IMPLIES
 (\{y : \langle x,y\rangle \in F\}\singleton)
 $$
 $$
 \big(\{y: \langle x,y\rangle\in F\}\singleton\big)
-\ \Longrightarrow\ 
+\IMPLIES
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
 \in
 \big(\{y: \langle x,y\rangle\in F\}\big)\quad(\mbox{by \ref{intersection of singleton} }).
@@ -677,21 +740,21 @@ $$
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
 \in
 \big(\{y: \langle x,y\rangle\in F\}\big)
-\ \Longrightarrow\ 
+\IMPLIES
 \langle x,\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\rangle\in F
 $$
 $$
 (!y : \langle x,y\rangle \in F)
-\ \&\ 
+\AND
 (\langle x,y\rangle\in F)
-\ \&\ 
+\AND
 \langle x,\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\rangle\in F
-\ \Longrightarrow\ 
+\IMPLIES
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
 $$
 $$
 (!y: \langle x,y\rangle\in F)
-\ \Longrightarrow\ 
+\IMPLIES
 \big(
 \{y: \langle x,y\rangle\in F\}
 =
@@ -702,50 +765,50 @@ $$
 \big(\{y: \langle x,y\rangle\in F\}
 =
 \{y: \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
-\ \&\ 
+\AND
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
-\ \Longrightarrow\ 
+\IMPLIES
 $$
 $$
-\ \Longrightarrow\ 
+\IMPLIES
 \big(\bigcap\{y: \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)=y
 $$
 $$
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
-\ \&\ ...
-\ \Longrightarrow\ 
+\AND...
+\IMPLIES
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
 $$
 $$
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
-\ \Longrightarrow\ 
+\IMPLIES
 (F(x)=y)
 $$
 So we proved that F(x)=y.
 
 \noindent($\Rightarrow$) Assume $(F(x)=y)$.
-$$(F(x)=y)\ \Longrightarrow\ \big(\iota y: \langle x,y\rangle\in F\big)=y.$$
-$$\big(\iota y: \langle x,y\rangle\in F\big)=y\ \Longrightarrow\ \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y.$$
+$$(F(x)=y)\IMPLIES\big(\iota y: \langle x,y\rangle\in F\big)=y.$$
+$$\big(\iota y: \langle x,y\rangle\in F\big)=y\IMPLIES\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y.$$
 $$(F\univocal)
-\ \Longrightarrow\ 
+\IMPLIES
 (\forall x:\ !y : \langle x,y\rangle \in F)
 $$
 $$
 (\forall x:\ !y : \langle x,y\rangle \in F)
-\ \Longrightarrow\ 
+\IMPLIES
 (!y : \langle x,y\rangle \in F)
 $$
 $$
 (y\set)
-\ \&\ 
+\AND
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
-\ \Longrightarrow\ 
+\IMPLIES
 (\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\set)
 $$
 
 $$
 (\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\set)
-\ \Longrightarrow\ 
+\IMPLIES
 \exists w: w\in \{y: \langle x,y\rangle\in F\}
 \quad\mbox{(by lemma ... )}
 $$
@@ -753,7 +816,7 @@ $$
 
 $$
 \big(\{y: \langle x,y\rangle\in F\}\singleton\big)
-\ \Longrightarrow\ 
+\IMPLIES
 \big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
 \in
 \big(\{y: \langle x,y\rangle\in F\}\big)\quad(\mbox{by \ref{intersection of singleton} }).
@@ -761,7 +824,7 @@ $$
 \Done
 
 
-$$(\big(\bigcap A\big)\set)\longrightarrow $$
+$$(\big(\bigcap A\big)\set)\implies $$
 
 
 
@@ -814,7 +877,7 @@ $$f\functional \IMPLIES f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[
 \end{theorem}
 \section{Linear algebra}
 \begin{definition}Matrix over a set S.
-$$\mbox{"A is a matrix over a set S"} \Leftrightarrow \exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \to S $$
+$$\mbox{"A is a matrix over a set S"} \Leftrightarrow \exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \implies S $$
 \end{definition}
 
 \begin{definition}
@@ -939,6 +1002,7 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 % $\blipo$ should give error
 \section{Probability theory}
 \section{Category theory}
+\pagebreak
 \section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the book]}
 \subsection{Example of a proof (FARMER'S CALCULUS)}
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
@@ -971,7 +1035,7 @@ f\mbox{ univocal}
 $$
 $$
 \big(\exists w: \langle x,w\rangle\in f\big)
-\quad\&\quad
+\AND
 \big(! w: \langle x,w\rangle\in f\big)
 \quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
 \big(\exists! w: \langle x,w\rangle\in f\big)
@@ -988,7 +1052,7 @@ $$
 $$
 $$
 \langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
-\quad\&\quad
+\AND
 \big(\langle x,y\rangle\in f\big)
 \quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
 (\iota w: \langle x,w\rangle\in f) \simeq y
@@ -1004,7 +1068,7 @@ $$
 \noindent($\Rightarrow$)
 $$(y\downarrow)\quad\mbox{(by PFOL8)}$$
 $$
-(y\downarrow)\quad\&\quad((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(y\downarrow)\AND((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 (\iota w: \langle x,w\rangle\in f)\downarrow $$
 $$
 \big(\iota w: \langle x,w\rangle\in f\big)\downarrow 
@@ -1013,7 +1077,7 @@ $$
 $$
 $$
 \langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
-\quad\&\quad
+\AND
 \big((\iota w: \langle x,w\rangle\in f)\simeq y\big)
 \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 \big(\langle x, y\rangle\in f\big)
