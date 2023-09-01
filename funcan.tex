@@ -7,6 +7,11 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+
+%\renewcommand{\thesubsection}{\arabic{subsection}}
+%\newtheorem{thm}{Theorem}[section]
+%\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
+
 \usepackage{thmtools}
 \usepackage{hyperref}
 \hypersetup{
@@ -19,11 +24,12 @@
     }
 %\usepackage{stix-type1}%\turnediota
 \theoremstyle{definition}
-\newtheorem{constructor}{Constructor}
+
+\newtheorem{constructor}{Constructor}[section]
 \newtheorem{axiom}{Axiom}
-\newtheorem{definition}{Definition}
-\newtheorem{lemma}{Lemma}
-\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
 \usepackage{etoolbox}
 
 %\newcommand*{\@Dashv}[2]{%
@@ -36,35 +42,40 @@
 % https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
-\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\AND}{\ \&\ }
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\closure}{\mbox{cl}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\converges}{\longrightarrow}
+\newcommand{\countable}{\mbox{\ countable}}
+\newcommand{\Done}{\noindent \textbf{Done.}\\}
 \newcommand{\Term}{\mathrm{Term}}
 \newcommand{\set}{\mathrm{\ set}}
-\newcommand{\univocal}{\mathrm{\ univocal}}
-\newcommand{\singleton}{\mathrm{\ singleton}}
-\newcommand{\complex}{\mathbb{C}}
-\newcommand{\real}{\mathbb{R}}
-\newcommand{\power}{\mathcal{P}}
-\newcommand{\borel}{\mathcal{B}}
-\newcommand{\interior}{\mbox{int}}
-\newcommand{\closure}{\mbox{cl}}
-\newcommand{\nghbset}{\mathcal{N}}
-\newcommand{\semialgebra}{\mathcal{S}}
-\newcommand{\topology}{\mathcal{T}}
-\newcommand{\union}{\bigcup}
+\newcommand{\relation}{\mathrm{\ relation}}
+\newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
-\newcommand{\injective}{\mbox{ }}
-\newcommand{\total}{\mbox{\ total on }}
-\newcommand{\surjective}{\mbox{\ surjective on}}
-\newcommand{\countable}{\mbox{\ countable}}
-\newcommand{\converges}{\longrightarrow}
-\newcommand{\AND}{\ \&\ }
 \newcommand{\IMPLIES}{\ \Rightarrow\ }
-\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
-\newcommand{\Done}{\noindent \textbf{Done.}\\}
-\newcommand{\UB}{\mathrm{UB}}
-\newcommand{\LB}{\mathrm{LB}}
-\newcommand{\Sup}{\mathrm{Sup}}
 \newcommand{\Inf}{\mathrm{Inf}}
+\newcommand{\injective}{\mbox{\ injective}}
+\newcommand{\injection}{\mbox{\ injection}}
+\newcommand{\interior}{\mbox{int}}
+\newcommand{\intersection}{\bigcap}
+\newcommand{\LB}{\mathrm{LB}}
+\newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\singleton}{\mathrm{\ singleton}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\surjective}{\mbox{\ surjective\ on\ }}
+\newcommand{\topology}{\mathcal{T}}
+\newcommand{\total}{\mbox{\ total\ on\ }}
+\newcommand{\union}{\bigcup}
+\newcommand{\univocal}{\mathrm{\ univocal}}
+\newcommand{\UB}{\mathrm{UB}}
+\newcommand{\Var}{\mathrm{Var}}
+
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -76,7 +87,7 @@
 The aim of this document is to provide perfect proofs.% of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform-dependent.\\
 %\noindent
 % elements are small letters, sets are uppercase latin letters, sets of sets are mathcal latin letters
-% the code should be comprehensive: use meaning of symbols
+% the code should be comprehensive: use meaning ozf symbols
 \noindent
 \subsection{Goals}
 %Interesting targets:
@@ -168,12 +179,53 @@ $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 %If $\varphi$ is a formula, then
 %$\{x|\varphi\}$ is MK-class.
 %\end{constructor}
-\begin{constructor}
+\begin{constructor} Subclass predicate.\\
+If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
+\end{constructor}
+\begin{definition} Subclass predicate.
+$$(A\subseteq B)\leftrightarrow(\forall x\in A:x\in B)$$
+\end{definition}
+\begin{constructor}Equality.\\
+If $A$ and $B$ are classes, then $(A=B)$ is a formula.
+\end{constructor}
+\begin{definition}
+Equality.
+$$(A=B)\leftrightarrow (\forall Y: A\in Y \leftrightarrow B\in Y)$$
+\end{definition}
+\begin{axiom}
+Extensionality.
+$$(A=B)\leftrightarrow ((A\subseteq B) \land (B\subseteq A))$$
+\end{axiom}
+\begin{constructor} Set predicate.\\
 If $A$ is a class, then $(A\set)$ is a formula.
 \end{constructor}
 \begin{definition} Set predicate.
-$$(X\set)\ \Leftrightarrow\ (\exists Y:X\in Y)$$
+$$(X\set)\leftrightarrow(\exists Y:X\in Y)$$
 \end{definition}
+
+\begin{constructor}
+If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
+(It is Mosrse-Kelley set theory, since there are no restrictions on $\varphi$.)
+\end{constructor}
+\begin{axiom} Class comprehension.
+$$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\ \&\ (\varphi[Y/W]))$$
+%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\ \&\ (\varphi[Y/x])$$
+%(or maybe
+%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\ \&\ (\varphi)$$
+%we need to find one expression for both cases.
+%)
+\end{axiom}
+
+\begin{constructor} Empty class.\\
+The empty set symbol $\emptyset$ is a constant closed term.
+\end{constructor}
+\begin{definition} Empty class.
+$$\emptyset := \{x|\bot\}$$
+\end{definition}
+\begin{axiom}
+$$(\emptyset\set)$$
+\end{axiom}
+
 \begin{theorem}
 %$$A\set \land B\in A \rightarrow B\set$$
 $$B\in A \rightarrow B\set$$
@@ -182,10 +234,63 @@ $B\in A \rightarrow \exists A: B\in A$ (by right-exists-intro).\\
 \Done
 \end{theorem}
 
-\begin{constructor}
-If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
-(It is Mosrse-Kelley set theory, since there are no restrictions on $\varphi$.)
-\end{constructor}
+
+\begin{axiom}
+\label{axm:limitation of size}
+Limitation of size.
+$$\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))$$
+\end{axiom}
+
+\begin{theorem}
+$$
+(\emptyset\subseteq A)
+$$
+\end{theorem}
+\Proof
+Claim:
+$$
+(\forall x\in \emptyset: x\in A)
+$$
+Assume $(x\in\emptyset)$.
+$$
+(x\in\emptyset)
+\ \Longrightarrow\ 
+\bot
+$$
+$$
+\bot
+\ \Longrightarrow\ 
+(x\in A)
+$$
+Claim is proven.
+$$
+(\forall x\in \emptyset: x\in A)
+\ \Longrightarrow\ 
+(\emptyset\subseteq A)
+$$
+\Done
+
+
+\begin{theorem}
+$$
+\neg\exists w: w\in A
+\ \longrightarrow\ 
+(A=\emptyset)
+$$
+\end{theorem}
+\Proof
+Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
+$(\supseteq)$\\
+
+$(\subseteq)$\\
+%$$
+%\neg\exists w: w\in A
+%\ \longrightarrow\ 
+%(A=\emptyset)
+%$$
+\Done
+
+
 \begin{definition} Universal class (constant).
 $$V:=\{x|\top\}$$
 \end{definition}
@@ -202,6 +307,7 @@ $$C\subseteq V$$
 \Done
 
 \begin{theorem}
+\label{thm:sets are in V}
 $$(X\set)\ \Leftrightarrow\ (X\in V)$$
 \end{theorem}
 \Proof
@@ -254,15 +360,6 @@ $$(\power\Psi\subseteq\Psi)\to(V\subseteq\Psi)$$
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
 %Значит любой класс не принадлежит сам себе.
 
-
-\begin{axiom} Class comprehension.
-$$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\ \&\ (\varphi[Y/W]))$$
-%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\ \&\ (\varphi[Y/x])$$
-%(or maybe
-%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\ \&\ (\varphi)$$
-%we need to find one expression for both cases.
-%)
-\end{axiom}
 
 
 \begin{theorem}
@@ -368,7 +465,7 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
 %$W:=Y$.\\
 \Done
 
-\begin{theorem}{A conglomerate of all classes is not a class.}
+\begin{theorem}{A conglomerate of all classes is not a class. It "does not exist as class".}
 $$\neg (\exists W \forall Q: Q\in W)$$
 $$(\forall W \exists Q: Q\notin W)$$
 \end{theorem}
@@ -379,7 +476,17 @@ By \ref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.\\
 \Done
 
-\begin{definition} Epsilon operator.
+\begin{definition}
+\label{def:intersection}
+Intersection of an arbitrary class A.
+$$\bigcap A = \{x|\forall a\in A: x\in a\}$$
+\end{definition}
+
+
+
+\begin{definition}
+\label{def:epsilon operator}
+Epsilon operator.
 $$(\varepsilon y: \varphi) = c\big(\{y|\varphi\}\big)$$
 \end{definition}
 
@@ -419,9 +526,27 @@ $$(a\in\{a\})\ \&\ (\{a\}=\{w\})\ \Longrightarrow\ (a\in\{w\})$$
 \Done
 
 \begin{theorem}
+$$(A \subseteq B)\land (B\subseteq A) \to (A=B)$$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}
 $$\big(\bigcap\{w\}=w\big)$$
 \end{theorem}
 \Proof
+$(\subseteq)$\\
+$(x\in\intersection \{w\})\ \Longrightarrow\ (\forall m\in\{w\}:x\in m)$.\\
+$(\forall m\in\{w\}:x\in m)\ \&\ (w\in \{w\})\ \Longrightarrow\ (x\in w).$\\
+$(\supseteq)$\\
+Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
+$(x\in w)\ \Longrightarrow\ (x\set)$.\\
+Claim: $(\forall m\in\{w\}:x\in m).$\\
+Fix m. Assume $m\in\{w\}$.\\
+$(m\in\{w\})\ \Longrightarrow\ (m=w)$.\\
+$(x\in w)\ \&\ (m=w)\ \Longrightarrow\ (x\in m)$\\
+The claim is proven.\\
+$(x\set)\ \&\ (\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
 \Done
 \begin{theorem}{Intersection of a singleton is in it.}
 \label{intersection of singleton}%
@@ -436,8 +561,80 @@ $$\big(\bigcap A=w\big)\ \&\ (w\in A)\ \Longrightarrow\ \big(\bigcap A\in A\big)
 \Done
 
 
+\begin{theorem}
+$$
+(\big(\bigcap A\big)\set)
+\ \Longrightarrow\ 
+(\exists w: w\in A)
+$$
+%\quad\mbox{(by lemma ... )}
+\end{theorem}
+\Proof
+New goal:
+$$
+\neg\exists w: w\in A
+\ \longrightarrow\ 
+\neg(\big(\bigcap A\big)\set)
+$$
 
-\begin{theorem} If $F$ is univocal, then
+Proof of claim:
+$$
+\neg\exists w: w\in A
+\ \Longrightarrow\ 
+(A=\emptyset)
+$$
+$$
+(A=\emptyset)
+\ \Longrightarrow\ 
+(\intersection A\big) = (\intersection \emptyset\big)
+$$
+$$
+(\intersection \emptyset\big) = V
+$$
+$$
+(\intersection A\big) = (\intersection \emptyset\big)
+\ \&\ 
+(\intersection \emptyset\big) = V
+\ \Longrightarrow\ 
+(\intersection A\big) = V
+$$
+$$
+(V\notin V)
+\quad\mbox{(by \ref{thm:not in itself} with $Y:=V$)}
+$$
+$$
+(V\notin V)
+\ \Longrightarrow\ 
+\neg(V\set)
+\quad\mbox{(by \ref{thm:sets are in V})}
+$$
+
+$$
+(\intersection A\big) = V
+\ \&\ 
+\neg(V\set)
+\ \Longrightarrow\ 
+\neg((\intersection A\big) \set)
+$$
+The claim is proven.
+$$
+(\big(\bigcap A\big)\set)
+\ \Longrightarrow\ 
+(\exists w: w\in A)
+\quad\mbox{(from claim by contraposition)}
+$$
+%$$
+%(\big(\bigcap A\big)\set)
+%\ \Longrightarrow\ 
+%\exists Q: \big(\bigcap A\big)\in Q
+%$$
+\Done
+
+
+
+\begin{theorem}
+\label{thm:pair in function}
+If $F$ is univocal, then
 $$\big(F(x)=y\big)\ \Longleftrightarrow\ \big(\langle x,y\rangle\in F\big)$$
 \end{theorem}
 \Proof
@@ -579,8 +776,13 @@ Notation:\\
 Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi-equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
 
 \begin{definition} Identity.
-$$I = \{(x,x)|\}$$
+$$I = \{(x,x)|\top\}$$
 \end{definition}
+\begin{definition} Identity is a relation.
+$$(I \relation)$$
+$$(I\subseteq V\times V)$$
+\end{definition}
+
 
 \begin{definition} "F on X".
 $$\mbox{"F on X"} = F\restriction X $$
@@ -819,6 +1021,7 @@ $$
 \\
 \Done
 \pagebreak
+\iffalse
 \section{Appendix 2: Alternative subset semantics [unfinished]}
 \subsection{Logic}
 $\mathcal{A}$ Alphabet
@@ -887,4 +1090,5 @@ $$M,A\vDash \varphi \stackrel{meta}{\Longleftrightarrow} I_A(\varphi)=\mbox{True
 $$(M\vDash \varphi) \stackrel{meta}{\Longleftrightarrow} (\forall A\in \mbox{Assignment}: M,A\vDash \varphi)$$
 
 %I_A(\varphi)=\mbox{True}
+\fi
 \end{document}\\
