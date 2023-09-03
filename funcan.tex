@@ -42,7 +42,7 @@
 % https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
-\newcommand{\AND}{\ \&\ }
+\newcommand{\AND}{\ \ \&\ \ }
 \newcommand{\borel}{\mathcal{B}}
 \newcommand{\closure}{\mbox{cl}}
 \newcommand{\complex}{\mathbb{C}}
@@ -51,8 +51,10 @@
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
 \newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
-\renewcommand{\implies}{\ \longrightarrow\ }
+\newcommand{\IFF}{\ \Longleftrightarrow\ }
+\renewcommand{\iff}{\ \longleftrightarrow\ }
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
+\renewcommand{\implies}{\ \longrightarrow\ }
 \newcommand{\Inf}{\mathrm{Inf}}
 \newcommand{\injective}{\mbox{\ injective}}
 \newcommand{\injection}{\mbox{\ injection}}
@@ -77,6 +79,7 @@
 \newcommand{\transitive}{\mathrm{\ transitive}}
 \newcommand{\union}{\bigcup}
 \newcommand{\univocal}{\mathrm{\ univocal}}
+\newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
 \newcommand{\UB}{\mathrm{UB}}
 \newcommand{\Var}{\mathrm{Var}}
 
@@ -101,13 +104,14 @@ The aim of this document is to provide perfect proofs.% of functional analysis a
 %\end{itemize}
 ...
 \newpage
-\section{Foundations}
+\section{Foundations [skip this section]}
 \subsection{Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
 $$\varphi[Z_1/W_1,...,Z_n/W_n]$$
 \end{definition}
-\noindent...
+\noindent
+...
 \subsection{Useful metatheorems}
 \begin{theorem}
 $$A=B\ \Longrightarrow\ (t[A/W]=t[B/W])$$
@@ -140,7 +144,7 @@ By induction on formula construction.\\
 \subsection{Extension by definitions}
 ...
 \pagebreak
-\section{First-order logic}
+\section{First-order logic [skip this section]}
 \begin{theorem}
 \label{thm:ILMorgan}
 In intuitionistic logic:\\
@@ -171,6 +175,14 @@ $\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
 $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 \Done
 
+\begin{theorem}
+$$
+(\exists x \forall y:\varphi) \longrightarrow (\forall y \exists x :\varphi)
+$$
+\end{theorem}
+\Proof
+...\\
+\Done
 \pagebreak
 \section{Class theory}%Developing set-theoretic foundations}
 %\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
@@ -186,8 +198,10 @@ $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 \begin{constructor} Subclass predicate.\\
 If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
 \end{constructor}
-\begin{definition} Subclass predicate.
-$$(A\subseteq B)\leftrightarrow(\forall x\in A:x\in B)$$
+\begin{definition}
+\label{def:subclass}
+Subclass predicate.
+$$(A\subseteq B)\iff(\forall x\in A:x\in B)$$
 \end{definition}
 If the variant of logic being used doesn't have equality, then add the following constructor and definition.
 \begin{constructor}Equality.\\
@@ -195,17 +209,17 @@ If $A$ and $B$ are classes, then $(A=B)$ is a formula.
 \end{constructor}
 \begin{definition}
 Equality.
-$$(A=B)\leftrightarrow (\forall Y: A\in Y \leftrightarrow B\in Y)$$
+$$(A=B)\iff (\forall Y: A\in Y \iff B\in Y)$$
 \end{definition}
 \begin{axiom}
 Extensionality.
-$$(A=B)\leftrightarrow ((A\subseteq B) \land (B\subseteq A))$$
+$$(A=B)\iff ((A\subseteq B) \land (B\subseteq A))$$
 \end{axiom}
 \begin{constructor} Set predicate.\\
 If $A$ is a class, then $(A\set)$ is a formula.
 \end{constructor}
 \begin{definition} Set predicate.
-$$(X\set)\leftrightarrow(\exists Y:X\in Y)$$
+$$(X\set)\iff(\exists Y:X\in Y)$$
 \end{definition}
 
 \begin{constructor}
@@ -213,10 +227,10 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 (It is Mosrse-Kelley set theory, since there are no restrictions on $\varphi$.)
 \end{constructor}
 \begin{axiom} Class comprehension.
-$$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\AND(\varphi[Y/W]))$$
-%$$Y\in\{x|\varphi\} \Leftrightarrow (Y\set)\AND(\varphi[Y/x])$$
+$$(Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))$$
+%$$Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])$$
 %(or maybe
-%$$Y\in\{x|\varphi[x/Y]\} \Leftrightarrow (Y\set)\AND(\varphi)$$
+%$$Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)$$
 %we need to find one expression for both cases.
 %)
 \end{axiom}
@@ -224,14 +238,19 @@ $$(Y\in\{x|\varphi[x/W]\}) \Leftrightarrow ((Y\set)\AND(\varphi[Y/W]))$$
 \begin{constructor} Empty class.\\
 The empty set symbol $\emptyset$ is a constant closed term.
 \end{constructor}
-\begin{definition} Empty class.
-$$\emptyset := \{x|\bot\}$$
+\begin{definition}
+\label{def:empty class}
+Empty class.
+$$\emptyset = \{x|\bot\}$$
 \end{definition}
+
 \begin{axiom}
+\label{axm:empty class}
 $$(\emptyset\set)$$
 \end{axiom}
 
 \begin{theorem}
+\label{thm:in class then set}
 %$$A\set \land B\in A \rightarrow B\set$$
 $$B\in A \rightarrow B\set$$
 \Proof
@@ -247,6 +266,7 @@ $$\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]
 \end{axiom}
 
 \begin{theorem}
+\label{thm:empty class is subclass}
 $$
 (\emptyset\subseteq A)
 $$
@@ -272,6 +292,7 @@ $$
 (\forall x\in \emptyset: x\in A)
 \IMPLIES
 (\emptyset\subseteq A)
+\quad\mbox{(by def \ref{def:empty class})}
 $$
 \Done
 
@@ -279,15 +300,19 @@ $$
 \begin{theorem}
 $$
 \neg\exists w: w\in A
-\IMPLIES
+\implies
 (A=\emptyset)
 $$
 \end{theorem}
 \Proof
 Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
 $(\supseteq)$\\
-
+$$
+(A\supseteq\emptyset)
+\quad\mbox{(by thm \ref{thm:empty class is subclass})}
+$$
 $(\subseteq)$\\
+...\\
 %$$
 %\neg\exists w: w\in A
 %\IMPLIES
@@ -297,23 +322,44 @@ $(\subseteq)$\\
 
 
 \begin{definition} Universal class (constant).
+\label{def:universal class}
 $$V:=\{x|\top\}$$
 \end{definition}
 \begin{theorem}
+Any class is a subclass of class of all sets.
 $$C\subseteq V$$
 \end{theorem}
 \Proof
 %$$\forall x\in C:x\in V$$
-...
-Fix $x$. Assume $x\in C$.
-
-$$\forall x\in C:x\in V$$
-$$C\subseteq V$$
+%...
+Claim: $(\forall x\in C:x\in V)$.\\
+Fix $x$. Assume $(x\in C)$. To show $(x\in V)$.
+$$
+(x\in C)
+\IMPLIES
+(x\set)
+\quad\mbox{(by thm \ref{thm:in class then set})}
+$$
+$$
+(x\set)
+\AND
+\top
+\IMPLIES
+(x\in V)
+\quad\mbox{(by def \ref{def:universal class})}
+$$
+Claim is proven.
+$$
+(\forall x\in C:x\in V)
+\IMPLIES
+(C\subseteq V)
+\quad\mbox{(by def \ref{def:subclass})}
+$$
 \Done
 
 \begin{theorem}
 \label{thm:sets are in V}
-$$(X\set)\ \Leftrightarrow\ (X\in V)$$
+$$(X\set)\iff(X\in V)$$
 \end{theorem}
 \Proof
 \noindent($\Leftarrow$) Assume $(X\in V)$.
@@ -370,27 +416,27 @@ $$(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)$$
 \begin{theorem}
 \label{Russel's Paradox}
 In classical and even in intuitionistic logic, the following holds:
-$$\neg (\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$$
+$$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$$
 \end{theorem}
 \Proof
-\noindent By contradiction, assume $(\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$. To show: $\bot$.\\
+\noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
 Set Q:=W.\\
-Therefore $W\in W \leftrightarrow W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
+Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
 From \ref{double neg LEM} where $P:=(W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
-$W\in W \leftrightarrow W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
+$W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
 Now, using backward reasoning:\\
-$W\in W \leftrightarrow W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
+$W\in W \iff W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
 Subgoal1:\\
-$W\in W \leftrightarrow W\notin W, (W\in W) \vdash \bot$.\\
-$W\in W \leftrightarrow W\notin W, (W\in W) \vdash (W\notin W)$.\\
-$W\in W \leftrightarrow W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
+$W\in W \iff W\notin W, (W\in W) \vdash \bot$.\\
+$W\in W \iff W\notin W, (W\in W) \vdash (W\notin W)$.\\
+$W\in W \iff W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
 Subgoal2:\\
-$W\in W \leftrightarrow W\notin W, (W\notin W) \vdash \bot$.\\
-$W\in W \leftrightarrow W\notin W, (W\notin W) \vdash (W\in W)$.\\
-$W\in W \leftrightarrow W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).\\
+$W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
+$W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
+$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).\\
 \Done
 
 
@@ -465,12 +511,14 @@ $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
 $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
 %By Russel's paradox(\ref{Russel's Paradox}), 
-%$\neg (\exists W \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
-%$\forall W(\neg \forall Q: Q\in W \leftrightarrow Q\notin Q)$\\
+%$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
+%$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
 %$W:=Y$.\\
 \Done
 
-\begin{theorem}{A conglomerate of all classes is not a class. It "does not exist as class".}
+\begin{theorem}
+\label{thm:conglomerate of classes not class}
+A conglomerate of all classes is not a class. It "does not exist as class".
 $$\neg (\exists W \forall Q: Q\in W)$$
 $$(\forall W \exists Q: Q\notin W)$$
 \end{theorem}
@@ -484,10 +532,83 @@ So $Q\notin W$.\\
 \begin{definition}
 \label{def:intersection}
 Intersection of an arbitrary class A.
-$$\bigcap A = \{x|\forall a\in A: x\in a\}$$
+$$\intersection A = \{x|\forall a\in A: x\in a\}$$
+\end{definition}
+
+\begin{definition}
+\label{def:union}
+Union of an arbitrary class A.
+$$\union A = \{x|\exists a\in A: x\in a\}$$
+\end{definition}
+
+\begin{definition}
+\label{def:ordered pair}
+Ordered pair. %maybe V somehow?
+$$\langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}$$
+\end{definition}
+
+\begin{definition}
+\label{def:uniqueness quantifier}
+Uniqueness quantifier
+$$
+(!y:\varphi)\iff (\forall y_1\forall y_2:\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+$$
+\end{definition}
+
+\begin{theorem}
+A class constructed with conjugation of a formula and the uniqueness of object satisfying the same formula has at most one element.
+\label{thm:class with at most one object}
+$$
+(!w:w\in \{y|\varphi\land (!y:\varphi)\})
+$$
+\end{theorem}
+\Proof
+Assume $w_1\in \{y|\varphi\land (!y:\varphi)\}$ and $w_2\in \{y|\varphi\land (!y:\varphi)\}$.\\
+To show: $w_1=w_2$.
+$$
+w_1\in \{y|\varphi\land (!y:\varphi)\}
+\IMPLIES
+\varphi[w_1/y]
+\land
+(!y:\varphi)
+$$
+$$
+w_2\in \{y|\varphi\land (!y:\varphi)\}
+\IMPLIES
+\varphi[w_2/y]
+\land
+(!y:\varphi)
+$$
+$$
+(!y:\varphi)
+\AND
+\varphi[w_1/y]
+\AND
+\varphi[w_2/y]
+\IMPLIES
+w_1=w_2
+$$
+\Done
+
+\begin{definition}
+\label{def:iota operator}
+Iota operator.
+$$(\iota y: \varphi) = \intersection \{y|\varphi \land (!y:\varphi)\}$$
+\end{definition}
+
+\begin{definition}
+\label{def:lambda operator}
+Lambda operator.
+$$(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}$$
 \end{definition}
 
 
+%\IFF
+\begin{definition}
+\label{def:value}
+Intended use: value of a class-function. Class F is arbitrary.
+$$F(x) = \big(\iota y: \langle x,y\rangle\in F\big)$$
+\end{definition}
 
 \begin{definition}
 \label{def:epsilon operator}
@@ -495,19 +616,6 @@ Epsilon operator.
 $$(\varepsilon y: \varphi) = c\big(\{y|\varphi\}\big)$$
 \end{definition}
 
-\begin{definition} Iota operator.
-$$(\iota y: \varphi) = \bigcap \{y|\varphi \land (!Y:\varphi)\}$$
-\end{definition}
-
-\begin{definition} Lambda operator.
-$$(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}$$
-\end{definition}
-
-
-%\Leftrightarrow
-\begin{definition} Value of a function.
-$$F(x) = \big(\iota y: \langle x,y\rangle\in F\big)$$
-\end{definition}
 
 \begin{definition} Singleton (functional symbol).
 $$\{w\} = \{x|x=w\}$$
@@ -537,7 +645,7 @@ $$(A \subseteq B)\land (B\subseteq A) \implies (A=B)$$
 \Done
 
 \begin{theorem}
-$$\big(\bigcap\{w\}=w\big)$$
+$$\big(\intersection\{w\}=w\big)$$
 \end{theorem}
 \Proof
 $(\subseteq)$\\
@@ -555,10 +663,10 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \Done
 
 \begin{definition}
-$$(A \transitive)\leftrightarrow (A\subseteq \power A)$$
+$$(A \transitive)\iff (A\subseteq \power A)$$
 \end{definition}
 \begin{theorem}
-$$(A \transitive)\leftrightarrow (\union A\subseteq A)$$
+$$(A \transitive)\iff (\union A\subseteq A)$$
 \end{theorem}
 \Proof
 \Done
@@ -566,12 +674,55 @@ $$(A \transitive)\leftrightarrow (\union A\subseteq A)$$
 $$(B\in A) \rightarrow \big(B \subseteq \union A\big)$$
 \end{theorem}
 \Proof
+Assume $(b\in B)$.\\
+To show: $(b\in \union A)$.\\
+$$
+(b\in B)
+\IMPLIES
+(b\set)
+\quad\mbox{(by \ref{thm:in class then set})}
+$$
+$$
+(B\in A)
+\AND
+(b\in B)
+\IMPLIES
+(\exists a\in A : b\in a)
+$$
+$$
+(b\set)
+\AND
+(\exists a\in A : b\in a)
+\IMPLIES
+(b\in \union A)
+$$
+
 \Done
 
 \begin{theorem}
 $$(B\in A) \rightarrow \big(\intersection A\big)\subseteq B$$
 \end{theorem}
 \Proof
+Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
+
+
+$$
+(x\in \intersection A)
+\IMPLIES
+(x\set)
+\AND
+(\forall a\in A : x\in a)
+$$
+%(b\set)
+%\quad\mbox{(by \ref{thm:in class then set})}
+%$$a:=B$$
+$$
+(\forall a\in A : x\in a)
+\AND
+(B\in A)
+\IMPLIES
+(x\in B)
+$$
 \Done
 
 \begin{theorem}
@@ -606,27 +757,29 @@ $$
 
 \begin{theorem}{}
 %\label{intersection of singleton}%
-$$(A \transitive) \rightarrow \big(\big(\bigcap A\big)\subseteq A\big)$$
+$$(A \transitive) \rightarrow \big(\big(\intersection A\big)\subseteq A\big)$$
 \end{theorem}
 \Proof
 \Done
 
 \begin{theorem}{Intersection of a singleton is in it.}
-\label{intersection of singleton}%
-$$(A \singleton) \rightarrow \big(\big(\bigcap A\big)\in A\big)$$
+\label{thm:intersection of singleton}%
+$$(A \singleton) \rightarrow \big(\big(\intersection A\big)\in A\big)$$
 \end{theorem}
 \Proof
 $$(A\singleton)\IMPLIES(\exists!w:w\in A)$$
 $$(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}$$
-$$(\{w\}=A)\IMPLIES\big(\bigcap\{w\}=\bigcap A\big).$$
-$$\big(\bigcap\{w\}=w\big)\AND\big(\bigcap\{w\}=\bigcap A\big)\IMPLIES\big(\bigcap A=w\big)$$
-$$\big(\bigcap A=w\big)\AND(w\in A)\IMPLIES\big(\bigcap A\in A\big)$$
+$$(\{w\}=A)\IMPLIES\big(\intersection\{w\}=\intersection A\big).$$
+$$\big(\intersection\{w\}=w\big)\AND\big(\intersection\{w\}=\intersection A\big)\IMPLIES\big(\intersection A=w\big)$$
+$$\big(\intersection A=w\big)\AND(w\in A)\IMPLIES\big(\intersection A\in A\big)$$
 \Done
 
 
 \begin{theorem}
+\label{thm:intersection set then}
+If intersection of a class A is a set, then A is nonempty. 
 $$
-(\big(\bigcap A\big)\set)
+(\big(\intersection A\big)\set)
 \IMPLIES
 (\exists w: w\in A)
 $$
@@ -636,11 +789,10 @@ $$
 New goal:
 $$
 \neg\exists w: w\in A
-\IMPLIES
-\neg(\big(\bigcap A\big)\set)
+\implies
+\neg(\big(\intersection A\big)\set)
 $$
-
-Proof of claim:
+Proof of the claim:
 $$
 \neg\exists w: w\in A
 \IMPLIES
@@ -663,15 +815,14 @@ $$
 $$
 $$
 (V\notin V)
-\quad\mbox{(by \ref{thm:not in itself} with $Y:=V$)}
+\quad\mbox{(by thm \ref{thm:not in itself} with $Y:=V$)}
 $$
 $$
 (V\notin V)
 \IMPLIES
 \neg(V\set)
-\quad\mbox{(by \ref{thm:sets are in V})}
+\quad\mbox{(by thm \ref{thm:sets are in V})}
 $$
-
 $$
 (\intersection A\big) = V
 \AND
@@ -681,36 +832,53 @@ $$
 $$
 The claim is proven.
 $$
-(\big(\bigcap A\big)\set)
+(\big(\intersection A\big)\set)
 \IMPLIES
 (\exists w: w\in A)
 \quad\mbox{(from claim by contraposition)}
 $$
 %$$
-%(\big(\bigcap A\big)\set)
+%(\big(\intersection A\big)\set)
 %\IMPLIES
-%\exists Q: \big(\bigcap A\big)\in Q
+%\exists Q: \big(\intersection A\big)\in Q
 %$$
 \Done
-
-
-
+\begin{definition}
+\label{def:univocalat}
+$$
+(F\univocalat x)\iff(!y : \langle x,y\rangle \in F)
+$$
+\end{definition}
+\begin{definition}
+\label{def:univocal}
+$$
+(F\univocal)\iff (\forall x: F\univocalat x)
+$$
+\end{definition}
 \begin{theorem}
 \label{thm:pair in function}
-If $F$ is univocal, then
-$$\big(F(x)=y\big)\ \Longleftrightarrow\ \big(\langle x,y\rangle\in F\big)$$
+If $(F\univocalat x)\land(y\set)$, then
+$$\big(F(x)=y\big)\ \longleftrightarrow\ \big(\langle x,y\rangle\in F\big)$$
 \end{theorem}
 \Proof
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
+% USELESS
+%$$
+%(F\univocal)
+%\IMPLIES
+%(\forall x:\ !y : \langle x,y\rangle \in F)
+%$$
+% USELESS
+%$$
+%(\forall x:\ !y : \langle x,y\rangle \in F)
+%\IMPLIES
+%(!y : \langle x,y\rangle \in F)
+%$$
 $$
-(F\univocal)
-\IMPLIES
-(\forall x:\ !y : \langle x,y\rangle \in F)
-$$
-$$
-(\forall x:\ !y : \langle x,y\rangle \in F)
+(F\univocalat x)
 \IMPLIES
 (!y : \langle x,y\rangle \in F)
+\quad\mbox{(by def \ref{def:univocalat})}
 $$
 $$
 (\langle x,y\rangle\in F)
@@ -727,58 +895,163 @@ $$
 $$
 (\exists! y : \langle x,y\rangle \in F)
 \IMPLIES
-(\{y : \langle x,y\rangle \in F\}\singleton)
+(\{y | \langle x,y\rangle \in F\}\singleton)
 $$
 $$
-\big(\{y: \langle x,y\rangle\in F\}\singleton\big)
+\big(\{y| \langle x,y\rangle\in F\}\singleton\big)
 \IMPLIES
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
+\big(\intersection\{y| \langle x,y\rangle\in F\}\big)
 \in
-\big(\{y: \langle x,y\rangle\in F\}\big)\quad(\mbox{by \ref{intersection of singleton} }).
+\big(\{y| \langle x,y\rangle\in F\}\big)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
 $$
 $$
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
+\big(\intersection\{y| \langle x,y\rangle\in F\}\big)
 \in
-\big(\{y: \langle x,y\rangle\in F\}\big)
+\big(\{y| \langle x,y\rangle\in F\}\big)
 \IMPLIES
-\langle x,\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\rangle\in F
+\langle x,\big(\intersection\{y| \langle x,y\rangle\in F\}\big)\rangle\in F
 $$
 $$
 (!y : \langle x,y\rangle \in F)
 \AND
 (\langle x,y\rangle\in F)
 \AND
-\langle x,\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\rangle\in F
+\langle x,\big(\intersection\{y| \langle x,y\rangle\in F\}\big)\rangle\in F
 \IMPLIES
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
+\big(\intersection\{y| \langle x,y\rangle\in F\}\big)=y
 $$
+
+$$
+\beta
+\IMPLIES
+\big(
+\alpha
+\iff
+(\alpha \land \beta))
+\big)
+$$
+
+$$
+\big(
+\varphi_1\iff \varphi_2
+\big)
+\IMPLIES
+\big(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\big)
+\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
+$$
+(so the assignment is not only for Term variables, but also for Formula variables.\\
+Substitution is also simultaneous.\\
+All Term variables are free in a Formula varriable.\\
+During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
+But here it is an example with free variable: $y$.
+$$\varphi_1 = \alpha$$
+$$\varphi_2 = \alpha \land \beta$$
+Idea: we may use 
+$$(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})$$
+comment: i don't use G\"odel notation in my system.
+But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
+)\\
+Other problem:\\
+$$(\forall x:\varphi)\implies \varphi[t/x]$$
+$$t:=x$$
+$$(\forall x:\varphi)\implies \varphi[x/x]$$
+$$(\forall x:\varphi)\implies \varphi$$
+Assume we proved $(\forall x:\varphi)$.
+I don't actually have problem here, but I feel it is mildly dangerous to introduce
+formula variables, because need to implement substitution and be sure that
+it will not break the consistency.\\
+What can break consistency?\\
+If we use facts specific for theorem?... probably not.
+Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
+I don't like the following statement:
+$$
+\big(
+\varphi_1\iff \varphi_2
+\big)
+\IMPLIES
+\big(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\big),
+$$
+because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
+Maybe it is not a problem.\\
+Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
+
+
+
+$$
+\beta\implies(\alpha\iff(\alpha \land \beta)))
+$$
+
+$$????
+(!y: \langle x,y\rangle\in F)
+\IMPLIES
+\big(
+(\langle x,y\rangle\in F)
+\iff
+(\langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F))
+\big)
+$$
+
+
 $$
 (!y: \langle x,y\rangle\in F)
 \IMPLIES
 \big(
-\{y: \langle x,y\rangle\in F\}
+\{y| \langle x,y\rangle\in F\}
 =
-\{y: \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
+\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
 \big)
 $$
+
+
+
 $$
-\big(\{y: \langle x,y\rangle\in F\}
+\big(\{y| \langle x,y\rangle\in F\}
 =
-\{y: \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+\IMPLIES
+$$
+$$
+\IMPLIES
+\big(\intersection\{y| \langle x,y\rangle\in F\}\big)=
+\big(\intersection\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+$$
+
+
+$$
+\big(\{y| \langle x,y\rangle\in F\}
+=
+\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
 \AND
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
+\big(\intersection\{y| \langle x,y\rangle\in F\}\big)=y
 \IMPLIES
 $$
 $$
 \IMPLIES
-\big(\bigcap\{y: \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)=y
+\big(\intersection\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)=y
+$$
+
+
+++++++
+$$
+\big(\intersection\{y| (\langle x,y\rangle\in F) \land (!y:\langle x,y\rangle\in F)\}\big)=y
+\AND
 $$
 $$
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
-\AND...
+\AND
+(\iota y: (\langle x,y\rangle\in F))
+=
+\big(\intersection\{y| \langle x,y\rangle\in F \land (!y:\langle x,y\rangle\in F)\}\big)
+\IMPLIES
+$$
+$$
 \IMPLIES
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
 $$
+---------
 $$
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
 \IMPLIES
@@ -787,44 +1060,122 @@ $$
 So we proved that F(x)=y.
 
 \noindent($\Rightarrow$) Assume $(F(x)=y)$.
-$$(F(x)=y)\IMPLIES\big(\iota y: \langle x,y\rangle\in F\big)=y.$$
-$$\big(\iota y: \langle x,y\rangle\in F\big)=y\IMPLIES\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y.$$
-$$(F\univocal)
+For formulas to be short, let's define 
+$$
+Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
+$$
+$$
+y=F(x)
+\quad(\mbox{by assumption})
+$$
+$$
+=\big(\iota y: \langle x,y\rangle\in F\big)
+\quad(\mbox{by def of value of a function \ref{def:value}})
+$$
+$$
+=\big(\intersection Q\big)
+\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+$$
+
+%$$
+%(F(x)=y)
+%\IMPLIES
+%\big(\iota y: \langle x,y\rangle\in F\big)=y.
+%$$
+
+%$$
+%\big(\iota y: \langle x,y\rangle\in F\big)=y
+%\IMPLIES
+%\big(\intersection Q\big)=y.
+%$$
+
+$$
+(F\univocal)
 \IMPLIES
 (\forall x:\ !y : \langle x,y\rangle \in F)
 $$
+
 $$
 (\forall x:\ !y : \langle x,y\rangle \in F)
 \IMPLIES
 (!y : \langle x,y\rangle \in F)
 $$
+
 $$
 (y\set)
 \AND
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)=y
+\big(\intersection Q\big)=y
 \IMPLIES
-(\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\set)
+(\big(\intersection Q\big)\set)
 $$
 
 $$
-(\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)\set)
+(\big(\intersection Q\big)\set)
 \IMPLIES
-\exists w: w\in \{y: \langle x,y\rangle\in F\}
-\quad\mbox{(by lemma ... )}
+(\exists w: w\in Q)
+\quad(\mbox{by thm \ref{thm:intersection set then}}).
 $$
 
+%GOOD, BUT USELESS
+%$$
+%(w\in Q)
+%\IMPLIES
+%\langle x,w\rangle\in F
+%\land 
+%(!w: \langle x,w\rangle\in F)
+%\quad(\mbox{by def of Q}).
+%$$
+
+%(!w:w\in \{y|\varphi\land (!y:\varphi)\})
+%(!w:w\in \{y|(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))\})
+$$
+(!w:w\in Q)
+\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi:=(\langle x,y\rangle\in F)$)}
+$$
+%...
 
 $$
-\big(\{y: \langle x,y\rangle\in F\}\singleton\big)
+(\exists w: w\in Q)
+\AND
+(! w: w\in Q)
 \IMPLIES
-\big(\bigcap\{y: \langle x,y\rangle\in F\}\big)
-\in
-\big(\{y: \langle x,y\rangle\in F\}\big)\quad(\mbox{by \ref{intersection of singleton} }).
+(\exists! w: w\in Q)
 $$
+
+$$
+\exists! w: w\in Q
+\IMPLIES
+(Q\singleton)
+$$
+
+$$
+\big(Q\singleton\big)
+\IMPLIES
+\big(\intersection Q\big)\in Q
+\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+$$
+
+$$
+\big(\intersection Q\big)\in Q
+\AND
+\big(\intersection Q\big)=y
+\IMPLIES
+y\in Q.
+$$
+
+$$
+y\in Q
+\IMPLIES
+(\langle x,y\rangle\in F)
+\land 
+(!y: \langle x,y\rangle\in F)
+\quad(\mbox{by def of Q}).
+$$
+So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \Done
 
 
-$$(\big(\bigcap A\big)\set)\implies $$
+%$$(\big(\intersection A\big)\set)\implies $$
 
 
 
@@ -853,41 +1204,73 @@ $$\mbox{"F on X"} = F\restriction X $$
 
 
 \begin{definition}
-$$y\in f[A] \Leftrightarrow \exists x\in A: \langle x,y\rangle\in f$$
+$$
+(y\in f[A])
+\iff
+(\exists x\in A: \langle x,y\rangle\in f)
+$$
 \end{definition}
 \begin{definition}
-$$y\in f\langle A\rangle \Leftrightarrow \forall x\in A: \langle x,y\rangle\in f$$
+$$
+(y\in f\langle A\rangle)
+\iff
+(\forall x\in A: \langle x,y\rangle\in f)
+$$
 \end{definition}
 \begin{theorem}
-$$X\subseteq \power Y \Leftrightarrow \union X \subseteq Y$$
+$$
+X\subseteq \power Y
+\iff
+\union X \subseteq Y
+$$
 \end{theorem}
 \begin{theorem}
-$$g\functional \AND M \countable \IMPLIES g[M] \countable$$
+$$
+(g\functional)
+\AND
+(M \countable)
+\IMPLIES
+(g[M] \countable)
+$$
 \end{theorem}
 \begin{theorem}
 $$f^\leftarrow \functional$$
 \end{theorem}
 
 \begin{theorem}
-$$f\injective \IMPLIES f\left[\union M\right] = \union f^{\rightarrow}\left[M\right]$$
+$$
+(f\injective)
+\IMPLIES
+(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right])$$
 \end{theorem}
 
 \begin{theorem}
-$$f\functional \IMPLIES f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]$$
+$$
+f\functional
+\IMPLIES
+f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
+$$
 \end{theorem}
 \section{Linear algebra}
 \begin{definition}Matrix over a set S.
-$$\mbox{"A is a matrix over a set S"} \Leftrightarrow \exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \implies S $$
+$$
+\mbox{"A is a matrix over a set S"}
+\iff
+\exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \implies S $$
 \end{definition}
 
 \begin{definition}
-$$\mbox{combine}(f_1,f_2) := \{(((m,k),(m,v)),(m,(k,v)))| (m,k)\in f_1 \land (m,v)\in f_2\}$$
+$$
+\mbox{combine}(f_1,f_2) := \{(((m,k),(m,v)),(m,(k,v)))| (m,k)\in f_1 \land (m,v)\in f_2\}
+$$
 \end{definition}
 (A combination is a product of morphisms in the category sets and functions.)
 
 \section{Real analysis}
 \begin{definition}
-$$\UB_R(S) = R[S]$$
+$$
+\UB_R(S) = R[S]
+$$
 \end{definition}
 \begin{definition}
 $$\LB_R(S) = R^{-1}[S]$$
@@ -904,13 +1287,21 @@ $\geq = \leq^{-1}$\\
 \noindent
 
 \begin{definition}
-$$A \leqslant B \Longleftrightarrow \forall a\in A \forall b\in B: a\leq b$$
+$$
+A \leqslant B
+\longleftrightarrow
+\forall a\in A \forall b\in B: a\leq b
+$$
 \end{definition}
 \begin{definition}
-$$\UB(S) = \leq [S]$$
+$$
+\UB(S) = \leq [S]
+$$
 \end{definition}
 \begin{definition}
-$$\LB(S) = \geq [S]$$
+$$
+\LB(S) = \geq [S]
+$$
 \end{definition}
 
 \begin{theorem}
@@ -929,20 +1320,34 @@ $$\Inf(S) = \LB(S)\cap \UB(\LB(S))$$
 
 
 \begin{definition}
-$$\mbox{sup}(S) = (\iota x: x\in \mathrm{Sup}(S))$$
+$$
+\mbox{sup}(S) = (\iota x: x\in \mathrm{Sup}(S))
+$$
 \end{definition}
 \begin{definition}
-$$\mbox{inf}(S) = (\iota x: x\in \mathrm{Inf}(S))$$
+$$
+\mbox{inf}(S) = (\iota x: x\in \mathrm{Inf}(S))
+$$
 \end{definition}
 
 
 \begin{theorem}
-$$A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B$$
+$$
+A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
+$$
 \end{theorem}
 
 
 \begin{theorem}
-$$a:\mathbb{N}\rightarrow \real, \{a_n\}_n \mbox{bdd above in }\real, (a_n)_n\mbox{ non-decreasing} \Rightarrow a \converges \sup \{a_n\}_n$$
+$$
+(a:\mathbb{N}\rightarrow \real)
+\land
+(\{a_n\}_n \mbox{bdd above in }\real)
+\land
+((a_n)_n\mbox{ non-decreasing})
+\implies 
+(a \converges \sup \{a_n\}_n)
+$$
 \end{theorem}
 \section{Topology}
 \begin{definition}
@@ -964,7 +1369,7 @@ $$\interior_\topology(V) = \union
 $$(\interior = \nghbset^{-1})\AND(\nghbset=\interior^{-1})$$
 \end{theorem}
 \begin{theorem}
-$$V\in \nghbset_\topology\langle A\rangle \Leftrightarrow A \subseteq \interior(V) $$
+$$V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V) $$
 \end{theorem}
 \begin{theorem}
 $$\closure \dashv \mbox{id} \dashv \interior$$
@@ -974,7 +1379,7 @@ $$\closure \dashv \mbox{id} \dashv \interior$$
 % \{W\in\topology|W\subseteq V\}
 %\noindent Lemma:
 \begin{theorem}
-$$V\in\nghbset_\topology(x) \Leftrightarrow x\in \interior_\topology(V)$$
+$$V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)$$
 \end{theorem}
 \Proof
 $(\Rightarrow)\\
@@ -1013,7 +1418,7 @@ $$f(x) \simeq \big(\iota y: \langle x,y\rangle\in f\big)$$
 \end{definition}
 
 \begin{theorem} If $f$ is univocal, then
-$$\big(f(x)\simeq y\big)\Leftrightarrow \big(\langle x,y\rangle\in f\big)$$
+$$\big(f(x)\simeq y\big)\iff \big(\langle x,y\rangle\in f\big)$$
 \end{theorem}
 \Proof
 ($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
@@ -1100,7 +1505,7 @@ Fm ::=\\
 \end{definition}
 
 \begin{definition}
-$$M(Z) \Leftrightarrow \exists C: Z\in C$$
+$$M(Z) \iff \exists C: Z\in C$$
 \end{definition}
 
 G\"odel notation:\\
@@ -1117,7 +1522,7 @@ Assume X and Y are some terms(sic! not just variables).
 $X\in Y$ is valid iff for any assignment any class-element of I(X) is in any class-element of I(Y).\\
 
 Hypothesis:
-$$A(\varepsilon x: A)\Leftrightarrow \exists x: A(x)$$
+$$A(\varepsilon x: A)\iff \exists x: A(x)$$
 
 
 
@@ -1145,7 +1550,7 @@ $K$ - conglomerate of all classes.\\
 Assignment:\\
 $$A:\mbox{Var}\to \power(K)$$
 
-$$I^{\mathrm{Fm}}_A(S\downarrow) \Leftrightarrow (I^{\mathrm{Term}}_A(S)\neq\emptyset)$$
+$$I^{\mathrm{Fm}}_A(S\downarrow) \iff (I^{\mathrm{Term}}_A(S)\neq\emptyset)$$
 
 Definiton of truth:
 $$\mbox{Bool} := \{\mbox{False}, \mbox{True}\}$$
