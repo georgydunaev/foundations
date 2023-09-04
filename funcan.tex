@@ -83,6 +83,7 @@
 \newcommand{\UB}{\mathrm{UB}}
 \newcommand{\Var}{\mathrm{Var}}
 
+\newcommand{\comment}[1]{\quad\mbox{(#1)}}
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -98,7 +99,8 @@
 \end{center}
 %\pagebreak
 \newpage
-
+\tableofcontents
+\newpage
 %qwertyuio
 \noindent
 % of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform-dependent.\\
@@ -123,7 +125,7 @@ The other point of creating such document is to provide programmed classical log
 \end{itemize}
 %...
 \newpage
-\section{Foundations [skip this section]}
+\section{Foundations [skip this section; go to section 3]}
 \subsection{Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
@@ -179,7 +181,7 @@ By induction on formula construction.\\
 \subsection{Extension by definitions}
 ...
 \pagebreak
-\section{First-order logic [skip this section]}
+\section{First-order logic[skip this section; go to sect.3]}
 ...
 \begin{theorem}
 \label{thm:ILMorgan}
@@ -252,6 +254,7 @@ Equality. (in case if the 1st order logic is given without equality)
 (A=B)\iff (\forall Y: A\in Y \iff B\in Y)
 \]
 \end{definition}
+\subsection{Axiom of extensionality}
 \begin{axiom}
 \label{axm:extensionality}
 Extensionality.
@@ -295,6 +298,7 @@ Empty class.
 \end{definition}
 
 \begin{axiom}
+\subsection{Axiom of empty class}
 \label{axm:empty class}
 \[
 (\emptyset\set)
@@ -312,10 +316,10 @@ $B\in A \rightarrow \exists A: B\in A$ (by right-exists-intro).\\
 \Done
 \end{theorem}
 
-
+\subsection{Axiom of limitation of size}
 \begin{axiom}
 \label{axm:limitation of size}
-Limitation of size.
+Limitation of size (of a set).
 \[
 \neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))
 \]
@@ -368,7 +372,41 @@ $(\supseteq)$\\
 \quad\mbox{(by thm \ref{thm:empty class is subclass})}
 \]
 $(\subseteq)$\\
-...\\
+Claim: $(\forall x\in A:x\in\emptyset)$\\
+Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
+\[
+(x\in A)
+\IMPLIES
+(\exists x:x\in A)
+\]
+\[
+(\exists x:x\in A)
+\AND
+(\neg\exists x:x\in A)
+\IMPLIES
+\bot
+\]
+\[
+\bot
+\IMPLIES
+(x\in\emptyset)
+\]
+The claim is proven.
+\[
+(\forall x\in A:x\in\emptyset)
+\IMPLIES
+(A \subseteq \emptyset)
+\comment{by def of subclass \ref{def:subclass}}
+\]
+\[
+(A \subseteq \emptyset)
+\AND
+(A \supseteq \emptyset)
+\IMPLIES
+(A=\emptyset)
+\comment{by axm \ref{axm:extensionality}}
+\]
+%So by extensionality axiom we are done.\\
 %\[
 %\neg\exists w: w\in A
 %\IMPLIES
@@ -765,7 +803,14 @@ Assume $(x\in A)$. To show: $(x\in B)$\\
 (x\in B)
 \]
 $(\Leftarrow)$\\
-
+Assume $(x\in B)$. To show: $(x\in A)$\\
+\[
+(x\in B)
+\AND
+(B\subseteq A)
+\IMPLIES
+(x\in A)
+\]
 Claim is proven.
 \[
 (\forall x:x\in A \iff x\in B)
@@ -794,16 +839,19 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \Done
 
 \begin{definition}
+\label{def:transitive through power}
 \[
 (A \transitive)\iff (A\subseteq \power A)
 \]
 \end{definition}
 \begin{theorem}
+\label{thm:transitive through union}
 \[
 (A \transitive)\iff (\union A\subseteq A)
 \]
 \end{theorem}
 \Proof
+...\\
 \Done
 \begin{theorem}
 \[
@@ -863,6 +911,7 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \Done
 
 \begin{theorem}
+\label{thm:intersection of nonempty is subset of union}
 \[
 (A \nonempty) \rightarrow \big(\big(\intersection A\big)\subseteq \big(\union A\big)\big)
 \]
@@ -895,11 +944,15 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \begin{theorem}{}
 %\label{intersection of singleton}%
 \[
-(A \transitive) \rightarrow \big(\big(\intersection A\big)\subseteq A\big)
+(A\nonempty)
+\land
+(A\transitive) 
+\implies
+ \big(\big(\intersection A\big)\subseteq A\big)
 \]
 \end{theorem}
 \Proof
-...\\
+By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.\\
 \Done
 
 \begin{theorem}{Intersection of a singleton is in it.}
@@ -1001,10 +1054,44 @@ The claim is proven.
 \label{thm:pair in function}
 If $(F\univocalat x)\land(y\set)$, then
 \[
-\big(F(x)=y\big)\ \longleftrightarrow\ \big(\langle x,y\rangle\in F\big)
+\big(F(x)=y\big)\iff\big(\langle x,y\rangle\in F\big)
 \]
+\begin{align*}
+(F\univocalat x)
+\implies
+\left(
+\big(\langle x,y\rangle\in F\big)
+\implies
+\big(F(x)=y\big)
+\right)
+\\
+(y\set)
+\implies
+\left(
+\big(F(x)=y\big)
+\implies
+\big(\langle x,y\rangle\in F\big)
+\right)
+\end{align*}
+\iffalse
+\[
+\mbox{x set!!??}
+(F\univocalat x)
+\implies
+\left(
+\left(
+\big(F(x)=y\big)\land(y\set)
+\right)
+\iff\big(\langle x,y\rangle\in F\big)
+\right)
+\]
+\fi
 \end{theorem}
 \Proof
+For formulas to be short, let's define 
+\[
+Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
+\]
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
 % USELESS
 %\[
@@ -1065,76 +1152,21 @@ If $(F\univocalat x)\land(y\set)$, then
 \big(\intersection\{y| \langle x,y\rangle\in F\}\big)=y
 \]
 
-\[
-\beta
-\IMPLIES
-\big(
-\alpha
-\iff
-(\alpha \land \beta))
-\big)
-\]
-
-\[
-\big(
-\varphi_1\iff \varphi_2
-\big)
-\IMPLIES
-\big(
-P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
-\big)
-\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
-\]
-(so the assignment is not only for Term variables, but also for Formula variables.\\
-Substitution is also simultaneous.\\
-All Term variables are free in a Formula varriable.\\
-During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
-But here it is an example with free variable: $y$.
-\[
-\varphi_1 = \alpha
-\]
-
-\[\varphi_2 = \alpha \land \beta\]
-Idea: we may use 
-\[
-(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
-\]
-comment: i don't use G\"odel notation in my system.
-But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
-)\\
-Other problem:\\
-\[(\forall x:\varphi)\implies \varphi[t/x]\]
-\[t:=x\]
-\[(\forall x:\varphi)\implies \varphi[x/x]\]
-\[(\forall x:\varphi)\implies \varphi\]
-Assume we proved $(\forall x:\varphi)$.
-I don't actually have problem here, but I feel it is mildly dangerous to introduce
-formula variables, because need to implement substitution and be sure that
-it will not break the consistency.\\
-What can break consistency?\\
-If we use facts specific for theorem?... probably not.
-Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
-I don't like the following statement:
-\[
-\big(
-\varphi_1\iff \varphi_2
-\big)
-\IMPLIES
-\big(
-P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
-\big),
-\]
-because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
-Maybe it is not a problem.\\
-Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
-
-
+%\[
+%\beta
+%\IMPLIES
+%\big(
+%\alpha
+%\iff
+%(\alpha \land \beta))
+%\big)
+%\]
 
 \[
 \beta\implies(\alpha\iff(\alpha \land \beta)))
 \]
 
-\[????
+\[
 (!y: \langle x,y\rangle\in F)
 \IMPLIES
 \big(
@@ -1144,100 +1176,95 @@ Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ orde
 \big)
 \]
 
-
+%(!y: \langle x,y\rangle\in F)
 \[
-(!y: \langle x,y\rangle\in F)
 \IMPLIES
 \big(
 \{y| \langle x,y\rangle\in F\}
 =
-\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
+Q
 \big)
 \]
 
 
-
-\[
-\big(\{y| \langle x,y\rangle\in F\}
-=
-\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
-\IMPLIES
-\]
+%\[
+%\big(\{y| \langle x,y\rangle\in F\}
+%=
+%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+%\IMPLIES
+%\]
 \[
 \IMPLIES
 \big(\intersection\{y| \langle x,y\rangle\in F\}\big)=
-\big(\intersection\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+\big(\intersection
+Q
+\big)
 \]
 
-
+\iffalse
+%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
 \[
 \big(\{y| \langle x,y\rangle\in F\}
 =
-\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)
+Q
+\big)
 \AND
 \big(\intersection\{y| \langle x,y\rangle\in F\}\big)=y
 \IMPLIES
-\]
-\[
-\IMPLIES
-\big(\intersection\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\big)=y
+\big(
+\intersection Q
+\big)
+=y
 \]
 
-
-++++++
 \[
-\big(\intersection\{y| (\langle x,y\rangle\in F) \land (!y:\langle x,y\rangle\in F)\}\big)=y
-\AND
-\]
-\[
+\big(\intersection
+Q
+\big)=y
 \AND
 (\iota y: (\langle x,y\rangle\in F))
 =
-\big(\intersection\{y| \langle x,y\rangle\in F \land (!y:\langle x,y\rangle\in F)\}\big)
-\IMPLIES
-\]
-\[
+\big(\intersection
+Q
+\big)
 \IMPLIES
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
 \]
----------
 \[
 \big((\iota y: \langle x,y\rangle\in F)=y\big)
 \IMPLIES
 (F(x)=y)
 \]
 So we proved that F(x)=y.
+\fi
 
-\noindent($\Rightarrow$) Assume $(F(x)=y)$.
-For formulas to be short, let's define 
-\[
-Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
-\]
-\[
-y=F(x)
-\quad(\mbox{by assumption})
-\]
-\[
-=\big(\iota y: \langle x,y\rangle\in F\big)
+\begin{align*}
+F(x)&=\big((\iota y: \langle x,y\rangle\in F)\\
+&=\intersection Q\\
+&=\intersection \{y: \langle x,y\rangle\in F\}\\
+&=y
+\end{align*}
+So we proved that $(F(x)=y)$.\\
+\noindent($\Rightarrow$) Assume $(F(x)=y)$. To show:$(\langle x,y\rangle\in F)$
+\begin{align*}
+y&=F(x)
+\quad(\mbox{by assumption}) \\
+&=\big(\iota y: \langle x,y\rangle\in F\big)
 \quad(\mbox{by def of value of a function \ref{def:value}})
-\]
-\[
-=\big(\intersection Q\big)
+\\
+&=\big(\intersection Q\big)
 \quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
-\]
-
+\end{align*}
 %\[
 %(F(x)=y)
 %\IMPLIES
 %\big(\iota y: \langle x,y\rangle\in F\big)=y.
 %\]
-
 %\[
 %\big(\iota y: \langle x,y\rangle\in F\big)=y
 %\IMPLIES
 %\big(\intersection Q\big)=y.
 %\]
-
 \[
 (F\univocal)
 \IMPLIES
@@ -1323,11 +1350,79 @@ y\in Q
 So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \Done
 
+\iffalse
+\[
+\big(
+\varphi_1\iff \varphi_2
+\big)
+\IMPLIES
+\big(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\big)
+\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
+\]
+(so the assignment is not only for Term variables, but also for Formula variables.\\
+Substitution is also simultaneous.\\
+All Term variables are free in a Formula varriable.\\
+During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
+But here it is an example with free variable: $y$.
+\[
+\varphi_1 = \alpha
+\]
+
+\[\varphi_2 = \alpha \land \beta\]
+Idea: we may use 
+\[
+(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
+\]
+comment: i don't use G\"odel notation in my system.
+But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
+)\\
+Other problem:\\
+\[(\forall x:\varphi)\implies \varphi[t/x]\]
+\[t:=x\]
+\[(\forall x:\varphi)\implies \varphi[x/x]\]
+\[(\forall x:\varphi)\implies \varphi\]
+Assume we proved $(\forall x:\varphi)$.
+I don't actually have problem here, but I feel it is mildly dangerous to introduce
+formula variables, because need to implement substitution and be sure that
+it will not break the consistency.\\
+What can break consistency?\\
+If we use facts specific for theorem?... probably not.
+Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
+I don't like the following statement:
+\[
+\big(
+\varphi_1\iff \varphi_2
+\big)
+\IMPLIES
+\big(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\big),
+\]
+because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
+Maybe it is not a problem.\\
+Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
+\fi
+
+\begin{theorem}
+(Azriel Levy 1968 "On Von Neumann's Axiom System for Set Theory"
+\url{https://www.jstor.org/stable/2315201})
+\[
+(A\set)
+\implies
+\left(\union A\set\right)
+\]
+\end{theorem}
+\Proof
+(the proof needs theorems about ordinals done first)\\
+...\\
+\Done
 
 %\[(\big(\intersection A\big)\set)\implies \]
 
 
-
+\iffalse
 \section{Singleton-Semantics}
 \subsection{•}
 \[((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)\]
@@ -1596,8 +1691,9 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 % $\blipo$ should give error
 \section{Probability theory}
 \section{Category theory}
+\fi
 \pagebreak
-\section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the book]}
+\section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
 \subsection{Example of a proof (FARMER'S CALCULUS)}
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
 ``A Set Theory with Support for Partial Functions''.\\
