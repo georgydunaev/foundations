@@ -275,7 +275,10 @@ If $A$ is a class, then $(A\set)$ is a formula.
 If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 (It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
 \end{constructor}
-\begin{axiom} Class comprehension.
+\subsection{Axiom of class comprehension}
+\begin{axiom}
+\label{axm:comprehension}
+Class comprehension.
 \[
 (Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
 \]
@@ -297,8 +300,8 @@ Empty class.
 \]
 \end{definition}
 
-\begin{axiom}
 \subsection{Axiom of empty class}
+\begin{axiom}
 \label{axm:empty class}
 \[
 (\emptyset\set)
@@ -483,20 +486,28 @@ Claim is proven.
 \power X = \{x|x\subseteq X\}
 \]
 \end{definition}
-\begin{axiom}{ Heredity.}
+\subsection{Axiom of heredity}
+\begin{axiom}
+\label{axm:heredity}
+Heredity.
 \[
 (A\set) \land (B\subseteq A) \rightarrow (B\set)
 \]
 \end{axiom}
-
-\begin{axiom}{ Powerset.} (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
+\subsection{Axiom of powerset}
+\begin{axiom}
+\label{axm:powerset}
+Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
 \[(A\set) \rightarrow (\power A\set)\]
 \end{axiom}
 
 %\begin{axiom} $\in$-induction. (variant that uses formulas)
 %\[\big(\forall X: (\forall Y\in X: P(Y))\implies P(X)\big)\implies (\forall X: P(X))\]
 %\end{axiom}
-\begin{axiom} $\in$-induction. %(variant that uses classes)
+\subsection{Axiom of regularity / Epsilon-induction}
+\begin{axiom} 
+\label{axn:epsilon induction}
+$\in$-induction. %(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
 (\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)
@@ -745,6 +756,14 @@ Epsilon operator.
 \[
 (\varepsilon y: \varphi) = c\big(\{y|\varphi\}\big)
 \]
+Here c is a class-function of global choice:
+\[
+c:V\setminus\{\emptyset\}\to V
+\]
+\[
+c(X)\in X
+\]
+Existence of such function follows from the axiom of limitation of size(below).
 \end{definition}
 
 
@@ -756,7 +775,7 @@ Epsilon operator.
 
 \begin{definition} Singleton (predicate symbol).
 \[
-(A\singleton) \longleftrightarrow (\exists!a:a\in A)
+(A\singleton) \iff (\exists!a:a\in A)
 \]
 \end{definition}
 
@@ -851,7 +870,36 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \]
 \end{theorem}
 \Proof
-...\\
+Asssume $(x\in\union A)$. To show:$x\in A$.
+\[
+(A \transitive)
+\IMPLIES
+(A\subseteq \power A)
+\]
+\[
+(x\in\union A)
+\IMPLIES
+(\exists y\in A: x\in y)
+\]
+\[
+(y\in A)
+\AND
+(A\subseteq \power A)
+\IMPLIES
+(y\in \power A)
+\]
+\[
+(y\in \power A)
+\IMPLIES
+(y\subseteq A)
+\]
+\[
+(x\in y)
+\AND
+(y\subseteq A)
+\IMPLIES
+(x\in A)
+\]
 \Done
 \begin{theorem}
 \[
