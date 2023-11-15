@@ -20,7 +20,7 @@
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
+    %pdfpagemode=FullScreen,
     }
 %\usepackage{stix-type1}%\turnediota
 \theoremstyle{definition}
@@ -49,6 +49,8 @@
 \newcommand{\complex}{\mathbb{C}}
 \newcommand{\converges}{\longrightarrow}
 \newcommand{\countable}{\mbox{\ countable}}
+\newcommand{\defined}{\mbox{\ defined}}
+\newcommand{\dom}{\mbox{dom}}
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
 \newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
@@ -162,7 +164,7 @@ Since $A=B$, $t[A/W]=t[B/W]$, so we are done.
 Otherwise, i.e. if the variable $v$ is not $W$, then $t[A/W]=v=t$ and $t[B/W]=v=t$.\\
 Therefore $t[A/W]=t[B/W]$, so we are done.\\
 Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Term$, where $f$ is a functional symbol of arity n.\\
-Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition  of substitution.
+Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition of substitution.
 \[
 t[A/W]=f(t_1,...,t_n)[A/W]=
 \]
@@ -605,15 +607,17 @@ Restricted uniqueness quantifier for sets only
 \Done
 \fi
 \subsection{Universal class}
-\begin{definition} Universal class (constant).
+\begin{definition} Universal class (constant V).
 \label{def:universal class}
-\[V:=\{x|\top\}\]
+\[
+V:=\{x|\top\}
+\]
 \end{definition}
 
 
 \begin{theorem}
 Any class is a subclass of class of all sets.
-\[C\subseteq V\]
+\[(C\subseteq V)\]
 \end{theorem}
 \Proof
 %\[\forall x\in C:x\in V\]
@@ -704,7 +708,7 @@ To show: $(b\in \union A)$.\\
 \AND
 (\exists a\in A : b\in a)
 \IMPLIES
-(b\in \union A)
+\left(b\in \union A\right)
 \]
 \Done
 
@@ -718,7 +722,7 @@ Intersection of an arbitrary class A.
 \end{definition}
 \begin{theorem}
 \[
-(B\in A) \rightarrow \left(\intersection A\right)\subseteq B
+(B\in A) \rightarrow \left(\intersection A\subseteq B\right)
 \]
 \end{theorem}
 \Proof
@@ -808,7 +812,9 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \Done
 
 \subsection{Powerclass}
-\begin{definition} Powerclass. (by class comprehension)
+\begin{definition}
+\label{def:powerclass}
+Powerclass. (by class comprehension)
 \[
 \power X = \{x|x\subseteq X\}
 \]
@@ -821,6 +827,21 @@ Heredity.
 (A\set) \land (B\subseteq A) \rightarrow (B\set)
 \]
 \end{axiom}
+\begin{theorem}
+\[
+(A\set) \land (B\subseteq A) \rightarrow (B\in\power A)
+\]
+\end{theorem}
+\Proof
+\[
+(A\set) \AND (B\subseteq A) \IMPLIES (B\set)
+\comment{by axm \ref{axm:heredity}}
+\]
+\[
+(B\set) \AND (B\subseteq A) \IMPLIES (B\in\power A)
+\comment{by def \ref{def:powerclass}}
+\]
+\Done
 \subsection{Axiom of powerset}
 \begin{axiom}
 \label{axm:powerset}
@@ -839,22 +860,49 @@ Powerset. (weak version, but it is okey, since together with axiom of heredity i
 \]
 \end{definition}
 \begin{theorem}
-\label{thm:transitive through union}
+\label{thm:UACA=ACPA}
 \[
-(A\subseteq \power A) \iff (\union A\subseteq A)
+(A\subseteq \power A) \iff \left(\union A\subseteq A\right)
 \]
 \end{theorem}
 \Proof
-\noindent($\Rightarrow$)\\
+\noindent($\Leftarrow$)\\
 Assume $(\union A\subseteq A)$. To show:$(A\subseteq \power A)$.\\
-Assume $(x\in A)$. To show: $x\in \power A$.\\
-...
+Assume $(x\in A)$. To show: $(x\in \power A)$.\\
+%To show: $(x\set)\land(x\subseteq A)$.\\
+%Goal1:$(x\set)$\\
+%oal2:$(x\subseteq A)$\\
+Claim:$(x\subseteq A)$.\\
+Assume $(y\in x)$. To show: $(y\in A)$.\\
 \[
+(y\in x)
+\AND
+(x\in A)
+\IMPLIES
+\left(y\in\union A\right)
+\]
+\[
+\left(y\in\union A\right)
+\AND
+\left(\union A\subseteq A\right)
+\IMPLIES
+(y\in A)
+\]
+The claim is proven.
+\[
+(x\in A)
+\IMPLIES
+(x\set)
+\comment{by thm \ref{thm:in class then set}}
+\]
+\[
+(x\set)
+\AND
 (x\subseteq A)
 \IMPLIES
 (x\in\power A)
 \]
-\noindent($\Leftarrow$)\\
+\noindent($\Rightarrow$)\\
 Assume $(A\subseteq \power A)$. To show:$(\union A\subseteq A)$.\\
 Assume $(x\in\union A)$. To show:$(x\in A)$.
 \[
@@ -863,7 +911,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 (A\subseteq \power A)
 \]
 \[
-(x\in\union A)
+\left(x\in\union A\right)
 \IMPLIES
 (\exists y\in A: x\in y)
 \]
@@ -890,10 +938,11 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 \begin{theorem}
 \label{thm:transitive through union}
 \[
-(A \transitive)\iff (\union A\subseteq A)
+\left(A \transitive\right)\iff \left(\union A\subseteq A\right)
 \]
 \end{theorem}
 \Proof
+by \ref{thm:UACA=ACPA}\\
 \Done
 
 \begin{theorem}{}
@@ -1017,8 +1066,8 @@ $(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)\\
 \label{thm:intersection set then}
 If intersection of a class A is a set, then A is nonempty. 
 \[
-(\left(\intersection A\right)\set)
-\IMPLIES
+\left(\left(\intersection A\right)\set\right)
+\implies
 (\exists w: w\in A)
 \]
 %\quad\mbox{(by lemma ... )}
@@ -1070,7 +1119,7 @@ Proof of the claim:
 \]
 The claim is proven.
 \[
-(\left(\intersection A\right)\set)
+\left(\left(\intersection A\right)\set\right)
 \IMPLIES
 (\exists w: w\in A)
 \quad\mbox{(from claim by contraposition)}
@@ -1211,7 +1260,8 @@ Iota operator for sets.
 
 
 \begin{theorem}
-Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
+\label{thm:iota set exists unique set}
+%Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
 %This may not be true:
 %\[ ???
 %((\iota y: \varphi) \set)
@@ -1569,7 +1619,7 @@ So we proved that F(x)=y.
 \begin{align*}
 F(x)&=\left((\iota y: \langle x,y\rangle\in F\right)\\
 &=\intersection Q\\
-&=\intersection \{y: \langle x,y\rangle\in F\}\\
+&=\intersection \{y: \langle x,y\rangle\in F\land (!y:\langle x,y\rangle\in F)\}\\
 &=y
 \end{align*}
 So we proved that $(F(x)=y)$.\\
@@ -1610,11 +1660,11 @@ y&=F(x)
 \AND
 \left(\intersection Q\right)=y
 \IMPLIES
-(\left(\intersection Q\right)\set)
+\left(\left(\intersection Q\right)\set\right)
 \]
 
 \[
-(\left(\intersection Q\right)\set)
+\left(\left(\intersection Q\right)\set\right)
 \IMPLIES
 (\exists w: w\in Q)
 \quad(\mbox{by thm \ref{thm:intersection set then}}).
@@ -1677,6 +1727,83 @@ y\in Q
 \]
 So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \Done
+\begin{theorem}
+\[
+((\iota y:\phi)\defined)
+\implies
+\phi[(\iota y:\phi)/y]
+\]
+\end{theorem}
+\Proof
+\[
+((\iota y:\phi)\defined)
+\IFF
+((\iota y:\phi)\set)
+\comment{by def that is valid only for terms denoting sets}
+\]
+
+\[
+((\iota y:\phi)\set)
+\IMPLIES
+\left(\intersection\{y:\phi\land(!y:\phi)\}\set\right)
+\comment{by def of iota}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:pair in function}
+If $(F\univocalat x)\land(y\set)$, then
+\[
+\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
+\]
+\begin{align*}
+1) & & (y\set)
+\implies
+\left(
+\left(F(x)=y\right)
+\implies
+\left(\langle x,y\rangle\in F\right)
+\right)
+\\
+2) & & (F\univocalat x)
+\implies
+\left(
+\left(\langle x,y\rangle\in F\right)
+\implies
+\left(F(x)=y\right)
+\right)
+\\
+\end{align*}
+\end{theorem}
+Alternative proof:\\
+\Proof
+\noindent($\Rightarrow$)
+\begin{align*}
+y&=F(x)
+\quad(\mbox{by assumption}) \\
+&=\left(\iota y: \langle x,y\rangle\in F\right)
+\quad(\mbox{by def of value of a function \ref{def:value}})
+\\
+\end{align*}
+%&=\left(\intersection Q\right)
+%\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+\[
+(y=\left(\iota y: \langle x,y\rangle\in F\right))
+\AND
+(y\set)
+\IMPLIES
+(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+\]
+\[
+(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+\IMPLIES
+\left(\exists!(y\set):\langle x,y\rangle\in F\right)
+\comment{by thm \ref{thm:iota set exists unique set}}
+\]
+...\\
+\noindent($\Leftarrow$)\\
+...\\
+\Done
 
 
 \subsection{Axiom of limitation of size}
@@ -1706,13 +1833,60 @@ Other notable fact is that axiom of limitation of size implies axiom of global c
 \end{definition}
 
 \begin{theorem}
-\[ ???
+\[
 ((\epsilon y: \varphi) \set)
 \iff
-(\exists(b\set):\varphi)
+(\exists(y\set):\varphi)
 \]
 \end{theorem}
-
+\Proof
+$(\Rightarrow)$\\
+Assume $((\epsilon y: \phi) \set)$. To show: $(\exists(y\set):\phi)$.
+\[
+((\epsilon y: \phi) \set)
+\IMPLIES
+(c(\{y:\phi\})\set)
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\comment{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\exists y:\phi)
+\]
+$(\Leftarrow)$\\
+Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
+\[
+(\exists y:\phi)
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(c(\{y:\phi\})\set)
+\comment{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+((\epsilon y: \phi) \set)
+\]
+\Done
 
 \iffalse
 \[
@@ -2222,10 +2396,10 @@ Definiton of truth:
 %I am very grateful to these people for the knowledge they gave me.\\
 %\includegraphics[scale=0.3]{Thanks.jpg}
 
-\begin{definition}
-Context: A algebra.\\
-\[
-\exists u\in A: \forall a\in A: (a-au)\in I \land (a-ua)\in I
-\]
-\end{definition}
+%\begin{definition}
+%Context: A algebra.\\
+%\[
+%\exists u\in A: \forall a\in A: (a-au)\in I \land (a-ua)\in I
+%\]
+%\end{definition}
 \end{document}\\

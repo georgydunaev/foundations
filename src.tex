@@ -1,0 +1,133 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[german]{babel}
+%\usepackage[cyrillic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{stix-type1}%\turnediota
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\usepackage{etoolbox}
+
+%\newcommand*{\@Dashv}[2]{%
+%  \reflectbox{$\m@th#1#2$}%
+%}
+\newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
+  \{#1\in #2: #3\}
+}
+
+% https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
+%  \\mathcal\{T\} |---> \topology
+%  \\mathcal\{([^\}]*)\}   |--->  $1
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\interior}{\mbox{int}}
+\newcommand{\closure}{\mbox{cl}}
+\newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\topology}{\mathcal{T}}
+\newcommand{\union}{\bigcup}
+\newcommand{\functional}{\mbox{ functional}}
+\newcommand{\injective}{\mbox{ }}
+\newcommand{\total}{\mbox{ total on }}
+\newcommand{\surjective}{\mbox{ surjective on}}
+\newcommand{\countable}{\mbox{ countable}}
+\newcommand{\converges}{\longrightarrow}
+\newcommand{\AND}{\ \&\ }
+\newcommand{\IMPLIES}{\ \Rightarrow\ }
+\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
+\newcommand{\Done}{\noindent \textbf{Done.}\\}
+% local commands
+%\preto\section{\undef\blipo} %etoolbox
+\preto\subsection{\undef\blipo} %etoolbox
+% https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
+\begin{document}
+\section{Logic}
+Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
+``A Set Theory with Support for Partial Functions''.\\
+For simplicity of understanding by the reader, the notation from the article is used here.\\
+\begin{definition} Value of a function.
+$$f(x) \simeq \big(\iota y: \langle x,y\rangle\in f\big)$$
+\end{definition}
+
+\begin{theorem} If $f$ is univocal, then
+$$\big(f(x)\simeq y\big)\Leftrightarrow \big(\langle x,y\rangle\in f\big)$$
+\end{theorem}
+\Proof
+($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
+$$
+(\iota x:\varphi)\downarrow
+\quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
+(\exists!x:\varphi)
+$$
+So the proof is the following:
+$$
+\big(\langle x,y\rangle\in f\big)
+\quad\overset{\exists\mbox{-intro}}{\Longrightarrow}\quad
+\big(\exists w: \langle x,w\rangle\in f\big)
+$$
+$$
+f\mbox{ univocal}
+\quad\overset{\mbox{def}}{\Longleftrightarrow}\quad
+\big(! w: \langle x,w\rangle\in f\big)
+$$
+$$
+\big(\exists w: \langle x,w\rangle\in f\big)
+\quad\&\quad
+\big(! w: \langle x,w\rangle\in f\big)
+\quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
+\big(\exists! w: \langle x,w\rangle\in f\big)
+$$
+$$
+\big(\exists! w: \langle x,w\rangle\in f\big)
+\quad\overset{\mbox{PFOL10}'}{\Longrightarrow}\quad
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow
+$$
+$$
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+$$
+$$
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\quad\&\quad
+\big(\langle x,y\rangle\in f\big)
+\quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f) \simeq y
+$$
+$$
+f(x) \simeq y
+$$
+%\big(! w: \langle x,w\rangle\in f\big)
+%$$
+%\big(\iota w: \langle x,w\rangle\in f\big)\downarrow
+
+%$$
+\noindent($\Rightarrow$)
+$$(y\downarrow)\quad\mbox{(by PFOL8)}$$
+$$
+(y\downarrow)\quad\&\quad((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f)\downarrow $$
+$$
+\big(\iota w: \langle x,w\rangle\in f\big)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+$$
+$$
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\quad\&\quad
+\big((\iota w: \langle x,w\rangle\in f)\simeq y\big)
+\quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+\big(\langle x, y\rangle\in f\big)
+$$
+\\
+\Done
+
+\end{document}\\
