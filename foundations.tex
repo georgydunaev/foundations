@@ -3,10 +3,14 @@
 %\usepackage[german]{babel}
 %\usepackage[cyrillic]{babel}
 \usepackage[T1]{fontenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage[english, russian]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+
+\usepackage{bussproofs} %
 
 %\renewcommand{\thesubsection}{\arabic{subsection}}
 %\newtheorem{thm}{Theorem}[section]
@@ -26,10 +30,15 @@
 \theoremstyle{definition}
 
 \newtheorem{constructor}{Constructor}[section]
+\newtheorem{iaxiom}{Axiom}
 \newtheorem{axiom}{Axiom}
+\newtheorem*{axiom*}{Axiom}
 \newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition}
+
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{note}{Note}[section]
 \usepackage{etoolbox}
 
@@ -44,6 +53,7 @@
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
 \newcommand{\AND}{\ \ \&\ \ }
+\newcommand{\any}{\mathrm{\ any}}
 \newcommand{\borel}{\mathcal{B}}
 \newcommand{\closure}{\mbox{cl}}
 \newcommand{\complex}{\mathbb{C}}
@@ -52,6 +62,8 @@
 \newcommand{\defined}{\mbox{\ defined}}
 \newcommand{\dom}{\mbox{dom}}
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
+\newcommand{\Fm}{\mathrm{Fm}}
+\newcommand{\FuncSymb}{\mathrm{FuncSymb}}
 \newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
 \newcommand{\IFF}{\ \Longleftrightarrow\ }
@@ -67,7 +79,9 @@
 \newcommand{\LB}{\mathrm{LB}}
 \newcommand{\nghbset}{\mathcal{N}}
 \newcommand{\nonempty}{\mathrm{\ nonempty}}
+\newcommand{\Ord}{\mathrm{Ord}}
 \newcommand{\power}{\mathcal{P}}
+\newcommand{\PredSymb}{\mathrm{PredSymb}}
 \newcommand{\Proof}{\noindent \textbf{Proof.}\\}
 \newcommand{\real}{\mathbb{R}}
 \newcommand{\relation}{\mathrm{\ relation}}
@@ -139,7 +153,71 @@ The other point of creating such document is to provide programmed classical log
 \end{itemize}
 %...
 \newpage
-\section{Foundations [skip this section; go to section 3]}
+\section{Logical framework}
+%The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
+
+\begin{definition}(Variables)\\
+The countable set \\
+$\Var$
+\end{definition}
+
+\begin{definition}(Functional symbols)\\
+The countable set \\
+$\FuncSymb$
+\end{definition}
+
+\begin{definition}(Predicate symbols)\\
+The countable set \\
+$\PredSymb$
+\end{definition}
+
+\begin{definition}(Term)\\
+Inductive definition of term:\\
+1) $v\in\Var \IMPLIES v\in\Term$.\\
+2) $f\in\FuncSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES f(t_1,\dots,t_n)\in\Term$.\\
+\end{definition}
+
+\begin{definition}(Formula)\\
+Inductive definition of formula:\\
+1)$\bot\in\Fm$.\\
+2)$P\in\PredSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES P(t_1,\dots,t_n)\in\Fm$.\\
+3)$A\in\Fm \IMPLIES (\neg A)\in\Fm$.\\
+4)$A\in\Fm \AND B\in\Fm \IMPLIES (A\implies B)\in\Fm$.\\
+5)$A\in\Fm \AND B\in\Fm \IMPLIES (A\land B)\in\Fm$.\\
+6)$A\in\Fm \AND B\in\Fm \IMPLIES (A\lor B)\in\Fm$.\\
+7)$x\in\Var \AND A\in\Fm \IMPLIES (\forall x:A)\in\Fm$.\\
+8)$x\in\Var \AND A\in\Fm \IMPLIES (\exists x:A)\in\Fm$.\\
+\end{definition}
+
+\begin{definition}(Context)\\
+Context = \{d\}
+\end{definition}
+
+\begin{definition}(Statement)\\
+\end{definition}
+
+\begin{definition}(Proof)\\
+Let F be a statement. (i.e. a pair: context and formula)\\
+Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
+
+
+\end{definition}
+
+\begin{theorem}(Deduction theorem)
+\[
+(A \vdash B)
+\IMPLIES
+(\vdash A\to B)
+\]
+\end{theorem}
+\Proof
+This theorem is provable constructively.
+This is done through the formalisation of a proof notion.
+Proof is 
+
+\Done
+
+
 \subsection{Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
@@ -148,7 +226,40 @@ The other point of creating such document is to provide programmed classical log
 \]
 \end{definition}
 \noindent
-...
+\subsection{Axioms}
+For all formulas $A$, $B$, $C$.
+\[
+(A \implies (B \implies A))
+\]
+\[
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B)))
+\]
+\[
+((A\land B) \implies A)
+\]
+\[
+((A\land B) \implies B)
+\]
+\[
+(A \implies (B\implies (A\land B)))
+\]
+\[
+(A \implies (A\lor B))
+\]
+\[
+(B \implies (A\lor B))
+\]
+\[
+((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
+\]
+\[
+(\neg A \implies (A\implies B))
+\]
+\[
+((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
+\]
+
+
 \subsection{Useful metatheorems}
 \begin{theorem}
 \[
@@ -233,12 +344,96 @@ $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 \]
 \end{theorem}
 \Proof
-...\\
+%Assume
+%\[
+%(\exists x \forall y:\varphi)
+%\].
+Assume $(\exists x \forall y:\varphi)$. To show: $(\forall y \exists x :\varphi)$. (deduction theorem is in use)
+\[
+(\exists x \forall y:\varphi)
+\IMPLIES
+(\forall y:\varphi)
+\comment{$\exists$E, (x/x)}
+\]
+Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
+\[
+(\forall y:\varphi)
+\IMPLIES
+\varphi
+\comment{$\forall$E, (y:=y)}
+\]
+\[
+\varphi
+\IMPLIES
+(\exists x :\varphi)
+\comment{$\exists$I, (x:=x)}
+\]
 \Done
-...
+
 \pagebreak
 \section{Class theory}%Developing set-theoretic foundations}
-\begin{constructor} Subclass predicate.\\
+
+%TODO:\\
+%The first formula is the ... .\\
+%The first term in formula is the leftmost term in the first primitive formula.\\
+%Here $R_x$ means that variable x is the first free variable in the proposition $R$.\\
+
+%\begin{constructor} Restricted quantifier.\\
+%If $R_x$ is a proposition with free variable x,\\
+%\quad $Q$ is a proposition,\\
+%\quad $\#$ is one of quantifiers ($\forall$, $\exists$ or $!$)\\
+%then $\# R:Q$ is a formula.
+%\end{constructor}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context 0: assume that the first term of a proposition $R$ is $t$, %and it has no free variables.
+%\[
+%(\forall R:Q)
+%\iff
+%(R \implies Q)
+%\]
+%Meta-context 1: assume that the first term of a proposition $R$ is $t$, and the first free variable of $t$ is $x$.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+
+%\begin{definition} Restricted exists.\\
+%\label{def:exists restricted }
+%Meta-context: assume that the first term of a proposition R is a free variable x.
+%\[
+%(\exists R:Q)
+%\iff
+%(\exists x: R \land Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted unique.\\
+%\label{def:unique restricted }
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(! R:Q)
+%\iff
+%(! x: R \land Q)
+%\]
+%\end{definition}
+
+
+\begin{constructor} Membership predicate.\\
 If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
 \end{constructor}
 
@@ -264,7 +459,8 @@ Subclass predicate.
 \]
 \end{definition}
 \begin{theorem}
-\label{thm:element of subset}
+Any element of a subclass is in the class.
+\label{thm:element of subclass}
 \[
 (x\in A)\land(A\subseteq B)\implies(x\in B)
 \]
@@ -274,6 +470,7 @@ Subclass predicate.
 (A\subseteq B)
 \IMPLIES
 (\forall x\in A:x\in B)
+\comment{by def of subclass \ref{def:subclass}}
 \]
 \[
 (x\in A)
@@ -281,8 +478,81 @@ Subclass predicate.
 (\forall x\in A:x\in B)
 \IMPLIES
 (x\in B)
+\comment{by restricted specification elimination}
 \]
 \Done
+
+Details:
+\begin{prooftree}
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (x\in A)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in A)
+$}
+\RightLabel{by }
+
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(A\subseteq B) \vdash (A\subseteq B)
+$}
+\RightLabel{by}
+\UnaryInfC{$
+(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by weakening}
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by }
+\BinaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (A\subseteq B) \to (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash (x\in A) \land (A\subseteq B) \to (x\in B)
+$}
+\end{prooftree}
+
+Other idea:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+P_3,P_2,P_1 \vdash R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3,P_2 \vdash P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3 \vdash P_2 \land P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash P_3 \land P_2 \land P_1 \to R
+$}
+\end{prooftree}
+
+
+
+
 
 If the variant of logic being used doesn't have equality, then add the following constructor and definition.
 \begin{constructor}Equality.\\
@@ -290,6 +560,7 @@ If $A$ and $B$ are classes, then $(A=B)$ is a formula.
 \end{constructor}
 \begin{definition}
 Equality. (in case if the 1st order logic is given without equality)
+If Y is not a free variable neither in A nor in B, then:
 \[
 (A=B)\iff (\forall Y: A\in Y \iff B\in Y)
 \]
@@ -302,14 +573,14 @@ Extensionality.
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
 \]
 \end{axiom}
-\begin{constructor} Set predicate.\\
-If $A$ is a class, then $(A\set)$ is a formula.
-\end{constructor}
-\begin{definition} Set predicate.
+\begin{axiom*}
+\label{axm:extensionality'}
+Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
 \[
-(X\set)\iff(\exists Y:X\in Y)
+(A=B)\iff (\forall X: X\in A \iff X\in B)
 \]
-\end{definition}
+\end{axiom*}
+
 \begin{theorem}
 \[
 (A \subseteq B)\land (B\subseteq A) \implies (A=B)
@@ -347,6 +618,16 @@ Claim is proven.
 \]
 \Done
 
+\begin{constructor} Set predicate.\\
+If $A$ is a class, then $(A\set)$ is a formula.
+\end{constructor}
+\begin{definition} Set predicate.
+If Y is not a free variable in X, then:
+\[
+(X\set)\iff(\exists Y:X\in Y)
+\]
+\end{definition}
+
 \begin{theorem}
 \label{thm:in class then set}
 %\[A\set \land B\in A \rightarrow B\set\]
@@ -354,13 +635,54 @@ Claim is proven.
 (B\in A) \rightarrow (B\set)
 \]
 \Proof
+Assume $(B\in A)$. To show: $(B\set)$.
 \[
 (B\in A)
 \IMPLIES
 (\exists A: B\in A)
 \comment{by right-exists-intro}.
 \]
+\[
+(\exists A: B\in A)
+\IMPLIES
+(B\set)
+\comment{introduced by set's definition}.
+\]
 \Done
+
+
+%\begin{prooftree}
+%\AxiomC{A}
+%\UnaryInfC{B}
+%\AxiomC{C}
+%\BinaryInfC{D}
+%\AxiomC{E}
+%\AxiomC{F}
+%\BinaryInfC{G}
+%\UnaryInfC{H}
+%\BinaryInfC{J}
+%\end{prooftree}
+
+Details:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+(B\in A) \vdash (B\in A)
+$}
+\RightLabel{by $\exists$-intro}
+\UnaryInfC{$
+(B\in A) \vdash (\exists A: B\in A)
+$}
+\RightLabel{by def-intro/set-intro}
+\UnaryInfC{$
+(B\in A) \vdash (B\set)
+$}
+\RightLabel{deduction/ImplR/implies-intro}
+\UnaryInfC{$
+\vdash (B\in A)\to (B\set)
+$}
+\end{prooftree}
 \end{theorem}
 
 \begin{constructor}
@@ -371,6 +693,7 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 \begin{axiom}
 \label{axm:comprehension}
 Class comprehension.
+If Y is not a free variable of $\varphi$, then:
 \[
 (Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
 \]
@@ -519,7 +842,8 @@ The claim is proven.
 \subsection{Uniqueness quantifier}
 \begin{definition}
 \label{def:uniqueness quantifier}
-Uniqueness quantifier for classes
+Uniqueness quantifier for classes:\\
+If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
 \[
 (!Y:\varphi)\iff (\forall Y_1\forall Y_2:\varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
 \]
@@ -547,6 +871,31 @@ Restricted uniqueness quantifier for sets only
 
 \subsection{Singleton}
 \begin{definition} Singleton (functional symbol).
+(side note: because of big amount of side conditions, we state that all different variables are different. 
+It should not be possible to use it in such way: "{x}={x|x=x}".
+How to determine whether during substitution it can be fixed?
+I want it to happen automatically, but i don't want the proof to depend on implementation.
+What causes proofs(as list of actions) to be inapplicable in different cases.
+
+Everything is solved by the simple maxima: we don't need developed metatheory, because all those theorems can be proven for a model, and then added to the program if they are useful.
+
+How to implement definitions? see comments in source code here
+
+%Проблема со схемами -- их надо вручную добавлять, код менять.
+
+%Но! Можно задать новый язык формул, с подстановками, требованиями к различности переменных. -- это непонятно: как.
+
+%Боковые условия -- они как дополнительный навесок на теорему.
+
+%(можно, ещё, генерировать, а можно просто рэйзить эксепшены, если что-то не выполняется. Тогда получается язык для определений СХЕМ.
+
+%как логгировать пруф? сохранять состояние последнего успешного шага.
+)
+
+)
+
+
+
 \[
 \{w\} = \{x|x=w\}
 \]
@@ -1237,7 +1586,46 @@ w_1=w_2
 \]
 \end{theorem}
 \Proof
-trivial\\
+Assume $(A\subseteq B)$ and $(!x:x\in B)$.
+\[
+(!x:x\in B)
+\IMPLIES
+(\forall x_1\forall x_2: x_1\in B \land x_2\in B \implies x_1=x_2)
+\comment{by def of uniqueness quantifier \ref{def:uniqueness quantifier}}
+\]
+Claim $(\forall x_1\forall x_2: x_1\in A \land x_2\in A \implies x_1=x_2)$.\\
+Fix $x_1$ and $x_2$.
+Assume $x_1\in A$ and $x_2\in A$. 
+\[
+A\subseteq B
+\AND
+x_1\in A
+\IMPLIES
+x_1\in B
+\]
+\[
+A\subseteq B
+\AND
+x_2\in A
+\IMPLIES
+x_2\in B
+\]
+\[
+(!x:x\in B)
+\AND
+x_1\in B
+\AND
+x_2\in B
+\IMPLIES
+x_1=x_2
+\]
+Claim is proven.
+\[
+(\forall x_1\forall x_2: x_1\in A \land x_2\in A \implies x_1=x_2)
+\IMPLIES
+(!x:x\in A)
+\comment{by def of uniqueness quantifier \ref{def:uniqueness quantifier} costructor}
+\]
 \Done
 \pagebreak
 
@@ -1959,6 +2347,13 @@ Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ orde
 ...\\
 \Done
 
+\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/1.jpg}\\
+
+\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/2.jpg}\\
+\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/3.jpg}\\
+\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/4.jpg}\\
+\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/5.jpg}\\
+
 %\[(\left(\intersection A\right)\set)\implies \]
 
 
@@ -2233,6 +2628,111 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 \section{Category theory}
 \fi
 \pagebreak
+\section{Foundations and Large Cardinals}%
+This part is self-contained.\\
+The goal is to prove axiom of limitation of size using small amount of simple axioms and definitions.\\
+\begin{iaxiom}
+Axiom of limitation of size:
+\[
+(K\in V)
+\iff
+(|K| < |V|)
+\]
+\end{iaxiom}
+
+
+Here $|\cdot|$ is a functional symbol defined as following.
+\begin{definition}(cardinality of a class)
+\[
+|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+\]
+\end{definition}
+\begin{definition}
+\[
+(X\preccurlyeq Y)
+\iff
+(\exists f: (f:X\to Y)\land (f \injective))
+\]
+\end{definition}
+The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\Ord$ if the argument is a proper class.\\
+We will introduce some axioms to make such behaviour provable.\\
+\begin{iaxiom}
+\[
+|\cdot|:V \to \Ord
+\]
+Actually, since $|\cdot|$ is a functional symbol, we mean the following:
+\[
+(x\mapsto |x|):V \to \Ord
+\]
+Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\{\langle x, |x|\rangle | x \any\set\}$.
+\end{iaxiom}
+Actually, we can use the following axiom:
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\in\Ord)
+\]
+\end{axiom*}
+or even
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\set)
+\]
+\end{axiom*}
+since later we will prove that
+\begin{theorem*}
+\[
+(x\set)\implies(|x|\in\Ord)
+\]
+\end{theorem*}
+
+\begin{iaxiom} Sets are hereditary:
+\[
+(A\subseteq B)\land (B\set) \implies (A\set)
+\]
+\end{iaxiom}
+
+Some equivalent(in normal context) statements:
+\[
+(K\in V)
+\iff
+(|K| \subsetneq |V|)
+\]
+\[
+(K\in V)
+\iff
+(|K| \neq |V|)
+\]
+because $|V|=\Ord$ and
+\begin{theorem}
+\[
+|V|=\Ord
+\]
+\end{theorem}
+\Proof
+\Done
+
+In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
+\begin{definition} predicates on classes "is transitive" and "is ordinal"
+\[
+tr(X) \iff (\forall Z\in X: Z\subseteq X)
+\]
+\[
+ord(X) \iff tr(X)\land (\forall Y\in X: tr(Y))
+\]
+the other possibilities are
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)
+\]
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
+\]
+etc ...
+\end{definition}
+\[
+(X \set)
+\implies
+\]
+
 \section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
 \subsection{Example of a proof (FARMER'S CALCULUS)}
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
@@ -2389,6 +2889,22 @@ Definiton of truth:
 
 %I_A(\varphi)=\mbox{True}
 \fi
+\subsection{Analysis}
+Here there will be some theorems from Analysis I,II,III by Amann, Escher.
+
+E.g. necessary def for "f(x+0)" is limit with certain base.\\
+I prefer topological definition of limit and bases.\\
+There should be some kind of theorem that will says that limit of all sequences in some class of sequences(depending on the base) is equal to the limit of function w.r.t. the base.\\
+Potential theorem: in (maybe even pseudo?)metric spaces, "sequential limit"(limit of a sequence) is equal to the limit w.r.t some base.\\
+There are wildly used esilon-delta-definitions of these limits.It would be nice to list theorems about that they are equivalent to limits w.r.t. bases.\\
+
+%Just need to se
+
+
+\subsection{Differential geometry}
+Remark 1.1.8:\\
+Every connected 0-dimesional manifold M is given by a single point: $M={point}$.
+
 \pagebreak
 %\section{References}
 %\pagebreak
