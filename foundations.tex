@@ -1635,7 +1635,7 @@ It would be nice to define iota operator both for sets and proper classes, but i
 \comment{bad ``definition''}
 \]
 In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
-
+(the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
 %So the following definition does not work correctly for proper classes:
 \begin{definition}
 \label{def:iota operator}
@@ -2192,6 +2192,38 @@ y&=F(x)
 \noindent($\Leftarrow$)\\
 ...\\
 \Done
+\subsection{Descriptors}
+\begin{axiom}
+\[
+\exists (x\set):\varphi
+\implies
+(\varepsilon x: \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+
+\[
+(\varepsilon x: \varphi) \set
+\implies
+\exists (x\set):\varphi
+\]
+\end{axiom}
+
+\begin{axiom}
+\[
+\exists! (x\set):\varphi
+\implies
+(\iota x: \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+(\iota x: \varphi) \set
+\implies
+\exists! (x\set):\varphi
+\]
+\end{axiom}
 
 
 \subsection{Axiom of limitation of size}
@@ -2628,6 +2660,117 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 \section{Category theory}
 \fi
 \pagebreak
+\section{Inductions and recursions}%
+There exist unique class-function rec, such that:
+\[
+\mbox{rec}:(V\times V\to V)\to(V\to V)
+\]
+\[
+\mbox{rec}(H) = H\ \circ\ (\mbox{rec}(H)\restriction_-)
+\]
+\pagebreak
+\section{Some simple theorems about classes}
+\begin{definition}(Membership relation class)
+\[
+\mbox{E} = \{(x,y)|x\in y\}
+\]
+\end{definition}
+
+\begin{definition}(Dependent sum)
+\[
+\Sigma F = \mbox{E}^{-1} \circ F
+\]
+\end{definition}
+
+\begin{definition}(Dependent product)
+\[
+\Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
+\]
+\end{definition}
+
+\begin{theorem}
+\[
+\mbox{E}^{-1}[A]=\union A
+\]
+(or even "$\exists [A]= \union A$")
+\end{theorem}
+\Proof
+$(\subseteq)$\\
+Assume $w\in \mbox{E}^{-1}[A]$.\\
+Therefore $\exists a\in A: (a,w)\in \mbox{E}^{-1}$.\\
+So $(w,a)\in \mbox{E}$.\\
+So $w\in a$.\\
+Since $w\in a$ and $a\in A$, $w\in \union A$.\\
+$(\supseteq)$\\
+$w\in \union A$.\\
+Therefore $\exists a\in A: w\in a$.\\
+So $(w,a)\in \mbox{E}$.
+So $(a,w)\in \mbox{E}^{-1}$.
+From $(a,w)\in \mbox{E}^{-1}$ and $(a\in A)$, we have $(w\in \mbox{E}^{-1}[A])$.\\
+\Done
+
+\begin{definition}(Image)
+\[
+F[A]:=\{b|\exists a\in A: (a,b)\in F\}
+\]
+\end{definition}
+\begin{definition}(?)
+\[
+F\langle A \rangle=\{b|\forall a\in A: (a,b)\in F\}
+\]
+\end{definition}
+\begin{theorem}
+\[
+\mbox{E}^{-1}\langle A\rangle =\intersection A
+\]
+\end{theorem}
+\Proof
+\[
+v\in \mbox{E}^{-1}\langle A \rangle 
+\IFF
+\forall a\in A: (a,v)\in \mbox{E}^{-1}
+\]
+\[
+\IFF
+\forall a\in A: (v,a)\in \mbox{E}
+\]
+\[
+\IFF
+\forall a\in A: v \in a
+\]
+\[
+\IFF
+v \in \intersection A
+\]
+
+\Done
+\begin{theorem}()\\
+$(\dom(\Sigma F))\cup (F^{-1}[\{\emptyset\}]) = \dom(F)$
+$\\
+(\dom(\Sigma F))\cap (F^{-1}[\{\emptyset\}]) = \emptyset
+$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}(Dunaev)\\
+If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyset\notin\mbox{ran}(F))$ then
+\[
+F=\{(x,(\Sigma F)[\{x\}])|x\in \dom(\Sigma F)\}
+\]
+\end{theorem}
+\Proof
+\Done
+
+
+\begin{theorem}
+\[
+(F \circ G)[X]=F[G[X]]
+\]
+\end{theorem}
+\Proof
+\Done
+
 \section{Foundations and Large Cardinals}%
 This part is self-contained.\\
 The goal is to prove axiom of limitation of size using small amount of simple axioms and definitions.\\
@@ -2733,6 +2876,63 @@ etc ...
 \implies
 \]
 
+\subsection{Proof of the main statement}
+We want to prove the following statement:
+\[
+(K \in V) \iff (|K| \neq |V|)
+\]
+
+Firstly, we will prove some lemmas:
+\begin{lemma}
+\[
+\Ord\notin\Ord
+\]
+\end{lemma}
+\Proof
+Assume $\Ord\in\Ord$.\\
+Therefore $\in$ well-orders $\Ord$ as a well-founded strict linear order.\\
+In particular strict order is irreflexive.\\
+Since using assumpton, $\Ord$ is an element of $\Ord$, by irreflexetivity, we have $\Ord\notin\Ord$.
+Contradiction with assumption.
+Therefore $\Ord\notin\Ord$ is proven.
+\Done
+
+\begin{lemma}
+\[
+|V|=\Ord
+\]
+\end{lemma}
+\Proof
+...\\
+\Done
+
+\begin{lemma}(1st part of the statement, from left to right)
+\[
+(K \in V) \implies (|K| \neq |V|)
+\]
+\end{lemma}
+\Proof
+Assume $(K \in V)$.\\
+By our axiom, since $(K \in V)$ we have $(|K| \in \Ord)$.\\
+By previous lemmas we have $|V|=Ord$ and $\Ord\notin\Ord$.\\
+From these three statements we deduce that $|K| \neq |V|$.\\
+\Done
+
+\begin{lemma}(2nd part of the statement, from right to left)
+\[
+(|K| \neq |V|) \implies (K \in V)
+\]
+\end{lemma}
+\Proof
+Assume $(|K| \neq |V|)$.\\
+We know that $(|V|=\Ord)$, so $(|K| \neq Ord)$.\\
+Recalling the definition:
+$|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}$.\\
+Now we have that 
+there exists some $m \in \Ord$, which is not in $\bigcap \{a\in\Ord|K\preccurlyeq a\}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\Ord$ is subclass of $\Ord$)\\
+...
+
+\Done
 \section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
 \subsection{Example of a proof (FARMER'S CALCULUS)}
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
@@ -2818,7 +3018,77 @@ f(x) \simeq y
 \]
 \\
 \Done
+\begin{theorem}
+\[
+f(x)\downarrow \iff x\in\{x|\exists!y: \langle x,y\rangle\in f\}
+\]
+\end{theorem}
+\Proof
+\Done
 \pagebreak
+By extension of definitions from
+\[
+\forall f \forall x \exists! y : (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,y)\in f
+\]
+we have
+\[
+\forall f \forall x (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,f(x))\in f
+\]
+
+or from: (but it backward implication can be proven without such complifications)
+\[
+\forall f \forall x \exists! y : (f\mbox{ univocal at }x)\to ((x\in \dom(f)) \iff (x,y)\in f)
+\]
+
+
+%We need partial extension by definitions!\\
+or maybe 'Extension by new constant and function names'?\\
+% https://en.wikipedia.org/wiki/Extension_by_new_constant_and_function_names
+%no, also not possible.(it helps only get rid of uniqueness, but stil requires a proof for only one specific function and for specific argument)
+
+In general, a closed formula
+\[
+\forall \vec{x} : \exists! y: \varphi 
+\]
+implies
+\[
+\forall \vec{x} : \varphi[(Iy:\varphi)/y] 
+\]
+.
+IMHO, the most important part here is that y is not free in the context below.
+(the reason is identical to the one in the Generalization Rule)
+YES!
+Important: get rid if quantifier over arguments.
+If the context doesn't have y, the substitution of "whole phi" would be already done.
+
+something that a lil bit concerning is that context is not seen inside I, but it may not be important.
+
+So the following rules are proposed:
+\begin{prooftree}
+\AxiomC{$\Gamma \vdash \exists! y: \varphi$}
+%\RightLabel{Assume/Ident}
+%\UnaryInfC{$
+%P_3,P_2,P_1 \vdash R
+%$}
+\RightLabel{ExtByDef (if $y\notin \mbox{FV}(\Gamma)$)}
+\UnaryInfC{$
+\Gamma \vdash \varphi[(\iota y:\varphi)/y] 
+$}
+%\RightLabel{by }
+\end{prooftree}
+and
+\begin{prooftree}
+\AxiomC{$\Gamma \vdash \exists y: \varphi$}
+\RightLabel{ExtByCons (if $y\notin \mbox{FV}(\Gamma)$)}
+\UnaryInfC{$
+\Gamma \vdash \varphi[(\epsilon y:\varphi)/y] 
+$}
+\end{prooftree}
+%prim_specification
+
+\pagebreak
+
+
 \iffalse
 \section{Appendix 2: Alternative subset semantics [unfinished]}
 \subsection{Logic}
@@ -2896,10 +3166,34 @@ E.g. necessary def for "f(x+0)" is limit with certain base.\\
 I prefer topological definition of limit and bases.\\
 There should be some kind of theorem that will says that limit of all sequences in some class of sequences(depending on the base) is equal to the limit of function w.r.t. the base.\\
 Potential theorem: in (maybe even pseudo?)metric spaces, "sequential limit"(limit of a sequence) is equal to the limit w.r.t some base.\\
-There are wildly used esilon-delta-definitions of these limits.It would be nice to list theorems about that they are equivalent to limits w.r.t. bases.\\
+There are wildly used esilon-delta-definitions of these limits. It would be nice to list theorems about that they are equivalent to limits w.r.t. bases.\\
 
 %Just need to se
 
+\begin{theorem}
+\[
+(\forall \varepsilon >0: a+\varepsilon \geqslant 0) \to (a \geqslant 0)
+\]
+\end{theorem}
+\Proof
+\[
+a<0
+\IMPLIES
+\exists \varepsilon > 0 : a+\varepsilon < 0
+\]
+\[
+\varepsilon := \left(-\frac{a}{2}\right)
+\]
+\[
+a<0
+\IMPLIES
+\varepsilon > 0
+\]
+\[
+a+\varepsilon = \left(\frac{a}{2}\right) = -\varepsilon < 0
+\]
+
+\Done
 
 \subsection{Differential geometry}
 Remark 1.1.8:\\
