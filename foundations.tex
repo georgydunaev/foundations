@@ -2941,14 +2941,29 @@ There exist unique class-function rec, such that:
 \[
 (x\ \mbox{any}) \iff \top
 \]
+Context: (x:Var)
+%Side condition:\\
+%Term $x$ is a variable.
 \end{definition}
 
 \begin{definition}(Semi-singleton)
 \[
 (s\ \mbox{ss}) \iff (!y:y\in s)
 \]
-Side conditions:\\
-Variable s is not in free variables of s.\\
+Side condition:\\
+Variable $y$ is not in free variables of term $s$.
+\end{definition}
+
+\begin{definition}(Function constructor)
+\[
+(\lambda x: t) = \{(x,t)|(x\ \mbox{any})\}
+\]
+Context: ($x$:Var) ($t$:Term)\\
+Comment: Term $t$ can contain $x$ as a free variable.\\
+Side condition: 
+(variable $x$ is bound by class collection in r.h.s)
+(variable $x$ is bound by lambda abstraction in l.h.s)
+%No side conditions.
 \end{definition}
 
 \begin{definition}(Family constructor)
@@ -2956,21 +2971,147 @@ Variable s is not in free variables of s.\\
 (\Lambda x: t) = \{(x,s)|(s\subseteq y)\land (s\ \mbox{ss})\}
 \]
 % s is a bound variable
+Term $t$ can contain $x$ as a free variable.\\
 Side conditions:\\
-Term t can contain x as a free variable.\\
-Variables x and s are different.\\
-Variable s is not in free variables of t.\\
+Variables x and s are different.\\ %it should be a normal convention for any definition.
+Variable $s$ is not in free variables of $t$.
 \end{definition}
 
-\begin{definition}(Function constructor)
+\begin{definition}(Value of a function, value of a family)
 \[
-(\lambda x: t) = \{(x,t)|(x\ \mbox{any})\}
+f(x):=\bigcup \{s|(x,s)\in f\}
 \]
-% s is a bound variable
-Side conditions:\\
-Term t can contain x as a free variable.\\
 \end{definition}
 
+
+\begin{theorem}(Evaluation of a function)
+Context:\\
+(x:Var)(t:Term)(z:Term)
+\[
+(z\set) \land (t[z/x]\set) \implies
+\]
+\[
+(\lambda x: t)(z) = t[z/x]
+\]
+\end{theorem}
+\Proof
+To prove the equality, we use set extensionality and MP.
+\[
+((\lambda x: t)(z) \subseteq t[z/x] )
+\land
+((\lambda x: t)(z) \supseteq t[z/x] )
+\implies
+((\lambda x: t)(z) = t[z/x] )
+\]
+($\subseteq$)\\
+Assume 
+\[
+q\in (\lambda x: t)(z)
+\]
+By definition of $-(-)$ (evaluation),
+\[
+q\in\union \{b|(z,b)\in(\lambda x:t)\}.
+\]
+By destruction of the union,
+\[
+\exists s\in \{b|(z,b)\in(\lambda x:t)\}: q\in s.
+\]
+Note for the following step: since variable b has no free occurences in t, $t[s/b]=t$.
+\[
+s\in \{b|(z,b)\in(\lambda x:t)\}
+\IMPLIES
+(s\set) \& ((z,s)\in(\lambda x:t))
+\]
+By definition of $\lambda$,
+\[
+(z,s)\in(\lambda x:t)
+\IMPLIES
+(z,s)\in \{(x,t)|\top\}
+\]
+Unfolding the notation:
+\[
+(z,s)\in \{(x,t)|\top\}
+\IMPLIES
+(z,s)\in \{w|\exists x: w = (x,t) \land \top\}
+\]
+
+\[
+(z,s)\in \{w|\exists x: w = (x,t) \land \top\}
+\IMPLIES
+\exists x: (z,s) = (x,t) \land \top
+\]
+Notes: w is free in t, w is different from x. Since otherwise we would write $(x[(z,s)/w],t[(z,s)/w])$.
+
+Take such x. By defining property of ordered pairs,
+\[
+(z,s) = (x,t)
+\IMPLIES
+(z=x) \& (s=t)
+\]
+\[
+(q\in s)\& (s=t)
+\IMPLIES
+q\in t
+\]
+\[
+z=x
+\IMPLIES
+t[z/x]=t
+\]
+Therefore
+\[
+(q\in t) \& (t[z/x]=t)
+\IMPLIES
+(q \in t[z/x])
+\]
+\ \\
+\ \\
+($\supseteq$)\\
+Assume $(q \in t[z/x])$.\\
+Let $s:=t[z/x]$. Then $(q\in s)$.\\
+Goal1:$(z,s)\in(\lambda x:t)$.\\
+\[
+x[z/x]=z
+\]
+\[
+(z,t[z/x]) = (x[z/x],t[z/x])=(x,t)[z/x]
+\]
+Goal1: $(x,t)[z/x]\in\{(x,t)|(x\mbox{ any})\}$\\
+Goal2: $\exists x:(x,t)=((x,t)[z/x])$\\
+x:=z\\
+There are no free occurencies of $x$ in $((x,t)[z/x])$, because of the substitution.\\
+$c:=((x,t)[z/x])$\\
+\[
+(((x,t)[z/x])=c)\implies\exists x: (x,t)=c
+\]
+Goal' is done.\\
+
+From the premise, $(x,t)[z/x]$ is a set.\\
+Therefore Goal1 is proven.\\
+So $(x,t)[z/x]\in (\lambda x:t)$.\\
+So $(z,t[z/x])\in (\lambda x:t)$.\\
+So $t[z/x]\in \{b|(z,b)\in(\lambda x:t)\}$.\\
+Since $(q \in t[z/x])$, we also have
+\[
+q\in \bigcup \{b|(z,b)\in(\lambda x: t)\}
+\]
+So $q\in (\lambda x: t)(z)$.\\
+And were are done.\\
+\Done
+
+
+\begin{theorem}(Evaluation of family)
+\[
+(\Lambda x: t)(x) = t
+\]
+\[
+(\Lambda x: t)(z) = t[z/x]
+\]
+Context:
+(q term)
+\end{theorem}
+\Proof
+\Done
 
 \begin{definition}(Membership relation class)
 \[
