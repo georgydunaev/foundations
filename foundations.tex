@@ -1873,12 +1873,39 @@ A protected family is a relation which range of relation consists only of subset
 (F \defined\mbox{ at }x) \IFF (x\in\dom(F))
 \]
 \end{definition}
+%For every axiomatic definition, there are certain prerequisites.
+It doesn't make sense to prove anything about $(\varepsilon x:\varphi)$, if it is not proven that $\exists x: \varphi$.\\
+It doesn't make sense to prove anything about $(\iota x:\varphi)$, if it is not proven that $\exists! x: \varphi$.\\
+There is a "default value" D1 which $(\varepsilon x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
+There is a "default value" D2 which $(\iota x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
+They are not specified. (Up to now).\\
+If they are not specified, then we cannot define the "(- defined)" predicate.
+It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
+It is not possible to have a "defined" predicate, because it isn't preserved under equality.\\
+So naive "defined" requires a recursion on a term.\\
+Even if we introduce own "defined" for each constructor of the term, it still will require syntactic analysis.\\
+So the solution is to have a context under which definitions make sense.\\
+It may be a family of classes, where the first one should be non-empty, as a signal that some conditions are satisfied.\\
+It strongly reminds a notion of signature and structure.\\
+
+In the situation, when $\exists x: \varphi$ and $\neg\exists! x: \varphi$.
+"value-defined".
 
 Relations are symmetrical, so inverse relation is defined.
 
 Protected families are assymetrical, so it is not always possible to define the inverse of a family.
 
 Families 
+\subsection{Non-empty families}
+All definitions in this section are local: they will not be used in other sections.
+\begin{definition}(family of non-empty classes)
+\[
+(F is NEF) 
+\]
+\end{definition}
+
+
+
 \subsection{Unified approach to functions and of families}
 
 \begin{definition}(Conglomerate of all classes)
@@ -2910,6 +2937,41 @@ There exist unique class-function rec, such that:
 \]
 \pagebreak
 \section{Some simple theorems about classes}
+\begin{definition}(some syntactic sugar)
+\[
+(x\ \mbox{any}) \iff \top
+\]
+\end{definition}
+
+\begin{definition}(Semi-singleton)
+\[
+(s\ \mbox{ss}) \iff (!y:y\in s)
+\]
+Side conditions:\\
+Variable s is not in free variables of s.\\
+\end{definition}
+
+\begin{definition}(Family constructor)
+\[
+(\Lambda x: t) = \{(x,s)|(s\subseteq y)\land (s\ \mbox{ss})\}
+\]
+% s is a bound variable
+Side conditions:\\
+Term t can contain x as a free variable.\\
+Variables x and s are different.\\
+Variable s is not in free variables of t.\\
+\end{definition}
+
+\begin{definition}(Function constructor)
+\[
+(\lambda x: t) = \{(x,t)|(x\ \mbox{any})\}
+\]
+% s is a bound variable
+Side conditions:\\
+Term t can contain x as a free variable.\\
+\end{definition}
+
+
 \begin{definition}(Membership relation class)
 \[
 \mbox{E} = \{(x,y)|x\in y\}
