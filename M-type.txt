@@ -1,0 +1,14 @@
+Inductive sigma (A:Type) (F:A->Type) : Type :=
+ sigma_intro : forall (a : A), (F a) -> (sigma A F)  
+.
+
+Require Import List.
+
+
+(* countable collection of something *)
+Inductive Cou (X:Type) : Type :=
+  fin : (list X) -> Cou X
+| inf : (nat -> X) -> Cou X.
+
+Definition M (A:Type) (F:A->Type) : Type := sigma Type (fun Q => sigma Q (fun _ => Cou (sigma A F))).
+
