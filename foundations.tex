@@ -93,10 +93,12 @@
 \newcommand{\relation}{\mathrm{\ relation}}
 \newcommand{\set}{\mathrm{\ set}}
 \newcommand{\singleton}{\mathrm{\ singleton}}
+\newcommand{\semantics}{\mathrm{semantics}}
 \newcommand{\semialgebra}{\mathcal{S}}
 \newcommand{\Sup}{\mathrm{Sup}}
 \newcommand{\surjective}{\mbox{\ surjective\ on\ }}
 \newcommand{\Term}{\mathrm{Term}}
+\newcommand{\Type}{\mathrm{Type}}
 \newcommand{\topology}{\mathcal{T}}
 \newcommand{\total}{\mbox{\ total\ on\ }}
 \newcommand{\transitive}{\mathrm{\ transitive}}
@@ -2968,7 +2970,7 @@ Side condition:
 
 \begin{definition}(Family constructor)
 \[
-(\Lambda x: t) = \{(x,s)|(s\subseteq y)\land (s\ \mbox{ss})\}
+(\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
@@ -3096,7 +3098,7 @@ Since $(q \in t[z/x])$, we also have
 q\in \bigcup \{b|(z,b)\in(\lambda x: t)\}
 \]
 So $q\in (\lambda x: t)(z)$.\\
-And were are done.\\
+And we are done.\\
 \Done
 
 
@@ -3113,11 +3115,47 @@ Context:
 \Proof
 \Done
 
-\begin{definition}(Membership relation class)
+%\begin{definition}(conglomerate of all classes)
+%\
+%\end{definition}
+
+\subsection{Classes-as-Types semantics}
+In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-types in classes.
+
+First of all, we (loosely) define the semantics.
+
+Since, everything is a class in MK, we have:
 \[
-\mbox{E} = \{(x,y)|x\in y\}
+\semantics("(A:\Type)"):=\top.
 \]
-\end{definition}
+Dependent types are treated as families.
+\[
+\semantics("(x:A\vdash B(x):\Type)"):=(B\family)\land(\dom(B)\subseteq A).
+\]
+
+\[
+(\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
+\]
+
+is it okey ???
+\[
+(B\family)\iff\exists t : B = (\Lambda x: t) 
+\]
+
+\subsubsection{$\Sigma$-types}
+
+In type theory, the formatin rule for a $\Sigma$-type is
+\begin{prooftree}
+\AxiomC{
+$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+}
+\RightLabel{$\Pi$-form}
+\UnaryInfC{$
+\vdash \Sigma_{(x:A)}B(x):\Type  
+$}
+\end{prooftree}
+
+Assume that $(F\family)$.
 
 \begin{definition}(Dependent sum)
 \[
@@ -3125,11 +3163,45 @@ Context:
 \]
 \end{definition}
 
+\subsubsection{$\Pi$-types}
+In type theory, the formatin rule for a $\Pi$-type is
+\begin{prooftree}
+\AxiomC{
+$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+}
+\RightLabel{$\Pi$-form}
+\UnaryInfC{$
+\vdash \Pi_{(x:A)}B(x):\Type  
+$}
+\end{prooftree}
+
+In MK, it corresponds to the following:
+
 \begin{definition}(Dependent product)
 \[
 \Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
 \]
 \end{definition}
+
+
+\begin{theorem}
+
+\end{theorem}
+
+
+
+\subsubsection{$W$-types}
+
+
+\subsection{Previous implementation}
+
+\begin{definition}(Membership relation class)
+\[
+\mbox{E} = \{(x,y)|x\in y\}
+\]
+\end{definition}
+
+
 
 \begin{theorem}
 \[
