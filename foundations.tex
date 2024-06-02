@@ -148,6 +148,9 @@ Motivation: there are lots of proof assistants which allow to prove mathematical
 I am creating a proof assistant and this document is a very early prologue to what the computer-generated article will look like.\\
 
 The other point of creating such document is to provide programmed classical logical foundations for developing a set-theoretic proofs, and vice-versa to provide a set-theoretic foundations to prove theorems about logic.
+
+
+
 \noindent
 \subsection{Goals}
 %Interesting targets:
@@ -3120,7 +3123,7 @@ Context:
 %\end{definition}
 
 \subsection{Classes-as-Types semantics}
-In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-types in classes.
+In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
 
 First of all, we (loosely) define the semantics.
 
@@ -3137,7 +3140,7 @@ Dependent types are treated as families.
 (\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
 \]
 
-is it okey ???
+Is the following okey ???
 \[
 (B\family)\iff\exists t : B = (\Lambda x: t) 
 \]
@@ -3181,6 +3184,16 @@ In MK, it corresponds to the following:
 \[
 \Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
 \]
+
+
+(Note: For sets the following definition is also okey:
+\[
+\Pi F = \left\{f\in \left(\union\ran(F)\right)^{\dom(f)} \middle| \forall (x\in\dom(f)) : (f(x) \in F(x)) \right\},
+\]
+but it is not working well for classes)
+
+(Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
+
 \end{definition}
 
 
@@ -3191,7 +3204,23 @@ In MK, it corresponds to the following:
 
 
 \subsubsection{$W$-types}
-
+Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
+\[
+\mbox{W}_{\mathrm{fun}}F(0):= \emptyset 
+\]
+\[
+\mbox{W}_{\mathrm{fun}}F(n+1):= \{(r,s)| (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )\}
+\]
+\[
+\mbox{W}F :=\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\]
+\subsubsection{$M$-types}
+\[
+MF := \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
+\]
+\[
+\forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
+\]
 
 \subsection{Previous implementation}
 
