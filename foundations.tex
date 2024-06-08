@@ -103,6 +103,11 @@
 \newcommand{\total}{\mbox{\ total\ on\ }}
 \newcommand{\transitive}{\mathrm{\ transitive}}
 \newcommand{\union}{\bigcup}
+\newcommand{\lif}{\mathrm{if}}
+\newcommand{\lthen}{\mathrm{then}}
+\newcommand{\lelse}{\mathrm{else}}
+\newcommand{\lexception}{\mathrm{exception}}
+\newcommand{\lundef}{\mathrm{undef}}
 \newcommand{\univocal}{\mathrm{\ univocal}}
 \newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
 \newcommand{\UB}{\mathrm{UB}}
@@ -153,6 +158,17 @@ The other point of creating such document is to provide programmed classical log
 
 \noindent
 \subsection{Goals}
+
+$\simeq$ is the quasi-equality
+
+\[
+(s\simeq t) \IFF (((s \defined)\lor(t \defined)) \implies (s=t))
+\]
+
+\[
+F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
+\]
+
 %Interesting targets:
 \begin{itemize}
 \item The aim of this document is to provide standard classical mathematical foundations as well as some amount of perfect proofs.
