@@ -61,10 +61,12 @@
 \newcommand{\complex}{\mathbb{C}}
 \newcommand{\converges}{\longrightarrow}
 \newcommand{\countable}{\mbox{\ countable}}
-\newcommand{\defined}{\mbox{\ defined}}
+\newcommand{\ldefined}{\mbox{\ defined}}
 \newcommand{\dom}{\mbox{dom}}
 \newcommand{\Dom}{\mbox{Dom}}
 \newcommand{\Done}{\noindent \textbf{Done.}\\}
+\newcommand{\lexists}{\mbox{\ exists}}
+\newcommand{\lunique}{\mbox{\ unique}}
 \newcommand{\family}{\mathrm{\ family}}
 \newcommand{\Fm}{\mathrm{Fm}}
 \newcommand{\FuncSymb}{\mathrm{FuncSymb}}
@@ -85,6 +87,9 @@
 \newcommand{\nonempty}{\mathrm{\ nonempty}}
 \newcommand{\Ord}{\mathrm{Ord}}
 \newcommand{\power}{\mathcal{P}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\fst}{\mathrm{fst}}
+\newcommand{\snd}{\mathrm{snd}}
 \newcommand{\PredSymb}{\mathrm{PredSymb}}
 \newcommand{\Proof}{\noindent \textbf{Proof.}\\}
 \newcommand{\ran}{\mathrm{ran}}
@@ -158,16 +163,224 @@ The other point of creating such document is to provide programmed classical log
 
 \noindent
 \subsection{Goals}
+Despite theory being presented is sometimes unusually presented, my intention was to keep it as standard as possible. Any "extravagant" part has reason behind it: for example, it is absurd to speak about truthness of the statements $f(x)=5$, when $x\notin\dom(f)$.
+We may want to say that it is false, but then it creates the assymetry: $f(x)\neq 5$ means that some of two cases is true: 1) $x\notin\dom(f)$ or 2) ($(x\notin\dom(f))$ and f(x) is actually equal to something else).
+But when we have 3-valued logic, then we get rid of such compromises.
+In it $(f(x)\neq 5)$ means that both sides are defined and they are not equal.\\
+
+%The statement $f(x)\neq 5$ should not raise two different cases: whe
+
+
+\subsection{Value of a function. (BEST)}
+Definition of the value of the function: (in the context of 3-valued logic)
 
 $\simeq$ is the quasi-equality
 
 \[
-(s\simeq t) \IFF (((s \defined)\lor(t \defined)) \implies (s=t))
+(s\simeq t) \IFF (((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \]
 
 \[
 F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
+
+\subsection{Theorems about transifinite- and epsilon- induction and recursion.}
+
+Recall:\\
+Transfinite recursion\\
+$G:V\to V$\\
+$\exists! F:\Ord\to V$, s.t.\\
+$F(a) = G(F\restriction a)$\\
+
+Recall:\\
+Epsilon recursion:\\
+$G:V\to V$\\
+$\exists! F:V\to V$, s.t.\\
+$F(a) = G(F\restriction a)$\\
+
+Height function definition:\\
+
+Height function:\\
+
+$h(x)$ is the height of a the set. It is equal by definition to the maximum length of a $\ni$-chain, started from $x$.\\
+Examples:\\
+$h(\emptyset)$=0,\\
+$h(\{\emptyset\})$=1,\\
+$h(\{\emptyset,\{\emptyset\}\})$=2,\\
+and in general if $n$ is a finite ordinal number, then $h(n)=n$.\\
+Definition: by $\in$-recursion
+\[
+h(x) := \sup \{ h(y) | y \in x\}
+\]
+Property:
+\[
+h(x) = \sup h[x]
+\]
+
+$G(R) := \sup(\ran(R)) = \union(\ran(R))$\\
+via epsilon recursion.\\
+$h : V\to V$\\
+$h(a) = \sup(\ran(h\restriction a) )$\\
+
+Lemma: $(h:V\to\Ord)$\\
+\Proof
+by epsilon induction.\\
+\Done
+
+
+\subsection{Definitions of the ordered pair for sets and classes}
+Separate definitions:
+\[
+(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+\]
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}
+\]
+
+\noindent Simultaneous defintion:
+\[
+(a,b) := ({0}\times a)\cup ({1}\times b)
+\]
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}
+\]
+
+Note:\\
+Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
+\[
+\tilde{K}:= \{\{k\}| k\in K\}
+\]
+\[
+[a,b] := ({0}\times \tilde{a})\cup ({1}\times \tilde{b})
+\]
+Generally speaking,
+\[
+(a,b) :\neq [a,b]
+\]
+because then there is gurantee that it is well-founded.(todo: check it)\\
+End.
+
+\Proof
+
+Well-foundedness by epsilon-relation:\\
+%Checking that $(a,b)$ is well-found.
+\begin{theorem}
+If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+\end{theorem}
+\Proof
+We apply the epsilon-induction for $a$.\\ % maybe even  complete? nah, it's enough
+Assume there is no infinite $\ni$-chain in $(a_1,b)$ for any element $a_1$ of $a$.\\
+We apply the epsilon-induction for $b$.\\
+Assume there is no infinite $\ni$-chain in $(a_1,b_1)$ for any element $b_1$ of $b$.\\
+\[
+w\in (a,b)
+\]
+WLOG("Case I"), 
+\[
+w\in \{(0,a_1)|a_1\in a\}
+\]
+\[
+\exists a_1\in a: w\in (0,a_1)
+\]
+
+%Case 1: a is empty.\\
+%Then it contradicts with $w\in \{(0,a_1)|a_1\in a\}$, so statement is exfalso proven.\\
+%Case 2: a is non-empty.\\
+
+We know that
+\[
+(a,\emptyset) = \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in \emptyset\} = \{(0,a_1)|a_1\in a\}
+\]
+and
+\[
+(\emptyset,b) = \{(0,a_1)|a_1\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)|b_1\in b\}
+\]
+.
+
+Small remark: we can compute, just for the sanity check:
+\[
+(0,0) = (\emptyset,\emptyset) = \{(1,b_1)|b_1\in \emptyset\} = \emptyset
+\]
+\[
+(1,0) = (\{\emptyset\},\emptyset) = \{(0,\emptyset)\} = \{\emptyset\}
+\]
+\[
+(0,1) = (\emptyset,\{\emptyset\}) =/\mbox{by the 2nd eq}/= \{(1,\emptyset)\} = \{\{\emptyset\}\},
+\]
+indeed they are all different when arguments are different, as intended. In the later theorem it will be proven for arbitrary pairs.
+
+Every chain ends with the empty set(or with an urelement in some non-extensional theories).\\
+
+If(WA) $(0,a_1)$ has an infinite chain, then (using the second equality) 
+$\{(1,e)|e\in a_1\}$ has it too. 
+
+So there exists $e_0\in a_1$, such that $(1,e_0)$ has an infinite chain.
+\[
+(1,e_0) = \{(0,0)\}\cup \{(1,e_1)|e_1\in e_0\}
+\]
+.
+Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_1\in e_0$, such that $(1,e_1)$ has an infinite chain.
+\[
+(1,e_1) = \{(0,0)\}\cup \{(1,e_2)|e_2\in e_1\}
+\]
+and so on: (using here a natural number recursion/induction)
+Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_{n+1}\in e_{n}$, such that $(1,e_{n+1})$ has an infinite chain.
+\[
+(1,e_{n+1}) = \{(0,0)\}\cup \{(1,e_{n+1})|e_{n+1}\in e_n\}
+\]
+
+Therefore $a$ has an infinite chain starting with $e$, contradiction.
+
+The proof is similar, for the "Case II", where
+\[
+w\in \{(1,b_1)|b_1\in b\}
+\]
+\[
+\exists b_1\in b: w\in (1,b_1),
+\]
+with obtaining a contradiction with $b$ being well-founded.\\
+\Done
+
+\begin{definition}(we define a functional symbols which take the first and the second element of the pair) [we can add, "if it's an ordered pair"]
+\[
+\pr_1(P) := \fst(P) := \{b|(0,b)\in P\}
+\]
+\[
+\pr_2(P) := \snd(P) := \{b|(1,b)\in P\}
+\]
+\end{definition}
+
+\begin{theorem}
+\[
+((A_1,B_1) = (A_2,B_2)) \iff ((A_1=A_2)\land(B_1=B_2)) 
+\]
+\end{theorem}
+\Proof
+...\\
+\Done
+
+\begin{theorem}(OLD)
+If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+\end{theorem}
+\Proof
+\[
+h((a,b)) = h(({0}\times a)\cup ({1}\times b)) = 
+\]
+\[
+=\max( \sup\{h(y)|y\in ({0}\times a)\}, \sup\{h(y)|y\in ({0}\times a)\} ) = /\mbox{WLOG}/
+\]
+\[
+= \sup\{h(y)|y\in ({0}\times a)\} = /\mbox{by def}/
+\]
+\[
+= \sup\{h(y)|y\in \{(0,a_1)|a_1\in a_0\}\} =
+\]
+\[
+= \sup\{h((0,a_1))|a_1\in a_0)\} =
+\]
+
+\Done
+
 
 %Interesting targets:
 \begin{itemize}
@@ -181,6 +394,14 @@ F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\
 %...
 \newpage
 \section{Logical framework}
+
+\subsection{Basic definitions of the syntax}
+In this section we deal with strings of letters.
+NOTE: The definitions in this section are simultaneous: some earlier definitions depend on later. It is possible to rewrite equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implemented, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
+
+%Coding function
+%\[\]
+
 %The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
 
 \begin{definition}(Variables)\\
@@ -200,8 +421,13 @@ $\PredSymb$
 
 \begin{definition}(Term)\\
 Inductive definition of term:\\
-1) $v\in\Var \IMPLIES v\in\Term$.\\
-2) $f\in\FuncSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES f(t_1,\dots,t_n)\in\Term$.\\
+1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
+2) 
+$"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
+3) Some higher-order features:\\
+$"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
+...
+
 \end{definition}
 
 \begin{definition}(Formula)\\
@@ -253,8 +479,54 @@ Proof is
 \]
 \end{definition}
 \noindent
-\subsection{Axioms}
-For all formulas $A$, $B$, $C$.
+
+\subsection{Full semantics}
+
+
+The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
+Let $\power \mathcal{U}$ be the domain of discourse of the presented model for the theory.\\
+It means that we have a super-large model.\\
+Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
+Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
+
+%Let $I_\Term$ is an interpretation function on Terms.
+
+Let $f$ be an evaluation of variables:\\
+\[
+f:\Var\to \power \mathcal{U}
+\]
+But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
+Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
+
+Terms are interpreted as subconglomerates of the conglomerate of all classes.
+\[
+I_\Term(f) : \Term \to \power \mathcal{U}
+\]
+
+
+Notation:\\
+F:=False\\
+U:=Undefined\\
+T:=True\\
+\[
+I_\Fm(f) : \Fm \to \{F,U,T\}
+\]
+
+\begin{definition}(valid formula)
+The formula $\varphi$ is called valid if it is true under any evaluation.
+\end{definition}
+
+\[
+I_\Fm(f)((t\lexists)) := (\lif\ (I_\Term(f)(t)\nonempty)\ \lthen\ F\ \lelse\ T)
+\]
+\[
+I_\Fm(f)((t\lunique)) := (\lif\ (I_\Term(f)(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
+\]
+
+\subsection{Axioms for the corresponding prediacate calculus}
+\subsection{Propositional part}
+%For all formulas $A$, $B$, $C$.
+For all atomic formulas $A$, $B$, $C$.
 \[
 (A \implies (B \implies A))
 \]
@@ -285,7 +557,29 @@ For all formulas $A$, $B$, $C$.
 \[
 ((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
 \]
-
+\subsection{Predicational part}
+Specification rules:
+\[
+(t\ldefined)\implies ((\forall x: \phi) \implies \phi[t/x])
+\]
+\[
+(t\ldefined) \implies (\phi[t/x] \implies (\exists x: \phi))
+\]
+Bernays' rules: if $x$ is not free in formula $\psi$ then
+\[
+\frac{
+\psi \implies \varphi
+}{
+\psi \implies (\forall x:\varphi)
+}\mbox{(B1)}
+\]
+\[
+\frac{
+\varphi \implies \psi
+}{
+(\exists x:\varphi)\implies \psi
+}\mbox{(B2)}
+\]
 
 \subsection{Useful metatheorems}
 \begin{theorem}
@@ -332,6 +626,11 @@ By induction on formula construction.\\
 
 \subsection{Extension by definitions}
 ...
+
+\subsection{Soundness of the calculus}
+...
+
+
 \pagebreak
 \section{First-order logic[skip this section; go to sect.3]}
 ...
@@ -1421,7 +1720,7 @@ $(B\set)\AND(B\notin B) \Longrightarrow (B\in C)$.\\
 %Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
 %Доказали PC⊆C.
 We are done proving the goal $\power C\subseteq C$.\\
-$\power C\subseteq C \Longrightarrow V\subseteq C$ (by axiom of regularity).\\
+$\power C\subseteq C \Longrightarrow V\subseteq C$ (by epsilon induction).\\
 %Значит из аксиомы следует, что A=V.
 %Значит для любого множества W, W∉W.
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
@@ -1819,7 +2118,7 @@ Lambda operator.
 (\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}
 \]
 \end{definition}
-\subsection{1ST ATTEMPT: Values of functions and o·f families of proper classes, unified approach}
+\subsection{1ST ATTEMPT: Values of functions and of families of proper classes, unified approach}
 SKIP THIS, GO TO THE NEXT SUBSECTION
 \begin{definition}(Value of relation/function/protected family at x)
 \[
@@ -1891,7 +2190,7 @@ A protected family is a relation which range of relation consists only of subset
 
 \begin{definition}(r/f/F is defined at x)
 \[
-(F \defined\mbox{ at }x) \IFF (x\in\dom(F))
+(F \ldefined\mbox{ at }x) \IFF (x\in\dom(F))
 \]
 \end{definition}
 %For every axiomatic definition, there are certain prerequisites.
@@ -2340,14 +2639,14 @@ So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \Done
 \begin{theorem}
 \[
-((\iota y:\phi)\defined)
+((\iota y:\phi)\ldefined)
 \implies
 \phi[(\iota y:\phi)/y]
 \]
 \end{theorem}
 \Proof
 \[
-((\iota y:\phi)\defined)
+((\iota y:\phi)\ldefined)
 \IFF
 ((\iota y:\phi)\set)
 \comment{by def that is valid only for terms denoting sets}
@@ -2459,7 +2758,7 @@ y&=F(x)
 \begin{axiom}
 
 \[
-(\varepsilon (x\set): \varphi) \defined
+(\varepsilon (x\set): \varphi) \ldefined
 \implies
 \exists (x\set):\varphi
 \]
@@ -2475,7 +2774,7 @@ y&=F(x)
 \begin{axiom}
 %(\iota x: \varphi) \in \{x|\varphi\}
 \[
-(\iota (x\set): \varphi) \defined
+(\iota (x\set): \varphi) \ldefined
 \implies
 \exists! (x\set):\varphi
 \]
@@ -2483,7 +2782,7 @@ y&=F(x)
 qqqqqqqqqqqq
 \begin{axiom}
 \[
-(\iota (x\set): \varphi) \defined
+(\iota (x\set): \varphi) \ldefined
 \iff
 (\iota (x\set): \varphi) \set
 \]
@@ -2491,7 +2790,7 @@ qqqqqqqqqqqq
 \begin{axiom}
 %(\iota x: \varphi) \in \{x|\varphi\}
 \[
-(\iota (x\set): \varphi) \defined
+(\iota (x\set): \varphi) \ldefined
 \iff
 \exists! (x\set):\varphi
 \]
@@ -2499,7 +2798,7 @@ qqqqqqqqqqqq
 \begin{axiom}
 %(\iota x: \varphi) \in \{x|\varphi\}
 \[
-(\iota (x\set): \varphi) \defined
+(\iota (x\set): \varphi) \ldefined
 \implies
 (\iota (x\set): \varphi)  \in \{x|\varphi\}
 \]
@@ -2509,7 +2808,7 @@ qqqqqqqqqqqq
 \[
 \varphi\land (!x:\varphi)
 \implies
-(\iota (x\set): \varphi) \defined
+(\iota (x\set): \varphi) \ldefined
 \]
 \end{axiom}
 
@@ -2676,6 +2975,7 @@ Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ orde
 
 %\[(\left(\intersection A\right)\set)\implies \]
 
+\section{Experimental}
 
 \iffalse
 \section{Singleton-Semantics}
