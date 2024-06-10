@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+	\documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 %\usepackage[german]{babel}
 %\usepackage[cyrillic]{babel}
@@ -35,6 +35,10 @@
 \newtheorem*{axiom*}{Axiom}
 \newtheorem{definition}{Definition}[section]
 \newtheorem*{definition*}{Definition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{remark*}{Remark}
+\newtheorem{recall}{Recall}[section]
+\newtheorem*{recall*}{Recall}
 
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -186,23 +190,25 @@ F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\
 
 \subsection{Theorems about transifinite- and epsilon- induction and recursion.}
 
-Recall:\\
+\begin{recall}
 Transfinite recursion\\
 $G:V\to V$\\
 $\exists! F:\Ord\to V$, s.t.\\
 $F(a) = G(F\restriction a)$\\
-
-Recall:\\
+\end{recall}
+%Recall:\\
+\begin{recall}
 Epsilon recursion:\\
 $G:V\to V$\\
 $\exists! F:V\to V$, s.t.\\
 $F(a) = G(F\restriction a)$\\
+\end{recall}
 
+\begin{definition}
 Height function definition:\\
-
-Height function:\\
-
 $h(x)$ is the height of a the set. It is equal by definition to the maximum length of a $\ni$-chain, started from $x$.\\
+\end{definition}
+
 Examples:\\
 $h(\emptyset)$=0,\\
 $h(\{\emptyset\})$=1,\\
@@ -212,6 +218,7 @@ Definition: by $\in$-recursion
 \[
 h(x) := \sup \{ h(y) | y \in x\}
 \]
+
 Property:
 \[
 h(x) = \sup h[x]
@@ -222,7 +229,13 @@ via epsilon recursion.\\
 $h : V\to V$\\
 $h(a) = \sup(\ran(h\restriction a) )$\\
 
-Lemma: $(h:V\to\Ord)$\\
+
+
+\begin{lemma}()
+\[
+(h:V\to\Ord)
+\]
+\end{lemma}
 \Proof
 by epsilon induction.\\
 \Done
@@ -245,7 +258,7 @@ X\times Y := \{(x,y)|x\in X \land y\in Y\}
 X\times Y := \{(x,y)|x\in X \land y\in Y\}
 \]
 
-Note:\\
+\begin{remark}\ \\
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
 \[
 \tilde{K}:= \{\{k\}| k\in K\}
@@ -258,9 +271,29 @@ Generally speaking,
 (a,b) :\neq [a,b]
 \]
 because then there is gurantee that it is well-founded.(todo: check it)\\
-End.
+\end{remark}
 
-\Proof
+
+%Remark 1:
+%\[
+%(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+%\]
+%\[
+%   = \{\{(1,a_2)|a_2\in a_1\}|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+%(0,b) = \{(0,a_1')|a_1'\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)|%b_1\in b\}
+
+%(1,b_1)= \{(0,a_1')|a_1'\in \{\emptyset\}\}\cup \{(1,b_2)|b_2\in b_1\}
+%       = \{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}
+%       = \{(0,\emptyset)\}\cup \{\{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}|%b_2\in b_1\}
+%\]
+\[
+(a,0) = \{(0,a_1)|a_1\in a\}
+\]
+\[
+(0,b) = \{(1,b_1)|b_1\in b\}
+\]
+
+%\Proof
 
 Well-foundedness by epsilon-relation:\\
 %Checking that $(a,b)$ is well-found.
