@@ -1,0 +1,785 @@
+\subsection{1ST ATTEMPT: Values of functions and of families of proper classes, unified approach}
+SKIP THIS, GO TO THE NEXT SUBSECTION
+\begin{definition}(Value of relation/function/protected family at x)
+\[
+F(x):=\union\{b|(x,b)\in F\}
+\]
+\end{definition}
+\begin{definition}(Value of a simple family at x)
+\[
+F(x) :=\{b|(x,b)\in F\}=\ran(F)
+\]
+(if domain is defined as usual, then the element of a simple family is intrinsicallly non-empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
+%F(x) :=\union\{b|(x,b)\in F\}
+\end{definition}
+We need to improve the previous definitions, because:
+1) we want to have family with empty representative, we need to define.
+2) it if not possible to preserve domain if element of a family turned out to be empty.
+\begin{definition}(Value of a protected family at x)
+\[
+F(x)_p := \{b|(x,\{b\})\in F\}
+F(x)_p := \union\{s|(x,s)\in F\}
+\]
+The latter definition therefore is universal for any of r/f/F/PF
+\end{definition}
+
+
+\begin{definition}(Domain of relation/function/family/protected family)
+\[
+\Dom(F):=\{x|\exists s:(x,s)\in F\}=:\dom(F)
+\]
+\end{definition}
+
+\begin{definition}(Range of relation)(!!!Note that it is in general different from range of a function or family. "R-Ran","ran","small range")
+\[
+\ran(R):=\{y|\exists x:(x,y)\in R\}
+\]
+\end{definition}
+
+\begin{definition}(In range of relation/function/family. (It works for both R-Ran and F-Ran.))
+\[
+(K\mbox{ in classrange of }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)=K)
+\]
+\end{definition}
+\begin{definition}(In range of protected family. (It works for both R-Ran and F-Ran.))
+\[
+(K\mbox{ in classrange of protected }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)_p=K)
+\]
+\end{definition}
+
+
+\begin{definition}([Set-]Range of function/family. "F-Ran","Ran", "big range")
+%\[
+%\Ran(F):=\{y|\exists x: (x \in \Dom(F)) \land (F(x)=y)\}
+%\]
+\[
+\Ran(F):=\{y| y\mbox{ in classrange of } F\}
+\]
+\end{definition}
+
+\begin{definition}(Function)
+A function is a relation which is univocal.
+\end{definition}
+\begin{definition}(Protected Family)
+A protected family is a relation which range of relation consists only of subsets of singletones.
+\end{definition}
+
+
+%A relation is a function when it is univocal.
+%A relation is a family when it's relation range consists only of subsets of singletones.
+
+\begin{definition}(r/f/F is defined at x)
+\[
+(F \ldefined\mbox{ at }x) \IFF (x\in\dom(F))
+\]
+\end{definition}
+%For every axiomatic definition, there are certain prerequisites.
+It doesn't make sense to prove anything about $(\varepsilon x:\varphi)$, if it is not proven that $\exists x: \varphi$.\\
+It doesn't make sense to prove anything about $(\iota x:\varphi)$, if it is not proven that $\exists! x: \varphi$.\\
+There is a "default value" D1 which $(\varepsilon x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
+There is a "default value" D2 which $(\iota x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
+They are not specified. (Up to now).\\
+If they are not specified, then we cannot define the "(- defined)" predicate.
+It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
+It is not possible to have a "defined" predicate, because it isn't preserved under equality.\\
+So naive "defined" requires a recursion on a term.\\
+Even if we introduce own "defined" for each constructor of the term, it still will require syntactic analysis.\\
+So the solution is to have a context under which definitions make sense.\\
+It may be a family of classes, where the first one should be non-empty, as a signal that some conditions are satisfied.\\
+It strongly reminds a notion of signature and structure.\\
+
+In the situation, when $\exists x: \varphi$ and $\neg\exists! x: \varphi$.
+"value-defined".
+
+Relations are symmetrical, so inverse relation is defined.
+
+Protected families are assymetrical, so it is not always possible to define the inverse of a family.
+
+Families 
+\subsection{Non-empty families}
+All definitions in this section are local: they will not be used in other sections.
+\begin{definition}(family of non-empty classes)
+\[
+(F is NEF) 
+\]
+\end{definition}
+
+
+
+\subsection{Unified approach to functions and of families}
+
+\begin{definition}(Conglomerate of all classes)
+This symbol is not a term of our theory(MK+axGroth), because terms denote classes, and it is bigger than a class.
+\end{definition}
+Different variant of canonisations:
+\begin{definition}(Canonization a family of non-empty classes)\\
+$
+\canonize0(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}
+$\\
+
+\end{definition}
+\begin{definition}(Canonization[of a family of potentially empty classes])\\
+$
+\canonize1(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|x\in\Dom(F)\}
+$\\
+$
+\canonize2(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|(x\in\Dom(F))\land (F(x)=\emptyset) \}
+$\\
+$
+\canonize3(F) = \{(x,s)|\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)\}
+$\\
+
+\end{definition}
+
+\begin{definition}(Cardinality)\\
+\[
+|A|=\Ord\cap\bigcap \{f: | \}
+\]
+\end{definition}
+
+Here V denote a class of all sets, and Ord denotes the class of all ordinal numbers.
+\[
+|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):(f\mbox{ injective})\}
+\]
+Note: here we use the intersection of a class which is defined by 
+$
+(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
+$, therefore $\bigcap\emptyset = V$.
+In this case 
+\[
+(x\mapsto|x|):V\to\mbox{Ord}
+\]
+This definition allows also obtain a cardinality of any proper class P, in particular
+\[
+|P|=\mbox{Ord}
+\]
+This definition is natural since it agrees with the axiom of limitation of size which implies bijection between V and any proper class.
+
+
+\begin{definition}(Family)
+\[
+\]
+\end{definition}
+
+\begin{definition}(Family)
+\[
+(F:A\to\mathcal{U})
+\IFF
+(F\subseteq V\times V)
+\land
+(\Dom(F)=A)
+\]
+\end{definition}
+\begin{definition}(Canonical Family)
+Every family has a representation which is canonical.
+If we use axiomatic approach for families, they should be indistinguishable wrt all important properties.
+So agreement may be ocnsidered: "Read canonize(F) in any statement when F is mentioned" or "Add (canonize(F)=F) to the definition".
+\end{definition}
+
+
+
+\begin{definition}(Family)
+A family is a relation which range of relation consists only of subsets of singletones.
+\[
+(F\family) \IFF (F\subseteq V\times\{-\}[])
+\]
+\end{definition}
+A family is weaker than a funtional symbol, because functional symbols can take proper classes as arguments.\\
+A function is weaker than a family because it can return only sets.\\
+But the behaviour of $\{-\}$ is well-defined only on sets.
+Maybe it should be a family?\\
+What about $\{-,-\}$?\\
+Should $\{V\}$ be $\emptyset$ or $V$?\\
+E.g. Metamath uses an empty set as a default value.\\
+So it seems to legit, because it cannot be obtained in any other way out of the unordered pair or ordered pair. At worst it would be a singleton, but never an empty set. So the choice of $\emptyset$ as a default value is justified.\\
+
+It's not the same in other cases, e.g. for "f(x)", therefore it requires an additional assumption to be treated as "legit".
+
+\subsection{Value of a function via set-descriptors}
+\begin{definition}
+\label{def:value}
+Intended use: value of a class-function. Class F is arbitrary.
+\[
+F(x) = \left(\iota y: \langle x,y\rangle\in F\right)
+\]
+\end{definition}
+
+
+
+
+
+\begin{definition}
+\label{def:univocalat}
+\[
+(F\univocalat x)\iff(!y : \langle x,y\rangle \in F)
+\]
+\end{definition}
+\begin{definition}
+\label{def:univocal}
+\[
+(F\univocal)\iff (\forall x: F\univocalat x)
+\]
+\end{definition}
+\begin{theorem}
+\label{thm:pair in function}
+If $(F\univocalat x)\land(y\set)$, then
+\[
+\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
+\]
+\begin{align*}
+(F\univocalat x)
+\implies
+\left(
+\left(\langle x,y\rangle\in F\right)
+\implies
+\left(F(x)=y\right)
+\right)
+\\
+(y\set)
+\implies
+\left(
+\left(F(x)=y\right)
+\implies
+\left(\langle x,y\rangle\in F\right)
+\right)
+\end{align*}
+\iffalse
+\[
+\mbox{x set!!??}
+(F\univocalat x)
+\implies
+\left(
+\left(
+\left(F(x)=y\right)\land(y\set)
+\right)
+\iff\left(\langle x,y\rangle\in F\right)
+\right)
+\]
+\fi
+\end{theorem}
+\Proof
+For formulas to be short, let's define 
+\[
+Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
+\]
+\noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
+% USELESS
+%\[
+%(F\univocal)
+%\IMPLIES
+%(\forall x:\ !y : \langle x,y\rangle \in F)
+%\]
+% USELESS
+%\[
+%(\forall x:\ !y : \langle x,y\rangle \in F)
+%\IMPLIES
+%(!y : \langle x,y\rangle \in F)
+%\]
+\[
+(F\univocalat x)
+\IMPLIES
+(!y : \langle x,y\rangle \in F)
+\quad\mbox{(by def \ref{def:univocalat})}
+\]
+\[
+(\langle x,y\rangle\in F)
+\IMPLIES
+(\exists y : \langle x,y\rangle \in F)
+\]
+\[
+(\exists y : \langle x,y\rangle \in F)
+\AND
+(!y : \langle x,y\rangle \in F)
+\IMPLIES
+(\exists! y : \langle x,y\rangle \in F)
+\]
+\[
+(\exists! y : \langle x,y\rangle \in F)
+\IMPLIES
+(\{y | \langle x,y\rangle \in F\}\singleton)
+\]
+\[
+\left(\{y| \langle x,y\rangle\in F\}\singleton\right)
+\IMPLIES
+\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
+\in
+\left(\{y| \langle x,y\rangle\in F\}\right)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+\]
+\[
+\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
+\in
+\left(\{y| \langle x,y\rangle\in F\}\right)
+\IMPLIES
+\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
+\]
+\[
+(!y : \langle x,y\rangle \in F)
+\AND
+(\langle x,y\rangle\in F)
+\AND
+\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
+\IMPLIES
+\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
+\]
+
+%\[
+%\beta
+%\IMPLIES
+%\left(
+%\alpha
+%\iff
+%(\alpha \land \beta))
+%\right)
+%\]
+\[
+\beta\implies(\alpha\iff(\alpha \land \beta)))
+\]
+\[
+(!y: \langle x,y\rangle\in F)
+\IMPLIES
+\left(
+(\langle x,y\rangle\in F)
+\iff
+(\langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F))
+\right)
+\]
+
+%(!y: \langle x,y\rangle\in F)
+\[
+\IMPLIES
+\left(
+\{y| \langle x,y\rangle\in F\}
+=
+Q
+\right)
+\]
+
+
+%\[
+%\left(\{y| \langle x,y\rangle\in F\}
+%=
+%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\right)
+%\IMPLIES
+%\]
+\[
+\IMPLIES
+\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=
+\left(\intersection
+Q
+\right)
+\]
+
+\iffalse
+%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
+\[
+\left(\{y| \langle x,y\rangle\in F\}
+=
+Q
+\right)
+\AND
+\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
+\IMPLIES
+\left(
+\intersection Q
+\right)
+=y
+\]
+
+\[
+\left(\intersection
+Q
+\right)=y
+\AND
+(\iota y: (\langle x,y\rangle\in F))
+=
+\left(\intersection
+Q
+\right)
+\IMPLIES
+\left((\iota y: \langle x,y\rangle\in F)=y\right)
+\]
+\[
+\left((\iota y: \langle x,y\rangle\in F)=y\right)
+\IMPLIES
+(F(x)=y)
+\]
+So we proved that F(x)=y.
+\fi
+
+\begin{align*}
+F(x)&=\left((\iota y: \langle x,y\rangle\in F\right)\\
+&=\intersection Q\\
+&=\intersection \{y: \langle x,y\rangle\in F\land (!y:\langle x,y\rangle\in F)\}\\
+&=y
+\end{align*}
+So we proved that $(F(x)=y)$.\\
+\noindent($\Rightarrow$) Assume $(F(x)=y)$. To show:$(\langle x,y\rangle\in F)$
+\begin{align*}
+y&=F(x)
+\quad(\mbox{by assumption}) \\
+&=\left(\iota y: \langle x,y\rangle\in F\right)
+\quad(\mbox{by def of value of a function \ref{def:value}})
+\\
+&=\left(\intersection Q\right)
+\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+\end{align*}
+%\[
+%(F(x)=y)
+%\IMPLIES
+%\left(\iota y: \langle x,y\rangle\in F\right)=y.
+%\]
+%\[
+%\left(\iota y: \langle x,y\rangle\in F\right)=y
+%\IMPLIES
+%\left(\intersection Q\right)=y.
+%\]
+\[
+(F\univocal)
+\IMPLIES
+(\forall x:\ !y : \langle x,y\rangle \in F)
+\]
+
+\[
+(\forall x:\ !y : \langle x,y\rangle \in F)
+\IMPLIES
+(!y : \langle x,y\rangle \in F)
+\]
+
+\[
+(y\set)
+\AND
+\left(\intersection Q\right)=y
+\IMPLIES
+\left(\left(\intersection Q\right)\set\right)
+\]
+
+\[
+\left(\left(\intersection Q\right)\set\right)
+\IMPLIES
+(\exists w: w\in Q)
+\quad(\mbox{by thm \ref{thm:intersection set then}}).
+\]
+
+%GOOD, BUT USELESS
+%\[
+%(w\in Q)
+%\IMPLIES
+%\langle x,w\rangle\in F
+%\land 
+%(!w: \langle x,w\rangle\in F)
+%\quad(\mbox{by def of Q}).
+%\]
+
+%(!w:w\in \{y|\varphi\land (!y:\varphi)\})
+%(!w:w\in \{y|(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))\})
+\[
+(!w:w\in Q)
+\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi:=(\langle x,y\rangle\in F)$)}
+\]
+%...
+
+\[
+(\exists w: w\in Q)
+\AND
+(! w: w\in Q)
+\IMPLIES
+(\exists! w: w\in Q)
+\]
+
+\[
+(\exists! w: w\in Q)
+\IMPLIES
+(Q\singleton)
+\]
+
+\[
+\left(Q\singleton\right)
+\IMPLIES
+\left(\intersection Q\right)\in Q
+\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+\]
+
+\[
+\left(\intersection Q\right)\in Q
+\AND
+\left(\intersection Q\right)=y
+\IMPLIES
+y\in Q.
+\]
+
+\[
+y\in Q
+\IMPLIES
+(\langle x,y\rangle\in F)
+\land 
+(!y: \langle x,y\rangle\in F)
+\quad(\mbox{by def of Q}).
+\]
+So $(\langle x,y\rangle\in F)$ is proven as intended.\\
+\Done
+\begin{theorem}
+\[
+((\iota y:\phi)\ldefined)
+\implies
+\phi[(\iota y:\phi)/y]
+\]
+\end{theorem}
+\Proof
+\[
+((\iota y:\phi)\ldefined)
+\IFF
+((\iota y:\phi)\set)
+\comment{by def that is valid only for terms denoting sets}
+\]
+
+\[
+((\iota y:\phi)\set)
+\IMPLIES
+\left(\intersection\{y:\phi\land(!y:\phi)\}\set\right)
+\comment{by def of iota}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:pair in function}
+If $(F\univocalat x)\land(y\set)$, then
+\[
+\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
+\]
+\begin{align*}
+1) & & (y\set)
+\implies
+\left(
+\left(F(x)=y\right)
+\implies
+\left(\langle x,y\rangle\in F\right)
+\right)
+\\
+2) & & (F\univocalat x)
+\implies
+\left(
+\left(\langle x,y\rangle\in F\right)
+\implies
+\left(F(x)=y\right)
+\right)
+\\
+\end{align*}
+\end{theorem}
+Alternative proof:\\
+\Proof
+\noindent($\Rightarrow$)
+\begin{align*}
+y&=F(x)
+\quad(\mbox{by assumption}) \\
+&=\left(\iota y: \langle x,y\rangle\in F\right)
+\quad(\mbox{by def of value of a function \ref{def:value}})
+\\
+\end{align*}
+%&=\left(\intersection Q\right)
+%\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+\[
+(y=\left(\iota y: \langle x,y\rangle\in F\right))
+\AND
+(y\set)
+\IMPLIES
+(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+\]
+\[
+(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+\IMPLIES
+\left(\exists!(y\set):\langle x,y\rangle\in F\right)
+\comment{by thm \ref{thm:iota set exists unique set}}
+\]
+...\\
+\noindent($\Leftarrow$)\\
+...\\
+\Done
+\subsection{Descriptors OLD}
+\begin{axiom}
+\[
+\exists (x\set):\varphi
+\implies
+(\varepsilon x: \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+
+\[
+(\varepsilon x: \varphi) \set
+\implies
+\exists (x\set):\varphi
+\]
+\end{axiom}
+
+\begin{axiom}
+\[
+\exists! (x\set):\varphi
+\implies
+(\iota x: \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+(\iota x: \varphi) \set
+\implies
+\exists! (x\set):\varphi
+\]
+\end{axiom}
+
+
+
+It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
+\[
+(I y: \varphi) = \intersection \{y|\varphi \land (!y:\varphi)\}
+\comment{bad ``definition''}
+\]
+In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
+(the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
+%So the following definition does not work correctly for proper classes:
+\begin{definition}
+\label{def:iota operator}
+Iota operator for sets.
+\[
+(\iota y: \varphi) = \intersection \{y|\varphi \land (!(y\set):\varphi)\}
+\]
+\end{definition}
+
+
+
+\begin{theorem}
+\label{thm:iota set exists unique set}
+%Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
+%This may not be true:
+%\[ ???
+%((\iota y: \varphi) \set)
+%\iff
+%(\exists!(b\set):\varphi)
+%\]
+%Variant2(true before redef but ugly):
+%\[
+%((\iota y: \varphi) \set)
+%\iff
+%(\exists(b\set):\varphi)
+%\land
+%(!b:\varphi)
+%\]
+%Variant3:
+%\[
+%((\iota y: \varphi) \set)
+%\iff
+%(\exists!b:\varphi)
+%\]
+%Variant4:
+%\[
+%((\iota (y\set): \varphi) \set)
+%\iff
+%(\exists!(y\set):\varphi)
+%\]
+%Variant5:
+\[
+((\iota y: \varphi) \set)
+\iff
+(\exists!(y\set):\varphi)
+\]
+
+\end{theorem}
+\Proof
+%For formulas to be short, let's locally define the term Q:
+%\[
+%Q:=\{y|\varphi \land (!(y set):\varphi)\}
+%\]
+\noindent$(\Rightarrow)$\\
+Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
+\[
+((\iota y: \varphi) \set)
+\IMPLIES
+\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
+\comment{by def \ref{def:iota operator}}
+\]
+\[
+\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
+\IMPLIES
+\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
+\]
+\[
+\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
+\IMPLIES
+\left(\exists	y: y\in \{y|\varphi \land (!(y\set):\varphi)\}\right)
+\]
+\[
+\left(
+y\in \{y|\varphi \land (!(y\set):\varphi)\}
+\right)
+\IMPLIES
+\left(
+(y\set)\land \varphi\land (!(y\set):\varphi)
+\right)
+\]
+\[
+(y\set)
+\AND
+\varphi
+\IMPLIES
+\left(
+\exists (y\set):\varphi
+\right)
+\]
+%\[
+%\left(
+%!y:\varphi
+%\right)
+%\IMPLIES
+%\left(
+%!(y\set):\varphi
+%\right)
+%\]
+\[
+\left(
+\exists (y\set):\varphi
+\right)
+\AND
+\left(
+!(y\set):\varphi
+\right)
+\IFF
+\left(
+\exists! (y\set):\varphi
+\right)
+\]
+
+\noindent$(\Leftarrow)$\\
+Assume $(\exists!(y\set):\phi)$. To show:$((\iota y:\phi)\set)$.
+%%Here $!x:$.
+\[
+(\exists!(y\set):\phi)
+\IMPLIES
+(\exists(y\set):\phi)
+\land
+(!(y\set):\phi)
+\]
+\[
+(y\set)
+\AND
+\phi
+\AND
+(!(y\set):\phi)
+\IMPLIES
+y\in\{y:\phi\land(!(y\set):\phi)\}
+\]
+\[
+y\in\{y:\phi\land(!(y\set):\phi)\}
+\IMPLIES
+(\{y:\phi\land(!(y\set):\phi)\}\nonempty)
+\]
+\[
+(\{y|\varphi \land (!y:\varphi)\}\nonempty)
+\IMPLIES
+\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
+\]
+\[
+\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
+\IMPLIES
+\left(\left(\iota y: \varphi\right) \set\right)
+\]
+\Done

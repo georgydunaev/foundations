@@ -1,0 +1,173 @@
+\ifdefined\MyHeaderIncluded
+\else
+\def\partialfunctionssemanticsflag{true}
+\input{my_preamble.tex}
+\title{Partial Functions Semantics}
+\author[1]{Georgy Dunaev}
+\begin{document}
+\maketitle
+\fi
+
+
+\section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
+\subsection{Example of a proof (FARMER'S CALCULUS)}
+Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
+``A Set Theory with Support for Partial Functions''.\\
+For simplicity of understanding by the reader, the notation from the article is used here.\\
+\begin{definition} Value of a function.
+\[
+f(x) \simeq \left(\iota y: \langle x,y\rangle\in f\right)
+\]
+\end{definition}
+
+\begin{theorem} If $f$ is univocal, then
+\[
+\left(f(x)\simeq y\right)\iff \left(\langle x,y\rangle\in f\right)
+\]
+\end{theorem}
+\Proof
+($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
+\[
+(\iota x:\varphi)\downarrow
+\quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
+(\exists!x:\varphi)
+\]
+So the proof is the following:
+\[
+\left(\langle x,y\rangle\in f\right)
+\quad\overset{\exists\mbox{-intro}}{\Longrightarrow}\quad
+\left(\exists w: \langle x,w\rangle\in f\right)
+\]
+\[
+f\mbox{ univocal}
+\quad\overset{\mbox{def}}{\Longleftrightarrow}\quad
+\left(! w: \langle x,w\rangle\in f\right)
+\]
+\[
+\left(\exists w: \langle x,w\rangle\in f\right)
+\AND
+\left(! w: \langle x,w\rangle\in f\right)
+\quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
+\left(\exists! w: \langle x,w\rangle\in f\right)
+\]
+\[
+\left(\exists! w: \langle x,w\rangle\in f\right)
+\quad\overset{\mbox{PFOL10}'}{\Longrightarrow}\quad
+\left(\iota w: \langle x,w\rangle\in f\right)\downarrow
+\]
+\[
+\left(\iota w: \langle x,w\rangle\in f\right)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\]
+\[
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\AND
+\left(\langle x,y\rangle\in f\right)
+\quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f) \simeq y
+\]
+\[
+f(x) \simeq y
+\]
+%\left(! w: \langle x,w\rangle\in f\right)
+%\[
+%\left(\iota w: \langle x,w\rangle\in f\right)\downarrow
+
+%\]
+\noindent($\Rightarrow$)
+\[(y\downarrow)\quad\mbox{(by PFOL8)}\]
+\[
+(y\downarrow)\AND((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(\iota w: \langle x,w\rangle\in f)\downarrow \]
+\[
+\left(\iota w: \langle x,w\rangle\in f\right)\downarrow 
+\quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\]
+\[
+\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\AND
+\left((\iota w: \langle x,w\rangle\in f)\simeq y\right)
+\quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+\left(\langle x, y\rangle\in f\right)
+\]
+\\
+\Done
+\begin{theorem}
+\[
+f(x)\downarrow \iff x\in\{x|\exists!y: \langle x,y\rangle\in f\}
+\]
+\end{theorem}
+\Proof
+\Done
+\pagebreak
+By extension of definitions from
+\[
+\forall f \forall x \exists! y : (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,y)\in f
+\]
+we have
+\[
+\forall f \forall x (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,f(x))\in f
+\]
+
+or from: (but it backward implication can be proven without such complifications)
+\[
+\forall f \forall x \exists! y : (f\mbox{ univocal at }x)\to ((x\in \dom(f)) \iff (x,y)\in f)
+\]
+
+
+%We need partial extension by definitions!\\
+or maybe 'Extension by new constant and function names'?\\
+% https://en.wikipedia.org/wiki/Extension_by_new_constant_and_function_names
+%no, also not possible.(it helps only get rid of uniqueness, but stil requires a proof for only one specific function and for specific argument)
+
+In general, a closed formula
+\[
+\forall \vec{x} : \exists! y: \varphi 
+\]
+implies
+\[
+\forall \vec{x} : \varphi[(Iy:\varphi)/y] 
+\]
+.
+IMHO, the most important part here is that y is not free in the context below.
+(the reason is identical to the one in the Generalization Rule)
+YES!
+Important: get rid if quantifier over arguments.
+If the context doesn't have y, the substitution of "whole phi" would be already done.
+
+something that a lil bit concerning is that context is not seen inside I, but it may not be important.
+
+So the following rules are proposed:
+\begin{prooftree}
+\AxiomC{$\Gamma \vdash \exists! y: \varphi$}
+%\RightLabel{Assume/Ident}
+%\UnaryInfC{$
+%P_3,P_2,P_1 \vdash R
+%$}
+\RightLabel{ExtByDef (if $y\notin \mbox{FV}(\Gamma)$)}
+\UnaryInfC{$
+\Gamma \vdash \varphi[(\iota y:\varphi)/y] 
+$}
+%\RightLabel{by }
+\end{prooftree}
+and
+\begin{prooftree}
+\AxiomC{$\Gamma \vdash \exists y: \varphi$}
+\RightLabel{ExtByCons (if $y\notin \mbox{FV}(\Gamma)$)}
+\UnaryInfC{$
+\Gamma \vdash \varphi[(\epsilon y:\varphi)/y] 
+$}
+\end{prooftree}
+%prim_specification
+
+\pagebreak
+
+
+
+
+\ifdefined\partialfunctionssemanticsflag
+\undef\partialfunctionssemanticsflag
+\end{document}
+\fi

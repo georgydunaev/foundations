@@ -1,0 +1,89 @@
+\section{Linear algebra}
+\begin{definition}Matrix over a set S.
+\[
+\mbox{"A is a matrix over a set S"}
+\iff
+\exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \implies S \]
+\end{definition}
+
+\begin{definition}
+\[
+\mbox{combine}(f_1,f_2) := \{(((m,k),(m,v)),(m,(k,v)))| (m,k)\in f_1 \land (m,v)\in f_2\}
+\]
+\end{definition}
+(A combination is a product of morphisms in the category sets and functions.)
+
+\section{Topology}
+\begin{definition}
+\[
+\mbox{Segm} = \{[-\infty;\beta):\beta\in\real\}\cup \{(\alpha;+\infty]:\alpha\in\real\}\cup \{(\alpha;\beta):\alpha\in\real,\beta\in\real\}
+\]
+\end{definition}
+\begin{definition}
+\[
+\topology_{[-\infty;+\infty]} = \mbox{Segm}_\sigma
+\]
+\end{definition}
+\begin{definition}
+Set of neighbourhoods
+\[
+\nghbset_\topology(x) = \{S \subseteq \union \topology : \exists  U\in \topology: x\in U \subseteq S \}
+\]
+\end{definition}
+\begin{definition}
+Interior of a set V in a topology $\topology$.
+\[
+\interior_\topology(V) = \union
+\separation{W}{\topology}{W\subseteq V}
+\]
+\end{definition}
+\begin{theorem}
+\[
+(\interior = \nghbset^{-1})\AND(\nghbset=\interior^{-1})
+\]
+\end{theorem}
+\begin{theorem}
+\[
+V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
+\]
+\end{theorem}
+\begin{theorem}
+\[
+\closure \dashv \mbox{id} \dashv \interior
+\]
+\end{theorem}
+
+\newcommand*{\blipo}{\separation{W}{\topology}{W\subseteq V}}
+% \{W\in\topology|W\subseteq V\}
+%\noindent Lemma:
+\begin{theorem}
+\[
+V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
+\]
+\end{theorem}
+\Proof
+$(\Rightarrow)\\
+V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb-elim, union-elim).
+\\
+$U\in\topology\AND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification-intro).
+\\
+$x\in U \AND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union-intro).
+\\
+$x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior-intro).
+\\
+$(\Leftarrow)$
+\\
+$x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior-elim, union-elim).
+\\
+$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\AND W\subseteq V$\hfill(specification-elim).
+\\
+$x\in W\AND W\in\topology\AND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and-intro, exists-intro).
+\\
+$(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists-elim, nghb-intro).
+\\
+\Done
+\section{Measure theory}
+\section{Functional analysis}
+% $\blipo$ should give error
+\section{Probability theory}
+\section{Category theory}

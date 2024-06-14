@@ -1,0 +1,83 @@
+\section{Set \& class theory}
+Notation:\\
+
+Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi-equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
+
+\begin{definition}
+\label{def:identity}
+Identity.
+\[
+I = \{(x,x)|\top\}
+\]
+\end{definition}
+
+\begin{theorem}
+\label{thm:identity is relation}
+Identity is a relation.
+\[
+(I \relation)
+\]
+\[(I\subseteq V\times V)\]
+\end{theorem}
+
+
+\begin{definition}
+"F on X".
+\[
+\mbox{"F on X"} = F\restriction X
+\]
+\end{definition}
+
+
+\begin{definition}
+\[
+(y\in f[A])
+\iff
+(\exists x\in A: \langle x,y\rangle\in f)
+\]
+\end{definition}
+
+\begin{definition}
+\[
+(y\in f\langle A\rangle)
+\iff
+(\forall x\in A: \langle x,y\rangle\in f)
+\]
+\end{definition}
+\begin{theorem}
+\[
+X\subseteq \power Y
+\iff
+\union X \subseteq Y
+\]
+\end{theorem}
+\begin{theorem}
+\[
+(g\functional)
+\land
+(M \countable)
+\implies
+(g[M] \countable)
+\]
+\end{theorem}
+\begin{theorem}
+\[
+(f^\leftarrow \univocal)
+\]
+\end{theorem}
+
+\begin{theorem}
+\[
+(f\injective)
+\implies
+(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right])
+\]
+\end{theorem}
+
+\begin{theorem}
+\[
+(f\univocal)
+\implies
+f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
+\]
+\end{theorem}

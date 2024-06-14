@@ -1,0 +1,163 @@
+
+\section{Foundations and Large Cardinals}%
+This part is self-contained.\\
+The goal is to prove axiom of limitation of size using small amount of simple axioms and definitions.\\
+\begin{iaxiom}
+Axiom of limitation of size:
+\[
+(K\in V)
+\iff
+(|K| < |V|)
+\]
+\end{iaxiom}
+
+
+Here $|\cdot|$ is a functional symbol defined as following.
+\begin{definition}(cardinality of a class)
+\[
+|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+\]
+\end{definition}
+\begin{definition}
+\[
+(X\preccurlyeq Y)
+\iff
+(\exists f: (f:X\to Y)\land (f \injective))
+\]
+\end{definition}
+The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\Ord$ if the argument is a proper class.\\
+We will introduce some axioms to make such behaviour provable.\\
+\begin{iaxiom}
+\[
+|\cdot|:V \to \Ord
+\]
+Actually, since $|\cdot|$ is a functional symbol, we mean the following:
+\[
+(x\mapsto |x|):V \to \Ord
+\]
+Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\{\langle x, |x|\rangle | x \any\set\}$.
+\end{iaxiom}
+Actually, we can use the following axiom:
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\in\Ord)
+\]
+\end{axiom*}
+or even
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\set)
+\]
+\end{axiom*}
+since later we will prove that
+\begin{theorem*}
+\[
+(x\set)\implies(|x|\in\Ord)
+\]
+\end{theorem*}
+
+\begin{iaxiom} Sets are hereditary:
+\[
+(A\subseteq B)\land (B\set) \implies (A\set)
+\]
+\end{iaxiom}
+
+Some equivalent(in normal context) statements:
+\[
+(K\in V)
+\iff
+(|K| \subsetneq |V|)
+\]
+\[
+(K\in V)
+\iff
+(|K| \neq |V|)
+\]
+because $|V|=\Ord$ and
+\begin{theorem}
+\[
+|V|=\Ord
+\]
+\end{theorem}
+\Proof
+\Done
+
+In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
+\begin{definition} predicates on classes "is transitive" and "is ordinal"
+\[
+tr(X) \iff (\forall Z\in X: Z\subseteq X)
+\]
+\[
+ord(X) \iff tr(X)\land (\forall Y\in X: tr(Y))
+\]
+the other possibilities are
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)
+\]
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
+\]
+etc ...
+\end{definition}
+\[
+(X \set)
+\implies
+\]
+
+\subsection{Proof of the main statement}
+We want to prove the following statement:
+\[
+(K \in V) \iff (|K| \neq |V|)
+\]
+
+Firstly, we will prove some lemmas:
+\begin{lemma}
+\[
+\Ord\notin\Ord
+\]
+\end{lemma}
+\Proof
+Assume $\Ord\in\Ord$.\\
+Therefore $\in$ well-orders $\Ord$ as a well-founded strict linear order.\\
+In particular strict order is irreflexive.\\
+Since using assumpton, $\Ord$ is an element of $\Ord$, by irreflexetivity, we have $\Ord\notin\Ord$.
+Contradiction with assumption.
+Therefore $\Ord\notin\Ord$ is proven.
+\Done
+
+\begin{lemma}
+\[
+|V|=\Ord
+\]
+\end{lemma}
+\Proof
+...\\
+\Done
+
+\begin{lemma}(1st part of the statement, from left to right)
+\[
+(K \in V) \implies (|K| \neq |V|)
+\]
+\end{lemma}
+\Proof
+Assume $(K \in V)$.\\
+By our axiom, since $(K \in V)$ we have $(|K| \in \Ord)$.\\
+By previous lemmas we have $|V|=Ord$ and $\Ord\notin\Ord$.\\
+From these three statements we deduce that $|K| \neq |V|$.\\
+\Done
+
+\begin{lemma}(2nd part of the statement, from right to left)
+\[
+(|K| \neq |V|) \implies (K \in V)
+\]
+\end{lemma}
+\Proof
+Assume $(|K| \neq |V|)$.\\
+We know that $(|V|=\Ord)$, so $(|K| \neq Ord)$.\\
+Recalling the definition:
+$|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}$.\\
+Now we have that 
+there exists some $m \in \Ord$, which is not in $\bigcap \{a\in\Ord|K\preccurlyeq a\}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\Ord$ is subclass of $\Ord$)\\
+...
+
+\Done

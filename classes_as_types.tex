@@ -1,0 +1,99 @@
+\subsection{Classes-as-Types semantics}
+In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
+
+First of all, we (loosely) define the semantics.
+
+Since, everything is a class in MK, we have:
+\[
+\semantics("(A:\Type)"):=\top.
+\]
+Dependent types are treated as families.
+\[
+\semantics("(x:A\vdash B(x):\Type)"):=(B\family)\land(\dom(B)\subseteq A).
+\]
+
+\[
+(\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
+\]
+
+Is the following okey ???
+\[
+(B\family)\iff\exists t : B = (\Lambda x: t) 
+\]
+
+\subsubsection{$\Sigma$-types}
+
+In type theory, the formatin rule for a $\Sigma$-type is
+\begin{prooftree}
+\AxiomC{
+$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+}
+\RightLabel{$\Pi$-form}
+\UnaryInfC{$
+\vdash \Sigma_{(x:A)}B(x):\Type  
+$}
+\end{prooftree}
+
+Assume that $(F\family)$.
+
+\begin{definition}(Dependent sum)
+\[
+\Sigma F = \mbox{E}^{-1} \circ F
+\]
+\end{definition}
+
+\subsubsection{$\Pi$-types}
+In type theory, the formatin rule for a $\Pi$-type is
+\begin{prooftree}
+\AxiomC{
+$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+}
+\RightLabel{$\Pi$-form}
+\UnaryInfC{$
+\vdash \Pi_{(x:A)}B(x):\Type  
+$}
+\end{prooftree}
+
+In MK, it corresponds to the following:
+
+\begin{definition}(Dependent product)
+\[
+\Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
+\]
+
+
+(Note: For sets the following definition is also okey:
+\[
+\Pi F = \left\{f\in \left(\union\ran(F)\right)^{\dom(f)} \middle| \forall (x\in\dom(f)) : (f(x) \in F(x)) \right\},
+\]
+but it is not working well for classes)
+
+(Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
+
+\end{definition}
+
+
+\begin{theorem}
+
+\end{theorem}
+
+
+
+\subsubsection{$W$-types}
+Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
+\[
+\mbox{W}_{\mathrm{fun}}F(0):= \emptyset 
+\]
+\[
+\mbox{W}_{\mathrm{fun}}F(n+1):= \{(r,s)| (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )\}
+\]
+\[
+\mbox{W}F :=\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\]
+\subsubsection{$M$-types}
+\[
+MF := \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
+\]
+\[
+\forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
+\]

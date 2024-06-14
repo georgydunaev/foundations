@@ -1,0 +1,93 @@
+
+\subsection{Previous implementation}
+
+\begin{definition}(Membership relation class)
+\[
+\mbox{E} = \{(x,y)|x\in y\}
+\]
+\end{definition}
+
+
+
+\begin{theorem}
+\[
+\mbox{E}^{-1}[A]=\union A
+\]
+(or even "$\exists [A]= \union A$")
+\end{theorem}
+\Proof
+$(\subseteq)$\\
+Assume $w\in \mbox{E}^{-1}[A]$.\\
+Therefore $\exists a\in A: (a,w)\in \mbox{E}^{-1}$.\\
+So $(w,a)\in \mbox{E}$.\\
+So $w\in a$.\\
+Since $w\in a$ and $a\in A$, $w\in \union A$.\\
+$(\supseteq)$\\
+$w\in \union A$.\\
+Therefore $\exists a\in A: w\in a$.\\
+So $(w,a)\in \mbox{E}$.
+So $(a,w)\in \mbox{E}^{-1}$.
+From $(a,w)\in \mbox{E}^{-1}$ and $(a\in A)$, we have $(w\in \mbox{E}^{-1}[A])$.\\
+\Done
+
+\begin{definition}(Image)
+\[
+F[A]:=\{b|\exists a\in A: (a,b)\in F\}
+\]
+\end{definition}
+\begin{definition}(?)
+\[
+F\langle A \rangle=\{b|\forall a\in A: (a,b)\in F\}
+\]
+\end{definition}
+\begin{theorem}
+\[
+\mbox{E}^{-1}\langle A\rangle =\intersection A
+\]
+\end{theorem}
+\Proof
+\[
+v\in \mbox{E}^{-1}\langle A \rangle 
+\IFF
+\forall a\in A: (a,v)\in \mbox{E}^{-1}
+\]
+\[
+\IFF
+\forall a\in A: (v,a)\in \mbox{E}
+\]
+\[
+\IFF
+\forall a\in A: v \in a
+\]
+\[
+\IFF
+v \in \intersection A
+\]
+
+\Done
+\begin{theorem}()\\
+$(\dom(\Sigma F))\cup (F^{-1}[\{\emptyset\}]) = \dom(F)$
+$\\
+(\dom(\Sigma F))\cap (F^{-1}[\{\emptyset\}]) = \emptyset
+$
+\end{theorem}
+\Proof
+\Done
+
+\begin{theorem}(Dunaev)\\
+If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyset\notin\mbox{ran}(F))$ then
+\[
+F=\{(x,(\Sigma F)[\{x\}])|x\in \dom(\Sigma F)\}
+\]
+\end{theorem}
+\Proof
+\Done
+
+
+\begin{theorem}
+\[
+(F \circ G)[X]=F[G[X]]
+\]
+\end{theorem}
+\Proof
+\Done

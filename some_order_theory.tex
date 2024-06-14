@@ -13,46 +13,46 @@
 \subsection{Upward/downward closed set}
 \begin{definition}(Upward closed set)
 \[
-\uparrow_{(P,\leqslant)}x:=\{y\in P|x\leqslant y\}
+\uparrow_{(P,\leq)}x:=\{y\in P|x\leq y\}
 \]
 \end{definition}
 \begin{definition}(Downward closed set)
 \[
-\downarrow_{(P,\leqslant)}x:=\{y\in P|y\leqslant x\}
+\downarrow_{(P,\leq)}x:=\{y\in P|y\leq x\}
 \]
 \end{definition}
 
 \subsection{Ordered set of majorants/minorants}
 \begin{definition}(Ordered set of majorants)
 \[
-\mathrm{Ma}_{(P,\leqslant)}S:=\left(P\cap\intersection \uparrow_{(P,\leqslant)}[S],\leqslant\right)
+\mathrm{Ma}_{(P,\leq)}S:=\left(P\cap\intersection \uparrow_{(P,\leq)}[S],\leq\right)
 \]
 \end{definition}
 \begin{definition}(Ordered set of minorants)
 \[
-\mathrm{Mi}_{(P,\leqslant)}S:=\left(P\cap\intersection \downarrow_{(P,\leqslant)}[S],\leqslant\right)
+\mathrm{Mi}_{(P,\leq)}S:=\left(P\cap\intersection \downarrow_{(P,\leq)}[S],\leq\right)
 \]
 \end{definition}
 \subsection{Ordered set of greatest/least elemenents}
 \begin{definition}(Ordered set of greatest elements)
 \[
-\mathrm{Greatest}_{(P,\leqslant)}:=\mathrm{Ma}_{(P,\leqslant)}P
+\mathrm{Greatest}_{(P,\leq)}:=\mathrm{Ma}_{(P,\leq)}P
 \]
 \end{definition}
 \begin{definition}(Ordered set of least elements)
 \[
-\mathrm{Least}_{(P,\leqslant)}:=\mathrm{Mi}_{(P,\leqslant)}P
+\mathrm{Least}_{(P,\leq)}:=\mathrm{Mi}_{(P,\leq)}P
 \]
 \end{definition}
 \subsection{Ordered set of supremums/infimums}
 \begin{definition}(Ordered set of supremums)
 \[
-\mathrm{Sup}_{(P,\leqslant)}S:=\mathrm{Least}_{\mathrm{Ma}_{(P,\leqslant)}S}
+\mathrm{Sup}_{(P,\leq)}S:=\mathrm{Least}_{\mathrm{Ma}_{(P,\leq)}S}
 \]
 \end{definition}
 \begin{definition}(Ordered set of infimums)
 \[
-\mathrm{Inf}_{(P,\leqslant)}S:=\mathrm{Greatest}_{\mathrm{Mi}_{(P,\leqslant)}S}
+\mathrm{Inf}_{(P,\leq)}S:=\mathrm{Greatest}_{\mathrm{Mi}_{(P,\leq)}S}
 \]
 \end{definition}
 
@@ -70,6 +70,99 @@
 %(the proof needs theorems about ordinals done first)\\
 %...\\
 %\Done
+\section{some bad older definitions, but good thms}
+\begin{definition}bad
+\[
+\UB_R(S) = R[S]
+\]
+\end{definition}
+\begin{definition}bad
+\[\LB_R(S) = R^{-1}[S]\]
+\end{definition}
+
+Context and notation:\\
+Here by $\leq$ we denote the standard relation "less or equal to" on real numbers.
+$\leq$ for inequalities of numbers\\
+$\leqslant$ for inequalities of sets of numbers\\
+$R := \leq$\\
+$\leq = \geq^{-1}$\\
+$\geq = \leq^{-1}$\\
+Remark: if $\leq$ is transitive then $\leqslant$ is transitive on non-empty(sic!) sets.
+\noindent
+
+\begin{definition}good
+\[
+A \leqslant B
+\iff
+\forall a\in A \forall b\in B: a\leq b
+\]
+\end{definition}
+\begin{definition}bad
+\[
+\UB(S) = \leq [S]
+\]
+\end{definition}
+\begin{definition}bad
+\[
+\LB(S) = \geq [S]
+\]
+\end{definition}
+
+\begin{theorem}maybe
+\[
+A\leqslant B \iff B\subseteq \UB(A)
+\]
+\end{theorem}
+\begin{theorem}maybe
+\[
+A\leqslant B \Longleftrightarrow A\subseteq \LB(B)
+\]
+\end{theorem}
+
+\begin{definition}bad
+\[
+\Sup(S) = \UB(S)\cap \LB(\UB(S))
+\]
+\end{definition}
+\begin{definition}bad
+\[
+\Inf(S) = \LB(S)\cap \UB(\LB(S))
+\]
+\end{definition}
+
+
+\begin{definition}maybe
+\[
+\mbox{sup}(S) = (\iota x: x\in \mathrm{Sup}(S))
+\]
+\end{definition}
+\begin{definition}maybe
+\[
+\mbox{inf}(S) = (\iota x: x\in \mathrm{Inf}(S))
+\]
+\end{definition}
+
+
+\begin{theorem}good
+\[
+A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
+\]
+\end{theorem}
+
+
+\begin{theorem}doubt
+\[
+(a:\mathbb{N}\rightarrow \real)
+\land
+(\{a_n\}_n \mbox{bdd above in }\real)
+\land
+((a_n)_n\mbox{ non-decreasing})
+\implies 
+(a \converges \sup \{a_n\}_n)
+\]
+\end{theorem}
+
+
 
 \ifdefined\ordertheoryflag
 \undef\ordertheoryflag

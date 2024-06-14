@@ -1,0 +1,66 @@
+
+
+
+
+\section{Theorems about transifinite- and epsilon- induction and recursion.}
+
+\begin{recall}
+Transfinite recursion\\
+$G:V\to V$\\
+$\exists! F:\Ord\to V$, s.t.\\
+$F(a) = G(F\restriction a)$\\
+\end{recall}
+%Recall:\\
+\begin{recall}
+Epsilon recursion:\\
+$G:V\to V$\\
+$\exists! F:V\to V$, s.t.\\
+$F(a) = G(F\restriction a)$\\
+\end{recall}
+
+\begin{definition}
+Height function definition:\\
+$h(x)$ is the height of a the set. It is equal by definition to the maximum length of a $\ni$-chain, started from $x$.\\
+\end{definition}
+
+Examples:\\
+$h(\emptyset)$=0,\\
+$h(\{\emptyset\})$=1,\\
+$h(\{\emptyset,\{\emptyset\}\})$=2,\\
+and in general if $n$ is a finite ordinal number, then $h(n)=n$.\\
+Definition: by $\in$-recursion
+\[
+h(x) := \sup \{ h(y) | y \in x\}
+\]
+
+Property:
+\[
+h(x) = \sup h[x]
+\]
+
+$G(R) := \sup(\ran(R)) = \union(\ran(R))$\\
+via epsilon recursion.\\
+$h : V\to V$\\
+$h(a) = \sup(\ran(h\restriction a) )$\\
+
+
+
+\begin{lemma}()
+\[
+(h:V\to\Ord)
+\]
+\end{lemma}
+\Proof
+by epsilon induction.\\
+\Done
+
+\subsection{older Inductions and recursions thms}%
+There exist unique class-function rec, such that:
+\[
+\mbox{rec}:(V\times V\to V)\to(V\to V)
+\]
+\[
+\mbox{rec}(H) = H\ \circ\ (\mbox{rec}(H)\restriction_-)
+\]
+\pagebreak
+
