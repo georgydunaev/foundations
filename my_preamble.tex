@@ -1,3 +1,11 @@
+
+\ifdefined\MyHeaderIncluded
+
+\else
+  \newcommand{\foobar}{FooBar}
+  \def\MyHeaderIncluded{true}
+% if is till the end of the file
+
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 %\usepackage[german]{babel}
@@ -132,3 +140,6 @@
 % https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
 \usepackage{graphicx}
 \usepackage{authblk}
+
+
+\fi % guard

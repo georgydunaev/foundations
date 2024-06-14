@@ -1,9 +1,13 @@
+\ifdefined\MyHeaderIncluded
+\else
+\def\ordertheoryflag{true}
 \input{my_preamble.tex}
-
 \title{Supremum \& Infimum}
 \author[1]{Georgy Dunaev}
 \begin{document}
 \maketitle
+\fi
+
 %Some order theory.
 \section{Definitions}
 \subsection{Upward/downward closed set}
@@ -67,5 +71,7 @@
 %...\\
 %\Done
 
-
+\ifdefined\ordertheoryflag
+\undef\ordertheoryflag
 \end{document}
+\fi
