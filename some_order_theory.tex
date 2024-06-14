@@ -1,0 +1,71 @@
+\input{my_preamble.tex}
+
+\title{Supremum \& Infimum}
+\author[1]{Georgy Dunaev}
+\begin{document}
+\maketitle
+%Some order theory.
+\section{Definitions}
+\subsection{Upward/downward closed set}
+\begin{definition}(Upward closed set)
+\[
+\uparrow_{(P,\leqslant)}x:=\{y\in P|x\leqslant y\}
+\]
+\end{definition}
+\begin{definition}(Downward closed set)
+\[
+\downarrow_{(P,\leqslant)}x:=\{y\in P|y\leqslant x\}
+\]
+\end{definition}
+
+\subsection{Ordered sets of majorants/minorants}
+\begin{definition}(Ordered sets of majorants)
+\[
+\mbox{Ma}_{(P,\leqslant)}S:=\left(\intersection \uparrow_{(P,\leqslant)}[S],\leqslant\right)
+\]
+\end{definition}
+\begin{definition}(Ordered sets of minorants)
+\[
+\mbox{Mi}_{(P,\leqslant)}S:=\left(\intersection \downarrow_{(P,\leqslant)}[S],\leqslant\right)
+\]
+\end{definition}
+\subsection{Ordered sets of greatest/least elemenents}
+\begin{definition}(Ordered sets of greatest elements)
+\[
+\mbox{Greatest}_{(P,\leqslant)}:=\mbox{Ma}_{(P,\leqslant)}P
+\]
+\end{definition}
+\begin{definition}(Ordered sets of least elements)
+\[
+\mbox{Least}_{(P,\leqslant)}:=\mbox{Mi}_{(P,\leqslant)}P
+\]
+\end{definition}
+\subsection{Ordered sets of supremums/infimums}
+\begin{definition}(Ordered sets of supremums)
+\[
+\mbox{Sup}_{(P,\leqslant)}S:=\mbox{Least}_{\mbox{Ma}_{(P,\leqslant)}S}
+\]
+\end{definition}
+\begin{definition}(Ordered sets of infimums)
+\[
+\mbox{Inf}_{(P,\leqslant)}S:=\mbox{Greatest}_{\mbox{Mi}_{(P,\leqslant)}S}
+\]
+\end{definition}
+
+
+
+
+%\begin{theorem}
+%\[
+%(A\set)
+%\implies
+%\left(\union A\set\right)
+%\]
+%\end{theorem}
+%\Proof
+%(the proof needs theorems about ordinals done first)\\
+%...\\
+%\Done
+
+
+\end{document}

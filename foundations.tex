@@ -1,137 +1,7 @@
-	\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-%\usepackage[german]{babel}
-%\usepackage[cyrillic]{babel}
-\usepackage[T1]{fontenc}
-%\usepackage[T2A]{fontenc}
-%\usepackage[english, russian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
 
-\usepackage{bussproofs} %
 
-%\renewcommand{\thesubsection}{\arabic{subsection}}
-%\newtheorem{thm}{Theorem}[section]
-%\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
+\input{my_preamble.tex}
 
-\usepackage{thmtools}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdftitle={Overleaf Example},
-    %pdfpagemode=FullScreen,
-    }
-%\usepackage{stix-type1}%\turnediota
-\theoremstyle{definition}
-
-\newtheorem{constructor}{Constructor}[section]
-\newtheorem{iaxiom}{Axiom}
-\newtheorem{axiom}{Axiom}
-\newtheorem*{axiom*}{Axiom}
-\newtheorem{definition}{Definition}[section]
-\newtheorem*{definition*}{Definition}
-\newtheorem{remark}{Remark}[section]
-\newtheorem*{remark*}{Remark}
-\newtheorem{recall}{Recall}[section]
-\newtheorem*{recall*}{Recall}
-
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem*{theorem*}{Theorem}
-\newtheorem{note}{Note}[section]
-\usepackage{etoolbox}
-
-%\newcommand*{\@Dashv}[2]{%
-%  \reflectbox{$\m@th#1#2$}%
-%}
-\newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
-  \{#1\in #2: #3\}
-}
-
-% https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
-%  \\mathcal\{T\} |---> \topology
-%  \\mathcal\{([^\}]*)\}   |--->  $1
-\newcommand{\AND}{\ \ \&\ \ }
-\newcommand{\any}{\mathrm{\ any}}
-\newcommand{\borel}{\mathcal{B}}
-\newcommand{\can}{\mathrm{can}}
-\newcommand{\canonize}{\mathrm{canonize}}
-\newcommand{\closure}{\mbox{cl}}
-\newcommand{\complex}{\mathbb{C}}
-\newcommand{\converges}{\longrightarrow}
-\newcommand{\countable}{\mbox{\ countable}}
-\newcommand{\ldefined}{\mbox{\ defined}}
-\newcommand{\dom}{\mbox{dom}}
-\newcommand{\Dom}{\mbox{Dom}}
-\newcommand{\Done}{\noindent \textbf{Done.}\\}
-\newcommand{\lexists}{\mbox{\ exists}}
-\newcommand{\lunique}{\mbox{\ unique}}
-\newcommand{\family}{\mathrm{\ family}}
-\newcommand{\Fm}{\mathrm{Fm}}
-\newcommand{\FuncSymb}{\mathrm{FuncSymb}}
-\newcommand{\function}{\mathrm{\ function}}
-\newcommand{\functional}{\mbox{\ functional}}
-\newcommand{\IFF}{\ \Longleftrightarrow\ }
-\renewcommand{\iff}{\ \longleftrightarrow\ }
-\newcommand{\IMPLIES}{\ \Longrightarrow\ }
-\renewcommand{\implies}{\ \longrightarrow\ }
-\newcommand{\Inf}{\mathrm{Inf}}
-\newcommand{\injective}{\mbox{\ injective}}
-\newcommand{\injection}{\mbox{\ injection}}
-\newcommand{\interior}{\mbox{int}}
-\newcommand{\intersection}{\bigcap}
-\newcommand{\isempty}{\mathrm{\ empty}}
-\newcommand{\LB}{\mathrm{LB}}
-\newcommand{\nghbset}{\mathcal{N}}
-\newcommand{\nonempty}{\mathrm{\ nonempty}}
-\newcommand{\Ord}{\mathrm{Ord}}
-\newcommand{\power}{\mathcal{P}}
-\newcommand{\pr}{\mathrm{pr}}
-\newcommand{\fst}{\mathrm{fst}}
-\newcommand{\snd}{\mathrm{snd}}
-\newcommand{\PredSymb}{\mathrm{PredSymb}}
-\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
-\newcommand{\ran}{\mathrm{ran}}
-\newcommand{\Ran}{\mathrm{Ran}}
-\newcommand{\real}{\mathbb{R}}
-\newcommand{\relation}{\mathrm{\ relation}}
-\newcommand{\set}{\mathrm{\ set}}
-\newcommand{\singleton}{\mathrm{\ singleton}}
-\newcommand{\semantics}{\mathrm{semantics}}
-\newcommand{\semialgebra}{\mathcal{S}}
-\newcommand{\Sup}{\mathrm{Sup}}
-\newcommand{\surjective}{\mbox{\ surjective\ on\ }}
-\newcommand{\Term}{\mathrm{Term}}
-\newcommand{\Type}{\mathrm{Type}}
-\newcommand{\topology}{\mathcal{T}}
-\newcommand{\total}{\mbox{\ total\ on\ }}
-\newcommand{\transitive}{\mathrm{\ transitive}}
-\newcommand{\union}{\bigcup}
-\newcommand{\lif}{\mathrm{if}}
-\newcommand{\lthen}{\mathrm{then}}
-\newcommand{\lelse}{\mathrm{else}}
-\newcommand{\lexception}{\mathrm{exception}}
-\newcommand{\lundef}{\mathrm{undef}}
-\newcommand{\univocal}{\mathrm{\ univocal}}
-\newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
-\newcommand{\UB}{\mathrm{UB}}
-\newcommand{\Var}{\mathrm{Var}}
-
-\newcommand{\notvarphi}{\phi}
-\renewcommand{\phi}{\varphi}
-
-\newcommand{\comment}[1]{\quad\mbox{(#1)}}
-% local commands
-%\preto\section{\undef\blipo} %etoolbox
-\preto\subsection{\undef\blipo} %etoolbox
-% https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
-\usepackage{graphicx}
-\usepackage{authblk}
 \title{Formalisation of theorems}
 \author[1]{Georgy Dunaev}
 \begin{document}
@@ -174,6 +44,1601 @@ In it $(f(x)\neq 5)$ means that both sides are defined and they are not equal.\\
 
 %The statement $f(x)\neq 5$ should not raise two different cases: whe
 
+
+
+%Interesting targets:
+\begin{itemize}
+\item The aim of this document is to provide standard classical mathematical foundations as well as some amount of perfect proofs.
+\item The proof assistant based on this very classical theory is being implemented. \url{https://github.com/georgydunaev/set_theory_prover}
+\item After completion of development of the program, not only tactics, but also machine learning algorithms may be applied in a search of the proofs.
+
+%\item sequential criterion
+%\item completion of a metric space
+\end{itemize}
+%...
+\newpage
+\section{Logical framework}
+
+\subsection{Basic definitions of the syntax}
+In this section we deal with strings of letters.
+NOTE: The definitions in this section are simultaneous: some earlier definitions depend on later. It is possible to rewrite equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implemented, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
+
+%Coding function
+%\[\]
+
+%The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
+
+\begin{definition}(Variables)\\
+The countable set \\
+$\Var$
+\end{definition}
+
+\begin{definition}(Functional symbols)\\
+The countable set \\
+$\FuncSymb$
+\end{definition}
+
+\begin{definition}(Predicate symbols)\\
+The countable set \\
+$\PredSymb$
+\end{definition}
+
+\begin{definition}(Term)\\
+Inductive definition of term:\\
+1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
+2) 
+$"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
+3) Some higher-order features:\\
+$"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
+...
+
+\end{definition}
+
+\begin{definition}(Formula)\\
+Inductive definition of formula:\\
+1)$\bot\in\Fm$.\\
+2)$P\in\PredSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES P(t_1,\dots,t_n)\in\Fm$.\\
+3)$A\in\Fm \IMPLIES (\neg A)\in\Fm$.\\
+4)$A\in\Fm \AND B\in\Fm \IMPLIES (A\implies B)\in\Fm$.\\
+5)$A\in\Fm \AND B\in\Fm \IMPLIES (A\land B)\in\Fm$.\\
+6)$A\in\Fm \AND B\in\Fm \IMPLIES (A\lor B)\in\Fm$.\\
+7)$x\in\Var \AND A\in\Fm \IMPLIES (\forall x:A)\in\Fm$.\\
+8)$x\in\Var \AND A\in\Fm \IMPLIES (\exists x:A)\in\Fm$.\\
+\end{definition}
+
+\begin{definition}(Context)\\
+Context = \{d\}
+\end{definition}
+
+\begin{definition}(Statement)\\
+\end{definition}
+
+\begin{definition}(Proof)\\
+Let F be a statement. (i.e. a pair: context and formula)\\
+Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
+
+\end{definition}
+
+
+
+\subsection{Basic definitions}
+...
+\begin{definition} Simultaneous substitution.
+\[
+\varphi[Z_1/W_1,...,Z_n/W_n]
+\]
+\end{definition}
+\noindent
+
+\subsection{Full semantics}
+
+
+The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
+Let $\power \mathcal{U}$ be the domain of discourse of the presented model for the theory.\\
+It means that we have a super-large model.\\
+Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
+Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
+
+%Let $I_\Term$ is an interpretation function on Terms.
+
+Let $f$ be an evaluation of variables:\\
+\[
+f:\Var\to \power \mathcal{U}
+\]
+But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
+Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
+
+Terms are interpreted as subconglomerates of the conglomerate of all classes.
+\[
+I_\Term(f) : \Term \to \power \mathcal{U}
+\]
+
+
+Notation:\\
+F:=False\\
+U:=Undefined\\
+T:=True\\
+\[
+I_\Fm(f) : \Fm \to \{F,U,T\}
+\]
+
+\begin{definition}(valid formula)
+The formula $\varphi$ is called valid if it is true under any evaluation.
+\end{definition}
+
+\[
+I_\Fm(f)((t\lexists)) := (\lif\ (I_\Term(f)(t)\nonempty)\ \lthen\ F\ \lelse\ T)
+\]
+\[
+I_\Fm(f)((t\lunique)) := (\lif\ (I_\Term(f)(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
+\]
+
+\subsection{Axioms for the corresponding prediacate calculus}
+\subsection{Propositional part}
+%For all formulas $A$, $B$, $C$.
+For all atomic formulas $A$, $B$, $C$.
+\[
+(A \implies (B \implies A))
+\]
+\[
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B)))
+\]
+\[
+((A\land B) \implies A)
+\]
+\[
+((A\land B) \implies B)
+\]
+\[
+(A \implies (B\implies (A\land B)))
+\]
+\[
+(A \implies (A\lor B))
+\]
+\[
+(B \implies (A\lor B))
+\]
+\[
+((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
+\]
+\[
+(\neg A \implies (A\implies B))
+\]
+\[
+((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
+\]
+\subsection{Predicational part}
+Specification rules:
+\[
+(t\ldefined)\implies ((\forall x: \phi) \implies \phi[t/x])
+\]
+\[
+(t\ldefined) \implies (\phi[t/x] \implies (\exists x: \phi))
+\]
+Bernays' rules: if $x$ is not free in formula $\psi$ then
+\[
+\frac{
+\psi \implies \varphi
+}{
+\psi \implies (\forall x:\varphi)
+}\mbox{(B1)}
+\]
+\[
+\frac{
+\varphi \implies \psi
+}{
+(\exists x:\varphi)\implies \psi
+}\mbox{(B2)}
+\]
+
+\section{Class theory: axioms and definitions}%Developing set-theoretic foundations}
+
+%TODO:\\
+%The first formula is the ... .\\
+%The first term in formula is the leftmost term in the first primitive formula.\\
+%Here $R_x$ means that variable x is the first free variable in the proposition $R$.\\
+
+%\begin{constructor} Restricted quantifier.\\
+%If $R_x$ is a proposition with free variable x,\\
+%\quad $Q$ is a proposition,\\
+%\quad $\#$ is one of quantifiers ($\forall$, $\exists$ or $!$)\\
+%then $\# R:Q$ is a formula.
+%\end{constructor}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context 0: assume that the first term of a proposition $R$ is $t$, %and it has no free variables.
+%\[
+%(\forall R:Q)
+%\iff
+%(R \implies Q)
+%\]
+%Meta-context 1: assume that the first term of a proposition $R$ is $t$, and the first free variable of $t$ is $x$.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+
+%\begin{definition} Restricted exists.\\
+%\label{def:exists restricted }
+%Meta-context: assume that the first term of a proposition R is a free variable x.
+%\[
+%(\exists R:Q)
+%\iff
+%(\exists x: R \land Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted unique.\\
+%\label{def:unique restricted }
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(! R:Q)
+%\iff
+%(! x: R \land Q)
+%\]
+%\end{definition}
+
+
+\begin{constructor} Membership predicate.\\
+If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
+\end{constructor}
+
+%\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
+%\begin{constructor}
+%If $\varphi$ is a formula without class-quantifiers, then
+%$\{x|\varphi\}$ is NBG-class.
+%\end{constructor}
+
+%\begin{constructor}
+%If $\varphi$ is a formula, then
+%$\{x|\varphi\}$ is MK-class.
+%\end{constructor}
+
+\begin{constructor} Subclass predicate.\\
+If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
+\end{constructor}
+\begin{definition}
+\label{def:subclass}
+Subclass predicate.
+\[
+(A\subseteq B)\iff(\forall x\in A:x\in B)
+\]
+\end{definition}
+
+
+
+
+
+
+
+If the variant of logic being used doesn't have equality, then add the following constructor and definition.
+\begin{constructor}Equality.\\
+If $A$ and $B$ are classes, then $(A=B)$ is a formula.
+\end{constructor}
+\begin{definition}
+Equality. (in case if the 1st order logic is given without equality)
+If Y is not a free variable neither in A nor in B, then:
+\[
+(A=B)\iff (\forall Y: A\in Y \iff B\in Y)
+\]
+\end{definition}
+\subsection{Axiom of extensionality}
+\begin{axiom}
+\label{axm:extensionality}
+Extensionality.
+\[
+(A=B)\iff ((A\subseteq B) \land (B\subseteq A))
+\]
+\end{axiom}
+\begin{axiom*}
+\label{axm:extensionality'}
+Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
+\[
+(A=B)\iff (\forall X: X\in A \iff X\in B)
+\]
+\end{axiom*}
+
+
+\begin{constructor} Set predicate.\\
+If $A$ is a class, then $(A\set)$ is a formula.
+\end{constructor}
+\begin{definition} Set predicate.
+If Y is not a free variable in X, then:
+\[
+(X\set)\iff(\exists Y:X\in Y)
+\]
+\end{definition}
+
+
+\begin{constructor}
+If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
+(It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
+\end{constructor}
+\subsection{Axiom of class comprehension}
+\begin{axiom}
+\label{axm:comprehension}
+Class comprehension.
+If Y is not a free variable of $\varphi$, then:
+\[
+(Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
+\]
+%\[Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])\]
+%(or maybe
+%\[Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)\]
+%we need to find one expression for both cases.
+%)
+\end{axiom}
+
+\subsection{Empty class}
+\begin{constructor} Empty class.\\
+The empty set symbol $\emptyset$ is a constant closed term.
+\end{constructor}
+\begin{definition}
+\label{def:empty class}
+Empty class.
+\[
+\emptyset = \{x|\bot\}
+\]
+\end{definition}
+
+\begin{definition} Empty set predicate.
+\label{def:empty}
+\[
+(A\isempty)\iff (A=\emptyset)
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:nonempty}
+\[
+(A\nonempty)\iff \neg(A\isempty)
+\]
+\end{definition}
+
+
+
+\subsection{Axiom of empty set}
+\begin{axiom}
+\label{axm:empty class}
+\[
+(\emptyset\set)
+\]
+\end{axiom}
+\subsection{Uniqueness quantifier}
+\begin{definition}
+\label{def:uniqueness quantifier}
+Uniqueness quantifier for classes:\\
+If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
+\[
+(!Y:\varphi)\iff (\forall Y_1\forall Y_2:\varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
+\]
+%%(We will not use much this definition.)
+\end{definition}
+\begin{note}
+
+Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
+I have a notion of non-classical models, in which this is not a problem, but then logical rules become much more advanced, and all well-studied field of the first-order logic need to be re-done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
+\end{note}
+\begin{definition}
+\label{def:restricted uniqueness quantifier}
+Restricted uniqueness quantifier for sets only
+\begin{align*}
+(!(y\set):\varphi)
+&\iff 
+(!y:(y\set)\land\varphi)
+\\
+&\iff 
+(\forall (y_1\set)\forall (y_2\set):\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+\end{align*}
+
+%(\forall y_1\forall y_2:\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+\end{definition}
+
+\subsection{Singleton}
+\begin{definition} Singleton (functional symbol).
+(side note: because of big amount of side conditions, we state that all different variables are different. 
+It should not be possible to use it in such way: "{x}={x|x=x}".
+How to determine whether during substitution it can be fixed?
+I want it to happen automatically, but i don't want the proof to depend on implementation.
+What causes proofs(as list of actions) to be inapplicable in different cases.
+
+Everything is solved by the simple maxima: we don't need developed metatheory, because all those theorems can be proven for a model, and then added to the program if they are useful.
+
+How to implement definitions? see comments in source code here
+
+%Проблема со схемами -- их надо вручную добавлять, код менять.
+
+%Но! Можно задать новый язык формул, с подстановками, требованиями к различности переменных. -- это непонятно: как.
+
+%Боковые условия -- они как дополнительный навесок на теорему.
+
+%(можно, ещё, генерировать, а можно просто рэйзить эксепшены, если что-то не выполняется. Тогда получается язык для определений СХЕМ.
+
+%как логгировать пруф? сохранять состояние последнего успешного шага.
+)
+
+)
+
+
+
+\[
+\{w\} = \{x|x=w\}
+\]
+\end{definition}
+
+\begin{definition} Singleton (predicate symbol).
+\[
+(A\singleton) \iff (\exists!a:a\in A)
+\]
+\end{definition}
+
+
+
+
+\subsection{Universal class}
+\begin{definition} Universal class (constant V).
+\label{def:universal class}
+\[
+V:=\{x|\top\}
+\]
+\end{definition}
+
+\subsection{Union}
+\begin{definition}
+\label{def:union}
+Union of an arbitrary class A.
+\[
+\union A = \{x|\exists a\in A: x\in a\}
+\]
+\end{definition}
+
+
+\subsection{Intersection}
+\begin{definition}
+\label{def:intersection}
+Intersection of an arbitrary class A.
+\[
+\intersection A = \{x|\forall a\in A: x\in a\}
+\]
+\end{definition}
+
+\subsection{Powerclass}
+\begin{definition}
+\label{def:powerclass}
+Powerclass. (by class comprehension)
+\[
+\power X = \{x|x\subseteq X\}
+\]
+\end{definition}
+\subsection{Axiom of heredity}
+\begin{axiom}
+\label{axm:heredity}
+Heredity.
+\[
+(A\set) \land (B\subseteq A) \rightarrow (B\set)
+\]
+\end{axiom}
+\subsection{Axiom of powerset}
+\begin{axiom}
+\label{axm:powerset}
+Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
+\[(A\set) \rightarrow (\power A\set)\]
+\end{axiom}
+
+%\begin{axiom} $\in$-induction. (variant that uses formulas)
+%\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
+%\end{axiom}
+\subsection{Transitive set}
+\begin{definition}
+\label{def:transitive through power}
+\[
+(A \transitive)\iff (A\subseteq \power A)
+\]
+\end{definition}
+
+\subsection{Axiom of regularity / Epsilon-induction}
+\begin{axiom} 
+\label{axn:epsilon induction}
+$\in$-induction. %(variant that uses classes)
+%\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
+\[
+(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)
+\]
+\end{axiom}
+
+
+
+\begin{definition}
+\label{def:ordered pair}
+Ordered pair. %maybe V somehow?
+\[
+\langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
+\]
+\end{definition}
+
+
+\pagebreak
+
+\subsection{Lambda operator}
+\begin{definition}
+\label{def:lambda operator}
+Lambda operator.
+\[
+(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}
+\]
+\end{definition}
+
+\subsection{Descriptors NEW}
+\begin{axiom}
+\[
+\exists (x\set):\varphi
+\implies
+(\varepsilon (x\set): \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+
+\[
+(\varepsilon (x\set): \varphi) \ldefined
+\implies
+\exists (x\set):\varphi
+\]
+\end{axiom}
+
+\begin{axiom}
+\[
+(\exists! (x\set):\varphi)
+\implies
+(\iota (x\set): \varphi) \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+(\iota (x\set): \varphi) \ldefined
+\implies
+\exists! (x\set):\varphi
+\]
+\end{axiom}
+qqqqqqqqqqqq
+\begin{axiom}
+\[
+(\iota (x\set): \varphi) \ldefined
+\iff
+(\iota (x\set): \varphi) \set
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+(\iota (x\set): \varphi) \ldefined
+\iff
+\exists! (x\set):\varphi
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+(\iota (x\set): \varphi) \ldefined
+\implies
+(\iota (x\set): \varphi)  \in \{x|\varphi\}
+\]
+\end{axiom}
+\begin{axiom}
+%(\iota x: \varphi) \in \{x|\varphi\}
+\[
+\varphi\land (!x:\varphi)
+\implies
+(\iota (x\set): \varphi) \ldefined
+\]
+\end{axiom}
+
+
+\subsection{Axiom of limitation of size}
+\begin{axiom}
+\label{axm:limitation of size}
+Limitation of size (of a set).
+\[
+\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))
+\]
+\end{axiom}
+
+\begin{definition}
+\label{def:epsilon operator}
+Epsilon operator.
+\[
+(\varepsilon y: \varphi) = c\left(\{y|\varphi\}\right)
+\]
+Here c is a class-function of global choice:
+\[
+c:V\setminus\{\emptyset\}\to V
+\]
+\[
+c(X)\in X
+\]
+Existence of such function follows from the axiom of limitation of size(below).
+Other notable fact is that axiom of limitation of size implies axiom of global choice, axiom of replacement, axiom of separation, and axiom of union.
+\end{definition}
+
+\begin{theorem}
+\[
+((\epsilon y: \varphi) \set)
+\iff
+(\exists(y\set):\varphi)
+\]
+\end{theorem}
+\Proof
+$(\Rightarrow)$\\
+Assume $((\epsilon y: \phi) \set)$. To show: $(\exists(y\set):\phi)$.
+\[
+((\epsilon y: \phi) \set)
+\IMPLIES
+(c(\{y:\phi\})\set)
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\comment{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\exists y:\phi)
+\]
+$(\Leftarrow)$\\
+Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
+\[
+(\exists y:\phi)
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(c(\{y:\phi\})\set)
+\comment{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+((\epsilon y: \phi) \set)
+\]
+\Done
+
+\iffalse
+\[
+\left(
+\varphi_1\iff \varphi_2
+\right)
+\IMPLIES
+\left(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\right)
+\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
+\]
+(so the assignment is not only for Term variables, but also for Formula variables.\\
+Substitution is also simultaneous.\\
+All Term variables are free in a Formula varriable.\\
+During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
+But here it is an example with free variable: $y$.
+\[
+\varphi_1 = \alpha
+\]
+
+\[\varphi_2 = \alpha \land \beta\]
+Idea: we may use 
+\[
+(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
+\]
+comment: i don't use G\"odel notation in my system.
+But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
+)\\
+Other problem:\\
+\[(\forall x:\varphi)\implies \varphi[t/x]\]
+\[t:=x\]
+\[(\forall x:\varphi)\implies \varphi[x/x]\]
+\[(\forall x:\varphi)\implies \varphi\]
+Assume we proved $(\forall x:\varphi)$.
+I don't actually have problem here, but I feel it is mildly dangerous to introduce
+formula variables, because need to implement substitution and be sure that
+it will not break the consistency.\\
+What can break consistency?\\
+If we use facts specific for theorem?... probably not.
+Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
+I don't like the following statement:
+\[
+\left(
+\varphi_1\iff \varphi_2
+\right)
+\IMPLIES
+\left(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\right),
+\]
+because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
+Maybe it is not a problem.\\
+Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
+\fi
+
+
+
+%\[(\left(\intersection A\right)\set)\implies \]
+\section{Theorems within class theory}
+\begin{theorem}
+\[
+(A \subseteq B)\land (B\subseteq A) \implies (A=B)
+\]
+\end{theorem}
+\Proof
+Claim: $(\forall x:x\in A \iff x\in B)$.\\
+Fix x.\\
+$(\Rightarrow)$\\
+Assume $(x\in A)$. To show: $(x\in B)$\\
+\[
+(x\in A)
+\AND
+(A\subseteq B)
+\IMPLIES
+(x\in B)
+\comment{by thm \ref{thm:element of subset}}
+\]
+$(\Leftarrow)$\\
+Assume $(x\in B)$. To show: $(x\in A)$\\
+\[
+(x\in B)
+\AND
+(B\subseteq A)
+\IMPLIES
+(x\in A)
+\comment{by thm \ref{thm:element of subset}}
+\]
+Claim is proven.
+\[
+(\forall x:x\in A \iff x\in B)
+\IMPLIES
+(A=B)
+\quad\mbox{(by axm \ref{axm:extensionality})}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:empty class is subclass}
+\[
+(\emptyset\subseteq A)
+\]
+\end{theorem}
+\Proof
+Claim:
+\[
+(\forall x\in \emptyset: x\in A)
+\]
+Assume $(x\in\emptyset)$.
+\[
+(x\in\emptyset)
+\IMPLIES
+\bot
+\]
+\[
+\bot
+\IMPLIES
+(x\in A)
+\]
+Claim is proven.
+\[
+(\forall x\in \emptyset: x\in A)
+\IMPLIES
+(\emptyset\subseteq A)
+\quad\mbox{(by def \ref{def:empty class})}
+\]
+\Done
+
+\begin{theorem}
+\[
+\neg\exists w: w\in A
+\implies
+(A=\emptyset)
+\]
+\end{theorem}
+\Proof
+Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
+$(\supseteq)$\\
+\[
+(A\supseteq\emptyset)
+\quad\mbox{(by thm \ref{thm:empty class is subclass})}
+\]
+$(\subseteq)$\\
+Claim: $(\forall x\in A:x\in\emptyset)$\\
+Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
+\[
+(x\in A)
+\IMPLIES
+(\exists x:x\in A)
+\]
+\[
+(\exists x:x\in A)
+\AND
+(\neg\exists x:x\in A)
+\IMPLIES
+\bot
+\]
+\[
+\bot
+\IMPLIES
+(x\in\emptyset)
+\]
+The claim is proven.
+\[
+(\forall x\in A:x\in\emptyset)
+\IMPLIES
+(A \subseteq \emptyset)
+\comment{by def of subclass \ref{def:subclass}}
+\]
+\[
+(A \subseteq \emptyset)
+\AND
+(A \supseteq \emptyset)
+\IMPLIES
+(A=\emptyset)
+\comment{by axm \ref{axm:extensionality}}
+\]
+%So by extensionality axiom we are done.\\
+%\[
+%\neg\exists w: w\in A
+%\IMPLIES
+%(A=\emptyset)
+%\]
+\Done
+\begin{theorem}
+\[
+\neg\exists w: w\in A
+\iff
+(A\isempty)
+\]
+\end{theorem}
+\begin{theorem}
+\[
+\exists w: w\in A
+\iff
+(A\nonempty)
+\]
+\end{theorem}
+
+
+\begin{theorem}
+Any element of a subclass is in the class.
+\label{thm:element of subclass}
+\[
+(x\in A)\land(A\subseteq B)\implies(x\in B)
+\]
+\end{theorem}
+\Proof
+\[
+(A\subseteq B)
+\IMPLIES
+(\forall x\in A:x\in B)
+\comment{by def of subclass \ref{def:subclass}}
+\]
+\[
+(x\in A)
+\AND
+(\forall x\in A:x\in B)
+\IMPLIES
+(x\in B)
+\comment{by restricted specification elimination}
+\]
+\Done
+
+Details:
+\begin{prooftree}
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (x\in A)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in A)
+$}
+\RightLabel{by }
+
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(A\subseteq B) \vdash (A\subseteq B)
+$}
+\RightLabel{by}
+\UnaryInfC{$
+(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by weakening}
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by }
+\BinaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (A\subseteq B) \to (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash (x\in A) \land (A\subseteq B) \to (x\in B)
+$}
+\end{prooftree}
+
+Other idea:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+P_3,P_2,P_1 \vdash R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3,P_2 \vdash P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3 \vdash P_2 \land P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash P_3 \land P_2 \land P_1 \to R
+$}
+\end{prooftree}
+
+
+\begin{theorem}
+\label{thm:in class then set}
+%\[A\set \land B\in A \rightarrow B\set\]
+\[
+(B\in A) \rightarrow (B\set)
+\]
+\Proof
+Assume $(B\in A)$. To show: $(B\set)$.
+\[
+(B\in A)
+\IMPLIES
+(\exists A: B\in A)
+\comment{by right-exists-intro}.
+\]
+\[
+(\exists A: B\in A)
+\IMPLIES
+(B\set)
+\comment{introduced by set's definition}.
+\]
+\Done
+
+
+%\begin{prooftree}
+%\AxiomC{A}
+%\UnaryInfC{B}
+%\AxiomC{C}
+%\BinaryInfC{D}
+%\AxiomC{E}
+%\AxiomC{F}
+%\BinaryInfC{G}
+%\UnaryInfC{H}
+%\BinaryInfC{J}
+%\end{prooftree}
+
+Details:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+(B\in A) \vdash (B\in A)
+$}
+\RightLabel{by $\exists$-intro}
+\UnaryInfC{$
+(B\in A) \vdash (\exists A: B\in A)
+$}
+\RightLabel{by def-intro/set-intro}
+\UnaryInfC{$
+(B\in A) \vdash (B\set)
+$}
+\RightLabel{deduction/ImplR/implies-intro}
+\UnaryInfC{$
+\vdash (B\in A)\to (B\set)
+$}
+\end{prooftree}
+\end{theorem}
+
+
+\begin{theorem}
+\[
+(w\in A) \land (!a:a\in A) \implies \{w\}=A
+\]
+\end{theorem}
+\Proof
+\noindent($\subseteq$) Assume $(q\in \{w\})$.
+\[
+(q\in \{w\})\IMPLIES(q=w).
+\]
+\[
+(w\in A)\AND(q=w)\IMPLIES(q\in A).
+\]
+\noindent($\supseteq$) Assume $(a\in A)$.
+\[
+(!a:a\in A)\AND(a\in A)\AND(w\in A)\IMPLIES(a=w).
+\]
+\[
+(a=w)\IMPLIES(\{a\}=\{w\})
+\]
+\[
+(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
+\]
+\Done
+
+
+
+
+\iffalse
+%The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
+\begin{theorem}
+\[
+(\{y|\psi\}\nonempty)
+\iff
+(\exists y:\psi)
+\]
+\end{theorem}
+\Proof
+\noindent$(\Rightarrow)$\\
+\[
+(\{y|\psi\}\nonempty)
+\IMPLIES
+(\exists y:\psi)
+\]
+\noindent$(\Leftarrow)$\\
+\Done
+\fi
+
+\begin{theorem}
+Any class is a subclass of class of all sets.
+\[(C\subseteq V)\]
+\end{theorem}
+\Proof
+%\[\forall x\in C:x\in V\]
+%...
+Claim: $(\forall x\in C:x\in V)$.\\
+Fix $x$. Assume $(x\in C)$. To show $(x\in V)$.
+\[
+(x\in C)
+\IMPLIES
+(x\set)
+\quad\mbox{(by thm \ref{thm:in class then set})}
+\]
+\[
+(x\set)
+\AND
+\top
+\IMPLIES
+(x\in V)
+\quad\mbox{(by def \ref{def:universal class})}
+\]
+Claim is proven.
+\[
+(\forall x\in C:x\in V)
+\IMPLIES
+(C\subseteq V)
+\quad\mbox{(by def \ref{def:subclass})}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:sets are in V}
+\[
+(X\set)\iff(X\in V)
+\]
+\end{theorem}
+\Proof
+\noindent($\Leftarrow$) Assume $(X\in V)$.
+\[
+(X\in V)\IMPLIES(\exists W: X\in W).
+\]
+\[
+(\exists W: X\in W)\IMPLIES(X\set).
+\]
+\noindent($\Rightarrow$) Assume $(X\set)$.
+%\[
+%(X\set)\IMPLIES(\exists W: X\in W))
+%\]
+\[
+(X\set)\AND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
+\]
+\[
+(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V
+\]
+%\[(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
+\Done
+
+\begin{theorem}
+\[
+(B\in A) \rightarrow \left(B \subseteq \union A\right)
+\]
+\end{theorem}
+\Proof
+Assume $(b\in B)$.\\
+To show: $(b\in \union A)$.\\
+\[
+(b\in B)
+\IMPLIES
+(b\set)
+\quad\mbox{(by thm \ref{thm:in class then set})}
+\]
+\[
+(B\in A)
+\AND
+(b\in B)
+\IMPLIES
+(\exists a\in A : b\in a)
+\]
+\[
+(b\set)
+\AND
+(\exists a\in A : b\in a)
+\IMPLIES
+\left(b\in \union A\right)
+\]
+\Done
+\begin{theorem}
+\[
+(B\in A) \rightarrow \left(\intersection A\subseteq B\right)
+\]
+\end{theorem}
+\Proof
+Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
+\[
+(x\in \intersection A)
+\IMPLIES
+(x\set)
+\AND
+(\forall a\in A : x\in a)
+\]
+%(b\set)
+%\quad\mbox{(by \ref{thm:in class then set})}
+%\[a:=B\]
+\[
+(\forall a\in A : x\in a)
+\AND
+(B\in A)
+\IMPLIES
+(x\in B)
+\]
+\Done
+
+\begin{theorem}
+\[\left(\intersection\{w\}=w\right)\]
+\end{theorem}
+\Proof
+$(\subseteq)$\\
+$(x\in\intersection \{w\})\IMPLIES(\forall m\in\{w\}:x\in m)$.\\
+$(\forall m\in\{w\}:x\in m)\AND(w\in \{w\})\IMPLIES(x\in w).$\\
+$(\supseteq)$\\
+Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
+$(x\in w)\IMPLIES(x\set)$.\\
+Claim: $(\forall m\in\{w\}:x\in m).$\\
+Fix m. Assume $m\in\{w\}$.\\
+$(m\in\{w\})\IMPLIES(m=w)$.\\
+$(x\in w)\AND(m=w)\IMPLIES(x\in m)$\\
+The claim is proven.\\
+$(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
+\Done
+
+\begin{theorem}{Intersection of a singleton is in it.}
+\label{thm:intersection of singleton}%
+\[
+(A \singleton) \rightarrow \left(\left(\intersection A\right)\in A\right)
+\]
+\end{theorem}
+\Proof
+\[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
+\[(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
+\[(\{w\}=A)\IMPLIES\left(\intersection\{w\}=\intersection A\right).\]
+\[\left(\intersection\{w\}=w\right)\AND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
+\[\left(\intersection A=w\right)\AND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
+\Done
+
+
+\subsection{Theorems about union and intersection}
+\begin{theorem}
+\label{thm:intersection of nonempty is subset of union}
+\[
+(A \nonempty) \rightarrow \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
+\]
+\end{theorem}
+\Proof
+\[
+(A \nonempty)
+\IMPLIES
+(\exists B:B\in A)
+\]
+\[
+(B\in A)
+\IMPLIES
+\left(\intersection A\right)\subseteq B
+\]
+\[
+(B\in A)
+\IMPLIES
+\left(B \subseteq \union A\right)
+\]
+\[
+\left(\intersection A\right)\subseteq B
+\AND
+\left(B \subseteq \union A\right)
+\IMPLIES
+\left(\intersection A \subseteq \union A\right)
+\]
+\Done
+
+\begin{theorem}
+\[
+(A\set) \land (B\subseteq A) \rightarrow (B\in\power A)
+\]
+\end{theorem}
+\Proof
+\[
+(A\set) \AND (B\subseteq A) \IMPLIES (B\set)
+\comment{by axm \ref{axm:heredity}}
+\]
+\[
+(B\set) \AND (B\subseteq A) \IMPLIES (B\in\power A)
+\comment{by def \ref{def:powerclass}}
+\]
+\Done
+
+
+\begin{theorem}
+\label{thm:UACA=ACPA}
+\[
+(A\subseteq \power A) \iff \left(\union A\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+\noindent($\Leftarrow$)\\
+Assume $(\union A\subseteq A)$. To show:$(A\subseteq \power A)$.\\
+Assume $(x\in A)$. To show: $(x\in \power A)$.\\
+%To show: $(x\set)\land(x\subseteq A)$.\\
+%Goal1:$(x\set)$\\
+%oal2:$(x\subseteq A)$\\
+Claim:$(x\subseteq A)$.\\
+Assume $(y\in x)$. To show: $(y\in A)$.\\
+\[
+(y\in x)
+\AND
+(x\in A)
+\IMPLIES
+\left(y\in\union A\right)
+\]
+\[
+\left(y\in\union A\right)
+\AND
+\left(\union A\subseteq A\right)
+\IMPLIES
+(y\in A)
+\]
+The claim is proven.
+\[
+(x\in A)
+\IMPLIES
+(x\set)
+\comment{by thm \ref{thm:in class then set}}
+\]
+\[
+(x\set)
+\AND
+(x\subseteq A)
+\IMPLIES
+(x\in\power A)
+\]
+\noindent($\Rightarrow$)\\
+Assume $(A\subseteq \power A)$. To show:$(\union A\subseteq A)$.\\
+Assume $(x\in\union A)$. To show:$(x\in A)$.
+\[
+(A \transitive)
+\IMPLIES
+(A\subseteq \power A)
+\]
+\[
+\left(x\in\union A\right)
+\IMPLIES
+(\exists y\in A: x\in y)
+\]
+\[
+(y\in A)
+\AND
+(A\subseteq \power A)
+\IMPLIES
+(y\in \power A)
+\]
+\[
+(y\in \power A)
+\IMPLIES
+(y\subseteq A)
+\]
+\[
+(x\in y)
+\AND
+(y\subseteq A)
+\IMPLIES
+(x\in A)
+\]
+\Done
+\begin{theorem}
+\label{thm:transitive through union}
+\[
+\left(A \transitive\right)\iff \left(\union A\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+by \ref{thm:UACA=ACPA}\\
+\Done
+
+\begin{theorem}{}
+%\label{intersection of singleton}%
+\[
+(A\nonempty)
+\land
+(A\transitive) 
+\implies
+ \left(\left(\intersection A\right)\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.\\
+\Done
+\subsection{"Paradoxes" of class theory}
+%Регулярность:
+%(PA⊆A)→(V⊆A)
+%— это полезная аксиома.
+%Пусть A={W|W∉W}.
+%Докажем что PA⊆A.
+%Возьмём класс B. 
+%Он множество, т.к. из PA и верно что B⊆A.
+%Каждый его элемент не принадлежит себе.
+%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
+%Значит B не принадлежит себе.
+%Значит B тоже элемент А(т.к. B — множество, которое не принадлежит себе).
+%Доказали PA⊆A.
+%Значит из аксиомы следует, что A=V.
+%Значит для любого множества W, W∉W.
+%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
+%Значит любой класс не принадлежит сам себе.
+
+
+
+\begin{theorem}
+\label{Russel's Paradox}
+In classical and even in intuitionistic logic, the following holds:
+\[
+\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)
+\]
+\end{theorem}
+\Proof
+\noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
+Take such W.\\
+Set Q:=W.\\
+Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
+From \ref{double neg LEM} where $P:=(W\in W)$, we have:
+$\neg\neg((W\in W)\lor(W\notin W))$.\\
+Therefore the goal is:
+$W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
+Now, using backward reasoning:\\
+$W\in W \iff W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
+Subgoal1:\\
+$W\in W \iff W\notin W, (W\in W) \vdash \bot$.\\
+$W\in W \iff W\notin W, (W\in W) \vdash (W\notin W)$.\\
+$W\in W \iff W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
+Subgoal2:\\
+$W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
+$W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
+$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).\\
+\Done
+
+
+
+\begin{theorem}
+\label{thm:not in itself}
+In classical and even in intuitionistic logic, the following holds:
+\[ \forall Y: Y\notin Y\]
+\end{theorem}
+\Proof
+\noindent %Fix Y.\\
+Let $C:=\{W|W\notin W\}$.\\
+Goal $\power C\subseteq C$.\\
+Fix class $B$. Assume $B\in \power C$.\\
+$(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
+Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
+$(b\in B)\AND(B\subseteq C) \Longrightarrow (b\in C)$.\\
+$(b\in C) \Longrightarrow (b\notin b)$.\\
+Claim: $B\notin B$.\\
+Assume opposite $B\in B$ and derive a contradiction.\\
+$(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
+%$(B\in B)\AND(B\subseteq C) \Longrightarrow (B\in C)$.\\
+%$(B\in C) \Longrightarrow (B\notin B)$.\\
+$(B\in B)\AND(B\notin B) \Longrightarrow \bot$.\\
+Contradiction obtained, so the claim  $B\notin B$ is proven.\\
+%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
+%Значит B не принадлежит себе.
+$(B\set)\AND(B\notin B) \Longrightarrow (B\in C)$.\\
+%Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
+%Доказали PC⊆C.
+We are done proving the goal $\power C\subseteq C$.\\
+$\power C\subseteq C \Longrightarrow V\subseteq C$ (by epsilon induction).\\
+%Значит из аксиомы следует, что A=V.
+%Значит для любого множества W, W∉W.
+%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
+%Значит любой класс не принадлежит сам себе.
+Goal: $ \forall Y: Y\notin Y$.\\
+Fix $Y$.\\
+Case 1: $(Y\set)$.\\
+$(Y\set)\Longrightarrow (Y\in V)$.\\
+$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
+$(Y\in C)\Longrightarrow (Y\notin Y)$.\\
+Case 2: $\neg(Y\set)$.\\
+$\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
+$\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
+$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)\\
+\Done
+
+\begin{theorem}
+\label{thm:intersection set then}
+If intersection of a class A is a set, then A is nonempty. 
+\[
+\left(\left(\intersection A\right)\set\right)
+\implies
+(\exists w: w\in A)
+\]
+%\quad\mbox{(by lemma ... )}
+\end{theorem}
+\Proof
+New goal:
+\[
+\neg\exists w: w\in A
+\implies
+\neg(\left(\intersection A\right)\set)
+\]
+Proof of the claim:
+\[
+\neg\exists w: w\in A
+\IMPLIES
+(A=\emptyset)
+\]
+\[
+(A=\emptyset)
+\IMPLIES
+\left(\intersection A\right) = \left(\intersection \emptyset\right)
+\]
+\[
+\left(\intersection \emptyset\right) = V
+\]
+\[
+\left(\intersection A\right) = \left(\intersection \emptyset\right)
+\AND
+\left(\intersection \emptyset\right) = V
+\IMPLIES
+\left(\intersection A\right) = V
+\]
+\[
+(V\notin V)
+\quad\mbox{(by thm \ref{thm:not in itself} with $Y:=V$)}
+\]
+\[
+(V\notin V)
+\IMPLIES
+\neg(V\set)
+\quad\mbox{(by thm \ref{thm:sets are in V})}
+\]
+\[
+\left(\intersection A\right) = V
+\AND
+\neg(V\set)
+\IMPLIES
+\neg(\left(\intersection A\right) \set)
+\]
+The claim is proven.
+\[
+\left(\left(\intersection A\right)\set\right)
+\IMPLIES
+(\exists w: w\in A)
+\quad\mbox{(from claim by contraposition)}
+\]
+%\[
+%(\left(\intersection A\right)\set)
+%\IMPLIES
+%\exists Q: \left(\intersection A\right)\in Q
+%\]
+\Done
+
+
+\begin{theorem}
+\label{thm:powerset not a subset}
+In classical and even in intuitionistic logic, the following holds:
+\[ \forall (Y\set): \neg(\power Y \subseteq Y)\]
+\end{theorem}
+\Proof
+\noindent %Fix Y.\\
+\[
+C:=\{w|\neg(\power w \subseteq w)\}
+\]
+Claim $\power C \subseteq C$:\\
+Fix $B\in \power C$. To show: $B\in C$\\
+$(B\in \power C)\Longrightarrow (B\set)\land(B\subseteq C)$.\\
+Assume opposite: $B\notin C$, and derive a contradiction.\\
+$(B\notin C) \Longrightarrow (\neg(B\set))\lor (\neg\neg(\power w\subseteq w))$.\\
+$(B\set), (\neg(B\set))\lor (\neg\neg(\power B\subseteq B)) \Longrightarrow \neg\neg(\power B\subseteq B)$.\\
+$\neg\neg(\power B\subseteq B)  \Longrightarrow (\power B\subseteq B)$.\\
+$ (\power B\subseteq B) \land (B\subseteq C) \Longrightarrow (\power B\subseteq C)$.\\
+$(B\in \power B)$.\\
+$(B\in \power B)\land (\power B\subseteq C) \Longrightarrow (B\in C)$.\\
+$(B\in C) \land (B\notin C)  \Longrightarrow \bot$\\
+Contradiction obtained, so the claim $\power C \subseteq C$ is proven.\\
+$(\power C \subseteq C)\Longrightarrow (V\subseteq C)$ (by regularity axiom).\\
+Fix $(Y\set)$.\\
+$(Y\set)\Longrightarrow (Y\in V)$.\\
+$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
+$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
+%By Russel's paradox(\ref{Russel's Paradox}), 
+%$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
+%$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
+%$W:=Y$.\\
+\Done
+
+\begin{theorem}
+\label{thm:conglomerate of classes not class}
+A conglomerate of all classes is not a class. It "does not exist as class".
+\[
+\neg (\exists W \forall Q: Q\in W)
+\]
+\[
+(\forall W \exists Q: Q\notin W)
+\]
+\end{theorem}
+\Proof
+Fix W.\\
+Set $Q:=W$.\\
+By \ref{thm:not in itself}, $W\notin W$.\\
+So $Q\notin W$.\\
+\Done
+
+\section{Useful constructions in class theory}
 
 \subsection{Value of a function. (BEST)}
 Definition of the value of the function: (in the context of 3-valued logic)
@@ -414,80 +1879,7 @@ h((a,b)) = h(({0}\times a)\cup ({1}\times b)) =
 
 \Done
 
-
-%Interesting targets:
-\begin{itemize}
-\item The aim of this document is to provide standard classical mathematical foundations as well as some amount of perfect proofs.
-\item The proof assistant based on this very classical theory is being implemented. \url{https://github.com/georgydunaev/set_theory_prover}
-\item After completion of development of the program, not only tactics, but also machine learning algorithms may be applied in a search of the proofs.
-
-%\item sequential criterion
-%\item completion of a metric space
-\end{itemize}
-%...
-\newpage
-\section{Logical framework}
-
-\subsection{Basic definitions of the syntax}
-In this section we deal with strings of letters.
-NOTE: The definitions in this section are simultaneous: some earlier definitions depend on later. It is possible to rewrite equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implemented, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
-
-%Coding function
-%\[\]
-
-%The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
-
-\begin{definition}(Variables)\\
-The countable set \\
-$\Var$
-\end{definition}
-
-\begin{definition}(Functional symbols)\\
-The countable set \\
-$\FuncSymb$
-\end{definition}
-
-\begin{definition}(Predicate symbols)\\
-The countable set \\
-$\PredSymb$
-\end{definition}
-
-\begin{definition}(Term)\\
-Inductive definition of term:\\
-1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
-2) 
-$"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
-3) Some higher-order features:\\
-$"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
-...
-
-\end{definition}
-
-\begin{definition}(Formula)\\
-Inductive definition of formula:\\
-1)$\bot\in\Fm$.\\
-2)$P\in\PredSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES P(t_1,\dots,t_n)\in\Fm$.\\
-3)$A\in\Fm \IMPLIES (\neg A)\in\Fm$.\\
-4)$A\in\Fm \AND B\in\Fm \IMPLIES (A\implies B)\in\Fm$.\\
-5)$A\in\Fm \AND B\in\Fm \IMPLIES (A\land B)\in\Fm$.\\
-6)$A\in\Fm \AND B\in\Fm \IMPLIES (A\lor B)\in\Fm$.\\
-7)$x\in\Var \AND A\in\Fm \IMPLIES (\forall x:A)\in\Fm$.\\
-8)$x\in\Var \AND A\in\Fm \IMPLIES (\exists x:A)\in\Fm$.\\
-\end{definition}
-
-\begin{definition}(Context)\\
-Context = \{d\}
-\end{definition}
-
-\begin{definition}(Statement)\\
-\end{definition}
-
-\begin{definition}(Proof)\\
-Let F be a statement. (i.e. a pair: context and formula)\\
-Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
-
-
-\end{definition}
+\section{Useful metatheorems}
 
 \begin{theorem}(Deduction theorem)
 \[
@@ -499,122 +1891,9 @@ Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
 \Proof
 This theorem is provable constructively.
 This is done through the formalisation of a proof notion.
-Proof is 
-
+Proof is ...
 \Done
 
-
-\subsection{Basic definitions}
-...
-\begin{definition} Simultaneous substitution.
-\[
-\varphi[Z_1/W_1,...,Z_n/W_n]
-\]
-\end{definition}
-\noindent
-
-\subsection{Full semantics}
-
-
-The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
-Let $\power \mathcal{U}$ be the domain of discourse of the presented model for the theory.\\
-It means that we have a super-large model.\\
-Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
-Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
-
-%Let $I_\Term$ is an interpretation function on Terms.
-
-Let $f$ be an evaluation of variables:\\
-\[
-f:\Var\to \power \mathcal{U}
-\]
-But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
-Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
-
-Terms are interpreted as subconglomerates of the conglomerate of all classes.
-\[
-I_\Term(f) : \Term \to \power \mathcal{U}
-\]
-
-
-Notation:\\
-F:=False\\
-U:=Undefined\\
-T:=True\\
-\[
-I_\Fm(f) : \Fm \to \{F,U,T\}
-\]
-
-\begin{definition}(valid formula)
-The formula $\varphi$ is called valid if it is true under any evaluation.
-\end{definition}
-
-\[
-I_\Fm(f)((t\lexists)) := (\lif\ (I_\Term(f)(t)\nonempty)\ \lthen\ F\ \lelse\ T)
-\]
-\[
-I_\Fm(f)((t\lunique)) := (\lif\ (I_\Term(f)(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
-\]
-
-\subsection{Axioms for the corresponding prediacate calculus}
-\subsection{Propositional part}
-%For all formulas $A$, $B$, $C$.
-For all atomic formulas $A$, $B$, $C$.
-\[
-(A \implies (B \implies A))
-\]
-\[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B)))
-\]
-\[
-((A\land B) \implies A)
-\]
-\[
-((A\land B) \implies B)
-\]
-\[
-(A \implies (B\implies (A\land B)))
-\]
-\[
-(A \implies (A\lor B))
-\]
-\[
-(B \implies (A\lor B))
-\]
-\[
-((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
-\]
-\[
-(\neg A \implies (A\implies B))
-\]
-\[
-((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
-\]
-\subsection{Predicational part}
-Specification rules:
-\[
-(t\ldefined)\implies ((\forall x: \phi) \implies \phi[t/x])
-\]
-\[
-(t\ldefined) \implies (\phi[t/x] \implies (\exists x: \phi))
-\]
-Bernays' rules: if $x$ is not free in formula $\psi$ then
-\[
-\frac{
-\psi \implies \varphi
-}{
-\psi \implies (\forall x:\varphi)
-}\mbox{(B1)}
-\]
-\[
-\frac{
-\varphi \implies \psi
-}{
-(\exists x:\varphi)\implies \psi
-}\mbox{(B2)}
-\]
-
-\subsection{Useful metatheorems}
 \begin{theorem}
 \[
 A=B\ \Longrightarrow\ (t[A/W]=t[B/W])
@@ -730,2284 +2009,6 @@ Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
 \Done
 
 \pagebreak
-\section{Class theory}%Developing set-theoretic foundations}
-
-%TODO:\\
-%The first formula is the ... .\\
-%The first term in formula is the leftmost term in the first primitive formula.\\
-%Here $R_x$ means that variable x is the first free variable in the proposition $R$.\\
-
-%\begin{constructor} Restricted quantifier.\\
-%If $R_x$ is a proposition with free variable x,\\
-%\quad $Q$ is a proposition,\\
-%\quad $\#$ is one of quantifiers ($\forall$, $\exists$ or $!$)\\
-%then $\# R:Q$ is a formula.
-%\end{constructor}
-
-%\begin{definition} Restricted forall.\\
-%\label{def:restricted forall}
-%Meta-context: assume that the first term of a proposition R is a free %variable x.
-%\[
-%(\forall R:Q)
-%\iff
-%(\forall x: R \implies Q)
-%\]
-%\end{definition}
-
-%\begin{definition} Restricted forall.\\
-%\label{def:restricted forall}
-%Meta-context 0: assume that the first term of a proposition $R$ is $t$, %and it has no free variables.
-%\[
-%(\forall R:Q)
-%\iff
-%(R \implies Q)
-%\]
-%Meta-context 1: assume that the first term of a proposition $R$ is $t$, and the first free variable of $t$ is $x$.
-%\[
-%(\forall R:Q)
-%\iff
-%(\forall x: R \implies Q)
-%\]
-%\end{definition}
-
-
-%\begin{definition} Restricted exists.\\
-%\label{def:exists restricted }
-%Meta-context: assume that the first term of a proposition R is a free variable x.
-%\[
-%(\exists R:Q)
-%\iff
-%(\exists x: R \land Q)
-%\]
-%\end{definition}
-
-%\begin{definition} Restricted unique.\\
-%\label{def:unique restricted }
-%Meta-context: assume that the first term of a proposition R is a free %variable x.
-%\[
-%(! R:Q)
-%\iff
-%(! x: R \land Q)
-%\]
-%\end{definition}
-
-
-\begin{constructor} Membership predicate.\\
-If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
-\end{constructor}
-
-%\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
-%\begin{constructor}
-%If $\varphi$ is a formula without class-quantifiers, then
-%$\{x|\varphi\}$ is NBG-class.
-%\end{constructor}
-
-%\begin{constructor}
-%If $\varphi$ is a formula, then
-%$\{x|\varphi\}$ is MK-class.
-%\end{constructor}
-
-\begin{constructor} Subclass predicate.\\
-If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
-\end{constructor}
-\begin{definition}
-\label{def:subclass}
-Subclass predicate.
-\[
-(A\subseteq B)\iff(\forall x\in A:x\in B)
-\]
-\end{definition}
-\begin{theorem}
-Any element of a subclass is in the class.
-\label{thm:element of subclass}
-\[
-(x\in A)\land(A\subseteq B)\implies(x\in B)
-\]
-\end{theorem}
-\Proof
-\[
-(A\subseteq B)
-\IMPLIES
-(\forall x\in A:x\in B)
-\comment{by def of subclass \ref{def:subclass}}
-\]
-\[
-(x\in A)
-\AND
-(\forall x\in A:x\in B)
-\IMPLIES
-(x\in B)
-\comment{by restricted specification elimination}
-\]
-\Done
-
-Details:
-\begin{prooftree}
-\AxiomC{$
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A) \vdash (x\in A)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in A)
-$}
-\RightLabel{by }
-
-\AxiomC{$
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(A\subseteq B) \vdash (A\subseteq B)
-$}
-\RightLabel{by}
-\UnaryInfC{$
-(A\subseteq B) \vdash (\forall x\in A:x\in B)
-$}
-\RightLabel{by weakening}
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (\forall x\in A:x\in B)
-$}
-\RightLabel{by }
-\BinaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in B)
-$}
-
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in B)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A) \vdash (A\subseteq B) \to (x\in B)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-\vdash (x\in A) \land (A\subseteq B) \to (x\in B)
-$}
-\end{prooftree}
-
-Other idea:
-\begin{prooftree}
-\AxiomC{}
-\RightLabel{Assume/Ident}
-\UnaryInfC{$
-P_3,P_2,P_1 \vdash R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-P_3,P_2 \vdash P_1 \to R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-P_3 \vdash P_2 \land P_1 \to R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-\vdash P_3 \land P_2 \land P_1 \to R
-$}
-\end{prooftree}
-
-
-
-
-
-If the variant of logic being used doesn't have equality, then add the following constructor and definition.
-\begin{constructor}Equality.\\
-If $A$ and $B$ are classes, then $(A=B)$ is a formula.
-\end{constructor}
-\begin{definition}
-Equality. (in case if the 1st order logic is given without equality)
-If Y is not a free variable neither in A nor in B, then:
-\[
-(A=B)\iff (\forall Y: A\in Y \iff B\in Y)
-\]
-\end{definition}
-\subsection{Axiom of extensionality}
-\begin{axiom}
-\label{axm:extensionality}
-Extensionality.
-\[
-(A=B)\iff ((A\subseteq B) \land (B\subseteq A))
-\]
-\end{axiom}
-\begin{axiom*}
-\label{axm:extensionality'}
-Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
-\[
-(A=B)\iff (\forall X: X\in A \iff X\in B)
-\]
-\end{axiom*}
-
-\begin{theorem}
-\[
-(A \subseteq B)\land (B\subseteq A) \implies (A=B)
-\]
-\end{theorem}
-\Proof
-Claim: $(\forall x:x\in A \iff x\in B)$.\\
-Fix x.\\
-$(\Rightarrow)$\\
-Assume $(x\in A)$. To show: $(x\in B)$\\
-\[
-(x\in A)
-\AND
-(A\subseteq B)
-\IMPLIES
-(x\in B)
-\comment{by thm \ref{thm:element of subset}}
-\]
-$(\Leftarrow)$\\
-Assume $(x\in B)$. To show: $(x\in A)$\\
-\[
-(x\in B)
-\AND
-(B\subseteq A)
-\IMPLIES
-(x\in A)
-\comment{by thm \ref{thm:element of subset}}
-\]
-Claim is proven.
-\[
-(\forall x:x\in A \iff x\in B)
-\IMPLIES
-(A=B)
-\quad\mbox{(by axm \ref{axm:extensionality})}
-\]
-\Done
-
-\begin{constructor} Set predicate.\\
-If $A$ is a class, then $(A\set)$ is a formula.
-\end{constructor}
-\begin{definition} Set predicate.
-If Y is not a free variable in X, then:
-\[
-(X\set)\iff(\exists Y:X\in Y)
-\]
-\end{definition}
-
-\begin{theorem}
-\label{thm:in class then set}
-%\[A\set \land B\in A \rightarrow B\set\]
-\[
-(B\in A) \rightarrow (B\set)
-\]
-\Proof
-Assume $(B\in A)$. To show: $(B\set)$.
-\[
-(B\in A)
-\IMPLIES
-(\exists A: B\in A)
-\comment{by right-exists-intro}.
-\]
-\[
-(\exists A: B\in A)
-\IMPLIES
-(B\set)
-\comment{introduced by set's definition}.
-\]
-\Done
-
-
-%\begin{prooftree}
-%\AxiomC{A}
-%\UnaryInfC{B}
-%\AxiomC{C}
-%\BinaryInfC{D}
-%\AxiomC{E}
-%\AxiomC{F}
-%\BinaryInfC{G}
-%\UnaryInfC{H}
-%\BinaryInfC{J}
-%\end{prooftree}
-
-Details:
-\begin{prooftree}
-\AxiomC{}
-\RightLabel{Assume/Ident}
-\UnaryInfC{$
-(B\in A) \vdash (B\in A)
-$}
-\RightLabel{by $\exists$-intro}
-\UnaryInfC{$
-(B\in A) \vdash (\exists A: B\in A)
-$}
-\RightLabel{by def-intro/set-intro}
-\UnaryInfC{$
-(B\in A) \vdash (B\set)
-$}
-\RightLabel{deduction/ImplR/implies-intro}
-\UnaryInfC{$
-\vdash (B\in A)\to (B\set)
-$}
-\end{prooftree}
-\end{theorem}
-
-\begin{constructor}
-If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
-(It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
-\end{constructor}
-\subsection{Axiom of class comprehension}
-\begin{axiom}
-\label{axm:comprehension}
-Class comprehension.
-If Y is not a free variable of $\varphi$, then:
-\[
-(Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
-\]
-%\[Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])\]
-%(or maybe
-%\[Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)\]
-%we need to find one expression for both cases.
-%)
-\end{axiom}
-
-\subsection{Empty class}
-\begin{constructor} Empty class.\\
-The empty set symbol $\emptyset$ is a constant closed term.
-\end{constructor}
-\begin{definition}
-\label{def:empty class}
-Empty class.
-\[
-\emptyset = \{x|\bot\}
-\]
-\end{definition}
-
-\begin{theorem}
-\label{thm:empty class is subclass}
-\[
-(\emptyset\subseteq A)
-\]
-\end{theorem}
-\Proof
-Claim:
-\[
-(\forall x\in \emptyset: x\in A)
-\]
-Assume $(x\in\emptyset)$.
-\[
-(x\in\emptyset)
-\IMPLIES
-\bot
-\]
-\[
-\bot
-\IMPLIES
-(x\in A)
-\]
-Claim is proven.
-\[
-(\forall x\in \emptyset: x\in A)
-\IMPLIES
-(\emptyset\subseteq A)
-\quad\mbox{(by def \ref{def:empty class})}
-\]
-\Done
-
-\begin{definition} Empty set predicate.
-\label{def:empty}
-\[
-(A\isempty)\iff (A=\emptyset)
-\]
-\end{definition}
-
-\begin{definition}
-\label{def:nonempty}
-\[
-(A\nonempty)\iff \neg(A\isempty)
-\]
-\end{definition}
-
-
-\begin{theorem}
-\[
-\neg\exists w: w\in A
-\implies
-(A=\emptyset)
-\]
-\end{theorem}
-\Proof
-Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
-$(\supseteq)$\\
-\[
-(A\supseteq\emptyset)
-\quad\mbox{(by thm \ref{thm:empty class is subclass})}
-\]
-$(\subseteq)$\\
-Claim: $(\forall x\in A:x\in\emptyset)$\\
-Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
-\[
-(x\in A)
-\IMPLIES
-(\exists x:x\in A)
-\]
-\[
-(\exists x:x\in A)
-\AND
-(\neg\exists x:x\in A)
-\IMPLIES
-\bot
-\]
-\[
-\bot
-\IMPLIES
-(x\in\emptyset)
-\]
-The claim is proven.
-\[
-(\forall x\in A:x\in\emptyset)
-\IMPLIES
-(A \subseteq \emptyset)
-\comment{by def of subclass \ref{def:subclass}}
-\]
-\[
-(A \subseteq \emptyset)
-\AND
-(A \supseteq \emptyset)
-\IMPLIES
-(A=\emptyset)
-\comment{by axm \ref{axm:extensionality}}
-\]
-%So by extensionality axiom we are done.\\
-%\[
-%\neg\exists w: w\in A
-%\IMPLIES
-%(A=\emptyset)
-%\]
-\Done
-\begin{theorem}
-\[
-\neg\exists w: w\in A
-\iff
-(A\isempty)
-\]
-\end{theorem}
-\begin{theorem}
-\[
-\exists w: w\in A
-\iff
-(A\nonempty)
-\]
-\end{theorem}
-\subsection{Axiom of empty set}
-\begin{axiom}
-\label{axm:empty class}
-\[
-(\emptyset\set)
-\]
-\end{axiom}
-\subsection{Uniqueness quantifier}
-\begin{definition}
-\label{def:uniqueness quantifier}
-Uniqueness quantifier for classes:\\
-If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
-\[
-(!Y:\varphi)\iff (\forall Y_1\forall Y_2:\varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
-\]
-%%(We will not use much this definition.)
-\end{definition}
-\begin{note}
-
-Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
-I have a notion of non-classical models, in which this is not a problem, but then logical rules become much more advanced, and all well-studied field of the first-order logic need to be re-done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
-\end{note}
-\begin{definition}
-\label{def:restricted uniqueness quantifier}
-Restricted uniqueness quantifier for sets only
-\begin{align*}
-(!(y\set):\varphi)
-&\iff 
-(!y:(y\set)\land\varphi)
-\\
-&\iff 
-(\forall (y_1\set)\forall (y_2\set):\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
-\end{align*}
-
-%(\forall y_1\forall y_2:\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
-\end{definition}
-
-\subsection{Singleton}
-\begin{definition} Singleton (functional symbol).
-(side note: because of big amount of side conditions, we state that all different variables are different. 
-It should not be possible to use it in such way: "{x}={x|x=x}".
-How to determine whether during substitution it can be fixed?
-I want it to happen automatically, but i don't want the proof to depend on implementation.
-What causes proofs(as list of actions) to be inapplicable in different cases.
-
-Everything is solved by the simple maxima: we don't need developed metatheory, because all those theorems can be proven for a model, and then added to the program if they are useful.
-
-How to implement definitions? see comments in source code here
-
-%Проблема со схемами -- их надо вручную добавлять, код менять.
-
-%Но! Можно задать новый язык формул, с подстановками, требованиями к различности переменных. -- это непонятно: как.
-
-%Боковые условия -- они как дополнительный навесок на теорему.
-
-%(можно, ещё, генерировать, а можно просто рэйзить эксепшены, если что-то не выполняется. Тогда получается язык для определений СХЕМ.
-
-%как логгировать пруф? сохранять состояние последнего успешного шага.
-)
-
-)
-
-
-
-\[
-\{w\} = \{x|x=w\}
-\]
-\end{definition}
-
-\begin{definition} Singleton (predicate symbol).
-\[
-(A\singleton) \iff (\exists!a:a\in A)
-\]
-\end{definition}
-
-\begin{theorem}
-\[
-(w\in A) \land (!a:a\in A) \implies \{w\}=A
-\]
-\end{theorem}
-\Proof
-\noindent($\subseteq$) Assume $(q\in \{w\})$.
-\[
-(q\in \{w\})\IMPLIES(q=w).
-\]
-\[
-(w\in A)\AND(q=w)\IMPLIES(q\in A).
-\]
-\noindent($\supseteq$) Assume $(a\in A)$.
-\[
-(!a:a\in A)\AND(a\in A)\AND(w\in A)\IMPLIES(a=w).
-\]
-\[
-(a=w)\IMPLIES(\{a\}=\{w\})
-\]
-\[
-(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
-\]
-\Done
-
-
-
-
-\iffalse
-%The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
-\begin{theorem}
-\[
-(\{y|\psi\}\nonempty)
-\iff
-(\exists y:\psi)
-\]
-\end{theorem}
-\Proof
-\noindent$(\Rightarrow)$\\
-\[
-(\{y|\psi\}\nonempty)
-\IMPLIES
-(\exists y:\psi)
-\]
-\noindent$(\Leftarrow)$\\
-\Done
-\fi
-\subsection{Universal class}
-\begin{definition} Universal class (constant V).
-\label{def:universal class}
-\[
-V:=\{x|\top\}
-\]
-\end{definition}
-
-
-\begin{theorem}
-Any class is a subclass of class of all sets.
-\[(C\subseteq V)\]
-\end{theorem}
-\Proof
-%\[\forall x\in C:x\in V\]
-%...
-Claim: $(\forall x\in C:x\in V)$.\\
-Fix $x$. Assume $(x\in C)$. To show $(x\in V)$.
-\[
-(x\in C)
-\IMPLIES
-(x\set)
-\quad\mbox{(by thm \ref{thm:in class then set})}
-\]
-\[
-(x\set)
-\AND
-\top
-\IMPLIES
-(x\in V)
-\quad\mbox{(by def \ref{def:universal class})}
-\]
-Claim is proven.
-\[
-(\forall x\in C:x\in V)
-\IMPLIES
-(C\subseteq V)
-\quad\mbox{(by def \ref{def:subclass})}
-\]
-\Done
-
-\begin{theorem}
-\label{thm:sets are in V}
-\[
-(X\set)\iff(X\in V)
-\]
-\end{theorem}
-\Proof
-\noindent($\Leftarrow$) Assume $(X\in V)$.
-\[
-(X\in V)\IMPLIES(\exists W: X\in W).
-\]
-\[
-(\exists W: X\in W)\IMPLIES(X\set).
-\]
-\noindent($\Rightarrow$) Assume $(X\set)$.
-%\[
-%(X\set)\IMPLIES(\exists W: X\in W))
-%\]
-\[
-(X\set)\AND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
-\]
-\[
-(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V
-\]
-%\[(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
-\Done
-\subsection{Union}
-\begin{definition}
-\label{def:union}
-Union of an arbitrary class A.
-\[
-\union A = \{x|\exists a\in A: x\in a\}
-\]
-\end{definition}
-
-\begin{theorem}
-\[
-(B\in A) \rightarrow \left(B \subseteq \union A\right)
-\]
-\end{theorem}
-\Proof
-Assume $(b\in B)$.\\
-To show: $(b\in \union A)$.\\
-\[
-(b\in B)
-\IMPLIES
-(b\set)
-\quad\mbox{(by thm \ref{thm:in class then set})}
-\]
-\[
-(B\in A)
-\AND
-(b\in B)
-\IMPLIES
-(\exists a\in A : b\in a)
-\]
-\[
-(b\set)
-\AND
-(\exists a\in A : b\in a)
-\IMPLIES
-\left(b\in \union A\right)
-\]
-\Done
-
-\subsection{Intersection}
-\begin{definition}
-\label{def:intersection}
-Intersection of an arbitrary class A.
-\[
-\intersection A = \{x|\forall a\in A: x\in a\}
-\]
-\end{definition}
-\begin{theorem}
-\[
-(B\in A) \rightarrow \left(\intersection A\subseteq B\right)
-\]
-\end{theorem}
-\Proof
-Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
-\[
-(x\in \intersection A)
-\IMPLIES
-(x\set)
-\AND
-(\forall a\in A : x\in a)
-\]
-%(b\set)
-%\quad\mbox{(by \ref{thm:in class then set})}
-%\[a:=B\]
-\[
-(\forall a\in A : x\in a)
-\AND
-(B\in A)
-\IMPLIES
-(x\in B)
-\]
-\Done
-
-\begin{theorem}
-\[\left(\intersection\{w\}=w\right)\]
-\end{theorem}
-\Proof
-$(\subseteq)$\\
-$(x\in\intersection \{w\})\IMPLIES(\forall m\in\{w\}:x\in m)$.\\
-$(\forall m\in\{w\}:x\in m)\AND(w\in \{w\})\IMPLIES(x\in w).$\\
-$(\supseteq)$\\
-Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
-$(x\in w)\IMPLIES(x\set)$.\\
-Claim: $(\forall m\in\{w\}:x\in m).$\\
-Fix m. Assume $m\in\{w\}$.\\
-$(m\in\{w\})\IMPLIES(m=w)$.\\
-$(x\in w)\AND(m=w)\IMPLIES(x\in m)$\\
-The claim is proven.\\
-$(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
-\Done
-
-\begin{theorem}{Intersection of a singleton is in it.}
-\label{thm:intersection of singleton}%
-\[
-(A \singleton) \rightarrow \left(\left(\intersection A\right)\in A\right)
-\]
-\end{theorem}
-\Proof
-\[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
-\[(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
-\[(\{w\}=A)\IMPLIES\left(\intersection\{w\}=\intersection A\right).\]
-\[\left(\intersection\{w\}=w\right)\AND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
-\[\left(\intersection A=w\right)\AND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
-\Done
-
-
-\subsection{Theorems about union and intersection}
-\begin{theorem}
-\label{thm:intersection of nonempty is subset of union}
-\[
-(A \nonempty) \rightarrow \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
-\]
-\end{theorem}
-\Proof
-\[
-(A \nonempty)
-\IMPLIES
-(\exists B:B\in A)
-\]
-\[
-(B\in A)
-\IMPLIES
-\left(\intersection A\right)\subseteq B
-\]
-\[
-(B\in A)
-\IMPLIES
-\left(B \subseteq \union A\right)
-\]
-\[
-\left(\intersection A\right)\subseteq B
-\AND
-\left(B \subseteq \union A\right)
-\IMPLIES
-\left(\intersection A \subseteq \union A\right)
-\]
-\Done
-
-\subsection{Powerclass}
-\begin{definition}
-\label{def:powerclass}
-Powerclass. (by class comprehension)
-\[
-\power X = \{x|x\subseteq X\}
-\]
-\end{definition}
-\subsection{Axiom of heredity}
-\begin{axiom}
-\label{axm:heredity}
-Heredity.
-\[
-(A\set) \land (B\subseteq A) \rightarrow (B\set)
-\]
-\end{axiom}
-\begin{theorem}
-\[
-(A\set) \land (B\subseteq A) \rightarrow (B\in\power A)
-\]
-\end{theorem}
-\Proof
-\[
-(A\set) \AND (B\subseteq A) \IMPLIES (B\set)
-\comment{by axm \ref{axm:heredity}}
-\]
-\[
-(B\set) \AND (B\subseteq A) \IMPLIES (B\in\power A)
-\comment{by def \ref{def:powerclass}}
-\]
-\Done
-\subsection{Axiom of powerset}
-\begin{axiom}
-\label{axm:powerset}
-Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
-\[(A\set) \rightarrow (\power A\set)\]
-\end{axiom}
-
-%\begin{axiom} $\in$-induction. (variant that uses formulas)
-%\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
-%\end{axiom}
-\subsection{Transitive set}
-\begin{definition}
-\label{def:transitive through power}
-\[
-(A \transitive)\iff (A\subseteq \power A)
-\]
-\end{definition}
-\begin{theorem}
-\label{thm:UACA=ACPA}
-\[
-(A\subseteq \power A) \iff \left(\union A\subseteq A\right)
-\]
-\end{theorem}
-\Proof
-\noindent($\Leftarrow$)\\
-Assume $(\union A\subseteq A)$. To show:$(A\subseteq \power A)$.\\
-Assume $(x\in A)$. To show: $(x\in \power A)$.\\
-%To show: $(x\set)\land(x\subseteq A)$.\\
-%Goal1:$(x\set)$\\
-%oal2:$(x\subseteq A)$\\
-Claim:$(x\subseteq A)$.\\
-Assume $(y\in x)$. To show: $(y\in A)$.\\
-\[
-(y\in x)
-\AND
-(x\in A)
-\IMPLIES
-\left(y\in\union A\right)
-\]
-\[
-\left(y\in\union A\right)
-\AND
-\left(\union A\subseteq A\right)
-\IMPLIES
-(y\in A)
-\]
-The claim is proven.
-\[
-(x\in A)
-\IMPLIES
-(x\set)
-\comment{by thm \ref{thm:in class then set}}
-\]
-\[
-(x\set)
-\AND
-(x\subseteq A)
-\IMPLIES
-(x\in\power A)
-\]
-\noindent($\Rightarrow$)\\
-Assume $(A\subseteq \power A)$. To show:$(\union A\subseteq A)$.\\
-Assume $(x\in\union A)$. To show:$(x\in A)$.
-\[
-(A \transitive)
-\IMPLIES
-(A\subseteq \power A)
-\]
-\[
-\left(x\in\union A\right)
-\IMPLIES
-(\exists y\in A: x\in y)
-\]
-\[
-(y\in A)
-\AND
-(A\subseteq \power A)
-\IMPLIES
-(y\in \power A)
-\]
-\[
-(y\in \power A)
-\IMPLIES
-(y\subseteq A)
-\]
-\[
-(x\in y)
-\AND
-(y\subseteq A)
-\IMPLIES
-(x\in A)
-\]
-\Done
-\begin{theorem}
-\label{thm:transitive through union}
-\[
-\left(A \transitive\right)\iff \left(\union A\subseteq A\right)
-\]
-\end{theorem}
-\Proof
-by \ref{thm:UACA=ACPA}\\
-\Done
-
-\begin{theorem}{}
-%\label{intersection of singleton}%
-\[
-(A\nonempty)
-\land
-(A\transitive) 
-\implies
- \left(\left(\intersection A\right)\subseteq A\right)
-\]
-\end{theorem}
-\Proof
-By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.\\
-\Done
-
-\subsection{Axiom of regularity / Epsilon-induction}
-\begin{axiom} 
-\label{axn:epsilon induction}
-$\in$-induction. %(variant that uses classes)
-%\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
-\[
-(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)
-\]
-\end{axiom}
-
-%Регулярность:
-%(PA⊆A)→(V⊆A)
-%— это полезная аксиома.
-%Пусть A={W|W∉W}.
-%Докажем что PA⊆A.
-%Возьмём класс B. 
-%Он множество, т.к. из PA и верно что B⊆A.
-%Каждый его элемент не принадлежит себе.
-%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
-%Значит B не принадлежит себе.
-%Значит B тоже элемент А(т.к. B — множество, которое не принадлежит себе).
-%Доказали PA⊆A.
-%Значит из аксиомы следует, что A=V.
-%Значит для любого множества W, W∉W.
-%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
-%Значит любой класс не принадлежит сам себе.
-
-
-
-\begin{theorem}
-\label{Russel's Paradox}
-In classical and even in intuitionistic logic, the following holds:
-\[
-\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)
-\]
-\end{theorem}
-\Proof
-\noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
-Take such W.\\
-Set Q:=W.\\
-Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
-From \ref{double neg LEM} where $P:=(W\in W)$, we have:
-$\neg\neg((W\in W)\lor(W\notin W))$.\\
-Therefore the goal is:
-$W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
-Now, using backward reasoning:\\
-$W\in W \iff W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
-Subgoal1:\\
-$W\in W \iff W\notin W, (W\in W) \vdash \bot$.\\
-$W\in W \iff W\notin W, (W\in W) \vdash (W\notin W)$.\\
-$W\in W \iff W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
-Subgoal2:\\
-$W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
-$W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
-$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).\\
-\Done
-
-
-
-\begin{theorem}
-\label{thm:not in itself}
-In classical and even in intuitionistic logic, the following holds:
-\[ \forall Y: Y\notin Y\]
-\end{theorem}
-\Proof
-\noindent %Fix Y.\\
-Let $C:=\{W|W\notin W\}$.\\
-Goal $\power C\subseteq C$.\\
-Fix class $B$. Assume $B\in \power C$.\\
-$(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
-Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
-$(b\in B)\AND(B\subseteq C) \Longrightarrow (b\in C)$.\\
-$(b\in C) \Longrightarrow (b\notin b)$.\\
-Claim: $B\notin B$.\\
-Assume opposite $B\in B$ and derive a contradiction.\\
-$(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
-%$(B\in B)\AND(B\subseteq C) \Longrightarrow (B\in C)$.\\
-%$(B\in C) \Longrightarrow (B\notin B)$.\\
-$(B\in B)\AND(B\notin B) \Longrightarrow \bot$.\\
-Contradiction obtained, so the claim  $B\notin B$ is proven.\\
-%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
-%Значит B не принадлежит себе.
-$(B\set)\AND(B\notin B) \Longrightarrow (B\in C)$.\\
-%Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
-%Доказали PC⊆C.
-We are done proving the goal $\power C\subseteq C$.\\
-$\power C\subseteq C \Longrightarrow V\subseteq C$ (by epsilon induction).\\
-%Значит из аксиомы следует, что A=V.
-%Значит для любого множества W, W∉W.
-%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
-%Значит любой класс не принадлежит сам себе.
-Goal: $ \forall Y: Y\notin Y$.\\
-Fix $Y$.\\
-Case 1: $(Y\set)$.\\
-$(Y\set)\Longrightarrow (Y\in V)$.\\
-$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
-$(Y\in C)\Longrightarrow (Y\notin Y)$.\\
-Case 2: $\neg(Y\set)$.\\
-$\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
-$\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
-$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)\\
-\Done
-
-\begin{theorem}
-\label{thm:intersection set then}
-If intersection of a class A is a set, then A is nonempty. 
-\[
-\left(\left(\intersection A\right)\set\right)
-\implies
-(\exists w: w\in A)
-\]
-%\quad\mbox{(by lemma ... )}
-\end{theorem}
-\Proof
-New goal:
-\[
-\neg\exists w: w\in A
-\implies
-\neg(\left(\intersection A\right)\set)
-\]
-Proof of the claim:
-\[
-\neg\exists w: w\in A
-\IMPLIES
-(A=\emptyset)
-\]
-\[
-(A=\emptyset)
-\IMPLIES
-\left(\intersection A\right) = \left(\intersection \emptyset\right)
-\]
-\[
-\left(\intersection \emptyset\right) = V
-\]
-\[
-\left(\intersection A\right) = \left(\intersection \emptyset\right)
-\AND
-\left(\intersection \emptyset\right) = V
-\IMPLIES
-\left(\intersection A\right) = V
-\]
-\[
-(V\notin V)
-\quad\mbox{(by thm \ref{thm:not in itself} with $Y:=V$)}
-\]
-\[
-(V\notin V)
-\IMPLIES
-\neg(V\set)
-\quad\mbox{(by thm \ref{thm:sets are in V})}
-\]
-\[
-\left(\intersection A\right) = V
-\AND
-\neg(V\set)
-\IMPLIES
-\neg(\left(\intersection A\right) \set)
-\]
-The claim is proven.
-\[
-\left(\left(\intersection A\right)\set\right)
-\IMPLIES
-(\exists w: w\in A)
-\quad\mbox{(from claim by contraposition)}
-\]
-%\[
-%(\left(\intersection A\right)\set)
-%\IMPLIES
-%\exists Q: \left(\intersection A\right)\in Q
-%\]
-\Done
-
-
-\begin{theorem}
-\label{thm:powerset not a subset}
-In classical and even in intuitionistic logic, the following holds:
-\[ \forall (Y\set): \neg(\power Y \subseteq Y)\]
-\end{theorem}
-\Proof
-\noindent %Fix Y.\\
-\[
-C:=\{w|\neg(\power w \subseteq w)\}
-\]
-Claim $\power C \subseteq C$:\\
-Fix $B\in \power C$. To show: $B\in C$\\
-$(B\in \power C)\Longrightarrow (B\set)\land(B\subseteq C)$.\\
-Assume opposite: $B\notin C$, and derive a contradiction.\\
-$(B\notin C) \Longrightarrow (\neg(B\set))\lor (\neg\neg(\power w\subseteq w))$.\\
-$(B\set), (\neg(B\set))\lor (\neg\neg(\power B\subseteq B)) \Longrightarrow \neg\neg(\power B\subseteq B)$.\\
-$\neg\neg(\power B\subseteq B)  \Longrightarrow (\power B\subseteq B)$.\\
-$ (\power B\subseteq B) \land (B\subseteq C) \Longrightarrow (\power B\subseteq C)$.\\
-$(B\in \power B)$.\\
-$(B\in \power B)\land (\power B\subseteq C) \Longrightarrow (B\in C)$.\\
-$(B\in C) \land (B\notin C)  \Longrightarrow \bot$\\
-Contradiction obtained, so the claim $\power C \subseteq C$ is proven.\\
-$(\power C \subseteq C)\Longrightarrow (V\subseteq C)$ (by regularity axiom).\\
-Fix $(Y\set)$.\\
-$(Y\set)\Longrightarrow (Y\in V)$.\\
-$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
-$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
-%By Russel's paradox(\ref{Russel's Paradox}), 
-%$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
-%$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
-%$W:=Y$.\\
-\Done
-
-\begin{theorem}
-\label{thm:conglomerate of classes not class}
-A conglomerate of all classes is not a class. It "does not exist as class".
-\[
-\neg (\exists W \forall Q: Q\in W)
-\]
-\[
-(\forall W \exists Q: Q\notin W)
-\]
-\end{theorem}
-\Proof
-Fix W.\\
-Set $Q:=W$.\\
-By \ref{thm:not in itself}, $W\notin W$.\\
-So $Q\notin W$.\\
-\Done
-
-
-\begin{definition}
-\label{def:ordered pair}
-Ordered pair. %maybe V somehow?
-\[
-\langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
-\]
-\end{definition}
-
-
-\begin{theorem}
-A class constructed with conjugation of a formula and the uniqueness of object satisfying the same formula has at most one element.
-\label{thm:class with at most one object}
-\[
-(!w:w\in \{y|\varphi\land (!y:\varphi)\})
-\]
-\end{theorem}
-\Proof
-Assume $w_1\in \{y|\varphi\land (!y:\varphi)\}$ and $w_2\in \{y|\varphi\land (!y:\varphi)\}$.\\
-To show: $w_1=w_2$.
-\[
-w_1\in \{y|\varphi\land (!y:\varphi)\}
-\IMPLIES
-(w_1\set)
-\land
-\varphi[w_1/y]
-\land
-(!y:\varphi)
-\]
-\[
-w_2\in \{y|\varphi\land (!y:\varphi)\}
-\IMPLIES
-(w_2\set)
-\land
-\varphi[w_2/y]
-\land
-(!y:\varphi)
-\]
-\[
-(!y:\varphi)
-\AND
-(w_1\set)\land\varphi[w_1/y]
-\AND
-(w_1\set)\land\varphi[w_2/y]
-\IMPLIES
-w_1=w_2
-\]
-\Done
-
-\begin{theorem}
-\[
-(A\subseteq B)\land(!x:x\in B)\implies (!x:x\in A)
-\]
-\end{theorem}
-\Proof
-Assume $(A\subseteq B)$ and $(!x:x\in B)$.
-\[
-(!x:x\in B)
-\IMPLIES
-(\forall x_1\forall x_2: x_1\in B \land x_2\in B \implies x_1=x_2)
-\comment{by def of uniqueness quantifier \ref{def:uniqueness quantifier}}
-\]
-Claim $(\forall x_1\forall x_2: x_1\in A \land x_2\in A \implies x_1=x_2)$.\\
-Fix $x_1$ and $x_2$.
-Assume $x_1\in A$ and $x_2\in A$. 
-\[
-A\subseteq B
-\AND
-x_1\in A
-\IMPLIES
-x_1\in B
-\]
-\[
-A\subseteq B
-\AND
-x_2\in A
-\IMPLIES
-x_2\in B
-\]
-\[
-(!x:x\in B)
-\AND
-x_1\in B
-\AND
-x_2\in B
-\IMPLIES
-x_1=x_2
-\]
-Claim is proven.
-\[
-(\forall x_1\forall x_2: x_1\in A \land x_2\in A \implies x_1=x_2)
-\IMPLIES
-(!x:x\in A)
-\comment{by def of uniqueness quantifier \ref{def:uniqueness quantifier} costructor}
-\]
-\Done
-\pagebreak
-
-It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
-\[
-(I y: \varphi) = \intersection \{y|\varphi \land (!y:\varphi)\}
-\comment{bad ``definition''}
-\]
-In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
-(the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
-%So the following definition does not work correctly for proper classes:
-\begin{definition}
-\label{def:iota operator}
-Iota operator for sets.
-\[
-(\iota y: \varphi) = \intersection \{y|\varphi \land (!(y\set):\varphi)\}
-\]
-\end{definition}
-
-
-
-\begin{theorem}
-\label{thm:iota set exists unique set}
-%Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
-%This may not be true:
-%\[ ???
-%((\iota y: \varphi) \set)
-%\iff
-%(\exists!(b\set):\varphi)
-%\]
-%Variant2(true before redef but ugly):
-%\[
-%((\iota y: \varphi) \set)
-%\iff
-%(\exists(b\set):\varphi)
-%\land
-%(!b:\varphi)
-%\]
-%Variant3:
-%\[
-%((\iota y: \varphi) \set)
-%\iff
-%(\exists!b:\varphi)
-%\]
-%Variant4:
-%\[
-%((\iota (y\set): \varphi) \set)
-%\iff
-%(\exists!(y\set):\varphi)
-%\]
-%Variant5:
-\[
-((\iota y: \varphi) \set)
-\iff
-(\exists!(y\set):\varphi)
-\]
-
-\end{theorem}
-\Proof
-%For formulas to be short, let's locally define the term Q:
-%\[
-%Q:=\{y|\varphi \land (!(y set):\varphi)\}
-%\]
-\noindent$(\Rightarrow)$\\
-Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
-\[
-((\iota y: \varphi) \set)
-\IMPLIES
-\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
-\comment{by def \ref{def:iota operator}}
-\]
-\[
-\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
-\IMPLIES
-\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
-\]
-\[
-\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
-\IMPLIES
-\left(\exists	y: y\in \{y|\varphi \land (!(y\set):\varphi)\}\right)
-\]
-\[
-\left(
-y\in \{y|\varphi \land (!(y\set):\varphi)\}
-\right)
-\IMPLIES
-\left(
-(y\set)\land \varphi\land (!(y\set):\varphi)
-\right)
-\]
-\[
-(y\set)
-\AND
-\varphi
-\IMPLIES
-\left(
-\exists (y\set):\varphi
-\right)
-\]
-%\[
-%\left(
-%!y:\varphi
-%\right)
-%\IMPLIES
-%\left(
-%!(y\set):\varphi
-%\right)
-%\]
-\[
-\left(
-\exists (y\set):\varphi
-\right)
-\AND
-\left(
-!(y\set):\varphi
-\right)
-\IFF
-\left(
-\exists! (y\set):\varphi
-\right)
-\]
-
-\noindent$(\Leftarrow)$\\
-Assume $(\exists!(y\set):\phi)$. To show:$((\iota y:\phi)\set)$.
-%%Here $!x:$.
-\[
-(\exists!(y\set):\phi)
-\IMPLIES
-(\exists(y\set):\phi)
-\land
-(!(y\set):\phi)
-\]
-\[
-(y\set)
-\AND
-\phi
-\AND
-(!(y\set):\phi)
-\IMPLIES
-y\in\{y:\phi\land(!(y\set):\phi)\}
-\]
-\[
-y\in\{y:\phi\land(!(y\set):\phi)\}
-\IMPLIES
-(\{y:\phi\land(!(y\set):\phi)\}\nonempty)
-\]
-\[
-(\{y|\varphi \land (!y:\varphi)\}\nonempty)
-\IMPLIES
-\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
-\]
-\[
-\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
-\IMPLIES
-\left(\left(\iota y: \varphi\right) \set\right)
-\]
-\Done
-
-\subsection{Lambda operator}
-\begin{definition}
-\label{def:lambda operator}
-Lambda operator.
-\[
-(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}
-\]
-\end{definition}
-\subsection{1ST ATTEMPT: Values of functions and of families of proper classes, unified approach}
-SKIP THIS, GO TO THE NEXT SUBSECTION
-\begin{definition}(Value of relation/function/protected family at x)
-\[
-F(x):=\union\{b|(x,b)\in F\}
-\]
-\end{definition}
-\begin{definition}(Value of a simple family at x)
-\[
-F(x) :=\{b|(x,b)\in F\}=\ran(F)
-\]
-(if domain is defined as usual, then the element of a simple family is intrinsicallly non-empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
-%F(x) :=\union\{b|(x,b)\in F\}
-\end{definition}
-We need to improve the previous definitions, because:
-1) we want to have family with empty representative, we need to define.
-2) it if not possible to preserve domain if element of a family turned out to be empty.
-\begin{definition}(Value of a protected family at x)
-\[
-F(x)_p := \{b|(x,\{b\})\in F\}
-F(x)_p := \union\{s|(x,s)\in F\}
-\]
-The latter definition therefore is universal for any of r/f/F/PF
-\end{definition}
-
-
-\begin{definition}(Domain of relation/function/family/protected family)
-\[
-\Dom(F):=\{x|\exists s:(x,s)\in F\}=:\dom(F)
-\]
-\end{definition}
-
-\begin{definition}(Range of relation)(!!!Note that it is in general different from range of a function or family. "R-Ran","ran","small range")
-\[
-\ran(R):=\{y|\exists x:(x,y)\in R\}
-\]
-\end{definition}
-
-\begin{definition}(In range of relation/function/family. (It works for both R-Ran and F-Ran.))
-\[
-(K\mbox{ in classrange of }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)=K)
-\]
-\end{definition}
-\begin{definition}(In range of protected family. (It works for both R-Ran and F-Ran.))
-\[
-(K\mbox{ in classrange of protected }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)_p=K)
-\]
-\end{definition}
-
-
-\begin{definition}([Set-]Range of function/family. "F-Ran","Ran", "big range")
-%\[
-%\Ran(F):=\{y|\exists x: (x \in \Dom(F)) \land (F(x)=y)\}
-%\]
-\[
-\Ran(F):=\{y| y\mbox{ in classrange of } F\}
-\]
-\end{definition}
-
-\begin{definition}(Function)
-A function is a relation which is univocal.
-\end{definition}
-\begin{definition}(Protected Family)
-A protected family is a relation which range of relation consists only of subsets of singletones.
-\end{definition}
-
-
-%A relation is a function when it is univocal.
-%A relation is a family when it's relation range consists only of subsets of singletones.
-
-\begin{definition}(r/f/F is defined at x)
-\[
-(F \ldefined\mbox{ at }x) \IFF (x\in\dom(F))
-\]
-\end{definition}
-%For every axiomatic definition, there are certain prerequisites.
-It doesn't make sense to prove anything about $(\varepsilon x:\varphi)$, if it is not proven that $\exists x: \varphi$.\\
-It doesn't make sense to prove anything about $(\iota x:\varphi)$, if it is not proven that $\exists! x: \varphi$.\\
-There is a "default value" D1 which $(\varepsilon x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
-There is a "default value" D2 which $(\iota x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
-They are not specified. (Up to now).\\
-If they are not specified, then we cannot define the "(- defined)" predicate.
-It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
-It is not possible to have a "defined" predicate, because it isn't preserved under equality.\\
-So naive "defined" requires a recursion on a term.\\
-Even if we introduce own "defined" for each constructor of the term, it still will require syntactic analysis.\\
-So the solution is to have a context under which definitions make sense.\\
-It may be a family of classes, where the first one should be non-empty, as a signal that some conditions are satisfied.\\
-It strongly reminds a notion of signature and structure.\\
-
-In the situation, when $\exists x: \varphi$ and $\neg\exists! x: \varphi$.
-"value-defined".
-
-Relations are symmetrical, so inverse relation is defined.
-
-Protected families are assymetrical, so it is not always possible to define the inverse of a family.
-
-Families 
-\subsection{Non-empty families}
-All definitions in this section are local: they will not be used in other sections.
-\begin{definition}(family of non-empty classes)
-\[
-(F is NEF) 
-\]
-\end{definition}
-
-
-
-\subsection{Unified approach to functions and of families}
-
-\begin{definition}(Conglomerate of all classes)
-This symbol is not a term of our theory(MK+axGroth), because terms denote classes, and it is bigger than a class.
-\end{definition}
-Different variant of canonisations:
-\begin{definition}(Canonization a family of non-empty classes)\\
-$
-\canonize0(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}
-$\\
-
-\end{definition}
-\begin{definition}(Canonization[of a family of potentially empty classes])\\
-$
-\canonize1(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|x\in\Dom(F)\}
-$\\
-$
-\canonize2(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|(x\in\Dom(F))\land (F(x)=\emptyset) \}
-$\\
-$
-\canonize3(F) = \{(x,s)|\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)\}
-$\\
-
-\end{definition}
-
-\begin{definition}(Cardinality)\\
-\[
-|A|=\Ord\cap\bigcap \{f: | \}
-\]
-\end{definition}
-
-Here V denote a class of all sets, and Ord denotes the class of all ordinal numbers.
-\[
-|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):(f\mbox{ injective})\}
-\]
-Note: here we use the intersection of a class which is defined by 
-$
-(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
-$, therefore $\bigcap\emptyset = V$.
-In this case 
-\[
-(x\mapsto|x|):V\to\mbox{Ord}
-\]
-This definition allows also obtain a cardinality of any proper class P, in particular
-\[
-|P|=\mbox{Ord}
-\]
-This definition is natural since it agrees with the axiom of limitation of size which implies bijection between V and any proper class.
-
-
-\begin{definition}(Family)
-\[
-\]
-\end{definition}
-
-\begin{definition}(Family)
-\[
-(F:A\to\mathcal{U})
-\IFF
-(F\subseteq V\times V)
-\land
-(\Dom(F)=A)
-\]
-\end{definition}
-\begin{definition}(Canonical Family)
-Every family has a representation which is canonical.
-If we use axiomatic approach for families, they should be indistinguishable wrt all important properties.
-So agreement may be ocnsidered: "Read canonize(F) in any statement when F is mentioned" or "Add (canonize(F)=F) to the definition".
-\end{definition}
-
-
-
-\begin{definition}(Family)
-A family is a relation which range of relation consists only of subsets of singletones.
-\[
-(F\family) \IFF (F\subseteq V\times\{-\}[])
-\]
-\end{definition}
-A family is weaker than a funtional symbol, because functional symbols can take proper classes as arguments.\\
-A function is weaker than a family because it can return only sets.\\
-But the behaviour of $\{-\}$ is well-defined only on sets.
-Maybe it should be a family?\\
-What about $\{-,-\}$?\\
-Should $\{V\}$ be $\emptyset$ or $V$?\\
-E.g. Metamath uses an empty set as a default value.\\
-So it seems to legit, because it cannot be obtained in any other way out of the unordered pair or ordered pair. At worst it would be a singleton, but never an empty set. So the choice of $\emptyset$ as a default value is justified.\\
-
-It's not the same in other cases, e.g. for "f(x)", therefore it requires an additional assumption to be treated as "legit".
-
-\subsection{Value of a function via set-descriptors}
-\begin{definition}
-\label{def:value}
-Intended use: value of a class-function. Class F is arbitrary.
-\[
-F(x) = \left(\iota y: \langle x,y\rangle\in F\right)
-\]
-\end{definition}
-
-
-
-
-
-\begin{definition}
-\label{def:univocalat}
-\[
-(F\univocalat x)\iff(!y : \langle x,y\rangle \in F)
-\]
-\end{definition}
-\begin{definition}
-\label{def:univocal}
-\[
-(F\univocal)\iff (\forall x: F\univocalat x)
-\]
-\end{definition}
-\begin{theorem}
-\label{thm:pair in function}
-If $(F\univocalat x)\land(y\set)$, then
-\[
-\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
-\]
-\begin{align*}
-(F\univocalat x)
-\implies
-\left(
-\left(\langle x,y\rangle\in F\right)
-\implies
-\left(F(x)=y\right)
-\right)
-\\
-(y\set)
-\implies
-\left(
-\left(F(x)=y\right)
-\implies
-\left(\langle x,y\rangle\in F\right)
-\right)
-\end{align*}
-\iffalse
-\[
-\mbox{x set!!??}
-(F\univocalat x)
-\implies
-\left(
-\left(
-\left(F(x)=y\right)\land(y\set)
-\right)
-\iff\left(\langle x,y\rangle\in F\right)
-\right)
-\]
-\fi
-\end{theorem}
-\Proof
-For formulas to be short, let's define 
-\[
-Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
-\]
-\noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
-% USELESS
-%\[
-%(F\univocal)
-%\IMPLIES
-%(\forall x:\ !y : \langle x,y\rangle \in F)
-%\]
-% USELESS
-%\[
-%(\forall x:\ !y : \langle x,y\rangle \in F)
-%\IMPLIES
-%(!y : \langle x,y\rangle \in F)
-%\]
-\[
-(F\univocalat x)
-\IMPLIES
-(!y : \langle x,y\rangle \in F)
-\quad\mbox{(by def \ref{def:univocalat})}
-\]
-\[
-(\langle x,y\rangle\in F)
-\IMPLIES
-(\exists y : \langle x,y\rangle \in F)
-\]
-\[
-(\exists y : \langle x,y\rangle \in F)
-\AND
-(!y : \langle x,y\rangle \in F)
-\IMPLIES
-(\exists! y : \langle x,y\rangle \in F)
-\]
-\[
-(\exists! y : \langle x,y\rangle \in F)
-\IMPLIES
-(\{y | \langle x,y\rangle \in F\}\singleton)
-\]
-\[
-\left(\{y| \langle x,y\rangle\in F\}\singleton\right)
-\IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
-\in
-\left(\{y| \langle x,y\rangle\in F\}\right)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
-\]
-\[
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
-\in
-\left(\{y| \langle x,y\rangle\in F\}\right)
-\IMPLIES
-\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
-\]
-\[
-(!y : \langle x,y\rangle \in F)
-\AND
-(\langle x,y\rangle\in F)
-\AND
-\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
-\IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
-\]
-
-%\[
-%\beta
-%\IMPLIES
-%\left(
-%\alpha
-%\iff
-%(\alpha \land \beta))
-%\right)
-%\]
-\[
-\beta\implies(\alpha\iff(\alpha \land \beta)))
-\]
-\[
-(!y: \langle x,y\rangle\in F)
-\IMPLIES
-\left(
-(\langle x,y\rangle\in F)
-\iff
-(\langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F))
-\right)
-\]
-
-%(!y: \langle x,y\rangle\in F)
-\[
-\IMPLIES
-\left(
-\{y| \langle x,y\rangle\in F\}
-=
-Q
-\right)
-\]
-
-
-%\[
-%\left(\{y| \langle x,y\rangle\in F\}
-%=
-%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\right)
-%\IMPLIES
-%\]
-\[
-\IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=
-\left(\intersection
-Q
-\right)
-\]
-
-\iffalse
-%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
-\[
-\left(\{y| \langle x,y\rangle\in F\}
-=
-Q
-\right)
-\AND
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
-\IMPLIES
-\left(
-\intersection Q
-\right)
-=y
-\]
-
-\[
-\left(\intersection
-Q
-\right)=y
-\AND
-(\iota y: (\langle x,y\rangle\in F))
-=
-\left(\intersection
-Q
-\right)
-\IMPLIES
-\left((\iota y: \langle x,y\rangle\in F)=y\right)
-\]
-\[
-\left((\iota y: \langle x,y\rangle\in F)=y\right)
-\IMPLIES
-(F(x)=y)
-\]
-So we proved that F(x)=y.
-\fi
-
-\begin{align*}
-F(x)&=\left((\iota y: \langle x,y\rangle\in F\right)\\
-&=\intersection Q\\
-&=\intersection \{y: \langle x,y\rangle\in F\land (!y:\langle x,y\rangle\in F)\}\\
-&=y
-\end{align*}
-So we proved that $(F(x)=y)$.\\
-\noindent($\Rightarrow$) Assume $(F(x)=y)$. To show:$(\langle x,y\rangle\in F)$
-\begin{align*}
-y&=F(x)
-\quad(\mbox{by assumption}) \\
-&=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \ref{def:value}})
-\\
-&=\left(\intersection Q\right)
-\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
-\end{align*}
-%\[
-%(F(x)=y)
-%\IMPLIES
-%\left(\iota y: \langle x,y\rangle\in F\right)=y.
-%\]
-%\[
-%\left(\iota y: \langle x,y\rangle\in F\right)=y
-%\IMPLIES
-%\left(\intersection Q\right)=y.
-%\]
-\[
-(F\univocal)
-\IMPLIES
-(\forall x:\ !y : \langle x,y\rangle \in F)
-\]
-
-\[
-(\forall x:\ !y : \langle x,y\rangle \in F)
-\IMPLIES
-(!y : \langle x,y\rangle \in F)
-\]
-
-\[
-(y\set)
-\AND
-\left(\intersection Q\right)=y
-\IMPLIES
-\left(\left(\intersection Q\right)\set\right)
-\]
-
-\[
-\left(\left(\intersection Q\right)\set\right)
-\IMPLIES
-(\exists w: w\in Q)
-\quad(\mbox{by thm \ref{thm:intersection set then}}).
-\]
-
-%GOOD, BUT USELESS
-%\[
-%(w\in Q)
-%\IMPLIES
-%\langle x,w\rangle\in F
-%\land 
-%(!w: \langle x,w\rangle\in F)
-%\quad(\mbox{by def of Q}).
-%\]
-
-%(!w:w\in \{y|\varphi\land (!y:\varphi)\})
-%(!w:w\in \{y|(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))\})
-\[
-(!w:w\in Q)
-\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi:=(\langle x,y\rangle\in F)$)}
-\]
-%...
-
-\[
-(\exists w: w\in Q)
-\AND
-(! w: w\in Q)
-\IMPLIES
-(\exists! w: w\in Q)
-\]
-
-\[
-(\exists! w: w\in Q)
-\IMPLIES
-(Q\singleton)
-\]
-
-\[
-\left(Q\singleton\right)
-\IMPLIES
-\left(\intersection Q\right)\in Q
-\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
-\]
-
-\[
-\left(\intersection Q\right)\in Q
-\AND
-\left(\intersection Q\right)=y
-\IMPLIES
-y\in Q.
-\]
-
-\[
-y\in Q
-\IMPLIES
-(\langle x,y\rangle\in F)
-\land 
-(!y: \langle x,y\rangle\in F)
-\quad(\mbox{by def of Q}).
-\]
-So $(\langle x,y\rangle\in F)$ is proven as intended.\\
-\Done
-\begin{theorem}
-\[
-((\iota y:\phi)\ldefined)
-\implies
-\phi[(\iota y:\phi)/y]
-\]
-\end{theorem}
-\Proof
-\[
-((\iota y:\phi)\ldefined)
-\IFF
-((\iota y:\phi)\set)
-\comment{by def that is valid only for terms denoting sets}
-\]
-
-\[
-((\iota y:\phi)\set)
-\IMPLIES
-\left(\intersection\{y:\phi\land(!y:\phi)\}\set\right)
-\comment{by def of iota}
-\]
-\Done
-
-\begin{theorem}
-\label{thm:pair in function}
-If $(F\univocalat x)\land(y\set)$, then
-\[
-\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
-\]
-\begin{align*}
-1) & & (y\set)
-\implies
-\left(
-\left(F(x)=y\right)
-\implies
-\left(\langle x,y\rangle\in F\right)
-\right)
-\\
-2) & & (F\univocalat x)
-\implies
-\left(
-\left(\langle x,y\rangle\in F\right)
-\implies
-\left(F(x)=y\right)
-\right)
-\\
-\end{align*}
-\end{theorem}
-Alternative proof:\\
-\Proof
-\noindent($\Rightarrow$)
-\begin{align*}
-y&=F(x)
-\quad(\mbox{by assumption}) \\
-&=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \ref{def:value}})
-\\
-\end{align*}
-%&=\left(\intersection Q\right)
-%\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
-\[
-(y=\left(\iota y: \langle x,y\rangle\in F\right))
-\AND
-(y\set)
-\IMPLIES
-(\left(\iota y: \langle x,y\rangle\in F\right) \set)
-\]
-\[
-(\left(\iota y: \langle x,y\rangle\in F\right) \set)
-\IMPLIES
-\left(\exists!(y\set):\langle x,y\rangle\in F\right)
-\comment{by thm \ref{thm:iota set exists unique set}}
-\]
-...\\
-\noindent($\Leftarrow$)\\
-...\\
-\Done
-\subsection{Descriptors OLD}
-\begin{axiom}
-\[
-\exists (x\set):\varphi
-\implies
-(\varepsilon x: \varphi) \in \{x|\varphi\}
-\]
-\end{axiom}
-\begin{axiom}
-
-\[
-(\varepsilon x: \varphi) \set
-\implies
-\exists (x\set):\varphi
-\]
-\end{axiom}
-
-\begin{axiom}
-\[
-\exists! (x\set):\varphi
-\implies
-(\iota x: \varphi) \in \{x|\varphi\}
-\]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
-\[
-(\iota x: \varphi) \set
-\implies
-\exists! (x\set):\varphi
-\]
-\end{axiom}
-
-\subsection{Descriptors NEW}
-\begin{axiom}
-\[
-\exists (x\set):\varphi
-\implies
-(\varepsilon (x\set): \varphi) \in \{x|\varphi\}
-\]
-\end{axiom}
-\begin{axiom}
-
-\[
-(\varepsilon (x\set): \varphi) \ldefined
-\implies
-\exists (x\set):\varphi
-\]
-\end{axiom}
-
-\begin{axiom}
-\[
-(\exists! (x\set):\varphi)
-\implies
-(\iota (x\set): \varphi) \in \{x|\varphi\}
-\]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
-\[
-(\iota (x\set): \varphi) \ldefined
-\implies
-\exists! (x\set):\varphi
-\]
-\end{axiom}
-qqqqqqqqqqqq
-\begin{axiom}
-\[
-(\iota (x\set): \varphi) \ldefined
-\iff
-(\iota (x\set): \varphi) \set
-\]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
-\[
-(\iota (x\set): \varphi) \ldefined
-\iff
-\exists! (x\set):\varphi
-\]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
-\[
-(\iota (x\set): \varphi) \ldefined
-\implies
-(\iota (x\set): \varphi)  \in \{x|\varphi\}
-\]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
-\[
-\varphi\land (!x:\varphi)
-\implies
-(\iota (x\set): \varphi) \ldefined
-\]
-\end{axiom}
-
-
-\subsection{Axiom of limitation of size}
-\begin{axiom}
-\label{axm:limitation of size}
-Limitation of size (of a set).
-\[
-\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))
-\]
-\end{axiom}
-
-\begin{definition}
-\label{def:epsilon operator}
-Epsilon operator.
-\[
-(\varepsilon y: \varphi) = c\left(\{y|\varphi\}\right)
-\]
-Here c is a class-function of global choice:
-\[
-c:V\setminus\{\emptyset\}\to V
-\]
-\[
-c(X)\in X
-\]
-Existence of such function follows from the axiom of limitation of size(below).
-Other notable fact is that axiom of limitation of size implies axiom of global choice, axiom of replacement, axiom of separation, and axiom of union.
-\end{definition}
-
-\begin{theorem}
-\[
-((\epsilon y: \varphi) \set)
-\iff
-(\exists(y\set):\varphi)
-\]
-\end{theorem}
-\Proof
-$(\Rightarrow)$\\
-Assume $((\epsilon y: \phi) \set)$. To show: $(\exists(y\set):\phi)$.
-\[
-((\epsilon y: \phi) \set)
-\IMPLIES
-(c(\{y:\phi\})\set)
-\]
-\[
-(c(\{y:\phi\})\set)
-\IMPLIES
-(\{y:\phi\}\in\dom(c))
-\comment{by some variant of \ref{thm:pair in function} }
-\]
-\[
-(\{y:\phi\}\in\dom(c))
-\IMPLIES
-(\{y:\phi\}\nonempty)
-\]
-\[
-(\{y:\phi\}\nonempty)
-\IMPLIES
-(\exists y:\phi)
-\]
-$(\Leftarrow)$\\
-Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
-\[
-(\exists y:\phi)
-\IMPLIES
-(\{y:\phi\}\nonempty)
-\]
-\[
-(\{y:\phi\}\nonempty)
-\IMPLIES
-(\{y:\phi\}\in\dom(c))
-\]
-\[
-(\{y:\phi\}\in\dom(c))
-\IMPLIES
-(c(\{y:\phi\})\set)
-\comment{by some variant of \ref{thm:pair in function} }
-\]
-\[
-(c(\{y:\phi\})\set)
-\IMPLIES
-((\epsilon y: \phi) \set)
-\]
-\Done
-
-\iffalse
-\[
-\left(
-\varphi_1\iff \varphi_2
-\right)
-\IMPLIES
-\left(
-P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
-\right)
-\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
-\]
-(so the assignment is not only for Term variables, but also for Formula variables.\\
-Substitution is also simultaneous.\\
-All Term variables are free in a Formula varriable.\\
-During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
-But here it is an example with free variable: $y$.
-\[
-\varphi_1 = \alpha
-\]
-
-\[\varphi_2 = \alpha \land \beta\]
-Idea: we may use 
-\[
-(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
-\]
-comment: i don't use G\"odel notation in my system.
-But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
-)\\
-Other problem:\\
-\[(\forall x:\varphi)\implies \varphi[t/x]\]
-\[t:=x\]
-\[(\forall x:\varphi)\implies \varphi[x/x]\]
-\[(\forall x:\varphi)\implies \varphi\]
-Assume we proved $(\forall x:\varphi)$.
-I don't actually have problem here, but I feel it is mildly dangerous to introduce
-formula variables, because need to implement substitution and be sure that
-it will not break the consistency.\\
-What can break consistency?\\
-If we use facts specific for theorem?... probably not.
-Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
-I don't like the following statement:
-\[
-\left(
-\varphi_1\iff \varphi_2
-\right)
-\IMPLIES
-\left(
-P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
-\right),
-\]
-because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
-Maybe it is not a problem.\\
-Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
-\fi
-
-
-
-\begin{theorem}
-(Azriel Levy 1968 "On Von Neumann's Axiom System for Set Theory"
-\url{https://www.jstor.org/stable/2315201})
-\[
-(A\set)
-\implies
-\left(\union A\set\right)
-\]
-\end{theorem}
-\Proof
-(the proof needs theorems about ordinals done first)\\
-...\\
-\Done
-
-\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/1.jpg}\\
-
-\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/2.jpg}\\
-\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/3.jpg}\\
-\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/4.jpg}\\
-\includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/5.jpg}\\
-
-%\[(\left(\intersection A\right)\set)\implies \]
-
 \section{Experimental}
 
 \iffalse
@@ -3456,15 +2457,22 @@ And we are done.\\
 
 \begin{theorem}(Evaluation of family)
 \[
-(\Lambda x: t)(x) = t
+(\Lambda x: t)(z) = t[z/x],
 \]
+and in particular:
 \[
-(\Lambda x: t)(z) = t[z/x]
+(\Lambda x: t)(x) = t.
 \]
-Context:
-(q term)
+%Context:
+%(q term)
 \end{theorem}
 \Proof
+By definitions,
+\[
+(\Lambda x: t)(z) =.
+\]
+
+
 \Done
 
 %\begin{definition}(conglomerate of all classes)

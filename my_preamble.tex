@@ -1,0 +1,134 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[german]{babel}
+%\usepackage[cyrillic]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{bussproofs} %
+
+%\renewcommand{\thesubsection}{\arabic{subsection}}
+%\newtheorem{thm}{Theorem}[section]
+%\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
+
+\usepackage{thmtools}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    %pdfpagemode=FullScreen,
+    }
+%\usepackage{stix-type1}%\turnediota
+\theoremstyle{definition}
+
+\newtheorem{constructor}{Constructor}[section]
+\newtheorem{iaxiom}{Axiom}
+\newtheorem{axiom}{Axiom}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{remark*}{Remark}
+\newtheorem{recall}{Recall}[section]
+\newtheorem*{recall*}{Recall}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{note}{Note}[section]
+\usepackage{etoolbox}
+
+%\newcommand*{\@Dashv}[2]{%
+%  \reflectbox{$\m@th#1#2$}%
+%}
+\newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
+  \{#1\in #2: #3\}
+}
+
+% https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
+%  \\mathcal\{T\} |---> \topology
+%  \\mathcal\{([^\}]*)\}   |--->  $1
+\newcommand{\AND}{\ \ \&\ \ }
+\newcommand{\any}{\mathrm{\ any}}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\can}{\mathrm{can}}
+\newcommand{\canonize}{\mathrm{canonize}}
+\newcommand{\closure}{\mbox{cl}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\converges}{\longrightarrow}
+\newcommand{\countable}{\mbox{\ countable}}
+\newcommand{\ldefined}{\mbox{\ defined}}
+\newcommand{\dom}{\mbox{dom}}
+\newcommand{\Dom}{\mbox{Dom}}
+\newcommand{\Done}{\noindent \textbf{Done.}\\}
+\newcommand{\lexists}{\mbox{\ exists}}
+\newcommand{\lunique}{\mbox{\ unique}}
+\newcommand{\family}{\mathrm{\ family}}
+\newcommand{\Fm}{\mathrm{Fm}}
+\newcommand{\FuncSymb}{\mathrm{FuncSymb}}
+\newcommand{\function}{\mathrm{\ function}}
+\newcommand{\functional}{\mbox{\ functional}}
+\newcommand{\IFF}{\ \Longleftrightarrow\ }
+\renewcommand{\iff}{\ \longleftrightarrow\ }
+\newcommand{\IMPLIES}{\ \Longrightarrow\ }
+\renewcommand{\implies}{\ \longrightarrow\ }
+\newcommand{\Inf}{\mathrm{Inf}}
+\newcommand{\injective}{\mbox{\ injective}}
+\newcommand{\injection}{\mbox{\ injection}}
+\newcommand{\interior}{\mbox{int}}
+\newcommand{\intersection}{\bigcap}
+\newcommand{\isempty}{\mathrm{\ empty}}
+\newcommand{\LB}{\mathrm{LB}}
+\newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\nonempty}{\mathrm{\ nonempty}}
+\newcommand{\Ord}{\mathrm{Ord}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\fst}{\mathrm{fst}}
+\newcommand{\snd}{\mathrm{snd}}
+\newcommand{\PredSymb}{\mathrm{PredSymb}}
+\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
+\newcommand{\ran}{\mathrm{ran}}
+\newcommand{\Ran}{\mathrm{Ran}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\relation}{\mathrm{\ relation}}
+\newcommand{\set}{\mathrm{\ set}}
+\newcommand{\singleton}{\mathrm{\ singleton}}
+\newcommand{\semantics}{\mathrm{semantics}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\surjective}{\mbox{\ surjective\ on\ }}
+\newcommand{\Term}{\mathrm{Term}}
+\newcommand{\Type}{\mathrm{Type}}
+\newcommand{\topology}{\mathcal{T}}
+\newcommand{\total}{\mbox{\ total\ on\ }}
+\newcommand{\transitive}{\mathrm{\ transitive}}
+\newcommand{\union}{\bigcup}
+\newcommand{\lif}{\mathrm{if}}
+\newcommand{\lthen}{\mathrm{then}}
+\newcommand{\lelse}{\mathrm{else}}
+\newcommand{\lexception}{\mathrm{exception}}
+\newcommand{\lundef}{\mathrm{undef}}
+\newcommand{\univocal}{\mathrm{\ univocal}}
+\newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
+\newcommand{\UB}{\mathrm{UB}}
+\newcommand{\Var}{\mathrm{Var}}
+
+\newcommand{\notvarphi}{\phi}
+\renewcommand{\phi}{\varphi}
+
+\newcommand{\comment}[1]{\quad\mbox{(#1)}}
+% local commands
+%\preto\section{\undef\blipo} %etoolbox
+\preto\subsection{\undef\blipo} %etoolbox
+% https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
+\usepackage{graphicx}
+\usepackage{authblk}

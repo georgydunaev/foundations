@@ -1,1 +1,1 @@
-# funcan
+# foundations of mathematics
