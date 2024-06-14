@@ -1,0 +1,181 @@
+the following definition is too weak:
+\begin{definition}
+\label{def:ordered pair} unsatisfactory
+Ordered pair. %maybe V somehow?
+\[
+\langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
+\]
+\end{definition}
+
+\subsection{Definitions of the ordered pair for sets and classes}
+Separate definitions:
+\[
+(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+\]
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}
+\]
+
+\noindent Simultaneous defintion:
+\[
+(a,b) := ({0}\times a)\cup ({1}\times b)
+\]
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}
+\]
+
+\begin{remark}\ \\
+Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
+\[
+\tilde{K}:= \{\{k\}| k\in K\}
+\]
+\[
+[a,b] := ({0}\times \tilde{a})\cup ({1}\times \tilde{b})
+\]
+Generally speaking,
+\[
+(a,b) :\neq [a,b]
+\]
+because then there is gurantee that it is well-founded.(todo: check it)\\
+\end{remark}
+
+
+%Remark 1:
+%\[
+%(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+%\]
+%\[
+%   = \{\{(1,a_2)|a_2\in a_1\}|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
+%(0,b) = \{(0,a_1')|a_1'\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)|%b_1\in b\}
+
+%(1,b_1)= \{(0,a_1')|a_1'\in \{\emptyset\}\}\cup \{(1,b_2)|b_2\in b_1\}
+%       = \{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}
+%       = \{(0,\emptyset)\}\cup \{\{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}|%b_2\in b_1\}
+%\]
+\[
+(a,0) = \{(0,a_1)|a_1\in a\}
+\]
+\[
+(0,b) = \{(1,b_1)|b_1\in b\}
+\]
+
+%\Proof
+
+Well-foundedness by epsilon-relation:\\
+%Checking that $(a,b)$ is well-found.
+\begin{theorem}
+If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+\end{theorem}
+\Proof
+We apply the epsilon-induction for $a$.\\ % maybe even  complete? nah, it's enough
+Assume there is no infinite $\ni$-chain in $(a_1,b)$ for any element $a_1$ of $a$.\\
+We apply the epsilon-induction for $b$.\\
+Assume there is no infinite $\ni$-chain in $(a_1,b_1)$ for any element $b_1$ of $b$.\\
+\[
+w\in (a,b)
+\]
+WLOG("Case I"), 
+\[
+w\in \{(0,a_1)|a_1\in a\}
+\]
+\[
+\exists a_1\in a: w\in (0,a_1)
+\]
+
+%Case 1: a is empty.\\
+%Then it contradicts with $w\in \{(0,a_1)|a_1\in a\}$, so statement is exfalso proven.\\
+%Case 2: a is non-empty.\\
+
+We know that
+\[
+(a,\emptyset) = \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in \emptyset\} = \{(0,a_1)|a_1\in a\}
+\]
+and
+\[
+(\emptyset,b) = \{(0,a_1)|a_1\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)|b_1\in b\}
+\]
+.
+
+Small remark: we can compute, just for the sanity check:
+\[
+(0,0) = (\emptyset,\emptyset) = \{(1,b_1)|b_1\in \emptyset\} = \emptyset
+\]
+\[
+(1,0) = (\{\emptyset\},\emptyset) = \{(0,\emptyset)\} = \{\emptyset\}
+\]
+\[
+(0,1) = (\emptyset,\{\emptyset\}) =/\mbox{by the 2nd eq}/= \{(1,\emptyset)\} = \{\{\emptyset\}\},
+\]
+indeed they are all different when arguments are different, as intended. In the later theorem it will be proven for arbitrary pairs.
+
+Every chain ends with the empty set(or with an urelement in some non-extensional theories).\\
+
+If(WA) $(0,a_1)$ has an infinite chain, then (using the second equality) 
+$\{(1,e)|e\in a_1\}$ has it too. 
+
+So there exists $e_0\in a_1$, such that $(1,e_0)$ has an infinite chain.
+\[
+(1,e_0) = \{(0,0)\}\cup \{(1,e_1)|e_1\in e_0\}
+\]
+.
+Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_1\in e_0$, such that $(1,e_1)$ has an infinite chain.
+\[
+(1,e_1) = \{(0,0)\}\cup \{(1,e_2)|e_2\in e_1\}
+\]
+and so on: (using here a natural number recursion/induction)
+Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_{n+1}\in e_{n}$, such that $(1,e_{n+1})$ has an infinite chain.
+\[
+(1,e_{n+1}) = \{(0,0)\}\cup \{(1,e_{n+1})|e_{n+1}\in e_n\}
+\]
+
+Therefore $a$ has an infinite chain starting with $e$, contradiction.
+
+The proof is similar, for the "Case II", where
+\[
+w\in \{(1,b_1)|b_1\in b\}
+\]
+\[
+\exists b_1\in b: w\in (1,b_1),
+\]
+with obtaining a contradiction with $b$ being well-founded.\\
+\Done
+
+\begin{definition}(we define a functional symbols which take the first and the second element of the pair) [we can add, "if it's an ordered pair"]
+\[
+\pr_1(P) := \fst(P) := \{b|(0,b)\in P\}
+\]
+\[
+\pr_2(P) := \snd(P) := \{b|(1,b)\in P\}
+\]
+\end{definition}
+
+\begin{theorem}
+\[
+((A_1,B_1) = (A_2,B_2)) \iff ((A_1=A_2)\land(B_1=B_2)) 
+\]
+\end{theorem}
+\Proof
+...\\
+\Done
+
+\begin{theorem}(OLD)
+If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+\end{theorem}
+\Proof
+\[
+h((a,b)) = h(({0}\times a)\cup ({1}\times b)) = 
+\]
+\[
+=\max( \sup\{h(y)|y\in ({0}\times a)\}, \sup\{h(y)|y\in ({0}\times a)\} ) = /\mbox{WLOG}/
+\]
+\[
+= \sup\{h(y)|y\in ({0}\times a)\} = /\mbox{by def}/
+\]
+\[
+= \sup\{h(y)|y\in \{(0,a_1)|a_1\in a_0\}\} =
+\]
+\[
+= \sup\{h((0,a_1))|a_1\in a_0)\} =
+\]
+
+\Done

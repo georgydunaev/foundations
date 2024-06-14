@@ -1,0 +1,291 @@
+
+\iftrue
+%The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
+\begin{theorem}
+\[
+(\{y|\psi\}\nonempty)
+\iff
+(\exists y:\psi)
+\]
+\end{theorem}
+\Proof
+\noindent$(\Rightarrow)$\\
+\[
+(\{y|\psi\}\nonempty)
+\IMPLIES
+(\exists y:\psi)
+\]
+\noindent$(\Leftarrow)$\\
+\Done
+\fi
+
+\begin{theorem}
+Any class is a subclass of class of all sets.
+\[(C\subseteq V)\]
+\end{theorem}
+\Proof
+%\[\forall x\in C:x\in V\]
+%...
+Claim: $(\forall x\in C:x\in V)$.\\
+Fix $x$. Assume $(x\in C)$. To show $(x\in V)$.
+\[
+(x\in C)
+\IMPLIES
+(x\set)
+\quad\mbox{(by thm \ref{thm:in class then set})}
+\]
+\[
+(x\set)
+\AND
+\top
+\IMPLIES
+(x\in V)
+\quad\mbox{(by def \ref{def:universal class})}
+\]
+Claim is proven.
+\[
+(\forall x\in C:x\in V)
+\IMPLIES
+(C\subseteq V)
+\quad\mbox{(by def \ref{def:subclass})}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:sets are in V}
+\[
+(X\set)\iff(X\in V)
+\]
+\end{theorem}
+\Proof
+\noindent($\Leftarrow$) Assume $(X\in V)$.
+\[
+(X\in V)\IMPLIES(\exists W: X\in W).
+\]
+\[
+(\exists W: X\in W)\IMPLIES(X\set).
+\]
+\noindent($\Rightarrow$) Assume $(X\set)$.
+%\[
+%(X\set)\IMPLIES(\exists W: X\in W))
+%\]
+\[
+(X\set)\AND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
+\]
+\[
+(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V
+\]
+%\[(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
+\Done
+\begin{theorem}
+\[
+(A \subseteq B)\land (B\subseteq A) \implies (A=B)
+\]
+\end{theorem}
+\Proof
+Claim: $(\forall x:x\in A \iff x\in B)$.\\
+Fix x.\\
+$(\Rightarrow)$\\
+Assume $(x\in A)$. To show: $(x\in B)$\\
+\[
+(x\in A)
+\AND
+(A\subseteq B)
+\IMPLIES
+(x\in B)
+\comment{by thm \ref{thm:element of subset}}
+\]
+$(\Leftarrow)$\\
+Assume $(x\in B)$. To show: $(x\in A)$\\
+\[
+(x\in B)
+\AND
+(B\subseteq A)
+\IMPLIES
+(x\in A)
+\comment{by thm \ref{thm:element of subset}}
+\]
+Claim is proven.
+\[
+(\forall x:x\in A \iff x\in B)
+\IMPLIES
+(A=B)
+\quad\mbox{(by axm \ref{axm:extensionality})}
+\]
+\Done
+
+\begin{theorem}
+\label{thm:empty class is subclass}
+\[
+(\emptyset\subseteq A)
+\]
+\end{theorem}
+\Proof
+Claim:
+\[
+(\forall x\in \emptyset: x\in A)
+\]
+Assume $(x\in\emptyset)$.
+\[
+(x\in\emptyset)
+\IMPLIES
+\bot
+\]
+\[
+\bot
+\IMPLIES
+(x\in A)
+\]
+Claim is proven.
+\[
+(\forall x\in \emptyset: x\in A)
+\IMPLIES
+(\emptyset\subseteq A)
+\quad\mbox{(by def \ref{def:empty class})}
+\]
+\Done
+
+\begin{theorem}
+\[
+\neg\exists w: w\in A
+\implies
+(A=\emptyset)
+\]
+\end{theorem}
+\Proof
+Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
+$(\supseteq)$\\
+\[
+(A\supseteq\emptyset)
+\quad\mbox{(by thm \ref{thm:empty class is subclass})}
+\]
+$(\subseteq)$\\
+Claim: $(\forall x\in A:x\in\emptyset)$\\
+Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
+\[
+(x\in A)
+\IMPLIES
+(\exists x:x\in A)
+\]
+\[
+(\exists x:x\in A)
+\AND
+(\neg\exists x:x\in A)
+\IMPLIES
+\bot
+\]
+\[
+\bot
+\IMPLIES
+(x\in\emptyset)
+\]
+The claim is proven.
+\[
+(\forall x\in A:x\in\emptyset)
+\IMPLIES
+(A \subseteq \emptyset)
+\comment{by def of subclass \ref{def:subclass}}
+\]
+\[
+(A \subseteq \emptyset)
+\AND
+(A \supseteq \emptyset)
+\IMPLIES
+(A=\emptyset)
+\comment{by axm \ref{axm:extensionality}}
+\]
+%So by extensionality axiom we are done.\\
+%\[
+%\neg\exists w: w\in A
+%\IMPLIES
+%(A=\emptyset)
+%\]
+\Done
+\begin{theorem}
+\[
+\neg\exists w: w\in A
+\iff
+(A\isempty)
+\]
+\end{theorem}
+\begin{theorem}
+\[
+\exists w: w\in A
+\iff
+(A\nonempty)
+\]
+\end{theorem}
+
+
+\begin{theorem}
+Any element of a subclass is in the class.
+\label{thm:element of subclass}
+\[
+(x\in A)\land(A\subseteq B)\implies(x\in B)
+\]
+\end{theorem}
+\Proof
+\[
+(A\subseteq B)
+\IMPLIES
+(\forall x\in A:x\in B)
+\comment{by def of subclass \ref{def:subclass}}
+\]
+\[
+(x\in A)
+\AND
+(\forall x\in A:x\in B)
+\IMPLIES
+(x\in B)
+\comment{by restricted specification elimination}
+\]
+\Done
+
+
+\begin{theorem}
+\label{thm:in class then set}
+%\[A\set \land B\in A \rightarrow B\set\]
+\[
+(B\in A) \rightarrow (B\set)
+\]
+\Proof
+Assume $(B\in A)$. To show: $(B\set)$.
+\[
+(B\in A)
+\IMPLIES
+(\exists A: B\in A)
+\comment{by right-exists-intro}.
+\]
+\[
+(\exists A: B\in A)
+\IMPLIES
+(B\set)
+\comment{introduced by set's definition}.
+\]
+\Done
+
+\begin{theorem}
+\[
+(w\in A) \land (!a:a\in A) \implies \{w\}=A
+\]
+\end{theorem}
+\Proof
+\noindent($\subseteq$) Assume $(q\in \{w\})$.
+\[
+(q\in \{w\})\IMPLIES(q=w).
+\]
+\[
+(w\in A)\AND(q=w)\IMPLIES(q\in A).
+\]
+\noindent($\supseteq$) Assume $(a\in A)$.
+\[
+(!a:a\in A)\AND(a\in A)\AND(w\in A)\IMPLIES(a=w).
+\]
+\[
+(a=w)\IMPLIES(\{a\}=\{w\})
+\]
+\[
+(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
+\]
+\Done

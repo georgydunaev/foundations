@@ -1,0 +1,197 @@
+
+\section{Class theory: axioms and definitions}%Developing set-theoretic foundations}
+
+\begin{constructor} Membership predicate.\\
+If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
+\end{constructor}
+
+%\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
+%\begin{constructor}
+%If $\varphi$ is a formula without class-quantifiers, then
+%$\{x|\varphi\}$ is NBG-class.
+%\end{constructor}
+
+%\begin{constructor}
+%If $\varphi$ is a formula, then
+%$\{x|\varphi\}$ is MK-class.
+%\end{constructor}
+
+\begin{constructor} Subclass predicate.\\
+If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
+\end{constructor}
+\begin{definition}
+\label{def:subclass}
+Subclass predicate.
+\[
+(A\subseteq B)\iff(\forall x\in A:x\in B)
+\]
+\end{definition}
+
+
+
+If the variant of logic being used doesn't have equality, then add the following constructor and definition.
+\begin{constructor}Equality.\\
+If $A$ and $B$ are classes, then $(A=B)$ is a formula.
+\end{constructor}
+\begin{definition}
+Equality. (in case if the 1st order logic is given without equality)
+If Y is not a free variable neither in A nor in B, then:
+\[
+(A=B)\iff (\forall Y: A\in Y \iff B\in Y)
+\]
+\end{definition}
+\subsection{Axiom of extensionality}
+\begin{axiom}
+\label{axm:extensionality}
+Extensionality.
+\[
+(A=B)\iff ((A\subseteq B) \land (B\subseteq A))
+\]
+\end{axiom}
+\begin{axiom*}
+\label{axm:extensionality'}
+Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
+\[
+(A=B)\iff (\forall X: X\in A \iff X\in B)
+\]
+\end{axiom*}
+
+
+\begin{constructor} Set predicate.\\
+If $A$ is a class, then $(A\set)$ is a formula.
+\end{constructor}
+\begin{definition} Set predicate.
+If Y is not a free variable in X, then:
+\[
+(X\set)\iff(\exists Y:X\in Y)
+\]
+\end{definition}
+
+
+\begin{constructor}
+If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
+(It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
+\end{constructor}
+\subsection{Axiom of class comprehension}
+\begin{axiom}
+\label{axm:comprehension}
+Class comprehension.
+If Y is not a free variable of $\varphi$, then:
+\[
+(Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
+\]
+%\[Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])\]
+%(or maybe
+%\[Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)\]
+%we need to find one expression for both cases.
+%)
+\end{axiom}
+
+\subsection{Empty class}
+\begin{constructor} Empty class.\\
+The empty set symbol $\emptyset$ is a constant closed term.
+\end{constructor}
+\begin{definition}
+\label{def:empty class}
+Empty class.
+\[
+\emptyset = \{x|\bot\}
+\]
+\end{definition}
+
+\begin{definition} Empty set predicate.
+\label{def:empty}
+\[
+(A\isempty)\iff (A=\emptyset)
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:nonempty}
+\[
+(A\nonempty)\iff \neg(A\isempty)
+\]
+\end{definition}
+
+
+
+\subsection{Axiom of empty set}
+\begin{axiom}
+\label{axm:empty class}
+\[
+(\emptyset\set)
+\]
+\end{axiom}
+
+\subsection{Universal class}
+\begin{definition} Universal class (constant V).
+\label{def:universal class}
+\[
+V:=\{x|\top\}
+\]
+\end{definition}
+
+\subsection{Union}
+\begin{definition}
+\label{def:union}
+Union of an arbitrary class A.
+\[
+\union A = \{x|\exists a\in A: x\in a\}
+\]
+\end{definition}
+
+
+\subsection{Intersection}
+\begin{definition}
+\label{def:intersection}
+Intersection of an arbitrary class A.
+\[
+\intersection A = \{x|\forall a\in A: x\in a\}
+\]
+\end{definition}
+
+\subsection{Powerclass}
+\begin{definition}
+\label{def:powerclass}
+Powerclass. (by class comprehension)
+\[
+\power X = \{x|x\subseteq X\}
+\]
+\end{definition}
+\subsection{Axiom of heredity}
+\begin{axiom}
+\label{axm:heredity}
+Heredity.
+\[
+(A\set) \land (B\subseteq A) \rightarrow (B\set)
+\]
+\end{axiom}
+\subsection{Axiom of powerset}
+\begin{axiom}
+\label{axm:powerset}
+Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
+\[(A\set) \rightarrow (\power A\set)\]
+\end{axiom}
+
+%\begin{axiom} $\in$-induction. (variant that uses formulas)
+%\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
+%\end{axiom}
+\subsection{Axiom of regularity / Epsilon-induction}
+\begin{axiom} 
+\label{axn:epsilon induction}
+$\in$-induction. %(variant that uses classes)
+%\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
+\[
+(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)
+\]
+\end{axiom}
+
+
+\subsection{Axiom of limitation of size}
+\begin{axiom}
+\label{axm:limitation of size}
+Limitation of size (of a set).
+\[
+\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))
+\]
+\end{axiom}

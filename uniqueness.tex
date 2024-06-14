@@ -1,0 +1,67 @@
+\subsection{Uniqueness quantifier}
+\begin{definition}
+\label{def:uniqueness quantifier}
+Uniqueness quantifier for classes:\\
+If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
+\[
+(!Y:\varphi)\iff (\forall Y_1\forall Y_2:\varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
+\]
+%%(We will not use much this definition.)
+\end{definition}
+\begin{note}
+
+Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
+I have a notion of non-classical models, in which this is not a problem, but then logical rules become much more advanced, and all well-studied field of the first-order logic need to be re-done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
+\end{note}
+\begin{definition}
+\label{def:restricted uniqueness quantifier}
+Restricted uniqueness quantifier for sets only
+\begin{align*}
+(!(y\set):\varphi)
+&\iff 
+(!y:(y\set)\land\varphi)
+\\
+&\iff 
+(\forall (y_1\set)\forall (y_2\set):\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+\end{align*}
+
+%(\forall y_1\forall y_2:\varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+\end{definition}
+
+\subsection{Singleton}
+\begin{definition} Singleton (functional symbol).
+(side note: because of big amount of side conditions, we state that all different variables are different. 
+It should not be possible to use it in such way: "{x}={x|x=x}".
+How to determine whether during substitution it can be fixed?
+I want it to happen automatically, but i don't want the proof to depend on implementation.
+What causes proofs(as list of actions) to be inapplicable in different cases.
+
+Everything is solved by the simple maxima: we don't need developed metatheory, because all those theorems can be proven for a model, and then added to the program if they are useful.
+
+How to implement definitions? see comments in source code here
+
+%Проблема со схемами -- их надо вручную добавлять, код менять.
+
+%Но! Можно задать новый язык формул, с подстановками, требованиями к различности переменных. -- это непонятно: как.
+
+%Боковые условия -- они как дополнительный навесок на теорему.
+
+%(можно, ещё, генерировать, а можно просто рэйзить эксепшены, если что-то не выполняется. Тогда получается язык для определений СХЕМ.
+
+%как логгировать пруф? сохранять состояние последнего успешного шага.
+)
+
+)
+
+
+
+\[
+\{w\} = \{x|x=w\}
+\]
+\end{definition}
+
+\begin{definition} Singleton (predicate symbol).
+\[
+(A\singleton) \iff (\exists!a:a\in A)
+\]
+\end{definition}

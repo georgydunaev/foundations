@@ -1,0 +1,59 @@
+
+%TODO:\\
+%The first formula is the ... .\\
+%The first term in formula is the leftmost term in the first primitive formula.\\
+%Here $R_x$ means that variable x is the first free variable in the proposition $R$.\\
+
+%\begin{constructor} Restricted quantifier.\\
+%If $R_x$ is a proposition with free variable x,\\
+%\quad $Q$ is a proposition,\\
+%\quad $\#$ is one of quantifiers ($\forall$, $\exists$ or $!$)\\
+%then $\# R:Q$ is a formula.
+%\end{constructor}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted forall.\\
+%\label{def:restricted forall}
+%Meta-context 0: assume that the first term of a proposition $R$ is $t$, %and it has no free variables.
+%\[
+%(\forall R:Q)
+%\iff
+%(R \implies Q)
+%\]
+%Meta-context 1: assume that the first term of a proposition $R$ is $t$, and the first free variable of $t$ is $x$.
+%\[
+%(\forall R:Q)
+%\iff
+%(\forall x: R \implies Q)
+%\]
+%\end{definition}
+
+
+%\begin{definition} Restricted exists.\\
+%\label{def:exists restricted }
+%Meta-context: assume that the first term of a proposition R is a free variable x.
+%\[
+%(\exists R:Q)
+%\iff
+%(\exists x: R \land Q)
+%\]
+%\end{definition}
+
+%\begin{definition} Restricted unique.\\
+%\label{def:unique restricted }
+%Meta-context: assume that the first term of a proposition R is a free %variable x.
+%\[
+%(! R:Q)
+%\iff
+%(! x: R \land Q)
+%\]
+%\end{definition}

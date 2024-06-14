@@ -1,0 +1,105 @@
+
+Details:
+\begin{prooftree}
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (x\in A)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in A)
+$}
+\RightLabel{by }
+
+\AxiomC{$
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(A\subseteq B) \vdash (A\subseteq B)
+$}
+\RightLabel{by}
+\UnaryInfC{$
+(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by weakening}
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (\forall x\in A:x\in B)
+$}
+\RightLabel{by }
+\BinaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A),(A\subseteq B) \vdash (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+(x\in A) \vdash (A\subseteq B) \to (x\in B)
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash (x\in A) \land (A\subseteq B) \to (x\in B)
+$}
+\end{prooftree}
+
+Other idea:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+P_3,P_2,P_1 \vdash R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3,P_2 \vdash P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+P_3 \vdash P_2 \land P_1 \to R
+$}
+\RightLabel{by }
+\UnaryInfC{$
+\vdash P_3 \land P_2 \land P_1 \to R
+$}
+\end{prooftree}
+
+
+
+
+%\begin{prooftree}
+%\AxiomC{A}
+%\UnaryInfC{B}
+%\AxiomC{C}
+%\BinaryInfC{D}
+%\AxiomC{E}
+%\AxiomC{F}
+%\BinaryInfC{G}
+%\UnaryInfC{H}
+%\BinaryInfC{J}
+%\end{prooftree}
+
+Details:
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{Assume/Ident}
+\UnaryInfC{$
+(B\in A) \vdash (B\in A)
+$}
+\RightLabel{by $\exists$-intro}
+\UnaryInfC{$
+(B\in A) \vdash (\exists A: B\in A)
+$}
+\RightLabel{by def-intro/set-intro}
+\UnaryInfC{$
+(B\in A) \vdash (B\set)
+$}
+\RightLabel{deduction/ImplR/implies-intro}
+\UnaryInfC{$
+\vdash (B\in A)\to (B\set)
+$}
+\end{prooftree}
+\end{theorem}

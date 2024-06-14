@@ -1,0 +1,368 @@
+\section{Logical framework}
+
+%\begin{definition}(conglomerate of all classes)
+%\
+%\end{definition}
+
+\subsection{Basic definitions of the syntax}
+In this section we deal with strings of letters.
+NOTE: The definitions in this section are simultaneous: some earlier definitions depend on later. It is possible to rewrite equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implemented, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
+
+%Coding function
+%\[\]
+
+%The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
+
+\begin{definition}(Variables)\\
+The countable set \\
+$\Var$
+\end{definition}
+
+\begin{definition}(Functional symbols)\\
+The countable set \\
+$\FuncSymb$
+\end{definition}
+
+\begin{definition}(Predicate symbols)\\
+The countable set \\
+$\PredSymb$
+\end{definition}
+
+\begin{definition}(Term)\\
+Inductive definition of term:\\
+1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
+2) 
+$"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
+3) Some higher-order features:\\
+$"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
+...
+
+\end{definition}
+
+\begin{definition}(Formula)\\
+Inductive definition of formula:\\
+1)$\bot\in\Fm$.\\
+2)$P\in\PredSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES P(t_1,\dots,t_n)\in\Fm$.\\
+3)$A\in\Fm \IMPLIES (\neg A)\in\Fm$.\\
+4)$A\in\Fm \AND B\in\Fm \IMPLIES (A\implies B)\in\Fm$.\\
+5)$A\in\Fm \AND B\in\Fm \IMPLIES (A\land B)\in\Fm$.\\
+6)$A\in\Fm \AND B\in\Fm \IMPLIES (A\lor B)\in\Fm$.\\
+7)$x\in\Var \AND A\in\Fm \IMPLIES (\forall x:A)\in\Fm$.\\
+8)$x\in\Var \AND A\in\Fm \IMPLIES (\exists x:A)\in\Fm$.\\
+\end{definition}
+
+\begin{definition}(Context)\\
+Context = \{d\}
+\end{definition}
+
+\begin{definition}(Statement)\\
+\end{definition}
+
+\begin{definition}(Proof)\\
+Let F be a statement. (i.e. a pair: context and formula)\\
+Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
+
+\end{definition}
+
+
+
+\subsection{Basic definitions}
+...
+\begin{definition} Simultaneous substitution.
+\[
+\varphi[Z_1/W_1,...,Z_n/W_n]
+\]
+\end{definition}
+\noindent
+
+\subsection{Full semantics}
+
+
+The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
+Let $\power \mathcal{U}$ be the domain of discourse of the presented model for the theory.\\
+It means that we have a super-large model.\\
+Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
+Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
+
+%Let $I_\Term$ is an interpretation function on Terms.
+
+Let $f$ be an evaluation of variables:\\
+\[
+f:\Var\to \power \mathcal{U}
+\]
+But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
+Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
+
+Terms are interpreted as subconglomerates of the conglomerate of all classes.
+\[
+I_\Term(f) : \Term \to \power \mathcal{U}
+\]
+
+
+Notation:\\
+F:=False\\
+U:=Undefined\\
+T:=True\\
+\[
+I_\Fm(f) : \Fm \to \{F,U,T\}
+\]
+
+\begin{definition}(valid formula)
+The formula $\varphi$ is called valid if it is true under any evaluation.
+\end{definition}
+
+\[
+I_\Fm(f)((t\lexists)) := (\lif\ (I_\Term(f)(t)\nonempty)\ \lthen\ F\ \lelse\ T)
+\]
+\[
+I_\Fm(f)((t\lunique)) := (\lif\ (I_\Term(f)(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
+\]
+
+\subsection{Axioms for the corresponding prediacate calculus}
+\subsection{Propositional part}
+%For all formulas $A$, $B$, $C$.
+For all atomic formulas $A$, $B$, $C$.
+\[
+(A \implies (B \implies A))
+\]
+\[
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B)))
+\]
+\[
+((A\land B) \implies A)
+\]
+\[
+((A\land B) \implies B)
+\]
+\[
+(A \implies (B\implies (A\land B)))
+\]
+\[
+(A \implies (A\lor B))
+\]
+\[
+(B \implies (A\lor B))
+\]
+\[
+((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
+\]
+\[
+(\neg A \implies (A\implies B))
+\]
+\[
+((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
+\]
+\subsection{Predicational part}
+Specification rules:
+\[
+(t\ldefined)\implies ((\forall x: \phi) \implies \phi[t/x])
+\]
+\[
+(t\ldefined) \implies (\phi[t/x] \implies (\exists x: \phi))
+\]
+Bernays' rules: if $x$ is not free in formula $\psi$ then
+\[
+\frac{
+\psi \implies \varphi
+}{
+\psi \implies (\forall x:\varphi)
+}\mbox{(B1)}
+\]
+\[
+\frac{
+\varphi \implies \psi
+}{
+(\exists x:\varphi)\implies \psi
+}\mbox{(B2)}
+\]
+
+
+
+\section{Useful metatheorems}
+
+\begin{theorem}(Deduction theorem)
+\[
+(A \vdash B)
+\IMPLIES
+(\vdash A\to B)
+\]
+\end{theorem}
+\Proof
+This theorem is provable constructively.
+This is done through the formalisation of a proof notion.
+Proof is ...
+\Done
+
+\begin{theorem}
+\[
+A=B\ \Longrightarrow\ (t[A/W]=t[B/W])
+\]
+\end{theorem}
+\Proof
+Assume $A=B$.
+By induction on term construction.\\
+Case 1(Base): $t=v\in \Var$\\
+If also the variable $v$ is $W$ then $t[A/W]=A$ and $t[B/W]=B$.\\
+Since $A=B$, $t[A/W]=t[B/W]$, so we are done.
+Otherwise, i.e. if the variable $v$ is not $W$, then $t[A/W]=v=t$ and $t[B/W]=v=t$.\\
+Therefore $t[A/W]=t[B/W]$, so we are done.\\
+Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Term$, where $f$ is a functional symbol of arity n.\\
+Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition of substitution.
+\[
+t[A/W]=f(t_1,...,t_n)[A/W]=
+\]
+\[
+=f(t_1[A/W],...,t_n[A/W])=
+\]
+\[
+=f(t_1[B/W],...,t_n[B/W])=
+\]
+\[
+=f(t_1,...,t_n)[B/W]=t[B/W]
+\]
+Therefore $t[A/W]=t[B/W]$, so we are done.\\
+\Done
+
+\begin{theorem}
+\[
+A=B
+\implies
+(\varphi[A/W]\ \Longleftrightarrow\ \varphi[B/W])
+\]
+\end{theorem}
+\Proof
+By induction on formula construction.\\
+...\\
+\Done
+
+\subsection{Extension by definitions}
+...
+
+\subsection{Soundness of the calculus}
+...
+
+
+\pagebreak
+\section{First-order logic[skip this section; go to sect.3]}
+...
+\begin{theorem}
+\label{thm:ILMorgan}
+In intuitionistic logic:\\
+$\neg (A\lor B) \implies (\neg A\land\neg B)$
+\end{theorem}
+\Proof
+Using deduction theorem it is enought to show (backward reasoning):\\
+$\neg (A\lor B) \vdash (\neg A\land\neg B)$ (by OR-elim).\\
+Subgoal 1: $\neg (A\lor B) \vdash \neg A$ (by deduction)\\
+$\neg (A\lor B), A \vdash \bot$ (by MP $(A\lor B)\implies\bot$)\\
+$\neg (A\lor B), A \vdash (A\lor B)$ (by OR-intro)\\
+$\neg (A\lor B), A \vdash A$ (by assumption).\\
+Subgoal 2: $\neg (A\lor B) \vdash \neg B$ (by deduction).\\
+$\neg (A\lor B), B \vdash \bot$ (by MP $(A\lor B)\implies\bot$).\\
+$\neg (A\lor B), B \vdash (A\lor B)$(OR-intro).\\
+$\neg (A\lor B), B \vdash B$ (by assumption).\\
+\Done
+
+\begin{theorem} In intuitionistic logic:\\
+\label{double neg LEM}
+$\neg\neg (P\lor\neg P)$
+\end{theorem}
+\Proof
+Using deduction theorem it is enought to show (backward reasoning):\\
+$\neg (P\lor\neg P) \vdash \bot$ (cut rule with \ref{thm:ILMorgan})\\
+$\neg P\land\neg\neg P \vdash \bot$ (by Left\_AND\_Intro)\\
+$\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
+$\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
+\Done
+
+\begin{theorem}
+\[
+(\exists x \forall y:\varphi) \longrightarrow (\forall y \exists x :\varphi)
+\]
+\end{theorem}
+\Proof
+%Assume
+%\[
+%(\exists x \forall y:\varphi)
+%\].
+Assume $(\exists x \forall y:\varphi)$. To show: $(\forall y \exists x :\varphi)$. (deduction theorem is in use)
+\[
+(\exists x \forall y:\varphi)
+\IMPLIES
+(\forall y:\varphi)
+\comment{$\exists$E, (x/x)}
+\]
+Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
+\[
+(\forall y:\varphi)
+\IMPLIES
+\varphi
+\comment{$\forall$E, (y:=y)}
+\]
+\[
+\varphi
+\IMPLIES
+(\exists x :\varphi)
+\comment{$\exists$I, (x:=x)}
+\]
+\Done
+
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iffalse
+\[
+\left(
+\varphi_1\iff \varphi_2
+\right)
+\IMPLIES
+\left(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\right)
+\quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
+\]
+(so the assignment is not only for Term variables, but also for Formula variables.\\
+Substitution is also simultaneous.\\
+All Term variables are free in a Formula varriable.\\
+During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
+But here it is an example with free variable: $y$.
+\[
+\varphi_1 = \alpha
+\]
+
+\[\varphi_2 = \alpha \land \beta\]
+Idea: we may use 
+\[
+(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
+\]
+comment: i don't use G\"odel notation in my system.
+But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
+)\\
+Other problem:\\
+\[(\forall x:\varphi)\implies \varphi[t/x]\]
+\[t:=x\]
+\[(\forall x:\varphi)\implies \varphi[x/x]\]
+\[(\forall x:\varphi)\implies \varphi\]
+Assume we proved $(\forall x:\varphi)$.
+I don't actually have problem here, but I feel it is mildly dangerous to introduce
+formula variables, because need to implement substitution and be sure that
+it will not break the consistency.\\
+What can break consistency?\\
+If we use facts specific for theorem?... probably not.
+Maybe it will be helpful to use prefix: $(\psi \implies (\varphi_1 \iff \varphi_2)) \implies (\psi \implies ...) $(but it is disgusting).\\
+I don't like the following statement:
+\[
+\left(
+\varphi_1\iff \varphi_2
+\right)
+\IMPLIES
+\left(
+P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
+\right),
+\]
+because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
+Maybe it is not a problem.\\
+Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% /commented

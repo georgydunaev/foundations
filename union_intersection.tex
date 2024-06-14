@@ -1,0 +1,238 @@
+\begin{theorem}
+\[
+(B\in A) \rightarrow \left(B \subseteq \union A\right)
+\]
+\end{theorem}
+\Proof
+Assume $(b\in B)$.\\
+To show: $(b\in \union A)$.\\
+\[
+(b\in B)
+\IMPLIES
+(b\set)
+\quad\mbox{(by thm \ref{thm:in class then set})}
+\]
+\[
+(B\in A)
+\AND
+(b\in B)
+\IMPLIES
+(\exists a\in A : b\in a)
+\]
+\[
+(b\set)
+\AND
+(\exists a\in A : b\in a)
+\IMPLIES
+\left(b\in \union A\right)
+\]
+\Done
+\begin{theorem}
+\[
+(B\in A) \rightarrow \left(\intersection A\subseteq B\right)
+\]
+\end{theorem}
+\Proof
+Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
+\[
+(x\in \intersection A)
+\IMPLIES
+(x\set)
+\AND
+(\forall a\in A : x\in a)
+\]
+%(b\set)
+%\quad\mbox{(by \ref{thm:in class then set})}
+%\[a:=B\]
+\[
+(\forall a\in A : x\in a)
+\AND
+(B\in A)
+\IMPLIES
+(x\in B)
+\]
+\Done
+
+\begin{theorem}
+\[\left(\intersection\{w\}=w\right)\]
+\end{theorem}
+\Proof
+$(\subseteq)$\\
+$(x\in\intersection \{w\})\IMPLIES(\forall m\in\{w\}:x\in m)$.\\
+$(\forall m\in\{w\}:x\in m)\AND(w\in \{w\})\IMPLIES(x\in w).$\\
+$(\supseteq)$\\
+Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
+$(x\in w)\IMPLIES(x\set)$.\\
+Claim: $(\forall m\in\{w\}:x\in m).$\\
+Fix m. Assume $m\in\{w\}$.\\
+$(m\in\{w\})\IMPLIES(m=w)$.\\
+$(x\in w)\AND(m=w)\IMPLIES(x\in m)$\\
+The claim is proven.\\
+$(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
+\Done
+
+\begin{theorem}{Intersection of a singleton is in it.}
+\label{thm:intersection of singleton}%
+\[
+(A \singleton) \rightarrow \left(\left(\intersection A\right)\in A\right)
+\]
+\end{theorem}
+\Proof
+\[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
+\[(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
+\[(\{w\}=A)\IMPLIES\left(\intersection\{w\}=\intersection A\right).\]
+\[\left(\intersection\{w\}=w\right)\AND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
+\[\left(\intersection A=w\right)\AND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
+\Done
+
+
+\subsection{Theorems about union and intersection}
+\begin{theorem}
+\label{thm:intersection of nonempty is subset of union}
+\[
+(A \nonempty) \rightarrow \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
+\]
+\end{theorem}
+\Proof
+\[
+(A \nonempty)
+\IMPLIES
+(\exists B:B\in A)
+\]
+\[
+(B\in A)
+\IMPLIES
+\left(\intersection A\right)\subseteq B
+\]
+\[
+(B\in A)
+\IMPLIES
+\left(B \subseteq \union A\right)
+\]
+\[
+\left(\intersection A\right)\subseteq B
+\AND
+\left(B \subseteq \union A\right)
+\IMPLIES
+\left(\intersection A \subseteq \union A\right)
+\]
+\Done
+
+\begin{theorem}
+\[
+(A\set) \land (B\subseteq A) \rightarrow (B\in\power A)
+\]
+\end{theorem}
+\Proof
+\[
+(A\set) \AND (B\subseteq A) \IMPLIES (B\set)
+\comment{by axm \ref{axm:heredity}}
+\]
+\[
+(B\set) \AND (B\subseteq A) \IMPLIES (B\in\power A)
+\comment{by def \ref{def:powerclass}}
+\]
+\Done
+
+
+\begin{theorem}
+\label{thm:UACA=ACPA}
+\[
+(A\subseteq \power A) \iff \left(\union A\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+\noindent($\Leftarrow$)\\
+Assume $(\union A\subseteq A)$. To show:$(A\subseteq \power A)$.\\
+Assume $(x\in A)$. To show: $(x\in \power A)$.\\
+%To show: $(x\set)\land(x\subseteq A)$.\\
+%Goal1:$(x\set)$\\
+%oal2:$(x\subseteq A)$\\
+Claim:$(x\subseteq A)$.\\
+Assume $(y\in x)$. To show: $(y\in A)$.\\
+\[
+(y\in x)
+\AND
+(x\in A)
+\IMPLIES
+\left(y\in\union A\right)
+\]
+\[
+\left(y\in\union A\right)
+\AND
+\left(\union A\subseteq A\right)
+\IMPLIES
+(y\in A)
+\]
+The claim is proven.
+\[
+(x\in A)
+\IMPLIES
+(x\set)
+\comment{by thm \ref{thm:in class then set}}
+\]
+\[
+(x\set)
+\AND
+(x\subseteq A)
+\IMPLIES
+(x\in\power A)
+\]
+\noindent($\Rightarrow$)\\
+Assume $(A\subseteq \power A)$. To show:$(\union A\subseteq A)$.\\
+Assume $(x\in\union A)$. To show:$(x\in A)$.
+\[
+(A \transitive)
+\IMPLIES
+(A\subseteq \power A)
+\]
+\[
+\left(x\in\union A\right)
+\IMPLIES
+(\exists y\in A: x\in y)
+\]
+\[
+(y\in A)
+\AND
+(A\subseteq \power A)
+\IMPLIES
+(y\in \power A)
+\]
+\[
+(y\in \power A)
+\IMPLIES
+(y\subseteq A)
+\]
+\[
+(x\in y)
+\AND
+(y\subseteq A)
+\IMPLIES
+(x\in A)
+\]
+\Done
+\begin{theorem}
+\label{thm:transitive through union}
+\[
+\left(A \transitive\right)\iff \left(\union A\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+by \ref{thm:UACA=ACPA}\\
+\Done
+
+\begin{theorem}{}
+%\label{intersection of singleton}%
+\[
+(A\nonempty)
+\land
+(A\transitive) 
+\implies
+ \left(\left(\intersection A\right)\subseteq A\right)
+\]
+\end{theorem}
+\Proof
+By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.\\
+\Done
+
+%\[(\left(\intersection A\right)\set)\implies \]
