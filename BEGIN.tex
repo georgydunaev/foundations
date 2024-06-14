@@ -1,0 +1,13 @@
+\ifdefined\MyHeaderIncluded
+\else
+\def\qwertyflag{true}
+\input{my_preamble.tex}
+\ifdefined\topic
+\else
+\def\topic{No Titel}
+\fi
+\title{\topic}
+\author[1]{Georgy Dunaev}
+\begin{document}
+\maketitle
+\fi

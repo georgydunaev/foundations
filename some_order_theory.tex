@@ -1,12 +1,14 @@
-\ifdefined\MyHeaderIncluded
-\else
-\def\ordertheoryflag{true}
-\input{my_preamble.tex}
-\title{Supremum \& Infimum}
-\author[1]{Georgy Dunaev}
-\begin{document}
-\maketitle
-\fi
+%\ifdefined\MyHeaderIncluded
+%\else
+%\def\ordertheoryflag{true}
+%\input{my_preamble.tex}
+%\title{Supremum \& Infimum}
+%\author[1]{Georgy Dunaev}
+%\begin{document}
+%\maketitle
+%\fi
+\def\topic{Supremum \& Infimum}
+\input{BEGIN.tex}
 
 %Some order theory.
 \section{Definitions}
@@ -164,7 +166,9 @@ A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
 
 
 
-\ifdefined\ordertheoryflag
-\undef\ordertheoryflag
-\end{document}
-\fi
+%\ifdefined\ordertheoryflag
+%\undef\ordertheoryflag
+%\end{document}
+%\fi
+
+\input{END.tex}

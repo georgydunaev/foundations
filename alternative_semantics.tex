@@ -1,12 +1,15 @@
-\ifdefined\MyHeaderIncluded
-\else
-\def\alternativesemanticsflag{true}
-\input{my_preamble.tex}
-\title{Supremum \& Infimum}
-\author[1]{Georgy Dunaev}
-\begin{document}
-\maketitle
-\fi
+%\ifdefined\MyHeaderIncluded
+%\else
+%\def\alternativesemanticsflag{true}
+%\input{my_preamble.tex}
+%\title{Supremum \& Infimum}
+%\author[1]{Georgy Dunaev}
+%\begin{document}
+%\maketitle
+%\fi
+\def\topic{Alternative semantics}
+\input{BEGIN.tex}
+
 
 \section{Singleton-Semantics}
 \subsection{•}
@@ -84,7 +87,9 @@ Definiton of truth:
 
 %I_A(\varphi)=\mbox{True}
 
-\ifdefined\alternativesemanticsflag
-\undef\alternativesemanticsflag
-\end{document}
-\fi
+%\ifdefined\alternativesemanticsflag
+%\undef\alternativesemanticsflag
+%\end{document}
+%\fi
+
+\input{END.tex}

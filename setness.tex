@@ -1,3 +1,5 @@
+\def\topic{}
+\input{BEGIN.tex}
 
 \iftrue
 %The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
@@ -249,6 +251,7 @@ Any element of a subclass is in the class.
 \[
 (B\in A) \rightarrow (B\set)
 \]
+\end{theorem}
 \Proof
 Assume $(B\in A)$. To show: $(B\set)$.
 \[
@@ -289,3 +292,5 @@ Assume $(B\in A)$. To show: $(B\set)$.
 (a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
 \]
 \Done
+
+\input{END.tex}

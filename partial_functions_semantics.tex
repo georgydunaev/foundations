@@ -1,12 +1,15 @@
-\ifdefined\MyHeaderIncluded
-\else
-\def\partialfunctionssemanticsflag{true}
-\input{my_preamble.tex}
-\title{Partial Functions Semantics}
-\author[1]{Georgy Dunaev}
-\begin{document}
-\maketitle
-\fi
+\def\topic{}
+\input{BEGIN.tex}
+
+%\ifdefined\MyHeaderIncluded
+%\else
+%\def\partialfunctionssemanticsflag{true}
+%\input{my_preamble.tex}
+%\title{Partial Functions Semantics}
+%\author[1]{Georgy Dunaev}
+%\begin{document}
+%\maketitle
+%\fi
 
 
 \section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
@@ -167,7 +170,9 @@ $}
 
 
 
-\ifdefined\partialfunctionssemanticsflag
-\undef\partialfunctionssemanticsflag
-\end{document}
-\fi
+%\ifdefined\partialfunctionssemanticsflag
+%\undef\partialfunctionssemanticsflag
+%\end{document}
+%\fi
+
+\input{END.tex}
