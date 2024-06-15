@@ -1,25 +1,180 @@
-\def\topic{}
+
+
+\def\topic{Evaluation}
 \input{BEGIN.tex}
 
-\subsection{Value of a function. (BEST)}
+\section{Value} % of a function.
 Definition of the value of the function: (in the context of 3-valued logic)
 
-$\simeq$ is the quasi-equality
-
+\begin{definition}(quasi-equality)
 \[
-(s\simeq t) \IFF (((s \ldefined)\lor(t \ldefined)) \implies (s=t))
+(s\simeq t) :\IFF (((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \]
+\end{definition}
 
+\begin{definition}(undefined class)
+\[
+\lundef :\simeq (\varepsilon x: \bot)
+\]
+\end{definition}
+
+\begin{definition}(if-then-else)todo
+\[
+(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) :\simeq (\{z|((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)\})
+\]
+Side conditions:\\
+($z$ is not free in $t_1$),\\
+($z$ is not free in $t_2$),\\
+($z$ is not free in $\varphi$).\\
+\end{definition}
+What if $\varphi$ is assigned with $U$ (i.e. it is assigned with the "uncertain" truth value)?\\
+If $(I(\varphi)=U)$, then 
+\[
+(I((\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2))=I(\lundef))
+\]
+should follow.\\
+Btw, $I(\lundef)=\emptyset$.\\
+
+Note 1:\\
+Some things are undefined because of "plural" interpretation, some because of "nullar" interpretation. Only those which have "singular" interpretation are defined.\\
+Note 2:\\
+Technically almost everywhere where we use "defined" we mean well-defined, but write just "defined" for shortness.\\
+Note 3:\\
+If we explicitly assume the global choice, then epsilon operator may be assumed to be defined.\\
+If we didn't, epsilon operator is can still be defined, but not well-defined.\\
+
+Now, let's talk about how to understand Hilbert's definition of quantifiers via predicate and epsilon operater: (note the two different epsilon operators!)
+\[
+((\varepsilon x:\varphi) \lunique) \IFF (! x:\varphi)
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\]
+%:\IFF \varphi[(\epsilon x:\varphi)/x]
+%\]
+\[
+((\varepsilon x:\varphi) \lexists) \IFF (\exists x:\varphi):\IFF \varphi[(\epsilon x:\varphi)/x]
+\]
+\[
+(\neg((\varepsilon x:\neg\varphi) \lexists)) \IFF (\forall x:\varphi):\IFF \varphi[(\epsilon x:\neg\varphi)/x]
+\]
+If $(\varepsilon x:\varphi)$ is not well-defined, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
+Therefore for such definition we need a well-defined(total) variant. (extended with some default value)
+\\
+Btw,
+\[
+((\varepsilon x:\varphi) \lforall) :\IFF (\neg((\varepsilon x:\neg\varphi) \lexists)).
+\]
+For all connectives, if there is a U value, then the otcome will also be U.\\
+Including equivalences!\\
+Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well-defined.\\
+We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not defined on the empty predicates.\\
+Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
+1) $\tau$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
+3) total $\epsilon$-operator, which returns empty set in case of empty predicate;\\
+4) partial $\varepsilon$-operator, which is undefined on empty predicates.\\
+Note 1: operators work only on definable classes.\\
+Note 2: I think predicate is a little bit more general that the bounded formula since bounded formulas are corresponding to definable classes.\\
+ 
+For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$-operator.
+ 
+%$\bdbvbH$
+%\symbol{216}
+
+%$\symbol{208}$
+%qqqq
+\newcommand{\uncert}{\mbox{\symbol{208}}}
+%$\uncert$
+%ggggg
+To denote the constructor of an uncertain formula, we will use the symbol $\uncert$, because it is symmetrical (neither $\bot$, nor $\top$ are  symmetrical ). And it looks like crossed D, and "defined" starts with D, and it is connected with not being defined: normally(but not always!), if $f$ is a functional symbol, $f(...,\lundef,...)$.\\
+\[
+I_\Term(\uncert) \coloneqq U
+\]
+Assume we have not always well-defined epsilon operator.\\
+Assume $a$, $b$ are well-defined sets.\\
+Then
+$
+(\varepsilon x: x \in \{a,b\}) 
+$
+ is undefined, but not (semantically) equal to $\lundef$.\\
+It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
+But they are quasi-equal (syntactically), since they are both not well-defined.\\
+ 
+ 
+
+\iffalse
+\symbol{200}
+\symbol{201}
+\symbol{202}
+\symbol{203}
+\symbol{204}
+\symbol{205}
+\symbol{206}
+\symbol{207}
+\symbol{208}
+\symbol{209}
+\symbol{210}
+\symbol{211}
+\symbol{212}
+\symbol{213}
+\symbol{214}
+\symbol{215}
+\symbol{216}
+\symbol{217}
+\symbol{218}
+\symbol{219}\\
+\symbol{220}
+\symbol{221}
+\symbol{222}
+\symbol{223}
+\symbol{224}
+\symbol{225}
+\symbol{226}
+\symbol{227}
+\symbol{228}
+\symbol{229}
+\symbol{230}
+\symbol{231}
+\symbol{232}
+\symbol{233}
+\symbol{234}
+\symbol{235}
+\symbol{236}
+\symbol{237}
+\symbol{238}
+\symbol{239}\\
+\symbol{240}
+\symbol{241}
+\symbol{242}
+\symbol{243}
+\symbol{244}
+\symbol{245}
+\symbol{246}
+\symbol{247}
+\symbol{248}
+\symbol{249}
+\symbol{250}
+\symbol{251}
+\symbol{252}
+\symbol{253}
+\symbol{254}
+\symbol{255}
+\fi
+
+%\symbol{253A}
+%not everything that is undefined is quasi.
+
+
+\begin{definition}(value)
 \[
 F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
-
+\end{definition}
 
 
 \section{Some simple theorems about classes}
 \begin{definition}(some syntactic sugar)
 \[
-(x\ \mbox{any}) \iff \top
+(x\ \mbox{any}) :\iff \top
 \]
 Context: (x:Var)
 %Side condition:\\
@@ -28,41 +183,49 @@ Context: (x:Var)
 
 \begin{definition}(Semi-singleton)
 \[
-(s\ \mbox{ss}) \iff (!y:y\in s)
+(s\ \mbox{ss}) :\iff (!y:y\in s)
 \]
 Side condition:\\
 Variable $y$ is not in free variables of term $s$.
 \end{definition}
 
+\begin{definition}(Semi-singleton subset relation)
+\[
+(s\ \mbox{sss}\ t) :\iff ((s\ \mbox{ss})\land(s\subseteq t))
+\]
+\end{definition}
+
 \begin{definition}(Function constructor)
 \[
-(\lambda x: t) = \{(x,t)|(x\ \mbox{any})\}
+(\lambda x: t) := \{(x,t)|(x\ \mbox{any})\}
 \]
 Context: ($x$:Var) ($t$:Term)\\
 Comment: Term $t$ can contain $x$ as a free variable.\\
-Side condition: 
-(variable $x$ is bound by class collection in r.h.s)
-(variable $x$ is bound by lambda abstraction in l.h.s)
+Side conditions:\\ 
+(variable $x$ is bound by class collection in r.h.s)\\
+(variable $x$ is bound by lambda abstraction in l.h.s)\\
 %No side conditions.
 \end{definition}
 
 \begin{definition}(Family constructor)
 \[
-(\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
+(\Lambda x: t) := \{(x,s)|(s\ \mbox{sss}\ t), x\ \mbox{any}\}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
 Side conditions:\\
 Variables x and s are different.\\ %it should be a normal convention for any definition.
-Variable $s$ is not in free variables of $t$.
+Variable $s$ is not in free variables of $t$.\\
+As term $s$ can contain $x$ as a free variable.\\
 \end{definition}
 
-\begin{definition}(Value of a function, value of a family)
+\begin{definition*}(LOCAL definition of a value of a function, value of a family, for the next theorem)
 \[
-f(x):=\bigcup \{s|(x,s)\in f\}
+f(x) := \bigcup \{s|(x,s)\in f\}
 \]
-\end{definition}
-
+\end{definition*}
+% \coloneqq
+% \vcentcolon = 
 
 \begin{theorem}(Evaluation of a function)
 Context:\\
