@@ -56,7 +56,7 @@ Now, let's talk about how to understand Hilbert's definition of quantifiers via 
 \[
 (\neg((\varepsilon x:\neg\varphi) \lexists)) \IFF (\forall x:\varphi):\IFF \varphi[(\epsilon x:\neg\varphi)/x]
 \]
-If $(\varepsilon x:\varphi)$ is not well-defined, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
+If $(\varepsilon x:\varphi)$ is not well-defined for particular $\varpi$, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
 Therefore for such definition we need a well-defined(total) variant. (extended with some default value)
 \\
 Btw,
@@ -70,10 +70,10 @@ We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not de
 Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
 1) $\tau$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
 2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
-3) total $\epsilon$-operator, which returns empty set in case of empty predicate;\\
-4) partial $\varepsilon$-operator, which is undefined on empty predicates.\\
-Note 1: operators work only on definable classes.\\
-Note 2: I think predicate is a little bit more general that the bounded formula since bounded formulas are corresponding to definable classes.\\
+3) total $\epsilon$-operator, which returns empty set in case of everywhere false predicates is given as an argument;\\
+4) partial $\varepsilon$-operator, which is undefined on everywhere false predicates.\\
+Note 1: operators work only on definable conglomerates.\\
+Note 2: I think predicate is a little bit more general than the bounded formula since bounded formulas are corresponding to definable conglomerates.\\
  
 For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$-operator.
  
@@ -89,7 +89,33 @@ To denote the constructor of an uncertain formula, we will use the symbol $\unce
 \[
 I_\Term(\uncert) \coloneqq U
 \]
-Assume we have not always well-defined epsilon operator.\\
+\pagebreak
+
+
+We have not always well-defined epsilon operator.\\
+(tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
+
+Here we come to the point, where we nee more relaxed notion of truthness, to include $P((\varepsilon X: \varphi))$, when predicate P is true for all classes "X" satisfying $\varphi$.
+
+It is interesting, that quasi-equality is naturally arises as... oh no!
+We need to introduce a mix "exists and forall" quantifier and semantics, so the quasi-equality will natuarally arise.
+I mean the following:
+\begin{itemize}
+\item
+$P(t_1,...,t_n)=\lTrue$, iff two conditions are satisfied:\\
+1) $I_\Term(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
+\item $P(t_1,...,t_n)=\lFalse$, iff two conditions are satisfied:\\
+1) $I_\Term(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lFalse$.
+\item
+$P(t_1,...,t_n)=\lUncertain$, in all other cases.\\
+For example, if there exists $j\in\{1,...,n\}$, such that $I_\Term(t_j)$ is empty;\\
+or if neither of the second requirements hold,\\
+i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\right)$ is not a constant on $I_\Term(t_1)\times\dots\times I_\Term(t_n)$.
+\end{itemize}
+
+
 Assume $a$, $b$ are well-defined sets.\\
 Then
 $
@@ -99,7 +125,35 @@ $
 It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
 But they are quasi-equal (syntactically), since they are both not well-defined.\\
  
- 
+Remark: Here by semantical equality i mean the equaly of all interpretations of two term under any assignment of values.
+
+Remark: actually we can use 6 truth values.\\
+ True = (present, stable(True))\\
+False = (present, stable(False))\\
+U1    = ( absent, stable(True))\\
+U2    = ( absent, stable(False))\\
+U3    = (present, unstable)\\
+U4    = ( absent, unstable)\\
+Connectives are contagious in the first argument, it means the following:\\
+Let's say \# is an interpretation of a connective, and v is a truth value, then\\
+ (absent, ...) \# v = (absent, ...)\\
+ (note, that "..." in lhs and rhs are not necessary the same)\\
+ (..., stable(True)) $\land$ (..., stable(True)) =  (..., stable(True))\\
+But two predicates can stabilize each other, so these truth values does not have a truth table, that's why we will not use them.\\
+
+Also therefore Uncertain OR Uncertain is not necessary Uncertain in such semantics!
+Therefore we need to require even more: the certainity of every subformula, otherwise it will complicate the system too much?\\
+
+$(f(x)=5) \lor (x\notin\dom(f))$
+This is something unresolved, we need some time...
+
+
+% and define the Uncertain value, like:\\
+%Uncertain = Non-existent OR Non-constant\\
+%\,\quad\quad = Absent OR Unstable\\
+%\,\quad\quad = Void OR Varying\\
+%But then, how connectives will work? They will be "contagious" take "the worst case"? %Not necessary: two predicates can stabilize each other.\\
+
 
 \iffalse
 \symbol{200}
