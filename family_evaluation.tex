@@ -68,10 +68,26 @@ Including equivalences!\\
 Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well-defined.\\
 We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not defined on the empty predicates.\\
 Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
-1) $\tau$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
-2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
-3) total $\epsilon$-operator, which returns empty set in case of everywhere false predicates is given as an argument;\\
-4) partial $\varepsilon$-operator, which is undefined on everywhere false predicates.\\
+
+There are 3 natural ways of dealing with a default value of the choice.\\
+1) $\tau^\emptyset$. Here no value is given. It is unique, but it doesn't exist.\\
+2) $\tau^{\exists!}$. Here one particular value is set as a default. It may even be specified: e.g. $\tau^{\exists!}_\emptyset$, or $\tau^{\exists!}_\Un$ or, in general, $\tau^{\exists!}_K$, which is the same as even better: $\tau^{\{K\}}$.\\
+3) $\tau^\Un$. Here any class from the conglomerate of all classes $\Un$ value is a potential default value. It exists, but it isn't unique.\\
+
+
+Our convention:\\
+$\tau := \tau^\Un$\\
+$\epsilon := \tau^{\exists!}_\emptyset = \tau^{\{\emptyset\}}$\\
+$\varepsilon := \tau^\emptyset$\\
+In usual mathematics, usually either $\tau^{\exists!}$ or $\epsilon$ are used.\\
+
+%1) $t$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+%2) $\tau$ -- partial choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+
+%2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
+%3) total $\epsilon$-operator, which returns empty set in case of definable everywhere false predicates is given as an argument;\\
+%4) partial $\varepsilon$-operator, which is undefined on everywhere false definable predicates.\\
+
 Note 1: operators work only on definable conglomerates.\\
 Note 2: I think predicate is a little bit more general than the bounded formula since bounded formulas are corresponding to definable conglomerates.\\
  
@@ -117,11 +133,14 @@ i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\ri
 
 
 Assume $a$, $b$ are well-defined sets.\\
-Then
+Then $
+(\tau x: x \in \{a,b\}) 
+$ is well-defined, since using it assumes existence of a choice conglomerate-function.\\
+Meanwhile,
 $
 (\varepsilon x: x \in \{a,b\}) 
 $
- is undefined, but not (semantically) equal to $\lundef$.\\
+ is undefined. But it is not (semantically) equal to $\lundef$.\\
 It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
 But they are quasi-equal (syntactically), since they are both not well-defined.\\
  
@@ -144,8 +163,74 @@ But two predicates can stabilize each other, so these truth values does not have
 Also therefore Uncertain OR Uncertain is not necessary Uncertain in such semantics!
 Therefore we need to require even more: the certainity of every subformula, otherwise it will complicate the system too much?\\
 
-$(f(x)=5) \lor (x\notin\dom(f))$
-This is something unresolved, we need some time...
+e.g. $(f(x)=5) \lor (x\notin\dom(f))$.\\
+Or will it require too much to require?\\
+Yes, it will be too much, since then\\
+$(f\function)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
+will not work normally.\\
+Therefore we need something more interesting like:\\
+ $(\lFalse\implies\lUncertain) := \lTrue$.\\
+Or even brave \& better: reject the whole idea of having a defined truth table for uncertain values(or at least having a full/complete truth table).
+Such idea was wrong, because it is not true even in completely classical logic of existence: the formula "$(x\in y)$" is not valid, so it has no any particular defined truth value.\\
+
+Assigment maps each variable to some singletone.\\
+Let's come back to:
+$(f\family)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
+For the case when something goes wrong, "(f(x)=f(x))" is not true, since it being true assumes both-hand-sides to be defined.
+
+
+Recall:\\
+1) The term $(\varepsilon x: x \in \{a,b\})$ is not unique.\\
+2) The formula $a=(\varepsilon x: x \in \{a,b\})$ is not stable under differen assignment.\\
+3) Something of the following gives impression of something that should be true:
+$(a=(\varepsilon x: x \in \{a,b\}))\lor(b=(\varepsilon x: x \in \{a,b\}))$(bad)\\
+$z=(\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$z\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$t\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a\simeq t)\lor(b\simeq t)$(bad)\\
+We need to determine what is valid and what is not.\\
+Resolution:\\
+We should not use variables for definitions, because definitions are not always well-defined. And variables are always well-defined.\\
+We must use new constants instead.\\
+It is a more delicate mechanism than just the use of quasi-equality(as in W.Farmer's article).\\
+So we have a constant $c:=(\varepsilon x: x \in \{a,b\})$.
+But still $(a\simeq c)\lor(b\simeq c)$ is false.
+Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
+
+In order for lemmas from (link shen-logic-part2-2.pdf , page 137) to work, we need assign non-sigleton sets to variables.\\
+But we want to avoid tedious assumtions like the following:
+$(x_1\ldefined)\land...\land(x_n\ldefined)\implies \varphi$.\\
+Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the evaluation variables may be assigned to a set with non-unique values.\\
+The previous comment about introducing constants will patch the need for shortening of the statement while it is not possible to do via variable.\\
+But what about the cases when it should be a term, depending on some parameters?\\
+Resolution: we use only terms, and this mechanism of definitions of terms is outside the logic of the system.\\
+Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
+\begin{definition}(interpretation of definitional equality)\\
+\st{$I^v_\Fm(A\equiv B):=(I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
+$I^v_\Fm(A\equiv B):=\forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
+Will such definition work with a variable? I highly doubt. 
+So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
+But this definition works well for defining functional symbols, and, in particular, constants.
+\end{definition}
+
+Some statements:\\
+1) VALID, TRUE: $(\varepsilon x: x \in \{a,b\})\in \{a,b\}$.\\
+2) INVALID: $(\varepsilon x: x \in \emptyset) \in \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+3) INVALID: $(\varepsilon x: x \in \emptyset) \notin \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
+
+============================================\\
+Idea: Truth values of predicates are subsets of $\Un\times\dots\times\Un$ of values, where $I(P)$ is true.\\
+"True" corresponds to the whole subconglomerate $\Un\times\dots\times\Un$.\\
+"False" corresponds to the empty subconglomerate $\emptyset\times\dots\times\emptyset$, which is simply $\emptyset$.\\
+"Uncertain" corresponds to any other subconglomerate.\\
+All products here are given $n$ times: $n$ is a valency of the predicate symbol $P$.
+============================================\\
+
+%$\tau t$
+%Therefore.
+%This is something unresolved, we need some time...
 
 
 % and define the Uncertain value, like:\\
@@ -220,7 +305,7 @@ This is something unresolved, we need some time...
 
 \begin{definition}(value)
 \[
-F(x) :\simeq \left(\lif (x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
+F(x) :\simeq \left(\lif (F\family)\land(x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
 \end{definition}
 
