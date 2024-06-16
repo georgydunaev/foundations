@@ -221,13 +221,32 @@ Some statements:\\
 4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
 
 ============================================\\
-Idea: Truth values of predicates are subsets of $\Un\times\dots\times\Un$ of values, where $I(P)$ is true.\\
-"True" corresponds to the whole subconglomerate $\Un\times\dots\times\Un$.\\
-"False" corresponds to the empty subconglomerate $\emptyset\times\dots\times\emptyset$, which is simply $\emptyset$.\\
+Idea: Truth values of predicates are subconglomerates of $(2\times)\Un\times\dots\times\Un$ of values, where $I(P)$ is true.\\
+"(Always)True" corresponds to the whole subconglomerate $(1\times)\Un\times\dots\times\Un$.\\
+"(Always)False" corresponds to the empty subconglomerate $(0\times)\emptyset\times\dots\times\emptyset$, which is simply $\emptyset$.\\
 "Uncertain" corresponds to any other subconglomerate.\\
 All products here are given $n$ times: $n$ is a valency of the predicate symbol $P$.
 ============================================\\
 
+For example, the following predicates:\\
+\begin{itemize}
+\item (of valency 0):\\
+"$\bot$" corresponds to 0.("False")\\
+"$\top$" corresponds to 1.("True")\\
+"$\uncert$" corresponds to 2.("Uncertain")\\
+(from now on, we will forget about "$2\times$" form the definition, for simplicity)
+\item (of valency 1):\\
+"(X unique)" corresponds to the collection of all conglomerate-semisingletones.\\
+"(X exists)" corresponds to the collection of all nonempty conglomerates.\\
+"(X (well-)defined)" corresponds to the collection of all nonempty conglomerate-semisingletones, i.e. to the collection of all conglomerate-singletones\\
+"empty" \ corresponds to the collection of empty conglomerates, i.e. just $\{\emptyset\}$.
+\item (of valency 2):\\
+"$(x\in y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is in each class of the second conglomerate.\\
+"$(x\notin y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is not in any class of the second conglomerate.
+\end{itemize}
+\begin{definition}(Theorem)
+Theorem is a predicate which has the truth value "True".\\
+\end{definition}
 %$\tau t$
 %Therefore.
 %This is something unresolved, we need some time...
@@ -238,7 +257,14 @@ All products here are given $n$ times: $n$ is a valency of the predicate symbol 
 %\,\quad\quad = Absent OR Unstable\\
 %\,\quad\quad = Void OR Varying\\
 %But then, how connectives will work? They will be "contagious" take "the worst case"? %Not necessary: two predicates can stabilize each other.\\
+Idea 2:\\
 
+Actually, variables are ordered: $x_1,x_2,x_3,\dots$.
+So we can consider the following correspondence evaluation of the formula $x_2\in x_4$ via assignment function $w$, with 
+\[
+(1\times)\Un\times \{w(x_2)\}\times\Un\times\{w(x_4)\}\times\Un\times\Un\times\Un\dots,
+\]
+where "infinite product" is abuse of notation, which means a collection of functions $f$ from $\mathbb{N}_0$ to $\power\Un$, such that $f(0)=1$. %\subseteq 
 
 \iffalse
 \symbol{200}
