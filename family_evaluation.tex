@@ -116,20 +116,67 @@ Here we come to the point, where we nee more relaxed notion of truthness, to inc
 It is interesting, that quasi-equality is naturally arises as... oh no!
 We need to introduce a mix "exists and forall" quantifier and semantics, so the quasi-equality will natuarally arise.
 I mean the following:
+
+
+\begin{definition}(Interpretation of an atomic formula under some fixed assignment)
+Fix some assignment function $w:\Var\to\power\Un$.\\
+
+
 \begin{itemize}
 \item
-$P(t_1,...,t_n)=\lTrue$, iff two conditions are satisfied:\\
-1) $I_\Term(t_j)$ is non-empty\\
+$I_\Fm^w(P(t_1,...,t_n)):=\lTrue$, iff two conditions are satisfied:\\
+1) $I^w_\Term(t_j)$ is non-empty\\
 2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
-\item $P(t_1,...,t_n)=\lFalse$, iff two conditions are satisfied:\\
+\item $I_\Fm^w(P(t_1,...,t_n))=\lFalse$, iff two conditions are satisfied:\\
 1) $I_\Term(t_j)$ is non-empty\\
 2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lFalse$.
 \item
-$P(t_1,...,t_n)=\lUncertain$, in all other cases.\\
+$I_\Fm^w(P(t_1,...,t_n))=\lUncertain$, in all other cases.\\
 For example, if there exists $j\in\{1,...,n\}$, such that $I_\Term(t_j)$ is empty;\\
 or if neither of the second requirements hold,\\
 i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\right)$ is not a constant on $I_\Term(t_1)\times\dots\times I_\Term(t_n)$.
 \end{itemize}
+\end{definition}
+
+
+Formula is "GloballyTrue", if it is "classically valid", with the idea, that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
+
+$I_\Fm^w(\varphi \implies \psi) := ????  I_\Fm^w(\varphi) ??? I_\Fm^w(\psi)  ????$
+
+%Очень доволен собой: придумал двухуровневую семантику.
+
+%Есть логика предикатов, у неё есть классическая семантика. А что если рассуждать в более общем контексте, где во-первых у каждой переменной свой непустой домен, а если формула "локально (классически) валидна" для конкретного набора доменов, то она "глобально истинна под оценкой переменных этими доменами". Если формула "глобально истинная" для всех глобальных оценок доменами(подмножествами некоторого "глобального домена"), то формула будет "глобально валидна".
+%Т.е. у конструкции есть два этажа. Таким образом можно добавлять в язык предикаты (X unique), (X exists), (X defined), который есть конъюнкция двух предыдущих
+
+%Можно ещё потребовать, чтобы оценка переменных была синглтонами, тогда переменные автоматически (well-)defined. А то перед теоремой придётся писать про каждую переменную, что она определена. 🙂. Но модели, конечно, супербольшие получаются: я вот использую для теории классов MK такую конструкцию, и получается, что глобальный домен -- это коллекция всех подмножеств конгломерата всех классов. Но зато предикат well-defined is well-defined , плюс правильно работают всякие эпсилон, йота, тау операторы, "значие функиции" можно "естественным образом" определить и т.д.
+
+%Я помню, где-то рассматривалась семантика с разными доменами для разных переменных, но вот эту вот двухуровневость, я как бы сам осознал, вполне может быть это известный результат.
+
+
+\begin{note}
+Here it is impossible to separately define for atomic and non-atomic formulas, since the truth table will be too primitive / too useless if we use D.A. Bocharov's tree-valued logic.
+\end{note}
+
+\begin{definition}(Strictly semantically valid formula)
+The formula $\phi$ is valid, if it is true under any assignment.
+\end{definition}
+This is too strong, e.g. even $(x=x)$ will not be true, if we assign a conglomerate-pair of classes to the variable $x$.\\
+But "$(x\ldefined)\to(x=x)$" is strictly semantically valid.\\
+
+And we need therefore the following definition:
+\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
+The formula $\phi$ is valid, if it is true under any assignment $w:\Var\to\{{K}|K\in\Un\}$.\\
+\end{definition}
+Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
+
+
+
+\ \\
+\ \\
+\ \\
+\ \\
+
+
 
 
 Assume $a$, $b$ are well-defined sets.\\
