@@ -107,6 +107,48 @@ I_\Term(\uncert) \coloneqq U
 \]
 \pagebreak
 
+\begin{definition}(Global assignment / "domain assigment")\\
+w is a global assignment if
+$w:\Var\to((\power\Un)\setminus\emptyset)$
+(note, domains should be nonempty, otherwise statement will be too weak to deal with normally)
+\end{definition}
+
+\begin{definition}(Local assignment w.r.t. global assigment)\\
+$v$ is a local assignment w.r.t. global assignment $w$ if $v:\Pi_{(x:Var)}w(x)$,\\
+i.e. $\forall (x:\Var) : v(x) \in w(x)$.\\
+%$w:\Var\to((\power\Un)\setminus\emptyset)$
+\end{definition}
+
+\begin{definition}(Local interpretation of term)
+(classical definition)
+\end{definition}
+
+\begin{definition}(Local interpretation of formula)
+(also classical definition of "truth under assignment")
+\end{definition}
+
+\begin{definition}(Global interpretation of term)
+Just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.
+This is kinda useless definition, because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
+\end{definition}
+
+\begin{definition}(Global interpretation of formula)
+formula is globally true (wrt global w) if its locally valid (i.e it is true w.r.t local assignments respecting the global assignment w)
+\end{definition}
+
+\begin{definition}(Globally valid formula)
+Formula is globally valid if its globally true for any global assignment w.
+\end{definition}
+
+\begin{definition}(Weak globally valid formula)
+Formula is globally valid if its globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.
+\end{definition}
+
+
+%\begin{definition}(Locally true formula under local assigment v)
+%L_Fm^{}
+%\end{definition}
+
 
 We have not always well-defined epsilon operator.\\
 (tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
@@ -118,8 +160,8 @@ We need to introduce a mix "exists and forall" quantifier and semantics, so the 
 I mean the following:
 
 
-\begin{definition}(Interpretation of an atomic formula under some fixed assignment)
-Fix some assignment function $w:\Var\to\power\Un$.\\
+\begin{definition}(Interpretation of an atomic formula under some fixed global assignment)
+Fix some global assignment function $w:\Var\to\power\Un$.\\
 
 
 \begin{itemize}
