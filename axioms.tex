@@ -75,19 +75,59 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 (It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
 \end{constructor}
 \subsection{Axiom of class comprehension}
-\begin{axiom}
+\begin{axiom}(OLD Class comprehension)
 \label{axm:comprehension}
-Class comprehension.
-If Y is not a free variable of $\varphi$, then:
-\[
-(Y\in\{x|\varphi[x/W]\}) \iff ((Y\set)\AND(\varphi[Y/W]))
-\]
 %\[Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])\]
 %(or maybe
 %\[Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)\]
 %we need to find one expression for both cases.
 %)
 \end{axiom}
+\begin{axiom}(NEW Class comprehension)
+\label{axm:comprehension}
+\[
+(X\in\{X|\varphi\}) \iff ((X\set)\land \varphi)
+\]
+\end{axiom}
+
+
+\[
+(X\in\{X|\varphi\}) \iff ((X\set)\land \varphi)
+\]
+
+Let's substitute X with some variable Y, which is different from X.\\
+\[
+(Y\in\{X|\varphi\}) \iff ((Y\set)\land \varphi[Y/X])
+\]
+
+Do the same step but for $\varphi[X/W]$.
+\[
+(X\in\{X|\varphi[X/W]\}) \iff ((X\set)\land \varphi[X/W])
+\]
+\[
+(Y\in\{X|\varphi[X/W]\}) \iff ((Y\set)\land \varphi[X/W][Y/X])
+\]
+
+Is the following statement true:\\
+"If
+$\varphi[X/W]$ is defined(sic!), and if $\varphi[X/W][Y/X]$ is defined(btw the first follows from th second), and if (Y is not a free variable of $\varphi$) then $\varphi[X/W][Y/X]$ is equal to $\varphi[Y/W]$"?
+
+...\\
+
+
+Now, let's prove "old class comprehesion" statement.\\
+\begin{theorem}()\\
+If Y is not a free variable of $\varphi$, then:
+\[
+(Y\in\{X|\varphi[X/W]\}) \iff ((Y\set)\land(\varphi[Y/W]))
+\]
+\end{theorem}
+\Proof
+($\implies$)\\
+Assume $Y\in\{X|\varphi[X/W]\}$.\\
+
+...\\
+\Done
 
 \subsection{Empty class}
 \begin{constructor} Empty class.\\

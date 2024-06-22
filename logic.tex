@@ -7,7 +7,10 @@
 %\
 %\end{definition}
 
-\subsection{Basic definitions of the syntax}
+\subsection{Definitions of logical notions}%Basic definitions of the syntax
+
+This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
+
 In this section we deal with strings of letters.
 NOTE: The definitions in this section are simultaneous: some earlier definitions depend on later. It is possible to rewrite equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implemented, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
 
@@ -69,7 +72,7 @@ Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
 
 
 
-\subsection{Basic definitions}
+\subsubsection{Substitution}%Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
 \[
@@ -77,12 +80,12 @@ Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
 \]
 \end{definition}
 \noindent
-
-\subsection{Full semantics}
-
-
+\pagebreak
+\subsection{Semantics} % the big one.
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
+
 Let $\power \mathcal{U}$ be the domain of discourse of the presented model for the theory.\\
+
 It means that we have a super-large model.\\
 Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
 Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
@@ -96,30 +99,385 @@ f:\Var\to \power \mathcal{U}
 But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
-Terms are interpreted as subconglomerates of the conglomerate of all classes.
+
+
+%Notation:\\
+%F:=False\\
+%U:=Undefined\\
+%T:=True\\
+
 \[
-I_\Term(f) : \Term \to \power \mathcal{U}
+I_\Fm : \Fm \to \{\lValid,\lInvalid\}
 \]
 
+%\{F,U,T\}
 
-Notation:\\
-F:=False\\
-U:=Undefined\\
-T:=True\\
+
+
+\begin{definition}(global interpretation of a term under the global assignment w)
 \[
-I_\Fm(f) : \Fm \to \{F,U,T\}
+I^{\glob,w}_\Term(t) := \left\{I^{\loc,v}_\Term(t) \middle| v\in \prod_{x\in\Var}w(x) \right\}
 \]
+·\end{definition}
 
-\begin{definition}(valid formula)
-The formula $\varphi$ is called valid if it is true under any evaluation.
+
+\begin{definition}(global interpretation of some formulas)
+\[
+I^w_\Fm((t\lexists)) := (\lif\ (I^w_\Term(t)\nonempty)\ \lthen\ F\ \lelse\ T)
+\]
+\[
+I^w_\Fm((t\lunique)) := (\lif\ (I^w_\Term(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
+\]
 \end{definition}
 
+\begin{definition}(weakly globally valid formula)\\
+The formula $\varphi$ is called globally valid if it is true under any global evaluation by singletones.
+\end{definition}
+
+\iffalse 
+Theorem?:
+t defined
+forall x phi  -> phi[t/x]
+
+\fi
+============================================\\
+
+
+\begin{definition}(Global assignment / "domain assigment")\\
+w is a global assignment if
+$w:\Var\to((\power\Un)\setminus\{\emptyset\})$
+(note, domains should be nonempty, otherwise statement will be too weak to deal with normally)
+\end{definition}
+
+\begin{definition}(Local assignment w.r.t. global assigment)\\
+$v$ is a local assignment w.r.t. global assignment $w$ if $v:\Pi_{(x:\Var)}w(x)$,\\
+i.e. $v:\Var\to\Un$, such that $\forall (x:\Var) : v(x) \in w(x)$.\\
+%$w:\Var\to((\power\Un)\setminus\emptyset)$
+\end{definition}
+
+\begin{definition}(Local interpretation of term)
+(classical definition) OR the following:?\\
+Terms are interpreted as subconglomerates of the conglomerate of all classes.
 \[
-I_\Fm(f)((t\lexists)) := (\lif\ (I_\Term(f)(t)\nonempty)\ \lthen\ F\ \lelse\ T)
+I^{\loc,v}_\Term : \Term \to \mathcal{U}
 \]
+\end{definition}
+%\begin{definition}(Locally true formula under local assigment v)
+%L_Fm^{}
+%\end{definition}
+
+\begin{definition}(Local interpretation of formula)
+(also classical definition of "truth under assignment")
 \[
-I_\Fm(f)((t\lunique)) := (\lif\ (I_\Term(f)(t)\mbox{ semisingleton})\ \lthen\ F\ \lelse\ T)
+I^{\loc,v}_\Fm : \Fm \to \{\ltrue, \lfalse\}
 \]
+\end{definition}
+
+\begin{definition}(Locally valid formula w.r.t. global assignment $w$)
+Formula is locally valid if its locally true for any local assignment $v$ compatible with the global assignment $w$.
+\end{definition}
+
+\begin{definition}(Global interpretation of term)
+Just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.
+This is kinda useless definition, because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
+\end{definition}
+
+\begin{definition}(Global interpretation of formula)
+formula is globally true (wrt global assignment w) if its locally valid (i.e it is true w.r.t local assignments respecting the global assignment w)
+\[
+I^{\glob,w}_\Fm(\varphi) : \Fm \to \{\lTrue, non-\lTrue\}
+\]
+%\mathcal{U}
+
+\end{definition}
+
+\begin{definition}(Globally valid formula)
+Formula is globally valid if its globally true for any global assignment w.
+\end{definition}
+
+\begin{definition}(Weak globally valid formula)
+Formula is globally valid if its globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.
+\end{definition}
+
+
+
+
+We have not always well-defined epsilon operator.\\
+(tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
+
+Here we come to the point, where we nee more relaxed notion of truthness, to include $P((\varepsilon X: \varphi))$, when predicate P is true for all classes "X" satisfying $\varphi$.
+
+It is interesting, that quasi-equality is naturally arises as... oh no!
+We need to introduce a mix "exists and forall" quantifier and semantics, so the quasi-equality will natuarally arise.
+I mean the following:
+
+
+\begin{definition}(Interpretation of an atomic formula under some fixed global assignment)
+Fix some global assignment function $w:\Var\to\power\Un$.\\
+
+
+\begin{itemize}
+\item
+$I_\Fm^w(P(t_1,...,t_n)):=\lTrue$, iff two conditions are satisfied:\\
+1) $I^w_\Term(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
+\item $I_\Fm^w(P(t_1,...,t_n))=\lFalse$, iff two conditions are satisfied:\\
+1) $I_\Term(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lFalse$.
+\item
+$I_\Fm^w(P(t_1,...,t_n))=\lUncertain$, in all other cases.\\
+For example, if there exists $j\in\{1,...,n\}$, such that $I_\Term(t_j)$ is empty;\\
+or if neither of the second requirements hold,\\
+i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\right)$ is not a constant on $I_\Term(t_1)\times\dots\times I_\Term(t_n)$.
+\end{itemize}
+\end{definition}
+
+
+Formula is "GloballyTrue", if it is "classically valid", with the idea, that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
+
+$I_\Fm^w(\varphi \implies \psi) := ????  I_\Fm^w(\varphi) ??? I_\Fm^w(\psi)  ????$
+
+%Очень доволен собой: придумал двухуровневую семантику.
+
+%Есть логика предикатов, у неё есть классическая семантика. А что если рассуждать в более общем контексте, где во-первых у каждой переменной свой непустой домен, а если формула "локально (классически) валидна" для конкретного набора доменов, то она "глобально истинна под оценкой переменных этими доменами". Если формула "глобально истинная" для всех глобальных оценок доменами(подмножествами некоторого "глобального домена"), то формула будет "глобально валидна".
+%Т.е. у конструкции есть два этажа. Таким образом можно добавлять в язык предикаты (X unique), (X exists), (X defined), который есть конъюнкция двух предыдущих
+
+%Можно ещё потребовать, чтобы оценка переменных была синглтонами, тогда переменные автоматически (well-)defined. А то перед теоремой придётся писать про каждую переменную, что она определена. 🙂. Но модели, конечно, супербольшие получаются: я вот использую для теории классов MK такую конструкцию, и получается, что глобальный домен -- это коллекция всех подмножеств конгломерата всех классов. Но зато предикат well-defined is well-defined , плюс правильно работают всякие эпсилон, йота, тау операторы, "значие функиции" можно "естественным образом" определить и т.д.
+
+%Я помню, где-то рассматривалась семантика с разными доменами для разных переменных, но вот эту вот двухуровневость, я как бы сам осознал, вполне может быть это известный результат.
+
+
+\begin{note}
+Here it is impossible to separately define for atomic and non-atomic formulas, since the truth table will be too primitive / too useless if we use D.A. Bocharov's tree-valued logic.
+\end{note}
+
+\begin{definition}(Strictly semantically valid formula)
+The formula $\phi$ is valid, if it is true under any assignment.
+\end{definition}
+This is too strong, e.g. even $(x=x)$ will not be true, if we assign a conglomerate-pair of classes to the variable $x$.\\
+But "$(x\ldefined)\to(x=x)$" is strictly semantically valid.\\
+
+And we need therefore the following definition:
+\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
+The formula $\phi$ is valid, if it is true under any assignment $w:\Var\to\{{K}|K\in\Un\}$.\\
+\end{definition}
+Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
+
+
+
+\ \\
+\ \\
+\ \\
+\ \\
+
+
+
+
+Assume $a$, $b$ are well-defined sets.\\
+Then $
+(\tau x: x \in \{a,b\}) 
+$ is well-defined, since using it assumes existence of a choice conglomerate-function.\\
+Meanwhile,
+$
+(\varepsilon x: x \in \{a,b\}) 
+$
+ is undefined. But it is not (semantically) equal to $\lundef$.\\
+It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
+But they are quasi-equal (syntactically), since they are both not well-defined.\\
+ 
+Remark: Here by semantical equality i mean the equaly of all interpretations of two term under any assignment of values.
+
+Remark: actually we can use 6 truth values.\\
+ True = (present, stable(True))\\
+False = (present, stable(False))\\
+U1    = ( absent, stable(True))\\
+U2    = ( absent, stable(False))\\
+U3    = (present, unstable)\\
+U4    = ( absent, unstable)\\
+Connectives are contagious in the first argument, it means the following:\\
+Let's say \# is an interpretation of a connective, and v is a truth value, then\\
+ (absent, ...) \# v = (absent, ...)\\
+ (note, that "..." in lhs and rhs are not necessary the same)\\
+ (..., stable(True)) $\land$ (..., stable(True)) =  (..., stable(True))\\
+But two predicates can stabilize each other, so these truth values does not have a truth table, that's why we will not use them.\\
+
+Also therefore Uncertain OR Uncertain is not necessary Uncertain in such semantics!
+Therefore we need to require even more: the certainity of every subformula, otherwise it will complicate the system too much?\\
+
+e.g. $(f(x)=5) \lor (x\notin\dom(f))$.\\
+Or will it require too much to require?\\
+Yes, it will be too much, since then\\
+$(f\function)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
+will not work normally.\\
+Therefore we need something more interesting like:\\
+ $(\lFalse\implies\lUncertain) := \lTrue$.\\
+Or even brave \& better: reject the whole idea of having a defined truth table for uncertain values(or at least having a full/complete truth table).
+Such idea was wrong, because it is not true even in completely classical logic of existence: the formula "$(x\in y)$" is not valid, so it has no any particular defined truth value.\\
+
+Assigment maps each variable to some singletone.\\
+Let's come back to:
+$(f\family)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
+For the case when something goes wrong, "(f(x)=f(x))" is not true, since it being true assumes both-hand-sides to be defined.
+
+
+Recall:\\
+1) The term $(\varepsilon x: x \in \{a,b\})$ is not unique.\\
+2) The formula $a=(\varepsilon x: x \in \{a,b\})$ is not stable under differen assignment.\\
+3) Something of the following gives impression of something that should be true:
+$(a=(\varepsilon x: x \in \{a,b\}))\lor(b=(\varepsilon x: x \in \{a,b\}))$(bad)\\
+$z=(\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$z\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$t\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a\simeq t)\lor(b\simeq t)$(bad)\\
+We need to determine what is valid and what is not.\\
+Resolution:\\
+We should not use variables for definitions, because definitions are not always well-defined. And variables are always well-defined.\\
+We must use new constants instead.\\
+It is a more delicate mechanism than just the use of quasi-equality(as in W.Farmer's article).\\
+So we have a constant $c:=(\varepsilon x: x \in \{a,b\})$.
+But still $(a\simeq c)\lor(b\simeq c)$ is false.
+Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
+
+In order for lemmas from (link shen-logic-part2-2.pdf , page 137) to work, we need assign non-sigleton sets to variables.\\
+But we want to avoid tedious assumtions like the following:
+$(x_1\ldefined)\land...\land(x_n\ldefined)\implies \varphi$.\\
+Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the evaluation variables may be assigned to a set with non-unique values.\\
+The previous comment about introducing constants will patch the need for shortening of the statement while it is not possible to do via variable.\\
+But what about the cases when it should be a term, depending on some parameters?\\
+Resolution: we use only terms, and this mechanism of definitions of terms is outside the logic of the system.\\
+Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
+\begin{definition}(interpretation of definitional equality)\\
+\st{$I^v_\Fm(A\equiv B):=(I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
+$I^v_\Fm(A\equiv B):=\forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
+Will such definition work with a variable? I highly doubt. 
+So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
+But this definition works well for defining functional symbols, and, in particular, constants.
+\end{definition}
+
+Some statements:\\
+1) VALID, TRUE: $(\varepsilon x: x \in \{a,b\})\in \{a,b\}$.\\
+2) INVALID: $(\varepsilon x: x \in \emptyset) \in \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+3) INVALID: $(\varepsilon x: x \in \emptyset) \notin \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
+
+============================================\\
+Idea: Truth values of predicates are subconglomerates of $(2\times)\Un\times\dots\times\Un$ of values, where $I(P)$ is true.\\
+"(Always)True" corresponds to the whole subconglomerate $(1\times)\Un\times\dots\times\Un$.\\
+"(Always)False" corresponds to the empty subconglomerate $(0\times)\emptyset\times\dots\times\emptyset$, which is simply $\emptyset$.\\
+"Uncertain" corresponds to any other subconglomerate.\\
+All products here are given $n$ times: $n$ is a valency of the predicate symbol $P$.
+============================================\\
+
+For example, the following predicates:\\
+\begin{itemize}
+\item (of valency 0):\\
+"$\bot$" corresponds to 0.("False")\\
+"$\top$" corresponds to 1.("True")\\
+"$\uncert$" corresponds to 2.("Uncertain")\\
+(from now on, we will forget about "$2\times$" form the definition, for simplicity)
+\item (of valency 1):\\
+"(X unique)" corresponds to the collection of all conglomerate-semisingletones.\\
+"(X exists)" corresponds to the collection of all nonempty conglomerates.\\
+"(X (well-)defined)" corresponds to the collection of all nonempty conglomerate-semisingletones, i.e. to the collection of all conglomerate-singletones\\
+"empty" \ corresponds to the collection of empty conglomerates, i.e. just $\{\emptyset\}$.
+\item (of valency 2):\\
+"$(x\in y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is in each class of the second conglomerate.\\
+"$(x\notin y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is not in any class of the second conglomerate.
+\end{itemize}
+\begin{definition}(Theorem)
+Theorem is a predicate which has the truth value "True".\\
+\end{definition}
+%$\tau t$
+%Therefore.
+%This is something unresolved, we need some time...
+
+
+% and define the Uncertain value, like:\\
+%Uncertain = Non-existent OR Non-constant\\
+%\,\quad\quad = Absent OR Unstable\\
+%\,\quad\quad = Void OR Varying\\
+%But then, how connectives will work? They will be "contagious" take "the worst case"? %Not necessary: two predicates can stabilize each other.\\
+Idea 2:\\
+
+Actually, variables are ordered: $x_1,x_2,x_3,\dots$.
+So we can consider the following correspondence evaluation of the formula $x_2\in x_4$ via assignment function $w$, with 
+\[
+(1\times)\Un\times \{w(x_2)\}\times\Un\times\{w(x_4)\}\times\Un\times\Un\times\Un\dots,
+\]
+where "infinite product" is abuse of notation, which means a collection of functions $f$ from $\mathbb{N}_0$ to $\power\Un$, such that $f(0)=1$. %\subseteq 
+
+\iffalse
+\symbol{200}
+\symbol{201}
+\symbol{202}
+\symbol{203}
+\symbol{204}
+\symbol{205}
+\symbol{206}
+\symbol{207}
+\symbol{208}
+\symbol{209}
+\symbol{210}
+\symbol{211}
+\symbol{212}
+\symbol{213}
+\symbol{214}
+\symbol{215}
+\symbol{216}
+\symbol{217}
+\symbol{218}
+\symbol{219}\\
+\symbol{220}
+\symbol{221}
+\symbol{222}
+\symbol{223}
+\symbol{224}
+\symbol{225}
+\symbol{226}
+\symbol{227}
+\symbol{228}
+\symbol{229}
+\symbol{230}
+\symbol{231}
+\symbol{232}
+\symbol{233}
+\symbol{234}
+\symbol{235}
+\symbol{236}
+\symbol{237}
+\symbol{238}
+\symbol{239}\\
+\symbol{240}
+\symbol{241}
+\symbol{242}
+\symbol{243}
+\symbol{244}
+\symbol{245}
+\symbol{246}
+\symbol{247}
+\symbol{248}
+\symbol{249}
+\symbol{250}
+\symbol{251}
+\symbol{252}
+\symbol{253}
+\symbol{254}
+\symbol{255}
+\fi
+
+%\symbol{253A}
+%not everything that is undefined is quasi.
+
+
+\begin{definition}(value)
+\[
+F(x) :\simeq \left(\lif (F\family)\land(x \in \dom(F))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
+\]
+\end{definition}
+
+
+
 
 \subsection{Axioms for the corresponding prediacate calculus}
 \subsection{Propositional part}
