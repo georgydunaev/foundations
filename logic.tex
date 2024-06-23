@@ -100,6 +100,8 @@ The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
 Let $\power \mathcal{U}\setminus\{\emptyset\}$ be the domain of discourse on the global level of the presented model for the theory.\\
 
+We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
+
 It means that we have a super-large model.\\
 Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
 Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
@@ -116,94 +118,121 @@ Here we assume existence of such conglomerates. So the our chosen naive metatheo
 
 
 
-%Notation:\\
-%F:=False\\
-%U:=Undefined\\
-%T:=True\\
-\[
-I_\Fm : \Fm \to \{\lValid,\lInvalid\}
-\]
-%\{F,U,T\}
-
-\begin{definition}(global interpretation of a term under the global assignment w)
-\[
-I^{\glob,w}_\Term(t) := \left\{I^{\loc,v}_\Term(t) \middle| v\in \prod_{x\in\Var}w(x) \right\}
-\]
-·\end{definition}
-
-
-\begin{definition}(global interpretation of some formulas under global assignment)
-\[
-I^w_\Fm((t\lexists)) := (\lif\ (I^w_\Term(t)\nonempty)\ \lthen\ \ltrue\ \lelse\ \lfalse)
-\]
-\[
-I^w_\Fm((t\lunique)) := (\lif\ (I^w_\Term(t)\mbox{ semisingleton})\ \lthen\ \ltrue\ \lelse\ \lfalse)
-\]
-\end{definition}
-
 ============================================\\
 \subsubsection{Precise definitions}
-
 \begin{definition}(Global assignment / "domain assigment")\\
-w is a global assignment if
+A function $w$ is a global assignment iff
 $w:\Var\to((\power\Un)\setminus\{\emptyset\})$
 (note, domains should be nonempty, otherwise statement will be too weak to deal with normally)
 \end{definition}
-
 \begin{definition}(Local assignment w.r.t. global assigment)\\
-$v$ is a local assignment w.r.t. global assignment $w$ if $v:\Pi_{(x:\Var)}w(x)$,\\
+$v$ is a local assignment w.r.t. global assignment $w$ if $v:\prod_{(x:\Var)}w(x)$,\\
 i.e. $v:\Var\to\Un$, such that $\forall (x:\Var) : v(x) \in w(x)$.\\
 %$w:\Var\to((\power\Un)\setminus\emptyset)$
 \end{definition}
-
-\begin{definition}(Local interpretation of term)
-(classical definition) OR the following:?\\
+\begin{definition}(Local interpretation of term under local assignment v wrt the global assignment w)\\
+(almost classical definition)\\% OR the following:?\\
 Terms are interpreted as subconglomerates of the conglomerate of all classes.
 \[
 I^{\loc,v}_\Term : \Term \to \mathcal{U}
+\]
+\[
+I^{\loc,v}_\Term(x) := v(x)
+\]
+\[
+I^{\loc,v}_\Term(f(t_1,\dots,t_n)) := I(f)(I^{\loc,v}(t_1),\dots,I^{\loc,v}(t_n))
+\]
+\[
+\dots
 \]
 \end{definition}
 %\begin{definition}(Locally true formula under local assigment v)
 %L_Fm^{}
 %\end{definition}
-
 \begin{definition}(Local interpretation of formula)
 (also classical definition of "truth under assignment")
 \[
 I^{\loc,v}_\Fm : \Fm \to \{\ltrue, \lfalse\}
 \]
-\end{definition}
-
-\begin{definition}(Locally valid formula w.r.t. global assignment $w$)
-Formula is locally valid if its locally true for any local assignment $v$ compatible with the global assignment $w$.
-\end{definition}
-
-\begin{definition}(Global interpretation of term)
-Just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.
-This is kinda useless definition, because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
-\end{definition}
-
-\begin{definition}(Global interpretation of formula)
-formula is globally true (wrt global assignment w) if its locally valid (i.e it is true w.r.t local assignments respecting the global assignment w)
 \[
-I^{\glob,w}_\Fm(\varphi) : \Fm \to \{\lTrue, \lFalse\}
+(I^{\loc,v}_\Fm(P(t_1,\dots,t_n))=I(P)(I^{\loc,v}_\Term(t_1),\dots,I^{\loc,v}_\Term(t_n)))
+\]
+\[
+\dots
+\]
+
+\end{definition}
+\begin{definition}(Locally valid formula w.r.t. global assignment $w$)\\
+A formula is locally valid if its locally true for any local assignment $v$ compatible with the global assignment $w$.
+\end{definition}
+\begin{definition}(global interpretation of terms under a global assignment w)\\
+Remark: It is just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.\\
+This is kinda "useless definition", because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
+\[
+I^{\glob,w}_\Term(t) := \left\{I^{\loc,v}_\Term(t) \middle| v\in \prod_{x\in\Var}w(x) \right\}
+\]
+\end{definition}
+\begin{definition}(Global interpretation of a formula)\\
+A formula $\varphi$ is globally true (wrt global assignment w) if its locally valid (i.e it is true w.r.t local assignments respecting the global assignment w)
+\[
+I^{\glob,w}_\Fm : \Fm \to \{\lTrue, \lFalse\}
+\]
+\[
+\left(I^{\glob,w}_\Fm(\varphi)=\lTrue\right) \IFF \left(\forall \left(v\in\prod_{x:\Var}w(x)\right):I^{\loc,v}_\Fm(\varphi)=\ltrue\right)
 \]
 %\mathcal{U}
-
 \end{definition}
-
-\begin{definition}(Globally valid formula)
-Formula is globally valid if its globally true for any global assignment w.
+\begin{example}(global interpretation of some special formulas under global assignment)
+\[
+I^{\glob,w}_\Fm((t\lexists)) := (\lif\ (I^{\glob,w}_\Term(t)\nonempty)\ \lthen\ \lTrue\ \lelse\ \lFalse)
+\]
+\[
+I^{\glob,w}_\Fm((t\lunique)) := (\lif\ (I^{\glob,w}_\Term(t)\mbox{ semisingleton})\ \lthen\ \ltrue\ \lelse\ \lfalse)
+\]
+\end{example}
+%-----
+%\begin{definition}(Globally valid formula)
+%\end{definition}
+%OR
+\begin{definition}(Strictly globally valid formula)\\%semantically 
+A formula $\varphi$ is (strictly) globally valid if its globally true for any global assignment w.
+%The formula $\phi$ is valid, if it is true under any assignment.
+\[
+I^{\mathrm{strictly}\glob}_\Fm : \Fm \to \{\mathrm{strictly}\lValid,\mathrm{strictly}\lInvalid\}
+\]
+\[
+\left(I^{\mathrm{strictly}\glob}_\Fm(\varphi)=\mathrm{strictly}\lValid\right) \IFF
+ \left(\forall \left(w:\Var\to((\power\Un)\setminus\{\emptyset\})\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
+\]
 \end{definition}
-
-\begin{definition}(Weakly globally valid formula)
-Formula is globally valid if its globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.
+%?? This is too strong, e.g. even $(x=x)$ will not be true, if we assign a conglomerate-pair of classes to the variable $x$.\\
+%?? But "$(x\ldefined)\to(x=x)$" is strictly semantically valid.\\
+%And we need therefore the following definition:
+%-----
+\begin{definition}(Weakly globally valid formula)\\
+A formula $\varphi$ is globally valid if it's globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.\\
+%\end{definition}
+%OR
+%\begin{definition*}(Weakly globally valid formula)\\
+%The formula $\varphi$ is called globally valid if it is true under any global evaluation by singletones.
+%\end{definition*}
+%\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
+I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletones $w:\Var\to\{\{K\}|K\in\Un\}$.
+\[
+I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
+\]
+\[
+\left(I^{\glob}_\Fm(\varphi)=\lValid\right) \IFF
+ \left(\forall \left(w:\Var\to\{\{K\}|K\in\Un\}\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
+\]
 \end{definition}
-
-
-\begin{definition}(weakly globally valid formula)\\
-The formula $\varphi$ is called globally valid if it is true under any global evaluation by singletones.
-\end{definition}
+Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
+%Notation:\\
+%F:=False\\
+%U:=Undefined\\
+%T:=True\\
+%\{F,U,T\}
+%-----
 
 \iffalse 
 Theorem?:
@@ -245,45 +274,20 @@ i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\ri
 \end{definition}
 
 
-Formula is "GloballyTrue", if it is "classically valid", with the idea, that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
 
-$I_\Fm^w(\varphi \implies \psi) := ????  I_\Fm^w(\varphi) ??? I_\Fm^w(\psi)  ????$
-
-%Очень доволен собой: придумал двухуровневую семантику.
+%$I_\Fm^w(\varphi \implies \psi) := ????  I_\Fm^w(\varphi) ??? I_\Fm^w(\psi)  ????$
 
 %Есть логика предикатов, у неё есть классическая семантика. А что если рассуждать в более общем контексте, где во-первых у каждой переменной свой непустой домен, а если формула "локально (классически) валидна" для конкретного набора доменов, то она "глобально истинна под оценкой переменных этими доменами". Если формула "глобально истинная" для всех глобальных оценок доменами(подмножествами некоторого "глобального домена"), то формула будет "глобально валидна".
 %Т.е. у конструкции есть два этажа. Таким образом можно добавлять в язык предикаты (X unique), (X exists), (X defined), который есть конъюнкция двух предыдущих
 
-%Можно ещё потребовать, чтобы оценка переменных была синглтонами, тогда переменные автоматически (well-)defined. А то перед теоремой придётся писать про каждую переменную, что она определена. 🙂. Но модели, конечно, супербольшие получаются: я вот использую для теории классов MK такую конструкцию, и получается, что глобальный домен -- это коллекция всех подмножеств конгломерата всех классов. Но зато предикат well-defined is well-defined , плюс правильно работают всякие эпсилон, йота, тау операторы, "значие функиции" можно "естественным образом" определить и т.д.
+%Можно ещё потребовать, чтобы оценка переменных была синглтонами, тогда переменные автоматически (well-)defined. А то перед теоремой придётся писать про каждую переменную, что она определена. Но модели, конечно, супербольшие получаются: я вот использую для теории классов MK такую конструкцию, и получается, что глобальный домен -- это коллекция всех подмножеств конгломерата всех классов. Но зато предикат well-defined is well-defined , плюс правильно работают всякие эпсилон, йота, тау операторы, "значие функиции" можно "естественным образом" определить и т.д.
 
 %Я помню, где-то рассматривалась семантика с разными доменами для разных переменных, но вот эту вот двухуровневость, я как бы сам осознал, вполне может быть это известный результат.
 
 
-\begin{note}
-Here it is impossible to separately define for atomic and non-atomic formulas, since the truth table will be too primitive / too useless if we use D.A. Bocharov's tree-valued logic.
-\end{note}
-
-\begin{definition}(Strictly semantically valid formula)
-The formula $\phi$ is valid, if it is true under any assignment.
-\end{definition}
-This is too strong, e.g. even $(x=x)$ will not be true, if we assign a conglomerate-pair of classes to the variable $x$.\\
-But "$(x\ldefined)\to(x=x)$" is strictly semantically valid.\\
-
-And we need therefore the following definition:
-\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
-The formula $\phi$ is valid, if it is true under any assignment $w:\Var\to\{{K}|K\in\Un\}$.\\
-\end{definition}
-Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
-
-
-
-\ \\
-\ \\
-\ \\
-\ \\
-
-
-
+%\begin{note} IT IS TRUE BUT UNNECESSARY TO WRITE
+%Here it is impossible to separately define for atomic and non-atomic formulas, since the truth table will be too primitive / too useless if we use D.A. Bocharov's tree-valued logic.
+%\end{note}
 
 Assume $a$, $b$ are well-defined sets.\\
 Then $
@@ -297,7 +301,8 @@ $
 It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
 But they are quasi-equal (syntactically), since they are both not well-defined.\\
  
-Remark: Here by semantical equality i mean the equaly of all interpretations of two term under any assignment of values.
+Remark: 
+Here by semantical equality i mean the equaly of all interpretations of two term under any assignment of values.
 
 Assigment maps each variable to some singletone.\\
 Let's come back to:
@@ -313,6 +318,7 @@ The previous comment about introducing constants will patch the need for shorten
 But what about the cases when it should be a term, depending on some parameters?\\
 Resolution: we use only terms, and this mechanism of definitions of terms is outside the logic of the system.\\
 Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
+
 \begin{definition}(interpretation of definitional equality)\\
 \st{$I^v_\Fm(A\equiv B):=(I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
 $I^v_\Fm(A\equiv B):=\forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
@@ -328,8 +334,6 @@ Some statements:\\
 4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
 
 %not everything that is undefined is quasi.
-
-
 
 \subsection{Axioms for the corresponding prediacate calculus}
 \subsection{Propositional part}
