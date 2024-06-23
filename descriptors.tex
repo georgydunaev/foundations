@@ -1,6 +1,97 @@
 \def\topic{}
 \input{BEGIN.tex}
 
+Note 1:\\
+Some things are undefined because of "plural" interpretation, some because of "nullar" interpretation. Only those which have "singular" interpretation are defined.\\
+Note 2:\\
+Technically almost everywhere where we use "defined" we mean well-defined, but write just "defined" for shortness.\\
+Note 3:\\
+If we explicitly assume the global choice, then epsilon operator may be assumed to be defined.\\
+If we didn't, epsilon operator is can still be defined, but not well-defined.\\
+
+Now, let's talk about how to understand Hilbert's definition of quantifiers via predicate and epsilon operater: (note the two different epsilon operators!)
+\[
+((\varepsilon x:\varphi) \lunique) \IFF (! x:\varphi)
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\]
+%:\IFF \varphi[(\epsilon x:\varphi)/x]
+%\]
+\[
+((\varepsilon x:\varphi) \lexists) \IFF (\exists x:\varphi):\IFF \varphi[(\epsilon x:\varphi)/x]
+\]
+\[
+(\neg((\varepsilon x:\neg\varphi) \lexists)) \IFF (\forall x:\varphi):\IFF \varphi[(\epsilon x:\neg\varphi)/x]
+\]
+If $(\varepsilon x:\varphi)$ is not well-defined for particular $\varpi$, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
+Therefore for such definition we need a well-defined(total) variant. (extended with some default value)
+\\
+Btw,
+\[
+((\varepsilon x:\varphi) \lforall) :\IFF (\neg((\varepsilon x:\neg\varphi) \lexists)).
+\]
+For all connectives, if there is a U value, then the otcome will also be U.\\
+Including equivalences!\\
+Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well-defined.\\
+We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not defined on the empty predicates.\\
+Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
+
+There are 3 natural ways of dealing with a default value of the choice.\\
+1) $\tau^\emptyset$. Here no value is given. It is unique, but it doesn't exist.\\
+2) $\tau^{\exists!}$. Here one particular value is set as a default. It may even be specified: e.g. $\tau^{\exists!}_\emptyset$, or $\tau^{\exists!}_\Un$ or, in general, $\tau^{\exists!}_K$, which is the same as even better: $\tau^{\{K\}}$.\\
+3) $\tau^\Un$. Here any class from the conglomerate of all classes $\Un$ value is a potential default value. It exists, but it isn't unique.\\
+
+
+Our convention:\\
+$\tau := \tau^\Un$\\
+$\epsilon := \tau^{\exists!}_\emptyset = \tau^{\{\emptyset\}}$\\
+$\varepsilon := \tau^\emptyset$\\
+In usual mathematics, usually either $\tau^{\exists!}$ or $\epsilon$ are used.\\
+
+%1) $t$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+%2) $\tau$ -- partial choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+
+%2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
+%3) total $\epsilon$-operator, which returns empty set in case of definable everywhere false predicates is given as an argument;\\
+%4) partial $\varepsilon$-operator, which is undefined on everywhere false definable predicates.\\
+
+Note 1: operators work only on definable conglomerates.\\
+Note 2: I think predicate is a little bit more general than the bounded formula since bounded formulas are corresponding to definable conglomerates.\\
+ 
+For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$-operator.
+ 
+%$\bdbvbH$
+%\symbol{216}
+
+%$\symbol{208}$
+%qqqq
+
+%$\uncert$
+%ggggg
+
+================
+
+
+Recall:\\
+1) The term $(\varepsilon x: x \in \{a,b\})$ is not unique.\\
+2) The formula $a=(\varepsilon x: x \in \{a,b\})$ is not stable under differen assignment.\\
+3) Something of the following gives impression of something that should be true:
+$(a=(\varepsilon x: x \in \{a,b\}))\lor(b=(\varepsilon x: x \in \{a,b\}))$(bad)\\
+$z=(\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$z\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
+$t\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
+$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a\simeq t)\lor(b\simeq t)$(bad)\\
+We need to determine what is valid and what is not.\\
+Resolution:\\
+We should not use variables for definitions, because definitions are not always well-defined. And variables are always well-defined.\\
+We must use new constants instead.\\
+It is a more delicate mechanism than just the use of quasi-equality(as in W.Farmer's article).\\
+So we have a constant $c:=(\varepsilon x: x \in \{a,b\})$.
+But still $(a\simeq c)\lor(b\simeq c)$ is false.
+Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
+
+
+
 \subsection{Descriptors NEW}
 \begin{axiom}
 \[

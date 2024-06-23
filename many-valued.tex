@@ -1,0 +1,108 @@
+\def\topic{many-valued}
+\input{BEGIN.tex}
+
+\section{All many-valued ideas}
+To denote the constructor of an uncertain formula, we will use the symbol $\uncert$, because it is symmetrical (neither $\bot$, nor $\top$ are  symmetrical ). And it looks like crossed D, and "defined" starts with D, and it is connected with not being defined: normally(but not always!), if $f$ is a functional symbol, $f(...,\lundef,...)$.\\
+\[
+I_\Term(\uncert) \coloneqq U
+\]
+
+============
+
+Remark: actually we can use 6 truth values.\\
+ True = (present, stable(True))\\
+False = (present, stable(False))\\
+U1    = ( absent, stable(True))\\
+U2    = ( absent, stable(False))\\
+U3    = (present, unstable)\\
+U4    = ( absent, unstable)\\
+Connectives are contagious in the first argument, it means the following:\\
+Let's say \# is an interpretation of a connective, and v is a truth value, then\\
+ (absent, ...) \# v = (absent, ...)\\
+ (note, that "..." in lhs and rhs are not necessary the same)\\
+ (..., stable(True)) $\land$ (..., stable(True)) =  (..., stable(True))\\
+But two predicates can stabilize each other, so these truth values does not have a truth table, that's why we will not use them.\\
+
+Also therefore Uncertain OR Uncertain is not necessary Uncertain in such semantics!
+Therefore we need to require even more: the certainity of every subformula, otherwise it will complicate the system too much?\\
+
+e.g. $(f(x)=5) \lor (x\notin\dom(f))$.\\
+Or will it require too much to require?\\
+Yes, it will be too much, since then\\
+$(f\function)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
+will not work normally.\\
+Therefore we need something more interesting like:\\
+ $(\lFalse\implies\lUncertain) := \lTrue$.\\
+Or even brave \& better: reject the whole idea of having a defined truth table for uncertain values(or at least having a full/complete truth table).
+Such idea was wrong, because it is not true even in completely classical logic of existence: the formula "$(x\in y)$" is not valid, so it has no any particular defined truth value.\\
+
+=================
+
+
+============================================\\
+Idea: Truth values of predicates are subconglomerates of $(2\times)\Un\times\dots\times\Un$ of values, where $I(P)$ is true.\\
+"(Always)True" corresponds to the whole subconglomerate $(1\times)\Un\times\dots\times\Un$.\\
+"(Always)False" corresponds to the empty subconglomerate $(0\times)\emptyset\times\dots\times\emptyset$, which is simply $\emptyset$.\\
+"Uncertain" corresponds to any other subconglomerate.\\
+All products here are given $n$ times: $n$ is a valency of the predicate symbol $P$.
+============================================\\
+
+For example, the following predicates:\\
+\begin{itemize}
+\item (of valency 0):\\
+"$\bot$" corresponds to 0.("False")\\
+"$\top$" corresponds to 1.("True")\\
+"$\uncert$" corresponds to 2.("Uncertain")\\
+(from now on, we will forget about "$2\times$" form the definition, for simplicity)
+\item (of valency 1):\\
+"(X unique)" corresponds to the collection of all conglomerate-semisingletones.\\
+"(X exists)" corresponds to the collection of all nonempty conglomerates.\\
+"(X (well-)defined)" corresponds to the collection of all nonempty conglomerate-semisingletones, i.e. to the collection of all conglomerate-singletones\\
+"empty" \ corresponds to the collection of empty conglomerates, i.e. just $\{\emptyset\}$.
+\item (of valency 2):\\
+"$(x\in y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is in each class of the second conglomerate.\\
+"$(x\notin y)$" corresponds to collection of all ordered pairs of nonempty conglomerates, where each class from first conglomerate is not in any class of the second conglomerate.
+\end{itemize}
+\begin{definition}(Theorem)
+Theorem is a predicate which has the truth value "True".\\
+\end{definition}
+%$\tau t$
+%Therefore.
+%This is something unresolved, we need some time...
+
+
+% and define the Uncertain value, like:\\
+%Uncertain = Non-existent OR Non-constant\\
+%\,\quad\quad = Absent OR Unstable\\
+%\,\quad\quad = Void OR Varying\\
+%But then, how connectives will work? They will be "contagious" take "the worst case"? %Not necessary: two predicates can stabilize each other.\\
+Idea 2:\\
+
+Actually, variables are ordered: $x_1,x_2,x_3,\dots$.
+So we can consider the following correspondence evaluation of the formula $x_2\in x_4$ via assignment function $w$, with 
+\[
+(1\times)\Un\times \{w(x_2)\}\times\Un\times\{w(x_4)\}\times\Un\times\Un\times\Un\dots,
+\]
+where "infinite product" is abuse of notation, which means a collection of functions $f$ from $\mathbb{N}_0$ to $\power\Un$, such that $f(0)=1$. %\subseteq 
+
+\iffalse
+\symbol{200}\symbol{201}\symbol{202}\symbol{203}
+\symbol{204}\symbol{205}\symbol{206}\symbol{207}
+\symbol{208}\symbol{209}\symbol{210}\symbol{211}
+\symbol{212}\symbol{213}\symbol{214}\symbol{215}
+\symbol{216}\symbol{217}\symbol{218}\symbol{219}\\
+\symbol{220}\symbol{221}\symbol{222}\symbol{223}
+\symbol{224}\symbol{225}\symbol{226}\symbol{227}
+\symbol{228}\symbol{229}\symbol{230}\symbol{231}
+\symbol{232}\symbol{233}\symbol{234}\symbol{235}
+\symbol{236}\symbol{237}\symbol{238}\symbol{239}\\
+\symbol{240}\symbol{241}\symbol{242}\symbol{243}
+\symbol{244}\symbol{245}\symbol{246}\symbol{247}
+\symbol{248}\symbol{249}\symbol{250}\symbol{251}
+\symbol{252}\symbol{253}\symbol{254}\symbol{255}
+\fi
+
+%\symbol{253A}
+
+
+\input{END.tex}
