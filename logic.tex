@@ -100,10 +100,11 @@ The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
 Let $\power \mathcal{U}\setminus\{\emptyset\}$ be the domain of discourse on the global level of the presented model for the theory.\\
 
-We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
+% NOT TRUE ANYMORE
+% We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
 
 It means that we have a super-large model.\\
-Such big model is simple and natural for having predicates such as (- exist), (- unique) being defined.\\
+Such big model is simple and natural for having predicates such as (- exist), (- unique), (- defined) being defined.\\
 Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
 
 %Let $I_\Term$ is an interpretation function on Terms.
@@ -116,10 +117,80 @@ w:\Var\to \power \mathcal{U}\setminus\{\emptyset\}
 But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
+%\subsubsection{NEW VERSION, GOOD: Precise definitions}
+\subsubsection{Ideas}
+The whole this section is devoted to definition of interpretation of terms and formulas under arbitrary assignment and under assigmnent with singletones.\\
+%Firstly, we define evalua.
+We simultaneously define evaluation of formula with singleton-assignment, and extend it to arbitrary assignment:
+\[
+\left(w\models\varphi\vphantom\prod\right)\IFF
+\left(\forall \left(v\in\prod w\right):
+\left(v^*\models\varphi\right)\right),
+\]
+or, in  different notation,
+\[
+I^w_\Fm(\varphi):=
+\lif
+\ \left(
+\forall \left(v\in\prod w\right):
+\left(v^*\models\varphi\right)
+\right)
+\ \lthen
+\ \lTrue
+\ \lelse
+\ \lFalse,
+\]
+Semanntical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
+\[
+(v^*\models(t\ \lunique))\IFF (I^{v^*}_\Term(t)\ \semisingleton)
+\]
+\begin{example*}
+Let $w:=\{("x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
+\end{example*}
+\begin{theorem}
+The definitions of interpretation coincide on singleton-assignments.
+For all $v:\singeval$.
+\[
+\]
+
+\end{theorem}
+.
+\subsubsection{Lemmas for axiom validation}
+Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
+\begin{lemma}(substituition equals changing the assignment)
+\end{lemma}
+\subsubsection{Validation of axioms and rules}
+\begin{theorem}(Generalization rule)
+\[
+\frac{
+\models \psi
+}{
+\models (\forall x:\psi)
+}
+\]
+\end{theorem}
+\Proof
+The premise is equivalent to the following statement:
+\[
+\forall \left(w:\evaluation\right):
+\forall \left(v\in\prod w\right):
+\forall \left(q\in\Un\right):
+(v^*\models \psi)
+\]
+
+\Done
+
+\begin{theorem}(specification rule)
+\[
+\models ((t\lexists)\land(\forall x:\psi))\implies\psi[t/x]
+\]
+\end{theorem}
+\Proof
+\Done
 
 
 ============================================\\
-\subsubsection{Precise definitions}
+\subsubsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
 $w:\Var\to((\power\Un)\setminus\{\emptyset\})$
