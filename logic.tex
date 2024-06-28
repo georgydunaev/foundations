@@ -118,7 +118,7 @@ But we are interested mostly into variable interpreted as "class-singletones" of
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
 %\subsubsection{NEW VERSION, GOOD: Precise definitions}
-\subsubsection{Ideas}
+\subsubsection{Definitions}
 The whole this section is devoted to definition of interpretation of terms and formulas under arbitrary assignment and under assigmnent with singletones.\\
 %Firstly, we define evalua.
 We simultaneously define evaluation of formula with singleton-assignment, and extend it to arbitrary assignment:
@@ -140,21 +140,119 @@ I^w_\Fm(\varphi):=
 \ \lelse
 \ \lFalse,
 \]
-Semanntical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
+Also, for terms:
+\[
+I^w_\Term(t):=
+\bigcup \left\{ I^{v^*}_\Term 
+|v\in\prod w\right\}
+\]
+
+Semantical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
 \[
 (v^*\models(t\ \lunique))\IFF (I^{v^*}_\Term(t)\ \semisingleton)
 \]
+
+Assume $P$ is a predicate symbol.\\
+If it takes a term $t$ as an argument, then
+\[
+(v^*\models(P(t))\IFF I(P)(I^{v^*}_\Term(t)\ \semisingleton)
+\]
 \begin{example*}
-Let $w:=\{("x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
+Let $w:=\{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
 \end{example*}
+
+\begin{definition}(function(star) from the standard assignment to the ``big assignment'')
+\[
+v:\Var\to\Un
+\]
+\[
+v^*:\singeval
+\]
+\[
+v^*(a):=\{v(a)\}
+\]
+\[
+\dom(l^*)=\dom(l)
+\]
+\end{definition}
+
 \begin{theorem}
 The definitions of interpretation coincide on singleton-assignments.
-For all $v:\singeval$.
+For all $l:\Var\to\Un$.
 \[
+\left(\prod (l^*)\right)=\{l\}
 \]
-
 \end{theorem}
-.
+\Proof
+\[
+l=\{(a,l(a))|a\in\dom(l)\}
+\]
+\[
+l^*=\{(a,\{l(a)\})|a\in\dom(l)\}
+\]
+\[
+\left(\prod (l^*)\right)=
+\{\{(x,y)|(x\in \dom(l^*)) \land (y\in l^*(x))\}|\top\}
+\]
+\[
+=\{(x,y)|(x\in \dom(l)) \land (y\in \{l(x)\})\}|\top\}
+\]
+\[
+=\{\{(x,l(x))|x\in\dom(l)\}|\top\}
+\]
+\[
+=\{l|\top\}
+\]
+\[
+=\{l\}
+\]
+\Done
+\begin{theorem}(def of Truth extends)\\
+Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
+\[
+\left(l^*\models\varphi\vphantom\prod\right)\IFF
+\left(\forall \left(v\in\prod l^*\right):
+\left(v^*\models\varphi\right)\right)
+\]
+\end{theorem}
+\Proof
+\[
+\left(\forall \left(v\in\prod l^*\right):
+\left(v^*\models\varphi\right)\right)\IFF
+\]
+\[
+\left(\forall \left(v\in\{l\}\right):
+\left(v^*\models\varphi\right)\right)\IFF
+\]
+\[
+\left(l^*\models\varphi\right).
+\]
+\Done
+\begin{theorem}(def of Truth extends)\\
+Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
+\[
+I^{l^*}_\Term(t)=
+\bigcup \left\{ I^{v^*}_\Term 
+|v\in\prod l^*\right\}
+\]
+\end{theorem}
+\Proof
+\[
+\bigcup \left\{ I^{v^*}_\Term 
+|v\in\prod l^*\right\}=
+\]
+\[
+\bigcup \left\{ I^{v^*}_\Term 
+|v\in\{l\}\right\}=
+\]
+\[
+\bigcup \left\{ I^{l^*}_\Term\right\}=
+\]
+\[
+I^{l^*}_\Term
+\]
+\Done
+
 \subsubsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
 \begin{lemma}(substituition equals changing the assignment)
