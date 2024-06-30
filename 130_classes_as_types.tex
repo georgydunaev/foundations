@@ -26,11 +26,139 @@ Is the following okey ???
 \]
 \fi
 \subsection{Option types}
-...\\
+Axioms:\\
+\begin{axiom}(None-ax)
+\[
+\None\in\Option(A) 
+\]
+\end{axiom}
+\begin{axiom}(Some-ax)
+\[
+(a\in A)\implies(\Some(a)\in\Option(A))
+\]
+\end{axiom}
+Model:\\
+\begin{definition}(None-def)
+\[
+\None := \emptyset
+\]
+\end{definition}
+\begin{definition}(Some-def)
+\[
+\Some(a) := \{a\}
+\]
+\end{definition}
+\begin{definition}(Option-def)
+\[
+\Option(A) := \{b|(b \sss A)\}
+\]
+\end{definition}
+Theorems:\\
+\begin{theorem}
+\[
+\None\in\Option(A) 
+\]
+or, equivalently,
+\[
+\emptyset\in\{b|(b \sss A)\} 
+\]
+\end{theorem}
+\Proof
+1. The set $\emptyset$ is a semisingleton, by def of semisingletones.\\
+2. By thm ..., $\emptyset \subseteq A$.\\
+3. From 1 and 2, it follows that $\emptyset \sss A$ by ... .\\
+4. By ax ..., $(\emptyset\set)$.\\
+5. From 3 and 4, it follows that $\emptyset \in \{b|b \sss A\}$.\\
+\Done
+\begin{theorem}
+\[
+(a\in A)\implies(\Some(a)\in\Option(A))
+\]
+or, equivalently,
+\[
+(a\in A)\implies (\{a\}\in\{b|(b \sss A)\} 
+\]
+\end{theorem}
+\Proof
+1. Assume $(a\in A)$.\\
+2. $(a\in A) \IMPLIES (a \set)$, by ... .\\
+3. $(\{a\} \semisingleton)$, by ... .\\
+%4. $(a set) \IMPLIES (\{a\} set)$, by ... .\\
+4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
+5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
+6. From 2 and 5, it follows that $(\{a\}\in\{b|(b \sss A)\}$, by ... .\\
+\Done
 \subsection{Ordered pairs}
-...\\
+(see section, devoted to ordered pairs and cartesian productis)
+%...\\
 \subsection{Lists}
+Lists are modelled as any family with some initial segment of ordinals as domain.
+
+Axioms:\\
+\begin{axiom}(Nil-ax)
+\[
+[]\in\List(A) 
+\]
+\end{axiom}
+\begin{axiom}(Cons-ax)
+\[
+:: : A \to \List(A) \to \List(A) 
+\]
+\end{axiom}
+Model:\\
+\begin{definition}(List-def)
+\[
+\List(A):=\{(F\family) | \dom(F)\in \omega\cup\{\omega\}\}
+\]
+\end{definition}
+\begin{definition}(Nil-def)
+\[
+[] := \emptyset
+\]
+\end{definition}
+\begin{definition}(inc\_fst-def)
+\[
+\mathrm{inc\_fst}(r) := \{(x\cup\{x\},y) | (x,y) \in R\}
+\]
+\end{definition}
+\begin{definition}(Cons-def)
+\[
+(h::t) := \{(\emptyset,b)|(b\sss h)\}\cup \mathrm{inc\_fst}(t)
+\]
+\end{definition}
+Theorems:
+\begin{theorem}
+\[
+[]\in\List(A) 
+\]
+or, equivalently,
+\[
+\emptyset\in\List(A) 
+\]
+\end{theorem}
+\Proof
 ...\\
+%1. Assume $(a\in A)$.\\
+%2. $(a\in A) \IMPLIES (a \set)$, by ... .\\
+%3. $(\{a\} \semisingleton)$, by ... .\\
+%4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
+%5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
+%6. From 2 and 5, it follows that $(\{a\}\in\{b|(b \sss A)\}$, by ... .\\
+\Done
+\begin{theorem}
+\[
+:: : A \to \List(A) \to \List(A)
+\]
+or, equivalently,
+\[
+:: : A \to \List(A) \to \List(A)
+\]
+\end{theorem}
+\Proof
+...\\
+\Done
+
+%...\\
 \subsection{$\Sigma$-types}
 In type theory, the formatin rule for a $\Sigma$-type is
 \begin{prooftree}

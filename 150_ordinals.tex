@@ -8,4 +8,44 @@
 (A \transitive)\iff (A\subseteq \power A)
 \]
 \end{definition}
+...(many standard definitions are ommited here)...
+\subsection{Cardinality}
+%\begin{definition}(Cardinality)\\
+%\[
+%|A|=\Ord\cap\bigcap \{f: | \}
+%\]
+%\[
+%|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):%(f\mbox{ injective})\}
+%\]
+%\end{definition}
+\begin{definition}(cardinality of a class)
+\[
+|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+\]
+\end{definition}
+\begin{definition}($Y$ is not smaller than $X$)
+\[
+(X\preccurlyeq Y)
+\iff
+(\exists f: (f:X\to Y)\land (f \injective))
+\]
+\end{definition}
+
+Here $V$ denotes a class of all sets, and $\Ord$ denotes the class of all ordinal numbers.
+
+\begin{remark}
+Here we use the intersection of a class which is defined by 
+$
+(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
+$, therefore $\bigcap\emptyset = V$.
+In this case,
+\[
+(x\mapsto|x|):V\to\mbox{Ord}.
+\]
+This definition also allows to obtain a cardinality of any proper class $P$, in particular
+\[
+|P|=\mbox{Ord}
+\]
+This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
+\end{remark}
 \input{END.tex}
