@@ -18,6 +18,16 @@ NOTE: The definitions in this section are simultaneous: some earlier definitions
 
 %The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
 
+
+%The basic notion of the system is "class".
+%$\mathcal{A}$ Alphabet
+
+
+%\begin{definition}
+%\[M(Z) \iff \exists C: Z\in C\]
+%\end{definition}
+%G\"odel notation:\\
+
 \begin{definition}(Variables)\\
 The countable set \\
 $\Var$
@@ -33,6 +43,8 @@ The countable set \\
 $\PredSymb$
 \end{definition}
 
+%\subsubsection{Terms}
+%Terms ::= \\
 \begin{definition}(Term)\\
 Inductive definition of term:\\
 1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
@@ -41,9 +53,12 @@ $"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\
 3) Some higher-order features:\\
 $"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
 ...
-
 \end{definition}
 
+%\subsubsection{Formulas}
+%\begin{definition}
+%Fm ::=\\
+%\end{definition}
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
 1)$\bot\in\Fm$.\\
@@ -118,9 +133,15 @@ Here we assume existence of such conglomerates. So the our chosen naive metatheo
 
 %\subsubsection{NEW VERSION, GOOD: Precise definitions}
 \subsubsection{Definitions}
-The whole this section is devoted to definition of interpretation of terms and formulas under arbitrary assignment and under assigmnent with singletones.\\
+Traditional assignment is an univocal correspondence between variables and sets. In this text, the global assignment is introduced as an univocal correspondence between variables and conglomerates%-singletons
+ of classes. 
+The whole this section is devoted to definition of interpretation functions for terms and formulas under the global assignment.\\ 
+ The adjective ``global" will soon be completely ommited for brevity, because all assignments mentioned are assignments in the global sense.\\
+A global assignment is called singleton-assignment if all elements of its range are singleton conglomerates, containing exactly one class.\\
+
+% assignment and under assigmnent with singletones.\\
 %Firstly, we define evalua.
-We simultaneously define evaluation of formula with singleton-assignment, and extend it to arbitrary assignment:
+We simultaneously define evaluation of formula with a singleton-assignment, and extend it to an arbitrary assignment:
 \[
 \left(w\models\varphi\vphantom\prod\right)\IFF
 \left(\forall \left(v\in\prod w\right):
@@ -209,7 +230,7 @@ l^*=\{(a,\{l(a)\})|a\in\dom(l)\}
 %\iffalse
 \iftrue
 ==== Alternative proof for function coded as family.(unfinished)\\
-(naive)
+recall: (naive)
 \[
 \prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
 \]
@@ -799,4 +820,8 @@ Maybe it is not a problem.\\
 Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% /commented
+\subsection{Additional notions}
+\[((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)\]
+\[((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]\]
+
 \input{END.tex}

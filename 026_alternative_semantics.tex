@@ -1,61 +1,24 @@
 \def\topic{Alternative semantics}
 \input{BEGIN.tex}
-
-
-\section{Singleton-Semantics}
-\subsection{•}
-\[((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)\]
-
-\[((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]\]
-
-
-\section{Appendix 2: Alternative subset semantics [unfinished]}
-\subsection{Logic}
-$\mathcal{A}$ Alphabet
-\subsubsection{Syntax}
-Basic notion of the system is "class".
-\subsubsection{Terms}
-Terms ::= \\
-
-\subsubsection{Formulas}
-\begin{definition}
-Fm ::=\\
-\end{definition}
-
-\begin{definition}
-\[M(Z) \iff \exists C: Z\in C\]
-\end{definition}
-
-G\"odel notation:\\
-
-\subsubsection{Axioms}
-interpretation is denoted by I here.
-
-Usually assignment is an univocal correspondence between variables and sets.
-In our case assignment is an univocal correspondence between variables and conglomerate-singletons of classes.\\
-
+\section{Alternative semantics}
+%\subsection{ Alternative subset semantics [todo: merge with 020\_logic.tex]}
+%\subsection{Logic}
+%\subsubsection{Syntax}
+\subsection{Axioms}
 There are several possible ways of interpreting "in" relation: 
-Assume X and Y are some terms(sic! not just variables).
+Here X and Y are some terms(sic! not just variables).
 1) Weak
 $X\in Y$ is valid iff for any assignment any class-element of I(X) is in any class-element of I(Y).\\
 
 Hypothesis:
 \[A(\varepsilon x: A)\iff \exists x: A(x)\]
 
-
-
-
 Axiom schema
-
-
 
 Following class existence metatheorem for NBG, we can introduce an axiom schema.\\
 To begin with let's introduce recursive function on formulas: it substitutes class variables with set variables.
 
-
 The resulting formula contain only set variables.
-
-
 
 If $\varphi$ contains only set variables, then 
 $\{x | \varphi\}$ is defined.

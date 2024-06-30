@@ -65,12 +65,13 @@ $}
 
 In MK, it corresponds to the following:
 
-\begin{definition}(Dependent product)
+\begin{definition}(Dependent product, variant A)
 \[
 \Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
 \]
+\end{definition}
 
-
+\begin{definition}(Dependent product, variant B)\\
 (Note: For sets the following definition is also okey:
 \[
 \Pi F = \left\{f\in \left(\union\ran(F)\right)^{\dom(f)} \middle| \forall (x\in\dom(f)) : (f(x) \in F(x)) \right\},
@@ -78,10 +79,16 @@ In MK, it corresponds to the following:
 but it is not working well for classes)
 
 (Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
-
 \end{definition}
 
+\begin{definition}(Dependent product, variant C)\\
+Another definition:\\
+\[
+\prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
+\]
+\end{definition}
 
+% todo: prove some theorems about it
 \begin{theorem}
 
 \end{theorem}
