@@ -1,7 +1,94 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Ordered pair}
-the following definition is too weak:
+\subsection{Introduction}
+In this section different definitions of ordered are studied and the new one is proposed.
+\subsection{Kuratowski paar}
+\begin{definition}(Kuratowski pair)
+\[
+(a,b)_K:=\{\{a,a\},\{a,b\}\}
+\]
+\end{definition}
+\begin{definition}
+\[
+\fst_K(p):=\{x|\forall y\in p : x \in y\}
+\]
+\[
+\snd_K(p):=\{x|\exists! y\in p : x \in y\}
+\]
+\end{definition}
+
+\begin{remark}
+\[
+(\exists! y\in p : \psi)
+\stackrel{\mathrm{def}}{\IFF}
+(\exists y\in p : \psi)
+\&
+(! y\in p : \psi)
+\]
+
+%\[
+%\exists! y\in p : x \in y
+%\IFF
+%(\exists y\in p : x \in y)
+%\&
+%(! y\in p : x \in y)
+%\]
+%because
+%\[
+%\exists (y\in p) : (x \in y)
+%\IFF 
+%\exists y : (y\in p) \land (x \in y)
+%\]
+%\[
+%\! (y\in p) : (x \in y)
+%\IFF 
+%! y : (y\in p) \land (x \in y)
+%\]
+%\[
+%\IFF 
+%\forall y_1, y_2 : ((y_1\in p) \land (x \in y_1))\land
+%(y_2\in p) \land (x \in y_2)
+%\implies
+%y_1 = y_2
+%\]
+%...
+%\[
+%\exists! y : (y\in p) \land (x \in y)
+%\]
+\end{remark}
+
+
+%\begin{theorem}(THIS IS NOT TRUE)
+%\[
+%(! y : (y\in p) \land (x \in y))
+%\iff
+%(! y : (y\in p) \implies (x \in y))
+%\]
+%\Proof
+%($\Rightarrow$)\\
+%Assume $(! y : (y\in p) \land (x \in y))$.\\
+%Fix $y_1$, $y_2$.\\
+%Assume  $(y_1\in p) \implies (x \in y_1)$.\\
+%Assume  $(y_2\in p) \implies (x \in y_2)$.\\
+%To show $y_1=y_2$.\\
+%When $(y_1\in p) \implies (x \in y_1)$ is true and $(y_1\in p) \land (x \in %y_1)$ is not true? When $(y_1\in p)$ is false and $(x \in y_1)$ is true.
+%\[\]
+%($\Leftarrow$)\\
+%Assume $(! y : (y\in p) \implies (x \in y))$.\\
+%\Done
+%\end{theorem}
+
+%\begin{theorem}(ALSO NOT TRUE)
+%\[
+%E x : ! x : 
+%\iff
+%\]
+%\end{theorem}
+%\Proof
+%\Done
+\subsection{Ordered pair from Metamath}
+The following definition is too weak:
 \begin{definition}
 \label{def:ordered pair} unsatisfactory
 Ordered pair. %maybe V somehow?
@@ -9,31 +96,56 @@ Ordered pair. %maybe V somehow?
 \langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
 \]
 \end{definition}
+It doesn't work for the case of proper classes.
+\subsection{Morse's ordered pair.}
+There is a generalization of the ordered pair, that allows have proper classes as arguments, introduced by Morse.
+It is based on Kuratovsky pair, and, then \textbf{redefines} ordered pair in the following way:
+\[
+ s(x) = \{\emptyset \} \cup \{\{t\} \mid t \in x\} 
+\]
+\[
+(x, y) = (\{0\} \times s(x)) \cup (\{1\} \times s(y))
+\]
+and also defines 3-tuple:
+\[
+(x, y, z) = (\{0\} \times s(x)) \cup (\{1\} \times s(y)) \cup (\{2\} \times s(z))
+\]
+Similar tuples which are presented in the section ``Classes as Types" are called lists in this text.\\
+Unfortunately, this approach requires defining two variants of pairs, two variants of product, two variants of projections, and so on.\\
 
-\subsection{Definitions of the ordered pair for sets and classes}
-Separate definitions:
-\[
-(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
-\]
-\[
-X\times Y := \{(x,y)|x\in X \land y\in Y\}
-\]
+In fact, there is a uniform definition, which works both for sets and for classes.
 
-\noindent Simultaneous defintion:
+\subsection{Dunaev's ordered pair}
+%Definitions of the ordered pair for sets and classes
+In this section it will be proven that the following self-referential definition of pair and cartesian product is admissible.
+\begin{definition}
+%\noindent Simultaneous defintion:
 \[
-(a,b) := ({0}\times a)\cup ({1}\times b)
+(a,b) := (\{0\}\times a)\cup (\{1\}\times b),
 \]
 \[
-X\times Y := \{(x,y)|x\in X \land y\in Y\}
+X\times Y := \{(x,y)|x\in X \land y\in Y\}.
+\]
+\end{definition}
+
+
+%Separate definitions:
+To begin with, by substituting the second equality in the fist, we obtain
+\[
+(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}.
+\]
+So if it is defined, the cartesian product is normally defined by:
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}.
 \]
 
 \begin{remark}\ \\
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
 \[
-\tilde{K}:= \{\{k\}| k\in K\}
+\tilde{K}:= \{\emptyset\}\cup\{\{k\}| k\in K\}
 \]
 \[
-[a,b] := ({0}\times \tilde{a})\cup ({1}\times \tilde{b})
+[a,b] := (\{0\}\times \tilde{a})\cup (\{1\}\times \tilde{b})
 \]
 Generally speaking,
 \[
@@ -42,7 +154,70 @@ Generally speaking,
 because then there is gurantee that it is well-founded.(todo: check it)\\
 \end{remark}
 
+\subsection{Formally verified definition}
+This subsection is not necessary for the ongoing proof, but it is very illustrative, if the reader is familiar with The Coq Proof Assistant.
 
+Note, that it may be confusing that in code, the construction is done for the special type of sets of certain universe in Gallina's heavy metatheory, which is not the point here. Despite that the construction works fine for classes also, and it will be shown in the next subsection.
+
+\begin{lstlisting}(*The type of sets in for a universe.*)
+Inductive Ens : Type :=
+    sup : forall A : Type, (A -> Ens) -> Ens.
+\end{lstlisting}
+\begin{lstlisting}(* The empty set *)
+Definition Vide : Ens :=
+  sup False (fun x : False => match x return Ens with
+                              end).
+Definition Pair (A B:Ens) : Ens
+ := sup bool (fun b : bool => if b then A else B).
+(* The singleton set  *)
+Definition Sing (E : Ens) := Pair E E.
+\end{lstlisting}
+\begin{lstlisting}
+Definition Zero := Vide.
+Definition One  := Sing Vide.
+\end{lstlisting}
+\begin{lstlisting}
+Definition img (f:Ens -> Ens) (c:Ens) : Ens := 
+match c with
+| sup C h => sup _ (fun d => f (h d))
+end.
+\end{lstlisting}
+\begin{lstlisting}
+Definition bu A B := Union (Pair A B).
+Infix "u" := bu (at level 60, right associativity).
+\end{lstlisting}
+Now, we may try the following definition of the ordered pair
+\begin{lstlisting}
+Fail
+Program Fixpoint  OPair_Zero (c : Ens) : Ens := bu (img OPair_Zero Zero) (img OPair_One c)
+            with  OPair_One  (c : Ens) : Ens := bu (img OPair_Zero One ) (img OPair_One c)
+.
+\end{lstlisting}
+It will be unsuccessful, because the built-it consistency checker cannot infer well-foundedness. In order to overcome this obstacle we define the known special cases first:\\
+\begin{lstlisting}
+Definition img_OPair_Zero_on_Zero := Vide.      
+(* (img OPair_Zero Zero) === {(0,k)|k in 0} = emptyset *)
+Definition        OPair_Zero_Zero := Vide.      
+(* OPair Zero Zero === (0,0) = {(0,j)|j in 0}u{(1,k)|k in 0} = emptyset *)
+Definition img_OPair_Zero_on_One  := Sing Vide. 
+(*(img OPair_Zero One) === {(0,k)|k in 1} = {(0,0)} = {emptyset}*)
+Definition        OPair_Zero_One  := Sing Vide. 
+(* OPair Zero One === (0,1) = {(0,k)|k in 0}u{(0,k)|k in 1} =
+= {} u {(0,0)} = {0} = {emptyset} *)
+
+
+Program Fixpoint OPair_Zero (c:Ens):Ens :=               (img OPair_One c)
+            with OPair_One  (c:Ens):Ens := (Sing Vide) u (img OPair_One c) 
+(* OPair_Zero c = (img OPair_Zero   Zero) u (img OPair_One c) *)
+(* OPair_One  c = (img_OPair_Zero_on_One) u (img OPair_One c) *)
+\end{lstlisting}
+and finally, can define the ordered pair of arbitrary classes:
+\begin{lstlisting}
+Definition OPair (a b: Ens) : Ens := (img OPair_Zero a) u (img OPair_One b).
+\end{lstlisting}
+
+
+Now, from the definition we can obtain certain special cases, for empty set as an argument.
 %Remark 1:
 %\[
 %(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}
@@ -55,6 +230,7 @@ because then there is gurantee that it is well-founded.(todo: check it)\\
 %       = \{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}
 %       = \{(0,\emptyset)\}\cup \{\{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}|%b_2\in b_1\}
 %\]
+
 \[
 (a,0) = \{(0,a_1)|a_1\in a\}
 \]
