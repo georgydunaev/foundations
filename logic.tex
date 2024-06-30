@@ -184,6 +184,7 @@ For all $l:\Var\to\Un$.
 \]
 \end{theorem}
 \Proof
+%% ==== Standard proof for function coded as relation.
 \[
 l=\{(a,l(a))|a\in\dom(l)\}
 \]
@@ -206,6 +207,44 @@ l^*=\{(a,\{l(a)\})|a\in\dom(l)\}
 \[
 =\{l\}
 \]
+%\iffalse
+\iftrue
+==== Alternative proof for function coded as family.(unfinished)\\
+(naive)
+\[
+\prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
+\]
+To show: (here we need to fix something with ``unification function''(tilda), which decomposes values in set of singletones)
+\[
+\left(\prod (l^*)\right)=\{l\}
+\]
+
+\[
+l=\{(a,d)|((a\in\dom(l))\land (d \mbox{ sss } l(x)))\}
+\]
+\[
+l^*=\{(a,d)|((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))\}
+\]
+\[
+\left(\prod (l^*)\right)=
+\{\{(x,b)|(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))\}|\top\}
+\]
+\[
+=\{\{(x,b)|(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})\}|\top\}
+\]
+\[
+=\{\{(x,b)|(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))\}|\top\}
+\]
+\[
+=\{\{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})|x\in\dom(l)\}|\top\}
+\]
+???
+==== Alternative proof2 for function coded as family.
+\[
+\left(\prod (l^*)\right)=
+\{(x\in \dom(l^*) \mapsto h(x) \in l^*(x))\}| h any\}
+\]
+\fi
 \Done
 \begin{theorem}(def of Truth extends)\\
 Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
