@@ -1,7 +1,7 @@
 \def\topic{}
 \input{BEGIN.tex}
-
-\subsection{Classes-as-Types semantics}
+\section{Classes-as-Types}
+%\subsection{Classes-as-Types semantics}
 In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
 
 First of all, we (loosely) define the semantics.
@@ -19,13 +19,19 @@ Dependent types are treated as families.
 (\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
 \]
 
+\iffalse
 Is the following okey ???
 \[
 (B\family)\iff\exists t : B = (\Lambda x: t) 
 \]
-
-\subsubsection{$\Sigma$-types}
-
+\fi
+\subsection{Option types}
+...\\
+\subsection{Ordered pairs}
+...\\
+\subsection{Lists}
+...\\
+\subsection{$\Sigma$-types}
 In type theory, the formatin rule for a $\Sigma$-type is
 \begin{prooftree}
 \AxiomC{
@@ -45,7 +51,7 @@ Assume that $(F\family)$.
 \]
 \end{definition}
 
-\subsubsection{$\Pi$-types}
+\subsection{$\Pi$-types}
 In type theory, the formatin rule for a $\Pi$-type is
 \begin{prooftree}
 \AxiomC{
@@ -82,7 +88,7 @@ but it is not working well for classes)
 
 
 
-\subsubsection{$W$-types}
+\subsection{$W$-types}
 Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
 \[
 \mbox{W}_{\mathrm{fun}}F(0):= \emptyset 
@@ -93,7 +99,7 @@ Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on
 \[
 \mbox{W}F :=\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
 \]
-\subsubsection{$M$-types}
+\subsection{$M$-types}
 \[
 MF := \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
 \]

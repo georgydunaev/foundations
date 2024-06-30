@@ -1,27 +1,29 @@
+\def\MyPrintFlag{defined}
 \input{000_preamble.tex}
 
 \title{Foundations of Mathematics}
 \author[1]{Georgy Dunaev}
 \begin{document}
 \maketitle
+\ifdefined\MyPrintFlag
+  \thispagestyle{empty} % no page number in the bottom
+\fi
 \begin{center}
 \includegraphics[scale=0.5]{cargo.jpeg}
 \end{center}
-\thispagestyle{empty}
-\pagebreak
-\newpage
+
+\ifdefined\MyPrintFlag %%%% this is for printing a blank page
+  \newpage
+  \thispagestyle{empty}
+  \ \\
+\fi
 
 
-\ \\
-\thispagestyle{empty}
-\pagebreak
 \newpage
-\pagebreak
-\newpage
-
 \tableofcontents
+
+
 \newpage
-%qwertyuio
 \noindent
 % of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform-dependent.\\
 %\noindent
@@ -88,7 +90,13 @@ In it $(f(x)\neq 5)$ means that both sides are defined and they are not equal.\\
 
 %%% MODULES:
 
-\input{some_order_theory.tex}
-
+%\input{some_order_theory.tex}
+\input{020_logic.tex}
+\pagebreak
+\input{030_axioms.tex}
+\pagebreak
+\input{040_class_theory.tex}
+\pagebreak
+\input{050_classes_as_types.tex}
 
 \end{document}\\

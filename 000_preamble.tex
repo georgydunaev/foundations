@@ -2,9 +2,9 @@
 \ifdefined\MyHeaderIncluded
 
 \else
-  \newcommand{\foobar}{FooBar}
-  \def\MyHeaderIncluded{true}
-% if is till the end of the file
+  %OR \newcommand{\foobar}{FooBar}
+  \def\MyHeaderIncluded{defined}
+% This "if" scope is continuing untill the very end of this file.
 
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
