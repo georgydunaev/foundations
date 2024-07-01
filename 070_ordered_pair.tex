@@ -3,12 +3,23 @@
 \section{Ordered pair}
 \subsection{Introduction}
 In this section different definitions of ordered are studied and the new one is proposed.
-\subsection{Kuratowski paar}
-\begin{definition}(Kuratowski pair)
+\subsection{Axioms of ordered pair}
+\[
+((a\set)\land(b\set))\implies((a,b)\set)
+\tag{OPairCons}
+\]
+%\label(ax:ordered pair set)
+\[
+((a_1,b_1)=(a_2,b_2))\iff((a_1=a_2)\land(b_1=b_2))
+\tag{OPairUniq}
+\]
+\subsection{Kuratowski pair}
+\begin{definition}(Kuratowski pair of sets)
 \[
 (a,b)_K:=\{\{a,a\},\{a,b\}\}
 \]
 \end{definition}
+Here the original definition of projections is given.
 \begin{definition}
 \[
 \fst_K(p):=\{x|\forall y\in p : x \in y\}
@@ -17,7 +28,6 @@ In this section different definitions of ordered are studied and the new one is 
 \snd_K(p):=\{x|\exists! y\in p : x \in y\}
 \]
 \end{definition}
-
 \begin{remark}
 \[
 (\exists! y\in p : \psi)
@@ -26,7 +36,6 @@ In this section different definitions of ordered are studied and the new one is 
 \&
 (! y\in p : \psi)
 \]
-
 %\[
 %\exists! y\in p : x \in y
 %\IFF
@@ -57,8 +66,6 @@ In this section different definitions of ordered are studied and the new one is 
 %\exists! y : (y\in p) \land (x \in y)
 %\]
 \end{remark}
-
-
 %\begin{theorem}(THIS IS NOT TRUE)
 %\[
 %(! y : (y\in p) \land (x \in y))
@@ -87,17 +94,16 @@ In this section different definitions of ordered are studied and the new one is 
 %\end{theorem}
 %\Proof
 %\Done
-\subsection{Ordered pair from Metamath}
+\subsection{Metamath's ordered pair of sets definition}
 The following definition is too weak:
 \begin{definition}
-\label{def:ordered pair} unsatisfactory
-Ordered pair. %maybe V somehow?
+\label{def:MM_ordered pair}(Metamath's ordered pair) %maybe V somehow?
 \[
 \langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
 \]
 \end{definition}
 It doesn't work for the case of proper classes.
-\subsection{Morse's ordered pair.}
+\subsection{Morse's ordered pair}
 There is a generalization of the ordered pair, that allows have proper classes as arguments, introduced by Morse.
 It is based on Kuratovsky pair, and, then \textbf{redefines} ordered pair in the following way:
 \[
@@ -127,10 +133,8 @@ In this section it will be proven that the following self-referential definition
 X\times Y := \{(x,y)|x\in X \land y\in Y\}.
 \]
 \end{definition}
-
-
 %Separate definitions:
-To begin with, by substituting the second equality in the fist, we obtain
+To begin with, by substituting the second equality in the first equation, it is obtained that
 \[
 (a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}.
 \]
@@ -154,7 +158,7 @@ Generally speaking,
 because then there is gurantee that it is well-founded.(todo: check it)\\
 \end{remark}
 
-\subsection{Formally verified definition}
+\subsection{Formally verified implementation}
 This subsection is not necessary for the ongoing proof, but it is very illustrative, if the reader is familiar with The Coq Proof Assistant.
 
 Note, that it may be confusing that in code, the construction is done for the special type of sets of certain universe in Gallina's heavy metatheory, which is not the point here. Despite that the construction works fine for classes also, and it will be shown in the next subsection.
@@ -186,14 +190,16 @@ end.
 Definition bu A B := Union (Pair A B).
 Infix "u" := bu (at level 60, right associativity).
 \end{lstlisting}
-Now, we may try the following definition of the ordered pair
+The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built-it consistency checker cannot infer well-foundedness.
 \begin{lstlisting}
 Fail
-Program Fixpoint  OPair_Zero (c : Ens) : Ens := bu (img OPair_Zero Zero) (img OPair_One c)
-            with  OPair_One  (c : Ens) : Ens := bu (img OPair_Zero One ) (img OPair_One c)
+Program Fixpoint  OPair_Zero (c : Ens) : Ens
+                    := bu (img OPair_Zero Zero) (img OPair_One c)
+            with  OPair_One  (c : Ens) : Ens
+                    := bu (img OPair_Zero One ) (img OPair_One c)
 .
 \end{lstlisting}
-It will be unsuccessful, because the built-it consistency checker cannot infer well-foundedness. In order to overcome this obstacle we define the known special cases first:\\
+In order to overcome this obstacle the known special cases are defined first:
 \begin{lstlisting}
 Definition img_OPair_Zero_on_Zero := Vide.      
 (* (img OPair_Zero Zero) === {(0,k)|k in 0} = emptyset *)
@@ -211,12 +217,12 @@ Program Fixpoint OPair_Zero (c:Ens):Ens :=               (img OPair_One c)
 (* OPair_Zero c = (img OPair_Zero   Zero) u (img OPair_One c) *)
 (* OPair_One  c = (img_OPair_Zero_on_One) u (img OPair_One c) *)
 \end{lstlisting}
-and finally, can define the ordered pair of arbitrary classes:
+Finally, the ordered pair of arbitrary classes is defined:
 \begin{lstlisting}
 Definition OPair (a b: Ens) : Ens := (img OPair_Zero a) u (img OPair_One b).
 \end{lstlisting}
 
-
+\subsection{Model of ordered pair \& theorems}
 Now, from the definition we can obtain certain special cases, for empty set as an argument.
 %Remark 1:
 %\[

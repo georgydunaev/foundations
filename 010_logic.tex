@@ -833,8 +833,13 @@ Maybe it is not a problem.\\
 Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% /commented
-\subsection{Additional notions}
-\[((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)\]
-\[((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]\]
+\subsection{Additional specific notions}
+Due to richer semantics it is possible to formally introduce the relation between terms $(s \rightsquigarrow t)$ that holds when $t$ is one of possible the implementations of underdefined term $s$. This reflects the fact that certain underdefined concepts(like ordered pair, real numbers, lists, etc) can have various implementations.
+\[
+((\varepsilon x:x\in Q)\rightsquigarrow t) \longleftrightarrow (t\in Q)
+\]
+\[
+((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]
+\]
 
 \input{END.tex}

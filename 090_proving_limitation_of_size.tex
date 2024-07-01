@@ -87,17 +87,17 @@ because $|V|=\Ord$ and
 In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
-tr(X) \iff (\forall Z\in X: Z\subseteq X)
+\tr(X) \iff (\forall Z\in X: Z\subseteq X)
 \]
 \[
-ord(X) \iff tr(X)\land (\forall Y\in X: tr(Y))
+\ord(X) \iff tr(X)\land (\forall Y\in X: \tr(Y))
 \]
 the other possibilities are
 \[
-ord(X) \iff tr(X)\land (\mbox{E Wo }X)
+\ord(X) \iff \tr(X)\land (\mbox{E Wo }X)
 \]
 \[
-ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
+\ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
 \]
 etc ...
 \end{definition}
@@ -122,9 +122,9 @@ Firstly, we will prove some lemmas:
 Assume $\Ord\in\Ord$.\\
 Therefore $\in$ well-orders $\Ord$ as a well-founded strict linear order.\\
 In particular strict order is irreflexive.\\
-Since using assumpton, $\Ord$ is an element of $\Ord$, by irreflexetivity, we have $\Ord\notin\Ord$.
-Contradiction with assumption.
-Therefore $\Ord\notin\Ord$ is proven.
+Since using assumpton, $\Ord$ is an element of $\Ord$, by irreflexetivity, we have $\Ord\notin\Ord$.\\
+Contradiction with assumption.\\
+Therefore $\Ord\notin\Ord$ is proven.\\
 \Done
 
 \begin{lemma}
@@ -155,7 +155,7 @@ From these three statements we deduce that $|K| \neq |V|$.\\
 \end{lemma}
 \Proof
 Assume $(|K| \neq |V|)$.\\
-We know that $(|V|=\Ord)$, so $(|K| \neq Ord)$.\\
+We know that $(|V|=\Ord)$, so $(|K| \neq \Ord)$.\\
 Recalling the definition:
 $|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}$.\\
 Now we have that 
