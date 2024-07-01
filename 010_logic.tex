@@ -51,7 +51,7 @@ Inductive definition of term:\\
 2) 
 $"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
 3) Some higher-order features:\\
-$"x"\in\Var\AND"\varphi"\in Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
+$"x"\in\Var\AND"\varphi"\in \Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
 ...
 \end{definition}
 
@@ -95,18 +95,89 @@ Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
 \end{definition}
 \noindent
 
+\pagebreak
+%%% Example labeling
+%\[
+%E=mc^2 \label{eq:einstein} \tag{\ding{37}}
+%\]
+%As we can see from \eqref{eq:einstein}\ldots
 
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Axioms for the corresponding predicate calculus}
+\subsubsection{Propositional part}
+For all formulas $A$, $B$, $C$:
+%For all atomic formulas $A$, $B$, $C$.
+\[
+(A \implies (B \implies A)) \label{ax:A1} \tag{A1}
+\]
+\[
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B))) \label{ax:A2} \tag{A2}
+\]
+\[
+((A\land B) \implies A) \label{ax:A3} \tag{A3}
+\]
+\[
+((A\land B) \implies B)  \label{ax:A4} \tag{A4}
+\]
+\[
+(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{A5}
+\]
+\[
+(A \implies (A\lor B)) \label{ax:A6} \tag{A6}
+\]
+\[
+(B \implies (A\lor B)) \label{ax:A7} \tag{A7}
+\]
+\[
+((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
+\label{ax:A8} \tag{A8}
+\]
+\[
+(\neg A \implies (A\implies B)) \label{ax:A9} \tag{A9}
+\]
+\[
+((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
+\label{ax:A10} \tag{A10}
+\]
+\[
+(A\lor \neg A) \label{ax:LEM} \tag{LEM}
+\]
+\[
+\frac{
+A \implies B\quad\quad\quad A
+}{
+B
+}
+\label{ax:MP} \tag{MP}
+\]
+\subsubsection{Predicational part}
+Specification rules:
+\[
+(t\lexists)\implies ((\forall x: \phi) \implies \phi[t/x])
+\label{ax:S1} \tag{S1}
+\]
+\[
+(t\lexists) \implies (\phi[t/x] \implies (\exists x: \phi))
+\label{ax:S2} \tag{S2}
+\]
+Bernays' rules:%if $x$ is not free in formula $\psi$ then
+\[
+\frac{
+\psi \implies \varphi
+}{
+\psi \implies (\forall x:\varphi)
+}
+\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+\label{ax:B1} \tag{B1}
+\]
+\[
+\frac{
+\varphi \implies \psi
+}{
+(\exists x:\varphi)\implies \psi
+}
+\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+\label{ax:B2} \tag{B2}
+\]
 \pagebreak
 \subsection{Semantics} % the big one.
 \subsubsection{Motivation}
@@ -356,7 +427,7 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \Proof
 \Done
 
-
+\iffalse
 ============================================\\
 \subsubsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
@@ -571,66 +642,8 @@ Some statements:\\
 2) INVALID: $(\varepsilon x: x \in \emptyset) \in \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
 3) INVALID: $(\varepsilon x: x \in \emptyset) \notin \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
 4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
-
+\fi
 %not everything that is undefined is quasi.
-
-\subsection{Axioms for the corresponding prediacate calculus}
-\subsection{Propositional part}
-%For all formulas $A$, $B$, $C$.
-For all atomic formulas $A$, $B$, $C$.
-\[
-(A \implies (B \implies A))
-\]
-\[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B)))
-\]
-\[
-((A\land B) \implies A)
-\]
-\[
-((A\land B) \implies B)
-\]
-\[
-(A \implies (B\implies (A\land B)))
-\]
-\[
-(A \implies (A\lor B))
-\]
-\[
-(B \implies (A\lor B))
-\]
-\[
-((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
-\]
-\[
-(\neg A \implies (A\implies B))
-\]
-\[
-((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
-\]
-\subsection{Predicational part}
-Specification rules:
-\[
-(t\ldefined)\implies ((\forall x: \phi) \implies \phi[t/x])
-\]
-\[
-(t\ldefined) \implies (\phi[t/x] \implies (\exists x: \phi))
-\]
-Bernays' rules: if $x$ is not free in formula $\psi$ then
-\[
-\frac{
-\psi \implies \varphi
-}{
-\psi \implies (\forall x:\varphi)
-}\mbox{(B1)}
-\]
-\[
-\frac{
-\varphi \implies \psi
-}{
-(\exists x:\varphi)\implies \psi
-}\mbox{(B2)}
-\]
 
 
 
@@ -644,11 +657,11 @@ Bernays' rules: if $x$ is not free in formula $\psi$ then
 \]
 \end{theorem}
 \Proof
-This theorem is provable constructively.
-This is done through the formalisation of a proof notion.
-Proof is ...
+This theorem is provable constructively.\\
+This is done through the formalisation of a notion of proof.\\
+A proof is a list of formulas.\\
+...\\
 \Done
-
 \begin{theorem}
 \[
 A=B\ \Longrightarrow\ (t[A/W]=t[B/W])

@@ -25,8 +25,10 @@ Is the following okey ???
 (B\family)\iff\exists t : B = (\Lambda x: t) 
 \]
 \fi
-\subsection{Option types}
-Axioms:\\
+\pagebreak
+\subsection{Implementing option types}
+%Axioms:\\
+\subsubsection{Axioms of option types}
 \begin{axiom}(None-ax)
 \[
 \None\in\Option(A) 
@@ -37,7 +39,8 @@ Axioms:\\
 (a\in A)\implies(\Some(a)\in\Option(A))
 \]
 \end{axiom}
-Model:\\
+\subsubsection{Model of option types}
+%Model:\\
 \begin{definition}(None-def)
 \[
 \None := \emptyset
@@ -53,7 +56,8 @@ Model:\\
 \Option(A) := \{b|(b \sss A)\}
 \]
 \end{definition}
-Theorems:\\
+\subsubsection{Soundness of option types}
+%Theorems:\\
 \begin{theorem}
 \[
 \None\in\Option(A) 
@@ -88,13 +92,21 @@ or, equivalently,
 5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
 6. From 2 and 5, it follows that $(\{a\}\in\{b|(b \sss A)\}$, by ... .\\
 \Done
-\subsection{Ordered pairs}
+\pagebreak
+\subsection{Implementing ordered pairs}
 (see section, devoted to ordered pairs and cartesian productis)
 %...\\
-\subsection{Lists}
+\subsubsection{Axioms of ordered pairs}
+...
+\subsubsection{Model of ordered pairs}
+...
+\subsubsection{Soundness of ordered pairs}
+...
+\pagebreak
+\subsection{Implementing lists}
 Lists are modelled as any family with some initial segment of ordinals as domain.
 
-Axioms:\\
+\subsubsection{Axioms of lists}%:\\
 \begin{axiom}(Nil-ax)
 \[
 []\in\List(A) 
@@ -105,7 +117,8 @@ Axioms:\\
 :: : A \to \List(A) \to \List(A) 
 \]
 \end{axiom}
-Model:\\
+\subsubsection{Model of lists}
+%Model:\\
 \begin{definition}(List-def)
 \[
 \List(A):=\{(F\family) | \dom(F)\in \omega\cup\{\omega\}\}
@@ -126,7 +139,8 @@ Model:\\
 (h::t) := \{(\emptyset,b)|(b\sss h)\}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
-Theorems:
+%Theorems:
+\subsubsection{Soundness of lists}
 \begin{theorem}
 \[
 []\in\List(A) 
@@ -157,9 +171,9 @@ or, equivalently,
 \Proof
 ...\\
 \Done
-
-%...\\
-\subsection{$\Sigma$-types}
+\pagebreak
+\subsection{Implementing $\Sigma$-types}
+\subsubsection{Axioms of $\Sigma$-types}
 In type theory, the formatin rule for a $\Sigma$-type is
 \begin{prooftree}
 \AxiomC{
@@ -171,6 +185,7 @@ $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 $}
 \end{prooftree}
 
+\subsubsection{Model of $\Sigma$-types}
 Assume that $(F\family)$.
 
 \begin{definition}(Dependent sum)
@@ -179,7 +194,11 @@ Assume that $(F\family)$.
 \]
 \end{definition}
 
-\subsection{$\Pi$-types}
+\subsubsection{Soundness of $\Sigma$-types}
+...
+\pagebreak
+\subsection{Implementing $\Pi$-types}
+\subsubsection{Axioms of $\Pi$-types}
 In type theory, the formatin rule for a $\Pi$-type is
 \begin{prooftree}
 \AxiomC{
@@ -191,14 +210,13 @@ $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 $}
 \end{prooftree}
 
+\subsubsection{Model of $\Pi$-types}
 In MK, it corresponds to the following:
-
 \begin{definition}(Dependent product, variant A)
 \[
 \Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
 \]
 \end{definition}
-
 \begin{definition}(Dependent product, variant B)\\
 (Note: For sets the following definition is also okey:
 \[
@@ -215,15 +233,16 @@ Another definition:\\
 \prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
 \]
 \end{definition}
-
+\subsubsection{Soundness of $\Pi$-types}
+...
 % todo: prove some theorems about it
 \begin{theorem}
-
 \end{theorem}
-
-
-
-\subsection{$W$-types}
+\pagebreak
+\subsection{Implementing $W$-types}
+\subsubsection{Axioms of $W$-types}
+...
+\subsubsection{Model of $W$-types}
 Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
 \[
 \mbox{W}_{\mathrm{fun}}F(0):= \emptyset 
@@ -234,12 +253,19 @@ Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on
 \[
 \mbox{W}F :=\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
 \]
-\subsection{$M$-types}
+\subsubsection{Soundness of $W$-types}
+...
+\pagebreak
+\subsection{Implementing $M$-types}
+\subsubsection{Axioms of $M$-types}
+...
+\subsubsection{Model of $M$-types}
 \[
 MF := \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
 \]
 \[
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
 \]
-
+\subsubsection{Soundness of $\Pi$-types}
+...
 \input{END.tex}

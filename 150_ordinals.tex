@@ -8,6 +8,25 @@
 (A \transitive)\iff (A\subseteq \power A)
 \]
 \end{definition}
+
+In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
+\begin{definition} predicates on classes "is transitive" and "is ordinal"
+\[
+tr(X) \iff (\forall Z\in X: Z\subseteq X)
+\]
+\[
+ord(X) \iff tr(X)\land (\forall Y\in X: tr(Y))
+\]
+the other possibilities are
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)
+\]
+\[
+ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
+\]
+etc ...
+\end{definition}
+
 ...(many standard definitions are ommited here)...
 \subsection{Cardinality}
 %\begin{definition}(Cardinality)\\
@@ -48,4 +67,6 @@ This definition also allows to obtain a cardinality of any proper class $P$, in 
 \]
 This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
 \end{remark}
+
+
 \input{END.tex}
