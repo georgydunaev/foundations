@@ -64,7 +64,8 @@
 %...\\
 %\Done
 \subsection{Some theorems of the order theory}
-some bad older definitions, but good thms
+
+Here presented some bad older definitions, but good theorems
 \begin{definition}bad
 \[
 \UB_R(S) = R[S]
@@ -75,13 +76,28 @@ some bad older definitions, but good thms
 \end{definition}
 
 Context and notation:\\
-Here by $\leq$ we denote the standard relation "less or equal to" on real numbers.
-$\leq$ for inequalities of numbers\\
-$\leqslant$ for inequalities of sets of numbers\\
+Here by $\leq$ we denote the standard relation "less or equal to" on real numbers.\\
+$\leq$ for inequalities of numbers;\\
+$\leqslant$ for inequalities of sets of numbers;\\
 $R := \leq$\\
 $\leq = \geq^{-1}$\\
 $\geq = \leq^{-1}$\\
-Remark: if $\leq$ is transitive then $\leqslant$ is transitive on non-empty(sic!) sets.
+
+\begin{remark}
+If $\leq$ is transitive then $\leqslant$ is transitive only on non-empty(sic!) sets.
+\end{remark}
+\Proof
+(transitivity on nonempty sets)\\
+...\\
+(and only on them)\\
+By contradiction. Assume additionally, and just for fun, that $H,S$ are elements oof the order, and $S<H$. If the order were transitive, then the following deduction would be possible:
+\begin{quote}
+Nothing is better than eternal happiness. \null\hfill ($\{H\}<\emptyset$)\\
+A sandwich is better than nothing. \null\hfill ($\emptyset<\{S\}$)\\
+Therefore, a sandwich is better than eternal happiness. \null\hfill ($\{H\}<\{S\}$)\\
+\end{quote}
+We obtained $H<S$, which together with $S<H$ and transitivity on elements contradicts the irreflexivity of the order on elements.\\
+\Done
 \noindent
 
 \begin{definition}good

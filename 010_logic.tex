@@ -215,16 +215,16 @@ A global assignment is called singleton-assignment if all elements of its range 
 We simultaneously define evaluation of formula with a singleton-assignment, and extend it to an arbitrary assignment:
 \[
 \left(w\models\varphi\vphantom\prod\right)\IFF
-\left(\forall \left(v\in\prod w\right):
-\left(v^*\models\varphi\right)\right),
+\left(\forall \left(v\in\prod w\middle):
+\middle(v^*\models\varphi\right)\right),
 \]
-or, in  different notation,
+or, following a slightly different notation,
 \[
 I^w_\Fm(\varphi):=
 \lif
 \ \left(
-\forall \left(v\in\prod w\right):
-\left(v^*\models\varphi\right)
+\forall \left(v\in\prod w\middle):
+\middle(v^*\models\varphi\right)
 \right)
 \ \lthen
 \ \lTrue
@@ -235,18 +235,48 @@ Also, for terms:
 \[
 I^w_\Term(t):=
 \bigcup \left\{ I^{v^*}_\Term 
-|v\in\prod w\right\}
+\middle|v\in\prod w\right\}
 \]
 
 Semantical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
 \[
 (v^*\models(t\ \lunique))\IFF (I^{v^*}_\Term(t)\ \semisingleton)
 \]
+For simplicity, it is possible to consider
+\[
+\Type := \{\Term, \Fm, \BTerm, \BFm \},
+\]
+but it may be defined simultaneously with symbols, in order to produce new types.\\
+But it, in fact, may be a version of some primitive lambda calculus, which is used only for defining new types of symbols.\\
+
+For example, if Isabelle is used, then\\
+``i'' corresponds to Term,\\
+``o'' corresponds to Fm,\\
+``i=>i'' corresponds to BTerm,\\
+``i=>o'' corresponds to BFm,\\
+and so on.\\
+
+TODO: to prove semantics of\\
+https://isabelle.in.tum.de/dist/library/FOL/FOL/IFOL.html\\
+Paulson1989\_Article\_TheFoundationOfAGenericTheorem.pdf\\
+%Paulson1989_Article_TheFoundationOfAGenericTheorem.pdf\\
+
+There are symbols.\\
+Symbol has meaning.\\
+Symbol $S$ has valency $\val(S)$.\\
+\[
+\Symb:=\sum_{n\in\nat}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
+\]
+For a symbol S, the meaning of S is a function from $val(S)$ with domains $D_S(1),\dots,D_S(n)$ to the range of a symbol $R_S$.\\
 
 Assume $P$ is a predicate symbol.\\
+\[
+I_\PredSymb(P) : \left(\prod_{k\in\{1,\dots,\val(P)\}}D(P,k)\right)...
+\]
+
 If it takes a term $t$ as an argument, then
 \[
-(v^*\models(P(t))\IFF I(P)(I^{v^*}_\Term(t)\ \semisingleton)
+(v^*\models(P(t))\IFF I_\PredSymb(P)(I^{v^*}_\Term(t)\ \semisingleton)
 \]
 \begin{example*}
 Let $w:=\{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
@@ -382,6 +412,11 @@ I^{l^*}_\Term(t)=
 I^{l^*}_\Term
 \]
 \Done
+
+\subsubsection{Interpretation, special cases}
+\[
+I^{v^*}_\Fm((\varepsilon x:\varphi)):=\{\}
+\]
 
 \subsubsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
