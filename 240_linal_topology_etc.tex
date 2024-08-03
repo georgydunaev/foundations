@@ -84,6 +84,57 @@ $x\in W\AND W\in\topology\AND W\subseteq V \IMPLIES \exists U\in \topology: x\in
 $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists-elim, nghb-intro).
 \\
 \Done
+
+\subsection{Theorems about bases}
+
+\begin{definition}(Base)\\
+A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
+%any open set o
+$\forall U\in\mathcal{T}:\exists W\in\power\mathfrak{B}:U=\union W$\\
+or\\
+$\mathcal{T}\subseteq \{\union W |  W\in\power\mathfrak{B}\}$\\
+or\\
+$\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
+\end{definition}
+
+
+\begin{definition}(Generator)\\
+A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff\\
+%any open set o
+$\forall U\in\mathcal{T}:\exists W\in\power\{\intersection Q | (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}:U=\union W$\\
+or\\
+$\mathcal{T}\subseteq \{\union W |  W\in\power\{\intersection Q | (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}\}$\\
+or\\
+$\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
+\end{definition}
+Generator set is also called a "subbase".
+
+
+\begin{definition}(``Finer'' as order on filters)\\
+For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathcal{C} \leq \mathcal{F}$ if and only if for every $C \in \mathcal{C}$ there exists some $F \in \mathcal{F} \text{ such that } F \subseteq C,$ in which case it is said that $\mathcal{C}$ is coarser than $\mathcal{F}$ and that $\mathcal{F}$ is finer than (or subordinate to) $\mathcal{C}$.
+\[
+(\mathcal{C} \leq \mathcal{F})
+\IFF
+(\forall C \in \mathcal{C}:\exists F \in \mathcal{F}: F \subseteq C)
+\]
+\end{definition}
+
+\begin{notation}(generator/base/topology at x)
+\[
+\mathfrak{B}(x):=\{U\in\mathfrak{B}|x\in U\}
+\]
+\end{notation}
+
+\begin{definition}(Order on bases)
+Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff\\
+\[
+\forall x : (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
+\]
+\end{definition}
+
+
+\subsection{Alexandrov's theorem}
+
 \section{Measure theory}
 \section{Functional analysis}
 % $\blipo$ should give error
