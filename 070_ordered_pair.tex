@@ -362,6 +362,116 @@ h((a,b)) = h(({0}\times a)\cup ({1}\times b)) =
 \[
 = \sup\{h((0,a_1))|a_1\in a_0)\} =
 \]
-
 \Done
+
+\subsection{Cartesian product of numerals}
+
+Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjuction of truth values on $\Prop:=\{\emptyset,\{\emptyset\}\}$ 
+Since $(\emptyset, \emptyset) = \emptyset$,
+\[
+\{\emptyset\}\times \{\emptyset\} = \{(\emptyset, \emptyset)\} = \{\emptyset\} \in \Prop.
+\]
+(It is also possible to use just intersection.)\\
+
+What is the Dunaev's product of 2 and 2 or even arbitrary m and n? Is there a closed formula?
+\[
+(a,b) := (\{0\}\times a)\cup (\{1\}\times b),
+\]
+\[
+X\times Y := \{(x,y)|x\in X \land y\in Y\}.
+\]
+\[
+2:=\{\emptyset,\{\emptyset\}\}
+\]
+\[
+(0,\{\emptyset\}) = ... = \{\{\emptyset\}\}
+\]
+\[
+a:=\{\emptyset,\{\emptyset\}\}
+\]
+\[
+b:=\{\emptyset,\{\emptyset\}\}
+\]
+\[
+(\{0\}\times a) = (\{0\}\times\{\emptyset,\{\emptyset\}\}) =
+\]
+\[
+ = \{(0,\emptyset),(0,\{\emptyset\})\} =
+\]
+\[
+ = \{\emptyset,\{\{\emptyset\}\}\}
+\]
+
+\[
+(\{1\}\times b) = (\{1\}\times\{\emptyset,\{\emptyset\}\}) =
+\]
+\[
+ = \{(1,\emptyset),(1,\{\emptyset\})\} =
+\]
+\[
+ = \{\{\emptyset\},2\}
+\]
+%It's impossible to obtain two equal things!
+
+\[
+(2,2)= (\{0\}\times 2) \cup (\{1\}\times 2)
+\]
+\[
+ = \{\emptyset,\{\{\emptyset\}\}, \{\emptyset\},\{\emptyset,\{\emptyset\}\}\}
+\]
+\[
+ = \{\emptyset, \{\emptyset\}, \{\{\emptyset\}\},\{\emptyset,\{\emptyset\}\}\}
+\]
+
+Non-commutative multiplication table:\\
+\begin{tabular}{|c|c|c|c|}
+\hline
+$\times$ & 0 & 1 & 2\\
+\hline
+0 & 0 & 0 & 0\\
+\hline
+1 & 0 & 1 & $\{0,\{1\}\}$\\
+\hline
+2 & 0 & 2 & $\{0,\{1\},1,2\}$\\
+\hline
+\end{tabular}
+
+============== Recheck:\\
+\[
+(0,0) = 0
+\]
+\[
+(1,0) = (\{0\}\times1) \cup (\{1\}\times 0) = \{(0,0)\} \cup 0 = \{0\} = 1\\
+\]
+\[
+(0,1) = (\{0\}\times0) \cup (\{1\}\times 1) = 0 \cup \{(1,0)\} = \{\{0\}\} = \{1\}\\
+\]
+\[
+(1,1) = (\{0\}\times1) \cup (\{1\}\times 1) = \{0\} \cup \{(1,0)\} = \{0,\{0\}\} = 2\\
+\]\[
+(2,0) = (\{0\}\times2) \cup (\{1\}\times 0) = \{(0,0),(0,1)\} \cup 0 = \{0,\{1\}\}
+\]\[
+(2,1) = (\{0\}\times2) \cup (\{1\}\times 1) = \{(0,0),(0,1)\} \cup \{(1,0)\} = \{0,\{1\},1\}\\
+\]\[
+(2,2) = (\{0\}\times2) \cup (\{1\}\times 2) = \{(0,0),(0,1)\} \cup \{(1,0),(1,1)\} = \{0,\{1\},1,2\}\\
+\]
+\[
+(1,2) = (\{0\}\times1) \cup (\{1\}\times 2) = \{(0,0)\} \cup \{(1,0),(1,1)\} = \{0,1,2\} = 3
+\]
+
+% What if (-,-) works like sum, and times works like product? no, not commutative.
+
+% is it a MINIMUM FUNCTION ?
+% <a,b> := (a x b) u (b x a)
+% a x b := {<x,y> | x in a, y in b}
+% <0,0> = 0
+% <1,0> = 0
+% <0,1> = 0
+% <1,1> = {<0,0>} = {0} = 1
+% <2,1> = {<0,0>,<1,0>,<0,0>,<0,1>} = {0} = 1
+% <2,2> = {<0,0>,<1,0>,<0,1>,<1,1>} = {0,1} = 2
+% <3,3> = {<0,0>,<1,0>,<2,0>,<0,1>,<1,1>,<2,1>,<0,2>,<1,2>,<2,2>} = 
+% = {0,1,2} = 3
+
+
 \input{END.tex}

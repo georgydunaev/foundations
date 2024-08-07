@@ -94,6 +94,7 @@
 \newcommand{\IFF}{\ \Longleftrightarrow\ }
 \renewcommand{\iff}{\ \longleftrightarrow\ }
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
+\newcommand{\CIMPLIES}{=\Rightarrow}
 \renewcommand{\implies}{\ \longrightarrow\ }
 \newcommand{\Inf}{\mathrm{Inf}}
 \newcommand{\injective}{\mbox{\ injective}}
@@ -181,6 +182,9 @@
 %\DeclareRobustCommand{\invE}{\text{\reflectbox{$\Gamma$}}}
 \newcommand{\V}{\mathrm{V}}
 \newcommand{\I}{\mathrm{I}}
+\newcommand{\prop}{\mathrm{prop}}
+\newcommand{\Prop}{\mathrm{Prop}}
+\newcommand{\To}{\Rightarrow}
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -195,5 +199,9 @@
 % Code listings' pretty printer:
 \usepackage{listings}
 \usepackage{geometry}
+\usepackage{stmaryrd}  % for \llbracket \rrbracket
+
+\newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
+\newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
 
 \fi % guard

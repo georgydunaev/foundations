@@ -1,10 +1,104 @@
 \def\topic{}
 \input{BEGIN.tex}
+
+\section{Higher-order logical framework with dependent types}
+This framework is inspired by Lean's and Coq's meta-theories.\\
+...
+\pagebreak
 \section{Higher-order logical framework}
 This framework is inspired by Isabelle's meta-theory.\\
-...
 
-\section{Logical framework}
+\subsection{Inference rules for a metatheory}
+The proof assistant Isabelle uses metatheory with nonempty types, where the following derivation is possible:
+\[
+\frac{
+H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
+\quad\quad
+}{
+(\mathrm{spec}\ H_1): \left(\left(P(b)\right)::\prop\right)
+}(\mbox{where }(b::`a))
+\]
+%H_2: (b::`a)
+
+But if the type `a is empty, then creates problems, for example in case if P is constant false. (Or if P is false and doesn't depend on its argument at all.)
+
+It may be fixed this way:\\
+\[
+\frac{
+H_0: \left(\mathrm{inh}_{`a}::\prop\right)
+\quad\quad
+H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
+}{
+(\mathrm{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
+}(\mbox{where }(b::`a))
+\]
+The proof-term $H_0$ has the meaning of a proof of a statement that the type `a is inhabited(i.e. non-empty).
+%\CIMPLIES
+
+%\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+%\label{isa_exx} \tag{B1}
+
+\subsection{Inference rules for a theory}
+The type $i$ represents objects of a theory.
+In our case they are classes, but it is not important for the logical part, they may be considered as sets as well.\\
+The type $o$ represents formulas about object.\\
+The type $(o \To o)$ represents unary connectives.\\
+The type $(o \To (o \To o))$ represents binary connectives.\\
+These types represent computable functions which respect the substitution within it's arguments.\\
+I.e. something like:
+\[
+f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
+\]
+
+% \Lambda  \bigwedge  \bigvee
+% \IMPLIES \CIMPLIES
+\[
+(\forall I):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket \right)
+\CIMPLIES
+\llbracket \forall_{`a}P\rrbracket
+ \right):: \prop
+\]
+
+\[
+(\exists I):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(
+\bigwedge_{`a}\lambda x.
+\middle(
+\llbracket P(x)\rrbracket  \CIMPLIES \llbracket \exists_{`a}P\rrbracket
+ \middle)
+ \right)
+ \right):: \prop
+\]
+
+\[
+(\forall E):\left(\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(
+\llbracket \forall_{`a}P\rrbracket
+\CIMPLIES
+\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket
+\right)
+\right):: \prop
+\]
+
+\[
+(\exists E):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.\left(
+\llbracket \exists_{`a}P\rrbracket
+\CIMPLIES \left(
+\bigwedge_{o}\lambda B.\left(
+\bigwedge_{`a}\lambda x.
+\llbracket P(x)\rrbracket  \CIMPLIES \llbracket B\rrbracket
+\right)
+\CIMPLIES \llbracket B\rrbracket
+ \right)
+ \right)
+  \right):: \prop
+\]
+\pagebreak
+\section{First-order logical framework}
 
 %\begin{definition}(conglomerate of all classes)
 %\
@@ -51,12 +145,19 @@ $\PredSymb$
 %Terms ::= \\
 \begin{definition}(Term)\\
 Inductive definition of term:\\
-1) $"v"\in\Var \IMPLIES "v"\in\Term$.\\
+1) $v\in\Var \IMPLIES "v"\in\Term$.\\
 2) 
-$"f"\in\FuncSymb\AND "t_1"\in\Term \AND ...\AND "t_n"\in\Term  \IMPLIES "f(t_1,\dots,t_n)"\in\Term$.\\
-3) Some higher-order features:\\
-$"x"\in\Var\AND"\varphi"\in \Fm \IMPLIES "(\varepsilon x : \varphi)"\in $\\
+$f\in\FuncSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES f(t_1,\dots,t_n)\in\Term$.\\
+3) Some higher-order features.\\
+The following rule:\\
+$x\in\Var\AND \varphi\in \Fm \IMPLIES (\varepsilon x : \varphi)\in \Term$,\\
+can be split into two, via introducing bounded terms and formulas:\\
+$"x"\in\Var\AND"\varphi"\in \Fm \IMPLIES "(x.\varphi)"\in \BFm$\\
+$q\in \BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")"\in \Term$\\
+Here $\mdoubleplus$ denotes concatenation of strings, because in this variant of implementation all terms, formulas, etc are seen as strings of text.\\
+For example, the following symbols $(\varepsilon x : \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," : ",  \varphi, ")"].\]
 ...
+%$$\\
 \end{definition}
 
 %\subsubsection{Formulas}
