@@ -42,7 +42,7 @@ The proof-term $H_0$ has the meaning of a proof of a statement that the type `a 
 The type $i$ represents objects of a theory.
 In our case they are classes, but it is not important for the logical part, they may be considered as sets as well.\\
 The type $o$ represents formulas about object.\\
-The type $(o \To o)$ represents unary connectives.\\
+The type $(o \To o)$ represents unary connectives, like negation.\\
 The type $(o \To (o \To o))$ represents binary connectives.\\
 These types represent computable functions which respect the substitution within it's arguments.\\
 I.e. something like:
@@ -122,40 +122,85 @@ NOTE: The definitions in this section are simultaneous: some earlier definitions
 
 
 %\begin{definition}
-%\[M(Z) \iff \exists C: Z\in C\]
+%\[M(Z) \iff \exists C. Z\in C\]
 %\end{definition}
 %G\"odel notation:\\
 
+\begin{definition}(Alphabet)\\
+A countable set\\
+$\mathcal{A}$, which is enumerable.
+I.e. the should be an effective way of obtaining a letter from an alphabet by its number.
+There exists a computable function $e:\N\to\mathcal{A}$.
+\end{definition}
+The following subsets of the alphabet sets are assumed to be pairwise disjoint and each are also enumerable.
 \begin{definition}(Variables)\\
 The countable set \\
 $\Var$
 \end{definition}
-
 \begin{definition}(Functional symbols)\\
 The countable set \\
 $\FuncSymb$
 \end{definition}
-
 \begin{definition}(Predicate symbols)\\
 The countable set \\
 $\PredSymb$
 \end{definition}
 
+\begin{notation}(Membership relations in theory and metatheory)\\
+There is a difference between metavariable and actual meaning of it.
+So the dot sometimes mean actual string of length one, containing a dot.
+\[
+.:="."
+\]
+\[
+(:="("
+\]
+\[
+):=")"
+\]
+It is used together with a convention, that operation of concatination is almost always ommited: as long as we have two strings written consequently, it means that they are concatenated.
+\[
+,:=","
+\]
+The natural language as well as language of (informal) set theory are used as metalanguage of a ``theory of strings of letters'' in this chapter.\\
+
+The colon (":") is a sign for an infix operator of a membership relation in a metatheory.\\
+The epsilon ("$\in$") is a sign of for an infix operator of a membership relation in a theory.\\
+Loosely speaking, 
+\[
+``\mathbf{(:)} :  \Term \times \Type \to \Prop",
+\]
+\[
+``\mathbf{(\in)} :  \Term \times \Term \to \Fm".
+\]
+But it is also true that $"\in":\PredSymb$. 
+\[
+t_1:\Term \AND t_2:\Term \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
+\]
+
+Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
+\end{notation}
+
 %\subsubsection{Terms}
 %Terms ::= \\
 \begin{definition}(Term)\\
 Inductive definition of term:\\
-1) $v\in\Var \IMPLIES "v"\in\Term$.\\
+1) $v:\Var \IMPLIES v:\Term$.\\
 2) 
-$f\in\FuncSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES f(t_1,\dots,t_n)\in\Term$.\\
+$f:\FuncSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES f(t_1,\dots,t_n):\Term$.\\
 3) Some higher-order features.\\
+$x:\Var \AND x:`a \AND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
+
+$x:\Var \AND t:\Term \IMPLIES x.t:\BTerm$\\
+$y:\Var \AND b:\BTerm \IMPLIES y.b:\mathrm{BBTerm}$\\
+
 The following rule:\\
-$x\in\Var\AND \varphi\in \Fm \IMPLIES (\varepsilon x : \varphi)\in \Term$,\\
+$x:\Var \AND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Term$,\\
 can be split into two, via introducing bounded terms and formulas:\\
-$"x"\in\Var\AND"\varphi"\in \Fm \IMPLIES "(x.\varphi)"\in \BFm$\\
-$q\in \BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")"\in \Term$\\
+$x:\Var \AND \varphi: \Fm \IMPLIES x.\varphi: \BFm$\\
+$q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \Term$\\
 Here $\mdoubleplus$ denotes concatenation of strings, because in this variant of implementation all terms, formulas, etc are seen as strings of text.\\
-For example, the following symbols $(\varepsilon x : \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," : ",  \varphi, ")"].\]
+For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," . ",  \varphi, ")"].\]
 ...
 %$$\\
 \end{definition}
@@ -166,29 +211,30 @@ For example, the following symbols $(\varepsilon x : \varphi)$ mean concatenatio
 %\end{definition}
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
-1)$\bot\in\Fm$.\\
-2)$P\in\PredSymb\AND t_1\in\Term \AND ...\AND t_n\in\Term  \IMPLIES P(t_1,\dots,t_n)\in\Fm$.\\
-3)$A\in\Fm \IMPLIES (\neg A)\in\Fm$.\\
-4)$A\in\Fm \AND B\in\Fm \IMPLIES (A\implies B)\in\Fm$.\\
-5)$A\in\Fm \AND B\in\Fm \IMPLIES (A\land B)\in\Fm$.\\
-6)$A\in\Fm \AND B\in\Fm \IMPLIES (A\lor B)\in\Fm$.\\
-7)$x\in\Var \AND A\in\Fm \IMPLIES (\forall x:A)\in\Fm$.\\
-8)$x\in\Var \AND A\in\Fm \IMPLIES (\exists x:A)\in\Fm$.\\
+1)$\bot:\Fm$.\\
+2)$P:\PredSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
+3)$A:\Fm \IMPLIES (\neg A):\Fm$.\\
+4)$A:\Fm \AND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
+5)$A:\Fm \AND B:\Fm \IMPLIES (A\land B):\Fm$.\\
+6)$A:\Fm \AND B:\Fm \IMPLIES (A\lor B):\Fm$.\\
+7)$x:\Var \AND A:\Fm \IMPLIES (\forall x.A):\Fm$.\\
+8)$x:\Var \AND A:\Fm \IMPLIES (\exists x.A):\Fm$.\\
 \end{definition}
 
 \begin{definition}(Context)\\
-Context = \{d\}
+%Context = \{d\}
+Context is a set of formulas.
 \end{definition}
 
 \begin{definition}(Statement)\\
+A statement is an ordered pair of a context and a formula.
 \end{definition}
 
-\begin{definition}(Proof)\\
-Let F be a statement. (i.e. a pair: context and formula)\\
-Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
-
+\begin{definition}(Proof)(1st order one, without a context)\\
+Let F be a statement. (i.e. an ordered pair: a context and a formula)\\
+%Let P be a list of formulas. (i.e. function from $\{0,...,n-1\}$ to $\Fm$)\\
+A proof is a list of formulas, such that each is either an axiom, or obtained from previous formulas via inference rules.
 \end{definition}
-
 
 
 \subsubsection{Substitution}%Basic definitions}
@@ -209,7 +255,7 @@ Let P be a list of formulas. (i.e. function from {0,...,n-1} to Fm)\\
 
 \subsection{Axioms for the corresponding predicate calculus}
 \subsubsection{Propositional part}
-For all formulas $A$, $B$, $C$:
+For all formulas $A$, $B$, $C$, the following holds:
 %For all atomic formulas $A$, $B$, $C$.
 \[
 (A \implies (B \implies A)) \label{ax:A1} \tag{A1}
@@ -255,13 +301,14 @@ B
 \label{ax:MP} \tag{MP}
 \]
 \subsubsection{Predicational part}
-Specification rules:
+Specification rules:\\
+For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
-(t\lexists)\implies ((\forall x: \phi) \implies \phi[t/x])
+(t\lexists)\implies ((\forall x. \phi) \implies \phi[t/x])
 \label{ax:S1} \tag{S1}
 \]
 \[
-(t\lexists) \implies (\phi[t/x] \implies (\exists x: \phi))
+(t\lexists) \implies (\phi[t/x] \implies (\exists x. \phi))
 \label{ax:S2} \tag{S2}
 \]
 Bernays' rules:%if $x$ is not free in formula $\psi$ then
@@ -269,20 +316,23 @@ Bernays' rules:%if $x$ is not free in formula $\psi$ then
 \frac{
 \psi \implies \varphi
 }{
-\psi \implies (\forall x:\varphi)
+\psi \implies (\forall x.\varphi)
 }
-\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+\quad\quad(\mbox{where }x\notin\FV(\psi))
 \label{ax:B1} \tag{B1}
 \]
 \[
 \frac{
 \varphi \implies \psi
 }{
-(\exists x:\varphi)\implies \psi
+(\exists x.\varphi)\implies \psi
 }
-\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+\quad\quad(\mbox{where }x\notin\FV(\psi))
 \label{ax:B2} \tag{B2}
 \]
+%_{\mathrm{meta}}
+Inside the side conditions, the sign $\notin$ is used on the metalevel instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
+
 \pagebreak
 \subsection{Semantics} % the big one.
 \subsubsection{Motivation}
@@ -370,7 +420,7 @@ There are symbols.\\
 Symbol has meaning.\\
 Symbol $S$ has valency $\val(S)$.\\
 \[
-\Symb:=\sum_{n\in\nat}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
+\Symb:=\sum_{n\in\N}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
 \]
 For a symbol S, the meaning of S is a function from $val(S)$ with domains $D_S(1),\dots,D_S(n)$ to the range of a symbol $R_S$.\\
 
@@ -520,7 +570,7 @@ I^{l^*}_\Term
 
 \subsubsection{Interpretation, special cases}
 \[
-I^{v^*}_\Fm((\varepsilon x:\varphi)):=\{\}
+I^{v^*}_\Fm((\varepsilon x.\varphi)):=\{\}
 \]
 
 \subsubsection{Lemmas for axiom validation}
@@ -533,7 +583,7 @@ Some lemmas useful for proving validity of the axioms. The following lemma has s
 \frac{
 \models \psi
 }{
-\models (\forall x:\psi)
+\models (\forall x.\psi)
 }
 \]
 \end{theorem}
@@ -541,14 +591,14 @@ Some lemmas useful for proving validity of the axioms. The following lemma has s
 The premise is equivalent to the following statement:
 \[
 \forall \left(w:\evaluation\right):
-\forall \left(v\in\prod w\right):
+\forall \left(v\in\prod w\right).
 (v^*\models \psi)
 \]
 To show:
 \[
-\forall \left(w:\evaluation\right):
-\forall \left(v\in\prod w\right):
-\forall \left(q\in\Un\right):
+\forall \left(w:\evaluation\right).
+\forall \left(v\in\prod w\right).
+\forall \left(q\in\Un\right).
 ((v+(x,q))^*\models \psi)
 \]
 Denote $w$ from the premise as $w_{pre}$.\\
@@ -561,7 +611,7 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 
 \begin{theorem}(specification rule)
 \[
-\models ((t\lexists)\land(\forall x:\psi))\implies\psi[t/x]
+\models ((t\lexists)\land(\forall x.\psi))\implies\psi[t/x]
 \]
 \end{theorem}
 \Proof
@@ -577,7 +627,7 @@ $w:\Var\to((\power\Un)\setminus\{\emptyset\})$
 \end{definition}
 \begin{definition}(Local assignment w.r.t. global assigment)\\
 $v$ is a local assignment w.r.t. global assignment $w$ if $v:\prod_{(x:\Var)}w(x)$,\\
-i.e. $v:\Var\to\Un$, such that $\forall (x:\Var) : v(x) \in w(x)$.\\
+i.e. $v:\Var\to\Un$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
 %$w:\Var\to((\power\Un)\setminus\emptyset)$
 \end{definition}
 \begin{definition}(Local interpretation of term under local assignment v wrt the global assignment w)\\
@@ -673,7 +723,7 @@ I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
 \]
 \[
 \left(I^{\glob}_\Fm(\varphi)=\lValid\right) \IFF
- \left(\forall \left(w:\Var\to\{\{K\}|K\in\Un\}\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
+ \left(\forall \left(w:\Var\to\{\{K\}|K\in\Un\}\right).I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
 \]
 \end{definition}
 Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
@@ -696,7 +746,7 @@ forall x phi  -> phi[t/x]
 We have not always well-defined epsilon operator.\\
 (tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
 
-Here we come to the point, where we nee more relaxed notion of truthness, to include $P((\varepsilon X: \varphi))$, when predicate P is true for all classes "X" satisfying $\varphi$.
+Here we come to the point, where we nee more relaxed notion of truthness, to include $P((\varepsilon X. \varphi))$, when predicate P is true for all classes "X" satisfying $\varphi$.
 
 It is interesting, that quasi-equality is naturally arises as... oh no!
 We need to introduce a mix "exists and forall" quantifier and semantics, so the quasi-equality will natuarally arise.
@@ -745,7 +795,7 @@ Then $
 $ is well-defined, since using it assumes existence of a choice conglomerate-function.\\
 Meanwhile,
 $
-(\varepsilon x: x \in \{a,b\}) 
+(\varepsilon x. x \in \{a,b\}) 
 $
  is undefined. But it is not (semantically) equal to $\lundef$.\\
 It is neither equal, nor not equal in theory, because, some(in fact both) sides are not well-defined.\\
@@ -897,20 +947,20 @@ Assume $(\exists x \forall y:\varphi)$. To show: $(\forall y \exists x :\varphi)
 (\exists x \forall y:\varphi)
 \IMPLIES
 (\forall y:\varphi)
-\comment{$\exists$E, (x/x)}
+\commentary{$\exists$E, (x/x)}
 \]
 Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
 \[
 (\forall y:\varphi)
 \IMPLIES
 \varphi
-\comment{$\forall$E, (y:=y)}
+\commentary{$\forall$E, (y:=y)}
 \]
 \[
 \varphi
 \IMPLIES
 (\exists x :\varphi)
-\comment{$\exists$I, (x:=x)}
+\commentary{$\exists$I, (x:=x)}
 \]
 \Done
 

@@ -21,6 +21,8 @@
 
 \usepackage{bussproofs} %
 
+\usepackage{verbatim} % multiline comments
+
 %\renewcommand{\thesubsection}{\arabic{subsection}}
 %\newtheorem{thm}{Theorem}[section]
 %\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
@@ -56,6 +58,9 @@
 \newtheorem{example*}{Example}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{corollary*}{Corollary}
+
 \newtheorem{note}{Note}[section]
 \usepackage{etoolbox}
 
@@ -95,7 +100,7 @@
 \renewcommand{\iff}{\ \longleftrightarrow\ }
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
 \newcommand{\CIMPLIES}{=\Rightarrow}
-\renewcommand{\implies}{\ \longrightarrow\ }
+\renewcommand{\implies}{\longrightarrow}
 \newcommand{\Inf}{\mathrm{Inf}}
 \newcommand{\injective}{\mbox{\ injective}}
 \newcommand{\injection}{\mbox{\ injection}}
@@ -162,7 +167,7 @@
 
 \newcommand{\notvarphi}{\phi}
 \renewcommand{\phi}{\varphi}
-\newcommand{\comment}[1]{\quad\mbox{(#1)}}
+\newcommand{\commentary}[1]{\quad\mbox{(#1)}}
 \newcommand{\Option}{\mathrm{Option}}
 \newcommand{\None}{\mathrm{None}}
 \newcommand{\Some}{\mathrm{Some}}
@@ -174,7 +179,8 @@
 \newcommand{\tr}{\mathrm{tr}}
 \newcommand{\ord}{\mathrm{ord}}
 \newcommand{\val}{\mathrm{val}}
-\newcommand{\nat}{\mathbb{N}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\nat}{\mathbb{nat}}
 \newcommand{\image}{\mathrm{image}}
 \newcommand{\Image}{\mathrm{Image}}
 \newcommand{\E}{\mathrm{E}}
@@ -185,6 +191,9 @@
 \newcommand{\prop}{\mathrm{prop}}
 \newcommand{\Prop}{\mathrm{Prop}}
 \newcommand{\To}{\Rightarrow}
+\newcommand{\str}{\mathrm{str}}
+
+\newcommand{\supp}{\mathrm{supp}}
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -203,5 +212,7 @@
 
 \newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
 \newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+
+\author[1]{Georgy Dunaev}
 
 \fi % guard

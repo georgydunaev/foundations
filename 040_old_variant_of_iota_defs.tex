@@ -507,14 +507,14 @@ So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 ((\iota y:\phi)\ldefined)
 \IFF
 ((\iota y:\phi)\set)
-\comment{by def that is valid only for terms denoting sets}
+\commentary{by def that is valid only for terms denoting sets}
 \]
 
 \[
 ((\iota y:\phi)\set)
 \IMPLIES
 \left(\intersection\{y:\phi\land(!y:\phi)\}\set\right)
-\comment{by def of iota}
+\commentary{by def of iota}
 \]
 \Done
 
@@ -566,7 +566,7 @@ y&=F(x)
 (\left(\iota y: \langle x,y\rangle\in F\right) \set)
 \IMPLIES
 \left(\exists!(y\set):\langle x,y\rangle\in F\right)
-\comment{by thm \ref{thm:iota set exists unique set}}
+\commentary{by thm \ref{thm:iota set exists unique set}}
 \]
 ...\\
 \noindent($\Leftarrow$)\\
@@ -610,7 +610,7 @@ y&=F(x)
 It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
 \[
 (I y: \varphi) = \intersection \{y|\varphi \land (!y:\varphi)\}
-\comment{bad ``definition''}
+\commentary{bad ``definition''}
 \]
 In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
 (the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
@@ -673,7 +673,7 @@ Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
 ((\iota y: \varphi) \set)
 \IMPLIES
 \left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
-\comment{by def \ref{def:iota operator}}
+\commentary{by def \ref{def:iota operator}}
 \]
 \[
 \left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
