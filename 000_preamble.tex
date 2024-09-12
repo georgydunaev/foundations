@@ -1,3 +1,9 @@
+% !BIB TS-program = biber
+% (use "-synctex=1" to navigate via mouse)
+% Commands: 
+% 0) /usr/local/texlive/2024/bin/x86_64-linux/pdflatex -synctex=1 -interaction=nonstopmode %.tex
+% 1) /usr/local/texlive/2024/bin/x86_64-linux/latexmk -e "$pdflatex=q/pdflatex -synctex=1 -interaction=nonstopmode/" -pdf %.tex
+% 2) /usr/local/texlive/2024/bin/x86_64-linux/biber %
 
 \ifdefined\MyHeaderIncluded
 
@@ -86,7 +92,7 @@
 \newcommand{\ldefined}{\mbox{\ defined}}
 \newcommand{\dom}{\mbox{dom}}
 \newcommand{\Dom}{\mbox{Dom}}
-\newcommand{\Done}{\noindent \textbf{Done.}\\}
+\newcommand{\Done}{\par\noindent \textbf{Done.}\\}
 \newcommand{\lexists}{\mbox{\ exists}}
 \newcommand{\lforall}{\mbox{\ forall}}
 \newcommand{\lunique}{\mbox{\ unique}}
@@ -116,7 +122,7 @@
 \newcommand{\fst}{\mathrm{fst}}
 \newcommand{\snd}{\mathrm{snd}}
 \newcommand{\PredSymb}{\mathrm{PredSymb}}
-\newcommand{\Proof}{\noindent \textbf{Proof.}\\}
+\newcommand{\Proof}{\par\noindent\textbf{Proof.}\par}
 \newcommand{\ran}{\mathrm{ran}}
 \newcommand{\Ran}{\mathrm{Ran}}
 \newcommand{\real}{\mathbb{R}}
@@ -214,5 +220,19 @@
 \newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
 
 \author[1]{Georgy Dunaev}
+
+\DeclareUnicodeCharacter{2061}{} %https://tex.stackexchange.com/questions/484359/package-inputenc-error-unicode-character-u2061-inputenc-not-set-up-for
+
+\usepackage[american]{babel}
+\usepackage[style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa} %Literaturverzeichnis american-apa style
+%\addbibresource{library.bib} 
+
+\usepackage[babel,threshold=2]{csquotes}
+
+
+% Einstein's 
+% journal paper \cite{einstein} and Dirac's book \cite{dirac}.
+
 
 \fi % guard
