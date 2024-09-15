@@ -6,5 +6,7 @@
 *.pdf
 *.synctex.gz
 *.toc
-
+*.bcf
+*.dvi
+*.run.xml
 
