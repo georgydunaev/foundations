@@ -1,4 +1,202 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Category theory}
+\section{Category theory (Proofs are old here, they need to be upgraded)}
+
+Notes and notation:\\
+$\Ob_C$ and $C$ are used interchangeable. (e.g. $\Ob_\Set$ and $\Set$.)\\
+Duality: $\Ob_C = \Ob_{C^\op}$ and 
+ $\forall x,y \in \Ob_C. \Hom_C(x,y) = \Hom_{C^\op}(y,x)$.\\
+$\circ : \Pi(C\in \Cat).\Pi(X,Y,Z\in C).\Hom_C(X,Y)\times\Hom_C(Y,Z)\to\Hom_C(X,Z)$
+
+\subsection{Yoneda embedding lemma}
+Let C be a locally small category.\\
+Let Set be a category of sets.\\
+$[C^{op},\textrm{Set}]$ is some functor category.\\
+
+\begin{definition}
+Let $C$, $D$ be the categories.\\
+ $(F, \FMor)$ is a (covariant) functor iff\\
+\begin{enumerate}
+\item $F:C \to D$
+\item $\FMor:\Pi(A\ B:C).\Hom_C(A,B) \to \Hom_D(F(A), F(B))$
+\item $\forall A\in \Ob_C, \FMor^{A,A}(1_A)=1_{F(A)}$
+\item $\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}
+Let $C$, $D$ be the categories.\\
+$[C,D]$ is the set of functors from $C$ to $D$.\\
+\end{definition}
+
+\begin{definition} The morphism function of the Hom-functor.\\
+Let $f\in\Hom_{C}(A,B)$.
+$$\Hom_C: \Ob_C \times \Ob_C \to \Set$$
+$$\Hom_C(-,x): \Ob_C \to \Set$$
+$$\HomMor^{A,B}_C(f,x) : \Hom_C(B,x) \to \Hom_C(A,x)$$
+$$\HomMor^{A,B}_C(f,x) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f))$$
+$$\HomMor^{A,B}_C(f,x) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(A,x))$$
+$$\left(\textrm{another form is }\widetilde{\Hom_C(-,x)}^{A,B}(f) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(A,x)\right)$$
+\end{definition}
+
+\begin{lemma}
+$$\Hom_C(-, x) \in [C^\op,\Set]$$
+\end{lemma}
+
+%\noindent Proof.\\
+\myprf\\
+%\begin{itemize}
+%\end{itemize}
+Substitution:\\
+$C \coloneqq C^\op$, 
+$D \coloneqq \Set$, 
+$F \coloneqq \Hom_C(-,x)$, 
+$\FMor \coloneqq \HomMor_C(-,x)$\\
+\begin{enumerate}
+\item $\Hom(-, x) : C^\op \to \Set$\ \ \ by definition of $\Hom$.
+\item $\HomMor(-, x) :\Pi(A\ B:C).\Hom_{C^\op}(A,B) \to \Hom_\Set(\Hom_C(A,x), \Hom_C(B,x))$\\
+$\HomMor_C^{A,B}(f\in\Hom_{C^\op}(A,B), x) = (g \in\Hom_C(A,x) \mapsto (g \circ_C f) \in\Hom_C(B,x))$\ (this is a definition).\\
+In other words, fix the $A,B\in C$ and $f\in\Hom_{C^\op}(A,B)$.\\
+$\HomMor_C^{A,B}(f, x) = (g\mapsto (g \circ_C f))$\\
+$\HomMor_C^{A,B}(f, x) : \Hom_C(A,x) \to \Hom_C(B,x))$
+\\
+$\HomMor$ is total since $f:\Hom_{C^\op}(A,B), \Rightarrow f\in\Hom_C(B,A)$ by definition of dual category. (It follows that composition is defined, so it is total.)
+\item $1_A\in\Hom_{C^\op}(A,A)$\\
+$\HomMor^{A,A}(1_A, x) = \left(g \in\Hom_C(A,x)\mapsto g \circ_C 1_A\right) = $\\
+$\quad = \left(g \in\Hom_C(A,x) \mapsto g \in\Hom_C(A,x)\right) =$\\
+$\quad \quad = 1_{\Hom_C(A,x)} \in \Hom_\Set\left(\Hom_C(A,x), \Hom_C(A,x)\right).$\\
+since $1_A \circ_C g = g$\\
+\item Now we need do a substitution in
+$\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$ and prove it.\\
+Again, $C \coloneqq C^\op$, 
+$D \coloneqq \Set$, 
+$F \coloneqq \Hom_C(-,x)$, 
+$\FMor \coloneqq \HomMor_C(-,x)$\\
+So $\FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor(f)\circ_D^{F(X),F(Y),F(Z)} \FMor(g)$ becames\\
+$\HomMor_C^{X,Z}(f\circ_C^{X,Y,Z} g, x)=\HomMor_C(f,x)\circ_D^{F(X),F(Y),F(Z)} \HomMor_C(g,x)$.\\
+Equivalently, $\HomMor_C^{X,Z}(f\circ_{C^\op}^{X,Y,Z} g, x)=$\\ $=\HomMor_C^{Y,Z}(f,x)\circ_\Set^{\HomMor_C(X,x),\HomMor_C(Y,x),\HomMor_C(Z,x)} \HomMor_C^{X,Y}(g,x)$.\\
+We'll omit some notation for arrow composition below.\\
+$\HomMor_C^{X,Z}(f\circ_{C^\op}^{X,Y,Z} g, x)=\HomMor_C(f,x)\circ_\Set \HomMor_C(g,x)$,\\
+where $f\in\Hom_{C^\op}(Y,Z)$ and $g\in\Hom_{C^\op}(X,Y)$.\\
+So $f\in\Hom_{C}(Z,Y)$ and $g\in\Hom_{C}(Y,X)$.\\
+$f\circ_{C^\op}^{X,Y,Z} g = g\circ_{C}^{Z,Y,X} f$\\
+So it's enough to prove that $\HomMor_C(g\circ_C f, x) = \HomMor_C(f, x) \circ_\Set \HomMor_C(g, x)$\\
+$a)\ \HomMor_C(g\circ_C f, x) = (h \in\Hom_C(Z,x) \mapsto (h \circ_C (g\circ_C f))\in\Hom_C(X,x))$\\
+$b)\ \HomMor_C(f, x) = \left(u \in\Hom_C(Z,x) \mapsto (u \circ_C f)\in\Hom_C(Y,x)\right)$\\
+$c)\ \HomMor_C(g, x) = \left(v \in\Hom_C(Y,x) \mapsto (v \circ_C g)\in\Hom_C\left(X,x\right)\right)$\\
+\\
+$u \stackrel{\HomMor_C(g, x)}{\mapsto\mapsto\mapsto\mapsto\mapsto} (u \circ_C g)\stackrel{\HomMor_C(g, x)}{\mapsto\mapsto\mapsto\mapsto\mapsto} ((u \circ_C g) \circ_C f))$
+\\
+$\Hom_C(Z,x) \stackrel{\HomMor_C(g, x)}{\to\to\to\to\to} \Hom_C(Y,x)\stackrel{\HomMor_C(f, x)}{\to\to\to\to\to} \Hom_C(X,x)$
+\\
+\end{enumerate}
+\myqed
+\begin{definition}
+Yoneda functor between categories $C$ and $[C^\op,\Set]$.
+$$h_x = \Hom_C(-, x)$$
+\end{definition}
+
+
+\begin{definition}
+$$\eta : \Pi(w\in C^\op).\Hom_C(w,x)\to \Hom_C(w,y)$$
+$$\eta = \lambda (w\in C^\op). \lambda g\in\Hom_C(w,x).(f\circ_C^w,x,y g)$$
+\end{definition}
+Now our aim is to define a natural transformation of the elements of $[C^\op,\Set]$.\\
+\begin{lemma}$\textrm{ }$\\
+We have:\\
+$F=\Hom_C(-,x)\in [C^\op,\Set]$\\
+$G=\Hom_C(-,y)\in [C^\op,\Set]$\\
+$f\in\Hom_C(x,y)$\\
+We want:\\
+Find a natural tranformation $\eta$ from $\Hom_C(-,x)$ to $\Hom_C(-,x)$.\\ (define and prove)\\
+\end{lemma}
+Fix $w\in C^\op$. $\eta_w = ?$.\\
+$\eta_w\Hom_\Set(\Hom_C(w,x),\Hom_C(w,y))$\\
+$\eta_w: \Hom_C(w,x)\to \Hom_C(w,y)$\\
+
+% prove that 
+Substitution:\\
+$C \coloneqq C^\op$, $D \coloneqq \Set$, $F \coloneqq \Hom_C(-,x)$, $G \coloneqq \Hom_C(-,y)$, $x \coloneqq a$, $y \coloneqq b$, $f \coloneqq m$
+\begin{lemma}
+$$\forall a,b\in C^\op. \forall m\in \Hom_C\op (a,b).\eta_b \circ_\Set \Hom_C(m,x)=\Hom_C(m,y)\circ_\Set\eta_a$$
+\end{lemma}
+\myprf\\
+Fix $a$, $b$ and $m\in\Hom_C(b,a)$.\\
+Aim: $(\lambda g_1 \in \Hom_C(b,x). f\circ^{b,x,y}_C g_1)\circ_\Set \HomMor_C^{B,A}(m,x) = $\\
+$=\HomMor_C^{B,A}(m,y) \circ_\Set (\lambda g_2 \in \Hom_C(a,x). f\circ^{a,x,y}_C g_2)$.\\
+Note that $(f\circ^{a,x,y}_C g_2) \in \Hom_C(a,y)$\\
+$\HomMor_C^{B,A}(m,y) \eqdef (\lambda g_3 \in \Hom_C(a,y). g_3\circ^{b,a,y}_C m)$\\
+$\HomMor_C^{B,A}(m,y) : \Hom_C(a,y) \to \Hom_C(b,y)$\\
+RightHandSide $= \lambda g_2 \in \Hom_C(a,x). ((f \circ_C^{a,x,y} g_2) \circ_C^{b,a,y} m )$\\
+RHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
+$\HomMor_C^{B,A}(m,x) \eqdef (\lambda g_4 \in \Hom_C(a,y). g_4\circ^{b,a,y}_C m)$\\
+LeftHandSide $= \lambda g_2 \in \Hom_C(a,x). (f \circ_C^{b,x,y} (g_2 \circ_C^{b,a,x} m ))$\\
+LHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
+LHS=RHS\\
+\myqed
+\begin{lemma}
+$h_{-}:C\rightarrow [C^{op},\Set]$ is a fully faithful functor.
+\end{lemma}
+\myprf
+\begin{itemize}
+\item $h_-$ is a functor.\\
+$\widetilde{h}_-$ = ...\\
+Substitution: $C\coloneqq C$, $D\coloneqq [C^\op,\Set]$, $F\coloneqq h_-$,
+\begin{enumerate}
+\item $F:C \to D$
+\item $\FMor:\Pi(A\ B:C).\Hom_C(A,B) \to \Hom_D(F(A), F(B))$
+\item $\forall A\in \Ob_C, \FMor^{A,A}(1_A)=1_{F(A)}$
+\item $\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$
+\end{enumerate}
+\item $h_-$ is full.
+\item $h_-$ is faithfull.
+\item $h_-$ is injective on morphisms.
+\end{itemize}
+\myqed
+\begin{lemma}{by N.~Yoneda. (Contravariant version)}\\
+$G : C^\op \to \Set$\\
+$h_A = \Hom_C(-,A)$\\
+$h_A : C^\op \to \Set$\\
+$\Nat(h_A,G)\sim G(A)$\\
+(there is a bijection between value of functior G and natural transformations from $h_A$ to $G$)
+\end{lemma}
+\myprf\\
+Let $u\in G(A)$. Let's define a natural transformation $\Phi$ from $h_A$ to $G$.\\
+$\Phi:\Pi(x\in C^\op).h_A(x)\to G(x)$ (because it's a Hom in Set)\\
+1) Let $\Phi^u_A(\id_A)\eqdef u$. \\
+Now we need to define $\Phi_x(f)$ for arbitrary $x\in C$ and\\
+$f\in h_A(x).$ $=\Hom_C(x,A).$ $=\Hom_{C^\op}(A,x). \Longrightarrow$\\
+$\Longrightarrow$ therefore $\GMor ^{A,x}(f):G(A)\to G(x)$ is defined.\\
+So the definition will be $\Phi^u_x(f)\eqdef (\GMor^{A,x}(f))(u)$.\\
+Now we need to show the correctness of the definition.\\
+$\Phi^u_A(\id_A)\eqdef (\GMor^{A,A}(f))(\id_A) = (\id_{G(A)})(u) = u$. The correctness is proved.
+2) The next aim is proving commutativity of natural transformation with functor applied to morphisms.\\
+$\forall x,y\in C^\op.\forall f\in \Hom_{C^\op}(x,y).(G(f)\circ_\Set \Phi_x) = (\Phi_y \circ_\Set (\Hom_C(f,A)))$
+Fix  $x,y\in C^\op$ and $f\in \Hom_{C^\op}(x,y)$.\\
+Aim: $(G(f)\circ_\Set \Phi_x) = (\Phi_y \circ_\Set (\Hom_C(f,A)))$.
+Fix $g\in \Hom_C(x,A)$. Recall that $\Hom_C(f,A)=(-\circ^{y,x,a})$.\\
+Aim: $(G(f)\circ_\Set \Phi_x)(g) = (\Phi_y \circ_\Set (\Hom_C(f,A)))(g)$.\\
+Equivalently, $(G(f)\circ_\Set \Phi_x)(g) = \Phi_y (g\circ_C^{y,x,A} f)$.\\
+LHS $\coloneqq (G(f)\circ_\Set \Phi_x)(g) =($def of $\Phi)= \GMor^{x,y}(f)\left(\left(\GMor^{A,x}\left(g\right)\right)\left(u\right)\right) =$\\
+$ =\GMor^{A,y}\left(g\circ_C f\right)(u)$\\
+Then since $g\circ_C f = f\circ_{C^\op} g$ and $\GMor(f\circ_{C^\op} g)=  \GMor(f)\circ_\Set \GMor(g)$ we have:\\
+RHS $\coloneqq \Phi^u_y(g\circ f)=($def of $\Phi)=\GMor^{A,y}\left(g\circ_C f\right)(u)$\\
+This LHS=RHS holds therefore we obtained a natural transformation $\Phi\in\Nat(h_A,G)$ using the $u\in G(A)$.\\
+We already know that the relation between $G(A)$ and $\Phi\in\Nat(h_A,G)$ is functional and total on $G(A)$.
+The next step is to prove its injectivity and surjectivity on $\Phi\in\Nat(h_A,G)$.\\
+Injectivity: $u_1,u_2\in G(A)$, $u_1\neq u_2$.\\
+$\Phi_{1,A}(\id(A))= u_1\neq u_2 = \Phi_{2,A}(\id(A))\quad \Longrightarrow \quad \Phi_1 \neq \Phi_2$. It's proved. \\
+Surjectivity on $\Nat(h_A,G)$.:\\
+Let $\Psi\in\Nat(h_A,G)$. Let's show that $\exists u\in G(A).\Phi^u=\Psi$.\\
+$u\coloneqq \Psi_A(\id_A)$\\
+$\Psi:\Pi(x\in C). h_A(x)\to G(x)$\\
+$\Phi^u_x(f) \eqdef (\GMor^{A,x}(f))(u)$.\\
+Fix $x\in C$ and $f\in\Hom_C(x,A)$. $\Psi_x(f)=\ ?$.
+In other words, there is a $\Psi\in\Nat(h_A,G)$, and it is known that $\Psi_A(\id_A) = u$. Find $\Psi_x(f)$.\\
+Firstly, $\id_A \in \Hom_C(A,A)$. $\Longrightarrow (\id_A \circ_C^{x,A,A} f) \in \Hom_C(x,A)$. $\Longrightarrow \Psi_x(\id_A \circ_C^{x,A,A} f)\in G(A)$. $\Longrightarrow \Psi_x(f)\in G(A)$.\\
+Secondly, $\id_A \in \Hom_C(A,A)$. $\Longrightarrow \Psi_A(\id_A) \in G(A)$. Since $\Psi_A(\id_A)=u$ we have $G(f)(u)\in G(x)$.\\
+Since $\Psi$ is a natural transformation we obtained that $\Psi_x(f)=G(f)(u),$ which is equal to $\Phi^u_x(f)$.\\
+This equality holds for any argument $f\in \Hom_C(x,A)$ then $\forall x\in C. \Psi_x=\Phi^u_x$ by functional extensionality. Therefore the relation is surjective on $\Nat(h_A,G)$.
+\myqed\\
 \input{END.tex}
