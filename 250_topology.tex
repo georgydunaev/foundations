@@ -1,7 +1,7 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Topology}
-\subsection{The newest notation}
+\subsection{Topology via relation}
 \begin{definition}[Relation between points and neighbourhoods](parameter)
 \[
 \mathcal{R}\subseteq \V\times \V
@@ -73,6 +73,82 @@ x\in\intersection \mathrm{tni}(x)
 \interior(S)\in \left(N\cup\{\emptyset\}\right)
 \]
 \end{axiom}
+\subsection{Filter}
+\subsection{Filter Base}
+\begin{definition}[point-neighbourhood relation defined via filter bases]\ \\
+For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$, such that $\emptyset\notin \mathcal{B}$,
+\[
+\left(p \mathcal{R}_\mathcal{B} S \right) :\LRA 
+\left(\exists B\in\mathcal{B}: p\in B \subseteq S \right)
+\]
+\end{definition}
+
+\begin{theorem}[point-neighbourhood relation defined via filter bases is a point-neighbourhood relation]
+
+\end{theorem}
+\Proof
+\begin{itemize}
+\item (N1)
+\[
+x\in\intersection\mathcal{R}_\mathcal{B}[\{x\}]
+\]
+\[
+\forall S \in \mathcal{R}_\mathcal{B}[\{x\}] : x\in S
+\]
+\[
+\forall S: (x\mathcal{R}_\mathcal{B} S) \implies x\in S
+\]
+\[
+\forall S: \left(\exists B\in\mathcal{B}: p\in B\subseteq S \right) \implies x\in S
+\]
+\[
+(p\in B\subseteq S) \implies x\in S
+\]
+\item (N2)
+\[
+\mathcal{R}^{T}_\mathcal{B}[\{S\}]\in (N_\mathcal{B}\cup \{\emptyset\})
+\]
+\[
+N_\mathcal{B}=\union\mathcal{N}_\mathcal{B}=\union\ran(\mathrm{tni_\mathcal{B}})=\union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])
+\]
+If $\mathcal{R}^{T}_\mathcal{B}[\{S\}]$ is empty, then we are done.\\
+If it is not, then 
+\[
+\exists x: x \mathcal{R}_\mathcal{B} S.
+\]
+%Therefore
+\[
+(x \mathcal{R}_\mathcal{B} S)
+\IMPLIES
+S
+\in
+\mathcal{R}_\mathcal{B}[\{x\}]
+\in
+\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}]
+\]
+\[
+S\in \union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])=N_\mathcal{B}.
+\]
+\end{itemize}
+\Done
+
+\begin{definition}[a base for a binary product topology]
+\[
+\mathcal{B}_{E\times F} := \{A\times B | (A\in N_E) \land (B\in N_F)\}
+\]
+\end{definition}
+It can be given also this way:
+\begin{notation}[neighbourhoods of a point]
+\[
+\mathrm{nghb} := \mathrm{tni}
+\]
+\end{notation}
+
+\begin{definition}[product filter basis function]
+\[
+\mathrm{pfb}((a,b)):=\{A\times B | (A\in \mathrm{nghb}_E(a)) \land (B\in \mathrm{nghb}_F(b))\}
+\]
+\end{definition}
 
 \subsection{Topology in older notation}
 \begin{definition}
