@@ -8,9 +8,17 @@ The set $F$ is called \textit{filter} iff
 \begin{align*}
 \left( \emptyset\notin F \vphantom\union \right),
  && \text{(F$_1$)}\\
-\left(A\in F\middle)\land \middle(B\in F\middle)
+\left(
+\middle(
+A\in F
+\middle)
+\land
+\middle(
+B\in F
+\middle)
+\middle)
 \implies 
-\middle(A\cap B\in F \vphantom\union \right),
+\middle(\middle(A\cap B\middle)\in F \vphantom\union \right),
  && \text{(F$_2$)}\\
 \left(F \ni A \subseteq B \subseteq \union F\middle)
 \implies 
@@ -19,7 +27,6 @@ The set $F$ is called \textit{filter} iff
 \end{align*}
 %    x &=4-3 && \text{Subtract 3 from both sides}\\
 %    x &=1   && x \text{ must be one}
-
 \end{definition}
 \iffalse
 \subsection{Filter Base}
@@ -217,7 +224,186 @@ It can be given also this way:
 \end{definition}
 %\pagebreak
 %\subsection{Filter and filter base}
-\iffalse
+\pagebreak
+\subsection{Defining Topology and various Algebras}
+\begin{definition}[Topology]\ \\
+The set $\mathcal{T}$ is called \textit{topology} iff
+%\left( \emptyset\notin F \vphantom\union \right),
+% && \text{(F$_1$)}\\
+\begin{align*}
+\left(S \subseteq \mathcal{T}\middle)
+\implies 
+\middle(\middle(\union S\middle)\in \mathcal{T} \vphantom\union \right),
+ && \text{(T$_1$)}\\
+\left(\middle(
+A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
+\implies 
+\middle(\middle(A\cap B\middle)\in \mathcal{T} \vphantom\union \right),
+ && \text{(T$_2$)}\\
+\end{align*}
+%\left(F \ni A \subseteq B \subseteq \union F\middle)
+%\implies 
+%\middle(B\in F\right).
+%&& \text{(F$_3$)}\\
+\end{definition}
+
+\begin{definition}[Sigma-Algebra]\ \\
+The set $\sigma$ is called \textit{sigma-algebra} iff
+\begin{align*}
+\left(
+\middle(
+S \subseteq \sigma
+\middle)
+\land
+\middle(
+|S|\leqslant \omega
+\middle)
+\middle)
+\implies ·
+\middle(\middle(\union S\middle)\in \sigma \vphantom\union \right),
+ && \text{(S$_1$)}\\
+ \left(\middle(
+A\in \sigma \middle)\land \middle(B\in \sigma\middle)\middle)
+\implies 
+\middle(\middle(A\setminus B\middle)\in \sigma \vphantom\union \right),
+ && \text{(S$_2$)}\\
+\left( \left(\union \sigma\right) \in \sigma \vphantom\union \right).
+ && \text{(S$_3$)}\\
+\end{align*}
+%\left(\middle(
+%A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
+%\implies 
+%\middle(\middle(A\cap B\middle)\in \mathcal{T} \vphantom\union \right),
+% && \text{(T$_2$)}\\
+\end{definition}
+\begin{theorem}[intersection of topologies]
+\begin{align*}
+\left(
+Q \subseteq \{\mathcal{T}|\mathcal{T}\mathrm{\ topology}\}
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ topology}
+\vphantom\union 
+\right)
+\end{align*}
+% && \text{(S$_2$)}\\
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+
+\begin{theorem}[intersection of sigma-algebras]
+\begin{align*}
+\left(
+\middle(
+Q \subseteq \{\sigma|\sigma\mathrm{\ sigma{\shortminus}algebra}\}
+\middle)
+\land 
+\middle(
+\middle(
+\union\intersection Q 
+\middle)
+\in \intersection Q
+\middle)
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ sigma{\shortminus}algebra}
+\vphantom\union 
+\right)
+\end{align*}
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+
+\begin{theorem}[intersection of linear subspaces]
+\begin{align*}
+\left(
+Q \subseteq \{L|L\mathrm{\ linear\ subspace}\}
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ linear\ subspace}
+\vphantom\union 
+\right)
+\end{align*}
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+\begin{theorem}[intersection of closed sets]
+\begin{align*}
+\left(
+Q \subseteq \{C|C\mathrm{\ closed}\}
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ closed}
+\vphantom\union 
+\right)
+\end{align*}
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+\begin{theorem}[intersection of convex sets]
+\begin{align*}
+\left(
+Q \subseteq \{C|C\mathrm{\ convex}\}
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ convex}
+\vphantom\union 
+\right)
+\end{align*}
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+\begin{theorem}[intersection of balanced sets]
+\begin{align*}
+\left(
+Q \subseteq \{B|B\mathrm{\ balanced}\}
+\middle)
+\implies 
+\middle(
+\middle(
+\intersection Q
+\middle)
+\mathrm{\ balanced}
+\vphantom\union 
+\right)
+\end{align*}
+\Proof
+\dots
+\DoneNoPar
+\end{theorem}
+
+
+\iftrue
 \pagebreak
 \subsection{Topology in older notation}
 \begin{definition}
