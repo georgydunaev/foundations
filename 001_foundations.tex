@@ -13,28 +13,33 @@ Foundations of Mathematics}
 \ifdefined\MyPrintFlag
   \thispagestyle{empty} % no page number in the bottom
 \fi
-\begin{center}
+%\begin{center}
 %\includegraphics[scale=0.5]{cargo.jpeg}
 %\includegraphics[scale=0.3]{Thanks.jpg}
-\end{center}
-
+%\end{center}
 \ifdefined\MyPrintFlag %%%% this is for printing a blank page
   \newpage
   \thispagestyle{empty}
   \ \\
 \fi
-
-\newpage
-\tableofcontents
-
-
-\newpage
-\noindent
+%\newpage
 % of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform-dependent.\\
 %\noindent
 % elements are small letters, sets are uppercase latin letters, sets of sets are mathcal latin letters
+\chapter*{Introduction}
+\phantomsection
+%\addcontentsline{toc}{chapter}{Introduction}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Introduction}  % Correctly aligns with numbered chapters
+
+
+%\noindent
+\subsection{Disclaimer}
+This text contains contradictory notations and even factual errors, because my own understanding of the subject and develops gradually during writing this document. It takes time. Separate sections should be treated as separate ideas/constructions which I discovered (at least for myself) during my wondering around this topic.
+Despite it currently being of poor quality, it has new ideas, new syntax, new approaches. I'm doing my best to tell something, please do your best to understand.
+
+\subsection{Motivation}
 % the code should be comprehensive: use meaning ozf symbols
-Motivation: there are lots of proof assistants which allow to prove mathematical theorems, but their use for the purposes of an average mathematician is deeply disappointing due to various reasons.\\
+There are lots of proof assistants which allow to prove mathematical theorems, but their use for the purposes of an average mathematician is deeply disappointing due to various reasons.\\
 
 I am creating a proof assistant and this document is a very early prologue to what the computer-generated article will look like.\\
 
@@ -61,7 +66,27 @@ But if a modification of a classical logic is used, then such compromises are no
 %\item sequential criterion
 %\item completion of a metric space
 \end{itemize}
-%...
+%\newpage
+\subsection{Why descriptors?}
+Language determines the cognition.
+But what if the language is imprecise?
+For example, Russian language has no articles.
+The idea of article is implemented via other means and via the context.
+Unfortunate, the classical foundations via predicate calculus also suffers from the same problem.
+Or, maybe, it is because I learned it from the book in Russian?
+Luckily, the language of mathematics has precise notions of the finite and indefinite descriptors.
+Here I want to provide a natural modification of predicate calculus and its semantics, which allow to actually use descriptors, not in an ad hoc manner, as it is used to be.
+(Usually, the empty set serves as a default value, which is a bit strange, because the empty set itself often is a value too.)
+%Some believe that "
+%Mathematics provides the precision.
+%Then cognition of mathematical ideas 
+%Indeed, in russian, there
+% язык опр
+
+%From experience, it seems like, that Calculus of Constructions is an approach to implement the foundations of mathematics which allows deal with functions in.
+
+
+
 \newpage
 
 
@@ -93,8 +118,16 @@ But if a modification of a classical logic is used, then such compromises are no
 %\end{definition}
 
 %%% MODULES:
+%\chapter{Contents}
+\phantomsection
+%\addcontentsline{toc}{chapter}{Contents}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Contents}  % Correctly aligns with numbered chapters
+\tableofcontents
+\newpage
+
 
 %\input{some_order_theory.tex}
+\chapter{Logics}
 \input{010_logic.tex}
 \pagebreak
 \input{020_descriptors.tex}
@@ -105,6 +138,7 @@ But if a modification of a classical logic is used, then such compromises are no
 \pagebreak
 \input{050_prooftrees.tex}
 \pagebreak
+\chapter{Classes}
 \input{060_axioms.tex}
 \pagebreak
 \input{070_ordered_pair.tex}
@@ -143,6 +177,7 @@ But if a modification of a classical logic is used, then such compromises are no
 \pagebreak
 \input{230_analysis.tex}
 \pagebreak
+\chapter{Mathematics}
 %\input{240_linal_topology_etc.tex}
 \input{250_topology.tex}
 \pagebreak
@@ -172,10 +207,9 @@ But if a modification of a classical logic is used, then such compromises are no
 %\lstinputlisting{../set_theory_prover/program/checker.ml}
 %\begin{lstlisting}
 %\end{lstlisting}
-Einstein's 
-journal paper \cite{einstein} and Dirac's book \cite{dirac}. 
 
-\pagebreak
-\printbibliography[heading=bibintoc,title={References}]
+%Einstein's journal paper \cite{einstein} and Dirac's book \cite{dirac}. 
+%\pagebreak
+\printbibliography[heading=bibintoc,title={\protect\numberline{}References}]
 
 \end{document}\\

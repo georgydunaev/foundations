@@ -12,7 +12,18 @@
   \def\MyHeaderIncluded{defined}
 % This "if" scope is continuing untill the very end of this file.
 
-\documentclass[10pt,a4paper]{article}
+%\documentclass[10pt,a4paper]{article} %normal
+\documentclass[10pt,a4paper]{report} %if chapters are introduced
+\renewcommand{\thechapter}{}
+\renewcommand{\chaptername}{}
+
+%\renewcommand\thesection{\thechapter.\arabic{section}.} And also redefine \thesubsection. 
+\renewcommand\thesection{\arabic{section}}
+\usepackage{chngcntr}
+\counterwithout{section}{chapter}
+\usepackage{tocloft}  % Provides control over ToC formatting
+
+
 \usepackage[utf8]{inputenc}
 %\usepackage[german]{babel}
 %\usepackage[cyrillic]{babel}
@@ -34,6 +45,7 @@
 %\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
 
 \usepackage{thmtools}
+%\usepackage[linktocpage=true]{hyperref}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
