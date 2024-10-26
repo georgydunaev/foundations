@@ -78,6 +78,8 @@
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{corollary}{Corollary}[section]
 \newtheorem*{corollary*}{Corollary}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem*{assumption*}{Assumption}
 
 \newtheorem{note}{Note}[section]
 \usepackage{etoolbox}
@@ -363,5 +365,20 @@
 \newcommand{\open}{{\ \textrm{open}}}
 \newcommand{\closed}{{\ \textrm{closed}}}
 \newcommand{\continuous}{{\ \textrm{continuous}}}
+
+
+% big plus definition:
+\makeatletter
+\newcommand{\bigplus}{%
+  \DOTSB\mathop{\mathpalette\mattos@bigplus\relax}\slimits@
+}
+\newcommand\mattos@bigplus[2]{%
+  \vcenter{\hbox{%
+    \sbox\z@{$#1\sum$}%
+    \resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}{$\m@th#1+$}}%
+  }}%
+  \vphantom{\sum}%
+}
+\makeatother
 
 \fi % guard
