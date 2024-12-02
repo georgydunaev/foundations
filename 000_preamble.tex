@@ -80,6 +80,8 @@
 \newtheorem*{corollary*}{Corollary}
 \newtheorem{assumption}{Assumption}[section]
 \newtheorem*{assumption*}{Assumption}
+\newtheorem{premise}{Premise}[section]
+\newtheorem*{premise*}{Premise}
 
 \newtheorem{note}{Note}[section]
 \usepackage{etoolbox}
@@ -122,6 +124,7 @@
 \newcommand{\function}{\mathrm{\ function}}
 \newcommand{\functional}{\mbox{\ functional}}
 \newcommand{\IFF}{\ \Longleftrightarrow\ }
+\newcommand{\IFFnows}{\Longleftrightarrow}
 \renewcommand{\iff}{\ \longleftrightarrow\ }
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
 \newcommand{\CIMPLIES}{=\Rightarrow}
@@ -218,8 +221,9 @@
 \newcommand{\Prop}{\mathrm{Prop}}
 \newcommand{\To}{\Rightarrow}
 \newcommand{\str}{\mathrm{str}}
-
 \newcommand{\supp}{\mathrm{supp}}
+\newcommand{\ev}{\mathrm{ev}}
+
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -380,5 +384,30 @@
   \vphantom{\sum}%
 }
 \makeatother
+
+
+%%%%%%% For Better Footnotes INSIDE align environment.
+%\usepackage{amsmath,etoolbox} % already included
+\makeatletter
+\let\original@footnotemark\footnotemark
+\newcommand{\align@footnotemark}{%
+  \ifmeasuring@
+    \chardef\@tempfn=\value{footnote}%
+    \original@footnotemark
+    \setcounter{footnote}{\@tempfn}%
+  \else
+    \iffirstchoice@
+      \original@footnotemark
+    \fi
+  \fi}
+\pretocmd{\start@align}{\let\footnotemark\align@footnotemark}{}{}
+\makeatother
+% the use case:
+%\addtocounter{footnote}{-1}
+%\footnotetext{\url{https://en.wikipedia.org/wiki/Infimum_and_supremum}}
+%\addtocounter{footnote}{1}
+%\footnotetext{This also seems wrong for some reason.}
+%%%%END
+
 
 \fi % guard

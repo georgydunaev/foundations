@@ -144,12 +144,20 @@ SetUniverses = {U|U universe}   (* :Var->Prf *)
 (union X) = {z|exists (y in X): z in y}  (*:Var*Var*Term -> Prf*) (*order: z,y,X*)
  
 Axioms: (constructors of type Prf) (* first 4 are given axiomatically, but they can be defined *)
+ ({W|phi} exists)
  (A C B) & (B C A) -> (A = B)
- (A = B) -> (phi[A/v] -> phi[B/v])
- (phi & (W in Sets)) <-> (W in {W|phi})  (*:Var*Fm->Prf*)
+ forall A, B: (A = B) -> (phi[A/v] -> phi[B/v])
+ forall W: ((phi) & (W in Sets)) <-> ((W in {W|phi}))  (*:Var*Fm->Prf*)
+ ((phi) & (W in Sets)) <- ((W in {W|phi}) & (W exists))  (*:Var*Fm->Prf*)
+ ((phi) & (W in Sets)) -> ((W in {W|phi})             )  (*:Var*Fm->Prf*)
  ((pow K) C K) -> (Sets C K)             (*:Term->Prf*)
  (Sets universe)                         (*:Prf*)
  Sets C (union SetUniverses)             (*:Prf*)
+
+Logical notes: 
+1) (A = B) -> (A unique).
+2) (exists B:(A = B)) <-> (A unique).
+ ((phi) & (W in Sets) & (W exists)) <-> ((W in {W|phi}) & (W exists))  (*:Var*Fm->Prf*)
 
 Def. ("s is a semi-singleton subset of x")
  (s sss x) <-> (s C x) /\ (s ss)
