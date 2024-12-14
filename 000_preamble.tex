@@ -196,7 +196,7 @@
 
 \newcommand{\notvarphi}{\phi}
 \renewcommand{\phi}{\varphi}
-\newcommand{\commentary}[1]{\quad\mbox{(#1)}}
+\newcommand{\commentary}[1]{\mbox{(#1)}}%\quad
 \newcommand{\Option}{\mathrm{Option}}
 \newcommand{\None}{\mathrm{None}}
 \newcommand{\Some}{\mathrm{Some}}
@@ -223,7 +223,11 @@
 \newcommand{\str}{\mathrm{str}}
 \newcommand{\supp}{\mathrm{supp}}
 \newcommand{\ev}{\mathrm{ev}}
-
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\range}{\mathrm{range}}
+\newcommand{\homogeneous}{\mathrm{homogeneous}}
+\newcommand{\additive}{\mathrm{additive}}
+\newcommand{\linear}{\mathrm{linear}}
 % local commands
 %\preto\section{\undef\blipo} %etoolbox
 \preto\subsection{\undef\blipo} %etoolbox
@@ -409,5 +413,7 @@
 %\footnotetext{This also seems wrong for some reason.}
 %%%%END
 
+%https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 
 \fi % guard
