@@ -30,16 +30,64 @@ Definition SoundPred
 
 Definition SoundPredOf (E:Type) (E_EQ:E->E->Prop)
 := (fun (P:E->Prop)=>(forall w1 w2 : E, E_EQ w1 w2 -> P w1 -> P w2)).
+(** From "Jech" repositiory BEGIN **)
+Fixpoint EQ_tran (E1 E2 E3 : Ens) {struct E2}:
+ EQ E1 E2 -> EQ E2 E3 -> EQ E1 E3.
+Proof.
+destruct E1 as [A1 f1], E2 as [A2 f2], E3 as [A3 f3].
+intros E1eqE2 E2eqE3.
+destruct E1eqE2 as [E12 E21].
+destruct E2eqE3 as [E23 E32].
+simpl in |- *.
+split.
++ intro x1.
+  destruct (E12 x1) as [x2 P12].
+  destruct (E23 x2) as [x3 P23].
+  exists x3. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P12 P23).
++ intro x3.
+  destruct (E32 x3) as [x2 P32].
+  destruct (E21 x2) as [x1 P21].
+  exists x1. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P21 P32).
+Defined.
+
+Fixpoint EQ_sym (E1 E2 : Ens) {struct E2}: EQ E1 E2 -> EQ E2 E1.
+Proof.
+intro H.
+destruct E1 as [A f], E2 as [B g].
+simpl in * |- *.
+destruct H as [A2B B2A]; split.
++ intro b. destruct (B2A b) as [a J]. exists a. apply EQ_sym with (1:=J).
++ intro a. destruct (A2B a) as [b J]. exists b. apply EQ_sym with (1:=J).
+Defined.
+
+(*Hint Resolve EQ_sym EQ_refl : zfc.*)
+
+Theorem EQ_sound_left (c a b : Ens) (aeqb : EQ a b)
+ (H : EQ a c) : EQ b c.
+Proof.
+apply EQ_sym in aeqb.
+eapply EQ_tran.
+exact aeqb.
+exact H.
+Defined.
+Definition EQ_sound_right (a b c : Ens) (aeqb : EQ b c)
+ (H : EQ a b) : EQ a c 
+:= EQ_tran _ _ _ H aeqb.
+
+(** From "Jech" repositiory END **)
+
 
 Theorem Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t) ).
 Proof.
-(* it is proven in "Jech" repository *)
-Admitted.
+unfold SoundPredOf.
+exact EQ_sound_left.
+Defined.
 
 Theorem Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
 Proof.
-(* it is proven in "Jech" repository *)
-Admitted.
+unfold SoundPredOf.
+exact EQ_sound_right.
+Defined.
 
 
 (** Generalisation **)
@@ -98,15 +146,33 @@ fun A B => match A, B with
 end.
 Check true.
 
+Require Import Setoid.
+
 Theorem ClassOf_T_eq_sound_left (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) (fun y => (ClassEqOf ET) y t) ).
 Proof.
 (* simple exercise *)
-Admitted.
+unfold SoundPredOf.
+unfold ClassEqOf.
+intros.
+destruct w1, w2, t.
+intros.
+rewrite <- (H x).
+rewrite <- (H0 x).
+reflexivity.
+Defined.
 
 Theorem ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
 Proof.
 (* simple exercise *)
-Admitted.
+unfold SoundPredOf.
+unfold ClassEqOf.
+intros.
+destruct w1, w2, t.
+intros.
+rewrite <- (H x).
+rewrite <- (H0 x).
+reflexivity.
+Defined.
 
 
 Definition ClassETOf (ET:EqualityType) : EqualityType := 
@@ -187,36 +253,36 @@ Definition V: Menge CLASS := Constr SET V_func V_sound.
 End TheClassOfAllSets.
 
 
-Section BinaryIntersection.
-Context (ET:EqualityType).
-Definition DOMAIN := (ClassETOf ET). (* for the positivity axiom ET := CLASS, and DOMAIN := CONGLOMERATE*)
-Context (A B:Menge DOMAIN). 
+Definition binter_func {ET:EqualityType} (A B:Menge (ClassETOf ET))
+ := fun x => ((Predicate A) x) /\ ((Predicate B) x).
 
-
-Definition binter_func := fun x => ((Predicate A) x) /\ ((Predicate B) x).
-
-Theorem binter_sound : SoundPredicate ET binter_func.
+Theorem binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
 Proof.
-(*destruct DOMAIN.*)
-unfold DOMAIN in * |- *.
-unfold ClassETOf in * |- *.
 unfold SoundPredicate.
+destruct ET.
 unfold SoundPredOf.
 unfold binter_func.
 unfold Predicate.
 destruct A.
 destruct B.
 simpl.
-(* todo *)
-Admitted.
+unfold SoundPredOf in * |- *.
+intros.
+destruct H0.
 
-Definition binter := Constr ET binter_func binter_sound.
+unfold SoundPredicate in * |- *.
+unfold SoundPredOf in * |- *.
+split.
++ refine (p _ _ H H0).
++ refine (p0 w1 w2 H H1).
+Defined.
 
-End BinaryIntersection.
+Definition binter {ET:EqualityType} (A B:Menge (ClassETOf ET)):= Constr ET (binter_func A B) (binter_sound A B).
+
 
 
 Definition positive (P:Menge CONGLOMERATE) : Prop 
-  := forall (phi:Menge CONGLOMERATE), (Predicate P) (intersect_class (binter _ phi P)).
+  := forall (phi:Menge CONGLOMERATE), (Predicate P) (intersect_class (binter phi P)).
 
 Axiom Positivity : forall (P:Menge CONGLOMERATE), (positive P) -> ((Predicate P) V).
 
