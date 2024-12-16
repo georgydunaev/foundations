@@ -202,17 +202,29 @@ Definition MEM {ET:EqualityType} : (Menge ET) -> (ClassOf ET) -> Prop := (fun x 
 (*forall (phi:Class -),*)
 (** Defining the intersection of a conglomerate of classes **)
 Section Intersection.
+Context {ET1:EqualityType}. (* ET=CLASS*)
+Local Definition ET2:=(ClassETOf ET1).
+Local Definition ET3:=(ClassETOf ET2).
+Context (P:Menge ET3).
+(*
 Context (P:Menge CONGLOMERATE).
+*)
 
 Definition intersect_func (* (P:Menge CONGLOMERATE)*):=
-  (fun (y:Menge SET) => forall (U:Menge CLASS), ((Predicate P) U) -> ((Predicate U) y) ).
+  (fun (y:Menge ET1) => forall (U:Menge ET2), ((Predicate P) U) -> ((Predicate U) y) ).
 
 Check Constr.
 Print SoundPredicate.
 Check (intersect_func).
 
-Theorem intersect_sound (*(P:Menge CONGLOMERATE)*) : SoundPredicate SET (intersect_func).
+End Intersection.
+
+Print ET3.
+
+(* ET3:= (ClassETOf (ClassETOf ET1))*)
+Theorem intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
 Proof.
+destruct ET1.
 unfold SoundPredicate.
 unfold intersect_func.
 unfold SoundPredOf.
@@ -229,9 +241,15 @@ exact H.
 exact Q.
 Defined.
 
-Definition intersect_class := Constr _ intersect_func intersect_sound.
+Check intersect_func.
+Check intersect_sound.
+Check fun {ET1:EqualityType} (P:Menge ET3) 
+  => Constr ET1 (intersect_func P) (intersect_sound P).
 
-End Intersection.
+Definition intersect_class {ET1:EqualityType} (P:Menge ET3) 
+  := Constr ET1 (intersect_func P) (intersect_sound P).
+
+
 
 Section TheClassOfAllSets.
 
@@ -277,12 +295,36 @@ split.
 + refine (p0 w1 w2 H H1).
 Defined.
 
-Definition binter {ET:EqualityType} (A B:Menge (ClassETOf ET)):= Constr ET (binter_func A B) (binter_sound A B).
+Definition binter (ET:EqualityType) (A B:Menge (ClassETOf ET)):= Constr ET (binter_func A B) (binter_sound A B).
 
-
-
+Check Constr.
+(*
 Definition positive (P:Menge CONGLOMERATE) : Prop 
   := forall (phi:Menge CONGLOMERATE), (Predicate P) (intersect_class (binter phi P)).
+*)
+
+Definition positive {ET1: EqualityType}(P:Menge (ClassETOf (ClassETOf ET1))) : Prop 
+  := forall (phi:Menge (ClassETOf (ClassETOf ET1))), (Predicate P) (intersect_class (binter _ phi P)).
+
+
+Theorem positive_sound {ET1: EqualityType} : 
+SoundPredicate (ClassETOf (ClassETOf ET1)) positive.
+Proof.
+(* simple exercise *)
+Admitted.
+
+Check fun {ET1: EqualityType} => Constr (ClassETOf (ClassETOf ET1)) positive positive_sound.
+
+(* superconglomerate of positive properties of classes*)
+Definition ppc {ET1: EqualityType} := Constr (ClassETOf (ClassETOf ET1)) positive positive_sound.
+Check ppc.
+
+Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
+Proof.
+unfold positive.
+unfold ppc.
+(*...*)
+Admitted.
 
 Axiom Positivity : forall (P:Menge CONGLOMERATE), (positive P) -> ((Predicate P) V).
 
