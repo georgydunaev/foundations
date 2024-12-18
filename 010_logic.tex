@@ -86,7 +86,8 @@ Bernays' rules:%if $x$ is not free in formula $\psi$ then
 \label{ax:B2} \tag{B2}
 \]
 %_{\mathrm{meta}}
-Inside the side conditions, the sign $\notin$ is used on the metalevel instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
+Inside the side conditions, the sign $\notin$ is used on the metalevel.
+%% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 \pagebreak
 \subsubsection{Evaluation}
 \begin{definition}[evaluation]
@@ -245,8 +246,17 @@ I^v(P_2)\left(\vec{x}\right)
 \IFFdef 
 \left(\not\models^v_\forall P\left(\vec{X}\right)\right)
 \]
-
 \end{itemize}
+\begin{note}
+We could also use these definitions:
+\[
+(A\sqcup B)(\vec{X}) \IFFdef (\neg\circ ((\neg\circ A)\land (\neg\circ B))) (\vec{X})
+\]
+\[
+(A\lor B)(\vec{X}) \IFFdef (\neg ((\neg A)\land (\neg B))) (\vec{X})
+\]
+\end{note}
+
 \subsubsection{Validity}
 \end{definition}
 \begin{definition}[validity]\ \\% / entailment relation
@@ -268,7 +278,7 @@ $\dots$
 
 \pagebreak
 
-
+\iffalse
 \subsection{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
@@ -1212,7 +1222,7 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
  \right)
   \right):: \prop
 \]
+
+\fi
 \pagebreak
-
-
 \input{END.tex}
