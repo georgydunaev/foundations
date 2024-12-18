@@ -16,7 +16,7 @@ the following holds:
 (A \implies (B \implies A)) \label{ax:A1} \tag{A1}
 \]
 \[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B))) \label{ax:A2} \tag{A2}
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \label{ax:A2} \tag{A2}
 \]
 \[
 ((A\land B) \implies A) \label{ax:A3} \tag{A3}
@@ -147,113 +147,113 @@ Moreover, we require that negations commute, and that they are idempotent:
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then
 \[
-\left(\models^v_\forall A\left(\vec{X}\right)\right) \IFFdef \left(\forall \vec{x}\in I^v(\vec{X}):I^v(A)\left(\vec{x}\right)\right).
+\left(\models^v_\forall A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v(\vv{X}):I^v(A)\left(\vv{x}\right)\right).
 \]
 \[
-\left(\models^v_\exists A\left(\vec{X}\right)\right) \IFFdef \left(\exists \vec{x}\in I^v(\vec{X}):I^v(A)\left(\vec{x}\right)\right).
+\left(\models^v_\exists A\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v(\vv{X}):I^v(A)\left(\vv{x}\right)\right).
 \]
 \iffalse
 % NOT TRUE!
 \item 
 For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate terms and $@$ is a logical connective of valency $n$, then
 \[
-\left(\models^v_\forall @(P_1,\dots,P_n)\left(\vec{X}\right)\right) \IFFdef \left(\forall \vec{x}\in I^v(\vec{X}):  @((I^v(P_1)\left(\vec{x}\right)),\dots,(I^v(P_n)\left(\vec{x}\right)))  \right).
+\left(\models^v_\forall @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v(\vv{X}):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
 \]
 \[
-\left(\models^v_\exists @(P_1,\dots,P_n)\left(\vec{X}\right)\right) \IFFdef \left(\exists \vec{x}\in I^v(\vec{X}):  @((I^v(P_1)\left(\vec{x}\right)),\dots,(I^v(P_n)\left(\vec{x}\right)))  \right).
+\left(\models^v_\exists @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v(\vv{X}):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
 \]
 \fi
 \item If $P_1,P_2$ are predicate terms, then
 \[
-\left(\models^v_\forall (P_1\sqcup P_2)\left(\vec{X}\right)\right)
+\left(\models^v_\forall (P_1\sqcup P_2)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(
-\left(\models^v_\forall P_1\left(\vec{X}\right)\right)
+\left(\models^v_\forall P_1\left(\vv{X}\right)\right)
 \ \mathrm{or}\ 
-\left(\models^v_\forall P_2\left(\vec{X}\right)\right)
+\left(\models^v_\forall P_2\left(\vv{X}\right)\right)
 \right)
 \]
 
 \[
-\left(\models^v_\exists (P_1\lor P_2)\left(\vec{X}\right)\right)
+\left(\models^v_\exists (P_1\lor P_2)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(
-\left(\models^v_\exists P_1\left(\vec{X}\right)\right)
+\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
 \ \mathrm{or}\ 
-\left(\models^v_\exists P_2\left(\vec{X}\right)\right)
+\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 \right)
 \]
 
 \[
-\left(\models^v_\exists (P_1\sqcup P_2)\left(\vec{X}\right)\right)
+\left(\models^v_\exists (P_1\sqcup P_2)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(
-\forall \vec{x}\in I^v(\vec{X}):
+\forall \vv{x}\in I^v(\vv{X}):
 \left(
-I^v(P_1)\left(\vec{x}\right)
+I^v(P_1)\left(\vv{x}\right)
 \lor
-I^v(P_2)\left(\vec{x}\right)
+I^v(P_2)\left(\vv{x}\right)
 \right)
 \right)
 \IFFdef 
-\left(\models^v_\forall (P_1\lor P_2)\left(\vec{X}\right)\right)
+\left(\models^v_\forall (P_1\lor P_2)\left(\vv{X}\right)\right)
 \]
 
 %Good, but a duplication
 %\[
-%\left(\models^v_\forall (P_1\lor P_2)\left(\vec{X}\right)\right)
+%\left(\models^v_\forall (P_1\lor P_2)\left(\vv{X}\right)\right)
 %\IFFdef 
 %\left(
-%\forall \vec{x}\in I^v(\vec{X}):
+%\forall \vv{x}\in I^v(\vv{X}):
 %\left(
-%I^v(P_1)\left(\vec{x}\right)
+%I^v(P_1)\left(\vv{x}\right)
 %\lor
-%I^v(P_2)\left(\vec{x}\right)
+%I^v(P_2)\left(\vv{x}\right)
 %\right)
 %\right)
 %\]
 
 %\left(
-%\left(\models^v_\exists P_1\left(\vec{X}\right)\right)
+%\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
 %\ \mathrm{or}\ 
-%\left(\models^v_\exists P_2\left(\vec{X}\right)\right)
+%\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 %\right)
 
 \item If $P$ is a predicate term, then
 \[
-\left(\models^v_\forall (\neg \circ P)\left(\vec{X}\right)\right)
+\left(\models^v_\forall (\neg \circ P)\left(\vv{X}\right)\right)
 \IFFdef 
-\left(\not\models^v_\forall P\left(\vec{X}\right)\right)
+\left(\not\models^v_\forall P\left(\vv{X}\right)\right)
 \]
 \[
-\left(\models^v_\exists (\neg \circ P)\left(\vec{X}\right)\right)
+\left(\models^v_\exists (\neg \circ P)\left(\vv{X}\right)\right)
 \IFFdef 
-\left(\not\models^v_\exists P\left(\vec{X}\right)\right)
+\left(\not\models^v_\exists P\left(\vv{X}\right)\right)
 \]
 
 \item If $P$ is a predicate term, then
 \[
-\left(\models^v_\forall (\neg P)\left(\vec{X}\right)\right)
+\left(\models^v_\forall (\neg P)\left(\vv{X}\right)\right)
 \IFFdef 
-\left(\not\models^v_\exists P\left(\vec{X}\right)\right)
+\left(\not\models^v_\exists P\left(\vv{X}\right)\right)
 \]
 %\left(
 %\mathrm{not}
-%\left(\models^v_\forall P\left(\vec{X}\right)\right)
+%\left(\models^v_\forall P\left(\vv{X}\right)\right)
 %\right)
 \[
-\left(\models^v_\exists (\neg P)\left(\vec{X}\right)\right)
+\left(\models^v_\exists (\neg P)\left(\vv{X}\right)\right)
 \IFFdef 
-\left(\not\models^v_\forall P\left(\vec{X}\right)\right)
+\left(\not\models^v_\forall P\left(\vv{X}\right)\right)
 \]
 \end{itemize}
 \begin{note}
 We could also use these definitions:
 \[
-(A\sqcup B)(\vec{X}) \IFFdef (\neg\circ ((\neg\circ A)\land (\neg\circ B))) (\vec{X})
+(A\sqcup B)(\vv{X}) \IFFdef (\neg\circ ((\neg\circ A)\land (\neg\circ B))) (\vv{X})
 \]
 \[
-(A\lor B)(\vec{X}) \IFFdef (\neg ((\neg A)\land (\neg B))) (\vec{X})
+(A\lor B)(\vv{X}) \IFFdef (\neg ((\neg A)\land (\neg B))) (\vv{X})
 \]
 \end{note}
 
