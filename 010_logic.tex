@@ -1,107 +1,273 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Higher-order logical framework with dependent types}
-This framework is inspired by Lean's and Coq's meta-theories.\\
-...
-\pagebreak
-\section{Higher-order logical framework}
-This framework is inspired by Isabelle's meta-theory.\\
-
-\subsection{Inference rules for a metatheory}
-The proof assistant Isabelle uses metatheory with nonempty types, where the following derivation is possible:
-\[
-\frac{
-H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
-\quad\quad
-}{
-(\mathrm{spec}\ H_1): \left(\left(P(b)\right)::\prop\right)
-}(\mbox{where }(b::`a))
-\]
-%H_2: (b::`a)
-
-But if the type `a is empty, then creates problems, for example in case if P is constant false. (Or if P is false and doesn't depend on its argument at all.)
-
-It may be fixed this way:\\
-\[
-\frac{
-H_0: \left(\mathrm{inh}_{`a}::\prop\right)
-\quad\quad
-H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
-}{
-(\mathrm{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
-}(\mbox{where }(b::`a))
-\]
-The proof-term $H_0$ has the meaning of a proof of a statement that the type `a is inhabited(i.e. non-empty).
-%\CIMPLIES
-
-%\quad\quad(\mbox{where }``x"\notin\FV(\psi))
-%\label{isa_exx} \tag{B1}
-
-\subsection{Inference rules for a theory}
-The type $i$ represents objects of a theory.
-In our case they are classes, but it is not important for the logical part, they may be considered as sets as well.\\
-The type $o$ represents formulas about object.\\
-The type $(o \To o)$ represents unary connectives, like negation.\\
-The type $(o \To (o \To o))$ represents binary connectives.\\
-These types represent computable functions which respect the substitution within it's arguments.\\
-I.e. something like:
-\[
-f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
-\]
-
-% \Lambda  \bigwedge  \bigvee
-% \IMPLIES \CIMPLIES
-\[
-(\forall I):\left(
-\bigwedge_{(`a\Rightarrow o)}\lambda P.
-\left(\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket \right)
-\CIMPLIES
-\llbracket \forall_{`a}P\rrbracket
- \right):: \prop
-\]
-
-\[
-(\exists I):\left(
-\bigwedge_{(`a\Rightarrow o)}\lambda P.
-\left(
-\bigwedge_{`a}\lambda x.
-\middle(
-\llbracket P(x)\rrbracket  \CIMPLIES \llbracket \exists_{`a}P\rrbracket
- \middle)
- \right)
- \right):: \prop
-\]
-
-\[
-(\forall E):\left(\bigwedge_{(`a\Rightarrow o)}\lambda P.
-\left(
-\llbracket \forall_{`a}P\rrbracket
-\CIMPLIES
-\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket
-\right)
-\right):: \prop
-\]
-
-\[
-(\exists E):\left(
-\bigwedge_{(`a\Rightarrow o)}\lambda P.\left(
-\llbracket \exists_{`a}P\rrbracket
-\CIMPLIES \left(
-\bigwedge_{o}\lambda B.\left(
-\bigwedge_{`a}\lambda x.
-\llbracket P(x)\rrbracket  \CIMPLIES \llbracket B\rrbracket
-\right)
-\CIMPLIES \llbracket B\rrbracket
- \right)
- \right)
-  \right):: \prop
-\]
-\pagebreak
 \section{First-order logical framework}
 
 %\begin{definition}(conglomerate of all classes)
 %\
 %\end{definition}
+
+\subsection{Axioms for the corresponding predicate calculus}
+\subsubsection{Propositional part}
+For all formulas $A$, $B$, $C$,
+%(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
+the following holds:
+%For all atomic formulas $A$, $B$, $C$.
+\[
+(A \implies (B \implies A)) \label{ax:A1} \tag{A1}
+\]
+\[
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B))) \label{ax:A2} \tag{A2}
+\]
+\[
+((A\land B) \implies A) \label{ax:A3} \tag{A3}
+\]
+\[
+((A\land B) \implies B)  \label{ax:A4} \tag{A4}
+\]
+\[
+(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{A5}
+\]
+\[
+(A \implies (A\lor B)) \label{ax:A6} \tag{A6}
+\]
+\[
+(B \implies (A\lor B)) \label{ax:A7} \tag{A7}
+\]
+\[
+((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
+\label{ax:A8} \tag{A8}
+\]
+\[
+(\neg A \implies (A\implies B)) \label{ax:A9} \tag{A9}
+\]
+\[
+((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
+\label{ax:A10} \tag{A10}
+\]
+\[
+(A\lor \neg A) \label{ax:LEM} \tag{LEM}
+\]
+\[
+\frac{
+A \implies B\quad\quad\quad A
+}{
+B
+}
+\label{ax:MP} \tag{MP}
+\]
+\subsubsection{Predicational part}
+Specification rules:\\
+For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
+\[
+(t\lexists)\implies ((\forall x. \phi) \implies \phi[t/x])
+\label{ax:S1} \tag{S1}
+\]
+\[
+(t\lexists) \implies (\phi[t/x] \implies (\exists x. \phi))
+\label{ax:S2} \tag{S2}
+\]
+Bernays' rules:%if $x$ is not free in formula $\psi$ then
+\[
+\frac{
+\psi \implies \varphi
+}{
+\psi \implies (\forall x.\varphi)
+}
+\quad\quad(\mbox{where }x\notin\FV(\psi))
+\label{ax:B1} \tag{B1}
+\]
+\[
+\frac{
+\varphi \implies \psi
+}{
+(\exists x.\varphi)\implies \psi
+}
+\quad\quad(\mbox{where }x\notin\FV(\psi))
+\label{ax:B2} \tag{B2}
+\]
+%_{\mathrm{meta}}
+Inside the side conditions, the sign $\notin$ is used on the metalevel instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
+\pagebreak
+\subsubsection{Evaluation}
+\begin{definition}[evaluation]
+Any class-valued function from $\Var$ is called an evaluation:
+\[
+(v\evaluation) \IFFdef (v:\Var\to\mathrm{Class}).
+\]
+The constant $\mathrm{Class}$ is a conglomerate of all classes.
+\end{definition}
+\subsubsection{Interpretation}
+
+\subsubsection{Predicational terms}
+
+Based on atomic predicate symbols, one can introduce "predicate symbolic algebra."
+
+There are two fundamentally different types of negation:  
+
+\((\neg P)\) and \((\neg \circ P)\).  
+
+In the simple case, if all terms are well-defined (i.e., the interpretation of the term exists and is unique), these negations coincide.  
+
+However, in general, they are different.  
+
+Example of usage:
+\[
+(x \text{ exists}) \land (y \text{ exists}) \land (x \notin y) \implies \neg (x \in y)
+\]
+\[
+(x \text{ is unique}) \land (y \text{ is unique}) \land (\neg (x \in y)) \implies (x \notin y)
+\]
+
+Explanation:\\
+\((x \notin y)\) is \((\neg\in)(x, y)\),\\
+\(\neg (x \in y)\) is \((\neg\ \circ \in)(x, y)\).
+\begin{definition}[predicate terms]\ 
+\begin{itemize}
+\item If $A$ is an atomic predicate symbol, then $A$ is a predicate term.
+\item For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate terms and $@$ is a logical connective of valency $n$, then $@(P_1,\dots,P_n)$ is a predicate term.
+\item If $P$ is a predicate terms, then $\neg\circ P$ is a predicate term.
+\item In classical setting, the previous it is enough of inductive requirements, but if we want to study intuitionistic variant, then we need to add e.g. the following: if $P_1,P_2$ are predicate terms, then $P_1 \sqcup P_2$ is a predicate term.
+\end{itemize}
+Moreover, we require that negations commute, and that they are idempotent:
+\[
+(\neg (\neg P)) = P
+\]
+\[
+(\neg \circ (\neg \circ P)) = P
+\]
+\[
+(\neg (\neg \circ P)) = (\neg \circ (\neg P))
+\]
+(Here, for simplicity, we are considering the classical case, with no intuitionism.)
+\end{definition}
+
+\subsubsection{Truth}
+\begin{definition}[$\forall$- and $\exists$-truth under evaluation]\ \\
+\begin{itemize}
+\item If $A$ is an atomic predicate symbol, then
+\[
+\left(\models^v_\forall A\left(\vec{X}\right)\right) \IFFdef \left(\forall \vec{x}\in I^v(\vec{X}):I^v(A)\left(\vec{x}\right)\right).
+\]
+\[
+\left(\models^v_\exists A\left(\vec{X}\right)\right) \IFFdef \left(\exists \vec{x}\in I^v(\vec{X}):I^v(A)\left(\vec{x}\right)\right).
+\]
+\iffalse
+% NOT TRUE!
+\item 
+For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate terms and $@$ is a logical connective of valency $n$, then
+\[
+\left(\models^v_\forall @(P_1,\dots,P_n)\left(\vec{X}\right)\right) \IFFdef \left(\forall \vec{x}\in I^v(\vec{X}):  @((I^v(P_1)\left(\vec{x}\right)),\dots,(I^v(P_n)\left(\vec{x}\right)))  \right).
+\]
+\[
+\left(\models^v_\exists @(P_1,\dots,P_n)\left(\vec{X}\right)\right) \IFFdef \left(\exists \vec{x}\in I^v(\vec{X}):  @((I^v(P_1)\left(\vec{x}\right)),\dots,(I^v(P_n)\left(\vec{x}\right)))  \right).
+\]
+\fi
+\item If $P_1,P_2$ are predicate terms, then
+\[
+\left(\models^v_\forall (P_1\sqcup P_2)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(
+\left(\models^v_\forall P_1\left(\vec{X}\right)\right)
+\ \mathrm{or}\ 
+\left(\models^v_\forall P_2\left(\vec{X}\right)\right)
+\right)
+\]
+
+\[
+\left(\models^v_\exists (P_1\lor P_2)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(
+\left(\models^v_\exists P_1\left(\vec{X}\right)\right)
+\ \mathrm{or}\ 
+\left(\models^v_\exists P_2\left(\vec{X}\right)\right)
+\right)
+\]
+
+\[
+\left(\models^v_\exists (P_1\sqcup P_2)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(
+\forall \vec{x}\in I^v(\vec{X}):
+\left(
+I^v(P_1)\left(\vec{x}\right)
+\lor
+I^v(P_2)\left(\vec{x}\right)
+\right)
+\right)
+\IFFdef 
+\left(\models^v_\forall (P_1\lor P_2)\left(\vec{X}\right)\right)
+\]
+
+%Good, but a duplication
+%\[
+%\left(\models^v_\forall (P_1\lor P_2)\left(\vec{X}\right)\right)
+%\IFFdef 
+%\left(
+%\forall \vec{x}\in I^v(\vec{X}):
+%\left(
+%I^v(P_1)\left(\vec{x}\right)
+%\lor
+%I^v(P_2)\left(\vec{x}\right)
+%\right)
+%\right)
+%\]
+
+%\left(
+%\left(\models^v_\exists P_1\left(\vec{X}\right)\right)
+%\ \mathrm{or}\ 
+%\left(\models^v_\exists P_2\left(\vec{X}\right)\right)
+%\right)
+
+\item If $P$ is a predicate term, then
+\[
+\left(\models^v_\forall (\neg \circ P)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(\not\models^v_\forall P\left(\vec{X}\right)\right)
+\]
+\[
+\left(\models^v_\exists (\neg \circ P)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(\not\models^v_\exists P\left(\vec{X}\right)\right)
+\]
+
+\item If $P$ is a predicate term, then
+\[
+\left(\models^v_\forall (\neg P)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(\not\models^v_\exists P\left(\vec{X}\right)\right)
+\]
+%\left(
+%\mathrm{not}
+%\left(\models^v_\forall P\left(\vec{X}\right)\right)
+%\right)
+\[
+\left(\models^v_\exists (\neg P)\left(\vec{X}\right)\right)
+\IFFdef 
+\left(\not\models^v_\forall P\left(\vec{X}\right)\right)
+\]
+
+\end{itemize}
+\subsubsection{Validity}
+\end{definition}
+\begin{definition}[validity]\ \\% / entailment relation
+\[
+(\models \varphi) \IFFdef (\forall(v\evaluation), \models^v_\forall \varphi).
+\]
+\end{definition}
+\subsubsection{Soundness}
+\begin{theorem}[soundness]
+\[
+(\vdash \varphi)
+\IMPLIES
+(\models \varphi)
+\]
+\end{theorem}
+\Proof
+$\dots$
+\Done
+
+\pagebreak
+
 
 \subsection{Definitions of logical notions}%Basic definitions of the syntax
 
@@ -252,87 +418,6 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 %\]
 %As we can see from \eqref{eq:einstein}\ldots
 
-\subsection{Axioms for the corresponding predicate calculus}
-\subsubsection{Propositional part}
-For all formulas $A$, $B$, $C$, (and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)") the following holds:
-%For all atomic formulas $A$, $B$, $C$.
-\[
-(A \implies (B \implies A)) \label{ax:A1} \tag{A1}
-\]
-\[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies B))) \label{ax:A2} \tag{A2}
-\]
-\[
-((A\land B) \implies A) \label{ax:A3} \tag{A3}
-\]
-\[
-((A\land B) \implies B)  \label{ax:A4} \tag{A4}
-\]
-\[
-(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{A5}
-\]
-\[
-(A \implies (A\lor B)) \label{ax:A6} \tag{A6}
-\]
-\[
-(B \implies (A\lor B)) \label{ax:A7} \tag{A7}
-\]
-\[
-((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
-\label{ax:A8} \tag{A8}
-\]
-\[
-(\neg A \implies (A\implies B)) \label{ax:A9} \tag{A9}
-\]
-\[
-((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
-\label{ax:A10} \tag{A10}
-\]
-\[
-(A\lor \neg A) \label{ax:LEM} \tag{LEM}
-\]
-\[
-\frac{
-A \implies B\quad\quad\quad A
-}{
-B
-}
-\label{ax:MP} \tag{MP}
-\]
-\subsubsection{Predicational part}
-Specification rules:\\
-For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
-\[
-(t\lexists)\implies ((\forall x. \phi) \implies \phi[t/x])
-\label{ax:S1} \tag{S1}
-\]
-\[
-(t\lexists) \implies (\phi[t/x] \implies (\exists x. \phi))
-\label{ax:S2} \tag{S2}
-\]
-Bernays' rules:%if $x$ is not free in formula $\psi$ then
-\[
-\frac{
-\psi \implies \varphi
-}{
-\psi \implies (\forall x.\varphi)
-}
-\quad\quad(\mbox{where }x\notin\FV(\psi))
-\label{ax:B1} \tag{B1}
-\]
-\[
-\frac{
-\varphi \implies \psi
-}{
-(\exists x.\varphi)\implies \psi
-}
-\quad\quad(\mbox{where }x\notin\FV(\psi))
-\label{ax:B2} \tag{B2}
-\]
-%_{\mathrm{meta}}
-Inside the side conditions, the sign $\notin$ is used on the metalevel instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
-
-\pagebreak
 \subsection{Semantics} % the big one.
 \subsubsection{Motivation}
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
@@ -589,13 +674,13 @@ Some lemmas useful for proving validity of the axioms. The following lemma has s
 \Proof
 The premise is equivalent to the following statement:
 \[
-\forall \left(w:\evaluation\right):
+\forall \left(w:\evaluationTYPE\right):
 \forall \left(v\in\prod w\right).
 (v^*\models \psi)
 \]
 To show:
 \[
-\forall \left(w:\evaluation\right).
+\forall \left(w:\evaluationTYPE\right).
 \forall \left(v\in\prod w\right).
 \forall \left(q\in\Un\right).
 ((v+(x,q))^*\models \psi)
@@ -603,7 +688,7 @@ To show:
 Denote $w$ from the premise as $w_{pre}$.\\
 Denote $w$ from the conclusion $w_{con}$.\\
 Fix $w_{con}$. Fix $v_{con}$. Fix $q\in\Un$.\\
-Set $w_{pre}:= w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\evaluation$.\\
+Set $w_{pre}:= w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\evaluationTYPE$.\\
 Set $v_{pre}:= v_{con} + (x,q)$. It satisfies $v_{pre}:\prod w_{pre}$.\\
 Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \Done
@@ -1030,5 +1115,104 @@ Due to richer semantics it is possible to formally introduce the relation betwee
 \[
 ((\varepsilon y:\psi)\rightsquigarrow t) \longleftrightarrow \psi[t/y]
 \]
+
+\section{Higher-order logical framework with dependent types}
+This framework is inspired by Lean's and Coq's meta-theories.\\
+...
+\pagebreak
+\section{Higher-order logical framework}
+This framework is inspired by Isabelle's meta-theory.\\
+
+\subsection{Inference rules for a metatheory}
+The proof assistant Isabelle uses metatheory with nonempty types, where the following derivation is possible:
+\[
+\frac{
+H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
+\quad\quad
+}{
+(\mathrm{spec}\ H_1): \left(\left(P(b)\right)::\prop\right)
+}(\mbox{where }(b::`a))
+\]
+%H_2: (b::`a)
+
+But if the type `a is empty, then creates problems, for example in case if P is constant false. (Or if P is false and doesn't depend on its argument at all.)
+
+It may be fixed this way:\\
+\[
+\frac{
+H_0: \left(\mathrm{inh}_{`a}::\prop\right)
+\quad\quad
+H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
+}{
+(\mathrm{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
+}(\mbox{where }(b::`a))
+\]
+The proof-term $H_0$ has the meaning of a proof of a statement that the type `a is inhabited(i.e. non-empty).
+%\CIMPLIES
+
+%\quad\quad(\mbox{where }``x"\notin\FV(\psi))
+%\label{isa_exx} \tag{B1}
+
+\subsection{Inference rules for a theory}
+The type $i$ represents objects of a theory.
+In our case they are classes, but it is not important for the logical part, they may be considered as sets as well.\\
+The type $o$ represents formulas about object.\\
+The type $(o \To o)$ represents unary connectives, like negation.\\
+The type $(o \To (o \To o))$ represents binary connectives.\\
+These types represent computable functions which respect the substitution within it's arguments.\\
+I.e. something like:
+\[
+f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
+\]
+
+% \Lambda  \bigwedge  \bigvee
+% \IMPLIES \CIMPLIES
+\[
+(\forall I):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket \right)
+\CIMPLIES
+\llbracket \forall_{`a}P\rrbracket
+ \right):: \prop
+\]
+
+\[
+(\exists I):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(
+\bigwedge_{`a}\lambda x.
+\middle(
+\llbracket P(x)\rrbracket  \CIMPLIES \llbracket \exists_{`a}P\rrbracket
+ \middle)
+ \right)
+ \right):: \prop
+\]
+
+\[
+(\forall E):\left(\bigwedge_{(`a\Rightarrow o)}\lambda P.
+\left(
+\llbracket \forall_{`a}P\rrbracket
+\CIMPLIES
+\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket
+\right)
+\right):: \prop
+\]
+
+\[
+(\exists E):\left(
+\bigwedge_{(`a\Rightarrow o)}\lambda P.\left(
+\llbracket \exists_{`a}P\rrbracket
+\CIMPLIES \left(
+\bigwedge_{o}\lambda B.\left(
+\bigwedge_{`a}\lambda x.
+\llbracket P(x)\rrbracket  \CIMPLIES \llbracket B\rrbracket
+\right)
+\CIMPLIES \llbracket B\rrbracket
+ \right)
+ \right)
+  \right):: \prop
+\]
+\pagebreak
+
 
 \input{END.tex}
