@@ -208,7 +208,7 @@ Inductive definition of formulas:\\
 \begin{definition}[atomic interpretation]
 A function $I$ is called an atomic intepretation, if
 \[
-I:\AtomPredSymb\to\Pow\Un
+I:\AtomPredSymb\to\Pow\Domain
 \]
 \end{definition}
 (Note, that it is easy to generalise the interpretation of symbols, such that it may depend on evaluation, but it is quite unnecessary/excessively here.)
@@ -752,7 +752,7 @@ Let $w:=\{(``x",\{0,1\})\}$, but even in such situation, variables are keeping b
 
 \begin{definition}(function(star) from the standard assignment to the ``big assignment'')
 \[
-v:\Var\to\Un
+v:\Var\to\Domain
 \]
 \[
 v^*:\singeval
@@ -767,7 +767,7 @@ v^*(a):=\{v(a)\}
 
 \begin{theorem}
 The definitions of interpretation coincide on singleton-assignments.
-For all $l:\Var\to\Un$.
+For all $l:\Var\to\Domain$.
 \[
 \left(\prod (l^*)\right)=\{l\}
 \]
@@ -911,12 +911,12 @@ To show:
 \[
 \forall \left(w:\evaluationTYPE\right).
 \forall \left(v\in\prod w\right).
-\forall \left(q\in\Un\right).
+\forall \left(q\in\Domain\right).
 ((v+(x,q))^*\models \psi)
 \]
 Denote $w$ from the premise as $w_{pre}$.\\
 Denote $w$ from the conclusion $w_{con}$.\\
-Fix $w_{con}$. Fix $v_{con}$. Fix $q\in\Un$.\\
+Fix $w_{con}$. Fix $v_{con}$. Fix $q\in\Domain$.\\
 Set $w_{pre}:= w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\evaluationTYPE$.\\
 Set $v_{pre}:= v_{con} + (x,q)$. It satisfies $v_{pre}:\prod w_{pre}$.\\
 Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
@@ -935,12 +935,12 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \subsubsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
-$w:\Var\to((\power\Un)\setminus\{\emptyset\})$
+$w:\Var\to((\power\Domain)\setminus\{\emptyset\})$
 (note, domains should be nonempty, otherwise statement will be too weak to deal with normally)
 \end{definition}
 \begin{definition}(Local assignment w.r.t. global assigment)\\
 $v$ is a local assignment w.r.t. global assignment $w$ if $v:\prod_{(x:\Var)}w(x)$,\\
-i.e. $v:\Var\to\Un$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
+i.e. $v:\Var\to\Domain$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
 %$w:\Var\to((\power\Un)\setminus\emptyset)$
 \end{definition}
 \begin{definition}(Local interpretation of term under local assignment v wrt the global assignment w)\\
