@@ -6,7 +6,7 @@
 %\
 %\end{definition}
 
-\subsection{Axioms for the corresponding predicate calculus}
+\subsection{Axioms for the pluralistic predicate calculus}
 \subsubsection{Propositional part}
 For all formulas $A$, $B$, $C$,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
@@ -56,7 +56,7 @@ B
 \label{ax:MP} \tag{MP}
 \]
 \subsubsection{Predicational part}
-Specification rules:\\
+\underline{Specification rules:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
 (t\lexists)\implies ((\forall x. \phi) \implies \phi[t/x])
@@ -66,7 +66,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 (t\lexists) \implies (\phi[t/x] \implies (\exists x. \phi))
 \label{ax:S2} \tag{S2}
 \]
-Bernays' rules:%if $x$ is not free in formula $\psi$ then
+\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \[
 \frac{
 \psi \implies \varphi
@@ -90,14 +90,63 @@ Inside the side conditions, the sign $\notin$ is used on the metalevel.
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 \pagebreak
 \subsubsection{Evaluation}
-\begin{definition}[evaluation]
+\begin{parameter}[domain of discurse]\ \\
+We fix certain collection of objects $\Domain$ for which we want to use a pluralistic predicate logic. It can be a natural number, a Grothendieck universe, a class of sets, a conglomerate of all classes, etc.
+\end{parameter}
+\begin{parameter}[truth values]\ \\
+We fix certain collection of truth values $\TruthValues$ for which we want to use a pluralistic predicate logic. 
+%It can be a n
+\end{parameter}
+
+%$\Domain$
+
+%\begin{definition}[Class]
+%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+%\end{definition}
+
+\begin{example}[classical truth values]\ \\
+\[
+\lFalse := \emptyset
+\]
+\[
+\lTrue := \{\emptyset\}
+\]
+\[
+\ClassicalTruthValues := \{\lFalse, \lTrue\}
+\]
+\end{example}
+
+\begin{definition}[evaluation]\ \\
+An evaluation is a function, which show, what are the of the variable.
 Any class-valued function from $\Var$ is called an evaluation:
 \[
-(v\evaluation) \IFFdef (v:\Var\to\mathrm{Class}).
-\]
-The constant $\mathrm{Class}$ is a conglomerate of all classes.
+(v\evaluation) \IFFdef (v:\Var\to\Domain).
+\]%\mathrm{Class}
+%The constant $\mathrm{Class}$ is a conglomerate of all classes.
 \end{definition}
-\subsubsection{Interpretation}
+
+\begin{definition}[interpretation of atomic functional symbols]
+Functional symbols are correspond to the functions which maps finite tuples of an object to an object.
+(in our case: .
+%Any class-valued function from $\Var$ is called an evaluation:
+\[
+(I\TermInterpretation) \IFFdef (v:\FuncSymb\to
+\union_{n\in \omega}(\{1,\dots, n\}\to\Domain))\to\Domain.
+\]
+\end{definition}
+
+\begin{definition}[interpretation of atomic predicate symbols]
+Predicate symbols are correspond to the functions which maps finite tuples of classes to to truth values.
+(in our case: .
+%Any class-valued function from $\Var$ is called an evaluation:
+\[
+(I \PredInterpretation) \IFFdef (v:\AtomPredSymb\to
+\union_{n\in \omega}(\{1,\dots, n\}\to\Domain))\to\TruthValues.
+\]
+\end{definition}
+\begin{assumption}
+We assume that functional symbols are not interseccting with predicate symbol.
+\end{assumption}
 
 \subsubsection{Predicational terms}
 
@@ -116,7 +165,7 @@ Example of usage:
 (x \text{ exists}) \land (y \text{ exists}) \land (x \notin y) \implies \neg (x \in y)
 \]
 \[
-(x \text{ is unique}) \land (y \text{ is unique}) \land (\neg (x \in y)) \implies (x \notin y)
+(x \text{ unique}) \land (y \text{ unique}) \land (\neg (x \in y)) \implies (x \notin y)
 \]
 
 Explanation:\\
@@ -129,7 +178,7 @@ Explanation:\\
 \item If $P$ is a predicate terms, then $\neg\circ P$ is a predicate term.
 \item In classical setting, the previous it is enough of inductive requirements, but if we want to study intuitionistic variant, then we need to add e.g. the following: if $P_1,P_2$ are predicate terms, then $P_1 \sqcup P_2$ is a predicate term.
 \end{itemize}
-Moreover, we require that negations commute, and that they are idempotent:
+Moreover, we may require that negations to commute, and to be idempotent, since later defined truthness will respect the following equalities:
 \[
 (\neg (\neg P)) = P
 \]
@@ -141,16 +190,95 @@ Moreover, we require that negations commute, and that they are idempotent:
 \]
 (Here, for simplicity, we are considering the classical case, with no intuitionism.)
 \end{definition}
+\begin{definition}[formulas]\ 
+Inductive definition of formulas:\\
+\begin{enumerate}
+\item $\bot:\Fm$.\\
+\item $P:\PredSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
+\item $A:\Fm \IMPLIES (\neg A):\Fm$.\\
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\land B):\Fm$.\\
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\lor B):\Fm$.\\
+\item $x:\Var \AND A:\Fm \IMPLIES (\forall x.A):\Fm$.\\
+\item $x:\Var \AND A:\Fm \IMPLIES (\exists x.A):\Fm$.
+\end{enumerate}
+\end{definition}
+\subsubsection{Interpretation}
+\underline{Interpretation of atomic predicate terms:}\ \\
+\begin{definition}[atomic interpretation]
+A function $I$ is called an atomic intepretation, if
+\[
+I:\AtomPredSymb\to\Pow\Un
+\]
+\end{definition}
+(Note, that it is easy to generalise the interpretation of symbols, such that it may depend on evaluation, but it is quite unnecessary/excessively here.)
+%\Class.
 
+\iffalse
+\begin{itemize}
+\item If the $A$ is an atomic predicate symbol, then
+\[
+I^v(A)\eqdef
+\]
+\item 
+\[
+I^v(P_1\lor P_2)\eqdef (I^v(P_1)\cup I^v(P_2))
+\]
+\item 
+\[
+I^v(P_1\sqcup P_2)\eqdef (I^v(P_1)\cup I^v(P_2))
+\]
+Variants:
+\[
+BAD: I^v(P_1\sqcup P_2)\eqdef (I^v(P_1)\cup I^v(P_2))\setminus (I^v(P_1)\cap I^v(P_2))
+\]
+\[
+INTERESTING: I^v(P_1\sqcup P_2) \mathrm{\ has\ no\ interpretation!}
+\]
+$\dots$
+\end{itemize}
+\fi
+%\underline{}
+\begin{definition}[interpretation of formulas]
+The interpretations of formulas is defined by induction on construction of the formula.
+\begin{itemize}
+\item Nullary connectives:
+\[
+I^v(\bot) := \lFalse
+\]
+\[
+I^v(\top) := \lTrue
+\]
+\item Unary connectives:
+\[
+\swap (\lFalse) := \lTrue
+\]
+\[
+\swap (\lTrue) := \lFalse
+\]
+\[
+I^v(\neg \varphi) := \swap (I^v(\varphi))
+\]
+\item Binary connectives:
+\[
+I^v(\varphi_1 \lor \varphi_2) := (I^v(\varphi_1))\cup(I^v(\varphi_2))
+\]
+\end{itemize}
+\end{definition}
 \subsubsection{Truth}
+Due to high expressiveness of chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
+The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formlas, which indicates which quantifier must be used on atomic formulas.
+%It also involves to introduce  
+%, that's why it is necessary to introduce truthness predicate.
 \begin{definition}[$\forall$- and $\exists$-truth under evaluation]\ \\
+Let $v$ be evaluation and $I$ an interpretation
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then
 \[
-\left(\models^v_\forall A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v(\vv{X}):I^v(A)\left(\vv{x}\right)\right).
+\left(\models^v_\forall A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v(\vv{X}):I(A)\left(\vv{x}\right)\right).
 \]
 \[
-\left(\models^v_\exists A\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v(\vv{X}):I^v(A)\left(\vv{x}\right)\right).
+\left(\models^v_\exists A\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v(\vv{X}):I(A)\left(\vv{x}\right)\right).
 \]
 \iffalse
 % NOT TRUE!
@@ -183,7 +311,28 @@ For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate terms and $@$
 \left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 \right)
 \]
+There are two essentially different variants.\\
+Variant 1(reasonable, but wrong):
+it is not possible to define truthness of the instances of the following predicate terms (built by predicate terms $P_1$ and $P_2$) via truthness of their parts (both $P_1$ and $P_2$): there are no well-behaving definitions of $``I(P_1\lor P_2)"$ or $``I(P_1\sqcup P_2)"$, that's why they are stay undefined.
+\[
+\left(\models^v_\exists (P_1\sqcup P_2)\left(\vv{X}\right)\right)
+\IFFbaddef 
+\left(
+\exists \vv{x}\in I^v(\vv{X}):
+``I(P_1\sqcup P_2)"\left(\vv{x}\right)
+\right)
+\]
+\[
+\left(\models^v_\forall (P_1\lor P_2)\left(\vv{X}\right)\right)
+\IFFbaddef 
+\left(
+\forall \vv{x}\in I^v(\vv{X}):
+``I(P_1\lor P_2)"\left(\vv{x}\right)
+\right)
+\]
 
+\iffalse
+INCORRECT Variant 2(strange, but somehow following definitions in the note 1.1 below):
 \[
 \left(\models^v_\exists (P_1\sqcup P_2)\left(\vv{X}\right)\right)
 \IFFdef 
@@ -199,7 +348,7 @@ I^v(P_2)\left(\vv{x}\right)
 \left(\models^v_\forall (P_1\lor P_2)\left(\vv{X}\right)\right)
 \]
 
-%Good, but a duplication
+%BAD! Good, but a duplication
 %\[
 %\left(\models^v_\forall (P_1\lor P_2)\left(\vv{X}\right)\right)
 %\IFFdef 
@@ -218,6 +367,7 @@ I^v(P_2)\left(\vv{x}\right)
 %\ \mathrm{or}\ 
 %\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 %\right)
+\fi
 
 \item If $P$ is a predicate term, then
 \[
@@ -247,16 +397,64 @@ I^v(P_2)\left(\vv{x}\right)
 \left(\not\models^v_\forall P\left(\vv{X}\right)\right)
 \]
 \end{itemize}
-\begin{note}
-We could also use these definitions:
+\begin{definition}[dual predicate term]
+If $P$ is a predicate term, then
 \[
-(A\sqcup B)(\vv{X}) \IFFdef (\neg\circ ((\neg\circ A)\land (\neg\circ B))) (\vv{X})
+\dual(P):=(\neg\circ(\neg(P))).
+\]
+(It can also be defined as $\dual(P):=(\neg(\neg\circ P))$, but we need to pick one of them to use throughout the rest of the paper.)
+\end{definition}
+\begin{definition}[binary coproduct of predicate terms]
+If $P$ are predicate terms, then
+\[
+(P_1\sqcup P_2):=(\dual((\dual(P_1)\lor\dual(P_2)))).
+\]
+\end{definition}
+%Easy exercises:\\
+
+\iffalse
+\begin{note} ALL WRONG!
+So the part for predicate terms is done, it is left to define truth values on formulas. For the previous part we could also use these definitions:
+\[
+(A\sqcup B)(\vv{X}) \IFFdef (\neg\circ (\neg(A \lor B) )) (\vv{X})
+\]
+\[
+???(A\sqcup B)(\vv{X}) \IFFdef (\neg\circ ((\neg\circ A)\land (\neg\circ B))) (\vv{X})
 \]
 \[
 (A\lor B)(\vv{X}) \IFFdef (\neg ((\neg A)\land (\neg B))) (\vv{X})
 \]
 \end{note}
+\fi 
+\begin{itemize}
+\item If $\varphi$ is a formula, then
+\[
+\left(\models^v_\forall \neg \varphi \right)
+\IFFdef 
+\left(\not\models^v_\forall \varphi\right)
+\]
+\[
+\left(\models^v_\exists \neg \varphi \right)
+\IFFdef 
+\left(\not\models^v_\exists \varphi\right)
+\]
+\item If $\varphi_1$ and $\varphi_2$ are formulas, then
+\[
+\left(\models^v_\forall \varphi_1\lor\varphi_2 \right)
+\IFFdef 
+\left(\models^v_\forall \varphi_1\right)
+\mathrm{\ or\ }
+\left(\models^v_\forall \varphi_2\right)
+\]
+\[
+\left(\models^v_\exists \varphi_1\lor\varphi_2 \right)
+\IFFdef 
+\left(\models^v_\exists \varphi_1\right)
+\mathrm{\ or\ }
+\left(\models^v_\exists \varphi_2\right)
+\]
 
+\end{itemize}
 \subsubsection{Validity}
 \end{definition}
 \begin{definition}[validity]\ \\% / entailment relation
@@ -265,6 +463,26 @@ We could also use these definitions:
 \]
 \end{definition}
 \subsubsection{Soundness}
+\begin{lemma}
+\[
+I^v(u[t/\xi])=I^{v+(\xi\mapsto I^v(t))}(u)
+\]
+\Proof
+...
+\Done
+\end{lemma}
+\begin{lemma}
+\[
+\models_\forall^v(\varphi[t/\xi]) \IFF \models_\forall^{v+(\xi\mapsto I^v(t))}(\varphi)
+\]
+\[
+\models_\exists^v(\varphi[t/\xi]) \IFF \models_\exists^{v+(\xi\mapsto I^v(t))}(\varphi)
+\]
+\Proof
+\dots
+\Done
+\end{lemma}
+
 \begin{theorem}[soundness]
 \[
 (\vdash \varphi)

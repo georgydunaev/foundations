@@ -88,6 +88,11 @@
 \newtheorem*{premise*}{Premise}
 
 \newtheorem{note}{Note}[section]
+\newtheorem*{note*}{Note*}
+\newtheorem{parameter}{Parameter}[section]
+\newtheorem*{parameter*}{Parameter}
+
+
 \usepackage{etoolbox}
 
 %\newcommand*{\@Dashv}[2]{%
@@ -98,6 +103,7 @@
 }
 \newcommand{\LRA}{\Longleftrightarrow}
 \newcommand{\defi}{{\textrm{def}}}
+\newcommand{\baddefi}{{\textrm{bad\ def}}}
 \newcommand{\eqdef}{{\stackrel{\defi}{=}}}
 \newcommand{\rsto}{{\stackrel{RS}{\to}}}
 \newcommand{\propdef}{{\stackrel{\defi}{\ \Longleftrightarrow\ }}}
@@ -106,6 +112,7 @@
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
 \newcommand{\AND}{\ \ \&\ \ }
+\newcommand{\dual}{\mathrm{dual}}
 \newcommand{\any}{\mathrm{\ any}}
 \newcommand{\borel}{\mathcal{B}}
 \newcommand{\bounded}{\mathrm{\ bounded}}
@@ -136,6 +143,7 @@
 \newcommand{\IFF}{\ \Longleftrightarrow\ }
 \newcommand{\IFFnows}{\Longleftrightarrow}
 \newcommand{\IFFdef}{\ {\stackrel{\defi}{\IFFnows}}\ }
+\newcommand{\IFFbaddef}{\ {\stackrel{\baddefi}{\IFFnows}}\ }
 \renewcommand{\iff}{\ \longleftrightarrow\ }
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
 \newcommand{\CIMPLIES}{=\Rightarrow}
@@ -154,7 +162,9 @@
 \newcommand{\pr}{\mathrm{pr}}
 \newcommand{\fst}{\mathrm{fst}}
 \newcommand{\snd}{\mathrm{snd}}
+\newcommand{\AtomPredSymb}{\mathrm{AtomPredSymb}}
 \newcommand{\PredSymb}{\mathrm{PredSymb}}
+\newcommand{\Domain}{\mathrm{Domain}}
 \newcommand{\Proof}{\par\noindent\textbf{Proof.}\par}
 \newcommand{\ProofNoPar}{\par\noindent\textbf{Proof.}}
 \newcommand{\ran}{\mathrm{ran}}
@@ -175,7 +185,12 @@
 \newcommand{\topology}{\mathcal{T}}
 \newcommand{\total}{\mbox{\ total\ on\ }}
 \newcommand{\transitive}{\mathrm{\ transitive}}
+\newcommand{\swap}{\mathrm{swap}}
+\newcommand{\sd}{{\text -}}
 \newcommand{\union}{\bigcup}
+\newcommand{\interpretation}{\mathrm{\ interpretation}}
+\newcommand{\TermInterpretation}{\mathrm{\ Term{\sd}interpretation}}
+\newcommand{\PredInterpretation}{\mathrm{\ Pred{\sd}interpretation}}
 \newcommand{\lTrue}{\mathrm{True}}
 \newcommand{\lFalse}{\mathrm{False}}
 \newcommand{\lUncertain}{\mathrm{Uncertain}}
@@ -230,6 +245,11 @@
 \newcommand{\I}{\mathrm{I}}
 \newcommand{\prop}{\mathrm{prop}}
 \newcommand{\Prop}{\mathrm{Prop}}
+%\newcommand{\False}{\mathrm{False}}
+%\newcommand{\True}{\mathrm{True}}
+\newcommand{\Truth}{\mathrm{Truth}}
+\newcommand{\TruthValues}{\mathrm{TruthValues}}
+\newcommand{\ClassicalTruthValues}{\mathrm{ClassicalTruthValues}}
 \newcommand{\To}{\Rightarrow}
 \newcommand{\str}{\mathrm{str}}
 \newcommand{\supp}{\mathrm{supp}}
