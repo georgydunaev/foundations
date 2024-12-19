@@ -1,4 +1,4 @@
-\def\topic{}
+\def\topic{Pluralistic predicate calculus}
 \input{BEGIN.tex}
 \section{First-order logical framework}
 
@@ -145,7 +145,7 @@ Predicate symbols are correspond to the functions which maps finite tuples of cl
 \]
 \end{definition}
 \begin{assumption}
-We assume that functional symbols are not interseccting with predicate symbol.
+We assume that functional symbols are not intersecting with predicate symbol.
 \end{assumption}
 
 \subsubsection{Predicational terms}
@@ -160,7 +160,8 @@ In the simple case, if all terms are well-defined (i.e., the interpretation of t
 
 However, in general, they are different.  
 
-Example of usage:
+%Example of usage:
+\begin{example}[typical usage]
 \[
 (x \text{ exists}) \land (y \text{ exists}) \land (x \notin y) \implies \neg (x \in y)
 \]
@@ -171,6 +172,8 @@ Example of usage:
 Explanation:\\
 \((x \notin y)\) is \((\neg\in)(x, y)\),\\
 \(\neg (x \in y)\) is \((\neg\ \circ \in)(x, y)\).
+\end{example}
+
 \begin{definition}[predicate terms]\ 
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then $A$ is a predicate term.
@@ -191,15 +194,15 @@ Moreover, we may require that negations to commute, and to be idempotent, since 
 (Here, for simplicity, we are considering the classical case, with no intuitionism.)
 \end{definition}
 \begin{definition}[formulas]\ 
-Inductive definition of formulas:\\
+Inductive definition of formulas:
 \begin{enumerate}
-\item $\bot:\Fm$.\\
-\item $P:\PredSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
-\item $A:\Fm \IMPLIES (\neg A):\Fm$.\\
-\item $A:\Fm \AND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
-\item $A:\Fm \AND B:\Fm \IMPLIES (A\land B):\Fm$.\\
-\item $A:\Fm \AND B:\Fm \IMPLIES (A\lor B):\Fm$.\\
-\item $x:\Var \AND A:\Fm \IMPLIES (\forall x.A):\Fm$.\\
+\item $\bot:\Fm$.
+\item $P:\PredSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.
+\item $A:\Fm \IMPLIES (\neg A):\Fm$.
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\implies B):\Fm$.
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\land B):\Fm$.
+\item $A:\Fm \AND B:\Fm \IMPLIES (A\lor B):\Fm$.
+\item $x:\Var \AND A:\Fm \IMPLIES (\forall x.A):\Fm$.
 \item $x:\Var \AND A:\Fm \IMPLIES (\exists x.A):\Fm$.
 \end{enumerate}
 \end{definition}
@@ -443,16 +446,20 @@ So the part for predicate terms is done, it is left to define truth values on fo
 \[
 \left(\models^v_\forall \varphi_1\lor\varphi_2 \right)
 \IFFdef 
+\left(
 \left(\models^v_\forall \varphi_1\right)
 \mathrm{\ or\ }
 \left(\models^v_\forall \varphi_2\right)
+\right)
 \]
 \[
 \left(\models^v_\exists \varphi_1\lor\varphi_2 \right)
 \IFFdef 
+\left(
 \left(\models^v_\exists \varphi_1\right)
 \mathrm{\ or\ }
 \left(\models^v_\exists \varphi_2\right)
+\right)
 \]
 
 \end{itemize}
