@@ -218,10 +218,21 @@ Moreover, we may require that negations to commute, and to be idempotent, since 
 \underline{Interpretation of atomic predicate symbols:}
 \begin{definition}[atomic interpretation]\ \\
 A function $I$ is called an atomic intepretation, if
+%\[
+%I:\AtomPredSymb\to\left(\union_{n\in\omega}\Pow\left(\Domain^n\right)
+%\right)
+%\]
+
 \[
-I:\AtomPredSymb\to\left(\union_{n\in\omega}\Pow\left(\Domain^n\right)\right)
+J:\AtomPredSymb\to\left(\sum_{n\in\omega}\Pow\left(\Domain^n\right)
+\right)
 \]
-We assume, that such function is given and is called $I_\Pred$.
+
+
+We assume, that such function is given.% and is called $I_\Pred$.
+We define 
+$I_\val:= \pr_1 \circ J$.
+$I_\Pred := \pr_2 \circ J$.
 \end{definition}
 (Note, that it is easy to generalise the interpretation of symbols, such that it may depend on evaluation, but it is quite unnecessary/excessively here.)
 %\Class.
@@ -320,7 +331,7 @@ I^v((X_1,\dots,X_n)):=v(X_1)\times\dots\times v(X_n)
 
 \begin{definition}[evaluation of a tuple]
 \[
-v(\left(\vv{X}\right))
+v\left(\left(\vv{X}\right)\right)
 \]
 
 \end{definition}
@@ -588,9 +599,10 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \dots
 \Done
 
+=========================END=========================
 \pagebreak
 
-\iffalse
+\iftrue
 \subsection{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
@@ -1338,6 +1350,7 @@ $\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
 $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
 \Done
 
+\iffalse
 \begin{theorem}
 \[
 (\exists x \forall y:\varphi) \longrightarrow (\forall y \exists x :\varphi)
@@ -1355,6 +1368,7 @@ Assume $(\exists x \forall y:\varphi)$. To show: $(\forall y \exists x :\varphi)
 (\forall y:\varphi)
 \commentary{$\exists$E, (x/x)}
 \]
+
 Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
 \[
 (\forall y:\varphi)
@@ -1369,7 +1383,7 @@ Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
 \commentary{$\exists$I, (x:=x)}
 \]
 \Done
-
+\fi
 \pagebreak
 
 

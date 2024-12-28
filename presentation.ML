@@ -20,7 +20,7 @@ forall, exists : Var * Fm -> Fm
 {-,-}, (-,-): Term * Term -> Term
 {-}, pow(-), dom(-), ran(-), union(-), inter(-) : Term -> Term
 (- in -),(- = -), (- C -),(- from -),(- onto -),(- smaller than -) : Term * Term -> Fm
-(- func),(- transitive),(- hereditary),(- powerful),(- tight),(- universe) : Term -> Fm
+(- func),(- transitive),(- hereditary),(- powerful),(- limited),(- universe) : Term -> Fm
 (!-:-): Var * Fm -> Fm
 
 Todo: measure the complexity of the definition in depth of amount of constructors/connectives
@@ -138,8 +138,8 @@ F[{x}] = {s|(x,s) in F}
 (U transitive) <-> (forall (B in U): (B C U))  (* :Var*Term->Prf *) (*B not free in U*)
 (U hereditary) <-> (forall (B in U): forall (X C B): (X in U))  (* :Var*Var*Term->Prf *)
 (U powerful) <-> (forall (B in U): ((pow B) in U))  (* :Var*Term->Prf *)
-(U tight) <-> (forall (z C U): ((z smaller than U) <-> (z in U)))  (* :Var*Term->Prf *)
-(U universe) <-> (U  transitive, hereditary, powerful, tight)  (* :Term->Prf *)
+(U limited) <-> (forall (z C U): ((z smaller than U) <-> (z in U)))  (* :Var*Term->Prf *)
+(U universe) <-> (U  transitive, hereditary, powerful, limited)  (* :Term->Prf *)
 SetUniverses = {U|U universe}   (* :Var->Prf *)
 (union X) = {z|exists (y in X): z in y}  (*:Var*Var*Term -> Prf*) (*order: z,y,X*)
  

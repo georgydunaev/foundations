@@ -118,7 +118,8 @@
 \newcommand{\bounded}{\mathrm{\ bounded}}
 \newcommand{\can}{\mathrm{can}}
 \newcommand{\canonize}{\mathrm{canonize}}
-\newcommand{\closure}{\mathrm{cl}}
+%\newcommand{\closure}{\mathrm{cl}}
+\newcommand{\cl}{\mathrm{cl}}
 \newcommand{\complex}{\mathbb{C}}
 \newcommand{\converges}{\longrightarrow}
 \newcommand{\countable}{\mathrm{\ countable}}
@@ -226,7 +227,8 @@
 
 \newcommand{\notvarphi}{\phi}
 \renewcommand{\phi}{\varphi}
-\newcommand{\commentary}[1]{\mathrm{(#1)}}%\quad
+%\newcommand{\commentary}[1]{\mathrm{(#1)}}%\quad
+\newcommand{\commentary}[1]{\mbox{(#1)}}%\quad
 \newcommand{\Option}{\mathrm{Option}}
 \newcommand{\None}{\mathrm{None}}
 \newcommand{\Some}{\mathrm{Some}}
@@ -445,5 +447,11 @@
 
 %https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+
+%https://tex.stackexchange.com/questions/290275/mathematical-notation-of-convergence-in-latex
+%\newcommand{\myrightarrow}[1]{\xrightarrow{\makebox[2em][c]{$\scriptstyle#1$}}}‌
+%f_n \myrightarrow{\mu} f
+%f_n \myrightarrow{L^p} f
 
 \fi % guard
