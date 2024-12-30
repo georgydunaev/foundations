@@ -1,4 +1,4 @@
-\def\topic{Pluralistic foundations of mathematics}
+\def\topic{Foundations of mathematics}
 \input{BEGIN.tex}
 \section{Logical framework}%First-order l
 
@@ -26,8 +26,21 @@ Inductive definition of kinds:
 \item $(\VarType:::\Kind).$
 \item $(\ConstType:::\Kind).$
 \item $(\OptionType:::\Kind).$
+\item If $(K_1:::\Kind)$ and $(K_2:::\Kind)$, then $((K_1\cimplies K_2):::\Kind)$.
 \end{enumerate}
 \end{definition}
+\begin{axiom}[Kinding values of functional types]\ 
+\begin{enumerate}
+\item If $(A::K_1)$ and $(F::(K_1\cimplies K_2))$ then $(F(A)::K_2)$.
+\end{enumerate}
+\end{axiom}
+%\begin{definition}
+%Inductive defi
+%$\Term$,
+%\end{definition}
+%\begin{axiom}[Kinding types with $\ConstType$]\ \\
+%\end{axiom}
+
 \begin{definition}[$\ConstType$]\ \\
 %Typed constants: %NO!
 Inductive definition of some constant atomic types which are main entities for which the framework is developed:
@@ -120,7 +133,7 @@ $.
 \end{enumerate}
 \end{axiom}
 
-\begin{definition}[$\conseq :: (\Type \CImplies \OptionType)$]\ \\
+\begin{definition}[$\conseq :: (\Type \cimplies \OptionType)$]\ \\
 Taking the range type $\beta$ of a function type $\alpha\to\beta$.\\
 The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
 \begin{enumerate}
@@ -138,7 +151,7 @@ So the function that takes a consequent of function type is defined. Each value 
 \]
 and it $\conseq(\alpha)$ is computable for every explicitly given type $\alpha$.
 \end{definition}
-\begin{definition}[TypeOf:Expr$\to$Option(Type)]\ \\ \label{def:TypeOf}
+\begin{definition}[$\TypeOf::(\Expr\cimplies\OptionType)$]\ \\ \label{def:TypeOf}
 For each well-typed expression there exists one and only one type. The corresponding function $\TypeOf$ is recursively defined by induction on the argument:
 \begin{enumerate}
 \item In case it is $\var^\alpha(x)$, then \[
@@ -161,7 +174,7 @@ the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
 $\TypeOf(s)$:
 \begin{enumerate}
 \item In case it is $\None$, then return $\None$.
-\item In case it is $\Some(\beta)$, then return $Some(\alpha\to\beta)$.
+\item In case it is $\Some(\beta)$, then return $\Some(\alpha\to\beta)$.
 \end{enumerate}
 \item In case it is $(g(t))$, then
 the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
@@ -195,6 +208,7 @@ The expression $e$ is well-typed if computed $\TypeOf(e)$ is not $\None$.
 
 \begin{definition}[Substitution]\ \\
 Partial function of simultaneous substitution of a free variable $x$ in expression $u$ with another expression $t$.
+(The definition is not yet written, but it is implemented as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.)
 \end{definition}
 \begin{definition}[Transformation]\ \\
 Transformations of expressions.
@@ -650,7 +664,7 @@ v\left(\left(\vv{X}\right)\right)
 \end{definition}
 %Let $I^v\left(\vv{X}\right):=v(\left(\vv{X}\right))$.
 
-\begin{definition}[$\forall$- and $\exists$-truth under evaluation]\ \\
+\begin{definition}[truth under evaluation]\ \\%$\forall$- and $\exists$-truth
 Let $v$ be evaluation and $I$ be an interpretation.
 % TODO I^v\left(\vv{X}\right)
 \begin{itemize}
