@@ -125,6 +125,16 @@ Inside the side conditions, the sign $\notin$ is used on the metalevel.
 \begin{parameter}[domain of discourse]\ \\
 We fix certain collection of objects $\Domain$ over which we want to use a pluralistic predicate logic. It can be natural numbers, a Grothendieck universe, a class of hereditary finite sets, a class of all sets, a conglomerate of all classes, etc.
 \end{parameter}
+
+\begin{definition}[evaluation]\ \\
+An evaluation is a function, which assigns indivial object to every variable.
+Any object-valued function from $\Var$ is called an evaluation:%class-valued
+\[
+(v\evaluation) \IFFdef (v:\Var\to\Domain).
+\]%\mathrm{Class}
+%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+\end{definition}
+
 \iffalse TRUTHVALUES, NO!
 \begin{parameter}[truth values]\ \\
 We fix certain collection of truth values $\TruthValues$ for which we want to use a pluralistic predicate logic. 
@@ -149,14 +159,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 \]
 \end{example}
 
-\begin{definition}[evaluation]\ \\
-An evaluation is a function, which show, what are the of the variable.
-Any class-valued function from $\Var$ is called an evaluation:
-\[
-(v\evaluation) \IFFdef (v:\Var\to\Domain).
-\]%\mathrm{Class}
-%The constant $\mathrm{Class}$ is a conglomerate of all classes.
-\end{definition}
+
 
 \begin{definition}[interpretation of atomic functional symbols]
 Functional symbols are correspond to the functions which maps finite tuples of an object to an object.
@@ -233,6 +236,40 @@ Moreover, we may require that negations to commute, and to be idempotent, since 
 \end{definition}
 \subsubsection{Interpretation}
 \underline{Interpretation of atomic predicate symbols:}
+\begin{premise}[interpretation of atomic predicate symbols]\ \\
+\[
+J_\Pred:\AtomPredSymb\to\left(\sum_{n\in\omega}\Pow\left(\Domain^n\right)
+\right)
+\]
+Valence of a predicate symbol mapping:
+\[
+V_\Pred := \pr_1 \circ J_\Pred.
+\]
+Predicate of a predicate symbol mapping:
+\[
+I_\Pred := \pr_2 \circ J_\Pred.
+\]
+\end{premise}
+
+\begin{premise}[interpretation of atomic functional symbols]\ \\
+\[
+J_\Func:\AtomFuncSymb\to\left(\sum_{n\in\omega}
+\left(\Domain^n\right)
+\to
+\Domain
+\right)
+\]
+Valence of a function symbol mapping:
+\[
+V_\Func := \pr_1 \circ J_\Func.
+\]
+Function of a function symbol mapping:
+\[
+I_\Func := \pr_2 \circ J_\Func.
+\]
+\end{premise}
+
+\iffalse
 \begin{definition}[atomic interpretation]\ \\
 A function $I$ is called an atomic intepretation, if
 %\[
@@ -251,6 +288,7 @@ We define
 $I_\val:= \pr_1 \circ J$.
 $I_\Pred := \pr_2 \circ J$.
 \end{definition}
+\fi
 (Note, that it is easy to generalise the interpretation of symbols, such that it may depend on evaluation, but it is quite unnecessary/excessively here.)
 %\Class.
 
@@ -373,7 +411,7 @@ Let $v$ be evaluation and $I$ be an interpretation.
 %%\]
 \item If $A$ is an atomic predicate symbol, then
 \[
-\left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
+\left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I_{\overrightarrow{\Term}}^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
 \right).
 \]%_\forall
 %%\left(\vv{x}\right)
