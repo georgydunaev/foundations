@@ -154,19 +154,28 @@ For each well-typed expression there exists one and only one type. The correspon
 \alpha.
 \]
 \fi
+
+
 \item In case it is $(x^\alpha.s)$, then 
+the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
+$\TypeOf(s)$:
+\begin{enumerate}
+\item In case it is $\None$, then return $\None$.
+\item In case it is $\Some(\beta)$, then return $Some(\alpha\to\beta)$.
+\end{enumerate}
+\item In case it is $(g(t))$, then
 the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
 $\TypeOf(g)$:
 \begin{enumerate}
 \item In case it is $\None$, then return $\None$.
 \item In case it is $\Some(\gamma)$, then return $\conseq(\gamma)$.
 \end{enumerate}
-
-\item In case it is $(x^\alpha.s)$, then \[
-\TypeOf((x^\alpha.s))%^\beta
-:=
-(\alpha\to\TypeOf(s)).
-\]
+%\item In case it is $(g(t))$, then
+%\[
+%\TypeOf((x^\alpha.s))%^\beta
+%:=
+%(\alpha\to\TypeOf(s)).
+%\]
 %\[
 %\TypeOf(g(t))
 %:=
