@@ -1,14 +1,96 @@
-\def\topic{Pluralistic predicate calculus}
+\def\topic{Pluralistic foundations of mathematics}
 \input{BEGIN.tex}
-\section{First-order logical framework}
+\section{Logical framework}%First-order l
 
 %\begin{definition}(conglomerate of all classes)
 %\
 %\end{definition}
-\subsection{Language}
+\subsection{Lambda-calculus as a metalanguage}
+All inductive definitions in this section are simultaneous.
+\begin{notation}
+Various relations(:::,::,:) between text strings are introduced in this subsection.
+Quotation marks are ommited:\\
+Many-letter words such as Kind, Type, VarType, ConstType, Term, Fm, etc denote "Kind","Type", "VarType", "ConstType", "Term", "Fm", etc.
+One-letter length latin and greek words(except ``$\iota$'' and ``$\varepsilon$'') with or without subscription are variables which can be substituted with other words.\\
+Some strings are considered to be inferred, if they are obtained via (inductive) definitions.\\
+Arrows ``$\Implies$'' and ``$\CImplies$'' mean, that if string to the left of them is inferred , then the string to the right is also inferred.\\
+Comma ``$,$'' and ``$;$'' have higher priority than arrows. If two strings $s_1$ and $s_2$ are both inferred, then the string ``$s_1 , s_2$'' and ``$s_1 ; s_2$'' are also inferred. (Here $s_1$ and $s_2$ are meta-meta-variables.)\\
+Arrow ``$\rightsquigarrow$'' denotes the relation between strings, such that that if is any substrings of any inferred text coincided with the string on the left are replaced with the string on the right, then the obtained text is stated to be inferred too. %(such rules require certain metatheorems, which will be do)
+\end{notation}
+%, since formulas depend on terms and vice versa.
+\begin{definition}[$\Kind$]\ \\
+Inductive definition of kinds:
+\begin{enumerate}
+\item $(\Type:::\Kind).$
+\item $(\VarType:::\Kind).$
+\item $(\ConstType:::\Kind).$
+\end{enumerate}
+\end{definition}
+\begin{definition}[$\ConstType$]\ \\
+Typed constants:
+\begin{enumerate}
+\item $(\Term::\ConstType).$
+\item $(\Fm::\ConstType).$
+\item $(\Bool::\ConstType).$
+\item $(\alpha::\Type) \CImplies (\Const(\alpha)::\Const\Type).$
+\end{enumerate}
+\end{definition}
+\begin{definition}[$\Type$]\ \\
+Inductive definition of types: for any (strings) $\alpha$ and $\beta$,
+\begin{enumerate}
+\item $(\alpha::\ConstType) \CImplies  (\alpha::\Type).$
+%\item $(\Term::\Type).$
+%\item $(\Fm::\Type).$
+\item $(\alpha::\Type)\ ;\ (\beta::\Type) \CImplies ((\alpha\to \beta)::\Type).$
+%\item $(\alpha::\Type) \CImplies (\Var(\alpha)::\Type).$
+\end{enumerate}
+\end{definition}
+\begin{definition}[$\Var\Type$]\ \\
+Typed variables:
+\begin{enumerate}
+\item $(\alpha::\Type) \CImplies (\Var(\alpha)::\Var\Type).$
+\end{enumerate}
+\end{definition}
+%\begin{definition}[$\Symb$]\ \\
+%Inductive definition of symbols:
+%\begin{enumerate}
+%\end{enumerate}
+%\end{definition}
+\begin{definition}[$\Expr$]\ \\
+Inductive definition of expressions: let $\alpha$ and $\beta$ be arbitrary types, then
+\begin{enumerate}
+\item $(a:\Var(\alpha)) \Implies (a:\alpha)$.
+\item $(a:\Const(\alpha)) \Implies (a:\alpha)$.
+\item Lambda-abstartion: $(x:\Var(\alpha))\ ,\ (s:\beta) \Implies ((x.s):\alpha\to \beta)$.
+\item Application: $(g:\alpha\to \beta)\ ,\ (t:\alpha) \Implies (g(t):\beta)$.
+%\item $(x:\Var\Term)\ ,\ (s:\Symb) \Implies ((x.s):\Bound\Symb)$.
+\end{enumerate}
+\end{definition}
+\begin{definition}[Substitution]\ \\
+Partial function of simultaneous substitution of a free variable $x$ in expression $u$ with another expression $t$.
+\end{definition}
+\begin{definition}[Transformation]\ \\
+Transformations of expressions.
+\begin{enumerate}
+\item Alpha-conversion:$(x.M[x/v]) \rightsquigarrow (y.M[y/v]).$
+\item Beta-reduction:$((x.M) N) \rightsquigarrow (M[N/x]).$
+\end{enumerate}
+\end{definition}
+\subsection{Predicate calculus as a language}
+%All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
+\begin{definition}[$\Term$]\ \\
+Inductive definition of terms:
+\begin{enumerate}
+%\item $(x:\Var(\Term)) \Implies (x:\Term)$.
+\item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Term)$.
+\end{enumerate}
+\end{definition}
 \begin{definition}[$\Fm$]\ \\
 Inductive definition of formulas:
 \begin{enumerate}
+%\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
 \item $(\bot:\Fm)\ ,\ (\top:\Fm)$.
 \item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
 \item $(A:\Fm) \Implies ((\neg A):\Fm)$.
@@ -21,6 +103,25 @@ Inductive definition of formulas:
 \item $(t:\Term) \Implies ((t \lunique):\Fm)$.
 \end{enumerate}
 \end{definition}
+
+\begin{definition}[$\Bool$]\ \\
+Inductive definition of booleans:
+\begin{enumerate}
+\item $(\lFalse:\Bool).$
+\item $(\lTrue:\Bool).$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[$\vdash$]\ \\
+%Inductive definition of formulas:
+%\begin{enumerate}
+Inference in language is denoted with function $\vdash$.
+\[
+(\vdash : \Fm \to \Bool)
+\]
+It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
+\end{definition}
+\pagebreak
 \subsection{Axioms for the pluralistic predicate calculus}
 \subsubsection{Propositional part}
 For all formulas $A$, $B$, $C$,
@@ -72,7 +173,7 @@ B
 \]
 \subsubsection{Predicational part}
 \underline{Definitional axioms:}\\
-For any variable $x$ and for any term $t$,
+For any variable $x$, any term $t$, any formula $\varphi$,
 \[
 (x\ldefined)
 \label{ax:D1} \tag{D1}
@@ -86,6 +187,18 @@ For any variable $x$ and for any term $t$,
 (t\lunique)
 )
 \label{ax:D2} \tag{D2}
+\]
+\[
+(\exists x.\varphi)
+\iff
+((\varepsilon x.\varphi) \lexists)
+\label{ax:D3} \tag{D3}
+\]
+\[
+(!x.\varphi)
+\iff
+((\varepsilon x.\varphi) \lunique)
+\label{ax:D4} \tag{D4}
 \]
 \underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
@@ -161,8 +274,8 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 
 
 
-\begin{definition}[interpretation of atomic functional symbols]
-Functional symbols are correspond to the functions which maps finite tuples of an object to an object.
+\begin{definition}[interpretation of atomic function symbols]
+Function symbols are correspond to the functions which maps finite tuples of an object to an object.
 (in our case: .
 %Any class-valued function from $\Var$ is called an evaluation:
 \[
@@ -181,7 +294,7 @@ Predicate symbols are correspond to the functions which maps finite tuples of cl
 \]
 \end{definition}
 \begin{assumption}
-We assume that functional symbols are not intersecting with predicate symbols.
+We assume that function symbols are not intersecting with predicate symbols.
 \end{assumption}
 \begin{definition}[interpretation]
 \[
@@ -189,6 +302,7 @@ We assume that functional symbols are not intersecting with predicate symbols.
 \]
 \end{definition}
 \fi
+\subsubsection{Function symbols}
 \subsubsection{Predicate symbols}
 
 Based on atomic predicate symbols, one can introduce "predicate symbolic algebra."
@@ -251,7 +365,7 @@ I_\Pred := \pr_2 \circ J_\Pred.
 \]
 \end{premise}
 
-\begin{premise}[interpretation of atomic functional symbols]\ \\
+\begin{premise}[interpretation of atomic function symbols]\ \\
 \[
 J_\Func:\AtomFuncSymb\to\left(\sum_{n\in\omega}
 \left(\Domain^n\right)
@@ -662,10 +776,10 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \dots
 \Done
 
-=========================END=========================
+%=========================END=========================
 \pagebreak
 
-\iftrue
+\iffalse
 \subsection{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
@@ -699,7 +813,7 @@ The following subsets of the alphabet sets are assumed to be pairwise disjoint a
 The countable set \\
 $\Var$
 \end{definition}
-\begin{definition}(Functional symbols)\\
+\begin{definition}(Function symbols)\\
 The countable set \\
 $\FuncSymb$
 \end{definition}
@@ -1305,7 +1419,7 @@ Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
 $I^v_\Fm(A\equiv B):=\forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
 Will such definition work with a variable? I highly doubt. 
 So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
-But this definition works well for defining functional symbols, and, in particular, constants.
+But this definition works well for defining function symbols, and, in particular, constants.
 \end{definition}
 
 Some statements:\\
@@ -1346,7 +1460,7 @@ If also the variable $v$ is $W$ then $t[A/W]=A$ and $t[B/W]=B$.\\
 Since $A=B$, $t[A/W]=t[B/W]$, so we are done.
 Otherwise, i.e. if the variable $v$ is not $W$, then $t[A/W]=v=t$ and $t[B/W]=v=t$.\\
 Therefore $t[A/W]=t[B/W]$, so we are done.\\
-Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Term$, where $f$ is a functional symbol of arity n.\\
+Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Term$, where $f$ is a function symbol of arity n.\\
 Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition of substitution.
 \[
 t[A/W]=f(t_1,...,t_n)[A/W]=
