@@ -22,31 +22,50 @@ Arrow ``$\rightsquigarrow$'' denotes the relation between strings, such that tha
 Inductive definition of kinds:
 \begin{enumerate}
 \item $(\Type:::\Kind).$
+\item $(\Expr:::\Kind).$
 \item $(\VarType:::\Kind).$
 \item $(\ConstType:::\Kind).$
+\item $(\OptionType:::\Kind).$
 \end{enumerate}
 \end{definition}
 \begin{definition}[$\ConstType$]\ \\
-Typed constants:
+%Typed constants: %NO!
+Inductive definition of some constant atomic types which are main entities for which the framework is developed:
 \begin{enumerate}
 \item $(\Term::\ConstType).$
 \item $(\Fm::\ConstType).$
 \item $(\Bool::\ConstType).$
+\iffalse 
 \item $(\alpha::\Type) \CImplies (\Const(\alpha)::\Const\Type).$
+\fi
 \end{enumerate}
 \end{definition}
+\begin{definition}[$\OptionType$]\ \\
+Inductive definition of formulas:
+\begin{enumerate}
+\item $(\None::\OptionType).$
+\item $(\alpha::\Type) \CImplies (\Some(\alpha)::\OptionType).$
+\end{enumerate}
+%\item $(\alpha::\Type) \CImplies (\conseq(\alpha)::\OptionType).$
+\end{definition}
 \begin{definition}[$\Type$]\ \\
+%\tag{def:Type}
+\label{def:Type}
 Inductive definition of types: for any (strings) $\alpha$ and $\beta$,
 \begin{enumerate}
+\iftrue % ALLOWED! % constructors must always give NEW type
 \item $(\alpha::\ConstType) \CImplies  (\alpha::\Type).$
+\fi
 %\item $(\Term::\Type).$
 %\item $(\Fm::\Type).$
 \item $(\alpha::\Type)\ ;\ (\beta::\Type) \CImplies ((\alpha\to \beta)::\Type).$
 %\item $(\alpha::\Type) \CImplies (\Var(\alpha)::\Type).$
+\item $(\alpha::\Type)\ ;\ (\beta::\Type) \CImplies ((\alpha \times \beta)::\Type).$
+
 \end{enumerate}
 \end{definition}
-\begin{definition}[$\Var\Type$]\ \\
-Typed variables:
+\begin{definition}[$\VarType$]\ \\
+Inductive definition of a kind of typed variables:
 \begin{enumerate}
 \item $(\alpha::\Type) \CImplies (\Var(\alpha)::\Var\Type).$
 \end{enumerate}
@@ -57,25 +76,127 @@ Typed variables:
 %\end{enumerate}
 %\end{definition}
 \begin{definition}[$\Expr$]\ \\
-Inductive definition of expressions: let $\alpha$ and $\beta$ be arbitrary types, then
+Inductive definition of expressions:
+%Let $\alpha$ and $\beta$ be arbitrary types, then
 \begin{enumerate}
-\item $(a:\Var(\alpha)) \Implies (a:\alpha)$.
-\item $(a:\Const(\alpha)) \Implies (a:\alpha)$.
-\item Lambda-abstartion: $(x:\Var(\alpha))\ ,\ (s:\beta) \Implies ((x.s):\alpha\to \beta)$.
-\item Application: $(g:\alpha\to \beta)\ ,\ (t:\alpha) \Implies (g(t):\beta)$.
-%\item $(x:\Var\Term)\ ,\ (s:\Symb) \Implies ((x.s):\Bound\Symb)$.
+\item $(\alpha::\Type)\CImplies (\var^\alpha :: \Expr)$.
+\item $(\alpha::\Type)\ ;\ (\beta::\Type)\CImplies ((x^{\alpha}.s) :: \Expr)$.
+\item $(\alpha::\Type)\ ;\ (\beta::\Type)\CImplies (\pr^{\alpha\times\beta}_1 :: \Expr)$.
+\item $(\alpha::\Type)\ ;\ (\beta::\Type)\CImplies (\pr^{\alpha\times\beta}_2 :: \Expr)$.
+\item $(a::\Expr)\ ;\ (b::\Expr)\CImplies ((a,b) :: \Expr)$.
 \end{enumerate}
 \end{definition}
+\begin{axiom}[Typing of $\Expr$]\ \\
+Typing axioms for the expressions.
+Let $\alpha$ and $\beta$ be arbitrary types, then
+\begin{enumerate}
+\item $(\var^\alpha : \Var(\alpha) \to \alpha)$.
+%$(a:\Var(\alpha)) \Implies (a:\alpha)$.
+\iffalse % its unnecessary and wrong
+\item $(\const^\alpha : \Const(\alpha) \to \alpha)$.
+\fi
+%$(a:\Const(\alpha)) \Implies (a:\alpha)$.
+\item Lambda-abstraction: $(x:\Var(\alpha))\ ,\ (s:\beta) \Implies ((x.s):\alpha\to \beta)$.
+\item Application: $(g:\alpha\to \beta)\ ,\ (t:\alpha) \Implies (g(t):\beta)$.
+%\item $(x:\Var\Term)\ ,\ (s:\Symb) \Implies ((x.s):\Bound\Symb)$.
+\item OPairIntro: 
+$(a:\alpha)\ ,\ (b:\beta) \Implies ((a,b):\alpha\times\beta)$.
+\item FirstProj: $(\pr^{\alpha\times\beta}_1:\alpha\times\beta\to\alpha)$.
+\item SecondProj: $(\pr^{\alpha\times\beta}_2:\alpha\times\beta\to\beta)$.
+\iffalse
+\item OPairElim1:
+$
+((a,b):\alpha\times\beta)
+\Implies
+(a:\alpha)
+$.
+\item OPairElim2:
+$
+((a,b):\alpha\times\beta)
+\Implies
+(b:\beta)
+$.
+\fi
+\end{enumerate}
+\end{axiom}
+
+\begin{definition}[$\conseq :: (\Type \CImplies \OptionType)$]\ \\
+Taking the range type $\beta$ of a function type $\alpha\to\beta$.\\
+The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
+\begin{enumerate}
+\item If the type $\gamma$ is made out of constant type, then return $\None$.
+\item If the type $\gamma$ is a function type $\alpha\to\beta$ for some $\alpha$ and $\beta$, then return $\Some(\beta)$.
+\item If the type $\gamma$ is a pair type $\alpha\times\beta$ for some $\alpha$ and $\beta$, then return $\None$.
+\end{enumerate}
+%\[
+%\conseq(\alpha\to\beta):=\Some(\beta)
+%\conseq(\_):=\None
+%\]
+So the function that takes a consequent of function type is defined. Each value of it has the $\OptionType$ kind, therefore the following inference rule is admissible:
+\[
+(\alpha::\Type) \CImplies (\conseq(\alpha)::\OptionType),
+\]
+and it $\conseq(\alpha)$ is computable for every explicitly given type $\alpha$.
+\end{definition}
+\begin{definition}[TypeOf:Expr$\to$Option(Type)]\ \\ \label{def:TypeOf}
+For each well-typed expression there exists one and only one type. The corresponding function $\TypeOf$ is recursively defined by induction on the argument:
+\begin{enumerate}
+\item In case it is $\var^\alpha(x)$, then \[
+\TypeOf(\var^\alpha(x))
+%\rightsquigarrow 
+:=
+\alpha.
+\]
+\iffalse
+\item In case it is ...., then  \[
+\TypeOf(\const^\alpha(x))
+:=
+\alpha.
+\]
+\fi
+\item In case it is $(x^\alpha.s)$, then 
+the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
+$\TypeOf(g)$:
+\begin{enumerate}
+\item In case it is $\None$, then return $\None$.
+\item In case it is $\Some(\gamma)$, then return $\conseq(\gamma)$.
+\end{enumerate}
+
+\item In case it is $(x^\alpha.s)$, then \[
+\TypeOf((x^\alpha.s))%^\beta
+:=
+(\alpha\to\TypeOf(s)).
+\]
+%\[
+%\TypeOf(g(t))
+%:=
+%\conseq(\TypeOf(g)).
+%\]
+\end{enumerate}
+So the function that returns a type of an expression is defined. Each value of it has the $\OptionType$ kind, therefore the following inference rule is admissible:
+\[
+(e::\Expr) \CImplies (\TypeOf(e)::\OptionType),
+\]
+and it $\TypeOf(e)$ is computable for every explicitly given expression $e$.
+\end{definition}
+
+\begin{definition}[Well-typed expression]
+The expression $e$ is well-typed if computed $\TypeOf(e)$ is not $\None$.
+\end{definition}
+
 \begin{definition}[Substitution]\ \\
 Partial function of simultaneous substitution of a free variable $x$ in expression $u$ with another expression $t$.
 \end{definition}
 \begin{definition}[Transformation]\ \\
 Transformations of expressions.
 \begin{enumerate}
-\item Alpha-conversion:$(x.M[x/v]) \rightsquigarrow (y.M[y/v]).$
-\item Beta-reduction:$((x.M) N) \rightsquigarrow (M[N/x]).$
+\item Alpha-conversion: $(x.M[x/v]) \rightsquigarrow (y.M[y/v])$.
+\item Beta-reduction: $((x.M) N) \rightsquigarrow (M[N/x])$.
+\item Proj1-reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow a$.
+\item Proj2-reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow b$.
 \end{enumerate}
 \end{definition}
+\pagebreak
 \subsection{Predicate calculus as a language}
 %All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
 \begin{definition}[$\Term$]\ \\
@@ -129,39 +250,39 @@ For all formulas $A$, $B$, $C$,
 the following holds:
 %For all atomic formulas $A$, $B$, $C$.
 \[
-(A \implies (B \implies A)) \label{ax:A1} \tag{A1}
+(A \implies (B \implies A)) \label{ax:A1} \tag{ax:A1}
 \]
 \[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \label{ax:A2} \tag{A2}
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \label{ax:A2} \tag{ax:A2}
 \]
 \[
-((A\land B) \implies A) \label{ax:A3} \tag{A3}
+((A\land B) \implies A) \label{ax:A3} \tag{ax:A3}
 \]
 \[
-((A\land B) \implies B)  \label{ax:A4} \tag{A4}
+((A\land B) \implies B)  \label{ax:A4} \tag{ax:A4}
 \]
 \[
-(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{A5}
+(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{ax:A5}
 \]
 \[
-(A \implies (A\lor B)) \label{ax:A6} \tag{A6}
+(A \implies (A\lor B)) \label{ax:A6} \tag{ax:A6}
 \]
 \[
-(B \implies (A\lor B)) \label{ax:A7} \tag{A7}
+(B \implies (A\lor B)) \label{ax:A7} \tag{ax:A7}
 \]
 \[
 ((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
-\label{ax:A8} \tag{A8}
+\label{ax:A8} \tag{ax:A8}
 \]
 \[
-(\neg A \implies (A\implies B)) \label{ax:A9} \tag{A9}
+(\neg A \implies (A\implies B)) \label{ax:A9} \tag{ax:A9}
 \]
 \[
 ((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
-\label{ax:A10} \tag{A10}
+\label{ax:A10} \tag{ax:A10}
 \]
 \[
-(A\lor \neg A) \label{ax:LEM} \tag{LEM}
+(A\lor \neg A) \label{ax:LEM} \tag{ax:LEM}
 \]
 \[
 \frac{
@@ -169,36 +290,42 @@ A \implies B\quad\quad\quad A
 }{
 B
 }
-\label{ax:MP} \tag{MP}
+\label{ax:MP} \tag{ax:MP}
 \]
 \subsubsection{Predicational part}
 \underline{Definitional axioms:}\\
 For any variable $x$, any term $t$, any formula $\varphi$,
 \[
+(!x.\varphi)
+\iffdef
+((\forall x_1)(\forall x_2),\varphi[x_1/x]\land\varphi[x_2/x]\implies x_1=x_2)
+\label{def:unique} \tag{def:unique}
+\]
+\[
+((\varepsilon x.\varphi) \lexists)
+\iff
+(\exists x.\varphi)
+\label{ax:EpsEx} \tag{EpsEx}
+\]
+\[
+((\varepsilon x.\varphi) \lunique)
+\iff
+(!x.\varphi)
+\label{ax:EpsUn} \tag{EpsUn}
+\]
+\[
 (x\ldefined)
-\label{ax:D1} \tag{D1}
+\label{ax:VarDef} \tag{ax:VarDef}
 \]
 \[
 (t\ldefined)
-\iff
+\iffdef
 (
 (t\lexists)
 \land
 (t\lunique)
 )
-\label{ax:D2} \tag{D2}
-\]
-\[
-(\exists x.\varphi)
-\iff
-((\varepsilon x.\varphi) \lexists)
-\label{ax:D3} \tag{D3}
-\]
-\[
-(!x.\varphi)
-\iff
-((\varepsilon x.\varphi) \lunique)
-\label{ax:D4} \tag{D4}
+\label{def:defined} \tag{def:defined}
 \]
 \underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
@@ -482,6 +609,14 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) := ((I^v(\varphi_1))\ \mathrm{Or}\ (I^v(\varph
 \end{itemize}
 \end{definition}
 \fi
+\begin{definition}[Interpretation of epsilon operator]
+\[
+I^v((\varepsilon x. \varphi))
+\ \eqdef\ 
+\left\{b\in\Domain\ \middle|\,\left(\models^{v+(x,b)} \varphi\right)\,\right\}
+\label{def:IEps}\tag{def:IEps}
+\]
+\end{definition}
 \subsubsection{Truth}
 Due to high expressiveness of chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
 The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formulas, which indicates which quantifier must be used on atomic formulas.
@@ -919,6 +1054,7 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 \[
 \varphi[Z_1/W_1,...,Z_n/W_n]
 \]
+The definition is not yet written, but it is implemented as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.
 \end{definition}
 \noindent
 
