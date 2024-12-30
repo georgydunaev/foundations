@@ -6,7 +6,7 @@
 %\
 %\end{definition}
 \subsection{Language}
-\begin{definition}[formulas]\ \\
+\begin{definition}[$\Fm$]\ \\
 Inductive definition of formulas:
 \begin{enumerate}
 \item $(\bot:\Fm)\ ,\ (\top:\Fm)$.
@@ -71,17 +71,34 @@ B
 \label{ax:MP} \tag{MP}
 \]
 \subsubsection{Predicational part}
-\underline{Specification rules:}\\
+\underline{Definitional axioms:}\\
+For any variable $x$ and for any term $t$,
+\[
+(x\ldefined)
+\label{ax:D1} \tag{D1}
+\]
+\[
+(t\ldefined)
+\iff
+(
+(t\lexists)
+\land
+(t\lunique)
+)
+\label{ax:D2} \tag{D2}
+\]
+\underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
-(t\lexists)\implies ((\forall x. \phi) \implies \phi[t/x])
+(t\ldefined)\implies ((\forall x. \phi) \implies \phi[t/x])
 \label{ax:S1} \tag{S1}
 \]
 \[
-(t\lexists) \implies (\phi[t/x] \implies (\exists x. \phi))
+(t\ldefined) \implies (\phi[t/x] \implies (\exists x. \phi))
 \label{ax:S2} \tag{S2}
 \]
-\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
+%\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
+\underline{Abstractional rules:}%if $x$ is not free in formula $\psi$ then
 \[
 \frac{
 \psi \implies \varphi
@@ -343,60 +360,62 @@ Let $v$ be evaluation and $I$ be an interpretation.
 \begin{itemize}
 \item Logical constants
 \[
-\left(\not\models^v_\forall \bot\right)
-\]
+\left(\not\models^v \bot\right)
+\]%_\forall
+%%\[
+%%\left(\not\models^v_\exists \bot\right)
+%%\]
 \[
-\left(\not\models^v_\exists \bot\right)
-\]
-\[
-\left(\models^v_\forall \top\right)
-\]
-\[
-\left(\models^v_\exists \top\right)
-\]
+\left(\models^v \top\right) 
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists \top\right)
+%%\]
 \item If $A$ is an atomic predicate symbol, then
 \[
-\left(\models^v_\forall A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
+\left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
 \right).
-\]
-%\left(\vv{x}\right)
-\[
-\left(\models^v_\exists A\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
-\right).
-\]
+\]%_\forall
+%%\left(\vv{x}\right)
+%%\[
+%%\left(\models^v_\exists A\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
+%%\right).
+%%\]
 \iffalse
 % NOT TRUE!
 \item 
 For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate symbols and $@$ is a logical connective of valency $n$, then
 \[
-\left(\models^v_\forall @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v\left(\vv{X}\right):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
-\]
-\[
-\left(\models^v_\exists @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v\left(\vv{X}\right):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
-\]
+\left(\models^v @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I^v\left(\vv{X}\right):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists @(P_1,\dots,P_n)\left(\vv{X}\right)\right) \IFFdef \left(\exists \vv{x}\in I^v\left(\vv{X}\right):  @((I^v(P_1)\left(\vv{x}\right)),\dots,(I^v(P_n)\left(\vv{x}\right)))  \right).
+%%\]
 \fi
 \item If $P_1,P_2$ are predicate symbols, then
 \[
-\left(\models^v_\forall (P_1\sqcup P_2)\left(\vv{X}\right)\right)
+\left(\models^v (P_1\sqcup P_2)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(
-\left(\models^v_\forall P_1\left(\vv{X}\right)\right)
+\left(\models^v P_1\left(\vv{X}\right)\right)
 \ \mathrm{or}\ 
-\left(\models^v_\forall P_2\left(\vv{X}\right)\right)
+\left(\models^v P_2\left(\vv{X}\right)\right)
 \right)
-\]
+\]%_\forall
 
-\[
-\left(\models^v_\exists (P_1\lor P_2)\left(\vv{X}\right)\right)
-\IFFdef 
-\left(
-\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
-\ \mathrm{or}\ 
-\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
-\right)
-\]
+%%\[
+%%\left(\models^v_\exists (P_1\lor P_2)\left(\vv{X}\right)\right)
+%%\IFFdef 
+%%\left(
+%%\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
+%%\ \mathrm{or}\ 
+%%\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
+%%\right)
+%%\]
 %There are two essentially different variants.\\
 %Variant 1(reasonable, but wrong):
+
+\iffalse  %GOOD, BUT UNNECESSARY FOR MY PURPOSES
 \begin{note*}
 It is not possible to define truthness of the instances of the following predicate symbols (built by predicate symbols $P_1$ and $P_2$) via truthness of their parts (both $P_1$ and $P_2$): there are no well-behaving definitions of $``I(P_1\lor P_2)"$ or $``I(P_1\sqcup P_2)"$, that's why they are stay undefined, and the following two ``definitions" are incorrect:
 \[
@@ -416,6 +435,8 @@ It is not possible to define truthness of the instances of the following predica
 \right).
 \]
 \end{note*}
+\fi %END GOOD
+
 \iffalse
 INCORRECT Variant 2(strange, but somehow following definitions in the note 1.1 below):
 \[
@@ -456,31 +477,36 @@ I^v(P_2)\left(\vv{x}\right)
 
 \item If $P$ is a predicate symbol, then
 \[
-\left(\models^v_\forall (\neg \circ P)\left(\vv{X}\right)\right)
+\left(\models^v (\neg \circ P)\left(\vv{X}\right)\right)
 \IFFdef 
-\left(\not\models^v_\forall P\left(\vv{X}\right)\right)
-\]
-\[
-\left(\models^v_\exists (\neg \circ P)\left(\vv{X}\right)\right)
-\IFFdef 
-\left(\not\models^v_\exists P\left(\vv{X}\right)\right)
-\]
+\left(\not\models^v P\left(\vv{X}\right)\right)
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists (\neg \circ P)\left(\vv{X}\right)\right)
+%%\IFFdef 
+%%\left(\not\models^v_\exists P\left(\vv{X}\right)\right)
+%%\]
 
+\iffalse % GOOD, BUT WE DON'T USE SUCH CONSTRUCTORS WHICH SWITCH QUANTIFIERS!
 \item If $P$ is a predicate symbol, then
 \[
 \left(\models^v_\forall (\neg P)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(\not\models^v_\exists P\left(\vv{X}\right)\right)
 \]
+
 %\left(
 %\mathrm{not}
 %\left(\models^v_\forall P\left(\vv{X}\right)\right)
 %\right)
+
 \[
 \left(\models^v_\exists (\neg P)\left(\vv{X}\right)\right)
 \IFFdef 
 \left(\not\models^v_\forall P\left(\vv{X}\right)\right)
 \]
+\fi
+
 \end{itemize}
 \begin{definition}[dual predicate symbol]\ \\
 If $P$ is a predicate symbol, then
@@ -514,42 +540,41 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \begin{itemize}
 \item If $\varphi$ is a formula, then
 \[
-\left(\models^v_\forall \neg \varphi \right)
+\left(\models^v \neg \varphi \right)
 \IFFdef 
-\left(\not\models^v_\forall \varphi\right)
-\]
-\[
-\left(\models^v_\exists \neg \varphi \right)
-\IFFdef 
-\left(\not\models^v_\exists \varphi\right)
-\]
+\left(\not\models^v \varphi\right)
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists \neg \varphi \right)
+%%\IFFdef 
+%%\left(\not\models^v_\exists \varphi\right)
+%%\]
 \item If $\varphi_1$ and $\varphi_2$ are formulas, then
 \[
-\left(\models^v_\forall \varphi_1\lor\varphi_2 \right)
+\left(\models^v \varphi_1\lor\varphi_2 \right)
 \IFFdef 
 \left(
-\left(\models^v_\forall \varphi_1\right)
+\left(\models^v \varphi_1\right)
 \mathrm{\ or\ }
-\left(\models^v_\forall \varphi_2\right)
+\left(\models^v \varphi_2\right)
 \right)
-\]
-\[
-\left(\models^v_\exists \varphi_1\lor\varphi_2 \right)
-\IFFdef 
-\left(
-\left(\models^v_\exists \varphi_1\right)
-\mathrm{\ or\ }
-\left(\models^v_\exists \varphi_2\right)
-\right)
-\]
-
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists \varphi_1\lor\varphi_2 \right)
+%%\IFFdef 
+%%\left(
+%%\left(\models^v_\exists \varphi_1\right)
+%%\mathrm{\ or\ }
+%%\left(\models^v_\exists \varphi_2\right)
+%%\right)
+%%\]
 \end{itemize}
 \subsubsection{Validity}
 \end{definition}
 \begin{definition}[validity]\ %\\% / entailment relation
 \[
-(\models \varphi) \IFFdef (\forall(v\evaluation), \models^v_\forall \varphi).
-\]
+(\models \varphi) \IFFdef (\forall(v\evaluation), \models^v \varphi).
+\]%_\forall
 \end{definition}
 \subsubsection{Soundness}
 %(\vv{x})
@@ -573,16 +598,16 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \begin{lemma}
 % v+(\xi\mapsto I^v(t))
 \[
-\models_\forall^v(\varphi[t/\xi])
+\models^v(\varphi[t/\xi])
 \IFF
-\models_\forall^{\upd(v,\xi,I^v(t))}(\varphi)
-\]
+\models^{\upd(v,\xi,I^v(t))}(\varphi)
+\]%_\forall
 % v+(\xi\mapsto I^v(t))
-\[
-\models_\exists^v(\varphi[t/\xi])
-\IFF
-\models_\exists^{\upd(v,\xi,I^v(t))}(\varphi)
-\]
+%%\[
+%%\models_\exists^v(\varphi[t/\xi])
+%%\IFF
+%%\models_\exists^{\upd(v,\xi,I^v(t))}(\varphi)
+%%\]
 \Proof
 \dots
 \Done
