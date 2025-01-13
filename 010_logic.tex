@@ -235,7 +235,7 @@ Inductive definition of terms:
 Inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
-\item $(\bot:\Fm)\ ,\ (\top:\Fm)$.
+\item $(\bot:\Fm)\ ,\ (\top:\Fm)\ ,\ (\ddagger:\Fm)$.
 \item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
 \item $(A:\Fm) \Implies ((\neg A):\Fm)$.
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies ((A\implies B):\Fm)$.
@@ -266,7 +266,7 @@ Inference in language is denoted with function $\vdash$.
 It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \end{definition}
 \pagebreak
-\subsection{Axioms for the pluralistic predicate calculus}
+\subsection{Axioms for the predicate calculus}
 \subsubsection{Propositional part}
 For all formulas $A$, $B$, $C$,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
@@ -317,7 +317,8 @@ B
 \]
 \subsubsection{Predicational part}
 \underline{Definitional axioms:}\\
-For any variable $x$, any term $t$, any formula $\varphi$,
+For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\varphi$, every formula
+%(if it is defined) from the following list of axioms is considered to be provable.
 \[
 (!x.\varphi)
 \iffdef
@@ -328,17 +329,13 @@ For any variable $x$, any term $t$, any formula $\varphi$,
 ((\varepsilon x.\varphi) \lexists)
 \iff
 (\exists x.\varphi)
-\label{ax:EpsEx} \tag{EpsEx}
+\label{ax:EpsEx} \tag{metathm:EpsEx}
 \]
 \[
 ((\varepsilon x.\varphi) \lunique)
 \iff
 (!x.\varphi)
-\label{ax:EpsUn} \tag{EpsUn}
-\]
-\[
-(x\ldefined)
-\label{ax:VarDef} \tag{ax:VarDef}
+\label{ax:EpsUn} \tag{metathm:EpsUn}
 \]
 \[
 (t\ldefined)
@@ -349,6 +346,74 @@ For any variable $x$, any term $t$, any formula $\varphi$,
 (t\lunique)
 )
 \label{def:defined} \tag{def:defined}
+\]
+\[
+(x\ldefined)
+\label{ax:VarDef} \tag{ax:VarDef}
+\]
+\underline{Equalitites:}
+%\[
+%(A:=B)\implies ((A\equiv B)\land(B\lunique))
+%\label{def:DefEq} \tag{def:DefEq}
+%\]
+\[
+(A=B)\iffdef ((A\subseteq B)\land (B\subseteq A))
+\]
+\[
+(A:=B)\implies(A=B)
+\]
+
+\[
+(A\cong B)\implies ((A\equiv B)\land(B\ldefined))
+\]
+\[
+(A:\cong B)\implies(A\cong B)
+\]
+
+%\label{def:DefEq} \tag{def:DefEq}
+\[
+(A\simeq B)\iff ((A\equiv B)\land(B\lunique))
+\]
+\[
+(A:\simeq B)\implies(A\simeq B)
+\]
+\[
+(\models^v (A\equiv B))\IFFdef(I^v(A)=I^v(B))
+\]
+\[
+(A:\equiv B)\implies(A\equiv B)
+\]
+%\begin{theorem}
+\[
+(A\ldefined)\land(B\ldefined)\land(A=B)\implies(A\equiv B)
+\]
+Assuming the following axiom
+\[
+(\exists(x,y\in\Domain),x\neq y),
+\]
+we can weaken the previous axiom to:
+\[
+(A\lunique)\land(B\lunique)\land(A=B)\implies(A\equiv B).
+\]
+%\end{theorem}
+%\begin{theorem}
+\[
+(A\equiv B)\implies(A=B)
+\]
+\[
+(A\equiv A)
+\]
+\[
+(A\equiv B)\implies(\varphi[A/x]\implies\varphi[B/x])
+\]
+
+%\end{theorem}
+\underline{Values:}
+\[
+F(x):\equiv (\mbox{if $x\in\dom(F)$ then $\union F[\{x\}]$ else undef }).
+\]
+\[
+r_x:\equiv (\varepsilon y. (x,y)\in r)
 \]
 \underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:

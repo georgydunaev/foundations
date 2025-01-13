@@ -1,7 +1,297 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Ordinals}
-\subsection{Transitive set}
+The definitions in this section are the improved version of definitions from the Metamath system, because they are a bit chaotic there.
+\subsection{Definitions}
+Context: (it may be ignored potentially, but it is an ``intended use'')\\
+The parameter $A$ is an arbitrary class(so no assumptions, just a note that it is not necessary a set, it may be a proper class),\\
+The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times V$.
+\begin{definition}[irreflexive on]
+\label{def:irreflexiveOn}
+\[
+(R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A: (x,x)\notin R)
+\]
+\end{definition}
+\begin{definition}[relation is transitive on]
+\label{def:transitiveOn}
+\[
+(R\mathrm{\ Trans\ }A)\iffdef (\forall x\in A\forall y\in A\forall z\in A:
+(x,y)\in R \land (y,z)\in R \implies (x,z)\in R)
+\]
+\end{definition}
+
+\begin{definition}[relation is strictly partially ordered on]
+\label{def:partiallyOrderedOn}
+\[
+(R\mathrm{\ Po\ }A)\iffdef ((R\mathrm{\ Irr\ }A) \land (R\mathrm{\ Trans\ }A)))
+\]
+\end{definition}
+\begin{definition}[relation is linear on]
+\label{def:linearOn}
+\[
+(R\mathrm{\ Lin\ }A)\iffdef (\forall x\in A\forall y\in A:
+((x,y)\in R) \lor (x=y) \lor ((y,x)\in R))
+\]
+\end{definition}
+\begin{definition}[relation is strictly completely ordered on]
+\label{def:sOn}
+\[
+(R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A)))
+\]
+\end{definition}
+\begin{definition}[relation is founded on]
+\label{def:foundedOn}
+\[
+(R\mathrm{\ Fr\ }A)
+\iffdef
+(\forall S\subseteq A:
+S\subseteq R[S]
+\implies
+S=\emptyset)
+\]
+\end{definition}
+\begin{definition}[relation is well-ordered on]
+\label{def:wellOrderedOn}
+\[
+(R\mathrm{\ We\ }A)
+\iffdef
+((R\mathrm{\ Or\ }A) \land (R\mathrm{\ Fr\ }A)))
+\]
+\end{definition}
+
+\begin{definition}[class is transitive]
+\label{def:transitiveClass}
+\[
+\Tr(X)
+\iffdef
+(X\subseteq \power X)
+\]
+\end{definition}
+
+\begin{definition}[epsilon relation]
+\label{def:epsilonRelation}
+\[
+\E\eqdef \{(x,y)\ |\ x\in y\}
+\]
+\end{definition}
+\begin{definition}[class is ordinal]
+\label{def:ordinalClass}
+\[
+\Ord(X)
+\iffdef
+((\Tr(X))\land(\E\mathrm{\ We\ }X))
+\]
+\end{definition}
+\begin{definition}[limit class]
+Note, that this definition is a bit unconventional: usually it must also be nonempty.
+\label{def:limitClass}
+\[
+\LimClass(X)
+\iffdef
+\left(X\subseteq\union X\right)
+\]
+\end{definition}
+\begin{definition}[limit ordinal]
+Note, that this definition is a bit unconventional: usually it must also be nonempty.
+\label{def:limitClass}
+\[
+\LimOrd(X)
+\iffdef
+((\Ord(X))\land(\LimClass(X))
+\]
+\end{definition}
+
+\begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
+\label{def:ordinalNumbers}
+\[
+\On\ \eqdef\ \{\,x\ |\ \Ord(x)\,\}
+\]
+\end{definition}
+\subsection{Useful statements}
+\iffalse
+\begin{theorem}[]
+\label{thm:}
+\[
+\]
+\end{theorem}
+\fi
+\begin{lemma}[epsilon relation criterion]
+\label{lem:ordlem0}
+\[
+((x\in y)\land(y\set)) \iff ((x,y)\in\E)
+\]
+\end{lemma}
+
+\begin{lemma}[an element is a proper subset]
+\label{lem:ordlem1}
+\[
+((\E\mathrm{\ Irr\ }A)\land(\Tr(A)))
+\implies
+(
+(B\in A)
+\implies
+(B\subsetneq A))
+\]
+\end{lemma}
+
+\begin{lemma}[a proper subclass is an element]
+\label{lem:ordlem2}
+%(\mathrm{ })\land
+\[
+(
+(\Tr(A))\land
+(\E\mathrm{\ Fr\ }A)\land
+(\E\mathrm{\ Lin\ }A)\land
+(\Tr(B))
+)
+\implies
+(
+(B\subsetneq A)
+\implies
+(B\in A)
+)
+\]
+\end{lemma}
+
+
+\begin{theorem}[proper subclass iff element]
+\label{thm:subiffel}
+\[
+(
+(\Ord(A))\land
+(\Tr(B))
+)
+\implies
+(
+(B\in A)
+\iffnows
+(B\subsetneq A)
+)
+\]
+\end{theorem}
+\begin{theorem}[transitive subclass of ordinal numbers iff ordinal class]
+\label{thm:dford5}
+\[
+(
+\Ord(A)
+)
+\iff
+(
+(A\subseteq\On)
+\land
+(\Tr(A))
+)
+\]
+\end{theorem}
+\begin{theorem}[class of ordinal numbers is ordinal class]
+\label{thm:ordon}
+\[
+(
+\Ord(\On)
+)
+\]
+\end{theorem}
+
+\begin{theorem}[criterion in context of regularity axiom](note: it is not yet checked by me)
+\label{thm:ordViaReg}
+\[
+(E\mathrm{\ Fr\ }V)
+\implies
+\left(
+\Ord(X) \iff \Tr(X)\land (\forall Y\in X: \Tr(Y))
+\right)
+\]
+\end{theorem}
+\subsection{Cardinality}
+%\begin{definition}(Cardinality)\\
+%\[
+%|A|=\Ord\cap\bigcap \{f: | \}
+%\]
+%\[
+%|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):%(f\mbox{ injective})\}
+%\]
+%\end{definition}
+
+\begin{definition}($X$ can be injected in $Y$)
+\[
+(X \sqsubseteq Y)
+\iff
+(\exists f: (f:X\to Y)\land (f \injective))
+\]
+\end{definition}
+
+
+\begin{definition}($X$ is strictly smaller than $Y$)
+\[
+(X\prec Y)
+\iff
+(
+(X \sqsubseteq Y)
+\land
+(\neg(Y \sqsubseteq X))
+)
+\]
+\end{definition}
+%\exists f: (f:X\to Y)\land (f \injective))
+%(\exists f: (f:X\to Y)\land (f \injective))
+\begin{definition}[cardinality of a class] One of the following statements can be used as a definition of cardinality function.
+\[
+|K|:= \On \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+\]
+\[
+|K|:= \bigcup \{a\in\Ord|a\prec K\}
+\]
+
+\end{definition}
+
+\iffalse
+it will be a theorem
+\fi
+Here $V$ denotes a class of all sets, and $\On$ denotes the class of all ordinal numbers.
+
+
+\begin{remark}
+Here we use the intersection of a class which is defined by 
+$
+(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
+$, therefore $\bigcap\emptyset = V$.
+In this case,
+\[
+(x\mapsto|x|):V\to\On.
+\]
+This definition also allows to obtain a cardinality of any proper class $P$, in particular
+\[
+|P|=\On
+\]
+This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
+\end{remark}
+
+THe function $| \cdot |$ has interesting properties.
+
+
+\begin{theorem}[$| \cdot |$ is a projection]%\label{thm:}
+\end{theorem}
+
+\begin{theorem}[construction of a bijection between $\V$ and $\On$]%\label{thm:}
+\end{theorem}
+\dots
+
+\subsection{Further theorems}
+Plan:
+%1. Ordinals are linearly ordered: irreflexive, transitive, antisymmetric.\\
+%2. Ordinals are well-ordered.\\
+\begin{enumerate}
+\item Assuming choice, a set can be well-ordered.
+\item Ordinal induction.
+\item Ordinal recursion.
+\item recursion and induction for natural numbers.
+\item recursion and induction for finite intervals.
+\item definitions and properties of addtion and multipliation, etc.
+\item \dots
+\end{enumerate}
+
+\iffalse
+\subsection{Transitive set [very old subsection]}
 \begin{definition}
 \label{def:transitive through power}
 \[
@@ -28,54 +318,6 @@ etc ...
 \end{definition}
 
 ...(many standard definitions are ommited here)...
-Plan:\\
-1. Ordinals are linearly ordered: irreflexive, transitive, antisymmetric.\\
-2. Ordinals are well-ordered.\\
-3. Ordinal induction.\\
-4. Ordinal recursion.\\
-5. recursion and induction for natural numbers.\\
-6. recursion and induction for finite intervals.\\
-7. definition of addtion and multipliation, etc.\\
-8. ...\\
-\subsection{Cardinality}
-%\begin{definition}(Cardinality)\\
-%\[
-%|A|=\Ord\cap\bigcap \{f: | \}
-%\]
-%\[
-%|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):%(f\mbox{ injective})\}
-%\]
-%\end{definition}
-\begin{definition}(cardinality of a class)
-\[
-|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
-\]
-\end{definition}
-\begin{definition}($Y$ is not smaller than $X$)
-\[
-(X\preccurlyeq Y)
-\iff
-(\exists f: (f:X\to Y)\land (f \injective))
-\]
-\end{definition}
-
-Here $V$ denotes a class of all sets, and $\Ord$ denotes the class of all ordinal numbers.
-
-\begin{remark}
-Here we use the intersection of a class which is defined by 
-$
-(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
-$, therefore $\bigcap\emptyset = V$.
-In this case,
-\[
-(x\mapsto|x|):V\to\mbox{Ord}.
-\]
-This definition also allows to obtain a cardinality of any proper class $P$, in particular
-\[
-|P|=\mbox{Ord}
-\]
-This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
-\end{remark}
-
+\fi
 
 \input{END.tex}
