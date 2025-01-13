@@ -212,31 +212,46 @@ Note, that this definition is a bit unconventional: usually it must also be none
 %\]
 %\end{definition}
 
-\begin{definition}($X$ can be injected in $Y$)
+\begin{definition}($X$ can be injected in $Y$) %sqsubseteq
 \[
-(X \sqsubseteq Y)
+(X \preccurlyeq Y)
 \iff
 (\exists f: (f:X\to Y)\land (f \injective))
 \]
 \end{definition}
 
 
-\begin{definition}($X$ is strictly smaller than $Y$)
+\begin{definition}($X$ is strictly smaller than $Y$ in cardinality)%\sqsubseteq
 \[
 (X\prec Y)
 \iff
 (
-(X \sqsubseteq Y)
+(X \preccurlyeq Y)
 \land
+(\neg(Y \preccurlyeq X))
+)
+\]
+\end{definition}
+\iffalse
+\begin{definition}($X$ is smaller than or equal to $Y$ in cardinality)
+\[
+(X\prec Y)
+\iff
+(
+(X\prec Y)
+\lor
+
 (\neg(Y \sqsubseteq X))
 )
 \]
 \end{definition}
+\fi
+
 %\exists f: (f:X\to Y)\land (f \injective))
 %(\exists f: (f:X\to Y)\land (f \injective))
-\begin{definition}[cardinality of a class] One of the following statements can be used as a definition of cardinality function.
+\begin{definition}[cardinality of a class] One of the following statements can be used as a definition of cardinality function. %\On \cap 
 \[
-|K|:= \On \cap \bigcap \{a\in\On|K\preccurlyeq a\}
+|K|:= \bigcap \{a\in\On|K\preccurlyeq a\}
 \]
 \[
 |K|:= \bigcup \{a\in\On|a\prec K\}
@@ -266,7 +281,7 @@ This definition also allows to obtain a cardinality of any proper class $P$, in 
 This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
 \end{remark}
 
-THe function $| \cdot |$ has interesting properties.
+The function $| \cdot |$ has interesting properties.
 
 
 \begin{theorem}[$| \cdot |$ is a projection]%\label{thm:}
