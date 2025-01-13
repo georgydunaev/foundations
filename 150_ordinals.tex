@@ -23,7 +23,7 @@ The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times
 \begin{definition}[relation is strictly partially ordered on]
 \label{def:partiallyOrderedOn}
 \[
-(R\mathrm{\ Po\ }A)\iffdef ((R\mathrm{\ Irr\ }A) \land (R\mathrm{\ Trans\ }A)))
+(R\mathrm{\ Po\ }A)\iffdef ((R\mathrm{\ Irr\ }A) \land (R\mathrm{\ Trans\ }A))
 \]
 \end{definition}
 \begin{definition}[relation is linear on]
@@ -36,7 +36,7 @@ The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times
 \begin{definition}[relation is strictly completely ordered on]
 \label{def:sOn}
 \[
-(R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A)))
+(R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A))
 \]
 \end{definition}
 \begin{definition}[relation is founded on]
@@ -55,7 +55,7 @@ S=\emptyset)
 \[
 (R\mathrm{\ We\ }A)
 \iffdef
-((R\mathrm{\ Or\ }A) \land (R\mathrm{\ Fr\ }A)))
+((R\mathrm{\ Or\ }A) \land (R\mathrm{\ Fr\ }A))
 \]
 \end{definition}
 
@@ -236,10 +236,10 @@ Note, that this definition is a bit unconventional: usually it must also be none
 %(\exists f: (f:X\to Y)\land (f \injective))
 \begin{definition}[cardinality of a class] One of the following statements can be used as a definition of cardinality function.
 \[
-|K|:= \On \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+|K|:= \On \cap \bigcap \{a\in\On|K\preccurlyeq a\}
 \]
 \[
-|K|:= \bigcup \{a\in\Ord|a\prec K\}
+|K|:= \bigcup \{a\in\On|a\prec K\}
 \]
 
 \end{definition}
