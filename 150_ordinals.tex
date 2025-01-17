@@ -93,7 +93,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \end{definition}
 \begin{definition}[limit ordinal]
 Note, that this definition is a bit unconventional: usually it must also be nonempty.
-\label{def:limitClass}
+\label{def:limitOrdinal}
 \[
 \LimOrd(X)
 \iffdef
@@ -107,6 +107,20 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \On\ \eqdef\ \{\,x\ |\ \Ord(x)\,\}
 \]
 \end{definition}
+
+\begin{definition}[supremum]
+\label{def:supremum}
+\[
+\sup(A)\ \eqdef\ \bigcup\left(A\cap\On\right)
+\]
+\end{definition}
+\begin{definition}[infimum]
+\label{def:infimum}
+\[
+\inf(A)\ \eqdef\ \left(\bigcap A\right)\cap\On
+\]
+\end{definition}
+
 \subsection{Useful statements}
 \iffalse
 \begin{theorem}[]
@@ -115,6 +129,57 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \]
 \end{theorem}
 \fi
+\begin{lemma}[union of subclass of ordinals is transitive class]
+
+\begin{theorem}[properties are preserved on subclasses]\ \label{thm:inheritable}\ 
+\[
+(
+(R\mathrm{\ Irr\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Irr\ }B)
+\]\[
+(
+(R\mathrm{\ Trans\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Trans\ }B)
+\]
+\[
+(
+(R\mathrm{\ Po\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Po\ }B)
+\]
+\[
+(
+(R\mathrm{\ Fr\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Fr\ }B)
+\]
+\[
+(
+(R\mathrm{\ We\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ We\ }B)
+\]
+
+\end{theorem}
+
+
 \begin{lemma}[epsilon relation criterion]
 \label{lem:ordlem0}
 \[
@@ -183,6 +248,14 @@ Note, that this definition is a bit unconventional: usually it must also be none
 )
 \]
 \end{theorem}
+\begin{theorem}[element of ordinal is ordinal]
+\label{thm:tz7.6}
+\[
+\Ord(A)\land(a\in A)\implies \Ord(a)
+\]
+(7.6 Takeuti-Zaring)
+\end{theorem}
+
 \begin{theorem}[class of ordinal numbers is ordinal class]
 \label{thm:ordon}
 \[
@@ -192,10 +265,64 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \]
 \end{theorem}
 
+\label{lem:trunonss}
+\[
+(A\subseteq\On)
+\implies
+\left(\Tr\left(\union A\right)\right)
+\]
+\Proof
+Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
+\[
+\left(x\in\bigcup A\right)
+\IMPLIES
+(\exists a\in A: x\in a)
+\]
+\[
+(a\in A)
+\ \&\ 
+(\Tr(a))
+\IMPLIES
+\Ord(a)
+\]
+\[
+\Ord(a)
+\IMPLIES
+\Tr(a)
+\]
+\[
+(x\in a)
+\ \&\ 
+(\Tr(a))
+\IMPLIES
+(x\subseteq a)
+\]
+\[
+(y\in x)
+\ \&\ 
+(x\subseteq a)
+\IMPLIES
+(y\in a)
+\]
+\[
+z:=a
+\]
+\[
+(a\in A)
+\ \&\ 
+(a\in A)
+\IMPLIES
+(\exists z\in A:y\in z)
+\]
+\Done
+\end{lemma}
+
+
+
 \begin{theorem}[criterion in context of regularity axiom](note: it is not yet checked by me)
 \label{thm:ordViaReg}
 \[
-(E\mathrm{\ Fr\ }V)
+(\E\mathrm{\ Fr\ }V)
 \implies
 \left(
 \Ord(X) \iff \Tr(X)\land (\forall Y\in X: \Tr(Y))
@@ -216,22 +343,17 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \[
 (X \preccurlyeq Y)
 \iff
-(\exists f: (f:X\to Y)\land (f \injective))
+((\exists f) (f:X\to Y)\land (f \injective))
 \]
 \end{definition}
 
-
-\begin{definition}($X$ is strictly smaller than $Y$ in cardinality)%\sqsubseteq
+\begin{theorem}[$\preccurlyeq$ is a strongly connected reflexive transitive order on all classes]\ \\
+Using the statement of well-ordering theorem and transitivity, it is possible to prove that for any classes $A$ and $B$,
 \[
-(X\prec Y)
-\iff
-(
-(X \preccurlyeq Y)
-\land
-(\neg(Y \preccurlyeq X))
-)
+((A\preccurlyeq B)\lor(B\preccurlyeq A).
 \]
-\end{definition}
+\end{theorem}
+
 \iffalse
 \begin{definition}($X$ is smaller than or equal to $Y$ in cardinality)
 \[
@@ -249,20 +371,37 @@ Note, that this definition is a bit unconventional: usually it must also be none
 
 %\exists f: (f:X\to Y)\land (f \injective))
 %(\exists f: (f:X\to Y)\land (f \injective))
-\begin{definition}[cardinality of a class] One of the following statements can be used as a definition of cardinality function. %\On \cap 
+\begin{definition}[cardinality of a class]
+%One of the following statements can be used as a definition of cardinality function. We will use the second one. %\On \cap 
+%\[
+%|K|:= \bigcap \{a\in\On|K\preccurlyeq a\}
+%\]
+%\[
+%|K|:= \bigcгp \{{a}|(a\in\On) \land (K\prec a)\}
+%\]
+%\[
+%|K|:= \{a\in\On|a\prec K\}
+%\]
 \[
-|K|:= \bigcap \{a\in\On|K\preccurlyeq a\}
+|K|:= \{\,x\ |\ (\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A\,\}
 \]
+\end{definition}
+\begin{definition}[cardinality of $X$ is strictly smaller than cardinality of $Y$]%\sqsubseteq
 \[
-|K|:= \bigcup \{a\in\On|a\prec K\}
+(X\prec Y)
+\iff
+%(
+%(X \preccurlyeq Y)
+%\land
+(\neg(Y \preccurlyeq X))
+%)
 \]
-
 \end{definition}
 
 \iffalse
 it will be a theorem
 \fi
-Here $V$ denotes a class of all sets, and $\On$ denotes the class of all ordinal numbers.
+Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordinal numbers.
 
 
 \begin{remark}
@@ -278,7 +417,7 @@ This definition also allows to obtain a cardinality of any proper class $P$, in 
 \[
 |P|=\On
 \]
-This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $V$ and any proper class.
+This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $\V$ and any proper class.
 \end{remark}
 
 The function $| \cdot |$ has interesting properties.
@@ -290,6 +429,38 @@ The function $| \cdot |$ has interesting properties.
 \begin{theorem}[construction of a bijection between $\V$ and $\On$]%\label{thm:}
 \end{theorem}
 \dots
+\subsection{Well-founded induction}
+
+\begin{theorem}[induction on a transitive and well-founded by membership relation class]
+\[
+(\Tr(K))
+\land
+(\E\mathrm{\ Fr\ }K)
+\implies
+(
+((K\cap(\power A))\subseteq A)
+\implies
+(K\subseteq A)
+)
+\]
+\end{theorem}
+
+\begin{corollary}[epsilon induction]\ \\
+If well-foundness of the class of all sets (i.e. $(\E\mathrm{\ Fr\ }V)$) is assumed, then
+\[
+((\power A)\subseteq A)
+\implies
+(V\subseteq A).
+\]
+And vice versa is also true.
+\end{corollary}
+\begin{corollary}[transfinite induction]
+\[
+((\On\cap(\power A))\subseteq A)
+\implies
+(\On\subseteq A)
+\]
+\end{corollary}
 
 \subsection{Further theorems}
 Plan:
