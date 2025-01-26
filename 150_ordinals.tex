@@ -1,22 +1,35 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Ordinals}
+\section{Induction principles}
 The definitions in this section are the improved version of definitions from the Metamath system, because they are a bit chaotic there.
-\subsection{Definitions}
+\subsection{General setting}
 Context: (it may be ignored potentially, but it is an ``intended use'')\\
 The parameter $A$ is an arbitrary class(so no assumptions, just a note that it is not necessary a set, it may be a proper class),\\
 The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times V$.
+\begin{definition}[related]
+\label{def:related}
+\[
+ARB \iffdef (A,B) \in R
+\]
+\end{definition}
+\begin{definition*}[related(experimental)]
+\label{def:relatedexper}
+\[
+ARB \iffdef \exists (i\set):(R((i,0))=A)\land(R((i,1))=B)
+\]
+\end{definition*}
+
 \begin{definition}[irreflexive on]
 \label{def:irreflexiveOn}
 \[
-(R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A: (x,x)\notin R)
+(R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A: \neg (xRx))
 \]
 \end{definition}
 \begin{definition}[relation is transitive on]
 \label{def:transitiveOn}
 \[
 (R\mathrm{\ Trans\ }A)\iffdef (\forall x\in A\forall y\in A\forall z\in A:
-(x,y)\in R \land (y,z)\in R \implies (x,z)\in R)
+xRy \land yRz \implies xRz)
 \]
 \end{definition}
 
@@ -30,7 +43,7 @@ The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times
 \label{def:linearOn}
 \[
 (R\mathrm{\ Lin\ }A)\iffdef (\forall x\in A\forall y\in A:
-((x,y)\in R) \lor (x=y) \lor ((y,x)\in R))
+(xRy) \lor (x=y) \lor (yRx))
 \]
 \end{definition}
 \begin{definition}[relation is strictly completely ordered on]
@@ -59,7 +72,107 @@ S=\emptyset)
 \]
 \end{definition}
 
-\begin{definition}[class is transitive]
+
+\begin{definition}[$R_1R_2$ subclass]
+\label{def:Rsubset}	
+\[
+A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x:xR_1A\implies xR_2B)
+\]
+\end{definition}
+
+\begin{definition}[R subset]
+\label{def:Rsubset}
+\[
+k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
+\]
+\end{definition}
+
+\begin{definition}[powerclass w.r.t. relation R]
+\label{def:RpowerClass}
+\[
+\power_R X\ \eqdef\ \{\, k\ |\ k\stackrel{R\E}{\subclass}X\,\}
+\]
+\end{definition}
+
+\begin{definition}[class is transitive w.r.t. relation R]
+\label{def:RtransitiveClass}
+\[
+(R\ \Tr\ K)
+\iffdef
+(K\subseteq \power_R K)
+\]
+\end{definition}
+
+\begin{theorem}[properties are preserved on subclasses(except transitivity w.r.t. relation)]\ \label{thm:inheritable}\ 
+\[
+(
+(R\mathrm{\ Irr\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Irr\ }B)
+\]\[
+(
+(R\mathrm{\ Trans\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Trans\ }B)
+\]
+\[
+(
+(R\mathrm{\ Po\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Po\ }B)
+\]
+\[
+(
+(R\mathrm{\ Fr\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ Fr\ }B)
+\]
+\[
+(
+(R\mathrm{\ We\ }A)
+\land
+(B\subseteq A)
+)
+\implies
+(R\mathrm{\ We\ }B)
+\]
+\end{theorem}
+
+\begin{theorem}[induction on a R-transitive and R-well-founded class]
+\[
+(R\ \Tr\ K)
+\land
+(R\mathrm{\ Fr\ }K)
+\implies
+(
+((K\cap(\power_R A))\subseteq A)
+\implies
+(K\subseteq A)
+)
+\]
+\end{theorem}
+
+\subsection{Membership relation}
+\begin{definition}[epsilon relation]
+\label{def:epsilonRelation}
+\[
+\E\ \eqdef\ \{\,(x,y)\ |\ x\in y\,\}
+\]
+\end{definition}
+
+\begin{definition}[class is transitive (w.r.t. epsilon relation)]
 \label{def:transitiveClass}
 \[
 \Tr(X)
@@ -68,13 +181,8 @@ S=\emptyset)
 \]
 \end{definition}
 
-\begin{definition}[epsilon relation]
-\label{def:epsilonRelation}
-\[
-\E\eqdef \{(x,y)\ |\ x\in y\}
-\]
-\end{definition}
-\begin{definition}[class is ordinal]
+
+\begin{definition}[class is ordinal (w.r.t. epsilon relation)]
 \label{def:ordinalClass}
 \[
 \Ord(X)
@@ -131,53 +239,6 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \fi
 \begin{lemma}[union of subclass of ordinals is transitive class]
 
-\begin{theorem}[properties are preserved on subclasses]\ \label{thm:inheritable}\ 
-\[
-(
-(R\mathrm{\ Irr\ }A)
-\land
-(B\subseteq A)
-)
-\implies
-(R\mathrm{\ Irr\ }B)
-\]\[
-(
-(R\mathrm{\ Trans\ }A)
-\land
-(B\subseteq A)
-)
-\implies
-(R\mathrm{\ Trans\ }B)
-\]
-\[
-(
-(R\mathrm{\ Po\ }A)
-\land
-(B\subseteq A)
-)
-\implies
-(R\mathrm{\ Po\ }B)
-\]
-\[
-(
-(R\mathrm{\ Fr\ }A)
-\land
-(B\subseteq A)
-)
-\implies
-(R\mathrm{\ Fr\ }B)
-\]
-\[
-(
-(R\mathrm{\ We\ }A)
-\land
-(B\subseteq A)
-)
-\implies
-(R\mathrm{\ We\ }B)
-\]
-
-\end{theorem}
 
 
 \begin{lemma}[epsilon relation criterion]
@@ -431,6 +492,7 @@ The function $| \cdot |$ has interesting properties.
 \dots
 \subsection{Well-founded induction}
 
+
 \begin{theorem}[induction on a transitive and well-founded by membership relation class]
 \[
 (\Tr(K))
@@ -473,6 +535,7 @@ Plan:
 \item recursion and induction for natural numbers.
 \item recursion and induction for finite intervals.
 \item definitions and properties of addtion and multipliation, etc.
+\item Mostowski collapse lemma.
 \item \dots
 \end{enumerate}
 

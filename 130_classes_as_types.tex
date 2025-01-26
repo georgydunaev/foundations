@@ -1,6 +1,6 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Classes-as-Types}
+\section{Classes-as-Types, Sets-as-Expressions}
 %\subsection{Classes-as-Types semantics}
 In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
 
@@ -18,6 +18,14 @@ Dependent types are treated as families.
 \[
 (\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
 \]
+
+\subsection{Storage}
+Only finite objects can be stored in computer's memory.\\
+Functions are stored as an ordered pairs "variable" and "term".\\
+Types are needed merely for getting rid of nonsense expressions.\\
+Semantics with sets and classes is used as a safeguard: if something "paradoxical" is obtained, then there is a cntradiction in foundation of mathematics, what is a sensationally rare event.\\
+
+
 
 \iffalse
 Is the following okey ???
@@ -121,8 +129,8 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 %Model:\\
 \begin{definition}(List-def)
 \[
-\List(A):=\{(F\family) | \dom(F)\in \omega\cup\{\omega\}\}
-\]
+\List(A):=\{(F\family) | \dom(F)\in \omega\}
+\]%\omega\cup\{\omega\}
 \end{definition}
 \begin{definition}(Nil-def)
 \[

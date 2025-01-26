@@ -7,6 +7,7 @@
 %\end{definition}
 \subsection{Lambda-calculus as a metalanguage}
 All inductive definitions in this section are simultaneous.
+Classes are types, expressions are sets.
 \begin{notation}
 Various relations(:::,::,:) between text strings are introduced in this subsection.
 Quotation marks are ommited:\\
@@ -222,13 +223,26 @@ Transformations of expressions.
 \pagebreak
 \subsection{Predicate calculus as a language}
 %All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
+
+%\begin{definition}[$\BddExpr$]\ \\
+%Inductive definition of bound expressions:
+%\begin{enumerate}
+%\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Term)$.
+%\end{enumerate}
+%\end{definition}
+If dependent types are allowed, then
+\[
+\FuncSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Term).
+\]
 \begin{definition}[$\Term$]\ \\
 Inductive definition of terms:
 \begin{enumerate}
 %\item $(x:\Var(\Term)) \Implies (x:\Term)$.
 \item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
+\iffalse
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Term)$.
+\fi
 \end{enumerate}
 \end{definition}
 \begin{definition}[$\Fm$]\ \\
@@ -243,8 +257,10 @@ Inductive definition of formulas:
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies ((A\lor B):\Fm)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\forall x.A):\Fm)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\exists x.A):\Fm)$.
+\iffalse
 \item $(t:\Term) \Implies ((t \lexists):\Fm)$.
 \item $(t:\Term) \Implies ((t \lunique):\Fm)$.
+\fi
 \end{enumerate}
 \end{definition}
 
@@ -316,115 +332,17 @@ B
 \label{ax:MP} \tag{ax:MP}
 \]
 \subsubsection{Predicational part}
-\underline{Definitional axioms:}\\
-For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\varphi$, every formula
-%(if it is defined) from the following list of axioms is considered to be provable.
-\[
-(!x.\varphi)
-\iffdef
-((\forall x_1)(\forall x_2),\varphi[x_1/x]\land\varphi[x_2/x]\implies x_1=x_2)
-\label{def:unique} \tag{def:unique}
-\]
-\[
-((\varepsilon x.\varphi) \lexists)
-\iff
-(\exists x.\varphi)
-\label{ax:EpsEx} \tag{metathm:EpsEx}
-\]
-\[
-((\varepsilon x.\varphi) \lunique)
-\iff
-(!x.\varphi)
-\label{ax:EpsUn} \tag{metathm:EpsUn}
-\]
-\[
-(t\ldefined)
-\iffdef
-(
-(t\lexists)
-\land
-(t\lunique)
-)
-\label{def:defined} \tag{def:defined}
-\]
-\[
-(x\ldefined)
-\label{ax:VarDef} \tag{ax:VarDef}
-\]
-\underline{Equalitites:}
-%\[
-%(A:=B)\implies ((A\equiv B)\land(B\lunique))
-%\label{def:DefEq} \tag{def:DefEq}
-%\]
-\[
-(A=B)\iffdef ((A\subseteq B)\land (B\subseteq A))
-\]
-\[
-(A:=B)\implies(A=B)
-\]
-
-\[
-(A\cong B)\implies ((A\equiv B)\land(B\ldefined))
-\]
-\[
-(A:\cong B)\implies(A\cong B)
-\]
-
-%\label{def:DefEq} \tag{def:DefEq}
-\[
-(A\simeq B)\iff ((A\equiv B)\land(B\lunique))
-\]
-\[
-(A:\simeq B)\implies(A\simeq B)
-\]
-\[
-(\models^v (A\equiv B))\IFFdef(I^v(A)=I^v(B))
-\]
-\[
-(A:\equiv B)\implies(A\equiv B)
-\]
-%\begin{theorem}
-\[
-(A\ldefined)\land(B\ldefined)\land(A=B)\implies(A\equiv B)
-\]
-Assuming the following axiom
-\[
-(\exists(x,y\in\Domain),x\neq y),
-\]
-we can weaken the previous axiom to:
-\[
-(A\lunique)\land(B\lunique)\land(A=B)\implies(A\equiv B).
-\]
-%\end{theorem}
-%\begin{theorem}
-\[
-(A\equiv B)\implies(A=B)
-\]
-\[
-(A\equiv A)
-\]
-\[
-(A\equiv B)\implies(\varphi[A/x]\implies\varphi[B/x])
-\]
-
-%\end{theorem}
-\underline{Values:}
-\[
-F(x):\equiv (\mbox{if $x\in\dom(F)$ then $\union F[\{x\}]$ else undef }).
-\]
-\[
-r_x:\equiv (\varepsilon y. (x,y)\in r)
-\]
 \underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
-(t\ldefined)\implies ((\forall x. \phi) \implies \phi[t/x])
+(\forall x. \phi) \implies \phi[t/x]
 \label{ax:S1} \tag{S1}
 \]
 \[
-(t\ldefined) \implies (\phi[t/x] \implies (\exists x. \phi))
+\phi[t/x] \implies (\exists x. \phi)
 \label{ax:S2} \tag{S2}
 \]
+
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstractional rules:}%if $x$ is not free in formula $\psi$ then
 \[
@@ -468,6 +386,7 @@ Any object-valued function from $\Var$ is called an evaluation:%class-valued
 We fix certain collection of truth values $\TruthValues$ for which we want to use a pluralistic predicate logic. 
 %It can be a n
 \end{parameter}
+\fi
 
 %$\Domain$
 
@@ -475,6 +394,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 %The constant $\mathrm{Class}$ is a conglomerate of all classes.
 %\end{definition}
 
+\iffalse
 \begin{example}[classical truth values]\ \\
 \[
 \lFalse := \emptyset
@@ -485,10 +405,19 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 \[
 \ClassicalTruthValues := \{\lFalse, \lTrue\}
 \]
+\[
+\TruthValues := \ClassicalTruthValues
+\]
 \end{example}
+\fi
+
+\[
+\TruthValues := \Bool
+\]
 
 
 
+\iffalse TRUTHVALUES, NO!
 \begin{definition}[interpretation of atomic function symbols]
 Function symbols are correspond to the functions which maps finite tuples of an object to an object.
 (in our case: .
@@ -519,57 +448,21 @@ We assume that function symbols are not intersecting with predicate symbols.
 \fi
 \subsubsection{Function symbols}
 \subsubsection{Predicate symbols}
-
-Based on atomic predicate symbols, one can introduce "predicate symbolic algebra."
-
-There are two fundamentally different types of negation:  
-
-\((\neg P)\) and \((\neg \circ P)\).  
-
-In the simple case, if all terms are well-defined (i.e., the interpretation of the term exists and is unique), these negations coincide.  
-
-However, in general, they are different.  
-
-%Example of usage:
-\begin{example}[typical usage]
-\[
-(x \text{ exists}) \land (y \text{ exists}) \land (x \notin y) \implies \neg (x \in y)
-\]
-\[
-(x \text{ unique}) \land (y \text{ unique}) \land (\neg (x \in y)) \implies (x \notin y)
-\]
-
-Explanation:\\
-\((x \notin y)\) is \((\neg\in)(x, y)\),\\
-\(\neg (x \in y)\) is \((\neg\ \circ \in)(x, y)\).
-\end{example}
-
 \begin{definition}[predicate symbols]\ 
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then $A$ is a predicate symbols.
 \item For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate symbols and $@$ is a logical connective of valency $n$, then $@(P_1,\dots,P_n)$ is a predicate symbol.
-\item If $P$ is a predicate symbol, then $\neg\circ P$ is a predicate symbol.
-\item In classical setting, the previous it is enough of inductive requirements, but if we want to study intuitionistic variant, then we need to add e.g. the following: if $P_1,P_2$ are predicate symbols, then $P_1 \sqcup P_2$ is a predicate symbol.
 \end{itemize}
-Moreover, we may require that negations to commute, and to be idempotent, since later defined truthness will respect the following equalities:
-\[
-(\neg (\neg P)) = P
-\]
-\[
-(\neg \circ (\neg \circ P)) = P
-\]
-\[
-(\neg (\neg \circ P)) = (\neg \circ (\neg P))
-\]
-(Here, for simplicity, we are considering the classical case, with no intuitionism.)
 \end{definition}
+
 \subsubsection{Interpretation}
 \underline{Interpretation of atomic predicate symbols:}
 \begin{premise}[interpretation of atomic predicate symbols]\ \\
 \[
-J_\Pred:\AtomPredSymb\to\left(\sum_{n\in\omega}\Pow\left(\Domain^n\right)
-\right)
+J_\Pred:\AtomPredSymb\to\left(\sum_{n\in\omega}\left(\Domain^n\to\TruthValues\right)\right)
 \]
+%J_\Pred:\AtomPredSymb\to\left(\sum_{n\in\omega}\Pow\left(\Domain^n\right)\right)
+
 Valence of a predicate symbol mapping:
 \[
 V_\Pred := \pr_1 \circ J_\Pred.
@@ -583,9 +476,10 @@ I_\Pred := \pr_2 \circ J_\Pred.
 \begin{premise}[interpretation of atomic function symbols]\ \\
 \[
 J_\Func:\AtomFuncSymb\to\left(\sum_{n\in\omega}
-\left(\Domain^n\right)
+\left(\Domain^n
 \to
 \Domain
+\right)
 \right)
 \]
 Valence of a function symbol mapping:
@@ -697,14 +591,6 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) := ((I^v(\varphi_1))\ \mathrm{Or}\ (I^v(\varph
 \end{itemize}
 \end{definition}
 \fi
-\begin{definition}[Interpretation of epsilon operator]
-\[
-I^v((\varepsilon x. \varphi))
-\ \eqdef\ 
-\left\{b\in\Domain\ \middle|\,\left(\models^{v+(x,b)} \varphi\right)\,\right\}
-\label{def:IEps}\tag{def:IEps}
-\]
-\end{definition}
 \subsubsection{Truth}
 Due to high expressiveness of chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
 The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formulas, which indicates which quantifier must be used on atomic formulas.
@@ -1950,6 +1836,172 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
   \right):: \prop
 \]
 
+\fi
+\iffalse
+\subsection{DEPRECATED: Pluralitic variant of predicate calculus(too unusual)}
+\underline{Definitional axioms:}\\
+For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\varphi$, every formula
+%(if it is defined) from the following list of axioms is considered to be provable.
+\[
+(!x.\varphi)
+\iffdef
+((\forall x_1)(\forall x_2),\varphi[x_1/x]\land\varphi[x_2/x]\implies x_1=x_2)
+\label{def:unique} \tag{def:unique}
+\]
+\[
+((\varepsilon x.\varphi) \lexists)
+\iff
+(\exists x.\varphi)
+\label{ax:EpsEx} \tag{metathm:EpsEx}
+\]
+\[
+((\varepsilon x.\varphi) \lunique)
+\iff
+(!x.\varphi)
+\label{ax:EpsUn} \tag{metathm:EpsUn}
+\]
+\[
+(t\ldefined)
+\iffdef
+(
+(t\lexists)
+\land
+(t\lunique)
+)
+\label{def:defined} \tag{def:defined}
+\]
+\[
+(x\ldefined)
+\label{ax:VarDef} \tag{ax:VarDef}
+\]
+\underline{Equalitites:}
+%\[
+%(A:=B)\implies ((A\equiv B)\land(B\lunique))
+%\label{def:DefEq} \tag{def:DefEq}
+%\]
+\[
+(A=B)\iffdef ((A\subseteq B)\land (B\subseteq A))
+\]
+\[
+(A:=B)\implies(A=B)
+\]
+
+\[
+(A\cong B)\implies ((A\equiv B)\land(B\ldefined))
+\]
+\[
+(A:\cong B)\implies(A\cong B)
+\]
+
+%\label{def:DefEq} \tag{def:DefEq}
+\[
+(A\simeq B)\iff ((A\equiv B)\land(B\lunique))
+\]
+\[
+(A:\simeq B)\implies(A\simeq B)
+\]
+\[
+(\models^v (A\equiv B))\IFFdef(I^v(A)=I^v(B))
+\]
+\[
+(A:\equiv B)\implies(A\equiv B)
+\]
+%\begin{theorem}
+\[
+(A\ldefined)\land(B\ldefined)\land(A=B)\implies(A\equiv B)
+\]
+Assuming the following axiom
+\[
+(\exists(x,y\in\Domain),x\neq y),
+\]
+we can weaken the previous axiom to:
+\[
+(A\lunique)\land(B\lunique)\land(A=B)\implies(A\equiv B).
+\]
+%\end{theorem}
+%\begin{theorem}
+\[
+(A\equiv B)\implies(A=B)
+\]
+\[
+(A\equiv A)
+\]
+\[
+(A\equiv B)\implies(\varphi[A/x]\implies\varphi[B/x])
+\]
+
+%\end{theorem}
+\underline{Values:}
+\[
+F(x):\equiv (\mbox{if $x\in\dom(F)$ then $\union F[\{x\}]$ else undef }).
+\]
+\[
+r_x:\equiv (\varepsilon y. (x,y)\in r)
+\]
+\underline{Specificational axioms:}\\
+For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
+\[
+(t\ldefined)\implies ((\forall x. \phi) \implies \phi[t/x])
+\label{ax:S1} \tag{S1}
+\]
+\[
+(t\ldefined) \implies (\phi[t/x] \implies (\exists x. \phi))
+\label{ax:S2} \tag{S2}
+\]
+\subsubsection{Function symbols}
+\subsubsection{Predicate symbols}
+
+Based on atomic predicate symbols, one can introduce "predicate symbolic algebra."
+
+There are two fundamentally different types of negation:  
+
+\((\neg P)\) and \((\neg \circ P)\).  
+
+In the simple case, if all terms are well-defined (i.e., the interpretation of the term exists and is unique), these negations coincide.  
+
+However, in general, they are different.  
+
+%Example of usage:
+\begin{example}[typical usage]
+\[
+(x \text{ exists}) \land (y \text{ exists}) \land (x \notin y) \implies \neg (x \in y)
+\]
+\[
+(x \text{ unique}) \land (y \text{ unique}) \land (\neg (x \in y)) \implies (x \notin y)
+\]
+
+Explanation:\\
+\((x \notin y)\) is \((\neg\in)(x, y)\),\\
+\(\neg (x \in y)\) is \((\neg\ \circ \in)(x, y)\).
+\end{example}
+
+\begin{definition}[predicate symbols]\ 
+\begin{itemize}
+\item If $A$ is an atomic predicate symbol, then $A$ is a predicate symbols.
+\item For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate symbols and $@$ is a logical connective of valency $n$, then $@(P_1,\dots,P_n)$ is a predicate symbol.
+\item If $P$ is a predicate symbol, then $\neg\circ P$ is a predicate symbol.
+\item In classical setting, the previous it is enough of inductive requirements, but if we want to study intuitionistic variant, then we need to add e.g. the following: if $P_1,P_2$ are predicate symbols, then $P_1 \sqcup P_2$ is a predicate symbol.
+\end{itemize}
+Moreover, we may require that negations to commute, and to be idempotent, since later defined truthness will respect the following equalities:
+\[
+(\neg (\neg P)) = P
+\]
+\[
+(\neg \circ (\neg \circ P)) = P
+\]
+\[
+(\neg (\neg \circ P)) = (\neg \circ (\neg P))
+\]
+(Here, for simplicity, we are considering the classical case, with no intuitionism.)
+\end{definition}
+\begin{definition}[Interpretation of epsilon operator]
+\[
+I^v((\varepsilon x. \varphi))
+\ \eqdef\ 
+\left\{b\in\Domain\ \middle|\,\left(\models^{v+(x,b)} \varphi\right)\,\right\}
+\label{def:IEps}\tag{def:IEps}
+\]
+\end{definition}
 \fi
 \pagebreak
 \input{END.tex}
