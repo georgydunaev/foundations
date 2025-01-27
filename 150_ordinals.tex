@@ -5,7 +5,7 @@ The definitions in this section are the improved version of definitions from the
 \subsection{General setting}
 Context: (it may be ignored potentially, but it is an ``intended use'')\\
 The parameter $A$ is an arbitrary class(so no assumptions, just a note that it is not necessary a set, it may be a proper class),\\
-The parameter $R$ is an arbitrary class and a relation, i.e. $R\subseteq V\times V$.
+The parameter $R$ is an arbitrary class and a relation, i.e. $R\subclass V\times V$.
 \begin{definition}[related]
 \label{def:related}
 \[
@@ -62,8 +62,8 @@ xRy \land yRz \implies xRz)
 \[
 (R\mathrm{\ Fr\ }A)
 \iffdef
-(\forall S\subseteq A:
-S\subseteq R[S]
+(\forall S\subclass A:
+S\subclass R[S]
 \implies
 S=\emptyset)
 \]
@@ -96,7 +96,7 @@ A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x:xR_1A\implies xR_2B)
 \begin{lemma}[$R$ subclass]
 \label{lem:Rsubset}
 \[
-k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
+k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \]
 \end{lemma}
 
@@ -112,7 +112,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 \[
 (R\ \Tr\ K)
 \iffdef
-(K\subseteq \power_R K)
+(K\subclass \power_R K)
 \]
 \end{definition}
 
@@ -121,7 +121,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (
 (R\mathrm{\ Irr\ }A)
 \land
-(B\subseteq A)
+(B\subclass A)
 )
 \implies
 (R\mathrm{\ Irr\ }B)
@@ -129,7 +129,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (
 (R\mathrm{\ Trans\ }A)
 \land
-(B\subseteq A)
+(B\subclass A)
 )
 \implies
 (R\mathrm{\ Trans\ }B)
@@ -138,7 +138,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (
 (R\mathrm{\ Po\ }A)
 \land
-(B\subseteq A)
+(B\subclass A)
 )
 \implies
 (R\mathrm{\ Po\ }B)
@@ -147,7 +147,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (
 (R\mathrm{\ Fr\ }A)
 \land
-(B\subseteq A)
+(B\subclass A)
 )
 \implies
 (R\mathrm{\ Fr\ }B)
@@ -156,7 +156,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (
 (R\mathrm{\ We\ }A)
 \land
-(B\subseteq A)
+(B\subclass A)
 )
 \implies
 (R\mathrm{\ We\ }B)
@@ -182,7 +182,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 \]
 \Done
 \end{lemma}
-
+\pagebreak
 \begin{theorem}[induction on a R-transitive and R-well-founded class]
 \label{thm:Rind}
 \[
@@ -191,9 +191,9 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (R\mathrm{\ Fr\ }K)
 \implies
 (
-((K\cap(\power_R A))\subseteq A)
+((K\cap(\power_R A))\subclass A)
 \implies
-(K\subseteq A)
+(K\subclass A)
 )
 \]
 \Proof
@@ -215,8 +215,8 @@ Assume opposite $k\notin A$. To show $\bot$.
 \[
 (R\mathrm{\ Fr\ }K)
 \IFF
-(\forall S\subseteq K:
-S\subseteq R[S]
+(\forall S\subclass K:
+S\subclass R[S]
 \implies
 S=\emptyset)
 \]
@@ -269,11 +269,10 @@ S:=(K\setminus A)
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
 \quad(\mbox{lemma\ }\ref{lem:Rindlem})
-\]%
-\iftrue
+\]
 \[
 ((K\cap\power_R A)\subclass A)
-\IMPLIES
+\IFF
 (
 \{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
 \subclass A
@@ -283,6 +282,12 @@ S:=(K\setminus A)
 (m\in K)
 \AND
 (R^\top[\{m\}]\subclass A)
+\IMPLIES
+(m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
+\]
+\[
+(m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
+\AND
 (
 \{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
 \subclass A
@@ -297,9 +302,94 @@ S:=(K\setminus A)
 \IMPLIES
 \bot
 \]
-\fi
 \Done %the proof is finished
 \end{theorem}
+
+\begin{definition}[restriction of relation]
+\label{def:restrrel}
+\[
+(x(R\mathrm{\ on\ }K)y)
+\iffdef
+(x\in K)\land(xRy)
+\]
+\end{definition}
+\begin{lemma}[restriction of relation is transitive on class]\ \\
+\label{lem:restrreltran}
+If $R$ is a relation, then
+\[
+((R\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)
+\]
+\Proof
+To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
+Fix $k\in K$. To show: $k\in\{\,x\ |\ (R\mathrm{\ on\ }K)^\top[\{x\}]\subclass K$.\\
+To show: $(R\mathrm{\ on\ }K)^\top[\{k\}]\subclass K$.\\
+Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
+\[
+(w\in (R\mathrm{\ on\ }K)^\top[\{k\}])
+\IMPLIES
+(k(R\mathrm{\ on\ }K)^\top w)
+\]
+\[
+\IMPLIES
+(w(R\mathrm{\ on\ }K) k)
+\]
+\[
+\IMPLIES
+(w\in K)\land (wRk)
+\]
+\Done
+\end{lemma}
+%\power^K_R A
+%\eqdef
+%\{K\cap\}
+
+
+\begin{corollary}[alternative induction principle on $R_1$-well-founded class]
+\[
+(R_1\mathrm{\ Fr\ } K)
+\implies
+(
+((K\cap(\power_{(R_1\mathrm{\ on\ }K)} A))\subclass A)
+\implies
+(K\subclass A)
+)
+\]
+\label{thm:RindAlt}
+\Proof
+Assume $(R_1\mathrm{\ on\ }K)$.\\
+Let be $R:=(R_1\mathrm{\ on\ }K)$.\\
+By lemma \ref{lem:restrreltran}, $((R_1\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)$.\\
+I.e. $(R\mathrm{\ Tr\ }K)$.\\
+Therefore, $(R\mathrm{\ Fr\ }K)
+\implies
+(
+((K\cap(\power_R A))\subclass A)
+\implies
+(K\subclass A)
+)
+$ by theorem \ref{thm:Rind}.\\
+
+Since $R\subclass R_1$(it follows from the local definition of $R$), then by theorem \ref{thm:inheritable}
+\[
+(R_1\mathrm{\ on\ }K)
+\implies
+(R\mathrm{\ on\ }K)
+\]
+This allows us to obtain the following:
+\[
+(
+((K\cap(\power_R A))\subclass A)
+\implies
+(K\subclass A)
+)
+.\]
+Finally, we have $(
+((K\cap(\power_{(R_1\mathrm{\ on\ }K)} A))\subclass A)
+\implies
+(K\subclass A)
+)$ by unfolding $R_1$.
+\Done
+\end{corollary}
 
 \subsection{Case of membership relation E as R}
 \begin{definition}[class is transitive (w.r.t. epsilon relation)]
@@ -307,7 +397,7 @@ S:=(K\setminus A)
 \[
 \Tr(X)
 \iffdef
-(X\subseteq \power X)
+(X\subclass \power X)
 \]
 \end{definition}
 
@@ -326,7 +416,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \[
 \LimClass(X)
 \iffdef
-\left(X\subseteq\union X\right)
+\left(X\subclass\union X\right)
 \]
 \end{definition}
 \begin{definition}[limit ordinal]
@@ -433,7 +523,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 )
 \iff
 (
-(A\subseteq\On)
+(A\subclass\On)
 \land
 (\Tr(A))
 )
@@ -458,7 +548,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 
 \label{lem:trunonss}
 \[
-(A\subseteq\On)
+(A\subclass\On)
 \implies
 \left(\Tr\left(\union A\right)\right)
 \]
@@ -486,12 +576,12 @@ Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
 \AND
 (\Tr(a))
 \IMPLIES
-(x\subseteq a)
+(x\subclass a)
 \]
 \[
 (y\in x)
 \AND
-(x\subseteq a)
+(x\subclass a)
 \IMPLIES
 (y\in a)
 \]
@@ -628,33 +718,33 @@ The function $| \cdot |$ has interesting properties.
 (\E\mathrm{\ Fr\ }K)
 \implies
 (
-((K\cap(\power A))\subseteq A)
+((K\cap(\power A))\subclass A)
 \implies
-(K\subseteq A)
+(K\subclass A)
 )
 \]
 \end{corollary}
 \begin{corollary}[epsilon induction]\ \\
 If well-foundness of the class of all sets (i.e. $(\E\mathrm{\ Fr\ }V)$) is assumed, then
 \[
-((\power A)\subseteq A)
+((\power A)\subclass A)
 \implies
-(V\subseteq A).
+(V\subclass A).
 \]
 And vice versa is also true.
 \end{corollary}
 \begin{corollary}[transfinite induction]
 \[
-((\On\cap(\power A))\subseteq A)
+((\On\cap(\power A))\subclass A)
 \implies
-(\On\subseteq A)
+(\On\subclass A)
 \]
 \end{corollary}
 \begin{corollary}[induction up to ordinal class $\beta$]
 \[
-((\beta\cap(\power A))\subseteq A)
+((\beta\cap(\power A))\subclass A)
 \implies
-(\beta\subseteq A)
+(\beta\subclass A)
 \]
 \end{corollary}
 
@@ -678,14 +768,14 @@ Plan:
 \begin{definition}
 \label{def:transitive through power}
 \[
-(A \transitive)\iff (A\subseteq \power A)
+(A \transitive)\iff (A\subclass \power A)
 \]
 \end{definition}
 
 In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
-tr(X) \iff (\forall Z\in X: Z\subseteq X)
+tr(X) \iff (\forall Z\in X: Z\subclass X)
 \]
 \[
 ord(X) \iff tr(X)\land (\forall Y\in X: tr(Y))
