@@ -18,7 +18,12 @@ ARB \iffdef (A,B) \in R
 ARB \iffdef \exists (i\set):(R((i,0))=A)\land(R((i,1))=B)
 \]
 \end{definition*}
-
+\begin{definition}[epsilon relation]
+\label{def:epsilonRelation}
+\[
+\E\ \eqdef\ \{\,(x,y)\ |\ x\in y\,\}
+\]
+\end{definition}
 \begin{definition}[irreflexive on]
 \label{def:irreflexiveOn}
 \[
@@ -73,28 +78,36 @@ S=\emptyset)
 \end{definition}
 
 
+
 \begin{definition}[$R_1R_2$ subclass]
-\label{def:Rsubset}	
+\label{def:RRsubclass}	
 \[
 A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x:xR_1A\implies xR_2B)
 \]
 \end{definition}
-
-\begin{definition}[R subset]
-\label{def:Rsubset}
+\begin{definition}[$R$ subclass]
+\label{def:Rsubclass}	
+\[
+(A\stackrel{R}{\subclass} B)
+\iffdef
+(A\stackrel{R\E}{\subclass} B)
+\]
+\end{definition}
+\begin{lemma}[$R$ subclass]
+\label{lem:Rsubset}
 \[
 k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 \]
-\end{definition}
+\end{lemma}
 
-\begin{definition}[powerclass w.r.t. relation R]
+\begin{definition}[powerclass w.r.t. relation $R$]
 \label{def:RpowerClass}
 \[
 \power_R X\ \eqdef\ \{\, k\ |\ k\stackrel{R\E}{\subclass}X\,\}
 \]
 \end{definition}
 
-\begin{definition}[class is transitive w.r.t. relation R]
+\begin{definition}[class is transitive w.r.t. relation $R$]
 \label{def:RtransitiveClass}
 \[
 (R\ \Tr\ K)
@@ -150,7 +163,28 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 \]
 \end{theorem}
 
+\begin{lemma}
+\label{lem:Rindlem}
+\[
+(R^\top[\{m\}]\subclass K)
+\AND
+(m\notin R[K\setminus A])
+\IMPLIES
+(R^\top[\{m\}]\subclass A)
+\]
+\ProofNoPar
+\[
+(\forall q:qRm\implies q\in K)
+\AND
+(\forall q\in K:qRm\implies q\in A)
+\IMPLIES
+(\forall q:qRm\implies q\in A)
+\]
+\Done
+\end{lemma}
+
 \begin{theorem}[induction on a R-transitive and R-well-founded class]
+\label{thm:Rind}
 \[
 (R\ \Tr\ K)
 \land
@@ -162,16 +196,112 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subseteq X
 (K\subseteq A)
 )
 \]
+\Proof
+Assume $(R\ \Tr\ K)$, $(R\mathrm{\ Fr\ }K)$, $((K\cap\power_R A)\subclass A)$. To show: $K\subclass A$.\\
+Fix $k$. Assume $k\in K$. To show $k\in A$.\\
+Assume opposite $k\notin A$. To show $\bot$.
+\[
+(k\in K)
+\AND
+(k\notin A)
+\IMPLIES
+(k\in K\setminus A)
+\]
+\[
+(k\in K\setminus A)
+\IMPLIES
+(K\setminus A\neq\emptyset)
+\]
+\[
+(R\mathrm{\ Fr\ }K)
+\IFF
+(\forall S\subseteq K:
+S\subseteq R[S]
+\implies
+S=\emptyset)
+\]
+\[
+S:=(K\setminus A)
+\]
+\[
+(R\mathrm{\ Fr\ }K)
+\AND
+(K\setminus A\neq\emptyset)
+\AND
+(K\setminus A\subclass K)
+\IMPLIES
+\neg(S\subclass R[S])
+\]
+\[
+\IMPLIES
+(\exists m\in S: m\notin R[S])
+\]
+\[
+\IMPLIES
+(\exists m\in (K\setminus A): m\notin R[(K\setminus A)])
+\]
+\[
+(R\mathrm{\ Tr\ }K)
+\IFF
+(K\subclass \power_R(K))
+\]
+\[
+(m\in K)
+\AND
+(R\mathrm{\ Tr\ }K)
+\IMPLIES
+(m\in \power_R(K))
+\]
+\[
+(m\in \power_R(K)
+\IMPLIES
+(m\stackrel{R\E}{\subclass}K)
+\]
+\[
+(m\stackrel{R\E}{\subclass}K)
+\IMPLIES
+(R^\top[\{m\}]\subclass K)
+\]
+\[
+(R^\top[\{m\}]\subclass K)
+\AND
+(m\notin R[K\setminus A])
+\IMPLIES
+(R^\top[\{m\}]\subclass A)
+\quad(\mbox{lemma\ }\ref{lem:Rindlem})
+\]%
+\iftrue
+\[
+((K\cap\power_R A)\subclass A)
+\IMPLIES
+(
+\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
+\subclass A
+)
+\]
+\[
+(m\in K)
+\AND
+(R^\top[\{m\}]\subclass A)
+(
+\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
+\subclass A
+)
+\IMPLIES
+(m\in A)
+\]
+\[
+(m\in K\setminus A)
+\AND
+(m\in A)
+\IMPLIES
+\bot
+\]
+\fi
+\Done %the proof is finished
 \end{theorem}
 
-\subsection{Membership relation}
-\begin{definition}[epsilon relation]
-\label{def:epsilonRelation}
-\[
-\E\ \eqdef\ \{\,(x,y)\ |\ x\in y\,\}
-\]
-\end{definition}
-
+\subsection{Case of membership relation E as R}
 \begin{definition}[class is transitive (w.r.t. epsilon relation)]
 \label{def:transitiveClass}
 \[
@@ -341,7 +471,7 @@ Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
 \]
 \[
 (a\in A)
-\ \&\ 
+\AND
 (\Tr(a))
 \IMPLIES
 \Ord(a)
@@ -353,14 +483,14 @@ Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
 \]
 \[
 (x\in a)
-\ \&\ 
+\AND
 (\Tr(a))
 \IMPLIES
 (x\subseteq a)
 \]
 \[
 (y\in x)
-\ \&\ 
+\AND
 (x\subseteq a)
 \IMPLIES
 (y\in a)
@@ -370,7 +500,7 @@ z:=a
 \]
 \[
 (a\in A)
-\ \&\ 
+\AND
 (a\in A)
 \IMPLIES
 (\exists z\in A:y\in z)
@@ -490,10 +620,8 @@ The function $| \cdot |$ has interesting properties.
 \begin{theorem}[construction of a bijection between $\V$ and $\On$]%\label{thm:}
 \end{theorem}
 \dots
-\subsection{Well-founded induction}
-
-
-\begin{theorem}[induction on a transitive and well-founded by membership relation class]
+\subsection{Derived induction principles}
+\begin{corollary}[induction on a transitive and well-founded by membership relation class]
 \[
 (\Tr(K))
 \land
@@ -505,8 +633,7 @@ The function $| \cdot |$ has interesting properties.
 (K\subseteq A)
 )
 \]
-\end{theorem}
-
+\end{corollary}
 \begin{corollary}[epsilon induction]\ \\
 If well-foundness of the class of all sets (i.e. $(\E\mathrm{\ Fr\ }V)$) is assumed, then
 \[
@@ -521,6 +648,13 @@ And vice versa is also true.
 ((\On\cap(\power A))\subseteq A)
 \implies
 (\On\subseteq A)
+\]
+\end{corollary}
+\begin{corollary}[induction up to ordinal class $\beta$]
+\[
+((\beta\cap(\power A))\subseteq A)
+\implies
+(\beta\subseteq A)
 \]
 \end{corollary}
 
