@@ -13,7 +13,7 @@ In this section different definitions of ordered are studied and the new one is 
 ((a_1,b_1)=(a_2,b_2))\iff((a_1=a_2)\land(b_1=b_2))
 \tag{OPairUniq}
 \]
-\subsection{Kuratowski pair}
+\subsection{Definition of Kuratowski pair}
 \begin{definition}(Kuratowski pair of sets)
 \[
 (a,b)_K:=\{\{a,a\},\{a,b\}\}
@@ -94,14 +94,14 @@ Projections may be defined this way:
 %\end{theorem}
 %\Proof
 %\Done
-\subsection{Metamath's ordered pair of sets definition}
+\subsection{Definition of Metamath's ordered pair of sets}
 The following definition is too weak:
-\begin{definition}
+\begin{definition*}
 \label{def:MM_ordered pair}(Metamath's ordered pair) %maybe V somehow?
 \[
 \langle A,B \rangle=\{x|(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})\}
 \]
-\end{definition}
+\end{definition*}
 It doesn't work for the case of proper classes.
 \subsection{Morse's ordered pair}
 There is a generalization of the ordered pair, that allows have proper classes as arguments, introduced by Morse.
@@ -121,7 +121,7 @@ Unfortunately, this approach requires defining two variants of pairs, two varian
 
 In fact, there is a uniform definition, which works both for sets and for classes.
 
-\subsection{Dunaev's ordered pair}
+\subsection{Definition of Dunaev's ordered pair}
 %Definitions of the ordered pair for sets and classes
 In this section it will be proven that the following self-referential definition of pair and cartesian product is admissible.
 \begin{definition}

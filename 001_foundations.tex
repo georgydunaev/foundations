@@ -30,12 +30,12 @@ Foundations of Mathematics}
 % The following is a joke: idk to whom I should dedicate it
 %\chapter*{} % Dedication
 %\thispagestyle{empty}
-\begin{center}
-\emph{Dedicated to Milena, \\ 
-the most beautiful kitty in the universe, \\
-with the purest and kindest heart.
-}
-\end{center}
+%\begin{center}
+%\emph{Dedicated to Milena, \\ 
+%the most beautiful kitty in the universe, \\
+%with the purest and kindest heart.
+%}
+%\end{center}
 
 
 %whose support and inspiration helped me achieve this.
@@ -54,10 +54,13 @@ with the purest and kindest heart.
 
 
 %\noindent
+\iffalse
 \subsection{Disclaimer}
 This text contains contradictory notations and even factual errors, because my own understanding of the subject and develops gradually during writing this document. It takes time. Separate sections should be treated as separate ideas/constructions which I discovered (at least for myself) during my wondering around this topic.
 Despite it currently being of poor quality, it has new ideas, new syntax, new approaches. I'm doing my best to tell something, please do your best to understand.
+\fi
 
+\iffalse
 \subsection{Motivation}
 % the code should be comprehensive: use meaning ozf symbols
 There are lots of proof assistants which allow to prove mathematical theorems, but their use for the purposes of an average mathematician is deeply disappointing due to various reasons.\\
@@ -65,10 +68,11 @@ There are lots of proof assistants which allow to prove mathematical theorems, b
 I am creating a proof assistant and this document is a very early prologue to what the computer-generated article will look like.\\
 
 The other point of creating such document is to provide programmed classical logical foundations for developing a set-theoretic proofs, and vice-versa to provide a set-theoretic foundations to prove theorems about logic.
-
+\fi
 
 
 \noindent
+\iffalse
 \subsection{Goals}
 Despite theory being presented is sometimes unusually presented, my intention was to keep it as standard as possible. Any "extravagant" part has reason behind it: for example, it is absurd to speak about truthness of the statements $f(x)=5$, when $x\notin\dom(f)$.
 We may want to say that it is false, but then it creates the assymetry: $f(x)\neq 5$ means that some of two cases is true: 1) $x\notin\dom(f)$ or 2) ($(x\notin\dom(f))$ and f(x) is actually equal to something else).
@@ -88,6 +92,9 @@ But if a modification of a classical logic is used, then such compromises are no
 %\item completion of a metric space
 \end{itemize}
 %\newpage
+\fi
+
+\iffalse
 \subsection{Why descriptors?}
 Language determines the cognition.
 But what if the language is imprecise?
@@ -106,9 +113,9 @@ Here I want to provide a natural modification of predicate calculus and its sema
 
 %From experience, it seems like, that Calculus of Constructions is an approach to implement the foundations of mathematics which allows deal with functions in.
 
+\fi
 
-
-\newpage
+\newpage	
 
 
 
@@ -148,16 +155,8 @@ Here I want to provide a natural modification of predicate calculus and its sema
 
 
 %\input{some_order_theory.tex}
-\chapter{Logics}
+\chapter{Logical framework}
 \input{010_logic.tex}
-\pagebreak
-\input{020_descriptors.tex}
-\pagebreak
-\input{030_alternative_semantics.tex}
-\pagebreak
-\input{040_old_variant_of_iota_defs.tex}
-\pagebreak
-\input{050_prooftrees.tex}
 \pagebreak
 \chapter{Classes}
 \input{060_axioms.tex}
@@ -169,8 +168,6 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \input{090_proving_limitation_of_size.tex}
 \pagebreak
 \input{100_class_theory.tex}
-\pagebreak
-\input{110_family_evaluation.tex}
 \pagebreak
 
 \input{120_induction_recursion.tex}
@@ -196,9 +193,9 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 \input{220_simpler_img_thms.tex}
 \pagebreak
+\chapter{Mathematics}
 \input{230_analysis.tex}
 \pagebreak
-\chapter{Mathematics}
 %\input{240_linal_topology_etc.tex}
 \input{250_topology.tex}
 \pagebreak
@@ -215,6 +212,18 @@ Here I want to provide a natural modification of predicate calculus and its sema
 
 %%% ...
 \input{310_differential_geometry.tex}
+\pagebreak
+
+\chapter{Appendix 1: unfinished logic-related ideas}
+\input{110_family_evaluation.tex}
+\pagebreak
+\input{020_descriptors.tex}
+\pagebreak
+\input{030_alternative_semantics.tex}
+\pagebreak
+\input{040_old_variant_of_iota_defs.tex}
+\pagebreak
+\input{050_prooftrees.tex}
 \pagebreak
 \input{320_strang_thm.tex}
 \pagebreak

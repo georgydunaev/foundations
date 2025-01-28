@@ -41,14 +41,14 @@ F\langle A \rangle:=\{b|\forall a\in A: (a,b)\in F\}
 \invE[A] = \union A
 \]
 \[
-(\mbox{i.e. } \mbox{E}^{-1}[A]=\union A )
+(\mbox{i.e. } \mbox{E}^{\top}[A]=\union A )
 \]
 %(or even "$\invE[A] = \union A$") % \exists
 \end{theorem}
 \Proof
 $(\subseteq)$\\
-Assume $w\in \mbox{E}^{-1}[A]$.\\
-Therefore $\exists a\in A: (a,w)\in \mbox{E}^{-1}$.\\
+Assume $w\in \mbox{E}^{\top}[A]$.\\
+Therefore $\exists a\in A: (a,w)\in \mbox{E}^{\top}$.\\
 So $(w,a)\in \mbox{E}$.\\
 So $w\in a$.\\
 Since $w\in a$ and $a\in A$, $w\in \union A$.\\
@@ -56,23 +56,23 @@ $(\supseteq)$\\
 $w\in \union A$.\\
 Therefore $\exists a\in A: w\in a$.\\
 So $(w,a)\in \mbox{E}$.
-So $(a,w)\in \mbox{E}^{-1}$.
-From $(a,w)\in \mbox{E}^{-1}$ and $(a\in A)$, we have $(w\in \mbox{E}^{-1}[A])$.\\
+So $(a,w)\in \mbox{E}^{\top}$.
+From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A])$.\\
 \Done
 \begin{theorem}
 \[
 \invE \langle A \rangle = \intersection A
 \]
 \[
-(\mbox{i.e. } \mbox{E}^{-1}\langle A\rangle = \intersection A )
+(\mbox{i.e. } \mbox{E}^{\top}\langle A\rangle = \intersection A )
 \]
 %(or even "$\reflectbox{$\mbox{E}$}\langle A\rangle = \intersection A$")
 \end{theorem}
 \Proof
 \[
-v\in \mbox{E}^{-1}\langle A \rangle 
+v\in \mbox{E}^{\top}\langle A \rangle 
 \IFF
-\forall a\in A: (a,v)\in \mbox{E}^{-1}
+\forall a\in A: (a,v)\in \mbox{E}^{\top}
 \]
 \[
 \IFF
@@ -88,9 +88,9 @@ v \in \intersection A
 \]
 \Done
 \begin{theorem}()\\
-$(\dom(\Sigma F))\cup (F^{-1}[\{\emptyset\}]) = \dom(F)$\\
+$(\dom(\Sigma F))\cup (F^{\top}[\{\emptyset\}]) = \dom(F)$\\
 $
-(\dom(\Sigma F))\cap (F^{-1}[\{\emptyset\}]) = \emptyset
+(\dom(\Sigma F))\cap (F^{\top}[\{\emptyset\}]) = \emptyset
 $
 \end{theorem}
 \Proof

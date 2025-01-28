@@ -2,10 +2,12 @@
 \input{BEGIN.tex}
 %\section{Set \& c
 \section{Class theory}
+\subsection{Basic class-theoretic operations}
+\iffalse
 Notation:\\
 
 Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi-equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
-
+\fi
 \begin{definition}
 \label{def:identity}
 Identity.
@@ -71,18 +73,29 @@ X\subseteq \power Y
 
 \begin{theorem}
 \[
-(f\injective)
+\left(f\injective\right)
 \implies
-(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right])
+\left(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right]\right)
 \]
 \end{theorem}
 
 \begin{theorem}
 \[
-(f\univocal)
+\left(f\univocal\right)
 \implies
-f^{-1}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
+\left(
+f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
+\right)
 \]
 \end{theorem}
-
+\subsection{Conditional operator}
+\begin{definition}(if-then-else)
+\[
+(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) :\simeq (\{z|((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)\})
+\]
+Side conditions:\\
+($z$ is not free in $t_1$),\\
+($z$ is not free in $t_2$),\\
+($z$ is not free in $\varphi$).\\
+\end{definition}
 \input{END.tex}

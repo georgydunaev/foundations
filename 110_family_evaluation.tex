@@ -1,12 +1,13 @@
 \def\topic{Evaluation}
 \input{BEGIN.tex}
 \section{Evaluation}
+
+
 \begin{definition}(value)
 \[
 F(x) :\simeq \left(\lif ((F\family)\land(x \in \dom(F)))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
 \end{definition}
-
 \subsection{Value} % of a function.
 Definition of the value of the function:
 %(in the context of 3-valued logic)
@@ -38,16 +39,6 @@ I_\Fm(s\approx t) :\IFF
 \lundef :\simeq (\varepsilon x: \bot)
 \]
 \end{definition}
-
-\begin{definition}(if-then-else)todo
-\[
-(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) :\simeq (\{z|((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)\})
-\]
-Side conditions:\\
-($z$ is not free in $t_1$),\\
-($z$ is not free in $t_2$),\\
-($z$ is not free in $\varphi$).\\
-\end{definition}
 What if $\varphi$ is assigned with $U$ (i.e. it is assigned with the "uncertain" truth value)?\\
 If $(I(\varphi)=U)$, then 
 \[
@@ -55,7 +46,6 @@ If $(I(\varphi)=U)$, then
 \]
 should follow.\\
 Btw, $I(\lundef)=\emptyset$.\\
-
 \pagebreak
 
 \subsection{Some simple theorems about classes}

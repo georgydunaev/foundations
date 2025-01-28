@@ -1,11 +1,13 @@
 \def\topic{Foundations of mathematics}
 \input{BEGIN.tex}
-\section{Logical framework}%First-order l
+%\section{Logical framework}%First-order l
 
 %\begin{definition}(conglomerate of all classes)
 %\
 %\end{definition}
-\subsection{Lambda-calculus as a metalanguage}
+%\sub
+\section{Lambda-calculus as a metalanguage}
+\subsection{Definitions}
 All inductive definitions in this section are simultaneous.
 Classes are types, expressions are sets.
 \begin{notation}
@@ -211,6 +213,8 @@ The expression $e$ is well-typed if computed $\TypeOf(e)$ is not $\None$.
 Partial function of simultaneous substitution of a free variable $x$ in expression $u$ with another expression $t$.
 (The definition is not yet written, but it is implemented as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.)
 \end{definition}
+
+
 \begin{definition}[Transformation]\ \\
 Transformations of expressions.
 \begin{enumerate}
@@ -220,8 +224,17 @@ Transformations of expressions.
 \item Proj2-reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow b$.
 \end{enumerate}
 \end{definition}
+\subsection{Basic type theoretic definitions.}
+\begin{definition}[$\Bool$]\ \\
+Inductive definition of booleans:
+\begin{enumerate}
+\item $(\lFalse:\Bool).$
+\item $(\lTrue:\Bool).$
+\end{enumerate}
+\end{definition}
+\dots
 \pagebreak
-\subsection{Predicate calculus as a language}
+\section{Predicate calculus as a language}
 %All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
 
 %\begin{definition}[$\BddExpr$]\ \\
@@ -264,13 +277,6 @@ Inductive definition of formulas:
 \end{enumerate}
 \end{definition}
 
-\begin{definition}[$\Bool$]\ \\
-Inductive definition of booleans:
-\begin{enumerate}
-\item $(\lFalse:\Bool).$
-\item $(\lTrue:\Bool).$
-\end{enumerate}
-\end{definition}
 
 \begin{definition}[$\vdash$]\ \\
 %Inductive definition of formulas:
@@ -279,10 +285,14 @@ Inference in language is denoted with function $\vdash$.
 \[
 (\vdash : \Fm \to \Bool)
 \]
+\iffalse
 It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
+\fi
 \end{definition}
 \pagebreak
+%\sub
 \subsection{Axioms for the predicate calculus}
+%\sub
 \subsubsection{Propositional part}
 For all formulas $A$, $B$, $C$,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
@@ -331,6 +341,7 @@ B
 }
 \label{ax:MP} \tag{ax:MP}
 \]
+%\sub
 \subsubsection{Predicational part}
 \underline{Specificational axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
@@ -367,7 +378,8 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 Inside the side conditions, the sign $\notin$ is used on the metalevel.
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 %\pagebreak
-\subsubsection{Evaluation}
+%\sub
+\subsection{Evaluation}
 \begin{parameter}[domain of discourse]\ \\
 We fix certain collection of objects $\Domain$ over which we want to use a pluralistic predicate logic. It can be natural numbers, a Grothendieck universe, a class of hereditary finite sets, a class of all sets, a conglomerate of all classes, etc.
 \end{parameter}
@@ -446,8 +458,10 @@ We assume that function symbols are not intersecting with predicate symbols.
 \]
 \end{definition}
 \fi
-\subsubsection{Function symbols}
-\subsubsection{Predicate symbols}
+%\sub
+\subsection{Function symbols}
+%\sub
+\subsection{Predicate symbols}
 \begin{definition}[predicate symbols]\ 
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then $A$ is a predicate symbols.
@@ -455,7 +469,8 @@ We assume that function symbols are not intersecting with predicate symbols.
 \end{itemize}
 \end{definition}
 
-\subsubsection{Interpretation}
+%\sub
+\subsection{Interpretation}
 \underline{Interpretation of atomic predicate symbols:}
 \begin{premise}[interpretation of atomic predicate symbols]\ \\
 \[
@@ -591,12 +606,14 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) := ((I^v(\varphi_1))\ \mathrm{Or}\ (I^v(\varph
 \end{itemize}
 \end{definition}
 \fi
-\subsubsection{Truth}
+%\sub
+\subsection{Definition of truth}
+\iffalse
 Due to high expressiveness of chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
 The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formulas, which indicates which quantifier must be used on atomic formulas.
 %It also involves to introduce  
 %, that's why it is necessary to introduce truthness predicate.
-
+\fi
 
 \[
 I^v(()):=\{()\}
@@ -830,14 +847,16 @@ So the part for predicate symbols is done, it is left to define truth values on 
 %%\right)
 %%\]
 \end{itemize}
-\subsubsection{Validity}
+%s\sub
+\subsection{Validity}
 \end{definition}
 \begin{definition}[validity]\ %\\% / entailment relation
 \[
 (\models \varphi) \IFFdef (\forall(v\evaluation), \models^v \varphi).
 \]%_\forall
 \end{definition}
-\subsubsection{Soundness}
+%\sub
+\subsection{Soundness}
 %(\vv{x})
 \begin{definition}[update of the function]\ %\\
 %v\cap (\{\xi\}\times V)
@@ -889,7 +908,8 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \pagebreak
 
 \iffalse
-\subsection{Definitions of logical notions}%Basic definitions of the syntax
+%\sub
+\section{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
 
@@ -1022,7 +1042,8 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 \end{definition}
 
 
-\subsubsection{Substitution}%Basic definitions}
+%\sub
+\subsection{Substitution}%Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
 \[
@@ -1039,8 +1060,10 @@ The definition is not yet written, but it is implemented as functions ending wit
 %\]
 %As we can see from \eqref{eq:einstein}\ldots
 
-\subsection{Semantics} % the big one.
-\subsubsection{Motivation}
+%\sub
+\section{Semantics} % the big one.
+%\sub
+\subsection{Motivation}
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
 Let $\power \mathcal{U}\setminus\{\emptyset\}$ be the domain of discourse on the global level of the presented model for the theory.\\
@@ -1063,7 +1086,8 @@ But we are interested mostly into variable interpreted as "class-singletones" of
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
 %\subsubsection{NEW VERSION, GOOD: Precise definitions}
-\subsubsection{Definitions}
+%\sub
+\subsection{Definitions}
 Traditional assignment is an univocal correspondence between variables and sets. In this text, the global assignment is introduced as an univocal correspondence between variables and conglomerates%-singletons
  of classes. 
 The whole this section is devoted to definition of interpretation functions for terms and formulas under the global assignment.\\ 
@@ -1273,16 +1297,19 @@ I^{l^*}_\Term
 \]
 \Done
 
-\subsubsection{Interpretation, special cases}
+%\sub
+\subsection{Interpretation, special cases}
 \[
 I^{v^*}_\Fm((\varepsilon x.\varphi)):=\{\}
 \]
 
-\subsubsection{Lemmas for axiom validation}
+%\sub
+\subsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
 \begin{lemma}(substituition equals changing the assignment)
 \end{lemma}
-\subsubsection{Validation of axioms and rules}
+%\sub
+\subsection{Validation of axioms and rules}
 \begin{theorem}(Generalization rule)
 \[
 \frac{
@@ -1324,7 +1351,8 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 
 \iffalse
 ============================================\\
-\subsubsection{OLD VERSION, NOT GOOD: Precise definitions}
+%\sub
+\subsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
 $w:\Var\to((\power\Domain)\setminus\{\emptyset\})$
@@ -1446,7 +1474,8 @@ forall x phi  -> phi[t/x]
 
 \fi
 
-\subsubsection{Application for "greek"--operators}
+%\sub
+\subsection{Application for "greek"--operators}
 
 We have not always well-defined epsilon operator.\\
 (tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
@@ -1542,7 +1571,8 @@ Some statements:\\
 
 
 
-\subsection{Useful metatheorems}
+%\sub
+\section{Useful metatheorems}
 
 \begin{theorem}(Deduction theorem)
 \[
@@ -1599,13 +1629,16 @@ By induction on formula construction.\\
 ...\\
 \Done
 
-\subsubsection{Extension by definitions}
+%\sub
+\subsection{Extension by definitions}
 ...
 
-\subsubsection{Soundness of the calculus}
+%\sub
+\subsection{Soundness of the calculus}
 ...
 \pagebreak
-\subsection{Just some first-order logic theorems}
+%\sub
+\section{Just some first-order logic theorems}
 ...
 \begin{theorem}
 \label{thm:ILMorgan}
@@ -1730,6 +1763,8 @@ Maybe it is not a problem.\\
 Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% /commented
+
+
 \subsection{Additional specific notions}
 Due to richer semantics it is possible to formally introduce the relation between terms $(s \rightsquigarrow t)$ that holds when $t$ is one of possible the implementations of underdefined term $s$. This reflects the fact that certain underdefined concepts(like ordered pair, real numbers, lists, etc) can have various implementations.
 \[

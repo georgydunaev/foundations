@@ -80,7 +80,7 @@ or, equivalently,
 2. By thm ..., $\emptyset \subseteq A$.\\
 3. From 1 and 2, it follows that $\emptyset \sss A$ by ... .\\
 4. By ax ..., $(\emptyset\set)$.\\
-5. From 3 and 4, it follows that $\emptyset \in \{b|b \sss A\}$.\\
+5. From 3 and 4, it follows that $\emptyset \in \{\,b\ |\ b \sss A\,\}$.\\
 \Done
 \begin{theorem}
 \[
@@ -129,22 +129,22 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 %Model:\\
 \begin{definition}(List-def)
 \[
-\List(A):=\{(F\family) | \dom(F)\in \omega\}
+\List(A)\eqdef\{\,(F\family)\ |\ \dom(F)\in \omega\,\}
 \]%\omega\cup\{\omega\}
 \end{definition}
 \begin{definition}(Nil-def)
 \[
-[] := \emptyset
+[] \eqdef \emptyset
 \]
 \end{definition}
 \begin{definition}(inc\_fst-def)
 \[
-\mathrm{inc\_fst}(r) := \{(x\cup\{x\},y) | (x,y) \in R\}
+\mathrm{inc\_fst}(r) \eqdef \{(x\cup\{x\},y) | (x,y) \in R\}
 \]
 \end{definition}
 \begin{definition}(Cons-def)
 \[
-(h::t) := \{(\emptyset,b)|(b\sss h)\}\cup \mathrm{inc\_fst}(t)
+(h::t) \eqdef \{(\emptyset,b)|(b\sss h)\}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
 %Theorems:
@@ -184,123 +184,123 @@ or, equivalently,
 %\subsubsection{Axioms of $\Sigma$-types}
 \begin{definition}(Union)
 \[
-\union A:=\{x\ |\ \exists a\in A: x\in a\}
+\union A\eqdef\{x\ |\ \exists a\in A: x\in a\}
 \]
 \end{definition}
 %1
 \begin{definition}(Value)
 \[
-F(a):=\union\{s\ |\ (a,s)\in F\}
+F(a)\eqdef\union\{s\ |\ (a,s)\in F\}
 \]
 \end{definition}
 %2
 \begin{definition}(relational domain)
 \[
-\dom(R):=\{a\ |\ \exists b: (a,b)\in R\}
+\dom(R)\eqdef\{a\ |\ \exists b: (a,b)\in R\}
 \]
 \end{definition}
 \begin{definition}(functional Domain)
 \[
-\Dom(F):=\dom(F)
+\Dom(F)\eqdef\dom(F)
 \]
 \end{definition}
 %3
 \begin{definition}(relational range)
 \[
-\ran(R):=\{b\ |\ \exists a: (a,b)\in R\}
+\ran(R)\eqdef\{b\ |\ \exists a: (a,b)\in R\}
 \]
 \end{definition}
 \begin{definition}(functional Range)
 \[
-\Ran(F):=\{F(a)\ |\ a\in\Dom(F)\}
+\Ran(F)\eqdef\{F(a)\ |\ a\in\Dom(F)\}
 \]
 \end{definition}
 %4
 \begin{definition}(restriction)
 \[
-F\restriction A:=\{(a,s)\in F\ |\ a\in A\}
+F\restriction A\eqdef\{(a,s)\in F\ |\ a\in A\}
 \]
 \end{definition}
 %5
 \begin{definition}(relational image)
 \[
-\image_R(A):=\ran(R\restriction A)
+\image_R(A)\eqdef\ran(R\restriction A)
 \]
 \end{definition}
 \begin{definition}(functional Image)
 \[
-\Image_F(A):=\Ran(F\restriction A)
+\Image_F(A)\eqdef\Ran(F\restriction A)
 \]
 \end{definition}
 %6
 \begin{definition}(relational composition)
 \[
-R \circ S := \{(x,z)\ |\ \exists y:(x,y)\in S \land (y,z)\in R\}
+R \circ S \eqdef \{(x,z)\ |\ \exists y:(x,y)\in S \land (y,z)\in R\}
 \]
 \end{definition}
 \begin{definition}(functional composition)
 \[
-F \circ G := \{(x,z)\ |\ x \in \Dom(G) \land (G(x),z)\in F\}
+F \circ G \eqdef \{(x,z)\ |\ x \in \Dom(G) \land (G(x),z)\in F\}
 \]
 \end{definition}
 %7
 \begin{definition}(class of all sets)
 \[
-\V:=\{x\ |\ x\any\}
+\V\eqdef\{x\ |\ x\any\}
 \]
 \end{definition}
 \begin{definition}(membership class)
 \[
-\E:=\{(x,y)\ |\ x\in y\}
+\E\eqdef\{(x,y)\ |\ x\in y\}
 \]
 \end{definition}
 \begin{definition}(identity class)
 \[
-\I:=\{(x,x)\ |\ x\any\}
+\I\eqdef\{(x,x)\ |\ x\any\}
 \]
 \end{definition}
 %8
 \begin{definition}(relational transposition)
 \[
-R^\top:=\{(y,x)\ |\ (x,y)\in R\}
+R^\top\eqdef\{(y,x)\ |\ (x,y)\in R\}
 \]
 \end{definition}
 \begin{notation}
 \[
-\invE := \E^\top
+\invE \eqdef \E^\top
 \]
 \end{notation}
 \begin{definition}(functional transposition)
 \[
-F^\intercal:=\{(F(x),x)\ |\ x\in \Dom(F)\}
+F^\intercal\eqdef\{(F(x),x)\ |\ x\in \Dom(F)\}
 \]
 \end{definition}
 
 %9
 \begin{definition}(dependent sum of a family)
 \[
-\Sigma F:=\{(x,y)\ |\ y\in F(x)\}
+\Sigma F\eqdef\{(x,y)\ |\ y\in F(x)\}
 \]
 \end{definition}
 %10,11
 \begin{definition}(ordered pair projections)
 \[
-\pr_1 := \{((a,b),a)\ |\ a\any,b\any\}
+\pr_1 \eqdef \{((a,b),a)\ |\ a\any,b\any\}
 \]
 \[
-\pr_2 := \{((a,b),b)\ |\ a\any,b\any\}
+\pr_2 \eqdef \{((a,b),b)\ |\ a\any,b\any\}
 \]
 \end{definition}
 %12
 \begin{definition}(sections of a family)
 \[
-\Gamma F:=\{s:\Dom(F)\to\Sigma F\ |\ \pr_1\circ s \subseteq \I\}
+\Gamma F\eqdef\{s:\Dom(F)\to\Sigma F\ |\ \pr_1\circ s \subseteq \I\}
 \]
 \end{definition}
 %13
 \begin{definition}(dependent product of a family)
 \[
-\Pi F := \{\pr_2\circ s\ |\ s\in \Gamma F\}
+\Pi F \eqdef \{\pr_2\circ s\ |\ s\in \Gamma F\}
 \]
 \end{definition}
 %%14
@@ -342,7 +342,7 @@ Assume that $(F\family)$.
 
 \begin{definition}(Dependent sum)
 \[
-\Sigma F := \mbox{E}^{-1} \circ F
+\Sigma F \eqdef \mbox{E}^{\top} \circ F
 \]
 \end{definition}
 
@@ -372,7 +372,7 @@ In MK, it corresponds to the following:
 \begin{definition}(Dependent product, variant B)\\
 (Note: For sets the following definition is also okey:
 \[
-\Pi F = \left\{f\in \left(\union\ran(F)\right)^{\dom(f)} \middle| \forall (x\in\dom(f)) : (f(x) \in F(x)) \right\},
+\Pi F = \left\{\,f\in \left(\union\ran(F)\right)^{\dom(f)}\ \middle|\ \forall (x\in\dom(f)) : (f(x) \in F(x)) \,\right\},
 \]
 but it is not working well for classes)
 
@@ -382,7 +382,7 @@ but it is not working well for classes)
 \begin{definition}(Dependent product, variant C)\\
 Another definition:\\
 \[
-\prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
+\prod w \eqdef \left\{\,f\ |\ \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))\,\right\}
 \]
 \end{definition}
 \subsubsection{Soundness of $\Pi$-types}
@@ -397,23 +397,23 @@ Another definition:\\
 \subsubsection{Model of $W$-types}
 Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
 \[
-\mbox{W}_{\mathrm{fun}}F(0):= \emptyset 
+\mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyset 
 \]
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1):= \{(r,s)| (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )\}
+\mbox{W}_{\mathrm{fun}}F(n+1)\eqdef \{(r,s)| (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )\}
 \]
 \[
-\mbox{W}F :=\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
 \]
 \subsubsection{Soundness of $W$-types}
 ...
 \pagebreak
-\subsection{Implementing $M$-types}
+\subsection{Implementing $M$-types [unfinished]}
 \subsubsection{Axioms of $M$-types}
 ...
 \subsubsection{Model of $M$-types}
 \[
-MF := \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
+MF \eqdef \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
 \]
 \[
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}

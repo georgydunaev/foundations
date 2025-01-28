@@ -1,28 +1,279 @@
 \def\topic{Mechnization of Azriel Levy's Proof}
 \input{BEGIN.tex}
-\section{Azriel Levy's Union theorem}
+\section{Azriel Levy's Union Theorem}
 
-\begin{theorem}
-(Azriel Levy 1968 "On Von Neumann's Axiom System for Set Theory"
-\url{https://www.jstor.org/stable/2315201})
+This section follows the Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory''(1968) availible at 
+\url{https://www.jstor.org/stable/2315201}.\\
+%(the proof needs theorems about ordinals done first)\\
+Definitions:
+\iffalse
+\begin{definition}[]
+\label{def:}
+\end{definition}
+\fi
+\begin{definition}[well-ordering of universal class]
+\label{def:FwoV}
+\[
+F:\On \to \V \text{ surjective}
+\]
+\[
+\dots
+\]
+\end{definition}
+\begin{definition}[the section of $F$ which returns minimal ordinals]
+\label{def:Gsect}
+\[
+G(y)\eqdef\inf\{\,x\in\On\ |\ F(x)=y\,\}
+\]
+\end{definition}
+\begin{definition}[tilde]
+\label{def:tilde}
+\[
+\tilde{f}\eqdef
+\begin{cases}
+    f,& \text{if }f\text{ is a function},\\
+    \emptyset,& \text{otherwise}.
+\end{cases}
+\]
+\end{definition}
+%\[
+%\ev_\cdot:X\to((X\to Y)\to Y),
+%\]
+%\[
+%\ev_x(f):=f(x).
+%\]
+\begin{definition}[evaluation class-function]\ \\
+\label{def:evclass}
+Implying that $f(x)=\emptyset$ in case of $x\notin\dom(f)$,
+\[
+\ev_x\eqdef\{\,(f,f(x))\ |\ f\in\V\,\}
+\]
+\end{definition}
+\begin{definition}[R function]
+\label{def:Rfunc}
+\[
+R\eqdef((\tilde{\cdot})\circ F)
+\]
+\end{definition}
+\begin{definition}[Q(x)]
+\label{def:Qx}
+\[
+Q(x)\eqdef\ev_x[R[x]]
+\]
+\end{definition}
+
+\begin{definition}[h function]
+\label{def:hfunc}
+\[
+h(x)\eqdef\inf(\On\setminus(Q(x)))
+\]
+\end{definition}
+\begin{definition}[beta]
+\label{def:beta}
+\[
+\beta\eqdef G(h)
+\]
+\end{definition}
+\begin{definition}[bounded subclasses of On]\ \\
+\label{def:bddscOn}
+In context of $(b\subclass\On)$,
+\[
+(b\text{ bounded})\iffdef(\exists \beta\in\On:b\subclass\beta)
+\]
+\[
+(b\text{ unbounded})\iffdef(\neg(b\text{ bounded}))
+\]
+\end{definition}
+\begin{lemma}[subsets of On are bounded]
+\label{lem:ssOnBdd}
+\[
+(b\set)\land(b\subclass\On)\implies(b\text{ bounded})
+\]
+\Proof
+Step 1:
+\[
+(x\set)
+\IMPLIES
+(Q(x)\set)
+\]
+\[
+(Q(x)\set)
+\IMPLIES
+((\On\setminus Q(x))\neq\emptyset)
+\]
+\[
+\IMPLIES
+\inf(\On\setminus Q(x)) \in (\On\setminus Q(x))
+\]
+\[
+\IMPLIES
+h(x)\in (\On\setminus Q(x))
+\]
+\[
+\IMPLIES
+(h(x)\in \On)
+\land
+(h(x)\notin Q(x))
+\]
+Step 2:
+\[
+(y\set)
+\AND
+(F:\On\to\V\text{ surjective})
+\IMPLIES
+F^\top[\{y\}]\neq\emptyset
+\]
+\[
+\IMPLIES
+\inf(F^\top[\{y\}])\in F^\top[\{y\}]
+\]
+\[
+\IMPLIES
+G(y)\in F^\top[\{y\}]
+\]
+\[
+\IMPLIES
+(G(y)\in\On)\land( F(G(y))=y)
+\]
+\Done
+\end{lemma}
+\begin{lemma}[techlem]
+\label{lem:techlem}
+\[
+F[\alpha]\supseteq \union a
+\]
+\Proof
+Fix $\left(b\in\union a\right)$. To show: $n\in F[\alpha]$.
+\[
+\left(b\in\union a\right)
+\IMPLIES
+\exists b\in a:n\in b.
+\]
+Due to lemma \ref{lem:ssOnBdd} $H(b)$ is a strict upper bound of $G[b]$.
+\[
+(b\set)
+\IMPLIES
+(G[b]\in\power(\On))
+\]
+\[
+\IMPLIES
+(G[b]\text{ is bounded})
+\]
+There is a bound, therefore, there is a strict bound.
+\[
+(a\set)
+\AND
+(H\text{ class-function})
+\implies
+(H[a]\set)
+\]
+\[
+(H[a]\set)
+\AND
+(H[a]\subclass\On)
+\IMPLIES
+(\exists \alpha\in\On:H[a]\subclass\alpha)
+\]
+\[
+(b\in a)
+\IMPLIES
+(H(b)\in H[a])
+\]
+\[
+H[a]\subclass\alpha
+\IMPLIES
+H(b)\in\alpha
+\]
+\[
+H(b)\in\alpha
+\IMPLIES
+H(b)\subsetneq\alpha
+\]
+\[
+G[b]\subclass H(b)
+\AND
+H(b)\subsetneq\alpha
+\IMPLIES
+G[b]\subclass\alpha
+\]
+\[
+\IMPLIES
+(F[G[b]]\subclass F[\alpha])
+\]
+\[
+F[G[b]]=b
+\]
+\[
+b\subclass F[G[b]]
+\AND
+(F[G[b]]\subclass F[\alpha])
+\IMPLIES
+(b\subclass F[\alpha])
+\]
+\[
+(n\in b)
+\AND
+(b\subclass F[\alpha])
+\IMPLIES
+(n\in F[\alpha])
+\]
+\Done
+\end{lemma}
+
+\begin{theorem}[union of set is a set]
+\label{thm:unionisset}
 \[
 (A\set)
 \implies
 \left(\union A\set\right)
 \]
-\end{theorem}
 \Proof
-(the proof needs theorems about ordinals done first)\\
-...\\
+\[
+H(b)\eqdef\inf\{\,e\ |\ e\text{ strict upper bound of }G[b]\,\}
+\]
+\[
+(a\set)
+\AND
+(H\text{ class-function})
+\implies
+(H[a]\set)
+\]
+\[
+(H[a]\set)
+\AND
+(H[a]\subclass\On)
+\IMPLIES
+(H[a]\in\power(\On))
+\]
+\[
+(H[a]\in\power(\On))
+\IMPLIES
+(\exists\alpha\in\On:H[a]\subclass\alpha)
+\]
+\[
+(\alpha\set)
+\AND
+(F\text{ class-function})
+\IMPLIES
+(F[\alpha]\set)
+\]
+Statement of the lemma \ref{lem:techlem}: $F[\alpha]\supseteq \union a$.
+\[
+(F[\alpha]\set)
+\AND
+\left(\left(\union a\right)\subclass \left(F[\alpha]\right)\right)
+\IMPLIES
+\left(\left(\union a\right)\set\right)
+\]
 \Done
-
+\end{theorem}
+\iffalse
 \includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/1.jpg}\\
-
 \includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/2.jpg}\\
 \includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/3.jpg}\\
 \includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/4.jpg}\\
 \includegraphics[angle=-90,origin=c,scale=0.1]{azriel_levy/5.jpg}\\
-
+\fi
 %\end{document}
 
 \input{END.tex}

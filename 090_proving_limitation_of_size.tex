@@ -17,7 +17,7 @@ Axiom of limitation of size:
 Here $|\cdot|$ is a functional symbol defined as following.
 \begin{definition}(cardinality of a class)
 \[
-|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}
+|K|\eqdef \On \cap \bigcap \{a\in\On|K\preccurlyeq a\}
 \]
 \end{definition}
 \begin{definition}
@@ -27,22 +27,22 @@ Here $|\cdot|$ is a functional symbol defined as following.
 (\exists f: (f:X\to Y)\land (f \injective))
 \]
 \end{definition}
-The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\Ord$ if the argument is a proper class.\\
+The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\On$ if the argument is a proper class.\\
 We will introduce some axioms to make such behaviour provable.\\
 \begin{iaxiom}
 \[
-|\cdot|:V \to \Ord
+|\cdot|:V \to \On
 \]
 Actually, since $|\cdot|$ is a functional symbol, we mean the following:
 \[
-(x\mapsto |x|):V \to \Ord
+(x\mapsto |x|):V \to \On
 \]
 Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\{\langle x, |x|\rangle | x \any\set\}$.
 \end{iaxiom}
 Actually, we can use the following axiom:
 \begin{axiom*}
 \[
-(x\set)\implies(|x|\in\Ord)
+(x\set)\implies(|x|\in\On)
 \]
 \end{axiom*}
 or even
@@ -54,7 +54,7 @@ or even
 since later we will prove that
 \begin{theorem*}
 \[
-(x\set)\implies(|x|\in\Ord)
+(x\set)\implies(|x|\in\On)
 \]
 \end{theorem*}
 
@@ -75,10 +75,10 @@ Some equivalent(in normal context) statements:
 \iff
 (|K| \neq |V|)
 \]
-because $|V|=\Ord$ and
+because $|V|=\On$ and
 \begin{theorem}
 \[
-|V|=\Ord
+|V|=\On
 \]
 \end{theorem}
 \Proof
@@ -115,21 +115,21 @@ We want to prove the following statement:
 Firstly, we will prove some lemmas:
 \begin{lemma}
 \[
-\Ord\notin\Ord
+\On\notin\On
 \]
 \end{lemma}
 \Proof
-Assume $\Ord\in\Ord$.\\
-Therefore $\in$ well-orders $\Ord$ as a well-founded strict linear order.\\
+Assume $\On\in\On$.\\
+Therefore $\in$ well-orders $\On$ as a well-founded strict linear order.\\
 In particular strict order is irreflexive.\\
-Since using assumpton, $\Ord$ is an element of $\Ord$, by irreflexetivity, we have $\Ord\notin\Ord$.\\
+Since using assumpton, $\On$ is an element of $\On$, by irreflexetivity, we have $\On\notin\On$.\\
 Contradiction with assumption.\\
-Therefore $\Ord\notin\Ord$ is proven.\\
+Therefore $\On\notin\On$ is proven.\\
 \Done
 
 \begin{lemma}
 \[
-|V|=\Ord
+|V|=\On
 \]
 \end{lemma}
 \Proof
@@ -143,8 +143,8 @@ Therefore $\Ord\notin\Ord$ is proven.\\
 \end{lemma}
 \Proof
 Assume $(K \in V)$.\\
-By our axiom, since $(K \in V)$ we have $(|K| \in \Ord)$.\\
-By previous lemmas we have $|V|=Ord$ and $\Ord\notin\Ord$.\\
+By our axiom, since $(K \in V)$ we have $(|K| \in \On)$.\\
+By previous lemmas we have $|V|=Ord$ and $\On\notin\On$.\\
 From these three statements we deduce that $|K| \neq |V|$.\\
 \Done
 
@@ -155,11 +155,11 @@ From these three statements we deduce that $|K| \neq |V|$.\\
 \end{lemma}
 \Proof
 Assume $(|K| \neq |V|)$.\\
-We know that $(|V|=\Ord)$, so $(|K| \neq \Ord)$.\\
+We know that $(|V|=\On)$, so $(|K| \neq \On)$.\\
 Recalling the definition:
-$|K|:= \Ord \cap \bigcap \{a\in\Ord|K\preccurlyeq a\}$.\\
+$|K|:= \On \cap \bigcap \{a\in\On|K\preccurlyeq a\}$.\\
 Now we have that 
-there exists some $m \in \Ord$, which is not in $\bigcap \{a\in\Ord|K\preccurlyeq a\}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\Ord$ is subclass of $\Ord$)\\
+there exists some $m \in \On$, which is not in $\bigcap \{a\in\On|K\preccurlyeq a\}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\On$ is subclass of $\On$)\\
 ...
 
 \Done
