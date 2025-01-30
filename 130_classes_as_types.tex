@@ -8,11 +8,11 @@ First of all, we (loosely) define the semantics.
 
 Since, everything is a class in MK, we have:
 \[
-\semantics("(A:\Type)"):=\top.
+\semantics("(A:\Type)")\eqdef \top.
 \]
 Dependent types are treated as families.
 \[
-\semantics("(x:A\vdash B(x):\Type)"):=(B\family)\land(\dom(B)\subseteq A).
+\semantics("(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\dom(B)\subseteq A).
 \]
 
 \[
@@ -51,17 +51,17 @@ Is the following okey ???
 %Model:\\
 \begin{definition}(None-def)
 \[
-\None := \emptyset
+\None \eqdef \emptyset
 \]
 \end{definition}
 \begin{definition}(Some-def)
 \[
-\Some(a) := \{a\}
+\Some(a) \eqdef \{a\}
 \]
 \end{definition}
 \begin{definition}(Option-def)
 \[
-\Option(A) := \{b|(b \sss A)\}
+\Option(A) \eqdef \{b|(b \sss A)\}
 \]
 \end{definition}
 \subsubsection{Soundness of option types}

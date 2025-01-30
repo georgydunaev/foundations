@@ -19,10 +19,10 @@
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
 %Значит любой класс не принадлежит сам себе.
 
-\subsection{Russel's Paradox}
-\begin{theorem}
+\subsection{There is no class containing all irreflexive classes}
+\begin{theorem}[Russel's paradox]
 \label{Russel's Paradox}
-In classical and even in intuitionistic logic, the following holds:
+Both in classical and in intuitionistic logic, the following holds:
 \[
 \neg (\exists W \forall Q: Q\in W \iff Q\notin Q)
 \]
@@ -45,13 +45,13 @@ $W\in W \iff W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
 Subgoal2:\\
 $W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
 $W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
-$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).\\
+$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).
 \Done
 %\subsection{Consequences of regularity axiom}
-\subsection{Epsilon relation is not reflexive}
+\subsection{Regularity implies that all classes are irreflexive}
 \begin{theorem}
 \label{thm:not in itself}
-In classical and even in intuitionistic logic, the following holds:
+Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
 \[ \forall Y: Y\notin Y\]
 \end{theorem}
 \Proof
@@ -90,7 +90,7 @@ $(Y\in C)\Longrightarrow (Y\notin Y)$.\\
 Case 2: $\neg(Y\set)$.\\
 $\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
 $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
-$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)\\
+$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)
 \Done
 
 \begin{theorem}
@@ -108,7 +108,7 @@ New goal:
 \[
 \neg\exists w: w\in A
 \implies
-\neg(\left(\intersection A\right)\set)
+\neg\left(\left(\intersection A\right)\set\right)
 \]
 Proof of the claim:
 \[
@@ -162,7 +162,7 @@ The claim is proven.
 %\]
 \Done
 
-\subsection{Powerset A is not a subset of A}
+\subsection{The powerclass of a set A is not a subclass of A}
 
 \begin{theorem}
 \label{thm:powerset not a subset}
@@ -172,7 +172,7 @@ In classical and even in intuitionistic logic, the following holds:
 \Proof
 \noindent %Fix Y.\\
 \[
-C:=\{w|\neg(\power w \subseteq w)\}
+C:=\{\,w\ |\ \neg(\power w \subseteq w)\,\}
 \]
 Claim $\power C \subseteq C$:\\
 Fix $B\in \power C$. To show: $B\in C$\\
@@ -190,7 +190,7 @@ $(\power C \subseteq C)\Longrightarrow (V\subseteq C)$ (by regularity axiom).\\
 Fix $(Y\set)$.\\
 $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
-$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.\\
+$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 %By Russel's paradox(\ref{Russel's Paradox}), 
 %$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
 %$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
@@ -211,7 +211,7 @@ A conglomerate of all classes is not a class. It "does not exist as class".
 Fix W.\\
 Set $Q:=W$.\\
 By \ref{thm:not in itself}, $W\notin W$.\\
-So $Q\notin W$.\\
+So $Q\notin W$.
 \Done
 
 \input{END.tex}

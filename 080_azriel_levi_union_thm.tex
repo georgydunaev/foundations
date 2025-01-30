@@ -1,11 +1,16 @@
-\def\topic{Mechnization of Azriel Levy's Proof}
+\def\topic{Mechanization of Azriel Levy's Proof}
 \input{BEGIN.tex}
-\section{Azriel Levy's Union Theorem}
+\section{Azriel Levy's union theorem}
+This section cantains the expansion of Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory'' \cite{Levy68}.
 
-This section follows the Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory''(1968) availible at 
-\url{https://www.jstor.org/stable/2315201}.\\
+%This section follows the Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory''(1968) availible at 
+%\url{https://www.jstor.org/stable/2315201}.\\
+
+
+%\ref{TakeutiZaring1982}
+
 %(the proof needs theorems about ordinals done first)\\
-Definitions:
+\subsection{Definitions}
 \iffalse
 \begin{definition}[]
 \label{def:}
@@ -84,6 +89,7 @@ In context of $(b\subclass\On)$,
 (b\text{ unbounded})\iffdef(\neg(b\text{ bounded}))
 \]
 \end{definition}
+\subsection{Sets of ordinals are bounded}
 \begin{lemma}[subsets of On are bounded]
 \label{lem:ssOnBdd}
 \[
@@ -137,6 +143,8 @@ G(y)\in F^\top[\{y\}]
 \]
 \Done
 \end{lemma}
+
+\subsection{Union of a set is a set}
 \begin{lemma}[techlem]
 \label{lem:techlem}
 \[

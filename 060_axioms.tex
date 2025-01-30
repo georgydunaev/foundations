@@ -24,7 +24,7 @@ If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
 \label{def:subclass}
 Subclass predicate.
 \[
-(A\subseteq B)\iff(\forall x\in A:x\in B)
+(A\subseteq B)\iffdef(\forall x\in A:x\in B)
 \]
 \end{definition}
 
@@ -34,11 +34,10 @@ If the variant of logic being used doesn't have equality, then add the following
 \begin{constructor}Equality.\\
 If $A$ and $B$ are classes, then $(A=B)$ is a formula.
 \end{constructor}
-\begin{definition}
-Equality. (in case if the 1st order logic is given without equality)
+\begin{definition}[equality](in case if the 1st order logic is given without equality)\\
 If Y is not a free variable neither in A nor in B, then:
 \[
-(A=B)\iff (\forall Y: A\in Y \iff B\in Y)
+(A=B) \iffdef (\forall Y: A\in Y \iff B\in Y)
 \]
 \end{definition}
 \subsection{Axiom of extensionality}
@@ -74,21 +73,22 @@ If $\varphi$ is a formula, then $\{x|\varphi\}$ is a class.\\
 (It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
 \end{constructor}
 \subsection{Axiom of class comprehension}
-\begin{axiom}(OLD Class comprehension)
-\label{axm:comprehension}
+%\begin{axiom}(OLD Class comprehension)
+%\label{axm:comprehension}
 %\[Y\in\{x|\varphi\} \iff (Y\set)\AND(\varphi[Y/x])\]
 %(or maybe
 %\[Y\in\{x|\varphi[x/Y]\} \iff (Y\set)\AND(\varphi)\]
 %we need to find one expression for both cases.
 %)
-\end{axiom}
-\begin{axiom}(NEW Class comprehension)
+%\end{axiom}
+\begin{axiom}(class comprehension)%NEW 
 \label{axm:comprehension}
 \[
 (X\in\{X|\varphi\}) \iff ((X\set)\land \varphi)
 \]
 \end{axiom}
 
+\iffalse
 
 \[
 (X\in\{X|\varphi\}) \iff ((X\set)\land \varphi)
@@ -98,7 +98,6 @@ Let's substitute X with some variable Y, which is different from X.\\
 \[
 (Y\in\{X|\varphi\}) \iff ((Y\set)\land \varphi[Y/X])
 \]
-
 Do the same step but for $\varphi[X/W]$.
 \[
 (X\in\{X|\varphi[X/W]\}) \iff ((X\set)\land \varphi[X/W])
@@ -115,20 +114,22 @@ $\varphi[X/W]$ is defined(sic!), and if $\varphi[X/W][Y/X]$ is defined(btw the f
 
 
 Now, let's prove "old class comprehesion" statement.\\
+\fi
+
 \begin{theorem}()\\
 If Y is not a free variable of $\varphi$, then:
 \[
-(Y\in\{X|\varphi[X/W]\}) \iff ((Y\set)\land(\varphi[Y/W]))
+(Y\in\{\,X\ |\ \varphi[X/W]\,\}) \iff ((Y\set)\land(\varphi[Y/W])).
 \]
 \end{theorem}
 \Proof
 ($\implies$)\\
-Assume $Y\in\{X|\varphi[X/W]\}$.\\
+Assume $Y\in\{\,X\ |\ \varphi[X/W]\,\}$.\\
 
 ...\\
 \Done
 
-\subsection{Definition of Empty class}
+\subsection{Definition of empty class}
 \begin{constructor} Empty class.\\
 The empty set symbol $\emptyset$ is a constant closed term.
 \end{constructor}
@@ -136,7 +137,7 @@ The empty set symbol $\emptyset$ is a constant closed term.
 \label{def:empty class}
 Empty class.
 \[
-\emptyset = \{x|\bot\}
+\emptyset \eqdef \{\,x\ |\ \bot\,\}
 \]
 \end{definition}
 
@@ -157,46 +158,46 @@ Empty class.
 
 
 \subsection{Axiom of empty set}
-\begin{axiom}
+\begin{axiom}[The empty class is a set]
 \label{axm:empty class}
 \[
 (\emptyset\set)
 \]
 \end{axiom}
 
-\subsection{Definition of Universal class}
+\subsection{Definition of universal class}
 \begin{definition} Universal class (constant V).
 \label{def:universal class}
 \[
-V:=\{x|\top\}
+V\eqdef\{\,x\ |\ \top\,\}
 \]
 \end{definition}
 
-\subsection{Definition of Union}
+\subsection{Definition of union}
 \begin{definition}
 \label{def:union}
 Union of an arbitrary class A.
 \[
-\union A = \{x|\exists a\in A: x\in a\}
+\union A \eqdef \{\,x\ |\ \exists a\in A: x\in a\,\}
 \]
 \end{definition}
 
 
-\subsection{Definition of Intersection}
+\subsection{Definition of intersection}
 \begin{definition}
 \label{def:intersection}
 Intersection of an arbitrary class A.
 \[
-\intersection A = \{x|\forall a\in A: x\in a\}
+\intersection A \eqdef \{\,x\ |\ \forall a\in A: x\in a\,\}
 \]
 \end{definition}
 
-\subsection{Definition of Powerclass}
+\subsection{Definition of powerclass}
 \begin{definition}
 \label{def:powerclass}
 Powerclass. (by class comprehension)
 \[
-\power X = \{x|x\subseteq X\}
+\power X \eqdef \{\,x\ |\ x\subseteq X\,\}
 \]
 \end{definition}
 \subsection{Axiom of heredity}
@@ -233,7 +234,7 @@ $\in$-induction. %(variant that uses classes)
 \label{axm:limitation of size}
 Limitation of size (of a set).
 \[
-\neg(X\set) \longleftrightarrow (\exists T: (T\function)\land (V\subseteq T[X]))
+\neg(X\set) \longleftrightarrow (\exists T: (T\text{ class-function})\land (V\subseteq T[X]))
 \]
 \end{axiom}
 
