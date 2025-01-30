@@ -136,17 +136,17 @@ X\times Y := \{(x,y)|x\in X \land y\in Y\}.
 %Separate definitions:
 To begin with, by substituting the second equality in the first equation, it is obtained that
 \[
-(a,b) := \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in b\}.
+(a,b) := \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in b}.
 \]
 So if it is defined, the cartesian product is normally defined by:
 \[
-X\times Y := \{(x,y)|x\in X \land y\in Y\}.
+X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 
 \begin{remark}\ \\
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
 \[
-\tilde{K}:= \{\emptyset\}\cup\{\{k\}| k\in K\}
+\tilde{K}:= \{\emptyset\}\cup\cc{\{k\}}{k\in K}
 \]
 \[
 [a,b] := (\{0\}\times \tilde{a})\cup (\{1\}\times \tilde{b})
@@ -238,10 +238,10 @@ Now, from the definition we can obtain certain special cases, for empty set as a
 %\]
 
 \[
-(a,0) = \{(0,a_1)|a_1\in a\}
+(a,0) = \cc{(0,a_1)}{a_1\in a}
 \]
 \[
-(0,b) = \{(1,b_1)|b_1\in b\}
+(0,b) = \cc{(1,b_1)}{b_1\in b}
 \]
 
 %\Proof
@@ -261,7 +261,7 @@ w\in (a,b)
 \]
 WLOG("Case I"), 
 \[
-w\in \{(0,a_1)|a_1\in a\}
+w\in \cc{(0,a_1)}{a_1\in a}
 \]
 \[
 \exists a_1\in a: w\in (0,a_1)
@@ -273,7 +273,7 @@ w\in \{(0,a_1)|a_1\in a\}
 
 We know that
 \[
-(a,\emptyset) = \{(0,a_1)|a_1\in a\}\cup \{(1,b_1)|b_1\in \emptyset\} = \{(0,a_1)|a_1\in a\}
+(a,\emptyset) = \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in \emptyset} = \cc{(0,a_1)}{a_1\in a}
 \]
 and
 \[
@@ -283,7 +283,7 @@ and
 
 Small remark: we can compute, just for the sanity check:
 \[
-(0,0) = (\emptyset,\emptyset) = \{(1,b_1)|b_1\in \emptyset\} = \emptyset
+(0,0) = (\emptyset,\emptyset) = \cc{(1,b_1)}{b_1\in \emptyset} = \emptyset
 \]
 \[
 (1,0) = (\{\emptyset\},\emptyset) = \{(0,\emptyset)\} = \{\emptyset\}
@@ -296,16 +296,16 @@ indeed they are all different when arguments are different, as intended. In the 
 Every chain ends with the empty set(or with an urelement in some non-extensional theories).\\
 
 If(WA) $(0,a_1)$ has an infinite chain, then (using the second equality) 
-$\{(1,e)|e\in a_1\}$ has it too. 
+$\cc{(1,e)}{e\in a_1}$ has it too. 
 
 So there exists $e_0\in a_1$, such that $(1,e_0)$ has an infinite chain.
 \[
-(1,e_0) = \{(0,0)\}\cup \{(1,e_1)|e_1\in e_0\}
+(1,e_0) = \{(0,0)\}\cup \cc{(1,e_1)}{e_1\in e_0}
 \]
 .
 Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_1\in e_0$, such that $(1,e_1)$ has an infinite chain.
 \[
-(1,e_1) = \{(0,0)\}\cup \{(1,e_2)|e_2\in e_1\}
+(1,e_1) = \{(0,0)\}\cup \cc{(1,e_2)}{e_2\in e_1}
 \]
 and so on: (using here a natural number recursion/induction)
 Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_{n+1}\in e_{n}$, such that $(1,e_{n+1})$ has an infinite chain.
@@ -317,7 +317,7 @@ Therefore $a$ has an infinite chain starting with $e$, contradiction.
 
 The proof is similar, for the "Case II", where
 \[
-w\in \{(1,b_1)|b_1\in b\}
+w\in \cc{(1,b_1)}{b_1\in b}
 \]
 \[
 \exists b_1\in b: w\in (1,b_1),
