@@ -13,6 +13,13 @@
 % git add -u
 % Where -u is short for --update.
 
+% sed -nE 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/p' 070_ordered_pair.tex
+
+% Dry run (just try)
+% sed -nE 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/p' 070_ordered_pair.tex
+% Replace!
+% sed -E -i 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/g' 070_ordered_pair.tex
+
 \ifdefined\MyHeaderIncluded
 
 \else
