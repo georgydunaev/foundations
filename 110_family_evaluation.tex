@@ -74,7 +74,7 @@ Variable $y$ is not in free variables of term $s$.
 
 \begin{definition}(Function constructor)
 \[
-(\lambda x: t) := \cc{(x,t)}{(x\ \mbox{any})}
+(\lambda x: t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
 \]
 Context: ($x$:Var) ($t$:Term)\\
 Comment: Term $t$ can contain $x$ as a free variable.\\
@@ -86,7 +86,7 @@ Side conditions:\\
 
 \begin{definition}(Family constructor)
 \[
-(\Lambda x: t) := \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
+(\Lambda x: t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
@@ -98,7 +98,7 @@ As term $s$ can contain $x$ as a free variable.\\
 
 \begin{definition*}(LOCAL definition of a value of a function, value of a family, for the next theorem)
 \[
-f(x) := \bigcup \cc{s}{(x,s)\in f}
+f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 \]
 \end{definition*}
 % \coloneqq

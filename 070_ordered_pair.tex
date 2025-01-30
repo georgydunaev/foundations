@@ -127,29 +127,29 @@ In this section it will be proven that the following self-referential definition
 \begin{definition}
 %\noindent Simultaneous defintion:
 \[
-(a,b) := (\{0\}\times a)\cup (\{1\}\times b),
+(a,b) \ceq (\{0\}\times a)\cup (\{1\}\times b),
 \]
 \[
-X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
+X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 \end{definition}
 %Separate definitions:
 To begin with, by substituting the second equality in the first equation, it is obtained that
 \[
-(a,b) := \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in b}.
+(a,b) \ceq \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in b}.
 \]
 So if it is defined, the cartesian product is normally defined by:
 \[
-X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
+X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 
 \begin{remark}\ \\
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
 \[
-\tilde{K}:= \{\emptyclass\}\cup\cc{\{k\}}{k\in K}
+\tilde{K}\ceq \{\emptyclass\}\cup\cc{\{k\}}{k\in K}
 \]
 \[
-[a,b] := (\{0\}\times \tilde{a})\cup (\{1\}\times \tilde{b})
+[a,b] \ceq (\{0\}\times \tilde{a})\cup (\{1\}\times \tilde{b})
 \]
 Generally speaking,
 \[
@@ -172,61 +172,61 @@ Definition Vide : Ens :=
   sup False (fun x : False => match x return Ens with
                               end).
 Definition Pair (A B:Ens) : Ens
- := sup bool (fun b : bool => if b then A else B).
+ \ceq sup bool (fun b : bool => if b then A else B).
 (* The singleton set  *)
-Definition Sing (E : Ens) := Pair E E.
+Definition Sing (E : Ens) \ceq Pair E E.
 \end{lstlisting}
 \begin{lstlisting}
-Definition Zero := Vide.
-Definition One  := Sing Vide.
+Definition Zero \ceq Vide.
+Definition One  \ceq Sing Vide.
 \end{lstlisting}
 \begin{lstlisting}
-Definition img (f:Ens -> Ens) (c:Ens) : Ens := 
+Definition img (f:Ens -> Ens) (c:Ens) : Ens \ceq 
 match c with
 | sup C h => sup _ (fun d => f (h d))
 end.
 \end{lstlisting}
 \begin{lstlisting}
-Definition bu A B := Union (Pair A B).
-Infix "u" := bu (at level 60, right associativity).
+Definition bu A B \ceq Union (Pair A B).
+Infix "u" \ceq bu (at level 60, right associativity).
 \end{lstlisting}
 The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built-it consistency checker cannot infer well-foundedness.
 \begin{lstlisting}
 Fail
 Program Fixpoint  OPair_Zero (c : Ens) : Ens
-                    := bu (img OPair_Zero Zero) (img OPair_One c)
+                    \ceq bu (img OPair_Zero Zero) (img OPair_One c)
             with  OPair_One  (c : Ens) : Ens
-                    := bu (img OPair_Zero One ) (img OPair_One c)
+                    \ceq bu (img OPair_Zero One ) (img OPair_One c)
 .
 \end{lstlisting}
 In order to overcome this obstacle the known special cases are defined first:
 \begin{lstlisting}
-Definition img_OPair_Zero_on_Zero := Vide.      
+Definition img_OPair_Zero_on_Zero \ceq Vide.      
 (* (img OPair_Zero Zero) === {(0,k)|k in 0} = emptyset *)
-Definition        OPair_Zero_Zero := Vide.      
+Definition        OPair_Zero_Zero \ceq Vide.      
 (* OPair Zero Zero === (0,0) = {(0,j)|j in 0}u{(1,k)|k in 0} = emptyset *)
-Definition img_OPair_Zero_on_One  := Sing Vide. 
+Definition img_OPair_Zero_on_One  \ceq Sing Vide. 
 (*(img OPair_Zero One) === {(0,k)|k in 1} = {(0,0)} = {emptyset}*)
-Definition        OPair_Zero_One  := Sing Vide. 
+Definition        OPair_Zero_One  \ceq Sing Vide. 
 (* OPair Zero One === (0,1) = {(0,k)|k in 0}u{(0,k)|k in 1} =
 = {} u {(0,0)} = {0} = {emptyset} *)
 
 
-Program Fixpoint OPair_Zero (c:Ens):Ens :=               (img OPair_One c)
-            with OPair_One  (c:Ens):Ens := (Sing Vide) u (img OPair_One c) 
+Program Fixpoint OPair_Zero (c:Ens):Ens \ceq               (img OPair_One c)
+            with OPair_One  (c:Ens):Ens \ceq (Sing Vide) u (img OPair_One c) 
 (* OPair_Zero c = (img OPair_Zero   Zero) u (img OPair_One c) *)
 (* OPair_One  c = (img_OPair_Zero_on_One) u (img OPair_One c) *)
 \end{lstlisting}
 Finally, the ordered pair of arbitrary classes is defined:
 \begin{lstlisting}
-Definition OPair (a b: Ens) : Ens := (img OPair_Zero a) u (img OPair_One b).
+Definition OPair (a b: Ens) : Ens \ceq (img OPair_Zero a) u (img OPair_One b).
 \end{lstlisting}
 
 \subsection{Model of ordered pair \& theorems}
 Now, from the definition we can obtain certain special cases, for empty set as an argument.
 %Remark 1:
 %\[
-%(a,b) := \cc{(0,a_1)|a_1\in a\}\cup \{(1,b_1)}{b_1\in b}
+%(a,b) \ceq \cc{(0,a_1)|a_1\in a\}\cup \{(1,b_1)}{b_1\in b}
 %\]
 %\[
 %   = \cc{\cc{(1,a_2)|a_2\in a_1\}}{a_1\in a}\cup \{(1,b_1)}{b_1\in b}
@@ -327,10 +327,10 @@ with obtaining a contradiction with $b$ being well-founded.\\
 
 \begin{definition}(we define a functional symbols which take the first and the second element of the pair) [we can add, "if it's an ordered pair"]
 \[
-\pr_1(P) := \fst(P) := \cc{b}{(0,b)\in P}
+\pr_1(P) \ceq \fst(P) \ceq \cc{b}{(0,b)\in P}
 \]
 \[
-\pr_2(P) := \snd(P) := \cc{b}{(1,b)\in P}
+\pr_2(P) \ceq \snd(P) \ceq \cc{b}{(1,b)\in P}
 \]
 \end{definition}
 
@@ -375,10 +375,10 @@ Since $(\emptyclass, \emptyclass) = \emptyclass$,
 
 What is the Dunaev's product of 2 and 2 or even arbitrary m and n? Is there a closed formula?
 \[
-(a,b) := (\{0\}\times a)\cup (\{1\}\times b),
+(a,b) \ceq (\{0\}\times a)\cup (\{1\}\times b),
 \]
 \[
-X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
+X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 \[
 2:=\{\emptyclass,\{\emptyclass\}\}
@@ -462,8 +462,8 @@ $\times$ & 0 & 1 & 2\\
 % What if (-,-) works like sum, and times works like product? no, not commutative.
 
 % is it a MINIMUM FUNCTION ?
-% <a,b> := (a x b) u (b x a)
-% a x b := {<x,y> | x in a, y in b}
+% <a,b> \ceq (a x b) u (b x a)
+% a x b \ceq {<x,y> | x in a, y in b}
 % <0,0> = 0
 % <1,0> = 0
 % <0,1> = 0
