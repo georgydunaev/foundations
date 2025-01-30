@@ -51,7 +51,7 @@ Is the following okey ???
 %Model:\\
 \begin{definition}(None-def)
 \[
-\None \eqdef \emptyset
+\None \eqdef \emptyclass
 \]
 \end{definition}
 \begin{definition}(Some-def)
@@ -72,15 +72,15 @@ Is the following okey ???
 \]
 or, equivalently,
 \[
-\emptyset\in\cc{b}{(b \sss A)} 
+\emptyclass\in\cc{b}{(b \sss A)} 
 \]
 \end{theorem}
 \Proof
-1. The set $\emptyset$ is a semisingleton, by def of semisingletones.\\
-2. By thm ..., $\emptyset \subseteq A$.\\
-3. From 1 and 2, it follows that $\emptyset \sss A$ by ... .\\
-4. By ax ..., $(\emptyset\set)$.\\
-5. From 3 and 4, it follows that $\emptyset \in \cc{\,b\ }{\ b \sss A\,}$.\\
+1. The set $\emptyclass$ is a semisingleton, by def of semisingletones.\\
+2. By thm ..., $\emptyclass \subseteq A$.\\
+3. From 1 and 2, it follows that $\emptyclass \sss A$ by ... .\\
+4. By ax ..., $(\emptyclass\set)$.\\
+5. From 3 and 4, it follows that $\emptyclass \in \cc{\,b\ }{\ b \sss A\,}$.\\
 \Done
 \begin{theorem}
 \[
@@ -98,7 +98,7 @@ or, equivalently,
 %4. $(a set) \IMPLIES (\{a\} set)$, by ... .\\
 4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
 5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
-6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by ... .\\
+6. From 2 and 5, it follows that $(\{a\}\in\cc{b}{(b \sss A)}$, by ... .\\
 \Done
 \pagebreak
 \subsection{Implementing ordered pairs}
@@ -134,7 +134,7 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 \end{definition}
 \begin{definition}(Nil-def)
 \[
-[] \eqdef \emptyset
+[] \eqdef \emptyclass
 \]
 \end{definition}
 \begin{definition}(inc\_fst-def)
@@ -144,7 +144,7 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 \end{definition}
 \begin{definition}(Cons-def)
 \[
-(h::t) \eqdef \cc{(\emptyset,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
+(h::t) \eqdef \cc{(\emptyclass,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
 %Theorems:
@@ -155,7 +155,7 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 \]
 or, equivalently,
 \[
-\emptyset\in\List(A) 
+\emptyclass\in\List(A) 
 \]
 \end{theorem}
 \Proof
@@ -397,7 +397,7 @@ Another definition:\\
 \subsubsection{Model of $W$-types}
 Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
 \[
-\mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyset 
+\mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyclass 
 \]
 \[
 \mbox{W}_{\mathrm{fun}}F(n+1)\eqdef \cc{(r,s)}{ (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )}

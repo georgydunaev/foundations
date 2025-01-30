@@ -23,7 +23,7 @@ I_\Fm(s\approx t) :\IFF
 %(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right): I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
 %\[
-%(I^glob_\Fm(s = t)=\lTrue) \IFF \forall (w:\Var\to\power\Un\setminus\{\emptyset\} \forall (v:\prod_{x:Var}w(x)): I_\Term^{\loc,v}(t)=I_\Term^{\loc,v}(s)
+%(I^glob_\Fm(s = t)=\lTrue) \IFF \forall (w:\Var\to\power\Un\setminus\{\emptyclass\} \forall (v:\prod_{x:Var}w(x)): I_\Term^{\loc,v}(t)=I_\Term^{\loc,v}(s)
 %\]
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
@@ -45,7 +45,7 @@ If $(I(\varphi)=U)$, then
 (I((\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2))=I(\lundef))
 \]
 should follow.\\
-Btw, $I(\lundef)=\emptyset$.\\
+Btw, $I(\lundef)=\emptyclass$.\\
 \pagebreak
 
 \subsection{Some simple theorems about classes}

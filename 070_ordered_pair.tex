@@ -107,7 +107,7 @@ It doesn't work for the case of proper classes.
 There is a generalization of the ordered pair, that allows have proper classes as arguments, introduced by Morse.
 It is based on Kuratovsky pair, and, then \textbf{redefines} ordered pair in the following way:
 \[
- s(x) = \{\emptyset \} \cup \{\{t\} \mid t \in x\} 
+ s(x) = \{\emptyclass \} \cup \{\{t\} \mid t \in x\} 
 \]
 \[
 (x, y) = (\{0\} \times s(x)) \cup (\{1\} \times s(y))
@@ -146,7 +146,7 @@ X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
 \begin{remark}\ \\
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
 \[
-\tilde{K}:= \{\emptyset\}\cup\cc{\{k\}}{k\in K}
+\tilde{K}:= \{\emptyclass\}\cup\cc{\{k\}}{k\in K}
 \]
 \[
 [a,b] := (\{0\}\times \tilde{a})\cup (\{1\}\times \tilde{b})
@@ -230,11 +230,11 @@ Now, from the definition we can obtain certain special cases, for empty set as a
 %\]
 %\[
 %   = \cc{\cc{(1,a_2)|a_2\in a_1\}}{a_1\in a}\cup \{(1,b_1)}{b_1\in b}
-%(0,b) = \cc{(0,a_1')|a_1'\in \emptyset\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{%b_1\in b}
+%(0,b) = \cc{(0,a_1')|a_1'\in \emptyclass\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{%b_1\in b}
 
-%(1,b_1)= \cc{(0,a_1')|a_1'\in \{\emptyset\}\}\cup \{(1,b_2)}{b_2\in b_1}
-%       = \cc{(0,\emptyset)\}\cup \{(1,b_2)}{b_2\in b_1}
-%       = \cc{(0,\emptyset)\}\cup \cc{\{(0,\emptyset)\}\cup \{(1,b_2)}{b_2\in b_1}}{%b_2\in b_1}
+%(1,b_1)= \cc{(0,a_1')|a_1'\in \{\emptyclass\}\}\cup \{(1,b_2)}{b_2\in b_1}
+%       = \cc{(0,\emptyclass)\}\cup \{(1,b_2)}{b_2\in b_1}
+%       = \cc{(0,\emptyclass)\}\cup \cc{\{(0,\emptyclass)\}\cup \{(1,b_2)}{b_2\in b_1}}{%b_2\in b_1}
 %\]
 
 \[
@@ -273,23 +273,23 @@ w\in \cc{(0,a_1)}{a_1\in a}
 
 We know that
 \[
-(a,\emptyset) = \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in \emptyset} = \cc{(0,a_1)}{a_1\in a}
+(a,\emptyclass) = \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in \emptyclass} = \cc{(0,a_1)}{a_1\in a}
 \]
 and
 \[
-(\emptyset,b) = \cc{(0,a_1)|a_1\in \emptyset\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{b_1\in b}
+(\emptyclass,b) = \cc{(0,a_1)|a_1\in \emptyclass\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{b_1\in b}
 \]
 .
 
 Small remark: we can compute, just for the sanity check:
 \[
-(0,0) = (\emptyset,\emptyset) = \cc{(1,b_1)}{b_1\in \emptyset} = \emptyset
+(0,0) = (\emptyclass,\emptyclass) = \cc{(1,b_1)}{b_1\in \emptyclass} = \emptyclass
 \]
 \[
-(1,0) = (\{\emptyset\},\emptyset) = \{(0,\emptyset)\} = \{\emptyset\}
+(1,0) = (\{\emptyclass\},\emptyclass) = \{(0,\emptyclass)\} = \{\emptyclass\}
 \]
 \[
-(0,1) = (\emptyset,\{\emptyset\}) =/\mbox{by the 2nd eq}/= \{(1,\emptyset)\} = \{\{\emptyset\}\},
+(0,1) = (\emptyclass,\{\emptyclass\}) =/\mbox{by the 2nd eq}/= \{(1,\emptyclass)\} = \{\{\emptyclass\}\},
 \]
 indeed they are all different when arguments are different, as intended. In the later theorem it will be proven for arbitrary pairs.
 
@@ -366,10 +366,10 @@ h((a,b)) = h(({0}\times a)\cup ({1}\times b)) =
 
 \subsection{Cartesian product of numerals}
 
-Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjuction of truth values on $\Prop:=\{\emptyset,\{\emptyset\}\}$ 
-Since $(\emptyset, \emptyset) = \emptyset$,
+Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjuction of truth values on $\Prop:=\{\emptyclass,\{\emptyclass\}\}$ 
+Since $(\emptyclass, \emptyclass) = \emptyclass$,
 \[
-\{\emptyset\}\times \{\emptyset\} = \{(\emptyset, \emptyset)\} = \{\emptyset\} \in \Prop.
+\{\emptyclass\}\times \{\emptyclass\} = \{(\emptyclass, \emptyclass)\} = \{\emptyclass\} \in \Prop.
 \]
 (It is also possible to use just intersection.)\\
 
@@ -381,35 +381,35 @@ What is the Dunaev's product of 2 and 2 or even arbitrary m and n? Is there a cl
 X\times Y := \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 \[
-2:=\{\emptyset,\{\emptyset\}\}
+2:=\{\emptyclass,\{\emptyclass\}\}
 \]
 \[
-(0,\{\emptyset\}) = ... = \{\{\emptyset\}\}
+(0,\{\emptyclass\}) = ... = \{\{\emptyclass\}\}
 \]
 \[
-a:=\{\emptyset,\{\emptyset\}\}
+a:=\{\emptyclass,\{\emptyclass\}\}
 \]
 \[
-b:=\{\emptyset,\{\emptyset\}\}
+b:=\{\emptyclass,\{\emptyclass\}\}
 \]
 \[
-(\{0\}\times a) = (\{0\}\times\{\emptyset,\{\emptyset\}\}) =
+(\{0\}\times a) = (\{0\}\times\{\emptyclass,\{\emptyclass\}\}) =
 \]
 \[
- = \{(0,\emptyset),(0,\{\emptyset\})\} =
+ = \{(0,\emptyclass),(0,\{\emptyclass\})\} =
 \]
 \[
- = \{\emptyset,\{\{\emptyset\}\}\}
+ = \{\emptyclass,\{\{\emptyclass\}\}\}
 \]
 
 \[
-(\{1\}\times b) = (\{1\}\times\{\emptyset,\{\emptyset\}\}) =
+(\{1\}\times b) = (\{1\}\times\{\emptyclass,\{\emptyclass\}\}) =
 \]
 \[
- = \{(1,\emptyset),(1,\{\emptyset\})\} =
+ = \{(1,\emptyclass),(1,\{\emptyclass\})\} =
 \]
 \[
- = \{\{\emptyset\},2\}
+ = \{\{\emptyclass\},2\}
 \]
 %It's impossible to obtain two equal things!
 
@@ -417,10 +417,10 @@ b:=\{\emptyset,\{\emptyset\}\}
 (2,2)= (\{0\}\times 2) \cup (\{1\}\times 2)
 \]
 \[
- = \{\emptyset,\{\{\emptyset\}\}, \{\emptyset\},\{\emptyset,\{\emptyset\}\}\}
+ = \{\emptyclass,\{\{\emptyclass\}\}, \{\emptyclass\},\{\emptyclass,\{\emptyclass\}\}\}
 \]
 \[
- = \{\emptyset, \{\emptyset\}, \{\{\emptyset\}\},\{\emptyset,\{\emptyset\}\}\}
+ = \{\emptyclass, \{\emptyclass\}, \{\{\emptyclass\}\},\{\emptyclass,\{\emptyclass\}\}\}
 \]
 
 Non-commutative multiplication table:\\

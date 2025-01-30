@@ -65,7 +65,7 @@ xRy \land yRz \implies xRz)
 (\forall S\subclass A:
 S\subclass R[S]
 \implies
-S=\emptyset)
+S=\emptyclass)
 \]
 \end{definition}
 \begin{definition}[relation is well-ordered on]
@@ -210,7 +210,7 @@ Assume opposite $k\notin A$. To show $\bot$.
 \[
 (k\in K\setminus A)
 \IMPLIES
-(K\setminus A\neq\emptyset)
+(K\setminus A\neq\emptyclass)
 \]
 \[
 (R\mathrm{\ Fr\ }K)
@@ -218,7 +218,7 @@ Assume opposite $k\notin A$. To show $\bot$.
 (\forall S\subclass K:
 S\subclass R[S]
 \implies
-S=\emptyset)
+S=\emptyclass)
 \]
 \[
 S:=(K\setminus A)
@@ -226,7 +226,7 @@ S:=(K\setminus A)
 \[
 (R\mathrm{\ Fr\ }K)
 \LAND
-(K\setminus A\neq\emptyset)
+(K\setminus A\neq\emptyclass)
 \LAND
 (K\setminus A\subclass K)
 \IMPLIES
@@ -690,7 +690,7 @@ Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordina
 Here we use the intersection of a class which is defined by 
 $
 (x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
-$, therefore $\bigcap\emptyset = V$.
+$, therefore $\bigcap\emptyclass = V$.
 In this case,
 \[
 (x\mapsto|x|):V\to\On.

@@ -9,7 +9,7 @@ Here we try to develop some ideas about an axiomatization of topology inspired b
 %\[\]
 The set $F$ is called \textit{filter} iff
 \begin{align*}
-\left( \emptyset\notin F \vphantom\union \right),
+\left( \emptyclass\notin F \vphantom\union \right),
  && \text{(F$_1$)}\\
 \left(
 \middle(
@@ -116,7 +116,7 @@ x\in\intersection \mathrm{tni}(x)
 
 \begin{axiom*}[N$_2$]
 \[
-\interior(S)\in \left(N\cup\{\emptyset\}\right)
+\interior(S)\in \left(N\cup\{\emptyclass\}\right)
 \]
 \end{axiom*}
 %\subsection{Filter}
@@ -133,7 +133,7 @@ Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subba
 \end{definition}
 %point-neighbourhood relation defined via topology base?
 \begin{definition}[topology via subbase]\ \\
-%For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$(later we will see that its elements are open), such that $\emptyset\notin \mathcal{B}$,
+%For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$(later we will see that its elements are open), such that $\emptyclass\notin \mathcal{B}$,
 For any $p$, any $S$, and a subbase $\mathcal{B}$, we define:
 \footnote{
 Here we use $\union\mathcal{B}$ 
@@ -180,9 +180,9 @@ x\in\intersection\mathcal{R}_\mathcal{B}[\{x\}]
 \[
 (p\in B\subseteq S) \implies x\in S
 \]
-\item (N$_2$)\ To Show:\ $\interior_\mathcal{B}(S)\in (N_\mathcal{B}\cup \{\emptyset\})$
+\item (N$_2$)\ To Show:\ $\interior_\mathcal{B}(S)\in (N_\mathcal{B}\cup \{\emptyclass\})$
 \[
-\mathcal{R}^{T}_\mathcal{B}[\{S\}]\in (N_\mathcal{B}\cup \{\emptyset\})
+\mathcal{R}^{T}_\mathcal{B}[\{S\}]\in (N_\mathcal{B}\cup \{\emptyclass\})
 \]
 \[
 N_\mathcal{B}=\union\mathcal{N}_\mathcal{B}=\union\ran(\mathrm{tni_\mathcal{B}})=\union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])
@@ -231,7 +231,7 @@ It can be given also this way:
 \subsection{Defining Topology and various Algebras}
 \begin{definition}[Topology]\ \\
 The set $\mathcal{T}$ is called \textit{topology} iff
-%\left( \emptyset\notin F \vphantom\union \right),
+%\left( \emptyclass\notin F \vphantom\union \right),
 % && \text{(F$_1$)}\\
 \begin{align*}
 \left(S \subseteq \mathcal{T}\middle)

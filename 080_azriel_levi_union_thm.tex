@@ -37,7 +37,7 @@ G(y)\eqdef\inf\cc{\,x\in\On\ }{\ F(x)=y\,}
 \tilde{f}\eqdef
 \begin{cases}
     f,& \text{if }f\text{ is a function},\\
-    \emptyset,& \text{otherwise}.
+    \emptyclass,& \text{otherwise}.
 \end{cases}
 \]
 \end{definition}
@@ -49,7 +49,7 @@ G(y)\eqdef\inf\cc{\,x\in\On\ }{\ F(x)=y\,}
 %\]
 \begin{definition}[evaluation class-function]\ \\
 \label{def:evclass}
-Implying that $f(x)=\emptyset$ in case of $x\notin\dom(f)$,
+Implying that $f(x)=\emptyclass$ in case of $x\notin\dom(f)$,
 \[
 \ev_x\eqdef\cc{\,(f,f(x))\ }{\ f\in\V\,}
 \]
@@ -105,7 +105,7 @@ Step 1:
 \[
 (Q(x)\set)
 \IMPLIES
-((\On\setminus Q(x))\neq\emptyset)
+((\On\setminus Q(x))\neq\emptyclass)
 \]
 \[
 \IMPLIES
@@ -127,7 +127,7 @@ Step 2:
 \LAND
 (F:\On\to\V\text{ surjective})
 \IMPLIES
-F^\top[\{y\}]\neq\emptyset
+F^\top[\{y\}]\neq\emptyclass
 \]
 \[
 \IMPLIES

@@ -409,10 +409,10 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 \iffalse
 \begin{example}[classical truth values]\ \\
 \[
-\lFalse := \emptyset
+\lFalse := \emptyclass
 \]
 \[
-\lTrue := \{\emptyset\}
+\lTrue := \{\emptyclass\}
 \]
 \[
 \ClassicalTruthValues := \{\lFalse, \lTrue\}
@@ -580,7 +580,7 @@ I_\Fm^v((t\lexists))
 \[
 I_\Fm^v((t\lunique)):=\lif\ (I_\Term^v(t)\semisingleton)\ \lthen\ \lTrue\ \lelse\ \lFalse
 \]
-%\neq\emptyset
+%\neq\emptyclass
 
 \item Nullary connectives:
 \[
@@ -1066,7 +1066,7 @@ The definition is not yet written, but it is implemented as functions ending wit
 \subsection{Motivation}
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
-Let $\power \mathcal{U}\setminus\{\emptyset\}$ be the domain of discourse on the global level of the presented model for the theory.\\
+Let $\power \mathcal{U}\setminus\{\emptyclass\}$ be the domain of discourse on the global level of the presented model for the theory.\\
 
 % NOT TRUE ANYMORE
 % We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
@@ -1079,7 +1079,7 @@ Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
 
 Let $w$ be an evaluation of variables:\\
 \[
-w:\Var\to \power \mathcal{U}\setminus\{\emptyset\}
+w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 \]
 
 But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
@@ -1241,7 +1241,7 @@ l^*=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))}
 =\cc{\cc{(x,b)}{(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))}}{\top}
 \]
 \[
-=\cc{\cc{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})}{x\in\dom(l)}}{\top}
+=\cc{\cc{(x,\emptyclass)|x\in\dom(l)\}\cup\{(x,\{l(x)\})}{x\in\dom(l)}}{\top}
 \]
 ???
 ==== Alternative proof2 for function coded as family.
@@ -1355,13 +1355,13 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \subsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
-$w:\Var\to((\power\Domain)\setminus\{\emptyset\})$
+$w:\Var\to((\power\Domain)\setminus\{\emptyclass\})$
 (note, domains should be nonempty, otherwise statement will be too weak to deal with normally)
 \end{definition}
 \begin{definition}(Local assignment w.r.t. global assigment)\\
 $v$ is a local assignment w.r.t. global assignment $w$ if $v:\prod_{(x:\Var)}w(x)$,\\
 i.e. $v:\Var\to\Domain$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
-%$w:\Var\to((\power\Un)\setminus\emptyset)$
+%$w:\Var\to((\power\Un)\setminus\emptyclass)$
 \end{definition}
 \begin{definition}(Local interpretation of term under local assignment v wrt the global assignment w)\\
 (almost classical definition)\\% OR the following:?\\
@@ -1435,7 +1435,7 @@ I^{\mathrm{strictly}\glob}_\Fm : \Fm \to \{\mathrm{strictly}\lValid,\mathrm{stri
 \]
 \[
 \left(I^{\mathrm{strictly}\glob}_\Fm(\varphi)=\mathrm{strictly}\lValid\right) \IFF
- \left(\forall \left(w:\Var\to((\power\Un)\setminus\{\emptyset\})\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
+ \left(\forall \left(w:\Var\to((\power\Un)\setminus\{\emptyclass\})\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
 \]
 \end{definition}
 %?? This is too strong, e.g. even $(x=x)$ will not be true, if we assign a conglomerate-pair of classes to the variable $x$.\\
@@ -1563,8 +1563,8 @@ But this definition works well for defining function symbols, and, in particular
 
 Some statements:\\
 1) VALID, TRUE: $(\varepsilon x: x \in \{a,b\})\in \{a,b\}$.\\
-2) INVALID: $(\varepsilon x: x \in \emptyset) \in \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
-3) INVALID: $(\varepsilon x: x \in \emptyset) \notin \emptyset$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+2) INVALID: $(\varepsilon x: x \in \emptyclass) \in \emptyclass$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
+3) INVALID: $(\varepsilon x: x \in \emptyclass) \notin \emptyclass$. It is neither true, nor false, because the interpretation of the first term is an empty conglomerate of classes.\\
 4) VALID, TRUE: $(x\in y) \implies (x\in y)$.
 \fi
 %not everything that is undefined is quasi.

@@ -123,10 +123,10 @@ $\\
 \end{definition}
 \begin{definition}(Canonization[of a family of potentially empty classes])\\
 $
-\canonize1(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyset)}{x\in\Dom(F)}
+\canonize1(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{x\in\Dom(F)}
 $\\
 $
-\canonize2(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyset)}{(x\in\Dom(F))\land (F(x)=\emptyset) }
+\canonize2(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
 $\\
 $
 \canonize3(F) = \cc{(x,s)}{\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)}
@@ -167,9 +167,9 @@ A function is weaker than a family because it can return only sets.\\
 But the behaviour of $\{-\}$ is well-defined only on sets.
 Maybe it should be a family?\\
 What about $\{-,-\}$?\\
-Should $\{V\}$ be $\emptyset$ or $V$?\\
+Should $\{V\}$ be $\emptyclass$ or $V$?\\
 E.g. Metamath uses an empty set as a default value.\\
-So it seems to legit, because it cannot be obtained in any other way out of the unordered pair or ordered pair. At worst it would be a singleton, but never an empty set. So the choice of $\emptyset$ as a default value is justified.\\
+So it seems to legit, because it cannot be obtained in any other way out of the unordered pair or ordered pair. At worst it would be a singleton, but never an empty set. So the choice of $\emptyclass$ as a default value is justified.\\
 
 It's not the same in other cases, e.g. for "f(x)", therefore it requires an additional assumption to be treated as "legit".
 

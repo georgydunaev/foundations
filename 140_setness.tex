@@ -120,17 +120,17 @@ Claim is proven.
 \begin{theorem}
 \label{thm:empty class is subclass}
 \[
-(\emptyset\subseteq A)
+(\emptyclass\subseteq A)
 \]
 \end{theorem}
 \Proof
 Claim:
 \[
-(\forall x\in \emptyset: x\in A)
+(\forall x\in \emptyclass: x\in A)
 \]
-Assume $(x\in\emptyset)$.
+Assume $(x\in\emptyclass)$.
 \[
-(x\in\emptyset)
+(x\in\emptyclass)
 \IMPLIES
 \bot
 \]
@@ -141,9 +141,9 @@ Assume $(x\in\emptyset)$.
 \]
 Claim is proven.
 \[
-(\forall x\in \emptyset: x\in A)
+(\forall x\in \emptyclass: x\in A)
 \IMPLIES
-(\emptyset\subseteq A)
+(\emptyclass\subseteq A)
 \quad\mbox{(by def \ref{def:empty class})}
 \]
 \Done
@@ -152,18 +152,18 @@ Claim is proven.
 \[
 \neg\exists w: w\in A
 \implies
-(A=\emptyset)
+(A=\emptyclass)
 \]
 \end{theorem}
 \Proof
-Assume $\neg\exists w: w\in A$. To show: $(A=\emptyset)$.\\
+Assume $\neg\exists w: w\in A$. To show: $(A=\emptyclass)$.\\
 $(\supseteq)$\\
 \[
-(A\supseteq\emptyset)
+(A\supseteq\emptyclass)
 \quad\mbox{(by thm \ref{thm:empty class is subclass})}
 \]
 $(\subseteq)$\\
-Claim: $(\forall x\in A:x\in\emptyset)$\\
+Claim: $(\forall x\in A:x\in\emptyclass)$\\
 Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
 \[
 (x\in A)
@@ -180,28 +180,28 @@ Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
 \[
 \bot
 \IMPLIES
-(x\in\emptyset)
+(x\in\emptyclass)
 \]
 The claim is proven.
 \[
-(\forall x\in A:x\in\emptyset)
+(\forall x\in A:x\in\emptyclass)
 \IMPLIES
-(A \subseteq \emptyset)
+(A \subseteq \emptyclass)
 \commentary{by def of subclass \ref{def:subclass}}
 \]
 \[
-(A \subseteq \emptyset)
+(A \subseteq \emptyclass)
 \LAND
-(A \supseteq \emptyset)
+(A \supseteq \emptyclass)
 \IMPLIES
-(A=\emptyset)
+(A=\emptyclass)
 \commentary{by axm \ref{axm:extensionality}}
 \]
 %So by extensionality axiom we are done.\\
 %\[
 %\neg\exists w: w\in A
 %\IMPLIES
-%(A=\emptyset)
+%(A=\emptyclass)
 %\]
 \Done
 \begin{theorem}

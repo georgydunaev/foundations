@@ -36,15 +36,15 @@ We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not de
 Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
 
 There are 3 natural ways of dealing with a default value of the choice.\\
-1) $\tau^\emptyset$. Here no value is given. It is unique, but it doesn't exist.\\
-2) $\tau^{\exists!}$. Here one particular value is set as a default. It may even be specified: e.g. $\tau^{\exists!}_\emptyset$, or $\tau^{\exists!}_\Un$ or, in general, $\tau^{\exists!}_K$, which is the same as even better: $\tau^{\{K\}}$.\\
+1) $\tau^\emptyclass$. Here no value is given. It is unique, but it doesn't exist.\\
+2) $\tau^{\exists!}$. Here one particular value is set as a default. It may even be specified: e.g. $\tau^{\exists!}_\emptyclass$, or $\tau^{\exists!}_\Un$ or, in general, $\tau^{\exists!}_K$, which is the same as even better: $\tau^{\{K\}}$.\\
 3) $\tau^\Un$. Here any class from the conglomerate of all classes $\Un$ value is a potential default value. It exists, but it isn't unique.\\
 
 
 Our convention:\\
 $\tau := \tau^\Un$\\
-$\epsilon := \tau^{\exists!}_\emptyset = \tau^{\{\emptyset\}}$\\
-$\varepsilon := \tau^\emptyset$\\
+$\epsilon := \tau^{\exists!}_\emptyclass = \tau^{\{\emptyclass\}}$\\
+$\varepsilon := \tau^\emptyclass$\\
 In usual mathematics, usually either $\tau^{\exists!}$ or $\epsilon$ are used.\\
 
 %1) $t$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
@@ -166,7 +166,7 @@ Epsilon operator.
 \]
 Here c is a class-function of global choice:
 \[
-c:V\setminus\{\emptyset\}\to V
+c:V\setminus\{\emptyclass\}\to V
 \]
 \[
 c(X)\in X
