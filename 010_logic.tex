@@ -145,8 +145,8 @@ The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
 \item If the type $\gamma$ is a pair type $\alpha\times\beta$ for some $\alpha$ and $\beta$, then return $\None$.
 \end{enumerate}
 %\[
-%\conseq(\alpha\to\beta):=\Some(\beta)
-%\conseq(\_):=\None
+%\conseq(\alpha\to\beta)\ceq \Some(\beta)
+%\conseq(\_)\ceq \None
 %\]
 So the function that takes a consequent of function type is defined. Each value of it has the $\OptionType$ kind, therefore the following inference rule is admissible:
 \[
@@ -160,13 +160,13 @@ For each well-typed expression there exists one and only one type. The correspon
 \item In case it is $\var^\alpha(x)$, then \[
 \TypeOf(\var^\alpha(x))
 %\rightsquigarrow 
-:=
+\ceq 
 \alpha.
 \]
 \iffalse
 \item In case it is ...., then  \[
 \TypeOf(\const^\alpha(x))
-:=
+\ceq 
 \alpha.
 \]
 \fi
@@ -189,12 +189,12 @@ $\TypeOf(g)$:
 %\item In case it is $(g(t))$, then
 %\[
 %\TypeOf((x^\alpha.s))%^\beta
-%:=
+%\ceq 
 %(\alpha\to\TypeOf(s)).
 %\]
 %\[
 %\TypeOf(g(t))
-%:=
+%\ceq 
 %\conseq(\TypeOf(g)).
 %\]
 \end{enumerate}
@@ -562,7 +562,7 @@ The interpretation of formulas depends on the evaluation of variables $v$, and i
 \begin{itemize}
 \item Atomic predicate symbols:
 \[
-I_\Fm^v\left(A\left(\vv{X}\right)\right) :=
+I_\Fm^v\left(A\left(\vv{X}\right)\right) \ceq 
 \lif\ (I_\Term^v(X)\subseteq I_\Pred^v(A))
 \ \lthen\ \lTrue
 \ \lelse\ \lFalse
@@ -573,12 +573,12 @@ I_\Fm^v\left(A\left(\vv{X}\right)\right) :=
 \item The ``exists" and ``unique'' symbols:%$()$:
 \[
 I_\Fm^v((t\lexists))
-:=
+\ceq 
 \lif\ (I_\Term^v(t)\nonempty)\ \lthen\ \lTrue
 \ \lelse\ \lFalse
 \]
 \[
-I_\Fm^v((t\lunique)):=\lif\ (I_\Term^v(t)\semisingleton)\ \lthen\ \lTrue\ \lelse\ \lFalse
+I_\Fm^v((t\lunique))\ceq \lif\ (I_\Term^v(t)\semisingleton)\ \lthen\ \lTrue\ \lelse\ \lFalse
 \]
 %\neq\emptyclass
 
@@ -616,10 +616,10 @@ The choice of plural-semantics leads to necessity of introduction of a parameter
 \fi
 
 \[
-I^v(()):=\{()\}
+I^v(())\ceq \{()\}
 \]
 \[
-I^v((X_1,\dots,X_n)):=v(X_1)\times\dots\times v(X_n)
+I^v((X_1,\dots,X_n))\ceq v(X_1)\times\dots\times v(X_n)
 \]
 
 
@@ -630,7 +630,7 @@ v\left(\left(\vv{X}\right)\right)
 \]
 
 \end{definition}
-%Let $I^v\left(\vv{X}\right):=v(\left(\vv{X}\right))$.
+%Let $I^v\left(\vv{X}\right)\ceq v(\left(\vv{X}\right))$.
 
 \begin{definition}[truth under evaluation]\ \\%$\forall$- and $\exists$-truth
 Let $v$ be evaluation and $I$ be an interpretation.
@@ -789,14 +789,14 @@ I^v(P_2)\left(\vv{x}\right)
 \begin{definition}[dual predicate symbol]\ \\
 If $P$ is a predicate symbol, then
 \[
-\dual(P):=(\neg\circ(\neg(P))).
+\dual(P)\ceq (\neg\circ(\neg(P))).
 \]
-(It can also be defined as $\dual(P):=(\neg(\neg\circ P))$, but we need to pick one of them to use throughout the rest of the paper.)
+(It can also be defined as $\dual(P)\ceq (\neg(\neg\circ P))$, but we need to pick one of them to use throughout the rest of the paper.)
 \end{definition}
 \begin{definition}[binary coproduct of predicate symbols]\ \\
 If $P_1$ and $P_2$ are predicate symbols, then
 \[
-(P_1\sqcup P_2):=(\dual((\dual(P_1)\lor\dual(P_2)))).
+(P_1\sqcup P_2)\ceq (\dual((\dual(P_1)\lor\dual(P_2)))).
 \]
 \end{definition}
 %Easy exercises:\\
@@ -862,7 +862,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 %v\cap (\{\xi\}\times V)
 %\mathrm{upd}
 \[
-\upd(v,\xi,q)(\eta):=(\lif\ \eta=\xi\ \lthen\ q\ \lelse\ v(\eta))
+\upd(v,\xi,q)(\eta)\ceq (\lif\ \eta=\xi\ \lthen\ q\ \lelse\ v(\eta))
 \]
 \end{definition}
 
@@ -955,17 +955,17 @@ $\PredSymb$
 There is a difference between metavariable and actual meaning of it.
 So the dot sometimes mean actual string of length one, containing a dot.
 \[
-.:="."
+.\ceq "."
 \]
 \[
-(:="("
+(\ceq "("
 \]
 \[
-):=")"
+)\ceq ")"
 \]
 It is used together with a convention, that operation of concatination is almost always ommited: as long as we have two strings written consequently, it means that they are concatenated.
 \[
-,:=","
+,\ceq ","
 \]
 The natural language as well as language of (informal) set theory are used as metalanguage of a ``theory of strings of letters'' in this chapter.\\
 
@@ -1012,7 +1012,7 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 
 %\subsubsection{Formulas}
 %\begin{definition}
-%Fm ::=\\
+%Fm :\ceq \\
 %\end{definition}
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
@@ -1104,7 +1104,7 @@ We simultaneously define evaluation of formula with a singleton-assignment, and 
 \]
 or, following a slightly different notation,
 \[
-I^w_\Fm(\varphi):=
+I^w_\Fm(\varphi)\ceq 
 \lif
 \ \left(
 \forall \left(v\in\prod w\middle):
@@ -1117,7 +1117,7 @@ I^w_\Fm(\varphi):=
 \]
 Also, for terms:
 \[
-I^w_\Term(t):=
+I^w_\Term(t)\ceq 
 \bigcup \left\{ I^{v^*}_\Term 
 \middle|v\in\prod w\right\}
 \]
@@ -1149,7 +1149,7 @@ There are symbols.\\
 Symbol has meaning.\\
 Symbol $S$ has valency $\val(S)$.\\
 \[
-\Symb:=\sum_{n\in\N}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
+\Symb\ceq \sum_{n\in\N}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
 \]
 For a symbol S, the meaning of S is a function from $val(S)$ with domains $D_S(1),\dots,D_S(n)$ to the range of a symbol $R_S$.\\
 
@@ -1163,7 +1163,7 @@ If it takes a term $t$ as an argument, then
 (v^*\models(P(t))\IFF I_\PredSymb(P)(I^{v^*}_\Term(t)\ \semisingleton)
 \]
 \begin{example*}
-Let $w:=\{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
+Let $w\ceq \{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
 \end{example*}
 
 \begin{definition}(function(star) from the standard assignment to the ``big assignment'')
@@ -1174,7 +1174,7 @@ v:\Var\to\Domain
 v^*:\singeval
 \]
 \[
-v^*(a):=\{v(a)\}
+v^*(a)\ceq \{v(a)\}
 \]
 \[
 \dom(l^*)=\dom(l)
@@ -1300,7 +1300,7 @@ I^{l^*}_\Term
 %\sub
 \subsection{Interpretation, special cases}
 \[
-I^{v^*}_\Fm((\varepsilon x.\varphi)):=\{\}
+I^{v^*}_\Fm((\varepsilon x.\varphi))\ceq \{\}
 \]
 
 %\sub
@@ -1461,9 +1461,9 @@ I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
 \end{definition}
 Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
 %Notation:\\
-%F:=False\\
-%U:=Undefined\\
-%T:=True\\
+%F\ceq False\\
+%U\ceq Undefined\\
+%T\ceq True\\
 %\{F,U,T\}
 %-----
 
@@ -1493,7 +1493,7 @@ Fix some global assignment function $w:\Var\to\power\Un$.\\
 
 \begin{itemize}
 \item
-$I_\Fm^w(P(t_1,...,t_n)):=\lTrue$, iff two conditions are satisfied:\\
+$I_\Fm^w(P(t_1,...,t_n))\ceq \lTrue$, iff two conditions are satisfied:\\
 1) $I^w_\Term(t_j)$ is non-empty\\
 2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
 \item $I_\Fm^w(P(t_1,...,t_n))=\lFalse$, iff two conditions are satisfied:\\
@@ -1554,8 +1554,8 @@ Resolution: we use only terms, and this mechanism of definitions of terms is out
 Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
 
 \begin{definition}(interpretation of definitional equality)\\
-\st{$I^v_\Fm(A\equiv B):=(I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
-$I^v_\Fm(A\equiv B):=\forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
+\st{$I^v_\Fm(A\equiv B)\ceq (I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
+$I^v_\Fm(A\equiv B)\ceq \forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
 Will such definition work with a variable? I highly doubt. 
 So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
 But this definition works well for defining function symbols, and, in particular, constants.
@@ -1694,13 +1694,13 @@ Fix y. To show: $(\exists x :\varphi)$. (or just do $\forall I$ in the end)\\
 (\forall y:\varphi)
 \IMPLIES
 \varphi
-\commentary{$\forall$E, (y:=y)}
+\commentary{$\forall$E, (y\ceq y)}
 \]
 \[
 \varphi
 \IMPLIES
 (\exists x :\varphi)
-\commentary{$\exists$I, (x:=x)}
+\commentary{$\exists$I, (x\ceq x)}
 \]
 \Done
 \fi
@@ -1738,7 +1738,7 @@ But it is a half-measure(so unacceptable), since still need to manually prove eq
 )\\
 Other problem:\\
 \[(\forall x:\varphi)\implies \varphi[t/x]\]
-\[t:=x\]
+\[t\ceq x\]
 \[(\forall x:\varphi)\implies \varphi[x/x]\]
 \[(\forall x:\varphi)\implies \varphi\]
 Assume we proved $(\forall x:\varphi)$.
@@ -1911,14 +1911,14 @@ For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\v
 \]
 \underline{Equalitites:}
 %\[
-%(A:=B)\implies ((A\equiv B)\land(B\lunique))
+%(A\ceq B)\implies ((A\equiv B)\land(B\lunique))
 %\label{def:DefEq} \tag{def:DefEq}
 %\]
 \[
 (A=B)\iffdef ((A\subseteq B)\land (B\subseteq A))
 \]
 \[
-(A:=B)\implies(A=B)
+(A\ceq B)\implies(A=B)
 \]
 
 \[

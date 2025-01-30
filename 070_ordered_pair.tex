@@ -16,16 +16,16 @@ In this section different definitions of ordered are studied and the new one is 
 \subsection{Definition of Kuratowski pair}
 \begin{definition}(Kuratowski pair of sets)
 \[
-(a,b)_K:=\{\{a,a\},\{a,b\}\}
+(a,b)_K\ceq \{\{a,a\},\{a,b\}\}
 \]
 \end{definition}
 Projections may be defined this way:
 \begin{definition}(projections)
 \[
-\fst_K(p):=\cc{x}{\forall y\in p : x \in y},
+\fst_K(p)\ceq \cc{x}{\forall y\in p : x \in y},
 \]
 \[
-\snd_K(p):=\cc{x}{\exists! y\in p : x \in y}.
+\snd_K(p)\ceq \cc{x}{\exists! y\in p : x \in y}.
 \]
 \end{definition}
 \begin{remark}
@@ -164,11 +164,11 @@ This subsection is not necessary for the ongoing proof, but it is very illustrat
 Note, that it may be confusing that in code, the construction is done for the special type of sets of certain universe in Gallina's heavy metatheory, which is not the point here. Despite that the construction works fine for classes also, and it will be shown in the next subsection.
 
 \begin{lstlisting}(*The type of sets in for a universe.*)
-Inductive Ens : Type :=
+Inductive Ens : Type \ceq 
     sup : forall A : Type, (A -> Ens) -> Ens.
 \end{lstlisting}
 \begin{lstlisting}(* The empty set *)
-Definition Vide : Ens :=
+Definition Vide : Ens \ceq 
   sup False (fun x : False => match x return Ens with
                               end).
 Definition Pair (A B:Ens) : Ens
@@ -366,7 +366,7 @@ h((a,b)) = h(({0}\times a)\cup ({1}\times b)) =
 
 \subsection{Cartesian product of numerals}
 
-Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjuction of truth values on $\Prop:=\{\emptyclass,\{\emptyclass\}\}$ 
+Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjuction of truth values on $\Prop\ceq \{\emptyclass,\{\emptyclass\}\}$ 
 Since $(\emptyclass, \emptyclass) = \emptyclass$,
 \[
 \{\emptyclass\}\times \{\emptyclass\} = \{(\emptyclass, \emptyclass)\} = \{\emptyclass\} \in \Prop.
@@ -381,16 +381,16 @@ What is the Dunaev's product of 2 and 2 or even arbitrary m and n? Is there a cl
 X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
 \]
 \[
-2:=\{\emptyclass,\{\emptyclass\}\}
+2\ceq \{\emptyclass,\{\emptyclass\}\}
 \]
 \[
 (0,\{\emptyclass\}) = ... = \{\{\emptyclass\}\}
 \]
 \[
-a:=\{\emptyclass,\{\emptyclass\}\}
+a\ceq \{\emptyclass,\{\emptyclass\}\}
 \]
 \[
-b:=\{\emptyclass,\{\emptyclass\}\}
+b\ceq \{\emptyclass,\{\emptyclass\}\}
 \]
 \[
 (\{0\}\times a) = (\{0\}\times\{\emptyclass,\{\emptyclass\}\}) =

@@ -5,15 +5,15 @@
 SKIP THIS, GO TO THE NEXT SUBSECTION
 \begin{definition}(Value of relation/function/protected family at x)
 \[
-F(x):=\union\cc{b}{(x,b)\in F}
+F(x)\ceq \union\cc{b}{(x,b)\in F}
 \]
 \end{definition}
 \begin{definition}(Value of a simple family at x)
 \[
-F(x) :=\cc{b}{(x,b)\in F}=\ran(F)
+F(x) \ceq \cc{b}{(x,b)\in F}=\ran(F)
 \]
 (if domain is defined as usual, then the element of a simple family is intrinsicallly non-empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
-%F(x) :=\union\cc{b}{(x,b)\in F}
+%F(x) \ceq \union\cc{b}{(x,b)\in F}
 \end{definition}
 We need to improve the previous definitions, because:
 1) we want to have family with empty representative, we need to define.
@@ -29,13 +29,13 @@ The latter definition therefore is universal for any of r/f/F/PF
 
 \begin{definition}(Domain of relation/function/family/protected family)
 \[
-\Dom(F):=\cc{x}{\exists s:(x,s)\in F}=:\dom(F)
+\Dom(F)\ceq \cc{x}{\exists s:(x,s)\in F}=:\dom(F)
 \]
 \end{definition}
 
 \begin{definition}(Range of relation)(!!!Note that it is in general different from range of a function or family. "R-Ran","ran","small range")
 \[
-\ran(R):=\cc{y}{\exists x:(x,y)\in R}
+\ran(R)\ceq \cc{y}{\exists x:(x,y)\in R}
 \]
 \end{definition}
 
@@ -53,10 +53,10 @@ The latter definition therefore is universal for any of r/f/F/PF
 
 \begin{definition}([Set-]Range of function/family. "F-Ran","Ran", "big range")
 %\[
-%\Ran(F):=\cc{y}{\exists x: (x \in \Dom(F)) \land (F(x)=y)}
+%\Ran(F)\ceq \cc{y}{\exists x: (x \in \Dom(F)) \land (F(x)=y)}
 %\]
 \[
-\Ran(F):=\cc{y}{ y\mbox{ in classrange of } F}
+\Ran(F)\ceq \cc{y}{ y\mbox{ in classrange of } F}
 \]
 \end{definition}
 
@@ -238,7 +238,7 @@ If $(F\univocalat x)\land(y\set)$, then
 \Proof
 For formulas to be short, let's define 
 \[
-Q:=\cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
+Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \]
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
 % USELESS
@@ -452,7 +452,7 @@ y&=F(x)
 %(!w:w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))})
 \[
 (!w:w\in Q)
-\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi:=(\langle x,y\rangle\in F)$)}
+\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
 \]
 %...
 
@@ -665,7 +665,7 @@ Iota operator for sets.
 \Proof
 %For formulas to be short, let's locally define the term Q:
 %\[
-%Q:=\cc{y}{\varphi \land (!(y set):\varphi)}
+%Q\ceq \cc{y}{\varphi \land (!(y set):\varphi)}
 %\]
 \noindent$(\Rightarrow)$\\
 Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.

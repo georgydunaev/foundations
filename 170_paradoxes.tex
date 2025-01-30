@@ -30,9 +30,9 @@ Both in classical and in intuitionistic logic, the following holds:
 \Proof
 \noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
-Set Q:=W.\\
+Set $Q\ceq W$.\\
 Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
-From \ref{double neg LEM} where $P:=(W\in W)$, we have:
+From \ref{double neg LEM} where $P\ceq (W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
 $W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
@@ -56,7 +56,7 @@ Both in classical and in intuitionistic logic, the epsilon relation is not refle
 \end{theorem}
 \Proof
 \noindent %Fix Y.\\
-Let $C:=\cc{W}{W\notin W}$.\\
+Let $C\ceq \cc{W}{W\notin W}$.\\
 Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 $(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
@@ -90,7 +90,7 @@ $(Y\in C)\Longrightarrow (Y\notin Y)$.\\
 Case 2: $\neg(Y\set)$.\\
 $\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
 $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
-$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q:=Y$)
+$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q\ceq Y$)
 \Done
 
 \begin{theorem}
@@ -133,7 +133,7 @@ Proof of the claim:
 \]
 \[
 (V\notin V)
-\quad\mbox{(by thm \ref{thm:not in itself} with $Y:=V$)}
+\quad\mbox{(by thm \ref{thm:not in itself} with $Y\ceq V$)}
 \]
 \[
 (V\notin V)
@@ -172,7 +172,7 @@ In classical and even in intuitionistic logic, the following holds:
 \Proof
 \noindent %Fix Y.\\
 \[
-C:=\cc{w}{\neg(\power w \subseteq w)}
+C\ceq \cc{w}{\neg(\power w \subseteq w)}
 \]
 Claim $\power C \subseteq C$:\\
 Fix $B\in \power C$. To show: $B\in C$\\
@@ -194,7 +194,7 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 %By Russel's paradox(\ref{Russel's Paradox}), 
 %$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
 %$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
-%$W:=Y$.\\
+%$W\ceq Y$.\\
 \Done
 \subsection{Conglomerate of all classes is not a class}
 \begin{theorem}
@@ -209,7 +209,7 @@ A conglomerate of all classes is not a class. It "does not exist as class".
 \end{theorem}
 \Proof
 Fix W.\\
-Set $Q:=W$.\\
+Set $Q\ceq W$.\\
 By \ref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.
 \Done
