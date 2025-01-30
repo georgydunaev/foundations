@@ -1191,23 +1191,23 @@ For all $l:\Var\to\Domain$.
 \Proof
 %% ==== Standard proof for function coded as relation.
 \[
-l=\{(a,l(a))|a\in\dom(l)\}
+l=\cc{(a,l(a))}{a\in\dom(l)}
 \]
 \[
-l^*=\{(a,\{l(a)\})|a\in\dom(l)\}
+l^*=\cc{(a,\{l(a)\})}{a\in\dom(l)}
 \]
 \[
 \left(\prod (l^*)\right)=
-\{\{(x,y)|(x\in \dom(l^*)) \land (y\in l^*(x))\}|\top\}
+\cc{\{(x,y)|(x\in \dom(l^*)) \land (y\in l^*(x))\}}{\top}
 \]
 \[
-=\{(x,y)|(x\in \dom(l)) \land (y\in \{l(x)\})\}|\top\}
+=\cc{(x,y)|(x\in \dom(l)) \land (y\in \{l(x)\})\}}{\top}
 \]
 \[
-=\{\{(x,l(x))|x\in\dom(l)\}|\top\}
+=\cc{\{(x,l(x))|x\in\dom(l)\}}{\top}
 \]
 \[
-=\{l|\top\}
+=\cc{l}{\top}
 \]
 \[
 =\{l\}
@@ -1217,7 +1217,7 @@ l^*=\{(a,\{l(a)\})|a\in\dom(l)\}
 ==== Alternative proof for function coded as family.(unfinished)\\
 recall: (naive)
 \[
-\prod w := \{f | \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) \}
+\prod w := \cc{f }{ \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) }
 \]
 To show: (here we need to fix something with ``unification function''(tilda), which decomposes values in set of singletones)
 \[
@@ -1225,29 +1225,29 @@ To show: (here we need to fix something with ``unification function''(tilda), wh
 \]
 
 \[
-l=\{(a,d)|((a\in\dom(l))\land (d \mbox{ sss } l(x)))\}
+l=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l(x)))}
 \]
 \[
-l^*=\{(a,d)|((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))\}
+l^*=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))}
 \]
 \[
 \left(\prod (l^*)\right)=
-\{\{(x,b)|(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))\}|\top\}
+\cc{\{(x,b)|(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))\}}{\top}
 \]
 \[
-=\{\{(x,b)|(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})\}|\top\}
+=\cc{\{(x,b)|(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})\}}{\top}
 \]
 \[
-=\{\{(x,b)|(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))\}|\top\}
+=\cc{\{(x,b)|(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))\}}{\top}
 \]
 \[
-=\{\{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})|x\in\dom(l)\}|\top\}
+=\cc{\{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})|x\in\dom(l)\}}{\top}
 \]
 ???
 ==== Alternative proof2 for function coded as family.
 \[
 \left(\prod (l^*)\right)=
-\{(x\in \dom(l^*) \mapsto h(x) \in l^*(x))\}| h any\}
+\cc{(x\in \dom(l^*) \mapsto h(x) \in l^*(x))\}}{ h any}
 \]
 \fi
 \Done
@@ -1402,7 +1402,7 @@ A formula is locally valid if its locally true for any local assignment $v$ comp
 Remark: It is just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.\\
 This is kinda "useless definition", because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
 \[
-I^{\glob,w}_\Term(t) := \left\{I^{\loc,v}_\Term(t) \middle| v\in \prod_{x\in\Var}w(x) \right\}
+I^{\glob,w}_\Term(t) := \left\cc{I^{\loc,v}_\Term(t) \middle}{ v\in \prod_{x\in\Var}w(x) \right}
 \]
 \end{definition}
 \begin{definition}(Global interpretation of a formula)\\
@@ -1450,13 +1450,13 @@ A formula $\varphi$ is globally valid if it's globally true for all such global 
 %The formula $\varphi$ is called globally valid if it is true under any global evaluation by singletones.
 %\end{definition*}
 %\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
-I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletones $w:\Var\to\{\{K\}|K\in\Un\}$.
+I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletones $w:\Var\to\cc{\{K\}}{K\in\Un}$.
 \[
 I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
 \]
 \[
 \left(I^{\glob}_\Fm(\varphi)=\lValid\right) \IFF
- \left(\forall \left(w:\Var\to\{\{K\}|K\in\Un\}\right).I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
+ \left(\forall \left(w:\Var\to\cc{\{K\}}{K\in\Un}\right).I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
 \]
 \end{definition}
 Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
@@ -1731,7 +1731,7 @@ But here it is an example with free variable: $y$.
 \[\varphi_2 = \alpha \land \beta\]
 Idea: we may use 
 \[
-(\forall x:\varphi_1 \iff \varphi_2) \iff (\{x|\varphi_1\}=\{x|\varphi_2\})
+(\forall x:\varphi_1 \iff \varphi_2) \iff (\cc{x|\varphi_1\}=\{x}{\varphi_2})
 \]
 comment: i don't use G\"odel notation in my system.
 But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
@@ -2033,7 +2033,7 @@ Moreover, we may require that negations to commute, and to be idempotent, since 
 \[
 I^v((\varepsilon x. \varphi))
 \ \eqdef\ 
-\left\{b\in\Domain\ \middle|\,\left(\models^{v+(x,b)} \varphi\right)\,\right\}
+\left\cc{b\in\Domain\ \middle}{\,\left(\models^{v+(x,b)} \varphi\right)\,\right}
 \label{def:IEps}\tag{def:IEps}
 \]
 \end{definition}

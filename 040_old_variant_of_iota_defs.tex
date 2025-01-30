@@ -5,23 +5,23 @@
 SKIP THIS, GO TO THE NEXT SUBSECTION
 \begin{definition}(Value of relation/function/protected family at x)
 \[
-F(x):=\union\{b|(x,b)\in F\}
+F(x):=\union\cc{b}{(x,b)\in F}
 \]
 \end{definition}
 \begin{definition}(Value of a simple family at x)
 \[
-F(x) :=\{b|(x,b)\in F\}=\ran(F)
+F(x) :=\cc{b}{(x,b)\in F}=\ran(F)
 \]
 (if domain is defined as usual, then the element of a simple family is intrinsicallly non-empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
-%F(x) :=\union\{b|(x,b)\in F\}
+%F(x) :=\union\cc{b}{(x,b)\in F}
 \end{definition}
 We need to improve the previous definitions, because:
 1) we want to have family with empty representative, we need to define.
 2) it if not possible to preserve domain if element of a family turned out to be empty.
 \begin{definition}(Value of a protected family at x)
 \[
-F(x)_p := \{b|(x,\{b\})\in F\}
-F(x)_p := \union\{s|(x,s)\in F\}
+F(x)_p := \cc{b}{(x,\{b\})\in F}
+F(x)_p := \union\cc{s}{(x,s)\in F}
 \]
 The latter definition therefore is universal for any of r/f/F/PF
 \end{definition}
@@ -29,13 +29,13 @@ The latter definition therefore is universal for any of r/f/F/PF
 
 \begin{definition}(Domain of relation/function/family/protected family)
 \[
-\Dom(F):=\{x|\exists s:(x,s)\in F\}=:\dom(F)
+\Dom(F):=\cc{x}{\exists s:(x,s)\in F}=:\dom(F)
 \]
 \end{definition}
 
 \begin{definition}(Range of relation)(!!!Note that it is in general different from range of a function or family. "R-Ran","ran","small range")
 \[
-\ran(R):=\{y|\exists x:(x,y)\in R\}
+\ran(R):=\cc{y}{\exists x:(x,y)\in R}
 \]
 \end{definition}
 
@@ -53,10 +53,10 @@ The latter definition therefore is universal for any of r/f/F/PF
 
 \begin{definition}([Set-]Range of function/family. "F-Ran","Ran", "big range")
 %\[
-%\Ran(F):=\{y|\exists x: (x \in \Dom(F)) \land (F(x)=y)\}
+%\Ran(F):=\cc{y}{\exists x: (x \in \Dom(F)) \land (F(x)=y)}
 %\]
 \[
-\Ran(F):=\{y| y\mbox{ in classrange of } F\}
+\Ran(F):=\cc{y}{ y\mbox{ in classrange of } F}
 \]
 \end{definition}
 
@@ -117,19 +117,19 @@ This symbol is not a term of our theory(MK+axGroth), because terms denote classe
 Different variant of canonisations:
 \begin{definition}(Canonization a family of non-empty classes)\\
 $
-\canonize0(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}
+\canonize0(F) = \cc{(x,\{q\})}{\exists y:((x,y)\in F)\land (q\in y)}
 $\\
 
 \end{definition}
 \begin{definition}(Canonization[of a family of potentially empty classes])\\
 $
-\canonize1(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|x\in\Dom(F)\}
+\canonize1(F) = \cc{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)}{x\in\Dom(F)}
 $\\
 $
-\canonize2(F) = \{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)|(x\in\Dom(F))\land (F(x)=\emptyset) \}
+\canonize2(F) = \cc{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)}{(x\in\Dom(F))\land (F(x)=\emptyset) }
 $\\
 $
-\canonize3(F) = \{(x,s)|\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)\}
+\canonize3(F) = \cc{(x,s)}{\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)}
 $\\
 
 \end{definition}
@@ -238,7 +238,7 @@ If $(F\univocalat x)\land(y\set)$, then
 \Proof
 For formulas to be short, let's define 
 \[
-Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
+Q:=\cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \]
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
 % USELESS
@@ -274,30 +274,30 @@ Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
 \[
 (\exists! y : \langle x,y\rangle \in F)
 \IMPLIES
-(\{y | \langle x,y\rangle \in F\}\singleton)
+(\cc{y }{ \langle x,y\rangle \in F}\singleton)
 \]
 \[
-\left(\{y| \langle x,y\rangle\in F\}\singleton\right)
+\left(\cc{y}{ \langle x,y\rangle\in F}\singleton\right)
 \IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
+\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
 \in
-\left(\{y| \langle x,y\rangle\in F\}\right)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+\left(\cc{y}{ \langle x,y\rangle\in F}\right)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
 \]
 \[
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)
+\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
 \in
-\left(\{y| \langle x,y\rangle\in F\}\right)
+\left(\cc{y}{ \langle x,y\rangle\in F}\right)
 \IMPLIES
-\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
+\langle x,\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)\rangle\in F
 \]
 \[
 (!y : \langle x,y\rangle \in F)
 \LAND
 (\langle x,y\rangle\in F)
 \LAND
-\langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
+\langle x,\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)\rangle\in F
 \IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
+\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=y
 \]
 
 %\[
@@ -326,7 +326,7 @@ Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
 \[
 \IMPLIES
 \left(
-\{y| \langle x,y\rangle\in F\}
+\cc{y}{ \langle x,y\rangle\in F}
 =
 Q
 \right)
@@ -334,28 +334,28 @@ Q
 
 
 %\[
-%\left(\{y| \langle x,y\rangle\in F\}
+%\left(\cc{y}{ \langle x,y\rangle\in F}
 %=
-%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}\right)
+%\cc{y}{ \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)}\right)
 %\IMPLIES
 %\]
 \[
 \IMPLIES
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=
+\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=
 \left(\intersection
 Q
 \right)
 \]
 
 \iffalse
-%\{y| \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)\}
+%\cc{y}{ \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)}
 \[
-\left(\{y| \langle x,y\rangle\in F\}
+\left(\cc{y}{ \langle x,y\rangle\in F}
 =
 Q
 \right)
 \LAND
-\left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
+\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=y
 \IMPLIES
 \left(
 \intersection Q
@@ -448,8 +448,8 @@ y&=F(x)
 %\quad(\mbox{by def of Q}).
 %\]
 
-%(!w:w\in \{y|\varphi\land (!y:\varphi)\})
-%(!w:w\in \{y|(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))\})
+%(!w:w\in \cc{y}{\varphi\land (!y:\varphi)})
+%(!w:w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))})
 \[
 (!w:w\in Q)
 \quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi:=(\langle x,y\rangle\in F)$)}
@@ -577,7 +577,7 @@ y&=F(x)
 \[
 \exists (x\set):\varphi
 \implies
-(\varepsilon x: \varphi) \in \{x|\varphi\}
+(\varepsilon x: \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}
@@ -593,11 +593,11 @@ y&=F(x)
 \[
 \exists! (x\set):\varphi
 \implies
-(\iota x: \varphi) \in \{x|\varphi\}
+(\iota x: \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
+%(\iota x: \varphi) \in \cc{x}{\varphi}
 \[
 (\iota x: \varphi) \set
 \implies
@@ -609,7 +609,7 @@ y&=F(x)
 
 It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
 \[
-(I y: \varphi) = \intersection \{y|\varphi \land (!y:\varphi)\}
+(I y: \varphi) = \intersection \cc{y}{\varphi \land (!y:\varphi)}
 \commentary{bad ``definition''}
 \]
 In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
@@ -619,7 +619,7 @@ In general, the problem of NBG and MK is the principal inability to collect clas
 \label{def:iota operator}
 Iota operator for sets.
 \[
-(\iota y: \varphi) = \intersection \{y|\varphi \land (!(y\set):\varphi)\}
+(\iota y: \varphi) = \intersection \cc{y}{\varphi \land (!(y\set):\varphi)}
 \]
 \end{definition}
 
@@ -665,29 +665,29 @@ Iota operator for sets.
 \Proof
 %For formulas to be short, let's locally define the term Q:
 %\[
-%Q:=\{y|\varphi \land (!(y set):\varphi)\}
+%Q:=\cc{y}{\varphi \land (!(y set):\varphi)}
 %\]
 \noindent$(\Rightarrow)$\\
 Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
 \[
 ((\iota y: \varphi) \set)
 \IMPLIES
-\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)
 \commentary{by def \ref{def:iota operator}}
 \]
 \[
-\left(\intersection \{y|\varphi \land (!(y\set):\varphi)\} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)
 \IMPLIES
-\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
+\left(\cc{y}{\varphi \land (!(y\set):\varphi)}\nonempty\right)
 \]
 \[
-\left(\{y|\varphi \land (!(y\set):\varphi)\}\nonempty\right)
+\left(\cc{y}{\varphi \land (!(y\set):\varphi)}\nonempty\right)
 \IMPLIES
-\left(\exists	y: y\in \{y|\varphi \land (!(y\set):\varphi)\}\right)
+\left(\exists	y: y\in \cc{y}{\varphi \land (!(y\set):\varphi)}\right)
 \]
 \[
 \left(
-y\in \{y|\varphi \land (!(y\set):\varphi)\}
+y\in \cc{y}{\varphi \land (!(y\set):\varphi)}
 \right)
 \IMPLIES
 \left(
@@ -751,12 +751,12 @@ y\in\{y:\phi\land(!(y\set):\phi)\}
 (\{y:\phi\land(!(y\set):\phi)\}\nonempty)
 \]
 \[
-(\{y|\varphi \land (!y:\varphi)\}\nonempty)
+(\cc{y}{\varphi \land (!y:\varphi)}\nonempty)
 \IMPLIES
-\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!y:\varphi)} \set\right)
 \]
 \[
-\left(\intersection \{y|\varphi \land (!y:\varphi)\} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!y:\varphi)} \set\right)
 \IMPLIES
 \left(\left(\iota y: \varphi\right) \set\right)
 \]

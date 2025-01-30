@@ -5,7 +5,7 @@
 
 \begin{definition}(value)
 \[
-F(x) :\simeq \left(\lif ((F\family)\land(x \in \dom(F)))\ \lthen\ \union\{s|(x,s)\in F\}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
+F(x) :\simeq \left(\lif ((F\family)\land(x \in \dom(F)))\ \lthen\ \union\cc{s}{(x,s)\in F}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
 \end{definition}
 \subsection{Value} % of a function.
@@ -74,7 +74,7 @@ Variable $y$ is not in free variables of term $s$.
 
 \begin{definition}(Function constructor)
 \[
-(\lambda x: t) := \{(x,t)|(x\ \mbox{any})\}
+(\lambda x: t) := \cc{(x,t)}{(x\ \mbox{any})}
 \]
 Context: ($x$:Var) ($t$:Term)\\
 Comment: Term $t$ can contain $x$ as a free variable.\\
@@ -86,7 +86,7 @@ Side conditions:\\
 
 \begin{definition}(Family constructor)
 \[
-(\Lambda x: t) := \{(x,s)|(s\ \mbox{sss}\ t), x\ \mbox{any}\}
+(\Lambda x: t) := \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
@@ -98,7 +98,7 @@ As term $s$ can contain $x$ as a free variable.\\
 
 \begin{definition*}(LOCAL definition of a value of a function, value of a family, for the next theorem)
 \[
-f(x) := \bigcup \{s|(x,s)\in f\}
+f(x) := \bigcup \cc{s}{(x,s)\in f}
 \]
 \end{definition*}
 % \coloneqq
@@ -130,15 +130,15 @@ q\in (\lambda x: t)(z)
 \]
 By definition of $-(-)$ (evaluation),
 \[
-q\in\union \{b|(z,b)\in(\lambda x:t)\}.
+q\in\union \cc{b}{(z,b)\in(\lambda x:t)}.
 \]
 By destruction of the union,
 \[
-\exists s\in \{b|(z,b)\in(\lambda x:t)\}: q\in s.
+\exists s\in \cc{b}{(z,b)\in(\lambda x:t)}: q\in s.
 \]
 Note for the following step: since variable b has no free occurences in t, $t[s/b]=t$.
 \[
-s\in \{b|(z,b)\in(\lambda x:t)\}
+s\in \cc{b}{(z,b)\in(\lambda x:t)}
 \IMPLIES
 (s\set) \& ((z,s)\in(\lambda x:t))
 \]
@@ -146,17 +146,17 @@ By definition of $\lambda$,
 \[
 (z,s)\in(\lambda x:t)
 \IMPLIES
-(z,s)\in \{(x,t)|\top\}
+(z,s)\in \cc{(x,t)}{\top}
 \]
 Unfolding the notation:
 \[
-(z,s)\in \{(x,t)|\top\}
+(z,s)\in \cc{(x,t)}{\top}
 \IMPLIES
-(z,s)\in \{w|\exists x: w = (x,t) \land \top\}
+(z,s)\in \cc{w}{\exists x: w = (x,t) \land \top}
 \]
 
 \[
-(z,s)\in \{w|\exists x: w = (x,t) \land \top\}
+(z,s)\in \cc{w}{\exists x: w = (x,t) \land \top}
 \IMPLIES
 \exists x: (z,s) = (x,t) \land \top
 \]
@@ -196,7 +196,7 @@ x[z/x]=z
 \[
 (z,t[z/x]) = (x[z/x],t[z/x])=(x,t)[z/x]
 \]
-Goal1: $(x,t)[z/x]\in\{(x,t)|(x\mbox{ any})\}$\\
+Goal1: $(x,t)[z/x]\in\cc{(x,t)}{(x\mbox{ any})}$\\
 Goal2: $\exists x:(x,t)=((x,t)[z/x])$\\
 x:=z\\
 There are no free occurencies of $x$ in $((x,t)[z/x])$, because of the substitution.\\
@@ -210,10 +210,10 @@ From the premise, $(x,t)[z/x]$ is a set.\\
 Therefore Goal1 is proven.\\
 So $(x,t)[z/x]\in (\lambda x:t)$.\\
 So $(z,t[z/x])\in (\lambda x:t)$.\\
-So $t[z/x]\in \{b|(z,b)\in(\lambda x:t)\}$.\\
+So $t[z/x]\in \cc{b}{(z,b)\in(\lambda x:t)}$.\\
 Since $(q \in t[z/x])$, we also have
 \[
-q\in \bigcup \{b|(z,b)\in(\lambda x: t)\}
+q\in \bigcup \cc{b}{(z,b)\in(\lambda x: t)}
 \]
 So $q\in (\lambda x: t)(z)$.\\
 And we are done.\\
@@ -245,7 +245,7 @@ By definitions,
 \label{def:lambda operator}not good anymore: doesn't work for classes
 Lambda operator.
 \[
-(\lambda x: t) = \{p|\exists x: p = \langle x,t \rangle\}
+(\lambda x: t) = \cc{p}{\exists x: p = \langle x,t \rangle}
 \]
 \end{definition}
 

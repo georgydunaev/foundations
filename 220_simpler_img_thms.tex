@@ -4,36 +4,36 @@
 \section{Relational image/glare theorems}
 \begin{definition}((relational) membership relation)
 \[
-\mbox{E} := \{(x,y)|x\in y\}
+\mbox{E} := \cc{(x,y)}{x\in y}
 \]
 \end{definition}
 \begin{remark}(no "familial membership relation")\\
 There is a loss of meaning, when consider "familial membership relation", because it is "one-to-many", not functional, what is required for a family.
 \[
-``\mbox{E}_{\mathrm{fam}}" = \{(x,b)|(x\in Y)\land(b\sss Y)\} = V\times(\{\emptyset\}\cup\{\{q\}|q\in V\}) = (x \mapsto V)
+``\mbox{E}_{\mathrm{fam}}" = \cc{(x,b)|(x\in Y)\land(b\sss Y)\} = V\times(\{\emptyset\}\cup\{\{q\}}{q\in V}) = (x \mapsto V)
 \]
 \end{remark}
 \begin{definition}((relational) inverse membership relation)
 \[
-\invE := \{(y,x)|x\in y\} = \mbox{E}^{-1}
+\invE := \cc{(y,x)}{x\in y} = \mbox{E}^{-1}
 \]
 \end{definition}
 \begin{remark}(no "familial inverse membership relation")\\
 There is a loss of meaning, when consider "familial inverse membership relation", because it is "one-to-many", not functional, what is required for a family.
 %There is familial inverse membership relation, is also not functional, and it is, in fact, equal to "familial equality relation of sets", which itself is functional. 
 \[
-``\invE_{\mathrm{fam}}" = \{(y,b)|(x\in y)\land(b\sss x)\} = \left(y \mapsto \left(\union y\right)\right).
+``\invE_{\mathrm{fam}}" = \cc{(y,b)}{(x\in y)\land(b\sss x)} = \left(y \mapsto \left(\union y\right)\right).
 \]
 \end{remark}
 
 \begin{definition}(relational image)
 \[
-F[A]:=\{b|\exists a\in A: (a,b)\in F\}
+F[A]:=\cc{b}{\exists a\in A: (a,b)\in F}
 \]
 \end{definition}
 \begin{definition}(relational glare)
 \[
-F\langle A \rangle:=\{b|\forall a\in A: (a,b)\in F\}
+F\langle A \rangle:=\cc{b}{\forall a\in A: (a,b)\in F}
 \]
 \end{definition}
 \begin{theorem}
@@ -98,7 +98,7 @@ $
 \begin{theorem}(Dunaev)\\
 If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyset\notin\mbox{ran}(F))$ then
 \[
-F=\{(x,(\Sigma F)[\{x\}])|x\in \dom(\Sigma F)\}
+F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
 \]
 \end{theorem}
 \Proof

@@ -21,7 +21,7 @@ ARB \iffdef \exists (i\set):(R((i,0))=A)\land(R((i,1))=B)
 \begin{definition}[epsilon relation]
 \label{def:epsilonRelation}
 \[
-\E\ \eqdef\ \{\,(x,y)\ |\ x\in y\,\}
+\E\ \eqdef\ \cc{\,(x,y)\ }{\ x\in y\,}
 \]
 \end{definition}
 \begin{definition}[irreflexive on]
@@ -103,7 +103,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \begin{definition}[powerclass w.r.t. relation $R$]
 \label{def:RpowerClass}
 \[
-\power_R X\ \eqdef\ \{\, k\ |\ k\stackrel{R\E}{\subclass}X\,\}
+\power_R X\ \eqdef\ \cc{\, k\ }{\ k\stackrel{R\E}{\subclass}X\,}
 \]
 \end{definition}
 
@@ -274,7 +274,7 @@ S:=(K\setminus A)
 ((K\cap\power_R A)\subclass A)
 \IFF
 (
-\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
+\cc{\,k\in K\ }{\ (R^\top[\{m\}]\subclass A)\,}
 \subclass A
 )
 \]
@@ -283,13 +283,13 @@ S:=(K\setminus A)
 \LAND
 (R^\top[\{m\}]\subclass A)
 \IMPLIES
-(m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
+(m\in\cc{\,k\in K\ }{\ (R^\top[\{m\}]\subclass A)\,})
 \]
 \[
-(m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
+(m\in\cc{\,k\in K\ }{\ (R^\top[\{m\}]\subclass A)\,})
 \LAND
 (
-\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
+\cc{\,k\in K\ }{\ (R^\top[\{m\}]\subclass A)\,}
 \subclass A
 )
 \IMPLIES
@@ -321,7 +321,7 @@ If $R$ is a relation, then
 \]
 \Proof
 To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
-Fix $k\in K$. To show: $k\in\{\,x\ |\ (R\mathrm{\ on\ }K)^\top[\{x\}]\}\subclass K$.\\
+Fix $k\in K$. To show: $k\in\cc{\,x\ }{\ (R\mathrm{\ on\ }K)^\top[\{x\}]}\subclass K$.\\
 To show: $(R\mathrm{\ on\ }K)^\top[\{k\}]\subclass K$.\\
 Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
 \[
@@ -433,7 +433,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
 \label{def:ordinalNumbers}
 \[
-\On\ \eqdef\ \{\,x\ |\ \Ord(x)\,\}
+\On\ \eqdef\ \cc{\,x\ }{\ \Ord(x)\,}
 \]
 \end{definition}
 
@@ -614,10 +614,10 @@ z:=a
 \subsection{Cardinality}
 %\begin{definition}(Cardinality)\\
 %\[
-%|A|=\Ord\cap\bigcap \{f: | \}
+%|A|=\Ord\cap\bigcap \cc{f: }{ }
 %\]
 %\[
-%|A|:=\mbox{Ord}\cap\bigcap \{\alpha\in\mbox{Ord}|\exists (f:A\to\alpha):%(f\mbox{ injective})\}
+%|A|:=\mbox{Ord}\cap\bigcap \cc{\alpha\in\mbox{Ord}}{\exists (f:A\to\alpha):%(f\mbox{ injective})}
 %\]
 %\end{definition}
 
@@ -656,16 +656,16 @@ Using the statement of well-ordering theorem and transitivity, it is possible to
 \begin{definition}[cardinality of a class]
 %One of the following statements can be used as a definition of cardinality function. We will use the second one. %\On \cap 
 %\[
-%|K|:= \bigcap \{a\in\On|K\preccurlyeq a\}
+%|K|:= \bigcap \cc{a\in\On}{K\preccurlyeq a}
 %\]
 %\[
-%|K|:= \bigcгp \{{a}|(a\in\On) \land (K\prec a)\}
+%|K|:= \bigcгp \cc{{a}}{(a\in\On) \land (K\prec a)}
 %\]
 %\[
-%|K|:= \{a\in\On|a\prec K\}
+%|K|:= \cc{a\in\On}{a\prec K}
 %\]
 \[
-|K|:= \{\,x\ |\ (\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A\,\}
+|K|:= \cc{\,x\ }{\ (\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A\,}
 \]
 \end{definition}
 \begin{definition}[cardinality of $X$ is strictly smaller than cardinality of $Y$]%\sqsubseteq

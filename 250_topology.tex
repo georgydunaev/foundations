@@ -210,7 +210,7 @@ S\in \union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])=N_\mathcal{B}.
 \end{theorem}
 \begin{definition}[a base for a binary product topology]
 \[
-\mathcal{B}_{E\times F} := \{\,A\times B\ |\ (A\in N_E) \land (B\in N_F)\,\}
+\mathcal{B}_{E\times F} := \cc{\,A\times B\ }{\ (A\in N_E) \land (B\in N_F)\,}
 \]
 \end{definition}
 It can be given also this way:
@@ -222,7 +222,7 @@ It can be given also this way:
 
 \begin{definition}[product filter basis function]
 \[
-\mathrm{pfb}((a,b)):=\{A\times B | (A\in \mathrm{nghb}_E(a)) \land (B\in \mathrm{nghb}_F(b))\}
+\mathrm{pfb}((a,b)):=\cc{A\times B }{ (A\in \mathrm{nghb}_E(a)) \land (B\in \mathrm{nghb}_F(b))}
 \]
 \end{definition}
 %\pagebreak
@@ -282,7 +282,7 @@ A\in \sigma \middle)\land \middle(B\in \sigma\middle)\middle)
 \begin{theorem}[intersection of topologies]
 \begin{align*}
 \left(
-Q \subseteq \{\mathcal{T}|\mathcal{T}\mathrm{\ topology}\}
+Q \subseteq \cc{\mathcal{T}}{\mathcal{T}\mathrm{\ topology}}
 \middle)
 \implies 
 \middle(
@@ -304,7 +304,7 @@ Q \subseteq \{\mathcal{T}|\mathcal{T}\mathrm{\ topology}\}
 \begin{align*}
 \left(
 \middle(
-Q \subseteq \{\sigma|\sigma\mathrm{\ sigma{\shortminus}algebra}\}
+Q \subseteq \cc{\sigma}{\sigma\mathrm{\ sigma{\shortminus}algebra}}
 \middle)
 \land 
 \middle(
@@ -332,7 +332,7 @@ Q \subseteq \{\sigma|\sigma\mathrm{\ sigma{\shortminus}algebra}\}
 \begin{theorem}[intersection of linear subspaces]
 \begin{align*}
 \left(
-Q \subseteq \{L|L\mathrm{\ linear\ subspace}\}
+Q \subseteq \cc{L}{L\mathrm{\ linear\ subspace}}
 \middle)
 \implies 
 \middle(
@@ -351,7 +351,7 @@ Q \subseteq \{L|L\mathrm{\ linear\ subspace}\}
 \begin{theorem}[intersection of closed sets]
 \begin{align*}
 \left(
-Q \subseteq \{C|C\mathrm{\ closed}\}
+Q \subseteq \cc{C}{C\mathrm{\ closed}}
 \middle)
 \implies 
 \middle(
@@ -370,7 +370,7 @@ Q \subseteq \{C|C\mathrm{\ closed}\}
 \begin{theorem}[intersection of convex sets]
 \begin{align*}
 \left(
-Q \subseteq \{C|C\mathrm{\ convex}\}
+Q \subseteq \cc{C}{C\mathrm{\ convex}}
 \middle)
 \implies 
 \middle(
@@ -389,7 +389,7 @@ Q \subseteq \{C|C\mathrm{\ convex}\}
 \begin{theorem}[intersection of balanced sets]
 \begin{align*}
 \left(
-Q \subseteq \{B|B\mathrm{\ balanced}\}
+Q \subseteq \cc{B}{B\mathrm{\ balanced}}
 \middle)
 \implies 
 \middle(
@@ -409,7 +409,7 @@ Q \subseteq \{B|B\mathrm{\ balanced}\}
 \begin{align*}
 \left(
 \middle(
-Q \subseteq \{\lambda|\lambda\mathrm{\ Dynkin}\}
+Q \subseteq \cc{\lambda}{\lambda\mathrm{\ Dynkin}}
 \middle)
 \land 
 \middle(
@@ -482,7 +482,7 @@ V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 \end{theorem}
 
 \newcommand*{\blipo}{\separation{W}{\topology}{W\subseteq V}}
-% \{W\in\topology|W\subseteq V\}
+% \cc{W\in\topology}{W\subseteq V}
 %\noindent Lemma:
 \begin{theorem}
 \[
@@ -517,7 +517,7 @@ A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
 %any open set o
 $\forall U\in\mathcal{T}:\exists W\in\power\mathfrak{B}:U=\union W$\\
 or\\
-$\mathcal{T}\subseteq \{\union W |  W\in\power\mathfrak{B}\}$\\
+$\mathcal{T}\subseteq \cc{\union W }{  W\in\power\mathfrak{B}}$\\
 or\\
 $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 \end{definition}
@@ -526,9 +526,9 @@ $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 \begin{definition}(Generator)\\
 A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff\\
 %any open set o
-$\forall U\in\mathcal{T}:\exists W\in\power\{\intersection Q | (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}:U=\union W$\\
+$\forall U\in\mathcal{T}:\exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }:U=\union W$\\
 or\\
-$\mathcal{T}\subseteq \{\union W |  W\in\power\{\intersection Q | (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}\}$\\
+$\mathcal{T}\subseteq \cc{\union W |  W\in\power\{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}}$\\
 or\\
 $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
 \end{definition}
@@ -546,7 +546,7 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 
 \begin{notation}(generator/base/topology at x)
 \[
-\mathfrak{B}(x):=\{U\in\mathfrak{B}|x\in U\}
+\mathfrak{B}(x):=\cc{U\in\mathfrak{B}}{x\in U}
 \]
 \end{notation}
 
@@ -572,11 +572,11 @@ has the carsest topology s.t.
 are continuous for all $i\in I$.
 ("initial topology")
 \[
-\mathcal{A}\eqdef\union \{\{\pi^{-1}_i[U]|U\in\Tau_{X_i}\}|i\in I\}
+\mathcal{A}\eqdef\union \cc{\{\pi^{-1}_i[U]|U\in\Tau_{X_i}\}}{i\in I}
 \]
 In fact $\mathcal{A}$ is a subbasis.
 \[
-\Tau_\mathcal{A}\eqdef\intersection\{\Tau|(\Tau\mbox{ topology on }X)\land (\mathcal{A}\subseteq\Tau) \}
+\Tau_\mathcal{A}\eqdef\intersection\cc{\Tau}{(\Tau\mbox{ topology on }X)\land (\mathcal{A}\subseteq\Tau) }
 \]
 \fi
 \input{END.tex}

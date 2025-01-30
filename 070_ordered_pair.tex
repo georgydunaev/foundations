@@ -229,12 +229,12 @@ Now, from the definition we can obtain certain special cases, for empty set as a
 %(a,b) := \cc{(0,a_1)|a_1\in a\}\cup \{(1,b_1)}{b_1\in b}
 %\]
 %\[
-%   = \cc{\{(1,a_2)|a_2\in a_1\}|a_1\in a\}\cup \{(1,b_1)}{b_1\in b}
-%(0,b) = \cc{(0,a_1')|a_1'\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)}{%b_1\in b}
+%   = \cc{\cc{(1,a_2)|a_2\in a_1\}}{a_1\in a}\cup \{(1,b_1)}{b_1\in b}
+%(0,b) = \cc{(0,a_1')|a_1'\in \emptyset\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{%b_1\in b}
 
 %(1,b_1)= \cc{(0,a_1')|a_1'\in \{\emptyset\}\}\cup \{(1,b_2)}{b_2\in b_1}
 %       = \cc{(0,\emptyset)\}\cup \{(1,b_2)}{b_2\in b_1}
-%       = \cc{(0,\emptyset)\}\cup \{\{(0,\emptyset)\}\cup \{(1,b_2)|b_2\in b_1\}}{%b_2\in b_1}
+%       = \cc{(0,\emptyset)\}\cup \cc{\{(0,\emptyset)\}\cup \{(1,b_2)}{b_2\in b_1}}{%b_2\in b_1}
 %\]
 
 \[
@@ -277,7 +277,7 @@ We know that
 \]
 and
 \[
-(\emptyset,b) = \cc{(0,a_1)|a_1\in \emptyset\}\cup \{(1,b_1)|b_1\in b\} = \{(1,b_1)}{b_1\in b}
+(\emptyset,b) = \cc{(0,a_1)|a_1\in \emptyset\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{b_1\in b}
 \]
 .
 

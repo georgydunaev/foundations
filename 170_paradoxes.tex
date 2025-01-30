@@ -56,7 +56,7 @@ Both in classical and in intuitionistic logic, the epsilon relation is not refle
 \end{theorem}
 \Proof
 \noindent %Fix Y.\\
-Let $C:=\{W|W\notin W\}$.\\
+Let $C:=\cc{W}{W\notin W}$.\\
 Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 $(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
@@ -172,7 +172,7 @@ In classical and even in intuitionistic logic, the following holds:
 \Proof
 \noindent %Fix Y.\\
 \[
-C:=\{\,w\ |\ \neg(\power w \subseteq w)\,\}
+C:=\cc{\,w\ }{\ \neg(\power w \subseteq w)\,}
 \]
 Claim $\power C \subseteq C$:\\
 Fix $B\in \power C$. To show: $B\in C$\\

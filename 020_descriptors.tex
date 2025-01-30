@@ -97,7 +97,7 @@ Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
 \[
 \exists (x\set):\varphi
 \implies
-(\varepsilon (x\set): \varphi) \in \{x|\varphi\}
+(\varepsilon (x\set): \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}
@@ -113,11 +113,11 @@ Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
 \[
 (\exists! (x\set):\varphi)
 \implies
-(\iota (x\set): \varphi) \in \{x|\varphi\}
+(\iota (x\set): \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
+%(\iota x: \varphi) \in \cc{x}{\varphi}
 \[
 (\iota (x\set): \varphi) \ldefined
 \implies
@@ -133,7 +133,7 @@ qqqqqqqqqqqq
 \]
 \end{axiom}
 \begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
+%(\iota x: \varphi) \in \cc{x}{\varphi}
 \[
 (\iota (x\set): \varphi) \ldefined
 \iff
@@ -141,15 +141,15 @@ qqqqqqqqqqqq
 \]
 \end{axiom}
 \begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
+%(\iota x: \varphi) \in \cc{x}{\varphi}
 \[
 (\iota (x\set): \varphi) \ldefined
 \implies
-(\iota (x\set): \varphi)  \in \{x|\varphi\}
+(\iota (x\set): \varphi)  \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}
-%(\iota x: \varphi) \in \{x|\varphi\}
+%(\iota x: \varphi) \in \cc{x}{\varphi}
 \[
 \varphi\land (!x:\varphi)
 \implies
@@ -162,7 +162,7 @@ qqqqqqqqqqqq
 \label{def:epsilon operator}
 Epsilon operator.
 \[
-(\varepsilon y: \varphi) = c\left(\{y|\varphi\}\right)
+(\varepsilon y: \varphi) = c\left(\cc{y}{\varphi}\right)
 \]
 Here c is a class-function of global choice:
 \[

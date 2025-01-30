@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
 \begin{theorem}
 \[
-(\{y|\psi\}\nonempty)
+(\cc{y}{\psi}\nonempty)
 \iff
 (\exists y:\psi)
 \]
@@ -14,7 +14,7 @@
 \Proof
 \noindent$(\Rightarrow)$\\
 \[
-(\{y|\psi\}\nonempty)
+(\cc{y}{\psi}\nonempty)
 \IMPLIES
 (\exists y:\psi)
 \]
@@ -73,10 +73,10 @@ Claim is proven.
 %(X\set)\IMPLIES(\exists W: X\in W))
 %\]
 \[
-(X\set)\LAND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
+(X\set)\LAND\top[X/W]\IMPLIES(X\in \cc{x}{\top[x/W]})
 \]
 \[
-(X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V
+(X\in \cc{x|\top[x/W]\}=\{x}{\top}=V)\IMPLIES x\in V
 \]
 %\[(a\in\{a\})\LAND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
 \Done
