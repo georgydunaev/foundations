@@ -980,7 +980,7 @@ Loosely speaking,
 \]
 But it is also true that $"\in":\PredSymb$. 
 \[
-t_1:\Term \AND t_2:\Term \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
+t_1:\Term \LAND t_2:\Term \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
 \]
 
 Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
@@ -992,17 +992,17 @@ Unfortunately, the colon is also used both in theory and metatheory for denoting
 Inductive definition of terms:\\
 1) $v:\Var \IMPLIES v:\Term$.\\
 2) 
-$f:\FuncSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES f(t_1,\dots,t_n):\Term$.\\
+$f:\FuncSymb\LAND t_1:\Term \LAND ...\LAND t_n:\Term  \IMPLIES f(t_1,\dots,t_n):\Term$.\\
 3) Some higher-order features.\\
-$x:\Var \AND x:`a \AND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
+$x:\Var \LAND x:`a \LAND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
 
-$x:\Var \AND t:\Term \IMPLIES x.t:\BTerm$\\
-$y:\Var \AND b:\BTerm \IMPLIES y.b:\mathrm{BBTerm}$\\
+$x:\Var \LAND t:\Term \IMPLIES x.t:\BTerm$\\
+$y:\Var \LAND b:\BTerm \IMPLIES y.b:\mathrm{BBTerm}$\\
 
 The following rule:\\
-$x:\Var \AND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Term$,\\
+$x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Term$,\\
 can be split into two, via introducing bounded terms and formulas:\\
-$x:\Var \AND \varphi: \Fm \IMPLIES x.\varphi: \BFm$\\
+$x:\Var \LAND \varphi: \Fm \IMPLIES x.\varphi: \BFm$\\
 $q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \Term$\\
 Here $\mdoubleplus$ denotes concatenation of strings, because in this variant of implementation all terms, formulas, etc are seen as strings of text.\\
 For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," . ",  \varphi, ")"].\]
@@ -1017,13 +1017,13 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
 1)$\bot:\Fm$.\\
-2)$P:\PredSymb\AND t_1:\Term \AND ...\AND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
+2)$P:\PredSymb\LAND t_1:\Term \LAND ...\LAND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
 3)$A:\Fm \IMPLIES (\neg A):\Fm$.\\
-4)$A:\Fm \AND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
-5)$A:\Fm \AND B:\Fm \IMPLIES (A\land B):\Fm$.\\
-6)$A:\Fm \AND B:\Fm \IMPLIES (A\lor B):\Fm$.\\
-7)$x:\Var \AND A:\Fm \IMPLIES (\forall x.A):\Fm$.\\
-8)$x:\Var \AND A:\Fm \IMPLIES (\exists x.A):\Fm$.\\
+4)$A:\Fm \LAND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
+5)$A:\Fm \LAND B:\Fm \IMPLIES (A\land B):\Fm$.\\
+6)$A:\Fm \LAND B:\Fm \IMPLIES (A\lor B):\Fm$.\\
+7)$x:\Var \LAND A:\Fm \IMPLIES (\forall x.A):\Fm$.\\
+8)$x:\Var \LAND A:\Fm \IMPLIES (\exists x.A):\Fm$.\\
 \end{definition}
 
 \begin{definition}(Context)\\

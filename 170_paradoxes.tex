@@ -61,18 +61,18 @@ Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 $(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
 Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
-$(b\in B)\AND(B\subseteq C) \Longrightarrow (b\in C)$.\\
+$(b\in B)\LAND(B\subseteq C) \Longrightarrow (b\in C)$.\\
 $(b\in C) \Longrightarrow (b\notin b)$.\\
 Claim: $B\notin B$.\\
 Assume opposite $B\in B$ and derive a contradiction.\\
 $(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
-%$(B\in B)\AND(B\subseteq C) \Longrightarrow (B\in C)$.\\
+%$(B\in B)\LAND(B\subseteq C) \Longrightarrow (B\in C)$.\\
 %$(B\in C) \Longrightarrow (B\notin B)$.\\
-$(B\in B)\AND(B\notin B) \Longrightarrow \bot$.\\
+$(B\in B)\LAND(B\notin B) \Longrightarrow \bot$.\\
 Contradiction obtained, so the claim  $B\notin B$ is proven.\\
 %Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
 %Значит B не принадлежит себе.
-$(B\set)\AND(B\notin B) \Longrightarrow (B\in C)$.\\
+$(B\set)\LAND(B\notin B) \Longrightarrow (B\in C)$.\\
 %Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
 %Доказали PC⊆C.
 We are done proving the goal $\power C\subseteq C$.\\
@@ -126,7 +126,7 @@ Proof of the claim:
 \]
 \[
 \left(\intersection A\right) = \left(\intersection \emptyset\right)
-\AND
+\LAND
 \left(\intersection \emptyset\right) = V
 \IMPLIES
 \left(\intersection A\right) = V
@@ -143,7 +143,7 @@ Proof of the claim:
 \]
 \[
 \left(\intersection A\right) = V
-\AND
+\LAND
 \neg(V\set)
 \IMPLIES
 \neg(\left(\intersection A\right) \set)

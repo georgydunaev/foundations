@@ -467,7 +467,7 @@ Interior of a set V in a topology $\topology$.
 \end{definition}
 \begin{theorem}
 \[
-(\interior = \nghbset^{-1})\AND(\nghbset=\interior^{-1})
+(\interior = \nghbset^{-1})\LAND(\nghbset=\interior^{-1})
 \]
 \end{theorem}
 \begin{theorem}
@@ -492,9 +492,9 @@ V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 $(\Rightarrow)\\
 V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb-elim, union-elim).
 \\
-$U\in\topology\AND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification-intro).
+$U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification-intro).
 \\
-$x\in U \AND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union-intro).
+$x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union-intro).
 \\
 $x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior-intro).
 \\
@@ -502,9 +502,9 @@ $(\Leftarrow)$
 \\
 $x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior-elim, union-elim).
 \\
-$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\AND W\subseteq V$\hfill(specification-elim).
+$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\LAND W\subseteq V$\hfill(specification-elim).
 \\
-$x\in W\AND W\in\topology\AND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and-intro, exists-intro).
+$x\in W\LAND W\in\topology\LAND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and-intro, exists-intro).
 \\
 $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists-elim, nghb-intro).
 \DoneNoPar

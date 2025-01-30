@@ -39,7 +39,7 @@ f\mbox{ univocal}
 \]
 \[
 \left(\exists w: \langle x,w\rangle\in f\right)
-\AND
+\LAND
 \left(! w: \langle x,w\rangle\in f\right)
 \quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
 \left(\exists! w: \langle x,w\rangle\in f\right)
@@ -56,7 +56,7 @@ f\mbox{ univocal}
 \]
 \[
 \langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
-\AND
+\LAND
 \left(\langle x,y\rangle\in f\right)
 \quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
 (\iota w: \langle x,w\rangle\in f) \simeq y
@@ -72,7 +72,7 @@ f(x) \simeq y
 \noindent($\Rightarrow$)
 \[(y\downarrow)\quad\mbox{(by PFOL8)}\]
 \[
-(y\downarrow)\AND((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(y\downarrow)\LAND((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 (\iota w: \langle x,w\rangle\in f)\downarrow \]
 \[
 \left(\iota w: \langle x,w\rangle\in f\right)\downarrow 
@@ -81,7 +81,7 @@ f(x) \simeq y
 \]
 \[
 \langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
-\AND
+\LAND
 \left((\iota w: \langle x,w\rangle\in f)\simeq y\right)
 \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 \left(\langle x, y\rangle\in f\right)

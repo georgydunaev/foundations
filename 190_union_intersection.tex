@@ -17,14 +17,14 @@ To show: $(b\in \union A)$.\\
 \]
 \[
 (B\in A)
-\AND
+\LAND
 (b\in B)
 \IMPLIES
 (\exists a\in A : b\in a)
 \]
 \[
 (b\set)
-\AND
+\LAND
 (\exists a\in A : b\in a)
 \IMPLIES
 \left(b\in \union A\right)
@@ -41,7 +41,7 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 (x\in \intersection A)
 \IMPLIES
 (x\set)
-\AND
+\LAND
 (\forall a\in A : x\in a)
 \]
 %(b\set)
@@ -49,7 +49,7 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 %\[a:=B\]
 \[
 (\forall a\in A : x\in a)
-\AND
+\LAND
 (B\in A)
 \IMPLIES
 (x\in B)
@@ -62,16 +62,16 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \Proof
 $(\subseteq)$\\
 $(x\in\intersection \{w\})\IMPLIES(\forall m\in\{w\}:x\in m)$.\\
-$(\forall m\in\{w\}:x\in m)\AND(w\in \{w\})\IMPLIES(x\in w).$\\
+$(\forall m\in\{w\}:x\in m)\LAND(w\in \{w\})\IMPLIES(x\in w).$\\
 $(\supseteq)$\\
 Fix x. Assume $(x\in w)$. To show: $(x\in\intersection\{w\})$.\\
 $(x\in w)\IMPLIES(x\set)$.\\
 Claim: $(\forall m\in\{w\}:x\in m).$\\
 Fix m. Assume $m\in\{w\}$.\\
 $(m\in\{w\})\IMPLIES(m=w)$.\\
-$(x\in w)\AND(m=w)\IMPLIES(x\in m)$\\
+$(x\in w)\LAND(m=w)\IMPLIES(x\in m)$\\
 The claim is proven.\\
-$(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
+$(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$\\
 \Done
 
 \begin{theorem}{Intersection of a singleton is in it.}
@@ -82,10 +82,10 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \end{theorem}
 \Proof
 \[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
-\[(w\in A)\AND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
+\[(w\in A)\LAND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
 \[(\{w\}=A)\IMPLIES\left(\intersection\{w\}=\intersection A\right).\]
-\[\left(\intersection\{w\}=w\right)\AND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
-\[\left(\intersection A=w\right)\AND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
+\[\left(\intersection\{w\}=w\right)\LAND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
+\[\left(\intersection A=w\right)\LAND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
 \Done
 
 
@@ -114,7 +114,7 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \]
 \[
 \left(\intersection A\right)\subseteq B
-\AND
+\LAND
 \left(B \subseteq \union A\right)
 \IMPLIES
 \left(\intersection A \subseteq \union A\right)
@@ -128,11 +128,11 @@ $(x\set)\AND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).
 \end{theorem}
 \Proof
 \[
-(A\set) \AND (B\subseteq A) \IMPLIES (B\set)
+(A\set) \LAND (B\subseteq A) \IMPLIES (B\set)
 \commentary{by axm \ref{axm:heredity}}
 \]
 \[
-(B\set) \AND (B\subseteq A) \IMPLIES (B\in\power A)
+(B\set) \LAND (B\subseteq A) \IMPLIES (B\in\power A)
 \commentary{by def \ref{def:powerclass}}
 \]
 \Done
@@ -155,14 +155,14 @@ Claim:$(x\subseteq A)$.\\
 Assume $(y\in x)$. To show: $(y\in A)$.\\
 \[
 (y\in x)
-\AND
+\LAND
 (x\in A)
 \IMPLIES
 \left(y\in\union A\right)
 \]
 \[
 \left(y\in\union A\right)
-\AND
+\LAND
 \left(\union A\subseteq A\right)
 \IMPLIES
 (y\in A)
@@ -176,7 +176,7 @@ The claim is proven.
 \]
 \[
 (x\set)
-\AND
+\LAND
 (x\subseteq A)
 \IMPLIES
 (x\in\power A)
@@ -196,7 +196,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 \]
 \[
 (y\in A)
-\AND
+\LAND
 (A\subseteq \power A)
 \IMPLIES
 (y\in \power A)
@@ -208,7 +208,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 \]
 \[
 (x\in y)
-\AND
+\LAND
 (y\subseteq A)
 \IMPLIES
 (x\in A)

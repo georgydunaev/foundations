@@ -266,7 +266,7 @@ Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
 \]
 \[
 (\exists y : \langle x,y\rangle \in F)
-\AND
+\LAND
 (!y : \langle x,y\rangle \in F)
 \IMPLIES
 (\exists! y : \langle x,y\rangle \in F)
@@ -292,9 +292,9 @@ Q:=\{y| (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)\}.
 \]
 \[
 (!y : \langle x,y\rangle \in F)
-\AND
+\LAND
 (\langle x,y\rangle\in F)
-\AND
+\LAND
 \langle x,\left(\intersection\{y| \langle x,y\rangle\in F\}\right)\rangle\in F
 \IMPLIES
 \left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
@@ -354,7 +354,7 @@ Q
 =
 Q
 \right)
-\AND
+\LAND
 \left(\intersection\{y| \langle x,y\rangle\in F\}\right)=y
 \IMPLIES
 \left(
@@ -367,7 +367,7 @@ Q
 \left(\intersection
 Q
 \right)=y
-\AND
+\LAND
 (\iota y: (\langle x,y\rangle\in F))
 =
 \left(\intersection
@@ -425,7 +425,7 @@ y&=F(x)
 
 \[
 (y\set)
-\AND
+\LAND
 \left(\intersection Q\right)=y
 \IMPLIES
 \left(\left(\intersection Q\right)\set\right)
@@ -458,7 +458,7 @@ y&=F(x)
 
 \[
 (\exists w: w\in Q)
-\AND
+\LAND
 (! w: w\in Q)
 \IMPLIES
 (\exists! w: w\in Q)
@@ -479,7 +479,7 @@ y&=F(x)
 
 \[
 \left(\intersection Q\right)\in Q
-\AND
+\LAND
 \left(\intersection Q\right)=y
 \IMPLIES
 y\in Q.
@@ -557,7 +557,7 @@ y&=F(x)
 %\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
 \[
 (y=\left(\iota y: \langle x,y\rangle\in F\right))
-\AND
+\LAND
 (y\set)
 \IMPLIES
 (\left(\iota y: \langle x,y\rangle\in F\right) \set)
@@ -696,7 +696,7 @@ y\in \{y|\varphi \land (!(y\set):\varphi)\}
 \]
 \[
 (y\set)
-\AND
+\LAND
 \varphi
 \IMPLIES
 \left(
@@ -716,7 +716,7 @@ y\in \{y|\varphi \land (!(y\set):\varphi)\}
 \left(
 \exists (y\set):\varphi
 \right)
-\AND
+\LAND
 \left(
 !(y\set):\varphi
 \right)
@@ -738,9 +738,9 @@ Assume $(\exists!(y\set):\phi)$. To show:$((\iota y:\phi)\set)$.
 \]
 \[
 (y\set)
-\AND
+\LAND
 \phi
-\AND
+\LAND
 (!(y\set):\phi)
 \IMPLIES
 y\in\{y:\phi\land(!(y\set):\phi)\}

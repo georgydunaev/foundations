@@ -5,6 +5,14 @@
 % 1) /usr/local/texlive/2024/bin/x86_64-linux/latexmk -e "$pdflatex=q/pdflatex -synctex=1 -interaction=nonstopmode/" -pdf %.tex
 % 2) /usr/local/texlive/2024/bin/x86_64-linux/biber %
 
+% USEFUL
+% ================================
+% sed -i 's/\\AND/\\LAND/g' *.tex
+
+% To stage modified and deleted files:
+% git add -u
+% Where -u is short for --update.
+
 \ifdefined\MyHeaderIncluded
 
 \else
@@ -112,7 +120,7 @@
 % https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
 %  \\mathcal\{T\} |---> \topology
 %  \\mathcal\{([^\}]*)\}   |--->  $1
-\newcommand{\AND}{\ \ \&\ \ }
+\newcommand{\LAND}{\ \ \&\ \ }
 \newcommand{\dd}{\,d}
 \newcommand{\dx}{\dd x}
 \newcommand{\dy}{\dd y}

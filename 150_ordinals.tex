@@ -167,7 +167,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \label{lem:Rindlem}
 \[
 (R^\top[\{m\}]\subclass K)
-\AND
+\LAND
 (m\notin R[K\setminus A])
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
@@ -175,7 +175,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \ProofNoPar
 \[
 (\forall q:qRm\implies q\in K)
-\AND
+\LAND
 (\forall q\in K:qRm\implies q\in A)
 \IMPLIES
 (\forall q:qRm\implies q\in A)
@@ -202,7 +202,7 @@ Fix $k$. Assume $k\in K$. To show $k\in A$.\\
 Assume opposite $k\notin A$. To show $\bot$.
 \[
 (k\in K)
-\AND
+\LAND
 (k\notin A)
 \IMPLIES
 (k\in K\setminus A)
@@ -225,9 +225,9 @@ S:=(K\setminus A)
 \]
 \[
 (R\mathrm{\ Fr\ }K)
-\AND
+\LAND
 (K\setminus A\neq\emptyset)
-\AND
+\LAND
 (K\setminus A\subclass K)
 \IMPLIES
 \neg(S\subclass R[S])
@@ -247,7 +247,7 @@ S:=(K\setminus A)
 \]
 \[
 (m\in K)
-\AND
+\LAND
 (R\mathrm{\ Tr\ }K)
 \IMPLIES
 (m\in \power_R(K))
@@ -264,7 +264,7 @@ S:=(K\setminus A)
 \]
 \[
 (R^\top[\{m\}]\subclass K)
-\AND
+\LAND
 (m\notin R[K\setminus A])
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
@@ -280,14 +280,14 @@ S:=(K\setminus A)
 \]
 \[
 (m\in K)
-\AND
+\LAND
 (R^\top[\{m\}]\subclass A)
 \IMPLIES
 (m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
 \]
 \[
 (m\in\{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\})
-\AND
+\LAND
 (
 \{\,k\in K\ |\ (R^\top[\{m\}]\subclass A)\,\}
 \subclass A
@@ -297,7 +297,7 @@ S:=(K\setminus A)
 \]
 \[
 (m\in K\setminus A)
-\AND
+\LAND
 (m\in A)
 \IMPLIES
 \bot
@@ -562,7 +562,7 @@ Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
 \]
 \[
 (a\in A)
-\AND
+\LAND
 (\Tr(a))
 \IMPLIES
 \Ord(a)
@@ -574,14 +574,14 @@ Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
 \]
 \[
 (x\in a)
-\AND
+\LAND
 (\Tr(a))
 \IMPLIES
 (x\subclass a)
 \]
 \[
 (y\in x)
-\AND
+\LAND
 (x\subclass a)
 \IMPLIES
 (y\in a)
@@ -591,7 +591,7 @@ z:=a
 \]
 \[
 (a\in A)
-\AND
+\LAND
 (a\in A)
 \IMPLIES
 (\exists z\in A:y\in z)

@@ -39,7 +39,7 @@ Fix $x$. Assume $(x\in C)$. To show $(x\in V)$.
 \]
 \[
 (x\set)
-\AND
+\LAND
 \top
 \IMPLIES
 (x\in V)
@@ -73,12 +73,12 @@ Claim is proven.
 %(X\set)\IMPLIES(\exists W: X\in W))
 %\]
 \[
-(X\set)\AND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
+(X\set)\LAND\top[X/W]\IMPLIES(X\in \{x|\top[x/W]\})
 \]
 \[
 (X\in \{x|\top[x/W]\}=\{x|\top\}=V)\IMPLIES x\in V
 \]
-%\[(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
+%\[(a\in\{a\})\LAND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
 \Done
 \begin{theorem}
 \[
@@ -92,7 +92,7 @@ $(\Rightarrow)$\\
 Assume $(x\in A)$. To show: $(x\in B)$\\
 \[
 (x\in A)
-\AND
+\LAND
 (A\subseteq B)
 \IMPLIES
 (x\in B)
@@ -102,7 +102,7 @@ $(\Leftarrow)$\\
 Assume $(x\in B)$. To show: $(x\in A)$\\
 \[
 (x\in B)
-\AND
+\LAND
 (B\subseteq A)
 \IMPLIES
 (x\in A)
@@ -172,7 +172,7 @@ Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
 \]
 \[
 (\exists x:x\in A)
-\AND
+\LAND
 (\neg\exists x:x\in A)
 \IMPLIES
 \bot
@@ -191,7 +191,7 @@ The claim is proven.
 \]
 \[
 (A \subseteq \emptyset)
-\AND
+\LAND
 (A \supseteq \emptyset)
 \IMPLIES
 (A=\emptyset)
@@ -236,7 +236,7 @@ Any element of a subclass is in the class.
 \]
 \[
 (x\in A)
-\AND
+\LAND
 (\forall x\in A:x\in B)
 \IMPLIES
 (x\in B)
@@ -279,17 +279,17 @@ Assume $(B\in A)$. To show: $(B\set)$.
 (q\in \{w\})\IMPLIES(q=w).
 \]
 \[
-(w\in A)\AND(q=w)\IMPLIES(q\in A).
+(w\in A)\LAND(q=w)\IMPLIES(q\in A).
 \]
 \noindent($\supseteq$) Assume $(a\in A)$.
 \[
-(!a:a\in A)\AND(a\in A)\AND(w\in A)\IMPLIES(a=w).
+(!a:a\in A)\LAND(a\in A)\LAND(w\in A)\IMPLIES(a=w).
 \]
 \[
 (a=w)\IMPLIES(\{a\}=\{w\})
 \]
 \[
-(a\in\{a\})\AND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
+(a\in\{a\})\LAND(\{a\}=\{w\})\IMPLIES(a\in\{w\})
 \]
 \Done
 
