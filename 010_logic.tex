@@ -1198,13 +1198,13 @@ l^*=\cc{(a,\{l(a)\})}{a\in\dom(l)}
 \]
 \[
 \left(\prod (l^*)\right)=
-\cc{\{(x,y)|(x\in \dom(l^*)) \land (y\in l^*(x))\}}{\top}
+\cc{\cc{(x,y)}{(x\in \dom(l^*)) \land (y\in l^*(x))}}{\top}
 \]
 \[
 =\cc{(x,y)|(x\in \dom(l)) \land (y\in \{l(x)\})\}}{\top}
 \]
 \[
-=\cc{\{(x,l(x))|x\in\dom(l)\}}{\top}
+=\cc{\cc{(x,l(x))}{x\in\dom(l)}}{\top}
 \]
 \[
 =\cc{l}{\top}
@@ -1232,16 +1232,16 @@ l^*=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))}
 \]
 \[
 \left(\prod (l^*)\right)=
-\cc{\{(x,b)|(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))\}}{\top}
+\cc{\cc{(x,b)}{(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))}}{\top}
 \]
 \[
-=\cc{\{(x,b)|(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})\}}{\top}
+=\cc{\cc{(x,b)}{(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})}}{\top}
 \]
 \[
-=\cc{\{(x,b)|(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))\}}{\top}
+=\cc{\cc{(x,b)}{(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))}}{\top}
 \]
 \[
-=\cc{\{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})|x\in\dom(l)\}}{\top}
+=\cc{\cc{(x,\emptyset)|x\in\dom(l)\}\cup\{(x,\{l(x)\})}{x\in\dom(l)}}{\top}
 \]
 ???
 ==== Alternative proof2 for function coded as family.

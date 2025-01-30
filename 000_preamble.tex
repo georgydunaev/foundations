@@ -1,0 +1,526 @@
+% !BIB TS-program = biber
+% (use "-synctex=1" to navigate via mouse)
+% Commands: 
+% 0) /usr/local/texlive/2024/bin/x86_64-linux/pdflatex -synctex=1 -interaction=nonstopmode %.tex
+% 1) /usr/local/texlive/2024/bin/x86_64-linux/latexmk -e "$pdflatex=q/pdflatex -synctex=1 -interaction=nonstopmode/" -pdf %.tex
+% 2) /usr/local/texlive/2024/bin/x86_64-linux/biber %
+
+% USEFUL
+% ================================
+% sed -i 's/\\AND/\\LAND/g' *.tex
+
+% To stage modified and deleted files:
+% git add -u
+% Where -u is short for --update.
+
+% sed -nE 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/p' 070_ordered_pair.tex
+
+% Dry run (just try)
+% sed -nE 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/p' 070_ordered_pair.tex
+% Replace!
+% sed -E -i 's/\\\{(.*)\|(.*)\\\}/\\cc\{\1\}\{\2\}/g' 070_ordered_pair.tex
+
+\ifdefined\MyHeaderIncluded
+
+\else
+  %OR \newcommand{\foobar}{FooBar}
+  \def\MyHeaderIncluded{defined}
+% This "if" scope is continuing untill the very end of this file.
+
+%\documentclass[10pt,a4paper]{article} %normal
+\documentclass[10pt,a4paper]{report} %if chapters are introduced
+\renewcommand{\thechapter}{}
+\renewcommand{\chaptername}{}
+
+%\renewcommand\thesection{\thechapter.\arabic{section}.} And also redefine \thesubsection. 
+\renewcommand\thesection{\arabic{section}}
+\usepackage{chngcntr}
+\counterwithout{section}{chapter}
+\usepackage{tocloft}  % Provides control over ToC formatting
+
+
+\usepackage[utf8]{inputenc}
+%\usepackage[german]{babel}
+%\usepackage[cyrillic]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools} %coloneqq
+
+\usepackage{bussproofs} %
+
+\usepackage{verbatim} % multiline comments
+
+%\renewcommand{\thesubsection}{\arabic{subsection}}
+%\newtheorem{thm}{Theorem}[section]
+%\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
+
+\usepackage{thmtools}
+%\usepackage[linktocpage=true]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    %pdfpagemode=FullScreen,
+    }
+%\usepackage{stix-type1}%\turnediota
+
+\usepackage{esvect} % beautiful vectors
+
+
+\theoremstyle{definition}
+
+\newtheorem{constructor}{Constructor}[section]
+\newtheorem{iaxiom}{Axiom}
+\newtheorem{axiom}{Axiom}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{remark*}{Remark}
+\newtheorem{recall}{Recall}[section]
+\newtheorem*{recall*}{Recall}
+\newtheorem{notation}{Notation}[section]
+\newtheorem*{notation*}{Notation}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{lemma*}{Lemma}
+\newtheorem{example}{Example}[section]
+\newtheorem{example*}{Example}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem*{assumption*}{Assumption}
+\newtheorem{premise}{Premise}[section]
+\newtheorem*{premise*}{Premise}
+
+\newtheorem{note}{Note}[section]
+\newtheorem*{note*}{Note*}
+\newtheorem{parameter}{Parameter}[section]
+\newtheorem*{parameter*}{Parameter}
+
+
+\usepackage{etoolbox}
+
+%\newcommand*{\@Dashv}[2]{%
+%  \reflectbox{$\m@th#1#2$}%
+%}
+\newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
+  \{#1\in #2: #3\}
+}
+\newcommand{\LRA}{\Longleftrightarrow}
+\newcommand{\defi}{{\textrm{def}}}
+\newcommand{\baddefi}{{\textrm{bad\ def}}}
+\newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
+\newcommand{\rsto}{{\stackrel{RS}{\to}}}
+\newcommand{\propdef}{{\stackrel{\defi}{\ \Longleftrightarrow\ }}}
+\newcommand{\subclass}{\subseteq} % "subclasseq"
+
+% https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
+%  \\mathcal\{T\} |---> \topology
+%  \\mathcal\{([^\}]*)\}   |--->  $1
+\newcommand{\LAND}{\ \ \&\ \ }
+\newcommand{\dd}{\,d}
+\newcommand{\dx}{\dd x}
+\newcommand{\dy}{\dd y}
+\newcommand{\dz}{\dd z}
+\newcommand{\dmu}{\dd\mu}
+
+\newcommand{\dual}{\mathrm{dual}}
+\newcommand{\any}{\mathrm{\ any}}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\bounded}{\mathrm{\ bounded}}
+\newcommand{\can}{\mathrm{can}}
+\newcommand{\canonize}{\mathrm{canonize}}
+%\newcommand{\closure}{\mathrm{cl}}
+\newcommand{\cl}{\mathrm{cl}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\converges}{\longrightarrow}
+\newcommand{\countable}{\mathrm{\ countable}}
+\newcommand{\ldefined}{\mathrm{\ defined}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\Dom}{\mathrm{Dom}}
+%\newcommand{\Done}{\par\noindent\textbf{Done.}\\}
+\newcommand{\Done}{\par\noindent\textbf{Q.E.D.}\\}
+\newcommand{\DoneNoPar}{\par\noindent\textbf{Q.E.D.}}
+\newcommand{\esssup}{\mathrm{ess\,sup}}
+\newcommand{\essinf}{\mathrm{ess\,inf}}
+\newcommand{\evaluation}{\mathrm{\ evaluation}}
+\newcommand{\lexists}{\mathrm{\ exists}}
+\newcommand{\lforall}{\mathrm{\ forall}}
+\newcommand{\lunique}{\mathrm{\ unique}}
+\newcommand{\family}{\mathrm{\ family}}
+\newcommand{\On}{\mathrm{On}}
+\newcommand{\Lim}{\mathrm{Lim}}
+\newcommand{\LimClass}{\mathrm{LimClass}}
+\newcommand{\LimOrd}{\mathrm{LimOrd}}
+\newcommand{\Fm}{\mathrm{Fm}}
+\newcommand{\BFm}{\mathrm{BFm}}
+\newcommand{\TypeOf}{\mathrm{TypeOf}}
+\newcommand{\Symb}{\mathrm{Symb}}
+\newcommand{\Expr}{\mathrm{Expr}}
+\newcommand{\Kind}{\mathrm{Kind}}
+\newcommand{\Bool}{\mathrm{Bool}}
+\newcommand{\Variable}{\mathrm{Variable}}
+\newcommand{\VarType}{\mathrm{VarType}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\ConstType}{\mathrm{ConstType}}
+\newcommand{\OptionType}{\mathrm{OptionType}}
+%\newcommand{\Option}{\mathrm{Option}}
+\newcommand{\conseq}{\mathrm{conseq}}
+\newcommand{\Bound}{\mathrm{Bound}}
+\newcommand{\BoundSymb}{\mathrm{BoundSymb}}
+\newcommand{\BSymb}{\mathrm{BSymb}}
+\newcommand{\FuncSymb}{\mathrm{FuncSymb}}
+\newcommand{\function}{\mathrm{\ function}}
+\newcommand{\functional}{\mathrm{\ functional}}
+\newcommand{\IFF}{\ \Longleftrightarrow\ }
+\newcommand{\iffnows}{\longleftrightarrow}
+\newcommand{\IFFnows}{\Longleftrightarrow}
+\newcommand{\IFFdef}{\ {\stackrel{\defi}{\IFFnows}}\ }
+\newcommand{\iffdef}{\ {\stackrel{\defi}{\iffnows}}\ }
+\newcommand{\IFFbaddef}{\ {\stackrel{\baddefi}{\IFFnows}}\ }
+\renewcommand{\iff}{\ \longleftrightarrow\ }
+\newcommand{\Implies}{\ \Rightarrow\ }
+%\newcommand{\Implies}{|\models-}
+
+\newcommand{\IMPLIES}{\ \Longrightarrow\ }
+\newcommand{\CIMPLIES}{=\Rightarrow}%todo: fix it
+\newcommand{\CImplies}{=\Rightarrow}
+
+
+%\{(x,z)\ |\ x \in \Dom(G) \land (G(x),z)\in F\}
+\newcommand{\cc}[2]{
+\{\,#1\ |\ #2\,\}
+}
+
+%\newcommand*{\dd}{\mathop{}\!\mathrm{d}}  %dx   NEW!
+%\leftrightline
+\newcommand{\cimplies}{\ \mathrm{\--}\hspace{-1mm}\rightarrow\,}
+%\newcommand{\cimplies}{\ \mathrm{\--\-->}\,}
+\renewcommand{\implies}{\longrightarrow}
+\newcommand{\Inf}{\mathrm{Inf}}
+\newcommand{\injective}{\mathrm{\ injective}}
+\newcommand{\injection}{\mathrm{\ injection}}
+\newcommand{\interior}{\mathrm{int}}
+\newcommand{\intersection}{\bigcap}
+\newcommand{\bintersection}{\cap}
+%\newcommand{\inter}{\bigcap}
+%\newcommand{\binter}{\cap}
+\newcommand{\isempty}{\mathrm{\ empty}}
+\newcommand{\LB}{\mathrm{LB}}
+\newcommand{\nghbset}{\mathcal{N}}
+\newcommand{\nonempty}{\mathrm{\ nonempty}}
+\newcommand{\Ord}{\mathrm{Ord}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\fst}{\mathrm{fst}}
+\newcommand{\snd}{\mathrm{snd}}
+\newcommand{\AtomFuncSymb}{\mathrm{AtomFuncSymb}}
+\newcommand{\AtomPredSymb}{\mathrm{AtomPredSymb}}
+\newcommand{\PredSymb}{\mathrm{PredSymb}}
+\newcommand{\Domain}{\mathrm{Domain}}
+\newcommand{\ProofPar}{\par\noindent\textbf{Proof.}\par}
+\newcommand{\ProofNoPar}{\par\noindent\textbf{Proof.}}
+\newcommand{\Proof}{\ProofPar}
+%\newcommand{\Proof}{\par\noindent\textbf{Proof.}}
+\newcommand{\ran}{\mathrm{ran}}
+\newcommand{\Ran}{\mathrm{Ran}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\relation}{\mathrm{\ relation}}
+\newcommand{\set}{\mathrm{\ set}}
+\newcommand{\singleton}{\mathrm{\ singleton}}
+\newcommand{\semisingleton}{\mathrm{\ semisingleton}}
+\newcommand{\semantics}{\mathrm{semantics}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\surjective}{\mathrm{\ surjective\ on\ }}
+\newcommand{\Term}{\mathrm{Term}}
+\newcommand{\BTerm}{\mathrm{BTerm}}
+\newcommand{\Type}{\mathrm{Type}}
+%\newcommand{\Symb}{\mathrm{Symb}}
+\newcommand{\topology}{\mathcal{T}}
+\newcommand{\total}{\mathrm{\ total\ on\ }}
+\newcommand{\transitive}{\mathrm{\ transitive}}
+\newcommand{\swap}{\mathrm{swap}}
+\newcommand{\sd}{{\text -}}
+\newcommand{\union}{\bigcup}
+\newcommand{\bunion}{\cup}
+\newcommand{\unionbig}{\bigcup}
+\newcommand{\unionsmall}{\cup}
+
+\newcommand{\interpretation}{\mathrm{\ interpretation}}
+\newcommand{\FuncInterpretation}{\mathrm{\ Func{\sd}interpretation}}
+\newcommand{\PredInterpretation}{\mathrm{\ Pred{\sd}interpretation}}
+\newcommand{\lTrue}{\mathrm{True}}
+\newcommand{\lFalse}{\mathrm{False}}
+\newcommand{\lUncertain}{\mathrm{Uncertain}}
+\newcommand{\lif}{\mathrm{if}}
+\newcommand{\lthen}{\mathrm{then}}
+\newcommand{\lelse}{\mathrm{else}}
+\newcommand{\lexception}{\mathrm{exception}}
+\newcommand{\upd}{\mathrm{upd}}
+\newcommand{\lundef}{\mathrm{undef}}
+\newcommand{\uncert}{\mathrm{\symbol{208}}}
+\newcommand{\univocal}{\mathrm{\ univocal}}
+\newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
+\newcommand{\UB}{\mathrm{UB}}
+\newcommand{\Un}{\mathcal{U}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\loc}{\mathrm{loc}}
+\newcommand{\glob}{\mathrm{glob}}
+\newcommand{\lfalse}{\mathrm{false}}
+\newcommand{\ltrue}{\mathrm{true}}
+\newcommand{\lvalid}{\mathrm{valid}}
+\newcommand{\linvalid}{\mathrm{invalid}}
+\newcommand{\lValid}{\mathrm{Valid}}
+\newcommand{\lInvalid}{\mathrm{Invalid}}
+\newcommand{\evaluationTYPE}{
+\Var\to\power\Un\setminus\{\emptyset\}
+}
+\newcommand{\singeval}{
+\Var\to\{\{q\}|q\in\Un\}
+}
+
+\newcommand{\notvarphi}{\phi}
+\renewcommand{\phi}{\varphi}
+%\newcommand{\commentary}[1]{\mathrm{(#1)}}%\quad
+\newcommand{\commentary}[1]{\mbox{(#1)}}%\quad
+\newcommand{\Option}{\mathrm{Option}}
+\newcommand{\None}{\mathrm{None}}
+\newcommand{\Some}{\mathrm{Some}}
+\newcommand{\sss}{\mathrm{\ sss\ }}
+\newcommand{\List}{\mathrm{List}}
+\newcommand{\nil}{\mathrm{[]}}
+\newcommand{\cons}{\mathrm{::}}
+\newcommand{\FV}{\mathrm{FV}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\val}{\mathrm{val}}
+\newcommand{\Val}{\mathrm{Val}}
+\newcommand{\valen}{\mathrm{valen}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\nat}{\mathbb{nat}}
+\newcommand{\image}{\mathrm{image}}
+\newcommand{\Image}{\mathrm{Image}}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\invE}{\reflectbox{$\E$}}
+%\DeclareRobustCommand{\invE}{\text{\reflectbox{$\Gamma$}}}
+\newcommand{\V}{\mathrm{V}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\prop}{\mathrm{prop}}
+\newcommand{\Prop}{\mathrm{Prop}}
+%\newcommand{\False}{\mathrm{False}}
+%\newcommand{\True}{\mathrm{True}}
+\newcommand{\Truth}{\mathrm{Truth}}
+\newcommand{\TruthValues}{\mathrm{TruthValues}}
+\newcommand{\ClassicalTruthValues}{\mathrm{ClassicalTruthValues}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\str}{\mathrm{str}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\range}{\mathrm{range}}
+\newcommand{\homogeneous}{\mathrm{homogeneous}}
+\newcommand{\additive}{\mathrm{additive}}
+\newcommand{\linear}{\mathrm{linear}}
+\newcommand{\natz}{\mathbb{N}_0}
+\newcommand{\nato}{\mathbb{N}}
+% local commands
+%\preto\section{\undef\blipo} %etoolbox
+\preto\subsection{\undef\blipo} %etoolbox
+% https://tex.stackexchange.com/questions/105684/limit-macro-newcommand-scope-to-section
+\usepackage{graphicx}
+\usepackage{authblk}
+
+\setlength\parindent{0pt} % whole doc of \noindent
+\usepackage{soul}
+%\usepackage{mathgl}
+
+% Code listings' pretty printer:
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{stmaryrd}  % for \llbracket \rrbracket
+
+\newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
+\newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+
+\author[1]{Georgy Dunaev}
+
+\DeclareUnicodeCharacter{2061}{} %https://tex.stackexchange.com/questions/484359/package-inputenc-error-unicode-character-u2061-inputenc-not-set-up-for
+
+\usepackage[american]{babel}
+\usepackage[style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa} %Literaturverzeichnis american-apa style
+%\addbibresource{library.bib} 
+
+\usepackage[babel,threshold=2]{csquotes}
+
+
+% Einstein's 
+% journal paper \cite{einstein} and Dirac's book \cite{dirac}.
+
+
+\usepackage{mathtools} % \coloneqq  ( tlmgr install mathtools )
+% \usepackage[lite]{mtpro2}
+
+%% Definitions, lemmas, theorems
+\theoremstyle{definition}
+%%\newtheorem{definition}{Definition}[section]
+%%\newtheorem{lemma}{Lemma}[section]
+%%\newtheorem{theorem}{Theorem}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+%% Proofs
+\newcommand{\myprf}{\noindent\textbf{Proof.}}
+% quod erat demonstrandum :
+\newcommand{\myqed}{\par\noindent\textbf{Q.E.D.}\\} 
+%\newcommand{\Done}{\par\noindent\textbf{Done.}\\}
+
+
+
+
+%% Logic:
+\newcommand{\Tau}{\mathcal{T}}  % \mathrm{\mathcal{T}}}
+\newcommand{\Spec}{{\textrm{Spec}}}
+\newcommand{\Const}{{\textrm{Const}}}
+%%\newcommand{\Var}{{\textrm{Var}}}
+\newcommand{\Func}{{\textrm{Func}}}
+\newcommand{\Pred}{{\textrm{Pred}}}
+%%\newcommand{\Term}{{\textrm{Term}}}
+%%\newcommand{\Fm}{{\textrm{Fm}}}
+%%\newcommand{\FV}{{\textrm{FV}}}
+\newcommand{\WF}{{\textrm{WF}}}
+\newcommand{\iproof}{{\textrm{proof}}}
+\newcommand{\var}{{\textrm{var}}}
+\newcommand{\term}{{\textrm{term}}}
+%%\newcommand{\prop}{{\textrm{prop}}}
+\newcommand{\type}{{\textrm{type}}}
+\newcommand{\statement}{{\textrm{stmnt}}}
+\usepackage{float} % H hardposition for tables ( tlmgr install float )
+
+%% Set Theory
+\newcommand{\Set}{{\textrm{Set}}}
+\newcommand{\Pow}{{\mathcal{P}}}
+\newcommand{\inter}{{\bigcap}}
+\newcommand{\interclass}{{{\bigcap}_C}}
+
+\newcommand{\Fun}{{\textrm{Fun}}}
+\newcommand{\Rel}{{\textrm{Rel}}}
+%%\newcommand{\dom}{{\textrm{dom}}}
+\newcommand{\apo}{{\textrm{'}}}  % apostrophe
+\newcommand{\The}{{\textrm{The\,}}}
+
+\newcommand{\TOrd}{{\textrm{TOrd}}}
+\newcommand{\Tr}{{\textrm{Tr}}}
+\newcommand{\mysucc}{{\textrm{succ}}}
+
+
+%% Category theory
+\newcommand{\Ob}{{\textrm{Ob}}}
+\newcommand{\Mor}{{\textrm{Mor}}}
+\newcommand{\Cat}{{\textrm{Cat}}}
+\newcommand{\Hom}{{\textrm{Hom}}}
+\newcommand{\Nat}{{\textrm{Nat}}}
+\newcommand{\HomMor}{{\widetilde{\Hom}\textrm{}}}
+\newcommand{\FMor}{{\widetilde{F}\textrm{}}}
+\newcommand{\GMor}{{\widetilde{G}\textrm{}}}
+\newcommand{\op}{{\textrm{op}}}
+\newcommand{\id}{{\textrm{id}}}
+\newcommand{\mor}{{\textrm{mor}}}
+
+%% Isabelle
+\newcommand{\Truej}{{\textrm{Truej}}}
+\newcommand{\ITerm}{{\textrm{ITerm}}}
+\newcommand{\False}{{\textrm{False}}}
+\newcommand{\spec}{{\textrm{spec}}}
+\newcommand{\allI}{{\textrm{allI}}}
+\newcommand{\exI}{{\textrm{exI}}}
+\newcommand{\exE}{{\textrm{exE}}}
+\newcommand{\judgement}{{\textrm{jdmnt}}}
+%\newcommand{\Un}{{\mathcal{U}}}
+\newcommand{\Dd}{{\mathcal{D}}}
+
+% <brackets>
+%\DeclareFontEncoding{FML}{}{}
+%\DeclareFontSubstitution{FML}{futm}{m}{it}
+%\DeclareFontEncoding{FMS}{}{} 
+%\DeclareFontSubstitution{FMS}{futm}{m}{n}
+%\DeclareFontEncoding{FMX}{}{} 
+%\DeclareFontSubstitution{FMX}{futm}{m}{n}
+%\DeclareSymbolFont{symbols}{FMS}{futm}{m}{n}
+%\DeclareSymbolFont{largesymbols}{FMX}{futm}{m}{n}
+%\DeclareMathDelimiter{\llbracket}{\mathopen}{symbols}{153}{largesymbols}{133}
+%\DeclareMathDelimiter{\rrbracket}{\mathclose}{symbols}{154}{largesymbols}{134}
+% </brackets>
+\newcommand{\llbrack}{{[|}}
+\newcommand{\rrbrack}{{|]}}
+
+
+\usepackage{amsfonts} %% <- also included by amssymb
+\DeclareMathSymbol{\shortminus}{\mathbin}{AMSa}{"39}
+
+
+\renewcommand{\:}{\colon} % posic
+
+\newcommand{\open}{{\ \textrm{open}}}
+\newcommand{\closed}{{\ \textrm{closed}}}
+\newcommand{\continuous}{{\ \textrm{continuous}}}
+
+
+% big plus definition:
+\makeatletter
+\newcommand{\bigplus}{%
+  \DOTSB\mathop{\mathpalette\mattos@bigplus\relax}\slimits@
+}
+\newcommand\mattos@bigplus[2]{%
+  \vcenter{\hbox{%
+    \sbox\z@{$#1\sum$}%
+    \resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}{$\m@th#1+$}}%
+  }}%
+  \vphantom{\sum}%
+}
+\makeatother
+
+
+%%%%%%% For Better Footnotes INSIDE align environment.
+%\usepackage{amsmath,etoolbox} % already included
+\makeatletter
+\let\original@footnotemark\footnotemark
+\newcommand{\align@footnotemark}{%
+  \ifmeasuring@
+    \chardef\@tempfn=\value{footnote}%
+    \original@footnotemark
+    \setcounter{footnote}{\@tempfn}%
+  \else
+    \iffirstchoice@
+      \original@footnotemark
+    \fi
+  \fi}
+\pretocmd{\start@align}{\let\footnotemark\align@footnotemark}{}{}
+\makeatother
+% the use case:
+%\addtocounter{footnote}{-1}
+%\footnotetext{\url{https://en.wikipedia.org/wiki/Infimum_and_supremum}}
+%\addtocounter{footnote}{1}
+%\footnotetext{This also seems wrong for some reason.}
+%%%%END
+
+%https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+
+%https://tex.stackexchange.com/questions/290275/mathematical-notation-of-convergence-in-latex
+%\newcommand{\myrightarrow}[1]{\xrightarrow{\makebox[2em][c]{$\scriptstyle#1$}}}‌
+%f_n \myrightarrow{\mu} f
+%f_n \myrightarrow{L^p} f
+
+\fi % guard

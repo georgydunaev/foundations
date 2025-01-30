@@ -37,7 +37,7 @@ Actually, since $|\cdot|$ is a functional symbol, we mean the following:
 \[
 (x\mapsto |x|):V \to \On
 \]
-Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\{\langle x, |x|\rangle | x \any\set\}$.
+Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
 \end{iaxiom}
 Actually, we can use the following axiom:
 \begin{axiom*}
@@ -157,9 +157,9 @@ From these three statements we deduce that $|K| \neq |V|$.\\
 Assume $(|K| \neq |V|)$.\\
 We know that $(|V|=\On)$, so $(|K| \neq \On)$.\\
 Recalling the definition:
-$|K|:= \On \cap \bigcap \{a\in\On|K\preccurlyeq a\}$.\\
+$|K|:= \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}$.\\
 Now we have that 
-there exists some $m \in \On$, which is not in $\bigcap \{a\in\On|K\preccurlyeq a\}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\On$ is subclass of $\On$)\\
+there exists some $m \in \On$, which is not in $\bigcap \cc{a\in\On}{K\preccurlyeq a}$. (vice versa situation is not possible since any non-emptyintersection of subclasses of $\On$ is subclass of $\On$)\\
 ...
 
 \Done

@@ -16,7 +16,7 @@ Dependent types are treated as families.
 \]
 
 \[
-(\Lambda x: t) = \{(x,s)|(s\subseteq t)\land (s\ \mbox{ss})\}
+(\Lambda x: t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
 \]
 
 \subsection{Storage}
@@ -61,7 +61,7 @@ Is the following okey ???
 \end{definition}
 \begin{definition}(Option-def)
 \[
-\Option(A) \eqdef \{b|(b \sss A)\}
+\Option(A) \eqdef \cc{b}{(b \sss A)}
 \]
 \end{definition}
 \subsubsection{Soundness of option types}
@@ -72,7 +72,7 @@ Is the following okey ???
 \]
 or, equivalently,
 \[
-\emptyset\in\{b|(b \sss A)\} 
+\emptyset\in\cc{b}{(b \sss A)} 
 \]
 \end{theorem}
 \Proof
@@ -80,7 +80,7 @@ or, equivalently,
 2. By thm ..., $\emptyset \subseteq A$.\\
 3. From 1 and 2, it follows that $\emptyset \sss A$ by ... .\\
 4. By ax ..., $(\emptyset\set)$.\\
-5. From 3 and 4, it follows that $\emptyset \in \{\,b\ |\ b \sss A\,\}$.\\
+5. From 3 and 4, it follows that $\emptyset \in \cc{\,b\ }{\ b \sss A\,}$.\\
 \Done
 \begin{theorem}
 \[
@@ -88,7 +88,7 @@ or, equivalently,
 \]
 or, equivalently,
 \[
-(a\in A)\implies (\{a\}\in\{b|(b \sss A)\} 
+(a\in A)\implies (\cc{a\}\in\{b}{(b \sss A)} 
 \]
 \end{theorem}
 \Proof
@@ -98,7 +98,7 @@ or, equivalently,
 %4. $(a set) \IMPLIES (\{a\} set)$, by ... .\\
 4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
 5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
-6. From 2 and 5, it follows that $(\{a\}\in\{b|(b \sss A)\}$, by ... .\\
+6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by ... .\\
 \Done
 \pagebreak
 \subsection{Implementing ordered pairs}
@@ -129,7 +129,7 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 %Model:\\
 \begin{definition}(List-def)
 \[
-\List(A)\eqdef\{\,(F\family)\ |\ \dom(F)\in \omega\,\}
+\List(A)\eqdef\cc{\,(F\family)\ }{\ \dom(F)\in \omega\,}
 \]%\omega\cup\{\omega\}
 \end{definition}
 \begin{definition}(Nil-def)
@@ -139,12 +139,12 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 \end{definition}
 \begin{definition}(inc\_fst-def)
 \[
-\mathrm{inc\_fst}(r) \eqdef \{(x\cup\{x\},y) | (x,y) \in R\}
+\mathrm{inc\_fst}(r) \eqdef \cc{(x\cup\{x\},y) }{ (x,y) \in R}
 \]
 \end{definition}
 \begin{definition}(Cons-def)
 \[
-(h::t) \eqdef \{(\emptyset,b)|(b\sss h)\}\cup \mathrm{inc\_fst}(t)
+(h::t) \eqdef \cc{(\emptyset,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
 %Theorems:
@@ -165,7 +165,7 @@ or, equivalently,
 %3. $(\{a\} \semisingleton)$, by ... .\\
 %4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
 %5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
-%6. From 2 and 5, it follows that $(\{a\}\in\{b|(b \sss A)\}$, by ... .\\
+%6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by ... .\\
 \Done
 \begin{theorem}
 \[
@@ -184,19 +184,19 @@ or, equivalently,
 %\subsubsection{Axioms of $\Sigma$-types}
 \begin{definition}(Union)
 \[
-\union A\eqdef\{x\ |\ \exists a\in A: x\in a\}
+\union A\eqdef\cc{x\ }{\ \exists a\in A: x\in a}
 \]
 \end{definition}
 %1
 \begin{definition}(Value)
 \[
-F(a)\eqdef\union\{s\ |\ (a,s)\in F\}
+F(a)\eqdef\union\cc{s\ }{\ (a,s)\in F}
 \]
 \end{definition}
 %2
 \begin{definition}(relational domain)
 \[
-\dom(R)\eqdef\{a\ |\ \exists b: (a,b)\in R\}
+\dom(R)\eqdef\cc{a\ }{\ \exists b: (a,b)\in R}
 \]
 \end{definition}
 \begin{definition}(functional Domain)
@@ -207,18 +207,18 @@ F(a)\eqdef\union\{s\ |\ (a,s)\in F\}
 %3
 \begin{definition}(relational range)
 \[
-\ran(R)\eqdef\{b\ |\ \exists a: (a,b)\in R\}
+\ran(R)\eqdef\cc{b\ }{\ \exists a: (a,b)\in R}
 \]
 \end{definition}
 \begin{definition}(functional Range)
 \[
-\Ran(F)\eqdef\{F(a)\ |\ a\in\Dom(F)\}
+\Ran(F)\eqdef\cc{F(a)\ }{\ a\in\Dom(F)}
 \]
 \end{definition}
 %4
 \begin{definition}(restriction)
 \[
-F\restriction A\eqdef\{(a,s)\in F\ |\ a\in A\}
+F\restriction A\eqdef\cc{(a,s)\in F\ }{\ a\in A}
 \]
 \end{definition}
 %5
@@ -235,7 +235,7 @@ F\restriction A\eqdef\{(a,s)\in F\ |\ a\in A\}
 %6
 \begin{definition}(relational composition)
 \[
-R \circ S \eqdef \{(x,z)\ |\ \exists y:(x,y)\in S \land (y,z)\in R\}
+R \circ S \eqdef \cc{(x,z)\ }{\ \exists y:(x,y)\in S \land (y,z)\in R}
 \]
 \end{definition}
 \begin{definition}(functional composition)
@@ -246,23 +246,23 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 %7
 \begin{definition}(class of all sets)
 \[
-\V\eqdef\{x\ |\ x\any\}
+\V\eqdef\cc{x\ }{\ x\any}
 \]
 \end{definition}
 \begin{definition}(membership class)
 \[
-\E\eqdef\{(x,y)\ |\ x\in y\}
+\E\eqdef\cc{(x,y)\ }{\ x\in y}
 \]
 \end{definition}
 \begin{definition}(identity class)
 \[
-\I\eqdef\{(x,x)\ |\ x\any\}
+\I\eqdef\cc{(x,x)\ }{\ x\any}
 \]
 \end{definition}
 %8
 \begin{definition}(relational transposition)
 \[
-R^\top\eqdef\{(y,x)\ |\ (x,y)\in R\}
+R^\top\eqdef\cc{(y,x)\ }{\ (x,y)\in R}
 \]
 \end{definition}
 \begin{notation}
@@ -272,35 +272,35 @@ R^\top\eqdef\{(y,x)\ |\ (x,y)\in R\}
 \end{notation}
 \begin{definition}(functional transposition)
 \[
-F^\intercal\eqdef\{(F(x),x)\ |\ x\in \Dom(F)\}
+F^\intercal\eqdef\cc{(F(x),x)\ }{\ x\in \Dom(F)}
 \]
 \end{definition}
 
 %9
 \begin{definition}(dependent sum of a family)
 \[
-\Sigma F\eqdef\{(x,y)\ |\ y\in F(x)\}
+\Sigma F\eqdef\cc{(x,y)\ }{\ y\in F(x)}
 \]
 \end{definition}
 %10,11
 \begin{definition}(ordered pair projections)
 \[
-\pr_1 \eqdef \{((a,b),a)\ |\ a\any,b\any\}
+\pr_1 \eqdef \cc{((a,b),a)\ }{\ a\any,b\any}
 \]
 \[
-\pr_2 \eqdef \{((a,b),b)\ |\ a\any,b\any\}
+\pr_2 \eqdef \cc{((a,b),b)\ }{\ a\any,b\any}
 \]
 \end{definition}
 %12
 \begin{definition}(sections of a family)
 \[
-\Gamma F\eqdef\{s:\Dom(F)\to\Sigma F\ |\ \pr_1\circ s \subseteq \I\}
+\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F\ }{\ \pr_1\circ s \subseteq \I}
 \]
 \end{definition}
 %13
 \begin{definition}(dependent product of a family)
 \[
-\Pi F \eqdef \{\pr_2\circ s\ |\ s\in \Gamma F\}
+\Pi F \eqdef \cc{\pr_2\circ s\ }{\ s\in \Gamma F}
 \]
 \end{definition}
 %%14
@@ -320,7 +320,7 @@ F^\intercal\eqdef\{(F(x),x)\ |\ x\in \Dom(F)\}
 \end{lemma}
 \begin{lemma}
 \[
-\Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
+\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
 \]
 \end{lemma}
 \pagebreak
@@ -366,13 +366,13 @@ $}
 In MK, it corresponds to the following:
 \begin{definition}(Dependent product, variant A)
 \[
-\Pi F = \{f\in \power \Sigma F | (f\functional) \land (\dom(f)=\dom(F)) \}
+\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
 \]
 \end{definition}
 \begin{definition}(Dependent product, variant B)\\
 (Note: For sets the following definition is also okey:
 \[
-\Pi F = \left\{\,f\in \left(\union\ran(F)\right)^{\dom(f)}\ \middle|\ \forall (x\in\dom(f)) : (f(x) \in F(x)) \,\right\},
+\Pi F = \cc{\,f\in \left(\union\ran(F)\right)^{\dom(f)}}{\forall (x\in\dom(f)) : (f(x) \in F(x))},
 \]
 but it is not working well for classes)
 
@@ -382,7 +382,7 @@ but it is not working well for classes)
 \begin{definition}(Dependent product, variant C)\\
 Another definition:\\
 \[
-\prod w \eqdef \left\{\,f\ |\ \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))\,\right\}
+\prod w \eqdef \cc{f}{\exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))}
 \]
 \end{definition}
 \subsubsection{Soundness of $\Pi$-types}
@@ -400,7 +400,7 @@ Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on
 \mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyset 
 \]
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1)\eqdef \{(r,s)| (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )\}
+\mbox{W}_{\mathrm{fun}}F(n+1)\eqdef \cc{(r,s)}{ (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )}
 \]
 \[
 \mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
@@ -413,7 +413,7 @@ Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on
 ...
 \subsubsection{Model of $M$-types}
 \[
-MF \eqdef \{Q\in\mathcal{P}\{f:D \to\Sigma F| (D\in\omega)\lor(D=\omega)\}\ | 
+MF \eqdef \cc{Q\in\mathcal{P}\{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}\ | 
 \]
 \[
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}

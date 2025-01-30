@@ -123,10 +123,10 @@ $\\
 \end{definition}
 \begin{definition}(Canonization[of a family of potentially empty classes])\\
 $
-\canonize1(F) = \cc{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)}{x\in\Dom(F)}
+\canonize1(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyset)}{x\in\Dom(F)}
 $\\
 $
-\canonize2(F) = \cc{(x,\{q\})|\exists y:((x,y)\in F)\land (q\in y)\}\cup\{(x,\emptyset)}{(x\in\Dom(F))\land (F(x)=\emptyset) }
+\canonize2(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyset)}{(x\in\Dom(F))\land (F(x)=\emptyset) }
 $\\
 $
 \canonize3(F) = \cc{(x,s)}{\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)}
