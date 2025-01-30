@@ -21,7 +21,7 @@ ARB \iffdef \exists (i\set):(R((i,0))=A)\land(R((i,1))=B)
 \begin{definition}[epsilon relation]
 \label{def:epsilonRelation}
 \[
-\E\ \eqdef\ \cc{(x,y)}{x\in y\,}
+\E\ \eqdef\ \cc{(x,y)}{x\in y}
 \]
 \end{definition}
 \begin{definition}[irreflexive on]
@@ -103,7 +103,7 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \begin{definition}[powerclass w.r.t. relation $R$]
 \label{def:RpowerClass}
 \[
-\power_R X\ \eqdef\ \cc{ k}{k\stackrel{R\E}{\subclass}X\,}
+\power_R X\ \eqdef\ \cc{ k}{k\stackrel{R\E}{\subclass}X}
 \]
 \end{definition}
 
@@ -274,7 +274,7 @@ S:=(K\setminus A)
 ((K\cap\power_R A)\subclass A)
 \IFF
 (
-\cc{k\in K}{(R^\top[\{m\}]\subclass A)\,}
+\cc{k\in K}{(R^\top[\{m\}]\subclass A)}
 \subclass A
 )
 \]
@@ -283,13 +283,13 @@ S:=(K\setminus A)
 \LAND
 (R^\top[\{m\}]\subclass A)
 \IMPLIES
-(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)\,})
+(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)})
 \]
 \[
-(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)\,})
+(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)})
 \LAND
 (
-\cc{k\in K}{(R^\top[\{m\}]\subclass A)\,}
+\cc{k\in K}{(R^\top[\{m\}]\subclass A)}
 \subclass A
 )
 \IMPLIES
@@ -433,7 +433,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
 \label{def:ordinalNumbers}
 \[
-\On\ \eqdef\ \cc{x}{\Ord(x)\,}
+\On\ \eqdef\ \cc{x}{\Ord(x)}
 \]
 \end{definition}
 
@@ -665,7 +665,7 @@ Using the statement of well-ordering theorem and transitivity, it is possible to
 %|K|:= \cc{a\in\On}{a\prec K}
 %\]
 \[
-|K|:= \cc{x}{(\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A\,}
+|K|:= \cc{x}{(\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A}
 \]
 \end{definition}
 \begin{definition}[cardinality of $X$ is strictly smaller than cardinality of $Y$]%\sqsubseteq
