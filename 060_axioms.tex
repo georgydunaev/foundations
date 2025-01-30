@@ -119,12 +119,12 @@ Now, let's prove "old class comprehesion" statement.\\
 \begin{theorem}()\\
 If Y is not a free variable of $\varphi$, then:
 \[
-(Y\in\cc{\,X\ }{\ \varphi[X/W]\,}) \iff ((Y\set)\land(\varphi[Y/W])).
+(Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land(\varphi[Y/W])).
 \]
 \end{theorem}
 \Proof
 ($\implies$)\\
-Assume $Y\in\cc{\,X\ }{\ \varphi[X/W]\,}$.\\
+Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 
 ...\\
 \Done
@@ -137,7 +137,7 @@ The empty set symbol $\emptyclass$ is a constant closed term.
 \label{def:empty class}
 Empty class.
 \[
-\emptyclass \eqdef \cc{\,x\ }{\ \bot\,}
+\emptyclass \eqdef \cc{x}{\bot}
 \]
 \end{definition}
 
@@ -169,7 +169,7 @@ Empty class.
 \begin{definition} Universal class (constant V).
 \label{def:universal class}
 \[
-V\eqdef\cc{\,x\ }{\ \top\,}
+V\eqdef\cc{x}{\top}
 \]
 \end{definition}
 
@@ -178,7 +178,7 @@ V\eqdef\cc{\,x\ }{\ \top\,}
 \label{def:union}
 Union of an arbitrary class A.
 \[
-\union A \eqdef \cc{\,x\ }{\ \exists a\in A: x\in a\,}
+\union A \eqdef \cc{x}{\exists a\in A: x\in a}
 \]
 \end{definition}
 
@@ -188,7 +188,7 @@ Union of an arbitrary class A.
 \label{def:intersection}
 Intersection of an arbitrary class A.
 \[
-\intersection A \eqdef \cc{\,x\ }{\ \forall a\in A: x\in a\,}
+\intersection A \eqdef \cc{x}{\forall a\in A: x\in a}
 \]
 \end{definition}
 
@@ -197,7 +197,7 @@ Intersection of an arbitrary class A.
 \label{def:powerclass}
 Powerclass. (by class comprehension)
 \[
-\power X \eqdef \cc{\,x\ }{\ x\subseteq X\,}
+\power X \eqdef \cc{x}{x\subseteq X}
 \]
 \end{definition}
 \subsection{Axiom of heredity}
