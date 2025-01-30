@@ -80,7 +80,7 @@ or, equivalently,
 2. By thm ..., $\emptyclass \subseteq A$.\\
 3. From 1 and 2, it follows that $\emptyclass \sss A$ by ... .\\
 4. By ax ..., $(\emptyclass\set)$.\\
-5. From 3 and 4, it follows that $\emptyclass \in \cc{\,b\ }{\ b \sss A\,}$.\\
+5. From 3 and 4, it follows that $\emptyclass \in \cc{\,b}{b \sss A\,}$.\\
 \Done
 \begin{theorem}
 \[
@@ -129,7 +129,7 @@ Lists are modelled as any family with some initial segment of ordinals as domain
 %Model:\\
 \begin{definition}(List-def)
 \[
-\List(A)\eqdef\cc{\,(F\family)\ }{\ \dom(F)\in \omega\,}
+\List(A)\eqdef\cc{\,(F\family)}{\dom(F)\in \omega\,}
 \]%\omega\cup\{\omega\}
 \end{definition}
 \begin{definition}(Nil-def)
@@ -184,19 +184,19 @@ or, equivalently,
 %\subsubsection{Axioms of $\Sigma$-types}
 \begin{definition}(Union)
 \[
-\union A\eqdef\cc{x\ }{\ \exists a\in A: x\in a}
+\union A\eqdef\cc{x}{\exists a\in A: x\in a}
 \]
 \end{definition}
 %1
 \begin{definition}(Value)
 \[
-F(a)\eqdef\union\cc{s\ }{\ (a,s)\in F}
+F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \]
 \end{definition}
 %2
 \begin{definition}(relational domain)
 \[
-\dom(R)\eqdef\cc{a\ }{\ \exists b: (a,b)\in R}
+\dom(R)\eqdef\cc{a}{\exists b: (a,b)\in R}
 \]
 \end{definition}
 \begin{definition}(functional Domain)
@@ -207,18 +207,18 @@ F(a)\eqdef\union\cc{s\ }{\ (a,s)\in F}
 %3
 \begin{definition}(relational range)
 \[
-\ran(R)\eqdef\cc{b\ }{\ \exists a: (a,b)\in R}
+\ran(R)\eqdef\cc{b}{\exists a: (a,b)\in R}
 \]
 \end{definition}
 \begin{definition}(functional Range)
 \[
-\Ran(F)\eqdef\cc{F(a)\ }{\ a\in\Dom(F)}
+\Ran(F)\eqdef\cc{F(a)}{a\in\Dom(F)}
 \]
 \end{definition}
 %4
 \begin{definition}(restriction)
 \[
-F\restriction A\eqdef\cc{(a,s)\in F\ }{\ a\in A}
+F\restriction A\eqdef\cc{(a,s)\in F}{a\in A}
 \]
 \end{definition}
 %5
@@ -235,7 +235,7 @@ F\restriction A\eqdef\cc{(a,s)\in F\ }{\ a\in A}
 %6
 \begin{definition}(relational composition)
 \[
-R \circ S \eqdef \cc{(x,z)\ }{\ \exists y:(x,y)\in S \land (y,z)\in R}
+R \circ S \eqdef \cc{(x,z)}{\exists y:(x,y)\in S \land (y,z)\in R}
 \]
 \end{definition}
 \begin{definition}(functional composition)
@@ -246,23 +246,23 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 %7
 \begin{definition}(class of all sets)
 \[
-\V\eqdef\cc{x\ }{\ x\any}
+\V\eqdef\cc{x}{x\any}
 \]
 \end{definition}
 \begin{definition}(membership class)
 \[
-\E\eqdef\cc{(x,y)\ }{\ x\in y}
+\E\eqdef\cc{(x,y)}{x\in y}
 \]
 \end{definition}
 \begin{definition}(identity class)
 \[
-\I\eqdef\cc{(x,x)\ }{\ x\any}
+\I\eqdef\cc{(x,x)}{x\any}
 \]
 \end{definition}
 %8
 \begin{definition}(relational transposition)
 \[
-R^\top\eqdef\cc{(y,x)\ }{\ (x,y)\in R}
+R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \]
 \end{definition}
 \begin{notation}
@@ -272,35 +272,35 @@ R^\top\eqdef\cc{(y,x)\ }{\ (x,y)\in R}
 \end{notation}
 \begin{definition}(functional transposition)
 \[
-F^\intercal\eqdef\cc{(F(x),x)\ }{\ x\in \Dom(F)}
+F^\intercal\eqdef\cc{(F(x),x)}{x\in \Dom(F)}
 \]
 \end{definition}
 
 %9
 \begin{definition}(dependent sum of a family)
 \[
-\Sigma F\eqdef\cc{(x,y)\ }{\ y\in F(x)}
+\Sigma F\eqdef\cc{(x,y)}{y\in F(x)}
 \]
 \end{definition}
 %10,11
 \begin{definition}(ordered pair projections)
 \[
-\pr_1 \eqdef \cc{((a,b),a)\ }{\ a\any,b\any}
+\pr_1 \eqdef \cc{((a,b),a)}{a\any,b\any}
 \]
 \[
-\pr_2 \eqdef \cc{((a,b),b)\ }{\ a\any,b\any}
+\pr_2 \eqdef \cc{((a,b),b)}{a\any,b\any}
 \]
 \end{definition}
 %12
 \begin{definition}(sections of a family)
 \[
-\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F\ }{\ \pr_1\circ s \subseteq \I}
+\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F}{\pr_1\circ s \subseteq \I}
 \]
 \end{definition}
 %13
 \begin{definition}(dependent product of a family)
 \[
-\Pi F \eqdef \cc{\pr_2\circ s\ }{\ s\in \Gamma F}
+\Pi F \eqdef \cc{\pr_2\circ s}{s\in \Gamma F}
 \]
 \end{definition}
 %%14
