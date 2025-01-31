@@ -16,21 +16,270 @@ This section cantains the expansion of Azriel Levy's article ``On Von Neumann's 
 \label{def:}
 \end{definition}
 \fi
-\begin{definition}[well-ordering of universal class]
+
+\begin{theorem}
+\[
+\exists T: \V \to \On  \text{ injective}
+\]
+\Proof
+By ..., \[
+\On\notin V
+\]
+Axiom of limitation of size:
+\[
+\forall C, C\in V \iff C<V
+\]
+Def of <:
+\[
+(A<B)\iffdef (\neg(B\leqslant A)),
+\]
+\[
+(\On\notin V)\IMPLIES (\neg(\On<V))
+\]
+\[
+\IMPLIES (\neg(\neg(V\leqslant \On)))
+\]
+\[
+\IMPLIES (V\leqslant \On)
+\]
+\[
+\IMPLIES (\exists T:\V\to\On\text{ injective})
+\]
+
+\Done
+\end{theorem}
+
+\iffalse
+\begin{constructor}[Global order]
+We have proven existence of such
+\end{constructor}
+
+Extension by new constant and function names
+% https://en.wikipedia.org/wiki/Prenex_normal_form
+\begin{constructor}[Henkin constructor]
+For any proven(sic!) formula $\psi$ of the following form
+\[
+(\forall\vec{x}\exists\vec{y},\varphi),
+\]
+there exists a functional symbol $c_\psi$, and it's type is
+\[
+(\text{length}(\vec{x})\to\Term)\to\Term
+\]
+So the type depends a bit on the type of $\vec{x}$.
+Moreover, since only for proven $\psi$ such constant can be obtained, therefore it will not be possible via constructor of the type which is independent of the value(i.e. of $\psi$).
+
+Not necessary! We can have advanced axiom! (premise is the stat)
+I.e. there is a default value, e.g. the empty set, in case if $\psi$ is not a valid formula.
+\end{constructor}
+\begin{notation}
+\[
+\const:\Fm\to\Term
+\]
+\end{notation}
+\fi
+
+\begin{constructor}[Henkin constructor]\ \\%new
+%For any formula $\psi$ "of the following form"(this is BAD!)
+%\[
+%(\forall\vec{x}\exists\vec{y},\varphi),
+%\]
+%there exists a functional symbol $c_\psi$, and it's type is
+%\[
+%(\text{length}(\vec{x})\to\Term)\to\Term
+%\]
+\iffalse
+For any formula $\varphi$, for any list of variables $\vec{x}$ and $\vec{y}$,
+there exists a functional symbol $f_\psi$, where
+\[
+\psi\ceq(\forall\vec{x}\exists\vec{y},\varphi).
+\].
+
+\fi
+For any bounded by term formula $\kappa$, $c_{\kappa}$ is a term.
+\[
+h:\BoundFm\to\Term
+\]
+\[
+\kappa \mapsto h_\kappa
+\]
+\end{constructor}
+
+\begin{axiom}[Henkin axiom schema]\ \\
+\label{ax:Henkin}
+\iffalse
+variant1:
+\[
+(\forall\vec{x}\exists y,\varphi)
+\implies
+(\forall\vec{x}\varphi[f(\vec{x})/y])
+\]
+variant2:
+\fi
+\[
+(\exists y.\varphi)
+\implies
+(\varphi[h_{(y.\varphi)}/y])
+\]
+\iffalse
+%GOOD, BUT UGLY
+\[
+(\exists \kappa)
+\implies
+(\varphi[h_\kappa/\fst(\kappa)])
+\]
+\[
+(\exists (y.\varphi))
+\implies
+((y.\varphi)(h_{(y.\varphi)}))
+\]
+\fi
+
+\[
+\FV(c_{(y.\varphi)}):=\FV((y.\varphi))
+\]
+Semantics: if the assumption is true, then $c_{(y.\varphi)}$ is one of such objects $y$, that $\varphi$ holds(in our case classes are objects);  if the assumption is not true, then $c_{(y.\varphi)}$ is interpreted as some default class. The empty class is chosen to be default. Note, that the implementation of the interpretation of this symbol may require meta-theoretical choice on the domain (i.e. on the conglomerate of all classes) as well, or something like that.
+\end{axiom}
+
+\begin{definition}[Global choice, variant 1]\ \\
+If $x\notin \FV(S)$ then
+\[
+c(S)\ceq h_{(x.(x\in S))}
+\]
+\end{definition}
+\iffalse
+\begin{definition}[meta-definition]
+\[
+\text{T} \eqdef h_{(T.(T:\V\to\On\text{ injective}))}.
+\]
+
+%Let $\text{T}$ be a new constant, ...
+
+Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
+\[
+\text{T}:=T.
+\]
+\[
+\text{T}:\V\to\On\text{ injective}.
+\]
+\end{definition}
+\fi
+\begin{lemma}
+\[
+(\exists T:B\to C\text{ injective})
+\implies 
+(
+(\exists F:C\to B\text{ surjective})
+\lor
+(B=\emptyclass)
+)
+\]
+\Proof
+\[
+F\ceq G^\top\cup((C\setminus T[B])\times\{b\})
+\]
+\Done
+\end{lemma}
+
+\begin{lemma}[there exist an indexing of set with ordinal numbers]
+\label{lem:exOnToVSurj}
+\[
+\exists F:\On \to \V \text{ surjective}
+\]
+\Proof
+It follows from the previous lemma for $C\ceq\On$, %bad:$T\ceq\text{T}$,
+ $B\ceq\V$, that
+\[
+(\exists T:\V\to \On\text{ injective})
+\implies 
+(
+(\exists F:\On\to \V\text{ surjective})
+\lor
+(\V=\emptyclass)
+)
+\]
+From the axiom of existence of a set, it follows that $(\V\neq\emptyclass)$.\\
+From this fact and the theorem 1.1, it follows, that
+\[
+(\exists F:\On\to \V\text{ surjective})
+\]
+\Done
+\end{lemma}
+
+
+\begin{definition}[well-ordering of universal class]\ \\
 \label{def:FwoV}
+\iffalse
+Choose once any $F$, such that $\On \to \V \text{ surjective}$,
 \[
-F:\On \to \V \text{ surjective}
+\text{F}:=F.
 \]
 \[
-\dots
+\text{F}:\On \to \V \text{ surjective}
+\]
+\fi
+\[
+\F\eqdef h_{(F.(F:\On \to \V \text{ surjective}))}
 \]
 \end{definition}
-\begin{definition}[the section of $F$ which returns minimal ordinals]
+Obviously, from the lemma \ref{lem:exOnToVSurj} and the axiom \ref{ax:Henkin}, it follows that
+\[
+\F:\On \to \V \text{ surjective}.
+\]
+
+
+\begin{definition}[the ``minimal'' section of $F$ which returns minimal ordinals]
 \label{def:Gsect}
+%G_F(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
 \[
-G(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
+\G(y)\eqdef\inf\cc{x\in\On}{\F(x)=y}
 \]
 \end{definition}
+
+\begin{definition}[global choice]\ \\%, variant 2
+Here we define a functional symbol $c$ as an alias for some bound term:
+\[
+c(S) :\equiv \F(\inf \G[S])
+\]
+\iffalse
+GOOD BUT WEIRD
+Assume $(S\neq\emptyclass)$.
+\[
+c(S)\eqdef F(\inf G_F[S])
+\]
+\[
+c(S)\eqdef F(\inf T[S])
+\]
+\fi
+\end{definition}
+
+\begin{lemma}[global choice chooses]
+\label{lem:j}
+\[
+(S\neq\emptyclass)\implies(c(S)\in S)
+\]
+\Proof
+\[
+(S\subclass \V)
+\LAND
+(\G : V\to \On)
+\IMPLIES
+(\G[S]\subclass\On)
+\]
+\[
+(S\neq\emptyclass)
+\LAND
+(S\subclass \V)
+\LAND
+(\G : V\to \On \text{ surjective})
+\IMPLIES
+(G[S]\neq\emptyclass)
+\]
+Since $(\G[S]\subclass\On)$ and $(G[S]\neq\emptyclass)$, then $((\G[S]\intersection \On)\neq\emptyclass)$.\\
+Therefore, by theorem \ref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
+\Done
+\end{lemma}
+
+
 \begin{definition}[tilde]
 \label{def:tilde}
 \[

@@ -214,4 +214,45 @@ By \ref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.
 \Done
 
+\subsection{Class of all ordinals is not a set}
+\begin{theorem}
+\label{thm:OnNotSet}
+The class $\On$ of all ordinals is a proper class, i.e. not a set.
+\[
+\On\notin\V
+\]
+\end{theorem}
+\Proof
+Assume opposite: $\On\in\V$. To show: $\bot$.
+\[
+(\On\in\V)
+\IMPLIES
+(\On\set).
+\]
+By theorem \ref{thm:ordon}, $\Ord(\On)$.
+\[
+\Ord(\On)
+\LAND
+(\On\set)
+\IMPLIES
+(\On\in\On).
+\]
+\[
+\Ord(\On)
+\IMPLIES
+(E\Irr\On).
+\]
+\[
+(E\Irr\On)
+\IMPLIES
+(\On\notin\On).
+\]
+\[
+(\On\in\On)
+\LAND
+(\On\notin\On)
+\IMPLIES
+\bot
+\]
+\Done
 \input{END.tex}
