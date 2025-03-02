@@ -348,6 +348,34 @@ Assume that $(F\family)$.
 
 \subsubsection{Soundness of $\Sigma$-types}
 ...
+
+\subsubsection{Implementation of $\Sigma$-types}
+Formation:
+\[
+\Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
+\]
+Introduction:
+\[
+\textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ I\ B))))
+\]
+Elimination:
+\[
+\textrm{pr}_1 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto ((\Sigma\ A\ B) \to A)))
+\]
+\[
+\textrm{pr}_2 : \Pi((I:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B(\pr_1\ p))))
+\]
+Computation:
+\[
+\pr_1\ (\textrm{pair}\ A\ B\ x\ y) \equiv x
+\]
+\[
+\pr_2\ (\textrm{pair}\ A\ B\ x\ y) \equiv y
+\]
+\[
+\textrm{pair}\ A\ B\ (\pr_1\ p)\ (\pr_2\ p) \equiv p
+\]
+
 \pagebreak
 \subsection{Implementing $\Pi$-types}
 \subsubsection{Axioms of $\Pi$-types}
@@ -361,6 +389,7 @@ $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 \vdash \Pi_{(x:A)}B(x):\Type  
 $}
 \end{prooftree}
+
 
 \subsubsection{Model of $\Pi$-types}
 In MK, it corresponds to the following:

@@ -40,7 +40,7 @@ B\in F
 \end{definition}
 \fi
 
-\subsection{Topology via Relation}
+\subsection{Topology via relation}
 \begin{definition}[Relation between points and neighbourhoods](parameter)
 \[
 \mathcal{R}\subseteq \V\times \V
@@ -120,7 +120,7 @@ x\in\intersection \mathrm{tni}(x)
 \]
 \end{axiom*}
 %\subsection{Filter}
-\subsection{Topology via (sub)Base}
+\subsection{Topology via (sub)base}
 \begin{definition}[subbase]
 Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subbase}.
 \begin{align*}
@@ -228,7 +228,7 @@ It can be given also this way:
 %\pagebreak
 %\subsection{Filter and filter base}
 \pagebreak
-\subsection{Defining Topology and various Algebras}
+\subsection{Defining topology and various algebras}
 \begin{definition}[Topology]\ \\
 The set $\mathcal{T}$ is called \textit{topology} iff
 %\left( \emptyclass\notin F \vphantom\union \right),
@@ -250,7 +250,7 @@ A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
 %&& \text{(F$_3$)}\\
 \end{definition}
 
-\begin{definition}[Sigma-Algebra]\ \\
+\begin{definition}[sigma-algebra]\ \\
 The set $\sigma$ is called \textit{sigma-algebra} iff
 \begin{align*}
 \left(
@@ -434,7 +434,7 @@ Q \subseteq \cc{\lambda}{\lambda\mathrm{\ Dynkin}}
 \end{theorem}
 
 \subsection{Topological properties}
-\begin{definition}[Topological property]
+\begin{definition}[topological property]
 \end{definition}
 
 To be a topology is a hereditary topological property. To be a closed set is a [trivially] weakly hereditary topological property. To be an open set is a topological property, but not even weakly hereditary. Several hereditary topological properties: being compact, being separable, being connected etc.
@@ -511,8 +511,8 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 \end{theorem}
 \pagebreak
 \subsection{Theorems about bases}
-
-\begin{definition}(Base)\\
+%\iffalse ???
+\begin{definition}[base]\ \\
 A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
 %any open set o
 $\forall U\in\mathcal{T}:\exists W\in\power\mathfrak{B}:U=\union W$\\
@@ -521,9 +521,10 @@ $\mathcal{T}\subseteq \cc{\union W }{  W\in\power\mathfrak{B}}$\\
 or\\
 $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 \end{definition}
+%\fi
 
-
-\begin{definition}(Generator)\\
+%\iffalse ???
+\begin{definition}[generator]\ \\
 A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff\\
 %any open set o
 $\forall U\in\mathcal{T}:\exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }:U=\union W$\\
@@ -533,7 +534,7 @@ or\\
 $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
 \end{definition}
 Generator set is also called a "subbase".
-
+%\fi
 
 \begin{definition}(``Finer'' as order on filters)\\
 For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathcal{C} \leq \mathcal{F}$ if and only if for every $C \in \mathcal{C}$ there exists some $F \in \mathcal{F} \text{ such that } F \subseteq C,$ in which case it is said that $\mathcal{C}$ is coarser than $\mathcal{F}$ and that $\mathcal{F}$ is finer than (or subordinate to) $\mathcal{C}$.

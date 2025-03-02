@@ -1,7 +1,7 @@
 \def\topic{}
 \input{BEGIN.tex}
 
-\section{"Paradoxes" of class theory}
+\section{"Paradoxes" of mathematics}
 %Регулярность:
 %(PA⊆A)→(V⊆A)
 %— это полезная аксиома.
@@ -18,6 +18,61 @@
 %Значит для любого множества W, W∉W.
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
 %Значит любой класс не принадлежит сам себе.
+\subsection{There is no formula equivalent to its negation.}
+All proofs in this section don't require the law of excluded middle.
+\begin{lemma}[formula implies itself]
+\label{lem:CtoC}
+\[
+(C\implies C)
+\]
+\ProofNoPar
+\begin{enumerate}
+\item $(C\implies (C\implies C))$ (by ax.1)
+\item $(C\implies ((C\implies C)\implies C))\implies 
+(((C\implies (C\implies C))\implies (C\implies C)) )
+$ (by ax.2)
+\item $(C\implies ((C\implies C)\implies C))$ (by ax.1)
+\item $(((C\implies (C\implies C))\implies (C\implies C)) $ (by MP from steps 2 and 3)
+\item $(C\implies C)$ (by MP from steps 1 and 4)
+\end{enumerate}
+\Done
+\end{lemma}
+\begin{note}
+Via MP and the deduction theorem:
+\[
+C \implies ((C\implies F)\implies F)
+\]
+Peirce's Law:
+\[
+(((P \implies Q) \implies P)\implies P)
+\]
+\end{note}
+
+\begin{lemma}[formula implying its negation is invalid]
+\label{lem:CtoF}
+\[
+(C\implies (C\implies F))\implies (C\implies F)
+\]
+\Proof
+Assume $(C\implies (C\implies F))$, and assume $C$.\\
+By modus ponens from the assumptions, $(C\implies F)$.\\
+Then $F$ is derived from $C$ and $(C\implies F)$ via modus ponens.
+\Done
+\end{lemma}
+
+\begin{theorem}[Curry's paradox]
+\label{Curry's Paradox}
+\[
+(C\iff (C\implies F))\implies F
+\]
+\Proof
+Assume $(C\iff (C\implies F))$.\\
+Therefore $(C\implies (C\implies F))$ and $((C\implies F)\implies C)$.\\
+The formula $(C\implies F)$ holds by lemma \ref{lem:CtoF} from $(C\implies (C\implies F))$.\\
+%By axiom 2 and modus ponens from $ $,
+The proof of the formula $F$ is obtained via modus ponens from $((C\implies F)\implies C)$ and $(C\implies F)$.
+\Done
+\end{theorem}
 
 \subsection{There is no class containing all irreflexive classes}
 \begin{theorem}[Russel's paradox]
@@ -26,7 +81,6 @@ Both in classical and in intuitionistic logic, the following holds:
 \[
 \neg (\exists W \forall Q: Q\in W \iff Q\notin Q)
 \]
-\end{theorem}
 \Proof
 \noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
@@ -47,13 +101,13 @@ $W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
 $W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
 $W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).
 \Done
+\end{theorem}
 %\subsection{Consequences of regularity axiom}
 \subsection{Regularity implies that all classes are irreflexive}
 \begin{theorem}
 \label{thm:not in itself}
 Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
 \[ \forall Y: Y\notin Y\]
-\end{theorem}
 \Proof
 \noindent %Fix Y.\\
 Let $C\ceq \cc{W}{W\notin W}$.\\
@@ -92,6 +146,7 @@ $\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
 $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
 $(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q\ceq Y$)
 \Done
+\end{theorem}
 
 \begin{theorem}
 \label{thm:intersection set then}
@@ -102,7 +157,6 @@ If intersection of a class A is a set, then A is nonempty.
 (\exists w: w\in A)
 \]
 %\quad\mbox{(by lemma ... )}
-\end{theorem}
 \Proof
 New goal:
 \[
@@ -161,6 +215,7 @@ The claim is proven.
 %\exists Q: \left(\intersection A\right)\in Q
 %\]
 \Done
+\end{theorem}
 
 \subsection{The powerclass of a set A is not a subclass of A}
 
@@ -168,7 +223,6 @@ The claim is proven.
 \label{thm:powerset not a subset}
 In classical and even in intuitionistic logic, the following holds:
 \[ \forall (Y\set): \neg(\power Y \subseteq Y)\]
-\end{theorem}
 \Proof
 \noindent %Fix Y.\\
 \[
@@ -196,6 +250,8 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 %$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
 %$W\ceq Y$.\\
 \Done
+\end{theorem}
+
 \subsection{Conglomerate of all classes is not a class}
 \begin{theorem}
 \label{thm:conglomerate of classes not class}
@@ -206,22 +262,22 @@ A conglomerate of all classes is not a class. It "does not exist as class".
 \[
 (\forall W \exists Q: Q\notin W)
 \]
-\end{theorem}
 \Proof
 Fix W.\\
 Set $Q\ceq W$.\\
 By \ref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.
 \Done
+\end{theorem}
 
 \subsection{Class of all ordinals is not a set}
 \begin{theorem}
 \label{thm:OnNotSet}
+\label{thm:OnnotinV}
 The class $\On$ of all ordinals is a proper class, i.e. not a set.
 \[
 \On\notin\V
 \]
-\end{theorem}
 \Proof
 Assume opposite: $\On\in\V$. To show: $\bot$.
 \[
@@ -255,4 +311,6 @@ By theorem \ref{thm:ordon}, $\Ord(\On)$.
 \bot
 \]
 \Done
+\end{theorem}
+
 \input{END.tex}
