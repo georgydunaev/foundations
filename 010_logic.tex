@@ -6,7 +6,7 @@
 %\
 %\end{definition}
 %\sub
-\section{Lambda-calculus as a metalanguage}
+\section{Lambda-calculus as a metalanguage [OUTDATED: write a chapter on dependent types]}
 \subsection{Definitions}
 All inductive definitions in this section are simultaneous.
 Classes are types, expressions are sets.
@@ -384,11 +384,11 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 We fix certain collection of objects $\Domain$ over which we want to use a pluralistic predicate logic. It can be natural numbers, a Grothendieck universe, a class of hereditary finite sets, a class of all sets, a conglomerate of all classes, etc.
 \end{parameter}
 
-\begin{definition}[evaluation]\ \\
-An evaluation is a function, which assigns indivial object to every variable.
-Any object-valued function from $\Var$ is called an evaluation:%class-valued
+\begin{definition}[assignment]\ \\%evaluation
+An assignment is a function, which assigns an indivial object to each variable.
+Any object-valued function from $\Var$ is called an assignment:%class-valued
 \[
-(v\evaluation) \IFFdef (v:\Var\to\Domain).
+(v\assignment) \IFFdef (v:\Var\to\Domain).
 \]%\mathrm{Class}
 %The constant $\mathrm{Class}$ is a conglomerate of all classes.
 \end{definition}
@@ -433,7 +433,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 \begin{definition}[interpretation of atomic function symbols]
 Function symbols are correspond to the functions which maps finite tuples of an object to an object.
 (in our case: .
-%Any class-valued function from $\Var$ is called an evaluation:
+%Any class-valued function from $\Var$ is called an assignment:
 \[
 \left(I\FuncInterpretation\right) \IFFdef \left(v:\FuncSymb\to
 \left(\union_{n\in \omega}\left(\{1,\dots, n\}\to\Domain\right)\to\Domain\right)\right).
@@ -443,7 +443,7 @@ Function symbols are correspond to the functions which maps finite tuples of an 
 \begin{definition}[interpretation of atomic predicate symbols]
 Predicate symbols are correspond to the functions which maps finite tuples of classes to to truth values.
 (in our case: .
-%Any class-valued function from $\Var$ is called an evaluation:
+%Any class-valued function from $\Var$ is called an assignment:
 \[
 \left( I \PredInterpretation\right) \IFFdef \left(v:\AtomPredSymb\to
 \left(\union_{n\in \omega}\left(\{1,\dots, n\}\to\Domain\right)\to\TruthValues\right)\right).
@@ -527,7 +527,7 @@ $I_\val\ceq \pr_1 \circ J$.
 $I_\Pred \ceq \pr_2 \circ J$.
 \end{definition}
 \fi
-(Note, that it is easy to generalise the interpretation of symbols, such that it may depend on evaluation, but it is quite unnecessary/excessively here.)
+(Note, that it is easy to generalise the interpretation of symbols, such that it may depend on assignment, but it is quite unnecessary/excessively here.)
 %\Class.
 
 \iffalse
@@ -558,7 +558,7 @@ $\dots$
 
 \iffalse THERE IS NO INTERPRETATION OF FORMULAS! WE HAVE RELATION!
 \begin{definition}[interpretation of formulas]\ \\
-The interpretation of formulas depends on the evaluation of variables $v$, and is defined by induction on construction of the formula.
+The interpretation of formulas depends on the assignment of variables $v$, and is defined by induction on construction of the formula.
 \begin{itemize}
 \item Atomic predicate symbols:
 \[
@@ -632,8 +632,8 @@ v\left(\left(\vv{X}\right)\right)
 \end{definition}
 %Let $I^v\left(\vv{X}\right)\ceq v(\left(\vv{X}\right))$.
 
-\begin{definition}[truth under evaluation]\ \\%$\forall$- and $\exists$-truth
-Let $v$ be evaluation and $I$ be an interpretation.
+\begin{definition}[truth under assignment]\ \\%$\forall$- and $\exists$-truth
+Let $v$ be assignment and $I$ be an interpretation.
 % TODO I^v\left(\vv{X}\right)
 \begin{itemize}
 \item Logical constants
@@ -852,7 +852,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \end{definition}
 \begin{definition}[validity]\ %\\% / entailment relation
 \[
-(\models \varphi) \IFFdef (\forall(v\evaluation), \models^v \varphi).
+(\models \varphi) \IFFdef (\forall(v\assignment), \models^v \varphi).
 \]%_\forall
 \end{definition}
 %\sub
@@ -1077,7 +1077,7 @@ Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
 
 %Let $I_\Term$ is an interpretation function on Terms.
 
-Let $w$ be an evaluation of variables:\\
+Let $w$ be an assignment of variables:\\
 \[
 w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 \]
@@ -1322,13 +1322,13 @@ Some lemmas useful for proving validity of the axioms. The following lemma has s
 \Proof
 The premise is equivalent to the following statement:
 \[
-\forall \left(w:\evaluationTYPE\right):
+\forall \left(w:\assignmentTYPE\right):
 \forall \left(v\in\prod w\right).
 (v^*\models \psi)
 \]
 To show:
 \[
-\forall \left(w:\evaluationTYPE\right).
+\forall \left(w:\assignmentTYPE\right).
 \forall \left(v\in\prod w\right).
 \forall \left(q\in\Domain\right).
 ((v+(x,q))^*\models \psi)
@@ -1336,7 +1336,7 @@ To show:
 Denote $w$ from the premise as $w_{pre}$.\\
 Denote $w$ from the conclusion $w_{con}$.\\
 Fix $w_{con}$. Fix $v_{con}$. Fix $q\in\Domain$.\\
-Set $w_{pre}\ceq w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\evaluationTYPE$.\\
+Set $w_{pre}\ceq w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\assignmentTYPE$.\\
 Set $v_{pre}\ceq v_{con} + (x,q)$. It satisfies $v_{pre}:\prod w_{pre}$.\\
 Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \Done
@@ -1447,7 +1447,7 @@ A formula $\varphi$ is globally valid if it's globally true for all such global 
 %\end{definition}
 %OR
 %\begin{definition*}(Weakly globally valid formula)\\
-%The formula $\varphi$ is called globally valid if it is true under any global evaluation by singletones.
+%The formula $\varphi$ is called globally valid if it is true under any global assignment by singletones.
 %\end{definition*}
 %\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
 I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletones $w:\Var\to\cc{\{K\}}{K\in\Un}$.
@@ -1547,7 +1547,7 @@ For the case when something goes wrong, "(f(x)=f(x))" is not true, since it bein
 In order for lemmas from (link shen-logic-part2-2.pdf , page 137) to work, we need assign non-sigleton sets to variables.\\
 But we want to avoid tedious assumtions like the following:
 $(x_1\ldefined)\land...\land(x_n\ldefined)\implies \varphi$.\\
-Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the evaluation variables may be assigned to a set with non-unique values.\\
+Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the assignment variables may be assigned to a set with non-unique values.\\
 The previous comment about introducing constants will patch the need for shortening of the statement while it is not possible to do via variable.\\
 But what about the cases when it should be a term, depending on some parameters?\\
 Resolution: we use only terms, and this mechanism of definitions of terms is outside the logic of the system.\\
@@ -1555,7 +1555,7 @@ Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
 
 \begin{definition}(interpretation of definitional equality)\\
 \st{$I^v_\Fm(A\equiv B)\ceq (I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
-$I^v_\Fm(A\equiv B)\ceq \forall(w\ \mbox{evaluation}):(I^w_\Term(A) = I^w_\Term(B))$.\\
+$I^v_\Fm(A\equiv B)\ceq \forall(w\ \mbox{assignment}):(I^w_\Term(A) = I^w_\Term(B))$.\\
 Will such definition work with a variable? I highly doubt. 
 So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
 But this definition works well for defining function symbols, and, in particular, constants.
