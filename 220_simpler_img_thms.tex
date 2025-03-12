@@ -87,7 +87,7 @@ v\in \mbox{E}^{\top}\langle A \rangle
 v \in \intersection A
 \]
 \Done
-\begin{theorem}()\\
+\begin{theorem}[\ ]\ \\
 $(\dom(\Sigma F))\cup (F^{\top}[\{\emptyclass\}]) = \dom(F)$\\
 $
 (\dom(\Sigma F))\cap (F^{\top}[\{\emptyclass\}]) = \emptyclass
@@ -95,7 +95,7 @@ $
 \end{theorem}
 \Proof
 \Done
-\begin{theorem}(Dunaev)\\
+\begin{theorem}[\ ]\ \\
 If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyclass\notin\mbox{ran}(F))$ then
 \[
 F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
@@ -109,5 +109,79 @@ F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
 \]
 \end{theorem}
 \Proof
+\Done
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Choice and epsilon operator}
+\begin{definition}
+\label{def:epsilon operator for sets}
+Epsilon operator for sets.
+\[
+(\varepsilon y: \varphi) = c\left(\cc{y}{\varphi}\right)
+\]
+Here c is a class-function of global choice:
+\[
+c:V\setminus\{\emptyclass\}\to V
+\]
+\[
+c(X)\in X
+\]
+Existence of such function follows from the axiom of limitation of size(below).
+Other notable fact is that axiom of limitation of size implies axiom of global choice, axiom of replacement, axiom of separation, and axiom of union.
+\end{definition}
+
+\begin{theorem}
+\[
+((\epsilon y: \varphi) \set)
+\iff
+(\exists(y\set):\varphi)
+\]
+\end{theorem}
+\Proof
+$(\Rightarrow)$\\
+Assume $((\epsilon y: \phi) \set)$. To show: $(\exists(y\set):\phi)$.
+\[
+((\epsilon y: \phi) \set)
+\IMPLIES
+(c(\{y:\phi\})\set)
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\commentary{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\exists y:\phi)
+\]
+$(\Leftarrow)$\\
+Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
+\[
+(\exists y:\phi)
+\IMPLIES
+(\{y:\phi\}\nonempty)
+\]
+\[
+(\{y:\phi\}\nonempty)
+\IMPLIES
+(\{y:\phi\}\in\dom(c))
+\]
+\[
+(\{y:\phi\}\in\dom(c))
+\IMPLIES
+(c(\{y:\phi\})\set)
+\commentary{by some variant of \ref{thm:pair in function} }
+\]
+\[
+(c(\{y:\phi\})\set)
+\IMPLIES
+((\epsilon y: \phi) \set)
+\]
 \Done
 \input{END.tex}

@@ -1,6 +1,28 @@
 \def\topic{}
 \input{BEGIN.tex}
 %\section{Set \& c
+\section{Families and evaluations}
+
+\subsection{Family}
+
+\subsection{Beta-conversion}
+\label{thm:fam-beta}[$\beta$-conversion]
+\[
+(x\in A \mapsto t) = \lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi
+\]
+\Proof
+\Done
+
+\subsection{Eta-conversion}
+\begin{theorem}[$\eta$-conversion]
+\label{thm:fam-eta}
+\[
+(x\in \dom(F) \mapsto F(x))=F
+\]
+\Proof
+\Done
+\end{theorem}
+
 \section{Class theory}
 \subsection{Basic class-theoretic operations}
 \iffalse
@@ -88,14 +110,4 @@ f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
 \right)
 \]
 \end{theorem}
-\subsection{Conditional operator}
-\begin{definition}(if-then-else)
-\[
-(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) :\simeq (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
-\]
-Side conditions:\\
-($z$ is not free in $t_1$),\\
-($z$ is not free in $t_2$),\\
-($z$ is not free in $\varphi$).\\
-\end{definition}
 \input{END.tex}

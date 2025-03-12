@@ -460,7 +460,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \end{theorem}
 
 
-\subsection{Useful statements}
+\subsection{Properties of ordinals}
 \iffalse
 \begin{theorem}[]
 \label{thm:}
@@ -621,7 +621,63 @@ z\ceq a
 \right)
 \]
 \end{theorem}
-\subsection{Cardinality}
+
+
+\section{Cardinals}
+\subsection{Axioms}
+\begin{iaxiom}
+\[
+|\cdot|:V \to \On
+\]
+Actually, since $|\cdot|$ is a functional symbol, we mean the following:
+\[
+(x\mapsto |x|):V \to \On
+\]
+Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
+\end{iaxiom}
+Actually, we can use the following axiom:
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\in\On)
+\]
+\end{axiom*}
+or even
+\begin{axiom*}
+\[
+(x\set)\implies(|x|\set)
+\]
+\end{axiom*}
+since later we will prove that
+\begin{theorem*}
+\[
+(x\set)\implies(|x|\in\On)
+\]
+\end{theorem*}
+
+\begin{iaxiom} Sets are hereditary:
+\[
+(A\subseteq B)\land (B\set) \implies (A\set)
+\]
+\end{iaxiom}
+
+\subsection{Implementation}
+Here $|\cdot|$ is a functional symbol defined as following.
+\begin{definition}(cardinality of a class)
+\[
+|K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
+\]
+\end{definition}
+\begin{definition}
+\[
+(X\preccurlyeq Y)
+\iff
+(\exists f: (f:X\to Y)\land (f \injective))
+\]
+\end{definition}
+The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\On$ if the argument is a proper class.\\
+%%
+%%%%\subsection{Cardinality}
+%%
 %\begin{definition}(Cardinality)\\
 %\[
 %|A|=\Ord\cap\bigcap \cc{f: }{ }
@@ -714,14 +770,27 @@ This definition is natural since it agrees with the axiom of limitation of size 
 
 The function $| \cdot |$ has interesting properties.
 
-
+\subsection{Soundness}
+\begin{theorem}
+\[
+|V|=\On
+\]
+\end{theorem}
+\Proof
+\dots
+\Done
+\subsection{Properties}
 \begin{theorem}[$| \cdot |$ is a projection]%\label{thm:}
 \end{theorem}
 
 \begin{theorem}[construction of a bijection between $\V$ and $\On$]%\label{thm:}
 \end{theorem}
 \dots
-\subsection{Derived induction principles}
+
+
+
+\section{Various Induction and Recursion principles}
+\subsection{Induction principles}
 \begin{corollary}[induction on a transitive and well-founded by membership relation class]
 \[
 (\Tr(K))
@@ -758,7 +827,20 @@ And vice versa is also true.
 (\beta\subclass A)
 \]
 \end{corollary}
+
+
 \subsection{Recursion principles}
+\iffalse 
+\subsection{older Inductions and recursions thms}%
+There exist unique class-function rec, such that:
+\[
+\mbox{rec}:(V\times V\to V)\to(V\to V)
+\]
+\[
+\mbox{rec}(H) = H\ \circ\ (\mbox{rec}(H)\restriction_-)
+\]
+%\pagebreak
+\fi
 \subsection{Well-ordering theorem}
 
 \subsection{Mostowski collapse lemma}
@@ -778,7 +860,7 @@ Plan:
 \item \dots
 \end{enumerate}
 
-\subsection{Older ordinal-related statements [delete?]}
+\subsection{Ordinals' definition if the axiom of regularity is present}
 In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[

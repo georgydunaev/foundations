@@ -34,6 +34,29 @@ Is the following okey ???
 \]
 \fi
 \pagebreak
+\subsection{Implementing the boolean type}
+
+\subsubsection{Axioms of  boolean type}
+
+\subsubsection{Model of boolean type}
+\underline{Formation of boolean type:}\\
+\underline{Introduction of terms of boolean type:}\\
+\underline{Elimination of terms of boolean type:}\\
+\begin{definition}(Conditional operator if-then-else)
+\[
+(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) \eqdef (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
+\]
+Side conditions:\\
+($z$ is not free in $t_1$),\\
+($z$ is not free in $t_2$),\\
+($z$ is not free in $\varphi$).\\
+\end{definition}
+\underline{Computation of terms of boolean type:}\\
+
+\subsubsection{Soundness of boolean type}
+
+
+
 \subsection{Implementing option types}
 %Axioms:\\
 \subsubsection{Axioms of option types}
@@ -429,6 +452,7 @@ Another definition:\\
 ...
 \subsubsection{Model of $W$-types}
 \underline{Formation of W-type:}\\
+
 Assume $F$ is a family of classes with \textit{finite} domain $A$.
 (a.k.a. "some dependent class $F$, which depends on $\dom(F)$", where $\dom(F)=A$.)
 \[
@@ -517,6 +541,7 @@ Assume $(a\in \dom(F))$ and $(s:F(a)\to\mbox{W}F)$. Since $\dom(F)$ if finite, t
 \]
 %Therefore $\sup(F) = \id(\mbox{W}F)$ and $\sup(F)\restriction  = \id(\mbox{W}F)$.
 \end{definition}
+
 \underline{Elimination of terms of W-type:}\\
 \begin{definition}(destructor of W-type)\ \\
 \[
