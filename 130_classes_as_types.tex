@@ -344,6 +344,10 @@ Assume that $(F\family)$.
 \[
 \Sigma F \eqdef \mbox{E}^{\top} \circ F
 \]
+\[
+\Sigma F \eqdef \cc{(a,b)}{b\in F(a) }
+\]
+
 \end{definition}
 
 \subsubsection{Soundness of $\Sigma$-types}
@@ -424,7 +428,9 @@ Another definition:\\
 \subsubsection{Axioms of $W$-types}
 ...
 \subsubsection{Model of $W$-types}
-Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on $\dom(F)$.")
+\underline{Formation of W-type:}\\
+Assume $F$ is a family of classes with \textit{finite} domain $A$.
+(a.k.a. "some dependent class $F$, which depends on $\dom(F)$", where $\dom(F)=A$.)
 \[
 \mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyclass 
 \]
@@ -434,6 +440,130 @@ Assume $F$ is a family of classes. (aka "A dependent class $F$, which depends on
 \[
 \mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
 \]
+
+The equivalent definition, which uses class-theoretic implementations of the sigma types and the empty type:
+\[
+\mbox{W}_{\mathrm{fun}}F(0)\eqdef \mathrm{void}
+\]
+\[
+\mbox{W}_{\mathrm{fun}}F(n+1)\ \eqdef 
+\sum_{(r\in \dom(F))} (F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )
+\]
+%\Pi\Sigma\mathop{\dum}\limits_{(r\in \dom(F))} \sum
+%\mathop{\LARGE\ensuremath \mathrm{\LARGE \vphantom\sum W}\mathlarger{W}}\limits
+\[
+\mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\]
+%$\big\Sigma$
+%\scalebox{1.5}{$\Sigma$}
+%\scalebox{2}{$\Sigma$}
+
+%\vphantom{p}_F
+\begin{lemma}
+For all $n\in\N$,
+\[
+\mbox{W}_{\mathrm{fun}}F(n)
+\subseteq
+\mbox{W}_{\mathrm{fun}}F(n+1).
+\]
+\Proof
+By induction,\\
+Base: n=0. Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}F(1)$.\\
+Step:
+Assume \[
+\mbox{W}_{\mathrm{fun}}F(n)
+\subseteq
+\mbox{W}_{\mathrm{fun}}F(n+1).
+\]
+To show:
+\[
+\mbox{W}_{\mathrm{fun}}F(n+1)
+\subseteq
+\mbox{W}_{\mathrm{fun}}F(n+2).
+\]
+It follows from the assumption, that 
+\[
+(F(r)\to\mbox{W}_{\mathrm{fun}}F(n))
+\subseteq
+(F(r)\to\mbox{W}_{\mathrm{fun}}F(n+1)).
+\]
+Therefore
+\[
+\sum_{(r\in \dom(F))} (F(r)\to\mbox{W}_{\mathrm{fun}}F(n))
+\subseteq
+\sum_{(r\in \dom(F))} (F(r)\to\mbox{W}_{\mathrm{fun}}F(n+1)).
+\]
+And finally,
+\[
+\mbox{W}_{\mathrm{fun}}F(n+1)
+\subseteq
+\mbox{W}_{\mathrm{fun}}F(n+2).
+\]
+\Done
+\end{lemma}
+
+
+
+\underline{Introduction of terms of W-type:}\\
+\begin{definition}(constructor of W-type)\ \\
+For fixed function $F$, 
+\[
+\sup(F):\prod_{(a\in \dom(F))}((F(a)\to\mbox{W}F)\to \mbox{W}F)
+\]
+Assume $(a\in \dom(F))$ and $(s:F(a)\to\mbox{W}F)$. Since $\dom(F)$ if finite, then $s[F(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[F(a)]$, so $s[F(a)]\subseteq \mbox{W}_{\mathrm{fun}}F(m)$. Therefore $s:F(a)\to\mbox{W}_{\mathrm{fun}}F(m)$. Therefore $(a,s)\in \mbox{W}_{\mathrm{fun}}F(m+1)$, which is a subset of $\mbox{W}F$, so $(a,s)\in\mbox{W}F$. Therefore we can define $\sup$ this way:
+\[
+\sup(F) \eqdef ((a\in \dom(F))\mapsto ((s:F(a)\to\mbox{W}F)\mapsto (a,s)) ).
+\]
+\end{definition}
+\underline{Elimination of terms of W-type:}\\
+\begin{definition}(destructor of W-type)\ \\
+\[
+\mbox{W}_\mathrm{rect}:
+\prod_{(A : \Un)} \prod_{(F : A \to \Un)} \prod_{(P : \mathrm{W}F\to \Un)}
+  \left(\prod_{(a : A)} \prod_{(w : F(a) \to \mathrm{W}F)} \left(\prod_{(f : F(a))} P(w(f))\right)  \to P (\sup(F)(a)(w))\right) \to
+      \left(\prod_{(w : \mathrm{W}F)} P(w)\right)
+\]
+\begin{lstlisting}
+W_rect
+     : forall (A : Type) (F : A -> Type) (P : W F -> Type),
+       (forall (a : A) (w : F a -> W F), (forall f : F a, P (w f)) -> P (sup F a w)) ->
+       forall w : W F, P w
+\end{lstlisting}
+\end{definition}
+
+\underline{Computation of terms of W-type:}\\
+
+Due to finiteness of $A$ and $\mbox{W}_{\mathrm{fun}}F(0)=\emptyclass$, it holds that $\sup(F,a,f)\in \mbox{W}_{\mathrm{fun}}F(m+1)$ for some $m\in\N$.
+
+
+Assume ....\\
+Definition of $\mbox{W}_{\mathrm{rect}}$ is by induction on $n$.
+Base:\\
+n=0.
+Step:\\
+Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W}_{\mathrm{fun}}F(n)$.
+
+
+\[
+\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
+\eqdef e(a, f, (b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
+\]
+
+\Proof
+Base of induction $n=0$:\\
+For all elements $w$ of $\mbox{W}F(0)$,
+\[
+\mbox{W}_{\mathrm{rect}} (A,B,e,w) 
+\]
+is vacuously defined, since there are none.\\
+Step of induction $n\mapsto(n+1)$:\\
+Assume function is defined on $\mbox{W}F(n)$.\\
+Then via the last equation, it is defined on $\mbox{W}F(n+1)$ as well.\\
+It's definition doesn't depend on $n$.\\
+Therefore it is univoccally defined on whole $\mbox{W}F$, because it's a union of all "levels".
+\Done
+
+
 \subsubsection{Soundness of $W$-types}
 ...
 \pagebreak
@@ -446,6 +576,9 @@ MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{
 \]
 \[
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
+\]
+\[
+\inf : ...
 \]
 \subsubsection{Soundness of $\Pi$-types}
 ...
