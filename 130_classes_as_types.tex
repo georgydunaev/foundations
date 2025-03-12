@@ -467,9 +467,10 @@ For all $n\in\N$,
 \mbox{W}_{\mathrm{fun}}F(n+1).
 \]
 \Proof
-By induction,\\
-Base: n=0. Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}F(1)$.\\
-Step:
+By induction on $n$,\\
+\underline{Base}: n=0.\\
+ Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}F(1)$.\\
+\underline{Step of induction}:\\
 Assume \[
 \mbox{W}_{\mathrm{fun}}F(n)
 \subseteq
@@ -514,6 +515,7 @@ Assume $(a\in \dom(F))$ and $(s:F(a)\to\mbox{W}F)$. Since $\dom(F)$ if finite, t
 \[
 \sup(F) \eqdef ((a\in \dom(F))\mapsto ((s:F(a)\to\mbox{W}F)\mapsto (a,s)) ).
 \]
+%Therefore $\sup(F) = \id(\mbox{W}F)$ and $\sup(F)\restriction  = \id(\mbox{W}F)$.
 \end{definition}
 \underline{Elimination of terms of W-type:}\\
 \begin{definition}(destructor of W-type)\ \\
@@ -536,8 +538,8 @@ W_rect
 Due to finiteness of $A$ and $\mbox{W}_{\mathrm{fun}}F(0)=\emptyclass$, it holds that $\sup(F,a,f)\in \mbox{W}_{\mathrm{fun}}F(m+1)$ for some $m\in\N$.
 
 
-Assume ....\\
-Definition of $\mbox{W}_{\mathrm{rect}}$ is by induction on $n$.
+Assume $(A : \Un)$ $(F : A \to \Un)$ $(E : \mathrm{W}F\to \Un)$.\\
+Definition of $\mbox{W}_{\mathrm{rect}}$ is done by induction on $n$.\\
 Base:\\
 n=0.
 Step:\\
@@ -546,7 +548,7 @@ Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W
 
 \[
 \mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
-\eqdef e(a, f, (b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
+\eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
 
 \Proof
@@ -560,7 +562,7 @@ Step of induction $n\mapsto(n+1)$:\\
 Assume function is defined on $\mbox{W}F(n)$.\\
 Then via the last equation, it is defined on $\mbox{W}F(n+1)$ as well.\\
 It's definition doesn't depend on $n$.\\
-Therefore it is univoccally defined on whole $\mbox{W}F$, because it's a union of all "levels".
+Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of all "levels".
 \Done
 
 

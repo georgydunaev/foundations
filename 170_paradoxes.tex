@@ -271,6 +271,22 @@ So $Q\notin W$.
 \end{theorem}
 
 \subsection{Class of all ordinals is not a set}
+
+\begin{lemma}
+\label{lem:OnnotinOn}
+\[
+\On\notin\On
+\]
+\end{lemma}
+\Proof
+Assume $\On\in\On$.\\
+Therefore $\in$ well-orders $\On$ as a well-founded strict linear order.\\
+In particular strict order is irreflexive.\\
+Since using assumpton, $\On$ is an element of $\On$, by irreflexetivity, we have $\On\notin\On$.\\
+Contradiction with assumption.\\
+Therefore $\On\notin\On$ is proven.
+\Done
+
 \begin{theorem}
 \label{thm:OnNotSet}
 \label{thm:OnnotinV}
@@ -285,30 +301,30 @@ Assume opposite: $\On\in\V$. To show: $\bot$.
 \IMPLIES
 (\On\set).
 \]
-By theorem \ref{thm:ordon}, $\Ord(\On)$.
+By theorem \ref{thm:ordon}, $\Ord(\On)$. The rest is done in the previous lemma:
 \[
 \Ord(\On)
 \LAND
 (\On\set)
 \IMPLIES
-(\On\in\On).
+(\On\in\On);
 \]
 \[
 \Ord(\On)
 \IMPLIES
-(E\Irr\On).
+(E\Irr\On);
 \]
 \[
 (E\Irr\On)
 \IMPLIES
-(\On\notin\On).
+(\On\notin\On);
 \]
 \[
 (\On\in\On)
 \LAND
 (\On\notin\On)
 \IMPLIES
-\bot
+\bot.
 \]
 \Done
 \end{theorem}
