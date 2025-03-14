@@ -8,6 +8,16 @@ $G:\V\to\V$\\
 $\exists! F:\Ord\to\V$, s.t.\\
 $F(a) = G(F\restriction a)$.
 \end{recall}
+
+Variable is a syntatic atom.\\
+Object is a semantic atom.\\
+
+Functional is a syntactic function.\\
+Family is a semantic function.\\
+
+Evaluation is a syntactic image.
+
+
 \begin{definition}[union]\ \\
 \[
 \bigcup^y_{\psi} t 
@@ -38,13 +48,6 @@ Side conditions:\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.
 \end{definition}
-Variable is a syntatic atom.\\
-Object is a semantic atom.\\
-
-Functional is a syntactic function.\\
-Family is a semantic function.\\
-
-Evaluation is a syntactic image.
 \begin{notation}[intersection of evaluations of the elements of a class]\ \\
 Let $y$ be a variable, let $s$ and $t$ be terms. Then for the case if formula has form $(y\in s)$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
 \[
@@ -54,9 +57,9 @@ Let $y$ be a variable, let $s$ and $t$ be terms. Then for the case if formula ha
 \]
 \end{notation}
 \begin{notation}[intersection of the elements of a class]\ \\
-\[
-\bigcap G = \cc{x}{\forall y\in G. x\in y}
-\]
+%\[
+%\bigcap G = \cc{x}{\forall y\in G. x\in y}
+%\]
 \[
 \bigcap G 
 \ \eqdef\ 
@@ -75,7 +78,7 @@ For such intersections of proper classes satisfying some property the following 
 %\W\eqdef \bigwedge_Q (\power Q\subclass Q).
 %\]
 \[
-\W\eqdef \bigcap^Q\limits_{(\power Q\subclass Q)} Q.
+\W\eqdef \bigcap^Q\limits_{\power Q\subclass Q} Q.
 \]
 
 \[
