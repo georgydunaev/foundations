@@ -2,35 +2,199 @@
 \input{BEGIN.tex}
 \section{Height of the set}
 %Theorems about transifinite- and epsilon- induction and recursion.
-\begin{recall}
+\begin{recall}\ \\
 Transfinite recursion\\
-$G:V\to V$\\
-$\exists! F:\Ord\to V$, s.t.\\
-$F(a) = G(F\restriction a)$\\
+$G:\V\to\V$\\
+$\exists! F:\Ord\to\V$, s.t.\\
+$F(a) = G(F\restriction a)$.
 \end{recall}
-%Recall:\\
-\begin{recall}
+\begin{definition}[union]\ \\
+\[
+\bigcup^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\exists y, \psi \land x\in t}
+\]
+Side conditions:\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.
+%Side conditions:\\
+%1) variable $x$ is not free in formula $\psi$,\\
+%2) variable $x$ is not free in term $t$,\\
+%3) variable $x$ is not free in variable $y$.\\
+%Dependencies:\\
+%1) formula $\psi$ may depend on $y$.\\
+%2) term $t$ may depend on $y$.
+\end{definition}
+
+\begin{definition}[intersection of a definable conglomerate of classes]\ \\
+\[
+\bigcap^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\forall y, \psi \implies x\in t}
+\]
+Side conditions:\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.
+\end{definition}
+Variable is a syntatic atom.\\
+Object is a semantic atom.\\
+
+Functional is a syntactic function.\\
+Family is a semantic function.\\
+
+Evaluation is a syntactic image.
+\begin{notation}[intersection of evaluations of the elements of a class]\ \\
+Let $y$ be a variable, let $s$ and $t$ be terms. Then for the case if formula has form $(y\in s)$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+\[
+\bigcap_{y\in s} t 
+\ \eqdef\ 
+\bigcap^y_{y\in s} t 
+\]
+\end{notation}
+\begin{notation}[intersection of the elements of a class]\ \\
+\[
+\bigcap G = \cc{x}{\forall y\in G. x\in y}
+\]
+\[
+\bigcap G 
+\ \eqdef\ 
+\bigcap_{y\in G} y 
+\]
+\end{notation}
+\begin{definition}[W]\ \\
+The class of well-founded sets $\W$ is being defined as an intersection of all those classes, which contain each of their subsets in themselves.
+\[
+\W\eqdef\cc{x}{\forall Q, (\power Q\subclass Q)\implies (x\in Q)}
+\]
+\end{definition}
+\begin{notation}
+For such intersections of proper classes satisfying some property the following notation may be used:
+%\[
+%\W\eqdef \bigwedge_Q (\power Q\subclass Q).
+%\]
+\[
+\W\eqdef \bigcap^Q\limits_{(\power Q\subclass Q)} Q.
+\]
+
+\[
+\bigcap_{\psi(Q)} t(Q) 
+\eqdef
+\cc{x}{\forall Q, \psi(Q) \implies x\in t(Q)}
+\]
+
+
+
+\[
+\bigcap_{y\in Y} t(y)
+=\bigcap\cc{t(y)}{y\in Y}
+=\cc{m}{\forall y\in Y, m\in t(y)}
+=\cc{m}{\forall y, y\in Y \implies m\in t(y)}
+\]
+\[
+=\cc{x}{\forall Q, Q\in Y \implies x\in t(Q)}
+\]
+
+\[
+\bigcap_{y\in Y} t(y)
+= \bigcap \cc{t(y)}{{y\in Y}}
+= \bigcap (y\mapsto t(y))[Y]
+\]
+\end{notation}
+\begin{recall}\ \\
 Epsilon recursion:\\
 $G:V\to V$\\
-$\exists! F:V\to V$, s.t.\\
-$F(a) = G(F\restriction a)$\\
+$\exists! F:\W\to\V$, s.t.\\
+$F(a) = G(F\restriction a)$.
 \end{recall}
+\begin{lemma}[W]\ \\
+\[
+\forall Q, (\power Q\subclass Q) \implies (\W\subclass Q)
+\]
+\Proof
+Fix $Q$. Assume $(\power Q\subclass Q)$. To Show: $\W\subclass Q$.\\
+%Proposition: $\W\subclass Q$.\\
+Fix $m$.\\
+Assume $m\in\W$.\\
+To show: $m\in Q$.
+\[
+(m\in\W)
+\IMPLIES
+\forall D, (\power D\subclass D)\implies (x\in D)
+\]
+Set $D:=Q$.\\
+The assumption $(\power Q\subclass Q)$ together with the last statement lead to $(m\in Q)$ via specification and modus ponens.
+%So the statement $(\W\subclass Q)$ is proven.
+\DoneNoPar
+\end{lemma}
+\begin{note}
+Due to this lemma, the axiom of regularity may be formulated as $(\V\subclass\W)$.
+\end{note}
+\begin{theorem}[W]\ \\
+The class $\W$ contains all of its subsets in itself.
+\[
+\power \W \subclass \W
+\]
+\Proof
+Fix $(x\in \power \W)$. To show: $x\in\W$.
+\[
+(x\in \power \W)
+\IMPLIES
+(x\set)
+\land
+(x\subclass\W)
+\]
+To show: $(x\set)\land(\forall Q, (\power Q\subclass Q)\implies (x\in Q))$.\\
+Fix $Q$.\\
+Assume $(\power Q\subclass Q)$.\\
+To show $(x\in Q)$.\\
+The propostion $(\W\subclass Q)$ is proven by the specification of the previous lemma and then by modus ponens of the result together with the assumption.
+\[
+(x\subclass\W)
+\LAND
+(\W\subclass Q)
+\IMPLIES
+(x\subclass Q)
+\]
+\[
+(x\set)
+\LAND
+(x\subclass Q)
+\IMPLIES
+(x\in\power Q)
+\]
+
+\[
+(x\in\power Q)
+\LAND
+(\power Q\subclass Q)
+\IMPLIES
+(x\in Q)
+\]
+
+\Done
+\end{theorem}
+
 
 \begin{definition}
 Height function definition:\\
-$h(x)$ is the height of a the set. It is equal by definition to the maximum length of a $\ni$-chain, started from $x$.\\
+Let $h(x)$ denote the height of a the set, which is the maximum length of a $\ni$-chain, started from $x$, minus one.\\
 \end{definition}
 
-Examples:\\
+\begin{example*}\ \\
 $h(\emptyclass)$=0,\\
 $h(\{\emptyclass\})$=1,\\
 $h(\{\emptyclass,\{\emptyclass\}\})$=2,\\
-and in general if $n$ is a finite ordinal number, then $h(n)=n$.\\
-Definition: by $\in$-recursion
+and in general if $n$ is a finite ordinal number, then $h(n)=n$.
+\end{example*}
+\begin{definition}[height]\ \\
+\label{height}
+The height function is defined via $\in$-recursion:
 \[
-h(x) \ceq \sup \cc{ h(y) }{ y \in x}
+h(x) \ceq \sup \cc{ h(y) }{ y \in x}.
 \]
-
+\end{definition}
 Property:
 \[
 h(x) = \sup h[x]
@@ -38,18 +202,101 @@ h(x) = \sup h[x]
 
 $G(R) \ceq \sup(\ran(R)) = \union(\ran(R))$\\
 via epsilon recursion.\\
-$h : V\to V$\\
+$h : \V\to\V$\\
 $h(a) = \sup(\ran(h\restriction a) )$\\
 
 
-
-\begin{lemma}()
+% height = depth
+\begin{lemma}[set's height is ordinal]\ \\
+\label{lem:depthinon}
+The height of any set is an ordinal.
 \[
-(h:V\to\Ord)
+(h:V\to\On)
 \]
+%\omega
 \end{lemma}
-\Proof
-by epsilon induction.\\
+\ProofNoPar\ (first variant)\\
+Using the epsilon induction.\\
+Base of the epsilon induction, which may be ommited:
+\[
+h(\emptyclass) = \sup_\N h[\emptyclass] = \sup_\N \emptyclass = 0
+\]
+
+
+Step of the epsilon induction:\\
+Assume $\forall y\in x: h(y)\in \On$.\\
+To show: $h(x)\in\On$.\\
+It follows from the assupmtion, that $h[x]\subclass\On$.\\
+\[
+\forall B, \left(B\subclass\On\middle) \implies \middle(\Ord\middle(\union B\middle)\right)
+\]
+The $x$ is a set; $h$ with a domain restricted to x is a function.\\
+Therefore $h[x]$ is also a set.\\
+Therefore $\union h[x]$ is also a set.\\
+
+\[
+\left(\union h[x]\set\middle)
+\LAND
+\Ord\middle(\union h[x]\middle)
+\IMPLIES 
+\middle(\union h[x]\in\On\right)
+\]
+\[
+h(x) = \sup h[x] = \union h[x]
+\]
+Therefore $(h(x)\in\On)$.
+\Done
+
+\ProofNoPar\ (second variant)\\
+Using the epsilon induction.\\
+\[
+\power Q\subclass Q \implies \V\subclass Q
+\]
+\[
+Q\eqdef \cc{x\in\V}{h(x)\in\On}
+\]
+If $\V\subclass Q$ then $\forall x\in\V, h(x)\in\On$, and the proof is done.\\
+To Show: $\power Q\subclass Q$, or, equivalently, $\forall x, (x\set)\land (x\subclass Q) \implies (x\in Q)$.\\
+\[
+(x\subclass Q)
+\IMPLIES
+(h[x]\subclass \On).
+\]
+\[
+\IMPLIES
+\Ord(\union h[x])
+\]
+\[
+\IMPLIES
+\Ord(\sup h[x])
+\]
+\[
+\IMPLIES
+\Ord(h(x))
+\]
+...
+
+\[
+(s\set)
+\LAND
+(h\mathrm{\ set\-valued\ function})
+\IMPLIES
+(h(x)\set)
+\]
+\[
+(h(x)\set)
+\LAND
+\Ord(h(x))
+\IMPLIES
+(h(x)\in\On)
+\]
+\[
+(x\in\V)
+\LAND
+(h(x)\in\On)
+\IMPLIES
+(x\in Q)
+\]
 \Done
 
 

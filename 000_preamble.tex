@@ -206,6 +206,14 @@
 \newcommand{\Implies}{\ \Rightarrow\ }
 %\newcommand{\Implies}{|\models-}
 
+%FFFFF\textendash FFFF\\
+%$FFFFF\textendash FFFF$\\
+%$FFFFF\mbox{\textendash}FFFF$\\
+%$FFFFF\mbox{-}FFFF$
+\let\oldhyphen=\- % save the predefined cmd for discretionary hyphen
+\renewcommand{\-}{\mbox{-}} % define the "shortest hyphen"
+
+
 \newcommand{\IMPLIES}{\ \Longrightarrow\ }
 \newcommand{\CIMPLIES}{=\Rightarrow}%todo: fix it
 \newcommand{\CImplies}{=\Rightarrow}
@@ -331,6 +339,7 @@
 \newcommand{\invE}{\reflectbox{$\E$}}
 %\DeclareRobustCommand{\invE}{\text{\reflectbox{$\Gamma$}}}
 \newcommand{\V}{\mathrm{V}}
+\newcommand{\W}{\mathrm{W}}
 \newcommand{\I}{\mathrm{I}}
 \newcommand{\prop}{\mathrm{prop}}
 \newcommand{\Prop}{\mathrm{Prop}}
