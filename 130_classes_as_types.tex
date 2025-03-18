@@ -204,10 +204,10 @@ or, equivalently,
 \Done
 \pagebreak
 %\subsection{Self-contained presentation of dependent types}
-\subsection{Families of definable classes, abstraction and evaluation.}
-
+%\subsection{Families of definable classes, abstraction and evaluation.}
+\subsection{Implementing functions}
 %\subsection{Relational basics}
-\subsection{Family basics}
+\subsubsection{Family basics}
 \begin{definition}(Value)
 \[
 F(a)\eqdef\union\cc{s}{(a,s)\in F}
@@ -296,7 +296,7 @@ F^\intercal\eqdef\cc{(F(x),x)}{x\in \Dom(F)}
 \]
 \end{definition}
 
-\subsection{Family}
+\subsubsection{Family}
 
 \begin{definition}[family]
 Def is ommited!
@@ -331,29 +331,33 @@ F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
 \dots
 \fi
 \end{definition}
-\subsection{Lambda-abstraction}
+\subsubsection{Lambda-abstraction}
+%BADRecall:
+%\[
+%\cc{(x,t)}{(x\in A)}
+%= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
+%\]
+\begin{baddefinition*}[set-valued abstraction]\ \\
+The following attempt of definition requires the value to be set:
+\label{def:setvaluedabstraction}
+\[
+(x\in A \mapsto t)
+\eqbaddef
+\ccc{x}{(x,t)}{(x\in A)}
+\]
+(Here $x$ is a bound variable on the both sides of the equality.)
+%a binder
+\end{baddefinition*}
+
+\begin{definition}[class-valued abstraction]
+\label{def:classvaluedabstraction}
 \[
 (x\in A \mapsto t)
 \eqdef
-\cc{(x,t)}{(x\in A)}
+\ccc{x}{(x,b)}{(x\in A)\land (b \sss t)}
 \]
-($x$ is a binder on the both sides of equality)
-\[
-\cc{(x,t)}{(x\in A)}
-= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
-\]
+\end{definition}
 
-Both class constructors can be defined one from the other:
-\begin{notation}[cl]
-\[
-\cc{x}{\phi} := \ccc{x}{x}{\phi}
-\]
-\end{notation}
-\begin{notation}[cl]
-\[
-\ccc{x}{t}{\phi} := \cc{w}{\exists x, (w=t) \land \phi} 
-\]
-\end{notation}
 %\mathclap{#1}
 \iffalse
 %\ |^x\ \ \smash{\stackrel{x}{|}}
@@ -390,31 +394,92 @@ jjj
 % q:BTerm
 % q:= (x.t)
 % lam q := cc (x. exists x, (p = (x,t)) \land (x\in A) )
-\subsection{Alpha-equivalence}
+\subsubsection{Alpha-equivalence}
 
-Alpha-equivalence is a consequence of equivalence of class construction.
+Alpha-equivalence is a consequence of alpha-equivalence of the class constructors.
 
-\subsection{Beta-conversion}
-\label{thm:fam-beta}[$\beta$-conversion]
+\subsubsection{Beta-conversion}
+
+\begin{definition}[conditional operator]
 \[
-(x\in A \mapsto t)(a) = \lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi
+(\lif\ \phi\ \lthen\ t_1\ \lelse\ t_2\ \lfi)
+\eqdef
+\cc{w}{((\phi)\land(w\in t_1))\lor((\neg\phi)\land(w\in t_2))}
+\]
+\underline{Side conditions:}\\
+1) $w$ is not free in $\phi$,\\
+2) $w$ is not free in $t_1$,\\
+3) $w$ is not free in $t_2$.
+\end{definition}
+
+\begin{theorem}[$\beta$-conversion]
+\label{thm:fam-beta}
+\[
+(x\in A \mapsto t)(a) = (\lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
 \]
 \Proof
+\[
+(x\in A \mapsto t)(a)
+\]
+\[
+=
+\bigcup\cc{b}{((a,b)\in (x\in A \mapsto t))}
+\]
+\[
+=
+\bigcup\cc{b}{((a,b)\in \ccc{x}{(x,b)}{(x\in A)\land (b \sss t)})}
+\]
+\[
+=
+\bigcup\cc{b}{(a\in A)\land (b \sss t[a/x])}
+\]
+\[
+=
+\bigcup (\lif\ (x\in A)\ \lthen\ \cc{b}{(b \sss t[a/x])}\ \lelse\  \emptyclass\ \lfi)
+\]
+\[
+=
+(\lif\ (x\in A)\ \lthen\ \bigcup\cc{b}{(b \sss t[a/x])}\ \lelse\  \bigcup\emptyclass\ \lfi)
+\]
+\[
+=
+(\lif\ (x\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
+\]
 \Done
+\end{theorem}
 
-\subsection{Eta-conversion}
-\begin{theorem}[$\eta$-conversion]
+\subsubsection{Eta-conversion}
+\begin{theorem}[$\eta$-conversion]\ \\
 \label{thm:fam-eta}
+Assume that $F$ is a family and $\dom(F)=A$, then
 \[
-(x\in \dom(F) \mapsto F(x))=F
+(x\in \dom(F) \mapsto F(x))=F.
 \]
 \Proof
+\[
+(x\in \dom(F) \mapsto F(x))
+\]
+\[
+=\ccc{x}{(x,b)}{(x\in A)\land (b \sss F(x))}
+\]
+\[
+=\ccc{x}{(x,b)}{\left(x\in A\middle)\land \middle(b \sss \bigcup\cc{b}{((x,b)\in F)}\right)}
+\]
+\[
+=\ccc{x}{(x,b)}{\left(x\in A\middle)\land \middle(b \in \cc{b}{((x,b)\in F)}\right)}
+\]
+\[
+=\ccc{x}{(x,b)}{((x,b)\in F)}
+\]
+\[
+=F
+\]
 \Done
 \end{theorem}
 
 %\section{Class theory}
 %\subsection{Basic class-theoretic operations}
-\subsection{Basic classes}
+\subsubsection{Basic classes}
 \iffalse
 Notation:\\
 
@@ -513,61 +578,22 @@ f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
 %1
 
 %9
-\begin{definition}(dependent sum of a family)
-\[
-\Sigma F\eqdef\cc{(x,y)}{y\in F(x)}
-\]
-\end{definition}
-%10,11
-\begin{definition}(ordered pair projections)
-\[
-\pr_1 \eqdef \cc{((a,b),a)}{a\any,b\any}
-\]
-\[
-\pr_2 \eqdef \cc{((a,b),b)}{a\any,b\any}
-\]
-\end{definition}
 %12
-\begin{definition}(sections of a family)
-\[
-\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F}{\pr_1\circ s \subseteq \I}
-\]
-\end{definition}
-%13
-\begin{definition}(dependent product of a family)
-\[
-\Pi F \eqdef \cc{\pr_2\circ s}{s\in \Gamma F}
-\]
-\end{definition}
 %%14
 %\begin{definition}(Sigma-class)
 %\[
 %\]
 %\end{definition}
-\begin{lemma}
-\[
-\invE = \Sigma \I
-\]
-\end{lemma}
-\begin{lemma}
-\[
-\Sigma F = \invE \circ F
-\]
-\end{lemma}
-\begin{lemma}
-\[
-\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
-\]
-\end{lemma}
 \pagebreak
 \subsection{Implementing $\Sigma$-types}
 \subsubsection{Axioms of $\Sigma$-types}
 In type theory, the formatin rule for a $\Sigma$-type is
+Formation of $\Sigma$-type:
 \begin{prooftree}
 \AxiomC{
 $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 }
-\RightLabel{$\Pi$-form}
+\RightLabel{$\Sigma$-form}
 \UnaryInfC{$
 \vdash \Sigma_{(x:A)}B(x):\Type  
 $}
@@ -583,29 +609,45 @@ Assume that $(F\family)$.
 \[
 \Sigma F \eqdef \cc{(a,b)}{b\in F(a) }
 \]
-
 \end{definition}
+\begin{definition}(dependent sum of a family)
+\[
+\Sigma F\eqdef\cc{(x,y)}{y\in F(x)}
+\]
+\end{definition}
+%10,11
+\begin{definition}(ordered pair projections)
+\[
+\pr_1 \eqdef \ccc{a,b}{((a,b),a)}{a\any,b\any}
+\]
+\[
+\pr_2 \eqdef \ccc{a,b}{((a,b),b)}{a\any,b\any}
+\]
+\end{definition}
+
+
+
 
 \subsubsection{Soundness of $\Sigma$-types}
 \dots
 
 \subsubsection{Implementation of $\Sigma$-types}
-Formation:
+\underline{Formation of terms of $\Sigma$-type:}\\
 \[
 \Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
 \]
-Introduction:
+\underline{Introduction of terms of $\Sigma$-type:}\\
 \[
 \textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ I\ B))))
 \]
-Elimination:
+\underline{Elimination of terms of $\Sigma$-type:}\\
 \[
 \textrm{pr}_1 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto ((\Sigma\ A\ B) \to A)))
 \]
 \[
 \textrm{pr}_2 : \Pi((I:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B\ (\pr_1\ p))))
 \]
-Computation:
+\underline{Computation of terms of $\Sigma$-type:}\\
 \[
 \pr_1\ (\textrm{pair}\ A\ B\ x\ y) \equiv x
 \]
@@ -615,10 +657,21 @@ Computation:
 \[
 \textrm{pair}\ A\ B\ (\pr_1\ p)\ (\pr_2\ p) \equiv p
 \]
-
+\subsubsection{Properties of $\Sigma$-types}
+\begin{lemma}
+\[
+\invE = \Sigma \I
+\]
+\end{lemma}
+\begin{lemma}
+\[
+\Sigma F = \invE \circ F
+\]
+\end{lemma}
 \pagebreak
 \subsection{Implementing $\Pi$-types}
 \subsubsection{Axioms of $\Pi$-types}
+\underline{Formation of terms of $\Sigma$-type:}\\
 In type theory, the formatin rule for a $\Pi$-type is
 \begin{prooftree}
 \AxiomC{
@@ -629,7 +682,9 @@ $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 \vdash \Pi_{(x:A)}B(x):\Type  
 $}
 \end{prooftree}
-
+\underline{Introduction of terms of $\Pi$-type:}\\
+\underline{Elimination of terms of $\Pi$-type:}\\
+\underline{Computation of terms of $\Pi$-type:}\\
 
 \subsubsection{Model of $\Pi$-types}
 In MK, it corresponds to the following:
@@ -654,6 +709,26 @@ Another definition:\\
 \prod w \eqdef \cc{f}{\exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))}
 \]
 \end{definition}
+
+\begin{definition}(sections of a family)
+\[
+\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F}{\pr_1\circ s \subseteq \I}
+\]
+\end{definition}
+%13
+\begin{definition}(dependent product of a family)
+\[
+\Pi F \eqdef \cc{\pr_2\circ s}{s\in \Gamma F}
+\]
+\end{definition}
+
+\begin{definition}(Dependent product, variant D)\\
+\begin{lemma}
+\[
+\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
+\]
+\end{lemma}
+\end{definition}
 \subsubsection{Soundness of $\Pi$-types}
 \dots
 % todo: prove some theorems about it
@@ -662,7 +737,25 @@ Another definition:\\
 \pagebreak
 \subsection{Implementing $W$-types}
 \subsubsection{Axioms of $W$-types}
-\dots
+\underline{Formation of W-type:}\\
+Let $F$ be a family of types.\\
+Then $\W F$ is also a type.\\
+\underline{Introduction of terms of W-type:}\\
+\[
+\sup(F):\prod_{(a\in \dom(F))}((F(a)\to\mbox{W}F)\to \mbox{W}F)
+\]
+\underline{Elimination of terms of W-type:}\\
+\[
+\mbox{W}_\mathrm{rect}:
+\prod_{(A : \Un)} \prod_{(F : A \to \Un)} \prod_{(P : \mathrm{W}F\to \Un)}
+  \left(\prod_{(a : A)} \prod_{(w : F(a) \to \mathrm{W}F)} \left(\prod_{(f : F(a))} P(w(f))\right)  \to P (\sup(F)(a)(w))\right) \to
+      \left(\prod_{(w : \mathrm{W}F)} P(w)\right)
+\]
+\underline{Computation of terms of W-type:}\\
+\[
+\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
+\eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
+\]
 \subsubsection{Model of $W$-types}
 \underline{Formation of W-type:}\\
 
@@ -783,12 +876,12 @@ n=0.
 Step:\\
 Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W}_{\mathrm{fun}}F(n)$.
 
-
+\begin{theorem}[computation of W-type]
+\label{thm:Wcomp}
 \[
 \mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
 \eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
-
 \Proof
 Base of induction $n=0$:\\
 For all elements $w$ of $\mbox{W}F(0)$,
@@ -802,7 +895,7 @@ Then via the last equation, it is defined on $\mbox{W}F(n+1)$ as well.\\
 It's definition doesn't depend on $n$.\\
 Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of all "levels".
 \Done
-
+\end{theorem}
 
 \subsubsection{Soundness of $W$-types}
 \dots

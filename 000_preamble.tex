@@ -86,6 +86,8 @@
 \newtheorem*{axiom*}{Axiom}
 \newtheorem{definition}{Definition}[section]
 \newtheorem*{definition*}{Definition}
+\newtheorem{baddefinition}{Failed Definition}[section]
+\newtheorem*{baddefinition*}{Failed Definition}
 \newtheorem{remark}{Remark}[section]
 \newtheorem*{remark*}{Remark}
 \newtheorem{recall}{Recall}[section]
@@ -124,6 +126,7 @@
 \newcommand{\baddefi}{{\textrm{bad\ def}}}
 \newcommand{\ceq}{\,{\coloneqq}\,}
 \newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
+\newcommand{\eqbaddef}{\,{\stackrel{\baddefi}{\coloneqq}}\,}
 \newcommand{\rsto}{{\stackrel{RS}{\to}}}
 \newcommand{\propdef}{{\stackrel{\defi}{\ \Longleftrightarrow\ }}}
 \newcommand{\subclass}{\subseteq} % "subclasseq"
@@ -240,7 +243,7 @@
 %\hspace{.0em}
 
 \newcommand{\ccc}[3]{
-\left\{\,#2\ \middle|^{\mathclap{\smash{\mkern+4mu \vspace{-4pt}{#1}}}}\ #3\,\right\}%^{#1}
+\left\{\,#2\ \middle|^{\mathclap{\smash{\mkern+5mu \vspace{-4pt}{#1}}}}\ #3\,\right\}%^{#1}
 }
 
 %\renewcommand{\ccc}[3]{

@@ -69,7 +69,7 @@ If Y is not a free variable in X, then:
 
 \subsection{Axiom of class comprehension}
 \begin{constructor}
-If $\varphi$ is a formula, then $\cc{x}{\varphi}$ is a class.
+If $\varphi$ is a formula, $x$ is a variable, $t$ is a term, then $\ccc{x}{t}{\varphi}$ is a class.
 \end{constructor}
 \begin{note}
 There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots''$, etc).
@@ -88,6 +88,21 @@ There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is be
 \forall(\dots), (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
 \]
 \end{axiom}
+
+%...maybe
+%\[BAD
+%\cc{s}{(x\in A)} := \ccc{x}{s}{(x\in A)},
+%\]
+
+\begin{note}
+Both variants of class constructors can be expressed one from the other:
+\[
+\cc{x}{\phi} := \ccc{x}{x}{\phi},
+\]
+\[
+\ccc{x}{t}{\phi} := \cc{w}{\exists x, (w=t) \land \phi}.
+\]
+\end{note}
 
 \iffalse
 
@@ -126,8 +141,7 @@ If Y is not a free variable of $\varphi$, then:
 \Proof
 ($\implies$)\\
 Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
-
-...\\
+\dots
 \Done
 
 \subsection{Definition of the empty class}
