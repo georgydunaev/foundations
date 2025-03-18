@@ -8,7 +8,7 @@ $G:\V\to\V$\\
 $\exists! F:\Ord\to\V$, s.t.\\
 $F(a) = G(F\restriction a)$.
 \end{recall}
-
+offtopic:
 Variable is a syntatic atom.\\
 Object is a semantic atom.\\
 
@@ -17,55 +17,6 @@ Family is a semantic function.\\
 
 Evaluation is a syntactic image.
 
-
-\begin{definition}[union]\ \\
-\[
-\bigcup^y_{\psi} t 
-\ \eqdef\ 
-\cc{x}{\exists y, \psi \land x\in t}
-\]
-Side conditions:\\
-1) formula $\psi$ must not depend on variable $x$,\\
-2) term $t$ must not depend on variable $x$,\\
-3) variable $y$ is different from variable $x$.
-%Side conditions:\\
-%1) variable $x$ is not free in formula $\psi$,\\
-%2) variable $x$ is not free in term $t$,\\
-%3) variable $x$ is not free in variable $y$.\\
-%Dependencies:\\
-%1) formula $\psi$ may depend on $y$.\\
-%2) term $t$ may depend on $y$.
-\end{definition}
-
-\begin{definition}[intersection of a definable conglomerate of classes]\ \\
-\[
-\bigcap^y_{\psi} t 
-\ \eqdef\ 
-\cc{x}{\forall y, \psi \implies x\in t}
-\]
-Side conditions:\\
-1) formula $\psi$ must not depend on variable $x$,\\
-2) term $t$ must not depend on variable $x$,\\
-3) variable $y$ is different from variable $x$.
-\end{definition}
-\begin{notation}[intersection of evaluations of the elements of a class]\ \\
-Let $y$ be a variable, let $s$ and $t$ be terms. Then for the case if formula has form $(y\in s)$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
-\[
-\bigcap_{y\in s} t 
-\ \eqdef\ 
-\bigcap^y_{y\in s} t 
-\]
-\end{notation}
-\begin{notation}[intersection of the elements of a class]\ \\
-%\[
-%\bigcap G = \cc{x}{\forall y\in G. x\in y}
-%\]
-\[
-\bigcap G 
-\ \eqdef\ 
-\bigcap_{y\in G} y 
-\]
-\end{notation}
 \begin{definition}[W]\ \\
 The class of well-founded sets $\W$ is being defined as an intersection of all those classes, which contain each of their subsets in themselves.
 \[
@@ -80,6 +31,12 @@ For such intersections of proper classes satisfying some property the following 
 \[
 \W\eqdef \bigcap^Q\limits_{\power Q\subclass Q} Q.
 \]
+
+(small idea:
+\[
+?\eqdef \bigcup^Q\limits_{Q\subclass \power Q} Q.
+\]
+)
 
 \[
 \bigcap_{\psi(Q)} t(Q) 
@@ -267,7 +224,7 @@ To Show: $\power Q\subclass Q$, or, equivalently, $\forall x, (x\set)\land (x\su
 \]
 \[
 \IMPLIES
-\Ord(\union h[x])
+\Ord\left(\union h[x]\right)
 \]
 \[
 \IMPLIES
@@ -277,7 +234,7 @@ To Show: $\power Q\subclass Q$, or, equivalently, $\forall x, (x\set)\land (x\su
 \IMPLIES
 \Ord(h(x))
 \]
-...
+\dots
 
 \[
 (s\set)

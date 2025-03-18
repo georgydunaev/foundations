@@ -27,13 +27,13 @@ All proofs in this section don't require the law of excluded middle.
 \]
 \ProofNoPar
 \begin{enumerate}
-\item $(C\implies (C\implies C))$ (by ax.1)
-\item $(C\implies ((C\implies C)\implies C))\implies 
+\item \[(C\implies (C\implies C)) \tag{by ax.1}\]
+\item \[(C\implies ((C\implies C)\implies C))\implies 
 (((C\implies (C\implies C))\implies (C\implies C)) )
-$ (by ax.2)
-\item $(C\implies ((C\implies C)\implies C))$ (by ax.1)
-\item $(((C\implies (C\implies C))\implies (C\implies C)) $ (by MP from steps 2 and 3)
-\item $(C\implies C)$ (by MP from steps 1 and 4)
+\tag{by ax.2}\]
+\item \[(C\implies ((C\implies C)\implies C)) \tag{by ax.1}\]
+\item \[(((C\implies (C\implies C))\implies (C\implies C)) \tag{by MP from steps 2 and 3}\]
+\item \[(C\implies C)\tag{by MP from steps 1 and 4}\] 
 \end{enumerate}
 \Done
 \end{lemma}
@@ -93,13 +93,19 @@ $W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
 Now, using backward reasoning:\\
 $W\in W \iff W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
 Subgoal1:\\
-$W\in W \iff W\notin W, (W\in W) \vdash \bot$.\\
-$W\in W \iff W\notin W, (W\in W) \vdash (W\notin W)$.\\
-$W\in W \iff W\notin W, (W\in W) \vdash (W\in W)$ (by assumption).\\
+\[
+W\in W \iff W\notin W, (W\in W) \vdash \bot
+\]
+\[
+W\in W \iff W\notin W, (W\in W) \vdash (W\notin W).
+\]
+\[
+W\in W \iff W\notin W, (W\in W) \vdash (W\in W)\tag{by assumption}.
+\]
 Subgoal2:\\
-$W\in W \iff W\notin W, (W\notin W) \vdash \bot$.\\
-$W\in W \iff W\notin W, (W\notin W) \vdash (W\in W)$.\\
-$W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)$ (by assumption).
+\[W\in W \iff W\notin W, (W\notin W) \vdash \bot.\]
+\[W\in W \iff W\notin W, (W\notin W) \vdash (W\in W).\]
+\[W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)\tag{by assumption}\]
 \Done
 \end{theorem}
 %\subsection{Consequences of regularity axiom}
@@ -113,13 +119,18 @@ Both in classical and in intuitionistic logic, the epsilon relation is not refle
 Let $C\ceq \cc{W}{W\notin W}$.\\
 Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\
-$(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C)$.\\
+\[
+(B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C).
+\]
 Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
 $(b\in B)\LAND(B\subseteq C) \Longrightarrow (b\in C)$.\\
 $(b\in C) \Longrightarrow (b\notin b)$.\\
 Claim: $B\notin B$.\\
 Assume opposite $B\in B$ and derive a contradiction.\\
-$(B\in B) \Longrightarrow (B\notin B)$ (by previous claim).\\
+\[
+(B\in B) \Longrightarrow (B\notin B)
+ \tag{by previous claim}
+\]
 %$(B\in B)\LAND(B\subseteq C) \Longrightarrow (B\in C)$.\\
 %$(B\in C) \Longrightarrow (B\notin B)$.\\
 $(B\in B)\LAND(B\notin B) \Longrightarrow \bot$.\\
@@ -130,7 +141,10 @@ $(B\set)\LAND(B\notin B) \Longrightarrow (B\in C)$.\\
 %Значит B тоже элемент C(т.к. B — множество, которое не принадлежит себе).
 %Доказали PC⊆C.
 We are done proving the goal $\power C\subseteq C$.\\
-$\power C\subseteq C \Longrightarrow V\subseteq C$ (by epsilon induction).\\
+\[
+\power C\subseteq C \Longrightarrow V\subseteq C
+\tag{by epsilon induction}
+\]
 %Значит из аксиомы следует, что A=V.
 %Значит для любого множества W, W∉W.
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему-нибудь принадлежит.
@@ -144,7 +158,9 @@ $(Y\in C)\Longrightarrow (Y\notin Y)$.\\
 Case 2: $\neg(Y\set)$.\\
 $\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
 $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
-$(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)$. (by $Q\ceq Y$)
+\[
+(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\ceq Y$}
+\]
 \Done
 \end{theorem}
 
@@ -187,13 +203,13 @@ Proof of the claim:
 \]
 \[
 (V\notin V)
-\quad\mbox{(by thm \ref{thm:not in itself} with $Y\ceq V$)}
+\tag{by thm \ref{thm:not in itself} with $Y\ceq V$}
 \]
 \[
 (V\notin V)
 \IMPLIES
 \neg(V\set)
-\quad\mbox{(by thm \ref{thm:sets are in V})}
+\tag{by thm \ref{thm:sets are in V}}
 \]
 \[
 \left(\intersection A\right) = V

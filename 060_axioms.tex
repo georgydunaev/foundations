@@ -67,12 +67,13 @@ If Y is not a free variable in X, then:
 \]
 \end{definition}
 
-
-\begin{constructor}
-If $\varphi$ is a formula, then $\cc{x}{\varphi}$ is a class.\\
-(It is Mosrse-Kelley class theory, since there are no restrictions on $\varphi$, which is the only difference between MK and NBG.)
-\end{constructor}
 \subsection{Axiom of class comprehension}
+\begin{constructor}
+If $\varphi$ is a formula, then $\cc{x}{\varphi}$ is a class.
+\end{constructor}
+\begin{note}
+There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots''$, etc).
+\end{note}
 %\begin{axiom}(OLD Class comprehension)
 %\label{axm:comprehension}
 %\[Y\in\cc{x}{\varphi} \iff (Y\set)\LAND(\varphi[Y/x])\]
@@ -84,7 +85,7 @@ If $\varphi$ is a formula, then $\cc{x}{\varphi}$ is a class.\\
 \begin{axiom}(class comprehension)%NEW 
 \label{axm:comprehension}
 \[
-(X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
+\forall(\dots), (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
 \]
 \end{axiom}
 
@@ -166,6 +167,10 @@ Empty class.
 \end{axiom}
 
 \subsection{Definition of universal class}
+\begin{constructor} Universal class.\\
+The symbol $\V$ is a constant(closed term) of the language of class theory.
+\end{constructor}
+
 \begin{definition} Universal class (constant V).
 \label{def:universal class}
 \[
@@ -173,25 +178,130 @@ V\eqdef\cc{x}{\top}
 \]
 \end{definition}
 
-\subsection{Definition of union}
+\subsection{Definitions of unions}
 \begin{definition}
 \label{def:union}
-Union of an arbitrary class A.
+This is an admissible and ``elementary`` definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
 \union A \eqdef \cc{x}{\exists a\in A: x\in a}
 \]
 \end{definition}
 
+\begin{definition}[union of a definable conglomerate of classes]\ \\
+\label{def:uniondefcongl}
+\[
+\bigcup^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\exists y, \psi \land (x\in t)}
+\]
+Side conditions:\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.
+%Side conditions:\\
+%1) variable $x$ is not free in formula $\psi$,\\
+%2) variable $x$ is not free in term $t$,\\
+%3) variable $x$ is not free in variable $y$.\\
+%Dependencies:\\
+%1) formula $\psi$ may depend on $y$.\\
+%2) term $t$ may depend on $y$.
+\end{definition}
 
-\subsection{Definition of intersection}
-\begin{definition}
+\begin{definition}[union of terms built out of the elements of a class]\ \\
+Let $y$ be a variable, let $s$ and $t$ be terms.\\
+If formula has form $``(y\in s)''$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+\[
+\bigcup_{y\in s} t 
+\ \eqdef\ 
+\bigcup^y_{y\in s} t 
+\]
+\end{definition}
+\begin{definition}[union of the elements of a class]\ \\
+\[
+\bigcup A 
+\ \eqdef\ 
+\bigcup_{y\in A} y 
+\]
+\end{definition}
+\begin{theorem}[``elementary def of intersection'']
+\label{thm:union}
+\[
+\union A = \cc{x}{\exists a\in A: x\in a}
+\]
+\Proof
+\[
+\union A
+=
+\bigcup_{y\in A} y  
+=
+\bigcup^y_{y\in A} y 
+=
+\cc{x}{\exists y, (y\in A) \land (x\in y)}
+=
+\cc{x}{\exists a\in A: x\in a}
+\]
+\Done
+\end{theorem}
+
+\subsection{Definitions of intersections}
+\begin{definition}%[]
 \label{def:intersection}
-Intersection of an arbitrary class A.
+This is an admissible and ``elementary`` definition of an intersection of an arbitrary class A, which is proved to be a thoerem later in this section.
 \[
 \intersection A \eqdef \cc{x}{\forall a\in A: x\in a}
 \]
 \end{definition}
 
+\begin{definition}[intersection of a definable conglomerate of classes]\ \\
+\label{def:interdefcongl}
+\[
+\bigcap^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\forall y, \psi \implies x\in t}
+\]
+Side conditions:\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.
+\end{definition}
+\begin{definition}[intersection of terms built out of the elements of a class]\ \\
+Let $y$ be a variable, let $s$ and $t$ be terms.\\
+If formula has form $``(y\in s)''$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+\[
+\bigcap_{y\in s} t 
+\ \eqdef\ 
+\bigcap^y_{y\in s} t 
+\]
+\end{definition}
+\begin{definition}[intersection of the elements of a class]\ \\
+%\[
+%\bigcap G = \cc{x}{\forall y\in G. x\in y}
+%\]
+\[
+\bigcap A 
+\ \eqdef\ 
+\bigcap_{y\in A} y 
+\]
+\end{definition}
+\begin{theorem}[``elementary def of intersection'']
+\label{thm:intersection}
+\[
+\intersection A = \cc{x}{\forall a\in A: x\in a}
+\]
+\Proof
+\[
+\intersection A
+=
+\bigcap_{y\in A} y  
+=
+\bigcap^y_{y\in A} y 
+=
+\cc{x}{\forall y, (y\in A) \implies (x\in y)}
+=
+\cc{x}{\forall a\in A: x\in a}
+\]
+\Done
+\end{theorem}
 \subsection{Definition of powerclass}
 \begin{definition}
 \label{def:powerclass}

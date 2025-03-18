@@ -82,10 +82,30 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \end{theorem}
 \Proof
 \[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
-\[(w\in A)\LAND(!a:a\in A)\IMPLIES\{w\}=A\quad\mbox{(by the previous theorem)}\]
-\[(\{w\}=A)\IMPLIES\left(\intersection\{w\}=\intersection A\right).\]
-\[\left(\intersection\{w\}=w\right)\LAND\left(\intersection\{w\}=\intersection A\right)\IMPLIES\left(\intersection A=w\right)\]
-\[\left(\intersection A=w\right)\LAND(w\in A)\IMPLIES\left(\intersection A\in A\right)\]
+\[
+(w\in A)\LAND(!a:a\in A)
+\IMPLIES
+\{w\}=A
+\tag{by the previous theorem}
+\]
+\[
+(\{w\}=A)
+\IMPLIES
+\left(\intersection\{w\}=\intersection A\right).
+\]
+\[
+\left(\intersection\{w\}=w\right)
+\LAND
+\left(\intersection\{w\}=\intersection A\right)
+\IMPLIES
+\left(\intersection A=w\right)\]
+\[
+\left(\intersection A=w\right)
+\LAND
+(w\in A)
+\IMPLIES
+\left(\intersection A\in A\right)
+\]
 \Done
 
 
@@ -129,11 +149,11 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \Proof
 \[
 (A\set) \LAND (B\subseteq A) \IMPLIES (B\set)
-\commentary{by axm \ref{axm:heredity}}
+\tag{by axm \ref{axm:heredity}}
 \]
 \[
 (B\set) \LAND (B\subseteq A) \IMPLIES (B\in\power A)
-\commentary{by def \ref{def:powerclass}}
+\tag{by def \ref{def:powerclass}}
 \]
 \Done
 
@@ -172,7 +192,7 @@ The claim is proven.
 (x\in A)
 \IMPLIES
 (x\set)
-\commentary{by thm \ref{thm:in class then set}}
+\tag{by thm \ref{thm:in class then set}}
 \]
 \[
 (x\set)
