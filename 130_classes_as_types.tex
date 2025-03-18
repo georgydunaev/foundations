@@ -100,9 +100,9 @@ or, equivalently,
 \end{theorem}
 \Proof
 1. The set $\emptyclass$ is a semisingleton, by def of semisingletones.\\
-2. By thm ..., $\emptyclass \subseteq A$.\\
-3. From 1 and 2, it follows that $\emptyclass \sss A$ by ... .\\
-4. By ax ..., $(\emptyclass\set)$.\\
+2. By thm \dots, $\emptyclass \subseteq A$.\\
+3. From 1 and 2, it follows that $\emptyclass \sss A$ by \dots .\\
+4. By ax \dots, $(\emptyclass\set)$.\\
 5. From 3 and 4, it follows that $\emptyclass \in \cc{b}{b \sss A}$.\\
 \Done
 \begin{theorem}
@@ -116,23 +116,23 @@ or, equivalently,
 \end{theorem}
 \Proof
 1. Assume $(a\in A)$.\\
-2. $(a\in A) \IMPLIES (a \set)$, by ... .\\
-3. $(\{a\} \semisingleton)$, by ... .\\
-%4. $(a set) \IMPLIES (\{a\} set)$, by ... .\\
-4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
-5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
-6. From 2 and 5, it follows that $(\{a\}\in\cc{b}{(b \sss A)}$, by ... .\\
+2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
+3. $(\{a\} \semisingleton)$, by \dots .\\
+%4. $(a set) \IMPLIES (\{a\} set)$, by \dots .\\
+4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by \dots .\\
+5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
+6. From 2 and 5, it follows that $(\{a\}\in\cc{b}{(b \sss A)}$, by \dots .\\
 \Done
 \pagebreak
 \subsection{Implementing ordered pairs}
 (see section, devoted to ordered pairs and cartesian productis)
-%...\\
+%\dots\\
 \subsubsection{Axioms of ordered pairs}
-...
+\dots
 \subsubsection{Model of ordered pairs}
-...
+\dots
 \subsubsection{Soundness of ordered pairs}
-...
+\dots
 \pagebreak
 \subsection{Implementing lists}
 Lists are modelled as any family with some initial segment of ordinals as domain.
@@ -182,13 +182,13 @@ or, equivalently,
 \]
 \end{theorem}
 \Proof
-...\\
+\dots
 %1. Assume $(a\in A)$.\\
-%2. $(a\in A) \IMPLIES (a \set)$, by ... .\\
-%3. $(\{a\} \semisingleton)$, by ... .\\
-%4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by ... .\\
-%5. From 3 and 4, it follows that $(\{a\}\sss A)$, by ... .\\
-%6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by ... .\\
+%2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
+%3. $(\{a\} \semisingleton)$, by \dots .\\
+%4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by \dots .\\
+%5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
+%6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by \dots .\\
 \Done
 \begin{theorem}
 \[
@@ -200,17 +200,14 @@ or, equivalently,
 \]
 \end{theorem}
 \Proof
-...\\
+\dots
 \Done
 \pagebreak
-\subsection{Self-contained presentation of dependent types}
-%\subsubsection{Axioms of $\Sigma$-types}
-\begin{definition}(Union)
-\[
-\union A\eqdef\cc{x}{\exists a\in A: x\in a}
-\]
-\end{definition}
-%1
+%\subsection{Self-contained presentation of dependent types}
+\subsection{Families of definable classes, abstraction and evaluation.}
+
+%\subsection{Relational basics}
+\subsection{Family basics}
 \begin{definition}(Value)
 \[
 F(a)\eqdef\union\cc{s}{(a,s)\in F}
@@ -299,6 +296,222 @@ F^\intercal\eqdef\cc{(F(x),x)}{x\in \Dom(F)}
 \]
 \end{definition}
 
+\subsection{Family}
+
+\begin{definition}[family]
+Def is ommited!
+\end{definition}
+
+\begin{definition}[domain]
+\[
+\dom(F)\eqdef \cc{x}{\exists b, (x,b)\in F}
+\]
+\end{definition}
+
+\begin{definition}[value]
+\[
+F(x) \eqdef \bigcup\cc{b}{((x,b)\in F)}
+\]
+\iffalse
+\[
+F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
+\]
+
+% It may have sense to generalize value, but (x,b)\in F \dots
+% what can be done if b is a proper class?
+% if (x,b) = ({0}\times x)\cup({1}\times b), then
+% \dots. wait! Family is already a generalisation for the same purpose!
+
+
+(small idea:
+\[
+?\eqdef \bigcup^Q\limits_{Q\subclass \power Q} Q.
+\]
+)
+\dots
+\fi
+\end{definition}
+\subsection{Lambda-abstraction}
+\[
+(x\in A \mapsto t)
+\eqdef
+\cc{(x,t)}{(x\in A)}
+\]
+($x$ is a binder on the both sides of equality)
+\[
+\cc{(x,t)}{(x\in A)}
+= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
+\]
+
+Both class constructors can be defined one from the other:
+\begin{notation}[cl]
+\[
+\cc{x}{\phi} := \ccc{x}{x}{\phi}
+\]
+\end{notation}
+\begin{notation}[cl]
+\[
+\ccc{x}{t}{\phi} := \cc{w}{\exists x, (w=t) \land \phi} 
+\]
+\end{notation}
+%\mathclap{#1}
+\iffalse
+%\ |^x\ \ \smash{\stackrel{x}{|}}
+
+\newlength{\heightofhw}
+\settoheight{\heightofhw}{$
+\vphantom{
+\left\{\,
+\middle|
+2\  \middle|^{1} |^1 \middle|\ 3\,
+\right\}
+}$
+}
+
+%\fontsize{0.04\textheight}{0.04\textheight}
+%\the\heightofhw
+%\measuredelimiter{
+\[
+\left(
+jjj
+\left\{\,
+\middle|
+2\  \middle|^{1} |^1 \middle|\ 3\,
+\right\}
+\right)
+\]
+%}
+\fi
+
+% \def\delimsize{\middle}
+%\heightof{ }
+% \rule{width}{height} to match exact height
+% \scalebox{0.8}{}
+% q:BTerm
+% q:= (x.t)
+% lam q := cc (x. exists x, (p = (x,t)) \land (x\in A) )
+\subsection{Alpha-equivalence}
+
+Alpha-equivalence is a consequence of equivalence of class construction.
+
+\subsection{Beta-conversion}
+\label{thm:fam-beta}[$\beta$-conversion]
+\[
+(x\in A \mapsto t)(a) = \lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi
+\]
+\Proof
+\Done
+
+\subsection{Eta-conversion}
+\begin{theorem}[$\eta$-conversion]
+\label{thm:fam-eta}
+\[
+(x\in \dom(F) \mapsto F(x))=F
+\]
+\Proof
+\Done
+\end{theorem}
+
+%\section{Class theory}
+%\subsection{Basic class-theoretic operations}
+\subsection{Basic classes}
+\iffalse
+Notation:\\
+
+Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi-equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
+\fi
+\begin{definition}
+\label{def:identity}
+Identity.
+\[
+I = \cc{(x,x)}{\top}
+\]
+\end{definition}
+
+\begin{theorem}
+\label{thm:identity is relation}
+Identity is a relation.
+\[
+(I \relation)
+\]
+\[(I\subseteq V\times V)\]
+\end{theorem}
+
+
+\begin{definition}
+"F on X".
+\[
+\mbox{"F on X"} = F\restriction X
+\]
+\end{definition}
+
+
+\begin{definition}
+\[
+(y\in f[A])
+\iff
+(\exists x\in A: \langle x,y\rangle\in f)
+\]
+\end{definition}
+
+\begin{definition}
+\[
+(y\in f\langle A\rangle)
+\iff
+(\forall x\in A: \langle x,y\rangle\in f)
+\]
+\end{definition}
+\begin{theorem}
+\[
+X\subseteq \power Y
+\iff
+\union X \subseteq Y
+\]
+\end{theorem}
+\begin{theorem}
+\[
+(g\functional)
+\land
+(M \countable)
+\implies
+(g[M] \countable)
+\]
+\end{theorem}
+\begin{theorem}
+\[
+(f^\leftarrow \univocal)
+\]
+\end{theorem}
+
+\begin{theorem}
+\[
+\left(f\injective\right)
+\implies
+\left(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right]\right)
+\]
+\end{theorem}
+
+\begin{theorem}
+\[
+\left(f\univocal\right)
+\implies
+\left(
+f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
+\right)
+\]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% END
+
+%Implementing f
+%\subsubsection{Axioms of $\Sigma$-types}
+%\begin{definition}(Union)
+%\[
+%\union A\eqdef\cc{x}{\exists a\in A: x\in a}
+%\]
+%\end{definition}
+%1
+
 %9
 \begin{definition}(dependent sum of a family)
 \[
@@ -374,7 +587,7 @@ Assume that $(F\family)$.
 \end{definition}
 
 \subsubsection{Soundness of $\Sigma$-types}
-...
+\dots
 
 \subsubsection{Implementation of $\Sigma$-types}
 Formation:
@@ -442,14 +655,14 @@ Another definition:\\
 \]
 \end{definition}
 \subsubsection{Soundness of $\Pi$-types}
-...
+\dots
 % todo: prove some theorems about it
 \begin{theorem}
 \end{theorem}
 \pagebreak
 \subsection{Implementing $W$-types}
 \subsubsection{Axioms of $W$-types}
-...
+\dots
 \subsubsection{Model of $W$-types}
 \underline{Formation of W-type:}\\
 
@@ -592,11 +805,11 @@ Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of
 
 
 \subsubsection{Soundness of $W$-types}
-...
+\dots
 \pagebreak
 \subsection{Implementing $M$-types [unfinished]}
 \subsubsection{Axioms of $M$-types}
-...
+\dots
 \subsubsection{Model of $M$-types}
 \[
 MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
@@ -605,8 +818,8 @@ MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
 \]
 \[
-\inf : ...
+\inf : \dots
 \]
-\subsubsection{Soundness of $\Pi$-types}
-...
+\subsubsection{Soundness of $M$-types}
+\dots
 \input{END.tex}
