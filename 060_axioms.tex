@@ -149,7 +149,7 @@ Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 The empty set symbol $\emptyclass$ is a constant closed term.
 \end{constructor}
 \begin{definition}
-\label{def:empty class}
+\label{def:emptyclass}
 Empty class.
 \[
 \emptyclass \eqdef \cc{x}{\bot}
@@ -174,7 +174,7 @@ Empty class.
 
 \subsection{Axiom of the empty set}
 \begin{axiom}[The empty class is a set]
-\label{axm:empty class}
+\label{axm:emptyset}
 \[
 (\emptyclass\set)
 \]
@@ -223,7 +223,7 @@ Side conditions:\\
 
 \begin{definition}[union of terms built out of the elements of a class]\ \\
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
-If formula has form $``(y\in s)''$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
 \[
 \bigcup_{y\in s} t 
 \ \eqdef\ 
@@ -273,7 +273,7 @@ This is an admissible and ``elementary`` definition of an intersection of an arb
 \ \eqdef\ 
 \cc{x}{\forall y, \psi \implies x\in t}
 \]
-Side conditions:\\
+\underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.

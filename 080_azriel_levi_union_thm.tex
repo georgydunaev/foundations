@@ -49,120 +49,6 @@ Def of <:
 \Done
 \end{theorem}
 
-\iffalse
-\begin{constructor}[Global order]
-We have proven existence of such
-\end{constructor}
-
-Extension by new constant and function names
-% https://en.wikipedia.org/wiki/Prenex_normal_form
-\begin{constructor}[Henkin constructor]
-For any proven(sic!) formula $\psi$ of the following form
-\[
-(\forall\vec{x}\exists\vec{y},\varphi),
-\]
-there exists a functional symbol $c_\psi$, and it's type is
-\[
-(\text{length}(\vec{x})\to\Term)\to\Term
-\]
-So the type depends a bit on the type of $\vec{x}$.
-Moreover, since only for proven $\psi$ such constant can be obtained, therefore it will not be possible via constructor of the type which is independent of the value(i.e. of $\psi$).
-
-Not necessary! We can have advanced axiom! (premise is the stat)
-I.e. there is a default value, e.g. the empty set, in case if $\psi$ is not a valid formula.
-\end{constructor}
-\begin{notation}
-\[
-\const:\Fm\to\Term
-\]
-\end{notation}
-\fi
-
-\begin{constructor}[Henkin constructor]\ \\%new
-%For any formula $\psi$ "of the following form"(this is BAD!)
-%\[
-%(\forall\vec{x}\exists\vec{y},\varphi),
-%\]
-%there exists a functional symbol $c_\psi$, and it's type is
-%\[
-%(\text{length}(\vec{x})\to\Term)\to\Term
-%\]
-\iffalse
-For any formula $\varphi$, for any list of variables $\vec{x}$ and $\vec{y}$,
-there exists a functional symbol $f_\psi$, where
-\[
-\psi\ceq(\forall\vec{x}\exists\vec{y},\varphi).
-\].
-
-\fi
-For any bounded by term formula $\kappa$, $c_{\kappa}$ is a term.
-\[
-h:\BoundFm\to\Term
-\]
-\[
-\kappa \mapsto h_\kappa
-\]
-\end{constructor}
-
-\begin{axiom}[Henkin axiom schema]\ \\
-\label{ax:Henkin}
-\iffalse
-variant1:
-\[
-(\forall\vec{x}\exists y,\varphi)
-\implies
-(\forall\vec{x}\varphi[f(\vec{x})/y])
-\]
-variant2:
-\fi
-\[
-(\exists y.\varphi)
-\implies
-(\varphi[h_{(y.\varphi)}/y])
-\]
-\iffalse
-%GOOD, BUT UGLY
-\[
-(\exists \kappa)
-\implies
-(\varphi[h_\kappa/\fst(\kappa)])
-\]
-\[
-(\exists (y.\varphi))
-\implies
-((y.\varphi)(h_{(y.\varphi)}))
-\]
-\fi
-
-\[
-\FV(c_{(y.\varphi)}):=\FV((y.\varphi))
-\]
-Semantics: if the assumption is true, then $c_{(y.\varphi)}$ is one of such objects $y$, that $\varphi$ holds(in our case classes are objects);  if the assumption is not true, then $c_{(y.\varphi)}$ is interpreted as some default class. The empty class is chosen to be default. Note, that the implementation of the interpretation of this symbol may require meta-theoretical choice on the domain (i.e. on the conglomerate of all classes) as well, or something like that.
-\end{axiom}
-
-\begin{definition}[Global choice, variant 1]\ \\
-If $x\notin \FV(S)$ then
-\[
-c(S)\ceq h_{(x.(x\in S))}
-\]
-\end{definition}
-\iffalse
-\begin{definition}[meta-definition]
-\[
-\text{T} \eqdef h_{(T.(T:\V\to\On\text{ injective}))}.
-\]
-
-%Let $\text{T}$ be a new constant, ...
-
-Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
-\[
-\text{T}:=T.
-\]
-\[
-\text{T}:\V\to\On\text{ injective}.
-\]
-\end{definition}
-\fi
 \begin{lemma}
 \[
 (\exists T:B\to C\text{ injective})
@@ -236,6 +122,7 @@ Obviously, from the lemma \ref{lem:exOnToVSurj} and the axiom \ref{ax:Henkin}, i
 \end{definition}
 
 \begin{definition}[global choice]\ \\%, variant 2
+\label{def:globalchoice}
 Here we define a functional symbol $c$ as an alias for some bound term:
 \[
 c(S) :\equiv \F(\inf \G[S])

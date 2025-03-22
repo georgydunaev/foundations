@@ -331,6 +331,7 @@
 \newcommand{\univocalat}{\mathrm{\ univocal\ at\ }}
 \newcommand{\UB}{\mathrm{UB}}
 \newcommand{\Un}{\mathcal{U}}
+
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\loc}{\mathrm{loc}}
 \newcommand{\glob}{\mathrm{glob}}
@@ -448,6 +449,7 @@
 \DeclareMathOperator*{\dum}{\mathop{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\Sigma}}}}}}}
 
 %% Logic:
+
 \newcommand{\Tau}{\mathcal{T}}  % \mathrm{\mathcal{T}}}
 \newcommand{\Spec}{{\textrm{Spec}}}
 \newcommand{\Const}{{\textrm{Const}}}
@@ -465,6 +467,29 @@
 \newcommand{\type}{{\textrm{type}}}
 \newcommand{\statement}{{\textrm{stmnt}}}
 \usepackage{float} % H hardposition for tables ( tlmgr install float )
+%% Quantifiers
+
+
+\newcommand{\clearthin}{\usefont{\encodingdefault}{ClearSans-TLF}{thin}{n}}
+\newcommand{\definequantifier}[3]{%1 = command, #2 = h or v, #3 = letter
+  \if #2h%
+    \DeclareRobustCommand{#1}{\scalebox{-1}[1]{\text{\clearthin#3}}}%
+  \else
+    \DeclareRobustCommand{#1}{\raisebox{\depth}{\scalebox{1}[-1]{\text{\clearthin#3}}}}%
+  \fi
+}
+
+% for the comparison
+\let\oriexists\exists
+\let\oriforall\forall
+%%%
+
+\definequantifier{\exists}{h}{E}
+\definequantifier{\forall}{v}{A}
+\definequantifier{\qfoo}{h}{Q}
+\definequantifier{\Henkin}{h}{H}
+%\newcommand{\Henkin}{\mathrm{H}}
+
 
 %% Set Theory
 \newcommand{\Set}{{\textrm{Set}}}

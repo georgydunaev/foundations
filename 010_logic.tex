@@ -20,16 +20,31 @@ A sufficiently expressive programming language of reader's choice, may be used f
 %\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Term)$.
 %\end{enumerate}
 %\end{definition}
+\iffalse GOOD BUT TOO COMPLICATED FOR THIS PART
 If dependent types are allowed, then
 \[
-\FuncSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Term).
+\FuncSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Term),
 \]
+\[
+\PredSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Fm).
+\]
+If not, then certain formulas become ill-formed, and need to be checked.
+\fi
+%\begin{definition}[$\BTerm$]\ \\
+%Inductive definition of bound terms:
+%\item $(x:\Var)\ ,\ (t:\Term) \Implies ((x\mapsto t):\BTerm)$.
+%\end{definition}
+
 \begin{definition}[$\Term$]\ \\
 Inductive definition of terms:
 \begin{enumerate}
 %\item $(x:\Var(\Term)) \Implies (x:\Term)$.
-\item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
+%\item $(bt:\BTerm) \Implies ((x\mapsto t):\BTerm)$.
+%\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Term)$.
+\item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
+
 \iffalse
+\item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Term)$.
 \fi
@@ -39,33 +54,67 @@ Inductive definition of terms:
 Inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
-\item $(\bot:\Fm)\ ,\ (\top:\Fm)\ ,\ (\ddagger:\Fm)$.
-\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
+\item $(\bot:\Fm)\ ,\ (\top:\Fm)$. %\ ,\ (\ddagger:\Fm)$.
+%\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
+\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies ((t_1\in t_2):\Fm)$.
 \item $(A:\Fm) \Implies ((\neg A):\Fm)$.
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies ((A\implies B):\Fm)$.
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies ((A\land B):\Fm)$.
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies ((A\lor B):\Fm)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\forall x.A):\Fm)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\exists x.A):\Fm)$.
+%\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((!x.A):\Fm)$.
 \iffalse
 \item $(t:\Term) \Implies ((t \lexists):\Fm)$.
 \item $(t:\Term) \Implies ((t \lunique):\Fm)$.
 \fi
+%\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Term)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\Henkin x.A):\Term)$.
 \end{enumerate}
 \end{definition}
 
+\iffalse %G00OOD
+\begin{constructor}[Henkin constructor]\ \\%new
+%For any formula $\psi$ "of the following form"(this is BAD!)
+%\[
+%(\forall\vec{x}\exists\vec{y},\varphi),
+%\]
+%there exists a functional symbol $c_\psi$, and it's type is
+%\[
+%(\text{length}(\vec{x})\to\Term)\to\Term
+%\]
+\iffalse
+For any formula $\varphi$, for any list of variables $\vec{x}$ and $\vec{y}$,
+there exists a functional symbol $f_\psi$, where
+\[
+\psi\ceq(\forall\vec{x}\exists\vec{y},\varphi).
+\].
 
+\fi
+
+For any bounded by term formula $\kappa$, $h_{\kappa}$ is a term.
+\[
+h:\BoundFm\to\Term
+\]
+\[
+\kappa \mapsto h_\kappa
+\]
+\end{constructor}
+\fi
+
+\iffalse GOOD BUT IT COMPLICATES THE SYSTEM
 \begin{definition}[$\vdash$]\ \\
 %Inductive definition of formulas:
 %\begin{enumerate}
 Inference in language is denoted with function $\vdash$.
 \[
-(\vdash : \Fm \to \Bool)
+(\vdash\,: \Fm \to \Bool)
 \]
 \iffalse
 It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \fi
 \end{definition}
+\fi
 \pagebreak
 %\sub
 \subsection{Axioms for the predicate calculus}
@@ -120,7 +169,7 @@ B
 \]
 %\sub
 \subsubsection{Predicational part}
-\underline{Specificational axioms:}\\
+\underline{Specification axioms:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
 (\forall x. \phi) \implies \phi[t/x]
@@ -130,9 +179,16 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 \phi[t/x] \implies (\exists x. \phi)
 \label{ax:S2} \tag{S2}
 \]
+\underline{Extension axiom:}%
+\[
+(\exists y.\varphi)
+\implies
+(\varphi[(\Henkin y.\varphi)/y])
+\label{ax:H1} \tag{H1}
+\]
 
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
-\underline{Abstractional rules:}%if $x$ is not free in formula $\psi$ then
+\underline{Abstraction rules:}%if $x$ is not free in formula $\psi$ then
 \[
 \frac{
 \psi \implies \varphi
@@ -153,6 +209,102 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 \]
 %_{\mathrm{meta}}
 (The sign $\notin$ inside the side conditions is always used on the metalevel, because they are normally statements about terms, formulas, and other syntactic entities, not the statements within the theory.)
+
+
+\iffalse
+\begin{constructor}[Global order]
+We have proven existence of such
+\end{constructor}
+
+Extension by new constant and function names
+% https://en.wikipedia.org/wiki/Prenex_normal_form
+\begin{constructor}[Henkin constructor]
+For any proven(sic!) formula $\psi$ of the following form
+\[
+(\forall\vec{x}\exists\vec{y},\varphi),
+\]
+there exists a functional symbol $c_\psi$, and it's type is
+\[
+(\text{length}(\vec{x})\to\Term)\to\Term
+\]
+So the type depends a bit on the type of $\vec{x}$.
+Moreover, since only for proven $\psi$ such constant can be obtained, therefore it will not be possible via constructor of the type which is independent of the value(i.e. of $\psi$).
+
+Not necessary! We can have advanced axiom! (premise is the stat)
+I.e. there is a default value, e.g. the empty set, in case if $\psi$ is not a valid formula.
+\end{constructor}
+\begin{notation}
+\[
+\const:\Fm\to\Term
+\]
+\end{notation}
+\fi
+
+\iffalse %GOOOOD
+\begin{axiom}[Henkin axiom schema]\ \\
+\label{ax:Henkin}
+
+\iffalse
+variant1:
+\[
+(\forall\vec{x}\exists y,\varphi)
+\implies
+(\forall\vec{x}\varphi[f(\vec{x})/y])
+\]
+variant2:
+\fi
+\[
+(\exists y.\varphi)
+\implies
+(\varphi[h_{(y.\varphi)}/y])
+\label{ax:H1} \tag{H1}
+\]
+\iffalse
+%GOOD, BUT UGLY
+\[
+(\exists \kappa)
+\implies
+(\varphi[h_\kappa/\fst(\kappa)])
+\]
+\[
+(\exists (y.\varphi))
+\implies
+((y.\varphi)(h_{(y.\varphi)}))
+\]
+\fi
+
+
+\[
+\FV(c_{(y.\varphi)}):=\FV((y.\varphi))
+\]
+Semantics: if the assumption is true, then $c_{(y.\varphi)}$ is one of such objects $y$, that $\varphi$ holds(in our case classes are objects);  if the assumption is not true, then $c_{(y.\varphi)}$ is interpreted as some default class. The empty class is chosen to be default. Note, that the implementation of the interpretation of this symbol may require meta-theoretical choice on the domain (i.e. on the conglomerate of all classes) as well, or something like that.
+\end{axiom}
+\fi %GOOOOD
+\begin{definition}[global choice]\ \\%, variant 1
+If $x\notin \FV(S)$ then
+\[
+c(S)\ceq \Henkin x.(x\in S)
+\]
+\end{definition}
+\iffalse
+\begin{definition}[meta-definition]
+\[
+\text{T} \eqdef h_{(T.(T:\V\to\On\text{ injective}))}.
+\]
+
+%Let $\text{T}$ be a new constant, ...
+
+Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
+\[
+\text{T}:=T.
+\]
+\[
+\text{T}:\V\to\On\text{ injective}.
+\]
+\end{definition}
+\fi
+
+
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 %\pagebreak
 %\sub
@@ -164,11 +316,32 @@ Context is a list formulas. It is usually denoted by $\Gamma$.
 Theory is a list of closed formulas. It is usually denoted by $\Tau$.
 \end{definition}
 \begin{notation}
+Assume $\Tau$ is a theory, and $\Gamma$ is a context, then
 \[
 \left(\Tau,\Gamma\vdash \phi\middle) \iffdef \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
 \]
 \end{notation}
+
+\iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
+
 \subsection{Assignment}
+\begin{definition}[assignment]\ \\
+An assignment is any family with domain of $\Var$. (It is an interesting possibility to add a requiremnt ``definable'' here, so only those families which can be constructed within the theory, are considered. Apparentlly, it allows to avoid famous incompleteness results.)\\
+\[
+(v\assignment) \IFFdef ((v\family) \land (\dom(v)=\Var)).
+\]%\mathrm{Class}
+%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+\end{definition}
+
+%\[NO!
+%\Domain \ceq \V
+%\]
+
+% Better definition: 
+
+
+
+\iffalse OKAY BUT NO NEED SINCE USING ONLY FOR CLASS THEORY
 \begin{parameter}[domain of discourse]\ \\
 We fix certain collection of objects $\Domain$ over which we want to use a pluralistic predicate logic. It can be natural numbers, a Grothendieck universe, a class of hereditary finite sets, a class of all sets, a conglomerate of all classes, etc.
 \end{parameter}
@@ -318,7 +491,8 @@ $I_\Pred \ceq \pr_2 \circ J$.
 \fi
 (Note, that it is easy to generalise the interpretation of symbols, such that it may depend on assignment, but it is quite unnecessary/excessively here.)
 %\Class.
-
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \iffalse
 \begin{itemize}
 \item If the $A$ is an atomic predicate symbol, then
@@ -396,14 +570,7 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \mathrm{Or}\ (I^v(\var
 \end{definition}
 \fi
 %\sub
-\subsection{Definition of truth}
-\iffalse
-Due to high expressiveness of chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
-The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formulas, which indicates which quantifier must be used on atomic formulas.
-%It also involves to introduce  
-%, that's why it is necessary to introduce truthness predicate.
-\fi
-
+\subsection{Interpretation of terms}
 \[
 I^v(())\ceq \{()\}
 \]
@@ -421,23 +588,25 @@ v\left(\left(\vv{X}\right)\right)
 \end{definition}
 %Let $I^v\left(\vv{X}\right)\ceq v(\left(\vv{X}\right))$.
 
+
+\subsection{Definition of truth}
+\[
+\TruthValues \ceq \Bool
+\]
+
+\iffalse
+Due to high expressiveness of the chosen language, it is not possible to extend interpretation from atomic predicate onto every predicate term.
+The choice of plural-semantics leads to necessity of introduction of a parameter to the truth metapredicate on formulas, which indicates which quantifier must be used on atomic formulas.
+%It also involves to introduce  
+%, that's why it is necessary to introduce truthness predicate.
+\fi
+
+
 \begin{definition}[truth under assignment]\ \\%$\forall$- and $\exists$-truth
 Let $v$ be assignment and $I$ be an interpretation.
 % TODO I^v\left(\vv{X}\right)
+\iffalse %PLURAL
 \begin{itemize}
-\item Logical constants
-\[
-\left(\not\models^v \bot\right)
-\]%_\forall
-%%\[
-%%\left(\not\models^v_\exists \bot\right)
-%%\]
-\[
-\left(\models^v \top\right) 
-\]%_\forall
-%%\[
-%%\left(\models^v_\exists \top\right)
-%%\]
 \item If $A$ is an atomic predicate symbol, then
 \[
 \left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I_{\overrightarrow{\Term}}^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
@@ -572,9 +741,8 @@ I^v(P_2)\left(\vv{x}\right)
 \IFFdef 
 \left(\not\models^v_\forall P\left(\vv{X}\right)\right)
 \]
-\fi
-
-\end{itemize}
+\fi\end{itemize}
+\iffalse %PLURAL
 \begin{definition}[dual predicate symbol]\ \\
 If $P$ is a predicate symbol, then
 \[
@@ -588,6 +756,7 @@ If $P_1$ and $P_2$ are predicate symbols, then
 (P_1\sqcup P_2)\ceq (\dual((\dual(P_1)\lor\dual(P_2)))).
 \]
 \end{definition}
+\fi
 %Easy exercises:\\
 
 \iffalse
@@ -604,7 +773,21 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \]
 \end{note}
 \fi 
+\fi %PLURAL
 \begin{itemize}
+\item Logical constants
+\[
+\left(\not\models^v \bot\right)
+\]%_\forall
+%%\[
+%%\left(\not\models^v_\exists \bot\right)
+%%\]
+\[
+\left(\models^v \top\right) 
+\]%_\forall
+%%\[
+%%\left(\models^v_\exists \top\right)
+%%\]
 \item If $\varphi$ is a formula, then
 \[
 \left(\models^v \neg \varphi \right)
@@ -651,7 +834,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 %v\cap (\{\xi\}\times V)
 %\mathrm{upd}
 \[
-\upd(v,\xi,q)(\eta)\ceq (\lif\ \eta=\xi\ \lthen\ q\ \lelse\ v(\eta))
+\upd(v,\xi,q)(\eta)\ceq (\lif\ \eta=\xi\ \lthen\ q\ \lelse\ v(\eta)\ \lfi)
 \]
 \end{definition}
 
@@ -692,7 +875,18 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \Proof
 \dots
 \Done
+\fi %GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
 
+\subsection{Admissible rules}
+Simultaneous substitution: let $x_1,\dots,x_n$ be variables, $t_1,\dots,t_n$ be terms, and $\phi$ be formula, such that $t_1,\dots,t_n$ is free for $x_1,\dots,x_n$ in $\phi$, then the rule
+\begin{prooftree}
+\AxiomC{$\phi$}
+\RightLabel{SimSubst}
+\UnaryInfC{$
+\phi[t_1,\dots,t_n/x_1,\dots,x_n]
+$}
+\end{prooftree}
+is admissible.
 %=========================END=========================
 \pagebreak
 

@@ -102,7 +102,7 @@ or, equivalently,
 1. The set $\emptyclass$ is a semisingleton, by def of semisingletones.\\
 2. By thm \dots, $\emptyclass \subseteq A$.\\
 3. From 1 and 2, it follows that $\emptyclass \sss A$ by \dots .\\
-4. By ax \dots, $(\emptyclass\set)$.\\
+4. By ax \dots\ref{axm:emptyset}, $(\emptyclass\set)$.\\
 5. From 3 and 4, it follows that $\emptyclass \in \cc{b}{b \sss A}$.\\
 \Done
 \begin{theorem}
@@ -671,20 +671,60 @@ Assume that $(F\family)$.
 \pagebreak
 \subsection{Implementing $\Pi$-types}
 \subsubsection{Axioms of $\Pi$-types}
-\underline{Formation of terms of $\Sigma$-type:}\\
+\underline{Formation of terms of $\Pi$-type:}\\
 In type theory, the formatin rule for a $\Pi$-type is
 \begin{prooftree}
 \AxiomC{
-$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+$\Gamma \vdash (A:\Type)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Type)$
 }
 \RightLabel{$\Pi$-form}
 \UnaryInfC{$
-\vdash \Pi_{(x:A)}B(x):\Type  
+\Gamma \vdash \Pi_{(x:A)}B(x):\Type  
 $}
 \end{prooftree}
 \underline{Introduction of terms of $\Pi$-type:}\\
+\begin{prooftree}
+\AxiomC{
+$\Gamma, x:A\vdash b:B$
+}
+\RightLabel{$\Pi$-intro}
+\UnaryInfC{
+$\Gamma \vdash (\lambda ((x:A)\mapsto b)):\Pi_{(x:A)}B$
+%$\vdash \Pi_{(x:A)}B(x):\Type$
+}
+\end{prooftree}
 \underline{Elimination of terms of $\Pi$-type:}\\
+\begin{prooftree}
+\AxiomC{
+$\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$
+}
+\RightLabel{$\Pi$-elim}
+\UnaryInfC{
+$\Gamma \vdash f(a):B[a/x]$
+}
+\end{prooftree}
 \underline{Computation of terms of $\Pi$-type:}\\
+\begin{prooftree}
+\AxiomC{
+$\Gamma, x:A\vdash b:B$
+\quad\quad
+$\Gamma\vdash(a:A)$
+}
+\RightLabel{$\Pi$-comp}
+\UnaryInfC{
+$\Gamma \vdash (\lambda ((x:A)\mapsto b))(a) \equiv b[a/x] : B[a/x]$
+}
+\end{prooftree}
+\underline{Uniqueness of terms of $\Pi$-type:}\\
+\begin{prooftree}
+\AxiomC{
+$\Gamma \vdash f:\Pi_{(x:A)}B$
+}
+\RightLabel{$\Pi$-uniq}
+\UnaryInfC{
+$\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
+}
+\end{prooftree}
 
 \subsubsection{Model of $\Pi$-types}
 In MK, it corresponds to the following:
@@ -900,7 +940,7 @@ Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of
 \subsubsection{Soundness of $W$-types}
 \dots
 \pagebreak
-\subsection{Implementing $M$-types [unfinished]}
+\subsection{Implementing $M$-types [not present]} %unfinished
 \subsubsection{Axioms of $M$-types}
 \dots
 \subsubsection{Model of $M$-types}
