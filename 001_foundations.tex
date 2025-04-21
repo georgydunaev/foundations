@@ -5,7 +5,7 @@
 
 % Capitalize the first, last, and all major words in a book title, headline, or first-level heading. Major words are all words except articles (a, an, the), prepositions (on, in, of, etc.), coordinating conjunctions (and, or, but, etc.), and the word to. This capitalization style is called title case.
 
-\title{Set-Theoretic Approach to\\
+\title{Class-Theoretic\\%Approach to
 Foundations of Mathematics\\
 (Draft)}
 \author[1]{Georgy Dunaev}
@@ -53,11 +53,19 @@ Foundations of Mathematics\\
 %\addcontentsline{toc}{chapter}{Introduction}
 \addcontentsline{toc}{chapter}{\protect\numberline{}Introduction}  % Correctly aligns with numbered chapters
 
+This book is not yet finished. Therefore, the author ecourages the reader to skip any parts which are hard to understand or are badly written. Some sections are redundant, some are unnecessary, lots of inconsistencies are guarantied.
 
-This book is a collection of foundation-related ideas.
+%It appeared naturally, due to e
+%and it requires maybe a year of work.
 
-\begin{enumerate}
-\item One of them is the following:\\
+%There is a lot of scepticism about foundations in scientific community due to various reasons.
+
+The motivation of this book is a desire to show how easily the classical set/class-theoretic foundations of mathematics can be used. 
+
+
+This book is also a collection of original foundation-related ideas, which are just a side findings discovered in the process of writing. For example, one of them is the following:\\
+%\begin{enumerate}
+%\item 
 
 ``\\
 If ZFC is contradictory, then the following axiomatic system is also contradictory:\\
@@ -68,12 +76,32 @@ ax. unbounded class construction +\\
 ax. ``there exists at least one set''\\
 ''.\\
 
+The idea of ``Classes-as-Types, Sets-as-Expressions'' certainly deserves attention, as well as explicit mechanization, implementation, and refinig the proofs and formulations of various theorems, axioms and principles.
+
+%The development of ordinals
+
+Everything related to this book, that was developed in programming languages will be availible at\\
+\url{https://github.com/georgydunaev/class_theory_proof_assistant}.\ \\
+\vphantom\ [the repository is not yet published]\\
+
+The repository contains 3 projects:
+\begin{enumerate}
+\item The source code of this book written using \LaTeX\ system.
+\item The source code of the proof assistant based on the theory and metatheory defined in this book, and implemented in Standard~ML.
+\item The library of interpretable dependent types for PolyML, which itself is statically typed. (It is a side project, which will become a second proof assistant, with more expressive and complicated metatheory than the draft of this book contains now.)
+\end{enumerate}
+
+\iffalse
 The author have solid reasons to believe that this statement is possible to be proven(everything necessary is already known and published, and it seems to be just a matter of accurate compilation of know facts and constructions).\\
 If it is true and if ZFC is non-contradictory(which is unprovable, but highly likely true), then it gives at least partial justification that these axioms can be used as the foundations of all mathematics.
-It seems also, that there are even better justifications rooted in existence of Grothendiech universes, but the author has not thought enough about it yet.
-\item The other is to avoid declaring and entity to be set whenever possible. So the word``function'' means by default a general notion of class-functions(i.e. not necessary a set-function), if it is not stated or implied otherwise.
+It seems also, that there are even better justifications rooted in existence of Grothendieck universes, but the author has not thought enough about it yet.
+
+\item The other is to avoid declaring and entity to be set whenever possible. So the word ``function'' means by default a general notion of class-functions(i.e. not necessary a set-function), if it is not stated or implied otherwise.
 %\item 
-\end{enumerate}
+\
+\fi
+%\end{enumerate}
+
 %\noindent
 \iffalse
 \subsection{Disclaimer}
@@ -212,7 +240,7 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 \input{180_many-valued.tex}
 \pagebreak
-\chapter{Mathematics}
+\chapter{Undergraduate mathematics}
 \input{230_analysis.tex}
 \pagebreak
 %\input{240_linal_topology_etc.tex}
@@ -230,8 +258,8 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 %\input{310_differential_geometry.tex}
 %\pagebreak
-
-\chapter{Appendix 1: unfinished logic-related ideas}
+%Appendix 1: u
+\chapter{Unfinished logic-related ideas}
 
 \input{199_languages.tex}
 \pagebreak
@@ -255,6 +283,11 @@ Here I want to provide a natural modification of predicate calculus and its sema
 %\input{320_src.tex}
 %\pagebreak
 \input{330_restricted_quantifiers.tex}
+\pagebreak
+%Topological Vector Spaces, Measure Theory, and Functional Analysis 
+%Appendix 2: 
+\chapter{Topics related to Dunford-Pettis theorem}
+\input{../THESIS/TEX/AcademicWriting.tex}
 \pagebreak
 
 %%%%% For the code.

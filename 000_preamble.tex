@@ -77,6 +77,21 @@
 
 \usepackage{esvect} % beautiful vectors
 
+\usepackage{stackrel} % write over and under equality
+
+
+%\usepackage{logix} % for necessity box etc
+\newcommand{\boxT}[1]{
+\mathllap{\phantom{\square}}
+\mathord{\square\hspace{-1.4ex}\raisebox{0.3ex}{\scriptsize #1}}
+\hspace{+0.4ex}
+}
+
+\newcommand{\boxn}{\boxT{n}}
+\newcommand{\boxnp}{
+\boxT{\hspace{-0.1ex}\scalebox{0.35}[1]{n+1}\hspace{+0.0ex}}
+}
+
 
 \theoremstyle{definition}
 
@@ -86,20 +101,35 @@
 \newtheorem*{axiom*}{Axiom}
 \newtheorem{definition}{Definition}[section]
 \newtheorem*{definition*}{Definition}
-\newtheorem{baddefinition}{Failed Definition}[section]
-\newtheorem*{baddefinition*}{Failed Definition}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem{inferencerule}{Inference rule}
+\newtheorem*{inferencerule*}{Inference rule}
+\newtheorem{badinferencerule}{Bad inference rule}
+\newtheorem*{badinferencerule*}{Bad inference rule}
+\newtheorem{baddefinition}{Failed definition}[section]
+\newtheorem*{baddefinition*}{Failed definition}
 \newtheorem{remark}{Remark}[section]
 \newtheorem*{remark*}{Remark}
 \newtheorem{recall}{Recall}[section]
 \newtheorem*{recall*}{Recall}
 \newtheorem{notation}{Notation}[section]
 \newtheorem*{notation*}{Notation}
+\newtheorem{metanotation}{Metanotation}[section]
+\newtheorem*{metanotation*}{Metanotation}
+
+\newtheorem{metadefinition}{Metadefinition}[section]
+\newtheorem{metadefinition*}{Metadefinition}
+
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{lemma*}{Lemma}
 \newtheorem{example}{Example}[section]
 \newtheorem{example*}{Example}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
+\newtheorem{metatheorem}{Metaheorem}[section]
+\newtheorem*{metatheorem*}{Metatheorem}
+
 \newtheorem{corollary}{Corollary}[section]
 \newtheorem*{corollary*}{Corollary}
 \newtheorem{assumption}{Assumption}[section]
@@ -112,6 +142,14 @@
 \newtheorem{parameter}{Parameter}[section]
 \newtheorem*{parameter*}{Parameter}
 
+\iffalse
+% if a draft then ...
+\usepackage{showkeys} % PRINTS LABELS ON THE LEFT
+%\usepackage[notcite,notref]{showkeys}
+% else if acad writing then
+% ...
+% fi
+\fi
 
 \usepackage{etoolbox}
 
@@ -121,16 +159,21 @@
 \newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
   \{#1\in #2: #3\}
 }
+\newcommand{\Con}{{\text{Con}}}
 \newcommand{\LRA}{\Longleftrightarrow}
+\newcommand{\alev}{{\textrm{a.e.}}}
 \newcommand{\defi}{{\textrm{def}}}
 \newcommand{\baddefi}{{\textrm{bad\ def}}}
 \newcommand{\ceq}{\,{\coloneqq}\,}
 \newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
 \newcommand{\eqbaddef}{\,{\stackrel{\baddefi}{\coloneqq}}\,}
 \newcommand{\rsto}{{\stackrel{RS}{\to}}}
+\newcommand{\eqae}{{\stackrel[\mu]{\alev}{\,=\,}}}
 \newcommand{\propdef}{{\stackrel{\defi}{\ \Longleftrightarrow\ }}}
 \newcommand{\subclass}{\subseteq} % "subclasseq"
 \newcommand{\emptyclass}{\varnothing}
+\newcommand{\emptylist}{[\,]}
+
 
 % https://www.freecodecamp.org/news/simple-regex-tricks-for-beginners-3acb3fa257cb/
 %  \\mathcal\{T\} |---> \topology
@@ -159,7 +202,38 @@
 %\newcommand{\Done}{\par\noindent\textbf{Done.}\\}
 \newcommand{\Done}{\par\noindent\textbf{Q.E.D.}\\}
 \newcommand{\DoneNoPar}{\par\noindent\textbf{Q.E.D.}}
-\newcommand{\esssup}{\mathrm{ess\,sup}}
+%\newcommand{\esssup}{\operatorname{\mathrm{ess\,sup}}}
+
+\iftrue
+%\DeclareMathOperator*{\esssupNOLIMITS}{\text{ess\,sup}}
+%\newcommand{\esssup}{\esssupNOLIMITS\limits}
+\fi
+
+\iffalse
+%\DeclareMathOperator*{\essNOLIMITS}{\text{ess}}
+%\newcommand{\ess}{\essNOLIMITS\limits}
+%\newcommand{\muesssup}[2]{\ess_{#1}\sup_{#2}}
+\fi
+
+\usepackage{ifthen}
+
+\newcommand{\esssup}[1][]{
+ \operatornamewithlimits{
+\ifthenelse{\equal{#1}{}}{}{#1\,}\text{ess\,sup}
+ }\limits%_{#2}
+}
+
+
+
+\iffalse
+\newcommand{\esssup}[1]{
+\operatornamewithlimits{\text{ess\,sup}}\limits_{#1}
+}
+\newcommand{\muesssup}[2]{
+\operatornamewithlimits{#1\,\text{ess\,sup}}\limits_{#2}
+}
+\fi
+
 \newcommand{\essinf}{\mathrm{ess\,inf}}
 \newcommand{\assignment}{\mathrm{\ assignment}}
 \newcommand{\evaluation}{\mathrm{\ evaluation}}
@@ -176,18 +250,49 @@
 \newcommand{\T}{\mathrm{T}}% no need anymore
 \newcommand{\G}{\mathrm{G}}
 %\newcommand{\L}{\mathrm{L}}
+\newcommand{\Binf}{{\mathrm{B}^\infty}} %classes
 \newcommand{\Linf}{{\mathrm{L}^\infty}}
-\newcommand{\Binf}{{\mathrm{B}^\infty}}
-\newcommand{\frakBinf}{{\mathfrak{B}^\infty}}
+%\newcommand{\Finf}{{\mathrm{F}^\infty}}
+
+\newcommand{\frakBinf}{{\mathfrak{B}^\infty}} % unfactorized
 \newcommand{\frakFinf}{{\mathfrak{F}^\infty}}
+\newcommand{\frakLinf}{{\mathfrak{L}^\infty}}
+\newcommand{\uBinf}{{\frakBinf}} % unfactorized bounded func
+%\newcommand{\uFinf}{{\frakFinf}}
+
+
+% medium square center
+\makeatletter
+\DeclareRobustCommand{\sqcdot}{\mathbin{\mathpalette\morphic@sqcdot\relax}}
+\newcommand{\morphic@sqcdot}[2]{%
+  \sbox\z@{$\m@th#1\centerdot$}%
+  \ht\z@=.33333\ht\z@
+  \vcenter{\box\z@}%
+}
+\makeatother
+
+% square dot for after logic quantifiers
+\makeatletter
+\DeclareRobustCommand{\sqdot}{\mathbin{\mathpalette\morphic@sqdot\relax}}
+\newcommand{\morphic@sqdot}[2]{%
+  \sbox\z@{\scalebox{0.55}{$\m@th#1\centerdot$}}%
+  \ht\z@=.33333\ht\z@
+  %\vcenter
+  {\box\z@}%
+}
+\makeatother
+
+
 \newcommand{\B}{\mathrm{B}}
-\newcommand{\Fm}{\mathrm{Fm}}
+\newcommand{\cL}{c_\text{L}}
+\newcommand{\Fm}{\mathrm{Fm}}%\boldsymbol{\mathrm{Fm}}
 \newcommand{\BFm}{\mathrm{BFm}}
 \newcommand{\TypeOf}{\mathrm{TypeOf}}
 \newcommand{\Symb}{\mathrm{Symb}}
 \newcommand{\Expr}{\mathrm{Expr}}
 \newcommand{\Kind}{\mathrm{Kind}}
 \newcommand{\Bool}{\mathrm{Bool}}
+\newcommand{\String}{\mathrm{String}}
 \newcommand{\Variable}{\mathrm{Variable}}
 \newcommand{\VarType}{\mathrm{VarType}}
 \newcommand{\const}{\mathrm{const}}

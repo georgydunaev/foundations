@@ -6,13 +6,23 @@
 \ifdefined\MyHeaderIncluded
 \else
 \def\qwertyflag{true}
+
 \input{\mypath 000_preamble.tex}
+
+%\addbibresource{\mypath ../THESIS/TEX/references.bib}
+\addbibresource{/home/user/000/GITHUB/THESIS/TEX/references.bib}
+
 \ifdefined\topic
 \else
 \def\topic{No Titel}
 \fi
+
 \title{\topic}
 
 \begin{document}
 \maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
 \fi

@@ -114,7 +114,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \begin{theorem}
 \label{thm:intersection of nonempty is subset of union}
 \[
-(A \nonempty) \rightarrow \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
+(A \nonempty) \implies \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
 \]
 \end{theorem}
 \Proof
@@ -162,7 +162,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \begin{theorem}
 \label{thm:UACA=ACPA}
 \[
-(A\subseteq \power A) \iff \left(\union A\subseteq A\right)
+\left(A\subseteq \power A\middle) \iff \middle(\union A\subseteq A\right)
 \]
 \end{theorem}
 \Proof
@@ -175,18 +175,18 @@ Assume $(x\in A)$. To show: $(x\in \power A)$.\\
 Claim: $(x\subseteq A)$.\\
 Assume $(y\in x)$. To show: $(y\in A)$.\\
 \[
-(y\in x)
+\left(y\in x\middle)
 \LAND
-(x\in A)
+\middle(x\in A\middle)
 \IMPLIES
-\left(y\in\union A\right)
+\middle(y\in\union A\right)
 \]
 \[
-\left(y\in\union A\right)
+\left(y\in\union A\middle)
 \LAND
-\left(\union A\subseteq A\right)
+\middle(\union A\subseteq A\middle)
 \IMPLIES
-(y\in A)
+\middle(y\in A\right)
 \]
 The claim is proven.
 \[
@@ -211,9 +211,9 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 (A\subseteq \power A)
 \]
 \[
-\left(x\in\union A\right)
+\left(x\in\union A\middle)
 \IMPLIES
-(\exists y\in A: x\in y)
+\middle(\exists y\in A: x\in y\right)
 \]
 \[
 (y\in A)
@@ -238,7 +238,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 \begin{theorem}
 \label{thm:transitive through union}
 \[
-\left(A \transitive\right)\iff \left(\union A\subseteq A\right)
+\left(A \transitive\middle)\iff \middle(\union A\subseteq A\right)
 \]
 \end{theorem}
 \Proof
@@ -248,11 +248,11 @@ by \ref{thm:UACA=ACPA}
 \begin{theorem}{}
 %\label{intersection of singleton}%
 \[
-(A\nonempty)
+ \left(A\nonempty\middle)
 \land
-(A\transitive) 
+\middle(A\transitive\middle) 
 \implies
- \left(\left(\intersection A\right)\subseteq A\right)
+\middle(\left(\intersection A\right)\subseteq A\right)
 \]
 \end{theorem}
 \Proof

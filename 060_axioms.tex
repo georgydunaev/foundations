@@ -42,14 +42,14 @@ If Y is not a free variable neither in A nor in B, then:
 \end{definition}
 \subsection{Axiom of extensionality}
 \begin{axiom}
-\label{axm:extensionality}
+\label{ax:extensionality}
 Extensionality.
 \[
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
 \]
 \end{axiom}
 \begin{axiom*}
-\label{axm:extensionality'}
+\label{ax:extensionality'}
 Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
 \[
 (A=B)\iff (\forall X: X\in A \iff X\in B)
@@ -72,10 +72,10 @@ If Y is not a free variable in X, then:
 If $\varphi$ is a formula, $x$ is a variable, $t$ is a term, then $\ccc{x}{t}{\varphi}$ is a class.
 \end{constructor}
 \begin{note}
-There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots''$, etc).
+There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
 \end{note}
 %\begin{axiom}(OLD Class comprehension)
-%\label{axm:comprehension}
+%\label{ax:comprehension}
 %\[Y\in\cc{x}{\varphi} \iff (Y\set)\LAND(\varphi[Y/x])\]
 %(or maybe
 %\[Y\in\cc{x}{\varphi[x/Y]} \iff (Y\set)\LAND(\varphi)\]
@@ -83,7 +83,7 @@ There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is be
 %)
 %\end{axiom}
 \begin{axiom}(class comprehension)%NEW 
-\label{axm:comprehension}
+\label{ax:comprehension}
 \[
 \forall(\dots), (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
 \]
@@ -93,14 +93,24 @@ There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is be
 %\[BAD
 %\cc{s}{(x\in A)} := \ccc{x}{s}{(x\in A)},
 %\]
+\begin{notation}
+If a term is a variable, then there is no need to specify it twice:
+\[
+\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}.
+\]
+\end{notation}
+\begin{notation}
+If a term is value of some function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is also can be restored from the argument:
+\[
+\cc{f(x)}{\phi} \eqdef \ccc{x}{f(x)}{\phi}.
+\]
+\end{notation}
 
 \begin{note}
-Both variants of class constructors can be expressed one from the other:
+%Both variants of class constructors can be expressed one from the other, since
+If necessary, the class constructor can be restored from its truncated version via
 \[
-\cc{x}{\phi} := \ccc{x}{x}{\phi},
-\]
-\[
-\ccc{x}{t}{\phi} := \cc{w}{\exists x, (w=t) \land \phi}.
+\ccc{x}{t}{\phi} \ceq \cc{w}{\exists x, (w=t) \land \phi}.
 \]
 \end{note}
 
@@ -138,16 +148,22 @@ If Y is not a free variable of $\varphi$, then:
 (Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land(\varphi[Y/W])).
 \]
 \end{theorem}
-\Proof
+\begin{proof}
 ($\implies$)\\
 Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 \dots
-\Done
+\end{proof}
+
 
 \subsection{Definition of the empty class}
+
 \begin{constructor} Empty class.\\
 The empty set symbol $\emptyclass$ is a constant closed term.
+\[
+(\ulcorner\emptyclass\urcorner : \Term)
+\]
 \end{constructor}
+
 \begin{definition}
 \label{def:emptyclass}
 Empty class.
@@ -174,7 +190,7 @@ Empty class.
 
 \subsection{Axiom of the empty set}
 \begin{axiom}[The empty class is a set]
-\label{axm:emptyset}
+\label{ax:emptyset}
 \[
 (\emptyclass\set)
 \]
@@ -278,16 +294,18 @@ This is an admissible and ``elementary`` definition of an intersection of an arb
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.
 \end{definition}
-\begin{definition}[intersection of terms built out of the elements of a class]\ \\
+
+
+\begin{notation}[intersection of terms built out of the elements of a class]\ \\
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
-If formula has form $``(y\in s)''$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
 \[
 \bigcap_{y\in s} t 
 \ \eqdef\ 
 \bigcap^y_{y\in s} t 
 \]
-\end{definition}
-\begin{definition}[intersection of the elements of a class]\ \\
+\end{notation}
+\begin{notation}[intersection of the elements of a class]\ \\
 %\[
 %\bigcap G = \cc{x}{\forall y\in G. x\in y}
 %\]
@@ -296,7 +314,7 @@ If formula has form $``(y\in s)''$, and if $y$ is also its bound variale, then i
 \ \eqdef\ 
 \bigcap_{y\in A} y 
 \]
-\end{definition}
+\end{notation}
 \begin{theorem}[``elementary def of intersection'']
 \label{thm:intersection}
 \[
@@ -326,7 +344,7 @@ Powerclass. (by class comprehension)
 \end{definition}
 \subsection{Axiom of heredity}
 \begin{axiom}
-\label{axm:heredity}
+\label{ax:heredity}
 Heredity.
 \[
 (A\set) \land (B\subseteq A) \rightarrow (B\set)
@@ -334,7 +352,7 @@ Heredity.
 \end{axiom}
 \subsection{Axiom of powerset}
 \begin{axiom}
-\label{axm:powerset}
+\label{ax:powerset}
 Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
 \[(A\set) \rightarrow (\power A\set)\]
 \end{axiom}
@@ -344,7 +362,7 @@ Powerset. (weak version, but it is okey, since together with axiom of heredity i
 %\end{axiom}
 \subsection{Axiom of regularity as epsilon-induction}
 \begin{axiom} 
-\label{axn:epsilon induction}
+\label{ax:epsilon induction}
 $\in$-induction. %(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
@@ -355,7 +373,7 @@ $\in$-induction. %(variant that uses classes)
 
 \subsection{Axiom of limitation of size}
 \begin{axiom}
-\label{axm:limitation of size}
+\label{ax:limitation of size}
 Limitation of size (of a set).
 \[
 \neg(X\set) \longleftrightarrow (\exists T: (T\text{ class-function})\land (V\subseteq T[X]))

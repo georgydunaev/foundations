@@ -1,4 +1,4 @@
-\def\topic{Foundations of mathematics}
+\def\topic{Chapter: Logic}%Foundations of mathematics
 \input{BEGIN.tex}
 %\section{Logical framework}%First-order l
 
@@ -7,11 +7,58 @@
 %\end{definition}
 %\sub
 \section{Metalanguage}
+Usually, when something is proven, a question arises: where it was proven: what was a foundational theory, what was a metatheory of it?
+Once it is established, the same question may be asked about metametatheory, and so on.
+To avoid this infinite descend with increasing complexity of each step, author proposes to use $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory. In fact, a prefix ``$\mathcal{F}$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to increase of the complexity and increase of a metalevel of the statement.\\
+
+
+
+%Metatheory:\\
+When reading the string of symbols, it is important to distinguish entities which are semantic(e.g. a set $\emptyclass$ or a proposition $(\emptyclass \in \omega)$) from their symbols which are syntactic and belong to metatheory (e.g. a term $\ulcorner\emptyclass\urcorner$, and a judgement $(\ulcorner\emptyclass\urcorner : \Term)$). The the symbols $``\ulcorner\cdot\urcorner"$ are used to explicitly show that that the object inside is syntactic, i.e. is a code. Currently, they are often ommited, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
+
 
 A sufficiently expressive programming language of reader's choice, may be used for implementing functions and structures which operate with terms, formulas, etc.
 
+In this chapter, an elementary type theory is informally used.
+Depending on the purposes of the reader, it can be implemented:
+\begin{enumerate}
+\item either in some programming language, leading to creation of a proof assistant (\url{https://github.com/georgydunaev/class_theory_proof_assistant}),
+\item or within the foundations themselves, for example via notions defined in the section ``Classes-as-Types''.
+\end{enumerate}
 
-\section{Predicate calculus as a language}
+
+
+\iffalse
+Also the concept of ``quotation'' and ``antiquotation'' is introduced.
+\begin{lstlisting}
+datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
+\end{lstlisting}
+\fi
+
+%In chapters
+
+%, which can be implemented either in programming language(and as a result it wil),
+
+
+\section{Predicate calculus as an object language [unfinished section]}
+In this book, a class theory is being developed and studied, so classes are chosen by author to be objects.
+
+%In this chapter metalevel variables are normal, and metalevel constants are bold.
+
+\begin{metanotation}[styles]\ %
+\begin{enumerate}
+\item Every non-bold, 1-letter word of greek or latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
+\item Words of greek or latin alphabet written in ``\textbackslash mathrm'' style are constants.
+\end{enumerate}
+\end{metanotation}
+\begin{metanotation}[objects vs metaobjects]\ \\
+In chapters devoted to logic, set/class-theoretics \LaTeX\ symbols are syntactic codes.\\
+In chapters devoted to mathematics, set/class-theoretics \LaTeX\ symbols are sematic objects.
+\end{metanotation}
+\begin{metanotation}[proofs]\ \\
+Proofs are written as lists of imperative commands, which are usually one-liners. They are written in a way, that both the reader (and a parser of a proof assistant that is being developed) can recover the precise meaning of the line without the context of the theorem, and then validate it.
+\end{metanotation}
+%``\\mathnormal'' style
 %All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
 
 %\begin{definition}[$\BddExpr$]\ \\
@@ -30,27 +77,23 @@ If dependent types are allowed, then
 \]
 If not, then certain formulas become ill-formed, and need to be checked.
 \fi
-%\begin{definition}[$\BTerm$]\ \\
-%Inductive definition of bound terms:
-%\item $(x:\Var)\ ,\ (t:\Term) \Implies ((x\mapsto t):\BTerm)$.
-%\end{definition}
 
-\begin{definition}[$\Term$]\ \\
+\begin{metadefinition}[$\Term$]\ \\
 Inductive definition of terms:
 \begin{enumerate}
 %\item $(x:\Var(\Term)) \Implies (x:\Term)$.
 %\item $(bt:\BTerm) \Implies ((x\mapsto t):\BTerm)$.
 %\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Term)$.
+%\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Term)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
 \item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
-
 \iffalse
 \item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Term)$.
 \fi
 \end{enumerate}
-\end{definition}
-\begin{definition}[$\Fm$]\ \\
+\end{metadefinition}
+\begin{metadefinition}[$\Fm$]\ \\
 Inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
@@ -71,7 +114,60 @@ Inductive definition of formulas:
 %\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\Henkin x.A):\Term)$.
 \end{enumerate}
+\end{metadefinition}
+\begin{metadefinition}[$\BTerm$]\ \\
+Inductive definition of bound terms:
+\item $(x:\Var)\ ,\ (t:\Term) \Implies ((x.t):\BTerm)$.
+\end{metadefinition}
+\begin{definition}[$\BFm$]\ \\
+Inductive definition of bound formulas:
+\item $(x:\Var)\ ,\ (\varphi:\Fm) \Implies ((x. \varphi):\BFm)$.%\mapsto
 \end{definition}
+
+
+\iffalse
+\begin{definition}[quotation of a]
+Quotation:
+\[
+\ulcorner\cdot\urcorner : \String \to \Term
+\]
+\end{definition}
+\begin{definition}
+Antiquotation:
+\[
+\llcorner\cdot\lrcorner : \Term \to \String 
+\]
+\end{definition}
+\fi
+
+\begin{metadefinition}[ToDo: free variables of the term]
+\[
+\mathrm{Syntax} \eqdef \Term \sqcup \Fm \sqcup \dots
+\]
+\[
+\FV : \mathrm{Syntax} \to \List(\Var)
+\]
+\[
+\FV(\ulcorner\emptyclass\urcorner)\eqdef \emptylist
+\]%\emptyclass
+\[
+\FV(\ulcorner(\exists x.A)\urcorner)\eqdef \FV(A)\setminus\{x\}
+\]%\emptyclass
+\iffalse
+\[
+\FV_\Term : \Term \to \List(\Var)
+\]
+\[
+\FV_\Fm : \Fm \to \List(\Var)
+\]
+\fi
+ %\Pow_{\mathrm{fin}}%\Finite\Set\List
+(todo: write the standard definitions here, add links to the implementation of functions inside of the proof assistant)
+\end{metadefinition}
+\dots\\
+
+Definitions will just be following the code, that will be publshed in \url{https://github.com/georgydunaev/class_theory_proof_assistant}.
+
 
 \iffalse %G00OOD
 \begin{constructor}[Henkin constructor]\ \\%new
@@ -122,7 +218,8 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \subsubsection{Propositional part}
 For all formulas $A$, $B$, $C$,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
-the following holds:
+the following axiom schemes and%xor
+ rule schemes hold:
 %For all atomic formulas $A$, $B$, $C$.
 \[
 (A \implies (B \implies A)) \label{ax:A1} \tag{ax:A1}
@@ -165,12 +262,20 @@ A \implies B\quad\quad\quad A
 }{
 B
 }
-\label{ax:MP} \tag{ax:MP}
+\label{rule:MP}\tag{MP}
 \]
+%\label{ax:MP} %todo delete it
 %\sub
 \subsubsection{Predicational part}
+%% maybe use $.\sqdot\sqcdot$
+
+%In chapters devoted to logic, set/class-theoretics symbos
+
+% and $\psi$, 
+%the following holds in case the substitution $\phi[t/x]$ doesn't return error, the following holds.\\
+
 \underline{Specification axioms:}\\
-For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
+For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for $x$ in $\phi$, the following formulas are derivable:
 \[
 (\forall x. \phi) \implies \phi[t/x]
 \label{ax:S1} \tag{S1}
@@ -179,16 +284,20 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 \phi[t/x] \implies (\exists x. \phi)
 \label{ax:S2} \tag{S2}
 \]
-\underline{Extension axiom:}%
+\underline{Extension axiom(experimental):}\\%
+For any variable $x$, for any formula $\phi$ such that term $(\Henkin x.\varphi)$ is free for $x$ in $\phi$, the following formula is derivable:
 \[
-(\exists y.\varphi)
+(\exists x.\varphi)
 \implies
-(\varphi[(\Henkin y.\varphi)/y])
-\label{ax:H1} \tag{H1}
+(\varphi[(\Henkin x.\varphi)/x])
+\label{ax:H} \tag{ax:H}
 \]
 
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
-\underline{Abstraction rules:}%if $x$ is not free in formula $\psi$ then
+\underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
+For any variable $x$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\phi$, then
+the derivability of $\psi \implies \varphi$ implies the derivability of $\psi \implies (\forall x.\varphi)$ and $(\exists x.\varphi)\implies \psi$.
+% following formulas are derivable
 \[
 \frac{
 \psi \implies \varphi
@@ -208,7 +317,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$, the following ho
 \label{ax:B2} \tag{B2}
 \]
 %_{\mathrm{meta}}
-(The sign $\notin$ inside the side conditions is always used on the metalevel, because they are normally statements about terms, formulas, and other syntactic entities, not the statements within the theory.)
+(The sign $\notin$ inside the side conditions is always used on the metalevel in the sense "not in the list", because they are normally statements about terms, formulas, and other syntactic entities, not the statements within the theory.)
 
 
 \iffalse
@@ -313,16 +422,22 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 Context is a list formulas. It is usually denoted by $\Gamma$.
 \end{definition}
 \begin{definition}[theory]
-Theory is a list of closed formulas. It is usually denoted by $\Tau$.
+Theory is an ordered set of closed formulas. It is usually denoted by $\Tau$.
 \end{definition}
+\begin{definition}[primitive proof(todo)]
+Primitive proof is a finite list of formulas, such that each is derivable in the theory with a context of all previous formulas.
+\end{definition}
+
 \begin{notation}
 Assume $\Tau$ is a theory, and $\Gamma$ is a context, then
 \[
 \left(\Tau,\Gamma\vdash \phi\middle) \iffdef \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
 \]
+Note, that theory may not be enumerable, so it does not always work.
 \end{notation}
 
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
+
 
 \subsection{Assignment}
 \begin{definition}[assignment]\ \\
@@ -877,8 +992,20 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 \Done
 \fi %GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
 
-\subsection{Admissible rules}
-Simultaneous substitution: let $x_1,\dots,x_n$ be variables, $t_1,\dots,t_n$ be terms, and $\phi$ be formula, such that $t_1,\dots,t_n$ is free for $x_1,\dots,x_n$ in $\phi$, then the rule
+\subsection{Admissible rules[unfinished section]}
+%An axiom is a statement which is valid consensually.
+%A theorem is a statement with a proof of it.\\
+%An axiom is a theorem which proof is both consensual.
+% consensual statement.\\ noumenal
+
+
+
+Rules are metaaxioms.\\
+Admissible rules are metatheorems.\\
+
+
+\begin{metatheorem}[simultaneous substitution]\ \\
+Let $x_1,\dots,x_n$ be variables, $t_1,\dots,t_n$ be terms, and $\phi$ be formula, such that $t_1,\dots,t_n$ is free for $x_1,\dots,x_n$ in $\phi$, then the rule
 \begin{prooftree}
 \AxiomC{$\phi$}
 \RightLabel{SimSubst}
@@ -887,10 +1014,20 @@ Simultaneous substitution: let $x_1,\dots,x_n$ be variables, $t_1,\dots,t_n$ be 
 $}
 \end{prooftree}
 is admissible.
+\end{metatheorem}
+
+\begin{metatheorem}[substitution property / Leibniz's law]\ \\
+``If $a = b$, then, for any well-formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.
+\end{metatheorem}
+\dots
+
+% https://en.wikipedia.org/wiki/Substitution_(logic)
+% Proof of substitution in ZFC
 %=========================END=========================
-\pagebreak
 
 \iffalse
+\pagebreak
+
 %\sub
 \section{Definitions of logical notions}%Basic definitions of the syntax
 
@@ -2021,5 +2158,225 @@ I^v((\varepsilon x. \varphi))
 \]
 \end{definition}
 \fi
+
+\section{Incompleteness, Consistensy, Serial proofs}
+\iffalse
+%\fbox{0}
+%{\Huge
+%\[
+%\neg\boxn{\scalebox{0.35}[1]{n+1}}
+\[
+\scalebox{1.5}{$
+\neg\boxnp
+\bot
+\implies
+\neg\boxn\neg\boxT{1}\bot\square\bot\square\bot
+$}
+\]
+\fi
+Let $\mathcal{F}$ in this section be a sufficiently rich foundational theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the intended use is the Morse-Kelley class theory as presented in this book. So $\mathcal{F}$ is a collection of all axioms from this book closed with respect to all inference rules from this book.  The abbreviation ``GLP'' stands for ``G\"odel-L\"ob polymodal logic''.
+\begin{notation}[provability]\ \\
+A modal logic symbol meaning a provability in some theory $\Tau$ which is obvious from the context,
+\[
+\square\phi
+\iffdef
+(\Tau \vdash \phi)
+\]
+%(\cite{Japaridze1986})
+\end{notation}
+
+\begin{definition}[Japaridze's procedure for GLP]
+\[
+\Tau_0 \eqdef \mathcal{F}%\Tau
+\]
+\[
+\Tau_{n+1} \eqdef \Tau_n\cup\cc{A}{A\text{ is an axiom generated for a serial property of terms in the language of $\Tau_n$}}
+\]
+(\cite{Japaridze1986})
+\end{definition}
+\begin{definition}[provability predicate]
+\[
+\square_n\phi
+\iffdef
+(\Tau_n \vdash \phi)
+\]
+%(\cite{Japaridze1986})
+\end{definition}
+
+\begin{theorem}[G\"odel's second incompleteness theorem]
+\[
+\neg\square_n\bot
+\implies
+\neg\square_n\neg\square_n\bot
+\]
+(\cite{Beklemishev2011})
+\end{theorem}
+
+\begin{conjecture}[generalisation of Artemov's serial consistency theorem from PA to $\Tau$]
+\[
+\square_{n+1}\neg\square_n\bot
+\]
+(\cite{artemov2024serialpropertiesselectorproofs})
+\end{conjecture}
+
+Note: all rules of inference in this book are supposed to be structural. It means that any substitution of variables in them leads to an inferene rule which also holds. 
+\begin{inferencerule}[deduction]%(must be wrong?)
+\label{rule:deduction}
+%\Tau_n,
+\[
+\frac{
+\Gamma\vdash \phi
+}{
+\bigwedge\Gamma\implies\phi
+}
+\tag{Ded}
+\]
+\end{inferencerule}
+
+\begin{inferencerule}[necessitation]
+\label{rule:necessitation}\ \\
+The theory $\mathcal{F}$(this symbol is a constant) is strong enough, so for any first-order theory $\Xi$(this symbol is a variable),
+\[
+\frac{
+\Xi \vdash \psi
+}{
+\mathcal{F} \vdash (\Xi\vdash\psi)
+}
+\tag{Nec}
+\]
+For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
+\iffalse % rejected
+\[
+\frac{
+\Tau_n\vdash \psi
+}{
+\Tau_0 \vdash \square_n\psi
+}
+\tag{Nec}
+\]
+\[
+\frac{
+\square_n \psi
+}{
+\square \square_n\psi
+}
+\tag{Nec}
+\]
+\fi
+\end{inferencerule}
+\begin{badinferencerule*}[usage is discouraged, since it leads to contradictions]\ \\
+This is forbidden inference rule, because it makes it impossible to implement such system in reality.
+\[
+\frac{
+\psi
+}{
+\mathcal{F} \vdash \psi
+}
+\tag{Omniscience}
+\]%%\square \psi
+\end{badinferencerule*}
+\begin{note}
+Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real-life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
+\end{note}
+
+
+% \Tau = \mathcal{T}
+\iffalse
+\begin{inferencerule}[conecessitation]
+\label{rule:conecessitation}
+\[
+\frac{
+\Tau_0 \vdash \square_n(\bigwedge\Gamma\implies\phi)
+}{
+\Tau_{\max(n+1,1)},\Gamma\vdash \phi
+}
+\tag{CoNec}
+\]
+%,\Con(\Tau)
+\[
+\frac{
+\Tau_m \vdash \square_n(\bigwedge\Gamma\implies\phi)
+}{
+\Tau_{1+\max(n,m)},\Gamma\vdash \phi
+}
+\tag{CoNec}
+\]
+\end{inferencerule}
+\fi
+
+\begin{inferencerule}[creed]\ \\
+Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on the left hand side of ``$\vdash$''.
+\label{rule:creed}
+%\emptyclass
+\iffalse % rejected2
+\[
+\frac{
+\Tau_0 \vdash \square_n \psi
+}{
+\Tau_{n} \vdash \psi
+}
+\tag{Credo}
+\]
+\[
+\frac{
+\Tau \vdash \square \psi
+}{
+\Tau \vdash \psi
+}
+\tag{Credo}
+\]
+\[
+\frac{
+\square \square\psi
+}{
+\square \psi
+}
+\tag{Credo}
+\]
+\[
+\frac{
+\square\psi
+}{
+\psi
+}
+\tag{Credo}
+\]
+\fi % rejected2
+\[
+\frac{
+\mathcal{F}\vdash\psi
+}{
+\psi
+}
+\tag{Credo}
+\]
+\end{inferencerule}
+\begin{note}
+It is not possible to have an ``axiom'' scheme like 
+\[
+\square\square_n\psi \implies \square_n\psi,
+\tag{bad ``co-4'' axiom}
+\]
+because it leads to contradiction due to the second incompleteness theorem.
+The solution is either add the inference rule of creed and skew 
+%the inference rules, so the deduction theorem become complicated. (it becomes proof-dependent ?)Or
+
+The symbol ``$\implies$'' is strong: it means that the right hand side of it is derived from the left hand side of it without the use of Credo inference rule.
+
+\end{note}
+\begin{inferencerule}[v2]
+\[
+\frac{
+\Tau_0 \vdash \square_n \psi
+}{
+\Tau_{\max(n,1)} \vdash \psi
+}
+\tag{}
+\]
+\end{inferencerule}
+
+%The CN rule is admissible in GL
 \pagebreak
+
+
 \input{END.tex}
