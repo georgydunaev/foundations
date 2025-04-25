@@ -2160,6 +2160,30 @@ I^v((\varepsilon x. \varphi))
 \fi
 
 \section{Incompleteness, Consistensy, Serial proofs}
+% Fnds
+The assumption of this book is that there exists a theory $\mathcal{F}$, which is complete and consistentm and not recursively enumerable.
+
+
+\begin{enumerate}
+\item Neither Gödel's incompleteness theorem nor Löb's theorem are not applicable to such theory(actually any such theory), because it is not recursively enumerable.
+
+\item Some useful rules become admissible instead, like \[
+(\mathcal{F} \vdash \phi) \implies \phi
+\]
+
+\item This kind of theories helps not to "fall in meta" much better. 
+
+\item This type of theories are still implementable in code, of course, incompletely(that's the price), and still controllably(nothing new is proven that was not already widely accepted).
+%\item 
+\end{enumerate}
+% so the change is almost purely philosophical, deliberate change of an interpretation
+
+
+\iffalse
+Create image for a textbook on mathematics or computer science: i need vertical infinite binary tree. Background is white. Branches are black. Nodes are blue, except one node which is red. Actually, branches after(i.e. higher) than the red node are yellow!  The length of branches becomes shorter on to of the tree , and then some space is omitted because it is not possible to actually draw infinite tree. But then, on the very top of the tree, there are several nodes which represent the maximal elements of the tree. (Only those which are "after" the red node in the tree are green. The reset are as I wrote in this text.)
+\fi
+
+
 \iffalse
 %\fbox{0}
 %{\Huge
@@ -2378,5 +2402,8 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 %The CN rule is admissible in GL
 \pagebreak
 
+\input{MYTREECOPY.tex}
+
+\pagebreak
 
 \input{END.tex}

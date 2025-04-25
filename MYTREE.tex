@@ -1,0 +1,99 @@
+%\documentclass{article}
+%\documentclass[tikz,border=3mm]{standalone}
+%\usetikzlibrary{graphs,graphdrawing} 
+%\usegdlibrary{trees}
+%\begin{document}
+%hi
+%\end{document}
+
+\input{000_preamble.tex}
+
+%\documentclass[tikz,margin=2mm]{standalone}
+%\usepackage{amsmath}
+%\usepackage{tikz}
+
+%\usetikzlibrary{trees,arrows}
+
+%my -{>[Bidirectional]}
+\begin{document}
+
+\input{MYTREECOPY.tex}
+
+\iffalse
+\tikzstyle{level 1}=[level distance=20mm, sibling distance=70mm]
+\tikzstyle{level 2}=[level distance=20mm, sibling distance=35mm]
+\tikzstyle{level 3}=[level distance=20mm, sibling distance=10mm]
+\begin{tikzpicture}[grow=up,->,>=angle 60,
+bidi/.style={double,double
+distance=3pt,-}]  
+%\begin{scope}[yshift=0]
+  \node {$\Tau_{\ }$}
+    child {node {$\Tau_{0}$}
+      child {node {$\Tau_{00}$}
+        child {
+          node{$\dots$} edge from parent [bidi]
+          %edge from parent [bidi,-{>[shear=0pt .5 .5]>[shear]>[shear=0pt .5 .5]>[shear]}]
+        child[->] {node{$\Tau^{\max}_{000\dots}$}} 
+        child[] {node{$\dots$}  edge from parent[draw=none]}
+        child[->] {node{$\Tau^{\max}_{001\dots}$}}
+        } 
+      }
+      child {node{$\Tau_{01}$}
+        child[-] {node{$\dots$}  edge from parent [bidi]
+        child[->] {node{$\Tau^{\max}_{010\dots}$}}  
+        child[] {node{$\dots$}  edge from parent[draw=none]}
+        child[->] {node{$\Tau^{\max}_{011\dots}$}}
+        }
+      }
+    } 
+    %child[] {node{} edge from parent[draw=none]
+    %child[] {node{}  edge from parent[draw=none]
+    %child[] {node{$\dots$}  edge from parent[draw=none]
+    %child[] {node{$\dots$}  edge from parent[draw=none]
+    %}
+    %}
+    %}
+    %}
+    child {node {$\Tau_{1}$}
+      child {node{$\Tau_{10}$}
+        child[-] {node{$\dots$} edge from parent [bidi]
+        child[->] {node{$\Tau^{\max}_{100\dots}$}}  
+        child[] {node{$\dots$}  edge from parent[draw=none]}
+        child[->] {node{$\Tau^{\max}_{101\dots}$}}
+        }
+      }
+      child {node{$\Tau_{11}$}
+        child[-] {node{$\dots$} edge from parent [bidi]
+        child[->] {node{$\Tau^{\max}_{110\dots}$}}
+        child[] {node{$\dots$}  edge from parent[draw=none]}
+        child[->] {node{$\Tau^{\max}_{111\dots}$}}
+        }  
+      }
+    };
+\end{tikzpicture}
+\fi
+
+%\end{scope}
+\iffalse
+\begin{scope}[yshift=-6cm]
+  \node {$A_{1,2}$}
+    child {node {$A_{2,2}$}
+      child {node {$A_{3,2}$}
+        child[-] {node{$S^{<8>}$}}  
+      }
+      child {node {$A_{3,1}$}
+        child[-] {node{$S^{<7>}$}}  
+      }
+    }
+    child {node {$A_{2,1}$}
+      child {node {$A_{3,2}$}
+        child[-] {node{$S^{<6>}$}}
+      }
+      child {node {$A_{3,1}$}
+        child[-] {node{$S^{<5>}$}}  
+      }
+    };
+\end{scope}
+\fi
+
+\end{document}

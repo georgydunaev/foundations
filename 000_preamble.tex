@@ -28,7 +28,8 @@
 % This "if" scope is continuing untill the very end of this file.
 
 %\documentclass[10pt,a4paper]{article} %normal
-\documentclass[10pt,a4paper]{report} %if chapters are introduced
+%,tikz
+\documentclass[10pt,a4paper,tikz]{report} %if chapters are introduced
 \renewcommand{\thechapter}{}
 \renewcommand{\chaptername}{}
 
@@ -78,6 +79,55 @@
 \usepackage{esvect} % beautiful vectors
 
 \usepackage{stackrel} % write over and under equality
+
+
+\usepackage{tikz}
+
+\usetikzlibrary{trees,arrows,arrows.meta}
+\makeatletter
+
+\pgfkeys{
+  /pgf/arrow keys/.cd,
+  Bidirectional/.style={
+    length = +1.05pt 1.925 1,
+    shear
+  },
+  shear/.code={
+    \pgfarrowsthreeparameters{#1}%
+    \expandafter\pgfarrowsaddtooptions\expandafter{\expandafter\pgfarrowslinewidthdependentnew\pgfarrowstheparameters\pgfarrowshear\pgf@x}%
+  },
+  shear/.default = +0pt -.5 -.5
+}
+\newdimen\pgfarrowshear
+\pgfarrowshear0pt
+\def\pgfarrowslinewidthdependentnew#1#2#3{%
+  \pgf@x#1%
+  \ifdim\pgfinnerlinewidth>0pt%
+    \pgf@arrows@inner@line@width@depnew{#2}{#3}%
+  \else%  
+    \advance\pgf@x by#2\pgflinewidth%
+  \fi%
+}
+\def\pgf@arrows@inner@line@width@depnew#1#2{%
+  % #1 * outer line width + #2 * inner line width = our new one = the following
+  % (#1/2) * full line width + (#2-#1/2) * inner line width)
+  % Compute "real" line width
+  \pgf@xa.5\pgflinewidth%
+  \pgf@xa#1\pgf@xa%
+  \advance\pgf@x by\pgf@xa%
+  \pgf@xa\pgfinnerlinewidth%
+  \pgf@xb.5\pgf@xa%
+  \advance\pgf@x by#2\pgf@xa%
+  \advance\pgf@x by-#1\pgf@xb%
+}
+\def\pgf@arrow@drawer@shift#1#2#3{
+  \pgftransformyshift\pgfarrowshear%
+  \pgf@xb#2\pgftransformxshift{-\pgf@xb}%
+  \pgf@xc#1%
+  \advance\pgf@xc by\pgfarrowsep%
+  \advance\pgf@xc by-\pgf@xb%
+}
+\makeatother
 
 
 %\usepackage{logix} % for necessity box etc
@@ -711,5 +761,9 @@
 %\newcommand{\myrightarrow}[1]{\xrightarrow{\makebox[2em][c]{$\scriptstyle#1$}}}‌
 %f_n \myrightarrow{\mu} f
 %f_n \myrightarrow{L^p} f
+
+
+
+
 
 \fi % guard
