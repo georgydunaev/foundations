@@ -219,7 +219,7 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 For all formulas $A$, $B$, $C$,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
 the following axiom schemes and%xor
- rule schemes hold:
+\ a rule scheme are derivable in $\Tau$:
 %For all atomic formulas $A$, $B$, $C$.
 \[
 (A \implies (B \implies A)) \label{ax:A1} \tag{ax:A1}
@@ -273,9 +273,10 @@ B
 
 % and $\psi$, 
 %the following holds in case the substitution $\phi[t/x]$ doesn't return error, the following holds.\\
-
+%in $\mathcal{F}$
+%
 \underline{Specification axioms:}\\
-For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for $x$ in $\phi$, the following formulas are derivable:
+For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for $x$ in $\phi$, the following formulas are derivable in $\Tau$:
 \[
 (\forall x. \phi) \implies \phi[t/x]
 \label{ax:S1} \tag{S1}
@@ -284,19 +285,19 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \phi[t/x] \implies (\exists x. \phi)
 \label{ax:S2} \tag{S2}
 \]
-\underline{Extension axiom(experimental):}\\%
-For any variable $x$, for any formula $\phi$ such that term $(\Henkin x.\varphi)$ is free for $x$ in $\phi$, the following formula is derivable:
+\underline{Extension axiom:}\\%(experimental)
+For any variable $x$, for any formula $\phi$ such that term $(\Henkin x.\varphi)$ is free for $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
 (\exists x.\varphi)
 \implies
 (\varphi[(\Henkin x.\varphi)/x])
 \label{ax:H} \tag{ax:H}
 \]
-
+(This axiom scheme is based on assumtion that $\Fau$ is a theory with Henkin property, so therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
 For any variable $x$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\phi$, then
-the derivability of $\psi \implies \varphi$ implies the derivability of $\psi \implies (\forall x.\varphi)$ and $(\exists x.\varphi)\implies \psi$.
+the derivability of $\psi \implies \varphi$ in $\Tau$ implies the derivability of $\psi \implies (\forall x.\varphi)$ and $(\exists x.\varphi)\implies \psi$ in $\Tau$.
 % following formulas are derivable
 \[
 \frac{
@@ -418,24 +419,24 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 %\pagebreak
 %\sub
 \subsubsection{Theory and context}
-\begin{definition}[context]
-Context is a list formulas. It is usually denoted by $\Gamma$.
+\begin{definition}[context]\ \\
+Context is a finite list of arbitrary formulas. It is usually denoted by $\Gamma$ or $\Delta$.
 \end{definition}
-\begin{definition}[theory]
-Theory is an ordered set of closed formulas. It is usually denoted by $\Tau$.
+\begin{definition}[theory]\ \\
+Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by $\Tau$, $\Theta$ or $\Fau$.
 \end{definition}
-\begin{definition}[primitive proof(todo)]
+\begin{definition}[primitive proof(todo)]\ \\
 Primitive proof is a finite list of formulas, such that each is derivable in the theory with a context of all previous formulas.
 \end{definition}
 
-\begin{notation}
-Assume $\Tau$ is a theory, and $\Gamma$ is a context, then
+\begin{example}
+Assume $\Tau$ is a finite theory, and $\Gamma$ is a context, then
 \[
 \left(\Tau,\Gamma\vdash \phi\middle) \iffdef \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
 \]
-Note, that theory may not be enumerable, so it does not always work.
-\end{notation}
-
+Note, that theory may not be finite, so it does not always work.
+\end{example}
+%enumerable
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
 
 
@@ -2161,7 +2162,7 @@ I^v((\varepsilon x. \varphi))
 
 \section{Incompleteness, Consistensy, Serial proofs}
 % Fnds
-The assumption of this book is that there exists a theory $\mathcal{F}$, which is complete and consistentm and not recursively enumerable.
+The assumption of this book is that there exists a theory $\mathcal{F}$, which is complete and consistent and not recursively enumerable.
 
 
 \begin{enumerate}
@@ -2198,26 +2199,83 @@ Create image for a textbook on mathematics or computer science: i need vertical 
 $}
 \]
 \fi
-Let $\mathcal{F}$ in this section be a sufficiently rich foundational theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the intended use is the Morse-Kelley class theory as presented in this book. So $\mathcal{F}$ is a collection of all axioms from this book closed with respect to all inference rules from this book.  The abbreviation ``GLP'' stands for ``G\"odel-L\"ob polymodal logic''.
+
+\section{Informal definitions}
+\begin{definition*}[informal definition of language $\Lau$]\ \\
+Let $\Lau$ be a language, that contains exactly all of symbols of this book.%, except for  this section.%, no less, no more.
+\end{definition*}
+
+\begin{definition*}[informal definition of theory $\Tau$]\ \\
+Let $\Tau$ be an enumerable and incomplete theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
+%, except for  this section.%, no less, no more.
+\end{definition*}
+
+\section{Formal definitions}
+
+\begin{axiom*}[$\Tau$ is consistent]\ \\
+We %informally 
+accept without a proof that it is not possible to derive a contradiction from $\Tau$.
+\[
+\neg (\Tau \vdash \bot)
+\]
+\end{axiom*}
+
+\begin{definition*}[foundational theory $\mathcal{F}$]\ \\
+Let $\mathcal{F}$ be some (non-enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
+\[
+\Fau \eqdef (\Henkin \Theta. (\Theta\ \Lau\text{-theory}) \land (\Theta\text{ consistent}) \land (\Theta\text{ Henkin-complete}))
+\]
+\end{definition*}
+
+\section{G\"odel-L\"ob polymodal logic}
+\begin{inferencerule}[v2]
+\[
+\frac{
+\Theta_0 \vdash \square_n \psi
+}{
+\Theta_{\max(n,1)} \vdash \psi
+}
+\tag{Effective Neccesitation}
+\]
+\end{inferencerule}
+
+\iffalse
+Let $\Tau$ in this section be a sufficiently rich %foundational 
+theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the intended use is the Morse-Kelley class theory as presented in this book. So $\Tau$ is a collection of all axioms from this book closed with respect to all inference rules from this book.  
+\fi
+
+The abbreviation ``GLP'' stands for ``G\"odel-L\"ob polymodal logic''.
 \begin{notation}[provability]\ \\
-A modal logic symbol meaning a provability in some theory $\Tau$ which is obvious from the context,
+In context of provability modal logics, a modal logic symbol square means a provability in some theory $\Tau$ which is obvious from the context,
 \[
 \square\phi
 \iffdef
 (\Tau \vdash \phi)
 \]
+Here it is defined for \textit{the} theory $\Tau$, which is a constant.%n already defined
 %(\cite{Japaridze1986})
 \end{notation}
 
-\begin{definition}[Japaridze's procedure for GLP]
+\begin{definition}[Japaridze's procedure of ``standartisation'' of a theory]\ \\
+For any theory $\Theta$, define using the ordinal recursion, the following sequence:
 \[
-\Tau_0 \eqdef \mathcal{F}%\Tau
+\Theta_0 \eqdef \Theta
 \]
 \[
-\Tau_{n+1} \eqdef \Tau_n\cup\cc{A}{A\text{ is an axiom generated for a serial property of terms in the language of $\Tau_n$}}
+\Theta_{n+1} \eqdef \Theta_n\cup\cc{A}{A\text{ is an axiom generated by a serial property of all terms in the language of $\Tau_n$}}
 \]
-(\cite{Japaridze1986})
+\[
+\Theta_{\lambda} \eqdef \union_{\alpha<\lambda}\Theta_\alpha
+\]
+\[
+\Theta_{\On} \eqdef \union_{\alpha\in\On}\Theta_\alpha
+\]
+
+(following the ideas of \cite{Japaridze1986})
 \end{definition}
+
+\section{Incompleteness of $\Tau$}
+
 \begin{definition}[provability predicate]
 \[
 \square_n\phi
@@ -2249,24 +2307,33 @@ Note: all rules of inference in this book are supposed to be structural. It mean
 %\Tau_n,
 \[
 \frac{
-\Gamma\vdash \phi
+\Xi,\Gamma,\psi \vdash \phi
 }{
-\bigwedge\Gamma\implies\phi
-}
-\tag{Ded}
+\Xi,\Gamma \vdash \phi\implies \phi}
+\tag{Deduction}
 \]
 \end{inferencerule}
 
-\begin{inferencerule}[necessitation]
+\[
+\frac{
+\Xi,\Gamma \vdash \phi
+}{
+\Xi \vdash\bigwedge\Gamma\implies\phi
+}
+\tag{Full Deduction}
+\]
+
+
+\begin{inferencerule}[effective necessitation]
 \label{rule:necessitation}\ \\
-The theory $\mathcal{F}$(this symbol is a constant) is strong enough, so for any first-order theory $\Xi$(this symbol is a variable),
+The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-order theory $\Xi$(this symbol is a variable),
 \[
 \frac{
 \Xi \vdash \psi
 }{
-\mathcal{F} \vdash (\Xi\vdash\psi)
+\Tau \vdash (\Xi\vdash\psi)
 }
-\tag{Nec}
+\tag{Effective Nec}
 \]
 For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
 \iffalse % rejected
@@ -2288,22 +2355,43 @@ For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
 \]
 \fi
 \end{inferencerule}
-\begin{badinferencerule*}[usage is discouraged, since it leads to contradictions]\ \\
+%usage is discouraged, since
+\begin{badinferencerule*}[it leads to contradictions, if accepted]\ \\
 This is forbidden inference rule, because it makes it impossible to implement such system in reality.
 \[
 \frac{
 \psi
 }{
-\mathcal{F} \vdash \psi
+\Tau \vdash \psi
 }
-\tag{Omniscience}
+\tag{``Effective Omniscience''}
 \]%%\square \psi
 \end{badinferencerule*}
 \begin{note}
 Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real-life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
 \end{note}
 
+\begin{badaxiom}
+It is not possible to have an ``axiom'' scheme like 
+\[
+\square\square_n\psi \implies \square_n\psi,
+\tag{``co-transitivity''}
+\]
+because it leads to contradiction due to the second incompleteness theorem.
+%!The solution is either add the inference rule of creed and skew 
+%the inference rules, so the deduction theorem become complicated. (it becomes proof-dependent ?)Or
 
+\iffalse
+The symbol ``$\implies$'' is strong: it means that the right hand side of it is derived from the left hand side of it without the use of Credo inference rule.
+\fi
+\end{badaxiom}
+
+\section{Completeness of $\Fau$}
+\indent The following statement holds because of the properties of $\Fau$:
+\[
+(\Fau\vdash \phi) \iff \phi
+\]
+The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. This is done for clarity in implementation and to avoid unnecessary circular reasoing. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
 % \Tau = \mathcal{T}
 \iffalse
 \begin{inferencerule}[conecessitation]
@@ -2328,8 +2416,8 @@ Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it 
 \end{inferencerule}
 \fi
 
-\begin{inferencerule}[creed]\ \\
-Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on the left hand side of ``$\vdash$''.
+\begin{inferencerule}[Creed]\ \\
+Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on the left hand side of ``$\vdash$''. This rule works only for the constant ``$\mathcal{F}$''.
 \label{rule:creed}
 %\emptyclass
 \iffalse % rejected2
@@ -2375,28 +2463,15 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 \tag{Credo}
 \]
 \end{inferencerule}
-\begin{note}
-It is not possible to have an ``axiom'' scheme like 
-\[
-\square\square_n\psi \implies \square_n\psi,
-\tag{bad ``co-4'' axiom}
-\]
-because it leads to contradiction due to the second incompleteness theorem.
-The solution is either add the inference rule of creed and skew 
-%the inference rules, so the deduction theorem become complicated. (it becomes proof-dependent ?)Or
-
-The symbol ``$\implies$'' is strong: it means that the right hand side of it is derived from the left hand side of it without the use of Credo inference rule.
-
-\end{note}
-\begin{inferencerule}[v2]
+\begin{inferencerule}[Omniscience]\ \\
 \[
 \frac{
-\Tau_0 \vdash \square_n \psi
+\psi
 }{
-\Tau_{\max(n,1)} \vdash \psi
+\Fau \vdash \psi
 }
-\tag{}
-\]
+\tag{Omniscience}
+\]%%\square \psi
 \end{inferencerule}
 
 %The CN rule is admissible in GL
