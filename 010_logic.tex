@@ -47,7 +47,7 @@ In this book, a class theory is being developed and studied, so classes are chos
 
 \begin{metanotation}[styles]\ %
 \begin{enumerate}
-\item Every non-bold, 1-letter word of greek or latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
+\item Every non-bold, 1-letter word of Greek or Latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
 \item Words of greek or latin alphabet written in ``\textbackslash mathrm'' style are constants.
 \end{enumerate}
 \end{metanotation}
@@ -275,7 +275,7 @@ B
 %the following holds in case the substitution $\phi[t/x]$ doesn't return error, the following holds.\\
 %in $\mathcal{F}$
 %
-\underline{Specification axioms:}\\
+\underline{Specification axiom scheme:}\\
 For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for $x$ in $\phi$, the following formulas are derivable in $\Tau$:
 \[
 (\forall x. \phi) \implies \phi[t/x]
@@ -285,7 +285,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \phi[t/x] \implies (\exists x. \phi)
 \label{ax:S2} \tag{S2}
 \]
-\underline{Extension axiom:}\\%(experimental)
+\underline{Extension axiom scheme:}\\%(experimental)
 For any variable $x$, for any formula $\phi$ such that term $(\Henkin x.\varphi)$ is free for $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
 (\exists x.\varphi)
@@ -1018,9 +1018,20 @@ is admissible.
 \end{metatheorem}
 
 \begin{metatheorem}[substitution property / Leibniz's law]\ \\
-``If $a = b$, then, for any well-formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.
+Informally:\\
+``If $a = b$, then, for any well-formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
+Formally:
+\[
+\forall a,b\in\Term, 
+(\Fau\vdash (a=b))
+\implies
+(\forall x\in\Var, \Fau\vdash (\phi[a/x] \to \phi[b/x]))
+\]
+
 \end{metatheorem}
-\dots
+\begin{proof}
+[ToDo]
+\end{proof}
 
 % https://en.wikipedia.org/wiki/Substitution_(logic)
 % Proof of substitution in ZFC
@@ -2160,7 +2171,7 @@ I^v((\varepsilon x. \varphi))
 \end{definition}
 \fi
 
-\section{Incompleteness, Consistensy, Serial proofs}
+\section{Incompleteness, consistensy, serial proofs}
 % Fnds
 The assumption of this book is that there exists a theory $\mathcal{F}$, which is complete and consistent and not recursively enumerable.
 
@@ -2202,7 +2213,7 @@ $}
 
 \section{Informal definitions}
 \begin{definition*}[informal definition of language $\Lau$]\ \\
-Let $\Lau$ be a language, that contains exactly all of symbols of this book.%, except for  this section.%, no less, no more.
+Let $\Lau$ be a language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
 \end{definition*}
 
 \begin{definition*}[informal definition of theory $\Tau$]\ \\
@@ -2221,13 +2232,13 @@ accept without a proof that it is not possible to derive a contradiction from $\
 \end{axiom*}
 
 \begin{definition*}[foundational theory $\mathcal{F}$]\ \\
-Let $\mathcal{F}$ be some (non-enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
+Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
 \[
 \Fau \eqdef (\Henkin \Theta. (\Theta\ \Lau\text{-theory}) \land (\Theta\text{ consistent}) \land (\Theta\text{ Henkin-complete}))
 \]
 \end{definition*}
 
-\section{G\"odel-L\"ob polymodal logic}
+\section{G\"odel--L\"ob polymodal logic}
 \begin{inferencerule}[v2]
 \[
 \frac{
@@ -2309,7 +2320,7 @@ Note: all rules of inference in this book are supposed to be structural. It mean
 \frac{
 \Xi,\Gamma,\psi \vdash \phi
 }{
-\Xi,\Gamma \vdash \phi\implies \phi}
+\Xi,\Gamma \vdash \psi\implies \phi}
 \tag{Deduction}
 \]
 \end{inferencerule}

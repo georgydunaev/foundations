@@ -579,5 +579,47 @@ In fact $\mathcal{A}$ is a subbasis.
 \[
 \Tau_\mathcal{A}\eqdef\intersection\cc{\Tau}{(\Tau\mbox{ topology on }X)\land (\mathcal{A}\subseteq\Tau) }
 \]
+\fi %iftrue
+%Classification based on 
+\subsection{Cardinality--based topological definitions}
+Let $(X,\Tau)$ be a topological space. Let $S$ be any $S\subseteq X$.
+
+\[
+\text{closure}(S)\eqdef\cc{x\in X}{\forall N\in\mathcal{N}(x),\card(S\cap N) \geqslant 1}
+\]
+
+\[
+\text{exterior}(S) \eqdef X\setminus \text{closure}(S)
+\]
+
+\[
+\text{interior}(S) \eqdef \text{exterior}(X\setminus S)
+\]
+\iffalse
+\[
+\text{interior}(S) \eqdef X\setminus \text{closure}(X\setminus S)
+\]
 \fi
+\[
+\text{limits}(S)\eqdef \cc{x\in X}{\forall N\in\mathcal{N}(x),\card(S\cap N) \geqslant 2}
+\]
+
+\[
+\text{isolates}(S) \eqdef \text{closure}(S)\setminus\text{limits}(S)
+\]
+
+\[
+\text{border}(S) \eqdef \text{closure}(S)\setminus\text{interior}(S)
+\]
+\iffalse
+\begin{tabular}{|l|l|}
+\hline
+Set & \text{Column A} & \text{Column B} \\
+Cx & y \\
+\end{tabular}
+\fi
+%\todo
+\pagebreak
+
+
 \input{END.tex}
