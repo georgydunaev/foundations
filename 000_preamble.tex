@@ -63,6 +63,8 @@
 %\newtheorem{thm}{Theorem}[section]
 %\renewcommand{\thethm}{\arabic{subsection}.\arabic{thm}}
 
+\usepackage[super,negative]{nth}
+
 \usepackage{thmtools}
 %\usepackage[linktocpage=true]{hyperref}
 \usepackage{hyperref}
@@ -254,10 +256,16 @@
 \newcommand{\ldefined}{\mathrm{\ defined}}
 \newcommand{\dom}{\mathrm{dom}}
 \newcommand{\Dom}{\mathrm{Dom}}
+
+\iffalse
 %\newcommand{\Done}{\par\noindent\textbf{Done.}\\}
 \newcommand{\Done}{\par\noindent\textbf{Q.E.D.}\\}
 \newcommand{\DoneNoPar}{\par\noindent\textbf{Q.E.D.}}
 %\newcommand{\esssup}{\operatorname{\mathrm{ess\,sup}}}
+\fi
+\newcommand{\Done}{\end{proof}}
+\newcommand{\DoneNoPar}{\end{proof}}
+
 
 \iftrue
 %\DeclareMathOperator*{\esssupNOLIMITS}{\text{ess\,sup}}
@@ -443,10 +451,18 @@
 \newcommand{\AtomPredSymb}{\mathrm{AtomPredSymb}}
 \newcommand{\PredSymb}{\mathrm{PredSymb}}
 \newcommand{\Domain}{\mathrm{Domain}}
+
+\iffalse
 \newcommand{\ProofPar}{\par\noindent\textbf{Proof.}\par}
 \newcommand{\ProofNoPar}{\par\noindent\textbf{Proof.}}
 \newcommand{\Proof}{\ProofPar}
 %\newcommand{\Proof}{\par\noindent\textbf{Proof.}}
+\fi
+
+\newcommand{\ProofPar}{\begin{proof}\par}
+\newcommand{\ProofNoPar}{\begin{proof}}
+\newcommand{\Proof}{\begin{proof}\par}
+
 \newcommand{\ran}{\mathrm{ran}}
 \newcommand{\Ran}{\mathrm{Ran}}
 \newcommand{\real}{\mathbb{R}}
@@ -647,7 +663,7 @@
 \definequantifier{\exists}{h}{E}
 \definequantifier{\forall}{v}{A}
 \definequantifier{\qfoo}{h}{Q}
-\definequantifier{\Henkin}{h}{H}
+\definequantifier{\Henkin}{h}{K}
 %\newcommand{\Henkin}{\mathrm{H}}
 
 

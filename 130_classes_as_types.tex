@@ -101,7 +101,7 @@ or, equivalently,
 \Proof
 1. The set $\emptyclass$ is a semisingleton, by def of semisingletones.\\
 2. By thm \dots, $\emptyclass \subseteq A$.\\
-3. From 1 and 2, it follows that $\emptyclass \sss A$ by \dots .\\
+3. From 1 and 2, it follows that $(\emptyclass \sss A)$ by \dots .\\
 4. By ax \dots\ref{axm:emptyset}, $(\emptyclass\set)$.\\
 5. From 3 and 4, it follows that $\emptyclass \in \cc{b}{b \sss A}$.\\
 \Done
@@ -603,7 +603,7 @@ $}
 \subsubsection{Model of $\Sigma$-types}
 Assume that $(F\family)$.
 
-\begin{definition}(Dependent sum)
+\begin{definition}[Dependent sum]
 \[
 \Sigma F \eqdef \mbox{E}^{\top} \circ F
 \]
@@ -611,13 +611,13 @@ Assume that $(F\family)$.
 \Sigma F \eqdef \cc{(a,b)}{b\in F(a) }
 \]
 \end{definition}
-\begin{definition}(dependent sum of a family)
+\begin{definition}[dependent sum of a family]
 \[
 \Sigma F\eqdef\cc{(x,y)}{y\in F(x)}
 \]
 \end{definition}
 %10,11
-\begin{definition}(ordered pair projections)
+\begin{definition}[ordered pair projections]
 \[
 \pr_1 \eqdef \ccc{a,b}{((a,b),a)}{a\any,b\any}
 \]
@@ -734,7 +734,7 @@ In MK, it corresponds to the following:
 \Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
 \]
 \end{definition}
-\begin{definition}(Dependent product, variant B)\\
+\begin{definition}[Dependent product, variant B]
 (Note: For sets the following definition is also okey:
 \[
 \Pi F = \cc{f\in \left(\union\ran(F)\right)^{\dom(f)}}{\forall (x\in\dom(f)) : (f(x) \in F(x))},
@@ -744,26 +744,26 @@ but it is not working well for classes)
 (Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
 \end{definition}
 
-\begin{definition}(Dependent product, variant C)\\
+\begin{definition}[Dependent product, variant C]
 Another definition:\\
 \[
 \prod w \eqdef \cc{f}{\exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))}
 \]
 \end{definition}
 
-\begin{definition}(sections of a family)
+\begin{definition}[sections of a family]
 \[
 \Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F}{\pr_1\circ s \subseteq \I}
 \]
 \end{definition}
 %13
-\begin{definition}(dependent product of a family)
+\begin{definition}[dependent product of a family]
 \[
 \Pi F \eqdef \cc{\pr_2\circ s}{s\in \Gamma F}
 \]
 \end{definition}
 
-\begin{definition}(Dependent product, variant D)\\
+\begin{definition}[Dependent product, variant D]
 \begin{lemma}
 \[
 \Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }

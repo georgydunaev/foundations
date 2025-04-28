@@ -660,7 +660,7 @@ since later we will prove that
 
 \subsection{Implementation}
 Here $|\cdot|$ is a functional symbol defined as following.
-\begin{definition}(cardinality of a class)
+\begin{definition}[cardinality of a class]
 \[
 |K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
 \]
@@ -685,7 +685,7 @@ The intended behaviour of this definition is to have cardinality of argument if 
 %\]
 %\end{definition}
 
-\begin{definition}($X$ can be injected in $Y$) %sqsubseteq
+\begin{definition}[$X$ can be injected in $Y$] %sqsubseteq
 \[
 (X \preccurlyeq Y)
 \iff
@@ -701,7 +701,7 @@ Using the statement of well-ordering theorem and transitivity, it is possible to
 \end{theorem}
 
 \iffalse
-\begin{definition}($X$ is smaller than or equal to $Y$ in cardinality)
+\begin{definition}[$X$ is smaller than or equal to $Y$ in cardinality]
 \[
 (X\prec Y)
 \iff
@@ -750,7 +750,7 @@ it will be a theorem
 Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordinal numbers.
 
 
-\begin{remark}
+\begin{remark}\ \\
 Here we use the intersection of a class which is defined by 
 $
 (x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
@@ -855,7 +855,7 @@ Plan:
 %1. Ordinals are linearly ordered: irreflexive, transitive, antisymmetric.\\
 %2. Ordinals are well-ordered.\\
 \begin{enumerate}
-\item Assuming choice, a set can be well-ordered.
+\item Assuming choice, a set can be well--ordered.
 \item Ordinal induction.
 \item Ordinal recursion.
 \item recursion and induction for natural numbers.
@@ -872,14 +872,14 @@ In this text we will consider the simplest definition of ordinals which assumes 
 \tr(X) \iff (\forall Z\in X: Z\subseteq X)
 \]
 \[
-\ord(X) \iff tr(X)\land (\forall Y\in X: \tr(Y))
+\ord(X) \iff \tr(X)\land (\forall Y\in X: \tr(Y))
 \]
 the other possibilities are
 \[
 \ord(X) \iff \tr(X)\land (\mbox{E Wo }X)
 \]
 \[
-\ord(X) \iff tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
+\ord(X) \iff \tr(X)\land (\mbox{E Wo }X)\land (\mbox{E Fr }X)
 \]
 etc \dots
 \end{definition}

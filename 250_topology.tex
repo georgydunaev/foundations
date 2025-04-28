@@ -8,6 +8,32 @@ Here we try to develop some ideas about an axiomatization of topology inspired b
 \begin{definition}[filter]\ \\
 %\[\]
 The set $F$ is called \textit{filter} iff
+\[
+\left( \emptyclass\notin F \vphantom\union \right),
+\tag{F$_1$}
+\]
+\[
+\left(
+\middle(
+A\in F
+\middle)
+\land
+\middle(
+B\in F
+\middle)
+\middle)
+\implies 
+\middle(\middle(A\cap B\middle)\in F \vphantom\union \right),
+\tag{F$_2$}
+\]
+\[
+\left(F \ni A \subseteq B \subseteq \union F\middle)
+\implies 
+\middle(B\in F\right).
+\tag{F$_3$}
+\]
+
+\iffalse
 \begin{align*}
 \left( \emptyclass\notin F \vphantom\union \right),
  && \text{(F$_1$)}\\
@@ -28,6 +54,7 @@ B\in F
 \middle(B\in F\right).
 && \text{(F$_3$)}\\
 \end{align*}
+\fi
 %    x &=4-3 && \text{Subtract 3 from both sides}\\
 %    x &=1   && x \text{ must be one}
 \end{definition}
@@ -452,13 +479,12 @@ To be a topology is a hereditary topological property. To be a closed set is a [
 \topology_{[-\infty;+\infty]} = \mbox{Segm}_\sigma
 \]
 \end{definition}
-\begin{definition}
-Set of neighbourhoods
+\begin{definition}[neighbourhoods]
 \[
 \nghbset_\topology(x) = \{S \subseteq \union \topology : \exists  U\in \topology: x\in U \subseteq S \}
 \]
 \end{definition}
-\begin{definition}
+\begin{definition}[interior]
 Interior of a set V in a topology $\topology$.
 \[
 \interior_\topology(V) = \union
@@ -525,18 +551,23 @@ $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 
 %\iffalse ???
 \begin{definition}[generator]\ \\
-A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff\\
-%any open set o
-$\forall U\in\mathcal{T}:\exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }:U=\union W$\\
-or\\
-$\mathcal{T}\subseteq \cc{\union W |  W\in\power\{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}}$\\
-or\\
-$\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
+A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff
+\[
+\left(\forall U\in\mathcal{T}:\exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }:U=\union W
+\right)
+\]
+or
+\[
+\mathcal{T}
+\subseteq 
+\cc{\union W }{  W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}}}
+\]
+or $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
 \end{definition}
 Generator set is also called a "subbase".
 %\fi
 
-\begin{definition}(``Finer'' as order on filters)\\
+\begin{definition}[a relation ``finer'' as an order on filters]\ \\
 For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathcal{C} \leq \mathcal{F}$ if and only if for every $C \in \mathcal{C}$ there exists some $F \in \mathcal{F} \text{ such that } F \subseteq C,$ in which case it is said that $\mathcal{C}$ is coarser than $\mathcal{F}$ and that $\mathcal{F}$ is finer than (or subordinate to) $\mathcal{C}$.
 \[
 (\mathcal{C} \leq \mathcal{F})
@@ -545,13 +576,13 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 \]
 \end{definition}
 
-\begin{notation}(generator/base/topology at x)
+\begin{notation}[generator/base/topology at $x$]
 \[
 \mathfrak{B}(x)\ceq \cc{U\in\mathfrak{B}}{x\in U}
 \]
 \end{notation}
 
-\begin{definition}(Order on bases)
+\begin{definition}[Order on bases]
 Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff\\
 \[
 \forall x : (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
@@ -563,10 +594,11 @@ Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff\\
 %\todo
 \pagebreak
 \subsection{Various subsets: subspace, convex hull, balanced set}
+Let \dots, then $X$ has the product topology if the topology of
 \[
 X\ceq \prod_{i\in I}X_i
 \]
-has the carsest topology s.t.
+is the coarsest topology s.t.
 \[
 \pi_i:X\to X_i
 \]

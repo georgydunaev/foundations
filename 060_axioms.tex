@@ -2,7 +2,7 @@
 \input{BEGIN.tex}
 \section{Axioms and definitions of class theory}%Developing set-theoretic foundations}
 
-\begin{constructor} Membership predicate.\\
+\begin{constructor}[membership relation]
 If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
 \end{constructor}
 
@@ -17,58 +17,57 @@ If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
 %$\cc{x}{\varphi}$ is MK-class.
 %\end{constructor}
 
-\begin{constructor} Subclass predicate.\\
+\begin{constructor}[subclass relation]
 If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
 \end{constructor}
-\begin{definition}
-\label{def:subclass}
-Subclass predicate.
+\begin{definition}[subclass relation]
 \[
 (A\subseteq B)\iffdef(\forall x\in A:x\in B)
 \]
+\label{def:subclass}
 \end{definition}
 
 
 
 If the variant of logic being used doesn't have equality, then add the following constructor and definition.
-\begin{constructor}Equality.\\
+\begin{constructor}[equality]%\\
 If $A$ and $B$ are classes, then $(A=B)$ is a formula.
 \end{constructor}
-\begin{definition}[equality](in case if the 1st order logic is given without equality)\\
+\begin{definition}[equality]
+This definition is for the case if the underlying \nth{1} order logic is provided without equality.\\
 If Y is not a free variable neither in A nor in B, then:
 \[
 (A=B) \iffdef (\forall Y: A\in Y \iff B\in Y)
 \]
 \end{definition}
 \subsection{Axiom of extensionality}
-\begin{axiom}
-\label{ax:extensionality}
-Extensionality.
+\begin{axiom}[extensionality]
 \[
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
 \]
+\label{ax:extensionality}
 \end{axiom}
-\begin{axiom*}
-\label{ax:extensionality'}
-Extensionality. This is an other variant of the definition, with requirement that X is a variable different from both A and B). If we understand A and B as variables, then it is enough; if as terms, then x should not be free neither in A nor in  B.
+\begin{axiom*}[extensionality]
+This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$). If we understand $A$ and $B$ as variables, then it is enough; if as terms, then x should not be free neither in $A$ nor in  $B$.
 \[
 (A=B)\iff (\forall X: X\in A \iff X\in B)
 \]
+\label{ax:extensionality'}
 \end{axiom*}
 
 
-\begin{constructor} Set predicate.\\
+\begin{constructor}[setness predicate]
 If $A$ is a class, then $(A\set)$ is a formula.
 \end{constructor}
-\begin{definition} Set predicate.
+\begin{definition}[setness predicate]
 If Y is not a free variable in X, then:
 \[
 (X\set)\iff(\exists Y:X\in Y)
 \]
 \end{definition}
 
-\subsection{Axiom of class comprehension}
-\begin{constructor}
+\subsection{Class comprehension}
+\begin{constructor}[class]
 If $\varphi$ is a formula, $x$ is a variable, $t$ is a term, then $\ccc{x}{t}{\varphi}$ is a class.
 \end{constructor}
 \begin{note}
@@ -82,10 +81,20 @@ There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is be
 %we need to find one expression for both cases.
 %)
 %\end{axiom}
+\begin{definition}[closure]%\ \\
+There is an order on a set of variables $\Var$. \\
+Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\
+\
+Then define the closure via the formula
+\[
+\text{closure}(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
+\]
+\end{definition}
+
 \begin{axiom}(class comprehension)%NEW 
 \label{ax:comprehension}
 \[
-\forall(\dots), (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
+\forall(a), \forall X, (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
 \]
 \end{axiom}
 
@@ -157,29 +166,28 @@ Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 
 \subsection{Definition of the empty class}
 
-\begin{constructor} Empty class.\\
+\begin{constructor}[empty class]%\ \\
 The empty set symbol $\emptyclass$ is a constant closed term.
 \[
 (\ulcorner\emptyclass\urcorner : \Term)
 \]
 \end{constructor}
 
-\begin{definition}
+\begin{definition}[empty class]
 \label{def:emptyclass}
-Empty class.
 \[
 \emptyclass \eqdef \cc{x}{\bot}
 \]
 \end{definition}
 
-\begin{definition} Empty set predicate.
+\begin{definition}[empty set predicate]
 \label{def:empty}
 \[
 (A\isempty)\iff (A=\emptyclass)
 \]
 \end{definition}
 
-\begin{definition}
+\begin{definition}[nonempty set predicate]
 \label{def:nonempty}
 \[
 (A\nonempty)\iff \neg(A\isempty)
@@ -189,7 +197,7 @@ Empty class.
 
 
 \subsection{Axiom of the empty set}
-\begin{axiom}[The empty class is a set]
+\begin{axiom}[the empty class is a set]
 \label{ax:emptyset}
 \[
 (\emptyclass\set)
@@ -197,19 +205,19 @@ Empty class.
 \end{axiom}
 
 \subsection{Definition of the universal class}
-\begin{constructor} Universal class.\\
+\begin{constructor}[universal class]%\ \\
 The symbol $\V$ is a constant(closed term) of the language of class theory.
 \end{constructor}
 
-\begin{definition} Universal class (constant V).
+\begin{definition}[universal class (constant V)]
 \label{def:universal class}
 \[
-V\eqdef\cc{x}{\top}
+\V\eqdef\cc{x}{\top}
 \]
 \end{definition}
 
 \subsection{Definitions of unions}
-\begin{definition}
+\begin{definition}[elementary union]%\ \\
 \label{def:union}
 This is an admissible and ``elementary`` definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
@@ -217,7 +225,7 @@ This is an admissible and ``elementary`` definition of a union of an arbitrary c
 \]
 \end{definition}
 
-\begin{definition}[union of a definable conglomerate of classes]\ \\
+\begin{definition}[union of a definable conglomerate of classes]%\ \\
 \label{def:uniondefcongl}
 \[
 \bigcup^y_{\psi} t 
@@ -237,7 +245,7 @@ Side conditions:\\
 %2) term $t$ may depend on $y$.
 \end{definition}
 
-\begin{definition}[union of terms built out of the elements of a class]\ \\
+\begin{definition}[union of terms built out of the elements of a class]%\ \\
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
 If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
 \[
@@ -246,14 +254,14 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \bigcup^y_{y\in s} t 
 \]
 \end{definition}
-\begin{definition}[union of the elements of a class]\ \\
+\begin{definition}[union of the elements of a class]%\ \\
 \[
 \bigcup A 
 \ \eqdef\ 
 \bigcup_{y\in A} y 
 \]
 \end{definition}
-\begin{theorem}[``elementary def of intersection'']
+\begin{theorem}[``elementary def of intersection'']%\ \\
 \label{thm:union}
 \[
 \union A = \cc{x}{\exists a\in A: x\in a}
@@ -274,7 +282,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \end{theorem}
 
 \subsection{Definitions of intersections}
-\begin{definition}%[]
+\begin{definition}[elementary intersection]%\ \\
 \label{def:intersection}
 This is an admissible and ``elementary`` definition of an intersection of an arbitrary class A, which is proved to be a thoerem later in this section.
 \[
@@ -282,8 +290,8 @@ This is an admissible and ``elementary`` definition of an intersection of an arb
 \]
 \end{definition}
 
-\begin{definition}[intersection of a definable conglomerate of classes]\ \\
-\label{def:interdefcongl}
+\begin{definition}[intersection of a definable conglomerate of classes]%\ \\
+For any formula $\psi$, any term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
 \[
 \bigcap^y_{\psi} t 
 \ \eqdef\ 
@@ -293,10 +301,11 @@ This is an admissible and ``elementary`` definition of an intersection of an arb
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.
+\label{def:interdefcongl}
 \end{definition}
 
 
-\begin{notation}[intersection of terms built out of the elements of a class]\ \\
+\begin{notation}[intersection of terms built out of the elements of a class]%\ \\
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
 If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
 \[
@@ -305,7 +314,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \bigcap^y_{y\in s} t 
 \]
 \end{notation}
-\begin{notation}[intersection of the elements of a class]\ \\
+\begin{notation}[intersection of the elements of a class]%\ \\
 %\[
 %\bigcap G = \cc{x}{\forall y\in G. x\in y}
 %\]
@@ -335,49 +344,55 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \Done
 \end{theorem}
 \subsection{Definition of powerclass}
-\begin{definition}
-\label{def:powerclass}
-Powerclass. (by class comprehension)
+%A theory is conservatively extended with a functional  class comprehension.
+\begin{definition}[powerclass]%\ \\
+For any term $X$, for any variable $x$ which is not free in $X$,
 \[
 \power X \eqdef \cc{x}{x\subseteq X}
+\tag{def. Powerclass}
 \]
+\label{def:powerclass}
 \end{definition}
 \subsection{Axiom of heredity}
-\begin{axiom}
+\begin{axiom}[heredity]
 \label{ax:heredity}
-Heredity.
 \[
 (A\set) \land (B\subseteq A) \rightarrow (B\set)
+\tag{ax. Heredity}
 \]
 \end{axiom}
 \subsection{Axiom of powerset}
-\begin{axiom}
+\begin{axiom}[powerset]
 \label{ax:powerset}
-Powerset. (weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.)
 \[(A\set) \rightarrow (\power A\set)\]
 \end{axiom}
+\begin{note}
+This is a weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.
+\end{note}
 
 %\begin{axiom} $\in$-induction. (variant that uses formulas)
 %\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
 %\end{axiom}
 \subsection{Axiom of regularity as epsilon-induction}
-\begin{axiom} 
+\begin{axiom}[$\in$-induction]
 \label{ax:epsilon induction}
-$\in$-induction. %(variant that uses classes)
+For any term $\Psi$,
+%(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
-(\power\Psi\subseteq\Psi)\implies(V\subseteq\Psi)
+(\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi)
+\tag{EpsInd}
 \]
 \end{axiom}
 
 
 \subsection{Axiom of limitation of size}
-\begin{axiom}
-\label{ax:limitation of size}
-Limitation of size (of a set).
+\begin{axiom}[limitation of size (of a set)]
 \[
-\neg(X\set) \longleftrightarrow (\exists T: (T\text{ class-function})\land (V\subseteq T[X]))
+\neg(X\set) \longleftrightarrow (\exists T: (T\text{ class-function})\land (\V\subseteq T[X]))
+\tag{ax. LS}
 \]
+\label{ax:limitation of size}
 \end{axiom}
 
 \input{END.tex}
