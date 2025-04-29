@@ -5,60 +5,59 @@ The definitions in this section are the improved version of definitions from the
 \subsection{Definition of ordinal classes in general setting}
 Context: (it may be ignored potentially, but it is an ``intended use'')\\
 The parameter $A$ is an arbitrary class(so no assumptions, just a note that it is not necessary a set, it may be a proper class),\\
-The parameter $R$ is an arbitrary class and a relation, i.e. $R\subclass V\times V$.
+The parameter $R$ is an arbitrary class and a relation, i.e. $R\subclass \V\times \V$.
 \begin{definition}[related]
-\label{def:related}
 \[
 ARB \iffdef (A,B) \in R
 \]
+\label{def:related}
 \end{definition}
 \begin{definition*}[related(experimental)]
-\label{def:relatedexper}
 \[
 ARB \iffdef \exists (i\set):(R((i,0))=A)\land(R((i,1))=B)
 \]
+\label{def:relatedexper}
 \end{definition*}
 \begin{definition}[epsilon relation]
-\label{def:epsilonRelation}
 \[
 \E\ \eqdef\ \cc{(x,y)}{x\in y}
 \]
+\label{def:epsilonRelation}
 \end{definition}
 \begin{definition}[irreflexive on]
-\label{def:irreflexiveOn}
 \[
 (R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A: \neg (xRx))
 \]
+\label{def:irreflexiveOn}
 \end{definition}
 \begin{definition}[relation is transitive on]
-\label{def:transitiveOn}
 \[
 (R\mathrm{\ Trans\ }A)\iffdef (\forall x\in A\forall y\in A\forall z\in A:
 xRy \land yRz \implies xRz)
 \]
+\label{def:transitiveOn}
 \end{definition}
 
 \begin{definition}[relation is strictly partially ordered on]
-\label{def:partiallyOrderedOn}
 \[
 (R\mathrm{\ Po\ }A)\iffdef ((R\mathrm{\ Irr\ }A) \land (R\mathrm{\ Trans\ }A))
 \]
+\label{def:partiallyOrderedOn}
 \end{definition}
 \begin{definition}[relation is linear on]
-\label{def:linearOn}
 \[
 (R\mathrm{\ Lin\ }A)\iffdef (\forall x\in A\forall y\in A:
 (xRy) \lor (x=y) \lor (yRx))
 \]
+\label{def:linearOn}
 \end{definition}
 \begin{definition}[relation is strictly completely ordered on]
-\label{def:sOn}
 \[
 (R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A))
 \]
+\label{def:sOn}
 \end{definition}
 \begin{definition}[relation is founded on]
-\label{def:foundedOn}
 \[
 (R\mathrm{\ Fr\ }A)
 \iffdef
@@ -67,56 +66,57 @@ S\subclass R[S]
 \implies
 S=\emptyclass)
 \]
+\label{def:foundedOn}
 \end{definition}
 \begin{definition}[relation is well-ordered on]
-\label{def:wellOrderedOn}
 \[
 (R\mathrm{\ We\ }A)
 \iffdef
 ((R\mathrm{\ Or\ }A) \land (R\mathrm{\ Fr\ }A))
 \]
+\label{def:wellOrderedOn}
 \end{definition}
 
 
 
 \begin{definition}[$R_1R_2$ subclass]
-\label{def:RRsubclass}	
 \[
 A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x:xR_1A\implies xR_2B)
 \]
+\label{def:RRsubclass}	
 \end{definition}
 \begin{definition}[$R$ subclass]
-\label{def:Rsubclass}	
 \[
 (A\stackrel{R}{\subclass} B)
 \iffdef
 (A\stackrel{R\E}{\subclass} B)
 \]
+\label{def:Rsubclass}
 \end{definition}
 \begin{lemma}[$R$ subclass]
-\label{lem:Rsubset}
 \[
 k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \]
+\label{lem:Rsubset}
 \end{lemma}
 
 \begin{definition}[powerclass w.r.t. relation $R$]
-\label{def:RpowerClass}
 \[
 \power_R X\ \eqdef\ \cc{ k}{k\stackrel{R\E}{\subclass}X}
 \]
+\label{def:RpowerClass}
 \end{definition}
 
 \begin{definition}[class is transitive w.r.t. relation $R$]
-\label{def:RtransitiveClass}
 \[
 (R\ \Tr\ K)
 \iffdef
 (K\subclass \power_R K)
 \]
+\label{def:RtransitiveClass}
 \end{definition}
 
-\begin{theorem}[properties are preserved on subclasses(except transitivity w.r.t. relation)]\ \label{thm:inheritable}\ 
+\begin{theorem}[properties are preserved on subclasses(except transitivity w.r.t. relation)]
 \[
 (
 (R\mathrm{\ Irr\ }A)
@@ -161,10 +161,10 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \implies
 (R\mathrm{\ We\ }B)
 \]
+\label{thm:inheritable}
 \end{theorem}
 
 \begin{lemma}
-\label{lem:Rindlem}
 \[
 (R^\top[\{m\}]\subclass K)
 \LAND
@@ -172,6 +172,8 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
 \]
+\label{lem:Rindlem}
+\end{lemma}
 \ProofNoPar
 \[
 (\forall q:qRm\implies q\in K)
@@ -181,10 +183,8 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 (\forall q:qRm\implies q\in A)
 \]
 \Done
-\end{lemma}
 \pagebreak
 \begin{theorem}[induction on a R-transitive and R-well-founded class]
-\label{thm:Rind}
 \[
 (R\ \Tr\ K)
 \land
@@ -196,6 +196,8 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 (K\subclass A)
 )
 \]
+\label{thm:Rind}
+\end{theorem}
 \Proof
 Assume $(R\ \Tr\ K)$, $(R\mathrm{\ Fr\ }K)$, $((K\cap\power_R A)\subclass A)$. To show: $K\subclass A$.\\
 Fix $k$. Assume $k\in K$. To show $k\in A$.\\
@@ -303,7 +305,6 @@ S\ceq (K\setminus A)
 \bot
 \]
 \Done %the proof is finished
-\end{theorem}
 
 \begin{definition}[restriction of relation]
 \label{def:restrrel}
@@ -313,12 +314,13 @@ S\ceq (K\setminus A)
 (x\in K)\land(xRy)
 \]
 \end{definition}
-\begin{lemma}[restriction of relation is transitive on class]\ \\
-\label{lem:restrreltran}
+\begin{lemma}[restriction of relation is transitive on class]
 If $R$ is a relation, then
 \[
 ((R\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)
 \]
+\label{lem:restrreltran}
+\end{lemma}
 \Proof
 To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
 Fix $k\in K$. To show: $k\in\cc{x}{(R\mathrm{\ on\ }K)^\top[\{x\}]}\subclass K$.\\
@@ -338,13 +340,12 @@ Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
 (w\in K)\land (wRk)
 \]
 \Done
-\end{lemma}
 %\power^K_R A
 %\eqdef
 %\{K\cap\}
 
 
-\begin{corollary}[alternative induction principle on $R_1$-well-founded class]\ \\
+\begin{corollary}[alternative induction principle on $R_1$-well-founded class]
 This formulation of inductive principle corresponds to the exercise 9.22 of ``Introduction to Axiomatic Set Theory''(Takeuti,Zaring).
 \[
 (R_1\mathrm{\ Fr\ } K)
@@ -394,68 +395,69 @@ Finally, we have $(
 
 \subsection{Case of membership relation E as R}
 \begin{definition}[class is transitive (w.r.t. epsilon relation)]
-\label{def:transitiveClass}
 \[
 \Tr(X)
 \iffdef
 (X\subclass \power X)
 \]
+\label{def:transitiveClass}
 \end{definition}
 
 
 \begin{definition}[class is ordinal (w.r.t. epsilon relation)]
-\label{def:ordinalClass}
 \[
 \Ord(X)
 \iffdef
 ((\Tr(X))\land(\E\mathrm{\ We\ }X))
 \]
+\label{def:ordinalClass}
 \end{definition}
 \begin{definition}[limit class]
 Note, that this definition is a bit unconventional: usually it must also be nonempty.
-\label{def:limitClass}
 \[
 \LimClass(X)
 \iffdef
 \left(X\subclass\union X\right)
 \]
+\label{def:limitClass}
 \end{definition}
 \begin{definition}[limit ordinal]
 Note, that this definition is a bit unconventional: usually it must also be nonempty.
-\label{def:limitOrdinal}
 \[
 \LimOrd(X)
 \iffdef
 ((\Ord(X))\land(\LimClass(X))
 \]
+\label{def:limitOrdinal}
 \end{definition}
 
 \begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
-\label{def:ordinalNumbers}
 \[
 \On\ \eqdef\ \cc{x}{\Ord(x)}
 \]
+\label{def:ordinalNumbers}
 \end{definition}
 
 \begin{definition}[supremum]
-\label{def:supremum}
 \[
 \sup(A)\ \eqdef\ \bigcup\left(A\cap\On\right)
 \]
+\label{def:supremum}
 \end{definition}
 \begin{definition}[infimum]
-\label{def:infimum}
 \[
 \inf(A)\ \eqdef\ \left(\bigcap (A\cap\On)\right)\cap\On
 \]
+\label{def:infimum}
 \end{definition}
 
 \begin{theorem}[infimum of a subset of ordinals is the unique minimum]
-\label{thm:infordmin}
 \[
 ((A\cap\On)\neq\emptyclass)\implies(\inf(A)\in A)
 \]
+\label{thm:infordmin}
 \Proof
+ToDo!
 \Done
 \end{theorem}
 
@@ -625,11 +627,11 @@ z\ceq a
 \subsection{Axioms}
 \begin{iaxiom}
 \[
-|\cdot|:V \to \On
+|\cdot|:\V \to \On
 \]
 Actually, since $|\cdot|$ is a functional symbol, we mean the following:
 \[
-(x\mapsto |x|):V \to \On
+(x\mapsto |x|):\V \to \On
 \]
 Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
 \end{iaxiom}
@@ -693,7 +695,7 @@ The intended behaviour of this definition is to have cardinality of argument if 
 \]
 \end{definition}
 
-\begin{theorem}[$\preccurlyeq$ is a strongly connected reflexive transitive order on all classes]\ \\
+\begin{theorem}[$\preccurlyeq$ is a strongly connected reflexive transitive order on all classes]
 Using the statement of well-ordering theorem and transitivity, it is possible to prove that for any classes $A$ and $B$,
 \[
 ((A\preccurlyeq B)\lor(B\preccurlyeq A).
@@ -771,20 +773,20 @@ The function $| \cdot |$ has interesting properties.
 \subsection{Soundness}
 \begin{theorem}
 \[
-|V|=\On
+|\V|=\On
 \]
 \Proof
 \dots
 \Done
 \end{theorem}
 \subsection{Properties}
-\begin{theorem}[$| \cdot |$ is a projection]\ \\
+\begin{theorem}[$| \cdot |$ is a projection]
 \label{thm:cardproj}
 \Proof
 \dots
 \Done
 \end{theorem}
-\begin{theorem}[construction of a bijection between $\V$ and $\On$]\ \\
+\begin{theorem}[construction of a bijection between $\V$ and $\On$]
 \label{thm:vonbij}
 \Proof
 \dots
@@ -794,7 +796,7 @@ The function $| \cdot |$ has interesting properties.
 
 
 
-\section{Various Induction and Recursion principles}
+\section{Various induction and recursion principles}
 \subsection{Induction principles}
 \begin{corollary}[induction on a transitive and well-founded by membership relation class]
 \[
@@ -809,12 +811,12 @@ The function $| \cdot |$ has interesting properties.
 )
 \]
 \end{corollary}
-\begin{corollary}[epsilon induction]\ \\
-If well-foundness of the class of all sets (i.e. $(\E\mathrm{\ Fr\ }V)$) is assumed, then
+\begin{corollary}[epsilon induction]
+If well-foundness of the class of all sets (i.e. $(\E\text{ Fr }\V)$) is assumed, then
 \[
 ((\power A)\subclass A)
 \implies
-(V\subclass A).
+(\V\subclass A).
 \]
 And vice versa is also true.
 \end{corollary}

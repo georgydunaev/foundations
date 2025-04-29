@@ -25,7 +25,7 @@ All proofs in this section don't require the law of excluded middle.
 \[
 (C\implies C)
 \]
-\ProofNoPar
+\Proof\ \\
 \begin{enumerate}
 \item \[(C\implies (C\implies C)) \tag{by ax.1}\]
 \item \[(C\implies ((C\implies C)\implies C))\implies 
@@ -166,7 +166,7 @@ $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
 
 \begin{theorem}
 \label{thm:intersection set then}
-If intersection of a class A is a set, then A is nonempty. 
+If intersection of a class $A$ is a set, then $A$ is nonempty. 
 \[
 \left(\left(\intersection A\right)\set\right)
 \implies
@@ -182,7 +182,7 @@ New goal:
 \]
 Proof of the claim:
 \[
-\neg\exists w: w\in A
+\neg\exists w, w\in A
 \IMPLIES
 (A=\emptyclass)
 \]
@@ -192,29 +192,29 @@ Proof of the claim:
 \left(\intersection A\right) = \left(\intersection \emptyclass\right)
 \]
 \[
-\left(\intersection \emptyclass\right) = V
+\left(\intersection \emptyclass\right) = \V
 \]
 \[
 \left(\intersection A\right) = \left(\intersection \emptyclass\right)
 \LAND
-\left(\intersection \emptyclass\right) = V
+\left(\intersection \emptyclass\right) = \V
 \IMPLIES
-\left(\intersection A\right) = V
+\left(\intersection A\right) = \V
 \]
 \[
-(V\notin V)
-\tag{by thm \ref{thm:not in itself} with $Y\ceq V$}
+(\V\notin \V)
+\tag{by thm \ref{thm:not in itself} with $Y\ceq \V$}
 \]
 \[
-(V\notin V)
+(\V\notin \V)
 \IMPLIES
-\neg(V\set)
+\neg(\V\set)
 \tag{by thm \ref{thm:sets are in V}}
 \]
 \[
-\left(\intersection A\right) = V
+\left(\intersection A\right) = \V
 \LAND
-\neg(V\set)
+\neg(\V\set)
 \IMPLIES
 \neg(\left(\intersection A\right) \set)
 \]

@@ -8,13 +8,13 @@
 Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
 ``A Set Theory with Support for Partial Functions''.\\
 For simplicity of understanding by the reader, the notation from the article is used here.\\
-\begin{definition} Value of a function.
+\begin{definition}[value of a function]
 \[
-f(x) \simeq \left(\iota y: \langle x,y\rangle\in f\right)
+f(x) \simeq \left(\iota y, \langle x,y\rangle\in f\right)
 \]
 \end{definition}
 
-\begin{theorem} If $f$ is univocal, then
+\begin{theorem}[\ ] If $f$ is univocal, then
 \[
 \left(f(x)\simeq y\right)\iff \left(\langle x,y\rangle\in f\right)
 \]
@@ -41,7 +41,7 @@ f\mbox{ univocal}
 \left(\exists w: \langle x,w\rangle\in f\right)
 \LAND
 \left(! w: \langle x,w\rangle\in f\right)
-\quad\overset{\exists!\mbox{-intro}}{\Longrightarrow}\quad
+\quad\overset{\exists!\text{--intro}}{\Longrightarrow}\quad
 \left(\exists! w: \langle x,w\rangle\in f\right)
 \]
 \[

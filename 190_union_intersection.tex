@@ -4,7 +4,7 @@
 %Union \& Intersection
 \begin{theorem}
 \[
-(B\in A) \rightarrow \left(B \subseteq \union A\right)
+\left(B\in A\middle) \rightarrow \middle(B \subseteq \union A\right)
 \]
 \end{theorem}
 \Proof
@@ -21,29 +21,31 @@ To show: $(b\in \union A)$.\\
 \LAND
 (b\in B)
 \IMPLIES
-(\exists a\in A : b\in a)
+(\exists a\in A, b\in a)
 \]
 \[
 (b\set)
 \LAND
-(\exists a\in A : b\in a)
+(\exists a\in A, b\in a)
 \IMPLIES
 \left(b\in \union A\right)
 \]
 \Done
 \begin{theorem}
 \[
-(B\in A) \rightarrow \left(\intersection A\subseteq B\right)
+\left(B\in A\middle)
+\implies
+\middle(\intersection A\subseteq B\right)
 \]
 \end{theorem}
 \Proof
 Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \[
-(x\in \intersection A)
+\left(x\in \intersection A\middle)
 \IMPLIES
-(x\set)
+\middle(x\set\middle)
 \LAND
-(\forall a\in A : x\in a)
+\middle(\forall a\in A : x\in a\right)
 \]
 %(b\set)
 %\quad\mbox{(by \ref{thm:in class then set})}
@@ -78,7 +80,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \begin{theorem}{Intersection of a singleton is in it.}
 \label{thm:intersection of singleton}%
 \[
-(A \singleton) \rightarrow \left(\left(\intersection A\right)\in A\right)
+\left(A \singleton\middle) \rightarrow \middle(\left(\intersection A\right)\in A\right)
 \]
 \end{theorem}
 \Proof
@@ -112,16 +114,16 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 
 %\subsection{Theorems about union and intersection}
 \begin{theorem}
-\label{thm:intersection of nonempty is subset of union}
 \[
-(A \nonempty) \implies \left(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
+\left(A \nonempty\middle) \implies \middle(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
 \]
+\label{thm:intersection of nonempty is subset of union}
 \end{theorem}
 \Proof
 \[
 (A \nonempty)
 \IMPLIES
-(\exists B:B\in A)
+(\exists B,B\in A)
 \]
 \[
 (B\in A)
@@ -235,18 +237,17 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 (x\in A)
 \]
 \Done
-\begin{theorem}
-\label{thm:transitive through union}
+\begin{theorem}[transitive through union]
 \[
 \left(A \transitive\middle)\iff \middle(\union A\subseteq A\right)
 \]
+\label{thm:transitive through union}
 \end{theorem}
 \Proof
 By \ref{thm:UACA=ACPA}.
 \Done
 
 \begin{theorem}{}
-%\label{intersection of singleton}%
 \[
  \left(A\nonempty\middle)
 \land
@@ -254,6 +255,7 @@ By \ref{thm:UACA=ACPA}.
 \implies
 \middle(\left(\intersection A\right)\subseteq A\right)
 \]
+%\label{intersection of singleton}%
 \end{theorem}
 \Proof
 By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.

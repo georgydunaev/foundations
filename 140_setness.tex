@@ -45,7 +45,7 @@ Fix $x$. Assume $(x\in C)$. To show $(x\in \V)$.
 (x\in \V)
 \tag{by def \ref{def:universal class}}
 \]
-Claim is proven.
+The claim is proven.
 \[
 (\forall x\in C:x\in \V)
 \IMPLIES
@@ -63,10 +63,10 @@ Claim is proven.
 \Proof
 \noindent($\Leftarrow$) Assume $(X\in \V)$.
 \[
-(X\in \V)\IMPLIES(\exists W: X\in W).
+(X\in \V)\IMPLIES(\exists W, X\in W).
 \]
 \[
-(\exists W: X\in W)\IMPLIES(X\set).
+(\exists W, X\in W)\IMPLIES(X\set).
 \]
 \noindent($\Rightarrow$) Assume $(X\set)$.
 %\[
@@ -80,7 +80,7 @@ Claim is proven.
 \]
 %\[(a\in\{a\})\LAND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
 \Done
-\begin{theorem}
+\begin{theorem}[\ ]
 \[
 (A \subseteq B)\land (B\subseteq A) \implies (A=B)
 \]
@@ -141,7 +141,7 @@ Assume $(x\in\emptyclass)$.
 \]
 The claim is proven.
 \[
-(\forall x\in \emptyclass: x\in A)
+(\forall x\in \emptyclass, x\in A)
 \IMPLIES
 (\emptyclass\subseteq A)
 \tag{by def \ref{def:empty class}}
@@ -150,7 +150,7 @@ The claim is proven.
 
 \begin{theorem}
 \[
-\neg\exists w: w\in A
+\neg(\exists w, w\in A)
 \implies
 (A=\emptyclass)
 \]
@@ -273,7 +273,7 @@ Assume $(B\in A)$. To show: $(B\set)$.
 (w\in A) \land (!a:a\in A) \implies \{w\}=A
 \]
 \end{theorem}
-\Proof
+\Proof Assume $(w\in A)$ and $(!a:a\in A)$\\
 \noindent($\subseteq$) Assume $(q\in \{w\})$.
 \[
 (q\in \{w\})\IMPLIES(q=w).

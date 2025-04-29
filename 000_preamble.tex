@@ -144,10 +144,80 @@
 \boxT{\hspace{-0.1ex}\scalebox{0.35}[1]{n+1}\hspace{+0.0ex}}
 }
 
+\usepackage{underscore}
+\iftrue
+\usepackage{expl3}
+%:n
+%\$\#\%\&\_\~"'
+\ExplSyntaxOn
+
+% \cC. instead of [\$\#\%\&\_\~"'\protect\textbackslash]
+\cs_new:Npn \removespecials #1
+  {
+    \tl_set:Nn \l_tmpa_tl { #1 }
+    \regex_replace_all:nnN { \cC. } {} \l_tmpa_tl
+    \regex_replace_all:nnN { [-\_\--] } {} \l_tmpa_tl
+    \l_tmpa_tl
+  }
+
+\ExplSyntaxOff
+\fi
+% Better:
+\newcommand{\removeabs}[1]{%
+  {\catcode92=9 \endlinechar-1 \everyeof{\noexpand}\edef\x{\scantokens{#1}}\x}%
+}
+
+\let\edetok\relax  
+\def\userMacroA{\sqrt{4}}
+\def\userMacroB{$(A\in B)$}
+\def\userMacroC#1{#1}
+
+\newcommand\xdetokenize[1]{\detokaux#1\edetok\edetok}
+\def\detokaux#1#2\edetok{\ifx\edetok#1\edetok\else
+  \detokenize\expandafter{#1}\def\next{\detokaux#2\edetok\edetok}\expandafter\next\fi 
+  }
+% https://tex.stackexchange.com/questions/434387/expand-multiple-math-tokens-before-detokenize
+%-----------
+
+\usepackage{xparse}
+
+%Removing other characters
+\ExplSyntaxOn
+\tl_new:N \l_azor_string_tl
+\cs_new_protected:Npn \azor_replace_norsk:n #1
+ {
+  \tl_set:Nn \l_azor_string_tl { #1 }
+  \regex_replace_all:nnN { \cC. } { -- \c{cs_to_str:N} \0 } \l_azor_string_tl
+  \regex_replace_all:nnN { [-\_\--] } {} \l_azor_string_tl
+  \regex_replace_all:nnN { [/?\*] } {8} \l_azor_string_tl
+  \tl_use:N \l_azor_string_tl
+ }
+\NewDocumentCommand \replace { m }
+ {
+  \azor_replace_norsk:n { #1 }
+ }
+\ExplSyntaxOff
+
 
 \theoremstyle{definition}
+%if you use the \usepackage{underscore} the '_' character in labels will cause this error. To fix this also use \usepackage[english]{babel}
 
+\newtheoremstyle{theoremdd}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {}%{\itshape}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {. \\}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}{\label{#1:#2}}}
+%fail!
+
+\theoremstyle{theoremdd}
+%\label{\detokenize{#3}}
+%\protect\label{\protect\removeabs{#3}}
 \newtheorem{constructor}{Constructor}[section]
+\newtheorem*{constructor*}{Constructor}
 \newtheorem{iaxiom}{Axiom}
 \newtheorem{axiom}{Axiom}
 \newtheorem*{axiom*}{Axiom}
@@ -213,6 +283,8 @@
 \newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
   \{#1\in #2: #3\}
 }
+%\newcommand{\mydot}{.\ }
+\newcommand{\mydot}{,}
 \newcommand{\card}{{\text{card}}}
 \newcommand{\Lau}{{\mathcal{L}}}
 \newcommand{\Fau}{{\mathcal{F}}}
@@ -651,7 +723,11 @@
   \if #2h%
     \DeclareRobustCommand{#1}{\scalebox{-1}[1]{\text{\clearthin#3}}}%
   \else
+  \if #2v%
     \DeclareRobustCommand{#1}{\raisebox{\depth}{\scalebox{1}[-1]{\text{\clearthin#3}}}}%
+  \else
+    \DeclareRobustCommand{#1}{{\text{\clearthin#3}}}%
+  \fi
   \fi
 }
 
@@ -663,7 +739,9 @@
 \definequantifier{\exists}{h}{E}
 \definequantifier{\forall}{v}{A}
 \definequantifier{\qfoo}{h}{Q}
-\definequantifier{\Henkin}{h}{K}
+\definequantifier{\Henkin}{}{$\epsilon$}
+
+
 %\newcommand{\Henkin}{\mathrm{H}}
 
 

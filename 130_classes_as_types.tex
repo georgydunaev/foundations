@@ -1,6 +1,6 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Classes-as-types, sets-as-expressions approach}
+\section{Classes--as--types, sets--as--expressions approach}
 %\subsection{Classes-as-Types semantics}
 In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
 
@@ -12,7 +12,7 @@ Since, everything is a class in MK, we have:
 \]
 Dependent types are treated as families.
 \[
-\semantics("(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\dom(B)\subseteq A).
+\semantics(``(x:A\vdash B(x):\Type)'')\eqdef (B\family)\land(\dom(B)\subseteq A).
 \]
 
 \[
@@ -114,7 +114,7 @@ or, equivalently,
 (a\in A)\implies (\{a\}\in\cc{b}{(b \sss A)} 
 \]
 \end{theorem}
-\Proof
+\Proof\ \\
 1. Assume $(a\in A)$.\\
 2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
 3. $(\{a\} \semisingleton)$, by \dots .\\
@@ -208,79 +208,79 @@ or, equivalently,
 \subsection{Implementing functions}
 %\subsection{Relational basics}
 \subsubsection{Family basics}
-\begin{definition}(Value)
+\begin{definition}[value]
 \[
 F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \]
 \end{definition}
 %2
-\begin{definition}(relational domain)
+\begin{definition}[relational domain]
 \[
 \dom(R)\eqdef\cc{a}{\exists b: (a,b)\in R}
 \]
 \end{definition}
-\begin{definition}(functional Domain)
+\begin{definition}[functional Domain]
 \[
 \Dom(F)\eqdef\dom(F)
 \]
 \end{definition}
 %3
-\begin{definition}(relational range)
+\begin{definition}[relational range]
 \[
 \ran(R)\eqdef\cc{b}{\exists a: (a,b)\in R}
 \]
 \end{definition}
-\begin{definition}(functional Range)
+\begin{definition}[functional Range]
 \[
 \Ran(F)\eqdef\cc{F(a)}{a\in\Dom(F)}
 \]
 \end{definition}
 %4
-\begin{definition}(restriction)
+\begin{definition}[restriction]
 \[
 F\restriction A\eqdef\cc{(a,s)\in F}{a\in A}
 \]
 \end{definition}
 %5
-\begin{definition}(relational image)
+\begin{definition}[relational image]
 \[
 \image_R(A)\eqdef\ran(R\restriction A)
 \]
 \end{definition}
-\begin{definition}(functional Image)
+\begin{definition}[functional Image]
 \[
 \Image_F(A)\eqdef\Ran(F\restriction A)
 \]
 \end{definition}
 %6
-\begin{definition}(relational composition)
+\begin{definition}[relational composition]
 \[
 R \circ S \eqdef \cc{(x,z)}{\exists y:(x,y)\in S \land (y,z)\in R}
 \]
 \end{definition}
-\begin{definition}(functional composition)
+\begin{definition}[functional composition]
 \[
 F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 \]
 \end{definition}
 %7
-\begin{definition}(class of all sets)
+\begin{definition}[class of all sets]
 \[
 \V\eqdef\cc{x}{x\any}
 \]
 \end{definition}
-\begin{definition}(membership class)
+\begin{definition}[membership class]
 \[
 \E\eqdef\cc{(x,y)}{x\in y}
 \]
 \end{definition}
-\begin{definition}(identity class)
+\begin{definition}[identity class]
 \[
 \I\eqdef\cc{(x,x)}{x\any}
 \]
 \end{definition}
 %8
-\begin{definition}(relational transposition)
+\begin{definition}[relational transposition]
 \[
 R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \]
@@ -290,7 +290,7 @@ R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \invE \eqdef \E^\top
 \]
 \end{notation}
-\begin{definition}(functional transposition)
+\begin{definition}[functional transposition]
 \[
 F^\intercal\eqdef\cc{(F(x),x)}{x\in \Dom(F)}
 \]
@@ -586,10 +586,10 @@ f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
 %\]
 %\end{definition}
 \pagebreak
-\subsection{Implementing $\Sigma$-types}
-\subsubsection{Axioms of $\Sigma$-types}
+\subsection{Implementing $\Sigma$--types}
+\subsubsection{Axioms of $\Sigma$--types}
 In type theory, the formatin rule for a $\Sigma$-type is
-Formation of $\Sigma$-type:
+Formation of $\Sigma$--type:
 \begin{prooftree}
 \AxiomC{
 $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
@@ -600,7 +600,7 @@ $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 $}
 \end{prooftree}
 
-\subsubsection{Model of $\Sigma$-types}
+\subsubsection{Model of $\Sigma$--types}
 Assume that $(F\family)$.
 
 \begin{definition}[Dependent sum]
@@ -629,26 +629,26 @@ Assume that $(F\family)$.
 
 
 
-\subsubsection{Soundness of $\Sigma$-types}
+\subsubsection{Soundness of $\Sigma$--types}
 \dots
 
-\subsubsection{Implementation of $\Sigma$-types}
-\underline{Formation of terms of $\Sigma$-type:}\\
+\subsubsection{Implementation of $\Sigma$--types}
+\underline{Formation of terms of $\Sigma$--type:}\\
 \[
 \Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
 \]
-\underline{Introduction of terms of $\Sigma$-type:}\\
+\underline{Introduction of terms of $\Sigma$--type:}\\
 \[
 \textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ I\ B))))
 \]
-\underline{Elimination of terms of $\Sigma$-type:}\\
+\underline{Elimination of terms of $\Sigma$--type:}\\
 \[
 \textrm{pr}_1 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto ((\Sigma\ A\ B) \to A)))
 \]
 \[
 \textrm{pr}_2 : \Pi((I:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B\ (\pr_1\ p))))
 \]
-\underline{Computation of terms of $\Sigma$-type:}\\
+\underline{Computation of terms of $\Sigma$--type:}\\
 \[
 \pr_1\ (\textrm{pair}\ A\ B\ x\ y) \equiv x
 \]
@@ -658,7 +658,7 @@ Assume that $(F\family)$.
 \[
 \textrm{pair}\ A\ B\ (\pr_1\ p)\ (\pr_2\ p) \equiv p
 \]
-\subsubsection{Properties of $\Sigma$-types}
+\subsubsection{Properties of $\Sigma$--types}
 \begin{lemma}
 \[
 \invE = \Sigma \I
@@ -670,10 +670,10 @@ Assume that $(F\family)$.
 \]
 \end{lemma}
 \pagebreak
-\subsection{Implementing $\Pi$-types}
-\subsubsection{Axioms of $\Pi$-types}
-\underline{Formation of terms of $\Pi$-type:}\\
-In type theory, the formatin rule for a $\Pi$-type is
+\subsection{Implementing $\Pi$--types}
+\subsubsection{Axioms of $\Pi$--types}
+\underline{Formation of terms of $\Pi$--type:}\\
+In type theory, the formatin rule for a $\Pi$--type is
 \begin{prooftree}
 \AxiomC{
 $\Gamma \vdash (A:\Type)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Type)$
@@ -683,7 +683,7 @@ $\Gamma \vdash (A:\Type)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Type)$
 \Gamma \vdash \Pi_{(x:A)}B(x):\Type  
 $}
 \end{prooftree}
-\underline{Introduction of terms of $\Pi$-type:}\\
+\underline{Introduction of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
 $\Gamma, x:A\vdash b:B$
@@ -694,7 +694,7 @@ $\Gamma \vdash (\lambda ((x:A)\mapsto b)):\Pi_{(x:A)}B$
 %$\vdash \Pi_{(x:A)}B(x):\Type$
 }
 \end{prooftree}
-\underline{Elimination of terms of $\Pi$-type:}\\
+\underline{Elimination of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
 $\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$
@@ -704,7 +704,7 @@ $\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$
 $\Gamma \vdash f(a):B[a/x]$
 }
 \end{prooftree}
-\underline{Computation of terms of $\Pi$-type:}\\
+\underline{Computation of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
 $\Gamma, x:A\vdash b:B$
@@ -716,7 +716,7 @@ $\Gamma\vdash(a:A)$
 $\Gamma \vdash (\lambda ((x:A)\mapsto b))(a) \equiv b[a/x] : B[a/x]$
 }
 \end{prooftree}
-\underline{Uniqueness of terms of $\Pi$-type:}\\
+\underline{Uniqueness of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
 $\Gamma \vdash f:\Pi_{(x:A)}B$
@@ -727,7 +727,7 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 }
 \end{prooftree}
 
-\subsubsection{Model of $\Pi$-types}
+\subsubsection{Model of $\Pi$--types}
 In MK, it corresponds to the following:
 \begin{definition}(Dependent product, variant A)
 \[
@@ -770,14 +770,14 @@ Another definition:\\
 \]
 \end{lemma}
 \end{definition}
-\subsubsection{Soundness of $\Pi$-types}
+\subsubsection{Soundness of $\Pi$--types}
 \dots
 % todo: prove some theorems about it
 \begin{theorem}
 \end{theorem}
 \pagebreak
-\subsection{Implementing $W$-types}
-\subsubsection{Axioms of $W$-types}
+\subsection{Implementing $W$--types}
+\subsubsection{Axioms of $W$--types}
 \underline{Formation of W-type:}\\
 Let $F$ be a family of types.\\
 Then $\W F$ is also a type.\\
@@ -797,7 +797,7 @@ Then $\W F$ is also a type.\\
 \mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
 \eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
-\subsubsection{Model of $W$-types}
+\subsubsection{Model of $W$--types}
 \underline{Formation of W-type:}\\
 
 Assume $F$ is a family of classes with \textit{finite} domain $A$.
@@ -938,13 +938,13 @@ Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of
 \Done
 \end{theorem}
 
-\subsubsection{Soundness of $W$-types}
+\subsubsection{Soundness of $W$--types}
 \dots
 \pagebreak
-\subsection{Implementing $M$-types [not present]} %unfinished
-\subsubsection{Axioms of $M$-types}
+\subsection{Implementing $M$--types [not present]} %unfinished
+\subsubsection{Axioms of $M$--types}
 \dots
-\subsubsection{Model of $M$-types}
+\subsubsection{Model of $M$--types}
 \[
 MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
 \]
@@ -954,6 +954,6 @@ MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{
 \[
 \inf : \dots
 \]
-\subsubsection{Soundness of $M$-types}
+\subsubsection{Soundness of $M$--types}
 \dots
 \input{END.tex}
