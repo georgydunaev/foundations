@@ -104,7 +104,7 @@ Choose once any $F$, such that $\On \to \V \text{ surjective}$,
 \]
 \fi
 \[
-\F\eqdef \Henkin F\sqdot(F:\On \to \V \text{ surjective})
+\text{F}\eqdef \Henkin F\sqdot(F:\On \to \V \text{ surjective})
 \]
 \end{definition}
 Obviously, from the lemma \ref{lem:exOnToVSurj} and the axiom \ref{ax:H}, it follows that
@@ -113,22 +113,25 @@ Obviously, from the lemma \ref{lem:exOnToVSurj} and the axiom \ref{ax:H}, it fol
 \]
 
 
-\begin{definition}[the ``minimal'' section of $F$ which returns minimal ordinals]
-\label{def:Gsect}
+\begin{definition}[the ``minimal'' section of $\text{F}$]
+The ``minimal'' section of $\text{F}$ in the sense, that it returns the minimal ordinal class corresponding to the argument.
 %G_F(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
 \[
-\G(y)\eqdef\inf\cc{x\in\On}{\F(x)=y}
+\G(y)\eqdef\inf\cc{x\in\On}{\text{F}(x)=y}
 \]
+\label{def:Gsect}
+
 \end{definition}
 
-\begin{definition}[global choice]\ \\%, variant 2
-\label{def:globalchoice}
+\begin{definition}[a global choice functional symbol]%\ \\%, variant 2
 Here we define a functional symbol $c$ as an alias for some bound term:
 \[
 c(S) :\equiv \F(\inf \G[S])
 \]
+\label{def:globalchoice}
+
 \iffalse
-GOOD BUT WEIRD
+GOOD, BUT WEIRD
 Assume $(S\neq\emptyclass)$.
 \[
 c(S)\eqdef F(\inf G_F[S])
@@ -148,7 +151,7 @@ c(S)\eqdef F(\inf T[S])
 \[
 (S\subclass \V)
 \LAND
-(\G : V\to \On)
+(\G : \V\to \On)
 \IMPLIES
 (\G[S]\subclass\On)
 \]
@@ -157,7 +160,7 @@ c(S)\eqdef F(\inf T[S])
 \LAND
 (S\subclass \V)
 \LAND
-(\G : V\to \On \text{ surjective})
+(\G : \V\to \On \text{ surjective})
 \IMPLIES
 (G[S]\neq\emptyclass)
 \]
@@ -183,7 +186,7 @@ Therefore, by theorem \ref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
 %\[
 %\ev_x(f)\ceq f(x).
 %\]
-\begin{definition}[evaluation class-function]\ \\
+\begin{definition}[evaluation class--function]\ \\
 \label{def:evclass}
 Implying that $f(x)=\emptyclass$ in case of $x\notin\dom(f)$,
 \[
@@ -193,7 +196,7 @@ Implying that $f(x)=\emptyclass$ in case of $x\notin\dom(f)$,
 \begin{definition}[R function]
 \label{def:Rfunc}
 \[
-R\eqdef((\tilde{\cdot})\circ F)
+\text{R}\eqdef((\tilde{\cdot})\circ F)
 \]
 \end{definition}
 \begin{definition}[Q(x)]
@@ -209,14 +212,13 @@ Q(x)\eqdef\ev_x[R[x]]
 h(x)\eqdef\inf(\On\setminus(Q(x)))
 \]
 \end{definition}
-\begin{definition}[ordinal beta]
+\begin{definition}[an ordinal beta]
 \label{def:beta}
 \[
 \beta\eqdef G(h)
 \]
 \end{definition}
-\begin{definition}[bounded subclasses of On]\ \\
-\label{def:bddscOn}
+\begin{definition}[bounded subclasses of On]
 In context of $(b\subclass\On)$,
 \[
 (b\text{ bounded})\iffdef(\exists \beta\in\On:b\subclass\beta)
@@ -224,13 +226,14 @@ In context of $(b\subclass\On)$,
 \[
 (b\text{ unbounded})\iffdef(\neg(b\text{ bounded}))
 \]
+\label{def:bddscOn}
 \end{definition}
 \subsection{Sets of ordinals are bounded}
 \begin{lemma}[subsets of On are bounded]
-\label{lem:ssOnBdd}
 \[
 (b\set)\land(b\subclass\On)\implies(b\text{ bounded})
 \]
+\label{lem:ssOnBdd}
 \Proof
 Step 1:
 \[
@@ -364,12 +367,12 @@ b\subclass F[G[b]]
 \Done
 \end{lemma}
 
-\begin{theorem}[union of set is a set]
+\begin{theorem}[union of a set is a set]
 \label{thm:unionisset}
 \[
-(A\set)
+\left(A\set\middle)
 \implies
-\left(\union A\set\right)
+\middle(\union A\set\right)
 \]
 \Proof
 \[
@@ -378,7 +381,7 @@ H(b)\eqdef\inf\cc{e}{e\text{ strict upper bound of }G[b]}
 \[
 (a\set)
 \LAND
-(H\text{ class-function})
+(H\text{ class--function})
 \implies
 (H[a]\set)
 \]

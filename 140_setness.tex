@@ -29,7 +29,7 @@ Any class is a subclass of class of all sets.
 \Proof
 %\[\forall x\in C:x\in \V\]
 %...
-Claim: $(\forall x\in C:x\in \V)$.\\
+Claim: $(\forall x\in C,\ x\in \V)$.\\
 Fix $x$. Assume $(x\in C)$. To show $(x\in \V)$.
 \[
 (x\in C)
@@ -47,7 +47,7 @@ Fix $x$. Assume $(x\in C)$. To show $(x\in \V)$.
 \]
 The claim is proven.
 \[
-(\forall x\in C:x\in \V)
+(\forall x\in C,\ x\in \V)
 \IMPLIES
 (C\subseteq \V)
 \tag{by def \ref{def:subclass}}
@@ -63,10 +63,10 @@ The claim is proven.
 \Proof
 \noindent($\Leftarrow$) Assume $(X\in \V)$.
 \[
-(X\in \V)\IMPLIES(\exists W, X\in W).
+(X\in \V)\IMPLIES(\exists W,\ X\in W).
 \]
 \[
-(\exists W, X\in W)\IMPLIES(X\set).
+(\exists W,\ X\in W)\IMPLIES(X\set).
 \]
 \noindent($\Rightarrow$) Assume $(X\set)$.
 %\[

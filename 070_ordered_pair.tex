@@ -164,62 +164,62 @@ This subsection is not necessary for the ongoing proof, but it is very illustrat
 Note, that it may be confusing that in code, the construction is done for the special type of sets of certain universe in Gallina's heavy metatheory, which is not the point here. Despite that the construction works fine for classes also, and it will be shown in the next subsection.
 
 \begin{lstlisting}(*The type of sets in for a universe.*)
-Inductive Ens : Type \ceq 
+Inductive Ens : Type := 
     sup : forall A : Type, (A -> Ens) -> Ens.
 \end{lstlisting}
 \begin{lstlisting}(* The empty set *)
-Definition Vide : Ens \ceq 
+Definition Vide : Ens := 
   sup False (fun x : False => match x return Ens with
                               end).
 Definition Pair (A B:Ens) : Ens
- \ceq sup bool (fun b : bool => if b then A else B).
+ := sup bool (fun b : bool => if b then A else B).
 (* The singleton set  *)
-Definition Sing (E : Ens) \ceq Pair E E.
+Definition Sing (E : Ens) := Pair E E.
 \end{lstlisting}
 \begin{lstlisting}
-Definition Zero \ceq Vide.
-Definition One  \ceq Sing Vide.
+Definition Zero := Vide.
+Definition One  := Sing Vide.
 \end{lstlisting}
 \begin{lstlisting}
-Definition img (f:Ens -> Ens) (c:Ens) : Ens \ceq 
+Definition img (f:Ens -> Ens) (c:Ens) : Ens := 
 match c with
 | sup C h => sup _ (fun d => f (h d))
 end.
 \end{lstlisting}
 \begin{lstlisting}
-Definition bu A B \ceq Union (Pair A B).
-Infix "u" \ceq bu (at level 60, right associativity).
+Definition bu A B := Union (Pair A B).
+Infix "u" := bu (at level 60, right associativity).
 \end{lstlisting}
 The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built-it consistency checker cannot infer well-foundedness.
 \begin{lstlisting}
 Fail
 Program Fixpoint  OPair_Zero (c : Ens) : Ens
-                    \ceq bu (img OPair_Zero Zero) (img OPair_One c)
+                    := bu (img OPair_Zero Zero) (img OPair_One c)
             with  OPair_One  (c : Ens) : Ens
-                    \ceq bu (img OPair_Zero One ) (img OPair_One c)
+                    := bu (img OPair_Zero One ) (img OPair_One c)
 .
 \end{lstlisting}
 In order to overcome this obstacle the known special cases are defined first:
 \begin{lstlisting}
-Definition img_OPair_Zero_on_Zero \ceq Vide.      
+Definition img_OPair_Zero_on_Zero := Vide.      
 (* (img OPair_Zero Zero) === {(0,k)|k in 0} = emptyset *)
-Definition        OPair_Zero_Zero \ceq Vide.      
+Definition        OPair_Zero_Zero := Vide.      
 (* OPair Zero Zero === (0,0) = {(0,j)|j in 0}u{(1,k)|k in 0} = emptyset *)
-Definition img_OPair_Zero_on_One  \ceq Sing Vide. 
+Definition img_OPair_Zero_on_One  := Sing Vide. 
 (*(img OPair_Zero One) === {(0,k)|k in 1} = {(0,0)} = {emptyset}*)
-Definition        OPair_Zero_One  \ceq Sing Vide. 
+Definition        OPair_Zero_One  := Sing Vide. 
 (* OPair Zero One === (0,1) = {(0,k)|k in 0}u{(0,k)|k in 1} =
 = {} u {(0,0)} = {0} = {emptyset} *)
 
 
-Program Fixpoint OPair_Zero (c:Ens):Ens \ceq               (img OPair_One c)
-            with OPair_One  (c:Ens):Ens \ceq (Sing Vide) u (img OPair_One c) 
+Program Fixpoint OPair_Zero (c:Ens):Ens :=               (img OPair_One c)
+            with OPair_One  (c:Ens):Ens := (Sing Vide) u (img OPair_One c) 
 (* OPair_Zero c = (img OPair_Zero   Zero) u (img OPair_One c) *)
 (* OPair_One  c = (img_OPair_Zero_on_One) u (img OPair_One c) *)
 \end{lstlisting}
 Finally, the ordered pair of arbitrary classes is defined:
 \begin{lstlisting}
-Definition OPair (a b: Ens) : Ens \ceq (img OPair_Zero a) u (img OPair_One b).
+Definition OPair (a b: Ens) : Ens := (img OPair_Zero a) u (img OPair_One b).
 \end{lstlisting}
 
 \subsection{Model of ordered pair \& theorems}

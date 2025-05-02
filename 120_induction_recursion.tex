@@ -2,10 +2,8 @@
 \input{BEGIN.tex}
 \section{Height of a set}
 %Theorems about transifinite- and epsilon- induction and recursion.
-\begin{recall}\ \\
-Transfinite recursion\\
-$G:\V\to\V$\\
-$\exists! F:\Ord\to\V$, s.t.\\
+\begin{recall}[transfinite recursion]
+Let $G:\V\to\V$, then $\exists! F:\Ord\to\V$, such that
 $F(a) = G(F\restriction a)$.
 \end{recall}
 offtopic:
@@ -216,8 +214,8 @@ Using the epsilon induction.\\
 \[
 Q\eqdef \cc{x\in\V}{h(x)\in\On}
 \]
-If $\V\subclass Q$ then $\forall x\in\V, h(x)\in\On$, and the proof is done.\\
-To Show: $\power Q\subclass Q$, or, equivalently, $\forall x, (x\set)\land (x\subclass Q) \implies (x\in Q)$.\\
+If $\V\subclass Q$ then $\forall x\in\V,\ h(x)\in\On$, and the proof is done.\\
+To Show: $\power Q\subclass Q$, or, equivalently, $\forall x,\ (x\set)\land (x\subclass Q) \implies (x\in Q)$.\\
 \[
 (x\subclass Q)
 \IMPLIES
@@ -240,7 +238,7 @@ To Show: $\power Q\subclass Q$, or, equivalently, $\forall x, (x\set)\land (x\su
 \[
 (s\set)
 \LAND
-(h\mathrm{\ set\-valued\ function})
+(h\text{ set--valued function})
 \IMPLIES
 (h(x)\set)
 \]

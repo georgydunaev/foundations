@@ -2,17 +2,17 @@
 \input{BEGIN.tex}
 \section{Classes--as--types, sets--as--expressions approach}
 %\subsection{Classes-as-Types semantics}
-In this section, we will see, that there is a semantic of $\Pi$-, $\Sigma$-,$W$-, $M-$types in classes.
+In this section, we will see, that there is a semantic of $\Pi$--, $\Sigma$--,$W$--, $M$--types in classes.
 
 First of all, we (loosely) define the semantics.
 
 Since, everything is a class in MK, we have:
 \[
-\semantics("(A:\Type)")\eqdef \top.
+\semantics(``(A:\Type)")\eqdef \top.
 \]
 Dependent types are treated as families.
 \[
-\semantics(``(x:A\vdash B(x):\Type)'')\eqdef (B\family)\land(\dom(B)\subseteq A).
+\semantics(``(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\dom(B)\subseteq A).
 \]
 
 \[
@@ -776,8 +776,8 @@ Another definition:\\
 \begin{theorem}
 \end{theorem}
 \pagebreak
-\subsection{Implementing $W$--types}
-\subsubsection{Axioms of $W$--types}
+\subsection{Implementing W--types}
+\subsubsection{Axioms of W--types}
 \underline{Formation of W-type:}\\
 Let $F$ be a family of types.\\
 Then $\W F$ is also a type.\\
@@ -938,13 +938,13 @@ Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of
 \Done
 \end{theorem}
 
-\subsubsection{Soundness of $W$--types}
+\subsubsection{Soundness of W--types}
 \dots
 \pagebreak
-\subsection{Implementing $M$--types [not present]} %unfinished
-\subsubsection{Axioms of $M$--types}
+\subsection{Implementing M--types [not present]} %unfinished
+\subsubsection{Axioms of M--types}
 \dots
-\subsubsection{Model of $M$--types}
+\subsubsection{Model of M--types}
 \[
 MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
 \]
@@ -954,6 +954,6 @@ MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{
 \[
 \inf : \dots
 \]
-\subsubsection{Soundness of $M$--types}
+\subsubsection{Soundness of M--types}
 \dots
 \input{END.tex}

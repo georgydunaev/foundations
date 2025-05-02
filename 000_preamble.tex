@@ -55,6 +55,26 @@
 %\usepackage{mathtools} % \coloneqq  ( tlmgr install mathtools )
 % \usepackage[lite]{mtpro2}
 
+\newcommand{\quantifierthickness}{thin}
+
+\usepackage{bm}
+
+%%%%%%%%%%% MAKE ALL MATH BOLD
+\iffalse
+\usepackage{lmodern}
+%\usepackage{fontspec}
+%\setmainfont{Arial Black}
+
+\renewcommand{\rmdefault}{b} % set roman default to bold
+\renewcommand{\bfdefault}{b} % ensure bold series is used
+\boldmath
+% use insiide the document %\bfseries%\boldtext
+\renewcommand{\normalfont}{\bfseries}
+%\unboldmath
+\renewcommand{\quantifierthickness}{bold}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{bussproofs} %
 
 \usepackage{verbatim} % multiline comments
@@ -212,6 +232,9 @@
   { }% space after theorem head; " " = normal interword space
   {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}{\label{#1:#2}}}
 %fail!
+
+%\renewenvironment{proof}{{\bfseries Proof}}{\ }%
+\renewenvironment{proof}{\hfill\break{\textit{Proof.}}\phantom{.}}{\hfill$\square$}
 
 \theoremstyle{theoremdd}
 %\label{\detokenize{#3}}
@@ -387,8 +410,10 @@
 %\newcommand{\L}{\mathrm{L}}
 \newcommand{\Binf}{{\mathrm{B}^\infty}} %classes
 \newcommand{\Linf}{{\mathrm{L}^\infty}}
+\newcommand{\Lp}{{\mathrm{L}^p}}
 %\newcommand{\Finf}{{\mathrm{F}^\infty}}
 
+\newcommand{\Aau}{{\mathcal{A}}}
 \newcommand{\frakBinf}{{\mathfrak{B}^\infty}} % unfactorized
 \newcommand{\frakFinf}{{\mathfrak{F}^\infty}}
 \newcommand{\frakLinf}{{\mathfrak{L}^\infty}}
@@ -448,7 +473,9 @@
 \newcommand{\IFFdef}{\ {\stackrel{\defi}{\IFFnows}}\ }
 \newcommand{\iffdef}{\ {\stackrel{\defi}{\iffnows}}\ }
 \newcommand{\IFFbaddef}{\ {\stackrel{\baddefi}{\IFFnows}}\ }
-\renewcommand{\iff}{\ \longleftrightarrow\ }
+%\renewcommand{\iff}{\ \longleftrightarrow\ }
+\renewcommand{\iff}{{\ \iffnows\ }}
+
 \newcommand{\Implies}{\ \Rightarrow\ }
 %\newcommand{\Implies}{|\models-}
 
@@ -485,6 +512,10 @@
 \newcommand{\ccc}[3]{
 \left\{\,#2\ \middle|^{\mathclap{\smash{\mkern+5mu \vspace{-4pt}{#1}}}}\ #3\,\right\}%^{#1}
 }
+
+\newcommand{\thickbar}{\raisebox{-2.5pt}{\rule{1.2pt}{10pt}}}
+\newcommand{\boldccc}[3]{
+\bm{\{ }\,#2\  \thickbar^{\mathclap{\smash{\mkern+8mu \vspace{-4pt}{\phantom{.}#1}}}}\ #3\, \bm{ \} }}%^{#1}
 
 %\renewcommand{\ccc}[3]{
 %\left.\left\{\,%\begingroup
@@ -717,8 +748,8 @@
 \usepackage{float} % H hardposition for tables ( tlmgr install float )
 %% Quantifiers
 
-
-\newcommand{\clearthin}{\usefont{\encodingdefault}{ClearSans-TLF}{thin}{n}}
+%bold instead of thin on the next line
+\newcommand{\clearthin}{\usefont{\encodingdefault}{ClearSans-TLF}{\quantifierthickness}{n}}
 \newcommand{\definequantifier}[3]{%1 = command, #2 = h or v, #3 = letter
   \if #2h%
     \DeclareRobustCommand{#1}{\scalebox{-1}[1]{\text{\clearthin#3}}}%
@@ -860,6 +891,76 @@
 %\newcommand{\myrightarrow}[1]{\xrightarrow{\makebox[2em][c]{$\scriptstyle#1$}}}‌
 %f_n \myrightarrow{\mu} f
 %f_n \myrightarrow{L^p} f
+
+
+
+
+% Derivative dot:
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+% ====
+
+\usepackage{xparse}
+\usepackage{accents}
+
+\ExplSyntaxOn\makeatletter
+
+%\renewcommand*\dot[1]{%
+%  \placeaccent{\acc@dot\mkern2.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%
+%  }
+
+%\renewcommand*\meta[1]{%
+%  \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%
+%  }
+
+%\accentset{\sbullet}{A}%\vphantom{A}
+\newcommand{\meta}[1]{\accentset{\mkern3.0mu\sbullet}{{#1\vphantom{A}}}}%
+\newcommand{\mmeta}[1]{\accentset{\sbullet\sbullet}{#1}}
+\newcommand{\mmmeta}[1]{\accentset{\sbullet\sbullet\sbullet}{#1}}
+
+\renewcommand*\dddot[1]{%
+  \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%
+  }
+\renewcommand*\ddddot[1]{%
+
+\placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%
+  }
+\NewDocumentCommand \vardot {O{1} m }
+  {
+    \int_compare:nNnTF
+      {#1} = {1}
+      {\dot #2}
+      {\placeaccent{\prg_replicate:nn {#1-1} {\acc@dot\mkern1.4mu}\acc@dot}{#2}}
+  }
+\newcommand*\placeaccent[2]{%
+  \begingroup
+  \def\acc@dot{\kern-0.08em.\kern-0.08em}%
+  \def\acc@skip{\ifx\macc@style\displaystyle0.32
+           \else\ifx\macc@style\textstyle0.32
+           \else\ifx\macc@style\scriptstyle0.22
+           \else0.15\fi\fi\fi ex}%
+  \def\mathaccent##1##2{%
+    \setbox6\hbox{$\m@th\macc@style#1$}%
+    \@tempdima\wd4
+    \advance\@tempdima\macc@kerna
+    \advance\@tempdima-\wd6
+    \divide\@tempdima\tw@
+    \@tempdimb\z@
+    \ifdim\@tempdima<\z@ \@tempdimb-\@tempdima \@tempdima\z@ \fi
+    \vbox{\offinterlineskip
+          \moveright\@tempdima\box6
+          \kern\acc@skip
+          \moveright\@tempdimb\box4}%
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+  \macc@nested@a\relax111{#2}%
+  \endgroup
+}
+\makeatother\ExplSyntaxOff
 
 
 
