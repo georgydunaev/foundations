@@ -308,16 +308,24 @@
 }
 %\newcommand{\mydot}{.\ }
 \newcommand{\mydot}{,}
+\newcommand{\myparse}{{\text{parse}}}
+\newcommand{\DottedString}{{\text{DottedString}}}
+
 \newcommand{\card}{{\text{card}}}
 \newcommand{\Lau}{{\mathcal{L}}}
 \newcommand{\Fau}{{\mathcal{F}}}
 \newcommand{\Con}{{\text{Con}}}
 \newcommand{\LRA}{\Longleftrightarrow}
 \newcommand{\alev}{{\textrm{a.e.}}}
-\newcommand{\defi}{{\textrm{def}}}
+\newcommand{\defi}{{\textrm{def.}}}
+\newcommand{\noti}{{\textrm{notation}}}
+
 \newcommand{\baddefi}{{\textrm{bad\ def}}}
 \newcommand{\ceq}{\,{\coloneqq}\,}
 \newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
+%\newcommand{\eqnot}{\,{\stackrel{\noti}{\coloneqq}}\,}
+\newcommand{\eqnot}{\,{\stackrel{\noti}{:\equiv}}\,}
+
 \newcommand{\eqbaddef}{\,{\stackrel{\baddefi}{\coloneqq}}\,}
 \newcommand{\rsto}{{\stackrel{RS}{\to}}}
 \newcommand{\eqae}{{\stackrel[\mu]{\alev}{\,=\,}}}
@@ -508,6 +516,52 @@
 %(i.e. with term on the left and with the bound variable on top of the vertical line)
 %\mathsmash{#1}
 %\hspace{.0em}
+
+%%% valency zero
+\newcommand{\boldbot}{\pmb{\bm{\bot}}}
+\newcommand{\boldtop}{\pmb{\bm{\top}}}
+
+%\newcommand{\thinneg}[1]{(\neg #1)}
+%\newcommand{\boldneg}[1]{\pmb{(}\bm{\neg} #1\pmb{)}}
+
+%%% valency one
+\newcommand{\thinA}[2]{(#1 #2)}
+\newcommand{\boldA}[2]{\pmb{(}\bm{#1} #2\pmb{)}}
+
+%%% valency two
+\newcommand{\thinAA}[3]{(#2 #1 #3)}
+\newcommand{\boldAA}[3]{\pmb{(} #2 \bm{#1} #3\pmb{)}}
+
+%%% quantifier
+\newcommand{\thinQ}[3]{(#1 #2,\ #3)}
+\newcommand{\boldQ}[3]{\pmb{(} \pmb{#1} #2 \pmb{,\ } #3\pmb{)} }
+
+
+\newcommand{\thinneg}[1]{\thinA{\neg}{#1}}
+\newcommand{\boldneg}[1]{\boldA{\neg}{#1}}
+\newcommand{\thinin}[2]{\thinAA{\in}{#1}{#2}}
+\newcommand{\boldin}[2]{\boldAA{\in}{#1}{#2}}
+\newcommand{\thinimplies}[2]{\thinAA{\implies}{#1}{#2}}
+\newcommand{\boldimplies}[2]{\boldAA{\implies}{#1}{#2}}
+\newcommand{\thinor}[2]{\thinAA{\lor}{#1}{#2}}
+\newcommand{\boldor}[2]{\boldAA{\lor}{#1}{#2}}
+\newcommand{\thinand}[2]{\thinAA{\land}{#1}{#2}}
+\newcommand{\boldand}[2]{\boldAA{\land}{#1}{#2}}
+\newcommand{\thincomma}[2]{\thinAA{,}{#1}{#2}}
+\newcommand{\boldcomma}[2]{\boldAA{,}{#1}{#2}}
+\newcommand{\thinforall}[2]{\thinQ{\forall}{#1}{#2}}
+\newcommand{\boldforall}[2]{\boldQ{\forall}{#1}{#2}}
+\newcommand{\thinexists}[2]{\thinQ{\exists}{#1}{#2}}
+\newcommand{\boldexists}[2]{\boldQ{\exists}{#1}{#2}}
+\newcommand{\thinepsilon}[2]{\thinQ{\epsilon}{#1}{#2}}
+\newcommand{\boldepsilon}[2]{\boldQ{\epsilon}{#1}{#2}}
+
+
+%\newcommand{\thinin}[2]{(\neg #1\in #2)}
+%\newcommand{\boldin}[2]{\pmb{(} #1 \bm{\in} #2\pmb{)}}
+
+
+
 
 \newcommand{\ccc}[3]{
 \left\{\,#2\ \middle|^{\mathclap{\smash{\mkern+5mu \vspace{-4pt}{#1}}}}\ #3\,\right\}%^{#1}
@@ -917,6 +971,9 @@
 \newcommand{\meta}[1]{\accentset{\mkern3.0mu\sbullet}{{#1\vphantom{A}}}}%
 \newcommand{\mmeta}[1]{\accentset{\sbullet\sbullet}{#1}}
 \newcommand{\mmmeta}[1]{\accentset{\sbullet\sbullet\sbullet}{#1}}
+
+\newcommand{\myquote}[1]{\ifmmode `` #1 " \else `` #1 '' \fi}
+\newcommand{\antiquote}[1]{\meta{#1}}
 
 \renewcommand*\dddot[1]{%
   \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%

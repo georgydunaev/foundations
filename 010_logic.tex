@@ -72,7 +72,8 @@ In this book, a class theory is being developed and studied, so classes are chos
 \begin{metanotation}[styles]
 The following style conventions are adopted:
 \begin{enumerate}
-\item Every non-bold, 1--letter word of Greek or Latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
+\item Every bold 
+\item Every non--bold, 1--letter word of Greek or Latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
 \item Words of greek or latin alphabet written in ``\textbackslash mathrm'' style are constants.
 \end{enumerate}
 \end{metanotation}
@@ -121,13 +122,17 @@ If dependent types are allowed, then
 If not, then certain formulas become ill-formed, and need to be checked.
 \fi
 \begin{metanotation}[typing]
-A string of the form $(x:A)$ is a notation for 
+Bold mathematical symbols are just text, like ``string'' in programming languages. Thin symbols are various meta--level functions.
+A string of the form $(s:A)$ is a notation for 
 %$(x \in A)$.\\%\ulcorner x \urcorner
-$(\ulcorner x \urcorner \in A)$.\\%\ulcorner x \urcorner
+%$(\ulcorner x \urcorner \in A)$.\\%\ulcorner x \urcorner
+$((\#s) \in A)$.\\%\ulcorner x \urcorner
+Maybe even $((\#s) \in (\#A))$(ToDo).\\%\ulcorner x \urcorner
 
 Thin symbols are used for depicting functional symbols on object level.\\
 Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.\\
-Also, the following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\ccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.
+Also, the following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.
+\iffalse
 \[
 \pmb{\bm{\bot}}
 \eqdef
@@ -144,6 +149,29 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \ccc{\meta{x}}{\meta{t}}{\meta{\phi}}
 %\right\urcorner
 \]
+\fi
+\[
+\bot
+\eqdef
+%\left\ulcorner
+``
+\boldbot
+"
+%\right\urcorner
+\]
+\[
+\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
+\]
+\[
+\ccc{x}{t}{\phi}
+\eqdef
+%\left\ulcorner
+``
+\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}
+"
+%\right\urcorner
+\]
+
 
 (and so on\dots)
 \end{metanotation}
@@ -156,7 +184,7 @@ The inductive definition of terms:
 %\item $(bt:\BTerm) \Implies ((x\mapsto t):\BTerm)$.
 %\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Term)$.
 %\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Term)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
-\item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\boldccc{x}{t}{\phi} :\Term)$.
+\item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
 \iffalse
 \item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
@@ -168,31 +196,38 @@ The inductive definition of terms:
 The inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
-\item $(\pmb{\bm{\bot}}:\Fm)\ ,\ (\pmb{\bm{\top}}:\Fm)$. %\ ,\ (\ddagger:\Fm)$.
+\item $(\bot:\Fm)\ ,\ (\top:\Fm)$. %\ ,\ (\ddagger:\Fm)$.
 %\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
-\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm)$.
-\item $(A:\Fm) \Implies (\pmb{(}\bm{\neg} A\pmb{)}:\Fm)$.
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\pmb{(}A\pmb{\implies} B\pmb{)}:\Fm)$.
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\pmb{(}A\pmb{\land} B\pmb{)}:\Fm)$.
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\pmb{(}A\pmb{\lor} B\pmb{)}:\Fm)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\pmb{(}\pmb{\forall} x\bm{,}A\pmb{)}:\Fm)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\pmb{(}\pmb{\exists} x\bm{,}A\pmb{)}:\Fm)$.
+\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\thinin{t_1}{t_2}:\Fm)$
+%(\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm).
+\[
+\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
+\]
+
+
+\item $(A:\Fm) \Implies (\thinneg{A}:\Fm)$.
+\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinimplies{A}{B}:\Fm)$.
+% (\pmb{(}A\pmb{\implies} B\pmb{)}:\Fm)
+\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinand{A}{B}:\Fm)$.
+\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinor{A}{B}:\Fm)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinforall{x}{A}:\Fm)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinexists{x}{A}:\Fm)$.
 %\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((!x.A):\Fm)$.
 \iffalse
 \item $(t:\Term) \Implies (\pmb{(}t \bm{\lexists}\pmb{)}:\Fm)$.
 \item $(t:\Term) \Implies (\pmb{(}t \bm{\lunique}\pmb{)}:\Fm)$.
 \fi
 %\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Term)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Term)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinepsilon{x}{A}:\Term)$.%(\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Term).
 \end{enumerate}
 \end{metadefinition}
 \begin{metadefinition}[$\BTerm$]%\ \\
-The inductive definition of bound terms:
-\item $(x:\Var)\ ,\ (t:\Term) \Implies (\pmb{(}x\bm{,}t\pmb{)}:\BTerm)$.
+The inductive definition of bound terms:%\pmb{(}x\bm{,}t\pmb{)}
+\item $(x:\Var)\ ,\ (t:\Term) \Implies (\thincomma{x}{t}:\BTerm)$.
 \end{metadefinition}
 \begin{definition}[$\BFm$]%\ \\
-The inductive definition of bound formulas:
-\item $(x:\Var)\ ,\ (\varphi:\Fm) \Implies (\pmb{(}x\pmb{,}\varphi\pmb{)}:\BFm)$.%\mapsto
+The inductive definition of bound formulas:%pmb{(}x\pmb{,}\varphi\pmb{)}
+\item $(x:\Var)\ ,\ (\varphi:\Fm) \Implies (\thincomma{x}{\varphi}:\BFm)$.%\mapsto
 \end{definition}
 
 
@@ -221,6 +256,7 @@ Antiquotation:
 \[
 \FV(\ulcorner\emptyclass\urcorner)\eqdef \emptylist
 \]%\emptyclass
+\iffalse
 \[
 \forall x\in\Var,\ %
 \forall A\in\Fm,\ %
@@ -231,6 +267,20 @@ Antiquotation:
 \]
 \[
 \FV(\pmb{(\exists}x\pmb{,}\ A\pmb{)})\eqdef \FV(A)\setminus\{x\}
+\]
+\fi
+\[
+\forall x\in\Var,\ %
+\forall A\in\Fm,\ %
+\FV(\ulcorner\boldexists{ \meta{ x } }{\meta{ A } }\urcorner)\eqdef \FV(A)\setminus\{x\}
+\]%\emptyclass
+
+\[
+\FV(\#``\boldexists{ \meta{ x } }{\meta{ A } }")\eqdef \FV(A)\setminus\{x\}
+\]
+
+\[
+\FV(\#\thinexists{x}{A})\eqdef \FV(A)\setminus\{x\}
 \]
 
 \iffalse
@@ -367,12 +417,12 @@ The answer is computed on the highest meta--level of thes formula, or exception 
 The axiom schemes are expressed on the metalevel in this way:
 \[
 \forall A,B \in \Fm,
-\Tau \vdash \ulcorner(\meta{A} \implies (\meta{B} \implies \meta{A}))\urcorner
+\Tau \vdash (A \implies (B \implies A))
 \]
-in different notation:
+in different(and equivalent) notation:
 \[
 \forall A,B \in \Fm,
-\Tau \vdash \pmb{(}A \pmb{\implies} \pmb{(}B \pmb{\implies} A\pmb{)}\pmb{)}
+\Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner
 \]
 \[
 \text{\dots (other axioms are transformed similarly) \dots}
@@ -387,6 +437,7 @@ Everything that is derivable in $\Tau$ is also derivable in $\Fau$:
 \forall \phi\in\Fm, (\Tau \vdash \phi) \implies (\Fau \vdash \phi)
 \]
 Both of the following statements are necessary, because one is not implies the other(in general):
+\iffalse WRONG,
 \[
 \forall A,B \in \Fm,
 (\Tau \vdash \ulcorner(\meta{A} \implies \meta{B})\urcorner)
@@ -403,9 +454,57 @@ Both of the following statements are necessary, because one is not implies the o
 \implies
 (\Fau \vdash \ulcorner\meta{B}\urcorner)
 \]
+\fi
+%\myquote{
+\begin{metanotation}[metavariables]
+This notation is allowed inside quotation marks(i.e ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
 \[
-\forall A\in \Fm,\ A \equiv \ulcorner\meta{A}\urcorner
+A \eqnot {\antiquote{\pmb{A}}}
 \]
+\[
+(\Theta \vdash \phi) \eqnot \pmb{(}\#\Theta \pmb{\vdash} \#\phi\pmb{)}
+\]
+\end{metanotation}
+
+\[
+\myparse : \DottedString \to (\text{syntax frag list})
+\]
+
+Some computation rules:
+
+For all $A\in(\text{syntax frag list})$, 
+\[
+A \equiv \text{parse}(A).
+\]
+In particular(merely for demonstration purposes),
+\[
+\forall A : \Fm,\ A \equiv \myparse{(\myquote{\antiquote{\pmb{A}}})}.
+\]
+
+\[
+\forall A,B \in \Fm,
+(\Tau \vdash (A \implies B))
+\land 
+(\Tau \vdash A )
+\implies
+(\Tau \vdash B)
+\]
+\[
+\forall A,B \in \Fm,
+(\Fau \vdash (A \implies B))
+\land 
+(\Fau \vdash A)
+\implies
+(\Fau \vdash B)
+\]
+
+\iffalse
+\[
+\forall A\in \Fm,\ A \equiv \ulcorner\meta{\pmb{A}}\urcorner
+\]
+\fi
+
+
 (The symbol $\equiv$ is an unnecessary informal notation for $=$, for a single purpose of giving a hint, that equality is not only propositional, but also computational. For the purpose of this book, their difference can be safely ignored by the reader.)
 
 %_{(1)}
@@ -2470,7 +2569,7 @@ The same applies to $\Fau\vdash(\emptyset\in \{\emptyset\})$, $\Fau\vdash(\Fau\v
 Somehow it is always obvious from the context, what is meant.\\
 \textbf{Solution:}
 \[
-``(\emptyset\in \{\emptyset\})"\in\text{String}
+``(\emptyset\in \{\emptyset\})"\in\text{DottedString}
 \]
 \[
 \ulcorner
@@ -2562,6 +2661,20 @@ or better (it is still too informal)
 \begin{lstlisting}
 datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
 \end{lstlisting}
+\[
+\text{syntax} \eqdef \Fm \sqcup \dots 
+\]
+\[
+\# \:  \text{(syntax frag list)} \to \Term)
+\]
+\[
+`` \cdot " \: \text{DottedString} to \text{syntax frag list} 
+\]
+\begin{lstlisting}
+type DottedString = (alphabet * (unit option)) list
+\end{lstlisting}
+
+
 
 A string representation of the formula is divided into fragments, so it is a list of fragments of what? Of syntactic entities. It is indeed, because a metavariable may be used to represent literally anything syntactic in the formula: a term, a variable(as before), a subformula, etc.
 
