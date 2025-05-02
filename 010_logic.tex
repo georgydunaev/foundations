@@ -121,16 +121,20 @@ If dependent types are allowed, then
 \]
 If not, then certain formulas become ill-formed, and need to be checked.
 \fi
-\begin{metanotation}[typing]
+\begin{metanotation}[meaning of typing relation]
 Bold mathematical symbols are just text, like ``string'' in programming languages. Thin symbols are various meta--level functions.
 A string of the form $(s:A)$ is a notation for 
 %$(x \in A)$.\\%\ulcorner x \urcorner
 %$(\ulcorner x \urcorner \in A)$.\\%\ulcorner x \urcorner
-$((\#s) \in A)$.\\%\ulcorner x \urcorner
-Maybe even $((\#s) \in (\#A))$(ToDo).\\%\ulcorner x \urcorner
-
+%$((\#s) \in A)$.\\%\ulcorner x \urcorner
+%Maybe even 
+$((\#s) \in (\#A))$.%(ToDo).%\ulcorner x \urcorner
+\end{metanotation}
+\begin{metanotation}[meaning of symbol's boldness]
 Thin symbols are used for depicting functional symbols on object level.\\
-Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.\\
+Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.
+\end{metanotation}
+\begin{metanotation}[metasyntax for constructors]
 Also, the following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.
 \iffalse
 \[
@@ -152,7 +156,7 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \fi
 \[
 \bot
-\eqdef
+\eqnot
 %\left\ulcorner
 ``
 \boldbot
@@ -164,15 +168,13 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \]
 \[
 \ccc{x}{t}{\phi}
-\eqdef
+\eqnot
 %\left\ulcorner
 ``
 \boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}
 "
 %\right\urcorner
 \]
-
-
 (and so on\dots)
 \end{metanotation}
 
@@ -225,10 +227,10 @@ The inductive definition of formulas:
 The inductive definition of bound terms:%\pmb{(}x\bm{,}t\pmb{)}
 \item $(x:\Var)\ ,\ (t:\Term) \Implies (\thincomma{x}{t}:\BTerm)$.
 \end{metadefinition}
-\begin{definition}[$\BFm$]%\ \\
+\begin{metadefinition}[$\BFm$]%\ \\
 The inductive definition of bound formulas:%pmb{(}x\pmb{,}\varphi\pmb{)}
 \item $(x:\Var)\ ,\ (\varphi:\Fm) \Implies (\thincomma{x}{\varphi}:\BFm)$.%\mapsto
-\end{definition}
+\end{metadefinition}
 
 
 \iffalse
@@ -245,11 +247,13 @@ Antiquotation:
 \]
 \end{definition}
 \fi
-
-\begin{metadefinition}[ToDo: free variables of the term]
+\begin{metadefinition}[syntax]
 \[
 \mathrm{Syntax} \eqdef \Term \sqcup \Fm \sqcup \dots
 \]
+\end{metadefinition}
+\begin{metadefinition}[free variables of]
+The function, which returns the free variables of a syntactyc object, e.g. of the term:(ToDo)
 \[
 \FV : \mathrm{Syntax} \to \List(\Var)
 \]
@@ -341,6 +345,48 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \fi
 \end{definition}
 \fi
+
+
+\begin{metanotation}[metavariables]
+This notation is allowed inside quotation marks(i.e. ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
+\[
+A \eqnot {\antiquote{\pmb{A}}}
+\]
+\[
+(\Theta \vdash \phi) \eqnot \pmb{(}\#\Theta \pmb{\vdash} \#\phi\pmb{)}
+\]
+\end{metanotation}
+\begin{metadefinition}[encoding]
+This definition is a simplified variant of G\"odel's numbering, since for the purposes of this book it is unnecessary to encode syntactic entities(terms, formulas, etc) with natural numbers.
+\[
+\# : (\text{syntax frag list}) \to \text{syntax}
+\]
+The function $\#$ may raise an exception if the raw string take as argument is ill--formed, i.e. if it doesn't follow certain fixed synactic rules.
+\end{metadefinition}
+
+\begin{metadefinition}[parsing function for a string with metavariables]
+\[
+\myparse : \DottedString \to (\text{syntax frag list})
+\]
+\end{metadefinition}
+The parsing function satisfies the following computation rule:\\
+\begin{metainferencerule}
+For all $A\in(\text{syntax frag list})$, 
+\[
+A \equiv \myparse(\myquote{A}).
+\]
+\end{metainferencerule}
+\begin{example}[parsing the metavariable of syntax fragments list representing a formula]
+In particular,% parsing w
+\[
+\forall A : \Fm,\ A \equiv \myparse{(\myquote{\antiquote{\pmb{A}}})}.
+\]
+(It is written merely for demonstration purposes of the metainference rule use and ii a notation inside of the quotation.)\\
+As usual, $(\forall A : \Fm,\ \dots )$ is a notation for $(\forall A\in(\text{syntax frag list}),\ (\#A\in \#\Fm)\implies \dots)$. 
+\end{example}
+
+
+
 \pagebreak
 %\sub
 \subsection{Axioms for the predicate calculus}
@@ -419,7 +465,7 @@ The axiom schemes are expressed on the metalevel in this way:
 \forall A,B \in \Fm,
 \Tau \vdash (A \implies (B \implies A))
 \]
-in different(and equivalent) notation:
+or in different(and equivalent) presentation:
 \[
 \forall A,B \in \Fm,
 \Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner
@@ -429,8 +475,10 @@ in different(and equivalent) notation:
 \]
 \[
 \forall A \in \Fm,
-\Tau \vdash \ulcorner(\meta{A}\lor \neg \meta{A})\urcorner
+\Tau \vdash (A \lor \neg A)
 \]
+%\ulcorner(\meta{A}\lor \neg \meta{A})\urcorner
+
 
 Everything that is derivable in $\Tau$ is also derivable in $\Fau$:
 \[
@@ -456,30 +504,6 @@ Both of the following statements are necessary, because one is not implies the o
 \]
 \fi
 %\myquote{
-\begin{metanotation}[metavariables]
-This notation is allowed inside quotation marks(i.e ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
-\[
-A \eqnot {\antiquote{\pmb{A}}}
-\]
-\[
-(\Theta \vdash \phi) \eqnot \pmb{(}\#\Theta \pmb{\vdash} \#\phi\pmb{)}
-\]
-\end{metanotation}
-
-\[
-\myparse : \DottedString \to (\text{syntax frag list})
-\]
-
-Some computation rules:
-
-For all $A\in(\text{syntax frag list})$, 
-\[
-A \equiv \text{parse}(A).
-\]
-In particular(merely for demonstration purposes),
-\[
-\forall A : \Fm,\ A \equiv \myparse{(\myquote{\antiquote{\pmb{A}}})}.
-\]
 
 \[
 \forall A,B \in \Fm,
@@ -688,7 +712,7 @@ means
 \begin{definition}[definitional equivalence]
 Similarly to the previous definition, let $\phi_1$ and $\phi_2$ be formulas, such that $\phi_1$ is (normally) an application of a (new) predicate symbol to some arguments.\\
 Assume(normally) that $\phi_2$ has no free variable which are not free in $\phi_1$.\\
-Then the formula $(\phi_1 \iffdef \phi_2)$ is a notation(or definition?) for $(\text{closure}(\phi_1 \iff \phi_2))$.
+Then the formula $(\phi_1 \iffdef \phi_2)$ is a notation(or a definition?) for $(\text{closure}(\phi_1 \iff \phi_2))$.
 \end{definition}
 %It may be reasonable to require that 
 
@@ -2668,7 +2692,7 @@ datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
 \# \:  \text{(syntax frag list)} \to \Term)
 \]
 \[
-`` \cdot " \: \text{DottedString} to \text{syntax frag list} 
+`` \cdot " \: \text{DottedString} \to \text{syntax frag list} 
 \]
 \begin{lstlisting}
 type DottedString = (alphabet * (unit option)) list
