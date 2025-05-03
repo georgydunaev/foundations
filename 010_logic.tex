@@ -7,14 +7,19 @@
 %\end{definition}
 %\sub
 \section{Metalanguage}
-Usually, when something is proven, a question arises: where it was proven: what was a foundational theory, what was a metatheory of it?
-Once it is established, the same question may be asked about metametatheory, and so on.
-To avoid this infinite descend with increasing complexity of each step, author proposes to use $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory. In fact, a prefix ``$\mathcal{F}$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to increase of the complexity and increase of a metalevel of the statement.\\
-
+Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
+To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory.\\
+In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statement.\\
+\begin{definition}[level of meta]
+Metalevel of the statement is the maximal amount of nested ``$\mathcal{F}\vdash (\dots)$'' in the formula.
+\end{definition}
 
 
 %Metatheory:\\
-When reading the string of symbols, it is important to distinguish entities which are semantic(e.g. a set $\emptyclass$ or a proposition $(\emptyclass \in \omega)$) from their symbols which are syntactic and belong to metatheory (e.g. a term $\ulcorner\emptyclass\urcorner$, and a judgement $(\ulcorner\emptyclass\urcorner : \Term)$). The the symbols $``\ulcorner\cdot\urcorner"$ are used to explicitly show that that the object inside is syntactic, i.e. is a code. Currently, they are often ommited, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
+During reading the string of symbols, it is important to distinguish entities which are semantic(e.g. a set $\emptyclass$ or a proposition $(\emptyclass \in \omega)$) from their symbols which are syntactic and belonging to metatheory (e.g. a term $\ulcorner\boldemptyclass\urcorner$, and a judgement $(\ulcorner\boldemptyclass\urcorner : \Term)$). The symbols $``\ulcorner\cdot\urcorner"$ are used to explicitly show that that the object inside is syntactic, i.e. is a word. 
+
+%%%%% May be useful:
+%%%%% Currently, they are often ommited, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
 
 
 A sufficiently expressive programming language of reader's choice, may be used for implementing functions and structures which operate with terms, formulas, etc.
@@ -23,7 +28,7 @@ In this chapter, an elementary type theory is informally used.
 Depending on the purposes of the reader, it can be implemented:
 \begin{enumerate}
 \item either in some programming language, leading to creation of a proof assistant (\url{https://github.com/georgydunaev/class_theory_proof_assistant}),
-\item or within the foundations themselves, for example via notions defined in the section ``Classes-as-Types''.
+\item or within the foundations themselves, for example via notions defined in the section ``Classes--as--Types''.
 \end{enumerate}
 
 
@@ -39,8 +44,8 @@ datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
 
 %, which can be implemented either in programming language(and as a result it wil),
 \pagebreak
-\section{Quote from ``Languages and Calculi''}
-This section, is an adaptation and translation of the text from the book ``Languages and Calculi''(\cite[73-74]{vereshchagin_shen_2012}).
+\section{Adaptation of a quote from ``Languages and Calculi''}
+(This section, is an adaptation and translation of the text from the book ``Languages and Calculi'': \cite[73-74]{vereshchagin_shen_2012})).\\
 
 We fix a certain set of symbols called individual variables. These are intended to denote elements of the set over which the functions and predicates are defined; usually, Latin letters such as $x$, $y$, $z$, $u$, $v$, $w$ with indices are used for this purpose. Each formula will use only a finite number of variables, so a countable set of variables will suffice. We assume that the variables are distinct from all function and predicate symbols of the signature (otherwise confusion would arise).
 
@@ -57,7 +62,7 @@ If $A$ is a predicate symbol of arity $k$ and $t_1, \dots, t_k$ are terms, then 
 Formulas are constructed by the following rules:
 \begin{itemize}
   \item An atomic formula is a formula.
-  \item If $\varphi$ is a formula, then $\lnot\varphi$ is a formula.
+  \item If $\varphi$ is a formula, then $(\lnot\varphi)$ is a formula.
   \item If $\varphi$ and $\psi$ are formulas, then the expressions $(\varphi \land \psi)$, $(\varphi \lor \psi)$, and $(\varphi \implies \psi)$ are also formulas.
   \item If $\varphi$ is a formula and $\xi$ is an individual variable, then the expressions $\forall \xi\, \varphi$ and $\exists \xi\, \varphi$ are formulas.
 \end{itemize}
@@ -65,14 +70,14 @@ Formulas are constructed by the following rules:
 In many cases, the signature includes a binary predicate symbol $=$, called \textit{equality}. By tradition, instead of writing $=(t_1, t_2)$, one writes $(t_1 = t_2)$.
 
 \section{Predicate calculus as an object language [unfinished section]}
-In this book, a class theory is being developed and studied, so classes are chosen by author to be objects.
+In this book, a class theory is being developed and studied, so classes are chosen by author to be the objects of theories $\Tau$ and $\Fau$.
 
 %In this chapter metalevel variables are normal, and metalevel constants are bold.
 
 \begin{metanotation}[styles]
 The following style conventions are adopted:
 \begin{enumerate}
-\item Every bold 
+\item Every bold letter denotes the actual letter of from the alphabet.(E.g. ``$\pmb{a}$'', ``$\pmb{b}$'', ``$\pmb{c}$'', etc)
 \item Every non--bold, 1--letter word of Greek or Latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
 \item Words of greek or latin alphabet written in ``\textbackslash mathrm'' style are constants.
 \end{enumerate}
@@ -111,6 +116,36 @@ In order to avoid the complications of the computation-- and constructivism--rel
 %\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Term)$.
 %\end{enumerate}
 %\end{definition}
+
+\begin{lstlisting}
+type DottedString = (Alphabet * Nat) List
+\end{lstlisting}
+
+%The well--establishe name ``antiquotation'' is quite unfortunate.
+\begin{lstlisting}
+datatype 'a Fragment = QUOTE of string | ANTIQUOTE of 'a
+\end{lstlisting}
+
+\begin{lstlisting}
+type Code = (Syntax Fragment List)
+\end{lstlisting}
+
+\[
+\text{Syntax} \eqdef \Fm \sqcup \dots 
+\]
+\[
+\# \:  \text{(Syntax Frag List)} \to \Term)
+\]
+\[
+`` \cdot " \: \text{DottedString} \to \text{(Syntax Fragment List)}
+\]
+
+\iffalse
+A string representation of the formula is divided into fragments, so it is a list of fragments of what? Of syntactic entities. It is indeed, because a metavariable may be used to represent literally anything syntactic in the formula: a term, a variable(as before), a subformula, etc.
+\fi
+
+
+
 \iffalse GOOD BUT TOO COMPLICATED FOR THIS PART
 If dependent types are allowed, then
 \[
@@ -164,6 +199,13 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 %\right\urcorner
 \]
 \[
+\emptyclass
+\eqnot
+\myquote{
+\pmb{\emptyclass}
+}
+\]
+\[
 \thinneg{A} \eqnot ``\boldneg{\meta{A}}"
 \]
 \[
@@ -179,7 +221,7 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \end{metanotation}
 
 
-\begin{metadefinition}[$\Term$]%\ \\
+\begin{metadefinition}[set of terms $\Term$]%\ \\
 The inductive definition of terms:
 \begin{enumerate}
 %\item $(x:\Var(\Term)) \Implies (x:\Term)$.
@@ -194,7 +236,7 @@ The inductive definition of terms:
 \fi
 \end{enumerate}
 \end{metadefinition}
-\begin{metadefinition}[$\Fm$]%\ \\
+\begin{metadefinition}[set of formulas $\Fm$]%\ \\
 The inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
@@ -202,11 +244,10 @@ The inductive definition of formulas:
 %\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
 \item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\thinin{t_1}{t_2}:\Fm)$
 %(\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm).
-\[
-\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
-\]
-
-
+% TODO
+%\[
+%\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
+%\]
 \item $(A:\Fm) \Implies (\thinneg{A}:\Fm)$.
 \item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinimplies{A}{B}:\Fm)$.
 % (\pmb{(}A\pmb{\implies} B\pmb{)}:\Fm)
@@ -687,10 +728,10 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 %\sub
 \subsubsection{Theory and context}
 \begin{definition}[context]%\ \\
-Context is a finite list of arbitrary formulas. It is usually denoted by $\Gamma$ or $\Delta$.
+Context is a finite list of arbitrary formulas. It is usually denoted by the uppercase Greek alphabet letters like $\Gamma$ or $\Delta$.
 \end{definition}
 \begin{definition}[theory]%\ \\
-Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by $\Tau$, $\Theta$ or $\Fau$.
+Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by the uppercase Latin alphabet letters like $\Tau$, $\Theta$ or $\Fau$.
 \end{definition}
 \begin{definition}[definitional equality]
 Let $t_1$ and $t_2$ be terms, such that $t_1$ is (normally) an application of a (new) functional symbol to some arguments.\\
@@ -704,7 +745,7 @@ For example, the formula
 \]
 means
 \[
-\forall X, \power X = \cc{Y}{Y\subclass X}.
+\forall X,\ \power X = \cc{Y}{Y\subclass X}.
 \]
 (This is done to avoid writing a closure operator in definitions, which is necessary, sine technically axioms are declared, which are formulas of the theory, so they must be without free variables.)
 \end{example}
@@ -1292,12 +1333,12 @@ I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
 Inference rules are metaaxioms.\\
 Admissible rules are metatheorems.
 \begin{metatheorem}[simultaneous substitution]%\ \\
-Let $x_1,\dots,x_n$ be variables, $t_1,\dots,t_n$ be terms, and $\phi$ be formula, such that $t_1,\dots,t_n$ is free for $x_1,\dots,x_n$ in $\phi$, then the rule
+Let $x_1, \dots, x_n$ be variables, $t_1, \dots, t_n$ be terms, and $\phi$ be a formula, such that $t_1, \dots, t_n$ is free for $x_1, \dots, x_n$ in $\phi$, then the inference rule
 \begin{prooftree}
 \AxiomC{$\phi$}
 \RightLabel{SimSubst}
 \UnaryInfC{$
-\phi[t_1,\dots,t_n/x_1,\dots,x_n]
+\phi[t_1, \dots, t_n/x_1, \dots, x_n]
 $}
 \end{prooftree}
 is admissible.
@@ -1305,7 +1346,7 @@ is admissible.
 
 \begin{metatheorem}[substitution property / Leibniz's law]%\ \\
 Informally:\\
-``If $a = b$, then, for any well-formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
+``If $a = b$, then, for any well--formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
 Formally:
 \[
 \forall (a,b\in\Term), 
@@ -2498,7 +2539,9 @@ $}
 \]
 \fi
 
-\section{Primitive definitions}
+\section{Primitive definitions[ToDo]}
+\iffalse %BIBGIGIGIGI
+\
 In the beginning, the only functional symbols of the theory $\Tau$ are the class membership symbol(``$\in$'') and, optionally, the equality symbol(``$=$'').\\
 The language and the theory can be (conservatively) extended via ``extension by definition'' process.\\
 How it is connected with completeness, and epsilon calculus axiom?\\
@@ -2682,30 +2725,7 @@ or better (it is still too informal)
 \forall v\in \Var,\ (\Fau\vdash \#(``((x \set)\implies (x\in \{x\}))"[\text{antiquote}(v)/x]))
 \]
 
-\begin{lstlisting}
-datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
-\end{lstlisting}
-\[
-\text{syntax} \eqdef \Fm \sqcup \dots 
-\]
-\[
-\# \:  \text{(syntax frag list)} \to \Term)
-\]
-\[
-`` \cdot " \: \text{DottedString} \to \text{syntax frag list} 
-\]
-\begin{lstlisting}
-type DottedString = (alphabet * (unit option)) list
-\end{lstlisting}
-
-
-
-A string representation of the formula is divided into fragments, so it is a list of fragments of what? Of syntactic entities. It is indeed, because a metavariable may be used to represent literally anything syntactic in the formula: a term, a variable(as before), a subformula, etc.
-
-\begin{lstlisting}
-type metasyntacticEntity = syntax frag list
-\end{lstlisting}
-
+%=======================================
 How does ``$\#$'' work then? If its argument is not just a string, then its value is not just a code of a formula.\\
 
 The theory $\Fau$ is a set of formulas, not exactly(yes/no?) the set of codes of formulas, and certainly not a set of ``metasyntactic entities''.\\
@@ -2771,7 +2791,7 @@ Is $x$ free in $\forall x\in\Var, \Fau \vdash x=x$? No.\\
 Is $x$ free in $\Fau \vdash \forall x_{(0)}\in\Var, \Fau \vdash x_{(1)}=x_{(1)}$? No. (The formula makes sense, despite different numbers)\\
 Is $x$ free in $\Fau \vdash \forall x_{(1)}\in\Var, \Fau \vdash x_{(2)}=x_{(2)}$? Yes.\\
 
-
+%\fi %BIGIGIGIIGIG
 
 %???
 %\fi
@@ -2784,7 +2804,6 @@ Is $x$ free in $\Fau \vdash \forall x_{(1)}\in\Var, \Fau \vdash x_{(2)}=x_{(2)}$
 %\textbf{Solution:}\\Not a problem.
 %\textbf{Problem:}\\
 %\textbf{Solution:}\\
-\pagebreak
 
 
 \begin{constructor*}[a constant ``alphabet $\mathcal{A}$'']
@@ -2836,6 +2855,7 @@ The constant that represents the alphabet is actually an alphabet.
 (\mathcal{A}\text{ alphabet})
 \]
 \end{axiom*}
+\fi %BIGGIGIGI
 \section{Informal definitions}
 
 \begin{definition*}[informal definition of language $\Lau$]%\ \\
@@ -2860,7 +2880,7 @@ accept without a proof that it is not possible to derive a contradiction from $\
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
 Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
 \[
-\Fau \eqdef (\Henkin \Theta,(\Theta\ \Lau\text{--theory}) \land (\Theta\text{ consistent}) \land (\Theta\text{ Henkin-complete}))
+\Fau \eqdef (\Henkin \Theta,\ (\Theta\ \Lau\text{--theory}) \land (\Theta\text{ consistent}) \land (\Theta\text{ Henkin-complete}))
 \]
 \end{definition*}
 
@@ -2911,7 +2931,7 @@ For any theory $\Theta$, define using the ordinal recursion, the following seque
 (following the ideas of \cite{Japaridze1986})
 \end{definition}
 \pagebreak
-\section{Incompleteness of $\Tau$}
+\section{Incompleteness of the theory $\Tau$}
 
 \begin{definition}[provability predicate]
 \[
@@ -2938,7 +2958,10 @@ For any theory $\Theta$, define using the ordinal recursion, the following seque
 (\cite{artemov2024serialpropertiesselectorproofs})
 \end{conjecture}
 
-Note: all rules of inference in this book are supposed to be structural. It means that any substitution of variables in them leads to an inferene rule which also holds. 
+\begin{note}[structural rrules convention]
+All rules of inference in this book are supposed to be structural. It means that any substitution of variables in them leads to an inferene rule which also holds. 
+\end{note}
+
 \begin{inferencerule}[deduction]%(must be wrong?)
 \label{rule:deduction}
 %\Tau_n,
@@ -2969,7 +2992,7 @@ The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-
 }{
 \Tau \vdash (\Xi\vdash\psi)
 }
-\tag{Effective Nec}
+\tag{Effective Necessitation}
 \]
 For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
 \iffalse % rejected
@@ -3005,14 +3028,14 @@ This is forbidden inference rule, because it makes it impossible to implement su
 \]%%\square \psi
 \end{badinferencerule*}
 \begin{note}
-Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real-life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
+Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real--life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
 \end{note}
 
 \begin{badaxiom}
 It is not possible to have an ``axiom'' scheme like 
 \[
 \square\square_n\psi \implies \square_n\psi,
-\tag{``co-transitivity''}
+\tag{``co--transitivity''}
 \]
 because it leads to contradiction due to the second incompleteness theorem.
 %!The solution is either add the inference rule of creed and skew 
@@ -3023,7 +3046,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \fi
 \end{badaxiom}
 \pagebreak
-\section{Completeness of $\Fau$}
+\section{Completeness of the theory $\Fau$}
 \indent The following statement holds because of the properties of $\Fau$:
 \[
 (\Fau\vdash \phi) \iff \phi
