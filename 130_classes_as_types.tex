@@ -278,6 +278,9 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 \[
 \I\eqdef\cc{(x,x)}{x\any}
 \]
+\[
+\I\eqdef\ccc{x}{(x,x)}{\top}
+\]
 \end{definition}
 %8
 \begin{definition}[relational transposition]
@@ -354,7 +357,7 @@ The following attempt of definition requires the value to be set:
 \[
 (x\in A \mapsto t)
 \eqdef
-\ccc{x}{(x,b)}{(x\in A)\land (b \sss t)}
+\ccc{x,b}{(x,b)}{(x\in A)\land (b \sss t)}
 \]
 \end{definition}
 

@@ -52,7 +52,7 @@ We fix a certain set of symbols called individual variables. These are intended 
 We define the notion of a term for a given signature. A \textit{term} is a sequence of variables, commas, parentheses, and signature symbols, which can be constructed according to the following rules:
 \begin{itemize}
   \item An individual variable is a term.
-  \item A function symbol of arity 0 is a term.(sic!)
+  \item A function symbol of arity 0 is a term.
   \item If $t_1, \dots, t_k$ are terms and $f$ is a function symbol of arity $k > 0$, then $f(t_1, \dots, t_k)$ is a term.
 \end{itemize}
 In principle, we could avoid distinguishing function symbols of arity 0 (also called textit{constants}) as a separate group, but then we would have to write parentheses after them (as is done in the C programming language).
@@ -68,7 +68,7 @@ Formulas are constructed by the following rules:
 \end{itemize}
 
 In many cases, the signature includes a binary predicate symbol $=$, called \textit{equality}. By tradition, instead of writing $=(t_1, t_2)$, one writes $(t_1 = t_2)$.
-
+\pagebreak
 \section{Predicate calculus as an object language [unfinished section]}
 In this book, a class theory is being developed and studied, so classes are chosen by author to be the objects of theories $\Tau$ and $\Fau$.
 
@@ -77,7 +77,9 @@ In this book, a class theory is being developed and studied, so classes are chos
 \begin{metanotation}[styles]
 The following style conventions are adopted:
 \begin{enumerate}
-\item Every bold letter denotes the actual letter of from the alphabet.(E.g. ``$\pmb{a}$'', ``$\pmb{b}$'', ``$\pmb{c}$'', etc)
+\item Every bold letter denotes the actual letter of from the alphabet.\\
+Examples: `$\pmb{a}$', `$\pmb{b}$', `$\pmb{c}$', etc.
+%Examples: $\pmb{a}\ceq$`a', $\pmb{b}\ceq$`b', $\pmb{c}\ceq$`c', etc.
 \item Every non--bold, 1--letter word of Greek or Latin alphabet written in ``\textbackslash mathnormal'' style with or without subscript, is a metavariable.
 \item Words of greek or latin alphabet written in ``\textbackslash mathrm'' style are constants.
 \end{enumerate}
@@ -130,15 +132,56 @@ datatype 'a Fragment = QUOTE of string | ANTIQUOTE of 'a
 type Code = (Syntax Fragment List)
 \end{lstlisting}
 
+\begin{metadefinition}[syntax]
 \[
-\text{Syntax} \eqdef \Fm \sqcup \dots 
+\text{Syntax} \eqdef \Term \sqcup \Fm \sqcup \BTerm \sqcup \dots
 \]
+\end{metadefinition}
+
+%\[
+%\text{Syntax} \eqdef \Fm \sqcup \dots 
+%\]
+\begin{metadefinition}[encoding]
+This definition is a simplified variant of G\"odel's numbering, since for the purposes of this book it is unnecessary to encode syntactic entities(terms, formulas, etc) with natural numbers.
 \[
-\# \:  \text{(Syntax Frag List)} \to \Term)
+\# : (\text{Syntax Frag List}) \to \text{Syntax}
 \]
+The function $\#$ may raise an exception if the raw string take as argument is ill--formed, i.e. if it doesn't follow certain fixed synactic rules.\\
+It 
+\end{metadefinition}
+%\[
+%\# \:  \text{(Syntax Frag List)} \to \Term)
+%\]
 \[
-`` \cdot " \: \text{DottedString} \to \text{(Syntax Fragment List)}
+`` \cdot " \: \to \text{DottedString} 
 \]
+%\to \text{(Syntax Fragment List)}
+
+\[
+\myparse \: \text{DottedString} \to \text{(Syntax Fragment List)}
+\]
+
+%\[
+%???`` \cdot " \: \text{DottedString} \to \text{(Syntax Fragment List)}
+%\]
+
+\begin{metadefinition}[parsing function for a string with metavariables]
+\[
+\myparse : \DottedString \to (\text{Syntax Frag List})
+\]
+\end{metadefinition}
+The parsing function satisfies the following computation rule:\\
+\begin{metainferencerule}
+%For all $A\in(\text{Syntax Fragment List})$, 
+For all $A\in(\text{Syntax})$,
+\[
+A \equiv \myparse(\myquote{\meta{\pmb{A}}}).
+\]
+
+\[
+A \equiv \myparse(\myquote{A}).
+\]
+\end{metainferencerule}
 
 \iffalse
 A string representation of the formula is divided into fragments, so it is a list of fragments of what? Of syntactic entities. It is indeed, because a metavariable may be used to represent literally anything syntactic in the formula: a term, a variable(as before), a subformula, etc.
@@ -169,7 +212,7 @@ $((\#s) \in (\#A))$.%(ToDo).%\ulcorner x \urcorner
 Thin symbols are used for depicting functional symbols on object level.\\
 Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.
 \end{metanotation}
-\begin{metanotation}[metasyntax for constructors]
+\begin{metanotation}[metasyntax for constructors inside the quoted text]
 Also, the following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.
 \iffalse
 \[
@@ -242,26 +285,27 @@ The inductive definition of formulas:
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
 \item $(\bot:\Fm)\ ,\ (\top:\Fm)$. %\ ,\ (\ddagger:\Fm)$.
 %\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
-\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\thinin{t_1}{t_2}:\Fm)$
+\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\thinin{t_1}{t_2}:\Fm)$.
+\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies ((t_1=t_2):\Fm)$.
 %(\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm).
 % TODO
 %\[
 %\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
 %\]
-\item $(A:\Fm) \Implies (\thinneg{A}:\Fm)$.
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinimplies{A}{B}:\Fm)$.
+\item $(\phi:\Fm) \Implies (\thinneg{\phi}:\Fm)$.
+\item $(\phi:\Fm)\ ,\ (\psi:\Fm) \Implies (\thinimplies{\phi}{\psi}:\Fm)$.
 % (\pmb{(}A\pmb{\implies} B\pmb{)}:\Fm)
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinand{A}{B}:\Fm)$.
-\item $(A:\Fm)\ ,\ (B:\Fm) \Implies (\thinor{A}{B}:\Fm)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinforall{x}{A}:\Fm)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinexists{x}{A}:\Fm)$.
-%\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((!x.A):\Fm)$.
+\item $(\phi:\Fm)\ ,\ (\psi:\Fm) \Implies (\thinand{\phi}{\psi}:\Fm)$.
+\item $(\phi:\Fm)\ ,\ (\psi:\Fm) \Implies (\thinor{\phi}{\psi}:\Fm)$.
+\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinforall{x}{\phi}:\Fm)$.
+\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinexists{x}{\phi}:\Fm)$.
+%\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies ((!x.\phi):\Fm)$.
 \iffalse
 \item $(t:\Term) \Implies (\pmb{(}t \bm{\lexists}\pmb{)}:\Fm)$.
 \item $(t:\Term) \Implies (\pmb{(}t \bm{\lunique}\pmb{)}:\Fm)$.
 \fi
 %\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Term)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies (\thinepsilon{x}{A}:\Term)$.%(\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Term).
+\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinepsilon{x}{\phi}:\Term)$.%(\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Term).
 \end{enumerate}
 \end{metadefinition}
 \begin{metadefinition}[$\BTerm$]%\ \\
@@ -288,11 +332,6 @@ Antiquotation:
 \]
 \end{definition}
 \fi
-\begin{metadefinition}[syntax]
-\[
-\mathrm{Syntax} \eqdef \Term \sqcup \Fm \sqcup \dots
-\]
-\end{metadefinition}
 \begin{metadefinition}[free variables of]
 The function, which returns the free variables of a syntactyc object, e.g. of the term:(ToDo)
 \[
@@ -337,6 +376,60 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \]
 \fi
  %\Pow_{\mathrm{fin}}%\Finite\Set\List
+\subsubsection{Theory and context}
+\begin{metadefinition}[context]%\ \\
+Context is a finite list of arbitrary formulas. It is usually denoted by the uppercase Greek alphabet letters like $\Gamma$ or $\Delta$.
+\end{metadefinition}
+\begin{metadefinition}[theory]%\ \\
+Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by the uppercase Latin alphabet letters like $\Tau$, $\Wau$ or $\Fau$.
+\end{metadefinition}
+\begin{metadefinition}[definitional equality]
+Let $t_1$ and $t_2$ be terms, such that $t_1$ is (normally) an application of a (new) functional symbol to some arguments.\\
+Assume(normally) that $t_2$ has no free variable which are not free in $t_1$.\\
+Then the formula $(t_1 \eqdef t_2)$ is a notation for $(\text{closure}(t_1 = t_2))$ and a ceertain assumption on aleading functional symbol of $t_1$.
+\end{metadefinition}
+\begin{example}[definitional equality in the definition of the powerclass]
+For example, the formula
+\[
+\power X \eqdef \cc{Y}{Y\subclass X}
+\]
+means
+\[
+\forall X\in\Term,\ \ulcorner\pmb{\power} X\urcorner \in\Term
+\]
+and
+\[
+\forall X,\ \power X = \cc{Y}{Y\subclass X}.
+\]
+(This is done to avoid writing a closure operator in definitions, which is necessary, sine technically axioms are declared, which are formulas of the theory, so they must be without free variables.)
+\end{example}
+
+\begin{metadefinition}[definitional equivalence]
+Similarly to the previous definition, let $\phi_1$ and $\phi_2$ be formulas, such that $\phi_1$ is (normally) an application of a (new) predicate symbol to some arguments.\\
+Assume(normally) that $\phi_2$ has no free variable which are not free in $\phi_1$.\\
+Then the formula $(\phi_1 \iffdef \phi_2)$ is a notation(or a definition?) for $(\text{closure}(\phi_1 \iff \phi_2))$.
+\end{metadefinition}
+%It may be reasonable to require that 
+
+\begin{definition}[primitive proof(todo)]%\ \\
+Primitive proof is a finite list of formulas, such that each is derivable in the theory with a context of all previous formulas.
+\end{definition}
+\begin{notation}[derivablity from a theory with the empty context]
+Let $\Wau$ be a theory, and $\phi$ be a formula, then it is convenient to write
+\[
+(\Wau \vdash \phi) \iffdef (\Wau, [] \vdash \phi)
+\]
+\end{notation}
+
+\begin{example}
+Assume $\Tau$ is a \textbf{finite} theory, and $\Gamma$ is a context, then
+\[
+\left(\Tau,\Gamma\vdash \phi\middle) \iff \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
+\]
+Note, that theory bormally \underline{may not be finite}, so this equivalence holds extremely rarely. %does not always work
+\end{example}
+
+
 (todo: write the standard definitions here, add links to the implementation of functions inside of the proof assistant)
 \end{metadefinition}
 \dots\\
@@ -389,41 +482,28 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 
 
 \begin{metanotation}[metavariables]
-This notation is allowed inside quotation marks(i.e. ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
+This notation is allowed only \underline{inside quotation marks}(i.e. ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
 \[
 A \eqnot {\antiquote{\pmb{A}}}
 \]
 \[
-(\Theta \vdash \phi) \eqnot \pmb{(}\#\Theta \pmb{\vdash} \#\phi\pmb{)}
+(\Wau \vdash \phi) \eqnot \pmb{(}\#\Wau \pmb{\vdash} \#\phi\pmb{)}
 \]
 \end{metanotation}
-\begin{metadefinition}[encoding]
-This definition is a simplified variant of G\"odel's numbering, since for the purposes of this book it is unnecessary to encode syntactic entities(terms, formulas, etc) with natural numbers.
-\[
-\# : (\text{syntax frag list}) \to \text{syntax}
-\]
-The function $\#$ may raise an exception if the raw string take as argument is ill--formed, i.e. if it doesn't follow certain fixed synactic rules.
-\end{metadefinition}
-
-\begin{metadefinition}[parsing function for a string with metavariables]
-\[
-\myparse : \DottedString \to (\text{syntax frag list})
-\]
-\end{metadefinition}
-The parsing function satisfies the following computation rule:\\
-\begin{metainferencerule}
-For all $A\in(\text{syntax frag list})$, 
-\[
-A \equiv \myparse(\myquote{A}).
-\]
-\end{metainferencerule}
 \begin{example}[parsing the metavariable of syntax fragments list representing a formula]
 In particular,% parsing w
 \[
 \forall A : \Fm,\ A \equiv \myparse{(\myquote{\antiquote{\pmb{A}}})}.
 \]
 (It is written merely for demonstration purposes of the metainference rule use and ii a notation inside of the quotation.)\\
-As usual, $(\forall A : \Fm,\ \dots )$ is a notation for $(\forall A\in(\text{syntax frag list}),\ (\#A\in \#\Fm)\implies \dots)$. 
+As usual, 
+\[
+(\forall A : \Fm,\ \dots )
+\]
+is a notation for
+\[
+(\forall A\in(\text{Syntax Fragment List}),\ (\#A\in \#\Fm)\implies \dots).
+\] 
 \end{example}
 
 
@@ -432,12 +512,20 @@ As usual, $(\forall A : \Fm,\ \dots )$ is a notation for $(\forall A\in(\text{sy
 %\sub
 \subsection{Axioms for the predicate calculus}
 %\sub
+In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{first--order theory} $\Wau$.\\
+%, the following must hold:\\
+%In this subsection, the a theory $\Wau$ with all purely logical predicate calculus axioms is defined. Later, two $\Tau$ and $\Fau$ are defined, as certain extensions of $\Wau$. In particular, it holds that
+It is assumed that both $\Tau$ and $\Fau$ are the first order theories, requirements for $\Wau$ are also requirements for both $\Tau$ and $\Fau$.
+%\[
+%\Wau \subsetneq \Tau \subsetneq \Fau.
+%\]
 \subsubsection{Propositional part}
-For all formulas $A$, $B$, $C$,
+\begin{metaaxiom}[all tautolagies are derivable in $\Wau$]%$\Tau$ and $\Fau$
+For all formulas $A$, $B$, $C$, for all contexts,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
-the following axiom schemes %and%xor
-\ a rule scheme 
-are derivable in $\Tau$:
+the following formulas %axiom schemes %and%xor
+%\ a rule scheme 
+are derivable in $\Wau$:
 %For all atomic formulas $A$, $B$, $C$.
 \[
 (A \implies (B \implies A)) \label{ax:A1} \tag{ax:A1}
@@ -472,9 +560,16 @@ are derivable in $\Tau$:
 \label{ax:A10} \tag{ax:A10}
 \]
 \[
+(\bot \implies B)) \label{ax:A11} \tag{ax:A11}
+\]
+
+\[
 (A\lor \neg A) \label{ax:LEM} \tag{ax:LEM}
 \]
-Both theories $\Tau$ and $\Fau$ are closed w.r.t. the \textit{modus ponens} inference rule:
+\end{metaaxiom}
+\begin{metaaxiom}[Modus Ponens]
+%All mentioned theories $\Wau$, $\Tau$ and $\Fau$ are
+The theory $\Wau$ must be closed w.r.t. the \textit{modus ponens} inference rule:
 \[
 \frac{
 A \implies B\quad\quad\quad A
@@ -483,20 +578,21 @@ B
 }
 \label{rule:MP}\tag{MP}
 \]
+\end{metaaxiom}
 %\label{ax:MP} %todo delete it
 %\sub
 %\star
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
-\begin{definition}[``metation'' of a variable]
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on.
+\begin{definition}[``antiquotation'' of a variable or a term]%metation
+The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ is antiquoted, then it is just written "antiquote(t)"(without the quotation marks which are written here).
 \end{definition}
 \begin{note}[requirement for the implementation]
-For $\phi$ to be well--formed formula, all $n$--times--metavariables must be contained in $n$ nested corner--brackets ``$\ulcorner\cdot\urcorner$''.\\
-Otherwise it is not a formula, but a predicat--like symbol which needs some arguments.\\
-It is also important, because the proof assistant needs a precise term, not a variable, in order to check the side conditions like ``is free in'', ``is free for substitution'', etc.\\ %\underline{
-\fbox{This way these properties are decidable.}\\
-The answer is computed on the highest meta--level of thes formula, or exception is raised, if there are ``unclosed metavariables''.
+For $\phi$ to be well--formed formula, all $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
+(Otherwise, it is not a formula, but rather a predicat--like symbol which needs some arguments.)\\
+This requirement is also important, since the proof assistant needs a precise term, not a variable, in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
+\fbox{This agreement makes the side conditions decidable.}\\
+The ``yes/no'' answer is computed on the highest meta--level of the formula, otherwise the exception is raised, in case if there are ``unbound metavariables''.
 %They are done by the implementented core functions on the highest meta--level of the formula.
 \end{note}
 
@@ -508,22 +604,22 @@ The axiom schemes are expressed on the metalevel in this way:
 \]
 or in different(and equivalent) presentation:
 \[
-\forall A,B \in \Fm,
-\Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner
+\forall A,B \in \Fm,\ %
+(\Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner)
 \]
 \[
 \text{\dots (other axioms are transformed similarly) \dots}
 \]
 \[
-\forall A \in \Fm,
-\Tau \vdash (A \lor \neg A)
+\forall A \in \Fm,\ %
+(\Tau \vdash (A \lor \neg A))
 \]
 %\ulcorner(\meta{A}\lor \neg \meta{A})\urcorner
 
 
 Everything that is derivable in $\Tau$ is also derivable in $\Fau$:
 \[
-\forall \phi\in\Fm, (\Tau \vdash \phi) \implies (\Fau \vdash \phi)
+\forall \phi\in\Fm,\ ((\Tau \vdash \phi) \implies (\Fau \vdash \phi))
 \]
 Both of the following statements are necessary, because one is not implies the other(in general):
 \iffalse WRONG,
@@ -547,20 +643,30 @@ Both of the following statements are necessary, because one is not implies the o
 %\myquote{
 
 \[
-\forall A,B \in \Fm,
-(\Tau \vdash (A \implies B))
+\forall A,B \in \Fm,\ %
+\forall \Gamma \in \Ctx,\ %
+(
+(
+(\Tau,\Gamma \vdash (A \implies B))
 \land 
-(\Tau \vdash A )
+(\Tau,\Gamma \vdash A )
+)
 \implies
-(\Tau \vdash B)
+(\Tau,\Gamma \vdash B)
+)
 \]
 \[
-\forall A,B \in \Fm,
-(\Fau \vdash (A \implies B))
+\forall A,B \in \Fm,\ %
+\forall \Gamma \in \Ctx,\ %
+(
+(
+(\Fau,\Gamma \vdash (A \implies B))
 \land 
-(\Fau \vdash A)
+(\Fau,\Gamma \vdash A)
+)
 \implies
-(\Fau \vdash B)
+(\Fau,\Gamma \vdash B)
+)
 \]
 
 \iffalse
@@ -584,7 +690,7 @@ Both of the following statements are necessary, because one is not implies the o
 %
 
 \underline{Specification axiom scheme:}\\
-For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for [the substitution instead of] $x$ in $\phi$, the following formulas are derivable in $\Tau$:
+For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for [the substitution instead of] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
 \[
 (\forall x,\phi) \implies \phi[t/x]
 \label{ax:S1} \tag{S1}
@@ -593,8 +699,32 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \phi[t/x] \implies (\exists x,\phi)
 \label{ax:S2} \tag{S2}
 \]
+
+\[
+\forall x\in\Var,\ %
+\forall t\in\Term,\ %
+\forall \phi\in\Fm,\ %
+(
+(\text{$t$ free for $x$ in $\phi$})
+\implies
+(\Wau \vdash ((\forall x,\phi) \implies \phi[t/x]))
+)
+\label{ax:MetaS1} \tag{MetaS1}
+\]
+\[
+\forall x\in\Var,\ %
+\forall t\in\Term,\ %
+\forall \phi\in\Fm,\ %
+(
+(\text{$t$ free for $x$ in $\phi$})
+\implies
+(\Wau \vdash (\phi[t/x] \implies (\forall x,\phi)))
+)
+\label{ax:MetaS2} \tag{MetaS2}
+\]
+
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
-For any variable $x$, for any formula $\phi$ such that the term $\ulcorner (\Henkin x,\varphi)\urcorner$ is free for [the substitution of free occurences of] $x$ in $\phi$, the following formula is derivable in $\Fau$:
+For any variable $x$, for any formula $\phi$ such that the term $(\Henkin x,\varphi)$ is free for [the substitution of free occurences of] $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
 (\exists x,\varphi)
 \implies
@@ -604,16 +734,16 @@ For any variable $x$, for any formula $\phi$ such that the term $\ulcorner (\Hen
 (This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
-For any variable $x$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\phi$, then
-the derivability of $(\psi \implies \varphi)$ in $\Tau$ implies the derivability of $\ulcorner(\psi \implies (\forall x,\varphi))\urcorner$ and $\ulcorner((\exists x,\varphi)\implies \psi)\urcorner$ in $\Tau$.
-% following formulas are derivable
+For any variable $x$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\psi$, then
+the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability of $(\psi \implies (\forall x,\varphi))$ and $((\exists x,\varphi)\implies \psi)$ in $\Wau$.
+% following formulas are derivable $\Tau$($\Fau$)
 \[
 \frac{
 \psi \implies \varphi
 }{
 \psi \implies (\forall x,\varphi)
 }
-\quad\quad(\mbox{where }x\notin\FV(\psi))
+\quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
 \label{ax:B1} \tag{B1}
 \]
 \[
@@ -622,11 +752,55 @@ the derivability of $(\psi \implies \varphi)$ in $\Tau$ implies the derivability
 }{
 (\exists x,\varphi)\implies \psi
 }
-\quad\quad(\mbox{where }x\notin\FV(\psi))
+\quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
 \label{ax:B2} \tag{B2}
 \]
 %_{\mathrm{meta}}
 (The sign $\notin$ inside the side conditions is always used on the metalevel in the sense ``not in the list'', because they are metatheoretical statements about terms, formulas, and other syntactic entities, not the statements within the object theory.)
+
+
+\subsubsection{Simplification of rules B1 and B2}
+For our purposes in the classical setting, it is possible to simplify these abstraction rule requirements, down to the the generalisation rule and the classical definition of the existence quantifier.%For the case of classical predicate logic, it is enough to have 
+\begin{metadefinition}[generalisation rule]%underline
+For $\Wau$ to be a first--order theory, the following must hold:\\
+``
+For any variable $x$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
+the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$ in $\Wau$.
+''
+%$\Tau$($\Fau$)
+\[
+\frac{
+\varphi
+}{
+(\forall x,\varphi)
+}
+\quad\quad(\mbox{where }x\notin\FV(\Gamma))
+\label{Gen} \tag{Gen}
+\]
+\end{metadefinition}
+\begin{metadefinition}[generalisation rule, written on the meta--level]
+\[
+\forall x\in\Var,\ %
+\forall \phi\in\Fm,\ %
+\forall \Gamma \in \Ctx,\ %
+(x\notin\FV(\Gamma))
+\implies
+(
+(\Fau,\Gamma\vdash \phi)
+\implies
+(\Fau,\Gamma\vdash (\forall x,\phi))
+)
+\label{MetaGen} \tag{MetaGen}
+\]
+\end{metadefinition}
+
+
+\begin{metadefinition}[classical existence]
+\[
+(\exists x, \phi) \iffdef (\neg(\exists x,(\neg\phi)))
+\]
+\end{metadefinition}
+
 
 
 \iffalse
@@ -704,6 +878,70 @@ If $x\notin \FV(S)$ then
 c(S)\ceq (\Henkin x,(x\in S))
 \]
 \end{definition}
+
+Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type Val)
+%\[\]
+\[
+(t_1 \sim t_2)
+\iffdef
+\Fau\vdash (t_1=t_2)
+\]
+
+\[
+(\phi_1 \sim \phi_2)
+\iffdef
+(\Fau\vdash (\phi_1\iff\phi_2))
+\]
+
+
+\[
+(y \sim x)
+\implies
+(\phi[y/x] \sim \phi)
+\]
+
+\[
+(\Var\ni y\notin\FV(\phi))
+\implies
+(((y,\phi[y/x]) \sim (x,\phi) ))
+\]
+
+\[
+(\Var\ni x\notin (\FV(t_1)\cup \FV(t_2)))
+\land
+(t_1 \sim t_2)
+\implies
+(q[t_1/x] \sim q[t_2/x])
+\]
+\[
+(\Var\ni x\notin (\FV(t_1)\cup \FV(t_2)))
+\land
+(t_1 \sim t_2)
+\implies
+(\phi[t_1/x]\sim\phi[t_2/x])
+\]
+
+\[
+(\phi_1 \sim \phi_2)
+\implies
+((\Fau, \Gamma\vdash\phi_1) \sim (\Fau, \Gamma\vdash\phi_2))
+\]
+Generally speaking,
+\[
+(\vec{\exists})((t_1 \sim t_2)
+\not\implies
+(\encode(t_1) \sim_\Tau \encode(t_2))),
+\]
+but maybe it is possible assume (but the algorithm may be ineffective: manually checking all smaller codes. Also De Brujin notattion is a step in the same direction.)
+
+But in $\Fau$,
+\[
+(t_1 \sim t_2)
+\implies
+(\encode(t_1) \sim_\Fau \encode(t_2)).
+\]
+
+The same is not possible in $\Tau$(sure?)
 \iffalse
 \begin{definition}[meta-definition]
 \[
@@ -726,48 +964,7 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 %\pagebreak
 %\sub
-\subsubsection{Theory and context}
-\begin{definition}[context]%\ \\
-Context is a finite list of arbitrary formulas. It is usually denoted by the uppercase Greek alphabet letters like $\Gamma$ or $\Delta$.
-\end{definition}
-\begin{definition}[theory]%\ \\
-Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by the uppercase Latin alphabet letters like $\Tau$, $\Theta$ or $\Fau$.
-\end{definition}
-\begin{definition}[definitional equality]
-Let $t_1$ and $t_2$ be terms, such that $t_1$ is (normally) an application of a (new) functional symbol to some arguments.\\
-Assume(normally) that $t_2$ has no free variable which are not free in $t_1$.\\
-Then the formula $(t_1 \eqdef t_2)$ is a notation(or definition?) for $(\text{closure}(t_1 = t_2))$.
-\end{definition}
-\begin{example}
-For example, the formula
-\[
-\power X \eqdef \cc{Y}{Y\subclass X}
-\]
-means
-\[
-\forall X,\ \power X = \cc{Y}{Y\subclass X}.
-\]
-(This is done to avoid writing a closure operator in definitions, which is necessary, sine technically axioms are declared, which are formulas of the theory, so they must be without free variables.)
-\end{example}
 
-\begin{definition}[definitional equivalence]
-Similarly to the previous definition, let $\phi_1$ and $\phi_2$ be formulas, such that $\phi_1$ is (normally) an application of a (new) predicate symbol to some arguments.\\
-Assume(normally) that $\phi_2$ has no free variable which are not free in $\phi_1$.\\
-Then the formula $(\phi_1 \iffdef \phi_2)$ is a notation(or a definition?) for $(\text{closure}(\phi_1 \iff \phi_2))$.
-\end{definition}
-%It may be reasonable to require that 
-
-\begin{definition}[primitive proof(todo)]%\ \\
-Primitive proof is a finite list of formulas, such that each is derivable in the theory with a context of all previous formulas.
-\end{definition}
-
-\begin{example}
-Assume $\Tau$ is a \textbf{finite} theory, and $\Gamma$ is a context, then
-\[
-\left(\Tau,\Gamma\vdash \phi\middle) \iffdef \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
-\]
-Note, that theory may not be finite, so it does not always work.
-\end{example}
 %enumerable
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
 
@@ -2506,10 +2703,27 @@ The assumption of this book is that there exists a theory $\mathcal{F}$, which i
 \begin{enumerate}
 \item Neither Gödel's incompleteness theorem nor Löb's theorem are not applicable to such theory(actually any such theory), because it is not recursively enumerable.
 
-\item Some useful rules become admissible instead, like
+\item Some useful rules become admissible instead, like the reflection
 \[
-(\mathcal{F} \vdash \phi) \implies \phi
+((\Fau \vdash \phi) \implies \phi),
+\tag{Refl}
 \]
+\[
+\forall \phi\in\Fm,\ % 
+((\Fau \vdash \phi) \implies \phi),
+\tag{MetaRefl}
+\]%\Fau \vdash 
+which is (due to incompleteness argument) provably false in $\Tau$:
+\[
+\Tau \vdash
+(
+\neg (\forall \phi\in\Fm,\ % 
+((\Tau \vdash \phi) \implies \phi)
+))
+\tag{``Effective reflection'' is impossible}
+\]
+
+
 
 \item This kind of theories helps not to ``fall in meta'' much better. 
 
@@ -2538,10 +2752,10 @@ Create image for a textbook on mathematics or computer science: i need vertical 
 $}
 \]
 \fi
-
-\section{Primitive definitions[ToDo]}
 \iffalse %BIBGIGIGIGI
 \
+\section{Primitive definitions[ToDo]}
+
 In the beginning, the only functional symbols of the theory $\Tau$ are the class membership symbol(``$\in$'') and, optionally, the equality symbol(``$=$'').\\
 The language and the theory can be (conservatively) extended via ``extension by definition'' process.\\
 How it is connected with completeness, and epsilon calculus axiom?\\
@@ -2859,11 +3073,11 @@ The constant that represents the alphabet is actually an alphabet.
 \section{Informal definitions}
 
 \begin{definition*}[informal definition of language $\Lau$]%\ \\
-Let $\Lau$ be a language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
+Let $\Lau$ be a first--order language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
 \end{definition*}
 
 \begin{definition*}[informal definition of theory $\Tau$]%\ \\
-Let $\Tau$ be an enumerable and incomplete theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
+Let $\Tau$ be an enumerable and incomplete first--order theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
 %, except for  this section.%, no less, no more.
 \end{definition*}
 
@@ -2880,7 +3094,7 @@ accept without a proof that it is not possible to derive a contradiction from $\
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
 Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
 \[
-\Fau \eqdef (\Henkin \Theta,\ (\Theta\ \Lau\text{--theory}) \land (\Theta\text{ consistent}) \land (\Theta\text{ Henkin-complete}))
+\Fau \eqdef (\Henkin F,\ (F\ \Lau\text{--theory}) \land (F\text{ consistent}) \land (F\text{ Henkin--complete}))
 \]
 \end{definition*}
 
@@ -2892,7 +3106,7 @@ Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that
 }{
 \Theta_{\max(n,1)} \vdash \psi
 }
-\tag{Effective Neccesitation}
+\tag{Effective Necessitation}
 \]
 \end{inferencerule}
 
@@ -2967,34 +3181,34 @@ All rules of inference in this book are supposed to be structural. It means that
 %\Tau_n,
 \[
 \frac{
-\Xi,\Gamma,\psi \vdash \phi
+\Wau,\Gamma,\psi \vdash \phi
 }{
-\Xi,\Gamma \vdash \psi\implies \phi}
+\Wau,\Gamma \vdash \psi\implies \phi}
 \tag{Deduction}
 \]
 \end{inferencerule}
 
 \[
 \frac{
-\Xi,\Gamma \vdash \phi
+\Wau,\Gamma \vdash \phi
 }{
-\Xi \vdash\bigwedge\Gamma\implies\phi
+\Wau \vdash\bigwedge\Gamma\implies\phi
 }
 \tag{Full Deduction}
 \]
 
 
 \begin{inferencerule}[effective necessitation]
-The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-order theory $\Xi$(this symbol is a variable),
+The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-order theory $\Wau$(this symbol is a variable),
 \[
 \frac{
-\Xi \vdash \psi
+\Wau \vdash \psi
 }{
-\Tau \vdash (\Xi\vdash\psi)
+\Tau \vdash (\Wau\vdash\psi)
 }
 \tag{Effective Necessitation}
 \]
-For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
+For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
 \iffalse % rejected
 \[
 \frac{
@@ -3010,7 +3224,7 @@ For example, $\Xi$ may be substituted with $\mathcal{F}$ itself.
 }{
 \square \square_n\psi
 }
-\tag{Nec}
+\tag{Necessitation}
 \]
 \fi
 \label{rule:necessitation}
@@ -3134,9 +3348,9 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 \]%%\square \psi
 \end{inferencerule}
 
-\begin{conjecture}
+%\begin{conjecture}
 
-\end{conjecture}
+%\end{conjecture}
 %The CN rule is admissible in GL
 \pagebreak
 

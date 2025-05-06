@@ -4,7 +4,7 @@
 %Developing set-theoretic foundations
 
 \begin{constructor}[membership relation]
-If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
+If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
 %\iffalse
 %\$\#\%\&\_\~"' \\
 %\symbol{92}
@@ -27,8 +27,9 @@ If $A$ and $B$ are classes, then $(A\in B)$ is a formula.
 %\end{constructor}
 
 \begin{constructor}[subclass relation]
-If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
+If $A$ and $B$ are terms, then $(A\subseteq B)$ is a formula. %classes
 \end{constructor}
+
 \begin{definition}[subclass relation]
 \[
 (A\subseteq B)\iffdef(\forall x\in A\mydot x\in B)
@@ -40,7 +41,7 @@ If $A$ and $B$ are classes, then $(A\subseteq B)$ is a formula.
 
 If the variant of logic being used doesn't have equality, then add the following constructor and definition.
 \begin{constructor}[equality]%\\
-If $A$ and $B$ are classes, then $(A=B)$ is a formula.
+If $A$ and $B$ are terms, then $(A=B)$ is a formula.
 \end{constructor}
 \begin{definition}[equality]
 This definition is for the case if the underlying \nth{1} order logic is provided without equality.\\
@@ -53,23 +54,26 @@ If Y is not a free variable neither in A nor in B, then:
 \begin{axiom}[extensionality]
 \[
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
+\label{ax:Ext}\tag{ax:Ext}
 \]
 \label{ax:extensionality}
 \end{axiom}
 \begin{axiom*}[extensionality]
 This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$). If we understand $A$ and $B$ as variables, then it is enough; if as terms, then x should not be free neither in $A$ nor in  $B$.
 \[
-(A=B)\iff (\forall X \mydot X\in A \iff X\in B)
+(A=B)
+\iff
+(\forall X,\ (X\in A \iff X\in B))
 \]
 \label{ax:extensionality'}
 \end{axiom*}
 
 
 \begin{constructor}[setness predicate]
-If $A$ is a class, then $(A\set)$ is a formula.
+If $A$ is a term, then $(A\set)$ is a formula.
 \end{constructor}
 \begin{definition}[setness predicate]
-If Y is not a free variable in X, then:
+If Y is a variable, which is not free in X, then:
 \[
 (X\set)\iff(\exists Y,\ X\in Y)
 \]
@@ -77,10 +81,14 @@ If Y is not a free variable in X, then:
 
 \subsection{Class comprehension}
 \begin{constructor}[class]
-If $\varphi$ is a formula, $x$ is a variable, $t$ is a term, then $\ccc{x}{t}{\varphi}$ is a class.
+If $\varphi$ is a formula, $\vec{x}$ is a list of variables, $t$ is a term, then $\ccc{\vec{x}}{t}{\varphi}$ is a term.
 \end{constructor}
+If the list of variable is empty, then the singleton is defined:
+\[
+\{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top}
+\]
 \begin{note}
-There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
+There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
 \end{note}
 %\begin{axiom}(OLD Class comprehension)
 %\label{ax:comprehension}
@@ -90,7 +98,7 @@ There are no restrictions on $\varphi$ in Morse-Kelley class theory, which is be
 %we need to find one expression for both cases.
 %)
 %\end{axiom}
-\begin{definition}[closure]%\ \\
+\begin{definition}[universal closure]%\ \\
 There is an order on a set of variables $\Var$. \\
 Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\
 \
@@ -98,12 +106,22 @@ Then define the closure via the formula
 \[
 \text{closure}(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
 \]
+\[
+(
+(\vec{\forall})(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
+)
+\]
+
+Also the closure can be easier to use as a part of the definition of a formula.
+Every axiom is assumed to have the outermost closure operator.
+
+Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. Namely, there is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
 \end{definition}
 
 \begin{axiom}[class comprehension]%NEW 
 \label{ax:comprehension}
 \[
-\forall(a), \forall X, (X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
+(\vec{\forall})(\forall X,\ ((X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)))
 \]
 \end{axiom}
 
