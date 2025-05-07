@@ -6,7 +6,228 @@
 %\
 %\end{definition}
 %\sub
-\section{Metalanguage}
+\section{Example of the proof assistant's output}
+
+This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for illustration.
+
+\includegraphics[scale=0.5]{output.png}
+\pagebreak
+\section{Type theory of the proof assistant}
+Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
+The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so-called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
+
+\begin{lstlisting}
+datatype ''ty Variable =
+  name of string
+| meta of ''ty Variable  
+;
+
+datatype ('b,'a) Bound  =   
+  CBind of ('b Variable) * 'a;
+\end{lstlisting}
+
+\begin{lstlisting}
+datatype Term =
+  CV of Term Variable
+| Cc
+| CClass of   (Term,Fm) Bound
+| CEps   of   (Term,Fm) Bound
+| CIota  of   (Term,Fm) Bound
+(** Term constructors useful for formulating axioms, built-in **)
+| CEmptySet
+| CPower of (Term)
+| CImage of (Term * Term) (*can be defined*)
+| CSets (* class of all sets *)
+(** ANTIQUOTATION: Meta **)
+| CEnc of Val
+(** and so on **)
+and
+\end{lstlisting}
+\begin{lstlisting}
+Restr =
+  CSubst of (Term Variable) * Term
+and
+\end{lstlisting}
+\begin{lstlisting}
+Theory = (*syntactic sugar*)
+  Tau 
+| Fau
+| Qau (*Robinson's arithmetics*)
+\end{lstlisting}
+\begin{lstlisting}
+and Fm =
+(**Pure 1st order predicate logic**)
+  CBot
+| CTop
+(*| CDot   of Term Variable (** Sic! **)  no need anymore, since there is CMetaFm *)
+| CNeg   of (Fm)
+| CImpl  of (Fm * Fm)
+| CIff   of (Fm * Fm)
+| CAnd   of (Fm * Fm)
+| COr    of (Fm * Fm)
+| CFora  of ((Term,Fm) Bound)
+| CExis  of ((Term,Fm) Bound)
+| CMetaFm of Term (** ANTIQUOTATION: Meta **) (** Sic! Argument must be a term!
+It normally either encodes a formula, or a variable. **) 
+| CDer   of (Term * Term * Term)  (* Derivability predicate , \vdash *)
+(** Equality **)
+| CEq    of (Term * Term)
+(** Set-theoretic part (All necessary propositional symbols of class theory, built-in) **)
+| CIn    of (Term * Term)
+| CSet   of (Term)
+| CFunc  of (Term)
+| CSub   of (Term * Term)
+\end{lstlisting}
+Values for embedding of the syntax
+\begin{lstlisting}
+and Val =
+  VFm   of Fm
+| VTerm of Term
+| VCtx  of (Fm list) (** === Ctx **)
+| VTheory of Theory
+(* ------- *)
+| VTyp  of Typ
+\end{lstlisting}
+Types of values
+\begin{lstlisting}
+and Typ =
+  TFm
+| TTerm
+| TCtx
+| TTheory
+(* ------- *)
+| TTyp
+\end{lstlisting}
+\begin{lstlisting}
+
+type Ctx  = Fm list (* Context *)
+type Stmt = Theory * Ctx * Fm (* Statement *)
+
+type Goal = Stmt
+
+\end{lstlisting}
+\begin{lstlisting}
+
+datatype Prf =
+      Ccheat_prf of Stmt
+| CWeakening_prf of  Fm * Prf
+|      CWeak_prf of Ctx * Prf
+|     CInCtx_prf of Ctx * Prf
+|        CA0_prf of Term Variable (* of Ctx * (Term Var)*)
+(*
+|        CA1_prf of Ctx * Fm * Fm
+|        CA2_prf of Ctx * Fm * Fm * Fm
+
+Todo: just write all axioms from pdf.
+*)
+| CCredo_prf of Prf
+| COmnis_prf of Prf
+
+
+|        CMP_prf of Prf * Prf
+|     CIdent_prf of Fm
+|       CCut_prf of Prf * Prf
+
+|     CAnd1L_prf of  Fm * Prf
+|     CAnd2L_prf of  Fm * Prf
+|      CAndR_prf of Prf * Prf
+
+|      COr1R_prf of  Fm * Prf
+|      COr2R_prf of  Fm * Prf
+|       COrL_prf of Prf * Prf
+
+|     CImplL_prf of Prf * Prf
+|     CImplR_prf of Prf
+
+|      CNegL_prf of  Fm * Prf
+|      CNegR_prf of       Prf
+
+|     CForaL_prf of  Fm * Term     * Term Variable * Prf
+|     CExisR_prf of  Fm * Term     * Term Variable * Prf
+|     CForaR_prf of  Fm * Term Variable * Term Variable * Prf
+|     CExisL_prf of  Fm * Term Variable * Term Variable * Prf
+
+(** Some built-in Axioms for examples: **)
+(*|   CComprAx_prf of Variable(*W*) * Fm(*phi*)*)
+|   CComprAx_prf of (Term,Fm) Bound (*W.phi*)
+(* (PK C K) --> (V C K) *)
+|  CEpsIndAx_prf of Term(*K*) (* it is ok to use Term here, since no side conditions required. *)
+|  CPowSetAx_prf of Term (* (A set) -> (Pow(A))*)
+(** Built-in Definitions: **)
+(* forall A: forall B: (A=B <-> ((A \subseteq B)/\(A \subseteq B)) ) *)
+|     CEqDef_prf of Term Variable * Term Variable
+|    CIffDef_prf of       Fm * Fm
+(* forall A: forall B: (A \subseteq B <-> forall x: x in A -> x in B) *)
+|    CSubDef_prf of Term Variable * Term Variable * Term Variable
+(* forall B: ( (B set) <-> exists x: x in B) *)
+|    CSetDef_prf of Term Variable * Term Variable
+
+(* Pow K = Class v (Sub v K) *) (* if v is not free in K *)
+|    CPowDef_prf of Term Variable(*v*) * Term(*K*)
+\end{lstlisting}
+\begin{lstlisting}
+(*** Structure Thm ***)
+
+signature ThmWithoutPrf =
+sig
+  type Thm
+  val stmt : Thm -> Stmt
+
+  (* Inference rules' signatures: *)
+  val cheat : Fm list -> Fm -> Thm
+  val Weakening : Fm -> Thm -> Thm
+  val Weak : Ctx -> Thm -> Thm
+  val InCtx : Ctx -> Thm -> Thm
+
+  val Omnis : Thm -> Thm
+  val Credo : Thm -> Thm
+    
+  val Ident : Fm -> Thm
+  val Cut : Thm -> Thm -> Thm
+  val ImplL : Thm -> Thm -> Thm
+  val ImplR : Thm -> Thm
+  val Or1R : Fm -> Thm -> Thm
+  val Or2R : Fm -> Thm -> Thm
+  val OrL : Thm -> Thm -> Thm
+  val And1L : Fm -> Thm -> Thm
+  val And2L : Fm -> Thm -> Thm
+  val AndR : Thm -> Thm -> Thm
+  val NegL : Fm -> Thm -> Thm
+  val NegR : Thm -> Thm
+  val ForaL : Fm -> Term -> Term Variable -> Thm -> Thm
+  val ExisR : Fm -> Term -> Term Variable -> Thm -> Thm
+  val ForaR : Fm -> Term Variable -> Term Variable -> Thm -> Thm
+  val ExisL : Fm -> Term Variable -> Term Variable -> Thm -> Thm
+  val SubDef : Term Variable -> Term Variable -> Term Variable -> Thm
+  val SetDef : Term Variable -> Term Variable -> Thm
+
+  val A0 : Term Variable -> Thm
+  val MP : Thm -> Thm -> Thm
+  val IffDef : Fm -> Fm -> Thm
+  val EqDef : Term Variable -> Term Variable -> Thm
+  val ComprAx : ((Term,Fm) Bound) -> Thm
+  val EpsIndAx : Term -> Thm
+  val PowSetAx : Term -> Thm
+  val PowDef : Term Variable -> Term -> Thm
+
+  val show_proof : Thm -> unit; (* it shows IF it can *)
+  val prf_show : Thm -> unit; (* it shows IF it can *)
+end;
+
+signature ThmWithPrf =
+sig
+  include ThmWithoutPrf
+  val prf : Thm -> Prf
+  val derive : Prf -> Stmt
+  val check : Prf -> Thm
+  val slow_check : Prf -> Thm
+end;
+\end{lstlisting}
+
+\dots
+
+
+\section{Metalanguage[section is not yet written]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
 To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory.\\
 In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statement.\\
@@ -141,7 +362,7 @@ type Code = (Syntax Fragment List)
 %\[
 %\text{Syntax} \eqdef \Fm \sqcup \dots 
 %\]
-\begin{metadefinition}[encoding]
+\begin{metadefinition}[encoding(todo:rewrite these definitions)]
 This definition is a simplified variant of G\"odel's numbering, since for the purposes of this book it is unnecessary to encode syntactic entities(terms, formulas, etc) with natural numbers.
 \[
 \# : (\text{Syntax Frag List}) \to \text{Syntax}
@@ -165,13 +386,13 @@ It
 %???`` \cdot " \: \text{DottedString} \to \text{(Syntax Fragment List)}
 %\]
 
-\begin{metadefinition}[parsing function for a string with metavariables]
+\begin{metadefinition}[parsing function for a string with metavariables(todo:rewrite these definitions)]
 \[
 \myparse : \DottedString \to (\text{Syntax Frag List})
 \]
 \end{metadefinition}
 The parsing function satisfies the following computation rule:\\
-\begin{metainferencerule}
+\begin{metainferencerule}[(todo:rewrite these definitions)]
 %For all $A\in(\text{Syntax Fragment List})$, 
 For all $A\in(\text{Syntax})$,
 \[
@@ -481,7 +702,7 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \fi
 
 
-\begin{metanotation}[metavariables]
+\begin{metanotation}[metavariables(todo:rewrite these definitions)]
 This notation is allowed only \underline{inside quotation marks}(i.e. ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
 \[
 A \eqnot {\antiquote{\pmb{A}}}

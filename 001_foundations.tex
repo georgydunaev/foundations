@@ -8,14 +8,14 @@
 \title{Class--Theoretic\\%Approach to
 Foundations of Mathematics\\
 \& Applications\\
-(Draft)\\
+(Draft)
 }
 %\\
 %\ \\
 %\ \\
 %\input{MYTREECOPY.tex}
 %}
-\author[1]{Georgy Dunaev}
+\author[1]{Georgy Dunaev\\ \href{mailto:georgedunaev@gmail.com}{georgedunaev@gmail.com}}
 
 
 %\usetikzlibrary{trees,arrows}
@@ -273,6 +273,76 @@ Here I want to provide a natural modification of predicate calculus and its sema
 %\pagebreak
 %Appendix 1: u
 \chapter{Unfinished logic--related ideas}
+\section{Implementation of De Bruijn variabes for untyped lambda calculus}
+\begin{lstlisting}
+datatype Exp = 
+  Var of nat  (*todo: Nat.t*)
+| Lam of Exp
+| CApp of Exp * Exp
+;
+
+fun App x y = CApp (x,y);
+
+val zero = ze;
+val one = su zero;
+val two = su one;
+
+val id  = Lam (Var zero);
+val fst = Lam (Lam (Var one));
+val snd = Lam (Lam (Var zero));
+
+
+val tst = App id fst;
+
+
+fun pred (n:nat) : nat =
+  case n of
+    ze => raise (excErr "Nat: zero minus one?")
+  | su y => y
+;
+
+fun apply_hlp (M:Exp) (N:Exp) (mem:nat) : Exp =
+  case M of
+    Var n => if (n=mem) then N else (if (Nat.toInt n)>(Nat.toInt mem) then (Var (pred n)) else (Var n))
+  | Lam M2 => apply_hlp M2 N (su mem)
+  | CApp (e1,e2) =>  (App (apply_hlp e1 N mem) (apply_hlp e2 N mem))
+;
+
+(* The first time, without the optimisation. *)
+fun apply (LM:Exp) (N:Exp) : Exp =
+  case LM of
+    Var n => (App LM N)
+  | Lam M => apply_hlp M N zero
+  | CApp (e1,e2) =>  (App LM N)
+;
+
+val q = apply id fst;
+
+(* The first time, without the optimisation. *)
+fun normalize (e:Exp) : Exp = 
+  case e of
+    Var n => Var n
+  | Lam M => Lam (normalize M)
+  | CApp (e1,e2) => (
+    let 
+      val e1' = (normalize e1)
+      val e2' = (normalize e2)
+    in
+      (normalize (apply e1' e2'))
+    end) 
+;
+
+val w = normalize tst;
+
+val e = Lam (App (Var zero) (Var zero));
+
+val ee = App e e;
+
+
+val w = normalize ee; (* it will freeze the computations*)
+
+\end{lstlisting}
+\pagebreak
 
 \input{199_languages.tex}
 \pagebreak

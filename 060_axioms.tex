@@ -32,7 +32,7 @@ If $A$ and $B$ are terms, then $(A\subseteq B)$ is a formula. %classes
 
 \begin{definition}[subclass relation]
 \[
-(A\subseteq B)\iffdef(\forall x\in A\mydot x\in B)
+(A\subseteq B)\iffdef(\forall x\in A,\ x\in B)
 \]
 \label{def:subclass}
 \end{definition}
@@ -85,8 +85,17 @@ If $\varphi$ is a formula, $\vec{x}$ is a list of variables, $t$ is a term, then
 \end{constructor}
 If the list of variable is empty, then the singleton is defined:
 \[
-\{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top}
+\{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top},
 \]
+or it may be a set--level ``if'' operator:
+\[
+\ccc{\,[\,]}{r}{\,\phi}
+=
+\cc{p}{(p=r)\land\phi}
+=
+(\lif\ \phi\ \lthen\ \{r\}\ \lelse\ \emptyclass\ \lfi)
+\]
+
 \begin{note}
 There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
 \end{note}
@@ -450,7 +459,7 @@ qwertyu\\
 \subsection{Axiom of limitation of size}
 \begin{axiom}[limitation of size (of a set)]
 \[
-\neg(X\set) \longleftrightarrow (\exists T, (T\text{ class-function})\land (\V\subseteq T[X]))
+\neg(X\set) \longleftrightarrow (\exists T, (T\text{ class--function})\land (\V\subseteq T[X]))
 \tag{ax. LS}
 \]
 \label{ax:limitation of size}
