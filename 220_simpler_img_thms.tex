@@ -72,15 +72,15 @@ From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A
 \[
 v\in \mbox{E}^{\top}\langle A \rangle 
 \IFF
-\forall a\in A: (a,v)\in \mbox{E}^{\top}
+\forall a\in A,\ (a,v)\in \mbox{E}^{\top}
 \]
 \[
 \IFF
-\forall a\in A: (v,a)\in \mbox{E}
+\forall a\in A,\ (v,a)\in \mbox{E}
 \]
 \[
 \IFF
-\forall a\in A: v \in a
+\forall a\in A,\ v \in a
 \]
 \[
 \IFF
@@ -131,9 +131,9 @@ Other notable facts are that axiom of limitation of size implies axiom of global
 
 \begin{theorem}
 \[
-((\epsilon y: \varphi) \set)
+((\epsilon y,\  \varphi) \set)
 \iff
-(\exists(y\set):\varphi)
+(\exists(y\set),\ \varphi)
 \]
 \end{theorem}
 \Proof
@@ -165,23 +165,23 @@ Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
 \[
 (\exists y:\phi)
 \IMPLIES
-(\{y:\phi\}\nonempty)
+(\cc{y}{\phi}\nonempty)
 \]
 \[
-(\{y:\phi\}\nonempty)
+(\cc{y}{\phi}\nonempty)
 \IMPLIES
-(\{y:\phi\}\in\dom(c))
+(\cc{y}{\phi}\in\dom(c))
 \]
 \[
-(\{y:\phi\}\in\dom(c))
+(\cc{y}{\phi}\in\dom(c))
 \IMPLIES
-(c(\{y:\phi\})\set)
+(c(\cc{y}{\phi})\set)
 \tag{by some variant of \ref{thm:pair in function} }
 \]
 \[
-(c(\{y:\phi\})\set)
+(c(\cc{y}{\phi})\set)
 \IMPLIES
-((\epsilon y: \phi) \set)
+((\epsilon y,\ \phi) \set)
 \]
 \Done
 \input{END.tex}

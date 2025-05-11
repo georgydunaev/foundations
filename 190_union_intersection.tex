@@ -4,7 +4,9 @@
 %Union \& Intersection
 \begin{theorem}
 \[
-\left(B\in A\middle) \rightarrow \middle(B \subseteq \union A\right)
+\left(B\in A\middle)
+\implies
+\middle(B \subseteq \union A\right)
 \]
 \end{theorem}
 \Proof
@@ -80,11 +82,13 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \begin{theorem}{Intersection of a singleton is in it.}
 \label{thm:intersection of singleton}%
 \[
-\left(A \singleton\middle) \rightarrow \middle(\left(\intersection A\right)\in A\right)
+\left(A \singleton\middle)
+\implies
+\middle(\left(\intersection A\right)\in A\right)
 \]
 \end{theorem}
 \Proof
-\[(A\singleton)\IMPLIES(\exists!w:w\in A)\]
+\[(A\singleton)\IMPLIES(\exists!w,w\in A)\]
 \[
 (w\in A)\LAND(!a:a\in A)
 \IMPLIES
@@ -146,7 +150,11 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 
 \begin{theorem}
 \[
-(A\set) \land (B\subseteq A) \rightarrow (B\in\power A)
+(A\set)
+\land
+(B\subseteq A)
+\implies
+(B\in\power A)
 \]
 \end{theorem}
 \Proof

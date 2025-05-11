@@ -8,7 +8,7 @@
 \[
 (\cc{y}{\psi}\nonempty)
 \iff
-(\exists y:\psi)
+(\exists y,\ \psi)
 \]
 \end{theorem}
 \Proof
@@ -16,7 +16,7 @@
 \[
 (\cc{y}{\psi}\nonempty)
 \IMPLIES
-(\exists y:\psi)
+(\exists y,\ \psi)
 \]
 \noindent$(\Leftarrow)$\\
 \Done
@@ -27,7 +27,7 @@ Any class is a subclass of class of all sets.
 \[(C\subseteq \V)\]
 \end{theorem}
 \Proof
-%\[\forall x\in C:x\in \V\]
+%\[\forall x\in C,\ x\in \V\]
 %...
 Claim: $(\forall x\in C,\ x\in \V)$.\\
 Fix $x$. Assume $(x\in C)$. To show $(x\in \V)$.
@@ -70,7 +70,7 @@ The claim is proven.
 \]
 \noindent($\Rightarrow$) Assume $(X\set)$.
 %\[
-%(X\set)\IMPLIES(\exists W: X\in W))
+%(X\set)\IMPLIES(\exists W,\  X\in W))
 %\]
 \[
 (X\set)\LAND\top[X/W]\IMPLIES(X\in \cc{x}{\top[x/W]})
@@ -86,7 +86,7 @@ The claim is proven.
 \]
 \end{theorem}
 \Proof
-Claim: $(\forall x:x\in A \iff x\in B)$.\\
+Claim: $(\forall x,\ x\in A \iff x\in B)$.\\
 Fix x.\\
 $(\Rightarrow)$\\
 Assume $(x\in A)$. To show: $(x\in B)$\\
@@ -110,7 +110,7 @@ Assume $(x\in B)$. To show: $(x\in A)$\\
 \]
 The claim has been proven.
 \[
-(\forall x:x\in A \iff x\in B)
+(\forall x,\ x\in A \iff x\in B)
 \IMPLIES
 (A=B)
 \tag{by axm \ref{axm:extensionality}}
@@ -126,7 +126,7 @@ The claim has been proven.
 \Proof
 Claim:
 \[
-(\forall x\in \emptyclass: x\in A)
+(\forall x\in \emptyclass,\  x\in A)
 \]
 Assume $(x\in\emptyclass)$.
 \[
@@ -156,24 +156,24 @@ The claim is proven.
 \]
 \end{theorem}
 \Proof
-Assume $\neg\exists w: w\in A$. To show: $(A=\emptyclass)$.\\
+Assume $\neg\exists w,\  w\in A$. To show: $(A=\emptyclass)$.\\
 $(\supseteq)$\\
 \[
 (A\supseteq\emptyclass)
 \tag{by thm \ref{thm:empty class is subclass}}
 \]
 $(\subseteq)$\\
-Claim: $(\forall x\in A:x\in\emptyclass)$\\
+Claim: $(\forall x\in A,\ x\in\emptyclass)$\\
 Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
 \[
 (x\in A)
 \IMPLIES
-(\exists x:x\in A)
+(\exists x,\ x\in A)
 \]
 \[
-(\exists x:x\in A)
+(\exists x,\ x\in A)
 \LAND
-(\neg\exists x:x\in A)
+(\neg\exists x,\ x\in A)
 \IMPLIES
 \bot
 \]
@@ -184,7 +184,7 @@ Fix $x$. Assume $(x\in A)$. To show: $\bot$\\
 \]
 The claim is proven.
 \[
-(\forall x\in A:x\in\emptyclass)
+(\forall x\in A,\ x\in\emptyclass)
 \IMPLIES
 (A \subseteq \emptyclass)
 \tag{by def of subclass \ref{def:subclass}}
@@ -199,21 +199,21 @@ The claim is proven.
 \]
 %So by extensionality axiom we are done.\\
 %\[
-%\neg\exists w: w\in A
+%\neg\exists w,\  w\in A
 %\IMPLIES
 %(A=\emptyclass)
 %\]
 \Done
 \begin{theorem}
 \[
-\neg\exists w: w\in A
+\neg\exists w,\  w\in A
 \iff
 (A\isempty)
 \]
 \end{theorem}
 \begin{theorem}
 \[
-\exists w: w\in A
+\exists w,\  w\in A
 \iff
 (A\nonempty)
 \]
@@ -231,13 +231,13 @@ Any element of a subclass is in the class.
 \[
 (A\subseteq B)
 \IMPLIES
-(\forall x\in A:x\in B)
+(\forall x\in A,\ x\in B)
 \tag{by def of subclass \ref{def:subclass}}
 \]
 \[
 (x\in A)
 \LAND
-(\forall x\in A:x\in B)
+(\forall x\in A,\ x\in B)
 \IMPLIES
 (x\in B)
 \tag{by restricted specification elimination}
@@ -245,23 +245,26 @@ Any element of a subclass is in the class.
 \Done
 
 
-\begin{theorem}
-\label{thm:in class then set}
+\begin{theorem}[in class then set]
+For any terms $A$ and $B$,
 %\[A\set \land B\in A \rightarrow B\set\]
 \[
-(B\in A) \rightarrow (B\set)
+(B\in A)
+\implies
+(B\set)
 \]
+\label{thm:in class then set}
 \end{theorem}
 \Proof
 Assume $(B\in A)$. To show: $(B\set)$.
 \[
 (B\in A)
 \IMPLIES
-(\exists A: B\in A)
+(\exists A,\  B\in A)
 \tag{by right-exists-intro}.
 \]
 \[
-(\exists A: B\in A)
+(\exists A,\  B\in A)
 \IMPLIES
 (B\set)
 \tag{introduced by set's definition}.
@@ -270,10 +273,10 @@ Assume $(B\in A)$. To show: $(B\set)$.
 
 \begin{theorem}
 \[
-(w\in A) \land (!a:a\in A) \implies \{w\}=A
+(w\in A) \land (!a,\ a\in A) \implies \{w\}=A
 \]
 \end{theorem}
-\Proof Assume $(w\in A)$ and $(!a:a\in A)$\\
+\Proof Assume $(w\in A)$ and $(!a,\ a\in A)$\\
 \noindent($\subseteq$) Assume $(q\in \{w\})$.
 \[
 (q\in \{w\})\IMPLIES(q=w).
@@ -283,7 +286,7 @@ Assume $(B\in A)$. To show: $(B\set)$.
 \]
 \noindent($\supseteq$) Assume $(a\in A)$.
 \[
-(!a:a\in A)\LAND(a\in A)\LAND(w\in A)\IMPLIES(a=w).
+(!a,\ a\in A)\LAND(a\in A)\LAND(w\in A)\IMPLIES(a=w).
 \]
 \[
 (a=w)\IMPLIES(\{a\}=\{w\})

@@ -5,13 +5,24 @@
 In this section different definitions of ordered are studied and the new one is proposed.
 \subsection{Axioms of ordered pair}
 \[
+((a\in\Term)\land(b\in\Term))\implies((a,b)\in\Term)
+\tag{MetaOrderedPairConstructor}
+\]
+
+\[
 ((a\set)\land(b\set))\implies((a,b)\set)
-\tag{OPairCons}
+\tag{OrderedPairSize}
 \]
 %\label(ax:ordered pair set)
 \[
-((a_1,b_1)=(a_2,b_2))\iff((a_1=a_2)\land(b_1=b_2))
-\tag{OPairUniq}
+((a_1,b_1)=(a_2,b_2))
+\iff
+(
+(a_1=a_2)
+\land
+(b_1=b_2)
+)
+\tag{OrderedPairUniqness}
 \]
 \subsection{Definition of Kuratowski's pair}
 \begin{definition}[Kuratowski pair of sets]
@@ -20,12 +31,12 @@ In this section different definitions of ordered are studied and the new one is 
 \]
 \end{definition}
 Projections may be defined this way:
-\begin{definition}(projections)
+\begin{definition}[projections]
 \[
-\fst_K(p)\ceq \cc{x}{\forall y\in p : x \in y},
+\fst_K(p)\ceq \cc{x}{\forall  y\in p,\ (x \in y)},
 \]
 \[
-\snd_K(p)\ceq \cc{x}{\exists! y\in p : x \in y}.
+\snd_K(p)\ceq \cc{x}{\exists! y\in p,\ (x \in y)}.
 \]
 \end{definition}
 \begin{remark}
@@ -112,7 +123,7 @@ It is based on Kuratovsky pair, and, then \textbf{redefines} ordered pair in the
 \[
 (x, y) = (\{0\} \times s(x)) \cup (\{1\} \times s(y))
 \]
-and also defines 3-tuple:
+and also defines 3--tuple:
 \[
 (x, y, z) = (\{0\} \times s(x)) \cup (\{1\} \times s(y)) \cup (\{2\} \times s(z))
 \]
@@ -123,7 +134,7 @@ In fact, there is a uniform definition, which works both for sets and for classe
 
 \subsection{Definition of Dunaev's ordered pair}
 %Definitions of the ordered pair for sets and classes
-In this section it will be proven that the following self-referential definition of pair and cartesian product is admissible.
+In this section it will be proven that the following self--referential definition of pair and cartesian product is admissible.
 \begin{definition}
 %\noindent Simultaneous defintion:
 \[
@@ -155,7 +166,7 @@ Generally speaking,
 \[
 (a,b) :\neq [a,b]
 \]
-because then there is a gurantee that it is well-founded. (todo: check it)\\
+because then there is a gurantee that it is well--founded. (todo: check it)\\
 \end{remark}
 
 \subsection{Formally verified implementation}
@@ -190,7 +201,7 @@ end.
 Definition bu A B := Union (Pair A B).
 Infix "u" := bu (at level 60, right associativity).
 \end{lstlisting}
-The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built-it consistency checker cannot infer well-foundedness.
+The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built--in consistency checker cannot infer well--foundedness.
 \begin{lstlisting}
 Fail
 Program Fixpoint  OPair_Zero (c : Ens) : Ens
@@ -246,16 +257,16 @@ Now, from the definition we can obtain certain special cases, for empty set as a
 
 %\Proof
 
-Well-foundedness by epsilon-relation:\\
-%Checking that $(a,b)$ is well-found.
+Well--foundedness by epsilon--relation:\\
+%Checking that $(a,b)$ is well--found.
 \begin{theorem}
-If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+If $a$ and $b$ are well--founded, then $(a,b)$ is well--founded.
 \end{theorem}
 \Proof
-We apply the epsilon-induction for $a$.\\ % maybe even  complete? nah, it's enough
-Assume there is no infinite $\ni$-chain in $(a_1,b)$ for any element $a_1$ of $a$.\\
-We apply the epsilon-induction for $b$.\\
-Assume there is no infinite $\ni$-chain in $(a_1,b_1)$ for any element $b_1$ of $b$.\\
+We apply the epsilon--induction for $a$.\\ % maybe even  complete? nah, it's enough
+Assume there is no infinite $\ni$--chain in $(a_1,b)$ for any element $a_1$ of $a$.\\
+We apply the epsilon--induction for $b$.\\
+Assume there is no infinite $\ni$--chain in $(a_1,b_1)$ for any element $b_1$ of $b$.\\
 \[
 w\in (a,b)
 \]
@@ -269,7 +280,7 @@ w\in \cc{(0,a_1)}{a_1\in a}
 
 %Case 1: a is empty.\\
 %Then it contradicts with $w\in \cc{(0,a_1)}{a_1\in a}$, so statement is exfalso proven.\\
-%Case 2: a is non-empty.\\
+%Case 2: a is non--empty.\\
 
 We know that
 \[
@@ -293,7 +304,7 @@ Small remark: we can compute, just for the sanity check:
 \]
 indeed they are all different when arguments are different, as intended. In the later theorem it will be proven for arbitrary pairs.
 
-Every chain ends with the empty set(or with an urelement in some non-extensional theories).\\
+Every chain ends with the empty set(or with an urelement in some non--extensional theories).\\
 
 If(WA) $(0,a_1)$ has an infinite chain, then (using the second equality) 
 $\cc{(1,e)}{e\in a_1}$ has it too. 
@@ -317,15 +328,15 @@ Therefore $a$ has an infinite chain starting with $e$, contradiction.
 
 The proof is similar, for the "Case II", where
 \[
-w\in \cc{(1,b_1)}{b_1\in b}
+(w\in \cc{(1,b_1)}{b_1\in b})
 \]
 \[
-\exists b_1\in b: w\in (1,b_1),
+(\exists b_1\in b, w\in (1,b_1)),
 \]
-with obtaining a contradiction with $b$ being well-founded.\\
+with obtaining a contradiction with $b$ being well--founded.\\
 \Done
 
-\begin{definition}(we define a functional symbols which take the first and the second element of the pair) [we can add, "if it's an ordered pair"]
+\begin{definition}[we define a functional symbols which take the first and the second element of the pair (we can add, "if it's an ordered pair")]
 \[
 \pr_1(P) \ceq \fst(P) \ceq \cc{b}{(0,b)\in P}
 \]
@@ -343,8 +354,8 @@ with obtaining a contradiction with $b$ being well-founded.\\
 ...\\
 \Done
 
-\begin{theorem}(OLD)
-If $a$ and $b$ are well-founded, then $(a,b)$ is well-founded.
+\begin{theorem}[OLD]
+If $a$ and $b$ are well--founded, then $(a,b)$ is well--founded.
 \end{theorem}
 \Proof
 \[
@@ -423,7 +434,7 @@ b\ceq \{\emptyclass,\{\emptyclass\}\}
  = \{\emptyclass, \{\emptyclass\}, \{\{\emptyclass\}\},\{\emptyclass,\{\emptyclass\}\}\}
 \]
 
-%Non-commutative multiplication table:\\
+%Non--commutative multiplication table:\\
 Ordered pairing table:\\
 \begin{tabular}{|c|c|c|c|}
 \hline

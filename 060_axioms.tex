@@ -247,7 +247,8 @@ The empty set symbol $\emptyclass$ is a constant closed term.
 
 \subsection{Definition of the universal class}
 \begin{constructor}[universal class]%\ \\
-The symbol $\V$ is a constant(closed term) of the language of class theory.
+The symbol $\V$ is a constant of the language of class theory.
+A constant is a functional symbol of valency zero. It is a closed term, due to vacuous argument.
 \end{constructor}
 
 \begin{definition}[universal class (constant V)]
@@ -459,7 +460,7 @@ qwertyu\\
 \subsection{Axiom of limitation of size}
 \begin{axiom}[limitation of size (of a set)]
 \[
-\neg(X\set) \longleftrightarrow (\exists T, (T\text{ class--function})\land (\V\subseteq T[X]))
+\neg(X\set) \longleftrightarrow (\exists T,\ ((T\text{ class--function})\land (\V\subseteq T[X])))
 \tag{ax. LS}
 \]
 \label{ax:limitation of size}

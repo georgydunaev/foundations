@@ -14,7 +14,7 @@ This is a screenshot of tests using one of two kernels(the one which actually st
 \pagebreak
 \section{Type theory of the proof assistant}
 Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
-The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so-called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
+The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
 
 \begin{lstlisting}
 datatype ''ty Variable =
@@ -829,7 +829,7 @@ or in different(and equivalent) presentation:
 (\Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner)
 \]
 \[
-\text{\dots (other axioms are transformed similarly) \dots}
+\text{\dots\ (other axioms are transformed similarly)\ \dots}
 \]
 \[
 \forall A \in \Fm,\ %
@@ -939,7 +939,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 (
 (\text{$t$ free for $x$ in $\phi$})
 \implies
-(\Wau \vdash (\phi[t/x] \implies (\forall x,\phi)))
+(\Wau \vdash (\phi[t/x] \implies (\exists x,\phi)))
 )
 \label{ax:MetaS2} \tag{MetaS2}
 \]
@@ -1105,7 +1105,7 @@ Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type
 \[
 (t_1 \sim t_2)
 \iffdef
-\Fau\vdash (t_1=t_2)
+(\Fau\vdash (t_1=t_2))
 \]
 
 \[
@@ -3302,21 +3302,68 @@ Let $\Tau$ be an enumerable and incomplete first--order theory, that contains ex
 %, except for  this section.%, no less, no more.
 \end{definition*}
 
-\section{Formal definitions}
+\section{Formal statements}
+\begin{definition}[consistent theory]%\ \\
+Let $\Wau$ be a first--order--theory.
+It is called \textit{consistent}, if ``false'' is not derivable in $Wau$.
+\[
+(\Wau\text{ consistent})
+\iffdef
+(\neg (\Wau \vdash \bot))
+\]
+\end{definition}
 
-\begin{axiom*}[$\Tau$ is consistent]%\ \\
+\begin{axiom}[$\Tau$ is consistent]%\ \\
 We %informally 
 accept without a proof that it is not possible to derive a contradiction from $\Tau$.
 \[
 \neg (\Tau \vdash \bot)
 \]
-\end{axiom*}
+\end{axiom}
+
+\begin{definition}[complete theory]%\ \\
+Let $\Wau$ be a first--order--theory.
+It is called \textit{complete}, if for every formula, either its negation is derivable, or the formula itself is derivable.
+\[
+(\Wau\text{ complete})
+\iffdef
+(
+\forall \phi\in\Fm,\ %
+(
+(\Wau \vdash \phi)
+\lor
+(\Wau \vdash \neg\phi))
+)
+)
+\]
+\end{definition}
+
+
+\begin{definition}[Henkin theory]%\ \\
+Let $\Wau$ be a first--order--theory in language $\Lau$.
+It is said that it has \textit{a Henkin property}, if for every existential statement there is a witnessing term of it in $\Lau$.% w.r.t }\Lau
+\[
+(\Wau\text{ Henkin})
+\iffdef
+(\forall \phi\in\Fm, (\Wau \vdash \exists x,\ \phi)
+\implies
+(\exists t\in \text{Term},\ (\Wau \vdash \phi[t/x])))
+\]
+From this definition it immediately fllows, that there are no non--standard elements in such thery $\Wau$.
+\end{definition}
 
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
-Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. It's existence is provided by Lindenbaum's lemma.
+Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. 
 \[
-\Fau \eqdef (\Henkin F,\ (F\ \Lau\text{--theory}) \land (F\text{ consistent}) \land (F\text{ Henkin--complete}))
+\Fau
+\eqdef
+(\Henkin F,\ (F\ \Lau\text{--theory})
+\land (F\text{ consistent})
+\land (F\text{ complete})
+\land (F\text{ Henkin})
+)
 \]
+Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Techically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
 \end{definition*}
 
 \section{G\"odel--L\"ob polymodal logic}
@@ -3484,7 +3531,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \section{Completeness of the theory $\Fau$}
 \indent The following statement holds because of the properties of $\Fau$:
 \[
-(\Fau\vdash \phi) \iff \phi
+((\Fau\vdash \phi) \iff \phi)
 \]
 The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
 % \Tau = \mathcal{T}
