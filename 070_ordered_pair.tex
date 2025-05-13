@@ -6,14 +6,12 @@ In this section different definitions of ordered are studied and the new one is 
 \subsection{Axioms of ordered pair}
 \[
 ((a\in\Term)\land(b\in\Term))\implies((a,b)\in\Term)
-\tag{MetaOrderedPairConstructor}
+\clabeltagd{axm}{MetaOPairConstructor}
 \]
-
 \[
 ((a\set)\land(b\set))\implies((a,b)\set)
-\tag{OrderedPairSize}
-\]
-%\label(axm:ordered pair set)
+\clabeltagd{axm}{OPairSize}
+\]%\label(axm:ordered pair set)
 \[
 ((a_1,b_1)=(a_2,b_2))
 \iff
@@ -22,7 +20,7 @@ In this section different definitions of ordered are studied and the new one is 
 \land
 (b_1=b_2)
 )
-\tag{OrderedPairUniqness}
+\clabeltagd{axm}{OPairUniqueness}
 \]
 \subsection{Definition of Kuratowski's pair}
 \begin{definition}[Kuratowski pair of sets]
@@ -110,8 +108,8 @@ The following definition is too weak:
 \begin{definition*}[Metamath's ordered pair] %maybe V somehow?
 \[
 \langle A,B \rangle=\cc{x}{(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})}
+\labeltagd{def}{MM_ordered pair}
 \]
-\label{def:MM_ordered pair}
 \end{definition*}
 It doesn't work for the case of proper classes.
 \subsection{Definition of Morse's ordered pair}
@@ -313,7 +311,6 @@ So there exists $e_0\in a_1$, such that $(1,e_0)$ has an infinite chain.
 \[
 (1,e_0) = \{(0,0)\}\cup \cc{(1,e_1)}{e_1\in e_0}
 \]
-.
 Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_1\in e_0$, such that $(1,e_1)$ has an infinite chain.
 \[
 (1,e_1) = \{(0,0)\}\cup \cc{(1,e_2)}{e_2\in e_1}
@@ -326,7 +323,7 @@ Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_{n+1}\in e_{n}$
 
 Therefore $a$ has an infinite chain starting with $e$, contradiction.
 
-The proof is similar, for the "Case II", where
+The proof is similar, for the ``Case II'', where
 \[
 (w\in \cc{(1,b_1)}{b_1\in b})
 \]
@@ -336,7 +333,7 @@ The proof is similar, for the "Case II", where
 with obtaining a contradiction with $b$ being well--founded.\\
 \Done
 
-\begin{definition}[we define a functional symbols which take the first and the second element of the pair (we can add, "if it's an ordered pair")]
+\begin{definition}[we define a functional symbols which take the first and the second element of the pair (we can add, ``if it's an ordered pair'')]
 \[
 \pr_1(P) \ceq \fst(P) \ceq \cc{b}{(0,b)\in P}
 \]
@@ -371,7 +368,7 @@ h((a,b)) = h(({0}\times a)\cup ({1}\times b)) =
 = \sup\cc{h(y)|y\in \{(0,a_1)}{a_1\in a_0\}} =
 \]
 \[
-= \sup\cc{h((0,a_1))}{a_1\in a_0)} =
+= \sup\cc{h((0,a_1))}{a_1\in a_0)} = \dots
 \]
 \Done
 

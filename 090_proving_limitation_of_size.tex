@@ -41,7 +41,7 @@ Firstly, we will prove some lemmas:
 
 
 
-\begin{lemma}(1st part of the statement, from left to right)
+\begin{lemma}[\nth{1} part of the statement, from left to right]
 \[
 (K \in V) \implies (|K| \neq |V|)
 \]
@@ -53,7 +53,7 @@ By previous lemmas we have $|V|=\On$ and $\On\notin\On$.\\
 From these three statements we deduce that $|K| \neq |V|$.\\
 \Done
 
-\begin{lemma}(2nd part of the statement, from right to left)
+\begin{lemma}[\nth{2} part of the statement, from right to left]
 \[
 (|K| \neq |V|) \implies (K \in V)
 \]
@@ -66,9 +66,15 @@ $|K|\ceq \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}$.\\
 Now we have that 
 there exists some $m \in \On$, which is not in $\bigcap \cc{a\in\On}{K\preccurlyeq a}$. (vice versa situation is not possible since any non--empty intersection of subclasses of $\On$ is subclass of $\On$)\\
 ...
-
 \Done
-
+\pagebreak
 \section{Properties preserved by intersections of universes}
 
+\iffalse
+\section{Proposed foundations which axioms consist only of positive properties}
+\begin{lstlisting}
+\input{./Coq/positive_foundations.v}
+\end{lstlisting}
+% Risky!
+\fi
 \input{END.tex}

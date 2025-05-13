@@ -387,7 +387,7 @@ The empty set symbol $\emptyclass$ is a constant closed term.
 \begin{metadefinition}[constant]
 A functional symbol of valency zero is called a $constant$.
 \end{metadefinition}
-(A constant is alwaus a closed term, due to vacuous argument.)
+(A constant is always a closed term, due to vacuous argument.)
 \begin{constructor}[constant V]%\ \\
 Let the symbol $\V$ be a constant of the language of the class theory being discussed.
 \end{constructor}
@@ -602,9 +602,17 @@ qwertyu\\
 \subsection{Limitation of size}
 \begin{axiom}[limitation of size (of a set)]
 \[
-(\neg(X\set)) \longleftrightarrow (\exists T,\ ((T\text{ class--function})\land (\V\subclass T[X])))
+(\neg(X\set))
+\iff
+(
+\exists T,\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
 \clabeltagd{axm}{limitation of size}
-\]%\tag{ax. LS}
+\]
 \end{axiom}
 
 \input{END.tex}

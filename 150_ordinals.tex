@@ -667,11 +667,13 @@ Here $|\cdot|$ is a functional symbol defined as following.
 |K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
 \]
 \end{definition}
-\begin{definition}
+\begin{definition}[relation ``not stronger in cardinality'']
+Let $X$ and $Y$ be terms, then
 \[
 (X\preccurlyeq Y)
 \iff
-(\exists f: (f:X\to Y)\land (f \injective))
+(\exists f,\ (f:X\to Y)\land (f \injective))
+\labeltagd{def}{notstrongercard}
 \]
 \end{definition}
 The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\On$ if the argument is a proper class.\\
@@ -691,7 +693,7 @@ The intended behaviour of this definition is to have cardinality of argument if 
 \[
 (X \preccurlyeq Y)
 \iff
-((\exists f) (f:X\to Y)\land (f \injective))
+(\exists f,\ (f:X\to Y)\land (f \injective))
 \]
 \end{definition}
 
@@ -731,8 +733,14 @@ Using the statement of well--ordering theorem and transitivity, it is possible t
 %|K|\ceq \cc{a\in\On}{a\prec K}
 %\]
 \[
-|K|\ceq \cc{x}{(\forall A) \Ord(A)\land (K\preccurlyeq A)\implies x\in A}
+|K| \eqdef \cc{x}{\forall A,\ \Ord(A)\land (K\preccurlyeq A)\implies x\in A}
 \]
+\[
+|K|
+\eqdef
+\bigcap^A_{\Ord(A)\land (K\preccurlyeq A)} A
+\]
+%\cc{x}{\forall A,\ \Ord(A)\land (K\preccurlyeq A)\implies x\in A}
 \end{definition}
 \begin{definition}[cardinality of $X$ is strictly smaller than cardinality of $Y$]%\sqsubseteq
 \[
@@ -756,10 +764,10 @@ Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordina
 Here we use the intersection of a class which is defined by 
 $
 (x\in\bigcap Q)\iff(\forall q\in Q,\ x\in q)
-$, therefore $\bigcap\emptyclass = V$.
+$, therefore $\bigcap\emptyclass = \V$.
 In this case,
 \[
-(x\mapsto|x|):V\to\On.
+(x\mapsto|x|):\V\to\On.
 \]
 This definition also allows to obtain a cardinality of any proper class $P$, in particular
 \[
@@ -771,6 +779,106 @@ This definition is natural since it agrees with the axiom of limitation of size 
 The function $| \cdot |$ has interesting properties.
 
 \subsection{Soundness}
+\begin{lemma}
+\[
+\cc{a\in\On}{\V\preccurlyeq a}
+=
+\emptyclass
+\]
+\end{lemma}
+\begin{proof}
+Fix $a$. Assume $(a\in\On)$ and $ (\V\preccurlyeq a)$.
+\[
+(\V\preccurlyeq a)
+\iff
+(
+\exists g,\ %
+(g:\V\to a)
+\land 
+(g \injective)
+)
+\tagd{by def}{notstrongercard}
+\]
+\[
+(\V\preccurlyeq a)
+\IFF
+(
+\exists f,\ %
+(f^\top:\V\to a)
+\land 
+(f^\top \injective)
+)
+\]
+\[
+\IFF
+(
+\exists f,\ %
+(f^\top:\V\to a)
+\land 
+(f\text{ functional})
+)
+\]
+\[
+\IFF
+(
+\exists f,\ %
+(f^\top \text{ functional})
+\land
+(\dom(f^\top) = \V)
+\land
+(\ran(f^\top) \subclass a)
+\land
+(f\text{ functional})
+)
+\]
+\[
+\IMPLIES
+(
+\exists f,\ %
+(f \text{ injective})
+\land
+(\ran(f) \supclass \V)
+\land
+(\dom(f) \subclass a)
+)
+\]
+\[
+(\dom(f) \subclass a)
+\IMPLIES%\implies
+(\ran(f) = f[a])
+\]
+\[
+(\ran(f) \supclass \V)
+\LAND
+(\ran(f) = f[a])
+\IMPLIES
+(\V \subclass f[a])
+\]
+\[
+\IMPLIES
+(
+\exists f,\ %
+(f \text{ injective})
+\land
+(\V \subclass f[a])
+)
+\]
+\[
+\IMPLIES
+(
+a\text{ nonset}
+)
+\]
+\[
+(a\text{ nonset})
+\LAND
+(a\in \On)
+\IMPLIES
+\bot
+\]
+Contradiction obtained, therefore it is impossible for $\cc{a\in\On}{\V\preccurlyeq a}$ to have elements.
+\end{proof}
+
 \begin{theorem}
 \[
 |\V|=\On
@@ -780,12 +888,52 @@ The function $| \cdot |$ has interesting properties.
 |K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
 \]
 \[
-|V|= \On \cap \bigcap \cc{a\in\On}{V\preccurlyeq a}
+|\V|= \On \cap \bigcap \cc{a\in\On}{\V\preccurlyeq a}
 \]
 \[
-(V\preccurlyeq a)
+= \On \cap \bigcap \emptyclass
 \]
-\dots
+\[
+= \On \cap \V
+\]
+\[
+= \On
+\]
+Therefore, by transitivity of equality, $|\V|=\On$.
+\iffalse
+Original:
+\[
+(A\text{ nonset})
+\iff
+(
+\exists F,\ (
+(F\text{ class--functional})
+\land
+(\V\subclass F[A])
+)
+)
+\ctagd{axm}{limitation of size}
+\]
+New? no need: is it ok? not really: extended def of function! It doesn't  matter since nonsests are not in $F[A]$ anyway.
+\[
+(A\text{ nonset})
+\iff
+(
+\exists G,\ (
+(G\text{ class--injective})
+\land
+(\V\subclass G^\top[A])
+)
+)
+\ctagd{axm}{limitation of size}
+\]
+\[
+(T\text{ class--functional})
+\iff
+(T^\top\text{ class--injective})
+\]
+\fi
+
 \Done
 \end{theorem}
 \subsection{Properties}
@@ -886,10 +1034,10 @@ Plan:
 In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
-\tr(X) \iff (\forall Z\in X: Z\subseteq X)
+\tr(X) \iff (\forall Z\in X,\ Z\subseteq X)
 \]
 \[
-\ord(X) \iff \tr(X)\land (\forall Y\in X: \tr(Y))
+\ord(X) \iff \tr(X)\land (\forall Y\in X,\ \tr(Y))
 \]
 the other possibilities are
 \[
