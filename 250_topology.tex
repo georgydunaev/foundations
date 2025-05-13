@@ -158,7 +158,7 @@ Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subba
 % && \text{(F2)}\\
 
 \end{definition}
-%point-neighbourhood relation defined via topology base?
+%point--neighbourhood relation defined via topology base?
 \begin{definition}[topology via subbase]\ \\
 %For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$(later we will see that its elements are open), such that $\emptyclass\notin \mathcal{B}$,
 For any $p$, any $S$, and a subbase $\mathcal{B}$, we define:
@@ -180,7 +180,7 @@ Later we will also see that elements of $\mathcal{B}$ are open.
 %(Note: 
 %)
 
-%point-neighbourhood relation defined via filter bases is a point-neighbourhood relation
+%point--neighbourhood relation defined via filter bases is a point--neighbourhood relation
 \begin{theorem}[topology via subbase is a topology]\ \\
 The relation $\mathcal{R}_\mathcal{B}$ between points and neighbourhoods is topological.
 \ProofNoPar
@@ -277,8 +277,8 @@ A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
 %&& \text{(F$_3$)}\\
 \end{definition}
 
-\begin{definition}[sigma-algebra]\ \\
-The set $\sigma$ is called \textit{sigma-algebra} iff
+\begin{definition}[sigma--algebra]\ \\
+The set $\sigma$ is called \textit{sigma--algebra} iff
 \begin{align*}
 \left(
 \middle(
@@ -327,7 +327,7 @@ Q \subseteq \cc{\mathcal{T}}{\mathcal{T}\mathrm{\ topology}}
 \end{theorem}
 
 
-\begin{theorem}[intersection of sigma-algebras]
+\begin{theorem}[intersection of sigma--algebras]
 \begin{align*}
 \left(
 \middle(
@@ -437,7 +437,7 @@ Q \subseteq \cc{B}{B\mathrm{\ balanced}}
 \DoneNoPar
 \end{theorem}
 
-\begin{theorem}[intersection of Dynkin systems/$\lambda$-systems]
+\begin{theorem}[intersection of Dynkin systems/$\lambda$--systems]
 \begin{align*}
 \left(
 \middle(
@@ -521,23 +521,23 @@ V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 \]
 \Proof
 $(\Rightarrow)\\
-V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb-elim, union-elim).
+V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb--elim, union--elim).
 \\
-$U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification-intro).
+$U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification--intro).
 \\
-$x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union-intro).
+$x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union--intro).
 \\
-$x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior-intro).
+$x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior--intro).
 \\
 $(\Leftarrow)$
 \\
-$x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior-elim, union-elim).
+$x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior--elim, union--elim).
 \\
-$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\LAND W\subseteq V$\hfill(specification-elim).
+$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\LAND W\subseteq V$\hfill(specification--elim).
 \\
-$x\in W\LAND W\in\topology\LAND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and-intro, exists-intro).
+$x\in W\LAND W\in\topology\LAND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and--intro, exists--intro).
 \\
-$(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists-elim, nghb-intro).
+$(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists--elim, nghb--intro).
 \DoneNoPar
 \end{theorem}
 \pagebreak

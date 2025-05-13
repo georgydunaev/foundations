@@ -101,7 +101,7 @@ Inductive definition of expressions:
 \end{enumerate}
 \end{definition}
 
-\subsection{Definitions related to lambda-calculus}
+\subsection{Definitions related to lambda--calculus}
 
 \begin{axiom}[Typing of $\Expr$]\ \\
 Typing axioms for the expressions.
@@ -113,7 +113,7 @@ Let $\alpha$ and $\beta$ be arbitrary types, then
 \item $(\const^\alpha : \Const(\alpha) \to \alpha)$.
 \fi
 %$(a:\Const(\alpha)) \Implies (a:\alpha)$.
-\item Lambda-abstraction: $(x:\Var(\alpha))\ ,\ (s:\beta) \Implies ((x.s):\alpha\to \beta)$.
+\item Lambda--abstraction: $(x:\Var(\alpha))\ ,\ (s:\beta) \Implies ((x.s):\alpha\to \beta)$.
 \item Application: $(g:\alpha\to \beta)\ ,\ (t:\alpha) \Implies (g(t):\beta)$.
 %\item $(x:\Var\Term)\ ,\ (s:\Symb) \Implies ((x.s):\Bound\Symb)$.
 \item OPairIntro: 
@@ -156,7 +156,7 @@ So the function that takes a consequent of function type is defined. Each value 
 and it $\conseq(\alpha)$ is computable for every explicitly given type $\alpha$.
 \end{definition}
 \begin{definition}[$\TypeOf::(\Expr\cimplies\OptionType)$]\ \\ \label{def:TypeOf}
-For each well-typed expression there exists one and only one type. The corresponding function $\TypeOf$ is recursively defined by induction on the argument:
+For each well--typed expression there exists one and only one type. The corresponding function $\TypeOf$ is recursively defined by induction on the argument:
 \begin{enumerate}
 \item In case it is $\var^\alpha(x)$, then \[
 \TypeOf(\var^\alpha(x))
@@ -206,8 +206,8 @@ So the function that returns a type of an expression is defined. Each value of i
 and it $\TypeOf(e)$ is computable for every explicitly given expression $e$.
 \end{definition}
 
-\begin{definition}[Well-typed expression]
-The expression $e$ is well-typed if computed $\TypeOf(e)$ is not $\None$.
+\begin{definition}[Well--typed expression]
+The expression $e$ is well--typed if computed $\TypeOf(e)$ is not $\None$.
 \end{definition}
 
 \begin{definition}[Substitution]\ \\
@@ -219,10 +219,10 @@ Partial function of simultaneous substitution of a free variable $x$ in expressi
 \begin{definition}[Transformation]\ \\
 Transformations of expressions.
 \begin{enumerate}
-\item Alpha-conversion: $(x.M[x/v]) \rightsquigarrow (y.M[y/v])$.
-\item Beta-reduction: $((x.M) N) \rightsquigarrow (M[N/x])$.
-\item Proj1-reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow a$.
-\item Proj2-reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow b$.
+\item Alpha--conversion: $(x.M[x/v]) \rightsquigarrow (y.M[y/v])$.
+\item Beta--reduction: $((x.M) N) \rightsquigarrow (M[N/x])$.
+\item Proj1--reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow a$.
+\item Proj2--reduction: $\pr_1^{\TypeOf((a,b))}((a,b)) \rightsquigarrow b$.
 \end{enumerate}
 \end{definition}
 \subsection{Basic type theoretic definitions.}

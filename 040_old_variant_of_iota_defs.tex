@@ -12,7 +12,7 @@ F(x)\ceq \union\cc{b}{(x,b)\in F}
 \[
 F(x) \ceq \cc{b}{(x,b)\in F}=\ran(F)
 \]
-(if domain is defined as usual, then the element of a simple family is intrinsicallly non-empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
+(if domain is defined as usual, then the element of a simple family is intrinsicallly non--empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
 %F(x) \ceq \union\cc{b}{(x,b)\in F}
 \end{definition}
 We need to improve the previous definitions, because:
@@ -34,14 +34,14 @@ The latter definition therefore is universal for any of r/f/F/PF
 \end{definition}
 
 \begin{definition}[Range of relation]
-(!!!Note that it is in general different from range of a function or family. "R-Ran","ran","small range")
+(!!!Note that it is in general different from range of a function or family. "R--Ran","ran","small range")
 \[
 \ran(R)\ceq \cc{y}{\exists x:(x,y)\in R}
 \]
 \end{definition}
 
 \begin{definition}[in range of relation/function/family]
-It works for both R-Ran and F-Ran.
+It works for both R--Ran and F--Ran.
 \[
 (K\mbox{ in classrange of }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)=K)
 \]
@@ -54,7 +54,7 @@ It works for both R--Ran and F--Ran.
 \end{definition}
 
 
-\begin{definition}([Set-]Range of function/family. "F-Ran","Ran", "big range")
+\begin{definition}([Set--]Range of function/family. "F--Ran","Ran", "big range")
 %\[
 %\Ran(F)\ceq \cc{y}{\exists x: (x \in \Dom(F)) \land (F(x)=y)}
 %\]
@@ -85,17 +85,17 @@ It doesn't make sense to prove anything about $(\iota x:\varphi)$, if it is not 
 There is a "default value" D1 which $(\varepsilon x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
 There is a "default value" D2 which $(\iota x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
 They are not specified. (Up to now).\\
-If they are not specified, then we cannot define the "(- defined)" predicate.
+If they are not specified, then we cannot define the "(-- defined)" predicate.
 It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
 It is not possible to have a "defined" predicate, because it isn't preserved under equality.\\
 So naive "defined" requires a recursion on a term.\\
 Even if we introduce own "defined" for each constructor of the term, it still will require syntactic analysis.\\
 So the solution is to have a context under which definitions make sense.\\
-It may be a family of classes, where the first one should be non-empty, as a signal that some conditions are satisfied.\\
+It may be a family of classes, where the first one should be non--empty, as a signal that some conditions are satisfied.\\
 It strongly reminds a notion of signature and structure.\\
 
 In the situation, when $\exists x: \varphi$ and $\neg\exists! x: \varphi$.
-"value-defined".
+"value--defined".
 
 Relations are symmetrical, so inverse relation is defined.
 
@@ -104,7 +104,7 @@ Protected families are assymetrical, so it is not always possible to define the 
 Families 
 \subsection{Non--empty families}
 All definitions in this section are local: they will not be used in other sections.
-\begin{definition}(family of non-empty classes)
+\begin{definition}(family of non--empty classes)
 \[
 (F\text{ is NEF})\iffdef \dots 
 \]
@@ -115,7 +115,7 @@ All definitions in this section are local: they will not be used in other sectio
 This symbol is not a term of our theory(MK+axGroth), because terms denote classes, and it is bigger than a class.
 \end{definition}
 Different variant of canonisations:
-\begin{definition}[canonization a family of non-empty classes]
+\begin{definition}[canonization a family of non--empty classes]
 \[
 \canonize0(F) = \cc{(x,\{q\})}{\exists y:((x,y)\in F)\land (q\in y)}
 \]
@@ -164,7 +164,7 @@ A family is a relation which range of relation consists only of subsets of singl
 \end{definition}
 A family is weaker than a funtional symbol, because functional symbols can take proper classes as arguments.\\
 A function is weaker than a family because it can return only sets.\\
-But the behaviour of $\{-\}$ is well-defined only on sets.
+But the behaviour of $\{-\}$ is well--defined only on sets.
 Maybe it should be a family?\\
 What about $\{-,-\}$?\\
 Should $\{V\}$ be $\emptyclass$ or $V$?\\
@@ -173,9 +173,9 @@ So it seems to legit, because it cannot be obtained in any other way out of the 
 
 It's not the same in other cases, e.g. for ``f(x)'', therefore it requires an additional assumption to be treated as ``legit''.
 
-\subsection{Value of a function via set-descriptors}
+\subsection{Value of a function via set--descriptors}
 \begin{definition}
-Intended use: value of a class-function. Class F is arbitrary.
+Intended use: value of a class--function. Class F is arbitrary.
 \[
 F(x) = \left(\iota y: \langle x,y\rangle\in F\right)
 \]

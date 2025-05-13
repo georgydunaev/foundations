@@ -7,7 +7,7 @@ Note 2:\\
 Technically almost everywhere where we use "defined" we mean well-defined, but write just "defined" for shortness.\\
 Note 3:\\
 If we explicitly assume the global choice, then epsilon operator may be assumed to be defined.\\
-If we didn't, epsilon operator is can still be defined, but not well-defined.\\
+If we didn't, epsilon operator is can still be defined, but not well--defined.\\
 
 Now, let's talk about how to understand Hilbert's definition of quantifiers via predicate and epsilon operater: (note the two different epsilon operators!)
 \[
@@ -22,8 +22,8 @@ Now, let's talk about how to understand Hilbert's definition of quantifiers via 
 \[
 (\neg((\varepsilon x:\neg\varphi) \lexists)) \IFF (\forall x:\varphi):\IFF \varphi[(\epsilon x:\neg\varphi)/x]
 \]
-If $(\varepsilon x:\varphi)$ is not well-defined for particular $\varpi$, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
-Therefore for such definition we need a well-defined(total) variant. (extended with some default value)
+If $(\varepsilon x:\varphi)$ is not well--defined for particular $\varpi$, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
+Therefore for such definition we need a well--defined(total) variant. (extended with some default value)
 \\
 Btw,
 \[
@@ -31,7 +31,7 @@ Btw,
 \]
 For all connectives, if there is a U value, then the otcome will also be U.\\
 Including equivalences!\\
-Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well-defined.\\
+Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well--defined.\\
 We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not defined on the empty predicates.\\
 Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
 
@@ -51,13 +51,13 @@ In usual mathematics, usually either $\tau^{\exists!}$ or $\epsilon$ are used.\\
 %2) $\tau$ -- partial choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
 
 %2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
-%3) total $\epsilon$-operator, which returns empty set in case of definable everywhere false predicates is given as an argument;\\
-%4) partial $\varepsilon$-operator, which is undefined on everywhere false definable predicates.\\
+%3) total $\epsilon$--operator, which returns empty set in case of definable everywhere false predicates is given as an argument;\\
+%4) partial $\varepsilon$--operator, which is undefined on everywhere false definable predicates.\\
 
 Note 1: operators work only on definable conglomerates.\\
 Note 2: I think predicate is a little bit more general than the bounded formula since bounded formulas are corresponding to definable conglomerates.\\
  
-For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$-operator.
+For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$--operator.
  
 %$\bdbvbH$
 %\symbol{216}
@@ -83,10 +83,10 @@ $t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
 $t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a\simeq t)\lor(b\simeq t)$(bad)\\
 We need to determine what is valid and what is not.\\
 Resolution:\\
-We should not use variables for definitions, because definitions are not always well-defined. And variables are always well-defined.\\
+We should not use variables for definitions, because definitions are not always well--defined. And variables are always well--defined.\\
 We must use new constants instead.\\
-It is a more delicate mechanism than just the use of quasi-equality(as in W.Farmer's article).\\
-So we have a constant $c\ceq (\varepsilon x: x \in \{a,b\})$.
+It is a more delicate mechanism than just the use of quasi--equality(as in W.Farmer's article).\\
+So we have a constant $c\ceq (\varepsilon x,\ x \in \{a,b\})$.
 But still $(a\simeq c)\lor(b\simeq c)$ is false.
 Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
 
