@@ -28,12 +28,12 @@ There is a loss of meaning, when consider "familial inverse membership relation"
 
 \begin{definition}(relational image)
 \[
-F[A]\ceq \cc{b}{\exists a\in A: (a,b)\in F}
+F[A]\ceq \cc{b}{\exists a\in A,\  (a,b)\in F}
 \]
 \end{definition}
 \begin{definition}(relational glare)
 \[
-F\langle A \rangle\ceq \cc{b}{\forall a\in A: (a,b)\in F}
+F\langle A \rangle\ceq \cc{b}{\forall a\in A,\  (a,b)\in F}
 \]
 \end{definition}
 \begin{theorem}
@@ -48,13 +48,13 @@ F\langle A \rangle\ceq \cc{b}{\forall a\in A: (a,b)\in F}
 \Proof
 $(\subseteq)$\\
 Assume $w\in \mbox{E}^{\top}[A]$.\\
-Therefore $\exists a\in A: (a,w)\in \mbox{E}^{\top}$.\\
+Therefore $\exists a\in A,\  (a,w)\in \mbox{E}^{\top}$.\\
 So $(w,a)\in \mbox{E}$.\\
 So $w\in a$.\\
 Since $w\in a$ and $a\in A$, $w\in \union A$.\\
 $(\supseteq)$\\
 $w\in \union A$.\\
-Therefore $\exists a\in A: w\in a$.\\
+Therefore $\exists a\in A,\  w\in a$.\\
 So $(w,a)\in \mbox{E}$.
 So $(a,w)\in \mbox{E}^{\top}$.
 From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A])$.\\
@@ -113,12 +113,12 @@ F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{A choice function and the epsilon operator}
 \begin{definition}
-\label{def:epsilon operator for sets}
 Epsilon operator for sets, may be defined this way:
 \[
-(\varepsilon y: \varphi) = c\left(\cc{y}{\varphi}\right)
+(\varepsilon y,\  \varphi) = c\left(\cc{y}{\varphi}\right)
+\labeltagd{def}{epsilon operator for sets}
 \]
-Here the constant $\text{c}$ denotes a class--function of global choice(def. \myref{def:globalchoice}):
+Here the constant $\text{c}$ denotes a class--function of global choice(see \myref{def:globalchoice}):
 \[
 \text{c}:V\setminus\{\emptyclass\}\to V
 \]
@@ -138,32 +138,32 @@ Other notable facts are that axiom of limitation of size implies axiom of global
 \end{theorem}
 \Proof
 $(\Rightarrow)$\\
-Assume $((\epsilon y: \phi) \set)$. To show: $(\exists(y\set):\phi)$.
+Assume $((\epsilon y,\  \phi) \set)$. To show: $(\exists(y\set),\ \phi)$.
 \[
-((\epsilon y: \phi) \set)
+((\epsilon y,\ \phi) \set)
 \IMPLIES
-(c(\{y:\phi\})\set)
+(c(\cc{y}{\phi})\set)
 \]
 \[
-(c(\{y:\phi\})\set)
+(c(\cc{y}{\phi})\set)
 \IMPLIES
-(\{y:\phi\}\in\dom(c))
+(\cc{y}{\phi}\in\dom(c))
 \tag{by some variant of \myref{thm:pair in function} }
 \]
 \[
-(\{y:\phi\}\in\dom(c))
+(\cc{y}{\phi}\in\dom(c))
 \IMPLIES
-(\{y:\phi\}\nonempty)
+(\cc{y}{\phi}\nonempty)
 \]
 \[
-(\{y:\phi\}\nonempty)
+(\cc{y}{\phi}\nonempty)
 \IMPLIES
-(\exists y:\phi)
+(\exists y,\ \phi)
 \]
 $(\Leftarrow)$\\
-Assume $(\exists(y\set):\phi)$. To show: $((\epsilon y: \phi) \set)$.
+Assume $(\exists(y\set),\ \phi)$. To show: $((\epsilon y,\  \phi) \set)$.
 \[
-(\exists y:\phi)
+(\exists y,\ \phi)
 \IMPLIES
 (\cc{y}{\phi}\nonempty)
 \]

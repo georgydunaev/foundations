@@ -174,7 +174,7 @@ Later we will also see that elements of $\mathcal{B}$ are open.
 }
 \[
 \left(p \mathcal{R}_\mathcal{B} S \right) :\LRA 
-\left(\exists B\in\mathcal{B}: p\in B \subseteq S \subseteq \union\mathcal{B}  \right)
+\left(\exists B\in\mathcal{B},\  p\in B \subseteq S \subseteq \union\mathcal{B}  \right)
 \]
 \end{definition}
 %(Note: 
@@ -196,13 +196,13 @@ The relation $\mathcal{R}_\mathcal{B}$ between points and neighbourhoods is topo
 x\in\intersection\mathcal{R}_\mathcal{B}[\{x\}]
 \]
 \[
-\forall S \in \mathcal{R}_\mathcal{B}[\{x\}] : x\in S
+\forall S \in \mathcal{R}_\mathcal{B}[\{x\}] ,\  x\in S
 \]
 \[
-\forall S: (x\mathcal{R}_\mathcal{B} S) \implies x\in S
+\forall S,\  (x\mathcal{R}_\mathcal{B} S) \implies x\in S
 \]
 \[
-\forall S: \left(\exists B\in\mathcal{B}: p\in B\subseteq S \right) \implies x\in S
+\forall S,\  \left(\exists B\in\mathcal{B},\  p\in B\subseteq S \right) \implies x\in S
 \]
 \[
 (p\in B\subseteq S) \implies x\in S
@@ -217,7 +217,7 @@ N_\mathcal{B}=\union\mathcal{N}_\mathcal{B}=\union\ran(\mathrm{tni_\mathcal{B}})
 If $\mathcal{R}^{T}_\mathcal{B}[\{S\}]$ is empty, then we are done.\\
 If it is not, then 
 \[
-\exists x: x \mathcal{R}_\mathcal{B} S.
+\exists x,\  x \mathcal{R}_\mathcal{B} S.
 \]
 %Therefore
 \[
@@ -467,8 +467,8 @@ Q \subseteq \cc{\lambda}{\lambda\mathrm{\ Dynkin}}
 
 \subsection{Topological properties}
 \begin{definition}[topological property]
+(ToDo: definition)
 \end{definition}
-
 To be a topology is a hereditary topological property. To be a closed set is a [trivially] weakly hereditary topological property. To be an open set is a topological property, but not even weakly hereditary. Several hereditary topological properties: being compact, being separable, being connected etc.
 
 \iftrue
@@ -476,7 +476,7 @@ To be a topology is a hereditary topological property. To be a closed set is a [
 \subsection{Topology in older notation}
 \begin{definition}
 \[
-\mbox{Segm} = \{[-\infty;\beta):\beta\in\real\}\cup \{(\alpha;+\infty]:\alpha\in\real\}\cup \{(\alpha;\beta):\alpha\in\real,\beta\in\real\}
+\mbox{Segm} = \ccc{\beta}{[-\infty;\beta)}{\beta\in\real}\cup \ccc{\alpha}{(\alpha;+\infty]}{\alpha\in\real}\cup \ccc{\alpha,\beta}{(\alpha;\beta)}{\alpha\in\real,\beta\in\real}
 \]
 \end{definition}
 \begin{definition}
@@ -486,7 +486,7 @@ To be a topology is a hereditary topological property. To be a closed set is a [
 \end{definition}
 \begin{definition}[neighbourhoods]
 \[
-\nghbset_\topology(x) = \{S \subseteq \union \topology : \exists  U\in \topology: x\in U \subseteq S \}
+\nghbset_\topology(x) = \cc{S \subseteq \union \topology}{ \exists  U\in \topology,\  x\in U \subseteq S }
 \]
 \end{definition}
 \begin{definition}[interior]
@@ -513,6 +513,8 @@ V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 \end{theorem}
 
 \newcommand*{\blipo}{\separation{W}{\topology}{W\subseteq V}}
+\renewcommand*{\blipo}{\ccc{W}{W\in\topology}{W\subseteq V}}
+\renewcommand*{\blipo}{\cc{W\in\topology}{W\subseteq V}}
 % \cc{W\in\topology}{W\subseteq V}
 %\noindent Lemma:
 \begin{theorem}
@@ -520,24 +522,49 @@ V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 \]
 \Proof
-$(\Rightarrow)\\
-V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(nghb--elim, union--elim).
-\\
-$U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo $\hfill(specification--intro).
-\\
-$x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo$\hfill(union--intro).
-\\
-$x\in \union \blipo \IMPLIES x\in \interior_\topology(V)$\hfill(interior--intro).
-\\
+$(\Rightarrow)$
+\[
+V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology,\  x\in U \subseteq V
+\tag{nghb--elim, union--elim})
+\]%\hfill(\text
+\[
+U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo
+\tag(specification--intro)
+\]
+\[
+x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo
+\tag{union--intro}
+\]
+
+\[
+x\in \union \blipo \IMPLIES x\in \interior_\topology(V)
+\tag{interior--intro}
+\]
 $(\Leftarrow)$
-\\
-$x\in \interior_\topology(V) \IMPLIES \exists W\in  \{U\in\topology :U\subseteq V\}:\ x\in W$\hfill(interior--elim, union--elim).
-\\
-$W\in  \{U\in\topology:U\subseteq V\} \IMPLIES W\in\topology\LAND W\subseteq V$\hfill(specification--elim).
-\\
-$x\in W\LAND W\in\topology\LAND W\subseteq V \IMPLIES \exists U\in \topology: x\in U \subseteq V$\hfill(and--intro, exists--intro).
-\\
-$(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x)$\hfill(exists--elim, nghb--intro).
+\[
+x\in \interior_\topology(V) \IMPLIES \exists W\in \cc{U\in\topology}{U\subseteq V},\ x\in W
+\tag{interior--elim, union--elim}
+\]
+\[
+W\in \cc{U\in\topology}{U\subseteq V} \IMPLIES W\in\topology\LAND W\subseteq V
+\tag{specification--elim}
+\]
+\[
+x\in W
+\LAND
+W\in\topology
+\LAND 
+W\subseteq V 
+\IMPLIES 
+\exists U\in \topology,\  x\in U \subseteq V
+\tag{and--intro, exists--intro}
+\]
+\[
+(\exists U\in \topology,\  x\in U \subseteq V)
+\IMPLIES
+V\in \nghbset_\topology(x)
+\tag{exists--elim, nghb--intro}
+\]
 \DoneNoPar
 \end{theorem}
 \pagebreak
@@ -546,7 +573,7 @@ $(\exists U\in \topology: x\in U \subseteq V) \IMPLIES V\in \nghbset_\topology(x
 \begin{definition}[base]\ \\
 A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
 %any open set o
-$\forall U\in\mathcal{T}:\exists W\in\power\mathfrak{B}:U=\union W$\\
+$\forall U\in\mathcal{T},\ \exists W\in\power\mathfrak{B},\ U=\union W$\\
 or\\
 $\mathcal{T}\subseteq \cc{\union W }{  W\in\power\mathfrak{B}}$\\
 or\\
@@ -558,7 +585,7 @@ $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 \begin{definition}[generator]\ \\
 A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff
 \[
-\left(\forall U\in\mathcal{T}:\exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }:U=\union W
+\left(\forall U\in\mathcal{T},\ \exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) },\ U=\union W
 \right)
 \]
 or
@@ -577,7 +604,7 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 \[
 (\mathcal{C} \leq \mathcal{F})
 \IFF
-(\forall C \in \mathcal{C}:\exists F \in \mathcal{F}: F \subseteq C)
+(\forall C \in \mathcal{C},\ \exists F \in \mathcal{F},\  F \subseteq C)
 \]
 \end{definition}
 
@@ -587,10 +614,10 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 \]
 \end{notation}
 
-\begin{definition}[Order on bases]
+\begin{definition}[order on bases]
 Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff\\
 \[
-\forall x : (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
+\forall x ,\  (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
 \]
 \end{definition}
 

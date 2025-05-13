@@ -1,4 +1,4 @@
-\def\topic{}
+\def\topic{Ordered pair}
 \input{BEGIN.tex}
 \section{Ordered pair [not interesting]}
 \subsection{Introduction}
@@ -13,7 +13,7 @@ In this section different definitions of ordered are studied and the new one is 
 ((a\set)\land(b\set))\implies((a,b)\set)
 \tag{OrderedPairSize}
 \]
-%\label(ax:ordered pair set)
+%\label(axm:ordered pair set)
 \[
 ((a_1,b_1)=(a_2,b_2))
 \iff
@@ -41,51 +41,51 @@ Projections may be defined this way:
 \end{definition}
 \begin{remark}
 \[
-(\exists! y\in p : \psi)
+(\exists! y\in p ,\ \psi)
 \stackrel{\mathrm{def}}{\IFF}
-(\exists y\in p : \psi)
+(\exists y\in p ,\ \psi)
 \&
-(! y\in p : \psi)
+(! y\in p ,\ \psi)
 \]
 %\[
-%\exists! y\in p : x \in y
+%\exists! y\in p ,\ x \in y
 %\IFF
-%(\exists y\in p : x \in y)
+%(\exists y\in p,\ x \in y)
 %\&
-%(! y\in p : x \in y)
+%(! y\in p,\ x \in y)
 %\]
 %because
 %\[
-%\exists (y\in p) : (x \in y)
+%\exists (y\in p),\ (x \in y)
 %\IFF 
-%\exists y : (y\in p) \land (x \in y)
+%\exists y,\ (y\in p) \land (x \in y)
 %\]
 %\[
-%\! (y\in p) : (x \in y)
+%\! (y\in p),\ (x \in y)
 %\IFF 
-%! y : (y\in p) \land (x \in y)
+%! y,\ (y\in p) \land (x \in y)
 %\]
 %\[
 %\IFF 
-%\forall y_1, y_2 : ((y_1\in p) \land (x \in y_1))\land
+%\forall y_1, y_2,\ ((y_1\in p) \land (x \in y_1))\land
 %(y_2\in p) \land (x \in y_2)
 %\implies
 %y_1 = y_2
 %\]
 %...
 %\[
-%\exists! y : (y\in p) \land (x \in y)
+%\exists! y,\ (y\in p) \land (x \in y)
 %\]
 \end{remark}
 %\begin{theorem}(THIS IS NOT TRUE)
 %\[
-%(! y : (y\in p) \land (x \in y))
+%(! y,\ (y\in p) \land (x \in y))
 %\iff
-%(! y : (y\in p) \implies (x \in y))
+%(! y,\ (y\in p) \implies (x \in y))
 %\]
 %\Proof
 %($\Rightarrow$)\\
-%Assume $(! y : (y\in p) \land (x \in y))$.\\
+%Assume $(! y,\ (y\in p) \land (x \in y))$.\\
 %Fix $y_1$, $y_2$.\\
 %Assume  $(y_1\in p) \implies (x \in y_1)$.\\
 %Assume  $(y_2\in p) \implies (x \in y_2)$.\\
@@ -93,13 +93,13 @@ Projections may be defined this way:
 %When $(y_1\in p) \implies (x \in y_1)$ is true and $(y_1\in p) \land (x \in %y_1)$ is not true? When $(y_1\in p)$ is false and $(x \in y_1)$ is true.
 %\[\]
 %($\Leftarrow$)\\
-%Assume $(! y : (y\in p) \implies (x \in y))$.\\
+%Assume $(! y,\ (y\in p) \implies (x \in y))$.\\
 %\Done
 %\end{theorem}
 
 %\begin{theorem}(ALSO NOT TRUE)
 %\[
-%E x : ! x : 
+%E x,\ ! x,\ 
 %\iff
 %\]
 %\end{theorem}

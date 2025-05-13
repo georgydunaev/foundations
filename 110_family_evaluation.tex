@@ -20,10 +20,10 @@ I_{\Fm}(s\approx t) :\IFF
 
 \begin{definition}(equality)?
 %\[
-%(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right): I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
+%(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right),\ I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
 %\[
-%(I^glob_\Fm(s = t)=\lTrue) \IFF \forall (w:\Var\to\power\Un\setminus\{\emptyclass\} \forall (v:\prod_{x:Var}w(x)): I_\Term^{\loc,v}(t)=I_\Term^{\loc,v}(s)
+%(I^glob_\Fm(s = t)=\lTrue) \IFF \forall (w:\Var\to\power\Un\setminus\{\emptyclass\} \forall (v:\prod_{x:Var}w(x)),\ I_\Term^{\loc,v}(t)=I_\Term^{\loc,v}(s)
 %\]
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
@@ -36,7 +36,7 @@ I_{\Fm}(s\approx t) :\IFF
 
 \begin{definition}(underdefined class)(Note: be careful, since not every undefined class is underdefined, some are overdefined in various ways, so not even semantically equal to eachother.)
 \[
-\lundef :\simeq (\varepsilon x: \bot)
+\lundef :\simeq (\varepsilon x,\ \bot)
 \]
 \end{definition}
 What if $\varphi$ is assigned with $U$ (i.e. it is assigned with the "uncertain" truth value)?\\
@@ -60,7 +60,7 @@ Context: (x:Var)
 
 \begin{definition}(Semi--singleton)
 \[
-(s\ \mbox{ss}) :\iff (!y:y\in s)
+(s\ \mbox{ss}) :\iff (!y,\ y\in s)
 \]
 Side condition:\\
 Variable $y$ is not in free variables of term $s$.
@@ -74,7 +74,7 @@ Variable $y$ is not in free variables of term $s$.
 
 \begin{definition}(Function constructor)
 \[
-(\lambda x: t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
+(\lambda x,\ t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
 \]
 Context: ($x$:Var) ($t$:Term)\\
 Comment: Term $t$ can contain $x$ as a free variable.\\
@@ -86,7 +86,7 @@ Side conditions:\\
 
 \begin{definition}(Family constructor)
 \[
-(\Lambda x: t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
+(\Lambda x,\ t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
@@ -111,40 +111,40 @@ Context:\\
 (z\set) \land (t[z/x]\set) \implies
 \]
 \[
-(\lambda x: t)(z) = t[z/x]
+(\lambda x,\ t)(z) = t[z/x]
 \]
 \end{theorem}
 \Proof
 To prove the equality, we use set extensionality and MP.
 \[
-((\lambda x: t)(z) \subseteq t[z/x] )
+((\lambda x,\ t)(z) \subseteq t[z/x] )
 \land
-((\lambda x: t)(z) \supseteq t[z/x] )
+((\lambda x,\ t)(z) \supseteq t[z/x] )
 \implies
-((\lambda x: t)(z) = t[z/x] )
+((\lambda x,\ t)(z) = t[z/x] )
 \]
 ($\subseteq$)\\
 Assume 
 \[
-q\in (\lambda x: t)(z)
+q\in (\lambda x,\ t)(z)
 \]
 By definition of $-(-)$ (evaluation),
 \[
-q\in\union \cc{b}{(z,b)\in(\lambda x:t)}.
+q\in\union \cc{b}{(z,b)\in(\lambda x,\ t)}.
 \]
 By destruction of the union,
 \[
-\exists s\in \cc{b}{(z,b)\in(\lambda x:t)}: q\in s.
+(\exists s\in \cc{b}{(z,b)\in(\lambda x,\ t)},\ (q\in s)).
 \]
 Note for the following step: since variable b has no free occurences in t, $t[s/b]=t$.
 \[
-s\in \cc{b}{(z,b)\in(\lambda x:t)}
+s\in \cc{b}{(z,b)\in(\lambda x,\ t)}
 \IMPLIES
-(s\set) \& ((z,s)\in(\lambda x:t))
+(s\set) \& ((z,s)\in(\lambda x,\ t))
 \]
 By definition of $\lambda$,
 \[
-(z,s)\in(\lambda x:t)
+(z,s)\in(\lambda x,\ t)
 \IMPLIES
 (z,s)\in \cc{(x,t)}{\top}
 \]
@@ -152,13 +152,13 @@ Unfolding the notation:
 \[
 (z,s)\in \cc{(x,t)}{\top}
 \IMPLIES
-(z,s)\in \cc{w}{\exists x: w = (x,t) \land \top}
+(z,s)\in \cc{w}{\exists x,\ w = (x,t) \land \top}
 \]
 
 \[
-(z,s)\in \cc{w}{\exists x: w = (x,t) \land \top}
+(z,s)\in \cc{w}{\exists x,\ w = (x,t) \land \top}
 \IMPLIES
-\exists x: (z,s) = (x,t) \land \top
+\exists x,\ (z,s) = (x,t) \land \top
 \]
 Notes: w is free in t, w is different from x. Since otherwise we would write $(x[(z,s)/w],t[(z,s)/w])$.
 
@@ -189,7 +189,7 @@ Therefore
 ($\supseteq$)\\
 Assume $(q \in t[z/x])$.\\
 Let $s\ceq t[z/x]$. Then $(q\in s)$.\\
-Goal1:$(z,s)\in(\lambda x:t)$.\\
+Goal1:$(z,s)\in(\lambda x,\ t)$.\\
 \[
 x[z/x]=z
 \]
@@ -197,36 +197,36 @@ x[z/x]=z
 (z,t[z/x]) = (x[z/x],t[z/x])=(x,t)[z/x]
 \]
 Goal1: $(x,t)[z/x]\in\cc{(x,t)}{(x\mbox{ any})}$\\
-Goal2: $\exists x:(x,t)=((x,t)[z/x])$\\
+Goal2: $\exists x,\ (x,t)=((x,t)[z/x])$\\
 $x\ceq z$\\
 There are no free occurencies of $x$ in $((x,t)[z/x])$, because of the substitution.\\
 $c\ceq ((x,t)[z/x])$\\
 \[
-(((x,t)[z/x])=c)\implies\exists x: (x,t)=c
+(((x,t)[z/x])=c)\implies\exists x,\ (x,t)=c
 \]
 Goal' is done.\\
 
 From the premise, $(x,t)[z/x]$ is a set.\\
 Therefore Goal1 is proven.\\
-So $(x,t)[z/x]\in (\lambda x:t)$.\\
-So $(z,t[z/x])\in (\lambda x:t)$.\\
-So $t[z/x]\in \cc{b}{(z,b)\in(\lambda x:t)}$.\\
+So $(x,t)[z/x]\in (\lambda x,\ t)$.\\
+So $(z,t[z/x])\in (\lambda x,\ t)$.\\
+So $t[z/x]\in \cc{b}{(z,b)\in(\lambda x,\ t)}$.\\
 Since $(q \in t[z/x])$, we also have
 \[
-q\in \bigcup \cc{b}{(z,b)\in(\lambda x: t)}
+q\in \bigcup \cc{b}{(z,b)\in(\lambda x,\ t)}
 \]
-So $q\in (\lambda x: t)(z)$.\\
+So $q\in (\lambda x,\ t)(z)$.\\
 And we are done.\\
 \Done
 
 
 \begin{theorem}(Evaluation of family)
 \[
-(\Lambda x: t)(z) = t[z/x],
+(\Lambda x,\ t)(z) = t[z/x],
 \]
 and in particular:
 \[
-(\Lambda x: t)(x) = t.
+(\Lambda x,\ t)(x) = t.
 \]
 %Context:
 %(q term)
@@ -234,18 +234,18 @@ and in particular:
 \Proof
 By definitions,
 \[
-(\Lambda x: t)(z) =.
+(\Lambda x,\ t)(z) =.
 \]
 
 
 \Done
 
 \subsection{Lambda operatorOLD}
-\begin{definition}
-\label{def:lambda operator}not good anymore: doesn't work for classes
-Lambda operator.
+\begin{definition}[lambda operator]
+(not good anymore: doesn't work for classes!)
 \[
-(\lambda x: t) = \cc{p}{\exists x: p = \langle x,t \rangle}
+(\lambda x,\ t) = \cc{p}{\exists x,\ p = \langle x,t \rangle}
+\labeltagd{def}{lambda operator}
 \]
 \end{definition}
 

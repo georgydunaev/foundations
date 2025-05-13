@@ -1,7 +1,7 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Old variants of iota definitions}
-\subsection{1ST ATTEMPT: Values of functions and of families of proper classes, unified approach}
+\subsection{\nth{1} ATTEMPT: Values of functions and of families of proper classes, unified approach}
 SKIP THIS, GO TO THE NEXT SUBSECTION
 \begin{definition}[value of relation/function/protected family at $x$]
 \[
@@ -29,34 +29,34 @@ The latter definition therefore is universal for any of r/f/F/PF
 
 \begin{definition}[Domain of relation/function/family/protected family]
 \[
-\Dom(F)\ceq \cc{x}{\exists s:(x,s)\in F}=:\dom(F)
+\Dom(F)\ceq \cc{x}{\exists s,\ (x,s)\in F}=:\dom(F)
 \]
 \end{definition}
 
 \begin{definition}[Range of relation]
 (!!!Note that it is in general different from range of a function or family. "R--Ran","ran","small range")
 \[
-\ran(R)\ceq \cc{y}{\exists x:(x,y)\in R}
+\ran(R)\ceq \cc{y}{\exists x,\ (x,y)\in R}
 \]
 \end{definition}
 
 \begin{definition}[in range of relation/function/family]
 It works for both R--Ran and F--Ran.
 \[
-(K\mbox{ in classrange of }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)=K)
+(K\mbox{ in classrange of }F) \IFF \exists x,\  (x \in \Dom(F)) \land (F(x)=K)
 \]
 \end{definition}
 \begin{definition}[in range of protected family]
 It works for both R--Ran and F--Ran.
 \[
-(K\mbox{ in classrange of protected }F) \IFF \exists x: (x \in \Dom(F)) \land (F(x)_p=K)
+(K\mbox{ in classrange of protected }F) \IFF \exists x,\ (x \in \Dom(F)) \land (F(x)_p=K)
 \]
 \end{definition}
 
 
-\begin{definition}([Set--]Range of function/family. "F--Ran","Ran", "big range")
+\begin{definition}[(Set--)Range of function/family. "F--Ran","Ran", "big range"]
 %\[
-%\Ran(F)\ceq \cc{y}{\exists x: (x \in \Dom(F)) \land (F(x)=y)}
+%\Ran(F)\ceq \cc{y}{\exists x,\  (x \in \Dom(F)) \land (F(x)=y)}
 %\]
 \[
 \Ran(F)\ceq \cc{y}{ y\mbox{ in classrange of } F}
@@ -80,10 +80,10 @@ A protected family is a relation which range of relation consists only of subset
 \]
 \end{definition}
 %For every axiomatic definition, there are certain prerequisites.
-It doesn't make sense to prove anything about $(\varepsilon x:\varphi)$, if it is not proven that $\exists x: \varphi$.\\
-It doesn't make sense to prove anything about $(\iota x:\varphi)$, if it is not proven that $\exists! x: \varphi$.\\
-There is a "default value" D1 which $(\varepsilon x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
-There is a "default value" D2 which $(\iota x:\varphi)$ is equal to, if it is not true that $\exists x: \varphi$.\\
+It doesn't make sense to prove anything about $(\varepsilon x,\ \varphi)$, if it is not proven that $\exists x,\  \varphi$.\\
+It doesn't make sense to prove anything about $(\iota x,\ \varphi)$, if it is not proven that $\exists! x,\  \varphi$.\\
+There is a "default value" D1 which $(\varepsilon x,\ \varphi)$ is equal to, if it is not true that $\exists x,\  \varphi$.\\
+There is a "default value" D2 which $(\iota x,\ \varphi)$ is equal to, if it is not true that $\exists x,\  \varphi$.\\
 They are not specified. (Up to now).\\
 If they are not specified, then we cannot define the "(-- defined)" predicate.
 It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
@@ -94,7 +94,7 @@ So the solution is to have a context under which definitions make sense.\\
 It may be a family of classes, where the first one should be non--empty, as a signal that some conditions are satisfied.\\
 It strongly reminds a notion of signature and structure.\\
 
-In the situation, when $\exists x: \varphi$ and $\neg\exists! x: \varphi$.
+In the situation, when $\exists x,\  \varphi$ and $\neg\exists! x,\  \varphi$.
 "value--defined".
 
 Relations are symmetrical, so inverse relation is defined.
@@ -117,19 +117,19 @@ This symbol is not a term of our theory(MK+axGroth), because terms denote classe
 Different variant of canonisations:
 \begin{definition}[canonization a family of non--empty classes]
 \[
-\canonize0(F) = \cc{(x,\{q\})}{\exists y:((x,y)\in F)\land (q\in y)}
+\canonize0(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}
 \]
 
 \end{definition}
-\begin{definition}[canonization[of a family of potentially empty classes]]
+\begin{definition}[canonization( of a family of potentially empty classes])]
 \[
-\canonize1(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{x\in\Dom(F)}
+\canonize1(F) = \cc{(x,\cc{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{x\in\Dom(F)}
 \]
 \[
-\canonize2(F) = \cc{(x,\cc{q\})}{\exists y:((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
+\canonize2(F) = \cc{(x,\cc{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
 \]
 \[
-\canonize3(F) = \cc{(x,s)}{\exists y:((x,y)\in F)\land (s\subseteq y) \land (!q:q\in s)}
+\canonize3(F) = \cc{(x,s)}{\exists y,\ ((x,y)\in F)\land (s\subseteq y) \land (!q,\ q\in s)}
 \]
 \end{definition}
 
@@ -159,7 +159,7 @@ So agreement may be ocnsidered: ``Read canonize(F) in any statement when F is me
 \begin{definition}[family]
 A family is a relation which range of relation consists only of subsets of singletones.
 \[
-(F\family) \IFF (F\subseteq V\times\{-\}[])
+(F\family) \IFF (F\subseteq V\times\{-\}[\,])
 \]
 \end{definition}
 A family is weaker than a funtional symbol, because functional symbols can take proper classes as arguments.\\
@@ -177,7 +177,7 @@ It's not the same in other cases, e.g. for ``f(x)'', therefore it requires an ad
 \begin{definition}
 Intended use: value of a class--function. Class F is arbitrary.
 \[
-F(x) = \left(\iota y: \langle x,y\rangle\in F\right)
+F(x) = \left(\iota y,\  \langle x,y\rangle\in F\right)
 \]
 \label{def:value}
 \end{definition}
@@ -235,41 +235,41 @@ If $(F\univocalat x)\land(y\set)$, then
 \Proof
 For formulas to be short, let's define 
 \[
-Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
+Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y,\  \langle x,y\rangle\in F)}.
 \]
 \noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
 % USELESS
 %\[
 %(F\univocal)
 %\IMPLIES
-%(\forall x:\ !y : \langle x,y\rangle \in F)
+%(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
 %\]
 % USELESS
 %\[
-%(\forall x:\ !y : \langle x,y\rangle \in F)
+%(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
 %\IMPLIES
-%(!y : \langle x,y\rangle \in F)
+%(!y ,\  \langle x,y\rangle \in F)
 %\]
 \[
 (F\univocalat x)
 \IMPLIES
-(!y : \langle x,y\rangle \in F)
-\quad\mbox{(by \myref{def:univocalat})}
+(!y ,\  \langle x,y\rangle \in F)
+\tag{by \myref{def:univocalat}}
 \]
 \[
 (\langle x,y\rangle\in F)
 \IMPLIES
-(\exists y : \langle x,y\rangle \in F)
+(\exists y ,\  \langle x,y\rangle \in F)
 \]
 \[
-(\exists y : \langle x,y\rangle \in F)
+(\exists y ,\  \langle x,y\rangle \in F)
 \LAND
-(!y : \langle x,y\rangle \in F)
+(!y ,\  \langle x,y\rangle \in F)
 \IMPLIES
-(\exists! y : \langle x,y\rangle \in F)
+(\exists! y ,\  \langle x,y\rangle \in F)
 \]
 \[
-(\exists! y : \langle x,y\rangle \in F)
+(\exists! y ,\  \langle x,y\rangle \in F)
 \IMPLIES
 (\cc{y }{ \langle x,y\rangle \in F}\singleton)
 \]
@@ -278,7 +278,8 @@ Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \IMPLIES
 \left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
 \in
-\left(\cc{y}{ \langle x,y\rangle\in F}\right)\quad(\mbox{by thm \myref{thm:intersection of singleton} }).
+\left(\cc{y}{ \langle x,y\rangle\in F}\right)
+\tag{by \myref{thm:intersection of singleton}}
 \]
 \[
 \left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
@@ -288,7 +289,7 @@ Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \langle x,\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)\rangle\in F
 \]
 \[
-(!y : \langle x,y\rangle \in F)
+(!y ,\  \langle x,y\rangle \in F)
 \LAND
 (\langle x,y\rangle\in F)
 \LAND
@@ -310,16 +311,16 @@ Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \beta\implies(\alpha\iff(\alpha \land \beta)))
 \]
 \[
-(!y: \langle x,y\rangle\in F)
+(!y,\  \langle x,y\rangle\in F)
 \IMPLIES
 \left(
 (\langle x,y\rangle\in F)
 \iff
-(\langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F))
+(\langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F))
 \right)
 \]
 
-%(!y: \langle x,y\rangle\in F)
+%(!y,\  \langle x,y\rangle\in F)
 \[
 \IMPLIES
 \left(
@@ -333,7 +334,7 @@ Q
 %\[
 %\left(\cc{y}{ \langle x,y\rangle\in F}
 %=
-%\cc{y}{ \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)}\right)
+%\cc{y}{ \langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F)}\right)
 %\IMPLIES
 %\]
 \[
@@ -345,7 +346,7 @@ Q
 \]
 
 \iffalse
-%\cc{y}{ \langle x,y\rangle\in F \land (!y: \langle x,y\rangle\in F)}
+%\cc{y}{ \langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F)}
 \[
 \left(\cc{y}{ \langle x,y\rangle\in F}
 =
@@ -365,16 +366,16 @@ Q
 Q
 \right)=y
 \LAND
-(\iota y: (\langle x,y\rangle\in F))
+(\iota y,\  (\langle x,y\rangle\in F))
 =
 \left(\intersection
 Q
 \right)
 \IMPLIES
-\left((\iota y: \langle x,y\rangle\in F)=y\right)
+\left((\iota y,\  \langle x,y\rangle\in F)=y\right)
 \]
 \[
-\left((\iota y: \langle x,y\rangle\in F)=y\right)
+\left((\iota y,\  \langle x,y\rangle\in F)=y\right)
 \IMPLIES
 (F(x)=y)
 \]
@@ -382,48 +383,48 @@ So we proved that F(x)=y.
 \fi
 
 \begin{align*}
-F(x)&=\left((\iota y: \langle x,y\rangle\in F\right)\\
+F(x)&=\left((\iota y,\  \langle x,y\rangle\in F\right)\\
 &=\intersection Q\\
-&=\intersection \{y: \langle x,y\rangle\in F\land (!y:\langle x,y\rangle\in F)\}\\
+&=\intersection \cc{y}{\langle x,y\rangle\in F\land (!y,\ \langle x,y\rangle\in F)}\\
 &=y
 \end{align*}
 So we proved that $(F(x)=y)$.\\
 \noindent($\Rightarrow$) Assume $(F(x)=y)$. To show:$(\langle x,y\rangle\in F)$
 \begin{align*}
 y&=F(x)
-\quad(\mbox{by assumption}) \\
-&=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \myref{def:value}})
+\tag{by assumption}\\
+&=\left(\iota y,\ \langle x,y\rangle\in F\right)
+\tag{by def of value of a function \myref{def:value}}
 \\
 &=\left(\intersection Q\right)
-\quad(\text{by def of $Q$ and \myref{def:iota operator}})
+\tag{by def of $Q$ and \myref{def:iota operator}}
 \end{align*}
 %\[
 %(F(x)=y)
 %\IMPLIES
-%\left(\iota y: \langle x,y\rangle\in F\right)=y.
+%\left(\iota y,\  \langle x,y\rangle\in F\right)=y.
 %\]
 %\[
-%\left(\iota y: \langle x,y\rangle\in F\right)=y
+%\left(\iota y,\  \langle x,y\rangle\in F\right)=y
 %\IMPLIES
 %\left(\intersection Q\right)=y.
 %\]
 \[
 (F\univocal)
 \IMPLIES
-(\forall x:\ !y : \langle x,y\rangle \in F)
+(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
 \]
 
 \[
-(\forall x:\ !y : \langle x,y\rangle \in F)
+(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
 \IMPLIES
-(!y : \langle x,y\rangle \in F)
+(!y ,\  \langle x,y\rangle \in F)
 \]
 
 \[
-(y\set)
+\left(y\set\right)
 \LAND
-\left(\intersection Q\right)=y
+\left(\left(\intersection Q\right)=y\right)
 \IMPLIES
 \left(\left(\intersection Q\right)\set\right)
 \]
@@ -431,7 +432,7 @@ y&=F(x)
 \[
 \left(\left(\intersection Q\right)\set\right)
 \IMPLIES
-(\exists w: w\in Q)
+(\exists w,\  w\in Q)
 \quad(\mbox{by \myref{thm:intersection set then}}).
 \]
 
@@ -441,28 +442,28 @@ y&=F(x)
 %\IMPLIES
 %\langle x,w\rangle\in F
 %\land 
-%(!w: \langle x,w\rangle\in F)
+%(!w,\  \langle x,w\rangle\in F)
 %\quad(\mbox{by def of Q}).
 %\]
 
-%(!w:w\in \cc{y}{\varphi\land (!y:\varphi)})
-%(!w:w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))})
+%(!w,\ w\in \cc{y}{\varphi\land (!y,\ \varphi)})
+%(!w,\ w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y,\ (\langle x,y\rangle\in F))})
 \[
-(!w:w\in Q)
-\quad\mbox{(by thm \myref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
+(!w,\ w\in Q)
+\tag{(by thm \myref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
 \]
 %...
 
 \[
-(\exists w: w\in Q)
+(\exists w,\  w\in Q)
 \LAND
-(! w: w\in Q)
+(! w,\  w\in Q)
 \IMPLIES
-(\exists! w: w\in Q)
+(\exists! w,\  w\in Q)
 \]
 
 \[
-(\exists! w: w\in Q)
+(\exists! w,\  w\in Q)
 \IMPLIES
 (Q\singleton)
 \]
@@ -471,7 +472,7 @@ y&=F(x)
 \left(Q\singleton\right)
 \IMPLIES
 \left(\intersection Q\right)\in Q
-\quad(\mbox{by thm \myref{thm:intersection of singleton} }).
+\tag{by \myref{thm:intersection of singleton} }
 \]
 
 \[
@@ -487,39 +488,39 @@ y\in Q
 \IMPLIES
 (\langle x,y\rangle\in F)
 \land 
-(!y: \langle x,y\rangle\in F)
+(!y,\  \langle x,y\rangle\in F)
 \quad(\mbox{by def of Q}).
 \]
 So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \Done
 \begin{theorem}[???]
 \[
-((\iota y:\phi)\ldefined)
+((\iota y,\ \phi)\ldefined)
 \implies
-\phi[(\iota y:\phi)/y]
+\phi[(\iota y,\ \phi)/y]
 \]
 \end{theorem}
 \Proof
 \[
-((\iota y:\phi)\ldefined)
+((\iota y,\ \phi)\ldefined)
 \IFF
-((\iota y:\phi)\set)
-\commentary{by def that is valid only for terms denoting sets}
+((\iota y,\ \phi)\set)
+\tag{by def that is valid only for terms denoting sets}
 \]
 
 \[
-((\iota y:\phi)\set)
+((\iota y,\ \phi)\set)
 \IMPLIES
-\left(\intersection\{y:\phi\land(!y:\phi)\}\set\right)
-\commentary{by def of iota}
+\left(\intersection\cc{y}{\phi\land(!y,\ \phi)}\set\right)
+\tag{by def of iota}
 \]
 \Done
 
-\begin{theorem}
-\label{thm:pair in function}
+\begin{theorem}[pair in function]
 If $(F\univocalat x)\land(y\set)$, then
 \[
 \left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
+\labeltagd{thm}{pair in function}
 \]
 \begin{align*}
 1) & & (y\set)
@@ -545,25 +546,24 @@ Alternative proof:\\
 \noindent($\Rightarrow$)
 \begin{align*}
 y&=F(x)
-\quad(\mbox{by assumption}) \\
-&=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \myref{def:value}})
-\\
+\tag{by assumption}\\
+&=\left(\iota y,\  \langle x,y\rangle\in F\right)
+\tag{by def of value of a function \myref{def:value}}
 \end{align*}
 %&=\left(\intersection Q\right)
 %\quad(\mbox{by def of Q and def of a iota operator \myref{def:iota operator}})
 \[
-(y=\left(\iota y: \langle x,y\rangle\in F\right))
+(y=\left(\iota y,\  \langle x,y\rangle\in F\right))
 \LAND
 (y\set)
 \IMPLIES
-(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+(\left(\iota y,\  \langle x,y\rangle\in F\right) \set)
 \]
 \[
-(\left(\iota y: \langle x,y\rangle\in F\right) \set)
+(\left(\iota y,\  \langle x,y\rangle\in F\right) \set)
 \IMPLIES
-\left(\exists!(y\set):\langle x,y\rangle\in F\right)
-\commentary{by thm \myref{thm:iota set exists unique set}}
+\left(\exists!(y\set),\ \langle x,y\rangle\in F\right)
+\tag{by \myref{thm:iota set exists unique set}}
 \]
 ...\\
 \noindent($\Leftarrow$)\\
@@ -572,32 +572,32 @@ y&=F(x)
 \subsection{Descriptors OLD}
 \begin{axiom}[???]
 \[
-\exists (x\set):\varphi
+\exists (x\set),\ \varphi
 \implies
-(\varepsilon x: \varphi) \in \cc{x}{\varphi}
+(\varepsilon x,\  \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}[???]
 \[
-(\varepsilon x: \varphi) \set
+(\varepsilon x,\  \varphi) \set
 \implies
-\exists (x\set):\varphi
+\exists (x\set),\ \varphi
 \]
 \end{axiom}
 
 \begin{axiom}[???]
 \[
-\exists! (x\set):\varphi
+\exists! (x\set),\ \varphi
 \implies
-(\iota x: \varphi) \in \cc{x}{\varphi}
+(\iota x,\  \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
 \begin{axiom}[???]
-%(\iota x: \varphi) \in \cc{x}{\varphi}
+%(\iota x,\  \varphi) \in \cc{x}{\varphi}
 \[
-(\iota x: \varphi) \set
+(\iota x,\  \varphi) \set
 \implies
-\exists! (x\set):\varphi
+\exists! (x\set),\ \varphi
 \]
 \end{axiom}
 
@@ -605,15 +605,15 @@ y&=F(x)
 
 It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
 \[
-(I y: \varphi) = \intersection \cc{y}{\varphi \land (!y:\varphi)}
-\commentary{bad ``definition''}
+(I y,\  \varphi) = \intersection \cc{y}{\varphi \land (!y,\ \varphi)}
+\tag{bad ``definition''}
 \]
 In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
 (the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
 %So the following definition does not work correctly for proper classes:
 \begin{definition}[iota operator for sets]
 \[
-(\iota y: \varphi) = \intersection \cc{y}{\varphi \land (!(y\set):\varphi)}
+(\iota y,\  \varphi) = \intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)}
 \]
 \label{def:iota operator}
 \end{definition}
@@ -623,68 +623,68 @@ In general, the problem of NBG and MK is the principal inability to collect clas
 %Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
 %This may not be true:
 %\[ ???
-%((\iota y: \varphi) \set)
+%((\iota y,\  \varphi) \set)
 %\iff
-%(\exists!(b\set):\varphi)
+%(\exists!(b\set),\ \varphi)
 %\]
 %Variant2(true before redef but ugly):
 %\[
-%((\iota y: \varphi) \set)
+%((\iota y,\  \varphi) \set)
 %\iff
-%(\exists(b\set):\varphi)
+%(\exists(b\set),\ \varphi)
 %\land
-%(!b:\varphi)
+%(!b,\ \varphi)
 %\]
 %Variant3:
 %\[
-%((\iota y: \varphi) \set)
+%((\iota y,\  \varphi) \set)
 %\iff
-%(\exists!b:\varphi)
+%(\exists!b,\ \varphi)
 %\]
 %Variant4:
 %\[
-%((\iota (y\set): \varphi) \set)
+%((\iota (y\set),\  \varphi) \set)
 %\iff
-%(\exists!(y\set):\varphi)
+%(\exists!(y\set),\ \varphi)
 %\]
 %Variant5:
 \[
-((\iota y: \varphi) \set)
+((\iota y,\  \varphi) \set)
 \iff
-(\exists!(y\set):\varphi)
+(\exists!(y\set),\ \varphi)
 \]
 \label{thm:iota set exists unique set}
 \end{theorem}
 \Proof
 %For formulas to be short, let's locally define the term Q:
 %\[
-%Q\ceq \cc{y}{\varphi \land (!(y set):\varphi)}
+%Q\ceq \cc{y}{\varphi \land (!(y set),\ \varphi)}
 %\]
 \noindent$(\Rightarrow)$\\
-Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
+Assume $((\iota y,\  \varphi) \set)$. To show $(\exists!(y\set),\ \varphi)$.
 \[
-((\iota y: \varphi) \set)
+((\iota y,\  \varphi) \set)
 \IMPLIES
-\left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)
-\commentary{by def \myref{def:iota operator}}
+\left(\intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)} \set\right)
+\tag{by def \myref{def:iota operator}}
 \]
 \[
-\left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)} \set\right)
 \IMPLIES
-\left(\cc{y}{\varphi \land (!(y\set):\varphi)}\nonempty\right)
+\left(\cc{y}{\varphi \land (!(y\set),\ \varphi)}\nonempty\right)
 \]
 \[
-\left(\cc{y}{\varphi \land (!(y\set):\varphi)}\nonempty\right)
+\left(\cc{y}{\varphi \land (!(y\set),\ \varphi)}\nonempty\right)
 \IMPLIES
-\left(\exists	y: y\in \cc{y}{\varphi \land (!(y\set):\varphi)}\right)
+\left(\exists	y,\  y\in \cc{y}{\varphi \land (!(y\set),\ \varphi)}\right)
 \]
 \[
 \left(
-y\in \cc{y}{\varphi \land (!(y\set):\varphi)}
+y\in \cc{y}{\varphi \land (!(y\set),\ \varphi)}
 \right)
 \IMPLIES
 \left(
-(y\set)\land \varphi\land (!(y\set):\varphi)
+(y\set)\land \varphi\land (!(y\set),\ \varphi)
 \right)
 \]
 \[
@@ -693,65 +693,65 @@ y\in \cc{y}{\varphi \land (!(y\set):\varphi)}
 \varphi
 \IMPLIES
 \left(
-\exists (y\set):\varphi
+\exists (y\set),\ \varphi
 \right)
 \]
 %\[
 %\left(
-%!y:\varphi
+%!y,\ \varphi
 %\right)
 %\IMPLIES
 %\left(
-%!(y\set):\varphi
+%!(y\set),\ \varphi
 %\right)
 %\]
 \[
 \left(
-\exists (y\set):\varphi
+\exists (y\set),\ \varphi
 \right)
 \LAND
 \left(
-!(y\set):\varphi
+!(y\set),\ \varphi
 \right)
 \IFF
 \left(
-\exists! (y\set):\varphi
+\exists! (y\set),\ \varphi
 \right)
 \]
 
 \noindent$(\Leftarrow)$\\
-Assume $(\exists!(y\set):\phi)$. To show:$((\iota y:\phi)\set)$.
-%%Here $!x:$.
+Assume $(\exists!(y\set),\ \phi)$. To show:$((\iota y,\ \phi)\set)$.
+%%Here $!x,\ $.
 \[
-(\exists!(y\set):\phi)
+(\exists!(y\set),\ \phi)
 \IMPLIES
-(\exists(y\set):\phi)
+(\exists(y\set),\ \phi)
 \land
-(!(y\set):\phi)
+(!(y\set),\ \phi)
 \]
 \[
 (y\set)
 \LAND
 \phi
 \LAND
-(!(y\set):\phi)
+(!(y\set),\ \phi)
 \IMPLIES
-y\in\{y:\phi\land(!(y\set):\phi)\}
+y\in\cc{y}{\phi\land(!(y\set),\ \phi)}
 \]
 \[
-y\in\{y:\phi\land(!(y\set):\phi)\}
+y\in\cc{y}{\phi\land(!(y\set),\ \phi)}
 \IMPLIES
-(\{y:\phi\land(!(y\set):\phi)\}\nonempty)
+(\cc{y}{\phi\land(!(y\set),\ \phi)}\nonempty)
 \]
 \[
-(\cc{y}{\varphi \land (!y:\varphi)}\nonempty)
+(\cc{y}{\varphi \land (!y,\ \varphi)}\nonempty)
 \IMPLIES
-\left(\intersection \cc{y}{\varphi \land (!y:\varphi)} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!y,\ \varphi)} \set\right)
 \]
 \[
-\left(\intersection \cc{y}{\varphi \land (!y:\varphi)} \set\right)
+\left(\intersection \cc{y}{\varphi \land (!y,\ \varphi)} \set\right)
 \IMPLIES
-\left(\left(\iota y: \varphi\right) \set\right)
+\left(\left(\iota y,\  \varphi\right) \set\right)
 \]
 \Done
 \input{END.tex}

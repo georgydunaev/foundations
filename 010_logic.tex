@@ -757,7 +757,7 @@ the following formulas %axiom schemes %and%xor
 are derivable in $\Wau$:
 %For all atomic formulas $A$, $B$, $C$.
 \[
-(A \implies (B \implies A)) \labeltag{ax:A1}
+(A \implies (B \implies A)) \labeltagd{axm}{A1}
 \]
 \[
 ((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \labeltagd{axm}{A2}
@@ -808,7 +808,7 @@ B
 \labeltag{rule:MP}
 \]
 \end{metaaxiom}
-%\label{ax:MP} %todo delete it
+%\labeltagd{axm}{MP} %todo delete it
 %\sub
 %\star
 %Meta:
@@ -1063,7 +1063,7 @@ I.e. there is a default value, e.g. the empty set, in case if $\psi$ is not a va
 
 \iffalse %GOOOOD
 \begin{axiom}[Henkin axiom schema]%\ \\
-\label{ax:Henkin}
+\labeltagd{axm}{Henkin}
 
 \iffalse
 variant1:
@@ -1941,7 +1941,7 @@ The definition is not yet written, but it is implemented as functions ending wit
 \pagebreak
 %%% Example labeling
 %\[
-%E=mc^2 \label{eq:einstein} \tag{\ding{37}}
+%E=mc^2 \labeltagd{eq}{einstein} \t_a_g_{\ding{37}}
 %\]
 %As we can see from \eqref{eq:einstein}\ldots
 
@@ -2546,8 +2546,10 @@ $\neg (A\lor B), B \vdash B$ (by assumption).\\
 \Done
 
 \begin{theorem} In intuitionistic logic:\\
-\label{double neg LEM}
-$\neg\neg (P\lor\neg P)$
+\[
+\neg\neg (P\lor\neg P)
+\labeltagd{thm}{double neg LEM}
+\]
 \end{theorem}
 \Proof
 Using deduction theorem it is enought to show (backward reasoning):\\
@@ -2780,7 +2782,7 @@ For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\v
 ((\varepsilon x.\varphi) \lunique)
 \iff
 (!x.\varphi)
-\label{ax:EpsUn} \tag{metathm:EpsUn}
+\labeltagd{metathm}{EpsUn}=
 \]
 \[
 (t\ldefined)
@@ -2790,11 +2792,11 @@ For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\v
 \land
 (t\lunique)
 )
-\label{def:defined} \tag{def:defined}
+\labeltagd{def}{defined}
 \]
 \[
 (x\ldefined)
-\label{ax:VarDef} \tag{ax:VarDef}
+\labeltagd{axm}{VarDef}
 \]
 \underline{Equalitites:}
 %\[
@@ -2864,11 +2866,11 @@ r_x:\equiv (\varepsilon y. (x,y)\in r)
 For any variable $x$, for any term $t$, for any formula $\phi$, the following holds in case the substitution is possible:
 \[
 (t\ldefined)\implies ((\forall x. \phi) \implies \phi[t/x])
-\label{ax:S1} \tag{S1}
+\labeltagd{axm}{S1}
 \]
 \[
 (t\ldefined) \implies (\phi[t/x] \implies (\exists x. \phi))
-\label{ax:S2} \tag{S2}
+\labeltagd{axm}{S2}
 \]
 \subsubsection{Function symbols}
 \subsubsection{Predicate symbols}
@@ -2921,7 +2923,7 @@ Moreover, we may require that negations to commute, and to be idempotent, since 
 I^v((\varepsilon x. \varphi))
 \ \eqdef\ 
 \left\cc{b\in\Domain\ \middle}{\,\left(\models^{v+(x,b)} \varphi\right)\,\right}
-\label{def:IEps}\tag{def:IEps}
+\labeltagd{def}{IEps}
 \]
 \end{definition}
 \fi
@@ -3455,14 +3457,14 @@ All rules of inference in this book are supposed to be structural. It means that
 \end{note}
 
 \begin{inferencerule}[deduction]%(must be wrong?)
-\label{rule:deduction}
+%\l_abel{ru_le:ded_uction}
 %\Tau_n,
 \[
 \frac{
 \Wau,\Gamma,\psi \vdash \phi
 }{
 \Wau,\Gamma \vdash \psi\implies \phi}
-\labeltag{Deduction}
+\labeltagd{rule}{Deduction}
 \]
 \end{inferencerule}
 
@@ -3472,7 +3474,7 @@ All rules of inference in this book are supposed to be structural. It means that
 }{
 \Wau \vdash\bigwedge\Gamma\implies\phi
 }
-\tag{Full Deduction}
+\labeltagd{rule}{Full Deduction}
 \]
 
 
@@ -3484,7 +3486,7 @@ The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-
 }{
 \Tau \vdash (\Wau\vdash\psi)
 }
-\tag{Effective Necessitation}
+\labeltagd{rule}{Effective Necessitation}
 \]
 For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
 \iffalse % rejected
@@ -3494,7 +3496,7 @@ For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
 }{
 \Tau_0 \vdash \square_n\psi
 }
-\tag{Nec}
+\labeltagd{rule}{Nec}
 \]
 \[
 \frac{
@@ -3502,7 +3504,7 @@ For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
 }{
 \square \square_n\psi
 }
-\tag{Necessitation}
+\labeltagd{rule}{Necessitation}
 \]
 \fi
 \label{rule:necessitation}
@@ -3516,7 +3518,7 @@ This is forbidden inference rule, because it makes it impossible to implement su
 }{
 \Tau \vdash \psi
 }
-\tag{``Effective Omniscience''}
+\labeltagd{badrule}{``Effective Omniscience''}
 \]%%\square \psi
 \end{badinferencerule*}
 \begin{note}
@@ -3527,7 +3529,7 @@ Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it 
 It is not possible to have an ``axiom'' scheme like 
 \[
 \square\square_n\psi \implies \square_n\psi,
-\tag{``co--transitivity''}
+\labeltagd{badax}{``co--transitivity''}
 \]
 because it leads to contradiction due to the second incompleteness theorem.
 %!The solution is either add the inference rule of creed and skew 
@@ -3554,7 +3556,7 @@ The modal provability logic of $\Fau$ collapses into an underlying logic, which 
 }{
 \Tau_{\max(n+1,1)},\Gamma\vdash \phi
 }
-\tag{CoNec}
+\labeltagd{rule}{CoNec}
 \]
 %,\Con(\Tau)
 \[
@@ -3563,7 +3565,7 @@ The modal provability logic of $\Fau$ collapses into an underlying logic, which 
 }{
 \Tau_{1+\max(n,m)},\Gamma\vdash \phi
 }
-\tag{CoNec}
+\labeltagd{rule}{CoNec}
 \]
 \end{inferencerule}
 \fi
@@ -3579,7 +3581,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }{
 \Tau_{n} \vdash \psi
 }
-\tag{Credo}
+\labeltagd{rule}{Credo}
 \]
 \[
 \frac{
@@ -3587,7 +3589,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }{
 \Tau \vdash \psi
 }
-\tag{Credo}
+\labeltagd{rule}{Credo2}
 \]
 \[
 \frac{
@@ -3612,7 +3614,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }{
 \psi
 }
-\tag{Credo}
+\labeltagd{rule}{Credo}
 \]
 \end{inferencerule}
 \begin{inferencerule}[Omniscience]%\ \\
@@ -3622,7 +3624,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }{
 \Fau \vdash \psi
 }
-\tag{Omniscience}
+\labeltagd{rule}{Omniscience}
 \]%%\square \psi
 \end{inferencerule}
 

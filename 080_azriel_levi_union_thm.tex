@@ -92,8 +92,7 @@ From this fact and the theorem 1.1, it follows, that
 \end{lemma}
 
 
-\begin{definition}[well--ordering of universal class]\ \\
-\label{def:FwoV}
+\begin{definition}[well--ordering of universal class]
 \iffalse
 Choose once any $F$, such that $\On \to \V \text{ surjective}$,
 \[
@@ -105,31 +104,29 @@ Choose once any $F$, such that $\On \to \V \text{ surjective}$,
 \fi
 \[
 \text{F}\eqdef \Henkin F\sqdot(F:\On \to \V \text{ surjective})
+\labeltagd{def}{FwoV}
 \]
 \end{definition}
-Obviously, from the lemma \myref{lem:exOnToVSurj} and the axiom \myref{ax:H}, it follows that
+Obviously, from the lemma \myref{lem:exOnToVSurj} and the axiom \myref{axm:H}, it follows that
 \[
 \F:\On \to \V \text{ surjective}.
 \]
-
 
 \begin{definition}[the ``minimal'' section of $\text{F}$]
 The ``minimal'' section of $\text{F}$ in the sense, that it returns the minimal ordinal class corresponding to the argument.
 %G_F(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
 \[
 \G(y)\eqdef\inf\cc{x\in\On}{\text{F}(x)=y}
+\labeltagd{def}{Gsect}
 \]
-\label{def:Gsect}
-
 \end{definition}
 
-\begin{definition}[a global choice functional symbol]%\ \\%, variant 2
+\begin{definition}[a global choice functional symbol]
 Here we define a functional symbol $c$ as an alias for some bound term:
 \[
 c(S) :\equiv \F(\inf \G[S])
+\labeltagd{def}{globalchoice}
 \]
-\label{def:globalchoice}
-
 \iffalse
 GOOD, BUT WEIRD
 Assume $(S\neq\emptyclass)$.
@@ -143,9 +140,9 @@ c(S)\eqdef F(\inf T[S])
 \end{definition}
 
 \begin{lemma}[global choice chooses]
-\label{lem:j}
 \[
 (S\neq\emptyclass)\implies(c(S)\in S)
+\labeltagd{lem}{j}
 \]
 \Proof
 \[
@@ -171,13 +168,13 @@ Therefore, by theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
 
 
 \begin{definition}[tilde]
-\label{def:tilde}
 \[
 \tilde{f}\eqdef
 \begin{cases}
     f,& \text{if }f\text{ is a function},\\
     \emptyclass,& \text{otherwise}.
 \end{cases}
+\labeltagd{def}{tilde}
 \]
 \end{definition}
 %\[
@@ -187,35 +184,35 @@ Therefore, by theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
 %\ev_x(f)\ceq f(x).
 %\]
 \begin{definition}[evaluation class--function]\ \\
-\label{def:evclass}
 Implying that $f(x)=\emptyclass$ in case of $x\notin\dom(f)$,
 \[
 \ev_x\eqdef\cc{(f,f(x))}{f\in\V}
+\labeltagd{def}{evclass}
 \]
 \end{definition}
 \begin{definition}[R function]
-\label{def:Rfunc}
 \[
 \text{R}\eqdef((\tilde{\cdot})\circ F)
+\labeltagd{def}{Rfunc}
 \]
 \end{definition}
 \begin{definition}[Q(x)]
-\label{def:Qx}
 \[
 Q(x)\eqdef\ev_x[R[x]]
+\labeltagd{def}{Qx}
 \]
 \end{definition}
 
 \begin{definition}[h function]
-\label{def:hfunc}
 \[
 h(x)\eqdef\inf(\On\setminus(Q(x)))
+\labeltagd{def}{hfunc}
 \]
 \end{definition}
 \begin{definition}[an ordinal beta]
-\label{def:beta}
 \[
 \beta\eqdef G(h)
+\labeltagd{def}{beta}
 \]
 \end{definition}
 \begin{definition}[bounded subclasses of On]
@@ -225,15 +222,15 @@ In context of $(b\subclass\On)$,
 \]
 \[
 (b\text{ unbounded})\iffdef(\neg(b\text{ bounded}))
+\labeltagd{def}{bddscOn}
 \]
-\label{def:bddscOn}
 \end{definition}
 \subsection{Sets of ordinals are bounded}
 \begin{lemma}[subsets of On are bounded]
 \[
 (b\set)\land(b\subclass\On)\implies(b\text{ bounded})
+\labeltagd{lem}{ssOnBdd}
 \]
-\label{lem:ssOnBdd}
 \Proof
 Step 1:
 \[
@@ -285,9 +282,9 @@ G(y)\in F^\top[\{y\}]
 
 \subsection{Union of a set is a set}
 \begin{lemma}[techlem]
-\label{lem:techlem}
 \[
 F[\alpha]\supseteq \union a
+\labeltagd{lem}{techlem}
 \]
 \Proof
 Fix $\left(b\in\union a\right)$. To show: $n\in F[\alpha]$.
@@ -368,11 +365,11 @@ b\subclass F[G[b]]
 \end{lemma}
 
 \begin{theorem}[union of a set is a set]
-\label{thm:unionisset}
 \[
 \left(A\set\middle)
 \implies
 \middle(\union A\set\right)
+\labeltagd{thm}{unionisset}
 \]
 \Proof
 \[

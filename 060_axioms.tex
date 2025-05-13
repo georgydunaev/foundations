@@ -51,11 +51,6 @@ If $Y$ is not a free variable neither in $A$ nor in $B$, then:
 \end{definition}
 \subsection{Extensionality}
 \begin{axiom}[extensionality]
-%\[
-%zxcvbnm
-%\label{ax:Ext}
-%\tag{\ref{ax:Ext}}
-%\]
 \[
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
 \labeltagd{axm}{extensionality}
@@ -178,7 +173,7 @@ or it may be a set--level ``if'' operator:
 There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
 \end{note}
 %\begin{axiom}(OLD Class comprehension)
-%\label{ax:comprehension}
+%\labeltagd{axm}{comprehension}
 %\[Y\in\cc{x}{\varphi} \iff (Y\set)\LAND(\varphi[Y/x])\]
 %(or maybe
 %\[Y\in\cc{x}{\varphi[x/Y]} \iff (Y\set)\LAND(\varphi)\]
@@ -199,8 +194,8 @@ Assume $v_1,\dots,v_n \in \Var$. Then
 \]
 \end{notation}
 
-\begin{definition}[universal closure]%\ \\
-There is an order on a set of variables $\Var$. \\
+\begin{definition}[universal closure]
+There is an order on a set of variables $\Var$.\\
 Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\
 \
 Then define the closure via the formula
