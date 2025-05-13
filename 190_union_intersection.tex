@@ -16,7 +16,7 @@ To show: $(b\in \union A)$.\\
 (b\in B)
 \IMPLIES
 (b\set)
-\quad\mbox{(by thm \ref{thm:in class then set})}
+\tag{by \myref{thm:in class then set}}
 \]
 \[
 (B\in A)
@@ -50,7 +50,7 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \middle(\forall a\in A : x\in a\right)
 \]
 %(b\set)
-%\quad\mbox{(by \ref{thm:in class then set})}
+%\quad\mbox{(by \myref{thm:in class then set})}
 %\[a\ceq B\]
 \[
 (\forall a\in A,\ x\in a)
@@ -160,11 +160,11 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \Proof
 \[
 (A\set) \LAND (B\subseteq A) \IMPLIES (B\set)
-\tag{by axm \ref{axm:heredity}}
+\tag{by \myref{axm:heredity}}
 \]
 \[
 (B\set) \LAND (B\subseteq A) \IMPLIES (B\in\power A)
-\tag{by def \ref{def:powerclass}}
+\tag{by \myref{def:powerclass}}
 \]
 \Done
 
@@ -203,7 +203,7 @@ The claim is proven.
 (x\in A)
 \IMPLIES
 (x\set)
-\tag{by thm \ref{thm:in class then set}}
+\tag{by \myref{thm:in class then set}}
 \]
 \[
 (x\set)
@@ -252,7 +252,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 \label{thm:transitive through union}
 \end{theorem}
 \Proof
-By \ref{thm:UACA=ACPA}.
+By \myref{thm:UACA=ACPA}.
 \Done
 
 \begin{theorem}{}
@@ -266,7 +266,7 @@ By \ref{thm:UACA=ACPA}.
 %\label{intersection of singleton}%
 \end{theorem}
 \Proof
-By theorems \ref{thm:intersection of nonempty is subset of union} and \ref{thm:transitive through union}.
+By \myref{thm:intersection of nonempty is subset of union} and \myref{thm:transitive through union}.
 \Done
 
 %\[(\left(\intersection A\right)\set)\implies \]

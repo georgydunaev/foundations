@@ -18,7 +18,7 @@ F(x) \ceq \cc{b}{(x,b)\in F}=\ran(F)
 We need to improve the previous definitions, because:
 1) we want to have family with empty representative, we need to define.
 2) it if not possible to preserve domain if element of a family turned out to be empty.
-\begin{definition}(Value of a protected family at x)
+\begin{definition}[value of a protected family at $x$]
 \[
 F(x)_p \ceq \cc{b}{(x,\{b\})\in F}
 F(x)_p \ceq \union\cc{s}{(x,s)\in F}
@@ -254,7 +254,7 @@ Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 (F\univocalat x)
 \IMPLIES
 (!y : \langle x,y\rangle \in F)
-\quad\mbox{(by def \ref{def:univocalat})}
+\quad\mbox{(by \myref{def:univocalat})}
 \]
 \[
 (\langle x,y\rangle\in F)
@@ -278,7 +278,7 @@ Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y: \langle x,y\rangle\in F)}.
 \IMPLIES
 \left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
 \in
-\left(\cc{y}{ \langle x,y\rangle\in F}\right)\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+\left(\cc{y}{ \langle x,y\rangle\in F}\right)\quad(\mbox{by thm \myref{thm:intersection of singleton} }).
 \]
 \[
 \left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
@@ -393,10 +393,10 @@ So we proved that $(F(x)=y)$.\\
 y&=F(x)
 \quad(\mbox{by assumption}) \\
 &=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \ref{def:value}})
+\quad(\mbox{by def of value of a function \myref{def:value}})
 \\
 &=\left(\intersection Q\right)
-\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+\quad(\text{by def of $Q$ and \myref{def:iota operator}})
 \end{align*}
 %\[
 %(F(x)=y)
@@ -432,7 +432,7 @@ y&=F(x)
 \left(\left(\intersection Q\right)\set\right)
 \IMPLIES
 (\exists w: w\in Q)
-\quad(\mbox{by thm \ref{thm:intersection set then}}).
+\quad(\mbox{by \myref{thm:intersection set then}}).
 \]
 
 %GOOD, BUT USELESS
@@ -449,7 +449,7 @@ y&=F(x)
 %(!w:w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y:(\langle x,y\rangle\in F))})
 \[
 (!w:w\in Q)
-\quad\mbox{(by thm \ref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
+\quad\mbox{(by thm \myref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
 \]
 %...
 
@@ -471,7 +471,7 @@ y&=F(x)
 \left(Q\singleton\right)
 \IMPLIES
 \left(\intersection Q\right)\in Q
-\quad(\mbox{by thm \ref{thm:intersection of singleton} }).
+\quad(\mbox{by thm \myref{thm:intersection of singleton} }).
 \]
 
 \[
@@ -547,11 +547,11 @@ Alternative proof:\\
 y&=F(x)
 \quad(\mbox{by assumption}) \\
 &=\left(\iota y: \langle x,y\rangle\in F\right)
-\quad(\mbox{by def of value of a function \ref{def:value}})
+\quad(\mbox{by def of value of a function \myref{def:value}})
 \\
 \end{align*}
 %&=\left(\intersection Q\right)
-%\quad(\mbox{by def of Q and def of a iota operator \ref{def:iota operator}})
+%\quad(\mbox{by def of Q and def of a iota operator \myref{def:iota operator}})
 \[
 (y=\left(\iota y: \langle x,y\rangle\in F\right))
 \LAND
@@ -563,7 +563,7 @@ y&=F(x)
 (\left(\iota y: \langle x,y\rangle\in F\right) \set)
 \IMPLIES
 \left(\exists!(y\set):\langle x,y\rangle\in F\right)
-\commentary{by thm \ref{thm:iota set exists unique set}}
+\commentary{by thm \myref{thm:iota set exists unique set}}
 \]
 ...\\
 \noindent($\Leftarrow$)\\
@@ -666,7 +666,7 @@ Assume $((\iota y: \varphi) \set)$. To show $(\exists!(y\set):\varphi)$.
 ((\iota y: \varphi) \set)
 \IMPLIES
 \left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)
-\commentary{by def \ref{def:iota operator}}
+\commentary{by def \myref{def:iota operator}}
 \]
 \[
 \left(\intersection \cc{y}{\varphi \land (!(y\set):\varphi)} \set\right)

@@ -68,7 +68,7 @@ Then $F$ is derived from $C$ and $(C\implies F)$ via modus ponens.
 \Proof
 Assume $(C\iff (C\implies F))$.\\
 Therefore $(C\implies (C\implies F))$ and $((C\implies F)\implies C)$.\\
-The formula $(C\implies F)$ holds by lemma \ref{lem:CtoF} from $(C\implies (C\implies F))$.\\
+The formula $(C\implies F)$ holds by \myref{lem:CtoF} from $(C\implies (C\implies F))$.\\
 %By axiom 2 and modus ponens from $ $,
 The proof of the formula $F$ is obtained via modus ponens from $((C\implies F)\implies C)$ and $(C\implies F)$.
 \Done
@@ -86,7 +86,7 @@ Both in classical and in intuitionistic logic, the following holds:
 Take such W.\\
 Set $Q\ceq W$.\\
 Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
-From \ref{double neg LEM} where $P\ceq (W\in W)$, we have:
+From \myref{double neg LEM} where $P\ceq (W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
 $W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
@@ -113,7 +113,7 @@ Subgoal2:\\
 \begin{theorem}
 \label{thm:not in itself}
 Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
-\[ \forall Y: Y\notin Y\]
+\[ \forall Y,\ Y\notin Y\]
 \Proof
 \noindent %Fix Y.\\
 Let $C\ceq \cc{W}{W\notin W}$.\\
@@ -168,17 +168,17 @@ $\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
 \label{thm:intersection set then}
 If intersection of a class $A$ is a set, then $A$ is nonempty. 
 \[
-\left(\left(\intersection A\right)\set\right)
+\left(\left(\intersection A\right)\set\middle)
 \implies
-(\exists w: w\in A)
+\middle(\exists w,\ w\in A\right)
 \]
 %\quad\mbox{(by lemma ... )}
 \Proof
 New goal:
 \[
-\neg\exists w: w\in A
+\neg\left(\exists w,\ w\in A\middle)
 \implies
-\neg\left(\left(\intersection A\right)\set\right)
+\neg\middle(\left(\intersection A\right)\set\right)
 \]
 Proof of the claim:
 \[
@@ -203,27 +203,31 @@ Proof of the claim:
 \]
 \[
 (\V\notin \V)
-\tag{by thm \ref{thm:not in itself} with $Y\ceq \V$}
+\tag{by  \myref{thm:not in itself} with $Y\ceq \V$}
 \]
 \[
 (\V\notin \V)
 \IMPLIES
 \neg(\V\set)
-\tag{by thm \ref{thm:sets are in V}}
+\tag{by  \myref{thm:sets are in V}}
 \]
 \[
+\left(
 \left(\intersection A\right) = \V
+\middle)
 \LAND
+\middle(
 \neg(\V\set)
+\middle)
 \IMPLIES
-\neg(\left(\intersection A\right) \set)
+\neg\middle(\left(\intersection A\right) \set\right)
 \]
 The claim is proven.
 \[
-\left(\left(\intersection A\right)\set\right)
+\left(\left(\intersection A\right)\set\middle)
 \IMPLIES
-(\exists w: w\in A)
-\quad\mbox{(from claim by contraposition)}
+\middle(\exists w,\ w\in A\right)
+\tag{(from claim by contraposition)}
 \]
 %\[
 %(\left(\intersection A\right)\set)
@@ -238,7 +242,7 @@ The claim is proven.
 \begin{theorem}
 \label{thm:powerset not a subset}
 In classical and even in intuitionistic logic, the following holds:
-\[ \forall (Y\set): \neg(\power Y \subseteq Y)\]
+\[ \forall (Y\set),\ \neg(\power Y \subseteq Y)\]
 \Proof
 \noindent %Fix Y.\\
 \[
@@ -261,7 +265,7 @@ Fix $(Y\set)$.\\
 $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
 $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
-%By Russel's paradox(\ref{Russel's Paradox}), 
+%By Russel's paradox(\myref{Russel's Paradox}), 
 %$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
 %$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
 %$W\ceq Y$.\\
@@ -273,15 +277,15 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 \label{thm:conglomerate of classes not class}
 A conglomerate of all classes is not a class. It "does not exist as class".
 \[
-\neg (\exists W \forall Q: Q\in W)
+\neg (\exists W \forall Q,\ Q\in W)
 \]
 \[
-(\forall W \exists Q: Q\notin W)
+(\forall W \exists Q,\ Q\notin W)
 \]
 \Proof
 Fix W.\\
 Set $Q\ceq W$.\\
-By \ref{thm:not in itself}, $W\notin W$.\\
+By \myref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.
 \Done
 \end{theorem}
@@ -317,7 +321,7 @@ Assume opposite: $\On\in\V$. To show: $\bot$.
 \IMPLIES
 (\On\set).
 \]
-By theorem \ref{thm:ordon}, $\Ord(\On)$. The rest is done as in the previous lemma:
+By theorem \myref{thm:ordon}, $\Ord(\On)$. The rest is done as in the previous lemma:
 \[
 \Ord(\On)
 \LAND
