@@ -455,7 +455,7 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \fi
 \[
 \bot
-\eqnot
+\equivnot
 %\left\ulcorner
 ``
 \boldbot
@@ -464,17 +464,17 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 \]
 \[
 \emptyclass
-\eqnot
+\equivnot
 \myquote{
 \pmb{\emptyclass}
 }
 \]
 \[
-\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
+\thinneg{A} \equivnot ``\boldneg{\meta{A}}"
 \]
 \[
 \ccc{x}{t}{\phi}
-\eqnot
+\equivnot
 %\left\ulcorner
 ``
 \boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}
@@ -493,6 +493,14 @@ The inductive definition of terms:
 %\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Term)$.
 %\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Term)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
 \item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
+\[
+\text{ClassCompr}_1 : (\Term, (\Term * \Fm))\ \Bound \to \Term
+\]
+\item $(\vv{x}:\text{Var List})\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{\vv{x}}{t}{\phi} :\Term)$.
+\[
+\text{ClassCompr} : (\Term, (\Term * \Fm))\ \text{BoundByList} \to \Term
+\]
+
 \iffalse
 \item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
 \item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
@@ -511,7 +519,7 @@ The inductive definition of formulas:
 %(\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm).
 % TODO
 %\[
-%\thinneg{A} \eqnot ``\boldneg{\meta{A}}"
+%\thinneg{A} \equivnot ``\boldneg{\meta{A}}"
 %\]
 \item $(\phi:\Fm) \Implies (\thinneg{\phi}:\Fm)$.
 \item $(\phi:\Fm)\ ,\ (\psi:\Fm) \Implies (\thinimplies{\phi}{\psi}:\Fm)$.
@@ -647,7 +655,7 @@ Assume $\Tau$ is a \textbf{finite} theory, and $\Gamma$ is a context, then
 \[
 \left(\Tau,\Gamma\vdash \phi\middle) \iff \middle(\middle(\bigwedge \Tau\middle)\land \middle(\bigwedge \Gamma\middle)\implies \phi\right)
 \]
-Note, that theory bormally \underline{may not be finite}, so this equivalence holds extremely rarely. %does not always work
+Note, that theory normally \underline{may not be finite}, so this equivalence holds extremely rarely. %does not always work
 \end{example}
 
 
@@ -705,10 +713,10 @@ It is a constant expression(so $(\vdash : \Const(\Fm \to \Bool))$).
 \begin{metanotation}[metavariables(todo:rewrite these definitions)]
 This notation is allowed only \underline{inside quotation marks}(i.e. ``$\cdot$'')(and, therefore, also inside $\ulcorner\cdot\urcorner$).
 \[
-A \eqnot {\antiquote{\pmb{A}}}
+A \equivnot {\antiquote{\pmb{A}}}
 \]
 \[
-(\Wau \vdash \phi) \eqnot \pmb{(}\#\Wau \pmb{\vdash} \#\phi\pmb{)}
+(\Wau \vdash \phi) \equivnot \pmb{(}\#\Wau \pmb{\vdash} \#\phi\pmb{)}
 \]
 \end{metanotation}
 \begin{example}[parsing the metavariable of syntax fragments list representing a formula]
@@ -749,43 +757,43 @@ the following formulas %axiom schemes %and%xor
 are derivable in $\Wau$:
 %For all atomic formulas $A$, $B$, $C$.
 \[
-(A \implies (B \implies A)) \label{ax:A1} \tag{ax:A1}
+(A \implies (B \implies A)) \labeltag{ax:A1}
 \]
 \[
-((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \label{ax:A2} \tag{ax:A2}
+((A \implies (B \implies C))\implies ((A \implies B) \implies (A \implies C))) \labeltagd{axm}{A2}
 \]
 \[
-((A\land B) \implies A) \label{ax:A3} \tag{ax:A3}
+((A\land B) \implies A) \labeltagd{axm}{A3}
 \]
 \[
-((A\land B) \implies B)  \label{ax:A4} \tag{ax:A4}
+((A\land B) \implies B)  \labeltagd{axm}{A4}
 \]
 \[
-(A \implies (B\implies (A\land B))) \label{ax:A5} \tag{ax:A5}
+(A \implies (B\implies (A\land B))) \labeltagd{axm}{A5}
 \]
 \[
-(A \implies (A\lor B)) \label{ax:A6} \tag{ax:A6}
+(A \implies (A\lor B)) \labeltagd{axm}{A6}
 \]
 \[
-(B \implies (A\lor B)) \label{ax:A7} \tag{ax:A7}
+(B \implies (A\lor B)) \labeltagd{axm}{A7}
 \]
 \[
 ((A \implies C)\implies ((B \implies C) \implies ((A\lor B)\implies C)))
-\label{ax:A8} \tag{ax:A8}
+\labeltagd{axm}{A8}
 \]
 \[
-(\neg A \implies (A\implies B)) \label{ax:A9} \tag{ax:A9}
+(\neg A \implies (A\implies B)) \labeltagd{axm}{A9}
 \]
 \[
 ((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
-\label{ax:A10} \tag{ax:A10}
+\labeltagd{axm}{A10}
 \]
 \[
-(\bot \implies B)) \label{ax:A11} \tag{ax:A11}
+(\bot \implies B)) \labeltagd{axm}{A11}
 \]
 
 \[
-(A\lor \neg A) \label{ax:LEM} \tag{ax:LEM}
+(A\lor \neg A) \labeltagd{axm}{LEM}
 \]
 \end{metaaxiom}
 \begin{metaaxiom}[Modus Ponens]
@@ -797,7 +805,7 @@ A \implies B\quad\quad\quad A
 }{
 B
 }
-\label{rule:MP}\tag{MP}
+\labeltag{rule:MP}
 \]
 \end{metaaxiom}
 %\label{ax:MP} %todo delete it
@@ -914,11 +922,11 @@ Both of the following statements are necessary, because one is not implies the o
 For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for [the substitution instead of] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
 \[
 (\forall x,\phi) \implies \phi[t/x]
-\label{ax:S1} \tag{S1}
+\labeltagd{axm}{S1}
 \]
 \[
 \phi[t/x] \implies (\exists x,\phi)
-\label{ax:S2} \tag{S2}
+\labeltagd{axm}{S2}
 \]
 
 \[
@@ -930,7 +938,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \implies
 (\Wau \vdash ((\forall x,\phi) \implies \phi[t/x]))
 )
-\label{ax:MetaS1} \tag{MetaS1}
+\labeltagd{axm}{MetaS1}
 \]
 \[
 \forall x\in\Var,\ %
@@ -941,7 +949,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \implies
 (\Wau \vdash (\phi[t/x] \implies (\exists x,\phi)))
 )
-\label{ax:MetaS2} \tag{MetaS2}
+\labeltagd{axm}{MetaS2}
 \]
 
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
@@ -950,7 +958,7 @@ For any variable $x$, for any formula $\phi$ such that the term $(\Henkin x,\var
 (\exists x,\varphi)
 \implies
 (\varphi[(\Henkin x,\varphi)/x])
-\label{ax:H} \tag{ax:H}
+\labeltagd{axm}{H}
 \]
 (This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
@@ -965,7 +973,7 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 \psi \implies (\forall x,\varphi)
 }
 \quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
-\label{ax:B1} \tag{B1}
+\labeltagd{axm}{B1}
 \]
 \[
 \frac{
@@ -974,7 +982,7 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 (\exists x,\varphi)\implies \psi
 }
 \quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
-\label{ax:B2} \tag{B2}
+\labeltagd{axm}{B2}
 \]
 %_{\mathrm{meta}}
 (The sign $\notin$ inside the side conditions is always used on the metalevel in the sense ``not in the list'', because they are metatheoretical statements about terms, formulas, and other syntactic entities, not the statements within the object theory.)
@@ -996,7 +1004,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$
 (\forall x,\varphi)
 }
 \quad\quad(\mbox{where }x\notin\FV(\Gamma))
-\label{Gen} \tag{Gen}
+\labeltag{Gen}
 \]
 \end{metadefinition}
 \begin{metadefinition}[generalisation rule, written on the meta--level]
@@ -1011,7 +1019,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$
 \implies
 (\Fau,\Gamma\vdash (\forall x,\phi))
 )
-\label{MetaGen} \tag{MetaGen}
+\labeltag{MetaGen}
 \]
 \end{metadefinition}
 
@@ -1070,7 +1078,7 @@ variant2:
 (\exists y.\varphi)
 \implies
 (\varphi[h_{(y.\varphi)}/y])
-\label{ax:H1} \tag{H1}
+\labeltagd{axm}{H1}
 \]
 \iffalse
 %GOOD, BUT UGLY
@@ -2518,9 +2526,11 @@ By induction on formula construction.\\
 \section{Just some first-order logic theorems}
 ...
 \begin{theorem}
-\label{thm:ILMorgan}
-In intuitionistic logic:\\
-$\neg (A\lor B) \implies (\neg A\land\neg B)$
+In intuitionistic logic:
+\[
+\neg (A\lor B) \implies (\neg A\land\neg B)
+\]
+\labeltagd{thm}{ILMorgan}
 \end{theorem}
 \Proof
 Using deduction theorem it is enought to show (backward reasoning):\\
@@ -2541,7 +2551,7 @@ $\neg\neg (P\lor\neg P)$
 \end{theorem}
 \Proof
 Using deduction theorem it is enought to show (backward reasoning):\\
-$\neg (P\lor\neg P) \vdash \bot$ (cut rule with \ref{thm:ILMorgan})\\
+$\neg (P\lor\neg P) \vdash \bot$ (cut rule with \myref{thm:ILMorgan})\\
 $\neg P\land\neg\neg P \vdash \bot$ (by Left\_AND\_Intro)\\
 $\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
 $\neg P, \neg\neg P \vdash \neg P$ (by assumption).\\
@@ -2758,13 +2768,13 @@ For any variables $x$,$x_1$,$x_2$,... , any terms $t$, $A$, $B$, any formula $\v
 (!x.\varphi)
 \iffdef
 ((\forall x_1)(\forall x_2),\varphi[x_1/x]\land\varphi[x_2/x]\implies x_1=x_2)
-\label{def:unique} \tag{def:unique}
+\labeltag{def:unique}
 \]
 \[
 ((\varepsilon x.\varphi) \lexists)
 \iff
 (\exists x.\varphi)
-\label{ax:EpsEx} \tag{metathm:EpsEx}
+\labeltag{metathm:EpsEx}
 \]
 \[
 ((\varepsilon x.\varphi) \lunique)
@@ -3374,7 +3384,7 @@ Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. 
 }{
 \Theta_{\max(n,1)} \vdash \psi
 }
-\tag{Effective Necessitation}
+\labeltag{Effective Necessitation}
 \]
 \end{inferencerule}
 
@@ -3452,7 +3462,7 @@ All rules of inference in this book are supposed to be structural. It means that
 \Wau,\Gamma,\psi \vdash \phi
 }{
 \Wau,\Gamma \vdash \psi\implies \phi}
-\tag{Deduction}
+\labeltag{Deduction}
 \]
 \end{inferencerule}
 

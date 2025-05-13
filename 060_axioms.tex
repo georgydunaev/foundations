@@ -1,7 +1,7 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Axioms and definitions of class theory}
-%Developing set-theoretic foundations
+%Developing set--theoretic foundations
 
 \begin{constructor}[membership relation]
 If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
@@ -15,57 +15,62 @@ If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
 %\ExplSyntaxOff
 \end{constructor}
 
-%\subsection{Example of a proof (MORSE-KELLEY SET THEORY, CLASSICAL SEMANTICS)}
+%\subsection{Example of a proof (MORSE--KELLEY SET THEORY, CLASSICAL SEMANTICS)}
 %\begin{constructor}
-%If $\varphi$ is a formula without class-quantifiers, then
-%$\cc{x}{\varphi}$ is NBG-class.
+%If $\varphi$ is a formula without class--quantifiers, then
+%$\cc{x}{\varphi}$ is NBG--class.
 %\end{constructor}
 
 %\begin{constructor}
 %If $\varphi$ is a formula, then
-%$\cc{x}{\varphi}$ is MK-class.
+%$\cc{x}{\varphi}$ is MK--class.
 %\end{constructor}
 
 \begin{constructor}[subclass relation]
 If $A$ and $B$ are terms, then $(A\subseteq B)$ is a formula. %classes
 \end{constructor}
-
 \begin{definition}[subclass relation]
+Let $A$ and $B$ be terms, and $x$ a variable not free neither in $A$, nor in in $B$, then
 \[
 (A\subseteq B)\iffdef(\forall x\in A,\ x\in B)
+\labeltagd{def}{subclass}
 \]
-\label{def:subclass}
 \end{definition}
 
-
-
-If the variant of logic being used doesn't have equality, then add the following constructor and definition.
+Note, if a variant of the logic being used doesn't have equality, then add the following constructor and definition:
 \begin{constructor}[equality]%\\
 If $A$ and $B$ are terms, then $(A=B)$ is a formula.
 \end{constructor}
 \begin{definition}[equality]
 This definition is for the case if the underlying \nth{1} order logic is provided without equality.\\
-If Y is not a free variable neither in A nor in B, then:
+If $Y$ is not a free variable neither in $A$ nor in $B$, then:
 \[
 (A=B) \iffdef (\forall Y\mydot A\in Y \iff B\in Y)
+\labeltagd{def}{equality}
 \]
 \end{definition}
 \subsection{Axiom of extensionality}
 \begin{axiom}[extensionality]
+%\[
+%zxcvbnm
+%\label{ax:Ext}
+%\tag{\ref{ax:Ext}}
+%\]
 \[
 (A=B)\iff ((A\subseteq B) \land (B\subseteq A))
-\label{ax:Ext}\tag{ax:Ext}
+\labeltagd{axm}{extensionality}
 \]
-\label{ax:extensionality}
+
 \end{axiom}
 \begin{axiom*}[extensionality]
-This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$). If we understand $A$ and $B$ as variables, then it is enough; if as terms, then x should not be free neither in $A$ nor in  $B$.
+This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$. If we understand $A$ and $B$ as variables, then it is enough; if as terms, then the variable $X$ should not be free neither in $A$ nor in $B$.
 \[
-(A=B)
+(A = B)
 \iff
 (\forall X,\ (X\in A \iff X\in B))
+\labeltagd{axm}{extensionality2}
 \]
-\label{ax:extensionality'}
+
 \end{axiom*}
 
 
@@ -73,16 +78,82 @@ This is an other variant of the definition, with requirement that $X$ is a varia
 If $A$ is a term, then $(A\set)$ is a formula.
 \end{constructor}
 \begin{definition}[setness predicate]
-If Y is a variable, which is not free in X, then:
+If $Y$ is a variable, which is not free in term $X$, then:
 \[
-(X\set)\iff(\exists Y,\ X\in Y)
+(X\set)
+\iffdef
+(\exists Y,\ X\in Y)
+\labeltagd{def}{isSet}
 \]
 \end{definition}
 
 \subsection{Class comprehension}
-\begin{constructor}[class]
+\begin{notation}[bound term]
+\[
+t_x \equivnot (x,t)
+\]
+\end{notation}
+\begin{notation}[bound formula]
+\[
+\phi_x \equivnot (x,\phi)
+\]
+\end{notation}
+\begin{notation}[restricted binding]
+A pair of a bound formula $\phi_x$ and a term $t$ is called a restricted (by a formula $\phi$) binding of a term $t$. 
+\[
+(\phi_x,t)
+\]
+A pair of a bound formula $\phi_x$ and a formula $\psi$ is called a restricted (by a formula $\phi$) binding of a formula $\psi$.
+%The restricted (by $\phi$) binding of a formula $\psi$ is
+\[
+(\phi_x,\psi)
+\]
+\end{notation}
+
+%\eqdef%\equivdef
+\[
+(\forall \phi_{y::\vv{x}},\ \psi)
+\equivdef 
+(\forall  y, (\forall \phi_{\vv{x}},\ \psi))
+\]
+
+\begin{definition}[restricted universal quantifier]
+\[
+(\forall \phi_{x},\ \psi)
+\iffdef 
+(\forall x,\ \phi \implies \psi)
+\]
+\end{definition}
+\begin{definition}[restricted existential quantifier]
+\[
+(\exists \phi_{x},\ \psi)
+\iffdef 
+(\exists x,\ \phi \land \psi)
+\]
+\end{definition}
+\begin{definition}[informal]
+A class is an arbitrary collection of sets.
+\end{definition}
+\begin{note}[comprehesibility is not stronger than definability]
+Each comprehesible class is definable, and,
+contrapositively, each undefinable class is certainly incomprehesible.
+\end{note}
+\begin{note}[philosophical]
+There may(or may not) be a definable classes, which are not comprehensible, for example, something which is defined using the epsilon calculus.\\
+For example, is we denote a class of definable sets by $\text{L}$, then the ``axiom of constructibility'' $\V=\text{L}$ implies that there are no non--definable sets. It may be restrictive for the reader. The question whether one should accept or reject the ``axiom of constructibility'' is outside of the scope of this book, but it looks quite restrictive.
+\end{note}
+
+\begin{constructor}[class comprehension]
 If $\varphi$ is a formula, $\vec{x}$ is a list of variables, $t$ is a term, then $\ccc{\vec{x}}{t}{\varphi}$ is a term.
 \end{constructor}
+
+\begin{notation}[clearer notation]
+\[
+\ccc{{\vv{x}}}{t}{\phi}
+\equivnot
+\cc{{t_{\vv{x}}}}{\phi_{\vv{x}}}
+\]
+\end{notation}
 If the list of variable is empty, then the singleton is defined:
 \[
 \{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top},
@@ -95,8 +166,15 @@ or it may be a set--level ``if'' operator:
 =
 (\lif\ \phi\ \lthen\ \{r\}\ \lelse\ \emptyclass\ \lfi)
 \]
+\[
+\union\ccc{\,[\,]}{r}{\,\phi}
+=
+\union(\lif\ \phi\ \lthen\ \{r\}\ \lelse\ \emptyclass\ \lfi)
+=
+(\lif\ \phi\ \lthen\ r\ \lelse\ \emptyclass\ \lfi)
+\]
 
-\begin{note}
+\begin{note}[MK vs NBG]
 There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
 \end{note}
 %\begin{axiom}(OLD Class comprehension)
@@ -107,6 +185,20 @@ There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is b
 %we need to find one expression for both cases.
 %)
 %\end{axiom}
+\begin{notation}[list of variables]
+Assume $v_1,\dots,v_n \in \Var$. Then
+\[
+(\forall\vv{v},\ \phi)
+\iffdef
+(\forall v_1,\ \dots,\forall v_n,\ \phi)
+\]
+\[
+(\exists\vv{v},\ \phi)
+\iffdef
+(\exists v_1,\ \dots,\exists v_n,\ \phi)
+\]
+\end{notation}
+
 \begin{definition}[universal closure]%\ \\
 There is an order on a set of variables $\Var$. \\
 Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\
@@ -116,8 +208,7 @@ Then define the closure via the formula
 \text{closure}(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
 \]
 \[
-(
-(\vec{\forall})(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
+((\vv{\forall})(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
 )
 \]
 
@@ -127,13 +218,6 @@ Every axiom is assumed to have the outermost closure operator.
 Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. Namely, there is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
 \end{definition}
 
-\begin{axiom}[class comprehension]%NEW 
-\label{ax:comprehension}
-\[
-(\vec{\forall})(\forall X,\ ((X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)))
-\]
-\end{axiom}
-
 %...maybe
 %\[BAD
 %\cc{s}{(x\in A)} := \ccc{x}{s}{(x\in A)},
@@ -141,28 +225,73 @@ Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the 
 \begin{notation}[case if a term is a variable]
 If a term is a variable, then there is no need to specify it twice:
 \[
-\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}.
-\]
-
-%\detokenize{a_a\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}}
+\cc{x}{\phi} \equivdef \ccc{x}{x}{\phi}.
+\labeltag{notation:cccxx}
+\]%\detokenize{a_a\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}}
 \end{notation}
 
-
-\begin{notation}[term comprehension]
-If a term is value of some function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is also can be restored from the argument:
+\begin{axiom}[class comprehension]%NEW 
+For any formula $\phi$, any variable $X$,
 \[
-\cc{f(x)}{\phi} \eqdef \ccc{x}{f(x)}{\phi}.
+(\vv{\forall})(\forall X,\ ((X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)))
+\clabeltagd{axm}{varComprehension}
+\]
+\end{axiom}
+\begin{axiom}[(optional axiom, todo) class term comprehension]
+For any formula $\phi$ and any term $t$, such that $\FV(t)\cap \FV(s)=\emptyclass$,
+\[
+(\vv{\forall})((t\in\ccc{\vv{x}}{s}{\varphi})
+\iff
+((t\set)\land (\exists \vv{x},\ (t=s) \land \varphi)))
+\clabeltagd{axm}{termComprehension}
+\]
+It may be called ``class--builder notation''.
+\end{axiom}
+\begin{notation}[class comprehension with a term's evaluation agreement]
+If a term is an evaluation of a function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is agreed to be restored from the argument in the following way:
+\[
+\cc{f(x)}{\phi} \equivnot \ccc{x}{f(x)}{\phi}.
 \]
 \end{notation}
 
 
-\begin{note}[restoring]
+\begin{note}[restoring one version of comprehension from the other]
 %Both variants of class constructors can be expressed one from the other, since
 If necessary, the class constructor can be restored from its truncated version via
 \[
-\ccc{x}{t}{\phi} \ceq \cc{w}{\exists x, (w=t) \land \phi}.
+\ccc{x}{t}{\phi} \ceq \cc{w}{\exists x,\ (w=t) \land \phi}.
+\]
+\[
+\ccc{\vv{x}}{t}{\phi}
+\ceq
+\cc{w}{\exists \vv{x},\ (w=t) \land \phi}.
 \]
 \end{note}
+
+%In particular, it justifies a notation \hyperref[notation:cccxx]{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:\\
+%In particular, it justifies a notation \ref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
+
+In particular, it justifies a notation \myref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
+\[
+\ccc{x}{x}{\phi}
+\equiv
+\cc{w}{\exists x,\ (w=x) \land \phi}
+=
+\cc{w}{\exists x,\ (w=x) \land \phi[x/w]}
+=
+\]
+\[
+=
+\cc{x}{\exists x,\ (x=x) \land \phi[x/w]}
+=
+\cc{x}{\exists x,\ \phi[x/w]}
+=
+\cc{x}{\exists x,\ \phi}
+\]
+%\equiv
+%\cc{w}{\exists x,\ (x=x) \land \phi}
+From this observation, we can derive the following maxima.\\
+\textbf{Principle:} \textit{In a proof assistant, as soon as propositional equality have been proven, if it has a ``preferable direction of simplification'', then it better be accepted as a definitional equality as well!}
 
 \iffalse
 
@@ -189,19 +318,29 @@ $\varphi[X/W]$ is defined(sic!), and if $\varphi[X/W][Y/X]$ is defined(btw the f
 ...\\
 
 
-Now, let's prove "old class comprehesion" statement.\\
+Now, let's prove "old class comprehesion" statement.
 \fi
 
-\begin{theorem}()\\
-If Y is not a free variable of $\varphi$, then:
+\begin{theorem}[example of changing the variables]
+If a variable $Y$ is not a free in formula $\varphi$, then:
 \[
 (Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land(\varphi[Y/W])).
 \]
 \end{theorem}
-\begin{proof}
+\begin{proof}\ \\
 ($\implies$)\\
 Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
-\dots
+\[
+(Y\in\cc{X}{\varphi[X/W]})
+\IMPLIES
+(
+(Y\set)
+\quad\&\quad
+\varphi[X/W][Y/X]
+)
+\]
+
+to be continued\dots
 \end{proof}
 
 
@@ -210,29 +349,33 @@ Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 \begin{constructor}[empty class]%\ \\
 The empty set symbol $\emptyclass$ is a constant closed term.
 \[
-(\ulcorner\emptyclass\urcorner : \Term)
+(\emptyclass : \Term)
 \]
+%\ulcorner\emptyclass\urcorner
 \end{constructor}
 
 \begin{definition}[empty class]
 \[
 \emptyclass \eqdef \cc{x}{\bot}
+\labeltagd{def}{emptyclass}
 \]
-\label{def:emptyclass}
 \end{definition}
 
 \begin{definition}[empty set predicate]
 \[
-(A\isempty)\iff (A=\emptyclass)
+((A\isempty)\iffdef(A=\emptyclass))
+\labeltagd{def}{empty}
 \]
-\label{def:empty}
+%\tag{def:empty}
 \end{definition}
 
 \begin{definition}[nonempty set predicate]
 \[
-(A\nonempty)\iff \neg(A\isempty)
+(A\nonempty)
+\iffdef
+(\neg(A\isempty))
+\labeltagd{def}{nonempty}
 \]
-\label{def:nonempty}
 \end{definition}
 
 
@@ -241,28 +384,31 @@ The empty set symbol $\emptyclass$ is a constant closed term.
 \begin{axiom}[the empty class is a set]
 \[
 (\emptyclass\set)
+\labeltagd{axm}{emptyset}
 \]
-\label{ax:emptyset}
 \end{axiom}
 
-\subsection{Definition of the universal class}
-\begin{constructor}[universal class]%\ \\
-The symbol $\V$ is a constant of the language of class theory.
-A constant is a functional symbol of valency zero. It is a closed term, due to vacuous argument.
+\subsection{Universal class}
+\begin{metadefinition}[constant]
+A functional symbol of valency zero is called a $constant$.
+\end{metadefinition}
+(A constant is alwaus a closed term, due to vacuous argument.)
+\begin{constructor}[constant V]%\ \\
+Let the symbol $\V$ be a constant of the language of the class theory being discussed.
 \end{constructor}
 
-\begin{definition}[universal class (constant V)]
+\begin{definition}[universal class]
 \[
 \V\eqdef\cc{x}{\top}
 \]
 \label{def:universal class}
 \end{definition}
 
-\subsection{Definitions of unions}
+\subsection{Unions}
 \begin{definition}[elementary union]%\ \\
-This is an admissible and ``elementary`` definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
+This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
-\union A \eqdef \cc{x}{\exists a\in A: x\in a}
+\union A \eqdef \cc{x}{\exists a\in A,\ x\in a}
 \]
 \label{def:union}
 \end{definition}
@@ -273,7 +419,7 @@ This is an admissible and ``elementary`` definition of a union of an arbitrary c
 \ \eqdef\ 
 \cc{x}{\exists y, \psi \land (x\in t)}
 \]
-Side conditions:\\
+\underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.
@@ -306,8 +452,8 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \begin{theorem}[``elementary def of intersection'']%\ \\
 \[
 \union A = \cc{x}{\exists a\in A: x\in a}
+\labeltagd{thm}{union}
 \]
-\label{thm:union}
 \end{theorem}
 \Proof
 \[
@@ -323,13 +469,13 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \]
 \Done
 
-\subsection{Definitions of intersections}
+\subsection{Intersections}
 \begin{definition}[elementary intersection]%\ \\
-This is an admissible and ``elementary`` definition of an intersection of an arbitrary class A, which is proved to be a thoerem later in this section.
+This is an admissible and ``elementary'' definition of an intersection of an arbitrary class $A$, which is proved to be a theorem later in this section.
 \[
 \intersection A \eqdef \cc{x}{\forall a\in A\mydot x\in a}
+\labeltagd{def}{intersection}
 \]
-\label{def:intersection}
 \end{definition}
 
 \begin{definition}[intersection of a definable conglomerate of classes]%\ \\
@@ -391,46 +537,47 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 For any term $X$, for any variable $x$ which is not free in $X$,
 \[
 \power X \eqdef \cc{x}{x\subseteq X}
-\tag{def. Powerclass}
-\]
-\label{def:powerclass}
+\labeltagd{def}{powerclass}
+\]%\tag{def. Powerclass}
 \end{definition}
 \subsection{Axiom of heredity}
 \begin{axiom}[heredity]
 \[
+(
 (A\set)
 \land 
 (B\subseteq A)
+)
 \implies
 (B\set)
-\tag{ax. Heredity}
-\]
-\label{ax:heredity}
+\labeltagd{axm}{heredity}
+\]%\tag{ax. Heredity}
 \end{axiom}
-\subsection{Axiom of powerset}
+\subsection{Powerset}
 \begin{axiom}[powerset]
+For any term $A$,
 \[
 (A\set)
 \implies
 (\power A\set)
+\labeltagd{axm}{powerset}
 \]
-\label{ax:powerset}
 \end{axiom}
 \begin{note}
 This is a weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.
 \end{note}
 
-%\begin{axiom} $\in$-induction. (variant that uses formulas)
+%\begin{axiom} $\in$--induction. (variant that uses formulas)
 %\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
 %\end{axiom}
-\subsection{Axiom of regularity as epsilon--induction}
-\begin{axiom}[$\in$-induction]
+\subsection{Regularity as epsilon--induction}
+\begin{axiom}[$\in$--induction]
 For any term $\Psi$,
 \iffalse
-\textrm{\removeabs{$\in$-induction}}
-\textrm{\replace{$\in$-induction}}
+\textrm{\removeabs{$\in$--induction}}
+\textrm{\replace{$\in$--induction}}
 
-%\xdetokenize{{$\in$-induction}}%
+%\xdetokenize{{$\in$--induction}}%
 \xdetokenize{\userMacroA}
 \xdetokenize{\userMacroB}
 
@@ -440,30 +587,29 @@ For any term $\Psi$,
 %\xdetokenize{\userMacroC{\detokenize{  $(A\in B)$ }}}
 qwertyu\\
 \noexpand\text{ccc}\\
-%\text{\detokenize{\expand\replace{$\in$-induction}}}
+%\text{\detokenize{\expand\replace{$\in$--induction}}}
 
 \removespecials{\detokenize{ $(A\in B)$ }}
 
-%\removespecials{$\in$-induction}
+%\removespecials{$\in$--induction}
 \fi
 
 %(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
 (\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi)
-\tag{EpsInd}
+\labeltagd{axm}{epsilon induction}
 \]
-\label{ax:epsilon induction}
+%\tag{EpsInd}
 \end{axiom}
 
 
-\subsection{Axiom of limitation of size}
+\subsection{Limitation of size}
 \begin{axiom}[limitation of size (of a set)]
 \[
-\neg(X\set) \longleftrightarrow (\exists T,\ ((T\text{ class--function})\land (\V\subseteq T[X])))
-\tag{ax. LS}
-\]
-\label{ax:limitation of size}
+(\neg(X\set)) \longleftrightarrow (\exists T,\ ((T\text{ class--function})\land (\V\subclass T[X])))
+\clabeltagd{axm}{limitation of size}
+\]%\tag{ax. LS}
 \end{axiom}
 
 \input{END.tex}

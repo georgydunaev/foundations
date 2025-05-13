@@ -305,13 +305,28 @@
 \fi
 
 \usepackage{etoolbox}
+\usepackage{cleveref} % CLEVER REFERENCES
 
 %\newcommand*{\@Dashv}[2]{%
 %  \reflectbox{$\m@th#1#2$}%
 %}
+% DEPRECATED:
 \newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
   \{#1\in #2: #3\}
 }
+%\makebox[0pt][0pt]
+%{\label{#1}\tag*{\clap{(#1)}}}
+%\hphantom{#1}
+
+\newcommand{\labeltag}[1]{\label{#1}\tag*{\ \llap{(#1)}}}
+\newcommand{\clabeltag}[1]{\label{#1}\tag{#1}}
+
+\newcommand{\labeltagd}[2]{\label{#1:#2}\tag*{\ \llap{(#1:#2)}}}
+\newcommand{\clabeltagd}[2]{\label{#1:#2}\tag{#1:#2}}
+
+
+\newcommand{\myref}[1]{\hyperref[#1]{#1}}
+
 %\newcommand{\mydot}{.\ }
 \newcommand{\mydot}{,\ }
 \newcommand{\myparse}{{\text{parse}}}
@@ -335,7 +350,9 @@
 \newcommand{\ceq}{\,{\coloneqq}\,}
 \newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
 %\newcommand{\eqnot}{\,{\stackrel{\noti}{\coloneqq}}\,}
-\newcommand{\eqnot}{\,{\stackrel{\noti}{:\equiv}}\,}
+%\newcommand{\eqnot}{\,{\stackrel{\noti}{:\equiv}}\,}
+\newcommand{\equivnot}{\,{\stackrel{\noti}{:\equiv}}\,}
+\newcommand{\equivdef}{\,{\stackrel{\defi}{:\equiv}}\,}
 
 \newcommand{\eqbaddef}{\,{\stackrel{\baddefi}{\coloneqq}}\,}
 \newcommand{\rsto}{{\stackrel{RS}{\to}}}
@@ -1030,7 +1047,6 @@
   \endgroup
 }
 \makeatother\ExplSyntaxOff
-
 
 
 
