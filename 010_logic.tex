@@ -564,7 +564,7 @@ Antiquotation:
 \begin{metadefinition}[free variables of]
 The function, which returns the free variables of a syntactyc object, e.g. of the term:(ToDo)
 \[
-\FV : \mathrm{Syntax} \to \List(\Var)
+\FV : \text{Syntax} \to \List(\Var)
 \]
 \[
 \FV(\ulcorner\emptyclass\urcorner)\eqdef \emptylist
@@ -604,7 +604,7 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \FV_\Fm : \Fm \to \List(\Var)
 \]
 \fi
- %\Pow_{\mathrm{fin}}%\Finite\Set\List
+ %\Pow_{\text{fin}}%\Finite\Set\List
 \subsubsection{Theory and context}
 \begin{metadefinition}[context]%\ \\
 Context is a finite list of arbitrary formulas. It is usually denoted by the uppercase Greek alphabet letters like $\Gamma$ or $\Delta$.
@@ -984,7 +984,7 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 \quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
 \labeltagd{axm}{B2}
 \]
-%_{\mathrm{meta}}
+%_{\text{meta}}
 (The sign $\notin$ inside the side conditions is always used on the metalevel in the sense ``not in the list'', because they are metatheoretical statements about terms, formulas, and other syntactic entities, not the statements within the object theory.)
 
 
@@ -1203,8 +1203,8 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 An assignment is any family with domain of $\Var$. (It is an interesting possibility to add a requiremnt ``definable'' here, so only those families which can be constructed within the theory, are considered. Apparentlly, it allows to avoid famous incompleteness results.)\\
 \[
 (v\assignment) \IFFdef ((v\family) \land (\dom(v)=\Var)).
-\]%\mathrm{Class}
-%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+\]%\text{Class}
+%The constant $\text{Class}$ is a conglomerate of all classes.
 \end{definition}
 
 %\[NO!
@@ -1225,8 +1225,8 @@ An assignment is a function, which assigns an indivial object to each variable.
 Any object-valued function from $\Var$ is called an assignment:%class-valued
 \[
 (v\assignment) \IFFdef (v:\Var\to\Domain).
-\]%\mathrm{Class}
-%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+\]%\text{Class}
+%The constant $\text{Class}$ is a conglomerate of all classes.
 \end{definition}
 
 \iffalse TRUTHVALUES, NO!
@@ -1239,7 +1239,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 %$\Domain$
 
 %\begin{definition}[Class]
-%The constant $\mathrm{Class}$ is a conglomerate of all classes.
+%The constant $\text{Class}$ is a conglomerate of all classes.
 %\end{definition}
 
 \iffalse
@@ -1386,7 +1386,7 @@ Variants:
 BAD: I^v(P_1\sqcup P_2)\eqdef (I^v(P_1)\cup I^v(P_2))\setminus (I^v(P_1)\cap I^v(P_2))
 \]
 \[
-INTERESTING: I^v(P_1\sqcup P_2) \mathrm{\ has\ no\ interpretation!}
+INTERESTING: I^v(P_1\sqcup P_2) \text{\ has\ no\ interpretation!}
 \]
 $\dots$
 \end{itemize}
@@ -1438,7 +1438,7 @@ I_\Fm^v(\neg \varphi) \ceq \swap (I_\Fm^v(\varphi))
 \]
 \item Binary connectives:
 \[
-I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \mathrm{Or}\ (I^v(\varphi_2)))
+I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \text{Or}\ (I^v(\varphi_2)))
 \]
 \end{itemize}
 \end{definition}
@@ -1508,7 +1508,7 @@ For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate symbols and $
 \IFFdef 
 \left(
 \left(\models^v P_1\left(\vv{X}\right)\right)
-\ \mathrm{or}\ 
+\ \text{or}\ 
 \left(\models^v P_2\left(\vv{X}\right)\right)
 \right)
 \]%_\forall
@@ -1518,7 +1518,7 @@ For any integer number $n\geq 0$, if $P_1,\dots,P_n$ are predicate symbols and $
 %%\IFFdef 
 %%\left(
 %%\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
-%%\ \mathrm{or}\ 
+%%\ \text{or}\ 
 %%\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 %%\right)
 %%\]
@@ -1580,7 +1580,7 @@ I^v(P_2)\left(\vv{x}\right)
 
 %\left(
 %\left(\models^v_\exists P_1\left(\vv{X}\right)\right)
-%\ \mathrm{or}\ 
+%\ \text{or}\ 
 %\left(\models^v_\exists P_2\left(\vv{X}\right)\right)
 %\right)
 \fi
@@ -1606,7 +1606,7 @@ I^v(P_2)\left(\vv{x}\right)
 \]
 
 %\left(
-%\mathrm{not}
+%\text{not}
 %\left(\models^v_\forall P\left(\vv{X}\right)\right)
 %\right)
 
@@ -1679,7 +1679,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \IFFdef 
 \left(
 \left(\models^v \varphi_1\right)
-\mathrm{\ or\ }
+\text{\ or\ }
 \left(\models^v \varphi_2\right)
 \right)
 \]%_\forall
@@ -1688,7 +1688,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 %%\IFFdef 
 %%\left(
 %%\left(\models^v_\exists \varphi_1\right)
-%%\mathrm{\ or\ }
+%%\text{\ or\ }
 %%\left(\models^v_\exists \varphi_2\right)
 %%\right)
 %%\]
@@ -1706,7 +1706,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 %(\vv{x})
 \begin{definition}[update of the function]\ %\\
 %v\cap (\{\xi\}\times V)
-%\mathrm{upd}
+%\text{upd}
 \[
 \upd(v,\xi,q)(\eta)\ceq (\lif\ \eta=\xi\ \lthen\ q\ \lelse\ v(\eta)\ \lfi)
 \]
@@ -1882,7 +1882,7 @@ $f:\FuncSymb\LAND t_1:\Term \LAND ...\LAND t_n:\Term  \IMPLIES f(t_1,\dots,t_n):
 $x:\Var \LAND x:`a \LAND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
 
 $x:\Var \LAND t:\Term \IMPLIES x.t:\BTerm$\\
-$y:\Var \LAND b:\BTerm \IMPLIES y.b:\mathrm{BBTerm}$\\
+$y:\Var \LAND b:\BTerm \IMPLIES y.b:\text{BBTerm}$\\
 
 The following rule:\\
 $x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Term$,\\
@@ -2316,10 +2316,10 @@ I^{\glob,w}_\Fm((t\lunique)) \ceq (\lif\ (I^{\glob,w}_\Term(t)\mbox{ semisinglet
 A formula $\varphi$ is (strictly) globally valid if its globally true for any global assignment w.
 %The formula $\phi$ is valid, if it is true under any assignment.
 \[
-I^{\mathrm{strictly}\glob}_\Fm : \Fm \to \{\mathrm{strictly}\lValid,\mathrm{strictly}\lInvalid\}
+I^{\text{strictly}\glob}_\Fm : \Fm \to \{\text{strictly}\lValid,\text{strictly}\lInvalid\}
 \]
 \[
-\left(I^{\mathrm{strictly}\glob}_\Fm(\varphi)=\mathrm{strictly}\lValid\right) \IFF
+\left(I^{\text{strictly}\glob}_\Fm(\varphi)=\text{strictly}\lValid\right) \IFF
  \left(\forall \left(w:\Var\to((\power\Un)\setminus\{\emptyclass\})\right):I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
 \]
 \end{definition}
@@ -2675,7 +2675,7 @@ The proof assistant Isabelle uses metatheory with nonempty types, where the foll
 H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
 \quad\quad
 }{
-(\mathrm{spec}\ H_1): \left(\left(P(b)\right)::\prop\right)
+(\text{spec}\ H_1): \left(\left(P(b)\right)::\prop\right)
 }(\mbox{where }(b::`a))
 \]
 %H_2: (b::`a)
@@ -2685,11 +2685,11 @@ But if the type `a is empty, then creates problems, for example in case if P is 
 It may be fixed this way:\\
 \[
 \frac{
-H_0: \left(\mathrm{inh}_{`a}::\prop\right)
+H_0: \left(\text{inh}_{`a}::\prop\right)
 \quad\quad
 H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
 }{
-(\mathrm{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
+(\text{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
 }(\mbox{where }(b::`a))
 \]
 The proof-term $H_0$ has the meaning of a proof of a statement that the type `a is inhabited(i.e. non-empty).

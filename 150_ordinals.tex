@@ -9,102 +9,102 @@ The parameter $R$ is an arbitrary class and a relation, i.e. $R\subclass \V\time
 \begin{definition}[related]
 \[
 ARB \iffdef (A,B) \in R
+\labeltagd{def}{related}
 \]
-\label{def:related}
 \end{definition}
 \begin{definition*}[related(experimental)]
 \[
 ARB \iffdef \exists (i\set),\ (R((i,0))=A)\land(R((i,1))=B)
+\labeltagd{def}{relatedexper}
 \]
-\label{def:relatedexper}
 \end{definition*}
 \begin{definition}[epsilon relation]
 \[
 \E\ \eqdef\ \cc{(x,y)}{x\in y}
+\labeltagd{def}{epsilonRelation}
 \]
-\label{def:epsilonRelation}
 \end{definition}
 \begin{definition}[irreflexive on]
 \[
-(R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A: \neg (xRx))
+(R\mathrm{\ Irr\ }A)\iffdef (\forall x\in A,\ \neg (xRx))
+\labeltagd{def}{irreflexiveOn}
 \]
-\label{def:irreflexiveOn}
 \end{definition}
 \begin{definition}[relation is transitive on]
 \[
-(R\mathrm{\ Trans\ }A)\iffdef (\forall x\in A\forall y\in A\forall z\in A:
+(R\mathrm{\ Trans\ }A)\iffdef (\forall x\in A\forall y\in A\forall z\in A,\ %
 xRy \land yRz \implies xRz)
+\labeltagd{def}{transitiveOn}
 \]
-\label{def:transitiveOn}
 \end{definition}
 
 \begin{definition}[relation is strictly partially ordered on]
 \[
 (R\mathrm{\ Po\ }A)\iffdef ((R\mathrm{\ Irr\ }A) \land (R\mathrm{\ Trans\ }A))
+\labeltagd{def}{partiallyOrderedOn}
 \]
-\label{def:partiallyOrderedOn}
 \end{definition}
 \begin{definition}[relation is linear on]
 \[
 (R\mathrm{\ Lin\ }A)\iffdef (\forall x\in A\forall y\in A:
 (xRy) \lor (x=y) \lor (yRx))
+\labeltagd{def}{linearOn}
 \]
-\label{def:linearOn}
 \end{definition}
 \begin{definition}[relation is strictly completely ordered on]
 \[
 (R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A))
+\labeltagd{def}{sOn}
 \]
-\label{def:sOn}
 \end{definition}
 \begin{definition}[relation is founded on]
 \[
 (R\mathrm{\ Fr\ }A)
 \iffdef
-(\forall S\subclass A:
+(\forall S\subclass A,\ %
 S\subclass R[S]
 \implies
 S=\emptyclass)
+\labeltagd{def}{foundedOn}
 \]
-\label{def:foundedOn}
 \end{definition}
 \begin{definition}[relation is well--ordered on]
 \[
 (R\mathrm{\ We\ }A)
 \iffdef
 ((R\mathrm{\ Or\ }A) \land (R\mathrm{\ Fr\ }A))
+\labeltagd{def}{wellOrderedOn}
 \]
-\label{def:wellOrderedOn}
 \end{definition}
 
 
 
 \begin{definition}[$R_1R_2$ subclass]
 \[
-A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x:xR_1A\implies xR_2B)
+A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x,\ xR_1A\implies xR_2B)
+\labeltagd{def}{RRsubclass}	
 \]
-\label{def:RRsubclass}	
 \end{definition}
 \begin{definition}[$R$ subclass]
 \[
 (A\stackrel{R}{\subclass} B)
 \iffdef
 (A\stackrel{R\E}{\subclass} B)
+\labeltagd{def}{Rsubclass}
 \]
-\label{def:Rsubclass}
 \end{definition}
 \begin{lemma}[$R$ subclass]
 \[
 k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
+\labeltagd{lem}{Rsubset}
 \]
-\label{lem:Rsubset}
 \end{lemma}
 
 \begin{definition}[powerclass w.r.t. relation $R$]
 \[
 \power_R X\ \eqdef\ \cc{ k}{k\stackrel{R\E}{\subclass}X}
+\labeltagd{def}{RpowerClass}
 \]
-\label{def:RpowerClass}
 \end{definition}
 
 \begin{definition}[class is transitive w.r.t. relation $R$]
@@ -112,8 +112,8 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 (R\ \Tr\ K)
 \iffdef
 (K\subclass \power_R K)
+\labeltagd{def}{RtransitiveClass}
 \]
-\label{def:RtransitiveClass}
 \end{definition}
 
 \begin{theorem}[properties are preserved on subclasses(except transitivity w.r.t. relation)]
@@ -171,16 +171,16 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 (m\notin R[K\setminus A])
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
+\labeltagd{lem}{Rind}
 \]
-\label{lem:Rindlem}
 \end{lemma}
 \ProofNoPar
 \[
-(\forall q:qRm\implies q\in K)
+(\forall q,\ qRm\implies q\in K)
 \LAND
-(\forall q\in K:qRm\implies q\in A)
+(\forall q\in K,\ qRm\implies q\in A)
 \IMPLIES
-(\forall q:qRm\implies q\in A)
+(\forall q,\ qRm\implies q\in A)
 \]
 \Done
 \pagebreak
@@ -195,8 +195,8 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \implies
 (K\subclass A)
 )
+\labeltagd{thm}{Rind}
 \]
-\label{thm:Rind}
 \end{theorem}
 \Proof
 Assume $(R\ \Tr\ K)$, $(R\mathrm{\ Fr\ }K)$, $((K\cap\power_R A)\subclass A)$. To show: $K\subclass A$.\\
@@ -217,7 +217,7 @@ Assume opposite $k\notin A$. To show $\bot$.
 \[
 (R\mathrm{\ Fr\ }K)
 \IFF
-(\forall S\subclass K:
+(\forall S\subclass K,\ %
 S\subclass R[S]
 \implies
 S=\emptyclass)
@@ -236,11 +236,11 @@ S\ceq (K\setminus A)
 \]
 \[
 \IMPLIES
-(\exists m\in S: m\notin R[S])
+(\exists m\in S,\ m\notin R[S])
 \]
 \[
 \IMPLIES
-(\exists m\in (K\setminus A): m\notin R[(K\setminus A)])
+(\exists m\in (K\setminus A),\ % m\notin R[(K\setminus A)])
 \]
 \[
 (R\mathrm{\ Tr\ }K)
@@ -308,19 +308,19 @@ S\ceq (K\setminus A)
 \Done %the proof is finished
 
 \begin{definition}[restriction of relation]
-\label{def:restrrel}
 \[
 (x(R\mathrm{\ on\ }K)y)
 \iffdef
 (x\in K)\land(xRy)
+\labeltagd{def}{restrrel}
 \]
 \end{definition}
 \begin{lemma}[restriction of relation is transitive on class]
 If $R$ is a relation, then
 \[
 ((R\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)
+\labeltagd{lem}{restrreltran}
 \]
-\label{lem:restrreltran}
 \end{lemma}
 \Proof
 To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
@@ -356,8 +356,8 @@ This formulation of inductive principle corresponds to the exercise 9.22 of ``In
 \implies
 (K\subclass A)
 )
+\labeltagd{thm}{RindAlt}
 \]
-\label{thm:RindAlt}
 \Proof
 Assume $(R_1\mathrm{\ on\ }K)$.\\
 Let be $R\ceq (R_1\mathrm{\ on\ }K)$.\\
@@ -400,8 +400,8 @@ Finally, we have $(
 \Tr(X)
 \iffdef
 (X\subclass \power X)
+\labeltagd{def}{transitiveClass}
 \]
-\label{def:transitiveClass}
 \end{definition}
 
 
@@ -410,8 +410,8 @@ Finally, we have $(
 \Ord(X)
 \iffdef
 ((\Tr(X))\land(\E\mathrm{\ We\ }X))
+\labeltagd{def}{ordinalClass}
 \]
-\label{def:ordinalClass}
 \end{definition}
 \begin{definition}[limit class]
 Note, that this definition is a bit unconventional: usually it must also be nonempty.
@@ -419,8 +419,8 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \LimClass(X)
 \iffdef
 \left(X\subclass\union X\right)
+\labeltagd{def}{limitClass}
 \]
-\label{def:limitClass}
 \end{definition}
 \begin{definition}[limit ordinal]
 Note, that this definition is a bit unconventional: usually it must also be nonempty.
@@ -428,35 +428,35 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \LimOrd(X)
 \iffdef
 ((\Ord(X))\land(\LimClass(X))
+\labeltagd{def}{limitOrdinal}
 \]
-\label{def:limitOrdinal}
 \end{definition}
 
 \begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
 \[
 \On\ \eqdef\ \cc{x}{\Ord(x)}
+\labeltagd{def}{ordinalNumbers}
 \]
-\label{def:ordinalNumbers}
 \end{definition}
 
 \begin{definition}[supremum]
 \[
 \sup(A)\ \eqdef\ \bigcup\left(A\cap\On\right)
+\labeltagd{def}{supremum}
 \]
-\label{def:supremum}
 \end{definition}
 \begin{definition}[infimum]
 \[
 \inf(A)\ \eqdef\ \left(\bigcap (A\cap\On)\right)\cap\On
+\labeltagd{def}{infimum}
 \]
-\label{def:infimum}
 \end{definition}
 
 \begin{theorem}[infimum of a subset of ordinals is the unique minimum]
 \[
 ((A\cap\On)\neq\emptyclass)\implies(\inf(A)\in A)
+\labeltagd{thm}{infordmin}
 \]
-\label{thm:infordmin}
 \Proof
 ToDo!
 \Done
@@ -466,21 +466,20 @@ ToDo!
 \subsection{Properties of ordinals}
 \iffalse
 \begin{theorem}[]
-\label{thm:}
+\labeltagd{thm}{}
 \[
 \]
 \end{theorem}
 \fi
 
 \begin{lemma}[epsilon relation criterion]
-\label{lem:ordlem0}
 \[
 ((x\in y)\land(y\set)) \iff ((x,y)\in\E)
+\labeltagd{lem}{ordlem0}
 \]
 \end{lemma}
 
 \begin{lemma}[an element is a proper subset]
-\label{lem:ordlem1}
 \[
 ((\E\mathrm{\ Irr\ }A)\land(\Tr(A)))
 \implies
@@ -488,11 +487,11 @@ ToDo!
 (B\in A)
 \implies
 (B\subsetneq A))
+\labeltagd{lem}{ordlem1}
 \]
 \end{lemma}
 
 \begin{lemma}[a proper subclass is an element]
-\label{lem:ordlem2}
 %(\mathrm{ })\land
 \[
 (
@@ -507,12 +506,12 @@ ToDo!
 \implies
 (B\in A)
 )
+\clabeltagd{lem}{ordlem2}
 \]
 \end{lemma}
 
 
 \begin{theorem}[proper subclass iff element]
-\label{thm:subiffel}
 \[
 (
 (\Ord(A))\land
@@ -524,10 +523,10 @@ ToDo!
 \iffnows
 (B\subsetneq A)
 )
+\labeltagd{thm}{subiffel}
 \]
 \end{theorem}
 \begin{theorem}[transitive subclass of ordinal numbers iff ordinal class]
-\label{thm:dford5}
 \[
 (
 \Ord(A)
@@ -538,31 +537,31 @@ ToDo!
 \land
 (\Tr(A))
 )
+\labeltagd{thm}{dford5}
 \]
 \end{theorem}
 \begin{theorem}[element of ordinal is ordinal]
-\label{thm:tz7.6}
 \[
 \Ord(A)\land(a\in A)\implies \Ord(a)
-\]
-(7.6 Takeuti--Zaring)
+\labeltagd{thm}{tz7.6}
+\]%(7.6 Takeuti--Zaring)
 \end{theorem}
 
 \begin{theorem}[class of ordinal numbers is ordinal class]
-\label{thm:ordon}
 \[
 (
 \Ord(\On)
 )
+\labeltagd{thm}{ordon}
 \]
 \end{theorem}
 
 \begin{lemma}[union of subclass of ordinals is transitive class]
-\label{lem:trunonss}
 \[
 (A\subclass\On)
 \implies
 \left(\Tr\left(\union A\right)\right)
+\labeltagd{lem}{trunonss}
 \]
 \Proof
 Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
@@ -613,13 +612,13 @@ z\ceq a
 
 
 \begin{theorem}[criterion in context of regularity axiom](note: it is not yet checked by me)
-\label{thm:ordViaReg}
 \[
 (\E\mathrm{\ Fr\ }V)
 \implies
 \left(
 \Ord(X) \iff \Tr(X)\land (\forall Y\in X: \Tr(Y))
 \right)
+\labeltagd{thm}{ordViaReg}
 \]
 \end{theorem}
 
@@ -756,7 +755,7 @@ Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordina
 \begin{remark}\ \\
 Here we use the intersection of a class which is defined by 
 $
-(x\in\bigcap Q)\iff(\forall q\in Q:x\in q)
+(x\in\bigcap Q)\iff(\forall q\in Q,\ x\in q)
 $, therefore $\bigcap\emptyclass = V$.
 In this case,
 \[
@@ -777,18 +776,33 @@ The function $| \cdot |$ has interesting properties.
 |\V|=\On
 \]
 \Proof
+\[
+|K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
+\]
+\[
+|V|= \On \cap \bigcap \cc{a\in\On}{V\preccurlyeq a}
+\]
+\[
+(V\preccurlyeq a)
+\]
 \dots
 \Done
 \end{theorem}
 \subsection{Properties}
 \begin{theorem}[$| \cdot |$ is a projection]
-\label{thm:cardproj}
+\[
+(|\cdot|\text{ projection})
+\labeltagd{thm}{cardproj}
+\]
 \Proof
 \dots
 \Done
 \end{theorem}
 \begin{theorem}[construction of a bijection between $\V$ and $\On$]
-\label{thm:vonbij}
+\[
+?
+\labeltagd{thm}{vonbij}
+\]
 \Proof
 \dots
 \Done
@@ -895,9 +909,9 @@ etc \dots
 
 \subsection{Transitive set [very old subsection]}
 \begin{definition}
-\label{def:transitive through power}
 \[
 (A \transitive)\iff (A\subclass \power A)
+\labeltagd{def}{transitive through power}
 \]
 \end{definition}
 
