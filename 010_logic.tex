@@ -9,13 +9,22 @@
 \section{Example of the proof assistant's output}
 
 This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for illustration.
-
-\includegraphics[scale=0.5]{output.png}
+\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
+\includegraphics[scale=0.5]{pictures/DEMO3.png}
+\restoregeometry
 \pagebreak
+
 \section{Type theory of the proof assistant}
 Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
 The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
 
+\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set\_theory\_proverSTOP/program/CONTENT.ML}
+
+\restoregeometry
+
+\iffalse
 \begin{lstlisting}
 datatype ''ty Variable =
   name of string
@@ -225,7 +234,120 @@ end;
 \end{lstlisting}
 
 \dots
+\fi
 
+\begin{definition}[informal introduction]
+Let $\Fm,\Term,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
+
+In a such model of Standard ML, there is a typing relation between semantics of terms and types.\\
+Assume this relation is given.\\
+Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\Term,\Ctx,\Theory,...$ and their ground values (without variables).\\
+Then let's extend this typing relation to the extended one, in which all remaining types also have type $\Typ$, such that 
+$(\Fm:\Typ)$, $(\Term:\Typ)$, $(\Ctx:\Typ)$, $\dots$, $(\Typ:\Typ)$ (note the last one).\\
+This could lead to a contradiction (Girard's Paradox) in case if this typing system would be significantly richer: at least if it had types of functions, dependent types, etc, but it doesn't have any of that: it is as simple as possible.
+\end{definition}
+%, even finite.
+
+
+
+\begin{definition}[class constants, corresponding to syntactic entities]
+Let $\circ$ be a composition of functional symbols here, then the class constants, corresponding to formulas, terms, etc are  defined the following way:
+\[
+\text{CFm}
+\eqdef
+(\text{Enc}\circ\text{VTyp})(\text{TFm})
+\]
+\[
+\text{CTerm}
+\eqdef
+(\text{Enc}\circ\text{VTyp})(\text{TTerm})
+\]
+\[
+\dots
+\]
+\end{definition}
+
+%It is possible for
+%\text{TTerm} is an element
+
+
+\iffalse
+\begin{notation}[abuse of notation]
+It seems possible to identify $\Term$ and $\text{TTerm}$, but it will not be done to avoid confusion.
+%The author is not sure, where 
+%(but in fact, no)
+%It can be
+%Starting from the next chapter, it can be 
+%It seems like
+%\[
+%\Term = \text{TTerm} = \text{CTerm}
+%\]
+\end{notation}
+\fi
+
+\begin{definition}[quantifiers with a bound variable of type $\Fm$]
+Let $\phi$ be a variable for formulas.\\
+Let $\psi$ be a formula.\\
+% such that $\phi_code$ is not free in $\phi$.
+%Not enough.
+Assume also that the substitution 
+$\psi[((\text{ValToFm}\circ\text{Dec})(\phi_\code))/\phi]$ is computed successfully, i.e. without raising an exception or error.
+Then
+%Then the following formula 
+\[
+(\forall (\phi:\text{TFm}),\ \psi)
+\iffdef
+\]
+\[
+\iffdef
+(\forall (\phi_\code:\text{TTerm}),\ %
+(\phi_\code\in (\text{Enc}\circ\text{VTyp})(\text{TFm}))
+\implies
+\psi[
+(\text{ValToFm}\circ\text{Dec})(\phi_\code)
+/
+\phi
+]
+)
+\]
+\end{definition}
+
+\begin{notation}[naming prefix of labels]
+In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid consuion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TTerm'', ``TCtx'', etc. \\
+But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
+\[
+``(\forall(x:\text{TFm}),\ \dots)",
+\]
+starting from the next chapter, it will be written
+\[
+``(\forall(x:\Fm),\ \dots)".
+\]
+In general, any other abuse of notation should be avoided and will be avoided at all costs.
+\end{notation}
+
+
+%Now the tricky part, te
+
+\begin{axiom}
+The author believe that the reason why terms are called ``a term'', is because it is ``terminal'' in the following sense: its quantifiers with a bound variable of type Term can be unfolded similarly, but they will still contain a TTerm type label:
+\[
+(\forall (t:\text{TTerm}),\ \psi)
+\iffaxm
+\]
+\[
+\iffdef
+(\forall (\phi_\code:\text{TTerm}),\ %
+(\phi_\code\in (\text{Enc}\circ\text{VTyp})(\text{TTerm}))
+\implies
+\psi[
+(\text{ValToTerm}\circ\text{Dec})(t_\code)
+/
+t
+]
+)
+\]
+That is why it is an axiom, because otherwise it would be a circular definition.
+\end{axiom}
 
 \section{Metalanguage[section is not yet written]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
@@ -453,6 +575,7 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 %\right\urcorner
 \]
 \fi
+\newpage
 \[
 \bot
 \equivnot
@@ -481,6 +604,193 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 "
 %\right\urcorner
 \]
+\begin{definition}
+For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
+\[
+\text{EncStmt}(\Wau, \Gamma\vdash \phi)
+\equivnot
+\pmb{(} \text{EncTheory}(\Wau) \pmb{,} \text{EncCtx}(\Gamma)\pmb{\pmb{\vdash}} \text{EncFm}(\phi)\pmb{)}
+\]
+\end{definition}
+The epression on the right side is an application of a first--order predicate symbol to 
+
+A term is called a \textit{class--term}, when it's a term of the type which is, unfortunately confusingly, called $\Term$ in the source code.
+
+
+\begin{definition}
+A pair of string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
+\end{definition}
+
+\begin{notation}[dot]
+If a variable of an arbitrary type has dots on top of it, it means, that it is from higher meta--level.\\
+The number of dots on top of the variable means how many times "meta" this variable is.\\
+Dots are used for variables only.\\
+\end{notation}
+
+
+\iffalse
+\begin{notation}[bold var]
+If a letter is written bold, it means only this particular variable, which is not possible to substitute with other variables or terms.
+\end{notation}
+\fi
+\begin{notation}[bold text variable means no terms]
+If a variable is written as a bold letter, it means it is possible to substitute it only with other variable from the same collection of variables used for particular type.
+\end{notation}
+
+
+\begin{notation}[displaying in computer's terminal]
+It is a bit tricky to display dots in Linux terminal, so the following notation may be used.
+\[
+\pmb{\phi}^\text{code} \equivnot \meta{\pmb{\phi}}(BAD)
+\]
+\end{notation}
+
+\begin{definition}[translation of variables for formulas into the first--order language]
+(This is a main definition.)
+
+For each variable wiht a name in the group ``a lowercase letter of Greek alphabet'',  
+
+\iffalse
+(in case of type of formulas, a name is
+
+Let $\phi$
+
+\fi
+
+\[
+\pmb{\phi}
+\equivdef
+\text{DecFm}(\pmb{\phi}^\code)
+\]
+\[
+\text{Meta}(\pmb{\phi})
+\equivdef
+\meta{\pmb{\phi}}
+\]
+\[
+\text{EncFm}(\meta{\pmb{\phi}})
+\reductsto
+\pmb{\phi}
+\]
+
+
+(There is no need to additionally require that
+\[
+\pmb{\psi}
+\equivdef
+\text{DecFm}({\pmb{\psi}^\code})
+,\ %
+\pmb{\chi}
+\equivdef
+\text{DecFm}({\pmb{\chi}^\code})
+,\ %\dots;
+\]
+because the agreement of bold notation requires it automatically. The group ``Greek lowercase letters'' is associated with type of formulas.)
+
+
+%\equivdef
+%\text{DecFm}(\pmb{\phi}^{\text{code}})
+\iffalse
+Each variable of type Fm is defined like this.
+Each time, there is a small Greek letter, it means the following. 
+\fi
+\end{definition}
+\iffalse
+For every formula--variable $\meta{\phi}$ of metalevel strictly higher than zero,
+\fi
+\begin{note}[formula vs formula term]
+The main distinction between \underline{formulas} and \underline{formulas terms} is that while they are both syntactical objects of type $\Fm$, but a \underline{formula} doesn't contain any of $\Enc$ and $\Dec$ constructors(for any of the types), while the \underline{formula term} may have them.
+\end{note}
+
+\begin{definition}[encoding variables for formulas]
+For every variable $\pmb{\phi}$ of type ``formula'', there exists a variable  $\pmb{\phi}^\code$ of type ``class--term'', what allows the function for encoding the formulas defined to be computed the following way:
+\[
+\text{EncFm}(\pmb{\phi})
+\equivdef
+{\pmb{\phi}}^\code
+\]
+\end{definition}
+\begin{definition}[further encoding for formulas]
+For any \underline{formulas}'s terms $\phi$ and $\psi$, the function for encoding the formula is computed this way:
+\[
+\text{EncFm}((\phi \implies \psi))
+\equivdef
+\pmb{(}\text{EncFm}(\phi) \pmb{\implies} \text{EncFm}(\psi)\pmb{)}
+\]
+A bold writing schrift of a predicate symbol notation symbols here means that, if the number of dots is interpreted simply like just a part of the variable's name, then it will be a first--order predicate symbol occurence in a first--order class term. (After the encoding of both subformulas will be fully computed, of course.)
+\end{definition}
+
+\begin{theorem}[]
+For any formula terms $\phi$,
+\[
+(\text{DecFm}(\text{EncFm}(\phi)) \reductsto \phi)
+\]
+(without proof via structural induction)
+\end{theorem}
+
+%If a variable of an arbitrary type is being encoded, then the the quotation marks are used for brevity.\\
+For example, if a class--term $t$ is an occurence of a variable $\pmb{x}$, then
+
+Left and right sides of these definitional equalities are computationally equivalent.(Conversions)
+TODO: DOUBLE CHECK HERE
+\[
+t\equiv \text{DecTerm}(\text{EncTerm}(t))
+\]
+%\forall t^{code}
+\[
+\forall (t:\Term),
+(t\equiv \text{DecTerm}(\text{EncTerm}(t)))
+\]
+\[
+\forall (\phi:\Fm),
+(\phi\equiv \text{DecFm}(\text{EncFm}(\phi)))
+\]
+\[
+\forall (\phi^{\text{code}}:\Term),
+(\phi^{\text{code}} \in \text{Emb(Fm)})
+\implies
+(\phi\equiv \text{DecFm}(\phi^{\text{code}}))
+\]
+
+
+
+
+\[
+(\pmb{\phi}:\Fm)
+\]
+
+There is an agreement, that for each variable,
+\[
+\phi^{\text{code}}
+\equiv
+\text{EncTerm}(\phi)
+\]
+
+
+\[
+t\equiv \text{DecTerm}(\meta{t})
+\]
+
+
+
+\[
+``\meta{t}"
+\equiv
+``\pmb{x}"
+\equivnot
+\text{EncTerm}(\pmb{x})
+\equiv
+\text{EncTerm}(t)
+\]
+
+\[
+``x"\equivnot \text{EncTerm}(x) 
+\]
+\[
+\meta{x}\equivnot \text{DecTerm}(x) 
+\]
+
+
 (and so on\dots)
 \end{metanotation}
 
@@ -494,11 +804,11 @@ The inductive definition of terms:
 %\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Term)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
 \item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
 \[
-\text{ClassCompr}_1 : (\Term, (\Term * \Fm))\ \Bound \to \Term
+\text{ClassCompr}_1 : (\Term, (\Term \times \Fm))\ \Bound \to \Term
 \]
 \item $(\vv{x}:\text{Var List})\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{\vv{x}}{t}{\phi} :\Term)$.
 \[
-\text{ClassCompr} : (\Term, (\Term * \Fm))\ \text{BoundByList} \to \Term
+\text{ClassCompr} : (\Term, (\Term \times \Fm))\ \text{BoundByList} \to \Term
 \]
 
 \iffalse
@@ -646,7 +956,7 @@ Primitive proof is a finite list of formulas, such that each is derivable in the
 \begin{notation}[derivablity from a theory with the empty context]
 Let $\Wau$ be a theory, and $\phi$ be a formula, then it is convenient to write
 \[
-(\Wau \vdash \phi) \iffdef (\Wau, [] \vdash \phi)
+(\Wau \vdash \phi) \iffdef (\Wau, [\,] \vdash \phi)
 \]
 \end{notation}
 
@@ -818,7 +1128,7 @@ The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the 
 \end{definition}
 \begin{note}[requirement for the implementation]
 For $\phi$ to be well--formed formula, all $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
-(Otherwise, it is not a formula, but rather a predicat--like symbol which needs some arguments.)\\
+(Otherwise, it is not a formula, but rather a predicate--like symbol which needs some arguments.)\\
 This requirement is also important, since the proof assistant needs a precise term, not a variable, in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
 \fbox{This agreement makes the side conditions decidable.}\\
 The ``yes/no'' answer is computed on the highest meta--level of the formula, otherwise the exception is raised, in case if there are ``unbound metavariables''.
@@ -930,6 +1240,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \]
 
 \[
+\forall \Wau\in\Theory,\ %
 \forall x\in\Var,\ %
 \forall t\in\Term,\ %
 \forall \phi\in\Fm,\ %
@@ -941,6 +1252,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \clabeltagd{axm}{MetaS1}
 \]
 \[
+\forall \Wau\in\Theory,\ %
 \forall x\in\Var,\ %
 \forall t\in\Term,\ %
 \forall \phi\in\Fm,\ %
@@ -960,6 +1272,18 @@ For any variable $x$, for any formula $\phi$ such that the term $(\Henkin x,\var
 (\varphi[(\Henkin x,\varphi)/x])
 \labeltagd{axm}{H}
 \]
+\[
+\forall x\in\Var,\ %
+\forall \varphi\in\Fm,\ %
+\Fau\vdash
+(
+(\exists x,\varphi)
+\implies
+(\varphi[(\Henkin x,\varphi)/x])
+)
+\labeltagd{axm}{MetaH}
+\]
+
 (This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
@@ -3357,13 +3681,38 @@ It is said that it has \textit{a Henkin property}, if for every existential stat
 \[
 (\Wau\text{ Henkin})
 \iffdef
-(\forall \phi\in\Fm, (\Wau \vdash \exists x,\ \phi)
+(\forall \phi\in\Fm,\ %
+(
+(\Wau \vdash \exists x,\ \phi)
 \implies
 (\exists t\in \text{Term},\ (\Wau \vdash \phi[t/x])))
+)
+\]
+\[
+(\Wau\text{ disjunctive})
+\iffdef
+(\forall \phi\in\Fm,\ ((\Wau \vdash (\phi_1\lor\phi_2))
+\implies
+(
+(\Wau \vdash \phi_1)
+\lor 
+(\Wau \vdash \phi_2)
+))
+)
 \]
 From this definition it immediately fllows, that there are no non--standard elements in such thery $\Wau$.
 \end{definition}
 
+\begin{theorem}[disj implies compl]
+\[
+(\Wau\text{ disjunctive})
+\implies
+(\Wau\text{ complete})
+\]
+\end{theorem}
+\begin{proof}
+
+\end{proof}
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
 Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. 
 \[
@@ -3373,6 +3722,13 @@ Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that
 \land (F\text{ consistent})
 \land (F\text{ complete})
 \land (F\text{ Henkin})
+)
+\]
+\[
+\Fau
+\eqdef
+(\Henkin F,\ (F\ \Lau\text{--theory})
+\land (F\text{ reflexive})
 )
 \]
 Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Techically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
@@ -3544,8 +3900,48 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \indent The following statement holds because of the properties of $\Fau$:
 \[
 ((\Fau\vdash \phi) \iff \phi)
+\labeltagd{axm}{reflexivity}
 \]
+%\iffalse
+Is this senseless? since $\phi$ here is an object!.. yes/no? 
+\[
+\forall \phi\in\Fm,\ %
+((\Fau\vdash \phi) \iff \phi)
+\labeltagd{axm}{metareflexivityorig}
+\]
+%\fi
+\[
+\forall \phi\in\Fm,\ %
+(
+\Fau\vdash 
+((\Fau\vdash \phi) \iff \phi)
+\labeltagd{axm}{metareflexivity1}
+)
+\]
+\[
+\Fau \vdash 
+(
+\forall \phi\in\Fm,\ %
+((\Fau\vdash \phi) \iff \phi)
+\labeltagd{axm}{metareflexivity2}
+)
+\]
+
+\begin{note}
+% either 
+The author uses a predicate $\vdash$, which is slightly different from the traditional: it is higher--order in nature, since it takes a theory(a set of formulas), a context (a list of formulas), and a formula as arguments.
+\[
+\text{Der} : \text{Theory} \times \text{Ctx} \times \Fm \to \Fm
+\]
+And it is treated in a special way: the function isFree which checks whether variable is free, increases the metalevel of the variable being checked when enters the areguments of this constructor of formulas. 
+This simple trick allows to avoid explicit writing of encoding and decoding of syntactic objects, and simplify the implementation.
+
+% is special or \ulcorner \urcorner
+ 
+\end{note}
+
 The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
+
 % \Tau = \mathcal{T}
 \iffalse
 \begin{inferencerule}[conecessitation]
@@ -3616,7 +4012,46 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }
 \labeltagd{rule}{Credo}
 \]
+\[
+\forall \psi\in\Fm,\ %
+(\mathcal{F}\vdash\psi)
+\implies
+\psi
+\labeltagd{axm}{Credo}
+\]
+\[
+\forall \psi\in\Fm,\ %
+(\mathcal{F}\vdash(\mathcal{F}\vdash\psi))
+\implies
+(\mathcal{F}\vdash\psi)
+\labeltagd{rule}{MetaCredo}
+\]
+
+Let $\phi\ceq \bot$, then:
+\[
+\neg(\mathcal{F}\vdash\bot)
+\labeltagd{thm}{CredoBot}
+\]
+
+\[
+(\mathcal{F}\not\vdash\bot)
+\implies
+(\mathcal{F}\not\vdash(\mathcal{F}\vdash\bot))
+\labeltagd{rule}{MetaCredoBot}
+\]
 \end{inferencerule}
+
+\begin{theorem}[credo implies cons]
+\[
+(\Fau\text{ credible})
+\implies
+(\Fau\text{ consistent})
+\]
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
 \begin{inferencerule}[Omniscience]%\ \\
 \[
 \frac{
@@ -3626,7 +4061,31 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 }
 \labeltagd{rule}{Omniscience}
 \]%%\square \psi
+\[
+\forall \psi\in\Fm,\ %
+\psi
+\implies
+(\mathcal{F}\vdash\psi)
+\labeltagd{axm}{Omniscience}
+\]
+\[
+\forall \psi\in\Fm,\ %
+(\mathcal{F}\vdash\psi)
+\implies
+(\mathcal{F}\vdash(\mathcal{F}\vdash\psi))
+\labeltagd{rule}{MetaOmniscience}
+\]
 \end{inferencerule}
+\begin{theorem}[omni implies disj]
+\[
+(\Fau\text{ omniscient})
+\implies
+(\Fau\text{ disjunctive})
+\]
+\end{theorem}
+\begin{proof}
+
+\end{proof}
 
 %\begin{conjecture}
 

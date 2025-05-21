@@ -79,10 +79,10 @@ The proof of the formula $F$ is obtained via modus ponens from $((C\implies F)\i
 \label{Russel's Paradox}
 Both in classical and in intuitionistic logic, the following holds:
 \[
-\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)
+\neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)
 \]
 \Proof
-\noindent By contradiction, assume $(\exists W \forall Q: Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
+\noindent By contradiction, assume $(\exists W \forall Q,\  Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
 Set $Q\ceq W$.\\
 Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
@@ -122,7 +122,7 @@ Fix class $B$. Assume $B\in \power C$.\\
 \[
 (B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C).
 \]
-Claim: $\forall b\in B:b\notin b$.\\ %Каждый его элемент не принадлежит себе.
+Claim: $\forall b\in B,\ b\notin b$.\\ %Каждый его элемент не принадлежит себе.
 $(b\in B)\LAND(B\subseteq C) \Longrightarrow (b\in C)$.\\
 $(b\in C) \Longrightarrow (b\notin b)$.\\
 Claim: $B\notin B$.\\
@@ -149,17 +149,17 @@ We are done proving the goal $\power C\subseteq C$.\\
 %Значит для любого множества W, W∉W.
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему--нибудь принадлежит.
 %Значит любой класс не принадлежит сам себе.
-Goal: $ \forall Y: Y\notin Y$.\\
+Goal: $ \forall Y,\  Y\notin Y$.\\
 Fix $Y$.\\
 Case 1: $(Y\set)$.\\
 $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
 $(Y\in C)\Longrightarrow (Y\notin Y)$.\\
 Case 2: $\neg(Y\set)$.\\
-$\neg(Y\set) \Longrightarrow \neg(\exists Q:Y\in Q)$.\\
-$\neg(\exists Q:Y\in Q)  \Longrightarrow (\forall Q:Y\notin Q)$.\\
+$\neg(Y\set) \Longrightarrow \neg(\exists Q,\ Y\in Q)$.\\
+$\neg(\exists Q,\ Y\in Q)  \Longrightarrow (\forall Q,\ Y\notin Q)$.\\
 \[
-(\forall Q:Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\ceq Y$}
+(\forall Q,\ Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\ceq Y$}
 \]
 \Done
 \end{theorem}
@@ -232,7 +232,7 @@ The claim is proven.
 %\[
 %(\left(\intersection A\right)\set)
 %\IMPLIES
-%\exists Q: \left(\intersection A\right)\in Q
+%\exists Q,\  \left(\intersection A\right)\in Q
 %\]
 \Done
 \end{theorem}
@@ -266,8 +266,8 @@ $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
 $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 %By Russel's paradox(\myref{Russel's Paradox}), 
-%$\neg (\exists W \forall Q: Q\in W \iff Q\notin Q)$\\
-%$\forall W(\neg \forall Q: Q\in W \iff Q\notin Q)$\\
+%$\neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)$\\
+%$\forall W(\neg \forall Q,\  Q\in W \iff Q\notin Q)$\\
 %$W\ceq Y$.\\
 \Done
 \end{theorem}
