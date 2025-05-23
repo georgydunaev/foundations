@@ -604,19 +604,19 @@ $}
 \end{prooftree}
 
 \subsubsection{Model of $\Sigma$--types}
-Assume that $(F\family)$.
+Assume that $(B\family)$.
 
 \begin{definition}[Dependent sum]
 \[
-\Sigma F \eqdef \mbox{E}^{\top} \circ F
+\Sigma B \eqdef \mbox{E}^{\top} \circ B
 \]
 \[
-\Sigma F \eqdef \cc{(a,b)}{b\in F(a) }
+\Sigma B \eqdef \cc{(a,b)}{b\in B(a) }
 \]
 \end{definition}
 \begin{definition}[dependent sum of a family]
 \[
-\Sigma F\eqdef\cc{(x,y)}{y\in F(x)}
+\Sigma B\eqdef\cc{(x,y)}{y\in B(x)}
 \]
 \end{definition}
 %10,11
@@ -669,7 +669,7 @@ Assume that $(F\family)$.
 \end{lemma}
 \begin{lemma}
 \[
-\Sigma F = \invE \circ F
+\Sigma B = \invE \circ B
 \]
 \end{lemma}
 \pagebreak
@@ -734,13 +734,13 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 In MK, it corresponds to the following:
 \begin{definition}(Dependent product, variant A)
 \[
-\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
+\Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\dom(B)) }
 \]
 \end{definition}
 \begin{definition}[Dependent product, variant B]
 (Note: For sets the following definition is also okey:
 \[
-\Pi F = \cc{f\in \left(\union\ran(F)\right)^{\dom(f)}}{\forall (x\in\dom(f)) : (f(x) \in F(x))},
+\Pi B = \cc{f\in \left(\union\ran(B)\right)^{\dom(f)}}{\forall (x\in\dom(f)) : (f(x) \in B(x))},
 \]
 but it is not working well for classes)
 
@@ -756,20 +756,20 @@ Another definition:\\
 
 \begin{definition}[sections of a family]
 \[
-\Gamma F\eqdef\cc{s:\Dom(F)\to\Sigma F}{\pr_1\circ s \subseteq \I}
+\Gamma B\eqdef\cc{s:\Dom(B)\to\Sigma B}{\pr_1\circ s \subseteq \I}
 \]
 \end{definition}
 %13
 \begin{definition}[dependent product of a family]
 \[
-\Pi F \eqdef \cc{\pr_2\circ s}{s\in \Gamma F}
+\Pi B \eqdef \cc{\pr_2\circ s}{s\in \Gamma B}
 \]
 \end{definition}
 
 \begin{definition}[Dependent product, variant D]
 \begin{lemma}
 \[
-\Pi F = \cc{f\in \power \Sigma F }{ (f\functional) \land (\dom(f)=\dom(F)) }
+\Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\dom(B)) }
 \]
 \end{lemma}
 \end{definition}
@@ -782,97 +782,126 @@ Another definition:\\
 \subsection{Implementing W--types}
 \subsubsection{Axioms of W--types}
 \underline{Formation of W--type:}\\
-Let $F$ be a family of types.\\
-Then $\W F$ is also a type.\\
+Let $B$ be a family of types.\\
+Then $\W B$ is also a type.\\
 \underline{Introduction of terms of W--type:}\\
 \[
-\sup(F):\prod_{(a\in \dom(F))}((F(a)\to\mbox{W}F)\to \mbox{W}F)
+\sup(B):\prod_{(a\in \dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
 \underline{Elimination of terms of W--type:}\\
 \[
 \mbox{W}_\mathrm{rect}:
-\prod_{(A : \Un)} \prod_{(F : A \to \Un)} \prod_{(P : \mathrm{W}F\to \Un)}
-  \left(\prod_{(a : A)} \prod_{(w : F(a) \to \mathrm{W}F)} \left(\prod_{(f : F(a))} P(w(f))\right)  \to P (\sup(F)(a)(w))\right) \to
-      \left(\prod_{(w : \mathrm{W}F)} P(w)\right)
+\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}
+  \left(\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)} \left(\prod_{(f : B(a))} P(w(f))\right)  \to P (\sup(B)(a)(w))\right) \to
+      \left(\prod_{(w : \mathrm{W}B)} P(w)\right)
 \]
 \underline{Computation of terms of W--type:}\\
 \[
-\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
+\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f)) 
 \eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
-\subsubsection{Model of $W$--types}
+\pagebreak
+\subsubsection{Model of $\text{W}$--types}
 \underline{Formation of W--type:}\\
 
-Assume $F$ is a family of classes with \textit{finite} domain $A$.
-(a.k.a. "some dependent class $F$, which depends on $\dom(F)$", where $\dom(F)=A$.)
+Assume $B$ is a family of classes with domain $A$.
+(a.k.a. ``some dependent class $B$, which depends on $\dom(B)$'', where $\dom(B)=A$.)
 \[
-\mbox{W}_{\mathrm{fun}}F(0)\eqdef \emptyclass 
+\mbox{W}_{\mathrm{fun}}B(0)\eqdef \emptyclass 
 \]
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1)\eqdef \cc{(r,s)}{ (r\in \dom(F))\land (s:F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )}
+\mbox{W}_{\mathrm{fun}}B(n+1)\eqdef \cc{(r,s)}{ (r\in \dom(B))\land (s:B(r)\to \mbox{W}_{\mathrm{fun}}B(n) )}
 \]
 \[
-\mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\mbox{W}B \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}B(n)
 \]
 
 The equivalent definition, which uses class--theoretic implementations of the sigma types and the empty type:
 \[
-\mbox{W}_{\mathrm{fun}}F(0)\eqdef \mathrm{void}
+\mbox{W}_{\mathrm{fun}}B(0)\eqdef \mathrm{Void}
 \]
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1)\ \eqdef 
-\sum_{(r\in \dom(F))} (F(r)\to \mbox{W}_{\mathrm{fun}}F(n) )
+\mbox{W}_{\mathrm{fun}}B(n+1)\ \eqdef 
+\sum_{(r\in \dom(B))} (B(r)\to \mbox{W}_{\mathrm{fun}}B(n) )
 \]
-%\Pi\Sigma\mathop{\dum}\limits_{(r\in \dom(F))} \sum
+%\Pi\Sigma\mathop{\dum}\limits_{(r\in \dom(B))} \sum
 %\mathop{\LARGE\ensuremath \mathrm{\LARGE \vphantom\sum W}\mathlarger{W}}\limits
 \[
-\mbox{W}F \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}F(n)
+\mbox{W}B \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}B(n)
+\]
+
+Note: this type is a solution of the fixed--point equation
+\[
+F(X)=X,
+\]
+where a functor $F$ is defined to be a polynomial functor $P_B$:
+\[
+P_B(X)
+\ceq
+\sum_{a:A}
+(B(a)
+\to 
+X)
+\]
+\[
+F(X)\ceq P_B(X)
+\]
+For every polynomial functor $P$, define
+\[
+P_{\text{fun}}(0)\eqdef \text{Void}
+\]
+\[
+P_{\text{fun}}(n+1)\eqdef P(P_{\text{fun}}(n))
+\]
+and the corresponding fixpoint type is
+\[
+\text{Fix}(P) \eqdef \bigsqcup_{n\in\textbf{N}} P_{\text{fun}}(n).
 \]
 %$\big\Sigma$
 %\scalebox{1.5}{$\Sigma$}
 %\scalebox{2}{$\Sigma$}
 
-%\vphantom{p}_F
+%\vphantom{p}_B
 \begin{lemma}
 For all $n\in\N$,
 \[
-\mbox{W}_{\mathrm{fun}}F(n)
+\mbox{W}_{\mathrm{fun}}B(n)
 \subseteq
-\mbox{W}_{\mathrm{fun}}F(n+1).
+\mbox{W}_{\mathrm{fun}}B(n+1).
 \]
 \Proof
 By induction on $n$,\\
 \underline{Base}: n=0.\\
- Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}F(1)$.\\
+ Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}B(1)$.\\
 \underline{Step of induction}:\\
 Assume \[
-\mbox{W}_{\mathrm{fun}}F(n)
+\mbox{W}_{\mathrm{fun}}B(n)
 \subseteq
-\mbox{W}_{\mathrm{fun}}F(n+1).
+\mbox{W}_{\mathrm{fun}}B(n+1).
 \]
 To show:
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1)
+\mbox{W}_{\mathrm{fun}}B(n+1)
 \subseteq
-\mbox{W}_{\mathrm{fun}}F(n+2).
+\mbox{W}_{\mathrm{fun}}B(n+2).
 \]
 It follows from the assumption, that 
 \[
-(F(r)\to\mbox{W}_{\mathrm{fun}}F(n))
+(B(r)\to\mbox{W}_{\mathrm{fun}}B(n))
 \subseteq
-(F(r)\to\mbox{W}_{\mathrm{fun}}F(n+1)).
+(B(r)\to\mbox{W}_{\mathrm{fun}}B(n+1)).
 \]
 Therefore
 \[
-\sum_{(r\in \dom(F))} (F(r)\to\mbox{W}_{\mathrm{fun}}F(n))
+\sum_{(r\in \dom(B))} (B(r)\to\mbox{W}_{\mathrm{fun}}B(n))
 \subseteq
-\sum_{(r\in \dom(F))} (F(r)\to\mbox{W}_{\mathrm{fun}}F(n+1)).
+\sum_{(r\in \dom(B))} (B(r)\to\mbox{W}_{\mathrm{fun}}B(n+1)).
 \]
 And finally,
 \[
-\mbox{W}_{\mathrm{fun}}F(n+1)
+\mbox{W}_{\mathrm{fun}}B(n+1)
 \subseteq
-\mbox{W}_{\mathrm{fun}}F(n+2).
+\mbox{W}_{\mathrm{fun}}B(n+2).
 \]
 \Done
 \end{lemma}
@@ -881,63 +910,63 @@ And finally,
 
 \underline{Introduction of terms of W--type:}\\
 \begin{definition}(constructor of W--type)\ \\
-For fixed function $F$, 
+For fixed function $B$, 
 \[
-\sup(F):\prod_{(a\in \dom(F))}((F(a)\to\mbox{W}F)\to \mbox{W}F)
+\sup(B):\prod_{(a\in \dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
-Assume $(a\in \dom(F))$ and $(s:F(a)\to\mbox{W}F)$. Since $\dom(F)$ if finite, then $s[F(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[F(a)]$, so $s[F(a)]\subseteq \mbox{W}_{\mathrm{fun}}F(m)$. Therefore $s:F(a)\to\mbox{W}_{\mathrm{fun}}F(m)$. Therefore $(a,s)\in \mbox{W}_{\mathrm{fun}}F(m+1)$, which is a subset of $\mbox{W}F$, so $(a,s)\in\mbox{W}F$. Therefore we can define $\sup$ this way:
+Assume $(a\in \dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\dom(B)$ if finite, then $s[B(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[B(a)]$, so $s[B(a)]\subseteq \mbox{W}_{\mathrm{fun}}B(m)$. Therefore $s:B(a)\to\mbox{W}_{\mathrm{fun}}B(m)$. Therefore $(a,s)\in \mbox{W}_{\mathrm{fun}}B(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
 \[
-\sup(F) \eqdef ((a\in \dom(F))\mapsto ((s:F(a)\to\mbox{W}F)\mapsto (a,s)) ).
+\sup(B) \eqdef ((a\in \dom(B))\mapsto ((s:B(a)\to\mbox{W}B)\mapsto (a,s)) ).
 \]
-%Therefore $\sup(F) = \id(\mbox{W}F)$ and $\sup(F)\restriction  = \id(\mbox{W}F)$.
+%Therefore $\sup(B) = \id(\mbox{W}B)$ and $\sup(B)\restriction  = \id(\mbox{W}B)$.
 \end{definition}
 
 \underline{Elimination of terms of W--type:}\\
 \begin{definition}(destructor of W--type)\ \\
 \[
 \mbox{W}_\mathrm{rect}:
-\prod_{(A : \Un)} \prod_{(F : A \to \Un)} \prod_{(P : \mathrm{W}F\to \Un)}
-  \left(\prod_{(a : A)} \prod_{(w : F(a) \to \mathrm{W}F)} \left(\prod_{(f : F(a))} P(w(f))\right)  \to P (\sup(F)(a)(w))\right) \to
-      \left(\prod_{(w : \mathrm{W}F)} P(w)\right)
+\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}
+  \left(\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)} \left(\prod_{(f : B(a))} P(w(f))\right)  \to P (\sup(B)(a)(w))\right) \to
+      \left(\prod_{(w : \mathrm{W}B)} P(w)\right)
 \]
 \begin{lstlisting}
 W_rect
-     : forall (A : Type) (F : A -> Type) (P : W F -> Type),
-       (forall (a : A) (w : F a -> W F), (forall f : F a, P (w f)) -> P (sup F a w)) ->
-       forall w : W F, P w
+     : forall (A : Type) (B : A -> Type) (P : W B -> Type),
+       (forall (a : A) (w : B a -> W B), (forall f : B a, P (w f)) -> P (sup B a w)) ->
+       forall w : W B, P w
 \end{lstlisting}
 \end{definition}
 
 \underline{Computation of terms of W--type:}\\
 
-Due to finiteness of $A$ and $\mbox{W}_{\mathrm{fun}}F(0)=\emptyclass$, it holds that $\sup(F,a,f)\in \mbox{W}_{\mathrm{fun}}F(m+1)$ for some $m\in\N$.
+Due to finiteness of $A$ and $\mbox{W}_{\mathrm{fun}}B(0)=\emptyclass$, it holds that $\sup(B,a,f)\in \mbox{W}_{\mathrm{fun}}B(m+1)$ for some $m\in\N$.
 
 
-Assume $(A : \Un)$ $(F : A \to \Un)$ $(E : \mathrm{W}F\to \Un)$.\\
+Assume $(A : \Un)$ $(B : A \to \Un)$ $(E : \mathrm{W}B\to \Un)$.\\
 Definition of $\mbox{W}_{\mathrm{rect}}$ is done by induction on $n$.\\
 Base:\\
 n=0.
 Step:\\
-Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W}_{\mathrm{fun}}F(n)$.
+Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W}_{\mathrm{fun}}B(n)$.
 
 \begin{theorem}[computation of W--type]
 \label{thm:Wcomp}
 \[
-\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(F,a,f)) 
+\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f)) 
 \eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
 \Proof
 Base of induction $n=0$:\\
-For all elements $w$ of $\mbox{W}F(0)$,
+For all elements $w$ of $\mbox{W}B(0)$,
 \[
 \mbox{W}_{\mathrm{rect}} (A,B,e,w) 
 \]
 is vacuously defined, since there are none.\\
 Step of induction $n\mapsto(n+1)$:\\
-Assume function is defined on $\mbox{W}F(n)$.\\
-Then via the last equation, it is defined on $\mbox{W}F(n+1)$ as well.\\
+Assume function is defined on $\mbox{W}B(n)$.\\
+Then via the last equation, it is defined on $\mbox{W}B(n+1)$ as well.\\
 It's definition doesn't depend on $n$.\\
-Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of all "levels".
+Therefore it is univocally defined on whole $\mbox{W}B$, because it's a union of all "levels".
 \Done
 \end{theorem}
 
@@ -949,7 +978,7 @@ Therefore it is univocally defined on whole $\mbox{W}F$, because it's a union of
 \dots
 \subsubsection{Model of M--types}
 \[
-MF \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma F}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
+\text{M}B \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma B}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
 \]
 \[
 \forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}

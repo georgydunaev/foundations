@@ -6,235 +6,27 @@
 %\
 %\end{definition}
 %\sub
+\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 \section{Example of the proof assistant's output}
 
 This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for illustration.
-\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
-\includegraphics[scale=0.5]{pictures/DEMO3.png}
-\restoregeometry
+
+\includegraphics[scale=0.5]{pictures/DEMO.png}
+
+%\restoregeometry
 \pagebreak
+%\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 
 \section{Type theory of the proof assistant}
 Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
 The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
 
-\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 
 \lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set\_theory\_proverSTOP/program/CONTENT.ML}
 
 \restoregeometry
 
-\iffalse
-\begin{lstlisting}
-datatype ''ty Variable =
-  name of string
-| meta of ''ty Variable  
-;
 
-datatype ('b,'a) Bound  =   
-  CBind of ('b Variable) * 'a;
-\end{lstlisting}
-
-\begin{lstlisting}
-datatype Term =
-  CV of Term Variable
-| Cc
-| CClass of   (Term,Fm) Bound
-| CEps   of   (Term,Fm) Bound
-| CIota  of   (Term,Fm) Bound
-(** Term constructors useful for formulating axioms, built-in **)
-| CEmptySet
-| CPower of (Term)
-| CImage of (Term * Term) (*can be defined*)
-| CSets (* class of all sets *)
-(** ANTIQUOTATION: Meta **)
-| CEnc of Val
-(** and so on **)
-and
-\end{lstlisting}
-\begin{lstlisting}
-Restr =
-  CSubst of (Term Variable) * Term
-and
-\end{lstlisting}
-\begin{lstlisting}
-Theory = (*syntactic sugar*)
-  Tau 
-| Fau
-| Qau (*Robinson's arithmetics*)
-\end{lstlisting}
-\begin{lstlisting}
-and Fm =
-(**Pure 1st order predicate logic**)
-  CBot
-| CTop
-(*| CDot   of Term Variable (** Sic! **)  no need anymore, since there is CMetaFm *)
-| CNeg   of (Fm)
-| CImpl  of (Fm * Fm)
-| CIff   of (Fm * Fm)
-| CAnd   of (Fm * Fm)
-| COr    of (Fm * Fm)
-| CFora  of ((Term,Fm) Bound)
-| CExis  of ((Term,Fm) Bound)
-| CMetaFm of Term (** ANTIQUOTATION: Meta **) (** Sic! Argument must be a term!
-It normally either encodes a formula, or a variable. **) 
-| CDer   of (Term * Term * Term)  (* Derivability predicate , \vdash *)
-(** Equality **)
-| CEq    of (Term * Term)
-(** Set-theoretic part (All necessary propositional symbols of class theory, built-in) **)
-| CIn    of (Term * Term)
-| CSet   of (Term)
-| CFunc  of (Term)
-| CSub   of (Term * Term)
-\end{lstlisting}
-Values for embedding of the syntax
-\begin{lstlisting}
-and Val =
-  VFm   of Fm
-| VTerm of Term
-| VCtx  of (Fm list) (** === Ctx **)
-| VTheory of Theory
-(* ------- *)
-| VTyp  of Typ
-\end{lstlisting}
-Types of values
-\begin{lstlisting}
-and Typ =
-  TFm
-| TTerm
-| TCtx
-| TTheory
-(* ------- *)
-| TTyp
-\end{lstlisting}
-\begin{lstlisting}
-
-type Ctx  = Fm list (* Context *)
-type Stmt = Theory * Ctx * Fm (* Statement *)
-
-type Goal = Stmt
-
-\end{lstlisting}
-\begin{lstlisting}
-
-datatype Prf =
-      Ccheat_prf of Stmt
-| CWeakening_prf of  Fm * Prf
-|      CWeak_prf of Ctx * Prf
-|     CInCtx_prf of Ctx * Prf
-|        CA0_prf of Term Variable (* of Ctx * (Term Var)*)
-(*
-|        CA1_prf of Ctx * Fm * Fm
-|        CA2_prf of Ctx * Fm * Fm * Fm
-
-Todo: just write all axioms from pdf.
-*)
-| CCredo_prf of Prf
-| COmnis_prf of Prf
-
-
-|        CMP_prf of Prf * Prf
-|     CIdent_prf of Fm
-|       CCut_prf of Prf * Prf
-
-|     CAnd1L_prf of  Fm * Prf
-|     CAnd2L_prf of  Fm * Prf
-|      CAndR_prf of Prf * Prf
-
-|      COr1R_prf of  Fm * Prf
-|      COr2R_prf of  Fm * Prf
-|       COrL_prf of Prf * Prf
-
-|     CImplL_prf of Prf * Prf
-|     CImplR_prf of Prf
-
-|      CNegL_prf of  Fm * Prf
-|      CNegR_prf of       Prf
-
-|     CForaL_prf of  Fm * Term     * Term Variable * Prf
-|     CExisR_prf of  Fm * Term     * Term Variable * Prf
-|     CForaR_prf of  Fm * Term Variable * Term Variable * Prf
-|     CExisL_prf of  Fm * Term Variable * Term Variable * Prf
-
-(** Some built-in Axioms for examples: **)
-(*|   CComprAx_prf of Variable(*W*) * Fm(*phi*)*)
-|   CComprAx_prf of (Term,Fm) Bound (*W.phi*)
-(* (PK C K) --> (V C K) *)
-|  CEpsIndAx_prf of Term(*K*) (* it is ok to use Term here, since no side conditions required. *)
-|  CPowSetAx_prf of Term (* (A set) -> (Pow(A))*)
-(** Built-in Definitions: **)
-(* forall A: forall B: (A=B <-> ((A \subseteq B)/\(A \subseteq B)) ) *)
-|     CEqDef_prf of Term Variable * Term Variable
-|    CIffDef_prf of       Fm * Fm
-(* forall A: forall B: (A \subseteq B <-> forall x: x in A -> x in B) *)
-|    CSubDef_prf of Term Variable * Term Variable * Term Variable
-(* forall B: ( (B set) <-> exists x: x in B) *)
-|    CSetDef_prf of Term Variable * Term Variable
-
-(* Pow K = Class v (Sub v K) *) (* if v is not free in K *)
-|    CPowDef_prf of Term Variable(*v*) * Term(*K*)
-\end{lstlisting}
-\begin{lstlisting}
-(*** Structure Thm ***)
-
-signature ThmWithoutPrf =
-sig
-  type Thm
-  val stmt : Thm -> Stmt
-
-  (* Inference rules' signatures: *)
-  val cheat : Fm list -> Fm -> Thm
-  val Weakening : Fm -> Thm -> Thm
-  val Weak : Ctx -> Thm -> Thm
-  val InCtx : Ctx -> Thm -> Thm
-
-  val Omnis : Thm -> Thm
-  val Credo : Thm -> Thm
-    
-  val Ident : Fm -> Thm
-  val Cut : Thm -> Thm -> Thm
-  val ImplL : Thm -> Thm -> Thm
-  val ImplR : Thm -> Thm
-  val Or1R : Fm -> Thm -> Thm
-  val Or2R : Fm -> Thm -> Thm
-  val OrL : Thm -> Thm -> Thm
-  val And1L : Fm -> Thm -> Thm
-  val And2L : Fm -> Thm -> Thm
-  val AndR : Thm -> Thm -> Thm
-  val NegL : Fm -> Thm -> Thm
-  val NegR : Thm -> Thm
-  val ForaL : Fm -> Term -> Term Variable -> Thm -> Thm
-  val ExisR : Fm -> Term -> Term Variable -> Thm -> Thm
-  val ForaR : Fm -> Term Variable -> Term Variable -> Thm -> Thm
-  val ExisL : Fm -> Term Variable -> Term Variable -> Thm -> Thm
-  val SubDef : Term Variable -> Term Variable -> Term Variable -> Thm
-  val SetDef : Term Variable -> Term Variable -> Thm
-
-  val A0 : Term Variable -> Thm
-  val MP : Thm -> Thm -> Thm
-  val IffDef : Fm -> Fm -> Thm
-  val EqDef : Term Variable -> Term Variable -> Thm
-  val ComprAx : ((Term,Fm) Bound) -> Thm
-  val EpsIndAx : Term -> Thm
-  val PowSetAx : Term -> Thm
-  val PowDef : Term Variable -> Term -> Thm
-
-  val show_proof : Thm -> unit; (* it shows IF it can *)
-  val prf_show : Thm -> unit; (* it shows IF it can *)
-end;
-
-signature ThmWithPrf =
-sig
-  include ThmWithoutPrf
-  val prf : Thm -> Prf
-  val derive : Prf -> Stmt
-  val check : Prf -> Thm
-  val slow_check : Prf -> Thm
-end;
-\end{lstlisting}
-
-\dots
-\fi
 
 \begin{definition}[informal introduction]
 Let $\Fm,\Term,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
@@ -255,32 +47,33 @@ Let $\circ$ be a composition of functional symbols here, then the class constant
 \[
 \text{CFm}
 \eqdef
-(\text{Enc}\circ\text{VTyp})(\text{TFm})
+\Emb(\TFm)
 \]
 \[
 \text{CTerm}
 \eqdef
-(\text{Enc}\circ\text{VTyp})(\text{TTerm})
+\Emb(\TTerm)
 \]
 \[
 \dots
 \]
 \end{definition}
+%(\text{Enc}\circ\text{VTyp})
 
 %It is possible for
-%\text{TTerm} is an element
+%\TTerm is an element
 
 
 \iffalse
 \begin{notation}[abuse of notation]
-It seems possible to identify $\Term$ and $\text{TTerm}$, but it will not be done to avoid confusion.
+It seems possible to identify $\Term$ and $\TTerm$, but it will not be done to avoid confusion.
 %The author is not sure, where 
 %(but in fact, no)
 %It can be
 %Starting from the next chapter, it can be 
 %It seems like
 %\[
-%\Term = \text{TTerm} = \text{CTerm}
+%\Term = \TTerm = \text{CTerm}
 %\]
 \end{notation}
 \fi
@@ -291,32 +84,33 @@ Let $\psi$ be a formula.\\
 % such that $\phi_code$ is not free in $\phi$.
 %Not enough.
 Assume also that the substitution 
-$\psi[((\text{ValToFm}\circ\text{Dec})(\phi_\code))/\phi]$ is computed successfully, i.e. without raising an exception or error.
+$\psi[(\DecFm(\phi_\code))/\phi]$ is computed successfully, i.e. without raising an exception or error.
 Then
 %Then the following formula 
 \[
-(\forall (\phi:\text{TFm}),\ \psi)
+(\forall (\phi:\TFm),\ \psi)
 \iffdef
 \]
 \[
 \iffdef
-(\forall (\phi_\code:\text{TTerm}),\ %
-(\phi_\code\in (\text{Enc}\circ\text{VTyp})(\text{TFm}))
+(\forall (\phi_\code:\TTerm),\ %
+(\phi_\code\in \Emb(\TFm))
 \implies
 \psi[
-(\text{ValToFm}\circ\text{Dec})(\phi_\code)
+\DecFm(\phi_\code)
 /
 \phi
 ]
 )
 \]
 \end{definition}
-
+% bad1: (\text{Enc}\circ\text{VTyp})
+% bad2: (\text{ValToFm}\circ\text{Dec})
 \begin{notation}[naming prefix of labels]
 In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid consuion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TTerm'', ``TCtx'', etc. \\
 But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
 \[
-``(\forall(x:\text{TFm}),\ \dots)",
+``(\forall(x:\TFm),\ \dots)",
 \]
 starting from the next chapter, it will be written
 \[
@@ -331,16 +125,16 @@ In general, any other abuse of notation should be avoided and will be avoided at
 \begin{axiom}
 The author believe that the reason why terms are called ``a term'', is because it is ``terminal'' in the following sense: its quantifiers with a bound variable of type Term can be unfolded similarly, but they will still contain a TTerm type label:
 \[
-(\forall (t:\text{TTerm}),\ \psi)
+(\forall (t:\TTerm),\ \psi)
 \iffaxm
 \]
 \[
-\iffdef
-(\forall (\phi_\code:\text{TTerm}),\ %
-(\phi_\code\in (\text{Enc}\circ\text{VTyp})(\text{TTerm}))
+\iffaxm
+(\forall (\phi_\code:\TTerm),\ %
+(\phi_\code\in \Emb(\TTerm))
 \implies
 \psi[
-(\text{ValToTerm}\circ\text{Dec})(t_\code)
+\DecTerm(t_\code)
 /
 t
 ]
@@ -349,7 +143,7 @@ t
 That is why it is an axiom, because otherwise it would be a circular definition.
 \end{axiom}
 
-\section{Metalanguage[section is not yet written]}
+\section{Metalanguage[section is not yet finished]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
 To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory.\\
 In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statement.\\
@@ -489,7 +283,7 @@ This definition is a simplified variant of G\"odel's numbering, since for the pu
 \[
 \# : (\text{Syntax Frag List}) \to \text{Syntax}
 \]
-The function $\#$ may raise an exception if the raw string take as argument is ill--formed, i.e. if it doesn't follow certain fixed synactic rules.\\
+The function $\#$ may raise an exception if the raw string take as argument is ill--formed, i.e. if it doesn't follow certain fixed syntactic rules.\\
 It 
 \end{metadefinition}
 %\[
@@ -609,7 +403,7 @@ For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of t
 \[
 \text{EncStmt}(\Wau, \Gamma\vdash \phi)
 \equivnot
-\pmb{(} \text{EncTheory}(\Wau) \pmb{,} \text{EncCtx}(\Gamma)\pmb{\pmb{\vdash}} \text{EncFm}(\phi)\pmb{)}
+\pmb{(} \text{EncTheory}(\Wau) \pmb{,} \text{EncCtx}(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
 \]
 \end{definition}
 The epression on the right side is an application of a first--order predicate symbol to 
@@ -660,7 +454,7 @@ Let $\phi$
 \[
 \pmb{\phi}
 \equivdef
-\text{DecFm}(\pmb{\phi}^\code)
+\DecFm(\pmb{\phi}^\code)
 \]
 \[
 \text{Meta}(\pmb{\phi})
@@ -668,7 +462,7 @@ Let $\phi$
 \meta{\pmb{\phi}}
 \]
 \[
-\text{EncFm}(\meta{\pmb{\phi}})
+\EncFm(\meta{\pmb{\phi}})
 \reductsto
 \pmb{\phi}
 \]
@@ -678,18 +472,18 @@ Let $\phi$
 \[
 \pmb{\psi}
 \equivdef
-\text{DecFm}({\pmb{\psi}^\code})
+\DecFm({\pmb{\psi}^\code})
 ,\ %
 \pmb{\chi}
 \equivdef
-\text{DecFm}({\pmb{\chi}^\code})
+\DecFm({\pmb{\chi}^\code})
 ,\ %\dots;
 \]
 because the agreement of bold notation requires it automatically. The group ``Greek lowercase letters'' is associated with type of formulas.)
 
 
 %\equivdef
-%\text{DecFm}(\pmb{\phi}^{\text{code}})
+%\DecFm(\pmb{\phi}^{\text{code}})
 \iffalse
 Each variable of type Fm is defined like this.
 Each time, there is a small Greek letter, it means the following. 
@@ -701,11 +495,13 @@ For every formula--variable $\meta{\phi}$ of metalevel strictly higher than zero
 \begin{note}[formula vs formula term]
 The main distinction between \underline{formulas} and \underline{formulas terms} is that while they are both syntactical objects of type $\Fm$, but a \underline{formula} doesn't contain any of $\Enc$ and $\Dec$ constructors(for any of the types), while the \underline{formula term} may have them.
 \end{note}
-
+\begin{axiom}
+For every variable $\pmb{\phi}$ of type ``formula'', there exists a variable  $\pmb{\phi}^\code$ of type ``class--term''.
+\end{axiom}
 \begin{definition}[encoding variables for formulas]
-For every variable $\pmb{\phi}$ of type ``formula'', there exists a variable  $\pmb{\phi}^\code$ of type ``class--term'', what allows the function for encoding the formulas defined to be computed the following way:
+The axiom above allows the function for encoding the formulas defined to be computed in the following way:
 \[
-\text{EncFm}(\pmb{\phi})
+\EncFm(\pmb{\phi})
 \equivdef
 {\pmb{\phi}}^\code
 \]
@@ -713,9 +509,9 @@ For every variable $\pmb{\phi}$ of type ``formula'', there exists a variable  $\
 \begin{definition}[further encoding for formulas]
 For any \underline{formulas}'s terms $\phi$ and $\psi$, the function for encoding the formula is computed this way:
 \[
-\text{EncFm}((\phi \implies \psi))
+\EncFm((\phi \implies \psi))
 \equivdef
-\pmb{(}\text{EncFm}(\phi) \pmb{\implies} \text{EncFm}(\psi)\pmb{)}
+\pmb{(}\EncFm(\phi) \pmb{\implies} \EncFm(\psi)\pmb{)}
 \]
 A bold writing schrift of a predicate symbol notation symbols here means that, if the number of dots is interpreted simply like just a part of the variable's name, then it will be a first--order predicate symbol occurence in a first--order class term. (After the encoding of both subformulas will be fully computed, of course.)
 \end{definition}
@@ -723,7 +519,7 @@ A bold writing schrift of a predicate symbol notation symbols here means that, i
 \begin{theorem}[]
 For any formula terms $\phi$,
 \[
-(\text{DecFm}(\text{EncFm}(\phi)) \reductsto \phi)
+(\DecFm(\EncFm(\phi)) \reductsto \phi)
 \]
 (without proof via structural induction)
 \end{theorem}
@@ -734,22 +530,22 @@ For example, if a class--term $t$ is an occurence of a variable $\pmb{x}$, then
 Left and right sides of these definitional equalities are computationally equivalent.(Conversions)
 TODO: DOUBLE CHECK HERE
 \[
-t\equiv \text{DecTerm}(\text{EncTerm}(t))
+t\equiv \DecTerm(\EncTerm(t))
 \]
 %\forall t^{code}
 \[
 \forall (t:\Term),
-(t\equiv \text{DecTerm}(\text{EncTerm}(t)))
+(t\equiv \DecTerm(\EncTerm(t)))
 \]
 \[
 \forall (\phi:\Fm),
-(\phi\equiv \text{DecFm}(\text{EncFm}(\phi)))
+(\phi\equiv \DecFm(\EncFm(\phi)))
 \]
 \[
 \forall (\phi^{\text{code}}:\Term),
 (\phi^{\text{code}} \in \text{Emb(Fm)})
 \implies
-(\phi\equiv \text{DecFm}(\phi^{\text{code}}))
+(\phi\equiv \DecFm(\phi^{\text{code}}))
 \]
 
 
@@ -763,12 +559,12 @@ There is an agreement, that for each variable,
 \[
 \phi^{\text{code}}
 \equiv
-\text{EncTerm}(\phi)
+\EncTerm(\phi)
 \]
 
 
 \[
-t\equiv \text{DecTerm}(\meta{t})
+t\equiv \DecTerm(\meta{t})
 \]
 
 
@@ -778,16 +574,16 @@ t\equiv \text{DecTerm}(\meta{t})
 \equiv
 ``\pmb{x}"
 \equivnot
-\text{EncTerm}(\pmb{x})
+\EncTerm(\pmb{x})
 \equiv
-\text{EncTerm}(t)
+\EncTerm(t)
 \]
 
 \[
-``x"\equivnot \text{EncTerm}(x) 
+``x"\equivnot \EncTerm(x) 
 \]
 \[
-\meta{x}\equivnot \text{DecTerm}(x) 
+\meta{x}\equivnot \DecTerm(x) 
 \]
 
 
@@ -3641,7 +3437,7 @@ Let $\Tau$ be an enumerable and incomplete first--order theory, that contains ex
 \section{Formal statements}
 \begin{definition}[consistent theory]%\ \\
 Let $\Wau$ be a first--order--theory.
-It is called \textit{consistent}, if ``false'' is not derivable in $Wau$.
+It is called \textit{consistent}, if ``false'' is not derivable in $\Wau$.
 \[
 (\Wau\text{ consistent})
 \iffdef
@@ -3700,10 +3496,10 @@ It is said that it has \textit{a Henkin property}, if for every existential stat
 ))
 )
 \]
-From this definition it immediately fllows, that there are no non--standard elements in such thery $\Wau$.
+From this definition it immediately follows, that there are no non--standard elements in such thery $\Wau$.
 \end{definition}
 
-\begin{theorem}[disj implies compl]
+\begin{theorem}[disjunctive property implies completeness]
 \[
 (\Wau\text{ disjunctive})
 \implies

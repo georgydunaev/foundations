@@ -332,6 +332,21 @@
 
 %\newcommand{\mydot}{.\ }
 \newcommand{\mydot}{,\ }
+\usepackage{xcolor}
+\newcommand{\encdeccolor}{cyan}
+\newcommand{\EncFm}{{\text{\textcolor{\encdeccolor}{EncFm}}}}
+\newcommand{\EncTerm}{{\text{\textcolor{\encdeccolor}{EncTerm}}}}
+\newcommand{\DecFm}{{\text{\textcolor{\encdeccolor}{DecFm}}}}
+\newcommand{\DecTerm}{{\text{\textcolor{\encdeccolor}{DecTerm}}}}
+
+\newcommand{\embcolor}{cyan!60!black}
+\newcommand{\Emb}{{\text{\textcolor{\embcolor}{Emb}}}}
+
+\newcommand{\typcolor}{green}
+\newcommand{\TTerm}{{\text{\textcolor{\typcolor}{TTerm}}}}
+\newcommand{\TFm}{{\text{\textcolor{\typcolor}{TFm}}}}
+
+
 \newcommand{\myparse}{{\text{parse}}}
 \newcommand{\DottedString}{{\text{DottedString}}}
 
@@ -783,7 +798,9 @@
 %\usepackage{mathgl}
 
 % Code listings' pretty printer:
-\usepackage{listings}
+%\usepackage{listings}
+\input{sml.tex}
+
 \usepackage{geometry}
 \usepackage{stmaryrd}  % for \llbracket \rrbracket
 
@@ -834,6 +851,7 @@
 %%\newcommand{\Var}{{\textrm{Var}}}
 \newcommand{\Func}{{\textrm{Func}}}
 \newcommand{\Pred}{{\textrm{Pred}}}
+\newcommand{\Prf}{{\textrm{Prf}}}
 %%\newcommand{\Term}{{\textrm{Term}}}
 %%\newcommand{\Fm}{{\textrm{Fm}}}
 %%\newcommand{\FV}{{\textrm{FV}}}
