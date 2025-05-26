@@ -338,6 +338,7 @@
 \newcommand{\encdeccolor}{cyan}
 \newcommand{\EncFm}{{\text{\textcolor{\encdeccolor}{EncFm}}}}
 \newcommand{\EncTerm}{{\text{\textcolor{\encdeccolor}{EncTerm}}}}
+\newcommand{\EncClass}{{\text{\textcolor{\encdeccolor}{EncClass}}}}
 \newcommand{\EncCtx}{{\text{\textcolor{\encdeccolor}{EncCtx}}}}
 \newcommand{\EncTheory}{{\text{\textcolor{\encdeccolor}{EncTheory}}}}
 \newcommand{\EncStmt}{{\text{\textcolor{\encdeccolor}{EncStmt}}}}
@@ -345,6 +346,7 @@
 
 \newcommand{\DecFm}{{\text{\textcolor{\encdeccolor}{DecFm}}}}
 \newcommand{\DecTerm}{{\text{\textcolor{\encdeccolor}{DecTerm}}}}
+\newcommand{\DecClass}{{\text{\textcolor{\encdeccolor}{DecClass}}}}
 \newcommand{\DecCtx}{{\text{\textcolor{\encdeccolor}{DecCtx}}}}
 \newcommand{\DecTheory}{{\text{\textcolor{\encdeccolor}{DecTheory}}}}
 \newcommand{\DecStmt}{{\text{\textcolor{\encdeccolor}{DecStmt}}}}
@@ -354,7 +356,17 @@
 
 \newcommand{\typcolor}{green}
 \newcommand{\TTerm}{{\text{\textcolor{\typcolor}{TTerm}}}}
+\newcommand{\TClass}{{\text{\textcolor{\typcolor}{TClass}}}}
 \newcommand{\TFm}{{\text{\textcolor{\typcolor}{TFm}}}}
+\newcommand{\TCtx}{{\text{\textcolor{\typcolor}{TCtx}}}}
+
+
+\newcommand{\constcolor}{violet}
+\newcommand{\CFm}{{\text{\textcolor{\constcolor}{CFm}}}}
+\newcommand{\CClass}{{\text{\textcolor{\constcolor}{CClass}}}}
+\newcommand{\CCtx}{{\text{\textcolor{\constcolor}{CCtx}}}}
+
+
 
 
 \newcommand{\myparse}{{\text{parse}}}
@@ -702,7 +714,9 @@
 \newcommand{\Sup}{\mathrm{Sup}}
 \newcommand{\surjective}{\mathrm{\ surjective\ on\ }}
 \newcommand{\Term}{\mathrm{Term}}
+\newcommand{\Class}{\mathrm{Class}}
 \newcommand{\BTerm}{\mathrm{BTerm}}
+\newcommand{\BClass}{\mathrm{BClass}}
 \newcommand{\Type}{\mathrm{Type}}
 %\newcommand{\Symb}{\mathrm{Symb}}
 \newcommand{\topology}{\mathcal{T}}
@@ -1041,14 +1055,14 @@
 %  }
 
 %\accentset{\sbullet}{A}%\vphantom{A}
-\newcommand{\meta}[1]{\accentset{\mkern3.0mu\sbullet}{{#1\vphantom{A}}}}%
+\newcommand{\meta}[1]{{\accentset{\mkern3.0mu\sbullet}{{#1\vphantom{A}}}}}%
 \newcommand{\mmeta}[1]{\accentset{\sbullet\sbullet}{#1}}
 \newcommand{\mmmeta}[1]{\accentset{\sbullet\sbullet\sbullet}{#1}}
 
 \newcommand{\myquote}[1]{\ifmmode `` #1 " \else `` #1 '' \fi} %DEL?
 \newcommand{\antiquote}[1]{\meta{#1}} %DELETE
 
-\newcommand{\boldmeta}[1]{\meta{\pmb{#1}}} % just for better appearance despite being write in opposite order.
+\newcommand{\boldmeta}[1]{{\meta{\pmb{#1}}}} % just for better appearance despite being write in opposite order.
 
 
 %\textcolor{

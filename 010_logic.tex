@@ -25,22 +25,38 @@ The idea is that a book on foundations is simultaneously is a documentation for 
 \lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set\_theory\_proverSTOP/program/CONTENT.ML}
 
 \restoregeometry
-
-%For any variables $x$,$\phi$,\dots , define
-\begin{definition}
-A pair of string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
+\subsection{Primitive definitions and notation}
+\begin{definition}[variable]
+An ordered (hetrogeneous) pair of a string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
 \end{definition}
+This and other prinmitive definitions can be simply restored from the code above, so there is no need to state them twice. %(Especially during the development.)\\
+%For any variables $x$,$\phi$,\dots , define
+%\subsection{Meaning of dots and bold symbols}%Second bold notation
+Meanwhile, the difference between notation for the proof assistant(which is quite natural for dealing with types), and the standard logical/mathematical notation makes the presence of the following subsection necessary.
+%this subsection. 
+%the following subsection.
 
+It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
+\begin{theorem*}[representation theorem in the traditional notation]
+Let $\mathbb{N}$ be the set of natural numbers. A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then $T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \leftrightarrow y = \overline{n} )$.\\
+(\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
+\end{theorem*}
+\begin{theorem*}[representation theorem in the local notation of this book]
+Let $\mathbb{N}$ be the set of natural numbers. 
+A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
+for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then $T \vdash \pmb{ \forall } \pmb{y} \pmb{(}\pmb{\varphi}_{\pmb{f}} \pmb{(}\boldmeta{m_1}\pmb{,} \pmb{\dots}\pmb{,} \boldmeta{m_k}\pmb{,} \pmb{y}\pmb{)} \pmb{\leftrightarrow} \pmb{y} = \boldmeta{n} \pmb{)}$.\\
+\end{theorem*}
 
+\iffalse % VERY GOOD, BUT DISTRACTING
 \subsection{First bold notation}
 \subsubsection{Notation for variables}
 \begin{notation}[bold variables for terms]
 For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
 
-%val xb1 : Term = (CShiftTerm (Quote(CV (namelvl (`x',zero)))))
+%val xb1 : Class = (CShiftClass (Quote(CV (namelvl (`x',zero)))))
 \begin{lstlisting}
-val xb1 : Term = (QuoteTerm (CV (namelvl (`x',zero))))
-val yb1 : Term = (QuoteTerm (CV (namelvl (`y',zero))))
+val xb1 : Class = (QuoteClass (CV (namelvl (`x',zero))))
+val yb1 : Class = (QuoteClass (CV (namelvl (`y',zero))))
 ...
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
@@ -58,8 +74,8 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \begin{notation}[bold variables for formulas]
 For any lower--case Greek letter(`{$\phi$}',`{$\psi$}', `{$\chi$}', \dots), define a bold lower-case Greek letter to denote
 \begin{lstlisting}
-val phib1 : Term = (QuoteFm (FmVar vphi))
-val psib1 : Term = (QuoteFm (FmVar vpsi))
+val phib1 : Class = (QuoteFm (FmVar vphi))
+val psib1 : Class = (QuoteFm (FmVar vpsi))
 ...
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
@@ -76,33 +92,93 @@ or the same, but in a mathematical notation, where not all constructors are prin
 
 \subsubsection{Notation for functional and predicate symbols}
 All bald functional and predicate symbols written boldly simply mean the same constructors as their thin counterparts.
+\pagebreak
 
-\subsection{Second bold notation}
-The second bold notation may be introduced in a situation when it is useful to show that all higher--order statements actually have a translation to the first--order statements, via the encoding.
-\begin{note}[non--commutativity]
-Contrary to the first notation, being bold and having a dot is not commutative here: it means precisely
+\fi %VERY GOOD BUT DISTRACTING (First bold notation)
+
+\subsection{Meaning of dots and bold symbols}%Second bold notation
+%The second bold notation may be introduced in a situation when it is useful to show that 
+All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. (Here the type $\Fm$ is being used for the demonstration, but all definitions are similar for every other type labeled by Typ: $\Ctx$, $\Class$, Theory, etc.)
+\begin{note}[non--commutativity of notation]
+%Contrary to the first notation,
+Properties ``being bold'' and ``having a dot'' are not commutative here: together they mean precisely following order of applications
+%\iffalse good
 \[
-\meta{\pmb{\phi}} \equivdef \text{Bold}(\text{Meta}(\phi))
+\meta{\pmb{\phi}} \equivdef \text{BoldFm}(\text{DotFm}(\phi)),
 \]
+where
 \[
-\pmb{\dot{\phi}} \equivdef \text{Bold}(\text{Meta}(\phi))
+\text{BoldFm} \equivdef (\DecFm \circ \text{Quote})
 \]
+and
+\[
+\text{DotFm} \equivdef (\text{Antiquote} \circ \EncFm).
+\]
+\iffalse
+\[
+\text{BoldFm} \equivdef (\EncFm \circ \text{Quote})
+\]
+and
+\[
+\text{DotFm} \equivdef (\text{Antiquote} \circ \DecFm).
+\]
+\fi
+So, as a result, the properties cancel each other:
+\iffalse
+\[
+\meta{\pmb{\phi}} 
+\equiv 
+((\EncFm \circ \text{Quote}) \circ (\text{Antiquote} \circ \DecFm))(\phi)
+\equiv
+\phi
+\]%\EncFm(\Antiquote{\phi})
+
+\[
+\meta{\pmb{\phi}} 
+\equiv 
+((\DecFm \circ \text{Quote}) \circ (\text{Antiquote} \circ \EncFm))(\phi)
+\equiv
+\phi
+\]%\EncFm(\Antiquote{\phi})
+\fi
+\[
+\meta{\pmb{\phi}} 
+\equiv 
+(
+(\DecFm \circ \text{Quote})
+\circ
+( \text{Antiquote}\circ \EncFm)
+)(\phi)
+\equiv
+\phi
+\]%\EncFm(\Antiquote{\phi})
+So the following computational equality is an identity:
+\[
+\boxed{
+\meta{\pmb{\phi}} 
+\equiv 
+\phi
+}
+\]
+%\[
+%\pmb{\dot{\phi}} \equivdef \text{Bold}(\text{Meta}(\phi))
+%\] % too ugly
 \end{note}
 
 \subsubsection{Notation for variables}
 \begin{notation}[bold variables for terms]
 For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
 \begin{lstlisting}
-val xb : Term = (QuoteTerm (CV (namelvl (`x',zero))))
-val yb : Term = (QuoteTerm (CV (namelvl (`y',zero))))
+val xb : Class = (QuoteClass (CV (namelvl (`x',zero))))
+val yb : Class = (QuoteClass (CV (namelvl (`y',zero))))
 ...
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{x} \equivdef \Quote{ x_{(0)} },
+\pmb{x} \equivdef \EncClass(\Quote{ x_{(0)} }),
 \]
 \[
-\pmb{y} \equivdef \Quote{ y_{(0)} },
+\pmb{y} \equivdef \EncClass(\Quote{ y_{(0)} }),
 \]
 \[
 \dots
@@ -112,16 +188,16 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \begin{notation}[bold variables for formulas]
 For any lower--case Greek letter(`{$\phi$}',`{$\psi$}', `{$\chi$}', \dots), define a bold lower-case Greek letter to denote
 \begin{lstlisting}
-val phib : Term = (EncFm (QuoteFm (FmVar vphi)))
-val psib : Term = (EncFm (QuoteFm (FmVar vpsi)))
+val phib : Class = (EncFm (QuoteFm (FmVar vphi)))
+val psib : Class = (EncFm (QuoteFm (FmVar vpsi)))
 ...
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{\phi} \equivdef \Enc(\Quote{ \phi_{(0)} }),
+\pmb{\phi} \equivdef \EncFm(\Quote{ \phi_{(0)} }),
 \]
 \[
-\pmb{\psi} \equivdef \Enc(\Quote{ \psi_{(0)} }),
+\pmb{\psi} \equivdef \EncFm(\Quote{ \psi_{(0)} }),
 \]
 \[
 \dots
@@ -129,9 +205,9 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \end{notation}
 
 \subsubsection{Notation for functional and predicate symbols}
-All bald functional and predicate symbols written boldly simply mean the first--order constructions which intended arguments are codes.
+All bold functional and predicate symbols written boldly simply mean the first--order constructions which intended arguments are just codes. So the encoding of higher order is inductive in nature:
 
-\begin{definition}
+\begin{definition}[computation of the encoding of statements]
 For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
 \[
 \EncStmt(\Wau,\,\Gamma\vdash \phi)
@@ -139,65 +215,88 @@ For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of t
 \pmb{(} \EncTheory(\Wau) \pmb{,}\, \EncCtx(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
 \]
 \end{definition}
-The epression on the right side is an application of a first--order predicate symbol to 
+The expression on the right side is an application of a first--order predicate symbol to three terms which are codes of some terms. Computation of the encoding of other types is done similarly.
 
+\iffalse
+\begin{definition}
 A term is called a \textit{class--term}, when it's a term of the type which is, unfortunately confusingly, called $\Term$ in the source code.
+\end{definition}
+\fi
 
 
-
-
+\subsection{Definitions of inference--related constants and their notation}
+\iffalse
 \subsection{OBSOLETE PART TO BE DELETED}
 
 \begin{definition}[informal introduction]
-Let $\Fm,\Term,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
+Let $\Fm,\Class,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
 
 In a such model of Standard ML, there is a typing relation between semantics of terms and types.\\
 Assume this relation is given.\\
-Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\Term,\Ctx,\Theory,...$ and their ground values (without variables).\\
+Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\Class,\Ctx,\Theory,...$ and their ground values (without variables).\\
 Then let's extend this typing relation to the extended one, in which all remaining types also have type $\Typ$, such that 
-$(\Fm:\Typ)$, $(\Term:\Typ)$, $(\Ctx:\Typ)$, $\dots$, $(\Typ:\Typ)$ (note the last one).\\
+$(\Fm:\Typ)$, $(\Class:\Typ)$, $(\Ctx:\Typ)$, $\dots$, $(\Typ:\Typ)$ (note the last one).\\
 This could lead to a contradiction (Girard's Paradox) in case if this typing system would be significantly richer: at least if it had types of functions, dependent types, etc, but it doesn't have any of that: it is as simple as possible.
 \end{definition}
 %, even finite.
-
+\fi
 
 
 \begin{definition}[class constants, corresponding to syntactic entities]
 Let $\circ$ be a composition of functional symbols here, then the class constants, corresponding to formulas, terms, etc are  defined the following way:
 \[
-\text{CFm}
-\eqdef
+\CFm
+\equivdef
 \Emb(\TFm)
 \]
 \[
-\text{CTerm}
-\eqdef
-\Emb(\TTerm)
+\CClass
+\equivdef
+\Emb(\TClass)
 \]
 \[
 \dots
 \]
 \end{definition}
+\begin{notation}[overloading]
+Luckily, on paper, it is possible to completely avoid the necessity of coloring the constants or of writing prefixes, via simple overloading trick: 
+\[
+\text{Fm}
+\equivnot
+\CFm
+\]
+\[
+\text{Class}
+\equivnot
+\CClass
+\]
+\[
+\dots
+\]
+Unfortunately, the Standard~ML doesn't have the overloading feature, so prefixes are kept in the program.
+\end{notation}
+
+
 %(\text{Enc}\circ\text{VTyp})
 
 %It is possible for
-%\TTerm is an element
+%\TClass is an element
 
 
 \iffalse
 \begin{notation}[abuse of notation]
-It seems possible to identify $\Term$ and $\TTerm$, but it will not be done to avoid confusion.
+It seems possible to identify $\Class$ and $\TClass$, but it will not be done to avoid confusion.
 %The author is not sure, where 
 %(but in fact, no)
 %It can be
 %Starting from the next chapter, it can be 
 %It seems like
 %\[
-%\Term = \TTerm = \text{CTerm}
+%\Class = \TClass = \text{CClass}
 %\]
 \end{notation}
 \fi
-
+\subsection{Typed quantification and its notation}
 \begin{definition}[quantifiers with a bound variable of type $\Fm$]
 Let $\phi$ be a variable for formulas.\\
 Let $\psi$ be a formula.\\
@@ -213,7 +312,7 @@ Then
 \]
 \[
 \iffdef
-(\forall (\phi_\code:\TTerm),\ %
+(\forall (\phi_\code:\TClass),\ %
 (\phi_\code\in \Emb(\TFm))
 \implies
 \psi[
@@ -227,7 +326,7 @@ Then
 % bad1: (\text{Enc}\circ\text{VTyp})
 % bad2: (\text{ValToFm}\circ\text{Dec})
 \begin{notation}[naming prefix of labels]
-In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid consuion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TTerm'', ``TCtx'', etc. \\
+In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid  confusion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TClass'', ``TCtx'', etc. \\
 But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
 \[
 ``(\forall(x:\TFm),\ \dots)",
@@ -236,33 +335,63 @@ starting from the next chapter, it will be written
 \[
 ``(\forall(x:\Fm),\ \dots)".
 \]
-In general, any other abuse of notation should be avoided and will be avoided at all costs.
 \end{notation}
+\begin{notation}[overloading naming prefix of constants]
+Similarly, instead of more precise expression
+\[
+``(\forall(f\in\CFm),\ \dots)",
+\]
+it will be written
+\[
+``(\forall(f\in\Fm),\ \dots)".
+\]
+Note, that the letter $f$ here is a vareiable for the code of the formula, not for the formula itself, as was above where the symbol ":" was used.
+\end{notation}
+In general, any other abuse of notation should be avoided and will be avoided at all costs.
 
 
 %Now the tricky part, te
 
-\begin{axiom}
-The author believe that the reason why terms are called ``a term'', is because it is ``terminal'' in the following sense: its quantifiers with a bound variable of type Term can be unfolded similarly, but they will still contain a TTerm type label:
+\begin{axiom}[class terms quantification unfolds via itself]
+The quantifiers with a bound variable of type Class can be unfolded similarly, with a differnce they will still contain a TClass type label:
 \[
-(\forall (t:\TTerm),\ \psi)
+(\forall (t:\TClass),\ \psi)
 \iffaxm
 \]
 \[
 \iffaxm
-(\forall (\phi_\code:\TTerm),\ %
-(\phi_\code\in \Emb(\TTerm))
+(\forall (\phi_\code:\TClass),\ %
+(\phi_\code\in \Emb(\TClass))
 \implies
 \psi[
-\DecTerm(t_\code)
+\DecClass(t_\code)
 /
 t
 ]
 )
 \]
-That is why it is an axiom, because otherwise it would be a circular definition.
+That is why it is an axiom, because otherwise it would be a circular definition. (The author believes that it might be the reason why terms are called ``a term'': they are ``terminal'' in the sense of being expressed not throught other types, but only via themselves.)
 \end{axiom}
+\begin{notation}[overloading class bindings]
+Again, as previously for formulas, 
+\[
+``(\forall(x:\TClass),\ \dots)",
+\]
+can be written as
+\[
+``(\forall(x:\Class),\ \dots)";
+\]
+and
+\[
+``(\forall(t\in\CClass),\ \dots)",
+\]
+can be likewise unambiguously written as
+\[
+``(\forall(t\in\Class),\ \dots)".
+\]
+\end{notation}
 
+\iffalse% METALANG
 \section{Metalanguage[section is not yet finished]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
 To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the questions about the metatheory can be discussed in the theory itself.\\%is possible to answer within a theory.\\
@@ -273,7 +402,8 @@ Metalevel of the statement is the maximal amount of nested ``$\mathcal{F}\vdash 
 
 
 %Metatheory:\\
-During reading the string of symbols, it is important to distinguish entities which are semantic(e.g. a set $\emptyclass$ or a proposition $(\emptyclass \in \omega)$) from their symbols which are syntactic and belonging to metatheory (e.g. a term $\ulcorner\boldemptyclass\urcorner$, and a judgement $(\ulcorner\boldemptyclass\urcorner : \Term)$). The symbols $``\ulcorner\cdot\urcorner"$ are used to explicitly show that that the object inside is syntactic, i.e. is a word. 
+During reading the string of symbols, it is important to distinguish entities which are semantic(e.g. a set $\emptyclass$ or a proposition $(\emptyclass \in \omega)$) from their symbols which are syntactic and belonging to metatheory (e.g. a term $\ulcorner\boldemptyclass\urcorner$, and a judgement $(\ulcorner\boldemptyclass\urcorner : \Class)$). The symbols $``\ulcorner\cdot\urcorner"$ are used to explicitly show that that the object inside is syntactic, i.e. is a word. 
+
 
 %%%%% May be useful:
 %%%%% Currently, they are often ommited, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
@@ -301,6 +431,9 @@ datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
 
 %, which can be implemented either in programming language(and as a result it wil),
 \pagebreak
+
+\fi% METALANG
+\iffalse %TODO TAKE THE BEST
 \section{Adaptation of a quote from ``Languages and Calculi''}
 (This section, is an adaptation and translation of the text from the book ``Languages and Calculi'': \cite[73-74]{vereshchagin_shen_2012})).\\
 
@@ -326,7 +459,9 @@ Formulas are constructed by the following rules:
 
 In many cases, the signature includes a binary predicate symbol $=$, called \textit{equality}. By tradition, instead of writing $=(t_1, t_2)$, one writes $(t_1 = t_2)$.
 \pagebreak
+\iffalse %May26
 \section{Predicate calculus as an object language [unfinished section]}
+
 In this book, a class theory is being developed and studied, so classes are chosen by author to be the objects of theories $\Tau$ and $\Fau$.
 
 %In this chapter metalevel variables are normal, and metalevel constants are bold.
@@ -372,7 +507,7 @@ In order to avoid the complications of the computation-- and constructivism--rel
 %\begin{definition}[$\BddExpr$]%\ \\
 %Inductive definition of bound expressions:
 %\begin{enumerate}
-%\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Term)$.
+%\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Class)$.
 %\end{enumerate}
 %\end{definition}
 
@@ -391,7 +526,7 @@ type Code = (Syntax Fragment List)
 
 \begin{metadefinition}[syntax]
 \[
-\text{Syntax} \eqdef \Term \sqcup \Fm \sqcup \BTerm \sqcup \dots
+\text{Syntax} \eqdef \Class \sqcup \Fm \sqcup \BClass \sqcup \dots
 \]
 \end{metadefinition}
 
@@ -407,7 +542,7 @@ The function $\#$ may raise an exception if the raw string take as argument is i
 It 
 \end{metadefinition}
 %\[
-%\# \:  \text{(Syntax Frag List)} \to \Term)
+%\# \:  \text{(Syntax Frag List)} \to \Class)
 %\]
 \[
 `` \cdot " \: \to \text{DottedString} 
@@ -449,10 +584,10 @@ A string representation of the formula is divided into fragments, so it is a lis
 \iffalse GOOD BUT TOO COMPLICATED FOR THIS PART
 If dependent types are allowed, then
 \[
-\FuncSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Term),
+\FuncSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Class)\to \Class),
 \]
 \[
-\PredSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Term)\to \Fm).
+\PredSymb : \sum_{n:\N}((\{1,\dots,n\}\to \Class)\to \Fm).
 \]
 If not, then certain formulas become ill-formed, and need to be checked.
 \fi
@@ -470,6 +605,7 @@ Thin symbols are used for depicting functional symbols on object level.\\
 Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.
 \end{metanotation}
 \pagebreak
+\fi %May26
 \begin{metanotation}[metasyntax for constructors inside the quoted text]
 When dealing with variables, it is possible to use these definitions:
 (The following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.)
@@ -638,19 +774,19 @@ For example, if a class--term $t$ is an occurence of a variable $\pmb{x}$, then
 Left and right sides of these definitional equalities are computationally equivalent.(Conversions)
 TODO: DOUBLE CHECK HERE
 \[
-t\equiv \DecTerm(\EncTerm(t))
+t\equiv \DecClass(\EncClass(t))
 \]
 %\forall t^{code}
 \[
-\forall (t:\Term),
-(t\equiv \DecTerm(\EncTerm(t)))
+\forall (t:\Class),
+(t\equiv \DecClass(\EncClass(t)))
 \]
 \[
 \forall (\phi:\Fm),
 (\phi\equiv \DecFm(\EncFm(\phi)))
 \]
 \[
-\forall (\phi^{\text{code}}:\Term),
+\forall (\phi^{\text{code}}:\Class),
 (\phi^{\text{code}} \in \text{Emb(Fm)})
 \implies
 (\phi\equiv \DecFm(\phi^{\text{code}}))
@@ -667,12 +803,12 @@ There is an agreement, that for each variable,
 \[
 \phi^{\text{code}}
 \equiv
-\EncTerm(\phi)
+\EncClass(\phi)
 \]
 
 
 \[
-t\equiv \DecTerm(\meta{t})
+t\equiv \DecClass(\meta{t})
 \]
 
 
@@ -682,16 +818,16 @@ t\equiv \DecTerm(\meta{t})
 \equiv
 ``\pmb{x}"
 \equivnot
-\EncTerm(\pmb{x})
+\EncClass(\pmb{x})
 \equiv
-\EncTerm(t)
+\EncClass(t)
 \]
 
 \[
-``x"\equivnot \EncTerm(x) 
+``x"\equivnot \EncClass(x) 
 \]
 \[
-\meta{x}\equivnot \DecTerm(x) 
+\meta{x}\equivnot \DecClass(x) 
 \]
 
 
@@ -699,26 +835,26 @@ t\equiv \DecTerm(\meta{t})
 \end{metanotation}
 
 
-\begin{metadefinition}[set of terms $\Term$]%\ \\
+\begin{metadefinition}[set of terms of type $\Class$]%\ \\
 The inductive definition of terms:
 \begin{enumerate}
-%\item $(x:\Var(\Term)) \Implies (x:\Term)$.
-%\item $(bt:\BTerm) \Implies ((x\mapsto t):\BTerm)$.
-%\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Term)$.
-%\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Term)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
-\item $(x:\Var)\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Term)$.
+%\item $(x:\Var(\Class)) \Implies (x:\Class)$.
+%\item $(bt:\BClass) \Implies ((x\mapsto t):\BClass)$.
+%\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\cc{x}{\phi} :\Class)$.
+%\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Class)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Class)$.
+\item $(x:\Var)\ ,\ (t:\Class)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Class)$.
 \[
-\text{ClassCompr}_1 : (\Term, (\Term \times \Fm))\ \Bound \to \Term
+\text{ClassCompr}_1 : (\Class, (\Class \times \Fm))\ \Bound \to \Class
 \]
-\item $(\vv{x}:\text{Var List})\ ,\ (t:\Term)\ ,\ (\phi:\Fm) \Implies (\ccc{\vv{x}}{t}{\phi} :\Term)$.
+\item $(\vv{x}:\text{Var List})\ ,\ (t:\Class)\ ,\ (\phi:\Fm) \Implies (\ccc{\vv{x}}{t}{\phi} :\Class)$.
 \[
-\text{ClassCompr} : (\Term, (\Term \times \Fm))\ \text{BoundByList} \to \Term
+\text{ClassCompr} : (\Class, (\Class \times \Fm))\ \text{BoundByList} \to \Class
 \]
 
 \iffalse
-\item $(f:\FuncSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (f(t_1,\dots,t_n):\Term)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Term)$.
-\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Term)$.
+\item $(f:\FuncSymb)\ ,\ (t_1:\Class)\ ,\ \dots\ ,\ (t_n:\Class) \Implies (f(t_1,\dots,t_n):\Class)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\varepsilon x.A):\Class)$.
+\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((\iota x.A):\Class)$.
 \fi
 \end{enumerate}
 \end{metadefinition}
@@ -727,9 +863,9 @@ The inductive definition of formulas:
 \begin{enumerate}
 %\item $(A:\Var(\Fm)) \Implies (A:\Fm)$.
 \item $(\bot:\Fm)\ ,\ (\top:\Fm)$. %\ ,\ (\ddagger:\Fm)$.
-%\item $(P:\PredSymb)\ ,\ (t_1:\Term)\ ,\ \dots\ ,\ (t_n:\Term) \Implies (P(t_1,\dots,t_n):\Fm)$.
-\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies (\thinin{t_1}{t_2}:\Fm)$.
-\item $(t_1:\Term)\ ,\ (t_2:\Term) \Implies ((t_1=t_2):\Fm)$.
+%\item $(P:\PredSymb)\ ,\ (t_1:\Class)\ ,\ \dots\ ,\ (t_n:\Class) \Implies (P(t_1,\dots,t_n):\Fm)$.
+\item $(t_1:\Class)\ ,\ (t_2:\Class) \Implies (\thinin{t_1}{t_2}:\Fm)$.
+\item $(t_1:\Class)\ ,\ (t_2:\Class) \Implies ((t_1=t_2):\Fm)$.
 %(\pmb{(}t_1\pmb{\in} t_2\pmb{)}:\Fm).
 % TODO
 %\[
@@ -744,16 +880,16 @@ The inductive definition of formulas:
 \item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinexists{x}{\phi}:\Fm)$.
 %\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies ((!x.\phi):\Fm)$.
 \iffalse
-\item $(t:\Term) \Implies (\pmb{(}t \bm{\lexists}\pmb{)}:\Fm)$.
-\item $(t:\Term) \Implies (\pmb{(}t \bm{\lunique}\pmb{)}:\Fm)$.
+\item $(t:\Class) \Implies (\pmb{(}t \bm{\lexists}\pmb{)}:\Fm)$.
+\item $(t:\Class) \Implies (\pmb{(}t \bm{\lunique}\pmb{)}:\Fm)$.
 \fi
-%\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Term)$.
-\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinepsilon{x}{\phi}:\Term)$.%(\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Term).
+%\item $(x:\Var)\ ,\ (A:\Fm) \Implies ((h_{(x.A)}):\Class)$.
+\item $(x:\Var)\ ,\ (\phi:\Fm) \Implies (\thinepsilon{x}{\phi}:\Class)$.%(\pmb{(}\bm{\Henkin} x\bm{,}A\pmb{)}:\Class).
 \end{enumerate}
 \end{metadefinition}
-\begin{metadefinition}[$\BTerm$]%\ \\
+\begin{metadefinition}[$\BClass$]%\ \\
 The inductive definition of bound terms:%\pmb{(}x\bm{,}t\pmb{)}
-\item $(x:\Var)\ ,\ (t:\Term) \Implies (\thincomma{x}{t}:\BTerm)$.
+\item $(x:\Var)\ ,\ (t:\Class) \Implies (\thincomma{x}{t}:\BClass)$.
 \end{metadefinition}
 \begin{metadefinition}[$\BFm$]%\ \\
 The inductive definition of bound formulas:%pmb{(}x\pmb{,}\varphi\pmb{)}
@@ -765,13 +901,13 @@ The inductive definition of bound formulas:%pmb{(}x\pmb{,}\varphi\pmb{)}
 \begin{definition}[quotation of a]
 Quotation:
 \[
-\ulcorner\cdot\urcorner : \String \to \Term
+\ulcorner\cdot\urcorner : \String \to \Class
 \]
 \end{definition}
 \begin{definition}
 Antiquotation:
 \[
-\llcorner\cdot\lrcorner : \Term \to \String 
+\llcorner\cdot\lrcorner : \Class \to \String 
 \]
 \end{definition}
 \fi
@@ -812,7 +948,7 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 
 \iffalse
 \[
-\FV_\Term : \Term \to \List(\Var)
+\FV_\Class : \Class \to \List(\Var)
 \]
 \[
 \FV_\Fm : \Fm \to \List(\Var)
@@ -838,7 +974,7 @@ For example, the formula
 \]
 means
 \[
-\forall X\in\Term,\ \ulcorner\pmb{\power} X\urcorner \in\Term
+\forall X\in\Class,\ \ulcorner\pmb{\power} X\urcorner \in\Class
 \]
 and
 \[
@@ -888,7 +1024,7 @@ Definitions will just be following the code, that will be publshed in \url{https
 %\]
 %there exists a functional symbol $c_\psi$, and it's type is
 %\[
-%(\text{length}(\vec{x})\to\Term)\to\Term
+%(\text{length}(\vec{x})\to\Class)\to\Class
 %\]
 \iffalse
 For any formula $\varphi$, for any list of variables $\vec{x}$ and $\vec{y}$,
@@ -901,7 +1037,7 @@ there exists a functional symbol $f_\psi$, where
 
 For any bounded by term formula $\kappa$, $h_{\kappa}$ is a term.
 \[
-h:\BoundFm\to\Term
+h:\BoundFm\to\Class
 \]
 \[
 \kappa \mapsto h_\kappa
@@ -948,12 +1084,12 @@ is a notation for
 (\forall A\in(\text{Syntax Fragment List}),\ (\#A\in \#\Fm)\implies \dots).
 \] 
 \end{example}
-
+\fi %TODO TAKE THE BEST
 
 
 \pagebreak
 %\sub
-\subsection{Axioms for the predicate calculus}
+\subsection{Axioms for the predicate calculus}[under construction]
 %\sub
 In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{first--order theory} $\Wau$.\\
 %, the following must hold:\\
@@ -1047,14 +1183,14 @@ The axiom schemes are expressed on the metalevel in this way:
 or in different(and equivalent) presentation:
 \[
 \forall A,B \in \Fm,\ %
-(\Tau \vdash \ulcorner\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}\urcorner)
+(\Tau \vdash \pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)})%\ulcorner \urcorner
 \]
 \[
 \text{\dots\ (other axioms are transformed similarly)\ \dots}
 \]
 \[
 \forall A \in \Fm,\ %
-(\Tau \vdash (A \lor \neg A))
+(\Tau \vdash \pmb{(}\meta{\pmb{A}} \pmb{\lor} \pmb{\neg} \meta{\pmb{A}}\pmb{)})
 \]
 %\ulcorner(\meta{A}\lor \neg \meta{A})\urcorner
 
@@ -1145,7 +1281,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \[
 \forall \Wau\in\Theory,\ %
 \forall x\in\Var,\ %
-\forall t\in\Term,\ %
+\forall t\in\Class,\ %
 \forall \phi\in\Fm,\ %
 (
 (\text{$t$ free for $x$ in $\phi$})
@@ -1157,7 +1293,7 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \[
 \forall \Wau\in\Theory,\ %
 \forall x\in\Var,\ %
-\forall t\in\Term,\ %
+\forall t\in\Class,\ %
 \forall \phi\in\Fm,\ %
 (
 (\text{$t$ free for $x$ in $\phi$})
@@ -1273,7 +1409,7 @@ For any proven(sic!) formula $\psi$ of the following form
 \]
 there exists a functional symbol $c_\psi$, and it's type is
 \[
-(\text{length}(\vec{x})\to\Term)\to\Term
+(\text{length}(\vec{x})\to\Class)\to\Class
 \]
 So the type depends a bit on the type of $\vec{x}$.
 Moreover, since only for proven $\psi$ such constant can be obtained, therefore it will not be possible via constructor of the type which is independent of the value(i.e. of $\psi$).
@@ -1283,7 +1419,7 @@ I.e. there is a default value, e.g. the empty set, in case if $\psi$ is not a va
 \end{constructor}
 \begin{notation}
 \[
-\const:\Fm\to\Term
+\const:\Fm\to\Class
 \]
 \end{notation}
 \fi
@@ -1388,7 +1524,7 @@ Generally speaking,
 \not\implies
 (\encode(t_1) \sim_\Tau \encode(t_2))),
 \]
-but maybe it is possible assume (but the algorithm may be ineffective: manually checking all smaller codes. Also De Brujin notattion is a step in the same direction.)
+but maybe it is possible assume (but the algorithm may be ineffective: manually checking all smaller codes. Also De Brujin notation is a step in the same direction.)
 
 But in $\Fau$,
 \[
@@ -1396,8 +1532,7 @@ But in $\Fau$,
 \implies
 (\encode(t_1) \sim_\Fau \encode(t_2)).
 \]
-
-The same is not possible in $\Tau$(sure?)
+The same may not be possible in $\Tau$.%(sure?)
 \iffalse
 \begin{definition}[meta-definition]
 \[
@@ -1627,7 +1762,7 @@ The interpretation of formulas depends on the assignment of variables $v$, and i
 \item Atomic predicate symbols:
 \[
 I_\Fm^v\left(A\left(\vv{X}\right)\right) \ceq 
-\lif\ (I_\Term^v(X)\subseteq I_\Pred^v(A))
+\lif\ (I_\Class^v(X)\subseteq I_\Pred^v(A))
 \ \lthen\ \lTrue
 \ \lelse\ \lFalse
 \]
@@ -1638,11 +1773,11 @@ I_\Fm^v\left(A\left(\vv{X}\right)\right) \ceq
 \[
 I_\Fm^v((t\lexists))
 \ceq 
-\lif\ (I_\Term^v(t)\nonempty)\ \lthen\ \lTrue
+\lif\ (I_\Class^v(t)\nonempty)\ \lthen\ \lTrue
 \ \lelse\ \lFalse
 \]
 \[
-I_\Fm^v((t\lunique))\ceq \lif\ (I_\Term^v(t)\semisingleton)\ \lthen\ \lTrue\ \lelse\ \lFalse
+I_\Fm^v((t\lunique))\ceq \lif\ (I_\Class^v(t)\semisingleton)\ \lthen\ \lTrue\ \lelse\ \lFalse
 \]
 %\neq\emptyclass
 
@@ -1710,7 +1845,7 @@ Let $v$ be assignment and $I$ be an interpretation.
 \begin{itemize}
 \item If $A$ is an atomic predicate symbol, then
 \[
-\left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I_{\overrightarrow{\Term}}^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
+\left(\models^v A\left(\vv{X}\right)\right) \IFFdef \left(\forall \vv{x}\in I_{\overrightarrow{\Class}}^v\left(\vv{X}\right):\vv{x}\in I_\Pred(A)
 \right).
 \]%_\forall
 %%\left(\vv{x}\right)
@@ -1942,7 +2077,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \begin{lemma}
 %v+(\xi\mapsto I^v(t))
 \[
-I_\Term^v(u[t/\xi])=I_\Term^{\upd(v,\xi,I^v(t))}(u)
+I_\Class^v(u[t/\xi])=I_\Class^{\upd(v,\xi,I^v(t))}(u)
 \]
 \Proof
 \dots
@@ -2002,10 +2137,10 @@ Informally:\\
 ``If $a = b$, then, for any well--formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
 Formally:
 \[
-\forall (a,b\in\Term), 
+\forall (a,b:\Class), 
 (\Fau\vdash (a=b))
 \implies
-(\forall x\in\Var, \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
+(\forall x:\Class, \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
 \]
 
 \end{metatheorem}
@@ -2085,37 +2220,37 @@ The colon (":") is a sign for an infix operator of a membership relation in a me
 The epsilon ("$\in$") is a sign of for an infix operator of a membership relation in a theory.\\
 Loosely speaking, 
 \[
-``\mathbf{(:)} :  \Term \times \Type \to \Prop",
+``\mathbf{(:)} :  \Class \times \Type \to \Prop",
 \]
 \[
-``\mathbf{(\in)} :  \Term \times \Term \to \Fm".
+``\mathbf{(\in)} :  \Class \times \Class \to \Fm".
 \]
 But it is also true that $"\in":\PredSymb$. 
 \[
-t_1:\Term \LAND t_2:\Term \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
+t_1:\Class \LAND t_2:\Class \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
 \]
 
 Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
 \end{notation}
 
-%\subsubsection{Terms}
-%Terms :\ceq \\
-\begin{definition}(Term)\\
+%\subsubsection{Classs}
+%Classs :\ceq \\
+\begin{definition}(Class)\\
 Inductive definition of terms:\\
-1) $v:\Var \IMPLIES v:\Term$.\\
+1) $v:\Var \IMPLIES v:\Class$.\\
 2) 
-$f:\FuncSymb\LAND t_1:\Term \LAND ...\LAND t_n:\Term  \IMPLIES f(t_1,\dots,t_n):\Term$.\\
+$f:\FuncSymb\LAND t_1:\Class \LAND ...\LAND t_n:\Class  \IMPLIES f(t_1,\dots,t_n):\Class$.\\
 3) Some higher-order features.\\
 $x:\Var \LAND x:`a \LAND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
 
-$x:\Var \LAND t:\Term \IMPLIES x.t:\BTerm$\\
-$y:\Var \LAND b:\BTerm \IMPLIES y.b:\text{BBTerm}$\\
+$x:\Var \LAND t:\Class \IMPLIES x.t:\BClass$\\
+$y:\Var \LAND b:\BClass \IMPLIES y.b:\text{BBClass}$\\
 
 The following rule:\\
-$x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Term$,\\
+$x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Class$,\\
 can be split into two, via introducing bounded terms and formulas:\\
 $x:\Var \LAND \varphi: \Fm \IMPLIES x.\varphi: \BFm$\\
-$q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \Term$\\
+$q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \Class$\\
 Here $\mdoubleplus$ denotes concatenation of strings, because in this variant of implementation all terms, formulas, etc are seen as strings of text.\\
 For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," . ",  \varphi, ")"].\]
 ...
@@ -2129,7 +2264,7 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
 1)$\bot:\Fm$.\\
-2)$P:\PredSymb\LAND t_1:\Term \LAND ...\LAND t_n:\Term  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
+2)$P:\PredSymb\LAND t_1:\Class \LAND ...\LAND t_n:\Class  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
 3)$A:\Fm \IMPLIES (\neg A):\Fm$.\\
 4)$A:\Fm \LAND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
 5)$A:\Fm \LAND B:\Fm \IMPLIES (A\land B):\Fm$.\\
@@ -2181,13 +2316,13 @@ The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 Let $\power \mathcal{U}\setminus\{\emptyclass\}$ be the domain of discourse on the global level of the presented model for the theory.\\
 
 % NOT TRUE ANYMORE
-% We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Term(t_k)$.\\
+% We will call a formula "GloballyTrue", if it is "classically valid", in a sense that every variable $q_k$ has the domain $I^w_\Class(t_k)$.\\
 
 It means that we have a super-large model.\\
 Such big model is simple and natural for having predicates such as (- exist), (- unique), (- defined) being defined.\\
 Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
 
-%Let $I_\Term$ is an interpretation function on Terms.
+%Let $I_\Class$ is an interpretation function on Classs.
 
 Let $w$ be an assignment of variables:\\
 \[
@@ -2229,26 +2364,26 @@ I^w_\Fm(\varphi)\ceq
 \]
 Also, for terms:
 \[
-I^w_\Term(t)\ceq 
-\bigcup \left\{ I^{v^*}_\Term 
+I^w_\Class(t)\ceq 
+\bigcup \left\{ I^{v^*}_\Class 
 \middle|v\in\prod w\right\}
 \]
 
 Semantical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
 \[
-(v^*\models(t\ \lunique))\IFF (I^{v^*}_\Term(t)\ \semisingleton)
+(v^*\models(t\ \lunique))\IFF (I^{v^*}_\Class(t)\ \semisingleton)
 \]
 For simplicity, it is possible to consider
 \[
-\Type \ceq \{\Term, \Fm, \BTerm, \BFm \},
+\Type \ceq \{\Class, \Fm, \BClass, \BFm \},
 \]
 but it may be defined simultaneously with symbols, in order to produce new types.\\
 But it, in fact, may be a version of some primitive lambda calculus, which is used only for defining new types of symbols.\\
 
 For example, if Isabelle is used, then\\
-``i'' corresponds to Term,\\
+``i'' corresponds to Class,\\
 ``o'' corresponds to Fm,\\
-``i=>i'' corresponds to BTerm,\\
+``i=>i'' corresponds to BClass,\\
 ``i=>o'' corresponds to BFm,\\
 and so on.\\
 
@@ -2272,7 +2407,7 @@ I_\PredSymb(P) : \left(\prod_{k\in\{1,\dots,\val(P)\}}D(P,k)\right)...
 
 If it takes a term $t$ as an argument, then
 \[
-(v^*\models(P(t))\IFF I_\PredSymb(P)(I^{v^*}_\Term(t)\ \semisingleton)
+(v^*\models(P(t))\IFF I_\PredSymb(P)(I^{v^*}_\Class(t)\ \semisingleton)
 \]
 \begin{example*}
 Let $w\ceq \{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
@@ -2387,25 +2522,25 @@ Definition of truthness for the arbitrary assignment is a proper extension of it
 \begin{theorem}(def of Truth extends)\\
 Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
 \[
-I^{l^*}_\Term(t)=
-\bigcup \left\{ I^{v^*}_\Term 
+I^{l^*}_\Class(t)=
+\bigcup \left\{ I^{v^*}_\Class 
 |v\in\prod l^*\right\}
 \]
 \end{theorem}
 \Proof
 \[
-\bigcup \left\{ I^{v^*}_\Term 
+\bigcup \left\{ I^{v^*}_\Class 
 |v\in\prod l^*\right\}=
 \]
 \[
-\bigcup \left\{ I^{v^*}_\Term 
+\bigcup \left\{ I^{v^*}_\Class 
 |v\in\{l\}\right\}=
 \]
 \[
-\bigcup \left\{ I^{l^*}_\Term\right\}=
+\bigcup \left\{ I^{l^*}_\Class\right\}=
 \]
 \[
-I^{l^*}_\Term
+I^{l^*}_\Class
 \]
 \Done
 
@@ -2477,15 +2612,15 @@ i.e. $v:\Var\to\Domain$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
 \end{definition}
 \begin{definition}(Local interpretation of term under local assignment v wrt the global assignment w)\\
 (almost classical definition)\\% OR the following:?\\
-Terms are interpreted as subconglomerates of the conglomerate of all classes.
+Classs are interpreted as subconglomerates of the conglomerate of all classes.
 \[
-I^{\loc,v}_\Term : \Term \to \mathcal{U}
+I^{\loc,v}_\Class : \Class \to \mathcal{U}
 \]
 \[
-I^{\loc,v}_\Term(x) \ceq v(x)
+I^{\loc,v}_\Class(x) \ceq v(x)
 \]
 \[
-I^{\loc,v}_\Term(f(t_1,\dots,t_n)) \ceq I(f)(I^{\loc,v}(t_1),\dots,I^{\loc,v}(t_n))
+I^{\loc,v}_\Class(f(t_1,\dots,t_n)) \ceq I(f)(I^{\loc,v}(t_1),\dots,I^{\loc,v}(t_n))
 \]
 \[
 \dots
@@ -2500,7 +2635,7 @@ I^{\loc,v}_\Term(f(t_1,\dots,t_n)) \ceq I(f)(I^{\loc,v}(t_1),\dots,I^{\loc,v}(t_
 I^{\loc,v}_\Fm : \Fm \to \{\ltrue, \lfalse\}
 \]
 \[
-(I^{\loc,v}_\Fm(P(t_1,\dots,t_n))=I(P)(I^{\loc,v}_\Term(t_1),\dots,I^{\loc,v}_\Term(t_n)))
+(I^{\loc,v}_\Fm(P(t_1,\dots,t_n))=I(P)(I^{\loc,v}_\Class(t_1),\dots,I^{\loc,v}_\Class(t_n)))
 \]
 \[
 \dots
@@ -2514,7 +2649,7 @@ A formula is locally valid if its locally true for any local assignment $v$ comp
 Remark: It is just the collection of all possible interpretations of terms wrt any local assignment that respects the global assignment.\\
 This is kinda "useless definition", because we don't care about the collection of interpretations of terms while constructing global interpretation of formula in the next definition.
 \[
-I^{\glob,w}_\Term(t) \ceq \left\cc{I^{\loc,v}_\Term(t) \middle}{ v\in \prod_{x\in\Var}w(x) \right}
+I^{\glob,w}_\Class(t) \ceq \left\cc{I^{\loc,v}_\Class(t) \middle}{ v\in \prod_{x\in\Var}w(x) \right}
 \]
 \end{definition}
 \begin{definition}(Global interpretation of a formula)\\
@@ -2529,10 +2664,10 @@ I^{\glob,w}_\Fm : \Fm \to \{\lTrue, \lFalse\}
 \end{definition}
 \begin{example}(global interpretation of some special formulas under global assignment)
 \[
-I^{\glob,w}_\Fm((t\lexists)) \ceq (\lif\ (I^{\glob,w}_\Term(t)\nonempty)\ \lthen\ \lTrue\ \lelse\ \lFalse)
+I^{\glob,w}_\Fm((t\lexists)) \ceq (\lif\ (I^{\glob,w}_\Class(t)\nonempty)\ \lthen\ \lTrue\ \lelse\ \lFalse)
 \]
 \[
-I^{\glob,w}_\Fm((t\lunique)) \ceq (\lif\ (I^{\glob,w}_\Term(t)\mbox{ semisingleton})\ \lthen\ \ltrue\ \lelse\ \lfalse)
+I^{\glob,w}_\Fm((t\lunique)) \ceq (\lif\ (I^{\glob,w}_\Class(t)\mbox{ semisingleton})\ \lthen\ \ltrue\ \lelse\ \lfalse)
 \]
 \end{example}
 %-----
@@ -2606,16 +2741,16 @@ Fix some global assignment function $w:\Var\to\power\Un$.\\
 \begin{itemize}
 \item
 $I_\Fm^w(P(t_1,...,t_n))\ceq \lTrue$, iff two conditions are satisfied:\\
-1) $I^w_\Term(t_j)$ is non-empty\\
-2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
+1) $I^w_\Class(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Class(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lTrue$.
 \item $I_\Fm^w(P(t_1,...,t_n))=\lFalse$, iff two conditions are satisfied:\\
-1) $I_\Term(t_j)$ is non-empty\\
-2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Term(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lFalse$.
+1) $I_\Class(t_j)$ is non-empty\\
+2) for all sequences of object $(q)_{j=1}^n$ , such that for all j from 1 to n, $q_j\in I_\Class(t_j)$: $I_{\PredSymb}(P)(q_1,...,q_n)=\lFalse$.
 \item
 $I_\Fm^w(P(t_1,...,t_n))=\lUncertain$, in all other cases.\\
-For example, if there exists $j\in\{1,...,n\}$, such that $I_\Term(t_j)$ is empty;\\
+For example, if there exists $j\in\{1,...,n\}$, such that $I_\Class(t_j)$ is empty;\\
 or if neither of the second requirements hold,\\
-i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\right)$ is not a constant on $I_\Term(t_1)\times\dots\times I_\Term(t_n)$.
+i.e. if the function $\left((q)_{j=1}^n \mapsto I_{\PredSymb}(P)(q_1,...,q_n)\right)$ is not a constant on $I_\Class(t_1)\times\dots\times I_\Class(t_n)$.
 \end{itemize}
 \end{definition}
 
@@ -2666,8 +2801,8 @@ Resolution: we use only terms, and this mechanism of definitions of terms is out
 Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
 
 \begin{definition}(interpretation of definitional equality)\\
-\st{$I^v_\Fm(A\equiv B)\ceq (I^v_\Term(A) = I^v_\Term(B))$}.NO! WRONG!\\
-$I^v_\Fm(A\equiv B)\ceq \forall(w\ \mbox{assignment}):(I^w_\Term(A) = I^w_\Term(B))$.\\
+\st{$I^v_\Fm(A\equiv B)\ceq (I^v_\Class(A) = I^v_\Class(B))$}.NO! WRONG!\\
+$I^v_\Fm(A\equiv B)\ceq \forall(w\ \mbox{assignment}):(I^w_\Class(A) = I^w_\Class(B))$.\\
 Will such definition work with a variable? I highly doubt. 
 So it's better to keep such definitions of undefined values outside of the logic until there will be an explicit necessity for them. (Probably there will be no.)
 But this definition works well for defining function symbols, and, in particular, constants.
@@ -2712,7 +2847,7 @@ If also the variable $v$ is $W$ then $t[A/W]=A$ and $t[B/W]=B$.\\
 Since $A=B$, $t[A/W]=t[B/W]$, so we are done.
 Otherwise, i.e. if the variable $v$ is not $W$, then $t[A/W]=v=t$ and $t[B/W]=v=t$.\\
 Therefore $t[A/W]=t[B/W]$, so we are done.\\
-Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Term$, where $f$ is a function symbol of arity n.\\
+Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Class$, where $f$ is a function symbol of arity n.\\
 Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition of substitution.
 \[
 t[A/W]=f(t_1,...,t_n)[A/W]=
@@ -2835,9 +2970,9 @@ P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
 \right)
 \quad\mbox{(Note: it is a substitution of propositional variable with a formula)}
 \]
-(so the assignment is not only for Term variables, but also for Formula variables.\\
+(so the assignment is not only for Class variables, but also for Formula variables.\\
 Substitution is also simultaneous.\\
-All Term variables are free in a Formula varriable.\\
+All Class variables are free in a Formula varriable.\\
 During this simultaneous substitution, can quantifiers bind free variables in $\varphi$? NO! (Because is changing the meaning.)\\
 But here it is an example with free variable: $y$.
 \[
@@ -2874,7 +3009,7 @@ I don't like the following statement:
 P[\varphi_1/\gamma]\iff P[\varphi_2/\gamma]
 \right),
 \]
-because it doesn't care about Term variables.(Term variables = object variables, Formula variables = propositional variables)\\
+because it doesn't care about Class variables.(Class variables = object variables, Formula variables = propositional variables)\\
 Maybe it is not a problem.\\
 Maybe I should also add "$\forall \gamma$", but it is not a $1^{\mbox{st}}$ order theory anymore then... No. I should not, it will not even help.\\
 \fi
@@ -3288,7 +3423,7 @@ The metaaxiom stating the axiom schema for definiotion of the subclass relation:
 \]
 
 \[
-\forall A,B\in\Term,\ \forall x\in \Var,\ %
+\forall A,B\in\Class,\ \forall x\in \Var,\ %
 (x\text{ is not free in }A)
 \land
 (x\text{ is not free in }B)
@@ -3413,7 +3548,7 @@ How it works then?
 \]
 
 \textbf{Idea:}\\
-Since a given formula (of $\Tau$) is already somehow defined in the proof assistant, maybe it can be considered as its own code? In this case, then the function $\ulcorner\cdot\urcorner$ is just an ``identity--like'' function from $\Fm$ to $\Term$. It is still may be better to be kept, because otherwise, the formulas and metaformulas are collapsing together, and they cannot be distinguished at all.
+Since a given formula (of $\Tau$) is already somehow defined in the proof assistant, maybe it can be considered as its own code? In this case, then the function $\ulcorner\cdot\urcorner$ is just an ``identity--like'' function from $\Fm$ to $\Class$. It is still may be better to be kept, because otherwise, the formulas and metaformulas are collapsing together, and they cannot be distinguished at all.
 \[
 \forall v\in \Var,\ (\Fau\vdash \ulcorner((x \set)\implies (x\in \{x\}))\urcorner)[v_{(0)}/x_{(-1)}]
 \]
@@ -3482,22 +3617,22 @@ Is $x$ free in $\Fau \vdash \forall x_{(1)}\in\Var, \Fau \vdash x_{(2)}=x_{(2)}$
 
 \begin{constructor*}[a constant ``alphabet $\mathcal{A}$'']
 \[
-(``\mathcal{A}"\in\Term)
+(``\mathcal{A}"\in\Class)
 \]
 \end{constructor*}
 \begin{constructor*}[a constant ``language $\mathcal{L}$'']
 \[
-(``\mathcal{L}"\in\Term)
+(``\mathcal{L}"\in\Class)
 \]
 \end{constructor*}
 \begin{constructor*}[a constant symbol ``theory $\Tau$'']
 \[
-(``\mathcal{T}"\in\Term)
+(``\mathcal{T}"\in\Class)
 \]
 \end{constructor*}
 \begin{constructor*}[a constant symbol ``theory $\Fau$'']
 \[
-(``\mathcal{F}"\in\Term)
+(``\mathcal{F}"\in\Class)
 \]
 \end{constructor*}
 \begin{definition}[unary predicate ``is an alphabet'']
@@ -3588,7 +3723,7 @@ It is said that it has \textit{a Henkin property}, if for every existential stat
 (
 (\Wau \vdash \exists x,\ \phi)
 \implies
-(\exists t\in \text{Term},\ (\Wau \vdash \phi[t/x])))
+(\exists t\in \text{Class},\ (\Wau \vdash \phi[t/x])))
 )
 \]
 \[
@@ -3806,7 +3941,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \labeltagd{axm}{reflexivity}
 \]
 %\iffalse
-Is this senseless? since $\phi$ here is an object!.. yes/no? 
+%Is this senseless? since $\phi$ here is an object!.. yes/no? 
 \[
 \forall \phi\in\Fm,\ %
 ((\Fau\vdash \phi) \iff \phi)
@@ -3836,14 +3971,11 @@ The author uses a predicate $\vdash$, which is slightly different from the tradi
 \[
 \text{Der} : \text{Theory} \times \text{Ctx} \times \Fm \to \Fm
 \]
-And it is treated in a special way: the function isFree which checks whether variable is free, increases the metalevel of the variable being checked when enters the areguments of this constructor of formulas. 
-This simple trick allows to avoid explicit writing of encoding and decoding of syntactic objects, and simplify the implementation.
-
-% is special or \ulcorner \urcorner
- 
+And it is treated in a special way: the function isFree which checks whether variable is free, increases the metalevel of the variable being checked when enters the quotation. %arguments of this constructor of formulas. 
+This simple trick allows to avoid explicit writing of encoding and decoding of syntactic objects, and simplify the implementation.% is special or \ulcorner \urcorner
 \end{note}
 
-The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
+The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. %This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
 
 % \Tau = \mathcal{T}
 \iffalse
@@ -3979,7 +4111,7 @@ Let $\phi\ceq \bot$, then:
 \labeltagd{rule}{MetaOmniscience}
 \]
 \end{inferencerule}
-\begin{theorem}[omni implies disj]
+\begin{theorem}[omniscience implies disjunctive property]
 \[
 (\Fau\text{ omniscient})
 \implies
@@ -3987,7 +4119,7 @@ Let $\phi\ceq \bot$, then:
 \]
 \end{theorem}
 \begin{proof}
-
+(todo)
 \end{proof}
 
 %\begin{conjecture}
