@@ -458,7 +458,88 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \labeltagd{thm}{infordmin}
 \]
 \Proof
-ToDo!
+\[
+((A\cap\On)\neq\emptyclass)
+\IMPLIES
+(\exists q,\ q\in(A\cap\On))
+\]
+\[
+\forall r\in R, \left(\bigcap R\right)  \subclass r
+\]
+\[
+(q\in(A\cap\On))
+\IMPLIES
+\left(\bigcap (A\cap\On)\right)  \subclass q
+\]
+\[
+(q\in\On)
+\IMPLIES
+(q\subseteq\On)
+\]
+\[
+\left(\left(\bigcap (A\cap\On)\right)  \subclass q\right)
+\LAND
+(q\subseteq\On)
+\IMPLIES
+\left(\left(\bigcap (A\cap\On)\right) \subclass \On\right)
+\]
+Therefore if I prove that  $\left(\bigcap (A\cap\On)\right)$ is transitive, then it will follow that it is an ordinal(due to lemma \ref{thm:dford5}).\\
+1) Then its interesection with On, doesn't change it.\\ 
+2) So $(\inf(A)\subseteq A)$.\\
+3) Since $\Ord(\inf(A))$ and $(\inf(A)\subseteq A)$, it gives two opportunities:\\
+either $(\inf(A)\in A)$ or $(\inf(A)=A)$ due to the lemma (\ref{lem:ordlem2}).\\
+4) $(\inf(A)=A)$ is impossible, since the
+\[
+(\inf(A)=A)
+\LAND
+(\inf(A) \subseteq q)
+\IMPLIES
+(A\subseteq q)
+\]
+\[
+(A\subseteq q)
+\LAND
+(q\in A)
+\IMPLIES
+(q\in q)
+\]
+Which is a contradiction.\\
+5) Therefore $(\inf(A)\in A)$.(QED)
+
+6) It is left to show that $\left(\bigcap (A\cap\On)\right)$ is actually transitive.\\
+Fix $y\in \left(\bigcap (A\cap\On)\right)$, fix $z\in y$.
+To show: $z \in \left(\bigcap (A\cap\On)\right)$.
+I.e. to show:
+\[
+\forall b\in (A\cap\On), z\in b.
+\]
+We have
+\[
+(y\in \left(\bigcap (A\cap\On)\right))
+\IMPLIES
+\forall b\in (A\cap\On), y\in b.
+\]
+\[
+b\in\On
+\IMPLIES
+\Tr(b)
+\]
+\[
+(y\in b)
+\LAND
+\Tr(b)
+\IMPLIES
+(y\subseteq b)
+\]
+\[
+(z\in y)
+\LAND
+(y\subseteq b)
+\IMPLIES
+(z\in b)
+\]
+So the transitivity is proven. The proof is done, the only ommited part is a proof of the lemma \ref{lem:ordlem2}.
+(for example, the proof of the main statement of the theorem can be found here \url{https://us.metamath.org/mpeuni/tz7.7.html})
 \Done
 \end{theorem}
 
@@ -526,7 +607,7 @@ ToDo!
 \labeltagd{thm}{subiffel}
 \]
 \end{theorem}
-\begin{theorem}[transitive subclass of ordinal numbers iff ordinal class]
+\begin{theorem}[transitive subclass of ordinal numbers iff it is an ordinal class]
 \[
 (
 \Ord(A)
@@ -537,13 +618,14 @@ ToDo!
 \land
 (\Tr(A))
 )
-\labeltagd{thm}{dford5}
+\clabeltagd{thm}{dford5}
 \]
+\url{https://us.metamath.org/mpeuni/dford5.html}
 \end{theorem}
 \begin{theorem}[element of ordinal is ordinal]
 \[
 \Ord(A)\land(a\in A)\implies \Ord(a)
-\labeltagd{thm}{tz7.6}
+\clabeltagd{thm}{tz7.6}
 \]%(7.6 Takeuti--Zaring)
 \end{theorem}
 
@@ -564,11 +646,11 @@ ToDo!
 \labeltagd{lem}{trunonss}
 \]
 \Proof
-Fix $x\in\bigcup A$, $y\in x$. To show: $\exists z\in A: y\in z$.\\
+Fix $x\in\bigcup A$, and $y\in x$. To show: $\exists z\in A,\ y\in z$.\\
 \[
 \left(x\in\bigcup A\right)
 \IMPLIES
-(\exists a\in A: x\in a)
+(\exists a\in A,\ x\in a)
 \]
 \[
 (a\in A)
@@ -611,7 +693,7 @@ z\ceq a
 
 
 
-\begin{theorem}[criterion in context of regularity axiom](note: it is not yet checked by me)
+\begin{theorem}[criterion in the context of the regularity axiom](note: it is not yet checked by me)
 \[
 (\E\mathrm{\ Fr\ }V)
 \implies
@@ -625,11 +707,11 @@ z\ceq a
 
 \section{Cardinals}
 \subsection{Axioms}
-\begin{iaxiom}
+\begin{iaxiom}[si]
 \[
 |\cdot|:\V \to \On
 \]
-Actually, since $|\cdot|$ is a functional symbol, we mean the following:
+Actually, since $|\cdot|$ is a functional symbol, the following is meant:
 \[
 (x\mapsto |x|):\V \to \On
 \]
@@ -666,6 +748,11 @@ Here $|\cdot|$ is a functional symbol defined as following.
 \[
 |K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
 \]
+or even
+\[
+|K|\eqdef \inf(\cc{a}{K\preccurlyeq a})
+\]
+in the sense of definition \ref{def:infimum}.
 \end{definition}
 \begin{definition}[relation ``not stronger in cardinality'']
 Let $X$ and $Y$ be terms, then
@@ -779,7 +866,10 @@ This definition is natural since it agrees with the axiom of limitation of size 
 The function $| \cdot |$ has interesting properties.
 
 \subsection{Soundness}
-\begin{lemma}
+\begin{lemma}[a class of sets is not injectible in an ordinal].
+A class of sets is not injectible in an ordinal.
+(Isn't it just a consequence of V being proper class?)
+%A class of all ordinal
 \[
 \cc{a\in\On}{\V\preccurlyeq a}
 =

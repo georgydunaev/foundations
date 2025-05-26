@@ -26,7 +26,127 @@ The idea is that a book on foundations is simultaneously is a documentation for 
 
 \restoregeometry
 
+%For any variables $x$,$\phi$,\dots , define
+\begin{definition}
+A pair of string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
+\end{definition}
 
+
+\subsection{First bold notation}
+\subsubsection{Notation for variables}
+\begin{notation}[bold variables for terms]
+For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
+
+%val xb1 : Term = (CShiftTerm (Quote(CV (namelvl (`x',zero)))))
+\begin{lstlisting}
+val xb1 : Term = (QuoteTerm (CV (namelvl (`x',zero))))
+val yb1 : Term = (QuoteTerm (CV (namelvl (`y',zero))))
+...
+\end{lstlisting}
+or the same, but in a mathematical notation, where not all constructors are printed,
+\[
+\pmb{x} \equivdef \Quote{ x_{(0)} },
+\]
+\[
+\pmb{y} \equivdef \Quote{ y_{(0)} },
+\]
+\[
+\dots
+\]
+\end{notation}%and so on.
+
+\begin{notation}[bold variables for formulas]
+For any lower--case Greek letter(`{$\phi$}',`{$\psi$}', `{$\chi$}', \dots), define a bold lower-case Greek letter to denote
+\begin{lstlisting}
+val phib1 : Term = (QuoteFm (FmVar vphi))
+val psib1 : Term = (QuoteFm (FmVar vpsi))
+...
+\end{lstlisting}
+or the same, but in a mathematical notation, where not all constructors are printed,
+\[
+\pmb{\phi} \equivdef \Quote{ \phi_{(0)} },
+\]
+\[
+\pmb{\psi} \equivdef \Quote{ \psi_{(0)} },
+\]
+\[
+\dots
+\]
+\end{notation}
+
+\subsubsection{Notation for functional and predicate symbols}
+All bald functional and predicate symbols written boldly simply mean the same constructors as their thin counterparts.
+
+\subsection{Second bold notation}
+The second bold notation may be introduced in a situation when it is useful to show that all higher--order statements actually have a translation to the first--order statements, via the encoding.
+\begin{note}[non--commutativity]
+Contrary to the first notation, being bold and having a dot is not commutative here: it means precisely
+\[
+\meta{\pmb{\phi}} \equivdef \text{Bold}(\text{Meta}(\phi))
+\]
+\[
+\pmb{\dot{\phi}} \equivdef \text{Bold}(\text{Meta}(\phi))
+\]
+\end{note}
+
+\subsubsection{Notation for variables}
+\begin{notation}[bold variables for terms]
+For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
+\begin{lstlisting}
+val xb : Term = (QuoteTerm (CV (namelvl (`x',zero))))
+val yb : Term = (QuoteTerm (CV (namelvl (`y',zero))))
+...
+\end{lstlisting}
+or the same, but in a mathematical notation, where not all constructors are printed,
+\[
+\pmb{x} \equivdef \Quote{ x_{(0)} },
+\]
+\[
+\pmb{y} \equivdef \Quote{ y_{(0)} },
+\]
+\[
+\dots
+\]
+\end{notation}%and so on.
+
+\begin{notation}[bold variables for formulas]
+For any lower--case Greek letter(`{$\phi$}',`{$\psi$}', `{$\chi$}', \dots), define a bold lower-case Greek letter to denote
+\begin{lstlisting}
+val phib : Term = (EncFm (QuoteFm (FmVar vphi)))
+val psib : Term = (EncFm (QuoteFm (FmVar vpsi)))
+...
+\end{lstlisting}
+or the same, but in a mathematical notation, where not all constructors are printed,
+\[
+\pmb{\phi} \equivdef \Enc(\Quote{ \phi_{(0)} }),
+\]
+\[
+\pmb{\psi} \equivdef \Enc(\Quote{ \psi_{(0)} }),
+\]
+\[
+\dots
+\]
+\end{notation}
+
+\subsubsection{Notation for functional and predicate symbols}
+All bald functional and predicate symbols written boldly simply mean the first--order constructions which intended arguments are codes.
+
+\begin{definition}
+For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
+\[
+\EncStmt(\Wau,\,\Gamma\vdash \phi)
+\equivnot
+\pmb{(} \EncTheory(\Wau) \pmb{,}\, \EncCtx(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
+\]
+\end{definition}
+The epression on the right side is an application of a first--order predicate symbol to 
+
+A term is called a \textit{class--term}, when it's a term of the type which is, unfortunately confusingly, called $\Term$ in the source code.
+
+
+
+
+\subsection{OBSOLETE PART TO BE DELETED}
 
 \begin{definition}[informal introduction]
 Let $\Fm,\Term,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
@@ -145,7 +265,7 @@ That is why it is an axiom, because otherwise it would be a circular definition.
 
 \section{Metalanguage[section is not yet finished]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
-To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the question about the metatheory is possible to answer within a theory.\\
+To avoid this ``infinite descend'' with increasing complexity of the statement of each step, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the questions about the metatheory can be discussed in the theory itself.\\%is possible to answer within a theory.\\
 In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statement.\\
 \begin{definition}[level of meta]
 Metalevel of the statement is the maximal amount of nested ``$\mathcal{F}\vdash (\dots)$'' in the formula.
@@ -349,8 +469,10 @@ $((\#s) \in (\#A))$.%(ToDo).%\ulcorner x \urcorner
 Thin symbols are used for depicting functional symbols on object level.\\
 Bold symbols are used for depicting a meta--level application of the functions, which construct a syntactic object be applying the functional symbols to the arguments.
 \end{metanotation}
+\pagebreak
 \begin{metanotation}[metasyntax for constructors inside the quoted text]
-Also, the following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.
+When dealing with variables, it is possible to use these definitions:
+(The following definitions are needed to avoid syntactic monsters with lots of dots like this one: ``$\boldccc{\meta{x}}{\meta{t}}{\meta{\phi}}$''.)
 \iffalse
 \[
 \pmb{\bm{\bot}}
@@ -369,7 +491,6 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 %\right\urcorner
 \]
 \fi
-\newpage
 \[
 \bot
 \equivnot
@@ -398,27 +519,14 @@ Also, the following definitions are needed to avoid syntactic monsters with lots
 "
 %\right\urcorner
 \]
-\begin{definition}
-For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
-\[
-\text{EncStmt}(\Wau, \Gamma\vdash \phi)
-\equivnot
-\pmb{(} \text{EncTheory}(\Wau) \pmb{,} \text{EncCtx}(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
-\]
-\end{definition}
-The epression on the right side is an application of a first--order predicate symbol to 
-
-A term is called a \textit{class--term}, when it's a term of the type which is, unfortunately confusingly, called $\Term$ in the source code.
-
-
-\begin{definition}
-A pair of string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
-\end{definition}
 
 \begin{notation}[dot]
 If a variable of an arbitrary type has dots on top of it, it means, that it is from higher meta--level.\\
 The number of dots on top of the variable means how many times "meta" this variable is.\\
 Dots are used for variables only.\\
+\[
+\meta{\phi} \equivnot \Antiquote{\phi}
+\]
 \end{notation}
 
 
@@ -435,8 +543,8 @@ If a variable is written as a bold letter, it means it is possible to substitute
 \begin{notation}[displaying in computer's terminal]
 It is a bit tricky to display dots in Linux terminal, so the following notation may be used.
 \[
-\pmb{\phi}^\text{code} \equivnot \meta{\pmb{\phi}}(BAD)
-\]
+\pmb{\phi}^\text{code} \equivnot \EncFm(\pmb{\phi})
+\]% \meta{\pmb{\phi}}(BAD)
 \end{notation}
 
 \begin{definition}[translation of variables for formulas into the first--order language]
@@ -888,16 +996,15 @@ are derivable in $\Wau$:
 \labeltagd{axm}{A8}
 \]
 \[
-(\neg A \implies (A\implies B)) \labeltagd{axm}{A9}
+(\neg A \implies (A\implies \bot)) \labeltagd{axm}{A9}
 \]
 \[
 ((A\implies B)\implies ((A \implies \neg B) \implies \neg A) )
 \labeltagd{axm}{A10}
 \]
 \[
-(\bot \implies B)) \labeltagd{axm}{A11}
+(\bot \implies B) \labeltagd{axm}{A11}
 \]
-
 \[
 (A\lor \neg A) \labeltagd{axm}{LEM}
 \]
@@ -920,7 +1027,7 @@ B
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
 \begin{definition}[``antiquotation'' of a variable or a term]%metation
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ is antiquoted, then it is just written "antiquote(t)"(without the quotation marks which are written here).
+The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ is antiquoted, then it is just written "Antiquote($t$)"(without the quotation marks which are written here).
 \end{definition}
 \begin{note}[requirement for the implementation]
 For $\phi$ to be well--formed formula, all $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\

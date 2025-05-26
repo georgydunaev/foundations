@@ -1,6 +1,6 @@
 \def\topic{Induction \& Recursion}
 \input{BEGIN.tex}
-\section{Height of a set}
+\section{Well--founded class and regularity reformulation}
 %Theorems about transifinite- and epsilon- induction and recursion.
 \begin{recall}[transfinite recursion]
 Let $G:\V\to\V$, then $\exists! F:\Ord\to\V$, such that
@@ -15,10 +15,12 @@ Family is a semantic function.\\
 
 Evaluation is a syntactic image.
 
-\begin{definition}[W]\ \\
+\begin{definition}[class of well--founded sets W]
 The class of well--founded sets $\W$ is being defined as an intersection of all those classes, which contain each of their subsets in themselves.
 \[
-\W\eqdef\cc{x}{\forall Q, (\power Q\subclass Q)\implies (x\in Q)}
+\W
+\eqdef
+\cc{x}{\forall Q,\ ((\power Q\subclass Q)\implies (x\in Q))}
 \]
 \end{definition}
 \begin{notation}
@@ -61,15 +63,13 @@ For such intersections of proper classes satisfying some property the following 
 = \bigcap (y\mapsto t(y))[Y]
 \]
 \end{notation}
-\begin{recall}\ \\
-Epsilon recursion:\\
-$G:V\to V$\\
-$\exists! F:\W\to\V$, s.t.\\
-$F(a) = G(F\restriction a)$.
+\begin{recall}Epsilon recursion:\\
+If $G:\V\to \V$, then  $\exists! F:\W\to\V$, s.t. $F(a) = G(F\restriction a)$.\\
 \end{recall}
-\begin{lemma}[W]\ \\
+\begin{lemma}[W is well--founded]
+The class of well--foundead sets is well--founded itself.
 \[
-\forall Q, (\power Q\subclass Q) \implies (\W\subclass Q)
+\forall Q,\ (\power Q\subclass Q) \implies (\W\subclass Q)
 \]
 \Proof
 Fix $Q$. Assume $(\power Q\subclass Q)$. To Show: $\W\subclass Q$.\\
@@ -80,7 +80,7 @@ To show: $m\in Q$.
 \[
 (m\in\W)
 \IMPLIES
-\forall D, (\power D\subclass D)\implies (x\in D)
+\forall D,\ ((\power D\subclass D)\implies (x\in D))
 \]
 Set $D:=Q$.\\
 The assumption $(\power Q\subclass Q)$ together with the last statement lead to $(m\in Q)$ via specification and modus ponens.
@@ -90,10 +90,10 @@ The assumption $(\power Q\subclass Q)$ together with the last statement lead to 
 \begin{note}
 Due to this lemma, the axiom of regularity may be formulated as $(\V\subclass\W)$.
 \end{note}
-\begin{theorem}[W]\ \\
+\begin{theorem}[W contains its subsets]
 The class $\W$ contains all of its subsets in itself.
 \[
-\power \W \subclass \W
+(\power \W \subclass \W)
 \]
 \Proof
 Fix $(x\in \power \W)$. To show: $x\in\W$.
@@ -104,7 +104,7 @@ Fix $(x\in \power \W)$. To show: $x\in\W$.
 \land
 (x\subclass\W)
 \]
-To show: $(x\set)\land(\forall Q, (\power Q\subclass Q)\implies (x\in Q))$.\\
+To show: $(x\set)\land(\forall Q,\ (\power Q\subclass Q)\implies (x\in Q))$.\\
 Fix $Q$.\\
 Assume $(\power Q\subclass Q)$.\\
 To show $(x\in Q)$.\\
@@ -123,7 +123,6 @@ The propostion $(\W\subclass Q)$ is proven by the specification of the previous 
 \IMPLIES
 (x\in\power Q)
 \]
-
 \[
 (x\in\power Q)
 \LAND
@@ -134,20 +133,25 @@ The propostion $(\W\subclass Q)$ is proven by the specification of the previous 
 
 \Done
 \end{theorem}
+%In fact, the regularity axiom i
+\begin{axiom}[reformulation of regularity/epsilon induction axiom]
+\[
+(\V\subclass \W)
+\]
+\end{axiom}
+\section{Height of a set}
 
-
-\begin{definition}
-Height function definition:\\
-Let $h(x)$ denote the height of a the set, which is the maximum length of a $\ni$--chain, started from $x$, minus one.\\
+\begin{definition}[height function]
+Let $h(x)$ denote the height of a the set, which is the maximum length, minus one, of a $\ni$--chain, started from $x$.
 \end{definition}
 
-\begin{example*}\ \\
+\begin{example*}[computations]
 $h(\emptyclass)$=0,\\
 $h(\{\emptyclass\})$=1,\\
 $h(\{\emptyclass,\{\emptyclass\}\})$=2,\\
 and in general if $n$ is a finite ordinal number, then $h(n)=n$.
 \end{example*}
-\begin{definition}[height]\ \\
+\begin{definition}[height]
 \label{height}
 The height function is defined via $\in$--recursion:
 \[
@@ -166,13 +170,12 @@ $h(a) = \sup(\ran(h\restriction a) )$\\
 
 
 % height = depth
-\begin{lemma}[set's height is ordinal]\ \\
-\label{lem:depthinon}
+\begin{lemma}[set's height is ordinal]
 The height of any set is an ordinal.
 \[
 (h:V\to\On)
-\]
-%\omega
+\label{lem:depthinon}
+\]%\omega
 \end{lemma}
 \ProofNoPar\ (first variant)\\
 Using the epsilon induction.\\
@@ -209,7 +212,7 @@ Therefore $(h(x)\in\On)$.
 \ProofNoPar\ (second variant)\\
 Using the epsilon induction.\\
 \[
-\power Q\subclass Q \implies \V\subclass Q
+((\power Q\subclass Q) \implies (\V\subclass Q))
 \]
 \[
 Q\eqdef \cc{x\in\V}{h(x)\in\On}

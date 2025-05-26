@@ -320,13 +320,15 @@
 
 \newcommand{\labeltag}[1]{\label{#1}\tag*{\phantom{.}\llap{(#1)}}}
 \newcommand{\clabeltag}[1]{\label{#1}\tag{#1}}
+\renewcommand{\labeltag}[1]{\label{#1}\tag{#1}}
 
 \newcommand{\labeltagd}[2]{\label{#1:#2}\tag*{\phantom{.}\ \llap{(#1:#2)}}}
 \newcommand{\clabeltagd}[2]{\label{#1:#2}\tag{#1:#2}}
+\renewcommand{\labeltagd}[2]{\label{#1:#2}\tag{#1:#2}}
 
 \newcommand{\tagd}[2]{\tag*{\phantom{.}\ \llap{(#1:#2)}}}
 \newcommand{\ctagd}[2]{\tag{#1:#2}}
-
+\renewcommand{\tagd}[2]{\tag{#1:#2}}
 
 \newcommand{\myref}[1]{\hyperref[#1]{#1}}
 
@@ -336,8 +338,16 @@
 \newcommand{\encdeccolor}{cyan}
 \newcommand{\EncFm}{{\text{\textcolor{\encdeccolor}{EncFm}}}}
 \newcommand{\EncTerm}{{\text{\textcolor{\encdeccolor}{EncTerm}}}}
+\newcommand{\EncCtx}{{\text{\textcolor{\encdeccolor}{EncCtx}}}}
+\newcommand{\EncTheory}{{\text{\textcolor{\encdeccolor}{EncTheory}}}}
+\newcommand{\EncStmt}{{\text{\textcolor{\encdeccolor}{EncStmt}}}}
+
+
 \newcommand{\DecFm}{{\text{\textcolor{\encdeccolor}{DecFm}}}}
 \newcommand{\DecTerm}{{\text{\textcolor{\encdeccolor}{DecTerm}}}}
+\newcommand{\DecCtx}{{\text{\textcolor{\encdeccolor}{DecCtx}}}}
+\newcommand{\DecTheory}{{\text{\textcolor{\encdeccolor}{DecTheory}}}}
+\newcommand{\DecStmt}{{\text{\textcolor{\encdeccolor}{DecStmt}}}}
 
 \newcommand{\embcolor}{cyan!60!black}
 \newcommand{\Emb}{{\text{\textcolor{\embcolor}{Emb}}}}
@@ -1035,8 +1045,15 @@
 \newcommand{\mmeta}[1]{\accentset{\sbullet\sbullet}{#1}}
 \newcommand{\mmmeta}[1]{\accentset{\sbullet\sbullet\sbullet}{#1}}
 
-\newcommand{\myquote}[1]{\ifmmode `` #1 " \else `` #1 '' \fi}
-\newcommand{\antiquote}[1]{\meta{#1}}
+\newcommand{\myquote}[1]{\ifmmode `` #1 " \else `` #1 '' \fi} %DEL?
+\newcommand{\antiquote}[1]{\meta{#1}} %DELETE
+
+\newcommand{\boldmeta}[1]{\meta{\pmb{#1}}} % just for better appearance despite being write in opposite order.
+
+
+%\textcolor{
+\newcommand{\Antiquote}[1]{\text{Antiquote}{(#1)}}
+\newcommand{\Quote}[1]{\text{Quote}{(#1)}}
 
 \renewcommand*\dddot[1]{%
   \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%

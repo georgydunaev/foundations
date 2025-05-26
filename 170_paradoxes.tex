@@ -103,9 +103,28 @@ W\in W \iff W\notin W, (W\in W) \vdash (W\notin W).
 W\in W \iff W\notin W, (W\in W) \vdash (W\in W)\tag{by assumption}.
 \]
 Subgoal2:\\
-\[W\in W \iff W\notin W, (W\notin W) \vdash \bot.\]
-\[W\in W \iff W\notin W, (W\notin W) \vdash (W\in W).\]
-\[W\in W \iff W\notin W, (W\notin W) \vdash (W\notin W)\tag{by assumption}\]
+\[
+[
+((W\in W) \iff (W\notin W)), (W\notin W)
+]
+\vdash
+\bot.
+\]
+\[
+[
+((W\in W) \iff (W\notin W)), (W\notin W) 
+]
+\vdash (W\in W).
+\]
+\[
+[
+((W\in W) \iff (W\notin W)), 
+(W\notin W)
+]
+\vdash
+(W\notin W)
+\tag{by assumption}
+\]
 \Done
 \end{theorem}
 %\subsection{Consequences of regularity axiom}
@@ -165,18 +184,18 @@ $\neg(\exists Q,\ Y\in Q)  \Longrightarrow (\forall Q,\ Y\notin Q)$.\\
 \end{theorem}
 
 \begin{theorem}
-\label{thm:intersection set then}
 If intersection of a class $A$ is a set, then $A$ is nonempty. 
 \[
 \left(\left(\intersection A\right)\set\middle)
 \implies
 \middle(\exists w,\ w\in A\right)
+\label{thm:intersection set then}
 \]
 %\quad\mbox{(by lemma ... )}
 \Proof
 New goal:
 \[
-\neg\left(\exists w,\ w\in A\middle)
+\left(\neg\exists w,\ w\in A\middle)
 \implies
 \neg\middle(\left(\intersection A\right)\set\right)
 \]
@@ -272,12 +291,12 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 \Done
 \end{theorem}
 
-\subsection{Conglomerate of all classes is not a class}
+\subsection{The conglomerate of all classes is not a class}
 \begin{theorem}
-\label{thm:conglomerate of classes not class}
 A conglomerate of all classes is not a class. It "does not exist as class".
 \[
 \neg (\exists W \forall Q,\ Q\in W)
+\label{thm:conglomerate of classes not class}
 \]
 \[
 (\forall W \exists Q,\ Q\notin W)
@@ -290,7 +309,7 @@ So $Q\notin W$.
 \Done
 \end{theorem}
 
-\subsection{Class of all ordinals is not a set}
+\subsection{The class of all ordinals is not a set}
 
 \begin{lemma}
 \label{lem:OnnotinOn}
@@ -307,13 +326,13 @@ Contradiction with assumption.\\
 Therefore $\On\notin\On$ is proven.
 \Done
 
-\begin{theorem}
-\label{thm:OnNotSet}
-\label{thm:OnnotinV}
+\begin{theorem}[the class of ordinal sets is not a set]
 The class $\On$ of all ordinals is a proper class, i.e. it is not a set.
 \[
 \On\notin\V
+\labeltagd{thm}{OnNotSet}
 \]
+%\label{thm:OnnotinV}
 \Proof
 Assume opposite: $\On\in\V$. To show: $\bot$.
 \[
