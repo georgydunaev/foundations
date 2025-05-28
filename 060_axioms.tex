@@ -345,6 +345,7 @@ to be continued\dots
 The empty set symbol $\emptyclass$ is a constant closed term.
 \[
 (\emptyclass : \Term)
+\labeltagd{constr}{emptyclass}
 \]
 %\ulcorner\emptyclass\urcorner
 \end{constructor}
@@ -395,8 +396,8 @@ Let the symbol $\V$ be a constant of the language of the class theory being disc
 \begin{definition}[universal class]
 \[
 \V\eqdef\cc{x}{\top}
+\clabeltagd{def}{universal class}
 \]
-\label{def:universal class}
 \end{definition}
 
 \subsection{Unions}
@@ -404,8 +405,8 @@ Let the symbol $\V$ be a constant of the language of the class theory being disc
 This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
 \union A \eqdef \cc{x}{\exists a\in A,\ x\in a}
+\clabeltagd{def}{elementary union}
 \]
-\label{def:union}
 \end{definition}
 
 \begin{definition}[union of a definable conglomerate of classes]%\ \\
@@ -413,6 +414,7 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 \bigcup^y_{\psi} t 
 \ \eqdef\ 
 \cc{x}{\exists y, \psi \land (x\in t)}
+\clabeltagd{def}{conglomerate union}
 \]
 \underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\

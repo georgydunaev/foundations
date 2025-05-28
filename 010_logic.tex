@@ -168,10 +168,14 @@ So the following computational equality is an identity:
 \subsubsection{Notation for variables}
 \begin{notation}[bold variables for terms]
 For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
+\iffalse
 \begin{lstlisting}
-val xb : Class = (QuoteClass (CV (namelvl (`x',zero))))
-val yb : Class = (QuoteClass (CV (namelvl (`y',zero))))
+val xb : Class = (EncClass (QuoteClass (CV (namelvl ("x", Nat.zero)))))
+val yb : Class = (EncClass (QuoteClass (CV (namelvl ("y", Nat.zero)))))
 ...
+\end{lstlisting}
+\fi
+\begin{lstlisting}
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
@@ -211,11 +215,11 @@ All bold functional and predicate symbols written boldly simply mean the first--
 For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
 \[
 \EncStmt(\Wau,\,\Gamma\vdash \phi)
-\equivnot
+\equiv
 \pmb{(} \EncTheory(\Wau) \pmb{,}\, \EncCtx(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
 \]
 \end{definition}
-The expression on the right side is an application of a first--order predicate symbol to three terms which are codes of some terms. Computation of the encoding of other types is done similarly.
+The expression on the right hand side is an application of a first--order predicate symbol to three arguments, which are codes of three terms. The computation of the encoding of other types is done in the same way.
 
 \iffalse
 \begin{definition}
@@ -329,11 +333,11 @@ Then
 In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid  confusion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TClass'', ``TCtx'', etc. \\
 But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
 \[
-``(\forall(x:\TFm),\ \dots)",
+``(\forall(\phi:\TFm),\ \dots)",
 \]
 starting from the next chapter, it will be written
 \[
-``(\forall(x:\Fm),\ \dots)".
+``(\forall(\phi:\Fm),\ \dots)".
 \]
 \end{notation}
 \begin{notation}[overloading naming prefix of constants]
