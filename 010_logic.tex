@@ -27,7 +27,7 @@ The idea is that a book on foundations is simultaneously is a documentation for 
 \restoregeometry
 \subsection{Primitive definitions and notation}
 \begin{definition}[variable]
-An ordered (hetrogeneous) pair of a string called \textit{name} and a natural number called a \textit{level} variable is called a \textit{variable}.
+An ordered and heterogeneous pair of a string called \textit{name} and a natural number called a \textit{level} is called a \textit{variable}.
 \end{definition}
 This and other prinmitive definitions can be simply restored from the code above, so there is no need to state them twice. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
@@ -38,15 +38,63 @@ Meanwhile, the difference between notation for the proof assistant(which is quit
 
 It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
 \begin{theorem*}[representation theorem in the traditional notation]
-Let $\mathbb{N}$ be the set of natural numbers. A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then $T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \leftrightarrow y = \overline{n} )$.\\
+Let $\mathbb{N}$ be the set of natural numbers. A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
+T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \leftrightarrow y = \overline{n} ).
+\]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
 \end{theorem*}
-\begin{theorem*}[representation theorem in the local notation of this book]
+\begin{theorem*}[representation theorem in the higher--order notation of this book]
 Let $\mathbb{N}$ be the set of natural numbers. 
-A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
-for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then $T \vdash \pmb{ \forall } \pmb{y} \pmb{(}\pmb{\varphi}_{\pmb{f}} \pmb{(}\boldmeta{m_1}\pmb{,} \pmb{\dots}\pmb{,} \boldmeta{m_k}\pmb{,} \pmb{y}\pmb{)} \pmb{\leftrightarrow} \pmb{y} = \boldmeta{n} \pmb{)}$.\\
-\end{theorem*}
+A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
+for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then 
+\iffalse
+\[
+T \vdash \Quote\Fm(\forall y (\Antiquote\Fm(\varphi_f)[\Antiquote\Class(m_1)/x_1, \dots, \Antiquote\Class(m_k)/x_k, y/y] \leftrightarrow (y = \Antiquote(n)) )).
+\]
+\fi
+\[
+T \vdash \Quote\Fm(\forall y (\Antiquote\Fm(\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote(y)/y]) \leftrightarrow (y = \Antiquote(n)) )).
+\]
+or, equivalently(this is a questionable formula, it may not be even wrong),
+\[
+T \vdash (\forall \Quote(y), ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \leftrightarrow (\Quote\Class(y) = n) )).
+\]
+or, equivalently,
+\[
+T \vdash (\forall y, ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \leftrightarrow (\Quote\Class(y) = n) )).
+\]
+or, equivalently,
+(OFFTOPIC:
+\[
+T \vdash \llcorner \pmb{\varphi} \lrcorner
+\]
 
+)
+\[
+T \vdash \llcorner
+\pmb{ \forall } \pmb{y} \pmb{(}\pmb{\varphi}_{\pmb{f}} \pmb{(}\boldmeta{m_1}\pmb{,} \pmb{\dots}\pmb{,} \boldmeta{m_k}\pmb{,} \pmb{y}\pmb{)} \pmb{\leftrightarrow} \pmb{y} = \boldmeta{n} \pmb{)}\lrcorner,
+\]
+where
+\[
+\ulcorner\cdot\urcorner \equivdef (\text{AntiquoteClass} \circ \EncFm),
+\]
+\[
+\ulcorner\cdot\urcorner : \Fm \to \Class
+\]
+\[
+\llcorner\cdot\lrcorner \equivdef (\DecFm \circ \text{QuoteClass}).
+\]%(\DecFm \circ \text{QuoteClass})
+%\DecFm
+\[
+\llcorner\cdot\lrcorner : \Class \to \Fm
+\]
+For any formula $\phi$,
+\[
+\llcorner\ulcorner\phi\urcorner\lrcorner
+\equiv
+\phi.
+\]
+\end{theorem*}
 \iffalse % VERY GOOD, BUT DISTRACTING
 \subsection{First bold notation}
 \subsubsection{Notation for variables}
@@ -61,10 +109,10 @@ val yb1 : Class = (QuoteClass (CV (namelvl (`y',zero))))
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{x} \equivdef \Quote{ x_{(0)} },
+\pmb{x} \equivdef \Quote\Var( x_{(0)} ),
 \]
 \[
-\pmb{y} \equivdef \Quote{ y_{(0)} },
+\pmb{y} \equivdef \Quote\Var( y_{(0)} ),
 \]
 \[
 \dots
@@ -80,10 +128,10 @@ val psib1 : Class = (QuoteFm (FmVar vpsi))
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{\phi} \equivdef \Quote{ \phi_{(0)} },
+\pmb{\phi} \equivdef \Quote\Fm( \phi_{(0)} ),
 \]
 \[
-\pmb{\psi} \equivdef \Quote{ \psi_{(0)} },
+\pmb{\psi} \equivdef \Quote\Fm( \psi_{(0)} ),
 \]
 \[
 \dots
@@ -98,22 +146,52 @@ All bald functional and predicate symbols written boldly simply mean the same co
 
 \subsection{Meaning of dots and bold symbols}%Second bold notation
 %The second bold notation may be introduced in a situation when it is useful to show that 
-All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. (Here the type $\Fm$ is being used for the demonstration, but all definitions are similar for every other type labeled by Typ: $\Ctx$, $\Class$, Theory, etc.)
+All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. 
+
+In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other type labeled by Typ: for $\Ctx$, $\Class$, $\Theory$, etc.
+
+\begin{definition}[functions Bold and Dot]
+Let $\circ$ be an infix operator of composition of functional symbols here. Then
+\[
+\text{BoldFm} \equivdef \EncFm
+\]%(\EncFm \circ \text{QuoteFm})
+\[
+\text{BoldFm} : \Fm \to \Class 
+\]
+and
+\[
+\text{Dot} \equivdef (\text{AntiquoteClass}).%\circ \DecFm
+\]
+\[
+\text{Dot} : \Class \to \Class 
+\]
+
+\end{definition}
+
+\begin{notation}[bold and/or dotted variables for formulas]
+For a formula variable $\phi$, its encoding is denoted as a bold $\pmb{\phi}$:
+\[
+\pmb{\phi} \equivnot \text{BoldFm}(\phi).
+\]
+For any class variable $t$, its antiquotation is denoted with a dot:
+\[
+\meta{t} \equivnot \text{Dot}(t).
+\]
+\end{notation}
+
 \begin{note}[non--commutativity of notation]
 %Contrary to the first notation,
 Properties ``being bold'' and ``having a dot'' are not commutative here: together they mean precisely following order of applications
 %\iffalse good
+\iffalse
 \[
-\meta{\pmb{\phi}} \equivdef \text{BoldFm}(\text{DotFm}(\phi)),
+\meta{\pmb{\phi}} \equivdef \text{BoldFm}(\text{DotFm}(\phi)).
 \]
-where
+\fi
 \[
-\text{BoldFm} \equivdef (\DecFm \circ \text{Quote})
+\meta{\pmb{\phi}} \equivdef \text{Dot}(\text{BoldFm}(\phi)).
 \]
-and
-\[
-\text{DotFm} \equivdef (\text{Antiquote} \circ \EncFm).
-\]
+%where
 \iffalse
 \[
 \text{BoldFm} \equivdef (\EncFm \circ \text{Quote})
@@ -128,34 +206,56 @@ So, as a result, the properties cancel each other:
 \[
 \meta{\pmb{\phi}} 
 \equiv 
-((\EncFm \circ \text{Quote}) \circ (\text{Antiquote} \circ \DecFm))(\phi)
+((\EncFm \circ \Quote) \circ (\Antiquote \circ \DecFm))(\phi)
 \equiv
 \phi
-\]%\EncFm(\Antiquote{\phi})
+\]%\EncFm(\Antiquote(\phi))
 
 \[
 \meta{\pmb{\phi}} 
 \equiv 
-((\DecFm \circ \text{Quote}) \circ (\text{Antiquote} \circ \EncFm))(\phi)
+((\DecFm \circ \Quote) \circ (\Antiquote \circ \EncFm))(\phi)
 \equiv
 \phi
-\]%\EncFm(\Antiquote{\phi})
+\]%\EncFm(\Antiquote(\phi))
 \fi
+\iffalse %last before three--agreement
 \[
 \meta{\pmb{\phi}} 
 \equiv 
 (
-(\DecFm \circ \text{Quote})
+(\DecFm \circ \text{QuoteClass})
 \circ
-( \text{Antiquote}\circ \EncFm)
+(\text{AntiquoteClass} \circ \EncFm)
 )(\phi)
 \equiv
 \phi
-\]%\EncFm(\Antiquote{\phi})
+\]%\EncFm(\Antiquote(\phi))
+No!%(\DecFm \circ \text{QuoteClass})
+\fi
+\[
+\llcorner
+\meta{\pmb{\phi}} 
+\lrcorner
+\equiv 
+(
+(\DecFm \circ \Quote\Class)
+\circ
+(\text{AntiquoteClass})%\circ \DecFm
+\circ
+(\EncFm)
+)(\phi)
+\equiv
+\phi
+\]%\EncFm(\Antiquote(\phi))
+%%%(\text{AntiquoteClass} \circ \DecFm)
+
 So the following computational equality is an identity:
 \[
 \boxed{
+\llcorner
 \meta{\pmb{\phi}} 
+\lrcorner
 \equiv 
 \phi
 }
@@ -167,11 +267,11 @@ So the following computational equality is an identity:
 
 \subsubsection{Notation for variables}
 \begin{notation}[bold variables for terms]
-For any lower-case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
-\iffalse
+For any lower--case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
+\iftrue
 \begin{lstlisting}
-val xb : Class = (EncClass (QuoteClass (CV (namelvl ("x", Nat.zero)))))
-val yb : Class = (EncClass (QuoteClass (CV (namelvl ("y", Nat.zero)))))
+val xb : Class = (EncClass (CV (namelvl ("x", Nat.zero))))
+val yb : Class = (EncClass (CV (namelvl ("y", Nat.zero))))
 ...
 \end{lstlisting}
 \fi
@@ -179,10 +279,10 @@ val yb : Class = (EncClass (QuoteClass (CV (namelvl ("y", Nat.zero)))))
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{x} \equivdef \EncClass(\Quote{ x_{(0)} }),
+\pmb{x} \equivdef \EncClass(x_{(0)} ),
 \]
 \[
-\pmb{y} \equivdef \EncClass(\Quote{ y_{(0)} }),
+\pmb{y} \equivdef \EncClass( y_{(0)} ),
 \]
 \[
 \dots
@@ -192,16 +292,16 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \begin{notation}[bold variables for formulas]
 For any lower--case Greek letter(`{$\phi$}',`{$\psi$}', `{$\chi$}', \dots), define a bold lower-case Greek letter to denote
 \begin{lstlisting}
-val phib : Class = (EncFm (QuoteFm (FmVar vphi)))
-val psib : Class = (EncFm (QuoteFm (FmVar vpsi)))
+val phib : Class = (EncFm (FmVar vphi))
+val psib : Class = (EncFm (FmVar vpsi))
 ...
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printed,
 \[
-\pmb{\phi} \equivdef \EncFm(\Quote{ \phi_{(0)} }),
+\pmb{\phi} \equivdef \EncFm(\phi_{(0)} ),
 \]
 \[
-\pmb{\psi} \equivdef \EncFm(\Quote{ \psi_{(0)} }),
+\pmb{\psi} \equivdef \EncFm(\psi_{(0)} ),
 \]
 \[
 \dots
@@ -219,7 +319,8 @@ For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of t
 \pmb{(} \EncTheory(\Wau) \pmb{,}\, \EncCtx(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
 \]
 \end{definition}
-The expression on the right hand side is an application of a first--order predicate symbol to three arguments, which are codes of three terms. The computation of the encoding of other types is done in the same way.
+The expression on the right hand side is an application of a first--order \underline{functional} %predicate 
+symbol to three arguments, which are codes of three terms, and which returns a term with meaning of a code of a statement. The computation of the encoding of other types is done in the same way.
 
 \iffalse
 \begin{definition}
@@ -245,15 +346,24 @@ This could lead to a contradiction (Girard's Paradox) in case if this typing sys
 %, even finite.
 \fi
 
-
-\begin{definition}[class constants, corresponding to syntactic entities]
-Let $\circ$ be a composition of functional symbols here, then the class constants, corresponding to formulas, terms, etc are  defined the following way:
+%class constants, corresponding to codes of syntactic entities
+\begin{definition}[sets of codes]
+%Let $\circ$ be a composition of functional symbols here, then t
+The class constants, corresponding to formulas, classes, contexts, etc are defined the following way:
 \[
+\text{FmCode} 
+\equivdef
+\CFm
+\text{, where }
 \CFm
 \equivdef
 \Emb(\TFm)
 \]
 \[
+\text{ClassCode} 
+\equivdef
+\CClass
+\text{, where }
 \CClass
 \equivdef
 \Emb(\TClass)
@@ -262,15 +372,16 @@ Let $\circ$ be a composition of functional symbols here, then the class constant
 \dots
 \]
 \end{definition}
+\iffalse
 \begin{notation}[overloading]
 Luckily, on paper, it is possible to completely avoid the necessity of coloring the constants or of writing prefixes, via simple overloading trick: 
 \[
-\text{Fm}
+\text{FmCode}
 \equivnot
 \CFm
 \]
 \[
-\text{Class}
+\text{ClassCode}
 \equivnot
 \CClass
 \]
@@ -279,6 +390,7 @@ Luckily, on paper, it is possible to completely avoid the necessity of coloring 
 \]
 Unfortunately, the Standard~ML doesn't have the overloading feature, so prefixes are kept in the program.
 \end{notation}
+\fi
 
 
 %(\text{Enc}\circ\text{VTyp})
@@ -340,6 +452,7 @@ starting from the next chapter, it will be written
 ``(\forall(\phi:\Fm),\ \dots)".
 \]
 \end{notation}
+\iffalse
 \begin{notation}[overloading naming prefix of constants]
 Similarly, instead of more precise expression
 \[
@@ -347,10 +460,11 @@ Similarly, instead of more precise expression
 \]
 it will be written
 \[
-``(\forall(f\in\Fm),\ \dots)".
+``(\forall(f\in\FmCode),\ \dots)".
 \]
 Note, that the letter $f$ here is a vareiable for the code of the formula, not for the formula itself, as was above where the symbol ":" was used.
 \end{notation}
+\fi
 In general, any other abuse of notation should be avoided and will be avoided at all costs.
 
 
@@ -379,22 +493,32 @@ That is why it is an axiom, because otherwise it would be a circular definition.
 \begin{notation}[overloading class bindings]
 Again, as previously for formulas, 
 \[
-``(\forall(x:\TClass),\ \dots)",
+``(\forall(K:\TClass),\ \dots)",
 \]
 can be written as
 \[
-``(\forall(x:\Class),\ \dots)";
+``(\forall(K:\Class),\ \dots)".
 \]
-and
+\iffalse
+and also the quantifiers bound by a variable codes of definable classes
 \[
-``(\forall(t\in\CClass),\ \dots)",
+``(\forall(e\in\CClass),\ \dots)",
 \]
 can be likewise unambiguously written as
 \[
-``(\forall(t\in\Class),\ \dots)".
+``(\forall(e\in\ClassCode),\ \dots)".
 \]
+\fi
 \end{notation}
-
+\begin{notation}[the default type]
+Finally, when the type is ommited, it is assumed to be ``Class''. So, unsurprisingly, a ``Class'' is a default type of the class theory.
+\[
+(\forall K,\ \psi)
+\iffnot
+(\forall (K:\Class),\ \psi)
+\]
+So, linguistically, any time ``a term'' is written, without mentioning type, the meaning behind it is ``a term of the type Class''. It may not be the case, in context of the proof assistant's implementation.
+\end{notation}
 \iffalse% METALANG
 \section{Metalanguage[section is not yet finished]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statement?''. Unfortunately, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
@@ -665,7 +789,7 @@ If a variable of an arbitrary type has dots on top of it, it means, that it is f
 The number of dots on top of the variable means how many times "meta" this variable is.\\
 Dots are used for variables only.\\
 \[
-\meta{\phi} \equivnot \Antiquote{\phi}
+\meta{\phi} \equivnot \Antiquote(\phi)
 \]
 \end{notation}
 
@@ -925,8 +1049,8 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \]%\emptyclass
 \iffalse
 \[
-\forall x\in\Var,\ %
-\forall A\in\Fm,\ %
+\forall (x:\Var),\ %
+\forall (A:\Fm),\ %
 \FV(\ulcorner(\exists \meta{x},\ \meta{A})\urcorner)\eqdef \FV(A)\setminus\{x\}
 \]%\emptyclass
 \[
@@ -937,8 +1061,8 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \]
 \fi
 \[
-\forall x\in\Var,\ %
-\forall A\in\Fm,\ %
+\forall (x:\Var),\ %
+\forall (A:\Fm),\ %
 \FV(\ulcorner\boldexists{ \meta{ x } }{\meta{ A } }\urcorner)\eqdef \FV(A)\setminus\{x\}
 \]%\emptyclass
 
@@ -960,12 +1084,17 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \fi
  %\Pow_{\text{fin}}%\Finite\Set\List
 \subsubsection{Theory and context}
-\begin{metadefinition}[context]%\ \\
+\begin{definition}[context]%\ \\meta
 Context is a finite list of arbitrary formulas. It is usually denoted by the uppercase Greek alphabet letters like $\Gamma$ or $\Delta$.
-\end{metadefinition}
-\begin{metadefinition}[theory]%\ \\
-Theory is an ordered (usually infinite) set of closed formulas. It is usually denoted by the uppercase Latin alphabet letters like $\Tau$, $\Wau$ or $\Fau$.
-\end{metadefinition}
+\end{definition}
+\begin{definition}[theory]%\ \\meta
+Theory is an ordered (usually infinite) set of closed formulas. It is denoted by italic uppercase Latin alphabet letters like $\Tau$, $\Wau$ or $\Fau$.
+\end{definition}
+
+
+
+
+
 \begin{metadefinition}[definitional equality]
 Let $t_1$ and $t_2$ be terms, such that $t_1$ is (normally) an application of a (new) functional symbol to some arguments.\\
 Assume(normally) that $t_2$ has no free variable which are not free in $t_1$.\\
@@ -978,7 +1107,7 @@ For example, the formula
 \]
 means
 \[
-\forall X\in\Class,\ \ulcorner\pmb{\power} X\urcorner \in\Class
+\forall (X:\Class),\ \ulcorner\pmb{\power} X\urcorner \in\Class
 \]
 and
 \[
@@ -1143,7 +1272,7 @@ are derivable in $\Wau$:
 \labeltagd{axm}{A10}
 \]
 \[
-(\bot \implies B) \labeltagd{axm}{A11}
+(\bot \implies B) \labeltagd{axm}{exfalso}
 \]
 \[
 (A\lor \neg A) \labeltagd{axm}{LEM}
@@ -1166,13 +1295,16 @@ B
 %\star
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
-\begin{definition}[``antiquotation'' of a variable or a term]%metation
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ is antiquoted, then it is just written "Antiquote($t$)"(without the quotation marks which are written here).
-\end{definition}
+\begin{notation}[``antiquotation'' of a term]%metation
+The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ (of arbitrary type) is antiquoted, then it can be simply written "Antiquote($t$)"(without the quotation marks which are written here).
+\end{notation}
 \begin{note}[requirement for the implementation]
-For $\phi$ to be well--formed formula, all $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
-(Otherwise, it is not a formula, but rather a predicate--like symbol which needs some arguments.)\\
-This requirement is also important, since the proof assistant needs a precise term, not a variable, in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
+\underline{For a formula $\phi$ to be well--formeda, all antiquotations in it must be quoted.}\\
+\iffalse
+$n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
+\fi
+(Otherwise, it would not be a formula, but rather kinda predicate--like symbol, which needs some arguments.)\\
+This requirement is also important, since the proof assistant requires a ground term in certain sense, without ``free antiquotations'', in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
 \fbox{This agreement makes the side conditions decidable.}\\
 The ``yes/no'' answer is computed on the highest meta--level of the formula, otherwise the exception is raised, in case if there are ``unbound metavariables''.
 %They are done by the implementented core functions on the highest meta--level of the formula.
@@ -1181,27 +1313,35 @@ The ``yes/no'' answer is computed on the highest meta--level of the formula, oth
 
 The axiom schemes are expressed on the metalevel in this way:
 \[
-\forall A,B \in \Fm,
-\Tau \vdash (A \implies (B \implies A))
+\forall (A,B : \Fm),\ %
+(\Tau \vdash (A \implies (B \implies A)))
 \]
 or in different(and equivalent) presentation:
 \[
-\forall A,B \in \Fm,\ %
-(\Tau \vdash \pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)})%\ulcorner \urcorner
+\forall (A,B : \Fm),\ %
+(\Tau \vdash 
+\llcorner
+\pmb{(}\meta{\pmb{A}} \pmb{\implies} \pmb{(}\meta{\pmb{B}} \pmb{\implies} \meta{\pmb{A}}\pmb{)}\pmb{)}
+\lrcorner
+)%\ulcorner \urcorner
 \]
 \[
 \text{\dots\ (other axioms are transformed similarly)\ \dots}
 \]
 \[
-\forall A \in \Fm,\ %
-(\Tau \vdash \pmb{(}\meta{\pmb{A}} \pmb{\lor} \pmb{\neg} \meta{\pmb{A}}\pmb{)})
+\forall (A : \Fm),\ %
+(\Tau \vdash 
+\llcorner
+\pmb{(}\meta{\pmb{A}} \pmb{\lor} \pmb{\neg} \meta{\pmb{A}}\pmb{)}
+\lrcorner
+)
 \]
 %\ulcorner(\meta{A}\lor \neg \meta{A})\urcorner
 
 
 Everything that is derivable in $\Tau$ is also derivable in $\Fau$:
 \[
-\forall \phi\in\Fm,\ ((\Tau \vdash \phi) \implies (\Fau \vdash \phi))
+\forall (\phi:\Fm),\ ((\Tau \vdash \phi) \implies (\Fau \vdash \phi))
 \]
 Both of the following statements are necessary, because one is not implies the other(in general):
 \iffalse WRONG,
@@ -1214,7 +1354,7 @@ Both of the following statements are necessary, because one is not implies the o
 (\Tau \vdash \ulcorner\meta{B}\urcorner)
 \]
 \[
-\forall A,B \in \Fm,
+\forall (A,B : \Fm),
 (\Fau \vdash \ulcorner(\meta{A} \implies \meta{B})\urcorner)
 \land 
 (\Fau \vdash \ulcorner\meta{A}\urcorner)
@@ -1225,8 +1365,8 @@ Both of the following statements are necessary, because one is not implies the o
 %\myquote{
 
 \[
-\forall A,B \in \Fm,\ %
-\forall \Gamma \in \Ctx,\ %
+\forall (A,B : \Fm),\ %
+\forall (\Gamma : \Ctx),\ %
 (
 (
 (\Tau,\Gamma \vdash (A \implies B))
@@ -1238,8 +1378,8 @@ Both of the following statements are necessary, because one is not implies the o
 )
 \]
 \[
-\forall A,B \in \Fm,\ %
-\forall \Gamma \in \Ctx,\ %
+\forall (A,B : \Fm),\ %
+\forall (\Gamma : \Ctx),\ %
 (
 (
 (\Fau,\Gamma \vdash (A \implies B))
@@ -1272,21 +1412,22 @@ Both of the following statements are necessary, because one is not implies the o
 %
 
 \underline{Specification axiom scheme:}\\
-For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t$ is free for [the substitution instead of] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
+For any variable $x$, for any type $X$, for any term $t$ of that type, for any formula $\phi$ such that term $t$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
 \[
-(\forall x,\phi) \implies \phi[t/x]
+(\forall (x:X),\phi) \implies \phi[t/x]
 \labeltagd{axm}{S1}
 \]
 \[
 \phi[t/x] \implies (\exists x,\phi)
 \labeltagd{axm}{S2}
 \]
-
 \[
-\forall \Wau\in\Theory,\ %
-\forall x\in\Var,\ %
-\forall t\in\Class,\ %
-\forall \phi\in\Fm,\ %
+\forall (\Wau:\Theory),\ %
+\forall (x:\Var),\ %
+\forall (t:\Class),\ %
+\forall (\phi:\Fm),\ %
+\]
+\[
 (
 (\text{$t$ free for $x$ in $\phi$})
 \implies
@@ -1295,10 +1436,12 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \clabeltagd{axm}{MetaS1}
 \]
 \[
-\forall \Wau\in\Theory,\ %
-\forall x\in\Var,\ %
-\forall t\in\Class,\ %
-\forall \phi\in\Fm,\ %
+\forall (\Wau:\Theory),\ %
+\forall (x:\Var),\ %
+\forall (t:\Class),\ %
+\forall (\phi:\Fm),\ %
+\]
+\[
 (
 (\text{$t$ free for $x$ in $\phi$})
 \implies
@@ -1308,21 +1451,22 @@ For any variable $x$, for any term $t$, for any formula $\phi$ such that term $t
 \]
 
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
-For any variable $x$, for any formula $\phi$ such that the term $(\Henkin x,\varphi)$ is free for [the substitution of free occurences of] $x$ in $\phi$, the following formula is derivable in $\Fau$:
+For any variable $x$, for any type $X$, and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
-(\exists x,\varphi)
+(\exists (x:X),\varphi)
 \implies
-(\varphi[(\Henkin x,\varphi)/x])
+(\varphi[(\Henkin (x:X),\varphi)/x])
 \labeltagd{axm}{H}
 \]
 \[
-\forall x\in\Var,\ %
-\forall \varphi\in\Fm,\ %
+\forall (x:\Var),\ %
+\forall (X:\Typ),\ %
+\forall (\phi:\Fm),\ %
 \Fau\vdash
 (
-(\exists x,\varphi)
+(\exists (x:X),\varphi)
 \implies
-(\varphi[(\Henkin x,\varphi)/x])
+(\varphi[(\Henkin (x:X),\varphi)/x])
 )
 \labeltagd{axm}{MetaH}
 \]
@@ -1330,14 +1474,14 @@ For any variable $x$, for any formula $\phi$ such that the term $(\Henkin x,\var
 (This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
-For any variable $x$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\psi$, then
-the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability of $(\psi \implies (\forall x,\varphi))$ and $((\exists x,\varphi)\implies \psi)$ in $\Wau$.
+For any variable $x$, for any type $X$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\psi$, then
+the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability of $(\psi \implies (\forall (x:X),\varphi))$ and $((\exists (x:X),\varphi)\implies \psi)$ in $\Wau$.
 % following formulas are derivable $\Tau$($\Fau$)
 \[
 \frac{
 \psi \implies \varphi
 }{
-\psi \implies (\forall x,\varphi)
+\psi \implies (\forall (x:X),\varphi)
 }
 \quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
 \labeltagd{axm}{B1}
@@ -1346,7 +1490,7 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 \frac{
 \varphi \implies \psi
 }{
-(\exists x,\varphi)\implies \psi
+(\exists (x:X),\varphi)\implies \psi
 }
 \quad\quad(\mbox{where }x\notin\FV(\psi::\Gamma))
 \labeltagd{axm}{B2}
@@ -1360,15 +1504,15 @@ For our purposes in the classical setting, it is possible to simplify these abst
 \begin{metadefinition}[generalisation rule]%underline
 For $\Wau$ to be a first--order theory, the following must hold:\\
 ``
-For any variable $x$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
-the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$ in $\Wau$.
+For any variable $x$, for any type $X$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
+the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varphi)$ in $\Wau$.
 ''
 %$\Tau$($\Fau$)
 \[
 \frac{
 \varphi
 }{
-(\forall x,\varphi)
+(\forall (x:X),\varphi)
 }
 \quad\quad(\mbox{where }x\notin\FV(\Gamma))
 \labeltag{Gen}
@@ -1376,15 +1520,17 @@ the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$
 \end{metadefinition}
 \begin{metadefinition}[generalisation rule, written on the meta--level]
 \[
-\forall x\in\Var,\ %
-\forall \phi\in\Fm,\ %
-\forall \Gamma \in \Ctx,\ %
+\forall (x:\Var),\ %
+\forall (X:\Typ),\ %
+\forall (\phi:\Fm),\ %
+\forall (\Gamma : \Ctx),\ %
+\]\[
 (x\notin\FV(\Gamma))
 \implies
 (
 (\Fau,\Gamma\vdash \phi)
 \implies
-(\Fau,\Gamma\vdash (\forall x,\phi))
+(\Fau,\Gamma\vdash (\forall (x:X),\phi))
 )
 \clabeltag{MetaGen}
 \]
@@ -1393,7 +1539,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall x,\varphi)$
 
 \begin{metadefinition}[classical existence]
 \[
-(\exists x, \phi) \iffdef (\neg(\exists x,(\neg\phi)))
+(\exists x, \phi) \iffdef (\neg \forall (x:X),\ (\neg\phi))
 \]
 \end{metadefinition}
 
@@ -1468,10 +1614,10 @@ variant2:
 Semantics: if the assumption is true, then $c_{(y.\varphi)}$ is one of such objects $y$, that $\varphi$ holds(in our case classes are objects);  if the assumption is not true, then $c_{(y.\varphi)}$ is interpreted as some default class. The empty class is chosen to be default. Note, that the implementation of the interpretation of this symbol may require meta-theoretical choice on the domain (i.e. on the conglomerate of all classes) as well, or something like that.
 \end{axiom}
 \fi %GOOOOD
-\begin{definition}[global choice]%\ \\%, variant 1
+\begin{definition}[a global choice function]%\ \\%, variant 1
 If $x\notin \FV(S)$ then
 \[
-c(S)\ceq (\Henkin x,(x\in S))
+c(S)\ceq (\Henkin (x:\Class),\ (x\in S))
 \]
 \end{definition}
 
@@ -1497,20 +1643,25 @@ Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type
 \]
 
 \[
-(\Var\ni y\notin\FV(\phi))
+\forall (y:\Var),\ %
+(
+(y\notin\FV(\phi))
 \implies
 (((y,\phi[y/x]) \sim (x,\phi) ))
+)
 \]
 
 \[
-(\Var\ni x\notin (\FV(t_1)\cup \FV(t_2)))
+\forall (x:\Var),\ %
+(x\notin (\FV(t_1)\cup \FV(t_2)))
 \land
 (t_1 \sim t_2)
 \implies
 (q[t_1/x] \sim q[t_2/x])
 \]
 \[
-(\Var\ni x\notin (\FV(t_1)\cup \FV(t_2)))
+\forall (x:\Var),\ %
+(x\notin (\FV(t_1)\cup \FV(t_2)))
 \land
 (t_1 \sim t_2)
 \implies
@@ -1522,13 +1673,13 @@ Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type
 \implies
 ((\Fau, \Gamma\vdash\phi_1) \sim (\Fau, \Gamma\vdash\phi_2))
 \]
-Generally speaking,
+Generally speaking, it may be true, that
 \[
 (\vec{\exists})((t_1 \sim t_2)
 \not\implies
 (\encode(t_1) \sim_\Tau \encode(t_2))),
 \]
-but maybe it is possible assume (but the algorithm may be ineffective: manually checking all smaller codes. Also De Brujin notation is a step in the same direction.)
+but maybe it is possible assume. (As a result the encoding algorithm may be very ineffective: e.g. via testing all smaller codes.) (The alternative architecture, which uses the De Brujin notation might be useful here.)
 
 But in $\Fau$,
 \[
@@ -2144,7 +2295,7 @@ Formally:
 \forall (a,b:\Class), 
 (\Fau\vdash (a=b))
 \implies
-(\forall x:\Class, \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
+(\forall (x:\Class),\ \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
 \]
 
 \end{metatheorem}
@@ -3308,15 +3459,15 @@ The assumption of this book is that there exists a theory $\mathcal{F}$, which i
 \tag{Refl}
 \]
 \[
-\forall \phi\in\Fm,\ % 
+\forall (\phi:\Fm),\ % 
 ((\Fau \vdash \phi) \implies \phi),
 \tag{MetaRefl}
 \]%\Fau \vdash 
-which is (due to incompleteness argument) provably false in $\Tau$:
+which is (due to the incompleteness argument) provably false in $\Tau$:
 \[
 \Tau \vdash
 (
-\neg (\forall \phi\in\Fm,\ % 
+\neg (\forall (\phi:\Fm),\ % 
 ((\Tau \vdash \phi) \implies \phi)
 ))
 \tag{``Effective reflection'' is impossible}
@@ -3706,7 +3857,7 @@ It is called \textit{complete}, if for every formula, either its negation is der
 (\Wau\text{ complete})
 \iffdef
 (
-\forall \phi\in\Fm,\ %
+\forall \phi:\Fm,\ %
 (
 (\Wau \vdash \phi)
 \lor
@@ -3723,29 +3874,33 @@ It is said that it has \textit{a Henkin property}, if for every existential stat
 \[
 (\Wau\text{ Henkin})
 \iffdef
-(\forall \phi\in\Fm,\ %
+(\forall (\phi:\Fm),\ %
 (
 (\Wau \vdash \exists x,\ \phi)
 \implies
-(\exists t\in \text{Class},\ (\Wau \vdash \phi[t/x])))
+(\exists (t: \Class),\ (\Wau \vdash \phi[t/x])))
 )
 \]
 \[
 (\Wau\text{ disjunctive})
 \iffdef
-(\forall \phi\in\Fm,\ ((\Wau \vdash (\phi_1\lor\phi_2))
+(
+\forall (\chi_1:\Fm),\ %
+\forall (\chi_2:\Fm),\ %
+((\Wau \vdash (\chi_1\lor\chi_2))
 \implies
 (
-(\Wau \vdash \phi_1)
+(\Wau \vdash \chi_1)
 \lor 
-(\Wau \vdash \phi_2)
+(\Wau \vdash \chi_2)
 ))
 )
 \]
-From this definition it immediately follows, that there are no non--standard elements in such thery $\Wau$.
+From this definition it immediately follows, that there are no non--standard elements in such theory $\Wau$.
 \end{definition}
 
 \begin{theorem}[disjunctive property implies completeness]
+For any theory $\Wau$,
 \[
 (\Wau\text{ disjunctive})
 \implies
@@ -3753,10 +3908,39 @@ From this definition it immediately follows, that there are no non--standard ele
 \]
 \end{theorem}
 \begin{proof}
-
+Fix $(\Wau:\Theory)$ and $(\phi:\Fm)$.
+\[
+(\Wau\text{ disjunctive})
+\IMPLIES
+(
+\forall (\chi_1:\Fm),\ %
+\forall (\chi_2:\Fm),\ %
+((\Wau \vdash (\chi_1\lor\chi_2))
+\implies
+(
+(\Wau \vdash \chi_1)
+\lor 
+(\Wau \vdash \chi_2)
+))
+)
+\]
+Let $\chi_1 \cequiv \phi$ and $\chi_2 \cequiv \neg\phi$.
+\[
+(\Wau \vdash (\phi\lor\neg\phi_2))
+\tag{by \ref{axm:LEM}}
+\]
+Therefore, it follows by MP from the assumption, that
+\[
+(
+(\Wau \vdash \phi)
+\lor 
+(\Wau \vdash \neg\phi)
+))
+\]
 \end{proof}
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
 Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. 
+\iffalse
 \[
 \Fau
 \eqdef
@@ -3773,6 +3957,13 @@ Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that
 \land (F\text{ reflexive})
 )
 \]
+\fi
+\[
+\Fau
+\eqdef
+(\Henkin (F:\Theory),\ (F\text{ reflexive}))
+\]
+
 Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Techically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
 \end{definition*}
 
@@ -3927,7 +4118,7 @@ Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it 
 It is not possible to have an ``axiom'' scheme like 
 \[
 \square\square_n\psi \implies \square_n\psi,
-\labeltagd{badax}{``co--transitivity''}
+\labeltagd{badaxm}{``cotransitivity''}
 \]
 because it leads to contradiction due to the second incompleteness theorem.
 %!The solution is either add the inference rule of creed and skew 
@@ -3947,13 +4138,13 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 %\iffalse
 %Is this senseless? since $\phi$ here is an object!.. yes/no? 
 \[
-\forall \phi\in\Fm,\ %
+\forall (\phi:\Fm),\ %
 ((\Fau\vdash \phi) \iff \phi)
 \labeltagd{axm}{metareflexivityorig}
 \]
 %\fi
 \[
-\forall \phi\in\Fm,\ %
+\forall (\phi:\Fm),\ %
 (
 \Fau\vdash 
 ((\Fau\vdash \phi) \iff \phi)
@@ -3963,7 +4154,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \[
 \Fau \vdash 
 (
-\forall \phi\in\Fm,\ %
+\forall (\phi:\Fm),\ %
 ((\Fau\vdash \phi) \iff \phi)
 \labeltagd{axm}{metareflexivity2}
 )
@@ -4052,35 +4243,25 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 \labeltagd{rule}{Credo}
 \]
 \[
-\forall \psi\in\Fm,\ %
+\forall (\psi:\Fm),\ %
+(
 (\mathcal{F}\vdash\psi)
 \implies
 \psi
+)
 \labeltagd{axm}{Credo}
 \]
 \[
-\forall \psi\in\Fm,\ %
+\forall (\psi:\Fm),\ %
 (\mathcal{F}\vdash(\mathcal{F}\vdash\psi))
 \implies
 (\mathcal{F}\vdash\psi)
 \labeltagd{rule}{MetaCredo}
 \]
 
-Let $\phi\ceq \bot$, then:
-\[
-\neg(\mathcal{F}\vdash\bot)
-\labeltagd{thm}{CredoBot}
-\]
-
-\[
-(\mathcal{F}\not\vdash\bot)
-\implies
-(\mathcal{F}\not\vdash(\mathcal{F}\vdash\bot))
-\labeltagd{rule}{MetaCredoBot}
-\]
 \end{inferencerule}
 
-\begin{theorem}[credo implies cons]
+\begin{theorem}[credibility implies consistency(unfinished)]
 \[
 (\Fau\text{ credible})
 \implies
@@ -4088,7 +4269,17 @@ Let $\phi\ceq \bot$, then:
 \]
 \end{theorem}
 \begin{proof}
-
+Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
+\[
+\neg(\mathcal{F}\vdash\bot)
+\labeltagd{thm}{CredoBot}
+\]
+\[
+(\mathcal{F}\not\vdash\bot)
+\implies
+(\mathcal{F}\not\vdash(\mathcal{F}\vdash\bot))
+\labeltagd{rule}{MetaCredoBot}
+\]%(to be )
 \end{proof}
 
 \begin{inferencerule}[Omniscience]%\ \\
@@ -4101,17 +4292,21 @@ Let $\phi\ceq \bot$, then:
 \labeltagd{rule}{Omniscience}
 \]%%\square \psi
 \[
-\forall \psi\in\Fm,\ %
+\forall (\psi:\Fm),\ %
+(
 \psi
 \implies
 (\mathcal{F}\vdash\psi)
+)
 \labeltagd{axm}{Omniscience}
 \]
 \[
-\forall \psi\in\Fm,\ %
+\forall (\psi:\Fm),\ %
+(
 (\mathcal{F}\vdash\psi)
 \implies
 (\mathcal{F}\vdash(\mathcal{F}\vdash\psi))
+)
 \labeltagd{rule}{MetaOmniscience}
 \]
 \end{inferencerule}

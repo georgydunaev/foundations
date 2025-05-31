@@ -616,5 +616,43 @@ qwertyu\\
 \clabeltagd{axm}{limitation of size}
 \]
 \end{axiom}
-
+\begin{note}[?]
+One direction of the equivalence extends what it means for class to be a set, i.e. it ``extends the inductive definition of a set'', so more classes are called sets as a result. Let such properties be called \textit{positive}.
+\[
+(\neg(X\set))
+\implies
+(
+\exists T,\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
+\]
+or
+\[
+(
+\neg\exists T,\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
+\implies
+(X\set)
+\]
+The opposite direction forbids certain situations. It makes proofs shorter. It reduces the amount of models of the theory. Let such properties be called \textit{negative}.
+\[
+(
+\exists T,\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
+\implies
+\neg(X\set)
+\]
+It seems like positive properties don't have problems with each other. At worst they can trivialize the theory, but positive and negative property together may or may not lead to a contradiction.
+\end{note}
 \input{END.tex}

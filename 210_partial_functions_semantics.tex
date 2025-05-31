@@ -125,6 +125,7 @@ implies
 \forall \vec{x} : \varphi[(Iy:\varphi)/y] 
 \]
 .
+\iffalse
 IMHO, the most important part here is that y is not free in the context below.
 (the reason is identical to the one in the Generalization Rule)
 YES!
@@ -133,7 +134,11 @@ If the context doesn't have y, the substitution of "whole phi" would be already 
 
 something that a lil bit concerning is that context is not seen inside I, but it may not be important.
 
-So the following rules are proposed:
+
+So 
+\fi
+
+The following rules are proposed:
 \begin{prooftree}
 \AxiomC{$\Gamma \vdash \exists! y: \varphi$}
 %\RightLabel{Assume/Ident}

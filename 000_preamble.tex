@@ -395,6 +395,8 @@
 
 \newcommand{\baddefi}{{\textrm{bad\ def}}}
 \newcommand{\ceq}{\,{\coloneqq}\,}
+\newcommand{\cequiv}{\,{:\equiv}\,}
+
 \newcommand{\eqdef}{\,{\stackrel{\defi}{\coloneqq}}\,}
 %\newcommand{\eqnot}{\,{\stackrel{\noti}{\coloneqq}}\,}
 %\newcommand{\eqnot}{\,{\stackrel{\noti}{:\equiv}}\,}
@@ -533,6 +535,10 @@
 \newcommand{\Theory}{{\text{Theory}}}
 \newcommand{\B}{\mathrm{B}}
 \newcommand{\cL}{c_\text{L}}
+\newcommand{\FmCode}{\text{FmCode}}
+\newcommand{\ClassCode}{\text{ClassCode}}
+%...
+
 \newcommand{\Fm}{\mathrm{Fm}}%\boldsymbol{\mathrm{Fm}}
 \newcommand{\BFm}{\mathrm{BFm}}
 \newcommand{\TypeOf}{\mathrm{TypeOf}}
@@ -561,6 +567,7 @@
 \newcommand{\IFFdef}{\ {\stackrel{\defi}{\IFFnows}}\ }
 \newcommand{\iffdef}{\ {\stackrel{\defi}{\iffnows}}\ }
 \newcommand{\iffaxm}{\ {\stackrel{\axmi}{\iffnows}}\ }
+\newcommand{\iffnot}{\ {\stackrel{\noti}{\iffnows}}\ }
 
 \newcommand{\IFFbaddef}{\ {\stackrel{\baddefi}{\IFFnows}}\ }
 %\renewcommand{\iff}{\ \longleftrightarrow\ }
@@ -714,7 +721,7 @@
 \newcommand{\Sup}{\mathrm{Sup}}
 \newcommand{\surjective}{\mathrm{\ surjective\ on\ }}
 \newcommand{\Term}{\mathrm{Term}}
-\newcommand{\Class}{\mathrm{Class}}
+%\newcommand{\Class}{\mathrm{Class}}
 \newcommand{\BTerm}{\mathrm{BTerm}}
 \newcommand{\BClass}{\mathrm{BClass}}
 \newcommand{\Type}{\mathrm{Type}}
@@ -823,7 +830,7 @@
 
 % Code listings' pretty printer:
 %\usepackage{listings}
-\input{sml.tex}
+\input{/home/user/000/GITHUB/foundations/sml.tex}
 
 \usepackage{geometry}
 \usepackage{stmaryrd}  % for \llbracket \rrbracket
@@ -1066,8 +1073,9 @@
 
 
 %\textcolor{
-\newcommand{\Antiquote}[1]{\text{Antiquote}{(#1)}}
-\newcommand{\Quote}[1]{\text{Quote}{(#1)}}
+\newcommand{\Antiquote}{\text{Antiquote}}
+\newcommand{\Quote}{{\text{Quote}}}
+\newcommand{\Class}{{\text{Class}}}
 
 \renewcommand*\dddot[1]{%
   \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%
