@@ -1,13 +1,12 @@
 \def\topic{uniqueness}
 \input{BEGIN.tex}
-
 \section{Uniqueness quantifier}
-\begin{definition}
-\label{def:uniqueness quantifier}
+\begin{definition}[uniqueness quantifier]
 Uniqueness quantifier for classes:\\
 If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
 \[
 (!Y,\ \varphi)\iff (\forall Y_1\forall Y_2,\ \varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
+\labeltagd{def}{uniqueness quantifier}
 \]
 %%(We will not use much this definition.)
 \end{definition}
@@ -16,7 +15,7 @@ If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
 Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
 I have a notion of non--classical models, in which this is not a problem, but then logical rules become much more advanced, and all well--studied field of the first--order logic need to be re--done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
 \end{note}
-\begin{definition}
+\begin{definition}[?]
 \label{def:restricted uniqueness quantifier}
 Restricted uniqueness quantifier for sets only
 \begin{align*}
@@ -32,7 +31,7 @@ Restricted uniqueness quantifier for sets only
 \end{definition}
 
 \subsection{Singleton}
-\begin{definition} Singleton (functional symbol).
+\begin{definition}[Singleton (functional symbol)]
 (side note: because of big amount of side conditions, we state that all different variables are different. 
 It should not be possible to use it in such way: "$\{x\}=\cc{x}{x=x}$".
 How to determine whether during substitution it can be fixed?
@@ -63,7 +62,7 @@ How to implement definitions? see comments in source code here
 \]
 \end{definition}
 
-\begin{definition} Singleton (predicate symbol).
+\begin{definition}[Singleton (predicate symbol)]
 \[
 (A\singleton) \iff (\exists!a,\ a\in A)
 \]

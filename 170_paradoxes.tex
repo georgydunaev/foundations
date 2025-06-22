@@ -182,14 +182,13 @@ $\neg(\exists Q,\ Y\in Q)  \Longrightarrow (\forall Q,\ Y\notin Q)$.\\
 \]
 \Done
 \end{theorem}
-
-\begin{theorem}
+\begin{theorem}[?]
 If intersection of a class $A$ is a set, then $A$ is nonempty. 
 \[
 \left(\left(\intersection A\right)\set\middle)
 \implies
 \middle(\exists w,\ w\in A\right)
-\label{thm:intersection set then}
+\labeltagd{thm}{intersection set then}
 \]
 %\quad\mbox{(by lemma ... )}
 \Proof
@@ -257,11 +256,12 @@ The claim is proven.
 \end{theorem}
 
 \subsection{The powerclass of a set $A$ is not a subclass of $A$}
-
-\begin{theorem}
-\label{thm:powerset not a subset}
+\begin{theorem}[?]
 In classical and even in intuitionistic logic, the following holds:
-\[ \forall (Y\set),\ \neg(\power Y \subseteq Y)\]
+\[
+\forall (Y\set),\ \neg(\power Y \subseteq Y)
+\labeltagd{thm}{powerset not a subset}
+\]
 \Proof
 \noindent %Fix Y.\\
 \[
@@ -292,11 +292,11 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 \end{theorem}
 
 \subsection{The conglomerate of all classes is not a class}
-\begin{theorem}
+\begin{theorem}[?]
 A conglomerate of all classes is not a class. It "does not exist as class".
 \[
 \neg (\exists W \forall Q,\ Q\in W)
-\label{thm:conglomerate of classes not class}
+\labeltagd{thm}{conglomerate of classes not class}
 \]
 \[
 (\forall W \exists Q,\ Q\notin W)
@@ -311,10 +311,10 @@ So $Q\notin W$.
 
 \subsection{The class of all ordinals is not a set}
 
-\begin{lemma}
-\label{lem:OnnotinOn}
+\begin{lemma}[?]
 \[
 \On\notin\On
+\labeltagd{lem}{OnnotinOn}
 \]
 \end{lemma}
 \Proof

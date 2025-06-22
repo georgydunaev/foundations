@@ -1224,10 +1224,10 @@ is a notation for
 %\sub
 \subsection{Axioms for the predicate calculus}[under construction]
 %\sub
-In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{first--order theory} $\Wau$.\\
+In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{theory} $\Wau$.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicate calculus axioms is defined. Later, two $\Tau$ and $\Fau$ are defined, as certain extensions of $\Wau$. In particular, it holds that
-It is assumed that both $\Tau$ and $\Fau$ are the first order theories, requirements for $\Wau$ are also requirements for both $\Tau$ and $\Fau$.
+It is assumed that both $\Tau$ and $\Fau$ are the theories, requirements for $\Wau$ are also requirements for both $\Tau$ and $\Fau$.
 %\[
 %\Wau \subsetneq \Tau \subsetneq \Fau.
 %\]
@@ -1418,13 +1418,13 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \labeltagd{axm}{S1}
 \]
 \[
-\phi[t/x] \implies (\exists x,\phi)
+\phi[t/x] \implies (\exists (x:X),\phi)
 \labeltagd{axm}{S2}
 \]
 \[
 \forall (\Wau:\Theory),\ %
 \forall (x:\Var),\ %
-\forall (t:\Class),\ %
+\forall (t:X),\ %\Class
 \forall (\phi:\Fm),\ %
 \]
 \[
@@ -1438,7 +1438,7 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \[
 \forall (\Wau:\Theory),\ %
 \forall (x:\Var),\ %
-\forall (t:\Class),\ %
+\forall (t:X),\ %\Class
 \forall (\phi:\Fm),\ %
 \]
 \[
@@ -1449,9 +1449,14 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 )
 \clabeltagd{axm}{MetaS2}
 \]
-
+The signatures of the functions which implement the predicates ``($\cdot$~free for~$\cdot$~in~$\cdot$)'' and \\``($\cdot$~occures~free~in~$\cdot$)'' are given in the listing below:
+\begin{lstlisting}
+FFI : Value * Variable * Value -> bool
+isFree : Variable * Value -> bool
+\end{lstlisting}
+(The quantification ``for any type $X$'' is purely metatheoretical here for simplicity, but it may be included if the dependent types will be implemented.)\\
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
-For any variable $x$, for any type $X$, and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
+For any type $X$, for any variable $x$ and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
 (\exists (x:X),\varphi)
 \implies
@@ -1459,8 +1464,8 @@ For any variable $x$, for any type $X$, and the formula $\phi$ such that the ter
 \labeltagd{axm}{H}
 \]
 \[
+``\forall (X:\Typ),"\ %
 \forall (x:\Var),\ %
-\forall (X:\Typ),\ %
 \forall (\phi:\Fm),\ %
 \Fau\vdash
 (
@@ -1502,9 +1507,9 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 \subsubsection{Simplification of rules B1 and B2}
 For our purposes in the classical setting, it is possible to simplify these abstraction rule requirements, down to the the generalisation rule and the classical definition of the existence quantifier.%For the case of classical predicate logic, it is enough to have 
 \begin{metadefinition}[generalisation rule]%underline
-For $\Wau$ to be a first--order theory, the following must hold:\\
+For $\Wau$ to be a theory, the following must hold, that for any type $X$:\\
 ``
-For any variable $x$, for any type $X$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
+For any variable $x$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
 the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varphi)$ in $\Wau$.
 ''
 %$\Tau$($\Fau$)
@@ -3453,15 +3458,15 @@ The assumption of this book is that there exists a theory $\mathcal{F}$, which i
 \begin{enumerate}
 \item Neither Gödel's incompleteness theorem nor Löb's theorem are not applicable to such theory(actually any such theory), because it is not recursively enumerable.
 
-\item Some useful rules become admissible instead, like the reflection
+\item Some useful rules become admissible instead, like the omniscience
 \[
 ((\Fau \vdash \phi) \implies \phi),
-\tag{Refl}
+\tag{Omniscience}
 \]
 \[
 \forall (\phi:\Fm),\ % 
 ((\Fau \vdash \phi) \implies \phi),
-\tag{MetaRefl}
+\tag{MetaOmniscience}
 \]%\Fau \vdash 
 which is (due to the incompleteness argument) provably false in $\Tau$:
 \[
@@ -3470,7 +3475,7 @@ which is (due to the incompleteness argument) provably false in $\Tau$:
 \neg (\forall (\phi:\Fm),\ % 
 ((\Tau \vdash \phi) \implies \phi)
 ))
-\tag{``Effective reflection'' is impossible}
+\tag{``Effective omniscience'' is impossible}
 \]
 
 
@@ -3823,17 +3828,17 @@ The constant that represents the alphabet is actually an alphabet.
 \section{Informal definitions}
 
 \begin{definition*}[informal definition of language $\Lau$]%\ \\
-Let $\Lau$ be a first--order language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
+Let $\Lau$ be a language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
 \end{definition*}
 
 \begin{definition*}[informal definition of theory $\Tau$]%\ \\
-Let $\Tau$ be an enumerable and incomplete first--order theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
+Let $\Tau$ be an enumerable and incomplete theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
 %, except for  this section.%, no less, no more.
 \end{definition*}
 
 \section{Formal statements}
 \begin{definition}[consistent theory]%\ \\
-Let $\Wau$ be a first--order--theory.
+Let $\Wau$ be a theory.
 It is called \textit{consistent}, if ``false'' is not derivable in $\Wau$.
 \[
 (\Wau\text{ consistent})
@@ -3857,7 +3862,7 @@ It is called \textit{complete}, if for every formula, either its negation is der
 (\Wau\text{ complete})
 \iffdef
 (
-\forall \phi:\Fm,\ %
+\forall (\phi:\Fm),\ %
 (
 (\Wau \vdash \phi)
 \lor
@@ -3869,18 +3874,24 @@ It is called \textit{complete}, if for every formula, either its negation is der
 
 
 \begin{definition}[Henkin theory]%\ \\
-Let $\Wau$ be a first--order--theory in language $\Lau$.
-It is said that it has \textit{a Henkin property}, if for every existential statement there is a witnessing term of it in $\Lau$.% w.r.t }\Lau
+Let $\Wau$ be a theory in language $\Lau$.
+It is said that it has \textit{a Henkin property}(for classes), if %for any type $X$ and
+for every existential statement there is a witnessing term %of type $X$
+in $\Lau$.% w.r.t }\Lau
 \[
 (\Wau\text{ Henkin})
 \iffdef
 (\forall (\phi:\Fm),\ %
 (
-(\Wau \vdash \exists x,\ \phi)
+(\Wau \vdash \exists (x:\Class),\ \phi)
 \implies
-(\exists (t: \Class),\ (\Wau \vdash \phi[t/x])))
+(\exists (t:\Class),\ (\Wau \vdash \phi[t/x])))%X=\Class
 )
 \]
+\end{definition}
+\begin{definition}[disjunctive theory]
+Let $\Wau$ be a theory in language $\Lau$.
+It is said that it is \textit{disjunctive}, if for every derivable disjunctve formula, at least one of its disjuncts is also derivable.
 \[
 (\Wau\text{ disjunctive})
 \iffdef
@@ -3896,17 +3907,18 @@ It is said that it has \textit{a Henkin property}, if for every existential stat
 ))
 )
 \]
-From this definition it immediately follows, that there are no non--standard elements in such theory $\Wau$.
+It immediately follows from this definition, that there are no non--standard elements in such theory $\Wau$.
 \end{definition}
 
-\begin{theorem}[disjunctive property implies completeness]
+\begin{lemma}[disjunctive property implies completeness]
 For any theory $\Wau$,
 \[
 (\Wau\text{ disjunctive})
 \implies
 (\Wau\text{ complete})
+\labeltagd{lem}{DisjImplCompl}
 \]
-\end{theorem}
+\end{lemma}
 \begin{proof}
 Fix $(\Wau:\Theory)$ and $(\phi:\Fm)$.
 \[
@@ -3929,7 +3941,7 @@ Let $\chi_1 \cequiv \phi$ and $\chi_2 \cequiv \neg\phi$.
 (\Wau \vdash (\phi\lor\neg\phi_2))
 \tag{by \ref{axm:LEM}}
 \]
-Therefore, it follows by MP from the assumption, that
+Therefore, it follows by Modus Ponens from the assumption, that
 \[
 (
 (\Wau \vdash \phi)
@@ -3964,7 +3976,7 @@ Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that
 (\Henkin (F:\Theory),\ (F\text{ reflexive}))
 \]
 
-Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Techically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
+Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Technically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
 \end{definition*}
 
 \section{G\"odel--L\"ob polymodal logic}
@@ -4041,7 +4053,7 @@ For any theory $\Theta$, define using the ordinal recursion, the following seque
 (\cite{artemov2024serialpropertiesselectorproofs})
 \end{conjecture}
 
-\begin{note}[structural rrules convention]
+\begin{note}[structural rules convention]
 All rules of inference in this book are supposed to be structural. It means that any substitution of variables in them leads to an inferene rule which also holds. 
 \end{note}
 
@@ -4052,7 +4064,7 @@ All rules of inference in this book are supposed to be structural. It means that
 \frac{
 \Wau,\Gamma,\psi \vdash \phi
 }{
-\Wau,\Gamma \vdash \psi\implies \phi}
+\Wau,\Gamma \vdash (\psi\implies \phi)}
 \labeltagd{rule}{Deduction}
 \]
 \end{inferencerule}
@@ -4130,6 +4142,45 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \end{badaxiom}
 \pagebreak
 \section{Completeness of the theory $\Fau$}
+\begin{definition}[credible theory]
+Let $\Wau$ be a theory. It is called \textit{credible}, if the derivability of any formula in it implies the validity of the formula.
+\[
+(\Wau\text{ credible})
+\iffdef
+(\forall (\phi:\Fm),\ ((\Wau\vdash \phi) \implies \phi))
+\]
+\end{definition}
+\begin{definition}[omniscient theory]
+Let $\Wau$ be a theory. It is called \textit{omniscient}, if the the validity of any formula implies derivability of the formula in $\Wau$.
+\[
+(\Wau\text{ omniscient})
+\iffdef
+(\forall (\phi:\Fm),\ (\phi \implies (\Wau\vdash \phi)))
+\]
+\end{definition}
+\begin{definition}[reflexive theory]
+Let $\Wau$ be a theory. It is called \textit{reflexive}, if the derivability of any formula in it is equivalent to the validity of the formula.
+\[
+(\Wau\text{ reflexive})
+\iffdef
+(\forall (\phi:\Fm),\ ((\Wau\vdash \phi) \iff \phi))
+\]
+\end{definition}
+It is trivial to see, that the following holds:
+\[
+(\Wau\text{ reflexive})
+\iff
+(
+(\Wau\text{ credible})
+\land
+(\Wau\text{ omniscient})
+).
+\]
+\begin{axiom}[$\Fau$ is reflexive]
+\[
+(\Fau\text{ reflexive})
+\]
+\end{axiom}
 \indent The following statement holds because of the properties of $\Fau$:
 \[
 ((\Fau\vdash \phi) \iff \phi)
@@ -4263,22 +4314,24 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 
 \begin{theorem}[credibility implies consistency(unfinished)]
 \[
-(\Fau\text{ credible})
+(\Wau\text{ credible})
 \implies
-(\Fau\text{ consistent})
+(\Wau\text{ consistent})
 \]
 \end{theorem}
 \begin{proof}
-Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
+%Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
 \[
-\neg(\mathcal{F}\vdash\bot)
-\labeltagd{thm}{CredoBot}
+\neg(\mathcal{W}\vdash\bot)
+\tag{by \ref{axm:Credo} for $\phi \equivdef \bot$}
 \]
+
 \[
-(\mathcal{F}\not\vdash\bot)
+(\mathcal{W}\not\vdash\bot)
 \implies
-(\mathcal{F}\not\vdash(\mathcal{F}\vdash\bot))
-\labeltagd{rule}{MetaCredoBot}
+(\mathcal{W}\not\vdash(\mathcal{W}\vdash\bot))
+\tag{by \ref{rule:MetaCredo} for $\phi \equivdef \bot$}
+%\labeltagd{rule}{MetaCredoBot}
 \]%(to be )
 \end{proof}
 
@@ -4307,19 +4360,87 @@ Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
 \implies
 (\mathcal{F}\vdash(\mathcal{F}\vdash\psi))
 )
-\labeltagd{rule}{MetaOmniscience}
+\labeltagd{axm}{MetaOmniscience}
 \]
 \end{inferencerule}
-\begin{theorem}[omniscience implies disjunctive property]
+\begin{lemma}[credibility and omniscience implies disjunctive property]
 \[
-(\Fau\text{ omniscient})
+(
+(\Wau\text{ credible})
+\land
+(\Wau\text{ omniscient})
+)
 \implies
-(\Fau\text{ disjunctive})
+(\Wau\text{ disjunctive})
+\]
+\end{lemma}
+\begin{proof}
+Fix $(\Wau:\Theory)$. By definition,
+\[
+(\Wau\text{ disjunctive})
+\iff
+(
+\forall (\chi_1:\Fm),\ %
+\forall (\chi_2:\Fm),\ %
+((\Wau \vdash (\chi_1\lor\chi_2))
+\implies
+(
+(\Wau \vdash \chi_1)
+\lor 
+(\Wau \vdash \chi_2)
+))
+)
+\]
+So fix $(\chi_1:\Fm)$, $(\chi_2:\Fm)$, and assume $((\Wau \vdash (\chi_1\lor\chi_2))$.\\
+Using the omniscience property and specification, it is shown for these formulas that:
+\[
+(
+\chi_1
+\implies
+(\Wau\vdash\chi_1)
+),
+\]
+\[
+(
+\chi_2
+\implies
+(\Wau\vdash\chi_2)
+).
+\]
+Therefore, via several propositional axioms, the following holds:
+\[
+(\chi_1\lor \chi_2)
+\implies
+((\Wau\vdash\chi_1)\lor((\Wau\vdash\chi_2)).
+\]
+By virtue of credibility rule,
+\[
+(\Wau\vdash(\chi_1\lor \chi_2))
+\implies
+(\chi_1\lor \chi_2).
+\]
+Finally, by transitivity of implication, 
+\[
+(\Wau\vdash(\chi_1\lor \chi_2))
+\implies
+((\Wau\vdash\chi_1)\lor((\Wau\vdash\chi_2)).
+\]
+\end{proof}
+\begin{theorem}[reflexivity implies consistensy and completeness]
+\[
+(\Wau\text{ reflexive})
+\implies
+(
+(\Wau\text{ consistent})
+\land
+(\Wau\text{ complete})
+)
 \]
 \end{theorem}
 \begin{proof}
-(todo)
+By combining all previous lemmas, we have all desired properties. 
 \end{proof}
+
 
 %\begin{conjecture}
 

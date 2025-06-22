@@ -16,7 +16,7 @@ Dependent types are treated as families.
 \]
 
 \[
-(\Lambda x: t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
+(\Lambda x,\ t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
 \]
 
 \subsection{Storage [unfinished]}
@@ -674,6 +674,7 @@ Assume that $(B\family)$.
 \end{lemma}
 \pagebreak
 \subsection{Implementing $\Pi$--types}
+
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
 In type theory, the formatin rule for a $\Pi$--type is
@@ -732,6 +733,8 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 
 \subsubsection{Model of $\Pi$--types}
 In MK, it corresponds to the following:
+The $\Type$ is a $\TClass$.\\
+
 \begin{definition}(Dependent product, variant A)
 \[
 \Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\dom(B)) }

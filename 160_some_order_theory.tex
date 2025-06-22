@@ -74,12 +74,12 @@
 \subsection{Some theorems of the order theory}
 
 Here presented some bad older definitions, but good theorems
-\begin{definition}bad
+\begin{definition}[?]bad
 \[
 \UB_R(S) = R[S]
 \]
 \end{definition}
-\begin{definition}bad
+\begin{definition}[?]bad
 \[\LB_R(S) = R^{-1}[S]\]
 \end{definition}
 
@@ -91,7 +91,7 @@ $R \ceq \leq$\\
 $\leq = \geq^{-1}$\\
 $\geq = \leq^{-1}$\\
 
-\begin{remark}
+\begin{remark}[?]
 If $\leq$ is transitive then $\leqslant$ is transitive only on non--empty(sic!) sets.
 \end{remark}
 \Proof
@@ -108,67 +108,59 @@ We obtained $H<S$ (by definition of an order on sets). The statement together wi
 \Done
 \noindent
 
-\begin{definition}good
+\begin{definition}[?]good
 \[
 A \leqslant B
 \iff
-\forall a\in A \forall b\in B: a\leq b
+\forall a\in A \forall b\in B,\ a\leq b
 \]
 \end{definition}
-\begin{definition}bad
+\begin{definition}[?]bad
 \[
 \UB(S) = \leq [S]
 \]
 \end{definition}
-\begin{definition}bad
+\begin{definition}[?]bad
 \[
 \LB(S) = \geq [S]
 \]
 \end{definition}
-
-\begin{theorem}maybe
+\begin{theorem}[?]maybe
 \[
 A\leqslant B \iff B\subseteq \UB(A)
 \]
 \end{theorem}
-\begin{theorem}maybe
+\begin{theorem}[?]maybe
 \[
 A\leqslant B \Longleftrightarrow A\subseteq \LB(B)
 \]
 \end{theorem}
-
-\begin{definition}bad
+\begin{definition}[?]bad
 \[
 \Sup(S) = \UB(S)\cap \LB(\UB(S))
 \]
 \end{definition}
-\begin{definition}bad
+\begin{definition}[?]bad
 \[
 \Inf(S) = \LB(S)\cap \UB(\LB(S))
 \]
 \end{definition}
-
-
-\begin{definition}maybe
+\begin{definition}[?]maybe
 \[
-\mbox{sup}(S) = (\iota x, x\in \mathrm{Sup}(S))
+\mbox{sup}(S) = (\iota x,\ x\in \mathrm{Sup}(S))
 \]
 \end{definition}
-\begin{definition}maybe
+\begin{definition}[?]maybe
 \[
-\mbox{inf}(S) = (\iota x, x\in \mathrm{Inf}(S))
+\mbox{inf}(S) = (\iota x,\ x\in \mathrm{Inf}(S))
 \]
 \end{definition}
-
-
-\begin{theorem}good
+\begin{theorem}[?]good
 \[
 A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
 \]
 \end{theorem}
-
-
-\begin{theorem}doubt
+\begin{theorem}[?]doubt
 \[
 (a:\mathbb{N}\rightarrow \real)
 \land
@@ -179,12 +171,8 @@ A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
 (a \converges \sup \{a_n\}_n)
 \]
 \end{theorem}
-
-
-
 %\ifdefined\ordertheoryflag
 %\undef\ordertheoryflag
 %\end{document}
 %\fi
-
 \input{END.tex}

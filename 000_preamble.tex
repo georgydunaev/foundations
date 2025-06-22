@@ -992,6 +992,19 @@
 \newcommand{\closed}{{\ \textrm{closed}}}
 \newcommand{\continuous}{{\ \textrm{continuous}}}
 
+% restriction bar
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \littletaller % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+
+
+
 
 % big plus definition:
 \makeatletter

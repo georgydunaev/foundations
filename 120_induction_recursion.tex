@@ -23,7 +23,7 @@ The class of well--founded sets $\W$ is being defined as an intersection of all 
 \cc{x}{\forall Q,\ ((\power Q\subclass Q)\implies (x\in Q))}
 \]
 \end{definition}
-\begin{notation}
+\begin{notation}[?]
 For such intersections of proper classes satisfying some property the following notation may be used:
 %\[
 %\W\eqdef \bigwedge_Q (\power Q\subclass Q).
@@ -54,7 +54,7 @@ For such intersections of proper classes satisfying some property the following 
 =\cc{m}{\forall y, y\in Y \implies m\in t(y)}
 \]
 \[
-=\cc{x}{\forall Q, Q\in Y \implies x\in t(Q)}
+=\cc{x}{\forall Q,\ Q\in Y \implies x\in t(Q)}
 \]
 
 \[
@@ -63,8 +63,8 @@ For such intersections of proper classes satisfying some property the following 
 = \bigcap (y\mapsto t(y))[Y]
 \]
 \end{notation}
-\begin{recall}Epsilon recursion:\\
-If $G:\V\to \V$, then  $\exists! F:\W\to\V$, s.t. $F(a) = G(F\restriction a)$.\\
+\begin{recall}[epsilon recursion]
+If $G:\V\to \V$, then  $\exists! F:\W\to\V$, s.t. $F(a) = G(F\restriction a)$.
 \end{recall}
 \begin{lemma}[W is well--founded]
 The class of well--foundead sets is well--founded itself.
@@ -87,7 +87,7 @@ The assumption $(\power Q\subclass Q)$ together with the last statement lead to 
 %So the statement $(\W\subclass Q)$ is proven.
 \DoneNoPar
 \end{lemma}
-\begin{note}
+\begin{note}[?]
 Due to this lemma, the axiom of regularity may be formulated as $(\V\subclass\W)$.
 \end{note}
 \begin{theorem}[W contains its subsets]
@@ -153,40 +153,71 @@ and in general if $n$ is a finite ordinal number, then $h(n)=n$.
 \end{example*}
 \begin{definition}[height]
 \label{height}
-The height function is defined via $\in$--recursion:
+The height function is defined via $\in$--recursion:\\
+Base:
 \[
-h(x) \ceq \sup \cc{ h(y) }{ y \in x}.
+h(\emptyset) \ceq 0.
 \]
+Step: (in case if $x\neq \emptyset$)
+\[
+h(x) \ceq 1+\sup \cc{ h(y) }{ y \in x}.
+\]
+(It is important here, that 1 (one) is added from the left side, so $1+\omega = \omega$ in case if the heights of elements of a set $x$ are not bounded. If it is added from the right, then, i will also keep track of the amounts of arbitrary deep elements, so it will have a different, more nuanced, meaning.)
+\iffalse
+If maximum exists, then
+\[
+h(x) \ceq 1+\max \cc{ h(y) }{ y \in x}.
+\]
+else
+\[
+h(x) \ceq \sup \cc{ h(y) }{ y \in x}.(BAD!)
+\]
+New:
+\[
+h(x) \ceq \inf(\On\setminus \sup \cc{ h(y) }{ y \in x}).
+\]fi
+New:
+\fi
+It is also possible to define it the following way:
+\[
+h(x) \ceq \inf\cc{\alpha\in\On}{h[x]\subseteq \alpha}.
+\]
+(this variant depends on both regularity and also limitation of size axioms, otherwise it may not be totally defined on $\V$)
 \end{definition}
+\iffalse
 Property:
 \[
 h(x) = \sup h[x]
 \]
-
 $G(R) \ceq \sup(\ran(R)) = \union(\ran(R))$\\
 via epsilon recursion.\\
 $h : \V\to\V$\\
 $h(a) = \sup(\ran(h\restriction a) )$\\
-
+\fi
 
 % height = depth
-\begin{lemma}[set's height is ordinal]
+\begin{lemma}[set's height is an ordinal less or equal to omega]
 The height of any set is an ordinal.
+%Without regularity axiom, which forbids infinite membership chains:
 \[
-(h:V\to\On)
+(h:\V\to\omega\cup\{\omega\})
 \label{lem:depthinon}
 \]%\omega
 \end{lemma}
 \ProofNoPar\ (first variant)\\
 Using the epsilon induction.\\
-Base of the epsilon induction, which may be ommited:
+Base of the epsilon induction:%, which may be ommited:
+\iffalse
 \[
 h(\emptyclass) = \sup_\N h[\emptyclass] = \sup_\N \emptyclass = 0
 \]
-
+\fi
+\[
+h(\emptyclass) = 0 \in \omega
+\]
 
 Step of the epsilon induction:\\
-Assume $\forall y\in x: h(y)\in \On$.\\
+Assume $\forall y\in x,\ h(y)\in \On$.\\
 To show: $h(x)\in\On$.\\
 It follows from the assupmtion, that $h[x]\subclass\On$.\\
 \[

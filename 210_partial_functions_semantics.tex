@@ -24,65 +24,65 @@ f(x) \simeq \left(\iota y, \langle x,y\rangle\in f\right)
 \[
 (\iota x:\varphi)\downarrow
 \quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
-(\exists!x:\varphi)
+(\exists!x,\ \varphi)
 \]
 So the proof is the following:
 \[
 \left(\langle x,y\rangle\in f\right)
 \quad\overset{\exists\mbox{--intro}}{\Longrightarrow}\quad
-\left(\exists w: \langle x,w\rangle\in f\right)
+\left(\exists w,\ \langle x,w\rangle\in f\right)
 \]
 \[
 f\mbox{ univocal}
 \quad\overset{\mbox{def}}{\Longleftrightarrow}\quad
-\left(! w: \langle x,w\rangle\in f\right)
+\left(! w,\ \langle x,w\rangle\in f\right)
 \]
 \[
-\left(\exists w: \langle x,w\rangle\in f\right)
+\left(\exists w,\ \langle x,w\rangle\in f\right)
 \LAND
-\left(! w: \langle x,w\rangle\in f\right)
+\left(! w,\ \langle x,w\rangle\in f\right)
 \quad\overset{\exists!\text{--intro}}{\Longrightarrow}\quad
-\left(\exists! w: \langle x,w\rangle\in f\right)
+\left(\exists! w,\ \langle x,w\rangle\in f\right)
 \]
 \[
-\left(\exists! w: \langle x,w\rangle\in f\right)
+\left(\exists! w,\ \langle x,w\rangle\in f\right)
 \quad\overset{\mbox{PFOL10}'}{\Longrightarrow}\quad
-\left(\iota w: \langle x,w\rangle\in f\right)\downarrow
+\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow
 \]
 \[
-\left(\iota w: \langle x,w\rangle\in f\right)\downarrow 
+\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow 
 \quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
-\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \]
 \[
-\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \LAND
 \left(\langle x,y\rangle\in f\right)
 \quad\overset{f \mbox{ univocal}}{\Longrightarrow}\quad
-(\iota w: \langle x,w\rangle\in f) \simeq y
+(\iota w,\ \langle x,w\rangle\in f) \simeq y
 \]
 \[
 f(x) \simeq y
 \]
-%\left(! w: \langle x,w\rangle\in f\right)
+%\left(! w,\ \langle x,w\rangle\in f\right)
 %\[
-%\left(\iota w: \langle x,w\rangle\in f\right)\downarrow
+%\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow
 
 %\]
 \noindent($\Rightarrow$)
 \[(y\downarrow)\quad\mbox{(by PFOL8)}\]
 \[
-(y\downarrow)\LAND((\iota w: \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
-(\iota w: \langle x,w\rangle\in f)\downarrow \]
+(y\downarrow)\LAND((\iota w,\ \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
+(\iota w,\ \langle x,w\rangle\in f)\downarrow \]
 \[
-\left(\iota w: \langle x,w\rangle\in f\right)\downarrow 
+\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow 
 \quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
-\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \]
 \[
-\langle x,(\iota w: \langle x,w\rangle\in f)\rangle\in f
+\langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \LAND
-\left((\iota w: \langle x,w\rangle\in f)\simeq y\right)
+\left((\iota w,\ \langle x,w\rangle\in f)\simeq y\right)
 \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 \left(\langle x, y\rangle\in f\right)
 \]
@@ -90,7 +90,7 @@ f(x) \simeq y
 \Done
 \begin{theorem}
 \[
-f(x)\downarrow \iff x\in\cc{x}{\exists!y: \langle x,y\rangle\in f}
+f(x)\downarrow \iff x\in\cc{x}{\exists!y,\ \langle x,y\rangle\in f}
 \]
 \end{theorem}
 \Proof
@@ -98,7 +98,7 @@ f(x)\downarrow \iff x\in\cc{x}{\exists!y: \langle x,y\rangle\in f}
 \pagebreak
 By extension of definitions from
 \[
-\forall f \forall x \exists! y : (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,y)\in f
+\forall f \forall x \exists! y ,\ (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,y)\in f
 \]
 we have
 \[
@@ -107,7 +107,7 @@ we have
 
 or from: (but it backward implication can be proven without such complications)
 \[
-\forall f \forall x \exists! y : (f\mbox{ univocal at }x)\to ((x\in \dom(f)) \iff (x,y)\in f)
+\forall f \forall x \exists! y ,\ (f\mbox{ univocal at }x)\to ((x\in \dom(f)) \iff (x,y)\in f)
 \]
 
 
@@ -118,11 +118,11 @@ or maybe 'Extension by new constant and function names'?\\
 
 In general, a closed formula
 \[
-\forall \vec{x} : \exists! y: \varphi 
+\forall \vec{x} ,\ \exists! y,\ \varphi 
 \]
 implies
 \[
-\forall \vec{x} : \varphi[(Iy:\varphi)/y] 
+\forall \vec{x} ,\ \varphi[(Iy:\varphi)/y] 
 \]
 .
 \iffalse
@@ -140,7 +140,7 @@ So
 
 The following rules are proposed:
 \begin{prooftree}
-\AxiomC{$\Gamma \vdash \exists! y: \varphi$}
+\AxiomC{$\Gamma \vdash \exists! y,\ \varphi$}
 %\RightLabel{Assume/Ident}
 %\UnaryInfC{$
 %P_3,P_2,P_1 \vdash R
@@ -153,7 +153,7 @@ $}
 \end{prooftree}
 and
 \begin{prooftree}
-\AxiomC{$\Gamma \vdash \exists y: \varphi$}
+\AxiomC{$\Gamma \vdash \exists y,\ \varphi$}
 \RightLabel{ExtByCons (if $y\notin \mbox{FV}(\Gamma)$)}
 \UnaryInfC{$
 \Gamma \vdash \varphi[(\epsilon y:\varphi)/y] 

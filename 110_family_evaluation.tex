@@ -1,9 +1,7 @@
 \def\topic{Evaluation}
 \input{BEGIN.tex}
 \section{Evaluation in context of pluralistic semantic}
-
-
-\begin{definition}(value)
+\begin{definition}[value]
 \[
 F(x) :\simeq \left(\lif ((F\family)\land(x \in \dom(F)))\ \lthen\ \union\cc{s}{(x,s)\in F}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
 \]
@@ -18,7 +16,7 @@ I_{\Fm}(s\approx t) :\IFF
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
 
-\begin{definition}(equality)?
+\begin{definition}[equality]?
 %\[
 %(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right),\ I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
@@ -28,13 +26,13 @@ I_{\Fm}(s\approx t) :\IFF
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
 
-\begin{definition}(quasi--equality)(Note: it is good for semantics with partial functions, not the two level set--semantics i use.)
+\begin{definition}[quasi--equality](Note: it is good for semantics with partial functions, not the two level set--semantics i use.)
 \[
 (s\simeq t) :\IFF (((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \]
 \end{definition}
 
-\begin{definition}(underdefined class)(Note: be careful, since not every undefined class is underdefined, some are overdefined in various ways, so not even semantically equal to eachother.)
+\begin{definition}[underdefined class](Note: be careful, since not every undefined class is underdefined, some are overdefined in various ways, so not even semantically equal to eachother.)
 \[
 \lundef :\simeq (\varepsilon x,\ \bot)
 \]
@@ -49,7 +47,7 @@ Btw, $I(\lundef)=\emptyclass$.\\
 \pagebreak
 
 \subsection{Some simple theorems about classes}
-\begin{definition}(some syntactic sugar)
+\begin{definition}[some syntactic sugar]
 \[
 (x\ \mbox{any}) :\iff \top
 \]
@@ -58,7 +56,7 @@ Context: (x:Var)
 %Term $x$ is a variable.
 \end{definition}
 
-\begin{definition}(Semi--singleton)
+\begin{definition}[semi--singleton]
 \[
 (s\ \mbox{ss}) :\iff (!y,\ y\in s)
 \]
@@ -66,13 +64,13 @@ Side condition:\\
 Variable $y$ is not in free variables of term $s$.
 \end{definition}
 
-\begin{definition}(Semi--singleton subset relation)
+\begin{definition}[semi--singleton subset relation]
 \[
 (s\ \mbox{sss}\ t) :\iff ((s\ \mbox{ss})\land(s\subseteq t))
 \]
 \end{definition}
 
-\begin{definition}(Function constructor)
+\begin{definition}[function constructor]
 \[
 (\lambda x,\ t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
 \]
@@ -84,7 +82,7 @@ Side conditions:\\
 %No side conditions.
 \end{definition}
 
-\begin{definition}(Family constructor)
+\begin{definition}[family constructor]
 \[
 (\Lambda x,\ t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
 \]
@@ -96,7 +94,7 @@ Variable $s$ is not in free variables of $t$.\\
 As term $s$ can contain $x$ as a free variable.\\
 \end{definition}
 
-\begin{definition*}(LOCAL definition of a value of a function, value of a family, for the next theorem)
+\begin{definition*}[LOCAL definition of a value of a function, value of a family, for the next theorem]
 \[
 f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 \]
@@ -104,7 +102,7 @@ f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 % \coloneqq
 % \vcentcolon = 
 
-\begin{theorem}(Evaluation of a function)
+\begin{theorem}[evaluation of a function]
 Context:\\
 (x:Var)(t:Term)(z:Term)
 \[
@@ -220,7 +218,7 @@ And we are done.\\
 \Done
 
 
-\begin{theorem}(Evaluation of family)
+\begin{theorem}[evaluation of family]
 \[
 (\Lambda x,\ t)(z) = t[z/x],
 \]

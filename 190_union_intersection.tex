@@ -2,7 +2,7 @@
 \input{BEGIN.tex}
 \section{Elementary theorems about union and intersection}
 %Union \& Intersection
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \left(B\in A\middle)
 \implies
@@ -33,7 +33,7 @@ To show: $(b\in \union A)$.\\
 \left(b\in \union A\right)
 \]
 \Done
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \left(B\in A\middle)
 \implies
@@ -61,7 +61,7 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \]
 \Done
 
-\begin{theorem}
+\begin{theorem}[?]
 \[\left(\intersection\{w\}=w\right)\]
 \end{theorem}
 \Proof
@@ -86,7 +86,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \implies
 \middle(\left(\intersection A\right)\in A\right)
 \]
-\end{theorem}
+\end{theorem}[?]
 \Proof
 \[(A\singleton)\IMPLIES(\exists!w,w\in A)\]
 \[
@@ -117,7 +117,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 
 
 %\subsection{Theorems about union and intersection}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \left(A \nonempty\middle) \implies \middle(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
 \]
@@ -148,7 +148,7 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \]
 \Done
 
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (A\set)
 \land
@@ -169,10 +169,10 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 \Done
 
 
-\begin{theorem}
-\label{thm:UACA=ACPA}
+\begin{theorem}[?]
 \[
 \left(A\subseteq \power A\middle) \iff \middle(\union A\subseteq A\right)
+\labeltagd{thm}{UACA=ACPA}
 \]
 \end{theorem}
 \Proof
@@ -255,7 +255,7 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 By \myref{thm:UACA=ACPA}.
 \Done
 
-\begin{theorem}{}
+\begin{theorem}[?]
 \[
  \left(A\nonempty\middle)
 \land

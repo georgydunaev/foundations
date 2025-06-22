@@ -400,6 +400,58 @@ Let the symbol $\V$ be a constant of the language of the class theory being disc
 \]
 \end{definition}
 
+Later it will be used as a default value for ``undefined'' values. They are not defined, indeed, in set--theoretic sense, but they are defined in class--theoretic sense.
+\begin{definition}[default nonset]
+\[
+\text{nonset}\eqdef\V
+\clabeltagd{def}{nonset}
+\]
+\end{definition}
+\begin{definition}[is not set predicate]
+\[
+(t\text{ not set})\iffdef(t\notin \V)
+\clabeltagd{def}{not set}
+\]
+\end{definition}
+The definitions above seem tobe the best solution to avoid many-valued logics and other semantic or syntactic complications of statements of the theorems. When a not involved in logic mathematician says ``undefined'', it usually means ``not set''(in the langugage of this book) and only sometimes ``undefined'', in the sense of ``was not yet defined''.
+\begin{example}[intersection of the empty set]
+\[
+\left(\left(\bigcap \emptyset\right)\text{ not set}\right)
+\]
+\end{example}
+\begin{example}[value of a function]
+\[
+(x\notin \dom(f)) \IMPLIES (f(x)\text{ not set})
+\]
+\end{example}
+\subsection{Functions and families}
+\[
+\Dom(F) \eqdef \cc{x}{\exists b,\ (x,b)\in F}
+\]
+\[
+F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}
+\]
+\[
+F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{nonset}\ \lfi\right) 
+\]
+\iffalse\[
+\dom(F) \eqdef \cc{x}{\exists (y\set),\ F(x)=y}
+\]\fi
+\[
+\dom(f) \eqdef \cc{x}{f(x)\set}
+\]
+\[
+\Gamma(f)\eqdef\cc{(x,f(x))}{x\in\dom(f)}
+\]
+\[
+(f\function)\iffdef (f=\Gamma(f))
+\]
+\[
+\ran(f) \eqdef \cc{f(x)}{x\in\dom(f)}
+\]
+\[
+(f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\function))
+\]
 \subsection{Unions}
 \begin{definition}[elementary union]%\ \\
 This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.

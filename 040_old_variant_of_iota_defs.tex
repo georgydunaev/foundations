@@ -104,7 +104,7 @@ Protected families are assymetrical, so it is not always possible to define the 
 Families 
 \subsection{Non--empty families}
 All definitions in this section are local: they will not be used in other sections.
-\begin{definition}(family of non--empty classes)
+\begin{definition}[family of non--empty classes]
 \[
 (F\text{ is NEF})\iffdef \dots 
 \]
@@ -174,33 +174,31 @@ So it seems to legit, because it cannot be obtained in any other way out of the 
 It's not the same in other cases, e.g. for ``f(x)'', therefore it requires an additional assumption to be treated as ``legit''.
 
 \subsection{Value of a function via set--descriptors}
-\begin{definition}
+\begin{definition}[?]
 Intended use: value of a class--function. Class F is arbitrary.
 \[
 F(x) = \left(\iota y,\  \langle x,y\rangle\in F\right)
+\labeltagd{def}{value}
 \]
-\label{def:value}
 \end{definition}
-
-
 \begin{definition}[univocal at]
 \[
 (F\univocalat x)\iff(!y, \langle x,y\rangle \in F)
-\]
 \label{def:univocalat}
+\]
 \end{definition}
 \begin{definition}[univocal]
 \[
 (F\univocal)\iff (\forall x, F\univocalat x)
-\]
 \label{def:univocal}
+\]
 \end{definition}
 \begin{theorem}[pair in function]
 If $(F\univocalat x)\land(y\set)$, then
 \[
 \left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
-\]
 \label{thm:pair in function}
+\]
 \begin{align*}
 (F\univocalat x)
 \implies
