@@ -2,41 +2,40 @@
 \input{BEGIN.tex}
 %(Previous implementation)
 \section{Relational image/glare theorems}
-\begin{definition}((relational) membership relation)
+\begin{definition}[(relational) membership relation]
 \[
 \mbox{E} \ceq \cc{(x,y)}{x\in y}
 \]
 \end{definition}
-\begin{remark}(no "familial membership relation")\\
+\begin{remark}[no "familial membership relation"]
 There is a loss of meaning, when consider "familial membership relation", because it is "one--to--many", not functional, what is required for a family.
 \[
 ``\mbox{E}_{\mathrm{fam}}" = \cc{(x,b)|(x\in Y)\land(b\sss Y)\} = V\times(\{\emptyclass\}\cup\{\{q\}}{q\in V}) = (x \mapsto V)
 \]
 \end{remark}
-\begin{definition}((relational) inverse membership relation)
+\begin{definition}[(relational) inverse membership relation]
 \[
 \invE \ceq \cc{(y,x)}{x\in y} = \mbox{E}^{-1}
 \]
 \end{definition}
-\begin{remark}(no "familial inverse membership relation")\\
+\begin{remark}[no "familial inverse membership relation"]
 There is a loss of meaning, when consider "familial inverse membership relation", because it is "one--to--many", not functional, what is required for a family.
 %There is familial inverse membership relation, is also not functional, and it is, in fact, equal to "familial equality relation of sets", which itself is functional. 
 \[
 ``\invE_{\mathrm{fam}}" = \cc{(y,b)}{(x\in y)\land(b\sss x)} = \left(y \mapsto \left(\union y\right)\right).
 \]
 \end{remark}
-
-\begin{definition}(relational image)
+\begin{definition}[relational image]
 \[
 F[A]\ceq \cc{b}{\exists a\in A,\  (a,b)\in F}
 \]
 \end{definition}
-\begin{definition}(relational glare)
+\begin{definition}[relational glare]
 \[
 F\langle A \rangle\ceq \cc{b}{\forall a\in A,\  (a,b)\in F}
 \]
 \end{definition}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \invE[A] = \union A
 \]
@@ -59,7 +58,7 @@ So $(w,a)\in \mbox{E}$.
 So $(a,w)\in \mbox{E}^{\top}$.
 From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A])$.\\
 \Done
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \invE \langle A \rangle = \intersection A
 \]
@@ -87,7 +86,7 @@ v\in \mbox{E}^{\top}\langle A \rangle
 v \in \intersection A
 \]
 \Done
-\begin{theorem}[\ ]\ \\
+\begin{theorem}[?]
 $(\dom(\Sigma F))\cup (F^{\top}[\{\emptyclass\}]) = \dom(F)$\\
 $
 (\dom(\Sigma F))\cap (F^{\top}[\{\emptyclass\}]) = \emptyclass
@@ -95,7 +94,7 @@ $
 \end{theorem}
 \Proof
 \Done
-\begin{theorem}[\ ]\ \\
+\begin{theorem}[?]
 If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyclass\notin\mbox{ran}(F))$ then
 \[
 F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
@@ -103,7 +102,7 @@ F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
 \end{theorem}
 \Proof
 \Done
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (F \circ G)[X]=F[G[X]]
 \]
@@ -112,7 +111,7 @@ F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
 \Done
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{A choice function and the epsilon operator}
-\begin{definition}
+\begin{definition}[?]
 Epsilon operator for sets, may be defined this way:
 \[
 (\varepsilon y,\  \varphi) = c\left(\cc{y}{\varphi}\right)
@@ -129,7 +128,7 @@ Existence of such function follows from the axiom of limitation of size(below).\
 Other notable facts are that axiom of limitation of size implies axiom of global choice, axiom of replacement, axiom of separation, and axiom of union.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[?]
 \[
 ((\epsilon y,\  \varphi) \set)
 \iff

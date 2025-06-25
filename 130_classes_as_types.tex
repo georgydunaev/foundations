@@ -737,13 +737,14 @@ The $\Type$ is a $\TClass$.\\
 
 \begin{definition}(Dependent product, variant A)
 \[
-\Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\dom(B)) }
+\Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
 \]
+The expression $\Dom(B)$ is used to include the case when $B$ is a proper family, not just a function.
 \end{definition}
 \begin{definition}[Dependent product, variant B]
 (Note: For sets the following definition is also okey:
 \[
-\Pi B = \cc{f\in \left(\union\ran(B)\right)^{\dom(f)}}{\forall (x\in\dom(f)) : (f(x) \in B(x))},
+\Pi B = \cc{f\in \left(\union\ran(B)\right)^{\dom(f)}}{\forall (x\in\dom(f)) ,\ (f(x) \in B(x))},
 \]
 but it is not working well for classes)
 
@@ -753,13 +754,13 @@ but it is not working well for classes)
 \begin{definition}[Dependent product, variant C]
 Another definition:\\
 \[
-\prod w \eqdef \cc{f}{\exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x))}
+\prod w \eqdef \cc{f}{\exists D,\ (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D,\ f(x) \in w(x))}
 \]
 \end{definition}
 
 \begin{definition}[sections of a family]
 \[
-\Gamma B\eqdef\cc{s:\Dom(B)\to\Sigma B}{\pr_1\circ s \subseteq \I}
+\Gamma B\eqdef\cc{s:\Dom(B)\to\Sigma B}{(\pr_1\circ s) \subseteq \I}
 \]
 \end{definition}
 %13

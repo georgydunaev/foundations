@@ -79,14 +79,15 @@ The claim is proven.\\
 $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\}).$
 \Done
 
-\begin{theorem}{Intersection of a singleton is in it.}
-\label{thm:intersection of singleton}%
+\begin{theorem}[intersection of singleton]
+Intersection of a singleton is in it.
 \[
 \left(A \singleton\middle)
 \implies
 \middle(\left(\intersection A\right)\in A\right)
+\label{thm:intersection of singleton}%
 \]
-\end{theorem}[?]
+\end{theorem}
 \Proof
 \[(A\singleton)\IMPLIES(\exists!w,w\in A)\]
 \[
@@ -117,11 +118,11 @@ $(x\set)\LAND(\forall m\in\{w\}:x\in m) \Longrightarrow (x\in\intersection\{w\})
 
 
 %\subsection{Theorems about union and intersection}
-\begin{theorem}[?]
+\begin{theorem}[intersection of nonempty is subset of union]
 \[
 \left(A \nonempty\middle) \implies \middle(\left(\intersection A\right)\subseteq \left(\union A\right)\right)
-\]
 \label{thm:intersection of nonempty is subset of union}
+\]
 \end{theorem}
 \Proof
 \[

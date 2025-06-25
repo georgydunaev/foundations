@@ -452,6 +452,67 @@ F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{
 \[
 (f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\function))
 \]
+
+\begin{definition}[family]
+A class $f$ is called \textit{family} if it satisfies two conditions:
+\[
+\forall x,\ %
+(
+(
+f(x)
+\text{ set}
+)
+\implies
+(
+\exists! y,\ %
+((x,y)\in f)
+)
+)
+\tag{1}
+\]
+\[
+\forall x,\ %
+(
+(
+f(x)
+\text{ proper}
+)
+\implies
+(
+\forall b,\ %
+(
+((x,b)\in f)
+\implies
+(b\text{ singleton})
+)
+)
+)
+\tag{2}
+\]
+\end{definition}
+\begin{definition}[set--valued]
+A set--valued family is called \textit{set--valued}, if
+\[
+(\forall x,\ (f(x)\text{ set}))
+\]
+\end{definition}
+\begin{definition}[function]
+A set--valued family is called a \textit{function}.
+\end{definition}
+\begin{axiom}[ordered pair of proper classes is a proper class]
+The following a little bit non--traditional agreement(the axiom) may be useful for this section, but it is not yet obvious that it is needed:
+\[
+(
+(
+(A\proper)
+\land
+(B\proper)
+)
+\implies
+((A,B)\proper)
+)
+\]
+\end{axiom}
 \subsection{Unions}
 \begin{definition}[elementary union]%\ \\
 This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
