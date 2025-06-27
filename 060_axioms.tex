@@ -413,7 +413,7 @@ Later it will be used as a default value for ``undefined'' values. They are not 
 \clabeltagd{def}{not set}
 \]
 \end{definition}
-The definitions above seem tobe the best solution to avoid many-valued logics and other semantic or syntactic complications of statements of the theorems. When a not involved in logic mathematician says ``undefined'', it usually means ``not set''(in the terminology of this book) and only sometimes ``undefined'', in the sense of ``was not yet defined''.
+The definitions above seem to be the best solution to avoid many--valued logics and other semantical or syntactical complications of the theorem's statements. So when a not involved in logic mathematician says ``undefined'', it usually means ``not set'' in the terminology of this book, and also sometimes ``undefined'', in the sense of ``was not yet defined''.
 \begin{example}[intersection of the empty set]
 \[
 \left(\left(\bigcap \emptyset\right)\text{ not set}\right)
@@ -514,30 +514,36 @@ A class--function can be called ``a locally small family''.\\
 An arbitrary family can be called ``a (large) family''.
 \end{note}
 \begin{lemma}[proper value not from dom]
-For every class $f$
+For every class $f$,
 \[
 (f(x)\proper)
 \implies
 (x\notin\dom(f))
+\label{lem:proper value not from dom}
 \]
 \end{lemma}
 \begin{proof}
-Assume opposite, $(f(x)\proper)$ and $(x\in\dom(f))$.
+Assume the opposite: $(f(x)\proper)$ and $(x\in\dom(f))$.
 \[
 (x\in\dom(f))
 \IMPLIES
+(x\in\cc{x}{f(x)\set})
+\]
+\[
+(x\in\cc{x}{f(x)\set})
+\IMPLIES
 (f(x)\set)
 \]
-Contradiction.
+The contradiction is obtained, so $(f(x)\proper)\implies(x\notin\dom(f))$.
 \end{proof}
 \begin{theorem}[small implies locally small]
-Every function is class-function(but not vice versa).
+Every function is a class--function(but not vice versa).
 \[
 \forall f,\ ((f\text{ function})\implies(f\text{ class--function}))
 \]
 \end{theorem}
 \begin{proof}
-Assume opposite: $f$ function, but not a class-function:
+Assume the opposite: $f$ function, but not a class-function:
 \[
 (f\text{ family}),
 \]
@@ -547,9 +553,9 @@ Assume opposite: $f$ function, but not a class-function:
 \[
 (\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
 \]
-Since $(f\text{ set})$, a unioun of its union is also a set.\\
-Assume here that pair is a-la Kuratowsky.\\
-Using ``flat proper values'' property, it is easy to construct an injectiv map from a proper class f(x) into the aforementioned union. It contradicts the axiom of limitation of size.\\
+Since $(f\text{ set})$, a union of its union is also a set.\\
+Assume here that pair is a--la Kuratowsky.\\
+Using ``flat proper values'' property, it is easy to construct an injective map from the proper class $f(x)$ into the aforementioned union. It contradicts the axiom of limitation of size.\\
 (todo: expand the proof)
 \end{proof}
 
