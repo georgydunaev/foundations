@@ -514,7 +514,7 @@ A class--function can be called ``a locally small family''.\\
 An arbitrary family can be called ``a (large) family''.
 \end{note}
 \begin{lemma}[proper value not from dom]
-For very family $f$
+For every class $f$
 \[
 (f(x)\proper)
 \implies
@@ -522,23 +522,35 @@ For very family $f$
 \]
 \end{lemma}
 \begin{proof}
-...
+Assume opposite, $(f(x)\proper)$ and $(x\in\dom(f))$.
+\[
+(x\in\dom(f))
+\IMPLIES
+(f(x)\set)
+\]
+Contradiction.
 \end{proof}
 \begin{theorem}[small implies locally small]
 Every function is class-function(but not vice versa).
 \[
-\forall f,\ (f\text{ function})\implies(f\text{ class--function}))
+\forall f,\ ((f\text{ function})\implies(f\text{ class--function}))
 \]
 \end{theorem}
 \begin{proof}
 Assume opposite: $f$ function, but not a class-function:
+\[
+(f\text{ family}),
+\]
 \[
 (f\text{ set}),
 \]
 \[
 (\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
 \]
-...
+Since $(f\text{ set})$, a unioun of its union is also a set.\\
+Assume here that pair is a-la Kuratowsky.\\
+Using ``flat proper values'' property, it is easy to construct an injectiv map from a proper class f(x) into the aforementioned union. It contradicts the axiom of limitation of size.\\
+(todo: expand the proof)
 \end{proof}
 
 \begin{axiom}[ordered pair of proper classes is a proper class]
