@@ -42,7 +42,7 @@ Is the following okey ???
 \underline{Formation of boolean type:}\\
 \underline{Introduction of terms of boolean type:}\\
 \underline{Elimination of terms of boolean type:}\\
-\begin{definition}(Conditional operator if--then--else)
+\begin{definition}[Conditional operator if--then--else]
 \[
 (\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) \eqdef (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
 \]
@@ -60,36 +60,36 @@ Side conditions:\\
 \subsection{Implementing option types}
 %Axioms:\\
 \subsubsection{Axioms of option types}
-\begin{axiom}(None--ax)
+\begin{axiom}[None--ax]
 \[
 \None\in\Option(A) 
 \]
 \end{axiom}
-\begin{axiom}(Some--ax)
+\begin{axiom}[Some--ax]
 \[
 (a\in A)\implies(\Some(a)\in\Option(A))
 \]
 \end{axiom}
 \subsubsection{Model of option types}
 %Model:\\
-\begin{definition}(None--def)
+\begin{definition}[None--def]
 \[
 \None \eqdef \emptyclass
 \]
 \end{definition}
-\begin{definition}(Some--def)
+\begin{definition}[Some--def]
 \[
 \Some(a) \eqdef \{a\}
 \]
 \end{definition}
-\begin{definition}(Option--def)
+\begin{definition}[Option--def]
 \[
 \Option(A) \eqdef \cc{b}{(b \sss A)}
 \]
 \end{definition}
 \subsubsection{Soundness of option types}
 %Theorems:\\
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \None\in\Option(A) 
 \]
@@ -105,7 +105,7 @@ or, equivalently,
 4. By ax \dots\myref{axm:emptyset}, $(\emptyclass\set)$.\\
 5. From 3 and 4, it follows that $\emptyclass \in \cc{b}{b \sss A}$.\\
 \Done
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (a\in A)\implies(\Some(a)\in\Option(A))
 \]
@@ -138,41 +138,41 @@ or, equivalently,
 Lists are modelled as any family with some initial segment of ordinals as domain.
 
 \subsubsection{Axioms of lists}%:\\
-\begin{axiom}(Nil--ax)
+\begin{axiom}[Nil--ax]
 \[
 []\in\List(A) 
 \]
 \end{axiom}
-\begin{axiom}(Cons--ax)
+\begin{axiom}[Cons--ax]
 \[
 :: : A \to \List(A) \to \List(A) 
 \]
 \end{axiom}
 \subsubsection{Model of lists}
 %Model:\\
-\begin{definition}(List--def)
+\begin{definition}[List--def]
 \[
 \List(A)\eqdef\cc{(F\family)}{\dom(F)\in \omega}
 \]%\omega\cup\{\omega\}
 \end{definition}
-\begin{definition}(Nil--def)
+\begin{definition}[Nil--def]
 \[
 [] \eqdef \emptyclass
 \]
 \end{definition}
-\begin{definition}(inc\_fst--def)
+\begin{definition}[inc\_fst--def]
 \[
 \mathrm{inc\_fst}(r) \eqdef \cc{(x\cup\{x\},y) }{ (x,y) \in R}
 \]
 \end{definition}
-\begin{definition}(Cons--def)
+\begin{definition}[Cons--def]
 \[
 (h::t) \eqdef \cc{(\emptyclass,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
 %Theorems:
 \subsubsection{Soundness of lists}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 []\in\List(A) 
 \]
@@ -190,7 +190,7 @@ or, equivalently,
 %5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
 %6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by \dots .\\
 \Done
-\begin{theorem}
+\begin{theorem}[?]
 \[
 :: : A \to \List(A) \to \List(A)
 \]
@@ -216,7 +216,7 @@ F(a)\eqdef\union\cc{s}{(a,s)\in F}
 %2
 \begin{definition}[relational domain]
 \[
-\dom(R)\eqdef\cc{a}{\exists b: (a,b)\in R}
+\dom(R)\eqdef\cc{a}{\exists b,\ (a,b)\in R}
 \]
 \end{definition}
 \begin{definition}[functional Domain]
@@ -288,7 +288,7 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \]
 \end{definition}
-\begin{notation}
+\begin{notation}[?]
 \[
 \invE \eqdef \E^\top
 \]
@@ -489,33 +489,30 @@ Notation:\\
 
 Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi--equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
 \fi
-\begin{definition}
-\label{def:identity}
-Identity.
+\begin{definition}[identity]
 \[
 I = \cc{(x,x)}{\top}
+\label{def:identity}
 \]
 \end{definition}
 
-\begin{theorem}
-\label{thm:identity is relation}
-Identity is a relation.
+\begin{theorem}[identity is a relation]
 \[
 (I \relation)
+\label{thm:identity is relation}
 \]
 \[(I\subseteq V\times V)\]
 \end{theorem}
 
 
-\begin{definition}
-"F on X".
+\begin{definition}["F on X"]
 \[
 \mbox{"F on X"} = F\restriction X
 \]
 \end{definition}
 
 
-\begin{definition}
+\begin{definition}[?]
 \[
 (y\in f[A])
 \iff
@@ -523,21 +520,21 @@ Identity is a relation.
 \]
 \end{definition}
 
-\begin{definition}
+\begin{definition}[?]
 \[
 (y\in f\langle A\rangle)
 \iff
 (\forall x\in A: \langle x,y\rangle\in f)
 \]
 \end{definition}
-\begin{theorem}
+\begin{theorem}[?]
 \[
-X\subseteq \power Y
+(X\subseteq \power Y)
 \iff
-\union X \subseteq Y
+(\union X \subseteq Y)
 \]
 \end{theorem}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (g\functional)
 \land
@@ -546,13 +543,13 @@ X\subseteq \power Y
 (g[M] \countable)
 \]
 \end{theorem}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (f^\leftarrow \univocal)
 \]
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \left(f\injective\middle)
 \implies
@@ -560,7 +557,7 @@ X\subseteq \power Y
 \]
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \left(f\univocal\middle)
 \implies
@@ -662,12 +659,12 @@ Assume that $(B\family)$.
 \textrm{pair}\ A\ B\ (\pr_1\ p)\ (\pr_2\ p) \equiv p
 \]
 \subsubsection{Properties of $\Sigma$--types}
-\begin{lemma}
+\begin{lemma}[?]
 \[
 \invE = \Sigma \I
 \]
 \end{lemma}
-\begin{lemma}
+\begin{lemma}[?]
 \[
 \Sigma B = \invE \circ B
 \]
@@ -677,16 +674,45 @@ Assume that $(B\family)$.
 
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
-In type theory, the formatin rule for a $\Pi$--type is
+In type theory, the formation rules for a $\Pi$--type are
 \begin{prooftree}
 \AxiomC{
-$\Gamma \vdash (A:\Type)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Type)$
+$\Gamma \vdash (A::\text{Class})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text{Class})$
 }
-\RightLabel{$\Pi$-form}
+\RightLabel{$\Pi$--form(large)}
 \UnaryInfC{$
-\Gamma \vdash \Pi_{(x:A)}B(x):\Type  
+\Gamma \vdash \Pi_{(x:A)}B(x)::\text{Class}
 $}
 \end{prooftree}
+\begin{prooftree}
+\AxiomC{
+$\Gamma \vdash (A::\text{Set})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text{Set})$
+}
+\RightLabel{$\Pi$--form(small)}
+\UnaryInfC{$
+\Gamma \vdash \Pi_{(x:A)}B(x)::\text{Set}
+$}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{
+$\Gamma \vdash (A:\Un)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Un)$
+}
+\RightLabel{$\Pi$--form(tiny)}
+\UnaryInfC{$
+\Gamma \vdash \Pi_{(x:A)}B(x):\Un  
+$}
+\end{prooftree}
+Subtypes are forbidden(due to many complications), but subkinds are allowed, since there are only two kinds: Set and Class(so it's easy to implement).
+\begin{prooftree}
+\AxiomC{
+$(A::\text{Set})$
+}
+\RightLabel{(Set is a subkind of Class)}
+\UnaryInfC{$
+(A::\text{Class})
+$}
+\end{prooftree}
+
 \underline{Introduction of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
@@ -735,13 +761,13 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 In MK, it corresponds to the following:
 The $\Type$ is a $\TClass$.\\
 
-\begin{definition}(Dependent product, variant A)
+\begin{definition}[dependent product, variant A]
 \[
 \Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
 \]
 The expression $\Dom(B)$ is used to include the case when $B$ is a proper family, not just a function.
 \end{definition}
-\begin{definition}[Dependent product, variant B]
+\begin{definition}[dependent product, variant B]
 (Note: For sets the following definition is also okey:
 \[
 \Pi B = \cc{f\in \left(\union\ran(B)\right)^{\dom(f)}}{\forall (x\in\dom(f)) ,\ (f(x) \in B(x))},
@@ -751,7 +777,7 @@ but it is not working well for classes)
 (Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
 \end{definition}
 
-\begin{definition}[Dependent product, variant C]
+\begin{definition}[dependent product, variant C]
 Another definition:\\
 \[
 \prod w \eqdef \cc{f}{\exists D,\ (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D,\ f(x) \in w(x))}
@@ -866,7 +892,7 @@ and the corresponding fixpoint type is
 %\scalebox{2}{$\Sigma$}
 
 %\vphantom{p}_B
-\begin{lemma}
+\begin{lemma}[?]
 For all $n\in\N$,
 \[
 \mbox{W}_{\mathrm{fun}}B(n)
@@ -913,8 +939,8 @@ And finally,
 
 
 \underline{Introduction of terms of W--type:}\\
-\begin{definition}(constructor of W--type)\ \\
-For fixed function $B$, 
+\begin{definition}[constructor of W--type]
+For fixed function $B$,
 \[
 \sup(B):\prod_{(a\in \dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
@@ -926,7 +952,7 @@ Assume $(a\in \dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\dom(B)$ if finite, t
 \end{definition}
 
 \underline{Elimination of terms of W--type:}\\
-\begin{definition}(destructor of W--type)\ \\
+\begin{definition}[destructor of W--type]
 \[
 \mbox{W}_\mathrm{rect}:
 \prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}
