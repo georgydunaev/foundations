@@ -8,7 +8,7 @@ The implementation of a dependent types library for the Standard ML, is availibl
 \subsection{Definitions}
 All inductive definitions in this section are simultaneous.
 Classes are types, expressions are sets.
-\begin{notation}
+\begin{notation}[?]
 Various relations(:::,::,:) between text strings are introduced in this subsection.
 Quotation marks are ommited:\\
 Many-letter words such as Kind, Type, VarType, ConstType, Term, Fm, etc denote "Kind","Type", "VarType", "ConstType", "Term", "Fm", etc.
@@ -19,7 +19,7 @@ Comma ``$,$'' and ``$;$'' have higher priority than arrows. If two strings $s_1$
 Arrow ``$\rightsquigarrow$'' denotes the relation between strings, such that that if is any substrings of any inferred text coincided with the string on the left are replaced with the string on the right, then the obtained text is stated to be inferred too. %(such rules require certain metatheorems, which will be do)
 \end{notation}
 %, since formulas depend on terms and vice versa.
-\begin{definition}[$\Kind$]\ \\
+\begin{definition}[$\Kind$]
 Inductive definition of kinds:
 \begin{enumerate}
 \item $(\Type:::\Kind).$
@@ -39,10 +39,10 @@ Inductive definition of kinds:
 %Inductive defi
 %$\Term$,
 %\end{definition}
-%\begin{axiom}[Kinding types with $\ConstType$]\ \\
+%\begin{axiom}[Kinding types with $\ConstType$]
 %\end{axiom}
 
-\begin{definition}[$\ConstType$]\ \\
+\begin{definition}[$\ConstType$]
 %Typed constants: %NO!
 Inductive definition of some constant atomic types which are main entities for which the framework is developed:
 \begin{enumerate}
@@ -54,7 +54,7 @@ Inductive definition of some constant atomic types which are main entities for w
 \fi
 \end{enumerate}
 \end{definition}
-\begin{definition}[$\OptionType$]\ \\
+\begin{definition}[$\OptionType$]
 Inductive definition of formulas:
 \begin{enumerate}
 \item $(\None::\OptionType).$
@@ -62,7 +62,7 @@ Inductive definition of formulas:
 \end{enumerate}
 %\item $(\alpha::\Type) \CImplies (\conseq(\alpha)::\OptionType).$
 \end{definition}
-\begin{definition}[$\Type$]\ \\
+\begin{definition}[$\Type$]
 %\tag{def:Type}
 \label{def:Type}
 Inductive definition of types: for any (strings) $\alpha$ and $\beta$,
@@ -78,18 +78,18 @@ Inductive definition of types: for any (strings) $\alpha$ and $\beta$,
 
 \end{enumerate}
 \end{definition}
-\begin{definition}[$\VarType$]\ \\
+\begin{definition}[$\VarType$]
 Inductive definition of a kind of typed variables:
 \begin{enumerate}
 \item $(\alpha::\Type) \CImplies (\Var(\alpha)::\Var\Type).$
 \end{enumerate}
 \end{definition}
-%\begin{definition}[$\Symb$]\ \\
+%\begin{definition}[$\Symb$]
 %Inductive definition of symbols:
 %\begin{enumerate}
 %\end{enumerate}
 %\end{definition}
-\begin{definition}[$\Expr$]\ \\
+\begin{definition}[$\Expr$]
 Inductive definition of expressions:
 %Let $\alpha$ and $\beta$ be arbitrary types, then
 \begin{enumerate}
@@ -136,7 +136,7 @@ $.
 \end{enumerate}
 \end{axiom}
 
-\begin{definition}[$\conseq :: (\Type \cimplies \OptionType)$]\ \\
+\begin{definition}[$\conseq :: (\Type \cimplies \OptionType)$]
 Taking the range type $\beta$ of a function type $\alpha\to\beta$.\\
 The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
 \begin{enumerate}
@@ -154,7 +154,7 @@ So the function that takes a consequent of function type is defined. Each value 
 \]
 and it $\conseq(\alpha)$ is computable for every explicitly given type $\alpha$.
 \end{definition}
-\begin{definition}[$\TypeOf::(\Expr\cimplies\OptionType)$]\ \\ \label{def:TypeOf}
+\begin{definition}[$\TypeOf::(\Expr\cimplies\OptionType)$] \label{def:TypeOf}
 For each well--typed expression there exists one and only one type. The corresponding function $\TypeOf$ is recursively defined by induction on the argument:
 \begin{enumerate}
 \item In case it is $\var^\alpha(x)$, then \[
@@ -205,17 +205,17 @@ So the function that returns a type of an expression is defined. Each value of i
 and it $\TypeOf(e)$ is computable for every explicitly given expression $e$.
 \end{definition}
 
-\begin{definition}[Well--typed expression]
+\begin{definition}[well--typed expression]
 The expression $e$ is well--typed if computed $\TypeOf(e)$ is not $\None$.
 \end{definition}
 
-\begin{definition}[Substitution]\ \\
+\begin{definition}[substitution]
 Partial function of simultaneous substitution of a free variable $x$ in expression $u$ with another expression $t$.
 (The definition is not yet written, but it is implemented as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.)
 \end{definition}
 
 
-\begin{definition}[Transformation]\ \\
+\begin{definition}[transformation]
 Transformations of expressions.
 \begin{enumerate}
 \item Alpha--conversion: $(x.M[x/v]) \rightsquigarrow (y.M[y/v])$.
@@ -225,7 +225,7 @@ Transformations of expressions.
 \end{enumerate}
 \end{definition}
 \subsection{Basic type theoretic definitions.}
-\begin{definition}[$\Bool$]\ \\
+\begin{definition}[$\Bool$]
 Inductive definition of booleans:
 \begin{enumerate}
 \item $(\lFalse:\Bool).$

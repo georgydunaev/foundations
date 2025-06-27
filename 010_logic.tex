@@ -95,6 +95,17 @@ For any formula $\phi$,
 \phi.
 \]
 \end{theorem*}
+\begin{example}[extension rule]
+Another (NOT YET FINISHED) example is the extension rule:
+\[
+\forall (\varphi:\Fm),\ %
+(\Fau \vdash \forall (n:?),\ \llcorner \pmb{\varphi}(\boldmeta{n}) \lrcorner)
+\IMPLIES
+(\Fau \vdash \forall (n:?),\ \varphi(n) ),
+\]
+where $\varphi(n)$ means (...).
+\end{example}
+
 \iffalse % VERY GOOD, BUT DISTRACTING
 \subsection{First bold notation}
 \subsubsection{Notation for variables}
@@ -148,8 +159,7 @@ All bald functional and predicate symbols written boldly simply mean the same co
 %The second bold notation may be introduced in a situation when it is useful to show that 
 All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. 
 
-In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other type labeled by Typ: for $\Ctx$, $\Class$, $\Theory$, etc.
-
+In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other type labeled by : for $\Ctx$, $\Class$, $\Theory$, etc.
 \begin{definition}[functions Bold and Dot]
 Let $\circ$ be an infix operator of composition of functional symbols here. Then
 \[
@@ -339,8 +349,9 @@ Let $\Fm,\Class,\Ctx,\Theory,...$ be a finite amount of sets, consisting of form
 In a such model of Standard ML, there is a typing relation between semantics of terms and types.\\
 Assume this relation is given.\\
 Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\Class,\Ctx,\Theory,...$ and their ground values (without variables).\\
-Then let's extend this typing relation to the extended one, in which all remaining types also have type $\Typ$, such that 
-$(\Fm:\Typ)$, $(\Class:\Typ)$, $(\Ctx:\Typ)$, $\dots$, $(\Typ:\Typ)$ (note the last one).\\
+Then let's extend this typing relation to the extended one, in which all remaining types also have type $\Type$, such that 
+$(\Fm:\Type)$, $(\Class:\Type)$, $(\Ctx:\Type)$, $\dots$
+%, $(\Typ:\Typ)$ (note the last one).\\
 This could lead to a contradiction (Girard's Paradox) in case if this typing system would be significantly richer: at least if it had types of functions, dependent types, etc, but it doesn't have any of that: it is as simple as possible.
 \end{definition}
 %, even finite.
@@ -442,7 +453,7 @@ Then
 % bad1: (\text{Enc}\circ\text{VTyp})
 % bad2: (\text{ValToFm}\circ\text{Dec})
 \begin{notation}[naming prefix of labels]
-In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid  confusion, the constructors of the (SML) type Typ, are called with prefix ``T'': e.g. ``TFm'', ``TClass'', ``TCtx'', etc. \\
+In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid  confusion, the constructors of the (SML) type Type, are called with prefix ``T'': e.g. ``TFm'', ``TClass'', ``TCtx'', etc. \\
 But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
 \[
 ``(\forall(\phi:\TFm),\ \dots)",
@@ -1464,7 +1475,7 @@ For any type $X$, for any variable $x$ and the formula $\phi$ such that the term
 \labeltagd{axm}{H}
 \]
 \[
-``\forall (X:\Typ),"\ %
+``\forall (X:\Type),"\ %
 \forall (x:\Var),\ %
 \forall (\phi:\Fm),\ %
 \Fau\vdash
@@ -1526,7 +1537,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \begin{metadefinition}[generalisation rule, written on the meta--level]
 \[
 \forall (x:\Var),\ %
-\forall (X:\Typ),\ %
+\forall (X:\Type),\ %
 \forall (\phi:\Fm),\ %
 \forall (\Gamma : \Ctx),\ %
 \]\[

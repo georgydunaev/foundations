@@ -92,18 +92,17 @@ $\Hom_C(Z,x) \stackrel{\HomMor_C(g, x)}{\to\to\to\to\to} \Hom_C(Y,x)\stackrel{\H
 \\
 \end{enumerate}
 \myqed
-\begin{definition}
+\begin{definition}[Yoneda functor]
 Yoneda functor between categories $C$ and $[C^\op,\Set]$.
 $$h_x = \Hom_C(-, x)$$
 \end{definition}
 
-
-\begin{definition}
+\begin{definition}[function $\eta$]
 $$\eta : \Pi(w\in C^\op),\Hom_C(w,x)\to \Hom_C(w,y)$$
 $$\eta = \lambda (w\in C^\op), \lambda g\in\Hom_C(w,x),(f\circ_C^w,x,y g)$$
 \end{definition}
 Now our aim is to define a natural transformation of the elements of $[C^\op,\Set]$.\\
-\begin{lemma}$\textrm{ }$\\
+\begin{lemma}[?]
 We have:\\
 $F=\Hom_C(-,x)\in [C^\op,\Set]$\\
 $G=\Hom_C(-,y)\in [C^\op,\Set]$\\
@@ -118,7 +117,7 @@ $\eta_w: \Hom_C(w,x)\to \Hom_C(w,y)$\\
 % prove that 
 Substitution:\\
 $C \coloneqq C^\op$, $D \coloneqq \Set$, $F \coloneqq \Hom_C(-,x)$, $G \coloneqq \Hom_C(-,y)$, $x \coloneqq a$, $y \coloneqq b$, $f \coloneqq m$
-\begin{lemma}
+\begin{lemma}[?]
 $$\forall a,b\in C^\op. \forall m\in \Hom_C\op (a,b).\eta_b \circ_\Set \Hom_C(m,x)=\Hom_C(m,y)\circ_\Set\eta_a$$
 \end{lemma}
 \myprf\\
@@ -133,9 +132,9 @@ RHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
 $\HomMor_C^{B,A}(m,x) \eqdef (\lambda g_4 \in \Hom_C(a,y). g_4\circ^{b,a,y}_C m)$\\
 LeftHandSide $= \lambda g_2 \in \Hom_C(a,x). (f \circ_C^{b,x,y} (g_2 \circ_C^{b,a,x} m ))$\\
 LHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
-LHS=RHS\\
+LHS=RHS
 \myqed
-\begin{lemma}
+\begin{lemma}[?]
 $h_{-}:C\rightarrow [C^{op},\Set]$ is a fully faithful functor.
 \end{lemma}
 \myprf
@@ -154,7 +153,7 @@ Substitution: $C\coloneqq C$, $D\coloneqq [C^\op,\Set]$, $F\coloneqq h_-$,
 \item $h_-$ is injective on morphisms.
 \end{itemize}
 \myqed
-\begin{lemma}{by N.~Yoneda. (Contravariant version)}\\
+\begin{lemma}[by N.~Yoneda. (Contravariant version)]
 $G : C^\op \to \Set$\\
 $h_A = \Hom_C(-,A)$\\
 $h_A : C^\op \to \Set$\\

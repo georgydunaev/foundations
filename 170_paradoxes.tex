@@ -37,7 +37,7 @@ All proofs in this section don't require the law of excluded middle.
 \end{enumerate}
 \Done
 \end{lemma}
-\begin{note}
+\begin{note}[?]
 Via MP and the deduction theorem:
 \[
 C \implies ((C\implies F)\implies F)
@@ -130,11 +130,13 @@ Subgoal2:\\
 %\subsection{Consequences of regularity axiom}
 \subsection{Regularity implies that all classes are irreflexive}
 \begin{theorem}
-\label{thm:not in itself}
 Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
-\[ \forall Y,\ Y\notin Y\]
+\[
+\forall Y,\ Y\notin Y
+\label{thm:not in itself}
+\]
 \Proof
-\noindent %Fix Y.\\
+%\noindent %Fix Y.\\
 Let $C\ceq \cc{W}{W\notin W}$.\\
 Goal $\power C\subseteq C$.\\
 Fix class $B$. Assume $B\in \power C$.\\

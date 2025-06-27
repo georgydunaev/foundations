@@ -5,7 +5,7 @@
 %(by \cite[p.469]{Treves1967})
 Here we try to develop some ideas about an axiomatization of topology inspired by the book ``Topological Vector Spaces, Distributions and Kernels''(\cite{Treves1967}).
 \subsection{Filter}
-\begin{definition}[filter]\ \\
+\begin{definition}[filter]
 %\[\]
 The set $F$ is called \textit{filter} iff
 \[
@@ -68,17 +68,17 @@ B\in F
 \fi
 
 \subsection{Topology via relation}
-\begin{definition}[Relation between points and neighbourhoods](parameter)
+\begin{definition}[relation between points and neighbourhoods](parameter)
 \[
 \mathcal{R}\subseteq \V\times \V
 \]
 \end{definition}
-\begin{definition}[Relation between neighbourhoods and points]
+\begin{definition}[relation between neighbourhoods and points]
 \[
 \reflectbox{$\mathcal{R}$}\ceq \mathcal{R}^{T}
 \]
 \end{definition}
-\begin{definition}[Neighbourhoods of a point]
+\begin{definition}[neighbourhoods of a point]
 \[
 \mathrm{tni}(x)\ceq \mathcal{R}[\{x\}]
 \]
@@ -86,7 +86,7 @@ B\in F
 %\mathcal{N}(x)\ceq \mathcal{R}[\{x\}]
 %\]
 \end{definition}
-\begin{definition}[Interior of a set]
+\begin{definition}[interior of a set]
 \[
 \interior(S)\ceq \reflectbox{$\mathcal{R}$}[\{S\}]
 \]
@@ -95,7 +95,7 @@ B\in F
 %(S)\ceq \reflectbox{$\mathcal{R}$}[\{S\}]
 %\]
 \end{definition}
-\begin{definition}[Set of all open sets]
+\begin{definition}[set of all open sets]
 \[
 \mathcal{T}\ceq \ran(\interior)
 \]
@@ -103,7 +103,7 @@ B\in F
 %\mathcal{T}\ceq \ran(\reflectbox{$\mathcal{N}$})
 %\]
 \end{definition}
-\begin{definition}[Set of all neighbourhoods filters]
+\begin{definition}[set of all neighbourhoods filters]
 \[
 \mathcal{N}\ceq \ran(\mathrm{tni})
 \]
@@ -111,13 +111,13 @@ B\in F
 %\mathbf{N}\ceq \ran(\mathcal{N})
 %\]
 \end{definition}
-\begin{definition}[Set of all points]
+\begin{definition}[set of all points]
 %\mathbf{NN}\ceq \union\ran(\mathcal{N})
 \[
 E\ceq \union\mathcal{T}
 \]
 \end{definition}
-\begin{definition}[Set of all neighbourhoods]
+\begin{definition}[set of all neighbourhoods]
 %\mathbf{NN}\ceq \union\ran(\mathcal{N})
 \[
 N\ceq \union\mathcal{N}
@@ -156,10 +156,9 @@ Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subba
 \middle(A\cap B\in \mathcal{B} \vphantom\union \right),
 \end{align*}
 % && \text{(F2)}\\
-
 \end{definition}
 %point--neighbourhood relation defined via topology base?
-\begin{definition}[topology via subbase]\ \\
+\begin{definition}[topology via subbase]
 %For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$(later we will see that its elements are open), such that $\emptyclass\notin \mathcal{B}$,
 For any $p$, any $S$, and a subbase $\mathcal{B}$, we define:
 \footnote{
@@ -181,7 +180,7 @@ Later we will also see that elements of $\mathcal{B}$ are open.
 %)
 
 %point--neighbourhood relation defined via filter bases is a point--neighbourhood relation
-\begin{theorem}[topology via subbase is a topology]\ \\
+\begin{theorem}[topology via subbase is a topology]
 The relation $\mathcal{R}_\mathcal{B}$ between points and neighbourhoods is topological.
 \ProofNoPar
 \begin{itemize}
@@ -246,7 +245,6 @@ It can be given also this way:
 \mathrm{nghb} \ceq \mathrm{tni}
 \]
 \end{notation}
-
 \begin{definition}[product filter basis function]
 \[
 \mathrm{pfb}((a,b))\ceq \cc{A\times B }{ (A\in \mathrm{nghb}_E(a)) \land (B\in \mathrm{nghb}_F(b))}
@@ -256,7 +254,7 @@ It can be given also this way:
 %\subsection{Filter and filter base}
 \pagebreak
 \subsection{Defining topology and various algebras}
-\begin{definition}[Topology]\ \\
+\begin{definition}[topology]
 The set $\mathcal{T}$ is called \textit{topology} iff
 %\left( \emptyclass\notin F \vphantom\union \right),
 % && \text{(F$_1$)}\\
@@ -277,7 +275,7 @@ A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
 %&& \text{(F$_3$)}\\
 \end{definition}
 
-\begin{definition}[sigma--algebra]\ \\
+\begin{definition}[sigma--algebra]
 The set $\sigma$ is called \textit{sigma--algebra} iff
 \begin{align*}
 \left(
@@ -474,12 +472,12 @@ To be a topology is a hereditary topological property. To be a closed set is a [
 \iftrue
 \pagebreak
 \subsection{Topology in older notation}
-\begin{definition}
+\begin{definition}[?]
 \[
 \mbox{Segm} = \ccc{\beta}{[-\infty;\beta)}{\beta\in\real}\cup \ccc{\alpha}{(\alpha;+\infty]}{\alpha\in\real}\cup \ccc{\alpha,\beta}{(\alpha;\beta)}{\alpha\in\real,\beta\in\real}
 \]
 \end{definition}
-\begin{definition}
+\begin{definition}[?]
 \[
 \topology_{[-\infty;+\infty]} = \mbox{Segm}_\sigma
 \]
@@ -496,17 +494,17 @@ Interior of a set V in a topology $\topology$.
 \separation{W}{\topology}{W\subseteq V}
 \]
 \end{definition}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 (\interior = \nghbset^{-1})\LAND(\nghbset=\interior^{-1})
 \]
 \end{theorem}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 \]
 \end{theorem}
-\begin{theorem}
+\begin{theorem}[?]
 \[
 \cl \dashv \mbox{id} \dashv \interior
 \]
@@ -517,7 +515,7 @@ V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 \renewcommand*{\blipo}{\cc{W\in\topology}{W\subseteq V}}
 % \cc{W\in\topology}{W\subseteq V}
 %\noindent Lemma:
-\begin{theorem}
+\begin{theorem}[?]
 \[
 V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 \]
@@ -570,7 +568,7 @@ V\in \nghbset_\topology(x)
 \pagebreak
 \subsection{Theorems about bases}
 %\iffalse ???
-\begin{definition}[base]\ \\
+\begin{definition}[base]
 A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
 %any open set o
 $\forall U\in\mathcal{T},\ \exists W\in\power\mathfrak{B},\ U=\union W$\\
@@ -582,7 +580,7 @@ $\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
 %\fi
 
 %\iffalse ???
-\begin{definition}[generator]\ \\
+\begin{definition}[generator]
 A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff
 \[
 \left(\forall U\in\mathcal{T},\ \exists W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) },\ U=\union W
@@ -599,7 +597,7 @@ or $\mathcal{T}$ is a subset of unions of subsets of intersections of finite sub
 Generator set is also called a "subbase".
 %\fi
 
-\begin{definition}[a relation ``finer'' as an order on filters]\ \\
+\begin{definition}[a relation ``finer'' as an order on filters]
 For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathcal{C} \leq \mathcal{F}$ if and only if for every $C \in \mathcal{C}$ there exists some $F \in \mathcal{F} \text{ such that } F \subseteq C,$ in which case it is said that $\mathcal{C}$ is coarser than $\mathcal{F}$ and that $\mathcal{F}$ is finer than (or subordinate to) $\mathcal{C}$.
 \[
 (\mathcal{C} \leq \mathcal{F})
@@ -615,7 +613,7 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 \end{notation}
 
 \begin{definition}[order on bases]
-Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff\\
+Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff
 \[
 \forall x ,\  (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
 \]
