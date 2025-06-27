@@ -4,11 +4,11 @@
 \iftrue
 %The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
-\begin{theorem}[?]
+\begin{theorem}[example of class builder use]
 \[
 (\cc{y}{\psi}\nonempty)
 \iff
-(\exists y,\ \psi)
+(\exists (y\set),\ \psi)
 \]
 \end{theorem}
 \Proof
@@ -16,13 +16,14 @@
 \[
 (\cc{y}{\psi}\nonempty)
 \IMPLIES
-(\exists y,\ \psi)
+(\exists (y\set),\ \psi)
 \]
 \noindent$(\Leftarrow)$\\
+\dots
 \Done
 \fi
 
-\begin{theorem}[?]
+\begin{theorem}[V is maximal]
 Any class is a subclass of class of all sets.
 \[
 (C\subseteq \V)
@@ -56,10 +57,10 @@ The claim is proven.
 \]
 \Done
 
-\begin{theorem}[?]
-\label{thm:sets are in V}
+\begin{theorem}[sets are in V]
 \[
 (X\set)\iff(X\in \V)
+\label{thm:sets are in V}
 \]
 \end{theorem}
 \Proof
@@ -119,7 +120,8 @@ The claim has been proven.
 \]
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[empty set is minimal]
+For all class $A$,
 \[
 (\emptyclass\subseteq A)
 \clabeltagd{thm}{empty class is subclass}
@@ -245,8 +247,7 @@ Any element of a subclass is in the class.
 \]
 \Done
 
-
-\begin{theorem}[in class then set]
+\begin{theorem}[is in class then is set]
 For any terms $A$ and $B$,
 %\[A\set \land B\in A \rightarrow B\set\]
 \[

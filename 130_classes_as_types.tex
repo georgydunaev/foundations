@@ -134,44 +134,60 @@ or, equivalently,
 \subsubsection{Soundness of ordered pairs}
 \dots
 \pagebreak
-\subsection{Implementing lists}
-Lists are modelled as any family with some initial segment of ordinals as domain.
 
-\subsubsection{Axioms of lists}%:\\
-\begin{axiom}[Nil--ax]
+\subsection{Implementing list of classes[not good]}
+Lists of classes are modelled as any family with some initial segment of ordinals as a domain.
+The type $\ClassList$ is introduced. 
+\subsubsection{Axioms}%:\\
+\begin{axiom}[nil]
 \[
-[]\in\List(A) 
+[]\in\ClassList 
 \]
 \end{axiom}
-\begin{axiom}[Cons--ax]
+\begin{axiom}[cons]
 \[
-:: : A \to \List(A) \to \List(A) 
+::\ :\ Class \to \ClassList \to \ClassList 
 \]
 \end{axiom}
-\subsubsection{Model of lists}
+\subsubsection{Model}
 %Model:\\
-\begin{definition}[List--def]
+\begin{definition}[class list]
 \[
-\List(A)\eqdef\cc{(F\family)}{\dom(F)\in \omega}
+\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
 \]%\omega\cup\{\omega\}
 \end{definition}
-\begin{definition}[Nil--def]
+\begin{definition}[nil]
 \[
 [] \eqdef \emptyclass
 \]
 \end{definition}
+%\subsection{Self--contained presentation of dependent types}
+%\subsection{Families of definable classes, abstraction and evaluation.}
+\subsection{Implementing list of a small type}
+Let $A$ be a small type.
+\subsubsection{Axioms}%:\\
+\begin{axiom}[nil]
+\[
+[]\in\List(A) 
+\]
+\end{axiom}
+\begin{axiom}[cons]
+\[
+::\ :\ A \to \List(A) \to \List(A) 
+\]
+\end{axiom}
 \begin{definition}[inc\_fst--def]
 \[
 \mathrm{inc\_fst}(r) \eqdef \cc{(x\cup\{x\},y) }{ (x,y) \in R}
 \]
 \end{definition}
-\begin{definition}[Cons--def]
+\begin{definition}[cons]
 \[
 (h::t) \eqdef \cc{(\emptyclass,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
 \]
 \end{definition}
 %Theorems:
-\subsubsection{Soundness of lists}
+\subsubsection{Soundness}
 \begin{theorem}[?]
 \[
 []\in\List(A) 
@@ -192,19 +208,19 @@ or, equivalently,
 \Done
 \begin{theorem}[?]
 \[
-:: : A \to \List(A) \to \List(A)
+::\ :\ A \to \List(A) \to \List(A)
 \]
 or, equivalently,
 \[
-:: : A \to \List(A) \to \List(A)
+::\ :\ A \to \List(A) \to \List(A)
 \]
 \end{theorem}
 \Proof
 \dots
 \Done
 \pagebreak
-%\subsection{Self--contained presentation of dependent types}
-%\subsection{Families of definable classes, abstraction and evaluation.}
+
+
 \subsection{Implementing functions}
 %\subsection{Relational basics}
 \subsubsection{Family basics}
@@ -219,22 +235,24 @@ F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \dom(R)\eqdef\cc{a}{\exists b,\ (a,b)\in R}
 \]
 \end{definition}
-\begin{definition}[functional Domain]
+\begin{definition}[functional Domain]%WRONG: \Dom(F)\eqdef\dom(F)
 \[
-\Dom(F)\eqdef\dom(F)
+\dom(R)\eqdef\cc{a}{\exists (b\set),\ (a,b)\in R}
 \]
 \end{definition}
 %3
 \begin{definition}[relational range]
 \[
-\ran(R)\eqdef\cc{b}{\exists a: (a,b)\in R}
+\ran(R)\eqdef\cc{b}{\exists a,\ (a,b)\in R}
 \]
 \end{definition}
+\iffalse bad
 \begin{definition}[functional Range]
 \[
 \Ran(F)\eqdef\cc{F(a)}{a\in\Dom(F)}
 \]
 \end{definition}
+\fi
 %4
 \begin{definition}[restriction]
 \[
@@ -247,15 +265,17 @@ F\restriction A\eqdef\cc{(a,s)\in F}{a\in A}
 \image_R(A)\eqdef\ran(R\restriction A)
 \]
 \end{definition}
+\iffalse
 \begin{definition}[functional Image]
 \[
 \Image_F(A)\eqdef\Ran(F\restriction A)
 \]
 \end{definition}
+\fi
 %6
 \begin{definition}[relational composition]
 \[
-R \circ S \eqdef \cc{(x,z)}{\exists y:(x,y)\in S \land (y,z)\in R}
+R \circ S \eqdef \cc{(x,z)}{\exists y,\ (x,y)\in S \land (y,z)\in R}
 \]
 \end{definition}
 \begin{definition}[functional composition]
@@ -266,7 +286,7 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 %7
 \begin{definition}[class of all sets]
 \[
-\V\eqdef\cc{x}{x\any}
+\V\eqdef\cc{x}{\top}%x\any
 \]
 \end{definition}
 \begin{definition}[membership class]
@@ -275,9 +295,11 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 \]
 \end{definition}
 \begin{definition}[identity class]
+\iffalse
 \[
 \I\eqdef\cc{(x,x)}{x\any}
 \]
+\fi
 \[
 \I\eqdef\ccc{x}{(x,x)}{\top}
 \]
@@ -288,14 +310,14 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \]
 \end{definition}
-\begin{notation}[?]
+\begin{notation}[containment relation]
 \[
 \invE \eqdef \E^\top
 \]
 \end{notation}
 \begin{definition}[functional transposition]
 \[
-F^\intercal\eqdef\cc{(F(x),x)}{x\in \Dom(F)}
+F^\intercal\eqdef\cc{(F(x),x)}{x\in \dom(F)}
 \]
 \end{definition}
 
@@ -307,7 +329,7 @@ Def is ommited!
 
 \begin{definition}[domain]
 \[
-\dom(F)\eqdef \cc{x}{\exists b, (x,b)\in F}
+\dom(F)\eqdef \cc{x}{\exists b,\ (x,b)\in F}
 \]
 \end{definition}
 

@@ -413,7 +413,7 @@ Later it will be used as a default value for ``undefined'' values. They are not 
 \clabeltagd{def}{not set}
 \]
 \end{definition}
-The definitions above seem tobe the best solution to avoid many-valued logics and other semantic or syntactic complications of statements of the theorems. When a not involved in logic mathematician says ``undefined'', it usually means ``not set''(in the langugage of this book) and only sometimes ``undefined'', in the sense of ``was not yet defined''.
+The definitions above seem tobe the best solution to avoid many-valued logics and other semantic or syntactic complications of statements of the theorems. When a not involved in logic mathematician says ``undefined'', it usually means ``not set''(in the terminology of this book) and only sometimes ``undefined'', in the sense of ``was not yet defined''.
 \begin{example}[intersection of the empty set]
 \[
 \left(\left(\bigcap \emptyset\right)\text{ not set}\right)
@@ -421,7 +421,7 @@ The definitions above seem tobe the best solution to avoid many-valued logics an
 \end{example}
 \begin{example}[value of a function]
 \[
-(x\notin \dom(f)) \IMPLIES (f(x)\text{ not set})
+(f\function) \LAND (x\notin \dom(f)) \IMPLIES (f(x)\text{ not set})
 \]
 \end{example}
 \subsection{Functions and families}
@@ -456,7 +456,7 @@ F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{
 \begin{definition}[family]
 A class $f$ is called \textit{family} if it satisfies two conditions:
 \[
-\forall x,\ %
+\forall (x\in\Dom(f)),\ %
 (
 (
 f(x)
@@ -468,10 +468,10 @@ f(x)
 ((x,y)\in f)
 )
 )
-\tag{1}
+\tag{concentrated set values}
 \]
 \[
-\forall x,\ %
+\forall (x\in\Dom(f)),\ %
 (
 (
 f(x)
@@ -487,18 +487,60 @@ f(x)
 )
 )
 )
-\tag{2}
+\tag{flat proper values}
 \]
 \end{definition}
 \begin{definition}[set--valued]
-A set--valued family is called \textit{set--valued}, if
+A class $f$ is called \textit{set--valued}, if all of its values are sets.
 \[
-(\forall x,\ (f(x)\text{ set}))
+(f\text{ set--valued})\iffdef(\forall (x\in\Dom(f)),\ (f(x)\text{ set}))
+\]
+\end{definition}
+\begin{definition}[class--function]
+A family is called a \textit{class--function} if it is set--valued.
+\[
+(F\text{ class--function})\iffdef((F\text{ family})\land(F\text{ set--valued}))
 \]
 \end{definition}
 \begin{definition}[function]
-A set--valued family is called a \textit{function}.
+A family is called a \textit{function} if it is a set.
+\[
+(F\text{ function})\iffdef((F\text{ family})\land(F\text{ set}))
+\]
 \end{definition}
+\begin{note}[category--theory inspired naming]
+A function can be called ``a small family''.\\
+A class--function can be called ``a locally small family''.\\
+An arbitrary family can be called ``a (large) family''.
+\end{note}
+\begin{lemma}[proper value not from dom]
+For very family $f$
+\[
+(f(x)\proper)
+\implies
+(x\notin\dom(f))
+\]
+\end{lemma}
+\begin{proof}
+...
+\end{proof}
+\begin{theorem}[small implies locally small]
+Every function is class-function(but not vice versa).
+\[
+\forall f,\ (f\text{ function})\implies(f\text{ class--function}))
+\]
+\end{theorem}
+\begin{proof}
+Assume opposite: $f$ function, but not a class-function:
+\[
+(f\text{ set}),
+\]
+\[
+(\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
+\]
+...
+\end{proof}
+
 \begin{axiom}[ordered pair of proper classes is a proper class]
 The following a little bit non--traditional agreement(the axiom) may be useful for this section, but it is not yet obvious that it is needed:
 \[
@@ -514,7 +556,7 @@ The following a little bit non--traditional agreement(the axiom) may be useful f
 \]
 \end{axiom}
 \subsection{Unions}
-\begin{definition}[elementary union]%\ \\
+\begin{definition}[elementary union]
 This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
 \union A \eqdef \cc{x}{\exists a\in A,\ x\in a}
@@ -522,7 +564,7 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 \]
 \end{definition}
 
-\begin{definition}[union of a definable conglomerate of classes]%\ \\
+\begin{definition}[union of a definable conglomerate of classes]
 \[
 \bigcup^y_{\psi} t 
 \ \eqdef\ 
@@ -543,7 +585,7 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 \label{def:uniondefcongl}
 \end{definition}
 
-\begin{definition}[union of terms built out of the elements of a class]%\ \\
+\begin{definition}[union of terms built out of the elements of a class]
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
 If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
 \[
@@ -552,14 +594,14 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \bigcup^y_{y\in s} t 
 \]
 \end{definition}
-\begin{definition}[union of the elements of a class]%\ \\
+\begin{definition}[union of the elements of a class]
 \[
 \bigcup A 
 \ \eqdef\ 
 \bigcup_{y\in A} y 
 \]
 \end{definition}
-\begin{theorem}[``elementary def of intersection'']%\ \\
+\begin{theorem}[``elementary def of intersection'']
 \[
 \union A = \cc{x}{\exists a\in A: x\in a}
 \labeltagd{thm}{union}
@@ -580,7 +622,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \Done
 
 \subsection{Intersections}
-\begin{definition}[elementary intersection]%\ \\
+\begin{definition}[elementary intersection]
 This is an admissible and ``elementary'' definition of an intersection of an arbitrary class $A$, which is proved to be a theorem later in this section.
 \[
 \intersection A \eqdef \cc{x}{\forall a\in A\mydot x\in a}
@@ -588,7 +630,7 @@ This is an admissible and ``elementary'' definition of an intersection of an arb
 \]
 \end{definition}
 
-\begin{definition}[intersection of a definable conglomerate of classes]%\ \\
+\begin{definition}[intersection of a definable conglomerate of classes]
 For any formula $\psi$, any term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
 \[
 \bigcap^y_{\psi} t 
@@ -603,7 +645,7 @@ For any formula $\psi$, any term $t$, any variables $x$ and $y$, in case all of 
 \end{definition}
 
 
-\begin{notation}[intersection of terms built out of the elements of a class]%\ \\
+\begin{notation}[intersection of terms built out of the elements of a class]
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
 If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
 \[
@@ -612,7 +654,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \bigcap^y_{y\in s} t 
 \]
 \end{notation}
-\begin{notation}[intersection of the elements of a class]%\ \\
+\begin{notation}[intersection of the elements of a class]
 %\[
 %\bigcap G = \cc{x}{\forall y\in G. x\in y}
 %\]
@@ -643,8 +685,8 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \Done
 \subsection{Powerclass}
 %A theory is conservatively extended with a functional  class comprehension.
-\begin{definition}[powerclass]%\ \\
-For any term $X$, for any variable $x$ which is not free in $X$,
+\begin{definition}[powerclass]
+For any class term $X$, for any variable $x$ which is not free in $X$,
 \[
 \power X \eqdef \cc{x}{x\subseteq X}
 \labeltagd{def}{powerclass}
@@ -652,6 +694,7 @@ For any term $X$, for any variable $x$ which is not free in $X$,
 \end{definition}
 \subsection{Heredity}
 \begin{axiom}[heredity]
+For any class terms $A$ and $B$,
 \[
 (
 (A\set)
@@ -665,7 +708,7 @@ For any term $X$, for any variable $x$ which is not free in $X$,
 \end{axiom}
 \subsection{Powerset}
 \begin{axiom}[powerset]
-For any term $A$,
+For any class term $A$,
 \[
 (A\set)
 \implies
@@ -673,7 +716,7 @@ For any term $A$,
 \labeltagd{axm}{powerset}
 \]
 \end{axiom}
-\begin{note}
+\begin{note}[the powerset axiom is weak here]
 This is a weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.
 \end{note}
 
@@ -682,7 +725,7 @@ This is a weak version, but it is okey, since together with axiom of heredity it
 %\end{axiom}
 \subsection{Regularity in form of epsilon--induction}
 \begin{axiom}[$\in$--induction]
-For any term $\Psi$,
+For any class $\Psi$,
 \iffalse
 \textrm{\removeabs{$\in$--induction}}
 \textrm{\replace{$\in$--induction}}

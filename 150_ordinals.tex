@@ -742,27 +742,28 @@ Actually, since $|\cdot|$ is a functional symbol, the following is meant:
 Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
 \end{iaxiom}
 Actually, we can use the following axiom:
-\begin{axiom*}
+\begin{axiom*}[?]
 \[
 (x\set)\implies(|x|\in\On)
 \]
 \end{axiom*}
 or even
-\begin{axiom*}
+\begin{axiom*}[?]
 \[
 (x\set)\implies(|x|\set)
 \]
 \end{axiom*}
-since later we will prove that
-\begin{theorem*}
+since later it will be proven that
+\begin{theorem*}[cardinality is an ordinal]
 \[
-(x\set)\implies(|x|\in\On)
+(x\set)\implies \Ord(|x|)
 \]
 \end{theorem*}
 \begin{proof}
 (TODO)
 \end{proof}
-\begin{iaxiom} Sets are hereditary:
+\begin{iaxiom}[heredity]
+Sets are hereditary:
 \[
 (A\subseteq B)\land (B\set) \implies (A\set)
 \]
