@@ -1312,7 +1312,7 @@ B
 The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ (of arbitrary type) is antiquoted, then it can be simply written "Antiquote($t$)"(without the quotation marks which are written here).
 \end{notation}
 \begin{note}[requirement for the implementation]
-\underline{For a formula $\phi$ to be well--formeda, all antiquotations in it must be quoted.}\\
+\underline{For a formula $\phi$ to be well--formed, all antiquotations in it must be quoted.}\\
 \iffalse
 $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
 \fi
@@ -1527,7 +1527,32 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 
 \subsubsection{Simplification of rules B1 and B2}
 For our purposes in the classical setting, it is possible to simplify these abstraction rule requirements, down to the the generalisation rule and the classical definition of the existence quantifier.%For the case of classical predicate logic, it is enough to have 
-\begin{metadefinition}[generalisation rule]%underline
+\begin{note}[sizes of types terminology]
+Types are divided in three sizes:
+\begin{enumerate}
+\item ``small'': types, which are interpreted as sets.
+\item ``medium'': types, which are interpreted as classes.
+\item ``large'': all mentioned types, extended by types ``Class'' and ``Type'', which is interpreted as a conglomerate of all classes.
+\end{enumerate}
+\end{note}
+\begin{note}[judgements]
+The following judging rules are assumed:
+\begin{itemize}
+\item All small terms have small types.
+\item All small types are also small terms, but not vice versa.
+\item So therefore any small type have some (other) small type.\\
+Moreover, a type of a small type is required to be a universe. Therefore a type of a universe is also a universe. And all of universes are small types. 
+\item All medium types have a large type ``Type''.
+\item Large types have no types. There are only two of them: ``Type'' and ``Class''.
+\end{itemize}
+\end{note}
+
+\begin{note}[on quantifications over all types]
+It seems to be impossible(due to paradoxes--related reasons) to ``uniformly'' write a metatheoretical statement that expresses, for example, generalisation rule for all types.
+The proposed solution for this problem is just to write it separately as two statements: one which is quantified over all medium types and one specifically for the only finite amount of large types manually called (there are two:``Class'' and ``Type''), and it seems to be enough.
+\end{note}
+\begin{definition}[generalisation rule(s)]%underline
+%It is not possible to write a generalisation rule for every large type
 For $\Wau$ to be a theory, the following must hold, that for any type $X$:\\
 ``
 For any variable $x$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
@@ -1543,11 +1568,11 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \quad\quad(\mbox{where }x\notin\FV(\Gamma))
 \labeltag{Gen}
 \]
-\end{metadefinition}
-\begin{metadefinition}[generalisation rule, written on the meta--level]
+\end{definition}
+\begin{definition}[generalisation rule, written on the meta--level]
 \[
+``\forall (X:\Type),\ ''%
 \forall (x:\Var),\ %
-\forall (X:\Type),\ %
 \forall (\phi:\Fm),\ %
 \forall (\Gamma : \Ctx),\ %
 \]\[
@@ -1560,14 +1585,14 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 )
 \clabeltag{MetaGen}
 \]
-\end{metadefinition}
+\end{definition}
 
 
-\begin{metadefinition}[classical existence]
+\begin{definition}[classical existence]
 \[
 (\exists x, \phi) \iffdef (\neg \forall (x:X),\ (\neg\phi))
 \]
-\end{metadefinition}
+\end{definition}
 
 
 
