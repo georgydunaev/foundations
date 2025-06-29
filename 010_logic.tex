@@ -38,14 +38,16 @@ Meanwhile, the difference between notation for the proof assistant(which is quit
 
 It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
 \begin{theorem*}[representation theorem in the traditional notation]
-Let $\mathbb{N}$ be the set of natural numbers. A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
-T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \leftrightarrow y = \overline{n} ).
+Let $\mathbb{N}$ be the set of natural numbers. A %first--order
+theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
+T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y = \overline{n} ).
 \]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
 \end{theorem*}
 \begin{theorem*}[representation theorem in the higher--order notation of this book]
 Let $\mathbb{N}$ be the set of natural numbers. 
-A first--order theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
+A% first--order
+ theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
 for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then 
 \iffalse
 \[
@@ -57,11 +59,11 @@ T \vdash \Quote\Fm(\forall y (\Antiquote\Fm(\varphi_f[m_1/x_1, \dots, m_k/x_k, \
 \]
 or, equivalently(this is a questionable formula, it may not be even wrong),
 \[
-T \vdash (\forall \Quote(y), ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \leftrightarrow (\Quote\Class(y) = n) )).
+T \vdash (\forall \Quote(y), ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \iff (\Quote\Class(y) = n) )).
 \]
 or, equivalently,
 \[
-T \vdash (\forall y, ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \leftrightarrow (\Quote\Class(y) = n) )).
+T \vdash (\forall y, ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \iff (\Quote\Class(y) = n) )).
 \]
 or, equivalently,
 (OFFTOPIC:
@@ -159,7 +161,7 @@ All bald functional and predicate symbols written boldly simply mean the same co
 %The second bold notation may be introduced in a situation when it is useful to show that 
 All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. 
 
-In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other type labeled by : for $\Ctx$, $\Class$, $\Theory$, etc.
+In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other types: $\Ctx$, $\Class$, $\Theory$, etc.%labeled by : for
 \begin{definition}[functions Bold and Dot]
 Let $\circ$ be an infix operator of composition of functional symbols here. Then
 \[
@@ -473,10 +475,10 @@ it will be written
 \[
 ``(\forall(f\in\FmCode),\ \dots)".
 \]
-Note, that the letter $f$ here is a vareiable for the code of the formula, not for the formula itself, as was above where the symbol ":" was used.
+Note, that the letter $f$ here is a vareiable for the code of the formula, not for the formula itself, as was above where the symbol ``:'' was used.
 \end{notation}
 \fi
-In general, any other abuse of notation should be avoided and will be avoided at all costs.
+In general, any other abuse of notation should be avoided and will be avoided.% at all costs.
 
 
 %Now the tricky part, te
@@ -502,9 +504,9 @@ t
 That is why it is an axiom, because otherwise it would be a circular definition. (The author believes that it might be the reason why terms are called ``a term'': they are ``terminal'' in the sense of being expressed not throught other types, but only via themselves.)
 \end{axiom}
 \begin{notation}[overloading class bindings]
-Again, as previously for formulas, 
+Again, as previously for formulas, a formula
 \[
-``(\forall(K:\TClass),\ \dots)",
+``(\forall(K:\TClass),\ \dots)"
 \]
 can be written as
 \[
@@ -513,7 +515,7 @@ can be written as
 \iffalse
 and also the quantifiers bound by a variable codes of definable classes
 \[
-``(\forall(e\in\CClass),\ \dots)",
+``(\forall(e\in\CClass),\ \dots)"
 \]
 can be likewise unambiguously written as
 \[
@@ -822,8 +824,8 @@ It is a bit tricky to display dots in Linux terminal, so the following notation 
 \]% \meta{\pmb{\phi}}(BAD)
 \end{notation}
 
-\begin{definition}[translation of variables for formulas into the first--order language]
-(This is a main definition.)
+\begin{definition}[translation of variables for formulas]% into the language]
+%(This is a main definition.)
 
 For each variable wiht a name in the group ``a lowercase letter of Greek alphabet'',  
 
@@ -1460,7 +1462,15 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 )
 \clabeltagd{axm}{MetaS2}
 \]
-The signatures of the functions which implement the predicates ``($\cdot$~free for~$\cdot$~in~$\cdot$)'' and \\``($\cdot$~occures~free~in~$\cdot$)'' are given in the listing below:
+The signatures of the functions which implement the predicates 
+\[\text{
+``($\cdot$~free for~$\cdot$~in~$\cdot$)'' 
+}\]
+and 
+\[\text{
+``($\cdot$~occures~free~in~$\cdot$)''
+}\]
+are given in the listing below:
 \begin{lstlisting}
 FFI : Value * Variable * Value -> bool
 isFree : Variable * Value -> bool
@@ -3056,7 +3066,7 @@ By induction on formula construction.\\
 ...
 \pagebreak
 %\sub
-\section{Just some first-order logic theorems}
+\section{Just some logic theorems}
 ...
 \begin{theorem}
 In intuitionistic logic:
@@ -3947,9 +3957,9 @@ Fix $(\Wau:\Theory)$ and $(\phi:\Fm)$.
 ))
 )
 \]
-Let $\chi_1 \cequiv \phi$ and $\chi_2 \cequiv \neg\phi$.
+Let $\chi_1 \cequiv \phi$ and $\chi_2 \cequiv \neg\phi$. Then
 \[
-(\Wau \vdash (\phi\lor\neg\phi_2))
+(\Wau \vdash (\phi\lor\neg\phi))
 \tag{by \ref{axm:LEM}}
 \]
 Therefore, it follows by Modus Ponens from the assumption, that
@@ -4091,7 +4101,8 @@ All rules of inference in this book are supposed to be structural. It means that
 
 
 \begin{inferencerule}[effective necessitation]
-The theory $\Tau$(this symbol is a constant) is strong enough, so for any first-order theory $\Wau$(this symbol is a variable),
+The theory $\Tau$(this symbol is a constant) is strong enough, so for any %first-order
+ theory $\Wau$(this symbol is a variable),
 \[
 \frac{
 \Wau \vdash \psi
@@ -4133,11 +4144,11 @@ This is forbidden inference rule, because it makes it impossible to implement su
 \labeltagd{badrule}{``Effective Omniscience''}
 \]%%\square \psi
 \end{badinferencerule*}
-\begin{note}[?]
+\begin{note}[philosophical]
 Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real--life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
 \end{note}
 
-\begin{badaxiom}[?]
+\begin{badaxiom}[``cotransitivity'']
 It is not possible to have an ``axiom'' scheme like 
 \[
 \square\square_n\psi \implies \square_n\psi,
@@ -4222,7 +4233,7 @@ It is trivial to see, that the following holds:
 )
 \]
 
-\begin{note}
+\begin{note}[unusual writing convention]
 % either 
 The author uses a predicate $\vdash$, which is slightly different from the traditional: it is higher--order in nature, since it takes a theory(a set of formulas), a context (a list of formulas), and a formula as arguments.
 \[
@@ -4346,7 +4357,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 \]%(to be )
 \end{proof}
 
-\begin{inferencerule}[Omniscience]%\ \\
+\begin{inferencerule}[omniscience]%\ \\
 \[
 \frac{
 \psi

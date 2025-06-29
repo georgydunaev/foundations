@@ -139,8 +139,17 @@ For example, is we denote a class of definable sets by $\text{L}$, then the ``ax
 \end{note}
 
 \begin{constructor}[class comprehension]
-If $\varphi$ is a formula, $\vec{x}$ is a list of variables, $t$ is a term, then $\ccc{\vec{x}}{t}{\varphi}$ is a term.
+If $\varphi$ is a formula, $\vec{x}$ is a list of variables(they are used for classes), $t$ is a class term, then $\ccc{\vec{x}}{t}{\varphi}$ is a class term.
 \end{constructor}
+\iffalse
+\begin{constructor}[medium type specification]
+If $\varphi$ is a formula, $x$ a variable, $X$ is a medium type, then $\cc{x:X}{\varphi}$ is a medium type.
+\end{constructor}
+PROBLEM: type ambihuity!
+\fi
+%\begin{constructor}[medium type comprehension] %TODO?
+%If $\varphi$ is a formula, $\vec{x}$ is a list of variables with types $\vv{X}$, $t$ is a class term, then $\ccc{\vec{x}}{t}{\varphi}$ is a class term.
+%\end{constructor}
 
 \begin{notation}[clearer notation]
 \[
@@ -181,16 +190,17 @@ There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is b
 %)
 %\end{axiom}
 \begin{notation}[list of variables]
-Assume $v_1,\dots,v_n \in \Var$. Then
+Assume $v_1,\dots,v_n$ are variables, assume $T_1,\dots,T_n$ are arbitrary types. % \in \Var$. ???
+Then
 \[
-(\forall\vv{v},\ \phi)
+(\forall(\vv{v}:\vv{T}),\ \phi)
 \iffdef
-(\forall v_1,\ \dots,\forall v_n,\ \phi)
+(\forall (v_1:T_1),\ \dots\ ,\forall (v_n:T_n),\ \phi)
 \]
 \[
-(\exists\vv{v},\ \phi)
+(\exists(\vv{v}:\vv{T}),\ \phi)
 \iffdef
-(\exists v_1,\ \dots,\exists v_n,\ \phi)
+(\exists (v_1:T_1),\ \dots\ ,\exists (v_n:T_n),\ \phi)
 \]
 \end{notation}
 
@@ -208,36 +218,47 @@ Then define the closure via the formula
 \]
 
 Also the closure can be easier to use as a part of the definition of a formula.
+
 Every axiom is assumed to have the outermost closure operator.
 
-Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. Namely, there is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
+%Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. %NO!
+%Namely, 
+There is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
 \end{definition}
 
 %...maybe
 %\[BAD
 %\cc{s}{(x\in A)} := \ccc{x}{s}{(x\in A)},
 %\]
-\begin{notation}[case if a term is a variable]
-If a term is a variable, then there is no need to specify it twice:
+\begin{notation}[the case if a term is a variable]
+If a term is just a variable, then there is no need to specify it twice:
 \[
-\cc{x}{\phi} \equivdef \ccc{x}{x}{\phi}.
+\cc{x}{\phi} \equivnot \ccc{x}{x}{\phi}.
 \labeltag{notation:cccxx}
 \]%\detokenize{a_a\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}}
 \end{notation}
 
 \begin{axiom}[class comprehension]%NEW 
-For any formula $\phi$, any variable $X$,
+For any formula $\phi$, any variable $w$,
 \[
-(\vv{\forall})(\forall X,\ ((X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)))
+(\vv{\forall})(\forall (w:\Class),\ ((w\in\cc{w}{\varphi}) \iff ((w\set)\land \varphi)))
 \clabeltagd{axm}{varComprehension}
 \]
+The comprehension for the all the rest small types is simpler. Namely, since they are modelled by the sets, there is no need for the setness check:
+\[
+(\vv{\forall})(\forall (W\text{ isSmallType}) \forall (w:W),\ ((w\in\cc{w:W}{\varphi}) \iff \varphi)
+\clabeltagd{axm}{varSmallTypeComprehension}
+\]
 \end{axiom}
-\begin{axiom}[(optional axiom, todo) class term comprehension]
+\begin{notation}[ommiting types]
+Due to lack of space in class--builder notation, it may be written just $\vv{x}$ instead of $(\vv{x}:\vv{X})$, if it is easy to restore the types from the context.
+\end{notation}
+\begin{axiom}[class term comprehension]%(optional axiom, todo?) 
 For any formula $\phi$ and any term $t$, such that $\FV(t)\cap \FV(s)=\emptyclass$,
 \[
 (\vv{\forall})((t\in\ccc{\vv{x}}{s}{\varphi})
 \iff
-((t\set)\land (\exists \vv{x},\ (t=s) \land \varphi)))
+((t\set)\land (\exists (\vv{x}:\vv{X}),\ (t=s) \land \varphi)))
 \clabeltagd{axm}{termComprehension}
 \]
 It may be called ``class--builder notation''.
@@ -254,12 +275,12 @@ If a term is an evaluation of a function $f$ (technically, it is an arbitrary te
 %Both variants of class constructors can be expressed one from the other, since
 If necessary, the class constructor can be restored from its truncated version via
 \[
-\ccc{x}{t}{\phi} \ceq \cc{w}{\exists x,\ (w=t) \land \phi}.
+\ccc{x}{t}{\phi} \ceq \cc{w}{\exists (x:X),\ (w=t) \land \phi}.
 \]
 \[
 \ccc{\vv{x}}{t}{\phi}
 \ceq
-\cc{w}{\exists \vv{x},\ (w=t) \land \phi}.
+\cc{w}{\exists (\vv{x}:\vv{X}),\ (w=t) \land \phi}.
 \]
 \end{note}
 
@@ -344,7 +365,7 @@ to be continued\dots
 \begin{constructor}[empty class]%\ \\
 The empty set symbol $\emptyclass$ is a constant closed term.
 \[
-(\emptyclass : \Term)
+(\emptyclass : \Class)
 \labeltagd{constr}{emptyclass}
 \]
 %\ulcorner\emptyclass\urcorner
@@ -389,7 +410,7 @@ The empty set symbol $\emptyclass$ is a constant closed term.
 A functional symbol of valency zero is called a $constant$.
 \end{metadefinition}
 (A constant is always a closed term, due to vacuous argument.)
-\begin{constructor}[constant V]%\ \\
+\begin{constructor}[class constant V]%\ \\
 Let the symbol $\V$ be a constant of the language of the class theory being discussed.
 \end{constructor}
 
@@ -407,7 +428,7 @@ Later it will be used as a default value for ``undefined'' values. They are not 
 \clabeltagd{def}{nonset}
 \]
 \end{definition}
-\begin{definition}[is not set predicate]
+\begin{definition}[``is not set'' predicate]
 \[
 (t\text{ not set})\iffdef(t\notin \V)
 \clabeltagd{def}{not set}
@@ -444,7 +465,7 @@ F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{
 \Gamma(f)\eqdef\cc{(x,f(x))}{x\in\dom(f)}
 \]
 \[
-(f\function)\iffdef (f=\Gamma(f))
+(f\text{ class--function})\iffdef (f=\Gamma(f))
 \]
 \[
 \ran(f) \eqdef \cc{f(x)}{x\in\dom(f)}
@@ -543,7 +564,7 @@ Every function is a class--function(but not vice versa).
 \]
 \end{theorem}
 \begin{proof}
-Assume the opposite: $f$ function, but not a class-function:
+Assume the opposite: $f$ function, but not a class--function:
 \[
 (f\text{ family}),
 \]
@@ -553,10 +574,10 @@ Assume the opposite: $f$ function, but not a class-function:
 \[
 (\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
 \]
-Since $(f\text{ set})$, a union of its union is also a set.\\
-Assume here that pair is a--la Kuratowsky.\\
-Using ``flat proper values'' property, it is easy to construct an injective map from the proper class $f(x)$ into the aforementioned union. It contradicts the axiom of limitation of size.\\
-(todo: expand the proof)
+Since $f$ is a set, a union of its union is also a set.\\
+(Assuming here that the ordered pair is defined a--la Kuratowsky.)\\
+Using ``flat proper values'' property, it is easy to construct an injective map from the proper class $f(x)$ into the aforementioned union. It contradicts the limitation of size axiom.\\
+(todo: expand on the proof)
 \end{proof}
 
 \begin{axiom}[ordered pair of proper classes is a proper class]
@@ -577,7 +598,7 @@ The following a little bit non--traditional agreement(the axiom) may be useful f
 \begin{definition}[elementary union]
 This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
 \[
-\union A \eqdef \cc{x}{\exists a\in A,\ x\in a}
+\union A \eqdef \cc{x}{\exists (a\in A),\ x\in a}
 \clabeltagd{def}{elementary union}
 \]
 \end{definition}
@@ -621,7 +642,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \end{definition}
 \begin{theorem}[``elementary def of intersection'']
 \[
-\union A = \cc{x}{\exists a\in A: x\in a}
+\union A = \cc{x}{\exists a\in A,\ x\in a}
 \labeltagd{thm}{union}
 \]
 \end{theorem}
@@ -635,7 +656,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 =
 \cc{x}{\exists y, (y\in A) \land (x\in y)}
 =
-\cc{x}{\exists a\in A, x\in a}
+\cc{x}{\exists a\in A,\ x\in a}
 \]
 \Done
 
@@ -643,23 +664,23 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \begin{definition}[elementary intersection]
 This is an admissible and ``elementary'' definition of an intersection of an arbitrary class $A$, which is proved to be a theorem later in this section.
 \[
-\intersection A \eqdef \cc{x}{\forall a\in A\mydot x\in a}
+\intersection A \eqdef \cc{x}{\forall (a\in A),\ x\in a}
 \labeltagd{def}{intersection}
 \]
 \end{definition}
 
 \begin{definition}[intersection of a definable conglomerate of classes]
-For any formula $\psi$, any term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
+For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
 \[
+\label{def:interdefcongl}
 \bigcap^y_{\psi} t 
 \ \eqdef\ 
-\cc{x}{\forall y\mydot \psi \implies x\in t}
+\cc{x}{\forall y\mydot (\psi \implies (x\in t))}
 \]
 \underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.
-\label{def:interdefcongl}
 \end{definition}
 
 
@@ -684,9 +705,9 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \end{notation}
 \begin{theorem}[``elementary def of intersection'']
 \[
-\intersection A = \cc{x}{\forall a\in A: x\in a}
-\]
 \label{thm:intersection}
+\intersection A = \cc{x}{\forall (a\in A),\ x\in a}
+\]
 \end{theorem}
 \Proof
 \[
@@ -696,7 +717,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 =
 \bigcap^y_{y\in A} y 
 =
-\cc{x}{\forall y\mydot (y\in A) \implies (x\in y)}
+\cc{x}{\forall y\mydot ((y\in A) \implies (x\in y))}
 =
 \cc{x}{\forall a\in A. x\in a}
 \]
@@ -704,16 +725,21 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \subsection{Powerclass}
 %A theory is conservatively extended with a functional  class comprehension.
 \begin{definition}[powerclass]
-For any class term $X$, for any variable $x$ which is not free in $X$,
+%For any class term $X$, for any variable $x$ which is not free in $X$,
 \[
+\forall (x:\Var),\ %
+\forall (X:\Class),\ %
 \power X \eqdef \cc{x}{x\subseteq X}
 \labeltagd{def}{powerclass}
 \]%\tag{def. Powerclass}
 \end{definition}
 \subsection{Heredity}
 \begin{axiom}[heredity]
-For any class terms $A$ and $B$,
+%For any class terms $A$ and $B$,
 \[
+\forall (A:\Class),\ %
+\forall (B:\Class),\ %
+(
 (
 (A\set)
 \land 
@@ -721,16 +747,20 @@ For any class terms $A$ and $B$,
 )
 \implies
 (B\set)
+)
 \labeltagd{axm}{heredity}
 \]%\tag{ax. Heredity}
 \end{axiom}
 \subsection{Powerset}
 \begin{axiom}[powerset]
-For any class term $A$,
+%For any class term $A$,
 \[
+\forall (A:\Class),\ %
+(
 (A\set)
 \implies
 (\power A\set)
+)
 \labeltagd{axm}{powerset}
 \]
 \end{axiom}
@@ -743,7 +773,7 @@ This is a weak version, but it is okey, since together with axiom of heredity it
 %\end{axiom}
 \subsection{Regularity in form of epsilon--induction}
 \begin{axiom}[$\in$--induction]
-For any class $\Psi$,
+%For any class term $\Psi$,
 \iffalse
 \textrm{\removeabs{$\in$--induction}}
 \textrm{\replace{$\in$--induction}}
@@ -768,7 +798,7 @@ qwertyu\\
 %(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
-(\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi)
+\forall (\Psi:\Class),\ (\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi)
 \labeltagd{axm}{epsilon induction}
 \]
 %\tag{EpsInd}
@@ -781,7 +811,7 @@ qwertyu\\
 (\neg(X\set))
 \iff
 (
-\exists T,\ (
+\exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
@@ -796,7 +826,7 @@ One direction of the equivalence extends what it means for class to be a set, i.
 (\neg(X\set))
 \implies
 (
-\exists T,\ (
+\exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
@@ -806,7 +836,7 @@ One direction of the equivalence extends what it means for class to be a set, i.
 or
 \[
 (
-\neg\exists T,\ (
+\neg\exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
@@ -818,7 +848,7 @@ or
 The opposite direction forbids certain situations. It makes proofs shorter. It reduces the amount of models of the theory. Let such properties be called \textit{negative}.
 \[
 (
-\exists T,\ (
+\exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
@@ -827,6 +857,6 @@ The opposite direction forbids certain situations. It makes proofs shorter. It r
 \implies
 \neg(X\set)
 \]
-It seems like positive properties don't have problems with each other. At worst they can trivialize the theory, but positive and negative property together may or may not lead to a contradiction.
+It seems like positive properties don't have problems with each other. At worst they can trivialize the theory, but a positive and a negative property together may or may not lead to a contradiction.
 \end{note}
 \input{END.tex}
