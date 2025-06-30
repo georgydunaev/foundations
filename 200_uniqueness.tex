@@ -10,13 +10,11 @@ If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
 \]
 %%(We will not use much this definition.)
 \end{definition}
-\begin{note}
-
+\begin{note}[?]
 Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
 I have a notion of non--classical models, in which this is not a problem, but then logical rules become much more advanced, and all well--studied field of the first--order logic need to be re--done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
 \end{note}
-\begin{definition}[?]
-\label{def:restricted uniqueness quantifier}
+\begin{definition}[restricted uniqueness quantifier]
 Restricted uniqueness quantifier for sets only
 \begin{align*}
 (!(y\set),\ \varphi)
@@ -25,8 +23,8 @@ Restricted uniqueness quantifier for sets only
 \\
 &\iff 
 (\forall (y_1\set)\forall (y_2\set),\ \varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
+\label{def:restricted uniqueness quantifier}
 \end{align*}
-
 %(\forall y_1\forall y_2,\ \varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
 \end{definition}
 

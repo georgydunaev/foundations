@@ -1,12 +1,12 @@
 \def\topic{Alternative semantics}
 \input{BEGIN.tex}
-\section{Alternative semantics}
+\section{[OUTDATED]Alternative semantics}
 %\subsection{ Alternative subset semantics [todo: merge with 020\_logic.tex]}
 %\subsection{Logic}
 %\subsubsection{Syntax}
 \subsection{Axioms}
 There are several possible ways of interpreting "in" relation: 
-Here X and Y are some terms(sic! not just variables).
+Here X and Y are some terms(sic! not just variables).\\
 1) Weak
 $X\in Y$ is valid iff for any assignment any class--element of I(X) is in any class--element of I(Y).\\
 
@@ -37,7 +37,10 @@ Definiton of truth:
 \[\mbox{Bool} \ceq \{\mbox{False}, \mbox{True}\}\]
 \[M,A\vDash \varphi \stackrel{meta}{\Longleftrightarrow} I_A(\varphi)=\mbox{True}\]
 
-\[(M\vDash \varphi) \stackrel{meta}{\Longleftrightarrow} (\forall A\in \mbox{Assignment},\ M,A\vDash \varphi)\]
+\[
+(M\vDash \varphi)
+\stackrel{meta}{\Longleftrightarrow}
+(\forall (A:\mbox{Assignment}),\ M,A\vDash \varphi)\]
 
 %I_A(\varphi)=\mbox{True}
 

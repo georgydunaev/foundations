@@ -23,7 +23,7 @@ If $f$ is univocal, then
 \Proof
 ($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
 \[
-(\iota x:\varphi)\downarrow
+(\iota x,\ \varphi)\downarrow
 \quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
 (\exists!x,\ \varphi)
 \]
@@ -123,7 +123,7 @@ In general, a closed formula
 \]
 implies
 \[
-\forall \vec{x} ,\ \varphi[(Iy:\varphi)/y] 
+\forall \vec{x} ,\ \varphi[(Iy,\ \varphi)/y] 
 \]
 .
 \iffalse
@@ -148,7 +148,7 @@ The following rules are proposed:
 %$}
 \RightLabel{ExtByDef (if $y\notin \mbox{FV}(\Gamma)$)}
 \UnaryInfC{$
-\Gamma \vdash \varphi[(\iota y:\varphi)/y] 
+\Gamma \vdash \varphi[(\iota y,\ \varphi)/y] 
 $}
 %\RightLabel{by }
 \end{prooftree}
@@ -157,7 +157,7 @@ and
 \AxiomC{$\Gamma \vdash \exists y,\ \varphi$}
 \RightLabel{ExtByCons (if $y\notin \mbox{FV}(\Gamma)$)}
 \UnaryInfC{$
-\Gamma \vdash \varphi[(\epsilon y:\varphi)/y] 
+\Gamma \vdash \varphi[(\epsilon y,\ \varphi)/y] 
 $}
 \end{prooftree}
 %prim_specification

@@ -1,6 +1,6 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Classes--as--types, sets--as--expressions approach}
+\section{[OUTDATED] Classes--as--types, sets--as--expressions approach}
 %\subsection{Classes--as--Types semantics}
 In this section, we will see, that there is a semantic of $\Pi$--, $\Sigma$--, $W$--, $M$--types in classes.
 
@@ -8,13 +8,13 @@ First of all, we (loosely) define the semantics.
 
 Since, everything is a class in MK, we have:
 \[
-\semantics(``(A:\Type)")\eqdef \top.
+\semantics(``(A:\Type)")\eqdef \top.(no! it ruins uniqueness of a term--type relation!)
 \]
 Dependent types are treated as families.
 \[
 \semantics(``(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\dom(B)\subseteq A).
 \]
-
+OUTDATED:
 \[
 (\Lambda x,\ t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
 \]
@@ -42,7 +42,7 @@ Is the following okey ???
 \underline{Formation of boolean type:}\\
 \underline{Introduction of terms of boolean type:}\\
 \underline{Elimination of terms of boolean type:}\\
-\begin{definition}[Conditional operator if--then--else]
+\begin{definition}[conditional operator if--then--else]
 \[
 (\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) \eqdef (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
 \]
@@ -62,38 +62,44 @@ Side conditions:\\
 \subsubsection{Axioms of option types}
 \begin{axiom}[None--ax]
 \[
-\None\in\Option(A) 
+\None:\Option(A)
+\]
+\[
+I(\None)\in\Emb(\Option(A))
 \]
 \end{axiom}
 \begin{axiom}[Some--ax]
 \[
-(a\in A)\implies(\Some(a)\in\Option(A))
+\frac{(a:A)}{(\Some(a)\in\Option(A))}
+\]
+\[
+(I(a)\in \Emb(A))\implies(I(\Some(a))\in\Emb(\Option(A)))
 \]
 \end{axiom}
 \subsubsection{Model of option types}
 %Model:\\
 \begin{definition}[None--def]
 \[
-\None \eqdef \emptyclass
+I(\None) \eqdef \emptyclass
 \]
 \end{definition}
 \begin{definition}[Some--def]
 \[
-\Some(a) \eqdef \{a\}
+I(\Some(a)) \eqdef \{a\}
 \]
 \end{definition}
-\begin{definition}[Option--def]
+\begin{definition}[Option--def](sic!)
 \[
-\Option(A) \eqdef \cc{b}{(b \sss A)}
+\Emb(\Option(A)) \eqdef \cc{b}{(b \sss A)}
 \]
 \end{definition}
 \subsubsection{Soundness of option types}
 %Theorems:\\
 \begin{theorem}[?]
 \[
-\None\in\Option(A) 
+I(\None)\in\Emb(\Option(A))
 \]
-or, equivalently,
+or, equivalently, (OUTDATED)
 \[
 \emptyclass\in\cc{b}{(b \sss A)} 
 \]
@@ -109,12 +115,12 @@ or, equivalently,
 \[
 (a\in A)\implies(\Some(a)\in\Option(A))
 \]
-or, equivalently,
+or, equivalently,(OUTDATED)
 \[
 (a\in A)\implies (\{a\}\in\cc{b}{(b \sss A)} 
 \]
 \end{theorem}
-\Proof\ \\
+\Proof
 1. Assume $(a\in A)$.\\
 2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
 3. $(\{a\} \semisingleton)$, by \dots .\\
@@ -135,36 +141,58 @@ or, equivalently,
 \dots
 \pagebreak
 
-\subsection{Implementing list of classes[not good]}
-Lists of classes are modelled as any family with some initial segment of ordinals as a domain.
+\subsection{Implementing list as a medium type}
+%of classes[not good]}
+Lists of classes are modelled as a family with some initial (and finite) segment of ordinals as a domain.
 The type $\ClassList$ is introduced. 
-\subsubsection{Axioms}%:\\
+\subsubsection{Axioms}
 \begin{axiom}[nil]
 \[
-[]\in\ClassList 
+[] : \ClassList 
 \]
 \end{axiom}
 \begin{axiom}[cons]
+String ``::'' is the infix notation of a constructor ``cons''.
+Parentheses around it make the prefix notation out of infix notation.
 \[
-::\ :\ Class \to \ClassList \to \ClassList 
+(::):\ \Class \to \ClassList \to \ClassList 
+\]
+\end{axiom}
+\begin{axiom}[concat]
+\[
+(\concat):\ \ClassList \to \ClassList \to \ClassList 
 \]
 \end{axiom}
 \subsubsection{Model}
 %Model:\\
-\begin{definition}[class list]
+A ``model'' of a medium type is not a set or class, because it's terms are interpreted as proper classes.
+It is a property(sic!), which all type's terms interpretations satisfy.
+\begin{definition}[inClassList]
+The interpretation of a term of a class list type property:
+%\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
 \[
-\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
+(F\text{ inClassList})
+\iffdef
+(
+(F\family)
+\land
+(Dom(F)\in\omega)
+)
 \]%\omega\cup\{\omega\}
 \end{definition}
+Interpretation function:
+\[
+I:\Type\to\Class
+\]
 \begin{definition}[nil]
 \[
-[] \eqdef \emptyclass
+I([]) \eqdef \emptyclass
 \]
 \end{definition}
 %\subsection{Self--contained presentation of dependent types}
 %\subsection{Families of definable classes, abstraction and evaluation.}
-\subsection{Implementing list of a small type}
-Let $A$ be a small type.
+\subsection{Implementing list of values having a small type}
+Let $A$ be a small type. Any list of terms of type $A$ is a small term, and al of them together form a small type.
 \subsubsection{Axioms}%:\\
 \begin{axiom}[nil]
 \[
@@ -224,12 +252,17 @@ or, equivalently,
 \subsection{Implementing functions}
 %\subsection{Relational basics}
 \subsubsection{Family basics}
+\iffalse %OUTDATED
+%нету "неопределённого" значения
 \begin{definition}[value]
 \[
 F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \]
 \end{definition}
+\fi %OUTDATED
 %2
+\iffalse %it doesn't matter whether it is set or class, bad!
+%Also functions are now relations too!
 \begin{definition}[relational domain]
 \[
 \dom(R)\eqdef\cc{a}{\exists b,\ (a,b)\in R}
@@ -240,12 +273,15 @@ F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \dom(R)\eqdef\cc{a}{\exists (b\set),\ (a,b)\in R}
 \]
 \end{definition}
+\fi %OUTDATED
 %3
+\iffalse %OUTDATED %"relational"
 \begin{definition}[relational range]
 \[
 \ran(R)\eqdef\cc{b}{\exists a,\ (a,b)\in R}
 \]
 \end{definition}
+\fi %OUTDATED
 \iffalse bad
 \begin{definition}[functional Range]
 \[
@@ -254,13 +290,13 @@ F(a)\eqdef\union\cc{s}{(a,s)\in F}
 \end{definition}
 \fi
 %4
-\begin{definition}[restriction]
+\begin{definition}[restriction]%OK
 \[
 F\restriction A\eqdef\cc{(a,s)\in F}{a\in A}
 \]
 \end{definition}
 %5
-\begin{definition}[relational image]
+\begin{definition}[image]%relational image]
 \[
 \image_R(A)\eqdef\ran(R\restriction A)
 \]
@@ -273,22 +309,26 @@ F\restriction A\eqdef\cc{(a,s)\in F}{a\in A}
 \end{definition}
 \fi
 %6
+\iffalse %OUTDATED (it doesn't work with families)
 \begin{definition}[relational composition]
 \[
 R \circ S \eqdef \cc{(x,z)}{\exists y,\ (x,y)\in S \land (y,z)\in R}
 \]
 \end{definition}
-\begin{definition}[functional composition]
+\fi %OUTDATED
+\begin{definition}[composition]%functional composition]
 \[
 F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
-\]
+\]% z may be either a singleton subset of a proper value, or a value.
 \end{definition}
 %7
+\iffalse %OUTDATED (probably already defined [as class])
 \begin{definition}[class of all sets]
 \[
 \V\eqdef\cc{x}{\top}%x\any
 \]
 \end{definition}
+\fi %OUTDATED
 \begin{definition}[membership class]
 \[
 \E\eqdef\cc{(x,y)}{x\in y}
@@ -305,35 +345,37 @@ F \circ G \eqdef \cc{(x,z)}{x \in \Dom(G) \land (G(x),z)\in F}
 \]
 \end{definition}
 %8
+\iffalse %OUTDATED
 \begin{definition}[relational transposition]
 \[
 R^\top\eqdef\cc{(y,x)}{(x,y)\in R}
 \]
 \end{definition}
+\fi %OUTDATED
 \begin{notation}[containment relation]
 \[
 \invE \eqdef \E^\top
 \]
 \end{notation}
-\begin{definition}[functional transposition]
+\begin{definition}[transposition]%functional transposition]
 \[
 F^\intercal\eqdef\cc{(F(x),x)}{x\in \dom(F)}
 \]
 \end{definition}
 
 \subsubsection{Family}
-
+\iffalse %OUTDATED
 \begin{definition}[family]
 Def is ommited!
 \end{definition}
 
-\begin{definition}[domain]
+\begin{definition}[domain]%WRONG it is Dom.
 \[
 \dom(F)\eqdef \cc{x}{\exists b,\ (x,b)\in F}
 \]
 \end{definition}
 
-\begin{definition}[value]
+\begin{definition}[value]% again, no "undefined" case
 \[
 F(x) \eqdef \bigcup\cc{b}{((x,b)\in F)}
 \]
@@ -346,8 +388,6 @@ F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
 % what can be done if b is a proper class?
 % if (x,b) = ({0}\times x)\cup({1}\times b), then
 % \dots. wait! Family is already a generalisation for the same purpose!
-
-
 (small idea:
 \[
 ?\eqdef \bigcup^Q\limits_{Q\subclass \power Q} Q.
@@ -356,30 +396,32 @@ F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
 \dots
 \fi
 \end{definition}
+\fi %OUTDATED
+
 \subsubsection{Lambda--abstraction}
 %BADRecall:
 %\[
 %\cc{(x,t)}{(x\in A)}
 %= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
 %\]
-\begin{baddefinition*}[set--valued abstraction]\ \\
+\begin{baddefinition*}[set--valued abstraction]
 The following attempt of definition requires the value to be set:
-\label{def:setvaluedabstraction}
 \[
 (x\in A \mapsto t)
 \eqbaddef
 \ccc{x}{(x,t)}{(x\in A)}
+\clabeltagd{def}{setvaluedabstraction}
 \]
 (Here $x$ is a bound variable on the both sides of the equality.)
 %a binder
 \end{baddefinition*}
 
-\begin{definition}[class--valued abstraction]
-\label{def:classvaluedabstraction}
+\begin{definition}[OUTDATED class--valued abstraction]
 \[
 (x\in A \mapsto t)
 \eqdef
 \ccc{x,b}{(x,b)}{(x\in A)\land (b \sss t)}
+\clabeltagd{def}{classvaluedabstraction}
 \]
 \end{definition}
 
@@ -424,8 +466,8 @@ jjj
 Alpha--equivalence is a consequence of alpha--equivalence of the class constructors.
 
 \subsubsection{Beta--conversion}
-
 \begin{definition}[conditional operator]
+For any formula $\phi$ and for any class terms $t_1$ and $t_2$, the conditional operator is defined in the following way:
 \[
 (\lif\ \phi\ \lthen\ t_1\ \lelse\ t_2\ \lfi)
 \eqdef
@@ -437,11 +479,17 @@ Alpha--equivalence is a consequence of alpha--equivalence of the class construct
 3) $w$ is not free in $t_2$.
 \end{definition}
 
-\begin{theorem}[$\beta$--conversion]
-\label{thm:fam--beta}
-Let $A$ be a class(or term?)... todo: write premises
+
+\begin{theorem}[OUTDATED $\beta$--conversion]
+This theorem assumes the outdated implementation:
+\[
+F(x) \eqdef \bigcup\cc{b}{((x,b)\in F)}
+\]
+
+Let $A$ be a class term, then%(or term?)... todo: write premises
 \[
 (x\in A \mapsto t)(a) = (\lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
+\clabeltagd{thm}{fam--beta}
 \]
 \Proof
 \[
@@ -475,11 +523,11 @@ Let $A$ be a class(or term?)... todo: write premises
 \end{theorem}
 
 \subsubsection{Eta--conversion}
-\begin{theorem}[$\eta$--conversion]\ \\
-\label{thm:fam--eta}
+\begin{theorem}[OUTDATED $\eta$--conversion]
 Assume that $F$ is a family and $\dom(F)=A$, then
 \[
 (x\in \dom(F) \mapsto F(x))=F.
+\clabeltagd{thm}{fam--eta}
 \]
 \Proof
 \[
@@ -511,25 +559,28 @@ Notation:\\
 
 Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi--equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
 \fi
+\iffalse %DUPLICATE
 \begin{definition}[identity]
 \[
 I = \cc{(x,x)}{\top}
-\label{def:identity}
+\clabeltagd{def}{identity}
 \]
 \end{definition}
-
-\begin{theorem}[identity is a relation]
+\fi %DUPLICATE
+\begin{lemma}[identity is a relation]
 \[
 (I \relation)
-\label{thm:identity is relation}
+\clabeltagd{lem}{identity is relation}
 \]
-\[(I\subseteq V\times V)\]
-\end{theorem}
-
-
-\begin{definition}["F on X"]
 \[
-\mbox{"F on X"} = F\restriction X
+\text{i.e. }(I\subseteq V\times V)\text{                     }
+\]
+\end{lemma}
+
+
+\begin{definition}[``F on X'']
+\[
+\text{``F on X''} \eqdef (F\restriction X)
 \]
 \end{definition}
 
@@ -538,7 +589,7 @@ I = \cc{(x,x)}{\top}
 \[
 (y\in f[A])
 \iff
-(\exists x\in A: \langle x,y\rangle\in f)
+(\exists x\in A,\ \langle x,y\rangle\in f)
 \]
 \end{definition}
 
@@ -546,7 +597,7 @@ I = \cc{(x,x)}{\top}
 \[
 (y\in f\langle A\rangle)
 \iff
-(\forall x\in A: \langle x,y\rangle\in f)
+(\forall x\in A,\ \langle x,y\rangle\in f)
 \]
 \end{definition}
 \begin{theorem}[?]
@@ -623,16 +674,19 @@ $}
 \end{prooftree}
 
 \subsubsection{Model of $\Sigma$--types}
-Assume that $(B\family)$.
-
-\begin{definition}[Dependent sum]
+In every theorem of this section, it is assumed, that $(B\family)$.
+\iffalse
+\begin{definition}[dependent sum]
+\iffalse %OUTDATED: functional transposition vs relational transposition
 \[
 \Sigma B \eqdef \mbox{E}^{\top} \circ B
 \]
+\fi
 \[
-\Sigma B \eqdef \cc{(a,b)}{b\in B(a) }
+\Sigma B \eqdef \cc{(a,b)}{(a\in\Dom(B))\land (b\in B(a)) }
 \]
 \end{definition}
+\fi
 \begin{definition}[dependent sum of a family]
 \[
 \Sigma B\eqdef\cc{(x,y)}{y\in B(x)}
@@ -641,10 +695,10 @@ Assume that $(B\family)$.
 %10,11
 \begin{definition}[ordered pair projections]
 \[
-\pr_1 \eqdef \ccc{a,b}{((a,b),a)}{a\any,b\any}
+\pr_1 \eqdef \ccc{a,b}{((a,b),a)}{\ a\any,b\any}
 \]
 \[
-\pr_2 \eqdef \ccc{a,b}{((a,b),b)}{a\any,b\any}
+\pr_2 \eqdef \ccc{a,b}{((a,b),b)}{\ a\any,b\any}
 \]
 \end{definition}
 
@@ -654,7 +708,7 @@ Assume that $(B\family)$.
 \subsubsection{Soundness of $\Sigma$--types}
 \dots
 
-\subsubsection{Implementation of $\Sigma$--types}
+\subsubsection{Implementation of (small?) $\Sigma$--types}
 \underline{Formation of terms of $\Sigma$--type:}\\
 \[
 \Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
@@ -780,9 +834,16 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 \end{prooftree}
 
 \subsubsection{Model of $\Pi$--types}
-In MK, it corresponds to the following:
-The $\Type$ is a $\TClass$.\\
+The $\Type$ is interpreted as $\TClass$.\\
+Large types are used just for preventing primitive typing errors.\\
+Medium types are for expressing the properties of proper classes.\\
+Small types are expressing the proper classes, which contain as sets all interpretations of the terms of that type.\\
+%(Another level may be here for expressing the proper classes, which contain only sets. It can be called "Small" while "Small" ones are renamed to "Tiny")\\
+%Medium1 types are for expressing the properties of proper classes.
+%Small(Maybe better call it "Tiny"?) 
+Tiny types are interpreted as sets, which contain as sets all interpretations of the terms of that type.\\
 
+In MK, a $\Pi$--types has the following interpretation:
 \begin{definition}[dependent product, variant A]
 \[
 \Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
@@ -1003,10 +1064,10 @@ Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W
 (todo\dots)
 
 \begin{theorem}[computation of W--type]
-\label{thm:Wcomp}
 \[
 \mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f)) 
 \eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
+\clabeltagd{thm}{Wcomp}
 \]
 \Proof
 Base of induction $n=0$:\\

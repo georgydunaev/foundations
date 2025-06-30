@@ -1,4 +1,4 @@
-\def\topic{}
+\def\topic{Yoneda embedding lemma}
 \input{BEGIN.tex}
 \section{Category theory (Proofs are old here, they need to be upgraded)}
 
@@ -9,11 +9,11 @@ Duality: $\Ob_C = \Ob_{C^\op}$ and
 $\circ : \Pi(C\in \Cat).\Pi(X,Y,Z\in C).\Hom_C(X,Y)\times\Hom_C(Y,Z)\to\Hom_C(X,Z)$
 
 \subsection{Yoneda embedding lemma}
-Let C be a locally small category.\\
-Let Set be a category of sets.\\
+Let $C$ be a locally small category.\\
+Let $\Set$ be a category of sets.\\
 $[C^{op},\textrm{Set}]$ is some functor category.\\
 
-\begin{definition}
+\begin{definition}[?]
 Let $C$, $D$ be the categories.\\
  $(F, \FMor)$ is a (covariant) functor iff\\
 \begin{enumerate}
@@ -25,7 +25,7 @@ Let $C$, $D$ be the categories.\\
 
 \end{definition}
 
-\begin{definition}
+\begin{definition}[?]
 Let $C$, $D$ be the categories.\\
 $[C,D]$ is the set of functors from $C$ to $D$.\\
 \end{definition}
@@ -40,7 +40,7 @@ $$\HomMor^{A,B}_C(f,x) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(
 $$\left(\textrm{another form is }\widetilde{\Hom_C(-,x)}^{A,B}(f) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(A,x)\right)$$
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}[?]
 $$\Hom_C(-, x) \in [C^\op,\Set]$$
 \end{lemma}
 
@@ -118,7 +118,9 @@ $\eta_w: \Hom_C(w,x)\to \Hom_C(w,y)$\\
 Substitution:\\
 $C \coloneqq C^\op$, $D \coloneqq \Set$, $F \coloneqq \Hom_C(-,x)$, $G \coloneqq \Hom_C(-,y)$, $x \coloneqq a$, $y \coloneqq b$, $f \coloneqq m$
 \begin{lemma}[?]
-$$\forall a,b\in C^\op. \forall m\in \Hom_C\op (a,b).\eta_b \circ_\Set \Hom_C(m,x)=\Hom_C(m,y)\circ_\Set\eta_a$$
+\[
+\forall a,b\in C^\op. \forall m\in \Hom_C\op (a,b).\eta_b \circ_\Set \Hom_C(m,x)=\Hom_C(m,y)\circ_\Set\eta_a
+\]
 \end{lemma}
 \myprf\\
 Fix $a$, $b$ and $m\in\Hom_C(b,a)$.\\

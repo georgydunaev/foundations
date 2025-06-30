@@ -45,13 +45,33 @@ If $(I(\varphi)=U)$, then
 should follow.\\
 Btw, $I(\lundef)=\emptyclass$.\\
 \pagebreak
-
-\subsection{Some simple theorems about classes}
-\begin{definition}[some syntactic sugar]
+\subsection{Singleton--based implementation of families(preferred)}
+\begin{definition}[singleton]
 \[
-(x\ \mbox{any}) :\iff \top
+(s\ \text{singleton}) :\iff (\exists!(y:\Class),\ y\in s)
 \]
-Context: (x:Var)
+Side condition:\\
+Variable $y$ is not among free variables of a class term $s$.
+\end{definition}
+\begin{definition}[family constructor]
+\[
+(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{((s\proper)\land(s\singleton)\land(s\subclass t))\lor((s\set)\land(s=t))}
+\]
+(or, later, maybe
+\[
+(\Lambda (x:\Class),\ t) \ceq (\epsilon (F:\Class),\ (F\family)\land\forall(x:\Class),\ (F(x)=t))
+\]
+)
+\end{definition}
+
+\subsection{Semisingleton--based implementation of families(outdated)}
+Theorems in this secction is outdated, because singleton--based implementation of families/class--functions/functions seems to be much more natural and uniform.
+%\subsection{Some simple theorems about classes}
+\begin{definition}[some outdated syntactic sugar]
+\[
+(x\ \mbox{any}) \iffdef \top
+\]
+Informal context: (x:Var) %what does it mean?
 %Side condition:\\
 %Term $x$ is a variable.
 \end{definition}
@@ -61,7 +81,7 @@ Context: (x:Var)
 (s\ \mbox{ss}) :\iff (!y,\ y\in s)
 \]
 Side condition:\\
-Variable $y$ is not in free variables of term $s$.
+Variable $y$ is not in free variables of a class term $s$.
 \end{definition}
 
 \begin{definition}[semi--singleton subset relation]
@@ -71,20 +91,20 @@ Variable $y$ is not in free variables of term $s$.
 \end{definition}
 
 \begin{definition}[function constructor]
+This definition doesn't work for cases when $t$ is a proper class.
 \[
-(\lambda x,\ t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
+(\lambda (x:\Class),\ t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
 \]
-Context: ($x$:Var) ($t$:Term)\\
-Comment: Term $t$ can contain $x$ as a free variable.\\
+Context: ($x$:Var) ($t$:Class)\\
+Comment: Class term $t$ can contain $x$ as a free variable.\\
 Side conditions:\\ 
 (variable $x$ is bound by class collection in r.h.s)\\
 (variable $x$ is bound by lambda abstraction in l.h.s)\\
 %No side conditions.
 \end{definition}
-
-\begin{definition}[family constructor]
+\begin{definition}[(outdated) family constructor]
 \[
-(\Lambda x,\ t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
+(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
@@ -94,7 +114,7 @@ Variable $s$ is not in free variables of $t$.\\
 As term $s$ can contain $x$ as a free variable.\\
 \end{definition}
 
-\begin{definition*}[LOCAL definition of a value of a function, value of a family, for the next theorem]
+\begin{definition*}[(LOCAL,OUTDATED) definition of a value of a function, value of a family, for the next theorem]
 \[
 f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 \]
@@ -104,7 +124,7 @@ f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 
 \begin{theorem}[evaluation of a function]
 Context:\\
-(x:Var)(t:Term)(z:Term)
+(x:Var)(t:Class)(z:Class)
 \[
 (z\set) \land (t[z/x]\set) \implies
 \]
@@ -227,7 +247,7 @@ and in particular:
 (\Lambda x,\ t)(x) = t.
 \]
 %Context:
-%(q term)
+%(q Class)
 \end{theorem}
 \Proof
 By definitions,

@@ -1543,13 +1543,13 @@ The following judging rules are assumed:
 \item So therefore any small type have some (other) small type.\\
 Moreover, a type of a small type is required to be a universe. Therefore a type of a universe is also a universe. And all of universes are small types. 
 \item All medium types have a large type ``Type''.
-\item Large types have no types. There are only two of them: ``Type'' and ``Class''.
+\item Large types have no types. There are only two of them: ``Type'' and ``Class''. 
 \end{itemize}
 \end{note}
 
 \begin{note}[on quantifications over all types]
 It seems to be impossible(due to paradoxes--related reasons) to ``uniformly'' write a metatheoretical statement that expresses, for example, generalisation rule for all types.
-The proposed solution for this problem is just to write it separately as two statements: one which is quantified over all medium types and one specifically for the only finite amount of large types manually called (there are two:``Class'' and ``Type''), and it seems to be enough.
+The proposed solution for this problem is just to write it separately as two statements: one which is quantified over all medium types and one specifically for the only finite amount of large types manually called (there are two: ``Class'' and ``Type''), and it seems to be enough.
 \end{note}
 \begin{definition}[generalisation rule(s)]%underline
 %It is not possible to write a generalisation rule for every large type
@@ -1571,7 +1571,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \end{definition}
 \begin{definition}[generalisation rule, written on the meta--level]
 \[
-``\forall (X:\Type),\ ''%
+\forall (X:\Type),\ %
 \forall (x:\Var),\ %
 \forall (\phi:\Fm),\ %
 \forall (\Gamma : \Ctx),\ %
@@ -1585,8 +1585,12 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 )
 \clabeltag{MetaGen}
 \]
+%\meta{x}
+It is interesting here, that if the variable is specialialised, then it is being substituted even in the place which is ``bound''. The explanation, is that occurences of type $X$ are being bound.
+How the clash of the varible names is avoided here?
 \end{definition}
-
+% DecFm := ((f:Class) |-> Dec (Fm, f))
+% DecFm | Class -> Fm
 
 \begin{definition}[classical existence]
 \[
@@ -4258,7 +4262,7 @@ It is trivial to see, that the following holds:
 )
 \]
 
-\begin{note}[unusual writing convention]
+\begin{note}[a nonstandard writing convention]
 % either 
 The author uses a predicate $\vdash$, which is slightly different from the traditional: it is higher--order in nature, since it takes a theory(a set of formulas), a context (a list of formulas), and a formula as arguments.
 \[

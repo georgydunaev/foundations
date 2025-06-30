@@ -9,7 +9,7 @@
 \uparrow_{(P,\leq)}x\ceq \cc{y\in P}{x\leq y}
 \]
 \end{definition}
-\begin{definition}[Down set of an element of an order]%(Downward closed set)
+\begin{definition}[down set of an element of an order]%(Downward closed set)
 \[
 \downarrow_{(P,\leq)}x\ceq \cc{y\in P}{y\leq x}
 \]
@@ -80,7 +80,9 @@ Here presented some bad older definitions, but good theorems
 \]
 \end{definition}
 \begin{definition}[?]bad
-\[\LB_R(S) = R^{-1}[S]\]
+\[
+\LB_R(S) = R^{-1}[S]
+\]
 \end{definition}
 
 Context and notation:\\
@@ -110,9 +112,9 @@ We obtained $H<S$ (by definition of an order on sets). The statement together wi
 
 \begin{definition}[?]good
 \[
-A \leqslant B
-\iff
-\forall a\in A \forall b\in B,\ a\leq b
+(A \leqslant B)
+\iffdef
+(\forall a\in A \forall b\in B,\ a\leq b)
 \]
 \end{definition}
 \begin{definition}[?]bad
@@ -127,12 +129,16 @@ A \leqslant B
 \end{definition}
 \begin{theorem}[?]maybe
 \[
-A\leqslant B \iff B\subseteq \UB(A)
+(A\leqslant B)
+\iff
+(B\subseteq \UB(A))
 \]
 \end{theorem}
 \begin{theorem}[?]maybe
 \[
-A\leqslant B \Longleftrightarrow A\subseteq \LB(B)
+(A\leqslant B) 
+\Longleftrightarrow
+(A\subseteq \LB(B))
 \]
 \end{theorem}
 \begin{definition}[?]bad
@@ -152,12 +158,14 @@ A\leqslant B \Longleftrightarrow A\subseteq \LB(B)
 \end{definition}
 \begin{definition}[?]maybe
 \[
-\mbox{inf}(S) = (\iota x,\ x\in \mathrm{Inf}(S))
+\mbox{inf}(S) \eqdef (\iota x,\ x\in \mathrm{Inf}(S))
 \]
 \end{definition}
 \begin{theorem}[?]good
 \[
-A \leqslant B \Longrightarrow A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B
+(A \leqslant B)
+\Longrightarrow
+(A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B)
 \]
 \end{theorem}
 \begin{theorem}[?]doubt
