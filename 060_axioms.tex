@@ -446,34 +446,52 @@ The definitions above seem to be the best solution to avoid many--valued logics 
 \]
 \end{example}
 \subsection{Functions and families}
+\begin{definition}[big domain ``Dom''including proper values]
+Assume $F$ is a family, class-function or a function, then
 \[
 \Dom(F) \eqdef \cc{x}{\exists b,\ (x,b)\in F}
+\clabeltagd{def}{bigdomain}
 \]
+\end{definition}
+\begin{definition}[image]
 \[
 F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}
+\clabeltagd{def}{image}
 \]
+\end{definition}
+\begin{definition}[evaluation of a family]
 \[
 F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{nonset}\ \lfi\right) 
 \]
+\end{definition}
 \iffalse\[
 \dom(F) \eqdef \cc{x}{\exists (y\set),\ F(x)=y}
 \]\fi
+\begin{definition}[small domain ``dom'']
 \[
 \dom(f) \eqdef \cc{x}{f(x)\set}
 \]
+\end{definition}
+\begin{definition}[graph of the (class--)function]
 \[
 \Gamma(f)\eqdef\cc{(x,f(x))}{x\in\dom(f)}
 \]
+\end{definition}
+\begin{definition}[class--function predicate]
 \[
 (f\text{ class--function})\iffdef (f=\Gamma(f))
 \]
+\end{definition}
+\begin{definition}[range]
 \[
 \ran(f) \eqdef \cc{f(x)}{x\in\dom(f)}
 \]
+\end{definition}
+\begin{definition}[signature of a function]
 \[
 (f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\function))
 \]
-
+\end{definition}
 \begin{definition}[family]
 A class $f$ is called \textit{family} if it satisfies two conditions:
 \[
