@@ -675,6 +675,18 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 (F_1 = F_2)
 )
 \]
+\iffalse % NOT TRUE!
+\[
+\forall (F_1 \text{ family})
+\forall (F_2 \text{ family}),\ %
+(
+\forall (x \in (\Dom(F_1)\cup\Dom(F_2)) ),\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+\]
+\fi
 \end{theorem}
 \begin{theorem}[class--function extensionality]
 \[
@@ -687,6 +699,20 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 )
 \implies
 (F_1 = F_2)
+)
+\]
+\end{theorem}
+\begin{theorem}[function extensionality]
+\[
+\forall (f_1 \text{ function}),\ %
+\forall (f_2 \text{ function}),\ %
+(
+(
+\forall x,\ %
+(f_1(x) = f_2(x))
+)
+\implies
+(f_1 = f_2)
 )
 \]
 \end{theorem}
