@@ -201,7 +201,7 @@ Properties ``being bold'' and ``having a dot'' are not commutative here: togethe
 \]
 \fi
 \[
-\meta{\pmb{\phi}} \equivdef \text{Dot}(\text{BoldFm}(\phi)).
+\meta{\pmb{\phi}} \equivnot \text{Dot}(\text{BoldFm}(\phi)).
 \]
 %where
 \iffalse
@@ -1442,23 +1442,23 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \]
 \[
 (
-(\text{$t$ free for $x$ in $\phi$})
+(\text{$t$ free for $v$ in $\phi$})
 \implies
-(\Wau \vdash ((\forall x,\phi) \implies \phi[t/x]))
+(\Wau \vdash ((\forall (\text{var}(v):X),\phi) \implies \phi[t/v]))
 )
 \clabeltagd{axm}{MetaS1}
 \]
 \[
 \forall (\Wau:\Theory),\ %
-\forall (x:\Var),\ %
+\forall (v:\Var),\ %
 \forall (t:X),\ %\Class
 \forall (\phi:\Fm),\ %
 \]
 \[
 (
-(\text{$t$ free for $x$ in $\phi$})
+(\text{$t$ free for $v$ in $\phi$})
 \implies
-(\Wau \vdash (\phi[t/x] \implies (\exists x,\phi)))
+(\Wau \vdash (\phi[t/v] \implies (\exists (\text{var}(v):X),\phi)))
 )
 \clabeltagd{axm}{MetaS2}
 \]
@@ -1485,7 +1485,7 @@ For any type $X$, for any variable $x$ and the formula $\phi$ such that the term
 \labeltagd{axm}{H}
 \]
 \[
-``\forall (X:\Type),"\ %
+``\forall (X:\SmallType),"\ %
 \forall (x:\Var),\ %
 \forall (\phi:\Fm),\ %
 \Fau\vdash
@@ -1594,7 +1594,7 @@ How the clash of the varible names is avoided here?
 
 \begin{definition}[classical existence]
 \[
-(\exists x, \phi) \iffdef (\neg \forall (x:X),\ (\neg\phi))
+(\exists (x:X), \phi) \iffdef (\neg \forall (x:X),\ (\neg\phi))
 \]
 \end{definition}
 

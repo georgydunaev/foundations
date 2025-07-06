@@ -1,8 +1,70 @@
 \def\topic{}
 \input{BEGIN.tex}
+\section{Setting}
+In some sense, sets are ``terminal'', ``ground zero'' objects.\\
+Classes are properties of sets.\\
+
+If a class is also a set, it means that there is a set, all elements of which are exactly all sets which satisfy the property and only them.\\
+
+
+A class theory provides a framework, in which a mathematician is required to do less while defining various entities: pair, domain, etc, because it is possible to use class comprehension axiom scheme instead of set  specification axiom scheme, so no need find and to provide a superset of the entity being defined.
+
+So the work of proving that something is a set is being postponed, and if it turns out that to be unnecessary for the current task, then it is useful.\\
+%Moreover, it allows to write expressive statements.
+
+(Being a subset of a set and being an element of a set are equivalent things, in case of presence of several widely accepted axioms of the set theory: heredity, powerclass, powerset, etc.)\\
+
+
+
+Q: But what kind of properties? Can a property include a quantifier ``for all properties''?\\
+A: If ``no'', then the class theory being constructed is NBG, which is a conservative extension of ZFC.
+If ``yes'', then the class theory being constructed is MK, which is strictly stronger than ZFC.\\
+
+
+Q: What if a property has only bounded (by classes) quantifiers?
+A: Then it is expressed through the properties of one universe $\V$.
+%It makes it less useful, because then 
+
+
+\url{https://math.stackexchange.com/questions/1745516/what-is-the-exact-consistency-strength-of-mk}
+\iffalse
+@MISC {1746450,
+    TITLE = {What is the *exact* consistency strength of $MK$?},
+    AUTHOR = {JDH (https://math.stackexchange.com/users/413/jdh)},
+    HOWPUBLISHED = {Mathematics Stack Exchange},
+    NOTE = {URL:https://math.stackexchange.com/q/1746450 (version: 2016-04-17)},
+    EPRINT = {https://math.stackexchange.com/q/1746450},
+    URL = {https://math.stackexchange.com/q/1746450}
+}
+\fi
+
+Q: Why introducing various kinds of types?\\
+
+A:
+
+Tiny:\\
+Small:\\
+Medium:\\
+Large:\\
+
+Q: Why not NBG, which is conservative extension?
+
+A:
+
+
+Q: How do you deal with bounded variables?
+How to 
+
+1) 
+
+
+------\\
+
+It is also possible to use universes for the same purpose: a property can be expressed as a function $f:\Un \to \Bool$.\\
+
+
 \section{Axioms and definitions of class theory}
 %Developing set--theoretic foundations
-
 \begin{constructor}[membership relation]
 If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
 %\iffalse
@@ -598,6 +660,38 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 (todo: expand on the proof)
 \end{proof}
 
+\begin{theorem}[family extensionality]
+\[
+\forall (F_1 \text{ family})
+\forall (F_2 \text{ family}),\ %
+(\Dom(F_1)=\Dom(F_2))
+\implies
+(
+(
+\forall x,\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+)
+\]
+\end{theorem}
+\begin{theorem}[class--function extensionality]
+\[
+\forall (F_1 \text{ class--function}),\ %
+\forall (F_2 \text{ class--function}),\ %
+(
+(
+\forall x,\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+)
+\]
+\end{theorem}
+
+
 \begin{axiom}[ordered pair of proper classes is a proper class]
 The following a little bit non--traditional agreement(the axiom) may be useful for this section, but it is not yet obvious that it is needed:
 \[
@@ -704,7 +798,7 @@ For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case a
 
 \begin{notation}[intersection of terms built out of the elements of a class]
 Let $y$ be a variable, let $s$ and $t$ be terms.\\
-If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it is allowed to skip writing a variable on top.
+If formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
 \[
 \bigcap_{y\in s} t 
 \ \eqdef\ 
@@ -743,6 +837,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \subsection{Powerclass}
 %A theory is conservatively extended with a functional  class comprehension.
 \begin{definition}[powerclass]
+A powerclass is a class of all subsets. (A subset is a subclass which is a set.)
 %For any class term $X$, for any variable $x$ which is not free in $X$,
 \[
 \forall (x:\Var),\ %
@@ -753,6 +848,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \end{definition}
 \subsection{Heredity}
 \begin{axiom}[heredity]
+A subclass of a set is also a set.
 %For any class terms $A$ and $B$,
 \[
 \forall (A:\Class),\ %
@@ -771,6 +867,7 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variale, then it
 \end{axiom}
 \subsection{Powerset}
 \begin{axiom}[powerset]
+A power class of a set is also a set.
 %For any class term $A$,
 \[
 \forall (A:\Class),\ %
@@ -816,7 +913,8 @@ qwertyu\\
 %(variant that uses classes)
 %\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
 \[
-\forall (\Psi:\Class),\ (\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi)
+\forall (\Psi:\Class),\ %
+((\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi))
 \labeltagd{axm}{epsilon induction}
 \]
 %\tag{EpsInd}
@@ -853,25 +951,25 @@ One direction of the equivalence extends what it means for class to be a set, i.
 \]
 or
 \[
-(
+\Big(
 \neg\exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
 )
-)
+\Big)
 \implies
 (X\set)
 \]
 The opposite direction forbids certain situations. It makes proofs shorter. It reduces the amount of models of the theory. Let such properties be called \textit{negative}.
 \[
-(
+\Big(
 \exists (T:\Class),\ (
 (T\text{ class--function})
 \land
 (\V\subclass T[X])
 )
-)
+\Big)
 \implies
 \neg(X\set)
 \]
