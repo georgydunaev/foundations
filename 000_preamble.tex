@@ -29,6 +29,9 @@
 
 %\documentclass[10pt,a4paper]{article} %normal
 %,tikz
+%\DeclareFontFamily{OT1}{cmrx}{}
+%\DeclareFontShape{OT1}{cmrx}{m}{n}{<->cmr10}{}
+
 \documentclass[10pt,a4paper,tikz]{report} %if chapters are introduced
 \renewcommand{\thechapter}{}
 \renewcommand{\chaptername}{}
@@ -732,7 +735,7 @@
 \newcommand{\BTerm}{\mathrm{BTerm}}
 \newcommand{\BClass}{\mathrm{BClass}}
 \newcommand{\Type}{\mathrm{Type}}
-\newcommand{\SmallType}{\mathrm{Type}}
+\newcommand{\SmallType}{\mathrm{SmallType}}
 %\newcommand{\Symb}{\mathrm{Symb}}
 \newcommand{\topology}{\mathcal{T}}
 \newcommand{\total}{\mathrm{\ total\ on\ }}
@@ -1095,6 +1098,14 @@
 
 
 %\textcolor{
+\newcommand{\mathguilsinglleft}{\mathord{\text{\guilsinglleft}}}
+\newcommand{\mathguilsinglright}{\mathord{\text{\guilsinglright}}}
+\newcommand{\mantiquote}[1]{\mathguilsinglleft #1\mathguilsinglright}
+\newcommand{\mquote}[1]{\llbracket #1\rrbracket}
+
+\newcommand{\mmquote}[1]{\mquote{\mquote{#1}}}
+\newcommand{\mmantiquote}[1]{\mantiquote{\mantiquote{#1}}}
+
 \newcommand{\Antiquote}{\text{Antiquote}}
 \newcommand{\Quote}{{\text{Quote}}}
 \newcommand{\Class}{{\text{Class}}}

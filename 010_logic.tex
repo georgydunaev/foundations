@@ -9,7 +9,13 @@
 \newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 \section{Example of the proof assistant's output}
 
-This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for illustration.
+This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for the illustration purposes.
+
+The original idea of including metatheory within the theory \textit{syntactically} seems to be impossible, because a constructor or function that reflects a metatheoretic statement inside the theory. 
+
+The other possibility is to include the theory \textit{semantically}(as an inner model), which was done many times for various systems, but that has very limited value.
+
+Nevertheless, during the deveopment, a framework draft for working with incompletness has been developed. 
 
 \includegraphics[scale=0.5]{pictures/DEMO.png}
 
@@ -88,7 +94,7 @@ where
 \]%(\DecFm \circ \text{QuoteClass})
 %\DecFm
 \[
-\llcorner\cdot\lrcorner : \Class \to \Fm
+\llcorner\cdot\lrcorner : \ClassTerm \to \Fm
 \]
 For any formula $\phi$,
 \[
@@ -98,13 +104,20 @@ For any formula $\phi$,
 \]
 \end{theorem*}
 \begin{example}[extension rule]
-Another (NOT YET FINISHED) example is the extension rule:
+Another (NOT YET FINISHED) example is the \textit{extension rule}:
 \[
 \forall (\varphi:\Fm),\ %
 (\Fau \vdash \forall (n:?),\ \llcorner \pmb{\varphi}(\boldmeta{n}) \lrcorner)
 \IMPLIES
 (\Fau \vdash \forall (n:?),\ \varphi(n) ),
 \]
+\[
+\forall (\varphi:\Fm),\ %
+(\forall (n:\ClassTerm),\ \Fau \vdash \llcorner \pmb{\varphi}(\boldmeta{n}) \lrcorner)
+\IMPLIES
+(\Fau \vdash \forall (n:\Class),\ \varphi(n) ),
+\]
+
 where $\varphi(n)$ means (...).
 \end{example}
 
@@ -168,14 +181,14 @@ Let $\circ$ be an infix operator of composition of functional symbols here. Then
 \text{BoldFm} \equivdef \EncFm
 \]%(\EncFm \circ \text{QuoteFm})
 \[
-\text{BoldFm} : \Fm \to \Class 
+\text{BoldFm} : \Fm \to \ClassTerm 
 \]
 and
 \[
 \text{Dot} \equivdef (\text{AntiquoteClass}).%\circ \DecFm
 \]
 \[
-\text{Dot} : \Class \to \Class 
+\text{Dot} : \ClassTerm \to \ClassTerm 
 \]
 
 \end{definition}
@@ -346,11 +359,11 @@ A term is called a \textit{class--term}, when it's a term of the type which is, 
 \subsection{OBSOLETE PART TO BE DELETED}
 
 \begin{definition}[informal introduction]
-Let $\Fm,\Class,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
+Let $\Fm,\ClassTerm,\Ctx,\Theory,...$ be a finite amount of sets, consisting of formulas, terms, contexts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomerate of all classes.\\
 
 In a such model of Standard ML, there is a typing relation between semantics of terms and types.\\
 Assume this relation is given.\\
-Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\Class,\Ctx,\Theory,...$ and their ground values (without variables).\\
+Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,\ClassTerm,\Ctx,\Theory,...$ and their ground values (without variables).\\
 Then let's extend this typing relation to the extended one, in which all remaining types also have type $\Type$, such that 
 $(\Fm:\Type)$, $(\Class:\Type)$, $(\Ctx:\Type)$, $\dots$
 %, $(\Typ:\Typ)$ (note the last one).\\
@@ -414,14 +427,14 @@ Unfortunately, the Standard~ML doesn't have the overloading feature, so prefixes
 
 \iffalse
 \begin{notation}[abuse of notation]
-It seems possible to identify $\Class$ and $\TClass$, but it will not be done to avoid confusion.
+It seems possible to identify $\ClassTerm$ and $\TClass$, but it will not be done to avoid confusion.
 %The author is not sure, where 
 %(but in fact, no)
 %It can be
 %Starting from the next chapter, it can be 
 %It seems like
 %\[
-%\Class = \TClass = \text{CClass}
+%\ClassTerm = \TClass = \text{CClass}
 %\]
 \end{notation}
 \fi
@@ -667,7 +680,7 @@ type Code = (Syntax Fragment List)
 
 \begin{metadefinition}[syntax]
 \[
-\text{Syntax} \eqdef \Class \sqcup \Fm \sqcup \BClass \sqcup \dots
+\text{Syntax} \eqdef \ClassTerm \sqcup \Fm \sqcup \BClass \sqcup \dots
 \]
 \end{metadefinition}
 
@@ -976,7 +989,7 @@ t\equiv \DecClass(\meta{t})
 \end{metanotation}
 
 
-\begin{metadefinition}[set of terms of type $\Class$]%\ \\
+\begin{metadefinition}[set of terms of type $\ClassTerm$]%\ \\
 The inductive definition of terms:
 \begin{enumerate}
 %\item $(x:\Var(\Class)) \Implies (x:\Class)$.
@@ -985,11 +998,11 @@ The inductive definition of terms:
 %\item $(\mathbf{x}:\Var)\ ,\ (\mathbf{t}:\Class)\ ,\ (\boldsymbol{\phi}:\Fm) \Implies (\ccc{x}{t}{\phi} :\Class)$.
 \item $(x:\Var)\ ,\ (t:\Class)\ ,\ (\phi:\Fm) \Implies (\ccc{x}{t}{\phi} :\Class)$.
 \[
-\text{ClassCompr}_1 : (\Class, (\Class \times \Fm))\ \Bound \to \Class
+\text{ClassCompr}_1 : (\ClassTerm, (\ClassTerm \times \Fm))\ \Bound \to \Class
 \]
 \item $(\vv{x}:\text{Var List})\ ,\ (t:\Class)\ ,\ (\phi:\Fm) \Implies (\ccc{\vv{x}}{t}{\phi} :\Class)$.
 \[
-\text{ClassCompr} : (\Class, (\Class \times \Fm))\ \text{BoundByList} \to \Class
+\text{ClassCompr} : (\ClassTerm, (\ClassTerm \times \Fm))\ \text{BoundByList} \to \Class
 \]
 
 \iffalse
@@ -1048,7 +1061,7 @@ Quotation:
 \begin{definition}
 Antiquotation:
 \[
-\llcorner\cdot\lrcorner : \Class \to \String 
+\llcorner\cdot\lrcorner : \ClassTerm \to \String 
 \]
 \end{definition}
 \fi
@@ -1089,7 +1102,7 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 
 \iffalse
 \[
-\FV_\Class : \Class \to \List(\Var)
+\FV_\ClassTerm : \ClassTerm \to \List(\Var)
 \]
 \[
 \FV_\Fm : \Fm \to \List(\Var)
@@ -1436,7 +1449,7 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \]
 \[
 \forall (\Wau:\Theory),\ %
-\forall (x:\Var),\ %
+``\forall (x:\Var),"\ %
 \forall (t:X),\ %\Class
 \forall (\phi:\Fm),\ %
 \]
@@ -1449,20 +1462,90 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \clabeltagd{axm}{MetaS1}
 \]
 \[
+\forall (X:\Type\Term),\ %
+\Tau \vdash \llbracket
 \forall (\Wau:\Theory),\ %
 \forall (v:\Var),\ %
-\forall (t:X),\ %\Class
+\forall (t:\mantiquote{X}),\ %\Class
 \forall (\phi:\Fm),\ %
-\]
+\]%\guilsinglleft hi! \guilsinglright
 \[
 (
 (\text{$t$ free for $v$ in $\phi$})
 \implies
-(\Wau \vdash (\phi[t/v] \implies (\exists (\text{var}(v):X),\phi)))
+(
+\Wau \vdash \mquote{
+(\mantiquote{\phi[t/v]}
+\implies
+%(\exists (\text{var}(v):\mantiquote{X}),\phi))
+(%\exists
+%\mantiquote{
+%(\text{var}(v):X),\phi)
+%Exis(X,Bind(v,\phi)
+\exists (\mantiquote{v}:\mmantiquote{X}),\mantiquote{\phi})
 )
-\clabeltagd{axm}{MetaS2}
+%}
+)
+}
+)
+)
+\rrbracket
+\clabeltagd{axm}{MetaMetaS2}
+\]%%%%%%%%%%%%
+\[
+\forall (X:\Type\Term),\ %
+\Tau \vdash \llbracket
+\forall (\Wau:\Theory),\ %
+\forall (v:\Var),\ %
+\forall (t:\mantiquote{X}),\ %\Class
+\forall (\phi:\Fm),\ %
+\]%
+\[
+(
+(\text{$t$ free for $v$ in $\phi$})
+\implies
+(
+\Wau \vdash \mquote{
+(\mantiquote{\phi[t/v]}
+\implies
+(
+\exists (\meta{v}:\mmeta{X}),\meta{\phi})
+)
+)
+}
+)
+)
+\rrbracket
+\clabeltagd{axm}{MetaMetaS2}
+\]%%%%%%%%%%%%%%
+%
+%
+\iffalse
+\[
+\forall (\Wau:\Theory),\ %
+\forall (v:\Var),\ %
+\forall (t:{\Type\Term}),\ %\Class %\mantiquote
+\forall (\phi:\Fm),\ %
+\]%-
+\[
+(
+(\text{$t$ free for $v$ in $\phi$})
+\implies
+(
+\Wau \vdash \mquote{
+(\mantiquote{\phi[t/v]}
+\implies
+(%\exists
+\exists (\mantiquote{v}:\mantiquote{\Type\Term}),\mantiquote{\phi})
+)
+)
+}
+)
+)
+\clabeltagd{axm}{MetaMetaS2}
 \]
-The signatures of the functions which implement the predicates 
+\fi
+The signatures of the functions implementing the predicates 
 \[\text{
 ``($\cdot$~free for~$\cdot$~in~$\cdot$)'' 
 }\]
@@ -2347,10 +2430,10 @@ Informally:\\
 ``If $a = b$, then, for any well--formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
 Formally:
 \[
-\forall (a,b:\Class), 
+\forall (a,b:\ClassTerm), 
 (\Fau\vdash (a=b))
 \implies
-(\forall (x:\Class),\ \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
+(\forall (x:\Class\Var),\ \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
 \]
 
 \end{metatheorem}
@@ -2430,14 +2513,14 @@ The colon (":") is a sign for an infix operator of a membership relation in a me
 The epsilon ("$\in$") is a sign of for an infix operator of a membership relation in a theory.\\
 Loosely speaking, 
 \[
-``\mathbf{(:)} :  \Class \times \Type \to \Prop",
+``\mathbf{(:)} :  \ClassTerm \times \Type \to \Prop",
 \]
 \[
-``\mathbf{(\in)} :  \Class \times \Class \to \Fm".
+``\mathbf{(\in)} :  \ClassTerm \times \ClassTerm \to \Fm".
 \]
 But it is also true that $"\in":\PredSymb$. 
 \[
-t_1:\Class \LAND t_2:\Class \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
+t_1:\ClassTerm \LAND t_2:\ClassTerm \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t_2):\Fm
 \]
 
 Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
@@ -2447,20 +2530,20 @@ Unfortunately, the colon is also used both in theory and metatheory for denoting
 %Classs :\ceq \\
 \begin{definition}(Class)\\
 Inductive definition of terms:\\
-1) $v:\Var \IMPLIES v:\Class$.\\
+1) $v:\Var \IMPLIES v:\ClassTerm$.\\
 2) 
-$f:\FuncSymb\LAND t_1:\Class \LAND ...\LAND t_n:\Class  \IMPLIES f(t_1,\dots,t_n):\Class$.\\
+$f:\FuncSymb\LAND t_1:\ClassTerm \LAND ...\LAND t_n:\ClassTerm  \IMPLIES f(t_1,\dots,t_n):\ClassTerm$.\\
 3) Some higher-order features.\\
 $x:\Var \LAND x:`a \LAND t:`b \IMPLIES \lambda x.t: (`a \To `b)$\\
 
-$x:\Var \LAND t:\Class \IMPLIES x.t:\BClass$\\
+$x:\Var \LAND t:\ClassTerm \IMPLIES x.t:\BClass$\\
 $y:\Var \LAND b:\BClass \IMPLIES y.b:\text{BBClass}$\\
 
 The following rule:\\
-$x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \Class$,\\
+$x:\Var \LAND \varphi:\Fm \IMPLIES \varepsilon x.\varphi : \ClassTerm$,\\
 can be split into two, via introducing bounded terms and formulas:\\
 $x:\Var \LAND \varphi: \Fm \IMPLIES x.\varphi: \BFm$\\
-$q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \Class$\\
+$q:\BFm \IMPLIES "(\varepsilon "\mdoubleplus q \mdoubleplus")": \ClassTerm$\\
 Here $\mdoubleplus$ denotes concatenation of strings, because in this variant of implementation all terms, formulas, etc are seen as strings of text.\\
 For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenation of the list of strings \[["(\varepsilon ", x ," . ",  \varphi, ")"].\]
 ...
@@ -2474,7 +2557,7 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
 1)$\bot:\Fm$.\\
-2)$P:\PredSymb\LAND t_1:\Class \LAND ...\LAND t_n:\Class  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
+2)$P:\PredSymb\LAND t_1:\ClassTerm \LAND ...\LAND t_n:\ClassTerm  \IMPLIES P(t_1,\dots,t_n):\Fm$.\\
 3)$A:\Fm \IMPLIES (\neg A):\Fm$.\\
 4)$A:\Fm \LAND B:\Fm \IMPLIES (A\implies B):\Fm$.\\
 5)$A:\Fm \LAND B:\Fm \IMPLIES (A\land B):\Fm$.\\
@@ -2532,7 +2615,7 @@ It means that we have a super-large model.\\
 Such big model is simple and natural for having predicates such as (- exist), (- unique), (- defined) being defined.\\
 Note: $(t\ldefined)\IFF ((t\lexists)\land(t\lunique))$\\
 
-%Let $I_\Class$ is an interpretation function on Classs.
+%Let $I_\ClassTerm$ is an interpretation function on Classs.
 
 Let $w$ be an assignment of variables:\\
 \[
@@ -2575,7 +2658,7 @@ I^w_\Fm(\varphi)\ceq
 Also, for terms:
 \[
 I^w_\Class(t)\ceq 
-\bigcup \left\{ I^{v^*}_\Class 
+\bigcup \left\{ I^{v^*}_\ClassTerm 
 \middle|v\in\prod w\right\}
 \]
 
@@ -2585,7 +2668,7 @@ Semantical consequence $\left(v^*\models\varphi\right)$ is defined recursively b
 \]
 For simplicity, it is possible to consider
 \[
-\Type \ceq \{\Class, \Fm, \BClass, \BFm \},
+\Type \ceq \{\ClassTerm, \Fm, \BClass, \BFm \},
 \]
 but it may be defined simultaneously with symbols, in order to produce new types.\\
 But it, in fact, may be a version of some primitive lambda calculus, which is used only for defining new types of symbols.\\
@@ -2733,17 +2816,17 @@ Definition of truthness for the arbitrary assignment is a proper extension of it
 Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
 \[
 I^{l^*}_\Class(t)=
-\bigcup \left\{ I^{v^*}_\Class 
+\bigcup \left\{ I^{v^*}_\ClassTerm 
 |v\in\prod l^*\right\}
 \]
 \end{theorem}
 \Proof
 \[
-\bigcup \left\{ I^{v^*}_\Class 
+\bigcup \left\{ I^{v^*}_\ClassTerm 
 |v\in\prod l^*\right\}=
 \]
 \[
-\bigcup \left\{ I^{v^*}_\Class 
+\bigcup \left\{ I^{v^*}_\ClassTerm 
 |v\in\{l\}\right\}=
 \]
 \[
@@ -2824,7 +2907,7 @@ i.e. $v:\Var\to\Domain$, such that $\forall (x:\Var) . v(x) \in w(x)$.\\
 (almost classical definition)\\% OR the following:?\\
 Classs are interpreted as subconglomerates of the conglomerate of all classes.
 \[
-I^{\loc,v}_\Class : \Class \to \mathcal{U}
+I^{\loc,v}_\ClassTerm : \ClassTerm \to \mathcal{U}
 \]
 \[
 I^{\loc,v}_\Class(x) \ceq v(x)
@@ -3057,7 +3140,7 @@ If also the variable $v$ is $W$ then $t[A/W]=A$ and $t[B/W]=B$.\\
 Since $A=B$, $t[A/W]=t[B/W]$, so we are done.
 Otherwise, i.e. if the variable $v$ is not $W$, then $t[A/W]=v=t$ and $t[B/W]=v=t$.\\
 Therefore $t[A/W]=t[B/W]$, so we are done.\\
-Case 2(Step of induction): $t=f(t_1,...,t_n)\in\Class$, where $f$ is a function symbol of arity n.\\
+Case 2(Step of induction): $t=f(t_1,...,t_n): \ClassTerm$, where $f$ is a function symbol of arity n.\\
 Now we can use induction hypotheses: $t_1[A/W]=t_1[B/W],...,t_n[A/W]=t_n[B/W]$ and definition of substitution.
 \[
 t[A/W]=f(t_1,...,t_n)[A/W]=
@@ -3633,7 +3716,7 @@ The metaaxiom stating the axiom schema for definiotion of the subclass relation:
 \]
 
 \[
-\forall A,B\in\Class,\ \forall x\in \Var,\ %
+\forall (A,B:\ClassTerm),\ \forall x\in \Var,\ %
 (x\text{ is not free in }A)
 \land
 (x\text{ is not free in }B)
@@ -3758,7 +3841,7 @@ How it works then?
 \]
 
 \textbf{Idea:}\\
-Since a given formula (of $\Tau$) is already somehow defined in the proof assistant, maybe it can be considered as its own code? In this case, then the function $\ulcorner\cdot\urcorner$ is just an ``identity--like'' function from $\Fm$ to $\Class$. It is still may be better to be kept, because otherwise, the formulas and metaformulas are collapsing together, and they cannot be distinguished at all.
+Since a given formula (of $\Tau$) is already somehow defined in the proof assistant, maybe it can be considered as its own code? In this case, then the function $\ulcorner\cdot\urcorner$ is just an ``identity--like'' function from $\Fm$ to $\ClassTerm$. It is still may be better to be kept, because otherwise, the formulas and metaformulas are collapsing together, and they cannot be distinguished at all.
 \[
 \forall v\in \Var,\ (\Fau\vdash \ulcorner((x \set)\implies (x\in \{x\}))\urcorner)[v_{(0)}/x_{(-1)}]
 \]
