@@ -735,6 +735,7 @@
 \newcommand{\BTerm}{\mathrm{BTerm}}
 \newcommand{\BClass}{\mathrm{BClass}}
 \newcommand{\Type}{\mathrm{Type}}
+\newcommand{\Types}{\text{Types}}
 \newcommand{\SmallType}{\mathrm{SmallType}}
 %\newcommand{\Symb}{\mathrm{Symb}}
 \newcommand{\topology}{\mathcal{T}}
@@ -1100,11 +1101,23 @@
 %\textcolor{
 \newcommand{\mathguilsinglleft}{\mathord{\text{\guilsinglleft}}}
 \newcommand{\mathguilsinglright}{\mathord{\text{\guilsinglright}}}
-\newcommand{\mantiquote}[1]{\mathguilsinglleft #1\mathguilsinglright}
-\newcommand{\mquote}[1]{\llbracket #1\rrbracket}
+
+\newcommand{\mquoteleft}{\mathguilsinglleft}
+\newcommand{\mquoteright}{\mathguilsinglright}
+\newcommand{\mantiquoteleft}{\llbracket}
+\newcommand{\mantiquoteright}{\rrbracket}
+
+
+\newcommand{\mquote}[1]{\mathguilsinglleft #1\mathguilsinglright}
+\newcommand{\mantiquote}[1]{\llbracket #1\rrbracket}
 
 \newcommand{\mmquote}[1]{\mquote{\mquote{#1}}}
 \newcommand{\mmantiquote}[1]{\mantiquote{\mantiquote{#1}}}
+
+\newcommand{\NOmquote}[1]{#1}
+\newcommand{\NOmmquote}[1]{#1}
+\newcommand{\NOmantiquote}[1]{#1}
+\newcommand{\NOmmantiquote}[1]{#1}
 
 \newcommand{\Antiquote}{\text{Antiquote}}
 \newcommand{\Quote}{{\text{Quote}}}

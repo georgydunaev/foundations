@@ -1449,7 +1449,7 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \]
 \[
 \forall (\Wau:\Theory),\ %
-``\forall (x:\Var),"\ %
+``\forall (v:\Var),"\ %
 \forall (t:X),\ %\Class
 \forall (\phi:\Fm),\ %
 \]
@@ -1462,60 +1462,62 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \clabeltagd{axm}{MetaS1}
 \]
 \[
-\forall (X:\Type\Term),\ %
-\Tau \vdash \llbracket
+\forall (X:\Types(\Type)),\ %
+\Tau \vdash 
+%\mquoteleft
 \forall (\Wau:\Theory),\ %
-\forall (v:\Var),\ %
+\forall (v:\Var(\Var)),\ %
 \forall (t:\mantiquote{X}),\ %\Class
 \forall (\phi:\Fm),\ %
 \]%\guilsinglleft hi! \guilsinglright
 \[
 (
-(\text{$t$ free for $v$ in $\phi$})
+(\text{$t$ free for $\mantiquote{v}$ in $\phi$})
 \implies
 (
-\Wau \vdash \mquote{
-(\mantiquote{\phi[t/v]}
+\Wau \vdash \NOmquote{
+(\NOmantiquote{\phi[t/v]}
 \implies
 %(\exists (\text{var}(v):\mantiquote{X}),\phi))
 (%\exists
 %\mantiquote{
 %(\text{var}(v):X),\phi)
 %Exis(X,Bind(v,\phi)
-\exists (\mantiquote{v}:\mmantiquote{X}),\mantiquote{\phi})
+\exists (\mantiquote{v}:\mantiquote{X}),\NOmantiquote{\phi})
 )
 %}
 )
 }
 )
 )
-\rrbracket
+%\mquoteright
 \clabeltagd{axm}{MetaMetaS2}
 \]%%%%%%%%%%%%
 \[
-\forall (X:\Type\Term),\ %
-\Tau \vdash \llbracket
+\forall (X:\Types(\Type)),\ %
+\Tau \vdash
+%\mquoteleft
 \forall (\Wau:\Theory),\ %
-\forall (v:\Var),\ %
-\forall (t:\mantiquote{X}),\ %\Class
+\forall (v:\Var(\ClassTerm)),\ %
+\forall (t:\meta{X}),\ %\Class
 \forall (\phi:\Fm),\ %
 \]%
 \[
 (
-(\text{$t$ free for $v$ in $\phi$})
+(\text{$t$ free for $\meta{v}$ in $\phi$})
 \implies
 (
-\Wau \vdash \mquote{
-(\mantiquote{\phi[t/v]}
+\Wau \vdash \NOmquote{
+(\NOmantiquote{\phi[t/v]}
 \implies
 (
-\exists (\meta{v}:\mmeta{X}),\meta{\phi})
+\exists (\meta{v}:\meta{X}),{\phi})
 )
 )
 }
 )
 )
-\rrbracket
+%\mquoteright
 \clabeltagd{axm}{MetaMetaS2}
 \]%%%%%%%%%%%%%%
 %
@@ -1524,7 +1526,7 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \[
 \forall (\Wau:\Theory),\ %
 \forall (v:\Var),\ %
-\forall (t:{\Type\Term}),\ %\Class %\mantiquote
+\forall (t:{\Types(\Type)}),\ %\Class %\mantiquote
 \forall (\phi:\Fm),\ %
 \]%-
 \[
@@ -3372,9 +3374,9 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
 \[
 (\forall I):\left(
 \bigwedge_{(`a\Rightarrow o)}\lambda P.
-\left(\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket \right)
+\left(\bigwedge_{`a}\lambda x.\mquoteleft P(x)\mquoteright \right)
 \CIMPLIES
-\llbracket \forall_{`a}P\rrbracket
+\mquoteleft \forall_{`a}P\mquoteright
  \right):: \prop
 \]
 
@@ -3384,7 +3386,7 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
 \left(
 \bigwedge_{`a}\lambda x.
 \middle(
-\llbracket P(x)\rrbracket  \CIMPLIES \llbracket \exists_{`a}P\rrbracket
+\mquoteleft P(x)\mquoteright  \CIMPLIES \mquoteleft \exists_{`a}P\mquoteright
  \middle)
  \right)
  \right):: \prop
@@ -3393,9 +3395,9 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
 \[
 (\forall E):\left(\bigwedge_{(`a\Rightarrow o)}\lambda P.
 \left(
-\llbracket \forall_{`a}P\rrbracket
+\mquoteleft \forall_{`a}P\mquoteright
 \CIMPLIES
-\bigwedge_{`a}\lambda x.\llbracket P(x)\rrbracket
+\bigwedge_{`a}\lambda x.\mquoteleft P(x)\mquoteright
 \right)
 \right):: \prop
 \]
@@ -3403,13 +3405,13 @@ f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
 \[
 (\exists E):\left(
 \bigwedge_{(`a\Rightarrow o)}\lambda P.\left(
-\llbracket \exists_{`a}P\rrbracket
+\mquoteleft \exists_{`a}P\mquoteright
 \CIMPLIES \left(
 \bigwedge_{o}\lambda B.\left(
 \bigwedge_{`a}\lambda x.
-\llbracket P(x)\rrbracket  \CIMPLIES \llbracket B\rrbracket
+\mquoteleft P(x)\mquoteright  \CIMPLIES \mquoteleft B\mquoteright
 \right)
-\CIMPLIES \llbracket B\rrbracket
+\CIMPLIES \mquoteleft B\mquoteright
  \right)
  \right)
   \right):: \prop
