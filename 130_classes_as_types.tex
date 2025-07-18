@@ -171,16 +171,16 @@ It is a property(sic!), which all type's terms interpretations satisfy.
 The interpretation of a term of a class list type property:
 %\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
 \[
-(F\text{ inClassList})
+(F\text{ in ClassList})
 \iffdef
 (
 (F\family)
 \land
-(Dom(F)\in\omega)
+(\Dom(F)\in\omega)
 )
 \]%\omega\cup\{\omega\}
 \end{definition}
-Interpretation function:
+Valuation function:
 \[
 I:\Type\to\Class
 \]
@@ -833,7 +833,86 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 }
 \end{prooftree}
 
-\subsubsection{Model of $\Pi$--types}
+\subsubsection{The first model of $\Pi$--types as predicates on classes}
+Let $B$ be a family term.\\
+So $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$ is a family of classes.\\
+%Let $B$ be a family of classes.\\
+
+For this model the judgement ``$\pmb{(f:\Pi B)}$'' is interpreted as a proposition ``$(f:\Pi B)$''.
+\begin{definition}[judgement as a proposition]
+\[
+\mantiquoteleft
+\pmb{(f:\Pi B)}
+\mantiquoteright^{\Prop}_v
+\iffdef
+(
+\mantiquoteleft
+\pmb{f}
+\mantiquoteright^{\Class}_v
+:\Pi 
+\mantiquoteleft
+\pmb{B}
+\mantiquoteright^{\Class}_v
+),
+\]
+\end{definition}
+where a predicate symbol is defined the following way:
+\begin{definition}[class--function $f$ respects a family $B$]
+\[
+(f:\Pi B)
+\iffdef
+\]
+\[
+\iff
+(
+(
+f\text{ class--function})
+\land
+\]
+\[
+\land
+(\dom(f)=\Dom(B))
+\land
+\]
+\[
+\land
+(\forall (x\in\dom(f)), (f(x)\in B(x)) )
+)
+\]
+\end{definition}
+This is done, because the meaning of $\Pi B$ is too large to be a class.
+Because whenever $B$ is valuated as a proper class--function, then the valuation of the term $f$ must also be a proper class--function, which is impossible for an element to be, since any element is a set(and vice versa), by the very definition of what a ``set'' is.
+
+
+\subsubsection{The second model of $\Pi$--types as sets}
+%Assume that $B$ is a function. NO
+The family terms are valuated as families. %(todo: prove it)
+Let family $B$ be the valuation of a family term $\pmb{B}$.
+Note, that
+\[
+\mantiquoteleft
+\pmb{\Dom(B)}
+\mantiquoteright^{\Class}_v
+=
+\Dom(
+\mantiquoteleft
+\pmb{B}
+\mantiquoteright^{\Family}_v
+).
+\]
+Let $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$.
+Assume that the domain of family $B$ is a set.
+Then
+\[
+\mantiquoteleft
+\pmb{\Pi B}
+\mantiquoteright^{\Set}_v
+\eqdef
+\cc{f}{(f:\Pi B)}
+\]
+
+
+\subsubsection{The third model of $\Pi$--types as a restriction of the first model?}
 The $\Type$ is interpreted as $\TClass$.\\
 Large types are used just for preventing primitive typing errors.\\
 Medium types are for expressing the properties of proper classes.\\
