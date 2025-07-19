@@ -424,6 +424,24 @@ The following attempt of definition requires the value to be set:
 \clabeltagd{def}{classvaluedabstraction}
 \]
 \end{definition}
+NEW:
+\begin{definition}[class--valued abstraction]
+\[
+(x\in A \mapsto t)
+\eqdef
+\ccc{x,b}{(x,b)}{
+(x\in A)\land
+(
+%\lif\ 
+((t\set)\land(b=t))
+\lor
+%\ \lthen\ 
+((t\proper)\land(b\singleton)\land(b\subset t))
+)
+}
+\clabeltagd{def}{classvaluedabstraction}
+\]
+\end{definition}
 
 %\mathclap{#1}
 \iffalse
@@ -778,12 +796,12 @@ $\Gamma \vdash (A:\Un)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Un)$
 \Gamma \vdash \Pi_{(x:A)}B(x):\Un  
 $}
 \end{prooftree}
-Subtypes are forbidden(due to many complications), but subkinds are allowed, since there are only two kinds: Set and Class(so it's easy to implement).
+Subtypes are forbidden(due to many complications), but subkinds are allowed, since there are only two sorts: Set and Class(so it's easy to implement).
 \begin{prooftree}
 \AxiomC{
 $(A::\text{Set})$
 }
-\RightLabel{(Set is a subkind of Class)}
+\RightLabel{(Set is a subsort of Class)}
 \UnaryInfC{$
 (A::\text{Class})
 $}

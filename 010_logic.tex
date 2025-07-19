@@ -496,8 +496,51 @@ In general, any other abuse of notation should be avoided and will be avoided.% 
 
 %Now the tricky part, te
 
+\begin{axiom}[set terms quantification unfolds via itself]
+The quantifiers with a bound variable of type Set can be unfolded similarly, with a differnce they will still contain a TClass type label:
+\[
+(\forall (t:\TSet),\ \psi)
+\iffaxm
+\]
+\[
+\iffaxm
+(\forall (\phi_\code:\TSet),\ %
+(\phi_\code\in \Emb(\TSet))
+\implies
+\psi[
+\DecSet(t_\code)
+/
+t
+]
+)
+\]
+That is why it is an axiom, because otherwise it would be a circular definition. (The author believes that it might be the reason why terms are called ``a term'': they are ``terminal'' in the sense of being expressed not throught other types, but only via themselves.)
+\end{axiom}
+\begin{notation}[overloading class bindings]
+Again, as previously for formulas, a formula
+\[
+``(\forall(K:\TSet),\ \dots)"
+\]
+can be written as
+\[
+``(\forall(K:\Set),\ \dots)".
+\]
+\iffalse
+and also the quantifiers bound by a variable codes of definable classes
+\[
+``(\forall(e\in\CClass),\ \dots)"
+\]
+can be likewise unambiguously written as
+\[
+``(\forall(e\in\ClassCode),\ \dots)".
+\]
+\fi
+\end{notation}
+%########################## Class
+
 \begin{axiom}[class terms quantification unfolds via itself]
-The quantifiers with a bound variable of type Class can be unfolded similarly, with a differnce they will still contain a TClass type label:
+The quantifiers with a bound variable of type Set can be unfolded similarly, with a differnce they will still contain a TClass type label:
+(see the model of pi--types for the explanation)
 \[
 (\forall (t:\TClass),\ \psi)
 \iffaxm
@@ -505,7 +548,7 @@ The quantifiers with a bound variable of type Class can be unfolded similarly, w
 \[
 \iffaxm
 (\forall (\phi_\code:\TClass),\ %
-(\phi_\code\in \Emb(\TClass))
+(\phi_\code : \Emb(\TClass))
 \implies
 \psi[
 \DecClass(t_\code)
@@ -525,17 +568,10 @@ can be written as
 \[
 ``(\forall(K:\Class),\ \dots)".
 \]
-\iffalse
-and also the quantifiers bound by a variable codes of definable classes
-\[
-``(\forall(e\in\CClass),\ \dots)"
-\]
-can be likewise unambiguously written as
-\[
-``(\forall(e\in\ClassCode),\ \dots)".
-\]
-\fi
 \end{notation}
+
+% ###
+
 \begin{notation}[the default type]
 Finally, when the type is ommited, it is assumed to be ``Class''. So, unsurprisingly, a ``Class'' is a default type of the class theory.
 \[
@@ -1462,11 +1498,11 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 \clabeltagd{axm}{MetaS1}
 \]
 \[
-\forall (X:\Types(\Type)),\ %
+\forall (X:\text{T}(\TType)),\ %\Types
 \Tau \vdash 
 %\mquoteleft
 \forall (\Wau:\Theory),\ %
-\forall (v:\Var(\Class)),\ %
+\forall (v:\Var(\TClass)),\ %
 \forall (t:\mantiquote{X}),\ %\Class
 \forall (\phi:\Fm),\ %
 \]%\guilsinglleft hi! \guilsinglright
@@ -1507,13 +1543,14 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 (\text{$t$ free for $\meta{v}$ in $\phi$})
 \implies
 (
-\Wau \vdash \NOmquote{
-(\NOmantiquote{\phi[t/v]}
-\implies
+\Wau \vdash \mquote{
+\pmb{(}
+\NOmantiquote{\phi[t/v]}
+\pmb{\implies}
 (
 \exists (\meta{v}:\meta{X}),{\phi})
 )
-)
+\pmb{)}
 }
 )
 )
@@ -1656,7 +1693,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \end{definition}
 \begin{definition}[generalisation rule, written on the meta--level]
 \[
-\forall (X:\Type),\ %
+\forall (X::\Type),\ %
 \forall (x:\Var),\ %
 \forall (\phi:\Fm),\ %
 \forall (\Gamma : \Ctx),\ %
