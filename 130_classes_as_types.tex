@@ -768,14 +768,53 @@ In every theorem of this section, it is assumed, that $(B\family)$.
 
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
-In type theory, the formation rules for a $\Pi$--type are
+Class--level type theory is predicative.\\
+In class--level type theory, the formation rule for a $\Pi$--type is
+\begin{prooftree}
+\AxiomC{
+$(B \family)$
+}
+\RightLabel{$\Pi$--form}
+\UnaryInfC{$
+((\Pi B)\text{ conglomerate})
+$}
+\end{prooftree}
+In particular,
+\begin{prooftree}
+\AxiomC{
+$(B \text{ class--function})$
+}
+\RightLabel{$\Pi$--form}
+\UnaryInfC{$
+((\Pi B)\text{ conglomerate})% sic! it's not a mistake!
+$}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{
+$(B \text{ family})\quad\quad(\Dom(B)\set)$
+}
+\RightLabel{$\Pi$--form}
+\UnaryInfC{$
+((\Pi B)\text{ class})$%% COOL!
+}
+\end{prooftree}%In particular,
+\begin{prooftree}
+\AxiomC{
+$(B \text{ function})$
+}
+\RightLabel{$\Pi$--form}
+\UnaryInfC{$
+((\Pi B)\text{ set})
+$}
+\end{prooftree}
+In set--level type theory, the formation rules for a $\Pi$--type are
 \begin{prooftree}
 \AxiomC{
 $\Gamma \vdash (A::\text{Class})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text{Class})$
 }
 \RightLabel{$\Pi$--form(large)}
 \UnaryInfC{$
-\Gamma \vdash \Pi_{(x:A)}B(x)::\text{Class}
+\Gamma \vdash (\Pi_{(x:A)}B(x)\text{ conglomerate})%::\text{Class}
 $}
 \end{prooftree}
 \begin{prooftree}
@@ -806,7 +845,6 @@ $(A::\text{Set})$
 (A::\text{Class})
 $}
 \end{prooftree}
-
 \underline{Introduction of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{

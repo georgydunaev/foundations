@@ -511,7 +511,7 @@ The definitions above seem to be the best solution to avoid many--valued logics 
 \begin{definition}[big domain ``Dom''including proper values]
 Assume $F$ is a family, class-function or a function, then
 \[
-\Dom(F) \eqdef \cc{x}{\exists b,\ (x,b)\in F}
+\Dom(F) \eqdef \cc{x}{\exists (b\in\V),\ (x,b)\in F}
 \clabeltagd{def}{bigdomain}
 \]
 \end{definition}
@@ -760,6 +760,7 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 
 \begin{definition}[union of a definable conglomerate of classes]
 \[
+%\label{def:uniondefcongl}
 \bigcup^y_{\psi} t 
 \ \eqdef\ 
 \cc{x}{\exists y, \psi \land (x\in t)}
@@ -768,7 +769,9 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 \underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
-3) variable $y$ is different from variable $x$.
+3) variable $y$ is different from variable $x$.\\
+(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
+
 %Side conditions:\\
 %1) variable $x$ is not free in formula $\psi$,\\
 %2) variable $x$ is not free in term $t$,\\
@@ -776,7 +779,6 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 %Dependencies:\\
 %1) formula $\psi$ may depend on $y$.\\
 %2) term $t$ may depend on $y$.
-\label{def:uniondefcongl}
 \end{definition}
 
 \begin{definition}[union of terms built out of the elements of a class]
@@ -827,7 +829,8 @@ This is an admissible and ``elementary'' definition of an intersection of an arb
 \begin{definition}[intersection of a definable conglomerate of classes]
 For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
 \[
-\label{def:interdefcongl}
+%\label{def:interdefcongl}
+\clabeltagd{def}{conglomerate intersection}
 \bigcap^y_{\psi} t 
 \ \eqdef\ 
 \cc{x}{\forall y\mydot (\psi \implies (x\in t))}
@@ -835,7 +838,8 @@ For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case a
 \underline{Side conditions:}\\
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
-3) variable $y$ is different from variable $x$.
+3) variable $y$ is different from variable $x$.\\
+(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
 \end{definition}
 
 
