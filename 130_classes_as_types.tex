@@ -765,7 +765,31 @@ In every theorem of this section, it is assumed, that $(B\family)$.
 \end{lemma}
 \pagebreak
 \subsection{Implementing $\Pi$--types}
-
+\begin{notation}[Fm]
+The terms for propositions are called \textit{formulas}.
+\[
+\Fm\equivdef\Prop\Term
+\]
+\end{notation}
+\begin{notation}[typecong]
+There are no conglomerate--level terms except conglomerate--level types and virtualisations of them.
+That is the reason why ``typecong'' is a keyword, that makes a judgment out of class--level term and conglomeerate--level type.
+There are exactly two variants of judgements: it is either a typing $(a:A)$ or declaring a conglomerate--level type.
+\end{notation}
+\begin{notation}[conglomerate--level types]
+Any formula (e.g. $\mquote{(x \set)}:\Prop\Term$), which is constructed out of an unary predicate symbol is semantically written like this:
+\[
+(x \set),
+\]
+while a typing judgement and variable's binding are syntactically written like this:
+\[
+(x:\Set).
+\]
+The former is the valuation of the latter. To be precise, specifically, it holds under one special assignment which maps all letters to corresponding variables of the current context. 
+\end{notation}
+%\[
+%\forall (B\family), 
+%\]
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
 Class--level type theory is predicative.\\
@@ -776,7 +800,7 @@ $(B \family)$
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
-((\Pi B)\text{ conglomerate})
+(\Pi B)\text{ typecong}
 $}
 \end{prooftree}
 In particular,
@@ -786,7 +810,7 @@ $(B \text{ class--function})$
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
-((\Pi B)\text{ conglomerate})% sic! it's not a mistake!
+(\Pi B)\text{ typecong}% sic! it's not a mistake!
 $}
 \end{prooftree}
 \begin{prooftree}
@@ -814,7 +838,7 @@ $\Gamma \vdash (A::\text{Class})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text
 }
 \RightLabel{$\Pi$--form(large)}
 \UnaryInfC{$
-\Gamma \vdash (\Pi_{(x:A)}B(x)\text{ conglomerate})%::\text{Class}
+\Gamma \vdash \Pi_{(x:A)}B(x)\text{ typecong}%::\text{Class}
 $}
 \end{prooftree}
 \begin{prooftree}
@@ -1230,7 +1254,7 @@ Therefore it is univocally defined on whole $\mbox{W}B$, because it's a union of
 \text{M}B \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma B}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
 \]
 \[
-\forall f,g\in Q: \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
+\forall f,g\in Q, \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
 \]
 \[
 \inf : \dots
