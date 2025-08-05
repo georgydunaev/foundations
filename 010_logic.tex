@@ -16,9 +16,15 @@ The original idea of including metatheory within the theory \textit{syntacticall
 The other possibility is to include the theory \textit{semantically}(as an inner model), which was done many times for various systems, but that has very limited value.
 
 Nevertheless, during the development, a framework draft for working with incompletness has been developed. 
+% тип полностью или неполнстью определён
+% тип написан как объект (и это возможно)
+% тип написан как терм, но можно было как объект
+% тип написан как объект (и это было невозможно) -- неполная имплементация/ошибка
+% тип написан как терм, но можно было как объект
 
-
-\begin{definition}[syntactic type(informal definition)]
+\begin{informaldefinition}[syntactically representable type]
+\end{informaldefinition}
+\begin{informaldefinition}[syntactic and semantic types of the system(informal definition)]
 A guest type $A$ in a [conglomerate--level] type theory of this book is called \textit{syntactic} if its intended meaning -- as a ``collection'' of ``elements'' of some size -- is ``bijectively representable'' in the host language. That is, there exists a host type $T$ such that:
 \begin{enumerate}
 \item There is a bijection between the ``intended meanings'' of the terms of the guest type $A$ and the terms of the host type $T$.
@@ -26,7 +32,7 @@ A guest type $A$ in a [conglomerate--level] type theory of this book is called \
 %\item    Every term $t$ of type $T$ corresponds to a unique element $a$ of the collection denoted by $A$.
 \item    In particular, the interpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a term of type $T$, which element of $A$ it represents.
 \end{enumerate}
-\end{definition}
+\end{informaldefinition}
 
 
 \includegraphics[scale=0.5]{pictures/DEMO.png}

@@ -507,21 +507,39 @@ The definitions above seem to be the best solution to avoid many--valued logics 
 (f\function) \LAND (x\notin \dom(f)) \IMPLIES (f(x)\text{ not set})
 \]
 \end{example}
+\pagebreak
 \subsection{Functions and families}
-\begin{definition}[big domain ``Dom''including proper values]
-Assume $F$ is a family, class-function or a function, then
+\begin{definition}[big domain ``Dom'' including proper values]
+Assume $F$ is a family. (Reminder: $F$ can be also a class--function or a function as well, since they both are families too.)
+The the domain(in a ``big sense'' which works for any family, not only for functions) is the following:
 \[
 \Dom(F) \eqdef \cc{x}{\exists (b\in\V),\ (x,b)\in F}
 \clabeltagd{def}{bigdomain}
 \]
+(note1: the role of $b$ in the formula is to either be $F(x)$ if it is a set, otherwise its role is to be any singleton subset of a proper class $F(x)$. It works due to the law of excluded middle, and because the proper classes are nonempty, following from numerous well--established %consensual
+axioms, e.g. from empty set axiom.)\\
+(note2: it seems like ``$\in\V$'' can be safely ommited, since if a pair of classes is in some class, then it is quite natural to require the pair to be a set too; )
 \end{definition}
-\begin{definition}[image]
+\begin{notation}[``in the big domain of'' relation]
+The common abuse of notation: since the more common ``logic of truthness'' is used instead of more rare and cumbersom ``logic of definitness'', the predicate ``$(\cdot\text{ defined})$'' is not given. Moreover, it seems to be impossible to define it. Instead of it, the following notation is introduced:
 \[
-F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}
+(F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})
+\IFFnot
+(x\in\Dom(F))
+\]
+This is a predicate symbol of two arguments, in a sense that ``$F\textcolor{blue}{(\textcolor{black}{x})}$'' is not a term in this notation, but rather a way of writing the arguments. So in the code it is written as something like ``inDomOf(F,x)''), but it is displayed as ``$(F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})$''.
+
+In this formula, ``$(\cdot\textcolor{blue}{(\textcolor{black}{\cdot})}\text{ defined})$'' is a predicate symbol of the valence two, and the internal parentheses are an essential part of its name. The coloring of the internal parentheses may be ommited as an abuse of notation.
+\end{notation}
+\begin{definition}[image]
+Let $F$ be arbirtrary family, and let $A$ be any class. Define the image of a family as the class of only those values of $F$ on the arguments from $A$, which are sets, i.e.:
+\[
+F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}.
 \clabeltagd{def}{image}
 \]
 \end{definition}
 \begin{definition}[evaluation of a family]
+Let $F$ be arbirtrary family, and let $x$ be any class(note, that it w).
 \[
 F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{nonset}\ \lfi\right) 
 \]
@@ -530,9 +548,11 @@ F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{
 \dom(F) \eqdef \cc{x}{\exists (y\set),\ F(x)=y}
 \]\fi
 \begin{definition}[small domain ``dom'']
+Let $f$ be a family.
 \[
 \dom(f) \eqdef \cc{x}{f(x)\set}
 \]
+(note: if $f$ is a function or a class--function, then $\dom(f)=\Dom(f)$)
 \end{definition}
 \begin{definition}[graph of the (class--)function]
 \[

@@ -204,6 +204,9 @@
 
 \usepackage{xparse}
 
+
+
+
 %Removing other characters
 \ExplSyntaxOn
 \tl_new:N \l_azor_string_tl
@@ -245,6 +248,7 @@
 \newtheorem{constructor}{Constructor}[section]
 \newtheorem*{constructor*}{Constructor}
 \newtheorem{iaxiom}{Axiom}
+%(ommited)
 \newtheorem{axiom}{Axiom}
 \newtheorem*{axiom*}{Axiom}
 \newtheorem{metaaxiom}{Metaaxiom}
@@ -261,6 +265,8 @@
 \newtheorem*{badinferencerule*}{Bad inference rule}
 \newtheorem{baddefinition}{Failed definition}[section]
 \newtheorem*{baddefinition*}{Failed definition}
+\newtheorem{informaldefinition}{Informal definition}[section]
+\newtheorem*{informaldefinition*}{Informal definition}
 \newtheorem{remark}{Remark}[section]
 \newtheorem*{remark*}{Remark}
 \newtheorem{recall}{Recall}[section]
@@ -579,7 +585,11 @@
 \newcommand{\IFF}{\ \Longleftrightarrow\ }
 \newcommand{\iffnows}{\longleftrightarrow}
 \newcommand{\IFFnows}{\Longleftrightarrow}
+
 \newcommand{\IFFdef}{\ {\stackrel{\defi}{\IFFnows}}\ }
+\newcommand{\IFFaxm}{\ {\stackrel{\axmi}{\IFFnows}}\ }
+\newcommand{\IFFnot}{\ {\stackrel{\noti}{\IFFnows}}\ }
+
 \newcommand{\iffdef}{\ {\stackrel{\defi}{\iffnows}}\ }
 \newcommand{\iffaxm}{\ {\stackrel{\axmi}{\iffnows}}\ }
 \newcommand{\iffnot}{\ {\stackrel{\noti}{\iffnows}}\ }
@@ -852,6 +862,17 @@
 
 \usepackage{geometry}
 \usepackage{stmaryrd}  % for \llbracket \rrbracket
+
+
+
+%%%%%%%%%% BEGIN: ADDING NUMBERS TO THE LEFT
+\usepackage{lineno}
+%\renewcommand{\linenumberfont}{\normalfont\bfseries\small\color{blue}}
+\renewcommand{\linenumberfont}{\normalfont\bfseries\small\color{red}}
+\linenumbers
+% https://tex.stackexchange.com/questions/247165/can-i-change-linenumber-colour
+%%%%%%%%%% END
+
 
 \newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
 \newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}

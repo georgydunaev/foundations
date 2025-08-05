@@ -1,6 +1,9 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{[OUTDATED] Classes--as--types, sets--as--expressions approach}
+\section{A type expresses an unary predicate.}
+
+%\section{[OUTDATED] Classes--as--types, sets--as--expressions approach}
+
 %\subsection{Classes--as--Types semantics}
 In this section, we will see, that there is a semantic of $\Pi$--, $\Sigma$--, $W$--, $M$--types in classes.
 
@@ -201,7 +204,7 @@ Let $A$ be a small type. Any list of terms of type $A$ is a small term, and al o
 \end{axiom}
 \begin{axiom}[cons]
 \[
-::\ :\ A \to \List(A) \to \List(A) 
+(::)\ :\ A \to \List(A) \to \List(A) 
 \]
 \end{axiom}
 \begin{definition}[inc\_fst--def]
@@ -234,6 +237,7 @@ or, equivalently,
 %5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
 %6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by \dots .\\
 \Done
+\iffalse
 \begin{theorem}[?]
 \[
 ::\ :\ A \to \List(A) \to \List(A)
@@ -246,6 +250,7 @@ or, equivalently,
 \Proof
 \dots
 \Done
+\fi
 \pagebreak
 
 
@@ -834,39 +839,39 @@ $}
 In set--level type theory, the formation rules for a $\Pi$--type are
 \begin{prooftree}
 \AxiomC{
-$\Gamma \vdash (A::\text{Class})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text{Class})$
+$\Wau \vdash (A:\text{Class})$\quad\quad$\Wau, (x:A)\vdash (B(x):\text{Class})$
 }
 \RightLabel{$\Pi$--form(large)}
 \UnaryInfC{$
-\Gamma \vdash \Pi_{(x:A)}B(x)\text{ typecong}%::\text{Class}
+\Wau \vdash \Pi_{(x:A)}B(x)\text{ typecong}%:\text{Class}
 $}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{
-$\Gamma \vdash (A::\text{Set})$\quad\quad$\Gamma \vdash (x:A\vdash B(x)::\text{Set})$
+$\Wau \vdash (A:\text{Set})$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\text{Set})$
 }
 \RightLabel{$\Pi$--form(small)}
 \UnaryInfC{$
-\Gamma \vdash \Pi_{(x:A)}B(x)::\text{Set}
+\Wau \vdash (\Pi_{(x:A)}B(x)):\text{Set}
 $}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{
-$\Gamma \vdash (A:\Un)$\quad\quad$\Gamma \vdash (x:A\vdash B(x):\Un)$
+$\Wau \vdash (A:\Un)$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\Un)$
 }
 \RightLabel{$\Pi$--form(tiny)}
 \UnaryInfC{$
 \Gamma \vdash \Pi_{(x:A)}B(x):\Un  
 $}
 \end{prooftree}
-Subtypes are forbidden(due to many complications), but subkinds are allowed, since there are only two sorts: Set and Class(so it's easy to implement).
+Subtypes are forbidden(due to many complications), but subsorts are allowed, since there are only two sorts: Set and Class(so it's easy to implement).
 \begin{prooftree}
 \AxiomC{
-$(A::\text{Set})$
+$(A:\text{Set})$
 }
 \RightLabel{(Set is a subsort of Class)}
 \UnaryInfC{$
-(A::\text{Class})
+(A:\text{Class})
 $}
 \end{prooftree}
 \underline{Introduction of terms of $\Pi$--type:}\\
