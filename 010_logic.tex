@@ -45,11 +45,11 @@ A guest type $A$ in a [conglomerate--level] type theory of this book is called \
 Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
 The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
 
-\iffalse
-
+%\iffalse
+\begin{nolinenumbers}
 \lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set\_theory\_proverSTOP/program/CONTENT.ML}
-
-\fi
+\end{nolinenumbers}
+%\fi
 
 \restoregeometry
 \subsection{Primitive definitions and notation}
@@ -66,7 +66,7 @@ Meanwhile, the difference between notation for the proof assistant(which is quit
 It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
 \begin{theorem*}[representation theorem in the traditional notation]
 Let $\mathbb{N}$ be the set of natural numbers. A %first--order
-theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ''represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
+theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
 T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y = \overline{n} ).
 \]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})

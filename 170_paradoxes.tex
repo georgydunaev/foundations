@@ -2,6 +2,7 @@
 \input{BEGIN.tex}
 
 \section{``Paradoxes'' of mathematics}
+Famous mathematical ``paradoxes'' in this section are formulated in a way that reveals that they are not true paradoxes for the current foundations, but rather just simple theorems.
 %Регулярность:
 %(PA⊆A)→(V⊆A)
 %— это полезная аксиома.
@@ -85,22 +86,31 @@ Both in classical and in intuitionistic logic, the following holds:
 \noindent By contradiction, assume $(\exists W \forall Q,\  Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
 Set $Q\ceq W$.\\
-Therefore $W\in W \iff W\notin W.$ (we already could say obtained a contradiction, but want to show that it doesn't need LEM.)\\
+Therefore $((W\in W) \iff (W\notin W)$. Here a contradiction could already be obtained a contradiction, but the proof is continued further in order to show that it doesn't require the law of excluded middle(LEM).\\
 From \myref{double neg LEM} where $P\ceq (W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
-$W\in W \iff W\notin W \vdash \neg((W\in W)\lor(W\notin W))$\\
+$[((W\in W) \iff (W\notin W))] \vdash \neg((W\in W)\lor(W\notin W))$\\
 Now, using backward reasoning:\\
-$W\in W \iff W\notin W, (W\in W)\lor(W\notin W) \vdash \bot$.\\
+$[((W\in W) \iff (W\notin W)), ((W\in W)\lor(W\notin W))] \vdash \bot$.\\
 Subgoal1:\\
 \[
-W\in W \iff W\notin W, (W\in W) \vdash \bot
+[
+(W\in W \iff W\notin W), (W\in W)
+]
+\vdash \bot
 \]
 \[
-W\in W \iff W\notin W, (W\in W) \vdash (W\notin W).
+[
+(W\in W \iff W\notin W), (W\in W)
+]
+\vdash (W\notin W).
 \]
 \[
-W\in W \iff W\notin W, (W\in W) \vdash (W\in W)\tag{by assumption}.
+[
+(W\in W \iff W\notin W), (W\in W)
+]
+ \vdash (W\in W)\tag{by assumption}.
 \]
 Subgoal2:\\
 \[
@@ -132,13 +142,13 @@ Subgoal2:\\
 \begin{theorem}[a class is not in itself]
 Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
 \[
+\labeltagd{thm}{not in itself}
 \forall Y,\ Y\notin Y
-\label{thm:not in itself}
 \]
 \Proof
 %\noindent %Fix Y.\\
 Let $C\ceq \cc{W}{W\notin W}$.\\
-Goal $\power C\subseteq C$.\\
+Goal: to show that $(\power C\subseteq C)$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 \[
 (B\in \power C) \Longrightarrow (B\set)\land(B\subseteq C).
@@ -147,7 +157,7 @@ Claim: $\forall b\in B,\ b\notin b$.\\ %Каждый его элемент не 
 $(b\in B)\LAND(B\subseteq C) \Longrightarrow (b\in C)$.\\
 $(b\in C) \Longrightarrow (b\notin b)$.\\
 Claim: $B\notin B$.\\
-Assume opposite $B\in B$ and derive a contradiction.\\
+Assume opposite $B\in B$ and derive a contradiction.
 \[
 (B\in B) \Longrightarrow (B\notin B)
  \tag{by previous claim}
@@ -261,11 +271,11 @@ The claim is proven.
 \begin{theorem}[powerset is not a subset]
 In classical and even in intuitionistic logic, the following holds:
 \[
-\forall (Y\set),\ \neg(\power Y \subseteq Y)
 \labeltagd{thm}{powerset not a subset}
+\forall (Y\set),\ \neg(\power Y \subseteq Y)
 \]
-\Proof
-\noindent %Fix Y.\\
+\end{theorem}
+\begin{proof}%\Proof%\noindent %Fix Y.\\
 \[
 C\ceq \cc{w}{\neg(\power w \subseteq w)}
 \]
@@ -290,8 +300,8 @@ $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
 %$\neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)$\\
 %$\forall W(\neg \forall Q,\  Q\in W \iff Q\notin Q)$\\
 %$W\ceq Y$.\\
-\Done
-\end{theorem}
+%\Done
+\end{proof}
 
 \subsection{The conglomerate of all classes is not a class}
 \begin{theorem}[conglomerate of classes not class]
@@ -313,12 +323,12 @@ So $Q\notin W$.
 
 \subsection{The class of all ordinals is not a set}
 
-\begin{lemma}[On not in On]
+\begin{lemma}[On is not in On]
 \[
 \On\notin\On
 \labeltagd{lem}{OnnotinOn}
 \]
-\end{lemma}
+\end{lemma}%
 \Proof
 Assume $\On\in\On$.\\
 Therefore $\in$ well--orders $\On$ as a well--founded strict linear order.\\
