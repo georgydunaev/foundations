@@ -1715,16 +1715,28 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \begin{definition}[generalisation rule, written on the meta--level]
 \[
 \forall (X::\Type),\ %
-\forall (x:\Var),\ %
+\forall (v:\Var),\ %
 \forall (\phi:\Fm),\ %
 \forall (\Gamma : \Ctx),\ %
 \]\[
-(x\notin\FV(\Gamma))
+(v\notin\FV(\Gamma))
 \implies
 (
 (\Fau,\Gamma\vdash \phi)
 \implies
-(\Fau,\Gamma\vdash (\forall (x:X),\phi))
+(\Fau,\Gamma\vdash
+\mquote{
+(\forall (
+\antiquote{
+v
+}
+:X),
+\mantiquote{
+\phi
+}
+)
+}
+)
 )
 \clabeltag{MetaGen}
 \]
@@ -2491,7 +2503,7 @@ Informally:\\
 Formally:
 \[
 \forall (a,b:\ClassTerm), 
-(\Fau\vdash (a=b))
+(\Fau\vdash \mquote{(\mantiquote{a}=\mantiquote{b})})
 \implies
 (\forall (x:\Class\Var),\ \Fau\vdash (\phi[a/x] \implies \phi[b/x]))
 \]
@@ -3653,21 +3665,23 @@ The assumption of this book is that there exists a theory $\mathcal{F}$, which i
 
 \item Some useful rules become admissible instead, like the omniscience
 \[
-((\Fau \vdash \phi) \implies \phi),
+((\Fau \vdash \phi) \implies \mantiquote{\phi}),
 \tag{Omniscience}
 \]
 \[
 \forall (\phi:\Fm),\ % 
-((\Fau \vdash \phi) \implies \phi),
+((\Fau \vdash \phi) \implies \mantiquote{\phi}),
 \tag{MetaOmniscience}
 \]%\Fau \vdash 
 which is (due to the incompleteness argument) provably false in $\Tau$:
 \[
 \Tau \vdash
+\mquote{
 (
 \neg (\forall (\phi:\Fm),\ % 
-((\Tau \vdash \phi) \implies \phi)
+((\Tau \vdash \phi) \implies \mantiquote{\phi})
 ))
+}
 \tag{``Effective omniscience'' is impossible}
 \]
 

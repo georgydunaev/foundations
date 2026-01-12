@@ -1134,8 +1134,8 @@
 \newcommand{\mantiquoteright}{\rrbracket}
 
 
-\newcommand{\mquote}[1]{\mathguilsinglleft #1\mathguilsinglright}
-\newcommand{\mantiquote}[1]{\llbracket #1\rrbracket}
+\newcommand{\mquote}[1]{\mquoteleft #1\mquoteright}
+\newcommand{\mantiquote}[1]{\mantiquoteleft #1\mantiquoteright}
 
 \newcommand{\mmquote}[1]{\mquote{\mquote{#1}}}
 \newcommand{\mmantiquote}[1]{\mantiquote{\mantiquote{#1}}}
@@ -1148,7 +1148,10 @@
 \newcommand{\Antiquote}{\text{Antiquote}}
 \newcommand{\Quote}{{\text{Quote}}}
 \newcommand{\Class}{{\text{Class}}}
+\newcommand{\Predicate}{{\text{Predicate}}}
+\newcommand{\CongType}{{\text{CongType}}}
 \newcommand{\ClassTerm}{{\text{ClassTerm}}}
+\newcommand{\ClassExpression}{{\text{ClassExpression}}}
 
 \renewcommand*\dddot[1]{%
   \placeaccent{\acc@dot\mkern1.4mu\acc@dot\mkern1.4mu\acc@dot}{#1}%

@@ -11,11 +11,11 @@ First of all, we (loosely) define the semantics.
 
 Since, everything is a class in MK, we have:
 \[
-\semantics(``(A:\Type)")\eqdef \top.(no! it ruins uniqueness of a term--type relation!)
+\semantics(``(A:\Type)")\eqdef \top.\text{(no! it ruins uniqueness of a term--type relation!)}
 \]
 Dependent types are treated as families.
 \[
-\semantics(``(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\dom(B)\subseteq A).
+\semantics(``(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\Dom(B)\subseteq A).
 \]
 OUTDATED:
 \[
@@ -24,7 +24,7 @@ OUTDATED:
 
 \subsection{Storage [unfinished]}
 Only finite objects can be stored in computer's memory.\\
-Functions are stored as an ordered pairs "variable" and "term".\\
+Functions are stored as an ordered pairs ``variable'' and ``term''.\\
 Types are needed merely for getting rid of nonsense expressions.\\
 Semantics with sets and classes is used as a safeguard: if something "paradoxical" is obtained, then there is a cntradiction in foundation of mathematics, what is a sensationally rare event.\\
 
@@ -73,12 +73,13 @@ I(\None)\in\Emb(\Option(A))
 \end{axiom}
 \begin{axiom}[Some--ax]
 \[
-\frac{(a:A)}{(\Some(a)\in\Option(A))}
+\frac{(a:A)}{(\Some(a):\Option(A))}
 \]
 \[
-(I(a)\in \Emb(A))\implies(I(\Some(a))\in\Emb(\Option(A)))
+(I(a)\in \kappa(\Emb(A)))\implies(I(\Some(a))\in\kappa(\Emb(\Option(A))))
 \]
 \end{axiom}
+(todo: add $\kappa$ to every $\Emb$ in this section, because it was changed to be $\Predicate$ )
 \subsubsection{Model of option types}
 %Model:\\
 \begin{definition}[None--def]
@@ -98,11 +99,16 @@ I(\Some(a)) \eqdef \{a\}
 \end{definition}
 \subsubsection{Soundness of option types}
 %Theorems:\\
+\[
+(\Emb:\CongType\to\Predicate)
+\]
 \begin{theorem}[?]
 \[
-I(\None)\in\Emb(\Option(A))
+I(\None)\in\kappa(\Emb(\Option(A)))
 \]
-or, equivalently, (OUTDATED)
+\end{theorem}
+
+\begin{theorem}[OUTDATED]
 \[
 \emptyclass\in\cc{b}{(b \sss A)} 
 \]
@@ -116,7 +122,7 @@ or, equivalently, (OUTDATED)
 \Done
 \begin{theorem}[?]
 \[
-(a\in A)\implies(\Some(a)\in\Option(A))
+(a\in A)\implies(\Some(\term(a))\in\kappa(\Option(\type(A))))
 \]
 or, equivalently,(OUTDATED)
 \[
@@ -1063,7 +1069,7 @@ Let $B$ be a family of types.\\
 Then $\W B$ is also a type.\\
 \underline{Introduction of terms of W--type:}\\
 \[
-\sup(B):\prod_{(a\in \dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
+\sup(B):\prod_{(a\in \Dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
 \underline{Elimination of terms of W--type:}\\
 \[
@@ -1081,30 +1087,42 @@ Then $\W B$ is also a type.\\
 \subsubsection{Model of $\text{W}$--types}
 \underline{Formation of W--type:}\\
 
-Assume $B$ is a family of classes with domain $A$.
-(a.k.a. ``some dependent class $B$, which depends on $\dom(B)$'', where $\dom(B)=A$.)
+Assume $B$ is a family of classes with class $A$ being its domain.
+(a.k.a. ``some dependent class $B$, which depends on $\Dom(B)$'', where $\Dom(B)=A$.)
 \[
-\mbox{W}_{\mathrm{fun}}B(0)\eqdef \emptyclass 
+(\mbox{W}_{\mathrm{fun}}B)(0)\eqdef \emptyclass 
 \]
 \[
-\mbox{W}_{\mathrm{fun}}B(n+1)\eqdef \cc{(r,s)}{ (r\in \dom(B))\land (s:B(r)\to \mbox{W}_{\mathrm{fun}}B(n) )}
+(\mbox{W}_{\mathrm{fun}}B)(n+1)\eqdef \cc{(r,s)}{ (r\in \Dom(B))\land (s:B(r)\to (\mbox{W}_{\mathrm{fun}}B)(n) )}
 \]
+% why \textbf{N} instead of \mathbb{N}
 \[
-\mbox{W}B \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}B(n)
+\mbox{W}B \eqdef\bigcup_{n\in\omega}((\mbox{W}_{\mathrm{fun}}B)(n)),
+\]
+or even simply
+\[
+\mbox{W}B \eqdef\ran(\mbox{W}_{\mathrm{fun}}B).
 \]
 
-The equivalent definition, which uses class--theoretic implementations of the sigma types and the empty type:
+A variant of a definition, which works only for definable families and that uses %class--theoretic implementations of 
+the sigma types and the empty type:
 \[
-\mbox{W}_{\mathrm{fun}}B(0)\eqdef \mathrm{Void}
+\mbox{W}_{\mathrm{fun}}':\Family\to(\mathbb{N}\to\Type)
 \]
 \[
-\mbox{W}_{\mathrm{fun}}B(n+1)\ \eqdef 
-\sum_{(r\in \dom(B))} (B(r)\to \mbox{W}_{\mathrm{fun}}B(n) )
+(\mbox{W}_{\mathrm{fun}}'B)(0)\eqdef \mathrm{Void}
 \]
-%\Pi\Sigma\mathop{\dum}\limits_{(r\in \dom(B))} \sum
+\[
+(\mbox{W}_{\mathrm{fun}}'B)(n+1)\ \eqdef 
+\sum_{(r: \Dom(B))} (B(r)\to (\mbox{W}_{\mathrm{fun}}B)(n) )
+\]
+%\Pi\Sigma\mathop{\dum}\limits_{(r\in \Dom(B))} \sum
 %\mathop{\LARGE\ensuremath \mathrm{\LARGE \vphantom\sum W}\mathlarger{W}}\limits
 \[
-\mbox{W}B \eqdef\bigcup_{n\in\textbf{N}} \mbox{W}_{\mathrm{fun}}B(n)
+\mbox{W}':\Family\to\Type
+\]
+\[
+\mbox{W}'B\eqdef\bigcup_{n:\mathbb{N}} ((\mbox{W}_{\mathrm{fun}}'B)(n))
 \]
 
 Note: this type is a solution of the fixed--point equation
@@ -1142,43 +1160,43 @@ and the corresponding fixpoint type is
 \begin{lemma}[levels of W--types are cumulative]
 For all $n\in\N$,
 \[
-\mbox{W}_{\mathrm{fun}}B(n)
+(\mbox{W}_{\mathrm{fun}}B)(n)
 \subseteq
-\mbox{W}_{\mathrm{fun}}B(n+1).
+(\mbox{W}_{\mathrm{fun}}B)(n+1).
 \]
 \Proof
 By induction on $n$,\\
 \underline{Base}: n=0.\\
- Trivially, $\emptyclass \subseteq \mbox{W}_{\mathrm{fun}}B(1)$.\\
+ Trivially, $\emptyclass \subseteq (\mbox{W}_{\mathrm{fun}}B)(1)$.\\
 \underline{Step of induction}:\\
 Assume \[
-\mbox{W}_{\mathrm{fun}}B(n)
+(\mbox{W}_{\mathrm{fun}}B)(n)
 \subseteq
-\mbox{W}_{\mathrm{fun}}B(n+1).
+(\mbox{W}_{\mathrm{fun}}B)(n+1).
 \]
 To show:
 \[
-\mbox{W}_{\mathrm{fun}}B(n+1)
+(\mbox{W}_{\mathrm{fun}}B)(n+1)
 \subseteq
-\mbox{W}_{\mathrm{fun}}B(n+2).
+(\mbox{W}_{\mathrm{fun}}B)(n+2).
 \]
 It follows from the assumption, that 
 \[
-(B(r)\to\mbox{W}_{\mathrm{fun}}B(n))
+(B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n))
 \subseteq
-(B(r)\to\mbox{W}_{\mathrm{fun}}B(n+1)).
+(B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n+1)).
 \]
 Therefore
 \[
-\sum_{(r\in \dom(B))} (B(r)\to\mbox{W}_{\mathrm{fun}}B(n))
+\sum_{(r\in \Dom(B))} (B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n))
 \subseteq
-\sum_{(r\in \dom(B))} (B(r)\to\mbox{W}_{\mathrm{fun}}B(n+1)).
+\sum_{(r\in \Dom(B))} (B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n+1)).
 \]
 And finally,
 \[
-\mbox{W}_{\mathrm{fun}}B(n+1)
+(\mbox{W}_{\mathrm{fun}}B)(n+1)
 \subseteq
-\mbox{W}_{\mathrm{fun}}B(n+2).
+(\mbox{W}_{\mathrm{fun}}B)(n+2).
 \]
 \Done
 \end{lemma}
@@ -1189,11 +1207,11 @@ And finally,
 \begin{definition}[constructor of W--type]
 For fixed function $B$,
 \[
-\sup(B):\prod_{(a\in \dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
+\sup(B):\prod_{(a\in \Dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
-Assume $(a\in \dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\dom(B)$ if finite, then $s[B(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[B(a)]$, so $s[B(a)]\subseteq \mbox{W}_{\mathrm{fun}}B(m)$. Therefore $s:B(a)\to\mbox{W}_{\mathrm{fun}}B(m)$. Therefore $(a,s)\in \mbox{W}_{\mathrm{fun}}B(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
+Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\Dom(B)$ is finite(?), then $s[B(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[B(a)]$, so $s[B(a)]\subseteq (\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $s:B(a)\to(\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $(a,s)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
 \[
-\sup(B) \eqdef ((a\in \dom(B))\mapsto ((s:B(a)\to\mbox{W}B)\mapsto (a,s)) ).
+\sup(B) \eqdef ((a\in \Dom(B))\mapsto ((s:B(a)\to\mbox{W}B)\mapsto (a,s)) ).
 \]
 %Therefore $\sup(B) = \id(\mbox{W}B)$ and $\sup(B)\restriction  = \id(\mbox{W}B)$.
 \end{definition}
@@ -1216,7 +1234,7 @@ W_rect
 
 \underline{Computation of terms of W--type:}\\
 
-Due to finiteness of $A$ and $\mbox{W}_{\mathrm{fun}}B(0)=\emptyclass$, it holds that $\sup(B,a,f)\in \mbox{W}_{\mathrm{fun}}B(m+1)$ for some $m\in\N$.
+Due to finiteness of $A$ and $(\mbox{W}_{\mathrm{fun}}B)(0)=\emptyclass$, it holds that $\sup(B,a,f)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$ for some $m\in\N$.
 
 
 Assume $(A : \Un)$ $(B : A \to \Un)$ $(E : \mathrm{W}B\to \Un)$.\\
@@ -1224,7 +1242,7 @@ Definition of $\mbox{W}_{\mathrm{rect}}$ is done by induction on $n$.\\
 Base:\\
 n=0.
 Step:\\
-Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in \mbox{W}_{\mathrm{fun}}B(n)$.\\
+Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in (\mbox{W}_{\mathrm{fun}}B)(n)$.\\
 (todo\dots)
 
 \begin{theorem}[computation of W--type]

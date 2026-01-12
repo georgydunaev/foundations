@@ -62,15 +62,19 @@
 \title{Class--Theoretic\\%Approach to
 Foundations of Mathematics\\
 \& Applications\\
-(Early Draft)
+(Very Early Draft)
 }
 %\\
 %\ \\
 %\ \\
 %\input{MYTREECOPY.tex}
 %}
-\author[1]{Georgy Dunaev\\ \href{mailto:georgedunaev@gmail.com}{georgedunaev@gmail.com}}
 
+\iftrue
+\author[1]{Georgy Dunaev\\ \href{mailto:georgedunaev@gmail.com}{georgedunaev@gmail.com}}
+\else
+\author[1]{[the author's name is hidden]}
+\fi
 
 %\usetikzlibrary{trees,arrows}
 \begin{document}
@@ -84,11 +88,13 @@ Foundations of Mathematics\\
 %\includegraphics[scale=0.5]{cargo.jpeg}
 %\includegraphics[scale=0.3]{Thanks.jpg}
 %\end{center}
+\iffalse
 %\ifdefined\MyPrintFlag %%%% this is for printing a blank page
   \newpage
   \thispagestyle{empty}
   \ \\
 %\fi
+\fi
 %\newpage
 % of functional analysis and topology. It is needed because writing it by hand leads to severe amount of corrections, while implementing it with an interactive proof assistant is tedious and platform--dependent.\\
 %\noindent
@@ -141,7 +147,7 @@ ax. unbounded class construction +\\
 ax. ``there exists at least one set''\\
 ''.\\
 
-The idea of ``Classes--as--Types, Sets--as--Expressions'' certainly deserves attention, as well as explicit mechanization, implementation, and refinig the proofs and formulations of various theorems, axioms and principles.
+The idea of ``Predicates--as--Types, Classes--as--Expressions'' certainly deserves attention, as well as explicit mechanization, implementation, and refinig the proofs and formulations of various theorems, axioms and principles.
 
 %The development of ordinals
 
@@ -324,8 +330,9 @@ Here I want to provide a natural modification of predicate calculus and its sema
 %\input{310_differential_geometry.tex}
 %\pagebreak
 %Appendix 1: u
-\chapter{Unfinished logic--related ideas}
-\section{Implementation of De Bruijn variabes for untyped lambda calculus}
+\chapter{Various logic--related ideas}
+\section{Implementation of De Bruijn variables for untyped lambda calculus}
+\begin{nolinenumbers}
 \begin{lstlisting}
 datatype Exp = 
   Var of nat  (*todo: Nat.t*)
@@ -394,6 +401,7 @@ val ee = App e e;
 val w = normalize ee; (* it will freeze the computations*)
 
 \end{lstlisting}
+\end{nolinenumbers}
 \pagebreak
 
 \input{199_languages.tex}
