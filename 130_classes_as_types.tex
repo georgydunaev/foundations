@@ -1085,72 +1085,84 @@ Then $\W B$ is also a type.\\
 \]
 \pagebreak
 \subsubsection{Model of $\text{W}$--types}
+% https://tex.stackexchange.com/questions/151549/mathscr-latex-or-xelatex
 \underline{Formation of W--type:}\\
 
-Assume $B$ is a family of classes with class $A$ being its domain.
+Assume $B$ is a family of classes with a class $A$ being its domain.
 (a.k.a. ``some dependent class $B$, which depends on $\Dom(B)$'', where $\Dom(B)=A$.)
+
+%\EuScript{W}
+%\mathscr{W}
 \[
-(\mbox{W}_{\mathrm{fun}}B)(0)\eqdef \emptyclass 
+(\EuScript{W}_{\mathrm{fun}}B)(0)\eqdef \emptyclass 
 \]
 \[
-(\mbox{W}_{\mathrm{fun}}B)(n+1)\eqdef \cc{(r,s)}{ (r\in \Dom(B))\land (s:B(r)\to (\mbox{W}_{\mathrm{fun}}B)(n) )}
+(\EuScript{W}_{\mathrm{fun}}B)(n+1)\eqdef \cc{(r,s)}{ (r\in \Dom(B))\land (s:B(r)\to (\EuScript{W}_{\mathrm{fun}}B)(n) )}
 \]
 % why \textbf{N} instead of \mathbb{N}
 \[
-\mbox{W}B \eqdef\bigcup_{n\in\omega}((\mbox{W}_{\mathrm{fun}}B)(n)),
+\EuScript{W}B \eqdef\bigcup_{n\in\omega}((\EuScript{W}_{\mathrm{fun}}B)(n)),
 \]
 or even simply
 \[
-\mbox{W}B \eqdef\ran(\mbox{W}_{\mathrm{fun}}B).
+\EuScript{W}B \eqdef\ran(\EuScript{W}_{\mathrm{fun}}B).
 \]
 
 A variant of a definition, which works only for definable families and that uses %class--theoretic implementations of 
 the sigma types and the empty type:
 \[
-\mbox{W}_{\mathrm{fun}}':\Family\to(\mathbb{N}\to\Type)
+\mbox{W}_{\mathrm{fun}}':\text{Family.Expression}
+\to
+(
+\mathbb{N}
+%\text{.Expression}
+\to
+\Type
+)
 \]
 \[
-(\mbox{W}_{\mathrm{fun}}'B)(0)\eqdef \mathrm{Void}
+(\mbox{W}_{\mathrm{fun}}'B)(0)\equivdef \mathrm{Void}
 \]
 \[
-(\mbox{W}_{\mathrm{fun}}'B)(n+1)\ \eqdef 
-\sum_{(r: \Dom(B))} (B(r)\to (\mbox{W}_{\mathrm{fun}}B)(n) )
+(\mbox{W}_{\mathrm{fun}}'B)(n+1)\ \equivdef 
+\sum_{(r: \Dom(B))} (B(r)\to (\mbox{W}_{\mathrm{fun}}'B)(n) )
 \]
 %\Pi\Sigma\mathop{\dum}\limits_{(r\in \Dom(B))} \sum
 %\mathop{\LARGE\ensuremath \mathrm{\LARGE \vphantom\sum W}\mathlarger{W}}\limits
 \[
-\mbox{W}':\Family\to\Type
+\mbox{W}':\text{Family.Expression}\to\Type
 \]
 \[
-\mbox{W}'B\eqdef\bigcup_{n:\mathbb{N}} ((\mbox{W}_{\mathrm{fun}}'B)(n))
+\mbox{W}'B\equivdef\bigsqcup_{n:\mathbb{N}} ((\mbox{W}_{\mathrm{fun}}'B)(n))
 \]
 
 Note: this type is a solution of the fixed--point equation
+%=
 \[
-F(X)=X,
+F(X)\cong X,
 \]
 where a functor $F$ is defined to be a polynomial functor $P_B$:
 \[
 P_B(X)
-\ceq
+\cequiv
 \sum_{a:A}
 (B(a)
 \to 
 X)
 \]
 \[
-F(X)\ceq P_B(X)
+F(X)\cequiv P_B(X)
 \]
 For every polynomial functor $P$, define
 \[
-P_{\text{fun}}(0)\eqdef \text{Void}
+P_{\text{fun}}(0)\equivdef \text{Void}
 \]
 \[
-P_{\text{fun}}(n+1)\eqdef P(P_{\text{fun}}(n))
+P_{\text{fun}}(n+1)\equivdef P(P_{\text{fun}}(n))
 \]
 and the corresponding fixpoint type is
 \[
-\text{Fix}(P) \eqdef \bigsqcup_{n\in\textbf{N}} P_{\text{fun}}(n).
+\text{Fix}(P) \equivdef \bigsqcup_{n:\textbf{Nat}} P_{\text{fun}}(n).
 \]
 %$\big\Sigma$
 %\scalebox{1.5}{$\Sigma$}
