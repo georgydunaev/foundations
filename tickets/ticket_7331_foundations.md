@@ -9,6 +9,12 @@
 ## Task Description
 Format axiom environments consistently, verify LaTeX comments, and fix cosmetic formatting flaws.
 
+## Current Status
+
+**Status:** Reopened
+
+**Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
+
 ## Execution Guidelines
 1. Work autonomously in `foundations/`.
 2. Ensure existing tests continue to pass.
