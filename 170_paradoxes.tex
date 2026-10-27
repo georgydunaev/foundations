@@ -76,7 +76,7 @@ The proof of the formula $F$ is obtained via modus ponens from $((C\implies F)\i
 \end{theorem}
 
 \subsection{There is no class containing all irreflexive classes}
-\begin{theorem}[Russel's paradox]
+\begin{theorem}[Russell's paradox]
 \label{Russel's Paradox}
 Both in classical and in intuitionistic logic, the following holds:
 \[
@@ -85,9 +85,9 @@ Both in classical and in intuitionistic logic, the following holds:
 \Proof
 \noindent By contradiction, assume $(\exists W \forall Q,\  Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
 Take such W.\\
-Set $Q\ceq W$.\\
-Therefore $((W\in W) \iff (W\notin W)$. Here a contradiction could already be obtained a contradiction, but the proof is continued further in order to show that it doesn't require the law of excluded middle(LEM).\\
-From \myref{double neg LEM} where $P\ceq (W\in W)$, we have:
+Set $Q\equiv W$.\\
+Therefore $((W\in W) \iff (W\notin W)$. Here a contradiction is obtained, but the proof is continued further in order to show that it doesn't require the law of excluded middle(LEM).\\
+From \myref{double neg LEM} where $P\equiv (W\in W)$, we have:
 $\neg\neg((W\in W)\lor(W\notin W))$.\\
 Therefore the goal is:
 $[((W\in W) \iff (W\notin W))] \vdash \neg((W\in W)\lor(W\notin W))$\\
@@ -147,7 +147,7 @@ Both in classical and in intuitionistic logic, the epsilon relation is not refle
 \]
 \Proof
 %\noindent %Fix Y.\\
-Let $C\ceq \cc{W}{W\notin W}$.\\
+Let $C\equiv \cc{W}{W\notin W}$.\\
 Goal: to show that $(\power C\subseteq C)$.\\
 Fix class $B$. Assume $B\in \power C$.\\
 \[
@@ -190,7 +190,7 @@ Case 2: $\neg(Y\set)$.\\
 $\neg(Y\set) \Longrightarrow \neg(\exists Q,\ Y\in Q)$.\\
 $\neg(\exists Q,\ Y\in Q)  \Longrightarrow (\forall Q,\ Y\notin Q)$.\\
 \[
-(\forall Q,\ Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\ceq Y$}
+(\forall Q,\ Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\equiv Y$}
 \]
 \Done
 \end{theorem}
@@ -233,7 +233,7 @@ Proof of the claim:
 \]
 \[
 (\V\notin \V)
-\tag{by  \myref{thm:not in itself} with $Y\ceq \V$}
+\tag{by  \myref{thm:not in itself} with $Y\equiv \V$}
 \]
 \[
 (\V\notin \V)
@@ -277,7 +277,7 @@ In classical and even in intuitionistic logic, the following holds:
 \end{theorem}
 \begin{proof}%\Proof%\noindent %Fix Y.\\
 \[
-C\ceq \cc{w}{\neg(\power w \subseteq w)}
+C\equiv \cc{w}{\neg(\power w \subseteq w)}
 \]
 Claim $\power C \subseteq C$:\\
 Fix $B\in \power C$. To show: $B\in C$\\
@@ -296,10 +296,10 @@ Fix $(Y\set)$.\\
 $(Y\set)\Longrightarrow (Y\in V)$.\\
 $(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
 $(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
-%By Russel's paradox(\myref{Russel's Paradox}), 
+%By Russell's paradox(\myref{Russel's Paradox}), 
 %$\neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)$\\
 %$\forall W(\neg \forall Q,\  Q\in W \iff Q\notin Q)$\\
-%$W\ceq Y$.\\
+%$W\equiv Y$.\\
 %\Done
 \end{proof}
 
@@ -315,7 +315,7 @@ A conglomerate of all classes is not a class. (In the sense, that it ``does not 
 \]
 \Proof
 Fix W.\\
-Set $Q\ceq W$.\\
+Set $Q\equiv W$.\\
 By \myref{thm:not in itself}, $W\notin W$.\\
 So $Q\notin W$.
 \Done
