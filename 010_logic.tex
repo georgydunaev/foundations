@@ -1,12 +1,17 @@
 \def\topic{Chapter: Logic}%Foundations of mathematics
 \input{BEGIN.tex}
 \section{Logical Framework}
+\label{sec:logical_framework}
 
 \begin{definition}[Conglomerate of All Classes]
+\label{def:conglomerate_classes}
+\end{definition}
 %\
 \end{definition}
 \subsection{Subsection Title}
-\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
+\label{subsec:subsection_title}
+\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm}
+\restoregeometry 
 \section{Example of the Proof Assistant's Output}
 \label{sec:proof_assistant_example}
 
@@ -24,9 +29,20 @@ Nevertheless, during the development, a framework draft for working with incompl
 % Type written as a term, but could have been written as an object
 
 \begin{informaldefinition}[Syntactically Representable Type]
-
+\label{def:syntactic_type}
+\end{informaldefinition}
+\begin{informaldefinition}[Syntactic and Semantic Types of the System]
+\label{def:semantic_types}
 \end{informaldefinition}
 
+\end{informaldefinition}
+\begin{informaldefinition}[Syntactic and Semantic Types of the System]
+\label{def:semantic_types}
+\end{informaldefinition}
+
+\end{informaldefinition}
+\begin{informaldefinition}[Syntactic and Semantic Types of the System]
+\label{def:semantic_types}
 \end{informaldefinition}
 \begin{informaldefinition}[Syntactic and Semantic Types of the System]
 \label{def:semantic_types}
@@ -38,13 +54,17 @@ A guest type $A$ in a [conglomerate--level] type theory of this book is called \
 \item    In particular, the interpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a term of type $T$, which element of $A$ it represents.
 \end{enumerate}
 \end{informaldefinition}
+\begin{informaldefinition}[Syntactic and Semantic Types of the System]
+\label{def:semantic_types}
+\end{informaldefinition}
 
 
 \includegraphics[scale=0.5]{pictures/DEMO.png}
 
 %\restoregeometry
 \pagebreak
-%\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
+%\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm}
+\restoregeometry 
 
 \section{Type Theory of the Proof Assistant}
 \label{sec:type_theory}
@@ -66,7 +86,8 @@ An ordered and heterogeneous pair of a string called \textit{name} and a natural
 \end{definition}
 This and other prinmitive definitions can be simply restored from the code above, so there is no need to state them twice. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
-\subsection{Subsection Title}section{Meaning of dots and bold symbols}%Second bold notation
+\subsection{Subsection Title}
+\label{subsec:subsection_title}section{Meaning of dots and bold symbols}%Second bold notation
 Meanwhile, the difference between notation for the proof assistant(which is quite natural for dealing with types), and the standard logical/mathematical notation makes the presence of the following subsection necessary.
 %this subsection. 
 %the following subsection.
@@ -1319,8 +1340,10 @@ is a notation for
 
 \pagebreak
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Axioms for the predicate calculus}[under construction]
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{theory} $\Wau$.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicate calculus axioms is defined. Later, two $\Tau$ and $\Fau$ are defined, as certain extensions of $\Wau$. In particular, it holds that
@@ -1389,6 +1412,7 @@ B
 \end{metaaxiom}
 %\labeltagd{axm}{MP} %todo delete it
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 %\star
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
@@ -1934,6 +1958,7 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 %\pagebreak
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 
 %enumerable
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
@@ -2036,8 +2061,10 @@ We assume that function symbols are not intersecting with predicate symbols.
 \end{definition}
 \fi
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Function symbols}
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Predicate symbols}
 \begin{definition}[predicate symbols]\ 
 \begin{itemize}
@@ -2047,6 +2074,7 @@ We assume that function symbols are not intersecting with predicate symbols.
 \end{definition}
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Interpretation}
 \underline{Interpretation of atomic predicate symbols:}
 \begin{premise}[interpretation of atomic predicate symbols]%\ \\
@@ -2185,6 +2213,7 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \text{Or}\ (I^v(\varph
 \end{definition}
 \fi
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Interpretation of terms}
 \[
 I^v(())\ceq \{()\}
@@ -2443,6 +2472,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 \]%_\forall
 \end{definition}
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Soundness}
 %(\vv{x})
 \begin{definition}[update of the function]\ %\\
@@ -2535,6 +2565,7 @@ ToDo
 \pagebreak
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \section{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
@@ -2612,7 +2643,8 @@ t_1:\ClassTerm \LAND t_2:\ClassTerm \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t
 Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
 \end{notation}
 
-\subsection{Subsection Title}subsection{Classs}
+\subsection{Subsection Title}
+\label{subsec:subsection_title}subsection{Classs}
 %Classs :\ceq \\
 \begin{definition}(Class)\\
 Inductive definition of terms:\\
@@ -2636,7 +2668,8 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 %$$\\
 \end{definition}
 
-\subsection{Subsection Title}subsection{Formulas}
+\subsection{Subsection Title}
+\label{subsec:subsection_title}subsection{Formulas}
 %\begin{definition}
 %Fm :\ceq \\
 \end{definition}
@@ -2669,6 +2702,7 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Substitution}%Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
@@ -2687,8 +2721,10 @@ The definition is not yet written, but it is implemented as functions ending wit
 %As we can see from \eqref{eq:einstein}\ldots
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \section{Semantics} % the big one.
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Motivation}
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
@@ -2711,8 +2747,10 @@ w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
-\subsection{Subsection Title}subsection{NEW VERSION, GOOD: Precise definitions}
 \subsection{Subsection Title}
+\label{subsec:subsection_title}subsection{NEW VERSION, GOOD: Precise definitions}
+\subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Definitions}
 Traditional assignment is an univocal correspondence between variables and sets. In this text, the global assignment is introduced as an univocal correspondence between variables and conglomerates%-singletons
  of classes. 
@@ -2924,17 +2962,20 @@ I^{l^*}_\Class
 \Done
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Interpretation, special cases}
 \[
 I^{v^*}_\Fm((\varepsilon x.\varphi))\ceq \{\}
 \]
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
 \begin{lemma}(substituition equals changing the assignment)
 \end{lemma}
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Validation of axioms and rules}
 \begin{theorem}(Generalization rule)
 \[
@@ -2978,6 +3019,7 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 \iffalse
 ============================================\\
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
@@ -3101,6 +3143,7 @@ forall x phi  -> phi[t/x]
 \fi
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Application for "greek"--operators}
 
 We have not always well-defined epsilon operator.\\
@@ -3198,6 +3241,7 @@ Some statements:\\
 
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \section{Useful metatheorems}
 
 \begin{theorem}(Deduction theorem)
@@ -3256,14 +3300,17 @@ By induction on formula construction.\\
 \Done
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Extension by definitions}
 ...
 
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \subsection{Soundness of the calculus}
 ...
 \pagebreak
 \subsection{Subsection Title}
+\label{subsec:subsection_title}
 \section{Just some logic theorems}
 ...
 \begin{theorem}
