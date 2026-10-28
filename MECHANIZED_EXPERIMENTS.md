@@ -1,13 +1,46 @@
-# MECHANIZED_EXPERIMENTS.md
+# MECHANIZED EXPERIMENTS
 
-## Summary of Inductive `Ens` W-type Encoding of Dunaev's Ordered Pair in Coq
+## Coq Positive Foundations
 
-The Coq file `positive_foundations.v` defines an inductive type `Ens` which represents a set. The `Pair` function is defined using the `sup` constructor, which takes a boolean and returns either the first or second argument based on the boolean value. This encoding allows for the representation of ordered pairs in a way that is consistent with Dunaev's ordered pair theory.
+### Inductive `Ens` W-type Encoding
 
-The `EQ` function defines extensional equality between two sets, and the `IN` function defines membership of an element in a set. The `SoundPred` and `SoundPredOf` functions define sound predicates over sets and types, respectively. The `EQ_tran` function is a proof that extensional equality is transitive.
+The Coq Positive Foundations file defines an inductive type `Ens` which represents a set. It includes:
 
-## Summary of Isabelle/FOL Definitions in `IFOLD.thy`
+- A `Pair` function that creates a pair of two sets.
+- Extensional equality (`EQ`) for sets.
+- Membership (`IN`) for sets.
+- Soundness predicates for sets.
+- A proof of transitivity of equality (`EQ_tran`).
 
-The Isabelle file `IFOLD.thy` defines the syntax and axiomatic basis for intuitionistic first-order logic. It includes the definition of a type `o` and a judgment `Trueprop` that maps terms of type `o` to propositions. The file also includes the definition of equality and propositional logic operators such as `False`, `conj` (conjunction), `disj` (disjunction), and `imp` (implication).
+### Dunaev's Ordered Pair
 
-The Isabelle definitions provide a formal foundation for reasoning about intuitionistic first-order logic, which can be used to verify the correctness of the Coq definitions and to explore the relationship between the two formalisms.
+The file also includes definitions and proofs related to Dunaev's ordered pair (`OPair_Zero`, `OPair_One`).
+
+## Isabelle IFOLD.thy
+
+### Intuitionistic First-Order Logic
+
+The Isabelle IFOLD.thy file defines a theory for intuitionistic first-order logic. It includes:
+
+- Syntax and axiomatic basis for terms and propositions.
+- Equality with reflexivity and substitution axioms.
+- Propositional logic with conjunction, disjunction, and implication.
+
+### ML File Imports
+
+The file includes ML file imports for various tools and utilities, such as:
+
+- `misc_legacy.ML`
+- `splitter.ML`
+- `hypsubst.ML`
+- `zipper.ML`
+- `isand.ML`
+- `rw_inst.ML`
+- `quantifier1.ML`
+- `intuitionistic.ML`
+- `project_rule.ML`
+- `atomize_elim.ML`
+
+## Summary
+
+The Coq Positive Foundations file provides an inductive `Ens` W-type encoding of Dunaev's ordered pair, while the Isabelle IFOLD.thy file defines a theory for intuitionistic first-order logic with syntax and axiomatic basis for terms and propositions.
