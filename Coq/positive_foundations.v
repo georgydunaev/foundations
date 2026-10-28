@@ -37,35 +37,35 @@ Definition SoundPredOf (E:Type) (E_EQ:E->E->Prop)
 Fixpoint EQ_tran (E1 E2 E3 : Ens) {struct E2}:
  EQ E1 E2 -> EQ E2 E3 -> EQ E1 E3.
 Proof.
-destruct E1 as [A1 f1], E2 as [A2 f2], E3 as [A3 f3].
+destructt E1 as [A1 f1], E2 as [A2 f2], E3 as [A3 f3].
 intros E1eqE2 E2eqE3.
-destruct E1eqE2 as [E12 E21].
-destruct E2eqE3 as [E23 E32].
+destructt E1eqE2 as [E12 E21].
+destructt E2eqE3 as [E23 E32].
 simpl in |- *.
 split.
 + intro x1.
-  destruct (E12 x1) as [x2 P12].
-  destruct (E23 x2) as [x3 P23].
+  destructt (E12 x1) as [x2 P12].
+  destructt (E23 x2) as [x3 P23].
   exists x3. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P12 P23).
 + intro x3.
-  destruct (E32 x3) as [x2 P32].
-  destruct (E21 x2) as [x1 P21].
+  destructt (E32 x3) as [x2 P32].
+  destructt (E21 x2) as [x1 P21].
   exists x1. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P21 P32).
 Defined.
 
 Fixpoint EQ_sym (E1 E2 : Ens) {struct E2}: EQ E1 E2 -> EQ E2 E1.
 Proof.
 intro H.
-destruct E1 as [A f], E2 as [B g].
+destructt E1 as [A f], E2 as [B g].
 simpl in * |- *.
-destruct H as [A2B B2A]; split.
-+ intro b. destruct (B2A b) as [a J]. exists a. apply EQ_sym with (1:=J).
-+ intro a. destruct (A2B a) as [b J]. exists b. apply EQ_sym with (1:=J).
+destructt H as [A2B B2A]; split.
++ intro b. destructt (B2A b) as [a J]. exists a. apply EQ_sym with (1:=J).
++ intro a. destructt (A2B a) as [b J]. exists b. apply EQ_sym with (1:=J).
 Defined.
 
 (*Hint Resolve EQ_sym EQ_refl : zfc.*)
 
-Theoremm EQ_sound_left (c a b : Ens) (aeqb : EQ a b)
+Theorem EQ_sound_left (c a b : Ens) (aeqb : EQ a b)
  (H : EQ a c) : EQ b c.
 Proof.
 apply EQ_sym in aeqb.
@@ -80,13 +80,13 @@ Definition EQ_sound_right (a b c : Ens) (aeqb : EQ b c)
 (** From "Jech" repositiory END **)
 
 
-Theoremm Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t) ).
+Theorem Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t) ).
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_left.
 Defined.
 
-Theoremm Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
+Theorem Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_right.
@@ -109,24 +109,23 @@ Definition SoundPredicate (ET:EqualityType)  := match ET with EqG E f _ _ => (So
 (*unnecessary*)
 
 (* getter of the statement:*)
-(* SoundPred: Defines a predicate P as sound if for any two sets w1 and w2, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
-Definition SoundPredicate (ET:EqualityType) :((Menge ET)->Prop)->Prop  := match ET with EqG E f _ _ => (SoundPredOf E f) end.
 
-Theoremm A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
+
+Theorem A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
 Proof.
 intros.
 unfold SoundPredOf.
 intros.
-destruct H, H0.
+destructt H, H0.
 reflexivity.
 Defined.
 
-Theoremm A_eq_sound_right (A:Type): (forall (t:A), SoundPredOf A (@eq A) (@eq A t) ).
+Theorem A_eq_sound_right (A:Type): (forall (t:A), SoundPredOf A (@eq A) (@eq A t) ).
 Proof.
 intros.
 unfold SoundPredOf.
 intros.
-destruct H, H0.
+destructt H, H0.
 reflexivity.
 Defined.
 
@@ -153,26 +152,26 @@ Check true.
 
 Require Import Setoid.
 
-Theoremm ClassOf_T_eq_sound_left (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) (fun y => (ClassEqOf ET) y t) ).
+Theorem ClassOf_T_eq_sound_left (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) (fun y => (ClassEqOf ET) y t) ).
 Proof.
 (* simple exercise *)
 unfold SoundPredOf.
 unfold ClassEqOf.
 intros.
-destruct w1, w2, t.
+destructt w1, w2, t.
 intros.
 rewrite <- (H x).
 rewrite <- (H0 x).
 reflexivity.
 Defined.
 
-Theoremm ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
+Theorem ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
 Proof.
 (* simple exercise *)
 unfold SoundPredOf.
 unfold ClassEqOf.
 intros.
-destruct w1, w2, t.
+destructt w1, w2, t.
 intros.
 rewrite <- (H x).
 rewrite <- (H0 x).
@@ -227,16 +226,16 @@ End Intersection.
 Print ET3.
 
 (* ET3:= (ClassETOf (ClassETOf ET1))*)
-Theoremm intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
+Theorem intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
 Proof.
-destruct ET1.
+destructt ET1.
 unfold SoundPredicate.
 unfold intersect_func.
 unfold SoundPredOf.
 simpl.
 intros.
 set (Q:= H0 U H1).
-destruct U.
+destructt U.
 simpl.
 simpl in p.
 simpl in * |- *.
@@ -260,7 +259,7 @@ Section TheClassOfAllSets.
 
 Definition V_func := (fun x : Menge SET => True).
 
-Theoremm V_sound : SoundPredicate SET V_func.
+Theorem V_sound : SoundPredicate SET V_func.
 Proof.
 unfold SoundPredicate.
 unfold SoundPredOf.
@@ -279,19 +278,19 @@ End TheClassOfAllSets.
 Definition binter_func {ET:EqualityType} (A B:Menge (ClassETOf ET))
  := fun x => ((Predicate A) x) /\ ((Predicate B) x).
 
-Theoremm binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
+Theorem binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
 Proof.
 unfold SoundPredicate.
-destruct ET.
+destructt ET.
 unfold SoundPredOf.
 unfold binter_func.
 unfold Predicate.
-destruct A.
-destruct B.
+destructt A.
+destructt B.
 simpl.
 unfold SoundPredOf in * |- *.
 intros.
-destruct H0.
+destructt H0.
 
 unfold SoundPredicate in * |- *.
 unfold SoundPredOf in * |- *.
@@ -312,7 +311,7 @@ Definition positive {ET1: EqualityType}(P:Menge (ClassETOf (ClassETOf ET1))) : P
   := forall (phi:Menge (ClassETOf (ClassETOf ET1))), (Predicate P) (intersect_class (binter _ phi P)).
 
 
-Theoremm positive_sound {ET1: EqualityType} : 
+Theorem positive_sound {ET1: EqualityType} : 
 SoundPredicate (ClassETOf (ClassETOf ET1)) positive.
 Proof.
 (* simple exercise *)
@@ -324,7 +323,7 @@ Check fun {ET1: EqualityType} => Constr (ClassETOf (ClassETOf ET1)) positive pos
 Definition ppc {ET1: EqualityType} := Constr (ClassETOf (ClassETOf ET1)) positive positive_sound.
 Check ppc.
 
-Theoremm ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
+Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
 Proof.
 unfold positive.
 unfold ppc.
