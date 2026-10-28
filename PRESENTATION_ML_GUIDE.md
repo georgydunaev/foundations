@@ -4,6 +4,17 @@
 This file presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom. It includes constructors of terms and formulas, complexity annotations, and definitions.
 
 ## Constructors of Terms and Formulas
+
+1. `Sets : Term` - This constructor represents the set of all terms.
+2. `c : Term -> Term` - This constructor represents the complexity annotation for terms.
+3. `Compr : Bound Fm -> Term` - This constructor represents the comprehension axiom, which allows the formation of sets based on a given formula.
+4. `Lam x.t` - This constructor represents the lambda abstraction, which allows the formation of functions.
+
+## Complexity Annotations
+The complexity annotations in the `presentation.ML` file are used to ensure that the theory is consistent and well-founded. They are based on the Morse-Kelley class theory and Tarski's axiom.
+
+## Definitions
+The `presentation.ML` file also includes various definitions that are used to build the theory of Class-Theoretic Foundations.
 - `Sets : Term`
 - `c : Term -> Term` ("super global choice")
 - `_ : Var -> Term`
