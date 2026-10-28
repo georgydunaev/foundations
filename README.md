@@ -4,19 +4,22 @@
 
 ### LaTeX Files
 
-| File | Mathematical Topic | Status |
-|------|-------------------|--------|
-| 000_preamble.tex | Preamble for Foundations of Mathematics | Active Draft |
-| presentation.ML | Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom | Active Draft |
+1. **000_preamble.tex**
+   - **Topic**: Preamble for Foundations of Mathematics
+   - **Status**: Active Draft
+
+2. **presentation.ML**
+   - **Topic**: Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom
+   - **Status**: Active Draft
 
 ### Coq Files
 
-| File | Mathematical Topic | Status |
-|------|-------------------|--------|
-| Coq/positive_foundations.v | Positive Foundations | Active Draft |
+1. **Coq/positive_foundations.v**
+   - **Topic**: Definition of Ens and Pair function
+   - **Status**: Active Draft
 
-### Isabelle Files
+### Isabelle/HOL Files
 
-| File | Mathematical Topic | Status |
-|------|-------------------|--------|
-| code/IFOLD.thy | Intuitionistic First-Order Logic | Active Draft |
+1. **code/IFOLD.thy**
+   - **Topic**: Intuitionistic first-order logic
+   - **Status**: Active Draft
