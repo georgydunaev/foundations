@@ -8,6 +8,15 @@ This file presents the underlying theory of Class-Theoretic Foundations based on
 1. `Sets : Term` - This constructor represents the set of all terms.
 2. `c : Term -> Term` - This constructor represents the complexity annotation for terms.
 3. `Compr : Bound Fm -> Term` - This constructor represents the comprehension axiom, which allows the formation of sets based on a given formula.
+4. `Lam x.t` - This constructor represents the lambda abstraction, which allows the formation of functions based on a given term.
+
+## Complexity Annotations
+
+Complexity annotations are used to measure the complexity of terms and formulas. Each constructor has a weight assigned to it, which contributes to the overall complexity of the term or formula.
+
+1. `Sets : Term` - This constructor represents the set of all terms.
+2. `c : Term -> Term` - This constructor represents the complexity annotation for terms.
+3. `Compr : Bound Fm -> Term` - This constructor represents the comprehension axiom, which allows the formation of sets based on a given formula.
 4. `Lam x.t` - This constructor represents the lambda abstraction, which allows the formation of functions.
 
 ## Complexity Annotations
