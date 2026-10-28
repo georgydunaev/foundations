@@ -13,19 +13,19 @@ Format axiom environments consistently, verify LaTeX comments, and fix cosmetic 
 
 **Status:** Reopened
 
-**Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
+**Reason:** The target string for editing the LaTeX file was not found, indicating a potential issue with the file content or the target string specification. The ticket author should verify the file content and the target string specification.
 
 **Status:** Reopened
 
-**Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
+**Reason:** The target string for editing the LaTeX file was not found, indicating a potential issue with the file content or the target string specification. The ticket author should verify the file content and the target string specification.
 
 **Status:** Reopened
 
-**Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
+**Reason:** The target string for editing the LaTeX file was not found, indicating a potential issue with the file content or the target string specification. The ticket author should verify the file content and the target string specification.
 
 **Status:** Reopened
 
-**Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
+**Reason:** The target string for editing the LaTeX file was not found, indicating a potential issue with the file content or the target string specification. The ticket author should verify the file content and the target string specification.
 
 **Reason:** No tests were executed during the ground-truth verification, indicating a lack of test coverage or test discovery failure. The ticket author should ensure comprehensive test coverage and verify that tests are discoverable by the test runner.
 
