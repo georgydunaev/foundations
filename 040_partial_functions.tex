@@ -1,0 +1,15 @@
+\section{Partial Function Semantics}
+
+\begin{definition}[Partial Function]
+A partial function $f$ from $A$ to $B$ is a relation $f \subseteq A \times B$ such that for all $x \in A$, there exists at most one $y \in B$ with $(x, y) \in f$.
+\end{definition}
+
+\begin{definition}[Function Value]
+The value of a partial function $f$ at $x$ is defined as:
+\[ f(x) \simeq (\iota y, \langle x,y\rangle \in f) \]
+\end{definition}
+
+\begin{theorem}[Univocal Functions]
+If $f$ is univocal, then:
+\[ (f(x) \simeq y) \iff (\langle x,y\rangle \in f) \]
+\end{theorem}
