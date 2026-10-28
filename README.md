@@ -5,52 +5,30 @@
 ### LaTeX Files
 
 1. **000_preamble.tex**
-   - **Topic**: Preamble for Foundations of Mathematics
-   - **Status**: Active Draft
+   - Description: Preamble for Foundations of Mathematics
+   - Author: mistral/codestral-latest (Capability Tier 1)
+   - Status: Active Draft
 
 2. **presentation.ML**
-   - **Topic**: Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom
-   - **Status**: Active Draft
+   - Description: Presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom.
+   - Author: openrouter/nvidia/nemotron-3.5-lightning:free (Capability Tier 1)
+   - Status: Active Draft
 
 ### Coq Files
 
 1. **Coq/positive_foundations.v**
-   - **Topic**: Definition of Ens and Pair function
-   - **Status**: Active Draft
+   - Description: Defines an inductive type `Ens` (Ensemble) with a constructor `sup` that takes a type `A` and a function from `A` to `Ens` and returns an `Ens`.
+   - Author: Not specified
+   - Status: Active Draft
 
 ### Isabelle Files
 
 1. **code/IFOLD.thy**
-   - **Topic**: Intuitionistic first-order logic
-   - **Status**: Active Draft
-
-1. **code/IFOLD.thy**
-   - **Topic**: Intuitionistic first-order logic
-   - **Status**: Active Draft
-
-### LaTeX Files
-
-1. **000_preamble.tex**
-   - **Topic**: Preamble for Foundations of Mathematics
-   - **Status**: Active Draft
-
-2. **presentation.ML**
-   - **Topic**: Presentation of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom
-   - **Status**: Active Draft
-
-### Coq Files
-
-1. **Coq/positive_foundations.v**
-   - **Topic**: Formalization of positive foundations
-   - **Status**: Active Draft
-
-### Isabelle/HOL Files
-
-1. **code/IFOLD.thy**
-   - **Topic**: Intuitionistic first-order logic
-   - **Status**: Active Draft
+   - Description: Defines intuitionistic first-order logic.
+   - Author: Not specified
+   - Status: Active Draft
 
 ### Notes
 
-- The files `001_set_theory.tex`, `002_logic.tex`, and `003_number_theory.tex` do not exist in the repository.
-- All other files are active drafts and are up-to-date.
+- Files `001_introduction.tex` and `002_set_theory.tex` do not exist in the specified directory.
+- Additional files from `000_preamble.tex` through `330_restricted_quantifiers.tex` were not found and are not included in this map.
