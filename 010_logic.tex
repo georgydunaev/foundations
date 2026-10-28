@@ -105,7 +105,7 @@ T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y 
 \]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
 \end{theorem*}
-\begin{theorem*}[Representation Theorem in the Higher-Order Notation of This Book]
+\begin{theorem*}[Higher-Order Representation Theorem]
 \label{thm:higher_order_representation_1}
 \label{thm:higher_order_representation_2}
 \end{theorem*}
@@ -214,7 +214,7 @@ val psib1 : Class = (QuotermsFm (FmVar vpsi))
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printermsd,
 \[
-\pmb{\phi} \equivdef \Quoterms\Fm( \phi_{(0)} ),
+\pmb{\phi} \equivdef \termsxt{BoldFm}(\phi),
 \]
 \[
 \pmb{\psi} \equivdef \Quoterms\Fm( \psi_{(0)} ),
@@ -2557,7 +2557,7 @@ Formally:
 \]
 
 \end{metatheorem}
-\begin{proof}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
 ToDo
 \end{proof}
 
@@ -4191,7 +4191,7 @@ For any theory $\Wau$,
 \labeltagd{lem}{DisjImplCompl}
 \]
 \end{lemma}
-\begin{proof}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
 Fix $(\Wau:\Theory)$ and $(\phi:\Fm)$.
 \[
 (\Wau\termsxt{ disjunctive})
@@ -4592,7 +4592,7 @@ Noterms, that the contermsxt must be empty: there should be only ``$\mathcal{F}$
 (\Wau\termsxt{ consistermsnt})
 \]
 \end{theorem}
-\begin{proof}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
 %Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
 \[
 \neg(\mathcal{W}\vdash\bot)
@@ -4647,7 +4647,7 @@ Noterms, that the contermsxt must be empty: there should be only ``$\mathcal{F}$
 (\Wau\termsxt{ disjunctive})
 \]
 \end{lemma}
-\begin{proof}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
 Fix $(\Wau:\Theory)$. By definition,
 \[
 (\Wau\termsxt{ disjunctive})
@@ -4710,7 +4710,7 @@ Finally, by transitivity of implication,
 )
 \]
 \end{theorem}
-\begin{proof}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
 By combining all previous lemmas, we have all desired properties. 
 \end{proof}
 
