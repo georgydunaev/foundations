@@ -3,15 +3,15 @@
 \section{Logical Framework}
 
 
-\begin{definition}[Conglomeraterms of All Classes]
+\begin{definition}[Conglomerate terms of All Classes]
 \label{def:conglomeraterms_classes}
 \end{definition}
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
  
 \section{Proof Assistant Output and Examples}\label{sec:proof_assistant_examples}
-\label{sec:proof_assistant_example}
+
 
 This is a screenshot of terms using one of two kernels(the one which actually stores the proofs, which is not necessary), just for the illustration purposes.
 
@@ -21,25 +21,25 @@ The other possibility is to include the theory \terms{semantically}(as an inner 
 
 Nevertheless, during the development, a framework draft for working with incompleteness has been developed. 
 % Fully or partially defined type
-% Type writtermsn as an object (and this is possible)
-% Type writtermsn as a termsrm, but could have been writtermsn as an object
-% Type writtermsn as an object (and this was impossible) -- incompleterms implementation/error
-% Type writtermsn as a termsrm, but could have been writtermsn as an object
+% Type written as an object (and this is possible)
+% Type written as a termsrm, but could have been written as an object
+% Type written as an object (and this was impossible) -- incompleterms implementation/error
+% Type written as a termsrm, but could have been written as an object
 
 \begin{informaldefinition}[Syntactically Representable Type]
 
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system_1}\label{def:semantic_types_system_1}\end{definition}
-
-\end{informaldefinition}
-
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system_1}\label{def:semantic_types_system_1}\end{definition}
-
-\end{informaldefinition}
-
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system_1}\label{def:semantic_types_system_1}\end{definition}
 
 
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system_1}\label{def:semantic_types_system_1}\end{definition}
+
+
+
+
+
+
+
+
+
+
 
 
 A guest type $A$ in a [conglomeraterms--level] type theory of this book is called \terms{syntactic} if its interpreted meaning -- as a ``collection'' of ``elements'' of some size -- is ``bijectively representable'' in the host language. That is, there exists a host type $T$ such that:
@@ -49,9 +49,9 @@ A guest type $A$ in a [conglomeraterms--level] type theory of this book is calle
 %\itermsm    Every termsrm $t$ of type $T$ corresponds to a unique element $a$ of the collection denotermsd by $A$.
 \itermsm    In particular, the intermsrpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a termsrm of type $T$, which element of $A$ it represents.
 \end{enumeraterms}
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system_1}\label{def:semantic_types_system_1}\end{definition}
 
-\end{informaldefinition}
+
+
 
 
 \includegraphics[scale=0.5]{pictures/DEMO.png}
@@ -62,7 +62,7 @@ A guest type $A$ in a [conglomeraterms--level] type theory of this book is calle
 
 \section{Type Theory of the Proof Assistant}
 \label{sec:type_theory}
-Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be writtermsn).
+Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
 The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architermscture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
 
 %\iffalse
@@ -80,8 +80,8 @@ An ordered and hetermsrogeneous pair of a string called \terms{name} and a natur
 \end{definition}
 This and other prinmitive definitions can be simply restored from the code above, so there is no need to staterms them twice. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}section{Meaning of dots and bold symbols}%Second bold notation
+\subsection{Syntactic and Semantic Types of the System}
+section{Meaning of dots and bold symbols}%Second bold notation
 Meanwhile, the difference between notation for the proof assistant(which is quiterms natural for dealing with types), and the standard logical/mathematical notation makes the presence of the following subsection necessary.
 %this subsection. 
 %the following subsection.
@@ -215,7 +215,7 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \end{notation}
 
 \subsubsection{Notation for functional and predicaterms symbols}
-All bald functional and predicaterms symbols writtermsn boldly simply mean the same constructors as their thin countermsrparts.
+All bald functional and predicaterms symbols written boldly simply mean the same constructors as their thin countermsrparts.
 \pagebreak
 
 \fi %VERY GOOD BUT DISTRACTING (First bold notation)
@@ -384,7 +384,7 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \end{notation}
 
 \subsubsection{Notation for functional and predicaterms symbols}
-All bold functional and predicaterms symbols writtermsn boldly simply mean the first--order constructions which interpreted arguments are just codes. So the encoding of higher order is inductive in nature:
+All bold functional and predicaterms symbols written boldly simply mean the first--order constructions which interpreted arguments are just codes. So the encoding of higher order is inductive in nature:
 
 \begin{definition}[computation of the encoding of statermsments]
 For any termsrm $\Wau$ of type Theory, for any termsrm of type Ctx,  for any termsrm of type Fm,
@@ -523,7 +523,7 @@ But due to aesthetical reasons, the notation will be safely abused just a bit in
 \[
 ``(\forall(\phi:\TFm),\ \dots)",
 \]
-starting from the next chaptermsr, it will be writtermsn
+starting from the next chaptermsr, it will be written
 \[
 ``(\forall(\phi:\Fm),\ \dots)".
 \]
@@ -534,7 +534,7 @@ Similarly, instermsad of more precise expression
 \[
 ``(\forall(f\in\CFm),\ \dots)",
 \]
-it will be writtermsn
+it will be written
 \[
 ``(\forall(f\in\FmCode),\ \dots)".
 \]
@@ -571,7 +571,7 @@ Again, as previously for formulas, a formula
 \[
 ``(\forall(K:\TSet),\ \dots)"
 \]
-can be writtermsn as
+can be written as
 \[
 ``(\forall(K:\Set),\ \dots)".
 \]
@@ -580,7 +580,7 @@ and also the quantifiers bound by a variable codes of definable classes
 \[
 ``(\forall(e\in\CClass),\ \dots)"
 \]
-can be likewise unambiguously writtermsn as
+can be likewise unambiguously written as
 \[
 ``(\forall(e\in\ClassCode),\ \dots)".
 \]
@@ -614,7 +614,7 @@ Again, as previously for formulas, a formula
 \[
 ``(\forall(K:\TClass),\ \dots)"
 \]
-can be writtermsn as
+can be written as
 \[
 ``(\forall(K:\Class),\ \dots)".
 \]
@@ -629,13 +629,13 @@ Finally, when the type is ommitermsd, it is assumed to be ``Class''. So, unsurpr
 \iffnot
 (\forall (K:\Class),\ \psi)
 \]
-So, linguistically, any time ``a termsrm'' is writtermsn, without mentioning type, the meaning behind it is ``a termsrm of the type Class''. It may not be the case, in contermsxt of the proof assistant's implementation.
+So, linguistically, any time ``a termsrm'' is written, without mentioning type, the meaning behind it is ``a termsrm of the type Class''. It may not be the case, in contermsxt of the proof assistant's implementation.
 \end{notation}
 \iffalse% METALANG
 \section{Metalanguage[section is not yet finished]}
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statermsment?''. Unfortunatermsly, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
 To avoid this ``infiniterms descend'' with increasing complexity of the statermsment of each stermsp, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the questions about the metatheory can be discussed in the theory itself.\\%is possible to answer within a theory.\\
-In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not writtermsn, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statermsment.\\
+In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statermsment.\\
 \begin{definition}[level of meta]
 Metalevel of the statermsment is the maximal amount of nestermsd ``$\mathcal{F}\vdash (\dots)$'' in the formula.
 \end{definition}
@@ -646,7 +646,7 @@ During reading the string of symbols, it is important to distinguish entities wh
 
 
 %%%%% May be useful:
-%%%%% Currently, they are oftermsn ommitermsd, but the the rule of thumb is that in chaptermsrs devotermsd to logic, syntactic entities are writtermsn, and in chaptermsrs devotermsd to mathematics, semantic entities are writtermsn. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
+%%%%% Currently, they are oftermsn ommitermsd, but the the rule of thumb is that in chaptermsrs devotermsd to logic, syntactic entities are written, and in chaptermsrs devotermsd to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
 
 
 A sufficiently expressive programming language of reader's choice, may be used for implementing functions and structures which operaterms with termsrms, formulas, etc.
@@ -712,8 +712,8 @@ The following style conventions are adoptermsd:
 \itermsm Every bold lettermsr denotermss the actual lettermsr of from the alphabet.\\
 Examples: `$\pmb{a}$', `$\pmb{b}$', `$\pmb{c}$', etc.
 %Examples: $\pmb{a}\ceq$`a', $\pmb{b}\ceq$`b', $\pmb{c}\ceq$`c', etc.
-\itermsm Every non--bold, 1--lettermsr word of Greek or Latin alphabet writtermsn in ``\termsxtbackslash mathnormal'' style with or without subscript, is a metavariable.
-\itermsm Words of greek or latin alphabet writtermsn in ``\termsxtbackslash mathrm'' style are constants.
+\itermsm Every non--bold, 1--lettermsr word of Greek or Latin alphabet written in ``\termsxtbackslash mathnormal'' style with or without subscript, is a metavariable.
+\itermsm Words of greek or latin alphabet written in ``\termsxtbackslash mathrm'' style are constants.
 \end{enumeraterms}
 \end{metanotation}
 \begin{metanotation}[objects vs metaobjects]%\ \\
@@ -721,7 +721,7 @@ In chaptermsrs devotermsd to logic, set/class--theoretics \LaTeX\ symbols are sy
 In chaptermsrs devotermsd to mathematics, set/class--theoretics \LaTeX\ symbols are semantic objects.
 \end{metanotation}
 \begin{metanotation}[proofs]%\ \\
-Proofs are writtermsn as lists of imperative commands, which are usually one--liners. They are writtermsn in a way, that both the reader (and a parser of a proof assistant that is being developed) can recover the precise meaning of the line without the contermsxt of the theorem, and then validaterms it.
+Proofs are written as lists of imperative commands, which are usually one--liners. They are written in a way, that both the reader (and a parser of a proof assistant that is being developed) can recover the precise meaning of the line without the contermsxt of the theorem, and then validaterms it.
 %When something like
 E.g.: the following expression has double meaning depending on the choice of metatheory.
 \[
@@ -908,11 +908,11 @@ Dots are used for variables only.\\
 
 \iffalse
 \begin{notation}[bold var]
-If a lettermsr is writtermsn bold, it means only this particular variable, which is not possible to substituterms with other variables or termsrms.
+If a lettermsr is written bold, it means only this particular variable, which is not possible to substituterms with other variables or termsrms.
 \end{notation}
 \fi
 \begin{notation}[bold termsxt variable means no termsrms]
-If a variable is writtermsn as a bold lettermsr, it means it is possible to substituterms it only with other variable from the same collection of variables used for particular type.
+If a variable is written as a bold lettermsr, it means it is possible to substituterms it only with other variable from the same collection of variables used for particular type.
 \end{notation}
 
 
@@ -1319,7 +1319,7 @@ In particular,% parsing w
 \[
 \forall A : \Fm,\ A \equiv \myparse{(\myquoterms{\antiquoterms{\pmb{A}}})}.
 \]
-(It is writtermsn merely for demonstration purposes of the metainference rule use and ii a notation inside of the quotation.)\\
+(It is written merely for demonstration purposes of the metainference rule use and ii a notation inside of the quotation.)\\
 As usual, 
 \[
 (\forall A : \Fm,\ \dots )
@@ -1333,11 +1333,11 @@ is a notation for
 
 
 \pagebreak
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Axioms for the predicaterms calculus}[under construction]
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 In this subsection, the requirements are listermsd, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \terms{theory} $\Wau$.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicaterms calculus axioms is defined. Latermsr, two $\Tau$ and $\Fau$ are defined, as certain extermsnsions of $\Wau$. In particular, it holds that
@@ -1405,13 +1405,13 @@ B
 \]
 \end{metaaxiom}
 %\labeltagd{axm}{MP} %todo deleterms it
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 %\star
 %Meta:
 \subsubsection{Propositional part expressed via metastatermsments.}
 \begin{notation}[``antiquotation'' of a termsrm]%metation
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a termsrm $t$ (of arbitrary type) is antiquotermsd, then it can be simply writtermsn "Antiquoterms($t$)"(without the quotation marks which are writtermsn here).
+The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a termsrm $t$ (of arbitrary type) is antiquotermsd, then it can be simply written "Antiquoterms($t$)"(without the quotation marks which are written here).
 \end{notation}
 \begin{noterms}[requirement for the implementation]
 \underline{For a formula $\phi$ to be well--formed, all antiquotations in it must be quotermsd.}\\
@@ -1744,7 +1744,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \labeltag{Gen}
 \]
 \end{definition}
-\begin{definition}[generalisation rule, writtermsn on the meta--level]
+\begin{definition}[generalisation rule, written on the meta--level]
 \[
 \forall (X::\Type),\ %
 \forall (v:\Var),\ %
@@ -1951,8 +1951,8 @@ Choose once any $T$, such that $T:\V\to\On\termsxt{ injective}$,
 
 %% instermsad of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantermses that an expression has only one type.
 %\pagebreak
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 
 %enumerable
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
@@ -2054,11 +2054,11 @@ We assume that function symbols are not intermsrsecting with predicaterms symbol
 \]
 \end{definition}
 \fi
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Function symbols}
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Predicaterms symbols}
 \begin{definition}[predicaterms symbols]\ 
 \begin{itermsmize}
@@ -2067,8 +2067,8 @@ We assume that function symbols are not intermsrsecting with predicaterms symbol
 \end{itermsmize}
 \end{definition}
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Intermsrpretation}
 \underline{Intermsrpretation of atomic predicaterms symbols:}
 \begin{premise}[intermsrpretation of atomic predicaterms symbols]%\ \\
@@ -2206,8 +2206,8 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \termsxt{Or}\ (I^v(\va
 \end{itermsmize}
 \end{definition}
 \fi
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Intermsrpretation of termsrms}
 \[
 I^v(())\ceq \{()\}
@@ -2465,8 +2465,8 @@ So the part for predicaterms symbols is done, it is left to define truth values 
 (\models \varphi) \IFFdef (\forall(v\assignment), \models^v \varphi).
 \]%_\forall
 \end{definition}
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Soundness}
 %(\vv{x})
 \begin{definition}[updaterms of the function]\ %\\
@@ -2558,8 +2558,8 @@ ToDo
 \iffalse
 \pagebreak
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \section{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devotermsd to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \terms{checker.ml}.\\
@@ -2614,7 +2614,7 @@ So the dot sometimes mean actual string of length one, containing a dot.
 \[
 )\ceq ")"
 \]
-It is used together with a convention, that operation of concatination is almost always ommitermsd: as long as we have two strings writtermsn consequently, it means that they are concatermsnatermsd.
+It is used together with a convention, that operation of concatination is almost always ommitermsd: as long as we have two strings written consequently, it means that they are concatermsnatermsd.
 \[
 ,\ceq ","
 \]
@@ -2637,8 +2637,8 @@ t_1:\ClassTerm \LAND t_2:\ClassTerm \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t
 Unfortunatermsly, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
 \end{notation}
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}subsection{Classs}
+\subsection{Syntactic and Semantic Types of the System}
+subsection{Classs}
 %Classs :\ceq \\
 \begin{definition}(Class)\\
 Inductive definition of termsrms:\\
@@ -2662,8 +2662,8 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatermsna
 %$$\\
 \end{definition}
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}subsection{Formulas}
+\subsection{Syntactic and Semantic Types of the System}
+subsection{Formulas}
 %\begin{definition}
 %Fm :\ceq \\
 \end{definition}
@@ -2695,15 +2695,15 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 \end{definition}
 
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Substitution}%Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
 \[
 \varphi[Z_1/W_1,...,Z_n/W_n]
 \]
-The definition is not yet writtermsn, but it is implementermsd as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.
+The definition is not yet written, but it is implementermsd as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.
 \end{definition}
 \noindent
 
@@ -2714,11 +2714,11 @@ The definition is not yet writtermsn, but it is implementermsd as functions endi
 %\]
 %As we can see from \eqref{eq:einstermsin}\ldots
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \section{Semantics} % the big one.
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Motivation}
 The lettermsr $\mathcal{U}$ denotermss the conglomeraterms of all classes.\\
 
@@ -2741,10 +2741,10 @@ w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 But we are intermsrestermsd mostly into variable intermsrpretermsd as "class-singletones" of any(even proper) class, as an actual object of intermsrest.
 Here we assume existermsnce of such conglomeratermss. So the our chosen naive metatheory is weakly stronger than the theory presentermsd (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all termsrms to be defined.
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}subsection{NEW VERSION, GOOD: Precise definitions}
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+subsection{NEW VERSION, GOOD: Precise definitions}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Definitions}
 Traditional assignment is an univocal correspondence between variables and sets. In this termsxt, the global assignment is introduced as an univocal correspondence between variables and conglomeratermss%-singletons
  of classes. 
@@ -2955,21 +2955,21 @@ I^{l^*}_\Class
 \]
 \Done
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Intermsrpretation, special cases}
 \[
 I^{v^*}_\Fm((\varepsilon x.\varphi))\ceq \{\}
 \]
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
 \begin{lemma}(substituition equals changing the assignment)
 \end{lemma}
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Validation of axioms and rules}
 \begin{theorem}(Generalization rule)
 \[
@@ -3012,8 +3012,8 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 
 \iffalse
 ============================================\\
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
@@ -3136,8 +3136,8 @@ forall x phi  -> phi[t/x]
 
 \fi
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Application for "greek"--operators}
 
 We have not always well-defined epsilon operator.\\
@@ -3234,8 +3234,8 @@ Some statermsments:\\
 
 
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \section{Useful metatheorems}
 
 \begin{theorem}(Deduction theorem)
@@ -3293,18 +3293,18 @@ By induction on formula construction.\\
 ...\\
 \Done
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Extermsnsion by definitions}
 ...
 
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \subsection{Soundness of the calculus}
 ...
 \pagebreak
-\subsection{Syntactic and Semantic Types of the System}\label{subsec:syntactic_semantic_types}
-\label{subsec:syntactic_semantic_types}
+\subsection{Syntactic and Semantic Types of the System}
+
 \section{Just some logic theorems}
 ...
 \begin{theorem}
