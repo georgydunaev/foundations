@@ -15,10 +15,10 @@
 ### Coq Files
 
 1. **Coq/positive_foundations.v**
-   - **Topic**: Positive Foundation in Coq
+   - **Topic**: Positive Foundations
    - **Status**: Active Draft
 
-### Isabelle/HOL Files
+### Isabelle Files
 
 1. **code/IFOLD.thy**
    - **Topic**: Intuitionistic first-order logic
@@ -26,5 +26,5 @@
 
 ### Notes
 
-- Files marked as `[OUTDATED]` are historical approaches and should not be used as references.
-- All other files are active drafts and are subject to change.
+- The files `001_set_theory.tex` and `002_logic.tex` do not exist.
+- The status of each file is marked as "Active Draft" as they are part of the current project and are not outdated.
