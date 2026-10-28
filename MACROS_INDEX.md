@@ -1,5 +1,3 @@
-# MACROS_INDEX.md
+# LaTeX Macros Index
 
-## Custom LaTeX Macros
-
-No custom LaTeX macros found in the codebase.
+No custom LaTeX macros found in 000_preamble.tex.
