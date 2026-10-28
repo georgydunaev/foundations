@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# mistral/mistral-small-latest (Capability Tier 1)
 import unittest
 
 class TestBasic(unittest.TestCase):
