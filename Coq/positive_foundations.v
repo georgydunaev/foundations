@@ -62,7 +62,7 @@ Defined.
 
 (*Hint Resolve EQ_sym EQ_refl : zfc.*)
 
-Theorem EQ_sound_left (c a b : Ens) (aeqb : EQ a b)
+Theoremm EQ_sound_left (c a b : Ens) (aeqb : EQ a b)
  (H : EQ a c) : EQ b c.
 Proof.
 apply EQ_sym in aeqb.
@@ -77,13 +77,13 @@ Definition EQ_sound_right (a b c : Ens) (aeqb : EQ b c)
 (** From "Jech" repositiory END **)
 
 
-Theorem Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t) ).
+Theoremm Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t) ).
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_left.
 Defined.
 
-Theorem Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
+Theoremm Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_right.
@@ -107,7 +107,7 @@ Fail Definition SoundPredicate (ET:EqualityType)  := match ET with EqG E f _ _ =
 (* getter of the statement:*)
 Definition SoundPredicate (ET:EqualityType) :((Menge ET)->Prop)->Prop  := match ET with EqG E f _ _ => (SoundPredOf E f) end.
 
-Theorem A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
+Theoremm A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
 Proof.
 intros.
 unfold SoundPredOf.
@@ -116,7 +116,7 @@ destruct H, H0.
 reflexivity.
 Defined.
 
-Theorem A_eq_sound_right (A:Type): (forall (t:A), SoundPredOf A (@eq A) (@eq A t) ).
+Theoremm A_eq_sound_right (A:Type): (forall (t:A), SoundPredOf A (@eq A) (@eq A t) ).
 Proof.
 intros.
 unfold SoundPredOf.
@@ -148,7 +148,7 @@ Check true.
 
 Require Import Setoid.
 
-Theorem ClassOf_T_eq_sound_left (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) (fun y => (ClassEqOf ET) y t) ).
+Theoremm ClassOf_T_eq_sound_left (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) (fun y => (ClassEqOf ET) y t) ).
 Proof.
 (* simple exercise *)
 unfold SoundPredOf.
@@ -161,7 +161,7 @@ rewrite <- (H0 x).
 reflexivity.
 Defined.
 
-Theorem ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
+Theoremm ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
 Proof.
 (* simple exercise *)
 unfold SoundPredOf.
@@ -222,7 +222,7 @@ End Intersection.
 Print ET3.
 
 (* ET3:= (ClassETOf (ClassETOf ET1))*)
-Theorem intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
+Theoremm intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
 Proof.
 destruct ET1.
 unfold SoundPredicate.
@@ -255,7 +255,7 @@ Section TheClassOfAllSets.
 
 Definition V_func := (fun x : Menge SET => True).
 
-Theorem V_sound : SoundPredicate SET V_func.
+Theoremm V_sound : SoundPredicate SET V_func.
 Proof.
 unfold SoundPredicate.
 unfold SoundPredOf.
@@ -274,7 +274,7 @@ End TheClassOfAllSets.
 Definition binter_func {ET:EqualityType} (A B:Menge (ClassETOf ET))
  := fun x => ((Predicate A) x) /\ ((Predicate B) x).
 
-Theorem binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
+Theoremm binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
 Proof.
 unfold SoundPredicate.
 destruct ET.
@@ -307,7 +307,7 @@ Definition positive {ET1: EqualityType}(P:Menge (ClassETOf (ClassETOf ET1))) : P
   := forall (phi:Menge (ClassETOf (ClassETOf ET1))), (Predicate P) (intersect_class (binter _ phi P)).
 
 
-Theorem positive_sound {ET1: EqualityType} : 
+Theoremm positive_sound {ET1: EqualityType} : 
 SoundPredicate (ClassETOf (ClassETOf ET1)) positive.
 Proof.
 (* simple exercise *)
@@ -319,7 +319,7 @@ Check fun {ET1: EqualityType} => Constr (ClassETOf (ClassETOf ET1)) positive pos
 Definition ppc {ET1: EqualityType} := Constr (ClassETOf (ClassETOf ET1)) positive positive_sound.
 Check ppc.
 
-Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
+Theoremm ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
 Proof.
 unfold positive.
 unfold ppc.
