@@ -1,11 +1,11 @@
 \def\topic{Chapter: Logic}%Foundations of mathematics
 \input{BEGIN.tex}
-%\section{Logical framework}%First-order l
+\section{Logical Framework}
 
-%\begin{definition}(conglomerate of all classes)
+\begin{definition}[Conglomerate of All Classes]
 %\
-%\end{definition}
-%\sub
+\end{definition}
+\subsection{Subsection Title}
 \newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 \section{Example of the Proof Assistant's Output}
 \label{sec:proof_assistant_example}
@@ -17,11 +17,11 @@ The original idea of including metatheory within the theory \textit{syntacticall
 The other possibility is to include the theory \textit{semantically}(as an inner model), which was done many times for various systems, but that has very limited value.
 
 Nevertheless, during the development, a framework draft for working with incompletness has been developed. 
-% тип полностью или неполнстью определён
-% тип написан как объект (и это возможно)
-% тип написан как терм, но можно было как объект
-% тип написан как объект (и это было невозможно) -- неполная имплементация/ошибка
-% тип написан как терм, но можно было как объект
+% Fully or partially defined type
+% Type written as an object (and this is possible)
+% Type written as a term, but could have been written as an object
+% Type written as an object (and this was impossible) -- incomplete implementation/error
+% Type written as a term, but could have been written as an object
 
 \begin{informaldefinition}[Syntactically Representable Type]
 
@@ -66,7 +66,7 @@ An ordered and heterogeneous pair of a string called \textit{name} and a natural
 \end{definition}
 This and other prinmitive definitions can be simply restored from the code above, so there is no need to state them twice. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
-%\subsection{Meaning of dots and bold symbols}%Second bold notation
+\subsection{Subsection Title}section{Meaning of dots and bold symbols}%Second bold notation
 Meanwhile, the difference between notation for the proof assistant(which is quite natural for dealing with types), and the standard logical/mathematical notation makes the presence of the following subsection necessary.
 %this subsection. 
 %the following subsection.
@@ -734,7 +734,7 @@ In order to avoid the complications of the computation-- and constructivism--rel
 %\begin{enumerate}
 %\item $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Class)$.
 %\end{enumerate}
-%\end{definition}
+\end{definition}
 
 \begin{lstlisting}
 type DottedString = (Alphabet * Nat) List
@@ -1318,9 +1318,9 @@ is a notation for
 
 
 \pagebreak
-%\sub
+\subsection{Subsection Title}
 \subsection{Axioms for the predicate calculus}[under construction]
-%\sub
+\subsection{Subsection Title}
 In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{theory} $\Wau$.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicate calculus axioms is defined. Later, two $\Tau$ and $\Fau$ are defined, as certain extensions of $\Wau$. In particular, it holds that
@@ -1388,7 +1388,7 @@ B
 \]
 \end{metaaxiom}
 %\labeltagd{axm}{MP} %todo delete it
-%\sub
+\subsection{Subsection Title}
 %\star
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
@@ -1933,7 +1933,7 @@ Choose once any $T$, such that $T:\V\to\On\text{ injective}$,
 
 %% instead of $\not{\raisebox{0.5pt}{:}}$. The sign of typing (:) should be used in a way, which guarantees that an expression has only one type.
 %\pagebreak
-%\sub
+\subsection{Subsection Title}
 
 %enumerable
 \iffalse GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
@@ -1981,7 +1981,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 
 %\begin{definition}[Class]
 %The constant $\text{Class}$ is a conglomerate of all classes.
-%\end{definition}
+\end{definition}
 
 \iffalse
 \begin{example}[classical truth values]%\ \\
@@ -2035,9 +2035,9 @@ We assume that function symbols are not intersecting with predicate symbols.
 \]
 \end{definition}
 \fi
-%\sub
+\subsection{Subsection Title}
 \subsection{Function symbols}
-%\sub
+\subsection{Subsection Title}
 \subsection{Predicate symbols}
 \begin{definition}[predicate symbols]\ 
 \begin{itemize}
@@ -2046,7 +2046,7 @@ We assume that function symbols are not intersecting with predicate symbols.
 \end{itemize}
 \end{definition}
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Interpretation}
 \underline{Interpretation of atomic predicate symbols:}
 \begin{premise}[interpretation of atomic predicate symbols]%\ \\
@@ -2184,7 +2184,7 @@ I_\Fm^v(\varphi_1 \lor \varphi_2) \ceq ((I^v(\varphi_1))\ \text{Or}\ (I^v(\varph
 \end{itemize}
 \end{definition}
 \fi
-%\sub
+\subsection{Subsection Title}
 \subsection{Interpretation of terms}
 \[
 I^v(())\ceq \{()\}
@@ -2442,7 +2442,7 @@ So the part for predicate symbols is done, it is left to define truth values on 
 (\models \varphi) \IFFdef (\forall(v\assignment), \models^v \varphi).
 \]%_\forall
 \end{definition}
-%\sub
+\subsection{Subsection Title}
 \subsection{Soundness}
 %(\vv{x})
 \begin{definition}[update of the function]\ %\\
@@ -2534,7 +2534,7 @@ ToDo
 \iffalse
 \pagebreak
 
-%\sub
+\subsection{Subsection Title}
 \section{Definitions of logical notions}%Basic definitions of the syntax
 
 This subsections is devoted to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \textit{checker.ml}.\\
@@ -2554,7 +2554,7 @@ NOTE: The definitions in this section are simultaneous: some earlier definitions
 
 %\begin{definition}
 %\[M(Z) \iff \exists C. Z\in C\]
-%\end{definition}
+\end{definition}
 %G\"odel notation:\\
 
 \begin{definition}(Alphabet)\\
@@ -2612,7 +2612,7 @@ t_1:\ClassTerm \LAND t_2:\ClassTerm \IMPLIES (t_1\mdoubleplus"\in"\mdoubleplus t
 Unfortunately, the colon is also used both in theory and metatheory for denoting functions, in this way: $"f:A\to B"$.
 \end{notation}
 
-%\subsubsection{Classs}
+\subsection{Subsection Title}subsection{Classs}
 %Classs :\ceq \\
 \begin{definition}(Class)\\
 Inductive definition of terms:\\
@@ -2636,10 +2636,10 @@ For example, the following symbols $(\varepsilon x . \varphi)$ mean concatenatio
 %$$\\
 \end{definition}
 
-%\subsubsection{Formulas}
+\subsection{Subsection Title}subsection{Formulas}
 %\begin{definition}
 %Fm :\ceq \\
-%\end{definition}
+\end{definition}
 \begin{definition}(Formula)\\
 Inductive definition of formula:\\
 1)$\bot:\Fm$.\\
@@ -2668,7 +2668,7 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 \end{definition}
 
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Substitution}%Basic definitions}
 ...
 \begin{definition} Simultaneous substitution.
@@ -2686,9 +2686,9 @@ The definition is not yet written, but it is implemented as functions ending wit
 %\]
 %As we can see from \eqref{eq:einstein}\ldots
 
-%\sub
+\subsection{Subsection Title}
 \section{Semantics} % the big one.
-%\sub
+\subsection{Subsection Title}
 \subsection{Motivation}
 The letter $\mathcal{U}$ denotes the conglomerate of all classes.\\
 
@@ -2711,8 +2711,8 @@ w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
 Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
 
-%\subsubsection{NEW VERSION, GOOD: Precise definitions}
-%\sub
+\subsection{Subsection Title}subsection{NEW VERSION, GOOD: Precise definitions}
+\subsection{Subsection Title}
 \subsection{Definitions}
 Traditional assignment is an univocal correspondence between variables and sets. In this text, the global assignment is introduced as an univocal correspondence between variables and conglomerates%-singletons
  of classes. 
@@ -2923,18 +2923,18 @@ I^{l^*}_\Class
 \]
 \Done
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Interpretation, special cases}
 \[
 I^{v^*}_\Fm((\varepsilon x.\varphi))\ceq \{\}
 \]
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Lemmas for axiom validation}
 Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
 \begin{lemma}(substituition equals changing the assignment)
 \end{lemma}
-%\sub
+\subsection{Subsection Title}
 \subsection{Validation of axioms and rules}
 \begin{theorem}(Generalization rule)
 \[
@@ -2977,7 +2977,7 @@ Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
 
 \iffalse
 ============================================\\
-%\sub
+\subsection{Subsection Title}
 \subsection{OLD VERSION, NOT GOOD: Precise definitions}
 \begin{definition}(Global assignment / "domain assigment")\\
 A function $w$ is a global assignment iff
@@ -3007,7 +3007,7 @@ I^{\loc,v}_\Class(f(t_1,\dots,t_n)) \ceq I(f)(I^{\loc,v}(t_1),\dots,I^{\loc,v}(t
 \end{definition}
 %\begin{definition}(Locally true formula under local assigment v)
 %L_Fm^{}
-%\end{definition}
+\end{definition}
 \begin{definition}(Local interpretation of formula)
 (also classical definition of "truth under assignment")
 \[
@@ -3051,7 +3051,7 @@ I^{\glob,w}_\Fm((t\lunique)) \ceq (\lif\ (I^{\glob,w}_\Class(t)\mbox{ semisingle
 \end{example}
 %-----
 %\begin{definition}(Globally valid formula)
-%\end{definition}
+\end{definition}
 %OR
 \begin{definition}(Strictly globally valid formula)\\%semantically 
 A formula $\varphi$ is (strictly) globally valid if its globally true for any global assignment w.
@@ -3070,7 +3070,7 @@ I^{\text{strictly}\glob}_\Fm : \Fm \to \{\text{strictly}\lValid,\text{strictly}\
 %-----
 \begin{definition}(Weakly globally valid formula)\\
 A formula $\varphi$ is globally valid if it's globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.\\
-%\end{definition}
+\end{definition}
 %OR
 %\begin{definition*}(Weakly globally valid formula)\\
 %The formula $\varphi$ is called globally valid if it is true under any global assignment by singletones.
@@ -3100,7 +3100,7 @@ forall x phi  -> phi[t/x]
 
 \fi
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Application for "greek"--operators}
 
 We have not always well-defined epsilon operator.\\
@@ -3197,7 +3197,7 @@ Some statements:\\
 
 
 
-%\sub
+\subsection{Subsection Title}
 \section{Useful metatheorems}
 
 \begin{theorem}(Deduction theorem)
@@ -3255,15 +3255,15 @@ By induction on formula construction.\\
 ...\\
 \Done
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Extension by definitions}
 ...
 
-%\sub
+\subsection{Subsection Title}
 \subsection{Soundness of the calculus}
 ...
 \pagebreak
-%\sub
+\subsection{Subsection Title}
 \section{Just some logic theorems}
 ...
 \begin{theorem}
