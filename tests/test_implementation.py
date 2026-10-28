@@ -1,4 +1,6 @@
+import sys
 import unittest
+sys.path.append('/botworkspace/foundations')
 from implementation_ticket_7329 import ImplementationClass
 
 class TestImplementationClass(unittest.TestCase):
