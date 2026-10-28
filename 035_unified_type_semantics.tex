@@ -1,0 +1,30 @@
+\def\topic{Unified Type Semantics}
+\input{BEGIN.tex}
+\section{Unified Type Semantics}
+
+This section defines the type-semantics that work with the unified descriptor definition.
+
+\subsection{General Type-Semantics Definition}
+
+The general type-semantics is defined as a relation between types and the general descriptor definition.
+
+\begin{definition}
+The general type-semantics is a relation $T \vdash D$ where:
+- $T$ is a type.
+- $D$ is a general descriptor.
+The relation holds if the type $T$ is valid with respect to the descriptor $D$.
+\end{definition}
+
+\subsection{Historical Variants}
+
+The historical variants of type-semantics are preserved as separate modules within the general type-semantics definition.
+
+1. **Classical 2-valued Morse-Kelley**: Implemented using the general type-semantics definition.
+2. **Hilbert 3-operator descriptors**: Implemented using the general descriptor definition.
+3. **Conglomerate subset semantics**: Implemented using the general type-semantics definition.
+4. **Farmer's PFOL $\iota$ definedness calculus**: Implemented using the general descriptor definition.
+5. **Classes-as-Types**: Implemented using the general type-semantics definition.
+
+\subsection{Compatibility}
+
+The general type-semantics is designed to be compatible with all historical variants. Each variant can be selected as a configuration parameter.

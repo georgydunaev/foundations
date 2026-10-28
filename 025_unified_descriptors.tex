@@ -1,0 +1,28 @@
+\def\topic{Unified Descriptors}
+\input{BEGIN.tex}
+\section{Unified Descriptors}
+
+This section defines a unified descriptor that incorporates all the historical variants of descriptors.
+
+\subsection{General Descriptor Definition}
+
+A general descriptor is defined as a tuple that can handle all the different cases of descriptors.
+
+\begin{definition}
+A general descriptor is a tuple $(D, \tau, \epsilon, \varepsilon, \iota, \text{Classes-as-Types})$ where:
+- $D$ is the domain of the descriptor.
+- $\tau$ is the Hilbert descriptor operator.
+- $\epsilon$ is the Hilbert epsilon operator.
+- $\varepsilon$ is the Hilbert epsilon operator with Kleene U value.
+- $\iota$ is the Farmer's PFOL definedness calculus operator.
+- Classes-as-Types is the early Classes-as-Types draft.
+\end{definition}
+
+\subsection{Historical Variants}
+
+The historical variants of descriptors are preserved as separate modules within the general descriptor definition.
+
+1. **Hilbert 3-operator descriptors**: Implemented using $\tau, \epsilon, \varepsilon$.
+2. **Conglomerate subset semantics**: Implemented using the general descriptor definition.
+3. **Farmer's PFOL $\iota$ definedness calculus**: Implemented using $\iota$.
+4. **Classes-as-Types**: Implemented using the Classes-as-Types module.
