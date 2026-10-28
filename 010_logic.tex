@@ -4,9 +4,9 @@
 \begin{proof}[Proof of Logical Framework]
 
 
-\begin{definition}[Conglomerate terms of All Classes]
+\begin{notation}[Conglomerate terms of All Classes]
 \label{def:conglomeraterms_classes}
-\begin{definition}[Conglomerate terms of All Classes]
+\begin{notation}[Conglomerate terms of All Classes]
 This is a definition of conglomerate terms of all classes.
 \end{definition}
 \end{definition}
@@ -85,7 +85,7 @@ The idea is that a book on foundations is simultaneously is a documentation for 
 \restoregeometry
 \subsection{Primitive Definitions and Notation}
 \label{subsec:primitive_definitions}
-\begin{definition}[variable]
+\begin{notation}[variable]
 \label{def:variable}
 An ordered and hetermsrogeneous pair of a string called \terms{name} and a natural number called a \terms{level} is called a \terms{variable}.
 \end{definition}
@@ -98,7 +98,7 @@ Meanwhile, the difference between notation for the proof assistant(which is quit
 %the following subsection.
 
 It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
-\begin{theorem*}[Representation Theorem in the Traditional Notation]
+\begin{proof}[Proof of Representation Theorem in the Traditional Notation]
 
 \end{theorem*}
 
@@ -108,9 +108,9 @@ T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y 
 \]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
 \end{theorem*}
-\begin{theorem*}[Higher-Order Representation Theorem]
-\label{thm:higher_order_representation_1}
-\label{thm:higher_order_representation_1}
+\begin{proof}[Proof of Higher-Order Representation Theorem]
+
+
 \end{theorem*}
 Let $\mathbb{N}$ be the set of natural numbers. 
 A% first--order
@@ -236,7 +236,7 @@ All bald functional and predicaterms symbols written boldly simply mean the same
 All higher--order statermsments actually have a translation to the first--order statermsments, via the combination of two involutions of coding and meta--level shifting. 
 
 In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other types: $\Ctx$, $\Class$, $\Theory$, etc.%labeled by : for
-\begin{definition}[functions Bold and Dot]
+\begin{notation}[functions Bold and Dot]
 Let $\circ$ be an infix operator of composition of functional symbols here. Then
 \[
 \termsxt{BoldFm} \equivdef \EncFm
@@ -397,7 +397,7 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \subsubsection{Notation for functional and predicaterms symbols}
 All bold functional and predicaterms symbols written boldly simply mean the first--order constructions which interpreted arguments are just codes. So the encoding of higher order is inductive in nature:
 
-\begin{definition}[computation of the encoding of statermsments]
+\begin{notation}[computation of the encoding of statermsments]
 For any termsrm $\Wau$ of type Theory, for any termsrm of type Ctx,  for any termsrm of type Fm,
 \[
 \EncStmt(\Wau,\,\Gamma\vdash \phi)
@@ -419,7 +419,7 @@ A termsrm is called a \terms{class--termsrm}, when it's a termsrm of the type wh
 \iffalse
 \subsection{OBSOLETE PART TO BE DELETED}
 
-\begin{definition}[informal introduction]
+\begin{notation}[informal introduction]
 Let $\Fm,\ClassTerm,\Ctx,\Theory,...$ be a finiterms amount of sets, consisting of formulas, terms, contermsxts, theories, etc, in a model of Standard ML language. There is a model, and the precise construction of it is outside of the scope of this book,let's just assume that there is one, and therefore there is one in a foundational theory $\Fau$, so there is a (computable) function from syntactic entities  to certain objects in a domain of discussion $C$, which is a conglomeraterms of all classes.\\
 
 In a such model of Standard ML, there is a typing relation between semantics of terms and types.\\
@@ -434,7 +434,7 @@ This could lead to a contradiction (Girard's Paradox) in case if this typing sys
 \fi
 
 %class constants, corresponding to codes of syntactic entities
-\begin{definition}[sets of codes]
+\begin{notation}[sets of codes]
 %Let $\circ$ be a composition of functional symbols here, then t
 The class constants, corresponding to formulas, classes, contermsxts, etc are defined the following way:
 \[
@@ -500,7 +500,7 @@ It seems possible to identify $\ClassTerm$ and $\TClass$, but it will not be don
 \end{notation}
 \fi
 \subsection{Typed quantification and its notation}
-\begin{definition}[quantifiers with a bound variable of type $\Fm$]
+\begin{notation}[quantifiers with a bound variable of type $\Fm$]
 Let $\phi$ be a variable for formulas.\\
 Let $\psi$ be a formula.\\
 % such that $\phi_code$ is not free in $\phi$.
@@ -647,7 +647,7 @@ So, linguistically, any time ``a termsrm'' is written, without mentioning type, 
 Usually, when something is proven, questions arise: ``Where it was proven?'', ``What was a foundational theory?'', ``What was a metatheory of the statermsment?''. Unfortunatermsly, once the answers are established for the theory, the same questions may be asked about metatheory, metametatheory, and so on.\\
 To avoid this ``infiniterms descend'' with increasing complexity of the statermsment of each stermsp, author proposes to use a certain theory $\mathcal{F}$ as it's own metatheory, so the questions about the metatheory can be discussed in the theory itself.\\%is possible to answer within a theory.\\
 In fact, a prefix ``$\mathcal{F}\vdash$'' is virtually omnipresent near every formula of this book, but it is not written, since the act of actual writing of it leads to the increase of complexity and increase of a metalevel of the statermsment.\\
-\begin{definition}[level of meta]
+\begin{notation}[level of meta]
 Metalevel of the statermsment is the maximal amount of nestermsd ``$\mathcal{F}\vdash (\dots)$'' in the formula.
 \end{definition}
 
@@ -755,7 +755,7 @@ In order to avoid the complications of the computation-- and constructivism--rel
 %``\\mathnormal'' style
 %All inductive definitions in this section are also simultaneous, since formulas depend on terms and vice versa.
 
-%\begin{definition}[$\BddExpr$]%\ \\
+%\begin{notation}[$\BddExpr$]%\ \\
 %Inductive definition of bound expressions:
 %\begin{enumeraterms}
 %\itermsm $(x:\Var)\ ,\ (A:\alpha) \Implies ((x.A):\Class)$.
@@ -934,7 +934,7 @@ It is a bit tricky to display dots in Linux termsrminal, so the following notati
 \]% \meta{\pmb{\phi}}(BAD)
 \end{notation}
 
-\begin{definition}[translation of variables for formulas]% into the language]
+\begin{notation}[translation of variables for formulas]% into the language]
 %(This is a main definition.)
 
 For each variable wiht a name in the group ``a lowercase lettermsr of Greek alphabet'',  
@@ -993,7 +993,7 @@ The main distinction between \underline{formulas} and \underline{formulas terms}
 \begin{axiom}
 For every variable $\pmb{\phi}$ of type ``formula'', there exists a variable  $\pmb{\phi}^\code$ of type ``class--termsrm''.
 \end{axiom}
-\begin{definition}[encoding variables for formulas]
+\begin{notation}[encoding variables for formulas]
 The axiom above allows the function for encoding the formulas defined to be computermsd in the following way:
 \[
 \EncFm(\pmb{\phi})
@@ -1001,7 +1001,7 @@ The axiom above allows the function for encoding the formulas defined to be comp
 {\pmb{\phi}}^\code
 \]
 \end{definition}
-\begin{definition}[further encoding for formulas]
+\begin{notation}[further encoding for formulas]
 For any \underline{formulas}'s terms $\phi$ and $\psi$, the function for encoding the formula is computermsd this way:
 \[
 \EncFm((\phi \implies \psi))
@@ -1149,7 +1149,7 @@ The inductive definition of bound formulas:%pmb{(}x\pmb{,}\varphi\pmb{)}
 
 
 \iffalse
-\begin{definition}[quotation of a]
+\begin{notation}[quotation of a]
 Quotation:
 \[
 \ulcorner\cdot\urcorner : \String \to \Class
@@ -1207,10 +1207,10 @@ The function, which returns the free variables of a syntactyc object, e.g. of th
 \fi
  %\Pow_{\termsxt{fin}}%\Finiterms\Set\List
 \subsubsection{Theory and contermsxt}
-\begin{definition}[contermsxt]%\ \\meta
+\begin{notation}[contermsxt]%\ \\meta
 Contermsxt is a finiterms list of arbitrary formulas. It is usually denotermsd by the uppercase Greek alphabet lettermsrs like $\Gamma$ or $\Delta$.
 \end{definition}
-\begin{definition}[theory]%\ \\meta
+\begin{notation}[theory]%\ \\meta
 Theory is an ordered (usually infiniterms) set of closed formulas. It is denotermsd by italic uppercase Latin alphabet lettermsrs like $\Tau$, $\Wau$ or $\Fau$.
 \end{definition}
 
@@ -1246,7 +1246,7 @@ Then the formula $(\phi_1 \iffdef \phi_2)$ is a notation(or a definition?) for $
 \end{metadefinition}
 %It may be reasonable to require that 
 
-\begin{definition}[primitive proof(todo)]%\ \\
+\begin{notation}[primitive proof(todo)]%\ \\
 Primitive proof is a finiterms list of formulas, such that each is derivable in the theory with a contermsxt of all previous formulas.
 \end{definition}
 \begin{notation}[derivablity from a theory with the empty contermsxt]
@@ -1302,7 +1302,7 @@ h:\BoundFm\to\Class
 \fi
 
 \iffalse GOOD BUT IT COMPLICATES THE SYSTEM
-\begin{definition}[$\vdash$]%\ \\
+\begin{notation}[$\vdash$]%\ \\
 %Inductive definition of formulas:
 %\begin{enumeraterms}
 Inference in language is denotermsd with function $\vdash$.
@@ -1737,7 +1737,7 @@ Moreover, a type of a small type is required to be a universe. Therefore a type 
 It seems to be impossible(due to paradoxes--relatermsd reasons) to ``uniformly'' writerms a metatheoretical statermsment that expresses, for example, generalisation rule for all types.
 The proposed solution for this problem is just to writerms it separatermsly as two statermsments: one which is quantified over all medium types and one specifically for the only finiterms amount of large types manually called (there are two: ``Class'' and ``Type''), and it seems to be enough.
 \end{noterms}
-\begin{definition}[generalisation rule(s)]%underline
+\begin{notation}[generalisation rule(s)]%underline
 %It is not possible to writerms a generalisation rule for every large type
 For $\Wau$ to be a theory, the following must hold, that for any type $X$:\\
 ``
@@ -1755,7 +1755,7 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \labeltag{Gen}
 \]
 \end{definition}
-\begin{definition}[generalisation rule, written on the meta--level]
+\begin{notation}[generalisation rule, written on the meta--level]
 \[
 \forall (X::\Type),\ %
 \forall (v:\Var),\ %
@@ -1790,7 +1790,7 @@ How the clash of the varible names is avoided here?
 % DecFm := ((f:Class) |-> Dec (Fm, f))
 % DecFm | Class -> Fm
 
-\begin{definition}[classical existermsnce]
+\begin{notation}[classical existermsnce]
 \[
 (\exists (x:X), \phi) \iffdef (\neg \forall (x:X),\ (\neg\phi))
 \]
@@ -1867,7 +1867,7 @@ variant2:
 Semantics: if the assumption is true, then $c_{(y.\varphi)}$ is one of such objects $y$, that $\varphi$ holds(in our case classes are objects);  if the assumption is not true, then $c_{(y.\varphi)}$ is intermsrpretermsd as some default class. The empty class is chosen to be default. Noterms, that the implementation of the intermsrpretation of this symbol may require meta-theoretical choice on the domain (i.e. on the conglomeraterms of all classes) as well, or something like that.
 \end{axiom}
 \fi %GOOOOD
-\begin{definition}[a global choice function]%\ \\%, variant 1
+\begin{notation}[a global choice function]%\ \\%, variant 1
 If $x\notin \FV(S)$ then
 \[
 c(S)\ceq (\Henkin (x:\Class),\ (x\in S))
@@ -1942,7 +1942,7 @@ But in $\Fau$,
 \]
 The same may not be possible in $\Tau$.%(sure?)
 \iffalse
-\begin{definition}[meta-definition]
+\begin{notation}[meta-definition]
 \[
 \termsxt{T} \eqdef h_{(T,(T:\V\to\On\termsxt{ injective}))}.
 \]
@@ -1970,7 +1970,7 @@ Choose once any $T$, such that $T:\V\to\On\termsxt{ injective}$,
 
 
 \subsection{Assignment}
-\begin{definition}[assignment]%\ \\
+\begin{notation}[assignment]%\ \\
 An assignment is any family with domain of $\Var$. (It is an intermsresting possibility to add a requiremnt ``definable'' here, so only those families which can be constructermsd within the theory, are considered. Apparentlly, it allows to avoid famous incompletermsness results.)\\
 \[
 (v\assignment) \IFFdef ((v\family) \land (\dom(v)=\Var)).
@@ -1991,7 +1991,7 @@ An assignment is any family with domain of $\Var$. (It is an intermsresting poss
 We fix certain collection of objects $\Domain$ over which we want to use a pluralistic predicaterms logic. It can be natural numbers, a Grothendieck universe, a class of hereditary finiterms sets, a class of all sets, a conglomeraterms of all classes, etc.
 \end{parametermsr}
 
-\begin{definition}[assignment]%\ \\%evaluation
+\begin{notation}[assignment]%\ \\%evaluation
 An assignment is a function, which assigns an indivial object to each variable.
 Any object-valued function from $\Var$ is called an assignment:%class-valued
 \[
@@ -2009,7 +2009,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 
 %$\Domain$
 
-%\begin{definition}[Class]
+%\begin{notation}[Class]
 %The constant $\termsxt{Class}$ is a conglomeraterms of all classes.
 \end{definition}
 
@@ -2037,7 +2037,7 @@ We fix certain collection of truth values $\TruthValues$ for which we want to us
 
 
 \iffalse TRUTHVALUES, NO!
-\begin{definition}[intermsrpretation of atomic function symbols]
+\begin{notation}[intermsrpretation of atomic function symbols]
 Function symbols are correspond to the functions which maps finiterms tuples of an object to an object.
 (in our case: .
 %Any class-valued function from $\Var$ is called an assignment:
@@ -2047,7 +2047,7 @@ Function symbols are correspond to the functions which maps finiterms tuples of 
 \]
 \end{definition}
 
-\begin{definition}[intermsrpretation of atomic predicaterms symbols]
+\begin{notation}[intermsrpretation of atomic predicaterms symbols]
 Predicaterms symbols are correspond to the functions which maps finiterms tuples of classes to to truth values.
 (in our case: .
 %Any class-valued function from $\Var$ is called an assignment:
@@ -2059,7 +2059,7 @@ Predicaterms symbols are correspond to the functions which maps finiterms tuples
 \begin{assumption}
 We assume that function symbols are not intermsrsecting with predicaterms symbols.
 \end{assumption}
-\begin{definition}[intermsrpretation]
+\begin{notation}[intermsrpretation]
 \[
 (I \intermsrpretation)\IFFdef ((I \PredIntermsrpretation)\ \&\  (I\FuncIntermsrpretation))
 \]
@@ -2071,7 +2071,7 @@ We assume that function symbols are not intermsrsecting with predicaterms symbol
 \subsection{Syntactic and Semantic Types of the System}
 
 \subsection{Predicaterms symbols}
-\begin{definition}[predicaterms symbols]\ 
+\begin{notation}[predicaterms symbols]\ 
 \begin{itermsmize}
 \itermsm If $A$ is an atomic predicaterms symbol, then $A$ is a predicaterms symbols.
 \itermsm For any intermsger number $n\geq 0$, if $P_1,\dots,P_n$ are predicaterms symbols and $@$ is a logical connective of valency $n$, then $@(P_1,\dots,P_n)$ is a predicaterms symbol.
@@ -2118,7 +2118,7 @@ I_\Func \ceq \pr_2 \circ J_\Func.
 \end{premise}
 
 \iffalse
-\begin{definition}[atomic intermsrpretation]%\ \\
+\begin{notation}[atomic intermsrpretation]%\ \\
 A function $I$ is called an atomic intermspretation, if
 %\[
 %I:\AtomPredSymb\to\left(\union_{n\in\omega}\Pow\left(\Domain^n\right)
@@ -2168,7 +2168,7 @@ $\dots$
 %\underline{}
 
 \iffalse THERE IS NO INTERPRETATION OF FORMULAS! WE HAVE RELATION!
-\begin{definition}[intermsrpretation of formulas]%\ \\
+\begin{notation}[intermsrpretation of formulas]%\ \\
 The intermsrpretation of formulas depends on the assignment of variables $v$, and is defined by induction on construction of the formula.
 \begin{itermsmize}
 \itermsm Atomic predicaterms symbols:
@@ -2229,7 +2229,7 @@ I^v((X_1,\dots,X_n))\ceq v(X_1)\times\dots\times v(X_n)
 
 
 
-\begin{definition}[evaluation of a tuple]
+\begin{notation}[evaluation of a tuple]
 \[
 v\left(\left(\vv{X}\right)\right)
 \]
@@ -2251,7 +2251,7 @@ The choice of plural-semantics leads to necessity of introduction of a parameter
 \fi
 
 
-\begin{definition}[truth under assignment]%\ \\%$\forall$- and $\exists$-truth
+\begin{notation}[truth under assignment]%\ \\%$\forall$- and $\exists$-truth
 Let $v$ be assignment and $I$ be an intermsrpretation.
 % TODO I^v\left(\vv{X}\right)
 \iffalse %PLURAL
@@ -2392,14 +2392,14 @@ I^v(P_2)\left(\vv{x}\right)
 \]
 \fi\end{itermsmize}
 \iffalse %PLURAL
-\begin{definition}[dual predicaterms symbol]%\ \\
+\begin{notation}[dual predicaterms symbol]%\ \\
 If $P$ is a predicaterms symbol, then
 \[
 \dual(P)\ceq (\neg\circ(\neg(P))).
 \]
 (It can also be defined as $\dual(P)\ceq (\neg(\neg\circ P))$, but we need to pick one of them to use throughout the rest of the paper.)
 \end{definition}
-\begin{definition}[binary coproduct of predicaterms symbols]%\ \\
+\begin{notation}[binary coproduct of predicaterms symbols]%\ \\
 If $P_1$ and $P_2$ are predicaterms symbols, then
 \[
 (P_1\sqcup P_2)\ceq (\dual((\dual(P_1)\lor\dual(P_2)))).
@@ -2471,7 +2471,7 @@ So the part for predicaterms symbols is done, it is left to define truth values 
 %s\sub
 \subsection{Validity}
 \end{definition}
-\begin{definition}[validity]\ %\\% / entailment relation
+\begin{notation}[validity]\ %\\% / entailment relation
 \[
 (\models \varphi) \IFFdef (\forall(v\assignment), \models^v \varphi).
 \]%_\forall
@@ -2480,7 +2480,7 @@ So the part for predicaterms symbols is done, it is left to define truth values 
 
 \subsection{Soundness}
 %(\vv{x})
-\begin{definition}[updaterms of the function]\ %\\
+\begin{notation}[updaterms of the function]\ %\\
 %v\cap (\{\xi\}\times V)
 %\termsxt{upd}
 \[
@@ -3692,7 +3692,7 @@ Explanation:\\
 \(\neg (x \in y)\) is \((\neg\ \circ \in)(x, y)\).
 \end{example}
 
-\begin{definition}[predicaterms symbols]\ 
+\begin{notation}[predicaterms symbols]\ 
 \begin{itermsmize}
 \itermsm If $A$ is an atomic predicaterms symbol, then $A$ is a predicaterms symbols.
 \itermsm For any intermsger number $n\geq 0$, if $P_1,\dots,P_n$ are predicaterms symbols and $@$ is a logical connective of valency $n$, then $@(P_1,\dots,P_n)$ is a predicaterms symbol.
@@ -3711,7 +3711,7 @@ Moreover, we may require that negations to commuterms, and to be idempotermsnt, 
 \]
 (Here, for simplicity, we are considering the classical case, with no intuitionism.)
 \end{definition}
-\begin{definition}[Intermsrpretation of epsilon operator]
+\begin{notation}[Intermsrpretation of epsilon operator]
 \[
 I^v((\varepsilon x. \varphi))
 \ \eqdef\ 
@@ -4068,7 +4068,7 @@ Is $x$ free in $\Fau \vdash \forall x_{(1)}\in\Var, \Fau \vdash x_{(2)}=x_{(2)}$
 (``\mathcal{F}"\in\Class)
 \]
 \end{constructor*}
-\begin{definition}[unary predicaterms ``is an alphabet'']
+\begin{notation}[unary predicaterms ``is an alphabet'']
 \[
 (\Aau \termsxt{ alphabet})
 \iffdef
@@ -4080,12 +4080,12 @@ Is $x$ free in $\Fau \vdash \forall x_{(1)}\in\Var, \Fau \vdash x_{(2)}=x_{(2)}$
 \]
 \end{definition}
 
-\begin{definition}[unary predicaterms ``is a language'']
+\begin{notation}[unary predicaterms ``is a language'']
 \[
 (\Lau\termsxt{ language})\iffdef \dots
 \]
 \end{definition}
-\begin{definition}[binary predicaterms ``$\Tau$ is a theory in language $\ \Lau$'']
+\begin{notation}[binary predicaterms ``$\Tau$ is a theory in language $\ \Lau$'']
 Assume that $\Lau$ is a language, then
 \[
 (\Tau \termsxt{ $\Lau$--theory})\iffdef \dots
@@ -4110,7 +4110,7 @@ Let $\Tau$ be an enumerable and incompleterms theory, that contains exactly all 
 \end{definition*}
 
 \section{Formal statermsments}
-\begin{definition}[consistermsnt theory]%\ \\
+\begin{notation}[consistermsnt theory]%\ \\
 Let $\Wau$ be a theory.
 It is called \terms{consistermsnt}, if ``false'' is not derivable in $\Wau$.
 \[
@@ -4128,7 +4128,7 @@ accept without a proof that it is not possible to derive a contradiction from $\
 \]
 \end{axiom}
 
-\begin{definition}[completerms theory]%\ \\
+\begin{notation}[completerms theory]%\ \\
 Let $\Wau$ be a theory.
 It is called \terms{completerms}, if for every formula, either its negation is derivable, or the formula itself is derivable.
 \[
@@ -4146,7 +4146,7 @@ It is called \terms{completerms}, if for every formula, either its negation is d
 \end{definition}
 
 
-\begin{definition}[Henkin theory]%\ \\
+\begin{notation}[Henkin theory]%\ \\
 Let $\Wau$ be a theory in language $\Lau$.
 It is said that it has \terms{a Henkin property}(for classes), if %for any type $X$ and
 for every existermsntial statermsment there is a witnessing termsrm %of type $X$
@@ -4162,7 +4162,7 @@ in $\Lau$.% w.r.t }\Lau
 )
 \]
 \end{definition}
-\begin{definition}[disjunctive theory]
+\begin{notation}[disjunctive theory]
 Let $\Wau$ be a theory in language $\Lau$.
 It is said that it is \terms{disjunctive}, if for every derivable disjunctve formula, at least one of its disjuncts is also derivable.
 \[
@@ -4281,7 +4281,7 @@ Here it is defined for \terms{the} theory $\Tau$, which is a constant.%n already
 %(\citerms{Japaridze1986})
 \end{notation}
 
-\begin{definition}[Japaridze's procedure of ``standartisation'' of a theory]%\ \\
+\begin{notation}[Japaridze's procedure of ``standartisation'' of a theory]%\ \\
 For any theory $\Theta$, define using the ordinal recursion, the following sequence:
 \[
 \Theta_0 \eqdef \Theta
@@ -4301,7 +4301,7 @@ For any theory $\Theta$, define using the ordinal recursion, the following seque
 \pagebreak
 \section{Incompletermsness of the theory $\Tau$}
 
-\begin{definition}[provability predicaterms]
+\begin{notation}[provability predicaterms]
 \[
 \square_n\phi
 \iffdef
@@ -4416,7 +4416,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \end{badaxiom}
 \pagebreak
 \section{Completermsness of the theory $\Fau$}
-\begin{definition}[credible theory]
+\begin{notation}[credible theory]
 Let $\Wau$ be a theory. It is called \terms{credible}, if the derivability of any formula in it implies the validity of the formula.
 \[
 (\Wau\termsxt{ credible})
@@ -4424,7 +4424,7 @@ Let $\Wau$ be a theory. It is called \terms{credible}, if the derivability of an
 (\forall (\phi:\Fm),\ ((\Wau\vdash \phi) \implies \phi))
 \]
 \end{definition}
-\begin{definition}[omniscient theory]
+\begin{notation}[omniscient theory]
 Let $\Wau$ be a theory. It is called \terms{omniscient}, if the the validity of any formula implies derivability of the formula in $\Wau$.
 \[
 (\Wau\termsxt{ omniscient})
@@ -4432,7 +4432,7 @@ Let $\Wau$ be a theory. It is called \terms{omniscient}, if the the validity of 
 (\forall (\phi:\Fm),\ (\phi \implies (\Wau\vdash \phi)))
 \]
 \end{definition}
-\begin{definition}[reflexive theory]
+\begin{notation}[reflexive theory]
 Let $\Wau$ be a theory. It is called \terms{reflexive}, if the derivability of any formula in it is equivalent to the validity of the formula.
 \[
 (\Wau\termsxt{ reflexive})
