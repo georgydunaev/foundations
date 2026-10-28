@@ -13,5 +13,13 @@ class TestImplementationClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.impl.process("invalid_input")
 
+    def test_process_none_input(self):
+        with self.assertRaises(ValueError):
+            self.impl.process(None)
+
+    def test_process_empty_string_input(self):
+        result = self.impl.process("")
+        self.assertEqual(result, "expected_output")
+
 if __name__ == '__main__':
     unittest.main()
