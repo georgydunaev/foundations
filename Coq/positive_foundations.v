@@ -37,31 +37,31 @@ Definition SoundPredOf (E:Type) (E_EQ:E->E->Prop)
 Fixpoint EQ_tran (E1 E2 E3 : Ens) {struct E2}:
  EQ E1 E2 -> EQ E2 E3 -> EQ E1 E3.
 Proof.
-destructt E1 as [A1 f1], E2 as [A2 f2], E3 as [A3 f3].
+destruct E1 as [A1 f1], E2 as [A2 f2], E3 as [A3 f3].
 intros E1eqE2 E2eqE3.
-destructt E1eqE2 as [E12 E21].
-destructt E2eqE3 as [E23 E32].
+destruct E1eqE2 as [E12 E21].
+destruct E2eqE3 as [E23 E32].
 simpl in |- *.
 split.
 + intro x1.
-  destructt (E12 x1) as [x2 P12].
-  destructt (E23 x2) as [x3 P23].
+  destruct (E12 x1) as [x2 P12].
+  destruct (E23 x2) as [x3 P23].
   exists x3. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P12 P23).
 + intro x3.
-  destructt (E32 x3) as [x2 P32].
-  destructt (E21 x2) as [x1 P21].
+  destruct (E32 x3) as [x2 P32].
+  destruct (E21 x2) as [x1 P21].
   exists x1. apply (EQ_tran (f1 x1) (f2 x2) (f3 x3) P21 P32).
-Defined.
+Qed.
 
 Fixpoint EQ_sym (E1 E2 : Ens) {struct E2}: EQ E1 E2 -> EQ E2 E1.
 Proof.
 intro H.
-destructt E1 as [A f], E2 as [B g].
+destruct E1 as [A f], E2 as [B g].
 simpl in * |- *.
-destructt H as [A2B B2A]; split.
-+ intro b. destructt (B2A b) as [a J]. exists a. apply EQ_sym with (1:=J).
-+ intro a. destructt (A2B a) as [b J]. exists b. apply EQ_sym with (1:=J).
-Defined.
+destruct H as [A2B B2A]; split.
++ intro b. destruct (B2A b) as [a J]. exists a. apply EQ_sym with (1:=J).
++ intro a. destruct (A2B a) as [b J]. exists b. apply EQ_sym with (1:=J).
+Qed.
 
 (*Hint Resolve EQ_sym EQ_refl : zfc.*)
 
@@ -72,7 +72,7 @@ apply EQ_sym in aeqb.
 eapply EQ_tran.
 exact aeqb.
 exact H.
-Defined.
+Qed.
 Definition EQ_sound_right (a b c : Ens) (aeqb : EQ b c)
  (H : EQ a b) : EQ a c 
 := EQ_tran _ _ _ H aeqb.
@@ -84,13 +84,13 @@ Theorem Ens_EQ_sound_left : (forall (t:Ens), SoundPredOf Ens EQ (fun y => EQ y t
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_left.
-Defined.
+Qed.
 
 Theorem Ens_EQ_sound_right : (forall (t:Ens), SoundPredOf Ens EQ (EQ t) ).
 Proof.
 unfold SoundPredOf.
 exact EQ_sound_right.
-Defined.
+Qed.
 
 
 (** Generalisation **)
@@ -116,18 +116,18 @@ Proof.
 intros.
 unfold SoundPredOf.
 intros.
-destructt H, H0.
+destruct H, H0.
 reflexivity.
-Defined.
+Qed.
 
 Theorem A_eq_sound_right (A:Type): (forall (t:A), SoundPredOf A (@eq A) (@eq A t) ).
 Proof.
 intros.
 unfold SoundPredOf.
 intros.
-destructt H, H0.
+destruct H, H0.
 reflexivity.
-Defined.
+Qed.
 
 (*
 classes on equality type are exactly well-defined predicates respecting the equality
@@ -158,12 +158,12 @@ Proof.
 unfold SoundPredOf.
 unfold ClassEqOf.
 intros.
-destructt w1, w2, t.
+destruct w1, w2, t.
 intros.
 rewrite <- (H x).
 rewrite <- (H0 x).
 reflexivity.
-Defined.
+Qed.
 
 Theorem ClassOf_T_eq_sound_right (ET:EqualityType): (forall (t:ClassOf ET), SoundPredOf (ClassOf ET) (ClassEqOf ET) ((ClassEqOf ET) t) ).
 Proof.
@@ -171,12 +171,12 @@ Proof.
 unfold SoundPredOf.
 unfold ClassEqOf.
 intros.
-destructt w1, w2, t.
+destruct w1, w2, t.
 intros.
 rewrite <- (H x).
 rewrite <- (H0 x).
 reflexivity.
-Defined.
+Qed.
 
 
 Definition ClassETOf (ET:EqualityType) : EqualityType := 
@@ -228,14 +228,14 @@ Print ET3.
 (* ET3:= (ClassETOf (ClassETOf ET1))*)
 Theorem intersect_sound {ET1:EqualityType} (P:Menge ET3) : SoundPredicate ET1 (intersect_func P).
 Proof.
-destructt ET1.
+destruct ET1.
 unfold SoundPredicate.
 unfold intersect_func.
 unfold SoundPredOf.
 simpl.
 intros.
 set (Q:= H0 U H1).
-destructt U.
+destruct U.
 simpl.
 simpl in p.
 simpl in * |- *.
@@ -243,7 +243,7 @@ unfold SoundPredOf in * |- *.
 refine (p _ _ _ _).
 exact H.
 exact Q.
-Defined.
+Qed.
 
 Check intersect_func.
 Check intersect_sound.
@@ -266,7 +266,7 @@ unfold SoundPredOf.
 unfold V_func.
 simpl.
 trivial.
-Defined.
+Qed.
 
 Check Constr SET V_func V_sound.
 
@@ -281,23 +281,23 @@ Definition binter_func {ET:EqualityType} (A B:Menge (ClassETOf ET))
 Theorem binter_sound {ET:EqualityType} (A B:Menge (ClassETOf ET)) : SoundPredicate ET (binter_func A B).
 Proof.
 unfold SoundPredicate.
-destructt ET.
+destruct ET.
 unfold SoundPredOf.
 unfold binter_func.
 unfold Predicate.
-destructt A.
-destructt B.
+destruct A.
+destruct B.
 simpl.
 unfold SoundPredOf in * |- *.
 intros.
-destructt H0.
+destruct H0.
 
 unfold SoundPredicate in * |- *.
 unfold SoundPredOf in * |- *.
 split.
 + refine (p _ _ H H0).
 + refine (p0 w1 w2 H H1).
-Defined.
+Qed.
 
 Definition binter (ET:EqualityType) (A B:Menge (ClassETOf ET)):= Constr ET (binter_func A B) (binter_sound A B).
 
