@@ -22,7 +22,7 @@ class TestTicket7329(unittest.TestCase):
 
     def test_functionality(self):
         """Test core functionality"""
-        result = ImplementationClass().process()
+        result = ImplementationClass().process(invalid_input)
         self.assertEqual(result, expected_output)
 
     def test_edge_cases(self):
