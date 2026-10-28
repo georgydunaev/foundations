@@ -13,13 +13,13 @@
 \section{Example of the Proof Assistant's Output}
 \label{sec:proof_assistant_example}
 
-This is a screenshot of termssts using one of two kernels(the one which actually stores the proofs, which is not necessary), just for the illustration purposes.
+This is a screenshot of terms using one of two kernels(the one which actually stores the proofs, which is not necessary), just for the illustration purposes.
 
-The original idea of including metatheory within the theory \termsxtit{syntactically} seems to be impossible, because a constructor or function that reflects a metatheoretic statermsment inside the theory. 
+The original idea of including metatheory within the theory \terms{syntactically} seems to be impossible, because a constructor or function that reflects a metatheoretic statermsment inside the theory. 
 
-The other possibility is to include the theory \termsxtit{semantically}(as an inner model), which was done many times for various systermsms, but that has very limitermsd value.
+The other possibility is to include the theory \terms{semantically}(as an inner model), which was done many times for various systems, but that has very limited value.
 
-Nevertheless, during the development, a framework draft for working with incompletness has been developed. 
+Nevertheless, during the development, a framework draft for working with incompleteness has been developed. 
 % Fully or partially defined type
 % Type writtermsn as an object (and this is possible)
 % Type writtermsn as a termsrm, but could have been writtermsn as an object
@@ -29,26 +29,26 @@ Nevertheless, during the development, a framework draft for working with incompl
 \begin{informaldefinition}[Syntactically Representable Type]
 \label{def:syntactic_type}
 \begin{informaldefinition}[Syntactic and Semantic Types of the Systermsm]
-\label{def:semantic_types}
+\label{def:semantic_types_1}
 \end{informaldefinition}
 
 \begin{informaldefinition}[Syntactic and Semantic Types of the Systermsm]
-\label{def:semantic_types}
+\label{def:semantic_types_1}
 \end{informaldefinition}
 
 \begin{informaldefinition}[Syntactic and Semantic Types of the Systermsm]
-\label{def:semantic_types}
+\label{def:semantic_types_1}
 \begin{informaldefinition}[Syntactic and Semantic Types of the Systermsm]
-\label{def:semantic_types}
-A guest type $A$ in a [conglomeraterms--level] type theory of this book is called \termsxtit{syntactic} if its intermsnded meaning -- as a ``collection'' of ``elements'' of some size -- is ``bijectively representable'' in the host language. That is, there exists a host type $T$ such that:
+\label{def:semantic_types_1}
+A guest type $A$ in a [conglomeraterms--level] type theory of this book is called \terms{syntactic} if its interpreted meaning -- as a ``collection'' of ``elements'' of some size -- is ``bijectively representable'' in the host language. That is, there exists a host type $T$ such that:
 \begin{enumeraterms}
-\itermsm There is a bijection between the ``intermsnded meanings'' of the termsrms of the guest type $A$ and the termsrms of the host type $T$.
+\itermsm There is a bijection between the ``interpreted meanings'' of the termsrms of the guest type $A$ and the termsrms of the host type $T$.
 %\itermsm    Every element $a$ of the collection denotermsd by $A$ corresponds to a unique termsrm $t$ of type $T$, and
 %\itermsm    Every termsrm $t$ of type $T$ corresponds to a unique element $a$ of the collection denotermsd by $A$.
 \itermsm    In particular, the intermsrpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a termsrm of type $T$, which element of $A$ it represents.
 \end{enumeraterms}
 \begin{informaldefinition}[Syntactic and Semantic Types of the Systermsm]
-\label{def:semantic_types}
+\label{def:semantic_types_1}
 \end{informaldefinition}
 
 
@@ -74,7 +74,7 @@ The idea is that a book on foundations is simultaneously is a documentation for 
 \label{subsec:primitive_definitions}
 \begin{definition}[variable]
 \label{def:variable}
-An ordered and hetermsrogeneous pair of a string called \termsxtit{name} and a natural number called a \termsxtit{level} is called a \termsxtit{variable}.
+An ordered and hetermsrogeneous pair of a string called \terms{name} and a natural number called a \terms{level} is called a \terms{variable}.
 \end{definition}
 This and other prinmitive definitions can be simply restored from the code above, so there is no need to staterms them twice. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
@@ -152,7 +152,7 @@ For any formula $\phi$,
 \]
 \end{theorem*}
 \begin{example}[extermsnsion rule]
-Another (NOT YET FINISHED) example is the \termsxtit{extermsnsion rule}:
+Another (NOT YET FINISHED) example is the \terms{extermsnsion rule}:
 \[
 \forall (\varphi:\Fm),\ %
 (\Fau \vdash \forall (n:?),\ \llcorner \pmb{\varphi}(\boldmeta{n}) \lrcorner)
@@ -382,7 +382,7 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \end{notation}
 
 \subsubsection{Notation for functional and predicaterms symbols}
-All bold functional and predicaterms symbols writtermsn boldly simply mean the first--order constructions which intermsnded arguments are just codes. So the encoding of higher order is inductive in nature:
+All bold functional and predicaterms symbols writtermsn boldly simply mean the first--order constructions which interpreted arguments are just codes. So the encoding of higher order is inductive in nature:
 
 \begin{definition}[computation of the encoding of statermsments]
 For any termsrm $\Wau$ of type Theory, for any termsrm of type Ctx,  for any termsrm of type Fm,
@@ -397,7 +397,7 @@ symbol to three arguments, which are codes of three termsrms, and which returns 
 
 \iffalse
 \begin{definition}
-A termsrm is called a \termsxtit{class--termsrm}, when it's a termsrm of the type which is, unfortunatermsly confusingly, called $\Term$ in the source code.
+A termsrm is called a \terms{class--termsrm}, when it's a termsrm of the type which is, unfortunatermsly confusingly, called $\Term$ in the source code.
 \end{definition}
 \fi
 
@@ -415,7 +415,7 @@ Then let's restrict it, for simplicity, to only those aforementioned types $\Fm,
 Then let's extermsnd this typing relation to the extermsnded one, in which all remaining types also have type $\Type$, such that 
 $(\Fm:\Type)$, $(\Class:\Type)$, $(\Ctx:\Type)$, $\dots$
 %, $(\Typ:\Typ)$ (noterms the last one).\\
-This could lead to a contradiction (Girard's Paradox) in case if this typing systermsm would be significantly richer: at least if it had types of functions, dependent types, etc, but it doesn't have any of that: it is as simple as possible.
+This could lead to a contradiction (Girard's Paradox) in case if this typing system would be significantly richer: at least if it had types of functions, dependent types, etc, but it doesn't have any of that: it is as simple as possible.
 \end{definition}
 %, even finiterms.
 \fi
@@ -675,17 +675,17 @@ datatype 'a frag = QUOTE of string | ANTIQUOTE of 'a
 \section{Adaptation of a quoterms from ``Languages and Calculi''}
 (This section, is an adaptation and translation of the termsxt from the book ``Languages and Calculi'': \citerms[73-74]{vereshchagin_shen_2012})).\\
 
-We fix a certain set of symbols called individual variables. These are intermsnded to denoterms elements of the set over which the functions and predicatermss are defined; usually, Latin lettermsrs such as $x$, $y$, $z$, $u$, $v$, $w$ with indices are used for this purpose. Each formula will use only a finiterms number of variables, so a countable set of variables will suffice. We assume that the variables are distinct from all function and predicaterms symbols of the signature (otherwise confusion would arise).
+We fix a certain set of symbols called individual variables. These are interpreted to denoterms elements of the set over which the functions and predicatermss are defined; usually, Latin lettermsrs such as $x$, $y$, $z$, $u$, $v$, $w$ with indices are used for this purpose. Each formula will use only a finiterms number of variables, so a countable set of variables will suffice. We assume that the variables are distinct from all function and predicaterms symbols of the signature (otherwise confusion would arise).
 
-We define the notion of a termsrm for a given signature. A \termsxtit{termsrm} is a sequence of variables, commas, parentheses, and signature symbols, which can be constructermsd according to the following rules:
+We define the notion of a termsrm for a given signature. A \terms{termsrm} is a sequence of variables, commas, parentheses, and signature symbols, which can be constructermsd according to the following rules:
 \begin{itermsmize}
   \itermsm An individual variable is a termsrm.
   \itermsm A function symbol of arity 0 is a termsrm.
   \itermsm If $t_1, \dots, t_k$ are termsrms and $f$ is a function symbol of arity $k > 0$, then $f(t_1, \dots, t_k)$ is a termsrm.
 \end{itermsmize}
-In principle, we could avoid distinguishing function symbols of arity 0 (also called termsxtit{constants}) as a separaterms group, but then we would have to writerms parentheses aftermsr them (as is done in the C programming language).
+In principle, we could avoid distinguishing function symbols of arity 0 (also called terms{constants}) as a separaterms group, but then we would have to writerms parentheses aftermsr them (as is done in the C programming language).
 
-If $A$ is a predicaterms symbol of arity $k$ and $t_1, \dots, t_k$ are termsrms, then the expression $A(t_1, \dots, t_k)$ is considered an \termsxtit{atomic formula}. Additionally, any predicaterms symbol of arity 0 is also considered an atomic formula.
+If $A$ is a predicaterms symbol of arity $k$ and $t_1, \dots, t_k$ are termsrms, then the expression $A(t_1, \dots, t_k)$ is considered an \terms{atomic formula}. Additionally, any predicaterms symbol of arity 0 is also considered an atomic formula.
 
 Formulas are constructermsd by the following rules:
 \begin{itermsmize}
@@ -695,7 +695,7 @@ Formulas are constructermsd by the following rules:
   \itermsm If $\varphi$ is a formula and $\xi$ is an individual variable, then the expressions $\forall \xi\, \varphi$ and $\exists \xi\, \varphi$ are formulas.
 \end{itermsmize}
 
-In many cases, the signature includes a binary predicaterms symbol $=$, called \termsxtit{equality}. By tradition, instermsad of writing $=(t_1, t_2)$, one writermss $(t_1 = t_2)$.
+In many cases, the signature includes a binary predicaterms symbol $=$, called \terms{equality}. By tradition, instermsad of writing $=(t_1, t_2)$, one writermss $(t_1 = t_2)$.
 \pagebreak
 \iffalse %May26
 \section{Predicaterms calculus as an object language [unfinished section]}
@@ -1336,7 +1336,7 @@ is a notation for
 \subsection{Axioms for the predicaterms calculus}[under construction]
 \subsection{Subsection Title}
 \label{subsec:subsection_title}
-In this subsection, the requirements are listermsd, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \termsxtit{theory} $\Wau$.\\
+In this subsection, the requirements are listermsd, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \terms{theory} $\Wau$.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicaterms calculus axioms is defined. Latermsr, two $\Tau$ and $\Fau$ are defined, as certain extermsnsions of $\Wau$. In particular, it holds that
 It is assumed that both $\Tau$ and $\Fau$ are the theories, requirements for $\Wau$ are also requirements for both $\Tau$ and $\Fau$.
@@ -1392,7 +1392,7 @@ are derivable in $\Wau$:
 \end{metaaxiom}
 \begin{metaaxiom}[Modus Ponens]
 %All mentioned theories $\Wau$, $\Tau$ and $\Fau$ are
-The theory $\Wau$ must be closed w.r.t. the \termsxtit{modus ponens} inference rule:
+The theory $\Wau$ must be closed w.r.t. the \terms{modus ponens} inference rule:
 \[
 \frac{
 A \implies B\quad\quad\quad A
@@ -2560,7 +2560,7 @@ ToDo
 \label{subsec:subsection_title}
 \section{Definitions of logical notions}%Basic definitions of the syntax
 
-This subsections is devotermsd to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \termsxtit{checker.ml}.\\
+This subsections is devotermsd to construction of a simple mathematical model of a logical notions. Under construction. It follows standard definitions and the code of \terms{checker.ml}.\\
 
 In this section we deal with strings of lettermsrs.
 NOTE: The definitions in this section are simultaneous: some earlier definitions depend on latermsr. It is possible to rewriterms equivalently the definitions via natural number parametrised of "stages" of definitions, and then take the unions of stages to obtain the final definitions. But it is too detailed. These definitions were implementermsd, so they are checked for soundness by the PolyML compiler, so there is no need in such messy unwinding of the definitions.
@@ -2571,7 +2571,7 @@ NOTE: The definitions in this section are simultaneous: some earlier definitions
 %The following definitions are a bit abstract, since we can define formulas as a string of symbols, or as trees.
 
 
-%The basic notion of the systermsm is "class".
+%The basic notion of the system is "class".
 %$\mathcal{A}$ Alphabet
 
 
@@ -3211,7 +3211,7 @@ $(x_1\ldefined)\land...\land(x_n\ldefined)\implies \varphi$.\\
 Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the assignment variables may be assigned to a set with non-unique values.\\
 The previous comment about introducing constants will patch the need for shortermsning of the statermsment while it is not possible to do via variable.\\
 But what about the cases when it should be a termsrm, depending on some parametermsrs?\\
-Resolution: we use only termsrms, and this mechanism of definitions of termsrms is outside the logic of the systermsm.\\
+Resolution: we use only termsrms, and this mechanism of definitions of termsrms is outside the logic of the system.\\
 Or we can introduce $:\equiv$ somehow? YES.\\%$:\approx$
 
 \begin{definition}(intermsrpretation of definitional equality)\\
@@ -3402,7 +3402,7 @@ Idea: we may use
 \[
 (\forall x:\varphi_1 \iff \varphi_2) \iff (\cc{x|\varphi_1\}=\{x}{\varphi_2})
 \]
-comment: i don't use G\"odel notation in my systermsm.
+comment: i don't use G\"odel notation in my system.
 But it is a half-measure(so unacceptable), since still need to manually prove equivalence for each stage of constructing $\varphi_1$ and $\varphi_2$, if the equivalence is deep inside the formula.
 )\\
 Other problem:\\
@@ -4099,7 +4099,7 @@ Let $\Tau$ be an enumerable and incompleterms theory, that contains exactly all 
 \section{Formal statermsments}
 \begin{definition}[consistermsnt theory]%\ \\
 Let $\Wau$ be a theory.
-It is called \termsxtit{consistermsnt}, if ``false'' is not derivable in $\Wau$.
+It is called \terms{consistermsnt}, if ``false'' is not derivable in $\Wau$.
 \[
 (\Wau\termsxt{ consistermsnt})
 \iffdef
@@ -4117,7 +4117,7 @@ accept without a proof that it is not possible to derive a contradiction from $\
 
 \begin{definition}[completerms theory]%\ \\
 Let $\Wau$ be a theory.
-It is called \termsxtit{completerms}, if for every formula, either its negation is derivable, or the formula itself is derivable.
+It is called \terms{completerms}, if for every formula, either its negation is derivable, or the formula itself is derivable.
 \[
 (\Wau\termsxt{ completerms})
 \iffdef
@@ -4135,7 +4135,7 @@ It is called \termsxtit{completerms}, if for every formula, either its negation 
 
 \begin{definition}[Henkin theory]%\ \\
 Let $\Wau$ be a theory in language $\Lau$.
-It is said that it has \termsxtit{a Henkin property}(for classes), if %for any type $X$ and
+It is said that it has \terms{a Henkin property}(for classes), if %for any type $X$ and
 for every existermsntial statermsment there is a witnessing termsrm %of type $X$
 in $\Lau$.% w.r.t }\Lau
 \[
@@ -4151,7 +4151,7 @@ in $\Lau$.% w.r.t }\Lau
 \end{definition}
 \begin{definition}[disjunctive theory]
 Let $\Wau$ be a theory in language $\Lau$.
-It is said that it is \termsxtit{disjunctive}, if for every derivable disjunctve formula, at least one of its disjuncts is also derivable.
+It is said that it is \terms{disjunctive}, if for every derivable disjunctve formula, at least one of its disjuncts is also derivable.
 \[
 (\Wau\termsxt{ disjunctive})
 \iffdef
@@ -4236,7 +4236,7 @@ Let $\mathcal{F}$ be some (non--enumerable) completerms and consistermsnt theory
 (\Henkin (F:\Theory),\ (F\termsxt{ reflexive}))
 \]
 
-Its existermsnce is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Technically, the inference systermsm for $\Fau$ is already relies on its existermsnce, so it is safer to staterms, that its existermsnce is also an axiom.
+Its existermsnce is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Technically, the inference system for $\Fau$ is already relies on its existermsnce, so it is safer to staterms, that its existermsnce is also an axiom.
 \end{definition*}
 
 \section{G\"odel--L\"ob polymodal logic}
@@ -4253,7 +4253,7 @@ Its existermsnce is provided by Lindenbaum's lemma, which can be proven in $\Tau
 
 \iffalse
 Let $\Tau$ in this section be a sufficiently rich %foundational 
-theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the intermsnded use is the Morse-Kelley class theory as presentermsd in this book. So $\Tau$ is a collection of all axioms from this book closed with respect to all inference rules from this book.  
+theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the interpreted use is the Morse-Kelley class theory as presentermsd in this book. So $\Tau$ is a collection of all axioms from this book closed with respect to all inference rules from this book.  
 \fi
 
 The abbreviation ``GLP'' stands for ``G\"odel--L\"ob polymodal logic''.
@@ -4264,7 +4264,7 @@ In contermsxt of provability modal logics, a modal logic symbol square means a p
 \iffdef
 (\Tau \vdash \phi)
 \]
-Here it is defined for \termsxtit{the} theory $\Tau$, which is a constant.%n already defined
+Here it is defined for \terms{the} theory $\Tau$, which is a constant.%n already defined
 %(\citerms{Japaridze1986})
 \end{notation}
 
@@ -4373,7 +4373,7 @@ For example, $\Wau$ may be substitutermsd with $\mathcal{F}$ itself.
 \end{inferencerule}
 %usage is discouraged, since
 \begin{badinferencerule*}[it leads to contradictions, if acceptermsd]%\ \\
-This is forbidden inference rule, because it makes it impossible to implement such systermsm in reality.
+This is forbidden inference rule, because it makes it impossible to implement such system in reality.
 \[
 \frac{
 \psi
@@ -4404,7 +4404,7 @@ The symbol ``$\implies$'' is strong: it means that the right hand side of it is 
 \pagebreak
 \section{Completermsness of the theory $\Fau$}
 \begin{definition}[credible theory]
-Let $\Wau$ be a theory. It is called \termsxtit{credible}, if the derivability of any formula in it implies the validity of the formula.
+Let $\Wau$ be a theory. It is called \terms{credible}, if the derivability of any formula in it implies the validity of the formula.
 \[
 (\Wau\termsxt{ credible})
 \iffdef
@@ -4412,7 +4412,7 @@ Let $\Wau$ be a theory. It is called \termsxtit{credible}, if the derivability o
 \]
 \end{definition}
 \begin{definition}[omniscient theory]
-Let $\Wau$ be a theory. It is called \termsxtit{omniscient}, if the the validity of any formula implies derivability of the formula in $\Wau$.
+Let $\Wau$ be a theory. It is called \terms{omniscient}, if the the validity of any formula implies derivability of the formula in $\Wau$.
 \[
 (\Wau\termsxt{ omniscient})
 \iffdef
@@ -4420,7 +4420,7 @@ Let $\Wau$ be a theory. It is called \termsxtit{omniscient}, if the the validity
 \]
 \end{definition}
 \begin{definition}[reflexive theory]
-Let $\Wau$ be a theory. It is called \termsxtit{reflexive}, if the derivability of any formula in it is equivalent to the validity of the formula.
+Let $\Wau$ be a theory. It is called \terms{reflexive}, if the derivability of any formula in it is equivalent to the validity of the formula.
 \[
 (\Wau\termsxt{ reflexive})
 \iffdef
