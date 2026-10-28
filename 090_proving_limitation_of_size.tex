@@ -1,10 +1,10 @@
 \def\topic{Theorems related to Limitation of Size}
 \input{BEGIN.tex}
 \section{Theorems Related to Limitation of Size}
-\label{sec:limitation_of_size}
-\label{sec:limitation_of_size}
 
-% This part is self-contained.\\
+
+
+% This part is self-contained.\\\n%\\
 
 The goal is to prove axiom of limitation of size using the small amount of usual axioms and simple definitions.
 
@@ -18,24 +18,24 @@ The goal is to prove axiom of limitation of size using the small amount of usual
 
 Some equivalent(in normal context) statements:
 \[
-(K\in \V)
+(K\in V)
 \iff
 (K\in V)
-(|K| \subsetneq |\V|)
+(|K| \subsetneq |V|)
 \]
 \[
-(K\in \V)
+(K\in V)
 \iff
 (K\in V)
-(|K| \neq |\V|)
+(|K| \neq |V|)
 \]
-because $|\V|=\On$.
+because $|V|=\On$.
 
 
 \subsection{Proof of the limitation of size via other axioms}
 We want to prove the following statement:
 \[
-(K \in \V) \iff (|K| \neq |\V|)
+(K \in V) \iff (|K| \neq |V|)
 \]
 
 Firstly, we will prove some lemmas:
@@ -45,25 +45,25 @@ Firstly, we will prove some lemmas:
 \begin{lemma}[First part of the limitation of size statement]
 \label{lem:limitation_of_size_first_part}
 \[
-(K \in \V) \implies (|K| \neq |\V|)
+(K \in V) \implies (|K| \neq |V|)
 \]
 \end{lemma}
-\Proof
-Assume $(K \in \V)$.\\
-By our axiom, since $(K \in \V)$ we have $(|K| \in \On)$.\\
-By previous lemmas we have $|\V|=\On$ and $\On\notin\On$.\\
-From these three statements we deduce that $|K| \neq |\V|$.\\
+\begin{proof}
+Assume $(K \in V)$.\\
+By our axiom, since $(K \in V)$ we have $(|K| \in \On)$.\\
+By previous lemmas we have $|V|=\On$ and $\On\notin\On$.\\
+From these three statements we deduce that $|K| \neq |V|$.\\
 \Done
 
 \begin{lemma}[Second part of the limitation of size statement]
 \label{lem:limitation_of_size_second_part}
 \[
-(|K| \neq |\V|) \implies (K \in \V)
+(|K| \neq |V|) \implies (K \in V)
 \]
 \end{lemma}
-\Proof
-Assume $(|K| \neq |\V|)$.\\
-We know that $(|\V|=\On)$, so $(|K| \neq \On)$.\\
+\begin{proof}
+Assume $(|K| \neq |V|)$.\\
+We know that $(|V|=\On)$, so $(|K| \neq \On)$.\\
 Recalling the definition:
 $|K|\ceq \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}$.\\
 Now we have that 
