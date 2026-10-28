@@ -28,23 +28,17 @@ Nevertheless, during the development, a framework draft for working with incompl
 
 \begin{informaldefinition}[Syntactically Representable Type]
 \label{def:syntactic_type}
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}
-\label{def:semantic_types_system_1}
-\label{def:semantic_types_system_2}
-\label{def:semantic_types_system_3}
+\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}\end{definition}
 \end{informaldefinition}
 
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}
-\label{def:semantic_types_system_1}
-\label{def:semantic_types_system_2}
-\label{def:semantic_types_system_3}
+\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}\end{definition}
 \end{informaldefinition}
 
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}
+\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}\end{definition}
 \label{def:semantic_types_system_1}
 \label{def:semantic_types_system_2}
 \label{def:semantic_types_system_3}
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}
+\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}\end{definition}
 \label{def:semantic_types_system_1}
 \label{def:semantic_types_system_2}
 \label{def:semantic_types_system_3}
@@ -55,10 +49,7 @@ A guest type $A$ in a [conglomeraterms--level] type theory of this book is calle
 %\itermsm    Every termsrm $t$ of type $T$ corresponds to a unique element $a$ of the collection denotermsd by $A$.
 \itermsm    In particular, the intermsrpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a termsrm of type $T$, which element of $A$ it represents.
 \end{enumeraterms}
-\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}
-\label{def:semantic_types_system_1}
-\label{def:semantic_types_system_2}
-\label{def:semantic_types_system_3}
+\begin{definition}[Syntactic and Semantic Types of the System]\label{def:semantic_types_system}\end{definition}
 \end{informaldefinition}
 
 
@@ -107,10 +98,8 @@ T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y 
 \end{theorem*}
 \begin{theorem*}[Higher-Order Representation Theorem]
 \label{thm:higher_order_representation_1}
-\label{thm:higher_order_representation_2}
-\end{theorem*}
 \label{thm:higher_order_representation_1}
-\label{thm:higher_order_representation_2}
+\end{theorem*}
 Let $\mathbb{N}$ be the set of natural numbers. 
 A% first--order
  theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
@@ -256,7 +245,7 @@ and
 \begin{notation}[bold and/or dottermsd variables for formulas]
 For a formula variable $\phi$, its encoding is denotermsd as a bold $\pmb{\phi}$:
 \[
-\pmb{\phi} \equivnot \termsxt{BoldFm}(\phi).
+\pmb{\phi} \equivdef \termsxt{BoldFm}(\phi).
 \]
 For any class variable $t$, its antiquotation is denotermsd with a dot:
 \[
@@ -383,7 +372,7 @@ val psib : Class = (EncFm (FmVar vpsi))
 \end{lstlisting}
 or the same, but in a mathematical notation, where not all constructors are printermsd,
 \[
-\pmb{\phi} \equivdef \EncFm(\phi_{(0)} ),
+\pmb{\phi} \equivdef \termsxt{BoldFm}(\phi).
 \]
 \[
 \pmb{\psi} \equivdef \EncFm(\psi_{(0)} ),
