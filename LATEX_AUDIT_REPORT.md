@@ -1,27 +1,6364 @@
-# LaTeX Audit Report
+## Duplicate Label in 010_logic.tex
 
-## Files Audited
-- 010_logic.tex
-- 020_descriptors.tex
-- 030_alternative_semantics.tex
-- 040_old_variant_of_iota_defs.tex
-- 050_prooftrees.tex
-- 060_axioms.tex
-- 070_ordered_pair.tex
-- 080_azriel_levi_union_thm.tex
-- 090_proving_limitation_of_size.tex
-- 100_class_theory.tex
-- 110_family_evaluation.tex
-- 120_induction_recursion.tex
-- 130_classes_as_types.tex
-- 140_setness.tex
-- 150_ordinals.tex
-- 160_some_order_theory.tex
-- 170_paradoxes.tex
-- 180_many-valued.tex
-- 190_union_intersection.tex
-- 199_languages.tex
-- 200_uniqueness.tex
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
 
-## Findings
-No LaTeX labels or references were found in the audited files.
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+L## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+T## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+X## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+A## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+R## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+F## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+A## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+g## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+I## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+F## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+D## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+`## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+\## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+{## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+:## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+}## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+`## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+2## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+9## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+3## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+U## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+`## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+\## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+{## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+:## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+}## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+`## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+2## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+I## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+F## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+N## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+N## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+h## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+3## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+4## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+5## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+6## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+7## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+8## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+z## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+h## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+9## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+g## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+z## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+h## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+2## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+3## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+4## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+5## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+6## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+h## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+7## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+p## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+8## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+m## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+y## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+v## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+9## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+1## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+9## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+9## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+g## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+g## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+-## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+2## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+0## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+_## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+q## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+x## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+### Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+F## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+g## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+
+## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+N## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+L## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+T## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+X## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+b## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+c## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+w## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+r## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+o## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+n## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+h## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+a## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+u## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+t## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+d## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+ ## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+f## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+i## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+l## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+e## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+s## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+
+.## Duplicate Label in 010_logic.tex
+
+- **File**: 010_logic.tex
+- **Line**: 29
+- **Label**: def:syntactic_type
+- **Description**: The label `def:syntactic_type` is duplicated on lines 26 and 29.
+

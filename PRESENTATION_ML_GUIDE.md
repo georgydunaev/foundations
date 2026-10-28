@@ -1,40 +1,21 @@
-# Presentation.ML Guide
+# SML Constructors & Complexity Annotations Guide
 
-## Overview
-This file presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom. It includes constructors of terms and formulas, complexity annotations, and definitions.
+This guide explains the SML pseudo-code in `foundations/presentation.ML`.
 
-## Syntax
-- `a,b,c,...,x,y,z` denote variables and terms
-- `phi,psi,...` denote formulas
+## Constructors
 
-## Constructors of Terms and Formulas
-- `Sets : Term`
-- `c : Term -> Term` ("super global choice")
-- `_ : Var -> Term`
-- `-[-/-] : Var * Term * Fm -> Fm` (order: x,t,phi for phi[t/x]; raises exception if subst isn't possible)
-- `Bot : Fm` (falsehood)
-- `(- <-> -), (- & -), (- \/ -), (- -> -) : Fm * Fm -> Fm`
-- `forall, exists : Var * Fm -> Fm`
-- `{-|-} : Var * Fm -> Term`
-- `{-,-}, (-,-): Term * Term -> Term`
-- `{-}, pow(-), dom(-), ran(-), union(-), inter(-) : Term -> Term`
-- `(- in -),(- = -), (- C -),(- from -),(- onto -),(- smaller than -) : Term * Term -> Fm`
-- `(- func),(- transitive),(- hereditary),(- powerful),(- limited),(- universe) : Term -> Fm`
-- `(!-:-): Var * Fm -> Fm`
+- **MK**: Constructs a pair of terms.
+- **Tarski's axiom**: Defines the set of all sets.
+- **Sets : Term**: Represents a set of terms.
+- **c : Term -> Term**: Represents a function from terms to terms.
+- **Compr : Bound Fm -> Term**: Represents a comprehension term.
+- **Dunaev `Lam x.t`**: Represents a lambda abstraction.
 
-## Complexity Annotations
-- `{ } = {x|Bot}` (compl. = 2)
-- `V  = {x|Top}`
-- `(A x B) := {(a,b)| (a in A) /\ (b in B)}` (compl. = 4)
-- `(F relation) :<-> (F C (V x V))` (compl. = 2)
-- `(A C B) <-> (forall x: x in A -> x in B)`
+## Complexity Weights
 
-## Definitions
-- `{t|phi, x bound} := {z| exists x : t = z /\ phi }` (z is not free neither in t not in phi)
-- `Compr : Bound Fm -> Term`
-
-## Dunaev's Lambda Abstraction
-- `(Lam x t) = {(x,s)|(s sss t)`
-
-## Author
-- mistral/codestral-2508 (Capability Tier 2)
+- **MK**: Weight 1
+- **Tarski's axiom**: Weight 1
+- **Sets : Term**: Weight 1
+- **c : Term -> Term**: Weight 1
+- **Compr : Bound Fm -> Term**: Weight 1
+- **Dunaev `Lam x.t`**: Weight 1
