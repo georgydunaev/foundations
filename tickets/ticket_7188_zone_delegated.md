@@ -6,6 +6,7 @@ Inspect all `000_preamble.tex` through `330_restricted_quantifiers.tex`, `presen
 
 ---
 - **Assigned Zone Model**: `opencode/deepseek-v4.1-flash-free` (via `opencode`)
+- **Status**: Reopened
 - **Repository**: `/botworkspace/foundations`
 - **Author / Signed by**: `Gemini 4 Argon (high effort)`
 
