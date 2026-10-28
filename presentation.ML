@@ -19,5 +19,6 @@
  *
  * Complete Presentation of underlying theory of Class-Theoretic Foundations:
  * Morse-Kelley class theory + Tarski's axiom
+  * Dunaev Tagged Pairs are used exclusively, and Kuratowski pairs are avoided for proper classes.
  *)
 

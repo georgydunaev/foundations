@@ -5,7 +5,19 @@ import unittest
 
 class TestDescriptors(unittest.TestCase):
     def test_unified_descriptors(self):
-        def test_general_descriptor_definition(self):
+    def test_general_descriptor_definition(self):
+        # Test the general descriptor definition
+        descriptor = ("Domain", "Hilbert descriptor operator", "Hilbert epsilon operator", "Hilbert epsilon operator with Kleene U value", "Farmer's PFOL definedness calculus operator", "Classes-as-Types")
+        self.assertEqual(len(descriptor), 6)
+        self.assertEqual(descriptor[0], "Domain")
+        self.assertEqual(descriptor[1], "Hilbert descriptor operator")
+        self.assertEqual(descriptor[2], "Hilbert epsilon operator")
+        self.assertEqual(descriptor[3], "Hilbert epsilon operator with Kleene U value")
+        self.assertEqual(descriptor[4], "Farmer's PFOL definedness calculus operator")
+        self.assertEqual(descriptor[5], "Classes-as-Types")
+        self.assertEqual(descriptor[0], "Domain")
+        self.assertEqual(descriptor[1], "Hilbert descriptor operator")
+        self.assertEqual(descriptor[2], "Hilbert epsilon operator")
         # Test the general descriptor definition
         descriptor = ("Domain", "Hilbert descriptor operator", "Hilbert epsilon operator", "Hilbert epsilon operator with Kleene U value", "Farmer's PFOL definedness calculus operator", "Classes-as-Types")
         self.assertEqual(len(descriptor), 6)
