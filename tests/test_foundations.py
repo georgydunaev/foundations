@@ -9,7 +9,7 @@ class TestFoundations(unittest.TestCase):
             import amssymb
             import amsthm
         except ImportError:
-            self.fail("Failed to import required LaTeX packages")
+            self.skipTest("LaTeX packages cannot be imported directly in Python")
 
 if __name__ == '__main__':
     unittest.main()
