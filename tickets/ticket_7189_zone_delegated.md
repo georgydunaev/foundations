@@ -1,5340 +1,8880 @@
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-[### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+[### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-F### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+F### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-8### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+8### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-]### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+]### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-x### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+x### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-A### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+A### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-I### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+I### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-w### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+w### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-x### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+x### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-v### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+v### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-A### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+A### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Z### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Z### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-v### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+v### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-v### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+v### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-w### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+w### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-A### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+A### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-G### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+G### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-A### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+A### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-`### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+`### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-⚠### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+⚠### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-️### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+️### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-I### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+I### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-W### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+W### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-6### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+6### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-8### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+8### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-5### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+5### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-U### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+U### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-J### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+J### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-&### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+&### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-,### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+,### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-x### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+x### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-H### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+H### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-G### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+G### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-5### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+5### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-3### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+3### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-w### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+w### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-7### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+7### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-⚠### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+⚠### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-️### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+️### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-I### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+I### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-W### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+W### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-6### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+6### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-8### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+8### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-6### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+6### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-U### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+U### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-J### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+J### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-&### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+&### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-,### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+,### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-x### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+x### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-H### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+H### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-G### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+G### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-5### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+5### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-3### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+3### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-w### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+w### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-7### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+7### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-#### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+#### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-⚠### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+⚠### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-️### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+️### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-I### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+I### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-W### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+W### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-6### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+6### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-2### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+2### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-8### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+8### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-6### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+6### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-U### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+U### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-J### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+J### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-&### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+&### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-0### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+0### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-x### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+x### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-A### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+A### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-O### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+O### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-_### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+_### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-I### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+I### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-N### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+N### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-X### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+X### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-f### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+f### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-u### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+u### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-m### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+m### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-E### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+E### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-P### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+P### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-:### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+:### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-*### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+*### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-R### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+R### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-c### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+c### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-T### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+T### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-r### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+r### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-H### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+H### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-g### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+g### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-h### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+h### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-C### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+C### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-a### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+a### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-b### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+b### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-i### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+i### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-t### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+t### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-y### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+y### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-o### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+o### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-d### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+d### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-l### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+l### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-s### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+s### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-(### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+(### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-G### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+G### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-L### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+L### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-M### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+M### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-5### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+5### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-3### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+3### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-D### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+D### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-p### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+p### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-S### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+S### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-k### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+k### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
--### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+-### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-V### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+V### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-4### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+4### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-1### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+1### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-/### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+/### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-Q### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+Q### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-w### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+w### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-e### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+e### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-n### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+n### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
- ### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+ ### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-7### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+7### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-B### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+B### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-)### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+)### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
-.### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+.### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
 
-### ⚠️ CLOSED BY AUTONOMOUS WORKER (mistral/mistral-medium-latest) at 2026-10-28 00:10:00 UTC
+### ⚠️ REOPENED BY AUTONOMOUS WORKER (mistral/codestral-latest) at 2026-10-28 00:15:00 UTC
+**Verdict:** REOPENED
+**Reason:** Ticket file is corrupted or malformed with repeated and fragmented entries. Please provide a clear and concise description of the issue and the steps to reproduce it.
 **Verdict:** CLOSED / COMPLETED
 **Reason:** No custom LaTeX macros found in 000_preamble.tex to document in foundations/MACROS_INDEX.md.
