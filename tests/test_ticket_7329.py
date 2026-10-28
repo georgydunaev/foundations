@@ -10,6 +10,9 @@ class TestTicket7329(unittest.TestCase):
         """Test that the implementation initializes correctly"""
         from implementation_ticket_7329 import *
 
+class TestTicket7329(unittest.TestCase):
+    """Test cases for ticket 7329 implementation"""
+    
     def test_initialization(self):
         """Test that the implementation initializes correctly"""
         obj = ImplementationClass()
