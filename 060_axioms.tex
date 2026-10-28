@@ -119,7 +119,7 @@ If $Y$ is not a free variable neither in $A$ nor in $B$, then:
 \]
 
 \end{axiom}
-\begin{axiom*}[extensionality]
+\begin{axiom}[extensionality]
 This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$. If we understand $A$ and $B$ as variables, then it is enough; if as terms, then the variable $X$ should not be free neither in $A$ nor in $B$.
 \[
 (A = B)
@@ -143,7 +143,6 @@ If $Y$ is a variable, which is not free in term $X$, then:
 \labeltagd{def}{isSet}
 \]
 \end{definition}
-
 \subsection{Class comprehension}
 \begin{notation}[bound term]
 \[
@@ -162,7 +161,7 @@ A pair of a bound formula $\phi_x$ and a term $t$ is called a restricted (by a f
 (\phi_x,t)
 \]
 A pair of a bound formula $\phi_x$ and a formula $\psi$ is called a restricted (by a formula $\phi$) binding of a formula $\psi$.
-%The restricted (by $\phi$) binding of a formula $\psi$ is
+% The restricted (by $\phi$) binding of a formula $\psi$ is
 \[
 (\phi_x,\psi)
 \]
@@ -225,7 +224,7 @@ If the list of variable is empty, then the singleton is defined:
 \[
 \{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top},
 \]
-or it may be a set--level ``if'' operator:
+or it may be a set--level ``if'' operator ``if'' operator:
 \[
 \ccc{\,[\,]}{r}{\,\phi}
 =
