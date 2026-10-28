@@ -6,18 +6,4 @@ class TestPresentationML(unittest.TestCase):
         self.assertTrue(os.path.exists('/botworkspace/foundations/PRESENTATION_ML_GUIDE.md'))
 
 if __name__ == '__main__':
-    # unittest.main()
-
-
-class TestPresentationML(unittest.TestCase):
-    def test_documentation(self):
-        # This test checks if the documentation file exists
-        import os
-        self.assertTrue(os.path.exists('/botworkspace/foundations/PRESENTATION_ML_GUIDE.md'))
-
-    # unittest.main()
-
-    # unittest.main()
-
-if __name__ == '__main__':
-    # unittest.main()
+    unittest.main()
