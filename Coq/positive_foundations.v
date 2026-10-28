@@ -8,7 +8,7 @@ Definition Pair (A B:Ens) : Ens
  := sup bool (fun b : bool => if b then A else B).
 
 
-(* Extensional equality of sets *)
+(* Extensional equality of sets: Defines the equality relation between two sets, E1 and E2, by requiring that for every element in E1, there is a corresponding element in E2 and vice versa. *)
 Fixpoint EQ (E1 E2: Ens) {struct E2}: Prop :=
   match E1, E2 with
   | sup A f, sup B g =>
@@ -17,17 +17,20 @@ Fixpoint EQ (E1 E2: Ens) {struct E2}: Prop :=
   end.
 
 
-(* Membership on sets *)
+(* Membership on sets: Defines the membership relation between an element E1 and a set E2 by requiring that there exists an element y in the set A such that E1 is equal to f y. *)
 Definition IN (E1 E2 : Ens) : Prop :=
   match E2 with
   | sup A f => exists y : A, EQ E1 (f y)
   end.
 
 
+(* SoundPred: Defines a predicate P as sound if for any two sets w1 and w2, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
 Definition SoundPred
 := (fun (P:Ens->Prop)=>(forall w1 w2 : Ens, EQ w1 w2 -> P w1 -> P w2)).
 
 
+(* SoundPred: Defines a predicate P as sound if for any two sets w1 and w2, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
+(* SoundPredOf: Defines a predicate P as sound for a type E with equality relation E_EQ if for any two elements w1 and w2 in E, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
 Definition SoundPredOf (E:Type) (E_EQ:E->E->Prop)
 := (fun (P:E->Prop)=>(forall w1 w2 : E, E_EQ w1 w2 -> P w1 -> P w2)).
 (** From "Jech" repositiory BEGIN **)
@@ -101,10 +104,12 @@ Inductive EqualityType : Type :=
 Definition Menge (ET: EqualityType) := match ET with EqG E _ _ _ => E end.
 Definition Gleichung (ET: EqualityType) : ((Menge ET)->(Menge ET)->Prop) := match ET with EqG _ f _ _ => f end.
 
-Fail Definition SoundPredicate (ET:EqualityType)  := match ET with EqG E f _ _ => (SoundPredOf E f) end.
+Fail (* SoundPred: Defines a predicate P as sound if for any two sets w1 and w2, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
+Definition SoundPredicate (ET:EqualityType)  := match ET with EqG E f _ _ => (SoundPredOf E f) end.
 (*unnecessary*)
 
 (* getter of the statement:*)
+(* SoundPred: Defines a predicate P as sound if for any two sets w1 and w2, if w1 is equal to w2 and P holds for w1, then P also holds for w2. *)
 Definition SoundPredicate (ET:EqualityType) :((Menge ET)->Prop)->Prop  := match ET with EqG E f _ _ => (SoundPredOf E f) end.
 
 Theoremm A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
