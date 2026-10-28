@@ -1,6 +1,51 @@
 # PRESENTATION_ML_GUIDE.md
 
 ## Overview
+This guide explains the SML pseudo-code in `presentation.ML`, which presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom.
+
+## SML Constructors and Complexity Annotations
+
+### Sets : Term
+
+```sml
+Sets : Term
+```
+
+This constructor represents the set of all terms.
+
+### c : Term -> Term
+
+```sml
+c : Term -> Term
+```
+
+This constructor represents the complement of a term.
+
+### Compr : Bound Fm -> Term
+
+```sml
+Compr : Bound Fm -> Term
+```
+
+This constructor represents the comprehension of a bound formula.
+
+### Lam x.t
+
+```sml
+Lam x.t
+```
+
+This constructor represents a lambda abstraction, where `x` is the bound variable and `t` is the term.
+
+### Complexity Weights
+
+The complexity annotations in `presentation.ML` are used to measure the complexity of terms and formulas. These annotations are crucial for ensuring the soundness of the theory.
+
+## Conclusion
+This guide provides an overview of the SML constructors and complexity annotations in `presentation.ML`. For more detailed information, please refer to the comments in the file.
+
+
+## Overview
 This file presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom. It includes constructors of terms and formulas, complexity annotations, and definitions.
 
 ## Constructors of Terms and Formulas
