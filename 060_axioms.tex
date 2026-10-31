@@ -1,24 +1,33 @@
 \def\topic{}
 \input{BEGIN.tex}
+\section{Setting}
+In some sense, sets are ``terminal'', ``ground zero'' objects.\\
+Classes are properties of sets.\\
 
-\begin{axiom}[Setting]
-A class theory provides a framework, in which a mathematician is required to do less while defining various entities: pair, domain, etc, because it is possible to use class comprehension axiom scheme instead of set specification axiom scheme, so no need find and to provide a superset of the entity being defined.
-\end{axiom}
+If a class is also a set, it means that there is a set, all elements of which are exactly all sets which satisfy the property and only them.\\
+
+
+A class theory provides a framework, in which a mathematician is required to do less while defining various entities: pair, domain, etc, because it is possible to use class comprehension axiom scheme instead of set  specification axiom scheme, so no need find and to provide a superset of the entity being defined.
 
 So the work of proving that something is a set is being postponed, and if it turns out that to be unnecessary for the current task, then it is useful.\\
+%Moreover, it allows to write expressive statements.
 
 (Being a subset of a set and being an element of a set are equivalent things, in case of presence of several widely accepted axioms of the set theory: heredity, powerclass, powerset, etc.)\\
+
+
 
 Q: But what kind of properties? Can a property include a quantifier ``for all properties''?\\
 A: If ``no'', then the class theory being constructed is NBG, which is a conservative extension of ZFC.
 If ``yes'', then the class theory being constructed is MK, which is strictly stronger than ZFC.\\
 
-Q: What if a property has only bounded (by classes) quantifiers?
-A: Then it is expressed through the properties of one universe $\\V$.
-%It makes it less useful, because then
 
-\\url{https://math.stackexchange.com/questions/1745516/what-is-the-exact-consistency-strength-of-mk}
-\\iffalse
+Q: What if a property has only bounded (by classes) quantifiers?
+A: Then it is expressed through the properties of one universe $\V$.
+%It makes it less useful, because then 
+
+
+\url{https://math.stackexchange.com/questions/1745516/what-is-the-exact-consistency-strength-of-mk}
+\iffalse
 @MISC {1746450,
     TITLE = {What is the *exact* consistency strength of $MK$?},
     AUTHOR = {JDH (https://math.stackexchange.com/users/413/jdh)},
@@ -27,11 +36,9 @@ A: Then it is expressed through the properties of one universe $\\V$.
     EPRINT = {https://math.stackexchange.com/q/1746450},
     URL = {https://math.stackexchange.com/q/1746450}
 }
-\\fi
+\fi
 
-\\begin{axiom}[Types]
-Q: Why introducing various kinds of types?
-\\end{axiom}
+Q: Why introducing various kinds of types?\\
 
 A:
 
@@ -44,11 +51,996 @@ Q: Why not NBG, which is conservative extension?
 
 A:
 
+
 Q: How do you deal with bounded variables?
-How to
+How to 
 
-1)
+1) 
 
-------
 
-It is also possible to use universes for the same pur
+------\\
+
+It is also possible to use universes for the same purpose: a property can be expressed as a function $f:\Un \to \Bool$.\\
+
+
+\section{Axioms and definitions of class theory}
+%Developing set--theoretic foundations
+\begin{constructor}[membership relation]
+If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
+%\iffalse
+%\$\#\%\&\_\~"' \\
+%\symbol{92}
+%\ExplSyntaxOn
+%\removespecials{\detokenize{ $(A\in B)$ }}
+%\removeabs{$(A\in B)$}
+%\fi
+%\ExplSyntaxOff
+\end{constructor}
+
+%\subsection{Example of a proof (MORSE--KELLEY SET THEORY, CLASSICAL SEMANTICS)}
+%\begin{constructor}
+%If $\varphi$ is a formula without class--quantifiers, then
+%$\cc{x}{\varphi}$ is NBG--class.
+%\end{constructor}
+
+%\begin{constructor}
+%If $\varphi$ is a formula, then
+%$\cc{x}{\varphi}$ is MK--class.
+%\end{constructor}
+
+\begin{constructor}[subclass relation]
+If $A$ and $B$ are terms, then $(A\subseteq B)$ is a formula. %classes
+\end{constructor}
+\begin{definition}[subclass relation]
+Let $A$ and $B$ be terms, and $x$ a variable not free neither in $A$, nor in in $B$, then
+\[
+(A\subseteq B)\iffdef(\forall x\in A,\ x\in B)
+\labeltagd{def}{subclass}
+\]
+\end{definition}
+
+Note, if a variant of the logic being used doesn't have equality, then add the following constructor and definition:
+\begin{constructor}[equality]%\\
+If $A$ and $B$ are terms, then $(A=B)$ is a formula.
+\end{constructor}
+\begin{definition}[equality]
+This definition is for the case if the underlying \nth{1} order logic is provided without equality.\\
+If $Y$ is not a free variable neither in $A$ nor in $B$, then:
+\[
+(A=B) \iffdef (\forall Y\mydot A\in Y \iff B\in Y)
+\labeltagd{def}{equality}
+\]
+\end{definition}
+\subsection{Extensionality}
+\begin{axiom}[extensionality]
+\[
+(A=B)\iff ((A\subseteq B) \land (B\subseteq A))
+\labeltagd{axm}{extensionality}
+\]
+
+\end{axiom}
+\begin{axiom*}[extensionality]
+This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$. If we understand $A$ and $B$ as variables, then it is enough; if as terms, then the variable $X$ should not be free neither in $A$ nor in $B$.
+\[
+(A = B)
+\iff
+(\forall X,\ (X\in A \iff X\in B))
+\labeltagd{axm}{extensionality2}
+\]
+
+\end{axiom*}
+
+
+\begin{constructor}[setness predicate]
+If $A$ is a term, then $(A\set)$ is a formula.
+\end{constructor}
+\begin{definition}[setness predicate]
+If $Y$ is a variable, which is not free in term $X$, then:
+\[
+(X\set)
+\iffdef
+(\exists Y,\ X\in Y)
+\labeltagd{def}{isSet}
+\]
+\end{definition}
+
+\subsection{Class comprehension}
+\begin{notation}[bound term]
+\[
+t_x \equivnot (x,t)
+\]
+\end{notation}
+\begin{notation}[bound formula]
+$(\phi:\Fm)$,$(x:\Variable)$
+\[
+\phi_x \equivnot (x,\phi)
+\]
+\end{notation}
+\begin{notation}[restricted binding]
+A pair of a bound formula $\phi_x$ and a term $t$ is called a restricted (by a formula $\phi$) binding of a term $t$. 
+\[
+(\phi_x,t)
+\]
+A pair of a bound formula $\phi_x$ and a formula $\psi$ is called a restricted (by a formula $\phi$) binding of a formula $\psi$.
+%The restricted (by $\phi$) binding of a formula $\psi$ is
+\[
+(\phi_x,\psi)
+\]
+\end{notation}
+
+%\eqdef%\equivdef
+\[
+(\forall \phi_{y::\vv{x}},\ \psi)
+\equivdef 
+(\forall  y, (\forall \phi_{\vv{x}},\ \psi))
+\]
+
+\begin{definition}[restricted universal quantifier]
+\[
+(\forall \phi_{x},\ \psi)
+\iffdef 
+(\forall x,\ \phi \implies \psi)
+\]
+\end{definition}
+\begin{definition}[restricted existential quantifier]
+\[
+(\exists \phi_{x},\ \psi)
+\iffdef 
+(\exists x,\ \phi \land \psi)
+\]
+\end{definition}
+\begin{definition}[informal]
+A class is an arbitrary collection of sets.
+\end{definition}
+\begin{note}[comprehesibility is not stronger than definability]
+Each comprehesible class is definable, and,
+contrapositively, each undefinable class is certainly incomprehesible.
+\end{note}
+\begin{note}[philosophical]
+There may(or may not) be a definable classes, which are not comprehensible, for example, something which is defined using the epsilon calculus.\\
+For example, is we denote a class of definable sets by $\text{L}$, then the ``axiom of constructibility'' $\V=\text{L}$ implies that there are no non--definable sets. It may be restrictive for the reader. The question whether one should accept or reject the ``axiom of constructibility'' is outside of the scope of this book, but it looks quite restrictive.
+\end{note}
+
+\begin{constructor}[class comprehension]
+If $\varphi$ is a formula, $\vec{x}$ is a list of variables(they are used for classes), $t$ is a class term, then $\ccc{\vec{x}}{t}{\varphi}$ is a class term.
+\end{constructor}
+\iffalse
+\begin{constructor}[medium type specification]
+If $\varphi$ is a formula, $x$ a variable, $X$ is a medium type, then $\cc{x:X}{\varphi}$ is a medium type.
+\end{constructor}
+PROBLEM: type ambihuity!
+\fi
+%\begin{constructor}[medium type comprehension] %TODO?
+%If $\varphi$ is a formula, $\vec{x}$ is a list of variables with types $\vv{X}$, $t$ is a class term, then $\ccc{\vec{x}}{t}{\varphi}$ is a class term.
+%\end{constructor}
+
+\begin{notation}[clearer notation]
+\[
+\ccc{{\vv{x}}}{t}{\phi}
+\equivnot
+\cc{{t_{\vv{x}}}}{\phi_{\vv{x}}}
+\]
+\end{notation}
+If the list of variable is empty, then the singleton is defined:
+\[
+\{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top},
+\]
+or it may be a set--level ``if'' operator:
+\[
+\ccc{\,[\,]}{r}{\,\phi}
+=
+\cc{p}{(p=r)\land\phi}
+=
+(\lif\ \phi\ \lthen\ \{r\}\ \lelse\ \emptyclass\ \lfi)
+\]
+\[
+\union\ccc{\,[\,]}{r}{\,\phi}
+=
+\union(\lif\ \phi\ \lthen\ \{r\}\ \lelse\ \emptyclass\ \lfi)
+=
+(\lif\ \phi\ \lthen\ r\ \lelse\ \emptyclass\ \lfi)
+\]
+
+\begin{note}[MK vs NBG]
+There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
+\end{note}
+%\begin{axiom}(OLD Class comprehension)
+%\labeltagd{axm}{comprehension}
+%\[Y\in\cc{x}{\varphi} \iff (Y\set)\LAND(\varphi[Y/x])\]
+%(or maybe
+%\[Y\in\cc{x}{\varphi[x/Y]} \iff (Y\set)\LAND(\varphi)\]
+%we need to find one expression for both cases.
+%)
+%\end{axiom}
+\begin{notation}[list of variables]
+Assume $v_1,\dots,v_n$ are variables, assume $T_1,\dots,T_n$ are arbitrary types. % \in \Var$. ???
+Then
+\[
+(\forall(\vv{v}:\vv{T}),\ \phi)
+\iffdef
+(\forall (v_1:T_1),\ \dots\ ,\forall (v_n:T_n),\ \phi)
+\]
+\[
+(\exists(\vv{v}:\vv{T}),\ \phi)
+\iffdef
+(\exists (v_1:T_1),\ \dots\ ,\exists (v_n:T_n),\ \phi)
+\]
+\end{notation}
+
+\begin{definition}[universal closure]
+There is an order on a set of variables $\Var$.\\
+Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\
+\
+Then define the closure via the formula
+\[
+\text{closure}(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
+\]
+\[
+((\vv{\forall})(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
+)
+\]
+
+Also the closure can be easier to use as a part of the definition of a formula.
+
+Every axiom is assumed to have the outermost closure operator.
+
+%Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. %NO!
+%Namely, 
+There is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
+\end{definition}
+
+%...maybe
+%\[BAD
+%\cc{s}{(x\in A)} := \ccc{x}{s}{(x\in A)},
+%\]
+\begin{notation}[the case if a term is a variable]
+If a term is just a variable, then there is no need to specify it twice:
+\[
+\cc{x}{\phi} \equivnot \ccc{x}{x}{\phi}.
+\labeltag{notation:cccxx}
+\]%\detokenize{a_a\cc{x}{\phi} \eqdef \ccc{x}{x}{\phi}}
+\end{notation}
+
+\begin{axiom}[class comprehension]%NEW 
+For any formula $\phi$, any variable $w$,
+\[
+(\vv{\forall})(\forall (w:\Class),\ ((w\in\cc{w}{\varphi}) \iff ((w\set)\land \varphi)))
+\clabeltagd{axm}{varComprehension}
+\]
+The comprehension for the all the rest small types is simpler. Namely, since they are modelled by the sets, there is no need for the setness check:
+\[
+(\vv{\forall})(\forall (W\text{ isSmallType}) \forall (w:W),\ ((w\in\cc{w:W}{\varphi}) \iff \varphi)
+\clabeltagd{axm}{varSmallTypeComprehension}
+\]
+\end{axiom}
+\begin{notation}[ommiting types]
+Due to lack of space in class--builder notation, it may be written just $\vv{x}$ instead of $(\vv{x}:\vv{X})$, if it is easy to restore the types from the context.
+\end{notation}
+\begin{axiom}[class term comprehension]%(optional axiom, todo?) 
+For any formula $\phi$ and any term $t$, such that $\FV(t)\cap \FV(s)=\emptyclass$,
+\[
+(\vv{\forall})((t\in\ccc{\vv{x}}{s}{\varphi})
+\iff
+((t\set)\land (\exists (\vv{x}:\vv{X}),\ (t=s) \land \varphi)))
+\clabeltagd{axm}{termComprehension}
+\]
+It may be called ``class--builder notation''.
+\end{axiom}
+\begin{notation}[class comprehension with a term's evaluation agreement]
+If a term is an evaluation of a function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is agreed to be restored from the argument in the following way:
+\[
+\cc{f(x)}{\phi} \equivnot \ccc{x}{f(x)}{\phi}.
+\]
+\end{notation}
+
+
+\begin{note}[restoring one version of comprehension from the other]
+%Both variants of class constructors can be expressed one from the other, since
+If necessary, the class constructor can be restored from its truncated version via
+\[
+\ccc{x}{t}{\phi} \ceq \cc{w}{\exists (x:X),\ (w=t) \land \phi}.
+\]
+\[
+\ccc{\vv{x}}{t}{\phi}
+\ceq
+\cc{w}{\exists (\vv{x}:\vv{X}),\ (w=t) \land \phi}.
+\]
+\end{note}
+
+%In particular, it justifies a notation \hyperref[notation:cccxx]{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:\\
+%In particular, it justifies a notation \ref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
+
+In particular, it justifies a notation \myref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
+\[
+\ccc{x}{x}{\phi}
+\equiv
+\cc{w}{\exists x,\ (w=x) \land \phi}
+=
+\cc{w}{\exists x,\ (w=x) \land \phi[x/w]}
+=
+\]
+\[
+=
+\cc{x}{\exists x,\ (x=x) \land \phi[x/w]}
+=
+\cc{x}{\exists x,\ \phi[x/w]}
+=
+\cc{x}{\exists x,\ \phi}
+\]
+%\equiv
+%\cc{w}{\exists x,\ (x=x) \land \phi}
+From this observation, we can derive the following maxima.\\
+\textbf{Principle:} \textit{In a proof assistant, as soon as propositional equality have been proven, if it has a ``preferable direction of simplification'', then it better be accepted as a definitional equality as well!}
+
+\iffalse
+
+\[
+(X\in\cc{X}{\varphi}) \iff ((X\set)\land \varphi)
+\]
+
+Let's substitute X with some variable Y, which is different from X.\\
+\[
+(Y\in\cc{X}{\varphi}) \iff ((Y\set)\land \varphi[Y/X])
+\]
+Do the same step but for $\varphi[X/W]$.
+\[
+(X\in\cc{X}{\varphi[X/W]}) \iff ((X\set)\land \varphi[X/W])
+\]
+\[
+(Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land \varphi[X/W][Y/X])
+\]
+
+Is the following statement true:\\
+"If
+$\varphi[X/W]$ is defined(sic!), and if $\varphi[X/W][Y/X]$ is defined(btw the first follows from th second), and if (Y is not a free variable of $\varphi$) then $\varphi[X/W][Y/X]$ is equal to $\varphi[Y/W]$"?
+
+...\\
+
+
+Now, let's prove "old class comprehesion" statement.
+\fi
+
+\begin{theorem}[example of changing the variables]
+If a variable $Y$ is not a free in formula $\varphi$, then:
+\[
+(Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land(\varphi[Y/W])).
+\]
+\end{theorem}
+\begin{proof}\ \\
+($\implies$)\\
+Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
+\[
+(Y\in\cc{X}{\varphi[X/W]})
+\IMPLIES
+(
+(Y\set)
+\quad\&\quad
+\varphi[X/W][Y/X]
+)
+\]
+
+to be continued\dots
+\end{proof}
+
+
+\subsection{Empty class}
+
+\begin{constructor}[empty class]%\ \\
+The empty set symbol $\emptyclass$ is a constant closed term.
+\[
+(\emptyclass : \Class)
+\labeltagd{constr}{emptyclass}
+\]
+%\ulcorner\emptyclass\urcorner
+\end{constructor}
+
+\begin{definition}[empty class]
+\[
+\emptyclass \eqdef \cc{x}{\bot}
+\labeltagd{def}{emptyclass}
+\]
+\end{definition}
+
+\begin{definition}[empty set predicate]
+\[
+((A\isempty)\iffdef(A=\emptyclass))
+\labeltagd{def}{empty}
+\]
+%\tag{def:empty}
+\end{definition}
+
+\begin{definition}[nonempty set predicate]
+\[
+(A\nonempty)
+\iffdef
+(\neg(A\isempty))
+\labeltagd{def}{nonempty}
+\]
+\end{definition}
+
+
+
+%\subsection{Axiom of the empty set}
+\begin{axiom}[the empty class is a set]
+\[
+(\emptyclass\set)
+\labeltagd{axm}{emptyset}
+\]
+\end{axiom}
+
+\subsection{Universal class}
+\begin{metadefinition}[constant]
+A functional symbol of valency zero is called a $constant$.
+\end{metadefinition}
+(A constant is always a closed term, due to vacuous argument.)
+\begin{constructor}[class constant V]%\ \\
+Let the symbol $\V$ be a constant of the language of the class theory being discussed.
+\end{constructor}
+
+\begin{definition}[universal class]
+\[
+\V\eqdef\cc{x}{\top}
+\clabeltagd{def}{universal class}
+\]
+\end{definition}
+
+Later it will be used as a default value for ``undefined'' values. They are not defined, indeed, in set--theoretic sense, but they are defined in class--theoretic sense.
+\begin{definition}[default nonset]
+\[
+\text{nonset}\eqdef\V
+\clabeltagd{def}{nonset}
+\]
+\end{definition}
+\begin{definition}[``is not set'' predicate]
+\[
+(t\text{ not set})\iffdef(t\notin \V)
+\clabeltagd{def}{not set}
+\]
+\end{definition}
+The definitions above seem to be the best solution to avoid many--valued logics and other semantical or syntactical complications of the theorem's statements. So when a not involved in logic mathematician says ``undefined'', it usually means ``not set'' in the terminology of this book, and also sometimes ``undefined'', in the sense of ``was not yet defined''.
+\begin{example}[intersection of the empty set]
+\[
+\left(\left(\bigcap \emptyset\right)\text{ not set}\right)
+\]
+\end{example}
+\begin{example}[value of a function]
+\[
+(f\function) \LAND (x\notin \dom(f)) \IMPLIES (f(x)\text{ not set})
+\]
+\end{example}
+\pagebreak
+\subsection{Functions and families}
+\begin{definition}[big domain ``Dom'' including proper values]
+Assume $F$ is a family. (Reminder: $F$ can be also a class--function or a function as well, since they both are families too.)
+The the domain(in a ``big sense'' which works for any family, not only for [class--] functions) is the following:
+\[
+\Dom(F) \eqdef \cc{x}{\exists (b\in\V),\ (x,b)\in F}
+\clabeltagd{def}{bigdomain}
+\]
+(note1: the role of $b$ in the formula is to either be $F(x)$ if it is a set, otherwise its role is to be any singleton subset of a proper class $F(x)$. It works due to the law of excluded middle, and because the proper classes are nonempty, following from numerous well--established %consensual
+axioms, e.g. from empty set axiom.)\\
+(note2: it seems like ``$\in\V$'' can be safely ommited, since if a pair of classes is in some class, then it is quite natural to require the pair to be a set too; )
+\end{definition}
+\begin{notation}[``in the big domain of'' relation]
+The common abuse of notation: since the more common ``logic of truthness'' is used instead of more rare and cumbersom ``logic of definitness'', the predicate ``$(\cdot\text{ defined})$'' is not given. Moreover, it seems to be impossible to define it. Instead of it, the following notation is introduced:
+\[
+(F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})
+\IFFnot
+(x\in\Dom(F))
+\]
+This is a predicate symbol of two arguments, in a sense that ``$F\textcolor{blue}{(\textcolor{black}{x})}$'' is not a term in this notation, but rather a way of writing the arguments. So in the code it is written as something like ``inDomOf(F,x)''), but it is displayed as ``$(F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})$''.
+
+In this formula, ``$(\cdot\textcolor{blue}{(\textcolor{black}{\cdot})}\text{ defined})$'' is a predicate symbol of the valence two, and the internal parentheses are an essential part of its name. The coloring of the internal parentheses may be ommited as an abuse of notation.
+\end{notation}
+\begin{definition}[image]
+Let $F$ be arbirtrary family, and let $A$ be any class. Define the image of a family as the class of only those values of $F$ on the arguments from $A$, which are sets, i.e.:
+\[
+F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}.
+\clabeltagd{def}{image}
+\]
+\end{definition}
+\begin{definition}[evaluation of a family]
+Let $F$ be arbirtrary family, and let $x$ be any class(note, that it w).
+\[
+F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{nonset}\ \lfi\right) 
+\]
+\end{definition}
+\iffalse\[
+\dom(F) \eqdef \cc{x}{\exists (y\set),\ F(x)=y}
+\]\fi
+\begin{definition}[small domain ``dom'']
+Let $f$ be a family.
+\[
+\dom(f) \eqdef \cc{x}{f(x)\set}
+\]
+(note: if $f$ is a function or a class--function, then $\dom(f)=\Dom(f)$)
+\end{definition}
+\begin{definition}[graph of the (class--)function]
+\[
+\Gamma(f)\eqdef\cc{(x,f(x))}{x\in\dom(f)}
+\]
+\end{definition}
+\begin{definition}[class--function predicate]
+\[
+(f\text{ class--function})\iffdef (f=\Gamma(f))
+\]
+\end{definition}
+\begin{definition}[range]
+\[
+\ran(f) \eqdef \cc{f(x)}{x\in\dom(f)}
+\]
+\end{definition}
+\begin{definition}[signature of a function]
+\[
+(f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\function))
+\]
+\end{definition}
+\begin{definition}[family]
+A class $f$ is called \textit{family} if it satisfies two conditions:
+\[
+\forall (x\in\Dom(f)),\ %
+(
+(
+f(x)
+\text{ set}
+)
+\implies
+(
+\exists! y,\ %
+((x,y)\in f)
+)
+)
+\tag{concentrated set values}
+\]
+\[
+\forall (x\in\Dom(f)),\ %
+(
+(
+f(x)
+\text{ proper}
+)
+\implies
+(
+\forall b,\ %
+(
+((x,b)\in f)
+\implies
+(b\text{ singleton})
+)
+)
+)
+\tag{flat proper values}
+\]
+\end{definition}
+\begin{definition}[set--valued]
+A class $f$ is called \textit{set--valued}, if all of its values are sets.
+\[
+(f\text{ set--valued})\iffdef(\forall (x\in\Dom(f)),\ (f(x)\text{ set}))
+\]
+\end{definition}
+\begin{definition}[class--function]
+A family is called a \textit{class--function} if it is set--valued.
+\[
+(F\text{ class--function})\iffdef((F\text{ family})\land(F\text{ set--valued}))
+\]
+\end{definition}
+\begin{definition}[function]
+A family is called a \textit{function} if it is a set.
+\[
+(F\text{ function})\iffdef((F\text{ family})\land(F\text{ set}))
+\]
+\end{definition}
+\begin{note}[category--theory inspired naming]
+A function can be called ``a small family''.\\
+A class--function can be called ``a locally small family''.\\
+An arbitrary family can be called ``a (large) family''.
+\end{note}
+\begin{lemma}[proper value not from dom]
+For every class $f$,
+\[
+(f(x)\proper)
+\implies
+(x\notin\dom(f))
+\label{lem:proper value not from dom}
+\]
+\end{lemma}
+\begin{proof}
+Assume the opposite: $(f(x)\proper)$ and $(x\in\dom(f))$.
+\[
+(x\in\dom(f))
+\IMPLIES
+(x\in\cc{x}{f(x)\set})
+\]
+\[
+(x\in\cc{x}{f(x)\set})
+\IMPLIES
+(f(x)\set)
+\]
+The contradiction is obtained, so $(f(x)\proper)\implies(x\notin\dom(f))$.
+\end{proof}
+\begin{theorem}[small implies locally small]
+Every function is a class--function(but not vice versa).
+\[
+\forall f,\ ((f\text{ function})\implies(f\text{ class--function}))
+\]
+\end{theorem}
+\begin{proof}
+Assume the opposite: $f$ function, but not a class--function:
+\[
+(f\text{ family}),
+\]
+\[
+(f\text{ set}),
+\]
+\[
+(\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
+\]
+Since $f$ is a set, a union of its union is also a set.\\
+(Assuming here that the ordered pair is defined a--la Kuratowsky.)\\
+Using ``flat proper values'' property, it is easy to construct an injective map from the proper class $f(x)$ into the aforementioned union. It contradicts the limitation of size axiom.\\
+(todo: expand on the proof)
+\end{proof}
+
+\begin{theorem}[family extensionality]
+\[
+\forall (F_1 \text{ family})
+\forall (F_2 \text{ family}),\ %
+(\Dom(F_1)=\Dom(F_2))
+\implies
+(
+(
+\forall x,\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+)
+\]
+\iffalse % NOT TRUE!
+\[
+\forall (F_1 \text{ family})
+\forall (F_2 \text{ family}),\ %
+(
+\forall (x \in (\Dom(F_1)\cup\Dom(F_2)) ),\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+\]
+\fi
+\end{theorem}
+\begin{theorem}[class--function extensionality]
+\[
+\forall (F_1 \text{ class--function}),\ %
+\forall (F_2 \text{ class--function}),\ %
+(
+(
+\forall x,\ %
+(F_1(x)=F_2(x))
+)
+\implies
+(F_1 = F_2)
+)
+\]
+\end{theorem}
+\begin{theorem}[function extensionality]
+\[
+\forall (f_1 \text{ function}),\ %
+\forall (f_2 \text{ function}),\ %
+(
+(
+\forall x,\ %
+(f_1(x) = f_2(x))
+)
+\implies
+(f_1 = f_2)
+)
+\]
+\end{theorem}
+\begin{theorem}[function extensionality for a set--theoretic foundations]
+\[
+\forall (f_1 \text{ function}),\ %
+\forall (f_2 \text{ function}),\ %
+\forall X,\ %
+(X=\dom(f_1)=\dom(f_2))
+\implies
+(
+(
+\forall (x\in X),\ %
+(f_1(x) = f_2(x))
+)
+\implies
+(f_1 = f_2)
+)
+\]
+\end{theorem}
+
+
+\begin{axiom}[ordered pair of proper classes is a proper class]
+The following a little bit non--traditional agreement(the axiom) may be useful for this section, but it is not yet obvious that it is needed:
+\[
+(
+(
+(A\proper)
+\land
+(B\proper)
+)
+\implies
+((A,B)\proper)
+)
+\]
+\end{axiom}
+\subsection{Unions}
+\begin{definition}[elementary union]
+This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
+\[
+\union A \eqdef \cc{x}{\exists (a\in A),\ x\in a}
+\clabeltagd{def}{elementary union}
+\]
+\end{definition}
+
+\begin{definition}[union of a definable conglomerate of classes]
+\[
+%\label{def:uniondefcongl}
+\bigcup^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\exists y, \psi \land (x\in t)}
+\clabeltagd{def}{conglomerate union}
+\]
+\underline{Side conditions:}\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.\\
+(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
+
+%Side conditions:\\
+%1) variable $x$ is not free in formula $\psi$,\\
+%2) variable $x$ is not free in term $t$,\\
+%3) variable $x$ is not free in variable $y$.\\
+%Dependencies:\\
+%1) formula $\psi$ may depend on $y$.\\
+%2) term $t$ may depend on $y$.
+\end{definition}
+
+\begin{definition}[union of terms built out of the elements of a class]
+Let $y$ be a variable, let $s$ and $t$ be terms.\\
+If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
+\[
+\bigcup_{y\in s} t 
+\ \eqdef\ 
+\bigcup^y_{y\in s} t 
+\]
+\end{definition}
+\begin{definition}[union of the elements of a class]
+\[
+\bigcup A 
+\ \eqdef\ 
+\bigcup_{y\in A} y 
+\]
+\end{definition}
+\begin{theorem}[``elementary def of intersection'']
+\[
+\union A = \cc{x}{\exists a\in A,\ x\in a}
+\labeltagd{thm}{union}
+\]
+\end{theorem}
+\Proof
+\[
+\union A
+=
+\bigcup_{y\in A} y  
+=
+\bigcup^y_{y\in A} y 
+=
+\cc{x}{\exists y, (y\in A) \land (x\in y)}
+=
+\cc{x}{\exists a\in A,\ x\in a}
+\]
+\Done
+
+\subsection{Intersections}
+\begin{definition}[elementary intersection]
+This is an admissible and ``elementary'' definition of an intersection of an arbitrary class $A$, which is proved to be a theorem later in this section.
+\[
+\intersection A \eqdef \cc{x}{\forall (a\in A),\ x\in a}
+\labeltagd{def}{intersection}
+\]
+\end{definition}
+
+\begin{definition}[intersection of a definable conglomerate of classes]
+For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case all of them satisfy the side conditions, the following holds
+\[
+%\label{def:interdefcongl}
+\clabeltagd{def}{conglomerate intersection}
+\bigcap^y_{\psi} t 
+\ \eqdef\ 
+\cc{x}{\forall y\mydot (\psi \implies (x\in t))}
+\]
+\underline{Side conditions:}\\
+1) formula $\psi$ must not depend on variable $x$,\\
+2) term $t$ must not depend on variable $x$,\\
+3) variable $y$ is different from variable $x$.\\
+(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
+\end{definition}
+
+
+\begin{notation}[intersection of terms built out of the elements of a class]
+Let $y$ be a variable, let $s$ and $t$ be terms.\\
+If formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then it is allowed to skip writing a variable on top.
+\[
+\bigcap_{y\in s} t 
+\ \eqdef\ 
+\bigcap^y_{y\in s} t 
+\]
+\end{notation}
+\begin{notation}[intersection of the elements of a class]
+%\[
+%\bigcap G = \cc{x}{\forall y\in G. x\in y}
+%\]
+\[
+\bigcap A 
+\ \eqdef\ 
+\bigcap_{y\in A} y 
+\]
+\end{notation}
+\begin{theorem}[``elementary def of intersection'']
+\[
+\label{thm:intersection}
+\intersection A = \cc{x}{\forall (a\in A),\ x\in a}
+\]
+\end{theorem}
+\Proof
+\[
+\intersection A
+=
+\bigcap_{y\in A} y  
+=
+\bigcap^y_{y\in A} y 
+=
+\cc{x}{\forall y\mydot ((y\in A) \implies (x\in y))}
+=
+\cc{x}{\forall a\in A. x\in a}
+\]
+\Done
+\subsection{Powerclass}
+%A theory is conservatively extended with a functional  class comprehension.
+\begin{definition}[powerclass]
+A powerclass is a class of all subsets. (A subset is a subclass which is a set.)
+%For any class term $X$, for any variable $x$ which is not free in $X$,
+\[
+\forall (x:\Var),\ %
+\forall (X:\Class),\ %
+\power X \eqdef \cc{x}{x\subseteq X}
+\labeltagd{def}{powerclass}
+\]%\tag{def. Powerclass}
+\end{definition}
+\subsection{Heredity}
+\begin{axiom}[heredity]
+A subclass of a set is also a set.
+%For any class terms $A$ and $B$,
+\[
+\forall (A:\Class),\ %
+\forall (B:\Class),\ %
+(
+(
+(A\set)
+\land 
+(B\subseteq A)
+)
+\implies
+(B\set)
+)
+\labeltagd{axm}{heredity}
+\]%\tag{ax. Heredity}
+\end{axiom}
+\subsection{Powerset}
+\begin{axiom}[powerset]
+A power class of a set is also a set.
+%For any class term $A$,
+\[
+\forall (A:\Class),\ %
+(
+(A\set)
+\implies
+(\power A\set)
+)
+\labeltagd{axm}{powerset}
+\]
+\end{axiom}
+\begin{note}[the powerset axiom is weak here]
+This is a weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.
+\end{note}
+
+%\begin{axiom} $\in$--induction. (variant that uses formulas)
+%\[\left(\forall X: (\forall Y\in X: P(Y))\implies P(X)\right)\implies (\forall X: P(X))\]
+%\end{axiom}
+\subsection{Regularity in form of epsilon--induction}
+\begin{axiom}[$\in$--induction]
+%For any class term $\Psi$,
+\iffalse
+\textrm{\removeabs{$\in$--induction}}
+\textrm{\replace{$\in$--induction}}
+
+%\xdetokenize{{$\in$--induction}}%
+\xdetokenize{\userMacroA}
+\xdetokenize{\userMacroB}
+
+
+\userMacroC{ $(A\in B)$ }
+\userMacroC{\detokenize{  $(A\in B)$ }}
+%\xdetokenize{\userMacroC{\detokenize{  $(A\in B)$ }}}
+qwertyu\\
+\noexpand\text{ccc}\\
+%\text{\detokenize{\expand\replace{$\in$--induction}}}
+
+\removespecials{\detokenize{ $(A\in B)$ }}
+
+%\removespecials{$\in$--induction}
+\fi
+
+%(variant that uses classes)
+%\[(\forall x: x\in \power\Psi \implies x\in\Psi )\implies (V\subseteq\Psi)\]
+\[
+\forall (\Psi:\Class),\ %
+((\power\Psi\subseteq\Psi)\implies(\V\subseteq\Psi))
+\labeltagd{axm}{epsilon induction}
+\]
+%\tag{EpsInd}
+\end{axiom}
+
+
+\subsection{Limitation of size}
+\begin{axiom}[limitation of size (of a set)]
+\[
+(\neg(X\set))
+\iff
+(
+\exists (T:\Class),\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
+\clabeltagd{axm}{limitation of size}
+\]
+\end{axiom}
+\begin{note}[properties]
+One direction of the equivalence extends what it means for class to be a set, i.e. it ``extends the inductive definition of a set'', so more classes are called sets as a result. Let such properties be called \textit{positive}.
+\[
+(\neg(X\set))
+\implies
+(
+\exists (T:\Class),\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+)
+\]
+or
+\[
+\Big(
+\neg\exists (T:\Class),\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+\Big)
+\implies
+(X\set)
+\]
+The opposite direction forbids certain situations. It makes proofs shorter. It reduces the amount of models of the theory. Let such properties be called \textit{negative}.
+\[
+\Big(
+\exists (T:\Class),\ (
+(T\text{ class--function})
+\land
+(\V\subclass T[X])
+)
+\Big)
+\implies
+\neg(X\set)
+\]
+It seems like positive properties don't have problems with each other. At worst they can trivialize the theory, but a positive and a negative property together may or may not lead to a contradiction.
+\end{note}
+\input{END.tex}

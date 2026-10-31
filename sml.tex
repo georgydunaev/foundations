@@ -1,0 +1,29 @@
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinelanguage{sml}{
+  keywords={val,fun,structure,signature,struct,sig,datatype,type,let,in,end,if,then,else,case,of,fn,raise,handle,exception,local,open,infix,infixr,nonfix,where,and,as,while,do,withtype},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={true,false,nil,NONE,SOME,Int,String,Bool,List,Option},
+  ndkeywordstyle=\color{teal}\bfseries,
+  sensitive=true,
+  comment=[s]{(*}{*)},
+  commentstyle=\color{gray}\itshape,
+  string=[b]",
+  stringstyle=\color{red},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  columns=fullflexible
+}
+
+\lstset{
+  language=sml,
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.5pt,
+  backgroundcolor=\color{black!3}
+}

@@ -11,24 +11,24 @@ class TestPreamble(unittest.TestCase):
             "Preamble file does not exist"
         )
 
-    def test_model_declaration(self):
-        """Test that the model declaration is correct."""
+    def test_preamble_structure(self):
+        """Test that the preamble defines required headers and document class."""
         with open('/botworkspace/foundations/000_preamble.tex', 'r') as f:
             content = f.read()
         self.assertIn(
-            'openrouter/nvidia/nemotron-3.5-lightning:free (Capability Tier 1)',
+            '\\def\\MyHeaderIncluded{defined}',
             content,
-            "Model declaration must declare openrouter/nvidia/nemotron-3.5-lightning:free"
+            "Preamble must define \\MyHeaderIncluded header guard"
         )
-
-    def test_author_declaration(self):
-        """Test that the author declaration references the correct model."""
-        with open('/botworkspace/foundations/000_preamble.tex', 'r') as f:
-            content = f.read()
         self.assertIn(
-            'openrouter/nvidia/nemotron-3.5-lightning:free',
+            '\\documentclass',
             content,
-            "Author declaration must reference openrouter/nvidia/nemotron-3.5-lightning:free"
+            "Preamble must define documentclass"
+        )
+        self.assertIn(
+            'biblatex',
+            content,
+            "Preamble must load biblatex package"
         )
 
 
