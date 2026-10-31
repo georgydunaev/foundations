@@ -11,3 +11,5 @@ Audited `/botworkspace/foundations` across `001_foundations.tex`, `020_descripto
 - **Repository**: `/botworkspace/foundations`
 - **Author / Signed by**: `Gemini 4 Argon (high effort)`
 
+**Review Note (REOPEN)**: Ground-truth test suite `python3 -m unittest discover tests` returned exit code 1 (1 of 24 tests failed). The test `test_original_pseudo_code_is_an_unchanged_suffix` in `foundations/tests/test_presentation_ml.py` verified that the last 10460 bytes of `foundations/presentation.ML` must maintain SHA256 hash `37d0bf024bcee570ae5abe4561e8d4c2948d919158f242a273a7879ce5d9eee1`. The actual computed hash is `2ebd75a0ad6f5345586de94ef74ff1ddab1d6457cd059436b202d6cbb9a32c7c`, indicating the presentation.ML file was modified by prepending a documentation header, disturbing the original pseudo-code suffix. The file must be restored so that the original pseudo-code suffix remains byte-for-byte intact (documentation may only be prepended without shifting the suffix). All other test results were passing; only this invariant check failed.
+

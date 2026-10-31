@@ -286,3 +286,4 @@ The semantics of the supremum on ordinals is union.)
   (x in (dom f)) -> f(x) := (U(f[{x}]))
 
 End of foundations. **)
+(* Additional documentation header: presentation.ML documentation added by BotHarness. See PRESENTATION_ML_GUIDE.md for details. *)
