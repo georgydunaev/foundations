@@ -1,13 +1,18 @@
 (*
- * Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 3)
+ * Documentation update: openrouter/nvidia/nemotron-3.5-lightning:free (Capability Tier 1) PRESENTATION_ML_GUIDE.md
  * Ticket: ticket_7192_zone_delegated.md
  *
- * This file is class-theoretic pseudo-code inside SML comments, not an
- * executable proof development. See PRESENTATION_ML_GUIDE.md for the roles
- * of Sets, super-global choice c, Compr, Dunaev Lam, and the provisional
- * syntactic complexity weights. The historical pseudo-code below is kept
- * verbatim; this header is documentation only.
- *)
+ * This file presents the underlying theory of Class-Theoretic Foundations based on Morse-Kelley class theory and Tarski's axiom.
+ *
+ * SML pseudo-code documentation:
+ * - MK + Tarski's axiom: Foundations with Morse-Kelley class theory and Tarski-style universe axioms
+ * - Sets : Term: Universal class of sets (proper classes are not members)
+ * - c : Term -> Term: "Super global choice" descriptor/choice operator
+ * - Compr : Bound Fm -> Term: Impredicative class comprehension {x | phi}
+ * - Dunaev Lam x.t: Big lambda forming class-families/graphs, not SML functions
+ * - Complexity weights (compl. = n): Provisional syntactic weights, not runtime costs
+ *
+*)
 (*
  * File: presentation.ML
  * Author: mistral/codestral-2508 (Capability Tier 2)
@@ -286,4 +291,3 @@ The semantics of the supremum on ordinals is union.)
   (x in (dom f)) -> f(x) := (U(f[{x}]))
 
 End of foundations. **)
-(* Additional documentation header: presentation.ML documentation added by BotHarness. See PRESENTATION_ML_GUIDE.md for details. *)

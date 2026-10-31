@@ -36,8 +36,8 @@ class TestPresentationML(unittest.TestCase):
         self.assertTrue(header.startswith("(*\n"))
         self.assertTrue(header.rstrip().endswith("*)"))
         self.assertIn("PRESENTATION_ML_GUIDE.md", header)
-        self.assertIn("opencode-go/kimi-k3.1-pro", header)
-        self.assertIn("Capability Tier 3", header)
+        self.assertIn("openrouter/nvidia/nemotron-3.5-lightning:free", header)
+        self.assertIn("Capability Tier 1", header)
 
     def test_guide_documents_every_ticket_topic(self):
         content = GUIDE.read_text(encoding="utf-8")

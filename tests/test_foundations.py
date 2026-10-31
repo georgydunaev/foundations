@@ -1,4 +1,13 @@
 import unittest
+import sys
+sys.path.append('/botworkspace/foundations')
+
+try:
+    import foundations
+    HAS_FOUNDATIONS = True
+except ImportError:
+    HAS_FOUNDATIONS = False
+
 
 class TestFoundations(unittest.TestCase):
     def test_imports(self):
@@ -7,6 +16,14 @@ class TestFoundations(unittest.TestCase):
             self.assertTrue(True)
         except ImportError:
             self.assertTrue(False)
+
+    def test_module_has_init(self):
+        self.assertIsNotNone(foundations.__init__)
+
+    def test_all_is_list(self):
+        if HAS_FOUNDATIONS:
+            self.assertIsInstance(foundations.__all__, list)
+
 
 if __name__ == '__main__':
     unittest.main()

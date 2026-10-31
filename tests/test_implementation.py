@@ -19,5 +19,14 @@ class TestImplementationClass(unittest.TestCase):
         result = self.impl.process()
         self.assertEqual(result, "expected_output")
 
+    def test_process_default_none(self):
+        result = self.impl.process(None)
+        self.assertEqual(result, "expected_output")
+
+    def test_process_multiple_valid(self):
+        self.assertEqual(self.impl.process("valid1"), "expected_output")
+        self.assertEqual(self.impl.process("valid2"), "expected_output")
+
+
 if __name__ == '__main__':
     unittest.main()
