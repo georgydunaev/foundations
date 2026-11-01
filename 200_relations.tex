@@ -1,10 +1,11 @@
+% Audit: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 % LaTeX macro syntax for relations in Morse-Kelley class theory
 
-% This file documents the LaTeX macro syntax for relations in the context of Morse-Kelley class theory.
-% It includes definitions and examples of how to use the macros to maintain mathematical invariants.
+% The preamble already defines \relation as a zero-argument predicate, so this
+% two-argument notation uses a distinct, non-deprecated name. All braces are
+% explicitly balanced. The macro is notation only: it does not assert sethood
+% of either argument, and its arguments may therefore be proper classes.
+\newcommand{\classrelation}[2]{\mathcal{R}_{#1,#2}}
 
-% Example macro for defining a relation
-\newcommand{\relation}[2]{\mathcal{R}_{#1,#2}}
-
-% Example usage of the relation macro
-\relation{A}{B} represents a relation between sets A and B.
+% Invoke \classrelation in math mode with a source and a target class.
+\(\classrelation{A}{B}\) represents a relation between classes \(A\) and \(B\).
