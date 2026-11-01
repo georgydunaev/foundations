@@ -1,9 +1,9 @@
 \def\topic{Mechanization of Azriel Levy's Proof}
 \input{BEGIN.tex}
 \section{Azriel Levy's Union Theorem}
-This section contains the expansion of Azriel Levy's article "On Von Neumann's Axiom System for Set Theory" \cite{Levy68}.
+This section contains the expansion of Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory'' \cite{Levy68}.
 
-This section follows the article "On Von Neumann's Axiom System for Set Theory" by Azriel Levy (1968), available at \url{https://www.jstor.org/stable/2315201}.
+This section follows the article ``On Von Neumann's Axiom System for Set Theory'' by Azriel Levy (1968), available at \url{https://www.jstor.org/stable/2315201}.
 
 
 %\myref{TakeutiZaring1982}
@@ -12,12 +12,12 @@ This section follows the article "On Von Neumann's Axiom System for Set Theory" 
 \subsection{Definitions}
 
 
-\begin{theorem}[Class of sets is injectible into class of ordinal numbers]
+\begin{theorem}[The class of sets is injectible into the class of ordinal numbers]
 \[
 \exists T: \V \to \On \text{ injective}
 \]
 \Proof
-By the theorem (\myref{thm:OnnotinV}) from the section on set--theoretical "paradoxes",
+By Theorem \myref{thm:OnnotinV} from the section on set--theoretical ``paradoxes'',
 \[
 (\On \notin \V)
 \]
@@ -25,7 +25,7 @@ Axiom of limitation of size:
 \[
 (\forall C,\ ((C\in \V) \iff (C<\V)))
 \]
-Def of $<$:
+Definition of $<$:
 \[
 (A<B)\iffdef (\neg(B\leqslant A)),
 \]
@@ -62,15 +62,15 @@ F\coloneqq G^\top\cup((C\setminus T[B])\times\{b\}).
 \Done
 \end{lemma}
 
-\begin{lemma}[class of ordinal numbers is surjectible onto class of sets]
+\begin{lemma}[The class of ordinal numbers is surjectible onto the class of sets]
 %[there exist an indexing of set with ordinal numbers]
 \label{lem:exOnToVSurj}
 \[
 (\exists F,\ \On \to \V \text{ surjective})
 \]
 \Proof
-It follows from the previous lemma for $C\ceq\On$, %bad:$T\ceq\text{T}$,
- $B\ceq\V$, that.
+It follows from the previous lemma, with $C\ceq\On$ and
+$B\ceq\V$, that
 \[
 (\exists T: \V \to \On \text{ injective})
 \implies 
@@ -81,7 +81,7 @@ It follows from the previous lemma for $C\ceq\On$, %bad:$T\ceq\text{T}$,
 )
 \]
 From the axiom of existence of a set, it follows that $(\V\neq\emptyclass)$.\\
-From this fact and the theorem 1.1, it follows, that.
+From this fact and Theorem 1.1, it follows that
 \[
 (\exists F:\On\to \V\text{ surjective})
 \]
@@ -106,13 +106,13 @@ Choose once any $F$, such that $\On \to \V \text{ surjective}$,
 \labeltagd{def}{FwoV}
 \]
 \end{definition}%\sqdot
-Obviously, from the lemma \myref{lem:exOnToVSurj} and the axiom \myref{axm:H}, it follows that
+It follows from Lemma \myref{lem:exOnToVSurj} and Axiom \myref{axm:H} that
 \[
 \F:\On \to \V \text{ surjective}.
 \]
 
 \begin{definition}[the ``minimal'' section of $\text{F}$]
-The ``minimal'' section of $\text{F}$ in the sense, that it returns the minimal ordinal class corresponding to the argument.
+The ``minimal'' section of $\text{F}$ returns the minimal ordinal class corresponding to the argument.
 %G_F(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
 \[
 \G(y)\eqdef\inf\cc{x\in\On}{\text{F}(x)=y}
@@ -160,8 +160,8 @@ c(S)\eqdef F(\inf T[S])
 \IMPLIES
 (G[S]\neq\emptyclass)
 \]
-Since $(\G[S]\subclass\On)$ and $(G[S]\neq\emptyclass)$, then $((\G[S]\intersection \On)\neq\emptyclass)$.\\
-Therefore, by theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
+Since $(\G[S]\subclass\On)$ and $(G[S]\neq\emptyclass)$, we have $((\G[S]\intersection \On)\neq\emptyclass)$.\\
+Therefore, by Theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$.
 \Done
 \end{lemma}
 
@@ -183,7 +183,7 @@ Therefore, by theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$
 %\ev_x(f)\ceq f(x).
 %\]
 \begin{definition}[evaluation class--function]\ \\
-Implying that $f(x)=\emptyclass$ in case of $x\notin\dom(f)$,
+Here, $f(x)=\emptyclass$ when $x\notin\dom(f)$,
 \[
 \ev_x\eqdef\cc{(f,f(x))}{f\in\V}
 \labeltagd{def}{evclass}
@@ -215,7 +215,7 @@ h(x)\eqdef\inf(\On\setminus(Q(x)))
 \]
 \end{definition}
 \begin{definition}[bounded subclasses of On]
-In context of $(b\subclass\On)$,
+In the context of $(b\subclass\On)$,
 \[
 (b\text{ bounded})\iffdef(\exists \beta\in\On:b\subclass\beta)
 \]
@@ -292,7 +292,7 @@ Fix $\left(b\in\union a\right)$. To show: $n\in F[\alpha]$.
 \IMPLIES
 \exists b\in a,\ n\in b.
 \]
-Due to lemma \myref{lem:ssOnBdd} $H(b)$ is a strict upper bound of $G[b]$.
+By Lemma \myref{lem:ssOnBdd}, $H(b)$ is a strict upper bound of $G[b]$.
 \[
 (b\set)
 \IMPLIES
@@ -302,7 +302,7 @@ Due to lemma \myref{lem:ssOnBdd} $H(b)$ is a strict upper bound of $G[b]$.
 \IMPLIES
 (G[b]\text{ is bounded})
 \]
-There is a bound, therefore, there is a strict bound.
+There is a bound; therefore, there is a strict bound.
 \[
 (a\set)
 \LAND
@@ -400,7 +400,7 @@ H(b)\eqdef\inf\cc{e}{e\text{ strict upper bound of }G[b]}
 \IMPLIES
 (F[\alpha]\set)
 \]
-Statement of the lemma \myref{lem:techlem}: $F[\alpha]\supseteq \union a$.
+By Lemma \myref{lem:techlem}, $F[\alpha]\supseteq \union a$.
 \[
 (F[\alpha]\set)
 \LAND

@@ -1,14 +1,25 @@
-import unittest
-import sys
+#!/usr/bin/env python3
+"""Run the complete foundations unittest suite.
 
-if __name__ == '__main__':
-    # Change to tests directory to avoid module conflicts with top-level test files
-    original_dir = __import__('sys').path[0]
-    try:
-        __import__('sys').path[0] = '/botworkspace/foundations/tests'
-        test_loader = unittest.TestLoader()
-        test_suite = test_loader.discover('.', pattern='test_*.py')
-        test_runner = unittest.TextTestRunner(verbosity=2)
-        test_runner.run(test_suite)
-    finally:
-        __import__('sys').path[0] = original_dir
+Author: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+"""
+
+import sys
+import unittest
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+def main():
+    suite = unittest.defaultTestLoader.discover(
+        start_dir=str(ROOT / "tests"),
+        top_level_dir=str(ROOT),
+    )
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    return 0 if result.wasSuccessful() else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

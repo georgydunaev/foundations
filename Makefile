@@ -1,2 +1,5 @@
+# Test runner: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+.PHONY: test
+
 test:
-	pdflatex -interaction=nonstopmode 000_preamble.tex && echo "Test passed: No syntax errors found."
+	python3 run_tests.py

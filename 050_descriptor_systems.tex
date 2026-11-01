@@ -1,14 +1,29 @@
+\def\topic{Descriptor Systems: Alternative Draft}
+% Alternative-status clarification: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+\input{BEGIN.tex}
 \section{Descriptor Systems}
 
-\begin{definition}[Conglomerate]
-A conglomerate $\cc{x}{\varphi}$ is the set of all $x$ such that $\varphi$ holds.
-\end{definition}
+\paragraph{Status.}
+These are secondary notes for the preserved descriptor and PFOL alternatives,
+not a unified active descriptor system.
 
-\begin{definition}[Iota Operator]
-The iota operator $(\iota (x\set): \varphi)$ is defined as:
-\[ (\iota (x\set): \varphi) \ldefined \iff \exists! (x\set):\varphi \]
-\end{definition}
+\subsection{Class Abstraction}
+In class theory, $\cc{x}{\varphi}$ denotes a class expression. It is not
+automatically a set: sethood requires a separate proof. In particular, no
+set or class of all classes may be introduced by this notation.
 
-\begin{axiom}[Definedness]
-\[ (\iota (x\set): \varphi) \ldefined \implies (\iota (x\set): \varphi) \in \cc{x}{\varphi} \]
-\end{axiom}
+\subsection{PFOL Iota Notation}
+Within Farmer's PFOL alternative, the iota descriptor satisfies
+\[
+(\iota x,\varphi)\downarrow\iff(\exists!x,\varphi).
+\]
+When defined, it denotes the unique witness. This statement belongs to the
+partial logic of \texttt{210\_partial\_functions\_semantics.tex}; it is not an
+axiom of the active total union-based evaluation.
+
+The three-valued choice conventions remain in
+\texttt{020\_descriptors.tex} and \texttt{180\_many-valued.tex}. Their
+$\tau$, $\epsilon$, and partial $\varepsilon$ operators must not be collapsed
+into one operator.
+
+\input{END.tex}

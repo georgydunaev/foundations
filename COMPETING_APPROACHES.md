@@ -1,37 +1,19 @@
-# Five Distinct Competing Approaches
+<!-- Approach comparison: opencode-go/kimi-k3.1-pro (Capability Tier 2). -->
+# Five Distinct Approaches
 
-The foundations repository contains many alternative mathematical constructions.  Below is a concise inventory of **five** especially prominent, historically and technically distinct approaches, each with a short description and a link to its source file.
+The five approaches are preserved, but they are not interchangeable semantic
+backends. See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) for the
+normative status and preservation rules, and
+[summary_of_approaches.tex](summary_of_approaches.tex) for the book guide.
 
----
+| # | Approach | Sources | Status |
+|---|---|---|---|
+| 1 | Classical two-valued MK/NBG, total comprehension evaluation, and Dunaev Tagged Ordered Pairs | `presentation.ML`, `060_axioms.tex`, `070_ordered_pair.tex` | Active mainline |
+| 2 | Predicates/formulas-as-types and classes-as-expressions; older classes-as-types attempt retained as outdated | `001_foundations.tex`, `130_classes_as_types.tex` | Active mainline with historical drafts |
+| 3 | Three-valued/uncertain descriptor calculus with `tau`, `epsilon`, and partial `varepsilon` | `020_descriptors.tex`, `180_many-valued.tex` | Preserved alternative |
+| 4 | Farmer's PFOL with iota-definedness and Kleene equality | `210_partial_functions_semantics.tex` | Preserved alternative |
+| 5 | Conglomerate-valued/subset semantics | `030_alternative_semantics.tex` | Preserved outdated alternative |
 
-## 1️⃣ 020_descriptors.tex
-**Description**: Introduces a tri‑adic operator suite \(\tau, \epsilon, \varepsilon\) that act as *descriptors* for elements, providing a flexible way to encode membership and identity without committing to a single primitive notion of set.
-**Location**: `foundations/020_descriptors.tex`
-
----
-
-## 2️⃣ 030_alternative_semantics.tex
-**Description**: Presents a **conglomerate subset semantics** where the universe is a collection of *conglomerates* rather than traditional sets, allowing a richer hierarchy of collections and a different interpretation of inclusion.
-**Location**: `foundations/030_alternative_semantics.tex`
-
----
-
-## 3️⃣ 040_old_variant_of_iota_defs.tex
-**Description**: Revisits an older formulation of the iota (definite description) operator, contrasting it with the modern treatment and highlighting subtle logical consequences in quantifier handling.
-**Location**: `foundations/040_old_variant_of_iota_defs.tex`
-
----
-
-## 4️⃣ 070_ordered_pair.tex
-**Description**: Compares three canonical constructions of ordered pairs – **Kuratowski**, **Morse**, and **Dunaev** (the latter being the framework adopted for this repository).  The file analyses their equivalences, strengths, and compatibility with class‑theoretic foundations.
-**Location**: `foundations/070_ordered_pair.tex`
-
----
-
-## 5️⃣ 130_classes_as_types.tex
-**Description**: Explores the **Classes‑as‑Types** versus **Predicates‑as‑Types** viewpoints, investigating how treating classes as type‑level objects influences the meta‑logic, especially in the presence of higher‑order constructions.
-**Location**: `foundations/130_classes_as_types.tex`
-
----
-
-These five entries capture a broad spectrum of competing ideas—from foundational set‑theoretic primitives to higher‑order type interpretations—making them an excellent starting point for comparative study or further unification work.
+Approaches (1) and (2) form the active proof-compiler line. Approaches (3),
+(4), and (5) remain independent. There is no general descriptor tuple,
+semantics-selection flag, or unproved translation layer connecting them.

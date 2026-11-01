@@ -1,9 +1,11 @@
 %\def\MyPrintFlag{defined}
+% Approach organization: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 \input{000_preamble.tex}
 
-%Primary Active Kernel Approach: Classical 2-valued Morse-Kelley / NBG class theory with Dunaev Tagged Ordered Pairs
-%This is the primary approach, which uses Dunaev Tagged Ordered Pairs defined as (a,b) = ({0} x a) U ({1} x b).
-%All classes are within the U2 universe, which includes PredicativeSet (U0), PredicativeClass (U1), and PredicativeConglomerate (U2).\n%Initial idea of my book is discarded.
+%Primary Active Kernel Approach: Classical 2-valued Morse-Kelley / NBG class theory with Dunaev Tagged Ordered Pairs.
+%The active type discipline is predicates/formulas-as-types and classes-as-expressions.
+%Approaches 3--5 are preserved independently; see summary_of_approaches.tex.
+%Initial idea of my book is discarded.
 %All these classes are within the U2 universe. 
 %(If we fix them,
 %U0 = PredicativeSet
@@ -35,23 +37,11 @@
 
 %Точнее есть, но только если ты имеешь основания сомневаться в коковской теории как в основаниях математики. (что есть полная паранойя)
 
-%Alternative Approaches:
-%1. Kok and Lin's Universes: Limited to omega-ordinal due to technical constraints
-%2. Voevodsky's Adjustments: Added additional universes for higher structures
-%3. Proof-Assistant Systems: Lacking sufficient expressivity for abstract/higher structures
-%4. Mathematical Physics Applications: Potential for precise notation in undefined expressions
-
 %Помнится Воеводский подкручивал , видимо чтобы добавить одну-две вселенные сверху
 
 %ChatGPT: "Первоначально он не находил в существующих proof‑assistant системах достаточную выразительность для работы с абстрактными и высшими структурами (в частности, высшими группоидами)."
 
 %ну и понятно, что там ещё желанная унивалентность для вселенных, чтобы эквивалентность на урове типов была. Интересно, откуда он узнал, что это возможно.(не особо на самом деле)
-
-%Unified Interface Proposal:
-%1. Core Interface: Handles both primary (MK/NBG) and alternative approaches
-%2. Translation Layer: Converts between different foundational systems
-%3. Physics Module: Specialized notation for mathematical physics applications
-%4. Verification Layer: Ensures consistency across different approaches 
 
 %Дело в том, что, как мы раньше обсуждали, у матфизиков есть проблемы с точной записью формул, где возможна недоопределённость. (А иногда(редко) надо написать несколько интегралов, не зная, что они определены, и только постфактум узнать, что это было легально, или там, когда операторы не всюду определённые, то надо работать с неопределёнными значениями)
 
@@ -283,6 +273,9 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \tableofcontents
 \newpage
 
+% Reader guide: active approaches 1--2 and independent alternatives 3--5.
+\input{summary_of_approaches.tex}
+\pagebreak
 
 %\input{some_order_theory.tex}
 \chapter{Logical framework}

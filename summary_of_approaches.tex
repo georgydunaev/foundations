@@ -1,22 +1,77 @@
 \def\topic{Summary of Approaches}
+% Approach organization: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 \input{BEGIN.tex}
-\section{Summary of Approaches}
+\chapter*{Guide to the Five Foundational Approaches}
+\addcontentsline{toc}{chapter}{Guide to the Five Foundational Approaches}
 
-This document summarizes the key concepts and differences from the various approaches to foundations presented in the book.
+This guide separates the active proof-compiler semantics from preserved
+alternatives. Inclusion in one book does not assert that the approaches have
+a common semantics or that translations between them have been proved.
 
-\subsection{Primary Semantics}
-The primary semantics approach defines the basic concepts of the theory, including terms, types, and families. It provides a foundational framework for the other approaches. Key concepts include:\n- Terms and their properties\n- Types as unary predicates\n- Families as dependent types\n- The concept of a class as a collection of terms
+\section{Active Mainline: Approaches 1 and 2}
 
-\subsection{Alternative Semantics}
-[Summary of alternative semantics content]
+The active development uses classical two-valued Morse--Kelley/NBG class
+theory. In MK, class comprehension is impredicative. Family evaluation is
+total by class comprehension:
+\[
+F(x)\eqdef\union\cc{s}{(x,s)\in F}.
+\]
+Ordered pairs of arbitrary classes use the Dunaev tagged construction
+\[
+(a,b)\ceq(\{0\}\times a)\cup(\{1\}\times b),
+\]
+not an outer Kuratowski pair of proper classes. The principal sources are
+\texttt{presentation.ML}, \texttt{060\_axioms.tex}, and
+\texttt{070\_ordered\_pair.tex}.
 
-\subsection{Iota Definitions}
-[Summary of iota definitions content]
+The accompanying type discipline is
+\emph{predicates/formulas-as-types, classes-as-expressions}. Class expressions
+are syntactic objects; their representations in SML are not object-theoretic
+classes. The older classes-as-types draft in
+\texttt{130\_classes\_as\_types.tex} remains marked \texttt{[OUTDATED]}.
+Its identification of every type with $\top$ is rejected because it destroys
+uniqueness of the term--type relation.
 
-\subsection{Ordered Pairs}
-[Summary of ordered pair definitions content]
+\section{Preserved Alternative 3: Uncertain Descriptors}
 
-\subsection{Classes-as-Types}
-[Summary of classes-as-types content]
+\texttt{020\_descriptors.tex} and \texttt{180\_many-valued.tex} preserve a
+three-valued/uncertain calculus. Its three conventions are distinct:
+\[
+\tau\ceq\tau^{\Un},\qquad
+\epsilon\ceq\tau^{\{\emptyclass\}},\qquad
+\varepsilon\ceq\tau^{\emptyclass}.
+\]
+The last descriptor is partial: no default value is supplied. The uncertain
+value $U$ belongs to this alternative, not to the classical active kernel.
+
+\section{Preserved Alternative 4: Farmer's PFOL}
+
+\texttt{210\_partial\_functions\_semantics.tex} develops partial functions
+using Farmer's Partial First-Order Logic. Its iota descriptor satisfies
+\[
+(\iota x,\varphi)\downarrow\iff(\exists!x,\varphi),
+\]
+and partial values are compared with Kleene equality $\simeq$. These notions
+must not be silently identified with the active total union evaluation.
+
+\section{Preserved Alternative 5: Conglomerate-Valued Semantics}
+
+\texttt{030\_alternative\_semantics.tex} retains the outdated subset semantics
+with assignments of the form
+\[
+A:\mathrm{Var}\to\power(K).
+\]
+It is an independent historical semantics, not an interpretation of the
+active formulas-as-types discipline.
+
+\section{Reading and Maintenance Rules}
+
+The main chapters develop approaches 1 and 2. Approaches 3--5 remain in their
+original standalone files as alternatives. The files
+\texttt{025\_unified\_descriptors.tex} and
+\texttt{035\_unified\_type\_semantics.tex} are retained only as rejected,
+non-normative drafts marked \texttt{[OUTDATED]}.
+\texttt{050\_unified\_interface.tex} provides navigation only: changing a
+\verb|\topic| title does not and cannot switch foundations.
 
 \input{END.tex}

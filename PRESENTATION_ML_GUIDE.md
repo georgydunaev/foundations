@@ -1,6 +1,6 @@
 # Guide to `presentation.ML`
 
-<!-- Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 3) -->
+<!-- Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 2) -->
 
 ## Overview
 

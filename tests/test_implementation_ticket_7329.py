@@ -1,4 +1,5 @@
 # Test suite for Ticket 7329
+# Author: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 
 import unittest
 from implementation_ticket_7329 import ImplementationClass

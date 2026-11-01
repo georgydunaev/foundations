@@ -1,13 +1,21 @@
+\def\topic{Ordered Pairs: Active Convention}
+% Mathematical summary repair: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+\input{BEGIN.tex}
 \section{Ordered Pairs}
 
-\begin{definition}[Dunaev Tagged Pair]
-\begin{itemize}
-\item First element: $x = \{ \{a\}, \{a, b\} \}$
-\item Second element: $y = \{ \{b\}, \{a, b\} \}$
-\item Ordered pair: $(x, y) = \{x, y\}$
-\end{itemize}
-\end{definition}
+The active outer pairing operation for arbitrary classes is the Dunaev tagged
+pair defined simultaneously with the Cartesian product in
+\texttt{070\_ordered\_pair.tex}:
+\[
+(a,b)\ceq(\{0\}\times a)\cup(\{1\}\times b),
+\qquad
+X\times Y\ceq\cc{(x,y)}{x\in X\land y\in Y}.
+\]
 
-\begin{definition}[Kuratowski Pair]
-$(x, y) = \{ \{x\}, \{x, y\} \}$
-\end{definition}
+This is not the outer Kuratowski construction
+$\{\{a\},\{a,b\}\}$. Kuratowski pairing requires its arguments to be sets and
+therefore must not be substituted for tagged pairing when proper classes are
+allowed. The present file is only a summary; the definitions and proofs in
+\texttt{070\_ordered\_pair.tex} are authoritative.
+
+\input{END.tex}

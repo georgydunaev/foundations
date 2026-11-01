@@ -1,15 +1,23 @@
-\section{Partial Function Semantics}
+\def\topic{Partial Functions: Alternative PFOL Draft}
+% Alternative-status clarification: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+\input{BEGIN.tex}
+\section{Partial Function Semantics Following PFOL}
 
-\begin{definition}[Partial Function]
-A partial function $f$ from $A$ to $B$ is a relation $f \subseteq A \times B$ such that for all $x \in A$, there exists at most one $y \in B$ with $(x, y) \in f$.
-\end{definition}
+\paragraph{Status.}
+This is a secondary draft for preserved Alternative 4, not the active total
+comprehension evaluation. The authoritative historical source is
+\texttt{210\_partial\_functions\_semantics.tex}.
 
-\begin{definition}[Function Value]
-The value of a partial function $f$ at $x$ is defined as:
-\[ f(x) \simeq (\iota y, \langle x,y\rangle \in f) \]
-\end{definition}
+For a univocal relation $f$, the PFOL notation is
+\[
+f(x)\simeq(\iota y,\langle x,y\rangle\in f).
+\]
+The descriptor is defined exactly when its witness exists uniquely:
+\[
+(\iota y,\varphi)\downarrow\iff(\exists!y,\varphi).
+\]
+Kleene equality $\simeq$ and the definedness predicate are part of this
+alternative partial logic. They must not be identified silently with the
+active classical equality and total union-based family evaluation.
 
-\begin{theorem}[Univocal Functions]
-If $f$ is univocal, then:
-\[ (f(x) \simeq y) \iff (\langle x,y\rangle \in f) \]
-\end{theorem}
+\input{END.tex}

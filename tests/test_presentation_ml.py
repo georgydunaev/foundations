@@ -1,6 +1,6 @@
 """Regression tests for ticket 7192.
 
-Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 3).
+Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 """
 
 import hashlib

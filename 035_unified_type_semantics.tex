@@ -1,30 +1,27 @@
-\def\topic{Unified Type Semantics}
+\def\topic{[OUTDATED] Unified Type Semantics}
+% Non-normative draft status: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 \input{BEGIN.tex}
-\section{Unified Type Semantics}
+\section{[OUTDATED] Unified Type-Semantics Draft}
 
-This section defines the type-semantics that work with the unified descriptor definition.
+\paragraph{Status.}
+This file is retained only as a non-normative historical draft. The proposed
+relation between an arbitrary type and a general descriptor tuple did not
+define a semantics and is withdrawn. It must not be used to select or combine
+foundational approaches.
 
-\subsection{General Type-Semantics Definition}
+\subsection{Active Type Discipline}
+The active line is predicates/formulas-as-types and classes-as-expressions.
+Proofs are terms, while class expressions are syntax rather than SML values
+containing object-theoretic classes. The earlier identification of every
+$(A:\Type)$ with $\top$ remains rejected because it violates uniqueness of the
+term--type relation. See \texttt{001\_foundations.tex} and
+\texttt{130\_classes\_as\_types.tex}.
 
-The general type-semantics is defined as a relation between types and the general descriptor definition.
+\subsection{Independent Alternatives}
+The uncertain descriptor calculus, Farmer's PFOL, and conglomerate-valued
+semantics retain their own source files and conventions. None supplies a
+configuration parameter for the active type system. Any future translation
+must separately define its source and target semantics and prove its
+metatheoretic properties.
 
-\begin{definition}
-The general type-semantics is a relation $T \vdash D$ where:
-- $T$ is a type.
-- $D$ is a general descriptor.
-The relation holds if the type $T$ is valid with respect to the descriptor $D$.
-\end{definition}
-
-\subsection{Historical Variants}
-
-The historical variants of type-semantics are preserved as separate modules within the general type-semantics definition.
-
-1. **Classical 2-valued Morse-Kelley**: Implemented using the general type-semantics definition.
-2. **Hilbert 3-operator descriptors**: Implemented using the general descriptor definition.
-3. **Conglomerate subset semantics**: Implemented using the general type-semantics definition.
-4. **Farmer's PFOL $\iota$ definedness calculus**: Implemented using the general descriptor definition.
-5. **Classes-as-Types**: Implemented using the general type-semantics definition.
-
-\subsection{Compatibility}
-
-The general type-semantics is designed to be compatible with all historical variants. Each variant can be selected as a configuration parameter.
+\input{END.tex}

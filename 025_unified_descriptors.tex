@@ -1,28 +1,30 @@
-\def\topic{Unified Descriptors}
+\def\topic{[OUTDATED] Unified Descriptors}
+% Non-normative draft status: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 \input{BEGIN.tex}
-\section{Unified Descriptors}
+\section{[OUTDATED] Unified Descriptor Draft}
 
-This section defines a unified descriptor that incorporates all the historical variants of descriptors.
+\paragraph{Status.}
+This file is retained only as a non-normative historical draft. It does not
+define a descriptor semantics and is not part of the active kernel. The former
+idea of packing domains, choice operators, PFOL, and a type-semantics label
+into one tuple was withdrawn: such a tuple specifies neither truth,
+definedness, equality, nor translation laws.
 
-\subsection{General Descriptor Definition}
+\subsection{Preserved Descriptor Sources}
+The actual alternatives remain separate and intact:
+\begin{itemize}
+\item \texttt{020\_descriptors.tex} and \texttt{180\_many-valued.tex}
+  distinguish $\tau\ceq\tau^{\Un}$,
+  $\epsilon\ceq\tau^{\{\emptyclass\}}$, and the partial
+  $\varepsilon\ceq\tau^{\emptyclass}$;
+\item \texttt{210\_partial\_functions\_semantics.tex} uses PFOL
+  iota-definedness and Kleene equality;
+\item \texttt{030\_alternative\_semantics.tex} preserves the independent
+  conglomerate-valued assignment semantics.
+\end{itemize}
 
-A general descriptor is defined as a tuple that can handle all the different cases of descriptors.
+The active kernel instead uses total class-comprehension evaluation as
+documented in \texttt{presentation.ML} and \texttt{060\_axioms.tex}. No
+compatibility or conservativity claim between these systems is made here.
 
-\begin{definition}
-A general descriptor is a tuple $(D, \tau, \epsilon, \varepsilon, \iota, \text{Classes-as-Types})$ where:
-- $D$ is the domain of the descriptor.
-- $\tau$ is the Hilbert descriptor operator.
-- $\epsilon$ is the Hilbert epsilon operator.
-- $\varepsilon$ is the Hilbert epsilon operator with Kleene U value.
-- $\iota$ is the Farmer's PFOL definedness calculus operator.
-- Classes-as-Types is the early Classes-as-Types draft.
-\end{definition}
-
-\subsection{Historical Variants}
-
-The historical variants of descriptors are preserved as separate modules within the general descriptor definition.
-
-1. **Hilbert 3-operator descriptors**: Implemented using $\tau, \epsilon, \varepsilon$.
-2. **Conglomerate subset semantics**: Implemented using the general descriptor definition.
-3. **Farmer's PFOL $\iota$ definedness calculus**: Implemented using $\iota$.
-4. **Classes-as-Types**: Implemented using the Classes-as-Types module.
+\input{END.tex}

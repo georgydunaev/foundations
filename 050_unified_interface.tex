@@ -1,1 +1,39 @@
-\def\topic{Unified Interface}\n\input{BEGIN.tex}\n\section{Unified Interface for Foundational Approaches}\n\subsection{Primary Approach}\nThe primary active kernel approach is Classical 2-valued Morse-Kelley / NBG class theory with Dunaev Tagged Ordered Pairs.\n\subsection{Alternative Approaches}\n1. Hilbert's 3-operator descriptors with Kleene U value\n2. Conglomerate subset semantics\n3. Farmer's PFOL $\iota$ definedness calculus\n\subsection{Switching Between Approaches}\nUsers can switch between the primary approach and the alternative approaches by modifying the \\topic command in the relevant files.
+\def\topic{Foundational Approach Interface}
+% Navigation repair: opencode-go/kimi-k3.1-pro (Capability Tier 2).
+\input{BEGIN.tex}
+\section{Interface to the Foundational Approaches}
+
+\paragraph{Status.}
+This is a navigation interface, not a unified semantics. The active
+proof-compiler line combines classical two-valued Morse--Kelley/NBG class
+theory and Dunaev Tagged Ordered Pairs with predicates/formulas-as-types and
+classes-as-expressions.
+
+\subsection{Active Sources}
+\begin{itemize}
+\item \texttt{presentation.ML}, \texttt{060\_axioms.tex}, and
+  \texttt{070\_ordered\_pair.tex}: class theory, total comprehension
+  evaluation, and tagged pairs;
+\item \texttt{001\_foundations.tex} and \texttt{130\_classes\_as\_types.tex}:
+  the active type discipline and its explicitly marked historical drafts.
+\end{itemize}
+
+\subsection{Independent Alternatives}
+\begin{itemize}
+\item \texttt{020\_descriptors.tex} and \texttt{180\_many-valued.tex}:
+  the three-valued/uncertain descriptor calculus;
+\item \texttt{210\_partial\_functions\_semantics.tex}: Farmer's PFOL,
+  iota-definedness, and Kleene equality;
+\item \texttt{030\_alternative\_semantics.tex}: the preserved outdated
+  conglomerate-valued/subset semantics.
+\end{itemize}
+
+\subsection{No Semantic Switch}
+The alternatives are not configuration parameters of the active kernel.
+There is no general translation layer between them. In particular, changing
+\verb|\topic| changes only a document title; it does not change the logic,
+descriptor semantics, evaluation rule, or type discipline. See
+\texttt{summary\_of\_approaches.tex} for the reading order and
+\texttt{APPROACHES\_INVENTORY.md} for the preservation policy.
+
+\input{END.tex}
