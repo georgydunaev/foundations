@@ -74,6 +74,10 @@ The source's tagged pairing of classes uses complementary tags `1` and `0`:
 
 The reversed tag order for `B` is intentional in the original draft. Here `sss` is the source's semi-singleton-subset relation, introduced by `(s sss x) <-> (s C x) /\ (s ss)`.
 
+The Ticket 7436 audit confirms that the historical pseudo-code contains no Kuratowski encoding `{{A}, {A,B}}`. Its round-bracket pairing axioms occur under the explicit heading `# Ordered pair of sets` and have sethood quantifiers such as `forall (a, b sets)`; those axioms must not be extrapolated to proper classes. Arbitrary-class pairing instead uses the displayed Dunaev form `[A, B]`, and the family product uses `(x |-> [F(x),G(x)])`. Neither construction inserts a possibly proper class into an outer Kuratowski pair.
+
+The `(x,s)` graph pairs in `Lam` likewise do not pair `x` with the possibly proper class `t` directly: `t` is represented through its semi-singleton subsets `s`. This is a static audit of the preserved design sketch, not a new formal proof of the draft's pairing or projection axioms.
+
 ### Dunaev `Lam x.t`
 
 `Lam x.t` is a **big lambda** or class-family constructor, not merely an ordinary SML function `fn x => t`. Its graph presentation is

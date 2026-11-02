@@ -12,6 +12,10 @@
  * - Dunaev Lam x.t: Big lambda forming class-families/graphs, not SML functions
  * - Complexity weights (compl. = n): Provisional syntactic weights, not runtime costs
  *
+ * Ticket 7436 audit: arbitrary-class pairing uses Dunaev tags and semi-singleton
+ * subsets; no Kuratowski encoding of proper classes is introduced.
+ * Verified by opencode-go/kimi-k3.1-pro (Capability Tier 2).
+ *
 *)
 (*
  * File: presentation.ML
