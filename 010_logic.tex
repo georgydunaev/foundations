@@ -1741,8 +1741,15 @@ v
 \clabeltag{MetaGen}
 \]
 %\meta{x}
-It is interesting here, that if the variable is specialialised, then it is being substituted even in the place which is ``bound''. The explanation, is that occurences of type $X$ are being bound.
-How the clash of the varible names is avoided here?
+It is interesting here, that if the variable is specialised, then it is being substituted even in the place which is ``bound''. The explanation, is that occurrences of type $X$ are being bound.
+How is the clash of the variable names avoided here?
+\begin{remark}[Metatheoretic variables ($v_x, v_y, v_C, v_s$) vs.\ metatheoretic constants ($c_x, c_y, c_C$) and capture avoidance]
+In metalevel rules such as \eqref{MetaGen}, symbols $v, v_x, v_y, v_C, v_s : \Var$ are \emph{metatheoretic variables} universally quantified over the datatype $\Var$ of object-language variable identifiers, whereas fixed concrete variable identifiers (such as the literal identifier for ``$x$'') are \emph{metatheoretic constants} denoted $c_x, c_y, c_C : \Var$. Inside a quoted formula $\mquote{(\forall (\antiquote{v}:X),\,\mantiquote{\phi})}$, the antiquotation $\antiquote{v}$ splices the variable identifier denoted by $v$ into the binder position. Accidental variable capture (name clash) is prevented by decidable boolean side conditions evaluated on the syntax trees:
+\begin{enumerate}
+\item In \eqref{MetaGen}, the side condition $(v \notin \FV(\Gamma))$ (checked by $\mathrm{NFV}(v, \gamma) = \True$ for every $\gamma \in \Gamma$) guarantees that the generalized variable identifier $v$ does not occur free in any assumption of $\Gamma$.
+\item In universal instantiation and existential elimination, the decidable predicate $\mathrm{FFI}(t, v_x, \phi) = \True$ (``term expression $t$ is free for metavariable $v_x$ in $\phi$'') recursively verifies that no free variable identifier occurring in $t : \Class.\Expr$ becomes bound by an inner quantifier when $t$ is substituted for free occurrences of $v_x$ in $\phi : \Fm$.
+\end{enumerate}
+\end{remark}
 \end{definition}
 % DecFm := ((f:Class) |-> Dec (Fm, f))
 % DecFm | Class -> Fm

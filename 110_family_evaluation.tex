@@ -250,12 +250,17 @@ and in particular:
 %(q Class)
 \end{theorem}
 \Proof
-By definitions,
+By definition of family encoding $(\Lambda x,\ t) = \cc{(x, y)}{y \in t}$ and fiber evaluation $B(z) = \cc{y}{(z, y) \in B}$ (or equivalently via the semi-singleton value extraction operator $\mathrm{sss}(X) = \bigcup\cc{w}{(w \subseteq X) \land \mathrm{semi\_singleton}(w)}$ applied to the singleton fiber image), for any set $z$ and any element $q$:
 \[
-(\Lambda x,\ t)(z) =.
+q \in (\Lambda x,\ t)(z)
+\iff (z, q) \in (\Lambda x,\ t)
+\iff \exists x,\ ((z, q) = (x, y) \land y \in t).
 \]
-
-
+By injectivity of ordered pairs (Dunaev tagged pairs $[x, y]_D$ for classes, or set pairs for set arguments $z, q$), $(z, q) = (x, y)$ holds if and only if $(x = z) \land (y = q)$. Substituting $x \ceq z$ (under the capture-avoidance side condition $\mathrm{FFI}(z, v_x, y \in t)$) yields:
+\[
+q \in (\Lambda x,\ t)(z) \iff q \in t[z/x].
+\]
+By class extensionality, $((\Lambda x,\ t)(z) = t[z/x])$. Taking $z \ceq x$ where $t[x/x] = t$ immediately yields $((\Lambda x,\ t)(x) = t)$. (Machine-checked in Obelisk Variant~1 as \texttt{family\_eval\_thm\_entry} and Variant~2 as \texttt{thm\_82\_family\_value\_eval} / \texttt{family\_fiber\_char}.)
 \Done
 
 \subsection{Lambda operatorOLD}

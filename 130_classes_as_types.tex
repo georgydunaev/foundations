@@ -735,7 +735,19 @@ In every theorem of this section, it is assumed, that $(B\family)$.
 
 
 \subsubsection{Soundness of $\Sigma$--types}
-\dots
+\begin{theorem}[Soundness of $\Sigma B$ Formation, Introduction, Projections, and $\beta$/$\eta$ Rules]
+Let $B$ be a family of classes over domain $A = \Dom(B)$, and let
+\[
+\Sigma B \eqdef \cc{p}{\exists (x \in \Dom(B)),\ \exists (y \in B(x)),\ (p = (x, y))}.
+\]
+Then:
+\begin{enumerate}
+\item \textbf{Introduction (Pairing):} If $(x \in \Dom(B))$ and $(y \in B(x))$, then $((x, y) \in \Sigma B)$.
+\item \textbf{Elimination (Projections):} For every $(p \in \Sigma B)$, writing $p = (x, y)$ with $(x \in \Dom(B))$ and $(y \in B(x))$, ordered-pair injectivity yields $(\pr_1(p) = x \in \Dom(B))$ and $(\pr_2(p) = y \in B(\pr_1(p)))$.
+\item \textbf{$\beta$- and $\eta$-Computation:} $(\pr_1((x, y)) = x)$, $(\pr_2((x, y)) = y)$, and $(( \pr_1(p), \pr_2(p) ) = p)$ for all $(p \in \Sigma B)$.
+\end{enumerate}
+(Formalized in Obelisk Variant~1 as \texttt{sigma\_model\_def\_entry} (Item~3.70) and Variant~2 as \texttt{thm\_83\_sigma\_model\_proj} and \texttt{sigma\_dependent\_sum\_intro}.)
+\end{theorem}
 
 \subsubsection{Implementation of (small?) $\Sigma$--types}
 \underline{Formation of terms of $\Sigma$--type:}\\
@@ -1057,10 +1069,19 @@ Another definition:\\
 \end{lemma}
 \end{definition}
 \subsubsection{Soundness of $\Pi$--types}
-\dots
-% todo: prove some theorems about it
-%\begin{theorem}[?]
-%\end{theorem}
+\begin{theorem}[Soundness of $\Pi B$ Formation, Abstraction, Application, and $\beta$/$\eta$ Rules]
+Let $B$ be a family of classes over domain $A = \Dom(B)$, and let
+\[
+\Pi B = \cc{f \in \power \Sigma B}{(f\functional) \land (\dom(f) = \Dom(B)) \land (\forall (x \in \Dom(B)),\ (f(x) \in B(x)))}.
+\]
+Then:
+\begin{enumerate}
+\item \textbf{Introduction ($\lambda$-Abstraction):} If for every $(x \in \Dom(B))$ the term $t(x)$ is a set satisfying $(t(x) \in B(x))$, then the functional graph $(\lambda (x \in \Dom(B)),\, t(x)) = \cc{(x, t(x))}{x \in \Dom(B)}$ is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (x \in \Dom(B)),\, t(x)) \in \Pi B)$.
+\item \textbf{Elimination (Dependent Application):} If $(f \in \Pi B)$ and $(a \in \Dom(B))$, then the unique value $f(a) = \mathrm{sss}(\cc{y}{(a, y) \in f})$ satisfies $(f(a) \in B(a))$.
+\item \textbf{$\beta$- and $\eta$-Computation:} For all $(a \in \Dom(B))$, $(((\lambda (x \in \Dom(B)),\, t(x)))(a) = t(a))$, and for every $(f \in \Pi B)$, $((\lambda (x \in \Dom(B)),\, f(x)) = f)$ by functional extensionality.
+\end{enumerate}
+(Formalized in Obelisk Variant~1 as \texttt{pi\_predicate\_model\_def\_entry} (Item~3.71) and Variant~2 as \texttt{thm\_84\_pi\_model\_elim} and \texttt{pi\_dependent\_product\_elim}.)
+\end{theorem}
 \pagebreak
 \subsection{Implementing W--types}
 \subsubsection{Axioms of W--types}
