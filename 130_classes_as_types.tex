@@ -45,9 +45,9 @@ Is the following okey ???
 \underline{Formation of boolean type:}\\
 \underline{Introduction of terms of boolean type:}\\
 \underline{Elimination of terms of boolean type:}\\
-\begin{definition}[conditional operator if--then--else]
+\begin{definition}[conditional operator if--then--else / $\lifdep$]
 \[
-(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) \eqdef (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
+(\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2) \eqdef \lifdep(\varphi, t_1, t_2) \eqdef (\cc{z}{((z\in t_1)\land\varphi)\lor((z\in t_2)\land\neg\varphi)})
 \]
 Side conditions:\\
 ($z$ is not free in $t_1$),\\
@@ -55,6 +55,16 @@ Side conditions:\\
 ($z$ is not free in $\varphi$).\\
 \end{definition}
 \underline{Computation of terms of boolean type:}\\
+\begin{theorem}[$\lifdep$--true--elim]
+\[
+(\varphi \implies (\lifdep(\varphi, t_1, t_2) = t_1))
+\]
+\end{theorem}
+\begin{theorem}[$\lifdep$--false--elim]
+\[
+((\neg\varphi) \implies (\lifdep(\varphi, t_1, t_2) = t_2))
+\]
+\end{theorem}
 
 \subsubsection{Soundness of boolean type}
 
