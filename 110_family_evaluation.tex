@@ -250,11 +250,11 @@ and in particular:
 %(q Class)
 \end{theorem}
 \Proof
-By definition of family encoding $(\Lambda x,\ t) = \cc{(x, y)}{y \in t}$ and fiber evaluation $B(z) = \cc{y}{(z, y) \in B}$ (or equivalently via the semi-singleton value extraction operator $\mathrm{sss}(X) = \bigcup\cc{w}{(w \subseteq X) \land \mathrm{semi\_singleton}(w)}$ applied to the singleton fiber image), for any set $z$ and any element $q$:
+By definition of family encoding $(\Lambda x,\ t) = \cc{(x, y)}{y \in t}$ and fiber evaluation $B(z) = \cc{y}{(z, y) \in B}$ (or equivalently via the semi-singleton value extraction operator $\mathrm{Value}(X) = \bigcup\cc{w}{(w\ \mathrm{sss}\ X)}$ where $(w\ \mathrm{sss}\ X) \iff ((w \subseteq X) \land \mathrm{semi\_singleton}(w))$ applied to the singleton fiber image), for any set $z$ and any element $q$:
 \[
 q \in (\Lambda x,\ t)(z)
 \iff (z, q) \in (\Lambda x,\ t)
-\iff \exists x,\ ((z, q) = (x, y) \land y \in t).
+\iff \exists x\ \exists y,\ ((z, q) = (x, y) \land y \in t).
 \]
 By injectivity of ordered pairs (Dunaev tagged pairs $[x, y]_D$ for classes, or set pairs for set arguments $z, q$), $(z, q) = (x, y)$ holds if and only if $(x = z) \land (y = q)$. Substituting $x \ceq z$ (under the capture-avoidance side condition $\mathrm{FFI}(z, v_x, y \in t)$) yields:
 \[

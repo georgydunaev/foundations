@@ -1087,7 +1087,7 @@ Let $B$ be a family of classes over domain $A = \Dom(B)$, and let
 Then:
 \begin{enumerate}
 \item \textbf{Introduction ($\lambda$-Abstraction):} If for every $(x \in \Dom(B))$ the term $t(x)$ is a set satisfying $(t(x) \in B(x))$, then the functional graph $(\lambda (x \in \Dom(B)),\, t(x)) = \cc{(x, t(x))}{x \in \Dom(B)}$ is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (x \in \Dom(B)),\, t(x)) \in \Pi B)$.
-\item \textbf{Elimination (Dependent Application):} If $(f \in \Pi B)$ and $(a \in \Dom(B))$, then the unique value $f(a) = \mathrm{sss}(\cc{y}{(a, y) \in f})$ satisfies $(f(a) \in B(a))$.
+\item \textbf{Elimination (Dependent Application):} If $(f \in \Pi B)$ and $(a \in \Dom(B))$, then the unique value $f(a) = \mathrm{Value}(\cc{y}{(a, y) \in f}) = \bigcup\cc{s}{(s\ \mathrm{sss}\ \cc{y}{(a, y) \in f})}$ satisfies $(f(a) \in B(a))$.
 \item \textbf{$\beta$- and $\eta$-Computation:} For all $(a \in \Dom(B))$, $(((\lambda (x \in \Dom(B)),\, t(x)))(a) = t(a))$, and for every $(f \in \Pi B)$, $((\lambda (x \in \Dom(B)),\, f(x)) = f)$ by functional extensionality.
 \end{enumerate}
 (Formalized in Obelisk Variant~1 as \texttt{pi\_predicate\_model\_def\_entry} (Item~3.71) and Variant~2 as \texttt{thm\_84\_pi\_model\_elim} and \texttt{pi\_dependent\_product\_elim}.)
