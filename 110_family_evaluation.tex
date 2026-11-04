@@ -250,13 +250,13 @@ and in particular:
 %(q Class)
 \end{theorem}
 \Proof
-By definition of family encoding $(\Lambda x,\ t) = \cc{(x, y)}{y \in t}$ and fiber evaluation $B(z) = \cc{y}{(z, y) \in B}$ (or equivalently via the semi-singleton value extraction operator $\mathrm{Value}(X) = \bigcup\cc{w}{(w\ \mathrm{sss}\ X)}$ where $(w\ \mathrm{sss}\ X) \iff ((w \subseteq X) \land \mathrm{semi\_singleton}(w))$ applied to the singleton fiber image), for any set $z$ and any element $q$:
+By definition of family encoding $(\Lambda x,\ t) = \cc{(x, s)}{s\ \mbox{sss}\ t}$ and fiber evaluation $F(z) = \bigcup\cc{s}{(z, s) \in F}$ where $(s\ \mbox{sss}\ A) \iff ((s \subseteq A) \land \mathrm{semi\_singleton}(s))$ (noting that $\bigcup\cc{s}{s\ \mbox{sss}\ A} = A$ reconstructs the fiber class $A$ from its semi-singleton subclasses $\emptyset$ and $\{q\}$ for $q \in A$, whereas extracting the unique element $a$ from a singleton fiber $X = \{a\}$ uses unary intersection $\mathrm{Value}(X) = \bigcap\cc{y \in X}{\mathrm{semi\_singleton}(X)}$ so that $\mathrm{Value}(\{a\}) = \bigcap\{a\} = a$), for any set $z$ and any element $q$:
 \[
 q \in (\Lambda x,\ t)(z)
-\iff (z, q) \in (\Lambda x,\ t)
-\iff \exists x\ \exists y,\ ((z, q) = (x, y) \land y \in t).
+\iff q \in \bigcup\cc{s}{(z, s) \in (\Lambda x,\ t)}
+\iff \exists s,\ (q \in s \land (z, s) \in (\Lambda x,\ t)).
 \]
-By injectivity of ordered pairs (Dunaev tagged pairs $[x, y]_D$ for classes, or set pairs for set arguments $z, q$), $(z, q) = (x, y)$ holds if and only if $(x = z) \land (y = q)$. Substituting $x \ceq z$ (under the capture-avoidance side condition $\mathrm{FFI}(z, v_x, y \in t)$) yields:
+By pair injectivity and the comprehension $(\Lambda x,\ t) = \cc{(x, s)}{s\ \mbox{sss}\ t}$ (under capture-avoidance $\mathrm{FFI}(z, v_x, (s\ \mbox{sss}\ t))$), $(z, s) \in (\Lambda x,\ t)$ holds if and only if $s$ is a set satisfying $(s\ \mbox{sss}\ t[z/x])$. If $q \in s$ and $s \subseteq t[z/x]$, then $q \in t[z/x]$; conversely, if $q \in t[z/x]$, then $q$ is a set and $s \ceq \{q\}$ is a semi-singleton subclass of $t[z/x]$ with $q \in \{q\}$. Thus:
 \[
 q \in (\Lambda x,\ t)(z) \iff q \in t[z/x].
 \]
