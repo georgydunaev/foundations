@@ -51,3 +51,18 @@ The file defines the equality relation with the `eq` function and provides axiom
 ### Propositional Logic
 
 The file defines the propositional logic operators `False`, `conj`, `disj`, and `imp` with their respective axioms and inference rules.
+
+## Obelisk Proof Assistant Cross-Reference (`set_theory_prover`)
+
+The active Morse–Kelley / NBG formulations in `110_family_evaluation.tex`, `130_classes_as_types.tex`, and `190_union_intersection.tex` are mechanized in both variants of `set_theory_prover` (105 exported 1st-order kernel entries in `program/types/foundations.ML`, 100/100 verified higher-order records in `program/verified_theorems.ML`, and 35/35 compiled `.nbg` theorems in `examples/nbg_verified_programs.nbg`):
+
+| `foundations` Chapter | Mathematical Concept | Catalog Entry | 1st-Order Kernel (`foundations.ML`) | Higher-Order (`verified_theorems.ML` & `.nbg`) |
+| :--- | :--- | :--- | :--- | :--- |
+| `110_family_evaluation.tex` | Semi-Singleton Subsets (`isSSS`) | `3.67` | `isSSS_def_entry` (`3.35`) | `thm_81_semi_singleton_sub_char`, `semi_singleton_subset_uniqueness` |
+| `110_family_evaluation.tex` | Class Family (`isFamily`) | `3.68` | `isFamily_def_entry` (`3.36`) | `thm_82_family_value_eval` |
+| `110_family_evaluation.tex` | Family Evaluation (`F(x)`) | `3.69` | `family_eval_def_entry` (`3.37`) | `thm_82_family_value_eval` |
+| `130_classes_as_types.tex` | Dependent Sum Model ($\Sigma B$) | `3.70` | `sigma_model_def_entry` (`3.38`) | `thm_83_sigma_model_proj`, `sigma_dependent_sum_intro` |
+| `130_classes_as_types.tex` | Dependent Product Models ($\Pi B$) | `3.71` | `pi_predicate_model_def_entry` (`3.39`) | `thm_84_pi_model_elim`, `pi_dependent_product_elim` |
+| `190_union_intersection.tex` | Subclass Antisymmetry | `3.72` | `A02_extensionality_axm` (`3.02`) | `thm_96_subset_antisym`, `thm_95_emptyset_subset_all` |
+| `190_union_intersection.tex` | Singleton & Intersection Inclusions | `3.73` | `binary_inter_def_entry` (`3.18`) | `thm_91`–`thm_94`, `inter_sub_union`, `singleton_sub_upair_left` |
+| `140_setness.tex` | Universal Subclass Criterion & $\mathcal{P}(\omega) \in \mathrm{V}$ | `3.74` | `universal_class_def_entry` (`3.05`) | `thm_97`–`thm_100`, `inter_sub_both` |

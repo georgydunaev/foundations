@@ -124,6 +124,16 @@ class TestApproachDocumentation(unittest.TestCase):
         self.assertIn("*(Preserved Alternative 4)*", content)
         self.assertIn("**[OUTDATED] Preserved Alternative 5**", content)
 
+    def test_mechanized_experiments_cross_references_obelisk_catalog(self):
+        content = read("MECHANIZED_EXPERIMENTS.md")
+        self.assertIn("110_family_evaluation.tex", content)
+        self.assertIn("130_classes_as_types.tex", content)
+        self.assertIn("3.67", content)
+        self.assertIn("3.71", content)
+        self.assertIn("3.74", content)
+        self.assertIn("100/100", content)
+        self.assertIn("35/35", content)
+
 
 if __name__ == "__main__":
     unittest.main()
