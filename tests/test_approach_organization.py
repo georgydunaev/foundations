@@ -134,6 +134,18 @@ class TestApproachDocumentation(unittest.TestCase):
         self.assertIn("100/100", content)
         self.assertIn("35/35", content)
 
+    def test_explicit_typed_term_interpretation_mu_and_four_theory_hierarchy(self):
+        classes_tex = read("130_classes_as_types.tex")
+        self.assertIn(r"\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression}", classes_tex)
+        self.assertIn("explicit typed term interpretation", classes_tex)
+        self.assertIn("valuation homomorphism", classes_tex)
+
+        mech_md = read("MECHANIZED_EXPERIMENTS.md")
+        self.assertIn(r"\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression}", mech_md)
+        self.assertIn(r"\mathcal{W}, \mathcal{E}, \mathcal{T}, \mathcal{F}", mech_md)
+        self.assertIn("Bezboruah & Shepherdson 1976", mech_md)
+        self.assertIn("Co-Necessitation", mech_md)
+
 
 if __name__ == "__main__":
     unittest.main()

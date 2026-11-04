@@ -66,3 +66,17 @@ The active Morse–Kelley / NBG formulations in `110_family_evaluation.tex`, `13
 | `190_union_intersection.tex` | Subclass Antisymmetry | `3.72` | `A02_extensionality_axm` (`3.02`) | `thm_96_subset_antisym`, `thm_95_emptyset_subset_all` |
 | `190_union_intersection.tex` | Singleton & Intersection Inclusions | `3.73` | `binary_inter_def_entry` (`3.18`) | `thm_91`–`thm_94`, `inter_sub_union`, `singleton_sub_upair_left` |
 | `140_setness.tex` | Universal Subclass Criterion & $\mathcal{P}(\omega) \in \mathrm{V}$ | `3.74` | `universal_class_def_entry` (`3.05`) | `thm_97`–`thm_100`, `inter_sub_both` |
+
+### Explicit Typed Term Interpretation ($\mu_A$ / $I$)
+
+In `130_classes_as_types.tex` and the Obelisk kernel (`program/types/typetheory.ML`, `program/Presentation.ML`), the operator $\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression}$ (written $I(a)$ or $\mu_A(a)$ in `130_classes_as_types.tex` and `\mu_A` in SML) denotes the **explicit typed term interpretation** (valuation homomorphism; cf. Tarski 1936, Enderton 2001 §2.2, Jacobs 1999) under a fixed (unspecified) background model and a fixed (unspecified) variable valuation, rather than the collection of all models.
+
+### Four-Theory Metatheoretic Hierarchy ($\mathcal{W}, \mathcal{E}, \mathcal{T}, \mathcal{F}$)
+
+The metatheoretic layer (`3.72`–`3.73`, `4.03`, `5.01`–`5.03` in `program/types/foundations.ML` and `program/demo_newchecker.ML`) is stratified into four theories:
+
+1. $\mathcal{W}$ (`\mathcal{W}`): weakest syntactic base theory.
+2. $\mathcal{E} \in \{I\Sigma_1, \mathcal{T}, \mathrm{NBG}, \mathrm{MK}\}$ (`\mathcal{E}`, `sEau`): elementary metatheory extending $I\Sigma_1$ used in Löb's theorem (`5.01`) and Gödel's second incompleteness theorem (`5.02`). Robinson's arithmetic $Q$ is intentionally excluded because $Q$ lacks the $\Sigma_1$-induction needed to verify the third Hilbert–Bernays–Löb derivability condition D3 ($\vdash_{\mathcal{E}} \Box_{\mathcal{T}}\varphi \to \Box_{\mathcal{T}}\Box_{\mathcal{T}}\varphi$) and to make Gödel's second incompleteness theorem meaningful (Hájek & Pudlák 1993, *Metamathematics of First-Order Arithmetic*, Ch. I & III; Bezboruah & Shepherdson 1976, *JSL* 41(2):503–512; Boolos 1993, *The Logic of Provability*, Ch. 2).
+3. $\mathcal{T}$ (`\mathcal{T}`, `sTau`): recursively enumerable (r.e.) base object theory (NBG/MK).
+4. $\mathcal{F}$ (`\mathcal{F}`, `sFau`): **non-r.e.** sound Henkin-complete extension of $\mathcal{T}$ (`3.72` Completeness $(\vdash_{\mathcal{F}}\neg\varphi)\lor(\vdash_{\mathcal{F}}\varphi)$, `3.73` Soundness $(\vdash_{\mathcal{F}}\varphi)\implies\varphi$), for which the Co-Necessitation meta-inference (`4.03`, $\varphi \vdash \Box_{\mathcal{F}}\varphi$) is justified by Soundness (`3.73`).
+

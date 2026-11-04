@@ -22,6 +22,14 @@ OUTDATED:
 (\Lambda x,\ t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
 \]
 
+\subsection{Explicit typed term interpretation ($\mu_A$ / $I$)}
+Throughout this chapter, the background model of the class theory (NBG/MK) is fixed (though unspecified), and the valuation of free variables is likewise fixed (though unspecified).
+Rather than ranging over the class of all models, the interpretation map $\mu_A$ (written $I(a)$ or $\mu_A(a)$ below, and rendered as \texttt{\textbackslash mu\_A} in the Obelisk SML kernel \texttt{typetheory.ML}) is an \emph{explicit typed term interpretation} (or \emph{valuation homomorphism}; cf.\ Tarski 1936, Enderton 2001 \S2.2, Jacobs 1999):
+\[
+\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression},
+\]
+which transforms any typed expression $a : A$ into an untyped expression $\mu_A(a) \equiv I(a)$ of sort $\mathsf{Class}$ while respecting the fixed variable valuation.
+
 \subsection{Storage [unfinished]}
 Only finite objects can be stored in computer's memory.\\
 Functions are stored as an ordered pairs ``variable'' and ``term''.\\
