@@ -1,15 +1,31 @@
-% 100_class_theory.tex -- Class Theory Overview.
-% Ticket 7335: cosmetic cleanup (typography, normalized blank-line spacing,
-% consistent section formatting). Content is semantically unchanged.
-% Author: opencode-go/glm-5.3-flash (Capability Tier 2)
+% 100_class_theory.tex -- Class Theory Overview & Morse-Kelley Comprehension / Separation.
+% Tickets 7335 & 7454: Rigorous Morse-Kelley class comprehension schema, sethood
+% distinction, and class separation principles (audited by Claude Opus 4.6).
 \section{Class Theory Overview}
+\label{sec:class_theory_overview}
 
-This section provides an overview of class theory, including definitions, axioms, and fundamental concepts. It serves as a foundational reference for understanding the structure and properties of classes in set theory.
+This section summarizes the foundational concepts of Morse--Kelley (MK) and von Neumann--Bernays--G\"odel (NBG) class theory used throughout the book, bridging the axiomatic kernel of Section~\ref{sec:axioms} (`060_axioms.tex`) with family evaluation (`110_family_evaluation.tex`), sethood (`140_setness.tex`), and union/intersection (`190_union_intersection.tex`).
 
-\subsection{Definitions}
+\subsection{Classes, Sets, and Proper Classes}
+\label{subsec:classes_sets_proper}
 
-In class theory, a class is a collection of sets that is too large to be considered a set. Classes are often defined using a property that their members satisfy. For example, the class of all sets is a proper class, as it is too large to be a set.
+Every mathematical object in the first-order discourse is a \emph{class}. The universal class of all sets is defined by
+\[
+V \eqdef \cc{x}{\top}.
+\]
+A class $x$ is a \emph{set} if and only if it belongs to some class ($x \in V \iff \exists Y,\ x \in Y$). Every set is a class; a \emph{proper class} is a class $X$ that is not a set ($X \notin V$). Consequently, only sets can appear on the left-hand side of membership ($z \in X \implies z \in V$).
 
-\subsection{Axioms}
+\subsection{Morse--Kelley Class Comprehension and Separation}
+\label{subsec:mk_comprehension_separation}
 
-Class theory is based on a set of axioms that define the properties of classes and sets. The most common axioms in class theory include the Axiom of Extensionality, the Axiom of Regularity, and the Axiom of Choice.
+For any formula $\phi(x)$ (which in full Morse--Kelley may quantify over arbitrary class variables, and in Stage~I predicative NBG quantifies only over set variables $y \in V$), the class comprehension term $\cc{x}{\phi(x)}$ satisfies the comprehension equivalence:
+\[
+\forall z,\quad z \in \cc{x}{\phi(x)} \iff (z \in V) \land \phi(z).
+\]
+Notice the mandatory sethood guard $z \in V$: substituting the Russell class $R \eqdef \cc{x}{x \notin x}$ yields $R \in R \iff (R \in V) \land (R \notin R)$, which proves $\lnot(R \in V)$ (i.e., $R$ is a proper class) rather than a contradiction.
+
+Given any set $a \in V$ and any class $P$ (or formula $\phi$), the \emph{Separation Principle} (Subsets / Intersection with a Set) states that the intersection
+\[
+a \cap P = \cc{x \in a}{x \in P} = \cc{x}{(x \in a) \land (x \in P)}
+\]
+is again a set: $(a \in V) \implies (a \cap P \in V)$. In Morse--Kelley class theory, Separation follows from Limitation of Size (`090_proving_limitation_of_size.tex`) since $a \cap P \subseteq a$ and $|a \cap P| \le |a| < |V|$.

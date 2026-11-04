@@ -329,6 +329,7 @@ not modified; this file is documentation only.
 | `\lfi` | Foundations preamble macro / notation |
 | `\lforall` | Foundations preamble macro / notation |
 | `\lif` | Foundations preamble macro / notation |
+| `\lifdep` | Foundations preamble macro / notation |
 | `\linear` | Foundations preamble macro / notation |
 | `\linenumberfont` | Foundations preamble macro / notation |
 | `\linvalid` | Foundations preamble macro / notation |
