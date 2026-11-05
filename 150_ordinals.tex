@@ -1196,6 +1196,17 @@ Fix $(a\in X)$. Fix $(b\in (\bigcap X))$. To show: $(b\in a)$.\\
 
 \section{Various induction and recursion principles}
 \subsection{Induction principles}
+\begin{note}[successor--inductive (Peano--inductive) classes and $\omega$ as the $\subseteq$--minimal successor--inductive class]
+Because several distinct induction principles appear in class theory (countable Peano successor--induction, transfinite $\in$--induction on ordinals, and $\power$--induction on well--founded sets), the predicate $\mathrm{Ind}(X)$ (Entry 3.55 in the Obelisk catalog) uses ``inductive'' in its narrowest possible sense, namely \textbf{successor--inductive} (or \textbf{Peano--inductive} / $0$--successor--closed):
+\[
+\mathrm{Ind}(X) \iffdef (\emptyclass \in X) \land (\forall (a:\Class),\ (a \in X) \implies ((a \cup \{a\}) \in X)).
+\]
+By its definition $\forall (x:\Class),\ (x \in \omega) \iff (\forall (Q:\Class),\ \mathrm{Ind}(Q) \implies (x \in Q))$ (Entry 3.56) together with $\mathrm{Ind}(\omega)$ (Entry 3.59), $\omega$ is not only the smallest successor--inductive ordinal, but also the \textbf{$\subseteq$--minimal (least) element among all successor--inductive classes in the subclass ($\subseteq$) order}:
+\[
+\mathrm{Ind}(\omega) \land \forall (Q:\Class),\ \mathrm{Ind}(Q) \implies (\omega \subseteq Q),
+\]
+which directly expresses simple countable mathematical (Peano) induction up to $\omega$.
+\end{note}
 \begin{corollary}[induction on a transitive and well--founded by membership relation class]
 \[
 (\Tr(K))

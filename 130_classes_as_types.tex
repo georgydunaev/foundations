@@ -30,6 +30,20 @@ Rather than ranging over the class of all models, the interpretation map $\mu_A$
 \]
 which transforms any typed expression $a : A$ into an untyped expression $\mu_A(a) \equiv I(a)$ of sort $\mathsf{Class}$ while respecting the fixed variable valuation.
 
+\begin{note}[advanced semantic setting: terms as classes, conglomerates (= predicates on classes) as types]
+Unlike the standard set-theoretic setting where terms are interpreted as sets and classes are interpreted as types, we work in a one-level-higher setting:
+\begin{enumerate}
+\item \textbf{Terms are interpreted as classes} (which may be either sets or proper classes such as $\V$ and $\On$).
+\item \textbf{Types are interpreted as conglomerates}, which we use interchangeably with \textbf{predicates on the conglomerate of all classes} ($\Class \to \Bool$). In particular, the type $\Class$ is the constant-true predicate on classes $\lambda (C:\Class).\ \top$ (informally, a constant conglomerate-function to $\Bool$, representing the conglomerate of all classes).
+\item \textbf{$\Class$ is the default type}: it is implicitly assumed whenever a quantifier or comprehension omits an explicit type ($\forall x,\ \varphi(x) :\equiv \forall (x:\Class),\ \varphi(x)$) and in \textbf{bound (bounded) quantifiers}:
+\[
+\forall (x\in Y),\ \varphi(x) \iffdef \forall (x:\Class),\ (x\in Y)\implies \varphi(x),
+\qquad
+\exists (x\in Y),\ \varphi(x) \iffdef \exists (x:\Class),\ (x\in Y)\land \varphi(x).
+\]
+\end{enumerate}
+\end{note}
+
 \subsection{Storage [unfinished]}
 Only finite objects can be stored in computer's memory.\\
 Functions are stored as an ordered pairs ``variable'' and ``term''.\\

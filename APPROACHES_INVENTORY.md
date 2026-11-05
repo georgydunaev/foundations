@@ -21,18 +21,27 @@ translation between their semantics is claimed.
 **Sources:** `presentation.ML`, `060_axioms.tex`, and `070_ordered_pair.tex`.
 
 - Class comprehension is impredicative in MK; NBG fragments retain their usual
-  predicative restriction that bound quantifiers range over sets.
+  predicative restriction that quantified variables inside comprehension formulas
+  range over sets (`Set`), whereas in MK quantified variables default to `Class`
+  (and bound quantifiers `\forall(x \in Y), \varphi(x)` / `\exists(x \in Y), \varphi(x)`
+  are short forms for `\forall(x:Class), (x \in Y) \rightarrow \varphi(x)` and
+  `\exists(x:Class), (x \in Y) \land \varphi(x)`).
 - Family evaluation is total by comprehension:
   `F(x) := union {s | (x,s) in F}`.
 - The outer ordered pair of arbitrary classes is the Dunaev tagged pair
   `(a,b) = ({0} × a) ∪ ({1} × b)`, not a Kuratowski pair of proper classes.
 
-## 2. Predicates/Formulas-as-Types, Classes-as-Expressions
+## 2. Conglomerates (Predicates on Classes) as Types, Classes as Term Interpretations
 
 **Status:** active mainline, with explicitly retained historical drafts.
 
 **Sources:** `001_foundations.tex` and `130_classes_as_types.tex`.
 
+- Unlike standard settings where terms are interpreted as sets and classes are
+  interpreted as types, here **terms are interpreted as classes** and
+  **conglomerates (= predicates on the conglomerate of all classes, `Class -> Bool`)
+  are interpreted as types**. In particular, the default type `Class` is the
+  constant-true predicate on classes `\lambda(C:Class). \top`.
 - Formulas and predicates play the role of types; proofs are terms.
 - Class expressions are syntax. An SML value representing a class expression
   is not itself a class in the object theory.
