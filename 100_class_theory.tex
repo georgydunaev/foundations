@@ -18,7 +18,7 @@ A class $x$ is a \emph{set} if and only if it belongs to some class ($x \in V \i
 \subsection{Morse--Kelley Class Comprehension and Separation}
 \label{subsec:mk_comprehension_separation}
 
-For any formula $\phi(x)$ (which in full Morse--Kelley may quantify over arbitrary class variables, and in Stage~I predicative NBG quantifies only over set variables $y \in V$), the class comprehension term $\cc{x}{\phi(x)}$ satisfies the comprehension equivalence:
+For any formula $\phi(x)$ (where every bound variable $x$ is a \emph{class variable} of default type $\mathsf{Class}$; in full Morse--Kelley $\phi(x)$ may contain unrestricted class binders, whereas in Stage~I predicative NBG internal binders in $\phi(x)$ are restricted/bounded class binders $\forall (y \in C),\ \dots \equiv \forall (y:\mathsf{Class}),\ (y \in C) \to \dots$, and class comprehension is \emph{never} altered to use a ``$\mathsf{Set}$'' variable type), the class comprehension term $\cc{x}{\phi(x)}$ satisfies the comprehension equivalence:
 \[
 \forall z,\quad z \in \cc{x}{\phi(x)} \iff (z \in V) \land \phi(z).
 \]
@@ -29,3 +29,19 @@ Given any set $a \in V$ and any class $P$ (or formula $\phi$), the \emph{Separat
 a \cap P = \cc{x \in a}{x \in P} = \cc{x}{(x \in a) \land (x \in P)}
 \]
 is again a set: $(a \in V) \implies (a \cap P \in V)$. In Morse--Kelley class theory, Separation follows from Limitation of Size (`090_proving_limitation_of_size.tex`) since $a \cap P \subseteq a$ and $|a \cap P| \le |a| < |V|$.
+
+\subsection{Binders: Quantifiers, Class Comprehension, and Descriptors}
+\label{subsec:binders_overview}
+
+Throughout this book (`010_logic.tex`, `020_descriptors.tex`, `060_axioms.tex`), variable-binding syntactic constructs are referred to collectively as \emph{binders} (or \emph{variable-binding operators}) rather than merely ``quantifiers,'' since the language includes both formula-valued and term-valued binders whose bound variable defaults to $\mathsf{Class}$:
+\begin{enumerate}
+  \item \textbf{Formula-Valued Logical Quantifiers}: universal ($\forall x,\ \phi(x)$), existential ($\exists x,\ \phi(x)$), uniqueness ($\exists! x,\ \phi(x)$ and $!x,\ \phi(x)$), and bounded quantifiers ($\forall (x \in Y),\ \phi(x)$ and $\exists (x \in Y),\ \phi(x)$).
+  \item \textbf{Class Comprehension Binder ($\kappa$-binder)}: $\cc{x}{\phi(x)}$ (and generalized comprehension $\ccc{\vec{x}}{t(\vec{x})}{\phi(\vec{x})}$), binding a class variable $x:\mathsf{Class}$ to form a class term.
+  \item \textbf{Definite Description ($\iota$-binder)}: $\iota x,\ \phi(x)$, denoting the unique class satisfying $\phi(x)$ when $\exists! x,\ \phi(x)$ holds (and defaulting to $\emptyset$ otherwise).
+  \item \textbf{Indefinite Description / Choice Descriptors ($\tau$-, $\epsilon$-, $\varepsilon$-binders, Section~\ref{sec:descriptors} / \texttt{020\_descriptors.tex})}:
+    \begin{itemize}
+      \item $\tau x,\ \phi(x) \eqdef \tau^{\mathrm{Un}} x,\ \phi(x)$ (Bourbaki's $\tau$-operator with universal class fallback),
+      \item $\epsilon x,\ \phi(x) \eqdef \tau^{\exists!}_{\emptyset} x,\ \phi(x)$ (unique-existence descriptor with $\emptyset$ fallback),
+      \item $\varepsilon x,\ \phi(x) \eqdef \tau^{\emptyset} x,\ \phi(x)$ (Hilbert's $\varepsilon$-operator with $\emptyset$ fallback).
+    \end{itemize}
+\end{enumerate}
