@@ -31,13 +31,14 @@ translation between their semantics is claimed.
 - The outer ordered pair of arbitrary classes is the Dunaev tagged pair
   `(a,b) = ({0} × a) ∪ ({1} × b)`, not a Kuratowski pair of proper classes.
 
-## 2. Conglomerates (Predicates on Classes) as Types, Classes as Term Interpretations
+## 2. Predicates/Formulas-as-Types, Classes-as-Expressions
 
 **Status:** active mainline, with explicitly retained historical drafts.
 
 **Sources:** `001_foundations.tex` and `130_classes_as_types.tex`.
 
-- Unlike standard settings where terms are interpreted as sets and classes are
+- The active type discipline is **Predicates/Formulas-as-Types, Classes-as-Expressions**:
+  unlike standard settings where terms are interpreted as sets and classes are
   interpreted as types, here **terms are interpreted as classes** and
   **conglomerates (= predicates on the conglomerate of all classes, `Class -> Bool`)
   are interpreted as types**. In particular, the default type `Class` is the
