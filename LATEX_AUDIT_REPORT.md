@@ -13,10 +13,10 @@ book.
 
 The current verification checkpoint covers the extended mathematical pass:
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran 90 tests: 89 passed
-  and one was skipped because Poly/ML is unavailable for the SML syntax
-  check. These are repository regression checks, not a formal verification
-  of the mathematics.
+- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran 90 tests, all passing.
+  A temporary Poly/ML 5.7.1 installation enabled the previously skipped
+  SML syntax check. These are repository regression checks, not a formal
+  verification of the mathematics or an executable proof-kernel audit.
 - `git diff --check` reported no whitespace errors.
 - A supplemental source scan found balanced active braces and environments
   in the 41 numbered body files. The scan strips comments, listings, and
@@ -102,6 +102,14 @@ ticket is a proposed theorem development, not a contradiction report:
 | Fresh binders in uniqueness expansions | [Binder hygiene](tickets/obelisk_uniqueness_binder_hygiene.md) |
 | Finite class-list representation and transport development | [Class-list transport](tickets/obelisk_class_lists_transport.md) |
 | Incompatible zero-base ordinal exponentiation claims | [Ordinal arithmetic zero cases](tickets/obelisk_ordinal_arithmetic_zero_cases.md) |
+| Hartogs comparison and Cantor proof scope | [Hartogs and Cantor](tickets/obelisk_hartogs_formula_and_cantor_scope.md) |
+| Proper-class fixed points versus powerclass members | [Fixed-point carrier](tickets/obelisk_class_fixed_point_carrier.md) |
+| Cardinal defaults versus actual class bijections | [Size-axiom scope](tickets/obelisk_size_axiom_cardinal_default.md) |
+| Missing sethood in the universe-axiom summary | [Universe sethood](tickets/obelisk_tarski_universe_sethood.md) |
+| Set versus class well-ordering and choice | [Well-ordering guards](tickets/obelisk_well_ordering_set_guards.md) |
+| Quotation and semantic interpretation signatures | [Quotation signatures](tickets/obelisk_quotation_semantic_signatures.md) |
+| Noncomputational constants versus normalization | [Normalization claims](tickets/obelisk_noncomputational_normalization_claims.md) |
+| Context freshness in quantifier rules | [Quantifier contexts](tickets/obelisk_logic_context_freshness.md) |
 
 The inspected site snapshot is commit
 `bb346f112ae91d1649940068c7f210a53b8674bf` in
@@ -128,6 +136,9 @@ Hilbert-ball weak compactness, proper ultrafilters and the compact product
 theorem rather than assuming that weak topologies are metrizable.
 Density constraints are weakly closed, and bounded expectations attain
 their extrema on nonempty dominated families with bounded moment constraints.
+The complex-valued finite-measure criterion follows by a proved realification
+and weak-product-topology argument; no real representation theorem is simply
+relabelled as complex.
 
 Further completed developments include finite and hereditarily finite
 countermodels for the minimal axioms, Hartogs and Mostowski theorems,
@@ -184,8 +195,9 @@ Some sections remain research sketches or incomplete model constructions.
 The proved predicate/storage interface does not supply a uniform model for
 every proposed dependent constructor. The serial-reflection hierarchy and
 extensions beyond the explicitly proved operational calculus likewise retain
-separate obligations. The intended Alexandrov and Strang statements have not been
-identified; their headings do not assert an arbitrarily chosen theorem.
+separate obligations. With the author's approval, the Alexandrov section
+now develops the topology–preorder correspondence, and the unspecified
+Strang placeholder is excluded from the assembled book.
 The external companion manuscript remains unavailable. These limits are
 stated locally, and the revised mathematics has not been kernel-verified.
 Further development is therefore needed for a complete publication edition.
@@ -214,3 +226,9 @@ confluence, canonicity and conservativity for the original calculus.
 Measurability prerequisites and quotient representative-choice assumptions
 are stated explicitly. The compact-unit-ball converse now uses a finite net
 and Riesz's lemma, avoiding a dependent-choice sequence construction.
+Filter-base generation is proved with the author's recovered-carrier
+convention and the empty-filter exception retained. Ordinal addition now
+has its own recursion proof, and the identities involving omega explicitly
+use Infinity. A transitive-set-hull argument supplies the bridge from
+set regularity to minimal elements of nonempty classes under its stated
+closure assumptions.

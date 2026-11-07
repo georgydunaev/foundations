@@ -135,6 +135,51 @@ Both $p$ and $\neg p$ vary, yet $p\lor\neg p$ is always true whereas
 $p\lor p$ still varies. A summary recording only ``present and varying''
 cannot determine disjunction.
 
+\begin{proposition}[The presence condition for classical tautologies]
+\label{prop:strict_tautology_presence}
+Let $\theta$ be a finite formula built from atoms by negation,
+conjunction, and disjunction, and let $\operatorname{At}(\theta)$ be
+the finite set of atoms occurring in it. Then
+\[
+H_\theta=\bigcap_{p\in\operatorname{At}(\theta)}H_p.
+\]
+If $\theta$ is a classical propositional tautology, its strict truth
+set is exactly this intersection:
+\[
+T_\theta=H_\theta
+ =\bigcap_{p\in\operatorname{At}(\theta)}H_p.
+\]
+Consequently a classical tautology holds at every assignment in
+$\Omega$ under the strict interpretation exactly when every atom
+occurring in it is present everywhere.
+\end{proposition}
+\Proof
+For an atom the first equation is its definition. Negation retains
+presence and does not change the occurring atoms. For either binary
+connective, the absence union and the partition lemma give
+$H_{\varphi\mathbin{\#}\psi}=H_\varphi\cap H_\psi$ for
+$\#\in\{\land,\lor\}$. The atoms of the compound are the union
+of the two finite atom sets, so structural induction proves the first
+equation. At every point of this intersection all occurring atoms have
+classical truth values. The partition lemma identifies evaluation there
+with the classical truth tables, and a tautology is true for every such
+valuation. Thus $H_\theta\subseteq T_\theta$. The reverse inclusion
+is part of the definition of presence. Finally, an intersection of
+subsets of $\Omega$ equals $\Omega$ if and only if each of its factors
+equals $\Omega$, giving the last assertion.
+\Done
+
+For example, with implication expanded as $\neg p\lor q$, the
+classical weakening axiom $p\implies(q\implies p)$ has strict truth
+set $H_p\cap H_q$. It is absent when $p$ is true and $q$ is absent.
+The companion catalog's classical axiom A01 and its excluded-middle
+axiom use a different, total truth interpretation. They agree with
+these clauses on the common region where the relevant atoms are
+present. Thus their validity in the classical calculus and their
+failure at absent assignments here describe different local settings;
+the latter does not invalidate the former, and the former supplies
+no unguarded axiom for this experiment.
+
 \begin{note}[Why guarding a partial value depends on the logic]
 Under the strict convention just defined, an implication with a false
 antecedent and an absent consequent is absent, if implication abbreviates

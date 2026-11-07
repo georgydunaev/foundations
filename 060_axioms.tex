@@ -1132,4 +1132,63 @@ The opposite direction forbids certain situations. It makes proofs shorter. It r
 \]
 This terminology distinguishes two roles an axiom can play in the proposed development. It is a heuristic for organizing assumptions, not a consistency theorem: compatibility of a collection of axioms still requires a separate argument.
 \end{note}
+
+\subsection{Set images under the surjective-image size axiom}
+The following consequences use precisely the limitation-of-size axiom
+just stated: a proper class admits a class-function image containing
+$\V$. They are not inferred from assigning the same default ordinal
+cardinality to proper classes. Use the earlier graph-image convention,
+class comprehension, and injective set-pair coding with set-valued pairs.
+In particular, a class function may be defined on only some members
+of an input class; its graph image retains only represented outputs.
+
+\begin{theorem}[Class-function images of sets are sets]
+\label{thm:set_image_from_surjective_size}
+Under the preceding assumptions, if $A$ is a set and $f$ is a
+class function, then $f[A]$ is a set. It is not necessary that
+$A\subseteq\dom(f)$.
+\end{theorem}
+\begin{proof}
+Suppose $B=f[A]$ is proper. The surjective-image size axiom supplies a
+class function $T$ with $\V\subseteq T[B]$. By class comprehension
+form the composite graph
+\[
+H=\{(x,z):\exists y\in\V,\ (x,y)\in f\land(y,z)\in T\}.
+\]
+All coordinates are sets, and uniqueness of the outputs in $f$ and $T$
+makes $H$ single-valued. Thus $H$ is a class function with its actual
+represented domain. This construction collects a class of set records;
+it does not use set-image or assert that the graph is a set.
+
+A set $z$ belongs to $H[A]$ exactly when there are $x\in A$ and
+$y\in\V$ with $(x,y)\in f$ and $(y,z)\in T$. This is exactly
+$z\in T[f[A]]=T[B]$. Therefore $\V\subseteq H[A]$, and the
+same size axiom implies that $A$ is proper, a contradiction.
+Classical logic gives that $f[A]$ is a set. No off-domain evaluation,
+choice of preimages, or union axiom was used.
+\end{proof}
+
+\begin{corollary}[A set domain gives a set graph]
+\label{thm:set_domain_set_graph}
+Under the same assumptions, a class function $f$ whose domain $D$
+is a set has a set graph and a set range.
+\end{corollary}
+\begin{proof}
+The range is $f[D]$, so the theorem gives its sethood. For each
+$a\in D$, the unique represented value $f(a)$ is a set, and so is
+the pair $(a,f(a))$. Class comprehension gives the class function
+\[
+q:D\to\V,\qquad q(a)=(a,f(a)).
+\]
+Its image on $D$ is exactly the graph $f$. Apply the same theorem
+to $q$ to conclude that $f$ is a set. This also covers $D=\emptyclass$:
+both graph and range are empty. Uniqueness of the values, rather than
+an axiom of choice, supplies the assignment used in the graph construction.
+\end{proof}
+
+These results justify the set-image and graph-collection steps used in
+the local small type models when the present strong size axiom is part
+of their background. In settings with a different size principle,
+replacement or the corresponding set-image assumption must still be
+stated separately.
 \input{END.tex}

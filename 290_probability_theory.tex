@@ -151,18 +151,57 @@ is $K$. The empty family, including the only possible family when
 $\mu(\Omega)=0$, satisfies the conclusions directly.
 \Done
 
+\begin{lemma}[Integrable observables on a dominated interval]
+\label{lem:dominated_observable_continuity}
+Let $h\in L^1(\mu;\mathbb R)$ be nonnegative almost everywhere and put
+\[
+D_h=\{f\in L^1(\mu;\mathbb R):0\leq f\leq h\text{ a.e.}\}.
+\]
+If $\psi$ is a measurable real function with
+$\int|\psi|h\,d\mu<\infty$, then
+\[
+\Phi_\psi:D_h\longrightarrow\mathbb R,\qquad
+\Phi_\psi(f)=\int\psi f\,d\mu
+\]
+is continuous for the relative weak topology of $L^1$.
+\end{lemma}
+\Proof
+Choose a nonnegative measurable representative of $h$. The estimate
+$|\psi f|\leq|\psi|h$ almost everywhere makes every displayed integral
+finite and independent of the representative of $f$. Put
+$\psi_m=\max(-m,\min(\psi,m))$. Each bounded test
+$\Phi_{\psi_m}$ is weakly continuous on all of $L^1$, and
+\[
+\sup_{f\in D_h}|\Phi_\psi(f)-\Phi_{\psi_m}(f)|
+\leq\int_{\{|\psi|>m\}}|\psi|h\,d\mu\longrightarrow0.
+\]
+Dominated convergence proves the limit, since $\psi$ is finite-valued
+and $|\psi|h$ is integrable. Thus the restrictions of the bounded-test
+functionals converge uniformly to $\Phi_\psi$ on $D_h$. Explicitly,
+given a tolerance, choose $m$ so that both approximation errors are
+less than one third of it, and then a relative weak neighbourhood
+controlling the difference of the two $\Phi_{\psi_m}$ values by its
+remaining third. This proves continuity, for nets as well as sequences.
+\Done
+
+The conclusion is restricted to the dominated interval. An unbounded
+observable need not define a finite continuous functional on all of
+$L^1$; domination supplies the uniform approximation used in the proof.
+
 \begin{theorem}[Attainment under domination and moment constraints]
 \label{thm:attained_density_expectations}
 Let $h\in L^1(\mu;\mathbb R)$ be nonnegative almost everywhere.
-Let $(\phi_i)_{i\in I}$ be a set-indexed family in $L^\infty(\mu;\mathbb R)$
-and $(c_i)_{i\in I}$ a family of real numbers. Suppose the family
+Let $(\phi_i)_{i\in I}$ be a set-indexed family of measurable real
+functions with $\int|\phi_i|h\,d\mu<\infty$ for every $i$, and let
+$(c_i)_{i\in I}$ be a family of real numbers. Suppose the family
 \[
 C=\left\{f\in\mathcal D_\mu:
  f\leq h\text{ a.e.},\quad
  \int\phi_i f\,d\mu=c_i\text{ for every }i\in I\right\}
 \]
-is nonempty. Then $C$ is weakly compact. For every bounded observable
-$\psi\in L^\infty(\mu;\mathbb R)$, there are $f_-,f_+\in C$ such that
+is nonempty. Then $C$ is weakly compact. For every measurable real
+observable $\psi$ with $\int|\psi|h\,d\mu<\infty$, there are
+$f_-,f_+\in C$ such that
 \[
 \int\psi f_-\,d\mu
  \leq\int\psi f\,d\mu
@@ -179,24 +218,32 @@ One implication is monotonicity of the integral. For the converse,
 apply the positivity argument from Proposition~\ref{prop:density_set_weak_closed}
 to $h-f$: its integral on every measurable set is nonnegative, so
 $h-f\geq0$ almost everywhere. Each displayed inequality defines a
-weakly closed half-space. Together with the weakly closed density set
-and the weakly closed moment hyperplanes, these inequalities express
-$C$ as an intersection of weakly closed sets. Thus $C$ is weakly closed,
-also for an arbitrary set of moment constraints.
+weakly closed half-space. Together with the weakly closed density set,
+these inequalities make
+$C_0=\{f\in\mathcal D_\mu:f\leq h\text{ a.e.}\}$ weakly closed.
 
-All its members satisfy $0\leq f\leq h$ almost everywhere. Consequently
+All members of $C_0$ satisfy $0\leq f\leq h$ almost everywhere. Consequently
 \[
-\sup_{f\in C}\int_{\{f>M\}} f\,d\mu
+\sup_{f\in C_0}\int_{\{f>M\}} f\,d\mu
  \leq\int_{\{h>M\}}h\,d\mu\longrightarrow0.
 \]
-The vanishing-tail lemma makes $C$ uniformly integrable. Theorem~
-\ref{thm:DP_weak_compact_finite} now gives weak compactness, since $C$
-is already weakly closed. The objective $f\mapsto\int\psi f\,d\mu$
-is weakly continuous, so its image is a nonempty compact subset of
+The vanishing-tail lemma makes $C_0$ uniformly integrable. Theorem~
+\ref{thm:DP_weak_compact_finite} makes $C_0$ weakly compact.
+By Lemma~\ref{lem:dominated_observable_continuity}, each moment map
+is continuous on $C_0\subseteq D_h$. Therefore $C$ is an intersection
+of relatively closed subsets of $C_0$, and is compact, even for
+arbitrarily many set-indexed constraints. The same lemma makes the
+objective continuous on $C$, so its image is a nonempty compact subset of
 $\mathbb R$. Such a subset has a minimum and maximum: it is bounded,
 and its infimum and supremum belong to it by closedness. Their preimages
 in $C$ give $f_-$ and $f_+$.
 \Done
+
+Bounded observables and bounded moment functions satisfy these weighted
+integrability hypotheses automatically, since $h\in L^1$. Thus the
+theorem includes the bounded-test case while also permitting unbounded
+observables whose absolute values are integrable against the common
+dominating density bound.
 
 The nonemptiness hypothesis is a genuine feasibility condition on the
 moments. Without moment constraints, the dominated density family is
@@ -205,6 +252,37 @@ integrating $f\leq h$. For sufficiency put
 $H=\int h\,d\mu\geq1$ and take $f=h/H$: this is a density and
 $0\leq f\leq h$. Extra prescribed moments may make the family empty,
 so the theorem does not assert feasibility of arbitrary numerical data.
+
+\begin{example}[Attaining expectations of an unbounded observable]
+On $(0,1)$ with Lebesgue measure, take $h=2$ and
+$\psi(x)=x^{-1/2}$. Although $\psi$ is unbounded,
+$\int_0^1|\psi|h\,dx=4<\infty$. Among all probability densities
+with $0\leq f\leq2$ almost everywhere, the maximum and minimum
+expectations are attained by
+\[
+f_+=2\mathbf1_{(0,1/2)},\qquad
+f_-=2\mathbf1_{(1/2,1)},
+\]
+respectively, and their values are
+\[
+\int_0^1\psi f_+\,dx=2\sqrt2,\qquad
+\int_0^1\psi f_-\,dx=4-2\sqrt2.
+\]
+Both functions are feasible because their integrals are one.
+To verify optimality without assuming it from the shape of $\psi$,
+subtract the threshold value $\psi(1/2)=\sqrt2$. Since all feasible
+densities have the same mass,
+\[
+\int\psi(f-f_+)\,dx=\int(\psi-\sqrt2)(f-f_+)\,dx\leq0.
+\]
+On $(0,1/2)$ the first factor is positive and the second is nonpositive;
+on $(1/2,1)$ their signs reverse. Both products are integrable by the
+common bound $h$. Replacing $f_+$ by $f_-$ makes the product nonnegative
+on both intervals, proving the minimum assertion. Finally,
+$\int_0^b x^{-1/2}\,dx=2\sqrt b$ gives the two displayed values.
+Thus domination permits optimization of this unbounded test even though
+it is not an element of the ambient $L^\infty$ dual-test space.
+\end{example}
 
 \begin{proposition}[Setwise testing for densities]
 For probability densities $f_n$ and $f$, the following are equivalent:

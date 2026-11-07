@@ -20,9 +20,15 @@ even when that relation is not a functional or canonical family.
 
 \begin{definition}[(relational) membership relation]
 \[
-\mbox{E} \ceq \cc{(x,y)}{x\in y}
+\mbox{E} \ceq \cc{(x,y)}{(y\in\V)\land(x\in y)}
 \]
 \end{definition}
+The guard on $y$ is needed: $x\in y$ makes $x$ a set, but $y$
+may be proper. Thus $\mbox{E}$ is membership restricted to two set
+coordinates, agreeing with the ordinal chapter's relation $\E$.
+It does not replace primitive membership of a set in an arbitrary
+class. Ordinary set-pair coding is applied only to the guarded set
+coordinates, without relying on any off-domain pairing convention.
 \begin{remark}[Membership and family evaluation]
 Membership is generally one-to-many, so it is not itself the graph of a
 single-valued function. Encoding all possible outputs by a family and
@@ -32,7 +38,7 @@ $Y=\{x,q\}$). Thus the union of those possible outputs is $\V$.
 \end{remark}
 \begin{definition}[(relational) inverse membership relation]
 \[
-\invE \ceq \cc{(y,x)}{x\in y} = \mbox{E}^{-1}
+\invE \ceq \cc{(y,x)}{(y\in\V)\land(x\in y)} = \mbox{E}^{-1}
 \]
 \end{definition}
 \begin{remark}[Inverse membership and family evaluation]

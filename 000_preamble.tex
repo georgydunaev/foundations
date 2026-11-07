@@ -109,7 +109,7 @@
 % PDF-native and XeTeX drivers already handle these links themselves.
 \makeatletter
 \@ifundefined{ver@hdvips.def}{}{%
-  \usepackage[anythingbreaks]{breakurl}
+  \usepackage[anythingbreaks]{breakurl}%
 }
 \makeatother
 \hypersetup{
@@ -139,7 +139,7 @@
     length = +1.05pt 1.925 1,
     shear
   },
-  shear/.code={
+  shear/.code={%
     \pgfarrowsthreeparameters{#1}%
     \expandafter\pgfarrowsaddtooptions\expandafter{\expandafter\pgfarrowslinewidthdependentnew\pgfarrowstheparameters\pgfarrowshear\pgf@x}%
   },
@@ -167,7 +167,7 @@
   \advance\pgf@x by#2\pgf@xa%
   \advance\pgf@x by-#1\pgf@xb%
 }
-\def\pgf@arrow@drawer@shift#1#2#3{
+\def\pgf@arrow@drawer@shift#1#2#3{%
   \pgftransformyshift\pgfarrowshear%
   \pgf@xb#2\pgftransformxshift{-\pgf@xb}%
   \pgf@xc#1%
@@ -178,15 +178,15 @@
 
 
 %\usepackage{logix} % for necessity box etc
-\newcommand{\boxT}[1]{
-\mathllap{\phantom{\square}}
-\mathord{\square\hspace{-1.4ex}\raisebox{0.3ex}{\scriptsize #1}}
-\hspace{+0.4ex}
+\newcommand{\boxT}[1]{%
+\mathllap{\phantom{\square}}%
+\mathord{\square\hspace{-1.4ex}\raisebox{0.3ex}{\scriptsize #1}}%
+\hspace{+0.4ex}%
 }
 
 \newcommand{\boxn}{\boxT{n}}
-\newcommand{\boxnp}{
-\boxT{\hspace{-0.1ex}\scalebox{0.35}[1]{n+1}\hspace{+0.0ex}}
+\newcommand{\boxnp}{%
+\boxT{\hspace{-0.1ex}\scalebox{0.35}[1]{n+1}\hspace{+0.0ex}}%
 }
 
 \usepackage{underscore}
@@ -346,7 +346,7 @@
 %}
 % DEPRECATED:
 \newcommand*{\separation}[3]{% 1)binder, 2)set, 3)condition
-  \{#1\in #2: #3\}
+  \{#1\in #2: #3\}%
 }
 %\makebox[0pt][0pt]
 %{\label{#1}\tag*{\clap{(#1)}}}
@@ -507,20 +507,20 @@
 
 \usepackage{ifthen}
 
-\newcommand{\esssup}[1][]{
- \operatornamewithlimits{
-\ifthenelse{\equal{#1}{}}{}{#1\,}\text{ess\,sup}
+\newcommand{\esssup}[1][]{%
+ \operatornamewithlimits{%
+\ifthenelse{\equal{#1}{}}{}{#1\,}\text{ess\,sup}%
  }\limits%_{#2}
 }
 
 
 
 \iffalse
-\newcommand{\esssup}[1]{
-\operatornamewithlimits{\text{ess\,sup}}\limits_{#1}
+\newcommand{\esssup}[1]{%
+\operatornamewithlimits{\text{ess\,sup}}\limits_{#1}%
 }
-\newcommand{\muesssup}[2]{
-\operatornamewithlimits{#1\,\text{ess\,sup}}\limits_{#2}
+\newcommand{\muesssup}[2]{%
+\operatornamewithlimits{#1\,\text{ess\,sup}}\limits_{#2}%
 }
 \fi
 
@@ -640,15 +640,15 @@
 
 \newsavebox{\mymathbox}
 \newcommand{\measuredelimiter}[1]{%
-    \sbox{\mymathbox}{#1} % $\left#1\right.$
+    \sbox{\mymathbox}{#1}% $\left#1\right.$
     \typeout{Height: \the\ht\mymathbox, Depth: \the\dp\mymathbox, Width: \the\wd\mymathbox}%
 }
 
 
 %\{(x,z)\ |\ x \in \Dom(G) \land (G(x),z)\in F\}
 % class constructor
-\newcommand{\cc}[2]{
-\left\{\,#1\ \middle|\ #2\,\right\}
+\newcommand{\cc}[2]{%
+\left\{\,#1\ \middle|\ #2\,\right\}%
 }
 
 % "complex" class constructor 
@@ -702,12 +702,12 @@
 
 
 
-\newcommand{\ccc}[3]{
+\newcommand{\ccc}[3]{%
 \left\{\,#2\ \middle|^{\mathclap{\smash{\mkern+5mu \vspace{-4pt}{#1}}}}\ #3\,\right\}%^{#1}
 }
 
 \newcommand{\thickbar}{\raisebox{-2.5pt}{\rule{1.2pt}{10pt}}}
-\newcommand{\boldccc}[3]{
+\newcommand{\boldccc}[3]{%
 \bm{\{ }\,#2\  \thickbar^{\mathclap{\smash{\mkern+8mu \vspace{-4pt}{\phantom{.}#1}}}}\ #3\, \bm{ \} }}%^{#1}
 
 %\renewcommand{\ccc}[3]{
@@ -818,11 +818,11 @@
 \newcommand{\linvalid}{\mathrm{invalid}}
 \newcommand{\lValid}{\mathrm{Valid}}
 \newcommand{\lInvalid}{\mathrm{Invalid}}
-\newcommand{\assignmentTYPE}{
-\Var\to\power\Un\setminus\{\emptyclass\}
+\newcommand{\assignmentTYPE}{%
+\Var\to\power\Un\setminus\{\emptyclass\}%
 }
-\newcommand{\singeval}{
-\Var\to\{\{q\}|q\in\Un\}
+\newcommand{\singeval}{%
+\Var\to\{\{q\}|q\in\Un\}%
 }
 
 \newcommand{\notvarphi}{\phi}

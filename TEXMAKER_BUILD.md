@@ -108,3 +108,19 @@ a source directory to Texmaker's executable `ExtraPath`.
 
 After switching between PDF and DVI engines, rerun the complete sequence;
 their shared auxiliary files can otherwise retain driver-specific link data.
+
+## Underscores in the optional companion listing
+
+The `underscore` package makes `_` an active character. Passing the companion
+path directly to `\lstinputlisting` can therefore fail with
+`Missing endcsname inserted` and `global invalid in file name`, followed by
+a misleading attempt to open `../set.tex`. This happens when the optional
+companion file is present; a checkout without it only exercises the fallback.
+The manuscript now passes its filename through `\detokenize{...}` to keep
+the underscores literal. Both present-file and missing-file branches were
+tested. Adding trailing `%` alone does not fix this filename-token issue.
+
+For ordinary multiline macro arguments, a trailing `%` suppresses the
+end-of-line space. It is appropriate for deliberate token continuations;
+prose still needs its word spaces, and blank lines intended as paragraph
+breaks must be retained. These are separate concerns from filename expansion.

@@ -812,9 +812,107 @@ $\mathfrak{B}_1$ is coarser than base $\mathfrak{B}_2$ iff
 \end{definition}
 
 %\pagebreak
-\subsection{Alexandrov's theorem: planned topic}
-The intended theorem and its hypotheses remain to be specified.
-%\todo
+\subsection{Alexandrov's correspondence between topology and order}
+This subsection gives the planned Alexandrov topic a precise meaning:
+topologies closed under arbitrary intersections correspond to preorders.
+The result connects the point--neighbourhood presentation with the order
+theory developed earlier; see \cite[Section 1.6]{MayPishevarFiniteSpaces}.
+We use the convention that open sets are \emph{upper} sets. Reversing
+the preorder gives the lower-set convention used in that reference.
+
+Fix a set $X$; no axiom of Choice or topological separation condition is used.
+All intersections
+below are relative to $X$, including
+the empty intersection $X$; no unrestricted class intersection is intended.
+A topology $\mathcal T$ on $X$ is \emph{Alexandrov} if every intersection
+of its open sets is open. In that case each point has a smallest open
+neighbourhood
+\[
+U_x=\bigcap\{U\in\mathcal T:x\in U\}.
+\]
+The family being intersected contains $X$, and $x\in U_x$.
+
+\begin{theorem}[Alexandrov correspondence]
+\label{thm:alexandrov_correspondence}
+There is a bijection between Alexandrov topologies on $X$ and preorders
+on $X$. Its two directions are
+\[
+x\preceq_{\mathcal T}y
+\quad\Longleftrightarrow\quad
+\forall U\in\mathcal T,\ x\in U\implies y\in U,
+\]
+and
+\[
+\mathcal T_{\preceq}
+=\{U\subseteq X:\forall x\in U\ \forall y\in X,
+                         \ x\preceq y\implies y\in U\}.
+\]
+In the corresponding topology, $U_x=\{y\in X:x\preceq y\}$.
+\end{theorem}
+\Proof
+For any topology, the displayed relation is reflexive. If
+$x\preceq_{\mathcal T}y$ and $y\preceq_{\mathcal T}z$, every open set
+containing $x$ contains $y$ and then $z$, proving transitivity.
+Every open set is upper for this relation. If the topology is Alexandrov,
+then $y\in U_x$ is exactly $x\preceq_{\mathcal T}y$. Consequently an
+upper subset $A$ is the union $\bigcup_{x\in A}U_x$, so it is open.
+Thus the preorder recovers precisely the original open sets.
+
+Conversely, upper subsets for a preorder include $\emptyclass$ and $X$
+and are closed under all unions and all intersections. They therefore
+form an Alexandrov topology. The principal upper set
+$\uparrow x=\{y:x\preceq y\}$ is upper by transitivity and contains
+$x$ by reflexivity. Every upper set containing $x$ contains
+$\uparrow x$, so this is its smallest open neighbourhood. It follows
+that the relation recovered from the topology is the original preorder.
+Both constructions are inverse, proving the bijection, also when $X$
+is empty.
+\Done
+
+\begin{proposition}[Continuous maps and separation]
+\label{prop:alexandrov_maps}
+A map between Alexandrov spaces is continuous if and only if it is
+monotone for their corresponding preorders. An Alexandrov space is
+$T_0$ if and only if its preorder is antisymmetric. Here $T_0$ means
+that distinct points can be distinguished by an open set containing
+exactly one of them.
+\end{proposition}
+\Proof
+Let $f:X\to Y$ be continuous and $x\preceq_X x'$. For each open
+$V\subseteq Y$ containing $f(x)$, its inverse image is an open set
+containing $x$, hence contains $x'$. Thus $f(x)\preceq_Y f(x')$.
+Conversely, if $f$ is monotone and $V$ is upper in $Y$, then
+$f^{-1}[V]$ is upper in $X$, and so is open. This is continuity.
+
+The two relations $x\preceq y$ and $y\preceq x$ hold together
+exactly when $x$ and $y$ belong to the same open sets. The $T_0$
+condition therefore says precisely that this can happen only when
+$x=y$, which is antisymmetry.
+\Done
+
+\begin{corollary}[Finite spaces and the Hausdorff boundary]
+Every finite topological space is Alexandrov. An Alexandrov Hausdorff
+space is discrete; every discrete space is Alexandrov and Hausdorff.
+\end{corollary}
+\Proof
+On a finite carrier there are only finitely many distinct open sets,
+so any intersection reduces to a finite one. In a Hausdorff space,
+for distinct $x,y$ there is an open neighbourhood of $x$ missing $y$.
+Its associated preorder is therefore equality. The correspondence then
+makes every subset open. The converse follows directly from the
+definitions, including for the empty space.
+\Done
+
+For example, the preorder $0\preceq1$ on $\{0,1\}$ gives
+$\mathcal T=\{\emptyclass,\{1\},\{0,1\}\}$, with
+$U_0=\{0,1\}$ and $U_1=\{1\}$. This space is $T_0$ but not
+Hausdorff. The indiscrete topology instead makes every pair of points
+comparable in both directions. These examples show why a preorder,
+rather than automatically a partial order, is the correct starting point.
+The usual topology on $\mathbb R$ is not Alexandrov: the intersection
+of the open intervals $(-1/n,1/n)$ over positive integers $n$ is
+$\{0\}$, which is not open. Thus arbitrary intersections of open
+sets remain a substantive additional hypothesis.
 \pagebreak
 \subsection{The product topology}
 Let $(X_i,\Tau_{X_i})_{i\in I}$ be a set-indexed family of topological

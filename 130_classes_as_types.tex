@@ -40,7 +40,9 @@ specified in the particular model; this sketch does not supply them all.
 
 \subsection{Explicit typed term interpretation (\texorpdfstring{$\mu_A$ / $I$}{mu-A / I})}
 Throughout this chapter, the background model of the class theory (NBG/MK) is fixed (though unspecified), and the valuation of free variables is likewise fixed (though unspecified).
-With that context fixed, the interpretation map $\mu_A$ (written $I(a)$ or $\mu_A(a)$ below, and rendered as \texttt{\textbackslash mu\_A} in the Obelisk SML kernel \texttt{typetheory.ML}) is an \emph{explicit typed term interpretation} (an expression-level interpretation map):
+With that context fixed, this chapter uses $\mu_A$ (written $I(a)$ or
+$\mu_A(a)$ below) for an \emph{explicit typed term interpretation},
+indexed by the type $A$, at the level of expressions:
 \[
 \mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression},
 \]
@@ -48,6 +50,12 @@ which translates a typed expression $a:A$ into a class expression $\mu_A(a)\equi
 can be used for the resulting semantic interpretation when preservation of
 the relevant constructors has been proved. That preservation is an
 obligation of the model, not a consequence of the map's displayed type.
+The companion catalog's comment on \texttt{DefMetaGeneralisation} (4.02)
+likewise describes a typed expression translation. Its symbol page for
+$\mu_A$ instead uses $A$ for an assignment and describes semantic
+valuation. These are different local signatures; the notation here is
+the book's convention, not a claim that both exports or an uninspected
+kernel implementation already realize this same map.
 
 \begin{note}[advanced semantic setting: terms as classes, conglomerates (= predicates on classes) as types]
 Unlike the standard set-theoretic setting where terms are interpreted as sets and classes are interpreted as types, we work in a one-level-higher setting:
@@ -1487,8 +1495,8 @@ image operators here.
 \subsubsection{Axioms of $\Sigma$--types}
 The formation rule for a dependent sum is:
 \begin{prooftree}
-\AxiomC{
-$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
+\AxiomC{%
+$(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$%
 }
 \RightLabel{$\Sigma$--form}
 \UnaryInfC{$
@@ -1530,18 +1538,95 @@ Throughout this subsection, $B$ is a family. The dependent sum consists of pairs
 
 \subsubsection{Soundness of $\Sigma$--types}
 \begin{theorem}[Soundness of $\Sigma B$ Formation, Introduction, Projections, and $\beta$/$\eta$ Rules]
-Let $B$ be a family of classes over domain $A = \Dom(B)$, and let
+\label{thm:sigma_carrier_model}
+Work with guarded class comprehension and injective set-pair coding.
+Let $B$ be a specified family of classes over the class
+$A=\Dom(B)$, and let
 \[
 \Sigma B \eqdef \cc{p}{\exists (x \in \Dom(B)),\ \exists (y \in B(x)),\ (p = (x, y))}.
 \]
-Then:
+This defines a class carrier. If $A$ and every $B(x)$ are sets,
+replacement and union additionally make this carrier a set.
+Its pairing and projections satisfy:
 \begin{enumerate}
 \item \textbf{Introduction (Pairing):} If $(x \in \Dom(B))$ and $(y \in B(x))$, then $((x, y) \in \Sigma B)$.
-\item \textbf{Elimination (Projections):} For every $(p \in \Sigma B)$, writing $p = (x, y)$ with $(x \in \Dom(B))$ and $(y \in B(x))$, ordered-pair injectivity yields $(\pr_1(p) = x \in \Dom(B))$ and $(\pr_2(p) = y \in B(\pr_1(p)))$.
-\item \textbf{$\beta$- and $\eta$-Computation:} $(\pr_1((x, y)) = x)$, $(\pr_2((x, y)) = y)$, and $(( \pr_1(p), \pr_2(p) ) = p)$ for all $(p \in \Sigma B)$.
+\item \textbf{Elimination (Projections):} If $p\in\Sigma B$, then
+$\pr_1(p)\in A$ and $\pr_2(p)\in B(\pr_1(p))$.
+\item \textbf{$\beta$- and $\eta$-Computation:} For $x\in A$ and
+$y\in B(x)$, one has $\pr_1((x,y))=x$ and $\pr_2((x,y))=y$.
+For every $p\in\Sigma B$, one has $(\pr_1(p),\pr_2(p))=p$.
 \end{enumerate}
-The newer catalog records the dependent-sum membership interface as \texttt{DefSigmaModel} (3.38). The projection and computation claims additionally use the selected pairing model; that entry alone is not a certificate for every rule displayed here.
 \end{theorem}
+\Proof
+The displayed predicate is an admitted class-comprehension instance.
+If $x\in A$ and $y\in B(x)$, both $x$ and $y$ are sets, so their
+pair code is a set. These two witnesses therefore put that pair in
+the guarded comprehension, proving introduction. Conversely, every
+$p\in\Sigma B$ has such a decomposition. Injectivity of the chosen
+pairing makes its two coordinates unique. The projection graphs
+restricted to these pair codes thus return precisely $x$ and $y$,
+which have the asserted memberships. Returning a pair's coordinates
+proves the two beta equations, and reconstructing the unique
+decomposition of $p$ proves eta.
+
+For the additional set assertion, replacement over the set $B(x)$
+forms the set $S_x=\{(x,y):y\in B(x)\}$ for each $x\in A$.
+The family $x\mapsto S_x$ is uniquely specified; replacement over
+the set $A$ collects its values, and union gives
+$\Sigma B=\bigcup_{x\in A}S_x$ as a set. When $A$ is empty the
+union is empty and the conclusion still holds. No member of a fibre
+has been selected in this argument, so no choice axiom is used.
+\Done
+
+The newer catalog records the dependent-sum membership interface as
+\texttt{DefSigmaModel} (3.38). Projection and computation additionally
+use the selected pairing model, as the proof shows. This carrier model
+has set-valued coordinates even when $A$ or a fibre is proper: membership
+in a class implies sethood. A predicate model allowing proper-class
+coordinates needs its own pairing interpretation; it is not obtained
+by treating those coordinates as members of this carrier.
+
+\begin{theorem}[Dependent elimination for the set sum]
+\label{thm:sigma_dependent_elimination}
+Let $A$ and every $B(a)$ be sets, put $S=\Sigma B$, and let
+$(E(p))_{p\in S}$ be a specified family of sets. Suppose a specified
+operation supplies $d(a,b)\in E((a,b))$ for every $a\in A$ and
+$b\in B(a)$. Then there is a unique function $r$ on $S$ with
+\[
+r(p)\in E(p),\qquad r((a,b))=d(a,b).
+\]
+Taking $d(a,b)=q((a,b))$ for a given dependent section $q$ returns
+$r=q$. A predicate on $S$ holds everywhere if it holds at every
+such pair $(a,b)$.
+\end{theorem}
+\Proof
+For $p\in S$, define
+$r(p)=d(\pr_1(p),\pr_2(p))$.
+The projection theorem makes this application legitimate, and the
+reconstruction equation identifies its type
+$E((\pr_1(p),\pr_2(p)))$ with $E(p)$. In particular the value is
+a set, so replacement on the set $S$ forms the graph of $r$.
+The two projection equations give the displayed computation rule.
+Every $p$ is its coordinate pair, so any other solution has the same
+value there; function extensionality proves uniqueness. The given $q$
+satisfies the same computation equations, proving the eta assertion.
+Finally the coordinate decomposition substitutes directly into the
+assumed pair instances of a predicate, proving its assertion on all of
+$S$. The empty sum gives the empty function and a vacuous predicate
+assertion. The supplied operation $d$ is data, not a choice from
+merely nonempty fibres.
+\Done
+
+These are semantic equations for the fixed model. To read them as
+soundness of contextual typing rules, one must also supply a
+context interpretation and the corresponding substitution lemma. At
+an environment $\rho$ satisfying a context, the value of $B[t/x]$
+must be the fibre of $B$ at the value of $t$; interpretations of term
+substitution must likewise agree with the updated environment.
+Under those assumptions the preceding membership checks apply at
+each environment. They do not establish that lemma for every proposed
+dependent syntax, or turn semantic beta and eta into judgmental
+conversion rules of an unspecified checker.
 
 \subsubsection{Rules for small $\Sigma$--types}
 For these rules, $\Un$ denotes a chosen universe closed under the dependent
@@ -1616,8 +1701,8 @@ The former is the valuation of the latter. To be precise, specifically, it holds
 Class--level type theory is predicative.\\
 In class--level type theory, the formation rule for a $\Pi$--type is
 \begin{prooftree}
-\AxiomC{
-$(B \family)$
+\AxiomC{%
+$(B \family)$%
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
@@ -1626,8 +1711,8 @@ $}
 \end{prooftree}
 In particular,
 \begin{prooftree}
-\AxiomC{
-$(B \text{ class--function})$
+\AxiomC{%
+$(B \text{ class--function})$%
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
@@ -1635,8 +1720,8 @@ $(B \text{ class--function})$
 $}
 \end{prooftree}
 \begin{prooftree}
-\AxiomC{
-$(B \text{ family})\quad\quad(\Dom(B)\set)$
+\AxiomC{%
+$(B \text{ family})\quad\quad(\Dom(B)\set)$%
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
@@ -1644,8 +1729,8 @@ $(B \text{ family})\quad\quad(\Dom(B)\set)$
 }
 \end{prooftree}%In particular,
 \begin{prooftree}
-\AxiomC{
-$(B \text{ function})$
+\AxiomC{%
+$(B \text{ function})$%
 }
 \RightLabel{$\Pi$--form}
 \UnaryInfC{$
@@ -1654,8 +1739,8 @@ $}
 \end{prooftree}
 In set--level type theory, the formation rules for a $\Pi$--type are
 \begin{prooftree}
-\AxiomC{
-$\Wau \vdash (A:\text{Class})$\quad\quad$\Wau, (x:A)\vdash (B(x):\text{Class})$
+\AxiomC{%
+$\Wau \vdash (A:\text{Class})$\quad\quad$\Wau, (x:A)\vdash (B(x):\text{Class})$%
 }
 \RightLabel{$\Pi$--form(large)}
 \UnaryInfC{$
@@ -1663,8 +1748,8 @@ $\Wau \vdash (A:\text{Class})$\quad\quad$\Wau, (x:A)\vdash (B(x):\text{Class})$
 $}
 \end{prooftree}
 \begin{prooftree}
-\AxiomC{
-$\Wau \vdash (A:\text{Set})$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\text{Set})$
+\AxiomC{%
+$\Wau \vdash (A:\text{Set})$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\text{Set})$%
 }
 \RightLabel{$\Pi$--form(small)}
 \UnaryInfC{$
@@ -1677,8 +1762,8 @@ family has $B(a)\in\Un$ for all $a\in A$, then its dependent product
 belongs to $\Un$. The dependent-sum closure assumed earlier does not by
 itself supply this requirement.
 \begin{prooftree}
-\AxiomC{
-$\Wau \vdash (A:\Un)$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\Un)$
+\AxiomC{%
+$\Wau \vdash (A:\Un)$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\Un)$%
 }
 \RightLabel{$\Pi$--form(tiny)}
 \UnaryInfC{$
@@ -1687,8 +1772,8 @@ $}
 \end{prooftree}
 The following implementation proposal omits general subtyping and instead permits the two-sort inclusion from Set to Class. This is a local design choice for these rules.
 \begin{prooftree}
-\AxiomC{
-$(A:\text{Set})$
+\AxiomC{%
+$(A:\text{Set})$%
 }
 \RightLabel{(Set is a subsort of Class)}
 \UnaryInfC{$
@@ -1701,45 +1786,45 @@ The bound name in the eta rule is chosen fresh for $f$ as well as for
 $\Gamma$. These conventions permit alpha-renaming of local binders.
 \underline{Introduction of terms of $\Pi$--type:}\\
 \begin{prooftree}
-\AxiomC{
-$\Gamma, x:A\vdash b:B$
+\AxiomC{%
+$\Gamma, x:A\vdash b:B$%
 }
 \RightLabel{$\Pi$-intro}
-\UnaryInfC{
-$\Gamma \vdash (\lambda ((x:A)\mapsto b)):\Pi_{(x:A)}B$
+\UnaryInfC{%
+$\Gamma \vdash (\lambda ((x:A)\mapsto b)):\Pi_{(x:A)}B$%
 %$\vdash \Pi_{(x:A)}B(x):\Type$
 }
 \end{prooftree}
 \underline{Elimination of terms of $\Pi$--type:}\\
 \begin{prooftree}
-\AxiomC{
-$\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$
+\AxiomC{%
+$\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$%
 }
 \RightLabel{$\Pi$-elim}
-\UnaryInfC{
-$\Gamma \vdash f(a):B[a/x]$
+\UnaryInfC{%
+$\Gamma \vdash f(a):B[a/x]$%
 }
 \end{prooftree}
 \underline{Computation of terms of $\Pi$--type:}\\
 \begin{prooftree}
-\AxiomC{
+\AxiomC{%
 $\Gamma, x:A\vdash b:B$
 \quad\quad
-$\Gamma\vdash(a:A)$
+$\Gamma\vdash(a:A)$%
 }
 \RightLabel{$\Pi$-comp}
-\UnaryInfC{
-$\Gamma \vdash (\lambda ((x:A)\mapsto b))(a) \equiv b[a/x] : B[a/x]$
+\UnaryInfC{%
+$\Gamma \vdash (\lambda ((x:A)\mapsto b))(a) \equiv b[a/x] : B[a/x]$%
 }
 \end{prooftree}
 \underline{Uniqueness of terms of $\Pi$--type:}\\
 \begin{prooftree}
-\AxiomC{
-$\Gamma \vdash f:\Pi_{(x:A)}B$
+\AxiomC{%
+$\Gamma \vdash f:\Pi_{(x:A)}B$%
 }
 \RightLabel{$\Pi$-uniq}
-\UnaryInfC{
-$\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
+\UnaryInfC{%
+$\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$%
 }
 \end{prooftree}
 
@@ -1923,11 +2008,15 @@ function, so the correspondence includes the empty-index case.
 
 \subsubsection{Soundness of $\Pi$--types}
 \begin{theorem}[Soundness of $\Pi B$ Formation, Abstraction, Application, and $\beta$/$\eta$ Rules]
-Let $B$ be a family of classes over a set domain $A=\Dom(B)$, and assume sethood of the graphs constructed below (as supplied by the class-function image principle). Let
+\label{thm:pi_carrier_model}
+Use guarded class comprehension, injective set-pair coding, and
+replacement for the specified operations below. Let $B$ be a family
+of classes over a set domain $A=\Dom(B)$. Let
 \[
 \Pi B = \cc{f \in \power \Sigma B}{(f\functional) \land (\dom(f) = \Dom(B)) \land (\forall (x \in \Dom(B)),\ (f(x) \in B(x)))}.
 \]
-Then:
+This is a class of set graphs. If every $B(x)$ is a set, the power-set
+axiom and separation additionally make $\Pi B$ a set. Then:
 \begin{enumerate}
 \item \textbf{Introduction ($\lambda$-Abstraction):} If for every $(x \in \Dom(B))$ the term $t(x)$ is a set satisfying $(t(x) \in B(x))$, then the functional graph
 \[
@@ -1939,6 +2028,55 @@ is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (
 \end{enumerate}
 These rules use the explicitly restricted product defined in this theorem. They do not follow from the unrestricted same-domain implication in the generated \texttt{DefPiPredicateModel} record discussed above.
 \end{theorem}
+\Proof
+For a specified operation $t$, replacement on $A$ forms the set
+$g=\{(x,t(x)):x\in A\}$. Each pair lies in $\Sigma B$ by
+Theorem~\ref{thm:sigma_carrier_model}, and injectivity of pairing
+shows that $g$ is functional with domain exactly $A$. Thus $g$ is
+a set subclass of $\Sigma B$, and it satisfies every clause of the
+displayed product predicate. This proves introduction even when
+some fibres are proper classes; it does not require collecting all
+their members into a set.
+
+Conversely, $f\in\Pi B$ is a functional graph with domain $A$.
+For $a\in A$, the domain clause supplies a pair $(a,y)\in f$,
+and functionality makes $y$ unique. The pointwise membership clause
+gives $y\in B(a)$. Therefore the displayed fibre is the singleton
+$\{y\}$. The unique-value operation on this singleton returns $y$,
+as does its intersection: for every set $z$, membership in that
+intersection is exactly membership in $y$. No default value on
+empty or nonsingleton classes is involved.
+
+For $g$ constructed from $t$, the pair $(a,t(a))$ belongs to $g$;
+the preceding uniqueness proves $g(a)=t(a)$, which is beta.
+For a given $f\in\Pi B$, replacement also forms
+$h=\{(a,f(a)):a\in A\}$. Every pair of $h$ lies in $f$ by the
+definition of application. Every pair of $f$ has first coordinate
+in $A$ and second coordinate its unique value, so lies in $h$.
+Extensionality gives $h=f$, proving eta.
+
+Finally, when all fibres are sets, the sum theorem makes
+$S=\Sigma B$ a set. The displayed product is then a subclass of
+the set $\power S$ and is a set by separation. Its construction
+uses no choice axiom. In particular introduction requires a supplied
+operation $t$, rather than asserting a section exists whenever all
+fibres are nonempty. For $A=\emptyclass$ the sole graph is the
+empty function, and both computation assertions remain valid.
+\Done
+
+For contextual abstraction, the interpretation of the body at
+$\rho[x\mapsto a]$ supplies the operation $t(a)$ in this proof.
+The environment and substitution assumptions stated after
+Theorem~\ref{thm:sigma_dependent_elimination} identify application
+and syntactic substitution with the fibre and value just computed.
+Under these assumptions the rules are sound in the model. The
+equations alone do not establish normalization or decidability of
+judgmental conversion for a dependent checker. Likewise, sethood
+of $\Pi B$ does not imply membership in an arbitrary chosen universe
+$\Un$; interpreting the small formation rule requires that universe
+to be closed under these dependent products. For a proper-class
+domain the predicate model remains available, but its proper-class
+function graphs cannot be members of this class of set graphs.
 \pagebreak
 \subsection{Implementing W--types}
 A W-type describes well-founded trees: a label $a$ determines the type

@@ -47,14 +47,14 @@
 
 %Это, конечно, слегка анахронизм, но пока они не перешли на Lean, пусть лучше классы пишут уверенно. (ну или скорее всего только я это буду делать если повезёт там работу найти)
 
-\IfFileExists{references.bib}{
-  \addbibresource{references.bib}
-}{
-  \IfFileExists{../THESIS/TEX/references.bib}{
-    \addbibresource{../THESIS/TEX/references.bib}
-  }{
-    \PackageWarning{foundations}{Bibliography source not found; citations need the companion references.bib}
-  }
+\IfFileExists{references.bib}{%
+  \addbibresource{references.bib}%
+}{%
+  \IfFileExists{../THESIS/TEX/references.bib}{%
+    \addbibresource{../THESIS/TEX/references.bib}%
+  }{%
+    \PackageWarning{foundations}{Bibliography source not found; citations need the companion references.bib}%
+  }%
 }
 
 % Capitalize the first, last, and all major words in a book title, headline, or first-level heading. Major words are all words except articles (a, an, the), prepositions (on, in, of, etc.), coordinating conjunctions (and, or, but, etc.), and the word to. This capitalization style is called title case.
@@ -460,8 +460,8 @@ val w = normalize ee; (* it will freeze the computations*)
 \pagebreak
 \input{050_prooftrees.tex}
 \pagebreak
-\input{320_strang_thm.tex}
-\pagebreak
+% The unspecified Strang topic remains in its source file, outside this edition.
+%\input{320_strang_thm.tex}
 %\input{320_src.tex}
 %\pagebreak
 \input{330_restricted_quantifiers.tex}
@@ -470,9 +470,9 @@ val w = normalize ee; (* it will freeze the computations*)
 %Appendix 2: 
 \chapter{Topics related to Dunford--Pettis theorem}
 %\chapter{From foundations to applications.}
-\IfFileExists{../THESIS/TEX/AcademicWriting.tex}{
-  \input{../THESIS/TEX/AcademicWriting.tex}
-}{
+\IfFileExists{../THESIS/TEX/AcademicWriting.tex}{%
+  \input{../THESIS/TEX/AcademicWriting.tex}%
+}{%
   This chapter is reserved for the companion manuscript on the
   Dunford--Pettis theorem. Its source is maintained separately and is not
   included in this checkout. The functional-analysis section supplies a

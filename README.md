@@ -61,7 +61,7 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **210_partial_functions_semantics.tex**: Farmer's PFOL, iota-definedness, and Kleene equality. *(Preserved Alternative 4)*
 - **220_simpler_img_thms.tex**: Simpler image theorems for functions between classes. *(Active Draft)*
 - **230_analysis.tex**: Foundations of real analysis within the class framework. *(Active Draft)*
-- **250_topology.tex**: Basic topology, proper ultrafilters, the ultrafilter criterion for compactness, and set-indexed Tychonoff under Choice. *(Active Draft)*
+- **250_topology.tex**: Basic topology, Alexandrov's topology–preorder correspondence, proper ultrafilters, and the ultrafilter criterion and Tychonoff theorem under Choice. *(Active Draft)*
 - **260_linear_algebra.tex**: Linear algebraic structures expressed via classes. *(Active Draft)*
 - **270_measure_theory.tex**: Measure construction tools, integral convergence, and completeness of function spaces. *(Active Draft)*
 - **280_functional_analysis.tex**: Duality, Banach-space principles, Vitali convergence, and finite-measure Dunford–Pettis in both sequential and topological weak-compactness forms. *(Active Draft)*
@@ -69,7 +69,7 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **300_category_theory.tex**: Categorical foundations compatible with Morse–Kelley theory. *(Active Draft)*
 - **310_differential_geometry.tex**: Local Euclidean structure, connected components, and path connectedness. *(Active Draft)*
 - **320_src.tex**: Source code excerpts and utilities supporting the LaTeX documents. *(Active Draft)*
-- **320_strang_thm.tex**: Planned Strang-theorem topic; the intended statement remains to be specified. *(Active Draft)*
+- **320_strang_thm.tex**: Unspecified Strang-theorem placeholder, retained as source but excluded from the assembled book.
 - **330_restricted_quantifiers.tex**: Treatment of restricted quantifiers in the class language. *(Active Draft)*
 - **summary_of_approaches.tex**: Front-of-book guide separating the active mainline from the three preserved alternatives. *(Active Guide)*
 
@@ -138,7 +138,11 @@ from their well-founded trees. The assembled logic chapter proves transport
 of quantification along syntax coding, a conservative total witness extension
 for nonempty set domains (including its substitution and coincidence cases),
 a diagonal construction under an explicit coding hypothesis, and Löb's theorem
-under explicit derivability hypotheses. Separate classical-fragment and
+under explicit derivability hypotheses. It also proves deduction for the
+specified context-sensitive rules and the obstruction to unrestricted internal
+truth. A normalization result for opaque constants separates termination from
+Boolean canonicity, preserving the verification-only compiler setting.
+Separate classical-fragment and
 candidate-selection lemmas remain in a disabled historical source block;
 they are not part of the assembled chapter. The language chapter proves simple-type checking,
 preservation, strong normalization, confluence, and decidable conversion.
@@ -197,7 +201,7 @@ margin line numbers for an editing copy. The repository checks run with
 
 - Keep the active semantics and alternative systems explicitly separated.
 - Require precise source/target semantics and proved metatheory for any future translation.
-- Specify the intended Alexandrov and Strang theorems before completing those
-  planned topics; retain application outlines as outlines until their claims are fixed.
+- Retain unspecified application outlines outside the assembled book until
+  their claims are fixed; the former Alexandrov placeholder now has a proved statement.
 - Extend the scoped type/storage interface only with explicit soundness proofs
   for additional constructors, and check any claimed connection with implemented encodings.

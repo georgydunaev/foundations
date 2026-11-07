@@ -107,9 +107,12 @@ without executing their denotations is retained throughout.
 
 %\iffalse
 \IfFileExists{../set_theory_prover/program/CONTENT.ML}{%
-\begin{nolinenumbers}
-\lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set_theory_prover/program/CONTENT.ML}
-\end{nolinenumbers}
+\begin{nolinenumbers}%
+% Keep filename underscores literal when the underscore package is active.
+\lstinputlisting[basicstyle=\ttfamily\footnotesize]{%
+\detokenize{../set_theory_prover/program/CONTENT.ML}%
+}%
+\end{nolinenumbers}%
 }{%
 \begin{note}[companion implementation]
 The full datatype listing belongs to the companion proof-assistant project
