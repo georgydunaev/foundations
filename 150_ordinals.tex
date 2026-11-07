@@ -1010,6 +1010,47 @@ By its definition $\forall (x:\Class),\ (x \in \omega) \iff (\forall (Q:\Class),
 \]
 which directly expresses simple countable mathematical (Peano) induction up to $\omega$.
 \end{note}
+\begin{proposition}[The least successor-inductive class and Infinity]
+\label{thm:omega_set_limit}
+Assume MK comprehension, empty set, pairing, union, and heredity.
+The class
+\[
+\omega=\{x:\forall Q,\ \mathrm{Ind}(Q)\implies x\in Q\}
+\]
+is successor-inductive and is contained in every successor-inductive
+class. It is a transitive class of ordinal sets. If additionally
+Infinity supplies a successor-inductive set, then $\omega$ is a set
+ordinal and is a nonzero limit ordinal. Conversely, sethood of this
+$\omega$ supplies the set required by Infinity.
+\end{proposition}
+\begin{proof}
+Every successor-inductive class contains zero, so $0\in\omega$.
+If $a\in\omega$, every such class contains $a$ and therefore its
+successor $a\cup\{a\}$. Pairing and union make that successor a set,
+so it belongs to $\omega$ by comprehension. The definition also gives
+the asserted minimality.
+
+Zero is an ordinal, and the successor of an ordinal set is an ordinal
+set: it is a transitive set of ordinal sets, so the ordinal
+characterization applies. Thus $\On$ is successor-inductive and
+minimality gives $\omega\subseteq\On$. For transitivity put
+\[
+T=\{a\in\omega:a\subseteq\omega\}.
+\]
+Zero belongs to $T$. If $a\in T$, then its successor belongs to
+$\omega$ and is a subclass of $\omega$, because both $a\subseteq\omega$
+and $a\in\omega$ hold. Thus $T$ is successor-inductive. Minimality
+gives $\omega\subseteq T$, proving transitivity of $\omega$.
+
+If $I$ is a successor-inductive set, minimality gives $\omega\subseteq I$,
+and heredity makes $\omega$ a set. Its transitivity and containment
+in $\On$ make it an ordinal set. It is nonempty because it contains
+zero. For each $a\in\omega$, its successor belongs to $\omega$ and
+contains $a$, so $a\in\bigcup\omega$. Transitivity gives the reverse
+inclusion, hence $\omega=\bigcup\omega$ is a nonzero limit ordinal.
+Finally, if $\omega$ is a set, its already proved successor-inductiveness
+is itself a witness to Infinity.
+\end{proof}
 \begin{corollary}[induction on a transitive and well--founded by membership relation class]
 \[
 (\Tr(K))
@@ -1435,10 +1476,91 @@ This proves the equivalence with set choice, without introducing a
 global choice function on proper classes.
 \end{proof}
 
-Ordinal arithmetic requires a separate recursive development. In
-particular, the height convention in the recursion chapter uses left
-ordinal addition; its behavior at limits must not be replaced by the
-successor operation used in the rank recurrence.
+\subsection{Ordinal addition and the height convention}
+\label{sec:ordinal_addition}
+We use the set-valued transfinite-recursion theorem from the earlier
+recursion chapter, together with pairing, union, and set-image. That
+theorem does not use ordinal addition. The following construction therefore
+also supplies the arithmetic facts used later in that chapter's height
+discussion, despite their present placement in the book.
+
+The stages used in this recursion need no prior arithmetic. The successor
+$\alpha\cup\{\alpha\}$ is a transitive set of ordinal sets, hence an
+ordinal set. The union of a set of ordinals is likewise an ordinal set:
+it is transitive and contained in $\On$, and union supplies sethood.
+Every nonzero ordinal $\delta$ is either a successor or a nonzero limit.
+Indeed, if $\delta\ne\bigcup\delta$, choose
+$\eta\in\delta\setminus\bigcup\delta$. Ordinal comparison forces
+every member of $\delta$ to be at most $\eta$, since $\eta\in\xi\in\delta$
+would contradict the choice of $\eta$. Thus
+$\delta=\eta\cup\{\eta\}$, with unique predecessor $\eta$.
+Otherwise $\delta=\bigcup\delta$ is the limit case.
+
+\begin{theorem}[Ordinal addition by recursion]
+For each ordinal set $\alpha$, there is a unique class function
+$\beta\mapsto\alpha+\beta$ from $\On$ to $\On$ satisfying
+\[
+\begin{aligned}
+\alpha+0&=\alpha,\\
+\alpha+(\beta+1)&=(\alpha+\beta)\cup\{\alpha+\beta\},\\
+\alpha+\lambda&=\bigcup_{\beta<\lambda}(\alpha+\beta)
+   &&(\lambda\text{ a nonzero limit ordinal}).
+\end{aligned}
+\]
+Here $\beta+1$ in the recursion index denotes the already defined
+successor $\beta\cup\{\beta\}$. After addition has been constructed,
+the equation at the index $1$ identifies these two uses of $+1$.
+\end{theorem}
+\begin{proof}
+Specify a total step on set graphs as follows. For a function graph $p$
+with ordinal domain $\delta$ and ordinal values, return $\alpha$ if
+$\delta=0$, the successor of $p(\eta)$ if $\delta=\eta+1$, and
+$\bigcup\operatorname{ran}(p)$ if $\delta$ is a nonzero limit.
+Return zero on every other set input. The successor and union outputs
+are sets by pairing, union, and set-image; they are ordinals by the
+successor and union properties of ordinals. Hence this is a set-valued
+class-function step, and transfinite recursion supplies its unique
+solution on $\On$.
+
+Ordinal induction shows that every value of the solution is an ordinal.
+At each stage its preceding restriction therefore satisfies the intended
+branch of the step, proving all three equations. Conversely, any
+ordinal-valued solution of these equations satisfies the same total
+recursion, so uniqueness follows from the recursion theorem. The
+nonzero restriction on the limit clause is necessary: this book's
+limit convention includes zero, whose value is specified separately.
+\end{proof}
+
+\begin{proposition}[Elementary addition identities]
+For every ordinal set $\beta$ and every finite ordinal $n$,
+\[
+0+\beta=\beta,\qquad 1+n=n+1.
+\]
+Assume Infinity for the assertions involving $\omega$, so that
+Proposition~\ref{thm:omega_set_limit} makes it a nonzero limit ordinal
+set. Then $1+\omega=\omega$, whereas $\omega+1$ is strictly greater
+than $\omega$.
+\end{proposition}
+\begin{proof}
+Induct on $\beta$ for the first identity. The zero and successor
+clauses preserve the equality. At a nonzero limit $\lambda$, the
+induction hypothesis gives $0+\lambda=\bigcup_{\beta<\lambda}\beta
+=\lambda$. Ordinary induction on $n$ gives $1+n=n+1$: the base
+is $1+0=1$, and each successor step takes the successor of both sides.
+Continuity at the nonzero limit $\omega$ then gives
+\[
+1+\omega=\bigcup_{n<\omega}(n+1)=\omega.
+\]
+The last equality follows because every finite ordinal belongs to a
+later finite successor and every member of a finite successor is finite.
+Finally $\omega+1=\omega\cup\{\omega\}$ properly contains $\omega$,
+since $\omega\notin\omega$.
+\end{proof}
+
+Thus left addition by $1$ preserves the bound $\omega$ used for depth
+in the recursion chapter, whereas the successor operation strictly
+increases every ordinal rank. Multiplication and exponentiation require
+separate recursions and are not implicit in this construction.
 
 \subsection{Ordinals' definition if the axiom of regularity is present}
 This final comparison assumes regularity locally. The shorter

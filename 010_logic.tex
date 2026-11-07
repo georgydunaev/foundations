@@ -61,6 +61,50 @@ while higher-level code organises proofs. The type notation below describes
 syntactic objects manipulated by that implementation. It must be distinguished
 from the classes and types discussed inside an object theory.
 
+\begin{note}[Checking, normalization, and semantic values]
+The companion compiler documentation specifies verification of derivations,
+without executable code generation. This is compatible with the present
+book's use of classical axioms and declarative meanings. It does not
+identify three different mathematical questions: whether a proposed finite
+derivation can be checked, whether a specified reduction relation
+terminates, and whether a normal form computes a semantic witness.
+In particular, an opaque axiom can have no computation rule without
+causing an infinite reduction. The following elementary consequence of
+the language chapter makes the distinction precise.
+\end{note}
+
+\begin{proposition}[Opaque constants and normalization]
+Take the simple Boolean calculus of
+Theorem~\ref{thm:boolean_strong_normalization}, and add constants with
+fixed simple types and no new reduction rules. Every well-typed term
+is still strongly normalizing for its full reduction relation. However,
+adding an opaque constant $b:\mathsf{Bool}$ invalidates the claim that
+every closed Boolean normal form is $\mathsf{true}$ or $\mathsf{false}$.
+\end{proposition}
+\Proof
+A finite term $t$ contains only finitely many new constants. Replace
+each such constant $c_i:\alpha_i$ by a distinct fresh free variable
+$z_i:\alpha_i$, first renaming bound variables to avoid these names.
+Induction on typing gives a term of the original calculus in the context
+extended by the $z_i$. This replacement commutes with capture-avoiding
+substitution: constants are never bound, and the fresh variables cannot
+be captured. Consequently every beta, projection, or Boolean contraction
+is carried to the same contraction, and the assertion extends to
+contractions inside contexts. No reduction introduces a new constant.
+An infinite reduction from $t$ would therefore give an infinite reduction
+of its translated original term, contradicting the cited normalization
+theorem for open well-typed terms. But $b$ itself is a closed normal form
+of Boolean type and is neither of the two Boolean constructors.
+\Done
+
+This is a syntactic result for the stated calculus. It does not assert
+semantic soundness of arbitrary added axioms, nor normalization of an
+unspecified dependent calculus. Likewise the absence of code generation
+does not establish a complexity bound for checking: that requires a
+particular checker, a representation of proofs and types, conversion
+rules, and a cost analysis. The author's choice to verify certificates
+without executing their denotations is retained throughout.
+
 %\iffalse
 \IfFileExists{../set_theory_prover/program/CONTENT.ML}{%
 \begin{nolinenumbers}
@@ -471,6 +515,37 @@ collecting that predicate returns $C$. In particular,
 $\operatorname{Code}(\TClass)$ is not the collected extension of the
 semantic type $\Class$, which would be the whole class $\V$ of sets.
 An expression's code and the class it denotes are different objects.
+
+\begin{note}[Quotation, decoding, and valuation have different signatures]
+Three operations must be distinguished even when a source uses
+``quotation'' or ``antiquotation'' for more than one of them.
+Syntactic encoding sends an expression to its code; decoding recovers
+an expression from a valid code; semantic valuation interprets that
+expression in a fixed model and assignment. In the type chapter's
+notation, $\mu_A$ is a type-indexed translation into class expressions,
+so evaluation of a valid code $c$ has the composite form
+\[
+\operatorname{Eval}_{A,\rho}(c)
+ =\operatorname{Val}_{\rho}
+       \bigl(\mu_A(\operatorname{Dec}_A(c))\bigr).
+\]
+The newer symbol pages instead use $\mu_A$ for valuation under an
+assignment called $A$. That is a different local signature; its version
+of $\mu_A(\operatorname{Dec}(c))$ already includes semantic evaluation.
+The two notations agree only after their roles have been translated,
+not by deleting the outer valuation in the displayed formula.
+
+The round trip from syntax to its code and back is a coding identity.
+A round trip from an arbitrary semantic value to a finite expression
+denoting it would additionally require surjectivity of interpretation.
+That stronger property fails in the function-space setting of
+Proposition~\ref{thm:finite_syntax_limit}. Distinct syntax can also have
+the same value: in ordinary arithmetic, $0+0$ and $0$ have different
+raw syntax codes but equal denotations. Thus decoding is not inversion
+of semantic equality. For formula codes, truth in the chosen model is
+again a separate semantic operation, subject to the language boundary
+in Proposition~\ref{prop:internal_truth_obstruction}.
+\end{note}
 \iffalse
 \begin{notation}[overloading]
 Luckily, on paper, it is possible to completely avoid the necessity of coloring the constants or of writing prefixes, via simple overloading trick: 
@@ -555,6 +630,38 @@ when the datatype is nonempty. Alternatively the display can be read as
 a bounded metatheoretic quantifier, which never applies the decoder to
 an invalid code. These conventions do not give a total semantic evaluator
 for arbitrary expressions or a code for every semantic class.
+
+\begin{proposition}[When codes can test semantic quantification]
+Let $C,A$ be sets and let $v:C\to A$ be an interpretation of codes.
+The equivalence
+\[
+(\forall a\in A,\ P(a))\iff(\forall c\in C,\ P(v(c)))
+\]
+holds for every predicate $P$ on $A$ exactly when $v$ is surjective.
+The same criterion holds for the corresponding existential equivalence.
+\end{proposition}
+\Proof
+Surjectivity supplies a code for each $a$, proving the reverse universal
+implication and the forward existential implication; the other two
+implications hold for every map. If $a_0\in A$ has no code, take
+$P(a)$ to be $a\ne a_0$ for the universal assertion. It holds at every
+interpreted code but not throughout $A$. For the existential assertion,
+take $P(a)$ to be $a=a_0$: it has a semantic witness and no coded witness.
+These examples also cover an empty code carrier with nonempty $A$.
+\Done
+
+Thus a syntax-coding bijection alone does not justify replacing a
+quantifier over semantic values by one over expressions. A further
+surjectivity hypothesis is needed for the interpretation being used.
+Even under surjectivity, unique \emph{codes} need not correspond to
+unique semantic values: two different codes can denote the same value.
+For example, the constant map from $\{0,1\}$ to $\{a\}$ gives a
+unique value satisfying $x=a$ but two codes satisfying its pullback.
+The countable-syntax obstruction in Proposition~\ref{thm:finite_syntax_limit}
+gives another reason to keep these quantifiers distinct in a fixed
+function-space interpretation. None of these observations precludes a
+separately specified model in which the required surjectivity holds.
+
 \begin{definition}[quantifiers with a bound variable of type $\Fm$]
 Let $\phi$ be a variable for formulas.\\
 Let $\psi$ be a formula.\\
@@ -2070,12 +2177,28 @@ If $x\notin \FV(S)$ then
 c(S)\ceq (\Henkin (x:\Class),\ (x\in S))
 \]
 \end{definition}
+This is a class-parameter choice operation under the proposed
+class-valued witness scheme. When $S$ is nonempty, that scheme gives
+$c(S)\in S$, so the selected value is a set. When $S$ is empty, the
+witness scheme prescribes no value; a total interpretation still needs
+a default. An ordinary global-choice \emph{class graph} has nonempty
+sets as its arguments, not arbitrary proper classes. Collecting this
+operation's restriction into such a graph additionally requires the
+corresponding comprehension instance in its expanded language. The
+set-domain conservativity theorem does not establish that additional
+class-theoretic assertion. A concrete class-parameter construction with
+its own hypotheses is given in the relational-image chapter.
 
 The following schemes describe \textit{provable equivalence} of syntactic
 objects. The term ``effective'' would require a separate decision procedure;
 the definitions themselves only refer to derivability in $\Fau$. Every
 substitution below is subject to the same typing and capture-avoidance
 conditions as the quantifier rules.
+The equality-congruence statements apply to the ordinary total fragment
+with equality substitutivity and extensional term constructors. They do
+not assert congruence through a constructor that inspects raw syntax,
+such as quotation or an injective coding of expressions. Such a
+constructor may distinguish terms with equal denotations.
 %\[\]
 \[
 (t_1 \sim t_2)
@@ -2101,9 +2224,17 @@ conditions as the quantifier rules.
 (
 (y\notin\FV(\phi))
 \implies
-(((y,\phi[y/x]) \sim (x,\phi) ))
+((y,\phi[y/x]) \equiv_\alpha (x,\phi))
 )
 \]
+Here $(x,\phi)$ denotes a binding expression and $\equiv_\alpha$
+means capture-avoiding renaming of its bound identifier, not equality of
+the two raw ordered syntax pairs. The variable $y$ has the same sort as
+$x$; inner binders are renamed before substitution when necessary. The
+renaming changes exactly the occurrences bound by the displayed binder.
+If syntax is stored modulo alpha-equivalence, these expressions have
+the same stored representative under a canonical coding. An injective
+coding of raw named trees need not assign them the same code.
 
 \[
 \forall (x:\Var),\ %
@@ -2125,8 +2256,26 @@ conditions as the quantifier rules.
 \[
 (\phi_1 \sim \phi_2)
 \implies
-((\Fau, \Gamma\vdash\phi_1) \sim (\Fau, \Gamma\vdash\phi_2))
+\bigl((\Fau, \Gamma\vdash\phi_1) \iff (\Fau, \Gamma\vdash\phi_2)\bigr)
 \]
+This last implication is a metatheorem, with both turnstiles read
+externally. Indeed, a theorem $\phi_1\iff\phi_2$ supplies both
+implications; weaken either into $\Gamma$ and apply modus ponens to a
+derivation of its antecedent. This transforms derivations in both
+directions. It does not by itself prove inside $\Fau$ a formula about
+the equivalence of two quoted sequents. That internal version requires
+specified representations and a proof that the two transformations are
+represented correctly.
+
+The preceding equality-congruence displays similarly use the equality
+axioms: from a theorem $t_1=t_2$, substitution of equals proves the
+equation between $q[t_1/x]$ and $q[t_2/x]$, and the biconditional between
+$\phi[t_1/x]$ and $\phi[t_2/x]$. The first display follows directly
+from equality substitution applied to $y=x$; it does not instantiate
+the later display's extra condition that its placeholder be absent from
+both replacement terms. These conclusions concern the stated
+extensional fragment and do not erase the distinctions just made for
+binders or quotations.
 The interaction between provable equivalence and encoding is a separate
 design question. The draft records the possibility that
 \[
@@ -5049,6 +5198,58 @@ separate check that this transformation remains valid.
 \]
 \end{inferencerule}
 
+\begin{proposition}[Deduction for the specified predicate-calculus rules]
+\label{prop:local_deduction}
+Consider derivations using assumptions, logical and nonlogical axioms,
+modus ponens, generalisation, and the abstraction rules B1 and B2 above.
+Suppose every generalisation or abstraction step has its stated freshness
+conditions, including freshness for the assumption $\psi$ to be discharged.
+Then a derivation of $\phi$ from $\Gamma\cup\{\psi\}$ can be transformed
+into a derivation of $\psi\implies\phi$ from $\Gamma$. Adding witness
+axioms of the preceding total extension does not change this conclusion;
+adding arbitrary new inference rules is not covered.
+\end{proposition}
+\Proof
+The propositional rewrites used below are consequences of A1--A5
+and modus ponens (implication composition and permutation, and conjunction
+introduction and elimination); they do not use the deduction theorem
+being proved. Induct on the given derivation, transforming a line $\chi$ into
+$\psi\implies\chi$. If $\chi$ is an axiom or an assumption in
+$\Gamma$, retain it and apply A1, namely
+$\chi\implies(\psi\implies\chi)$. If the line is $\psi$ itself,
+derive $\psi\implies\psi$ from A1 and A2: A1 gives
+$\psi\implies((\psi\implies\psi)\implies\psi)$ and
+$\psi\implies(\psi\implies\psi)$; A2 combines these to the result.
+For a modus-ponens step from $\chi$ and $\chi\implies\eta$, the
+induction hypotheses and A2 give $\psi\implies\eta$.
+
+For generalisation from $\chi$ to $\forall x\,\chi$, the induction
+hypothesis gives $\psi\implies\chi$. Rule B1 gives
+$\psi\implies\forall x\,\chi$ because $x$ is free in neither
+$\psi$ nor $\Gamma$.
+
+For a B1 step from $\chi\implies\eta$ to
+$\chi\implies\forall x\,\eta$, the transformed premise is
+$\psi\implies(\chi\implies\eta)$. Propositional logic, using
+conjunction introduction and elimination, rewrites this as
+$(\psi\land\chi)\implies\eta$. The original side conditions make
+$x$ fresh for $\chi,\psi,\Gamma$, so B1 gives
+$(\psi\land\chi)\implies\forall x\,\eta$. Propositional logic
+rewrites this as $\psi\implies(\chi\implies\forall x\,\eta)$.
+
+For a B2 step from $\chi\implies\eta$ to
+$(\exists x\,\chi)\implies\eta$, the transformed premise
+$\psi\implies(\chi\implies\eta)$ propositionally implies
+$\chi\implies(\psi\implies\eta)$. The B2 side conditions make $x$
+fresh for $\eta,\psi,\Gamma$, so B2 yields
+$(\exists x\,\chi)\implies(\psi\implies\eta)$. Reordering the two
+antecedents gives $\psi\implies((\exists x\,\chi)\implies\eta)$.
+These are all allowed inference steps. Witness axioms use the same
+axiom case as any other axiom; an additional inference rule would require
+another induction case, which is why no assertion about reflection or
+serial rules follows from this proof.
+\Done
+
 For a finite context $\Gamma$, and subject to the same restrictions,
 \[
 \frac{
@@ -5197,6 +5398,44 @@ The iterated displays below record the author's proposed treatment of
 metalevels. Their internal readings are additional principles to be justified
 for that treatment; they do not follow merely by suppressing quotation marks
 in an external semantic equivalence.
+
+\begin{proposition}[The obstruction to unrestricted internal truth]
+\label{prop:internal_truth_obstruction}
+Let $T$ be a classical theory in a language containing a unary predicate
+$\operatorname{Tr}$ and the sentence codes needed for the diagonal
+construction proved above. Assume that construction applies also to
+formulas containing $\operatorname{Tr}$. If, for every sentence $\theta$
+of this same language,
+\[
+T\vdash\operatorname{Tr}(\overline{\#\theta})\iff\theta,
+\]
+then $T$ is inconsistent. No effective enumeration of the axioms of $T$
+is required for this conclusion.
+\end{proposition}
+\Proof
+Apply the diagonal construction to
+$\psi(y)=\neg\operatorname{Tr}(y)$. It gives a sentence $L$ with
+\[
+T\vdash L\iff\neg\operatorname{Tr}(\overline{\#L}).
+\]
+The truth biconditional for $L$ gives
+$T\vdash\operatorname{Tr}(\overline{\#L})\iff L$.
+Substitution of these propositional equivalents yields
+$T\vdash L\iff\neg L$. Its forward implication gives
+$T\vdash\neg L$ by propositional reasoning: an assumption $L$
+would yield both $L$ and $\neg L$. Its reverse implication then gives
+$T\vdash L$, hence $T\vdash\bot$.
+\Done
+
+The proposition concerns an internal predicate that applies to its own
+full language and the specified diagonal coding. It does not apply to
+truth asserted externally for a fixed object language, or to a
+higher-level truth predicate restricted to a lower-level language. In
+those settings the self-referential sentence used in the proof is outside
+the domain of the relevant truth scheme. Non-enumerability of $\Fau$
+alone does not resolve this particular obstruction; the interpretation
+and metalevel of each evaluation and quotation must supply the boundary.
+
 \begin{definition}[credible theory]
 Let $\Wau$ be a theory. It is called \textit{credible}, if the derivability of any formula in it implies the validity of the formula.
 \[

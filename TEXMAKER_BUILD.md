@@ -80,6 +80,31 @@ numeric mode when using another version.
 
 ## Verification
 
-Command recipes have been checked against the configuration and source code.
-Full TeX Live 2024 PDF and DVI build results are pending; the Texmaker GUI and
-viewers have not been launched as part of this check.
+The compiler sequences were tested with archived TeX Live 2024, using
+pdfTeX 1.40.26 and its matching Biber 2.20. Both PdfLaTeX/Biber/PdfLaTeX
+twice and LaTeX/Biber/LaTeX twice compiled the full manuscript. Separate
+temporary output directories kept the PDF and DVI auxiliary files apart.
+The test installation lives outside the repository; the executable path
+prefix differs from the supplied `/usr/local/texlive/2024`, but the engine
+and bibliography versions match that release. The Texmaker GUI and viewers
+have not been launched; these are backend compilation checks.
+
+The illustration is selected without a filename extension: PDF engines use
+`pictures/DEMO.png`, while LaTeX/DVI uses its lossless EPS companion. The EPS
+was rendered independently and its RGB pixels matched the original image
+composited on white. Keep the PNG as the source when regenerating this asset.
+The DVI preamble uses `breakurl` so long web and bibliography links can wrap.
+
+## Packages and fonts
+
+A minimal TeX Live installation needs the packages loaded by
+`000_preamble.tex`, not just the engine executable. In particular, the font
+packages `clearsans`, `rsfs`, `cm-super`, and `esvect` supply the intended
+quantifiers, script letters, text outlines, and vector symbols. `authblk.sty`
+is distributed in the TeX Live package `preprint`; `mathrsfs.sty` is in
+`jknapltx`. The DVI route additionally needs `breakurl` and `xkeyval`.
+Install packages into the selected TeX Live installation rather than adding
+a source directory to Texmaker's executable `ExtraPath`.
+
+After switching between PDF and DVI engines, rerun the complete sequence;
+their shared auxiliary files can otherwise retain driver-specific link data.

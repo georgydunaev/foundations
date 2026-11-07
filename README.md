@@ -134,10 +134,13 @@ A countable-syntax diagonal argument records the limits of finite closed
 denotations; no uniform internal truth predicate is asserted. The chapter
 also proves finite-stage W-recursion, constructs set-level
 M-types by finite addresses, and obtains W-types for arbitrary set arities
-from their well-founded trees. The logic chapter proves substitution and
-locality for its classical fragment, a diagonal construction under an
-explicit coding hypothesis, and Löb's theorem under explicit derivability
-hypotheses. The language chapter proves simple-type checking,
+from their well-founded trees. The assembled logic chapter proves transport
+of quantification along syntax coding, a conservative total witness extension
+for nonempty set domains (including its substitution and coincidence cases),
+a diagonal construction under an explicit coding hypothesis, and Löb's theorem
+under explicit derivability hypotheses. Separate classical-fragment and
+candidate-selection lemmas remain in a disabled historical source block;
+they are not part of the assembled chapter. The language chapter proves simple-type checking,
 preservation, strong normalization, confluence, and decidable conversion.
 Its separate Boolean extension adds a two-point model and typed
 conditionals, with the new substitution, progress, reducibility, and
@@ -161,8 +164,25 @@ states its local setting rather than importing every assumption used elsewhere.
 
 ## Building a Reading Copy
 
-The full book was built with Tectonic 0.17.0 and Biber 2.17 (matching the
-bundled biblatex 3.17). With those executables on `PATH`, run:
+For Texmaker with TeX Live 2024, open `001_foundations.tex` as the master
+document and use **PdfLaTeX + Bib(la)tex + PdfLaTeX (x2) + View Pdf**.
+The Bib(la)tex command must be **Biber**. With the matching TeX Live
+executables on `PATH`, the compiler sequence is:
+
+```sh
+pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
+biber 001_foundations
+pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
+pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
+```
+
+See [TEXMAKER_BUILD.md](TEXMAKER_BUILD.md) for the supplied settings,
+command corrections, package requirements, and the optional LaTeX/DVI
+workflow. Use Biber from the same TeX Live installation as BibLaTeX;
+mixing versions can make bibliography control files incompatible.
+
+The book also supports Tectonic 0.17.0 and Biber 2.17 (matching Tectonic's
+bundled biblatex 3.17). With that pair on `PATH`, run:
 
 ```sh
 tectonic --keep-logs 001_foundations.tex

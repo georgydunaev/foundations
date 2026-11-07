@@ -101,6 +101,7 @@ ticket is a proposed theorem development, not a contradiction report:
 | Family-record domains and image conventions | [Family records](tickets/obelisk_family_records_and_image_conventions.md) |
 | Fresh binders in uniqueness expansions | [Binder hygiene](tickets/obelisk_uniqueness_binder_hygiene.md) |
 | Finite class-list representation and transport development | [Class-list transport](tickets/obelisk_class_lists_transport.md) |
+| Incompatible zero-base ordinal exponentiation claims | [Ordinal arithmetic zero cases](tickets/obelisk_ordinal_arithmetic_zero_cases.md) |
 
 The inspected site snapshot is commit
 `bb346f112ae91d1649940068c7f210a53b8674bf` in
@@ -120,10 +121,13 @@ pairing and projections, approximation-based transfinite recursion, the Levy
 boundedness argument and its union consequence, descriptor canonicalization,
 ordinal and order results, topology recovery, the Yoneda correspondence, and
 uniform-integrability and Vitali lemmas. Each uses its section's stated
-assumptions. The subsequent extended pass completed both directions of the sequential
-finite-measure Dunford–Pettis criterion, including the needed L1 duality
-and Hilbert-space arguments. Topological weak compactness is still
-distinguished from this sequential formulation.
+assumptions. Subsequent passes completed the finite-measure Dunford–Pettis
+equivalence between uniform integrability, compactness of the weak closure,
+and the weak subsequence criterion. The proof supplies L1 duality,
+Hilbert-ball weak compactness, proper ultrafilters and the compact product
+theorem rather than assuming that weak topologies are metrizable.
+Density constraints are weakly closed, and bounded expectations attain
+their extrema on nonempty dominated families with bounded moment constraints.
 
 Further completed developments include finite and hereditarily finite
 countermodels for the minimal axioms, Hartogs and Mostowski theorems,
@@ -177,11 +181,36 @@ glyphs nor replacement characters. A successful compilation is not a
 guarantee of perfect typography on every page.
 
 Some sections remain research sketches or incomplete model constructions.
-In particular, the uniform predicate-level translation involving `Emb` and
-`kappa`, the proposed serial-reflection hierarchy, and extension of the
-simple operational calculus to additional constructors remain separate
-obligations. The intended Alexandrov and Strang statements have not been
+The proved predicate/storage interface does not supply a uniform model for
+every proposed dependent constructor. The serial-reflection hierarchy and
+extensions beyond the explicitly proved operational calculus likewise retain
+separate obligations. The intended Alexandrov and Strang statements have not been
 identified; their headings do not assert an arbitrarily chosen theorem.
 The external companion manuscript remains unavailable. These limits are
 stated locally, and the revised mathematics has not been kernel-verified.
 Further development is therefore needed for a complete publication edition.
+
+## Follow-up merge and foundations review
+
+The follow-up pass checked the reported merge: its manuscript files preserved
+the reviewed parent version, and no unmerged index entries or actual conflict
+markers remained. Later user checkpoints were retained throughout the work.
+
+Additional corrections distinguish predecessor membership in a proper class
+from membership in a set-pair relation, and distinguish syntactic code
+carriers from semantic classes. The closed-sentence Henkin property is no
+longer presented as sufficient for uniform epsilon terms: a separate
+model-expansion and conservativity proof uses nonempty set domains and
+Choice. The local deduction theorem explicitly covers both displayed
+abstraction rules and their freshness conditions. These new arguments are
+active in the assembled manuscript. Separate classical-fragment and
+candidate-selection lemmas remain inside a disabled historical source block;
+their presence in the source is not an assertion that they appear in the PDF.
+
+The schematic predicate interface now proves exactly what storage of set
+instances preserves, and why proper-class information is lost. The Boolean
+operational extension includes preservation, progress, normalization,
+confluence, canonicity and conservativity for the original calculus.
+Measurability prerequisites and quotient representative-choice assumptions
+are stated explicitly. The compact-unit-ball converse now uses a finite net
+and Riesz's lemma, avoiding a dependent-choice sequence construction.

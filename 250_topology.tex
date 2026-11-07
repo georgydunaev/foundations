@@ -70,14 +70,46 @@ These three conditions also admit $F=\emptyclass$, because the last two
 are then vacuous. Thus this convention includes an empty family. When a
 nonempty filter is required, that hypothesis will be stated separately;
 for a nonempty $F$, upward closure implies $\union F\in F$.
-\iffalse
 \subsection{Filter Base}
-\begin{definition}[filter base] TODO
+\begin{definition}[filter base with its recovered carrier]
+A filter base is a nonempty set $\mathcal B$ of nonempty sets such that
+for $B_1,B_2\in\mathcal B$ there is $B_3\in\mathcal B$ with
+$B_3\subseteq B_1\cap B_2$. Its carrier is $X=\bigcup\mathcal B$.
+Define the generated family by
 \[
-...
+F(\mathcal B)=\{A\subseteq X:\exists B\in\mathcal B,\ B\subseteq A\}.
 \]
+Thus the base need not itself be upward closed or closed under
+intersections. The refinement condition supplies a member inside each
+intersection of two members.
 \end{definition}
-\fi
+
+\begin{proposition}[Generation and recovery of a nonempty filter]
+\label{prop:filter_base_generation}
+The family $F(\mathcal B)$ is a nonempty filter in the preceding local
+convention, has carrier $X$, and is the least such filter containing
+$\mathcal B$. Conversely, every nonempty filter $F$ in that convention
+is a filter base and satisfies $F(F)=F$.
+\end{proposition}
+\Proof
+Every base member belongs to $F(\mathcal B)$, so the generated family
+is nonempty and its union is $X$: containment in $X$ follows from its
+definition, and the reverse containment follows from
+$\mathcal B\subseteq F(\mathcal B)$. No member is empty, since it
+contains a nonempty base member. If $A_1,A_2\in F(\mathcal B)$,
+choose $B_i\in\mathcal B$ with $B_i\subseteq A_i$ for $i=1,2$.
+A common refinement $B_3$ is contained in $A_1\cap A_2$, so this
+intersection belongs to $F(\mathcal B)$. Upward closure within $X$
+is immediate. These are exactly the three filter axioms.
+
+If a filter $G$ contains $\mathcal B$, then $X\subseteq\bigcup G$.
+For $B\subseteq A\subseteq X$ with $B\in\mathcal B$, upward
+closure of $G$ therefore gives $A\in G$. Hence
+$F(\mathcal B)\subseteq G$, even if $G$ has a larger carrier.
+Finally, a nonempty filter is a base by its intersection axiom, and
+its upward closure gives $F(F)=F$. The empty filter admitted earlier
+is deliberately excluded from this base representation.
+\Done
 
 \subsection{Topology via a point--neighbourhood relation}
 The relation $x\mathcal{R}S$ is intended to mean that $S$ is a

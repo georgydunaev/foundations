@@ -108,10 +108,9 @@
 % The DVI/dvips driver needs breakurl to wrap linked URLs across lines.
 % PDF-native and XeTeX drivers already handle these links themselves.
 \makeatletter
-\def\FoundationsDvipsDriver{hdvips}
-\ifx\Hy@driver\FoundationsDvipsDriver
-  \usepackage{breakurl}
-\fi
+\@ifundefined{ver@hdvips.def}{}{%
+  \usepackage[anythingbreaks]{breakurl}
+}
 \makeatother
 \hypersetup{
     hypertexnames=false,
@@ -915,6 +914,11 @@
 
 \usepackage[american]{babel}
 \usepackage[style=apa,backend=biber]{biblatex}
+% APA's default DOI uses a single hyperlink box; use breakurl in DVI builds.
+\ifdefined\burl
+  \DeclareFieldFormat{doi}{\url{https://doi.org/#1}\nopunct}
+  \AtBeginBibliography{\emergencystretch=2em}
+\fi
 \DeclareLanguageMapping{american}{american-apa} %Literaturverzeichnis american-apa style
 %\addbibresource{library.bib} 
 
