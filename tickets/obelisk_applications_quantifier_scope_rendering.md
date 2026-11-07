@@ -1,7 +1,14 @@
 # Obelisk: preserve quantified subformula scope in rendered applications
 
-Status: open; formula-rendering correction. The inspected ASTs and proof
-terms below express the expected theorems.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:02:30Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented; formula-rendering correction applied in `set_theory_prover/program/nbg_html_generator.ML` and regenerated into `obeliskproofassistant.github.io/generated/`. The inspected ASTs and proof terms below express the expected theorems.
 
 Read-only evidence checkout: `/home/gdunaev/obeliskproofassistant.github.io`,
 commit `bb346f112ae91d1649940068c7f210a53b8674bf`.

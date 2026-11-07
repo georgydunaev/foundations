@@ -1,6 +1,14 @@
 # Obelisk: retain sethood in singleton introduction across library variants
 
-Status: source audit required; no upstream files changed.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:02:30Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `set_theory_prover/program/verified_theorems.ML`, `variants/variant2_higher_order/verified_theorems.ML`, and regenerated via `nbg_html_generator.ML`.
 Snapshot: `obeliskproofassistant.github.io` commit `bb346f112ae91d1649940068c7f210a53b8674bf`, inspected 2026-11-07.
 
 ## Evidence

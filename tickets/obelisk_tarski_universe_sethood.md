@@ -1,6 +1,14 @@
 # Obelisk: restore sethood in the Tarski-universe axiom dossier
 
-Status: proposed upstream exposition correction; generated files unchanged.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:02:30Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `obeliskproofassistant.github.io/docs/axioms/66_tarski_universes.md`; generated files unchanged.
 
 ## Exact mismatch
 
