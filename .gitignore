@@ -9,4 +9,7 @@
 *.bcf
 *.dvi
 *.run.xml
+__pycache__/
+*.pyc
+
 
