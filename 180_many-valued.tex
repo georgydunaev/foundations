@@ -27,7 +27,7 @@ E_R^-(J)&\iff J\neq\emptyclass\ \land\ J\cap R=\emptyclass.
 \end{split}
 \]
 These are assertions of uniform positive and uniform negative evidence.
-For $J=S\times T$, the first is precisely the guarded universal relation
+For $J=S\times T$, positive evidence is precisely the guarded universal relation
 from the alternative-semantics section. The second uses the complement
 of $R$ on the same candidate domain. It is \emph{not} the classical
 negation of the first.
@@ -41,13 +41,13 @@ Exactly one of the following holds:
 \item $J\cap R\neq\emptyclass$ and $J\setminus R\neq\emptyclass$
       (mixed evidence).
 \end{enumerate}
-If $\emptyclass\neq J'\subseteq J$, either uniform-evidence assertion
-true of $J$ remains true of $J'$.
+If $\emptyclass\neq J'\subseteq J$, either assertion of uniform evidence
+that holds for $J$ also holds for $J'$.
 \end{theorem}
 \Proof
 The disjoint sets $J\cap R$ and $J\setminus R$ partition $J$. If both
-are empty, $J$ is empty. If exactly one is nonempty, its side gives the
-corresponding uniform-evidence assertion. If both are nonempty, the
+are empty, $J$ is empty. If exactly one is nonempty, that part determines
+which assertion of uniform evidence holds. If both are nonempty, the
 state is mixed. This proves exhaustiveness and exclusivity. A subset
 of $R$ remains a subset of $R$, and a subset of a set disjoint from $R$
 remains disjoint from $R$. Nonemptiness of $J'$ retains the existence
@@ -83,7 +83,8 @@ classical truth and falsity where values are present, and $A$ records
 absence. These are sets in the metatheory, not additional classes in the
 object language.
 
-One possible propositional extension makes absence contagious. Define
+One possible extension to propositional formulas propagates absence through
+every connective. Define
 negation by exchanging $T$ and $F$ and retaining $A$. Define conjunction
 and disjunction by
 \[
@@ -127,9 +128,9 @@ unchanged.
 
 This separates two reasons for an informal label ``uncertain''. If a
 formula is present everywhere but true on only part of $\Omega$, its
-excluded middle is true everywhere. If it is absent somewhere, strict
-excluded middle remains absent there. Even among everywhere-present
-formulas, truth-set correlations matter: on
+excluded-middle formula is true everywhere. If it is absent somewhere,
+that formula remains absent there under the strict interpretation.
+Even among formulas present everywhere, correlations between truth sets matter: on
 $\Omega=\{\omega_0,\omega_1\}$ take $T_p=\{\omega_0\}$.
 Both $p$ and $\neg p$ vary, yet $p\lor\neg p$ is always true whereas
 $p\lor p$ still varies. A summary recording only ``present and varying''
@@ -219,7 +220,7 @@ If $G$ is contained in it, then an element of $G\cap T_\varphi$
 cannot belong to $F_\varphi$, so it must belong to $T_\psi$.
 This is the stated consequence with the extra assumption.
 Conversely, suppose both conditions hold and $\omega\in G$.
-Presence makes $\varphi$ either true or false at $\omega$. In the
+Because $\varphi$ is present, it is either true or false at $\omega$. In the
 false case, $\omega\in F_\varphi\cap H_\psi$; in the true case,
 the consequence condition gives $\omega\in H_\varphi\cap T_\psi$.
 Thus $\omega\in T_{\varphi\implies\psi}$.

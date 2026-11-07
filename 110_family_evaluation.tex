@@ -28,6 +28,10 @@ a unique value.
 \end{definition}
 
 \begin{definition}[equality: specification pending]
+For candidate-valued expressions, the symbol $s=t$ still needs a rule
+specifying whether it compares unique values, candidate collections,
+or values under each admitted selection. The comparisons below make
+these alternatives explicit; this unfinished entry fixes none of them.
 %\[
 %(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right),\ I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
@@ -169,7 +173,8 @@ of an ordinary set-valued graph.
 \subsection{Singleton--based implementation of families (preferred local encoding)}
 In both graph encodings below, stored coordinates are sets and the pair
 coding is injective on set coordinates. Accordingly the displayed binder
-$(x:\Class)$ collects records only at set inputs. Any proposed equation
+$(x:\Class)$ collects records only at set inputs: the record
+comprehensions explicitly bind their coordinates over $\V$. Any proposed equation
 quantifying over all class inputs needs an additional encoding: an
 ordinary class of set-pair records cannot store a proper-class argument.
 The beta equations below assert evaluation only at set inputs.
@@ -185,7 +190,11 @@ Variable $y$ is not among free variables of a class term $s$.
 The auxiliary bound variable $s$ is fresh for $t$ and distinct from $x$.
 The variable $x$ is the abstraction variable; all substitutions avoid capture.
 \[
-(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{((t\proper)\land(s\singleton)\land(s\subclass t))\lor((t\set)\land(s=t))}
+(\Lambda (x:\Class),\ t) \ceq
+\ccc{x:\V,\,s:\V}{(x,s)}{\begin{gathered}
+((t\proper)\land(s\singleton)\land(s\subclass t))\\
+\lor((t\set)\land(s=t))
+\end{gathered}}.
 \]
 (or, later, maybe
 \[
@@ -193,6 +202,48 @@ The variable $x$ is the abstraction variable; all substitutions avoid capture.
 \]
 )
 \end{definition}
+
+\begin{proposition}[Reconstructing the preferred family encoding]
+Work in the classical class interpretation of the displayed constructor,
+with its comprehension instance, empty and singleton sets, and injective
+ordered pairs of sets.
+Let $F=(\Lambda (x:\Class),t)$ use the preferred encoding above.
+For every set input $z$, with capture-avoiding substitution, put
+$A=t[z/x]$. Its stored fibre is
+\[
+\{s\in\V:(z,s)\in F\}=
+\begin{cases}
+\{A\},&A\set,\\
+\{\{q\}:q\in A\},&A\proper.
+\end{cases}
+\]
+In either case the fibre is nonempty and its union is $A$.
+\end{proposition}
+\Proof
+Rename the abstraction variable and the auxiliary variable freshly before
+substituting $z$. Injectivity of the set-pair coding identifies the fibre
+with the set records satisfying the constructor's condition at $A$.
+If $A$ is a set, that condition is exactly $s=A$; the union of its
+singleton fibre is $A$, including when $A$ is empty.
+If $A$ is proper, the condition says that $s$ is a singleton subclass
+of $A$. Such records are precisely the singleton sets of members of
+$A$. Every member therefore belongs to the union of the records, and
+every member of a record belongs to $A$. Extensionality gives the
+claimed union. A proper class is nonempty because the empty class is
+a set, so this fibre is also nonempty.
+\Done
+
+This proposition establishes reconstruction from records; it does not
+fix the domain test in the opening partial-evaluation proposal. If that
+test uses the small domain of the axioms chapter, it admits only arguments
+whose reconstructed value is a set. For example, the constant body $t=\V$ gives a nonempty fibre at
+every set input, with union $\V$, but its small domain is empty. The
+opening conditional would then return $\lundef$ at every input.
+Using the represented domain instead would admit those proper-class
+values, but that is a separate choice of partial-evaluation convention.
+Neither domain lets an ordinary record graph store a proper-class input;
+the alternative descriptor formula above, which quantifies over all
+class inputs, remains a proposal requiring an additional interpretation.
 
 \subsection{Semisingleton--based implementation of families (earlier encoding)}
 This earlier encoding represents each value by all of its semisingleton subclasses, including the empty class. Its calculations remain meaningful under that convention, even though the preceding construction uses a different canonical fiber. The label ``outdated'' records the development history, not a change to the assumptions of the following proofs.
@@ -221,27 +272,28 @@ Variable $y$ is not in free variables of a class term $s$.
 \end{definition}
 
 \begin{definition}[function constructor]
-This definition doesn't work for cases when $t$ is a proper class.
+This graph represents a value only at set inputs where $t$ is a set;
+proper-class values require one of the family encodings.
 \[
-(\lambda (x:\Class),\ t) \ceq \cc{(x,t)}{(x\ \mbox{any})}
+(\lambda (x:\Class),\ t) \ceq \ccc{x:\V}{(x,t)}{t\set}
 \]
 Context: ($x$:Var) ($t$:Class)\\
 Comment: Class term $t$ can contain $x$ as a free variable.\\
 Side conditions:\\
 (variable $x$ is bound by class collection in r.h.s)\\
-(variable $x$ is bound by lambda abstraction in l.h.s)\\
+(variable $x$ is bound by lambda abstraction in l.h.s)
 %No side conditions.
 \end{definition}
 \begin{definition}[(outdated) family constructor]
 \[
-(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{(s\ \mbox{sss}\ t), x\ \mbox{any}}
+(\Lambda (x:\Class),\ t) \ceq \ccc{x:\V,\,s:\V}{(x,s)}{s\ \mbox{sss}\ t}
 \]
 % s is a bound variable
 Term $t$ can contain $x$ as a free variable.\\
 Side conditions:\\
 Variables x and s are different.\\ %it should be a normal convention for any definition.
 Variable $s$ is not in free variables of $t$.\\
-As term $s$ can contain $x$ as a free variable.\\
+As term $s$ can contain $x$ as a free variable.
 \end{definition}
 
 \begin{definition*}[(LOCAL,OUTDATED) definition of a value of a function, value of a family, for the next theorem]
@@ -300,7 +352,7 @@ q \in (\Lambda x,\ t)(z)
 \iff q \in \bigcup\cc{s}{(z, s) \in (\Lambda x,\ t)}
 \iff \exists s,\ (q \in s \land (z, s) \in (\Lambda x,\ t)).
 \]
-By pair injectivity and the comprehension $(\Lambda x,\ t) = \cc{(x, s)}{s\ \mbox{sss}\ t}$ (under capture-avoidance $\mathrm{FFI}(z, v_x, (s\ \mbox{sss}\ t))$), $(z, s) \in (\Lambda x,\ t)$ holds if and only if $s$ is a set satisfying $(s\ \mbox{sss}\ t[z/x])$. If $q \in s$ and $s \subseteq t[z/x]$, then $q \in t[z/x]$; conversely, if $q \in t[z/x]$, then $q$ is a set and $s \ceq \{q\}$ is a semi-singleton subclass of $t[z/x]$ with $q \in \{q\}$. Thus:
+By pair injectivity and the comprehension $(\Lambda x,\ t) = \ccc{x:\V,\,s:\V}{(x,s)}{s\ \mbox{sss}\ t}$ (under capture-avoidance $\mathrm{FFI}(z, v_x, (s\ \mbox{sss}\ t))$), $(z, s) \in (\Lambda x,\ t)$ holds if and only if $s$ is a set satisfying $(s\ \mbox{sss}\ t[z/x])$. If $q \in s$ and $s \subseteq t[z/x]$, then $q \in t[z/x]$; conversely, if $q \in t[z/x]$, then $q$ is a set and $s \ceq \{q\}$ is a semi-singleton subclass of $t[z/x]$ with $q \in \{q\}$. Thus:
 \[
 q \in (\Lambda x,\ t)(z) \iff q \in t[z/x].
 \]
@@ -311,9 +363,16 @@ By class extensionality, $((\Lambda x,\ t)(z) = t[z/x])$. Taking $z \ceq x$ wher
 \begin{definition}[lambda operator]
 This graph encoding applies to set-valued terms on set arguments. It does not by itself represent proper-class values as members of a graph.
 \[
-(\lambda x,\ t) = \cc{p}{\exists x,\ p = \langle x,t \rangle}
+(\lambda x,\ t) = \cc{p}{\exists(x\in\V),\ (t\set)\land(p = \langle x,t \rangle)}
 \labeltagd{def}{lambda operator}
 \]
 \end{definition}
+
+The bound on $x$ is essential for the Metamath angle-pair convention,
+which returns the empty class if either coordinate is proper. Without
+that bound, even the constant body $t=\emptyclass$ would admit the witness
+$x=\V$ and insert $\langle\V,\emptyclass\rangle=\emptyclass$ into
+the graph. The empty class is not a Kuratowski pair of sets. The sethood
+condition on $t$ likewise excludes records for proper-class values.
 
 \input{END.tex}

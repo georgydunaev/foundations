@@ -6,8 +6,10 @@ Work on $\mathbb R^d$, $d\geq1$, with Lebesgue measure. In this
 chapter write $L=\sum_{j=1}^d\partial_j^2$ for the differential
 Laplacian. Thus the nonnegative operator used in the next chapters is
 $H_0=-L$, and its heat equation is $u_t=Lu$.
-We use elementary multivariable differentiation, the Gaussian integral,
-and dominated convergence. The point of the uniqueness argument is its
+We use elementary multivariable differentiation and Lebesgue integration,
+including Tonelli's theorem and dominated convergence. The Gaussian
+integral is computed below; the $L^2$ Fourier multiplier identification
+uses the imported Fourier--Plancherel theorem. The point of the uniqueness argument is its
 explicit growth class: a whole-space initial-value problem does not
 acquire unrestricted uniqueness from a bounded-domain maximum principle.
 Jost's Theorem~5.1.2 is precisely a maximum principle with such a
@@ -29,8 +31,15 @@ $\partial_tp_t=Lp_t$, and obeys
 \]
 \end{lemma}
 \Proof
-The substitution $x=2\sqrt t\,q$ and the product formula for the
-one-dimensional Gaussian integral give $\int p_t=1$. Direct
+For completeness, the one-dimensional Gaussian integral follows from
+Tonelli and polar coordinates. If $I=\int_{\mathbb R}e^{-q^2}\,dq$,
+then
+\[
+I^2=\int_{\mathbb R^2}e^{-(x^2+y^2)}\,dx\,dy
+=2\pi\int_0^\infty r e^{-r^2}\,dr=\pi.
+\]
+Positivity gives $I=\sqrt\pi$. The substitution $x=2\sqrt t\,q$
+and the product formula in $d$ coordinates now give $\int p_t=1$. Direct
 coordinate differentiation gives
 \[
 \partial_tp_t(x)=\left(-\frac d{2t}+\frac{|x|^2}{4t^2}\right)p_t(x),
@@ -128,6 +137,61 @@ trace and continuity at $t=0$. Fubini, boundedness of $f$, and the
 Gaussian convolution identity prove the semigroup law. For complex
 initial data apply the construction to real and imaginary parts.
 \Done
+
+\begin{corollary}[Uniform initial trace for uniformly continuous data]
+\label{cor:heat_uniform_initial_trace}
+Let $\operatorname{BUC}(\mathbb R^d)$ be the bounded uniformly
+continuous functions with supremum norm. The operators $P_t$ preserve
+this space and form a strongly continuous contraction semigroup on it:
+\[
+\lim_{t\downarrow0}\|P_tf-f\|_\infty=0
+\qquad(f\in\operatorname{BUC}(\mathbb R^d)).
+\]
+\end{corollary}
+\Proof
+Uniform continuity lets the preceding Gaussian-tail argument use one
+$\delta$ for all $x\in\mathbb R^d$, so it proves the asserted norm
+limit. Moreover
+\[
+|P_tf(x+h)-P_tf(x)|
+\leq\sup_y|f(y+h)-f(y)|,
+\]
+which tends to zero with $h$ and proves preservation of uniform
+continuity. The contraction bound and semigroup law were proved above.
+For $t>s\geq0$, they give
+$\|P_tf-P_sf\|_\infty\leq\|P_{t-s}f-f\|_\infty$,
+so continuity at zero also gives continuity at every time.
+\Done
+
+\begin{example}[Bounded continuous data need not have a uniform initial trace]
+The locally uniform conclusion of Theorem~\ref{thm:free_heat_bounded_data}
+cannot be replaced by convergence in supremum norm on $C_b(\mathbb R^d)$,
+the space of bounded continuous functions.
+In one dimension take $f(x)=\sin(x^2)$. For a fixed $t>0$, change
+variables in the convolution of the complex function $e^{iy^2}$:
+\[
+P_t(e^{i(\cdot)^2})(x)
+=e^{ix^2}\int_{\mathbb R}a_t(z)e^{-2ixz}\,dz,
+\qquad a_t(z)=p_t(z)e^{iz^2}.
+\]
+Here $a_t(z)\to0$ at both infinities and
+\[
+a_t'(z)=\left(-\frac{z}{2t}+2iz\right)a_t(z),
+\qquad a_t'\in L^1(\mathbb R).
+\]
+Integration by parts on finite intervals, followed by the limit of
+their endpoints, therefore gives, for $x\ne0$,
+\[
+\left|\int a_t(z)e^{-2ixz}\,dz\right|
+\leq\frac{\|a_t'\|_1}{2|x|}.
+\]
+Thus $P_tf(x)\to0$ as $|x|\to\infty$ for each fixed $t>0$.
+At $x_n=\sqrt{\pi/2+2\pi n}$ one has $f(x_n)=1$, whence
+$\|P_tf-f\|_\infty\geq1$ for every $t>0$. This does not contradict
+the locally uniform initial trace: the test points escape every
+compact set. It also shows why strong continuity on $C_b$ in its
+supremum norm must not be inferred from the kernel formula.
+\end{example}
 
 \subsection{Why the growth condition gives uniqueness}
 A classical subsolution on a time slab $[0,T]$ means a real function

@@ -9,6 +9,9 @@ usual product-integration theorems. We take these standard analytic
 results as prerequisites and prove the bounded-potential perturbation
 and kernel statements below directly. In particular, no pointwise limit of product formulas
 is used to assert existence or continuity of a kernel.
+We use the inner product $\langle f,g\rangle=\int f\overline g$,
+linear in its first variable. An operator norm written without
+subscripts means the norm from $L^2(\mathbb R^d)$ to itself.
 The imported spectral calculus says that a self-adjoint operator $A$
 has a projection-valued spectral measure $E_A$ with
 $A=\int\lambda\,dE_A(\lambda)$ on the domain determined by
@@ -234,6 +237,18 @@ The series is therefore locally uniformly convergent and has a
 jointly continuous sum. Summing the sharper Gaussian estimates gives
 the asserted bound.
 
+We will use the following elementary density fact. For $1\leq p<\infty$
+and $f\in L^p(\mathbb R^d)$, put
+\[
+f_m=f\mathbf1_{\{|x|\leq m,\ |f(x)|\leq m\}}.
+\]
+Each $f_m$ is bounded and compactly supported. The functions
+$|f-f_m|^p$ tend to zero almost everywhere and are bounded by $|f|^p$,
+so dominated convergence gives $\|f-f_m\|_p\to0$.
+In particular these functions are dense in both $L^1$ and $L^2$,
+and $L^1\cap L^2$ is dense in $L^1$. This argument does not claim
+density in $L^\infty$.
+
 To identify the operator, first take a bounded compactly supported
 function $f$. The same estimates and Tonelli's theorem for absolute
 values justify interchanging all integrals in the recursion; thus
@@ -252,6 +267,41 @@ continuity in $L^2$ as $x$ varies. Pairing these rows with $f$ proves
 continuity of the displayed representative. Its pointwise bound also
 gives $\|T_tf\|_\infty\leq e^{Mt}\|p_t\|_2\|f\|_2$.
 \Done
+
+\paragraph{The integral inequality used for smoothing.}
+For clarity, $L^p=L^p(\mathbb R^d)$ consists of measurable functions
+modulo equality almost everywhere, with
+\[
+\|f\|_p=\left(\int|f|^p\right)^{1/p}\quad(1\leq p<\infty),
+\qquad \|f\|_\infty=\operatorname*{ess\,sup}|f|.
+\]
+All operator bounds below refer to these norms. The kernel supplies
+specified continuous representatives when its spatial regularity is used.
+
+For conjugate exponents $1<\alpha,\beta<\infty$, meaning
+$1/\alpha+1/\beta=1$, elementary
+one-variable minimization gives
+\[
+ab\leq a^\alpha/\alpha+b^\beta/\beta\qquad(a,b\geq0).
+\]
+Indeed the minimum of $a^\alpha/\alpha-ab$ as a function of $a$
+is $-b^\beta/\beta$. Apply this inequality to
+$|u|/\|u\|_\alpha$ and $|v|/\|v\|_\beta$ and integrate to obtain
+H\"older's inequality
+$\int|uv|\leq\|u\|_\alpha\|v\|_\beta$.
+Zero norms are handled directly; at the conjugate endpoints $1,\infty$
+the inequality follows from the almost-everywhere essential bound.
+
+We also use its three-factor form: if $r_j\in[1,\infty]$ and
+$\sum_{j=1}^3 1/r_j=1$, then
+$\int|u_1u_2u_3|\leq\prod_{j=1}^3\|u_j\|_{r_j}$.
+For completeness, put $1/r=1/r_1+1/r_2$. When $r<\infty$,
+apply the two-factor inequality to $|u_1|^r,|u_2|^r$ with conjugate
+exponents $r_1/r,r_2/r$, giving
+$\|u_1u_2\|_r\leq\|u_1\|_{r_1}\|u_2\|_{r_2}$.
+For $r=\infty$ this follows directly from essential bounds.
+A second application with conjugate exponents $r,r_3$ proves the
+claim, including all endpoint cases.
 
 \begin{corollary}[Quantitative smoothing between Lebesgue spaces]
 \label{cor:schrodinger_Lp_Lq}
@@ -369,6 +419,401 @@ respectively, the lower and upper Gaussian bounds. Thus the time factor
 and the sign of the potential in those bounds cannot be improved
 uniformly over all real potentials with $\|V\|_\infty\leq M$.
 
+\subsection{The heat equation in its precise solution class}
+For a merely measurable potential, a continuous kernel need not give
+classical second spatial derivatives. The natural equation here is an
+$L^2$ evolution equation, whose spatial differential expression is
+understood in distributions. As in the free heat chapter, write
+$L=\sum_{j=1}^d\partial_j^2$, so that $H_0=-L$.
+If $f\in D(H_0)$ and $\phi\in C_c^\infty(\mathbb R^d)$, integration
+by parts in the Fourier transform gives
+$\widehat{-L\phi}=|\xi|^2\widehat\phi$. Plancherel then gives
+\[
+\langle H_0f,\phi\rangle
+=\langle |\xi|^2\widehat f,\widehat\phi\rangle
+=\langle\widehat f,|\xi|^2\widehat\phi\rangle
+=\langle f,-L\phi\rangle.
+\]
+All pairings are finite by Cauchy--Schwarz: both $H_0f$ and
+$-L\phi$ belong to $L^2$. This identity is exactly the
+distributional interpretation of $H_0f=-L f$, without requiring
+pointwise derivatives of $f$.
+
+\begin{proposition}[The strong solution and its distributional equation]
+\label{prop:schrodinger_heat_solution}
+For every $f\in L^2$ and $b>0$, $u(t)=T_tf$ is the unique function in
+\[
+C([0,b];L^2)\cap C^1((0,b);L^2)
+\]
+such that $u(0)=f$, $u(t)\in D(H)=D(H_0)$ for $0<t<b$, and
+$u'(t)=-Hu(t)$ in $L^2$. At every positive time,
+\[
+\|HT_t\|_{2\to2}\leq Me^{Mt}+\frac1{et}.
+\]
+Its kernel representative is jointly continuous in $(t,x)$ for $t>0$.
+For every $\phi\in C_c^\infty(\mathbb R^d)$ it satisfies
+\[
+\frac{d}{dt}\int u(t,x)\overline{\phi(x)}\,dx
+=\int u(t,x)\overline{L\phi(x)}\,dx
+ -\int V(x)u(t,x)\overline{\phi(x)}\,dx.
+\]
+The initial condition is convergence to $f$ in $L^2$.
+\end{proposition}
+\Proof
+The spectrum of $H$ is contained in $[-M,\infty)$. For $\lambda\geq0$,
+$\lambda e^{-t\lambda}\leq1/(et)$, whereas for
+$-M\leq\lambda<0$ one has
+$|\lambda|e^{-t\lambda}\leq Me^{Mt}$. Thus spectral calculus gives
+the displayed bound. It also gives
+\[
+\int\lambda^2e^{-2t\lambda}\,
+             d\langle E_H(\lambda)f,f\rangle<\infty,
+\]
+so $T_tf\in D(H)$ for every $t>0$.
+On any compact positive-time interval the scalar multipliers
+$\lambda e^{-t\lambda}$ have a common bound. The difference quotients
+of $e^{-t\lambda}$ are dominated by the same type of bound after
+slightly enlarging that interval. Dominated convergence in the spectral
+measure therefore proves $u'(t)=-HT_tf$ in $L^2$ and continuity of this
+derivative. Strong continuity at zero was already established.
+
+The preceding distributional identity, applied to $u(t)$, gives the
+tested differential equation. The kernel formula gives a jointly
+continuous representative: on a compact set of $(t,x)$ with $t>0$,
+its rows have a common Gaussian envelope in $L^2$ as functions of $y$.
+Joint kernel continuity and dominated convergence give continuity of
+these rows in $L^2$, and their pairing with $f$ preserves continuity.
+
+For uniqueness let $w$ be the difference of two solutions in the
+stated class. The lower bound $H\geq-M$ gives, for $0<t<b$,
+\[
+\frac{d}{dt}\|w(t)\|_2^2
+=-2\operatorname{Re}\langle Hw(t),w(t)\rangle
+\leq2M\|w(t)\|_2^2.
+\]
+Consequently $e^{-2Mt}\|w(t)\|_2^2$ is nonincreasing on $(0,b)$.
+For $0<s<t<b$ this implies
+$\|w(t)\|_2^2\leq e^{2M(t-s)}\|w(s)\|_2^2$.
+Let $s\downarrow0$ and use $w(0)=0$ and continuity; then $w(t)=0$.
+Continuity also gives equality at $b$. This proves uniqueness without
+requiring differentiability at time zero.
+\Done
+
+\subsection{First spatial derivatives of the kernel}
+Bounded measurable potentials permit more spatial regularity than mere
+continuity of the kernel. The following estimate requires no derivative
+of the potential. It does not assert the existence of classical second
+spatial derivatives.
+
+\begin{proposition}[Continuous first derivatives and Gaussian bounds]
+\label{prop:schrodinger_kernel_gradient}
+Put $b_d=2^{d/2}/\sqrt e$. For every real $V\in L^\infty$,
+the first derivatives of $k_V(t,x,y)$ in $x$ and in $y$ exist and are
+jointly continuous for $t>0$. With $M=\|V\|_\infty$,
+\[
+\begin{split}
+|\nabla_x k_V(t,x,y)|,
+\ |\nabla_y k_V(t,x,y)|
+&\leq B_{d,M}(t)\,p_{2t}(x-y),\\
+B_{d,M}(t)
+&=b_d e^{Mt}t^{-1/2}\bigl(1+2^{d/2+1}Mt\bigr).
+\end{split}
+\]
+The norm of each gradient is its Euclidean norm; no mixed derivative
+is asserted.
+\end{proposition}
+\Proof
+Direct differentiation and comparison of two Gaussian scales give
+\[
+|\nabla p_r(w)|
+=2^{d/2}\frac{|w|}{2r}e^{-|w|^2/(8r)}p_{2r}(w)
+\leq b_d r^{-1/2}p_{2r}(w).
+\]
+Indeed, the maximum of $\rho e^{-\rho^2/(8r)}$ for $\rho\geq0$
+is $2\sqrt{r/e}$. Absolute summation of the kernel recursion gives
+the pointwise integral equation
+\[
+k_V(t,x,y)=p_t(x-y)
+-\int_0^t\int p_{t-s}(x-u)V(u)k_V(s,u,y)\,du\,ds.
+\]
+Summation and integration can be interchanged because the sum of the
+absolute integrands is bounded after spatial integration by
+$M e^{Ms}p_t(x-y)$, which is integrable in $s$.
+
+The candidate derivative integral is absolutely convergent. Gaussian
+convolution and $t\leq2t-s\leq2t$ give
+\[
+\begin{split}
+\int |\nabla p_{t-s}(x-u)|\,|V(u)|\,|k_V(s,u,y)|\,du
+&\leq b_d M e^{Ms}(t-s)^{-1/2}p_{2t-s}(x-y)\\
+&\leq 2^{d/2}b_d M e^{Mt}(t-s)^{-1/2}p_{2t}(x-y).
+\end{split}
+\]
+For the last step, the normalization ratio is at most $2^{d/2}$,
+and the Gaussian exponential at time $2t-s$ is at most the one at
+time $2t$. Integration in $s$ gives the bound
+$2^{d/2+1}b_d M e^{Mt}\sqrt t\,p_{2t}(x-y)$.
+Adding the free derivative bound and using $e^{Mt}\geq1$ yields
+the asserted coefficient $B_{d,M}(t)$.
+
+We justify both differentiation and continuity, rather than only
+estimating a formal derivative. Substitute $s=t\theta$ and initially
+restrict to $\varepsilon\leq\theta\leq1-\varepsilon$.
+On compact sets of $(t,x,y)$ with $t>0$, the truncated integral and
+its derivative in $x$ have integrable Gaussian majorants in $u$.
+Their integrands are continuous in $t,x,y$ for each $\theta,u$;
+the factor $V(u)$ is fixed. Differentiation under the integral and
+dominated convergence therefore give truncated kernels that are
+continuously differentiable in $x$, with their $x$-gradients jointly
+continuous in $(t,x,y)$.
+
+The omitted parts of the undifferentiated integral tend uniformly
+to zero on these compact sets by its bound $M e^{Ms}p_t(x-y)$.
+For the derivative, the preceding estimate reduces the endpoint
+errors, up to a compact-set constant, to
+\[
+\int_0^\varepsilon(1-\theta)^{-1/2}\,d\theta
+ +\int_{1-\varepsilon}^1(1-\theta)^{-1/2}\,d\theta,
+\]
+which tends to zero. The truncated gradients thus converge locally
+uniformly to a continuous function $G$. To identify $G$ as the
+gradient, apply the fundamental theorem of calculus to each truncated
+kernel along a coordinate segment. Uniform convergence of both the
+functions and their derivatives passes this identity to the limit.
+Dividing by the segment length and using continuity of $G$ proves
+that $\nabla_x k_V=G$. Finally symmetry
+$k_V(t,x,y)=k_V(t,y,x)$ proves the same assertions in $y$.
+\Done
+
+Consequently the integral representative of $T_tf$ belongs to
+$C^1(\mathbb R^d)$ for every $f\in L^p$, $1\leq p\leq\infty$,
+at each fixed $t>0$. On a compact set of $x$, the kernel and its first
+derivatives have common Gaussian envelopes in $y$. Their products
+with $|f(y)|$ are integrable by H\"older's inequality, including its
+endpoints. Differentiation and continuity therefore pass under the
+integral. For $1\leq p\leq q\leq\infty$ and
+$1+1/q=1/p+1/r$, the convolution estimate already proved gives
+\[
+\|\nabla T_tf\|_q
+\leq B_{d,M}(t)\,\|p_{2t}\|_r\,\|f\|_p.
+\]
+Here the $L^q$ norm of the gradient uses its pointwise Euclidean norm,
+and $\|p_{2t}\|_r$ is the explicit Gaussian norm from
+Corollary~\ref{cor:schrodinger_Lp_Lq} with $t$ replaced by $2t$.
+
+\subsection{Uniform initial traces on spaces of continuous functions}
+The kernels diverge on the diagonal as time tends to zero, but their
+integrals against suitable initial data have a uniform initial trace.
+This remains true when the bounded potential is merely measurable.
+
+\begin{proposition}[Strong continuity on $C_0$ and $\operatorname{BUC}$]
+\label{prop:schrodinger_continuous_function_semigroups}
+Let $V$ be real and essentially bounded, with $M=\|V\|_\infty$.
+For $t>0$, define $T_tf$ by the continuous kernel integral, and put
+$T_0f=f$. On each of $C_0(\mathbb R^d)$ and
+$\operatorname{BUC}(\mathbb R^d)$ these operators form a strongly
+continuous semigroup in the supremum norm, with
+\[
+\|T_t\|\leq e^{Mt},\qquad
+\|T_tf-f\|_\infty
+\leq\|P_tf-f\|_\infty+(e^{Mt}-1)\|f\|_\infty.
+\]
+Here $C_0$ consists of continuous functions vanishing at infinity,
+and $\operatorname{BUC}$ consists of bounded uniformly continuous
+functions. Both carry the supremum norm.
+The operator norm in this display is taken on the indicated function space.
+\end{proposition}
+\Proof
+Summing the Dyson estimates for orders $n\geq1$ gives
+\[
+|k_V(t,x,y)-p_t(x-y)|\leq(e^{Mt}-1)p_t(x-y).
+\]
+Consequently, for every bounded measurable $f$,
+\[
+\|T_tf-P_tf\|_\infty\leq(e^{Mt}-1)\|f\|_\infty,
+\qquad \|T_tf\|_\infty\leq e^{Mt}\|f\|_\infty.
+\]
+The gradient bound in Proposition~\ref{prop:schrodinger_kernel_gradient}
+and differentiation under the kernel integral give
+\[
+\sup_x|\nabla T_tf(x)|\leq B_{d,M}(t)\|f\|_\infty.
+\]
+Integration along line segments therefore makes $T_tf$ globally
+Lipschitz for every fixed $t>0$. In particular it belongs to
+$\operatorname{BUC}$.
+
+If $f\in C_0$, fix $\epsilon>0$ and choose $R$ so that
+$|f(y)|\leq\epsilon$ for $|y|>R$. Gaussian domination gives
+\[
+|T_tf(x)|\leq e^{Mt}\left[
+\epsilon+\|f\|_\infty\int_{|y|\leq R}p_t(x-y)\,dy\right].
+\]
+For fixed $t,R$, the last integral tends to zero as $|x|\to\infty$:
+it is at most the volume of the ball times
+$(4\pi t)^{-d/2}\exp(-(|x|-R)^2/(4t))$ when $|x|>R$.
+Letting $\epsilon\downarrow0$ proves $T_tf\in C_0$.
+
+For bounded $f$, the double integral defining $T_tT_sf(x)$ is
+absolutely convergent: the integral of its absolute integrand is at
+most $e^{M(t+s)}\|f\|_\infty$, using Gaussian convolution and mass one.
+Fubini and the pointwise kernel composition law thus give
+$T_tT_sf=T_{t+s}f$ for $s,t>0$; the law at zero follows by definition.
+The earlier free uniform-trace result,
+Corollary~\ref{cor:heat_uniform_initial_trace}, and the displayed
+perturbation estimate imply $\|T_tf-f\|_\infty\to0$ for
+$f\in\operatorname{BUC}$. Every function in $C_0$ is uniformly
+continuous: use uniform continuity on a large closed ball, and smallness
+of the function outside a slightly smaller ball for pairs outside it.
+Thus the same limit holds on $C_0$.
+Finally, for $t>s\geq0$, the semigroup law gives
+\[
+\|T_tf-T_sf\|_\infty
+\leq e^{Ms}\|T_{t-s}f-f\|_\infty.
+\]
+This proves continuity at every time from continuity at zero.
+\Done
+
+\begin{corollary}[The maximal space with a uniform initial trace]
+\label{cor:schrodinger_maximal_uniform_trace}
+For a real bounded measurable potential and $f\in L^\infty$,
+\[
+\lim_{t\downarrow0}\|T_tf-f\|_\infty=0
+\quad\Longleftrightarrow\quad
+f\text{ has a bounded uniformly continuous representative}.
+\]
+In particular, for $f\in C_b$ the uniform initial trace holds exactly
+when $f\in\operatorname{BUC}$.
+\end{corollary}
+\Proof
+Sufficiency follows from
+Proposition~\ref{prop:schrodinger_continuous_function_semigroups}.
+Conversely, suppose the norm limit holds, and let $f_n$ be the
+continuous kernel representative of $T_{1/n}f$, for $n\geq1$. The gradient estimate
+makes every $f_n$ bounded and uniformly continuous. The assumed limit
+makes this sequence Cauchy in $L^\infty$. A bounded continuous function on
+$\mathbb R^d$ has supremum norm equal to its essential supremum norm, since
+every nonempty open set has positive Lebesgue measure. Applied to
+$f_n-f_m$, this shows that the sequence is uniformly Cauchy. Its
+uniform limit $g$ is bounded and uniformly continuous, and convergence
+in $L^\infty$ gives $g=f$ almost everywhere. If $f$ itself is
+continuous, equality almost everywhere between $f$ and $g$ implies
+equality everywhere by the same full-support argument.
+\Done
+
+Strong continuity on all of $C_b$ or $L^\infty$ would be false already
+for $V=0$. The example $f(x)=\sin(x^2)$ in
+Section~\ref{sec:free_heat_equation} gives
+$\|P_tf-f\|_\infty\geq1$ for every $t>0$ in dimension one.
+The difference is continuous, so its supremum equals its essential
+supremum; the example applies to both spaces. In higher dimensions use
+$f(x)=\sin(x_1^2)$ and the product Gaussian formula.
+The proposition concerns the integral semigroup; it requires no claim
+that multiplication by a discontinuous $V$ preserves either $C_0$ or
+$\operatorname{BUC}$.
+
+\subsection{Time derivatives and the limit of classical spatial regularity}
+The time variable has a different regularity mechanism: at positive
+times the spectral semigroup can be differentiated between two fixed
+smoothing operators. This avoids differentiating the potential.
+
+\begin{proposition}[Continuous time derivatives of every order]
+\label{prop:schrodinger_kernel_time_derivatives}
+For each integer $n\geq1$, the derivative $\partial_t^n k_V(t,x,y)$
+exists and is jointly continuous for $t>0$. It satisfies
+\[
+|\partial_t^n k_V(t,x,y)|
+\leq(2\pi t)^{-d/2}
+ \left[e^{Mt}M^n+e^{Mt/2}\left(\frac{2n}{et}\right)^n\right].
+\]
+This estimate is uniform in $x,y$; it is not an off-diagonal Gaussian
+derivative estimate.
+\end{proposition}
+\Proof
+For $s>0$, spectral calculus gives the bounded operator $H^nT_s$ and
+\[
+\|H^nT_s\|_{2\to2}
+\leq M^n e^{Ms}+\left(\frac{n}{es}\right)^n.
+\]
+On the nonnegative part of the spectrum, maximize
+$\lambda^n e^{-s\lambda}$ at $\lambda=n/s$; on $[-M,0)$ use
+$|\lambda|^n e^{-s\lambda}\leq M^n e^{Ms}$. On any compact
+positive $s$ interval, the same bounds with $n+1$ and $n+2$ control
+the scalar Taylor remainders uniformly in $\lambda\geq-M$.
+The spectral operator norm estimate therefore proves that $s\mapsto T_s$
+is infinitely differentiable in operator norm, with derivative
+$(-H)^nT_s$ of order $n$.
+
+Fix $a>0$. The real functions
+$r_x(u)=k_V(a,u,x)=k_V(a,x,u)$ belong to $L^2$, depend continuously
+on $x$ in that norm, and obey
+\[
+\|r_x\|_2\leq e^{Ma}\|p_a\|_2,
+\qquad \|p_a\|_2^2=(8\pi a)^{-d/2}.
+\]
+The norm continuity follows from joint kernel continuity and a common
+$L^2$ Gaussian envelope when $x$ ranges over a compact set.
+The pointwise composition law, applied twice, gives for $t>2a$
+\[
+k_V(t,x,y)=\langle T_{t-2a}r_y,r_x\rangle.
+\]
+Here the inner product is linear in its first variable; the reality
+and symmetry of the rows explain the displayed order. Since $a$ is
+fixed, only the middle operator depends on $t$. Differentiating in
+operator norm gives
+\[
+\partial_t^n k_V(t,x,y)
+=\langle(-H)^nT_{t-2a}r_y,r_x\rangle.
+\]
+Operator-norm continuity and the $L^2$ continuity of the rows prove
+joint continuity on $t>2a$. Every positive time has a neighborhood
+of this form, proving the assertion throughout $t>0$.
+
+To estimate at a particular time $t$, we may now choose $a=t/4$
+in the already proved identity. Cauchy--Schwarz and the operator
+bound with $s=t/2$ give
+\[
+e^{Mt/2}(2\pi t)^{-d/2}
+ \left[M^n e^{Mt/2}+\left(\frac{2n}{et}\right)^n\right],
+\]
+as required. This choice is made after differentiation; the smoothing
+rows were held fixed when taking the derivative.
+\Done
+
+\begin{example}[A bounded potential need not give continuous second derivatives]
+In dimension one, take $V(x)=\mathbf1_{(0,\infty)}(x)$. For every
+$t>0$ and $y\in\mathbb R$, the function $x\mapsto k_V(t,x,y)$
+is not $C^2$ on any neighborhood of zero, although its first spatial
+derivative and all its time derivatives are continuous.
+\end{example}
+\Proof
+We first justify the spatial distributional equation for a kernel
+column. Fix $0<a<t$ and write
+\[
+k_V(t,\cdot,y)=T_{t-a}k_V(a,\cdot,y).
+\]
+The initial column is in $L^2$, so
+Proposition~\ref{prop:schrodinger_heat_solution} applies. Pairing with
+a compactly supported smooth test function identifies its strong
+$L^2$ derivative with the pointwise time derivative from the preceding
+proposition: on the test function's compact support, that derivative
+is continuous and uniformly bounded on a compact time interval, so
+differentiation passes under the integral. Consequently
+\[
+\partial_x^2 k_V(t,\cdot,y)
+=\partial_t k_V(t,\cdot,y)+V\,k_V(t,\cdot,y)
+\]
+as distributions.
+
+If the column were $C^2$ near zero, its continuous second derivative
+would equal $\partial_t k_V(t,x,y)$ for $x<0$ and
+$\partial_t k_V(t,x,y)+k_V(t,x,y)$ for $x>0$. Distributional
+equality gives equality almost everywhere, and continuity on each
+open half interval makes it pointwise there. The limits of these
+two expressions at zero differ by $k_V(t,0,y)$, which is strictly
+positive by the Gaussian lower bound. This contradicts continuity
+of the second derivative at zero.
+\Done
+
 \subsection{The extension to finite measures}
 For a fixed $t>0$, the kernel just constructed connects the concrete
 semigroup to Theorem~\ref{thm:separate_kernel_criterion}. To make the
@@ -404,7 +849,8 @@ from the Dyson-series proof above; the abstract criterion alone
 only yields separate continuity.
 
 \subsection{The Trotter product formula for bounded potentials}
-The product formula provides a second way to approximate the semigroup.
+The product formula provides a second way to approximate the semigroup;
+the original product-formula paper is \textcite{Trotter1959Product}.
 We prove the precise bounded-potential case needed here, rather than
 importing a general product theorem with additional domain hypotheses.
 In particular the multiplication operator $e^{-hV}$ need not preserve
@@ -524,6 +970,19 @@ nor pointwise convergence of the product kernels. Kernel existence,
 joint continuity and Gaussian domination were proved independently
 above, so none of them rests on an unjustified interchange of the
 product limit with point evaluation.
+
+For comparison with contraction-semigroup formulations, replace $V$ by
+$V+M$. Both $P_t$ and multiplication by $e^{-t(V+M)}$ are contractions,
+and $H+M\geq0$. The exact scalar identities are
+\[
+\begin{aligned}
+\bigl(P_{t/n}e^{-(t/n)(V+M)}\bigr)^n
+ &=e^{-Mt}\bigl(P_{t/n}e^{-(t/n)V}\bigr)^n,\\
+e^{-t(H+M)}&=e^{-Mt}T_t.
+\end{aligned}
+\]
+Multiplication by $e^{Mt}$ transfers the shifted approximation to the
+original one, preserving uniform strong convergence on each $[0,b]$.
 
 The Gaussian normalization, the factor $e^{t\|V\|_\infty}$, and the
 restriction $t>0$ are part of these statements. At time zero the

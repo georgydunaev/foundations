@@ -113,12 +113,14 @@ earlier image-based sketches.
 \end{definition}
 
 Context and notation:\\
+All classes $A,B,S$ in the following bound comparisons are subclasses of
+the fixed carrier $P$. In the real-number examples take $P=\real$.
 Here by $\leq$ we denote the standard relation "less or equal to" on real numbers.\\
 $\leq$ for inequalities of numbers;\\
 $\leqslant$ for inequalities of sets of numbers;\\
 $R \ceq \leq$\\
 $\leq = \geq^{-1}$\\
-$\geq = \leq^{-1}$\\
+$\geq = \leq^{-1}$
 
 \begin{remark}[why the middle class must be nonempty]
 Define $A\leqslant B$ to mean that every element of $A$ is at most every element of $B$. If $A\leqslant B$ and $B\leqslant C$, transitivity of $\leq$ gives $A\leqslant C$ provided the middle class $B$ is nonempty. Without that hypothesis, both premises can hold vacuously.
@@ -128,7 +130,7 @@ Choose $b\in B$. For arbitrary $a\in A$ and $c\in C$, we have $a\leq b\leq c$, h
 \begin{quote}
 Nothing is better than eternal happiness. \null\hfill ($\{H\}<\emptyclass$)\\
 A sandwich is better than nothing. \null\hfill ($\emptyclass<\{S\}$)\\
-Therefore, a sandwich is better than eternal happiness. \null\hfill ($\{H\}<\{S\}$)\\
+Therefore, a sandwich is better than eternal happiness. \null\hfill ($\{H\}<\{S\}$)
 \end{quote}
 We obtained $H<S$ (by definition of an order on sets). The statement together with $S<H$ and transitivity on elements contradicts the irreflexivity of the order on elements.\\
 \Done
@@ -158,6 +160,11 @@ We obtained $H<S$ (by definition of an order on sets). The statement together wi
 (B\subseteq \UB(A))
 \]
 \end{theorem}
+\begin{proof}
+Since $B\subseteq P$, the right side says precisely that every $b\in B$
+satisfies $a\leq b$ for every $a\in A$. This is the defining condition
+for $A\leqslant B$, with the universal quantifiers interchanged.
+\end{proof}
 \begin{theorem}[comparison by bounds]
 \[
 (A\leqslant B)
@@ -165,6 +172,14 @@ We obtained $H<S$ (by definition of an order on sets). The statement together wi
 (A\subseteq \LB(B))
 \]
 \end{theorem}
+\begin{proof}
+Since $A\subseteq P$, membership of every $a\in A$ in $\LB(B)$
+means exactly that $a\leq b$ for every $b\in B$. Thus it is equivalent
+to $A\leqslant B$. Both comparisons include empty subclasses.
+\end{proof}
+The carrier restrictions matter: if $A=\emptyclass$ and $B$ contains
+an object outside $P$, then $A\leqslant B$ is vacuous but
+$B\subseteq\UB(A)=P$ fails.
 \begin{definition}[bound classes]
 \[
 \Sup(S) = \UB(S)\cap \LB(\UB(S))

@@ -336,4 +336,117 @@ provably defined comprehension, which is stronger than a sufficient
 formation condition. The display records that intended characterization;
 its two directions remain separate proof obligations.
 
+\subsection{A precise quantifier restriction in the candidate model}
+The following construction isolates one part of the preceding proposal.
+It specifies a restriction of bound variables in the finite candidate
+model; it does not identify that restriction with the intended
+$\mathrm{setify}$ operation or interpret comprehension.
+
+Fix the earlier finite model with semantic domain $B=\mathcal P(D)$.
+Work first in its descriptor-free relational language: terms are variables
+and constants $c_S$, and atomic formulas use candidate equality, the
+lifted relation $R^{\forall}$, and candidate presence. Choose any subset
+$E\subseteq B$ of allowed bound-variable values. Expand the language
+by a fresh unary predicate $G_E$, interpreted by
+\[
+M,a\vDash G_E(t)\quad\Longleftrightarrow\quad
+\llbracket t\rrbracket_a\in E.
+\]
+This is an explicitly supplied predicate interpretation, not an assertion
+that $E$ is definable in the original language.
+
+Define $M,a\vDash_E\varphi$ by keeping the existing atomic and Boolean
+clauses, but letting every quantifier range over $E$. For example,
+\[
+M,a\vDash_E\forall x\,\psi
+\quad\Longleftrightarrow\quad
+\forall S\in E,\ M,a[x\mapsto S]\vDash_E\psi.
+\]
+Assignments and constants still have values in $B$; in particular,
+free parameters are not silently restricted to $E$. This is a semantics
+with restricted bound-variable ranges, not necessarily an induced
+substructure with domain $E$.
+
+Define a translation $\varphi\mapsto\varphi^E$ recursively. It fixes
+atomic formulas, commutes with Boolean connectives, and has the binder
+clauses
+\[
+\begin{split}
+(\forall x\,\psi)^E&=\forall x\,(G_E(x)\implies\psi^E),\\
+(\exists x\,\psi)^E&=\exists x\,(G_E(x)\land\psi^E).
+\end{split}
+\]
+The superscript denotes a syntactic translation using the new predicate
+symbol. Since that symbol has no free parameters, its inserted occurrence
+introduces no new free variable and captures none from $\psi$.
+
+\begin{proposition}[Agreement for restricted quantifiers]
+\label{prop:candidate_quantifier_relativization}
+For every descriptor-free formula $\varphi$ and every assignment
+$a:\mathrm{Var}\to B$,
+\[
+M,a\vDash_E\varphi\quad\Longleftrightarrow\quad
+M,a\vDash\varphi^E.
+\]
+This includes $E=\emptyclass$, with universal quantifiers vacuous and
+existential quantifiers false in the restricted interpretation.
+\end{proposition}
+\Proof
+Induct on the formula. Atoms have identical term values and identical
+interpretations on the two sides, so the assertion holds for atoms.
+Each Boolean step follows by applying its ordinary two-valued truth
+operation to the equivalences supplied by induction.
+
+For a universal quantifier, the left side means that $\psi$ holds in
+the restricted interpretation under every update $a[x\mapsto S]$
+with $S\in E$. By induction this is equivalent to truth of $\psi^E$
+under exactly those updates. In the original domain $B$, requiring
+$G_E(x)\implies\psi^E$ at every update imposes the same condition:
+updates outside $E$ satisfy the implication vacuously. For an existential
+quantifier, a witness update in $E$ satisfies $\psi$ in the restricted
+interpretation exactly when it satisfies $\psi^E$ by induction. This
+is precisely a witness in $B$ for $G_E(x)\land\psi^E$.
+These arguments also handle $E=\emptyclass$, completing the induction.
+\Done
+
+\paragraph{Different restrictions give different theories.}
+Take $D=\{0,1\}$ with $0\ne1$. Three possible ranges are
+\[
+E_{\rm all}=\mathcal P(D),\qquad
+E_{\rm present}=\mathcal P(D)\setminus\{\emptyclass\},\qquad
+E_{\rm single}=\{\{0\},\{1\}\}.
+\]
+The sentence $\forall x\,(x\downarrow)$ is false for $E_{\rm all}$
+(the empty candidate set is a witness to failure) and true for
+$E_{\rm present}$ and $E_{\rm single}$. The sentence
+\[
+\forall x\,(x=c_{\{0\}}\lor x=c_{\{1\}})
+\]
+is true for $E_{\rm single}$ and false for $E_{\rm present}$,
+since $\{0,1\}$ is not equal to either singleton candidate set.
+Thus ranging over arbitrary candidate collections, nonempty candidate
+collections, and single-valued candidates are genuinely different
+interpretations even when every underlying object in $D$ is a set.
+None is selected by the word ``set'' alone in the original proposal.
+
+\paragraph{Why descriptors and comprehension remain separate.}
+The lemma deliberately contains no descriptor term. To extend it, one
+must decide whether an $\varepsilon$ binder also restricts its witnesses
+to $E$, and what happens when there is no such witness. The previous
+finite choice model returns the empty candidate set for
+$\varepsilon x,\bot$. This lies outside both $E_{\rm present}$ and
+$E_{\rm single}$. Therefore a semantics whose term values must stay
+inside either restricted domain cannot retain that default unchanged.
+One can instead keep the ambient value domain $B$ while restricting
+only selected quantifiers, or specify a different descriptor/default
+policy; those are additional choices, not consequences of relativization.
+
+Likewise, the chapter supplies no semantic clause for a comprehension
+term $\cc{x}{\varphi}$ and no calculus for its presence assertions.
+The proved translation lemma therefore does not establish either
+direction of the proposed provability characterization of
+$\mathrm{setify}[\mathrm{Fm}]$. It identifies a binder mechanism that
+can be adopted once the intended range, parameter policy, and term
+constructors are fixed, while leaving that original design question open.
+
 \input{END.tex}

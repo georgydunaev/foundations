@@ -253,8 +253,8 @@ Then
 
 \begin{definition}[universal closure]
 There is an order on a set of variables $\Var$.\\
-List the free variables of $\phi$ as $v_1, \dots, v_n$ in that order.\\
-\\
+List the free variables of $\phi$ as $v_1, \dots, v_n$ in that order.
+
 Then define the closure via the formula
 \[
 \text{closure}(\phi) \iffdef (\forall v_1,\dots,\forall v_n, \phi)
@@ -319,6 +319,12 @@ It may be called ``class--builder notation''.
 The terms $s$ and $t$ may share free parameters; disjointness of their
 free-variable sets is neither needed nor a substitute for freshness of
 the actual binders. Every substitution in this schema avoids capture.
+Schema admissibility applies to the complete defining formula after
+expanding generalized comprehension and defined notation. In particular,
+the witnesses in $\exists(\vv{x}:\vv{X})$ must be set-quantified in an
+NBG instance, unless the formula is separately shown equivalent to an
+admitted one. A sethood guard on the collected value does not remove
+quantification over arbitrary classes.
 \end{axiom}
 \begin{notation}[class comprehension with a term's evaluation agreement]
 If a term is an evaluation of a function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is agreed to be restored from the argument in the following way:
@@ -396,7 +402,7 @@ Assume that $X$ and $Y$ are fresh for $\varphi$ except at the indicated substitu
 \end{theorem}
 \begin{proof}\ \\
 ($\implies$)\\
-Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
+Assume $Y\in\cc{X}{\varphi[X/W]}$.
 \[
 (Y\in\cc{X}{\varphi[X/W]})
 \IMPLIES

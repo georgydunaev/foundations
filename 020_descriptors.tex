@@ -18,9 +18,11 @@ are properties of its possible witnesses. A choice interpretation adds a
 further ingredient: it selects one witness when candidates exist. Several
 possible witnesses therefore need not make a term ambiguous once a fixed
 choice interpretation has been supplied.
+Here ``nullary'' refers to the absence of witnesses, not to the number
+of arguments of the predicate.
 
-The draft uses ``defined'' in places where ``well-defined under the chosen
-interpretation'' is intended. We will keep the distinction explicit:
+The draft sometimes uses ``defined'' to mean ``well-defined under the chosen
+interpretation''. We keep the distinction explicit:
 existence concerns whether a value is available; uniqueness concerns whether
 the predicate determines it; selection concerns which available value an
 interpretation chooses. Invoking choice requires specifying the collection
@@ -57,7 +59,8 @@ of classes described by predicates in the chosen language. The precise
 language and the interpretation of choice are part of the local setting.
 
 \subsection{Quantifiers and total choice}
-The following notation separates existence from at-most-one uniqueness:
+The following notation separates existence from the condition of having
+at most one witness:
 \[
 ((\varepsilon x:\varphi) \lunique) \IFF (!x:\varphi),
 \qquad
@@ -109,7 +112,7 @@ holds under that interpretation. Its individual disjuncts may vary when the
 choice interpretation varies. This distinguishes a statement about all
 permitted selections from a statement about one selected value.
 
-The exploratory alternative is to leave $c$ unresolved, treating it as a
+An alternative under investigation leaves $c$ unresolved, treating it as a
 descriptor with several candidates rather than as an already selected
 witness. Then the meanings of $a=c$, $a\simeq c$, and their disjunctions
 must be specified before those formulas can be evaluated. A strict
@@ -249,7 +252,7 @@ Their marginal sets agree, but their joint values with $c$ do not.
 This does not invalidate equality of candidate sets in the alternative
 powerset-domain model: there a candidate set is itself the semantic object,
 and no further selection correlation is retained. In a shared-selection
-model, the sufficient replacement condition is pointwise agreement
+model, a sufficient condition for replacement is pointwise agreement
 $s(v)=t(v)$ at every admitted assignment (together with the ordinary
 binder freshness conditions). Equality of their ranges is weaker.
 

@@ -1,7 +1,10 @@
+% Close the conditional before ending a standalone document.
+\let\foundationsfinishdocument\relax
 \ifdefined\qwertyflag
 \undef\qwertyflag
 %\printbibliography[heading=bibintoc,title={\protect\numberline{}References}]
 \printbibliography[heading=bibintoc,title={References}]
-\end{document}
+\def\foundationsfinishdocument{\end{document}}%
 
 \fi
+\foundationsfinishdocument

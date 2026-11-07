@@ -1,0 +1,328 @@
+\def\topic{Polynomial trees with a class of labels}
+\input{BEGIN.tex}
+\section{Polynomial trees with a class of labels}
+\label{sec:class_polynomial_trees}
+
+The finite-address construction extends to a proper class of labels when
+every label is a set and every branch fibre is a set. The carriers may
+then be proper classes, although each individual tree remains a set.
+This gives an intermediate model for the larger class-valued proposal
+in the preceding section.
+
+\subsection{Local assumptions and class operations}
+Work in classical NBG with the ordinary set axioms, including Pairing,
+Union, Separation, Infinity, powerset, and Replacement for set domains
+with fixed class parameters; MK also suffices. Only elementary
+class comprehension is used: its quantified variables range over sets,
+and previously specified classes occur as parameters. No Choice or
+Global Choice is used. Auxiliary pairs and function graphs use ordinary
+Kuratowski coding. The founded-recursion arguments below use
+Theorem~\ref{thm:setlike_class_recursion}; foundedness is proved for the
+particular relations, so global regularity is not needed for those steps.
+
+Fix a class $A$ and a class relation $R\subseteq A\times\V$ such that
+every fibre
+\[
+B(a)=\{b:(a,b)\in R\}\qquad(a\in A)
+\]
+is a set. Here $B(a)$ denotes this specified fibre, independently of the
+historical family encodings. Its uniqueness follows from extensionality;
+no choice of a representative is involved. Since labels belong to $A$,
+they are sets even when $A$ is proper.
+
+For any class $X$, define
+\[
+F_B(X)=\{(a,s):a\in A,\ s\text{ is a set function }B(a)\to X\}.
+\]
+This is a class of set pair codes. For a class function $u:X\to Y$,
+Replacement on the set $B(a)$ makes $u\circ s$ a set graph, and
+\[
+F_B(u)(a,s)=(a,u\circ s)
+\]
+defines a class function $F_B(X)\to F_B(Y)$. The equations
+$F_B(1_X)=1_{F_B(X)}$ and
+$F_B(v\circ u)=F_B(v)\circ F_B(u)$ follow by evaluation at each branch.
+
+The universal properties below mean statements for every specified
+class $X$ and class structure map, with existence and uniqueness of a
+class map satisfying the stated equation. They do not form a class
+whose members are all classes or all class-function graphs. This
+interpretation avoids needing an internal category of all classes.
+
+\subsection{Finite addresses and the size of an individual tree}
+Put
+\[
+C=\{(a,b):a\in A,\ b\in B(a)\}.
+\]
+A finite word over $C$ is a set function $p:n\to C$ for some
+$n\in\omega$. Write $\operatorname{Word}(C)$ for the class of these
+words, $\epsilon$ for the empty word, $pq$ for concatenation, and
+$pc$ for appending one letter $c$. Every such word is a set, although
+$C$ and $\operatorname{Word}(C)$ may be proper classes.
+
+\begin{definition}[Class-labelled finite-address tree]
+A tree is a functional class graph $t:D_t\to A$, with
+$D_t\subseteq\operatorname{Word}(C)$, satisfying:
+\begin{enumerate}
+\item $\epsilon\in D_t$;
+\item $D_t$ is prefix closed;
+\item for $p\in D_t$ and $c\in C$,
+\[
+pc\in D_t\iff c=(t(p),b)\text{ for some }b\in B(t(p)).
+\]
+\end{enumerate}
+The functional graph has set words and set labels as its coordinates.
+\end{definition}
+
+\begin{lemma}[Every such individual tree is a set]
+\label{lem:class_tree_is_set}
+A class-labelled finite-address tree has a set domain and a set graph.
+\end{lemma}
+\Proof
+For each $n\in\omega$, let $D_n$ consist of its addresses of length
+$n$. We prove that $D_n$ is a set by induction. The root condition
+gives $D_0=\{\epsilon\}$. If $D_n$ is a set, then for each
+$p\in D_n$ the exact-child condition gives the set of children
+\[
+\{p(t(p),b):b\in B(t(p))\}.
+\]
+It is a set by Replacement on the set fibre. Replacement over $D_n$
+collects these child sets, and their union is $D_{n+1}$: every
+nonempty address has its unique preceding prefix, which belongs to
+$D_t$ by prefix closure. This proves the induction step.
+
+The level $D_n$ is uniquely specified from $n$ and the fixed class
+parameter $t$. Replacement over $\omega$ therefore collects the levels,
+and their union is $D_t$, since every word has finite length.
+Replacement on this set domain now collects the pairs $(p,t(p))$,
+giving exactly the graph $t$ as a set. There is no selection of a
+branch or of a label: both are supplied by the given graph.
+\Done
+
+Define $\mathcal M_B$ to be the class of set graphs satisfying these
+tree conditions. This is an elementary comprehension instance: words,
+their domains, and their lengths are sets, and $A,R$ are fixed class
+parameters. Lemma~\ref{lem:class_tree_is_set} shows that it includes
+every functional class tree with this finite-address interface.
+
+\begin{lemma}[Class-labelled grafting and decomposition]
+\label{lem:class_tree_grafting}
+There is a class bijection
+\[
+\delta:\mathcal M_B\longrightarrow F_B(\mathcal M_B),\qquad
+\delta(t)=(a,b\mapsto t_b),\quad a=t(\epsilon),
+\]
+where $t_b$ is obtained by removing the initial letter $(a,b)$ from
+the addresses beginning with that letter. Its inverse is grafting.
+\end{lemma}
+\Proof
+For $b\in B(a)$, Separation and Replacement on the set graph $t$
+give the subtree with domain and values
+\[
+D_{t_b}=\{q:(a,b)q\in D_t\},\qquad t_b(q)=t((a,b)q).
+\]
+The tree conditions hold after removing the prefix. Replacement on
+the set $B(a)$ then gives the set function $b\mapsto t_b$.
+
+Conversely, given $(a,s)\in F_B(\mathcal M_B)$, use the domain
+\[
+D=\{\epsilon\}\cup
+\{(a,b)q:b\in B(a),\ q\in D_{s(b)}\}.
+\]
+Replacement collects the prefixed subtree domains over the set $B(a)$;
+union makes $D$ a set. Give the root label $a$ and give $(a,b)q$
+the label $s(b)(q)$. Unique decomposition of a nonempty word into its
+first letter and suffix makes this a well-defined set graph. Prefix
+closure and the exact-child condition hold at the root by $B(a)$ and
+below it by the corresponding conditions on $s(b)$.
+Removing and restoring the first letter recovers every address and
+label. Thus these operations are inverse. Their uniquely specified
+set outputs define class maps by elementary comprehension.
+\Done
+
+\subsection{Corecursion for class state spaces}
+\begin{theorem}[Finality for class coalgebras with set arities]
+\label{thm:class_M_final}
+For every class $X$ and class function $\gamma:X\to F_B(X)$, there
+is exactly one class function $h:X\to\mathcal M_B$ satisfying
+\[
+\delta\circ h=F_B(h)\circ\gamma.
+\]
+\end{theorem}
+\Proof
+Write $\gamma(y)=(a_y,s_y)$. Fix $x\in X$. Construct the reached
+address/state pairs by natural-number recursion:
+\[
+L_0=\{(\epsilon,x)\},\qquad
+L_{n+1}=\{(p(a_y,b),s_y(b)):(p,y)\in L_n,\ b\in B(a_y)\}.
+\]
+Each successor is a set: for each record of the set $L_n$, Replacement
+on $B(a_y)$ forms its next records; Replacement over $L_n$ and union
+collect them. The operation is uniquely specified with fixed class
+parameter $\gamma$, so ordinary set-valued recursion on $\omega$
+applies. It can be made total on other set inputs by returning the
+empty set there. Inductively every reached state belongs to $X$, so
+that default is never used. Replacement over $\omega$ and union give
+the set $L=\bigcup_nL_n$.
+
+At each length an address reaches at most one state: remove its last
+letter and use the uniqueness of the preceding state and of the
+transition $s_y(b)$. Different lengths have disjoint address domains.
+Thus $L$ is functional. Replacing each reached state $y$ by its label
+$a_y$ gives a set graph $t_x$. Its domain contains the root, is prefix
+closed, and has exactly the children prescribed by the reached state's
+arity. Consequently $t_x\in\mathcal M_B$.
+
+Its root has label $a_x$. After the first letter $(a_x,b)$ the same
+transition construction starts from $s_x(b)$, so its subtree is
+$t_{s_x(b)}$. This proves the equation for $h(x)=t_x$.
+The construction uniquely specifies a set graph for each $x$ using
+set quantifiers and the fixed parameters. Elementary class comprehension
+therefore gives the class function $h$, even when $X$ is proper.
+
+If $k:X\to\mathcal M_B$ also satisfies the equation, its root at $x$
+has label $a_x$ and its $b$-subtree is $k(s_x(b))$. Induction on word
+length, simultaneously for all $x\in X$, gives the same admissible
+addresses and labels as the transition construction. Every address is
+finite, so the graphs agree at each $x$, and $k=h$.
+\Done
+
+\begin{corollary}[Class bisimulation]
+If a class relation $Q\subseteq\mathcal M_B\times\mathcal M_B$
+relates only trees with equal root labels and relates their corresponding
+subtrees at every branch, then $t\mathrel Q u$ implies $t=u$.
+\end{corollary}
+\Proof
+For each related pair with common root label $a$, Replacement on $B(a)$
+forms the set function $b\mapsto(t_b,u_b)$. It defines a class
+coalgebra $Q\to F_B(Q)$. Both projections to $\mathcal M_B$ satisfy
+the coalgebra-morphism equation. Theorem~\ref{thm:class_M_final} makes
+them equal, proving the assertion.
+\Done
+
+\subsection{The founded class and its recursion principle}
+Let $\mathcal W_B\subseteq\mathcal M_B$ consist of trees whose
+immediate-child relation on $D_t$ is well founded, with a child preceding
+its parent. This means every nonempty subset of $D_t$ has a minimal
+member. The subsets quantified over are sets, so elementary comprehension
+defines $\mathcal W_B$. This is the minimal-member condition, not an
+assertion that no infinite branch has been chosen.
+
+\begin{lemma}[Founded grafting and the subtree relation]
+\label{lem:class_W_founded}
+Grafting restricts to a class bijection
+$F_B(\mathcal W_B)\to\mathcal W_B$. The immediate-root-subtree
+relation on $\mathcal W_B$ is founded and set-like.
+\end{lemma}
+\Proof
+For $t=\delta^{-1}(a,s)$, foundedness of $t$ implies foundedness of
+each $s(b)$ by prefixing a nonempty subset of subtree addresses with
+$(a,b)$ and taking a minimal member. Conversely, suppose every $s(b)$
+is founded and take a nonempty subset $S$ of $D_t$. If $S$ contains
+only the root, the root is minimal. Otherwise take a nonroot address
+in $S$ with first letter $(a,b)$. The suffixes of the addresses of $S$
+with that first letter form a nonempty subset of $D_{s(b)}$. A minimal
+suffix there gives a minimal address in all of $S$, because immediate
+children preserve the first letter. This proves the grafting assertion
+using Lemma~\ref{lem:class_tree_grafting}.
+
+First construct heights on individual address sets, without assuming
+foundedness of the relation between trees. Founded recursion on the set
+relation for $t$ gives the unique ordinal assignment
+\[
+r_t(p)=\sup\{r_t(q)+1:q\text{ is an immediate child of }p\}.
+\]
+This is the ordinal-rank construction following
+Theorem~\ref{thm:setlike_class_recursion}; Replacement and ordinal union
+give each supremum. Put $h(t)=r_t(\epsilon)$. Removing a subtree's
+initial letter preserves its child relation. Transporting the restriction
+of $r_t$ along $q\mapsto(a,b)q$ gives the subtree's rank assignment,
+by uniqueness of founded recursion:
+\[
+r_{t_b}(q)=r_t((a,b)q).
+\]
+Hence
+\[
+h(t)=\sup_{b\in B(t(\epsilon))}(h(t_b)+1),\qquad h(t_b)<h(t).
+\]
+Each rank graph is a set by Replacement on its set domain $D_t$.
+Consequently its existence and defining equations use only set
+quantifiers. Elementary comprehension gives the class height
+function $h:\mathcal W_B\to\On$.
+
+The immediate subtrees of any $t$ form the image of the set
+$B(t(\epsilon))$, so the subtree relation is set-like. If $S$ is any
+nonempty subclass of $\mathcal W_B$, its ordinal height image is a
+nonempty class of ordinals and has a least member. A tree in $S$ of
+that height has no immediate subtree in $S$, since every such height
+would be smaller. This proves foundedness on the class of trees.
+\Done
+
+\begin{theorem}[Initiality for class algebras with set arities]
+\label{thm:class_W_initial}
+For every class $X$ and class function $\alpha:F_B(X)\to X$, there
+is exactly one class function $r:\mathcal W_B\to X$ satisfying
+\[
+r\circ\delta^{-1}=\alpha\circ F_B(r).
+\]
+An elementary predicate with fixed class parameters holds throughout
+$\mathcal W_B$ if it is preserved by grafting from all immediate subtrees.
+\end{theorem}
+\Proof
+Apply Theorem~\ref{thm:setlike_class_recursion} to the relation established
+in Lemma~\ref{lem:class_W_founded}. At a tree $t=\delta^{-1}(a,s)$,
+let $P_t$ be its set of immediate subtrees. For a set function $g$
+with domain $P_t$ and range contained in $X$, Replacement on $B(a)$
+forms $k(b)=g(s(b))$. Then $(a,k)\in F_B(X)$, so define the step
+value to be $\alpha(a,k)$. On every other set input return the empty
+set. This is a total set-valued class operation, defined by elementary
+comprehension with the specified class parameters.
+
+Founded recursion gives a class function $r:\mathcal W_B\to\V$.
+Founded induction shows $r(t)\in X$: if this holds at all immediate
+subtrees, the restricted predecessor graph is correctly typed, and the
+step gives the value $\alpha(a,b\mapsto r(s(b)))\in X$. Thus the
+default never occurs and the displayed morphism equation holds.
+If two such class maps agree on the predecessors of a tree, their
+equations give equal values there. A minimal disagreement is therefore
+impossible, proving uniqueness. Repeated identical subtrees present no
+ambiguity: the predecessor graph supplies one value for that subtree
+at every occurrence.
+
+For the induction assertion, elementary comprehension makes the class
+of counterexamples. If nonempty, it has a minimal tree by the founded
+subtree relation. All its immediate subtrees satisfy the predicate, so
+grafting preservation contradicts its being a counterexample.
+\Done
+
+\subsection{Scope and a proper-class example}
+\begin{example}[A proper class of nullary labels]
+Take $A=\V$ and $B(a)=\emptyclass$ for every $a$. Every tree consists
+of its root, with its chosen set label. Thus
+\[
+a\longmapsto\{(\epsilon,a)\}
+\]
+is a class bijection from $\V$ to both $\mathcal M_B$ and
+$\mathcal W_B$. Each individual tree is a set. The carriers are proper
+classes: if either were a set, Replacement by the root-label map would
+make $\V$ a set. The initiality and finality statements above apply
+to these proper carriers.
+\end{example}
+
+When $A$ is a set, Replacement collects the specified set fibres and
+their tagged union is a set. The finite-address graphs and foundedness
+condition then give exactly the preceding section's set constructions,
+using the same pair and word coding. The class universal properties
+also allow proper-class target algebras and source coalgebras; their
+maps still have set values at each argument.
+
+The extension therefore covers a proper class of possible set labels,
+not individual labels that are themselves proper classes. It also
+requires every arity to be a set. A proper-class branch fibre would
+invalidate the set-level construction of the next address level and
+the polynomial's set-function branch component. Theorems here make no
+claim about that different interface, or about an encoding with
+proper-class term values. Those versions still require their own
+representation and recursion principles.
+
+\input{END.tex}

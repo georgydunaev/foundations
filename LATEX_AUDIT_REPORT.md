@@ -14,19 +14,20 @@ book.
 The current verification checkpoint includes the standalone Schrödinger thesis
 and its four chapters integrated into the book:
 
-- The **32-page thesis** and **343-page book** compile with archived TeX Live
+- The **52-page thesis** and **383-page book** compile with archived TeX Live
   2024 (pdfTeX 1.40.26 and Biber 2.20), using PdfLaTeX → Biber → PdfLaTeX
   twice. The corresponding LaTeX/DVI sequences also succeed. Texmaker's
   configured backend sequence was tested; its GUI was not launched.
 - The final thesis logs contain no warnings, overfull boxes, underfull boxes,
   undefined references or citations. The book has no undefined references,
   citations, duplicate-label warnings, missing-character warnings or overfull
-  boxes. Its older material still produces 40 underfull-box notices in PDF
-  mode and 41 in DVI mode; these are recorded rather than hidden.
+  boxes. The PDF book also has no underfull boxes after removing redundant
+  paragraph-ending line breaks. The DVI book retains one underfull
+  bibliography line; the rendered bibliography was inspected and is legible.
 - PDF inspection found all fonts embedded, no invalid internal links, no text
   outside page boundaries and no Unicode replacement characters. The thesis
-  has 75 links and 30 bookmarks; the book has 437 links and 263 bookmarks.
-- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran **92 tests, all passing**,
+  has 117 links and 38 bookmarks; the book has 500 links and 284 bookmarks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran **99 tests, all passing**,
   with temporary TeX Live and Poly/ML installations. These include both the
   present and absent companion-listing branches. Regression tests do not
   constitute a formal proof check of the mathematics.
@@ -34,18 +35,32 @@ and its four chapters integrated into the book:
   found. Decorative lines of equals signs in historical material are not
   merge conflicts.
 - A limited active-source scan found balanced braces and environments in
-  all 46 numbered body files and the standalone thesis wrapper. It strips
+  all 47 numbered body files and the standalone thesis wrapper. It strips
   comments, listings and disabled drafts and accounts for the proof macros;
   it is not a TeX interpreter.
-- The assembled book's 37 files have 307 recognized labels and 89 distinct
+- All **47 numbered body files** also passed a standalone PdfLaTeX smoke
+  build. Two previously include-only files received the standard standalone
+  wrapper. These isolated builds intentionally retain references to other
+  chapters; reference resolution is checked in the assembled documents.
+- The assembled book's 40 files have 341 recognized labels and 110 distinct
   referenced keys, with no duplicates or unresolved keys. Compilation and
   Biber separately check the active document's references and citations.
-- The Obelisk checkout remains unchanged. **23 local tickets** record
+- The Obelisk checkout remains unchanged. **24 local tickets** record
   source-level corrections, clarifications and proposed development.
 
 The thesis's core arguments and extensions received independent mathematical
 review by other agents. Fourier–Plancherel and the self-adjoint spectral
-calculus remain explicitly stated background inputs. The manuscript establishes
+calculus remain explicitly stated background inputs. The final spectral
+argument proves a Euclidean specialization of the Beckus–Takase
+localization method, with averaged smooth cutoffs and an explicit
+Gaussian commutator constant. Independent review checked measurable
+averaging, nonzero-vector selection, translation signs, spectral closures,
+and the explicit bound at all subsystem distances. A qualitative
+corollary combines the same localization lemma with uniform continuity
+of localized operators on the compact parameter space; it requires only
+continuous sampling and action. A further
+corollary controls the bottom of the subsystem spectrum, using spectral
+mapping on an interval bounded away from zero. The manuscript establishes
 the bounded-potential and dynamical results with proofs; it does not claim
 research novelty or reproduce the full unbounded Kato-class theory. The exact
 Weidmann theorem number supplied in the programme remains unverified, while
@@ -60,6 +75,61 @@ joint continuity, Gaussian bounds, all-endpoint smoothing, and the strong
 Trotter formula. The dynamical chapter proves covariance, pointwise Duhamel,
 explicit Lipschitz estimates in exponentially weighted norms, a Hölder
 extension, and stronger estimates for isometric actions.
+
+The extended development also proves continuous first spatial derivatives,
+smooth positive-time dependence, the precise heat-equation solution class,
+potential order and scalar-shift identities, uniform initial traces on C0
+and BUC (with BUC representatives characterized as the maximal such
+L-infinity subspace), and quantitative estimates for
+actions with exponential distortion. Continuous sampling and action alone
+give weighted canonical-kernel continuity and localized operator-norm
+continuity; stronger Lipschitz assumptions give explicit rates. A bounded
+step potential illustrates why continuous second spatial derivatives cannot
+be asserted in general. The literature comparison identifies the qualitative
+continuity consequences of Broderix--Hundertmark--Leschke, rather than
+presenting those consequences as new results.
+
+The book additionally includes a complete executable de Bruijn substitution
+example with scope and capture-avoidance proofs, separate from the preserved
+historical prototype. Seven tests check it against an independent named-term
+oracle, as well as normal forms, fuel bounds, invalid inputs and large
+indices. Independent reviews also checked the full finite-measure
+Dunford--Pettis argument, including the distinction between weak compactness
+and sequential compactness. The optional absent companion manuscript no
+longer produces an empty placeholder chapter.
+
+Further independent passes corrected a missing carrier restriction in bound
+comparisons and a missing fresh-variable condition in a uniqueness binder.
+The type chapter now distinguishes set-level W/M constructions from their
+membership in a chosen universe and proves sufficient closure conditions.
+A separately reviewed diagonal argument derives indexed-union closure from
+Obelisk's Tight condition for wellorderable set universes; a local development
+ticket requests an upstream proof interface without changing generated files.
+The following chapter extends the finite-address constructions to a possibly
+proper class of set labels with set arities. Independently reviewed proofs
+establish that individual trees are sets, and prove finality for class
+coalgebras and initiality for class algebras in the stated NBG setting
+without Choice. Proper-class arities remain explicitly outside that model.
+A reconstruction proof for the preferred family encoding now distinguishes
+its represented domain from the small domain used by another partial
+evaluation proposal. The constant proper-class value makes the difference
+explicit. The reading guide also records the actual forward dependencies
+of ordinal recursion and the imported analytic background. A fresh logic
+review made effective necessitation require provable certificate checking
+and separated non-effective truth adjunction from inconsistency. The
+ordinal chapter proves elementary-comprehension reductions for ordinal
+sets and injections into set bounds, with explicit set-formation
+assumptions and no added Choice.
+The topology chapter gives a precise continuous-image preservation result
+without silently defining the author's proposed inheritance hierarchy.
+The completed local-Euclidean connectedness section is included in the book.
+The shear-torus example now also distinguishes phase spectral discontinuity
+from continuity of spectral unions over invariant subsystems. Its spectral
+consequence follows from the proved localization corollary; the general
+method is attributed to Beckus–Takase. The operator-norm counterexample
+has its separate direct proof.
+The thesis counterexample has a reproducible PDF/EPS illustration generated
+from its explicit cosine potentials; it is explanatory, not numerical proof.
 
 The sign in the proposed covariant formula is corrected: the convention
 `V_z(g)=v(T(g,z))` requires `T(g,z)` in the formula. The negative action gives

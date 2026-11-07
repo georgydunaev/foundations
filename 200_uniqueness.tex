@@ -74,13 +74,16 @@ class, the same comprehension is empty, because only sets can be members.
 \subsection{Properties}
 \begin{theorem}[Comprehension with a uniqueness condition]
 Conjoining a formula with the assertion that it has at most one witness
-produces a class with at most one member.
+produces a class with at most one member. Choose $w$ distinct from $y$
+and not free in $\varphi$, so the outer uniqueness binder does not
+change the parameters of the comprehension.
 \[
 (!w,\ w\in \cc{y}{\varphi\land (!y,\ \varphi)})
 \clabeltagd{thm}{class with at most one object}
 \]
 \end{theorem}
 \Proof
+Choose distinct witnesses $w_1,w_2$ fresh for $\varphi,y,w$.
 Assume $w_1\in \cc{y}{\varphi\land (!y,\ \varphi)}$ and $w_2\in \cc{y}{\varphi\land (!y,\ \varphi)}$.\\
 To show: $w_1=w_2$.
 \[
@@ -111,6 +114,11 @@ w_2\in \cc{y}{\varphi\land (!y,\ \varphi)}
 (w_1=w_2)
 \]
 \Done
+
+The freshness condition is necessary. If $\varphi$ were $y=w$, the
+comprehension would be $\{w\}$, and the displayed assertion would become
+$!w,\ w\in\{w\}$: at most one set exists. With two distinct sets this
+is false, since the bound $w$ would vary the class being tested.
 
 \begin{theorem}[Uniqueness passes to subclasses]
 \[

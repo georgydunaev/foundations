@@ -1,6 +1,7 @@
 %\def\MyPrintFlag{defined}
 % Approach organization: opencode-go/kimi-k3.1-pro (Capability Tier 2).
 \input{000_preamble.tex}
+\counterwithout{figure}{chapter}
 
 %Primary Active Kernel Approach: Classical 2-valued Morse-Kelley / NBG class theory with Dunaev Tagged Ordered Pairs.
 %The active type discipline is predicates/formulas-as-types and classes-as-expressions.
@@ -332,6 +333,8 @@ Here I want to provide a natural modification of predicate calculus and its sema
 
 \input{130_classes_as_types.tex}
 \pagebreak
+\input{131_class_polynomial_trees.tex}
+\pagebreak
 
 \input{160_some_order_theory.tex}
 \pagebreak
@@ -361,8 +364,8 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 \input{300_category_theory.tex}
 \pagebreak
-%\input{310_differential_geometry.tex}
-%\pagebreak
+\input{310_differential_geometry.tex}
+\pagebreak
 %Appendix 1: u
 \chapter{Various logic--related ideas}
 \section{De Bruijn indices in the untyped lambda calculus}
@@ -452,6 +455,8 @@ val w = normalize ee; (* it will freeze the computations*)
 \end{nolinenumbers}
 \pagebreak
 
+\input{198_debruijn_substitution.tex}
+\pagebreak
 \input{199_languages.tex}
 \pagebreak
 \input{200_uniqueness.tex}
@@ -476,20 +481,14 @@ val w = normalize ee; (* it will freeze the computations*)
 \pagebreak
 %Topological Vector Spaces, Measure Theory, and Functional Analysis 
 %Appendix 2: 
-\chapter{Topics related to Dunford--Pettis theorem}
-%\chapter{From foundations to applications.}
 \IfFileExists{../THESIS/TEX/AcademicWriting.tex}{%
+  \chapter{Topics related to Dunford--Pettis theorem}%
   \input{../THESIS/TEX/AcademicWriting.tex}%
+  \pagebreak%
 }{%
-  This chapter is reserved for the companion manuscript on the
-  Dunford--Pettis theorem. Its source is maintained separately and is not
-  included in this checkout. The functional-analysis section supplies a
-  self-contained introduction to weak convergence and uniform integrability,
-  together with proofs of the finite-measure Dunford--Pettis criterion in
-  both its sequential and weak-compactness formulations. These results
-  do not replace the absent companion manuscript.
+  % The optional companion is maintained separately. Chapters 260--290
+  % include the self-contained finite-measure Dunford--Pettis development.
 }
-\pagebreak
 
 %%%%% For the code.
 %\lstinputlisting[firstline=300,lastline=500]{file.cc}

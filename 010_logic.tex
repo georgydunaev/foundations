@@ -1598,7 +1598,7 @@ B
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
 \begin{notation}[``antiquotation'' of a term]%metation
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the variable belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ (of arbitrary type) is antiquoted, then it can be simply written "Antiquote($t$)"(without the quotation marks which are written here).
+The bullet above a variable $\meta{A}$ (or $A_{(1)}$) indicates that the variable belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. An antiquoted term $t$ of any type can be written as ``Antiquote($t$)'', without the surrounding quotation marks.
 \end{notation}
 \begin{note}[requirement for the implementation]
 \underline{For a formula $\phi$ to be well--formed, all antiquotations in it must be quoted.}\\
@@ -1606,9 +1606,9 @@ The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the 
 $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
 \fi
 (A free antiquotation would instead describe a template that still needs an argument.)\\
-This requirement is also important, since the proof assistant requires a ground term in certain sense, without ``free antiquotations'', in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
+The proof assistant needs a term that is ground at the metalevel, with no free antiquotations, to check syntactic side conditions such as ``is free in'' and ``is free for substitution''.\\ %\underline{
 \fbox{This agreement makes the side conditions decidable.}\\
-The ``yes/no'' answer is computed on the highest meta--level of the formula, otherwise the exception is raised, in case if there are ``unbound metavariables''.
+The check computes a Boolean answer at the formula's highest metalevel. If unbound metavariables prevent that check, it raises an exception.
 %They are done by the implementented core functions on the highest meta--level of the formula.
 \end{note}
 
@@ -1618,7 +1618,7 @@ The axiom schemes are expressed on the metalevel in this way:
 \forall (A,B : \Fm),\ %
 (\Tau \vdash (A \implies (B \implies A)))
 \]
-or in different(and equivalent) presentation:
+or, equivalently:
 \[
 \forall (A,B : \Fm),\ %
 (\Tau \vdash 
@@ -1842,7 +1842,7 @@ are given in the listing below:
 FFI : Value * Variable * Value -> bool
 isFree : Variable * Value -> bool
 \end{lstlisting}
-(The quantification ``for any type $X$'' is purely metatheoretical here for simplicity, but it may be included if the dependent types will be implemented.)\\
+(For simplicity, ``for any type $X$'' is metatheoretic quantification here. It could be included in the object language if dependent types were implemented.)\\
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
 For any type $X$, for any variable $x$ and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurrences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
@@ -2008,8 +2008,8 @@ below belong to this particular proposed typed calculus.%For the case of classic
 \begin{note}[sizes of types terminology]
 This local proposal distinguishes three sizes of types:
 \begin{enumerate}
-\item ``small'': types, which are interpreted as sets.
-\item ``medium'': types, which are interpreted as classes.
+\item ``small'': types interpreted as sets.
+\item ``medium'': types interpreted as classes.
 \item ``large'': all mentioned types, extended by types ``Class'' and ``Type'', which is interpreted as a conglomerate of all classes.
 \end{enumerate}
 \end{note}
@@ -2019,8 +2019,8 @@ The following typing conventions are assumed in this proposal:
 \item All small terms have small types.
 \item All small types are also small terms, but not vice versa.
 \item Thus each small type has a small type of its own.\\
-Moreover, a type of a small type is required to be a universe. Therefore a type of a universe is also a universe. All these universes are small types.
-\item All medium types have a large type ``Type''.
+The type of a small type is required to be a universe. Consequently, the type of a universe is also a universe. All these universes are small types.
+\item All medium types have the large type ``Type''.
 \item Large types have no types. There are only two of them: ``Type'' and ``Class''. 
 \end{itemize}
 \end{note}
@@ -2033,7 +2033,7 @@ in the generalisation rule below.
 \end{note}
 \begin{definition}[generalisation rule(s)]%underline
 %It is not possible to write a generalisation rule for every large type
-For $\Wau$ to be a theory, the following must hold, that for any type $X$:\\
+For $\Wau$ to be a theory, the following rule must hold for any type $X$:\\
 ``
 For any variable $x$, for any formula $\phi$ such that the variable $x$ is not free in the context, then
 the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varphi)$ in $\Wau$.
@@ -2096,7 +2096,9 @@ identifier, including at the binder position. This is different from
 substituting a term for a free occurrence in the resulting object formula.
 The following distinction explains the relevant freshness checks.
 \begin{remark}[Metatheoretic variables ($v_x, v_y, v_C, v_s$) vs.\ metatheoretic constants ($c_x, c_y, c_C$) and capture avoidance]
-In metalevel rules such as \eqref{MetaGen}, symbols $v, v_x, v_y, v_C, v_s : \Var$ are \emph{metatheoretic variables} universally quantified over the datatype $\Var$ of object-language variable identifiers, whereas fixed concrete variable identifiers (such as the literal identifier for ``$x$'') are \emph{metatheoretic constants} denoted $c_x, c_y, c_C : \Var$. Inside a quoted formula $\mquote{(\forall (\antiquote{v}:X),\,\mantiquote{\phi})}$, the antiquotation $\antiquote{v}$ splices the variable identifier denoted by $v$ into the binder position. Accidental variable capture (name clash) is prevented by decidable boolean side conditions evaluated on the syntax trees:
+In metalevel rules such as \eqref{MetaGen}, symbols $v, v_x, v_y, v_C, v_s : \Var$ are \emph{metatheoretic variables} universally quantified over the datatype $\Var$ of object-language variable identifiers. Fixed identifiers (such as the literal identifier for ``$x$'') are instead \emph{metatheoretic constants}, denoted $c_x, c_y, c_C : \Var$.
+
+Inside a quoted formula $\mquote{(\forall (\antiquote{v}:X),\,\mantiquote{\phi})}$, the antiquotation $\antiquote{v}$ splices the variable identifier denoted by $v$ into the binder position. Decidable Boolean checks on the syntax trees enforce the following freshness and capture-avoidance conditions:
 \begin{enumerate}
 \item In \eqref{MetaGen}, the side condition $(v \notin \FV(\Gamma))$ (checked by $\mathrm{NFV}(v, \gamma) = \True$ for every $\gamma \in \Gamma$) guarantees that the generalized variable identifier $v$ does not occur free in any assumption of $\Gamma$.
 \item In universal instantiation and existential elimination, the decidable predicate
@@ -5280,7 +5282,16 @@ For a finite context $\Gamma$, and subject to the same restrictions,
 \begin{inferencerule}[effective necessitation]
 The intended rule represents a given certified derivation inside $\Tau$.
 It requires a representation of the theory $\Wau$ and of the particular
-proof, together with a proof-checking relation available in $\Tau$:
+proof, together with a proof-checking relation available in $\Tau$.
+More precisely, for each actual certified derivation $p$ of $\psi$ in the
+represented fragment, require the numeralwise verification
+$\Tau\vdash\operatorname{Prf}_{\Wau}(\overline{\#p},
+\overline{\#\psi})$. Read the represented assertion
+$(\Wau\vdash\psi)$ in the conclusion as
+$\exists q\,\operatorname{Prf}_{\Wau}(q,\overline{\#\psi})$,
+or require $\Tau$ to prove its equivalence to that formula. Existential
+introduction with the certificate numeral then justifies the rule;
+merely having a formula named ``proof checking'' does not suffice:
 \[
 \frac{
 \Wau \vdash \psi
@@ -5315,7 +5326,7 @@ derivations remains an additional requirement of the framework.
 \label{rule:necessitation}
 \end{inferencerule}
 %usage is discouraged, since
-\begin{badinferencerule*}[it leads to contradictions, if accepted]%\ \\
+\begin{badinferencerule*}[not an effective rule for the fixed theory]%\ \\
 The following unrestricted passage from truth to effective provability is
 excluded from the effective calculus. Unlike the preceding rule, its premise
 does not provide a certified derivation that the implementation can encode.
@@ -5327,6 +5338,13 @@ does not provide a certified derivation that the implementation can encode.
 }
 \labeltagd{badrule}{``Effective Omniscience''}
 \]%%\square \psi
+Under the arithmetic and consistency hypotheses above, the fixed effective
+theory $\Tau$ cannot capture all truth in the intended standard
+interpretation. This is not a claim that adjoining true sentences must
+produce a contradiction: starting with a sound theory, adjoining all such
+sentences preserves soundness and consistency, but in this setting the
+resulting theory is no longer effectively axiomatised. That enlarged
+theory must be distinguished from the fixed $\Tau$ in the displayed rule.
 \end{badinferencerule*}
 \begin{note}[philosophical]
 A computer stores a representation of a proof and checks it against specified
@@ -5524,12 +5542,12 @@ The definitions immediately give:
 
 \begin{note}[a nonstandard writing convention]
 % either 
-The author uses a predicate $\vdash$, which is slightly different from the traditional: it is higher--order in nature, since it takes a theory(a set of formulas), a context (a list of formulas), and a formula as arguments.
+The author's predicate $\vdash$ differs from the traditional notation: it is higher-order, taking a theory (a set of formulas), a context (a list of formulas), and a formula as arguments.
 \[
 \text{Der} : \text{Theory} \times \text{Ctx} \times \Fm \to \Fm
 \]
-And it is treated in a special way: the function isFree which checks whether variable is free, increases the metalevel of the variable being checked when enters the quotation. %arguments of this constructor of formulas. 
-This simple trick allows to avoid explicit writing of encoding and decoding of syntactic objects, and simplify the implementation.% is special or \ulcorner \urcorner
+The function isFree treats quotation specially: when checking whether a variable occurs free, it increases the variable's metalevel as it enters a quotation. %arguments of this constructor of formulas.
+This convention avoids writing the encoding and decoding of syntactic objects explicitly and simplifies the implementation.% is special or \ulcorner \urcorner
 \end{note}
 
 Under the stated reflexivity convention, provability in $\Fau$ and truth
@@ -5563,7 +5581,7 @@ semantics validates their equivalence. %This is done for clarity in implementati
 \fi
 
 \begin{inferencerule}[creed]%\ \\
-Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on the left hand side of ``$\vdash$''. This rule works only for the constant ``$\mathcal{F}$''.
+The context must be empty: only ``$\mathcal{F}$'' appears on the left-hand side of ``$\vdash$''. The rule applies only to the constant ``$\mathcal{F}$''.
 \label{rule:creed}
 %\emptyclass
 \iffalse % rejected2

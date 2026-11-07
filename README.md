@@ -23,9 +23,11 @@ book:
 - `293_heat_equation.tex`: Gaussian construction, maximum principle and uniqueness.
 - `294_kernel_criterion.tex`: finite-measure extensions and continuous kernels.
 - `295_schrodinger_semigroups.tex`: self-adjointness, Duhamel, kernel continuity,
-  Gaussian bounds, smoothing and the strong Trotter formula.
+  Gaussian bounds, smoothing, spatial and time derivatives, uniform initial
+  traces on continuous-function spaces, and the strong Trotter formula.
 - `296_dynamical_schrodinger_kernels.tex`: covariance, pointwise comparison,
-  explicit parameter estimates and exponential weights.
+  explicit parameter estimates and exponential weights, localized operator
+  continuity, and a global operator-norm discontinuity example.
 
 Use PdfLaTeX → Biber → PdfLaTeX twice with the thesis master selected;
 see [Texmaker instructions](TEXMAKER_BUILD.md).
@@ -40,6 +42,11 @@ theory, Dunaev Tagged Ordered Pairs, total comprehension evaluation, and
 predicates/formulas-as-types with classes-as-expressions**. The uncertain
 descriptor calculus, Farmer's PFOL, and conglomerate-valued semantics remain
 independent preserved alternatives; they are not kernel configuration options.
+Here “MK/NBG” identifies related local settings, not a claim that every
+construction works in both. Definitions quantifying over arbitrary classes
+inside comprehension use the stated MK assumption; NBG instances require
+an elementary defining formula, with set quantifiers and possibly class
+parameters.
 Total evaluation itself has two local defaults: the older prototype uses
 the empty class, while the class-axiom section and newer Obelisk export use
 `V` outside the represented domain. The guide preserves both settings; the
@@ -71,12 +78,14 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **110_family_evaluation.tex**: Theory of families and evaluation maps. *(Active Draft)*
 - **120_induction_recursion.tex**: Induction and recursion principles for classes. *(Active Draft)*
 - **130_classes_as_types.tex**: Active predicates/formulas-as-types discipline, a scoped predicate/storage interface and option models, with older classes-as-types attempts explicitly marked outdated. *(Active Draft with Historical Sections)*
+- **131_class_polynomial_trees.tex**: Class-valued initial algebras and final coalgebras for a class of set labels with set arities, including proofs that individual trees remain sets. *(Proved in the stated NBG setting)*
 - **140_setness.tex**: Exploration of setness versus classness. *(Active Draft)*
 - **150_ordinals.tex**: Development of ordinal numbers within the class framework. *(Active Draft)*
 - **160_some_order_theory.tex**: Bounds, extrema, complete lattices, and the Knaster–Tarski fixed-point theorem. *(Active Draft)*
 - **170_paradoxes.tex**: Analysis of classical paradoxes. *(Active Draft)*
 - **180_many-valued.tex**: Many-valued and uncertain-value experiments accompanying Alternative 3. *(Preserved Alternative 3)*
 - **190_union_intersection.tex**: Formal treatment of union and intersection operations on classes. *(Active Draft)*
+- **198_debruijn_substitution.tex**: Complete untyped de Bruijn substitution, scope and capture-avoidance proofs, and a fuel-bounded executable SML evaluator. *(Proved example, separate from the typed calculus)*
 - **199_languages.tex**: Simple-type checking, denotational semantics, strong normalization, confluence, and decidable conversion, including a proved Boolean conditional extension. *(Active Draft)*
 - **200_relations.tex**: Theory of relations between classes. *(Active Draft)*
 - **200_uniqueness.tex**: Uniqueness principles and their applications. *(Active Draft)*
@@ -128,7 +137,8 @@ regenerated.
 The manuscript still includes explicit research sketches and application
 outlines. The active citations now have a local `references.bib`; its comments
 record the restored sources and the replacement of an unidentified citation.
-The companion Dunford–Pettis source is absent, but chapters 260–290 are now
+The companion Dunford–Pettis source is optional and absent; its chapter is
+included only when that source is available. Chapters 260–290 are now
 included in the assembled book and develop the analytic prerequisites.
 For real L1 on a finite positive measure space, the Dunford–Pettis
 equivalence is now proved in full: uniform integrability is equivalent
@@ -138,6 +148,13 @@ weak compactness of Hilbert balls and weakly convergent subsequences
 from weakly compact subsets of normed spaces.
 
 ## Mathematical Development in This Revision
+
+The thesis also proves a Euclidean specialization of Beckus–Takase's
+spectral localization method. Averaged smooth cutoffs and the proved
+Gaussian bounds yield an explicit square-root Hausdorff estimate for
+heat-spectrum unions over invariant subsystems, and a bound for the
+spectral bottom. A worked example distinguishes subsystem continuity
+from discontinuity at individual phases.
 
 The extended mathematical pass adds proofs of membership and set-like
 well-founded recursion, Mostowski collapse, Hartogs' theorem, well-ordering
@@ -156,7 +173,13 @@ A countable-syntax diagonal argument records the limits of finite closed
 denotations; no uniform internal truth predicate is asserted. The chapter
 also proves finite-stage W-recursion, constructs set-level
 M-types by finite addresses, and obtains W-types for arbitrary set arities
-from their well-founded trees. The assembled logic chapter proves transport
+from their well-founded trees. Explicit universe-closure theorems distinguish
+set carriers from membership in a chosen universe, including a diagonal
+proof connecting Obelisk's Tight condition to indexed-union closure. The
+following chapter extends the tree models to a class of set labels with
+set arities, proving class-valued initiality and finality without Choice.
+Its size lemma shows why every individual tree is still a set.
+The assembled logic chapter proves transport
 of quantification along syntax coding, a conservative total witness extension
 for nonempty set domains (including its substitution and coincidence cases),
 a diagonal construction under an explicit coding hypothesis, and Löb's theorem

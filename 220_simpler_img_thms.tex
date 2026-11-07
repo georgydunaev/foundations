@@ -89,15 +89,15 @@ F\langle A \rangle\ceq \cc{b}{\forall a\in A,\  (a,b)\in F}
 \Proof
 $(\subseteq)$\\
 Assume $w\in \mbox{E}^{\top}[A]$.\\
-Therefore $\exists a\in A,\  (a,w)\in \mbox{E}^{\top}$.\\
-So $(w,a)\in \mbox{E}$.\\
-So $w\in a$.\\
+Therefore $\exists a\in A,\  (a,w)\in \mbox{E}^{\top}$. Choose such a witness.\\
+By the definition of converse, $(w,a)\in \mbox{E}$.\\
+The membership relation then gives $w\in a$.\\
 Since $w\in a$ and $a\in A$, $w\in \union A$.\\
 $(\supseteq)$\\
-$w\in \union A$.\\
-Therefore $\exists a\in A,\  w\in a$.\\
-So $(w,a)\in \mbox{E}$.
-So $(a,w)\in \mbox{E}^{\top}$.
+Assume $w\in \union A$.\\
+Therefore $\exists a\in A,\  w\in a$. Choose such a witness.\\
+By the definition of the membership relation, $(w,a)\in \mbox{E}$.
+Taking the converse gives $(a,w)\in \mbox{E}^{\top}$.
 From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A])$.\\
 \Done
 \begin{theorem}[Intersection as a relational glare]
@@ -226,7 +226,7 @@ $F^{\forall}(B)=(\V\setminus P)\cup B$, whereas its restriction to $P$
 is just $B$.
 
 \subsection{Further identities for the relational encoding}
-Here fix the expansion convention explicitly. For a relation
+For the following identities, fix the expansion convention explicitly. For a relation
 $F\subseteq\V\times\V$, define
 \[
 \Sigma F=\cc{(x,z)}{\exists y\in\V,\ (x,y)\in F\land z\in y}.
@@ -308,7 +308,7 @@ For $S_\varphi\in\V\setminus\{\emptyclass\}$, define
 (\varepsilon y,\  \varphi) = c\left(\cc{y}{\varphi}\right)
 \labeltagd{def}{epsilon operator for sets}
 \]
-Here the constant $\text{c}$ denotes a class--function of global choice(see \myref{def:globalchoice}):
+Here the constant $\text{c}$ denotes a global choice class function (see \myref{def:globalchoice}):
 \[
 \text{c}:\V\setminus\{\emptyclass\}\to \V
 \]

@@ -1,4 +1,4 @@
-\def\topic{}
+\def\topic{Types as predicates on classes}
 \input{BEGIN.tex}
 \section{Types as predicates on classes}
 
@@ -39,14 +39,19 @@ specified in the particular model; this sketch does not supply them all.
 \end{note}
 
 \subsection{Explicit typed term interpretation (\texorpdfstring{$\mu_A$ / $I$}{mu-A / I})}
-Throughout this chapter, the background model of the class theory (NBG/MK) is fixed (though unspecified), and the valuation of free variables is likewise fixed (though unspecified).
+Throughout this chapter, fix a background model of the chosen class
+theory (NBG or MK) and a valuation of its free variables. Neither the
+model nor the valuation needs to be specified further here.
 With that context fixed, this chapter uses $\mu_A$ (written $I(a)$ or
 $\mu_A(a)$ below) for an \emph{explicit typed term interpretation},
 indexed by the type $A$, at the level of expressions:
 \[
 \mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression},
 \]
-which translates a typed expression $a:A$ into a class expression $\mu_A(a)\equiv I(a)$. Evaluating the translated expression in the fixed model is a further semantic operation; the expression itself is not a class object. The term \emph{valuation homomorphism}
+which translates a typed expression $a:A$ into a class expression
+$\mu_A(a)\equiv I(a)$. Evaluating the translated expression in the fixed
+model is a further semantic operation; the expression itself is not a
+class object. The term \emph{valuation homomorphism}
 can be used for the resulting semantic interpretation when preservation of
 the relevant constructors has been proved. That preservation is an
 obligation of the model, not a consequence of the map's displayed type.
@@ -61,7 +66,12 @@ kernel implementation already realize this same map.
 Unlike the standard set-theoretic setting where terms are interpreted as sets and classes are interpreted as types, we work in a one-level-higher setting:
 \begin{enumerate}
 \item \textbf{Terms are interpreted as classes} (which may be either sets or proper classes such as $\V$ and $\On$).
-\item \textbf{Types are interpreted as conglomerates}, which we use interchangeably with \textbf{predicates on the conglomerate of all classes} ($\Class \to \Bool$). In particular, the type $\Class$ is the constant-true predicate on classes $\lambda (C:\Class).\ \top$ (informally, a constant conglomerate-function to $\Bool$, representing the conglomerate of all classes).
+\item \textbf{Types are interpreted as conglomerates}. Here this means
+\textbf{predicates on the conglomerate of all classes}
+($\Class \to \Bool$). In particular, the type $\Class$ is the
+constant-true predicate on classes $\lambda (C:\Class).\ \top$
+(informally, a constant conglomerate-function to $\Bool$, representing
+the conglomerate of all classes).
 \item \textbf{$\Class$ is the default type}: it is implicitly assumed whenever a quantifier or comprehension omits an explicit type ($\forall x,\ \varphi(x) :\equiv \forall (x:\Class),\ \varphi(x)$) and in \textbf{bound (bounded) quantifiers}:
 \[
 \begin{aligned}
@@ -79,7 +89,11 @@ letters $P,Q$ stand schematically for formulas with a designated class
 argument $C$ and specified parameters; they are not members of an
 object-theoretic class of all predicates. Work with MK comprehension,
 or restrict the formulas to the comprehension instances admitted in
-the chosen NBG fragment. Fix the background model and an assignment
+the chosen NBG fragment. The same restriction applies when a later
+comprehension or induction argument uses a schematic predicate. A fixed
+class parameter is permitted in an elementary NBG formula; a quantified
+variable ranging over arbitrary classes is different.
+Fix the background model and an assignment
 $\rho$ of the free parameters.
 
 For a type expression $A$, a specified interpretation supplies a
@@ -224,7 +238,7 @@ two-element set, whereas a proposition is a formula.
 Side conditions:\\
 ($z$ is not free in $t_1$),\\
 ($z$ is not free in $t_2$),\\
-($z$ is not free in $\varphi$).\\
+($z$ is not free in $\varphi$).
 \end{definition}
 \underline{Computation of terms of boolean type:}\\
 \begin{theorem}[$\lifdep$--true--elim]
@@ -497,7 +511,10 @@ its corresponding hypothesis.
 
 \pagebreak
 \subsection{Implementing ordered pairs}
-The ordered-pair section gives the intended constructor, sethood condition, and injectivity property, and compares several candidate models. The type-theoretic presentation here relies on the selected model satisfying that interface.
+The ordered-pair section states the intended constructor, sethood
+condition, and injectivity property, and compares several candidate
+models. The type-theoretic presentation here requires the selected model
+to satisfy that interface.
 %\dots\\
 \subsubsection{Axioms of ordered pairs}
 Use the constructor, sethood, and injectivity interface stated in the ordered-pair section.
@@ -507,10 +524,10 @@ Choose one of the pair constructions described there, with its stated domain.
 This requires the constructor and projection equations for that chosen model.
 \pagebreak
 
-\subsection{Implementing list as a medium type}
+\subsection{Implementing lists as a medium type}
 %of classes[not good]}
-Lists of classes are modelled as a family with some initial (and finite) segment of ordinals as a domain.
-The type $\ClassList$ is introduced.
+Each list of classes is modelled by a family whose domain is a finite
+initial segment of the ordinals. We introduce the type $\ClassList$.
 \subsubsection{Axioms}
 \begin{axiom}[nil]
 \[
@@ -518,8 +535,8 @@ The type $\ClassList$ is introduced.
 \]
 \end{axiom}
 \begin{axiom}[cons]
-String ``::'' is the infix notation of a constructor ``cons''.
-Parentheses around it make the prefix notation out of infix notation.
+The symbol ``::'' is infix notation for the constructor ``cons''.
+Enclosing it in parentheses allows it to be used in prefix position.
 \[
 (::):\ \Class \to \ClassList \to \ClassList
 \]
@@ -531,7 +548,9 @@ Parentheses around it make the prefix notation out of infix notation.
 \end{axiom}
 \subsubsection{Model}
 %Model:\\
-For a medium type, some term interpretations may be proper classes. The model is therefore a predicate on classes, rather than necessarily a set or class containing those interpretations as members.
+For a medium type, some terms may be interpreted as proper classes.
+The model therefore uses a predicate on classes; it need not be a set
+or class containing those interpretations as members.
 \begin{definition}[inClassList]
 The historical representation proposal for class-list terms is:
 %\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
@@ -812,7 +831,7 @@ The proof allows proper-class entries but only finite natural tags;
 it does not verify any unstated kernel conversion rules or an extension
 to arbitrary class-valued tags.
 
-\subsection{Implementing list of values having a small type}
+\subsection{Implementing lists of values of a small type}
 Fix a set $A$ interpreting the small type. We use the author's
 semisingleton family encoding, rather than the concentrated-fibre
 convention used in some other sections. Work with Infinity, powerset,
@@ -1182,7 +1201,9 @@ F^\intercal\eqdef\cc{(F(x),x)}{x\in \dom(F)}
 \end{definition}
 
 \subsubsection{Family}
-A family combines its domain with the chosen fiber representation. The preceding family-evaluation section gives the two encodings compared here.
+A family combines its domain with the chosen fibre representation.
+The preceding family-evaluation section describes the two encodings
+compared here.
 \iffalse %OUTDATED
 \begin{definition}[family]
 Def is ommited!
@@ -1224,18 +1245,19 @@ F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
 %= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
 %\]
 \begin{baddefinition*}[set--valued abstraction]
-This graph abstraction represents set values. It can be used when $t$ is set-valued on $A$; extending it to proper-class values requires another encoding:
+This graph abstraction represents set values. It applies when $t$ is
+set-valued on $A$; proper-class values require another encoding:
 \[
 (x\in A \mapsto t)
 \eqbaddef
 \ccc{x}{(x,t)}{(x\in A)}
 \clabeltagd{def}{setvaluedabstraction}
 \]
-(Here $x$ is a bound variable on the both sides of the equality.)
+Here $x$ is bound on both sides of the equality.
 %a binder
 \end{baddefinition*}
 
-In both following abstractions, $x$ is not free in the fixed domain $A$,
+In each of the following abstractions, $x$ is not free in the fixed domain $A$,
 and the auxiliary variable $b$ is distinct from $x$ and fresh for $A,t$.
 Rename auxiliary variables before substitution whenever needed.
 
@@ -1247,7 +1269,8 @@ Rename auxiliary variables before substitution whenever needed.
 \clabeltagd{def}{classvaluedabstraction-old}
 \]
 \end{definition}
-In the singleton-based variant, a set value is stored directly and a proper-class value is represented by singleton subclasses:
+In the singleton-based variant, a set value is stored directly, while
+a proper-class value is represented by its singleton subclasses:
 \begin{definition}[class--valued abstraction]
 \[
 (x\in A \mapsto t)
@@ -1304,11 +1327,15 @@ jjj
 % lam q := cc (x. exists x, (p = (x,t)) \land (x\in A) )
 \subsubsection{Alpha--equivalence}
 
-Renaming the bound variable in an abstraction preserves its meaning, provided the new variable is fresh and the renaming avoids capture. This follows from the same renaming property for class comprehension.
+Renaming the bound variable in an abstraction preserves its meaning,
+provided the new variable is fresh and the renaming avoids capture.
+This follows from the corresponding renaming property for class
+comprehension.
 
 \subsubsection{Beta--conversion}
 \begin{definition}[conditional operator]
-For any formula $\phi$ and for any class terms $t_1$ and $t_2$, the conditional operator is defined in the following way:
+For a formula $\phi$ and class terms $t_1$ and $t_2$, define the
+conditional operator by
 \[
 (\lif\ \phi\ \lthen\ t_1\ \lelse\ t_2\ \lfi)
 \eqdef
@@ -1322,7 +1349,7 @@ For any formula $\phi$ and for any class terms $t_1$ and $t_2$, the conditional 
 
 
 \begin{theorem}[OUTDATED $\beta$--conversion]
-This theorem assumes the outdated implementation:
+This historical theorem uses the earlier union-evaluation convention:
 \[
 F(x) \eqdef \bigcup\cc{c}{((x,c)\in F)}
 \]
@@ -1505,7 +1532,10 @@ $}
 \end{prooftree}
 
 \subsubsection{Model of $\Sigma$--types}
-Throughout this subsection, $B$ is a family. The dependent sum consists of pairs of an index in its domain and a member of the corresponding value. The domain guard is explicit so that an out-of-domain default contributes no extra pairs.
+Throughout this subsection, $B$ is a family. The dependent sum consists
+of pairs containing an index in its domain and a member of the
+corresponding value. The explicit domain guard prevents an out-of-domain
+default from contributing extra pairs.
 \iffalse
 \begin{definition}[dependent sum]
 \iffalse %OUTDATED: functional transposition vs relational transposition
@@ -1631,22 +1661,22 @@ conversion rules of an unspecified checker.
 \subsubsection{Rules for small $\Sigma$--types}
 For these rules, $\Un$ denotes a chosen universe closed under the dependent
 sum construction. That closure is an assumption on this local universe.
-\underline{Formation of terms of $\Sigma$--type:}\\
+\underline{Formation of terms of $\Sigma$--type:}
 \[
 \Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
 \]
-\underline{Introduction of terms of $\Sigma$--type:}\\
+\underline{Introduction of terms of $\Sigma$--type:}
 \[
 \textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ A\ B))))
 \]
-\underline{Elimination of terms of $\Sigma$--type:}\\
+\underline{Elimination of terms of $\Sigma$--type:}
 \[
 \textrm{pr}_1 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto ((\Sigma\ A\ B) \to A)))
 \]
 \[
 \textrm{pr}_2 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B\ (\pr_1\ p))))
 \]
-\underline{Computation of terms of $\Sigma$--type:}\\
+\underline{Computation of terms of $\Sigma$--type:}
 \[
 \pr_1\ (\textrm{pair}\ A\ B\ x\ y) \equiv x
 \]
@@ -1698,7 +1728,10 @@ The former is the valuation of the latter. To be precise, specifically, it holds
 %\]
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
-Class--level type theory is predicative.\\
+The draft describes this type-formation discipline as predicative.
+Its separation of class carriers from predicates on classes does not
+assert predicativity of the ambient comprehension schema: the local MK
+or admitted-NBG assumptions stated above still apply.
 In class--level type theory, the formation rule for a $\Pi$--type is
 \begin{prooftree}
 \AxiomC{%
@@ -1770,7 +1803,9 @@ $\Wau \vdash (A:\Un)$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\Un)$%
 \Wau \vdash \Pi_{(x:A)}B(x):\Un
 $}
 \end{prooftree}
-The following implementation proposal omits general subtyping and instead permits the two-sort inclusion from Set to Class. This is a local design choice for these rules.
+The following implementation proposal permits the two-sort inclusion
+from Set to Class and omits general subtyping. This is a local design
+choice for these rules.
 \begin{prooftree}
 \AxiomC{%
 $(A:\text{Set})$%
@@ -1784,7 +1819,7 @@ In the contextual rules below, $x$ is fresh for $\Gamma$, all displayed
 contexts and types are well formed, and substitutions avoid capture.
 The bound name in the eta rule is chosen fresh for $f$ as well as for
 $\Gamma$. These conventions permit alpha-renaming of local binders.
-\underline{Introduction of terms of $\Pi$--type:}\\
+\underline{Introduction of terms of $\Pi$--type:}
 \begin{prooftree}
 \AxiomC{%
 $\Gamma, x:A\vdash b:B$%
@@ -1795,7 +1830,7 @@ $\Gamma \vdash (\lambda ((x:A)\mapsto b)):\Pi_{(x:A)}B$%
 %$\vdash \Pi_{(x:A)}B(x):\Type$
 }
 \end{prooftree}
-\underline{Elimination of terms of $\Pi$--type:}\\
+\underline{Elimination of terms of $\Pi$--type:}
 \begin{prooftree}
 \AxiomC{%
 $\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$%
@@ -1805,7 +1840,7 @@ $\Gamma \vdash(f:\Pi_{(x:A)}B)$\quad\quad$\Gamma\vdash(a:A)$%
 $\Gamma \vdash f(a):B[a/x]$%
 }
 \end{prooftree}
-\underline{Computation of terms of $\Pi$--type:}\\
+\underline{Computation of terms of $\Pi$--type:}
 \begin{prooftree}
 \AxiomC{%
 $\Gamma, x:A\vdash b:B$
@@ -1817,7 +1852,7 @@ $\Gamma\vdash(a:A)$%
 $\Gamma \vdash (\lambda ((x:A)\mapsto b))(a) \equiv b[a/x] : B[a/x]$%
 }
 \end{prooftree}
-\underline{Uniqueness of terms of $\Pi$--type:}\\
+\underline{Uniqueness of terms of $\Pi$--type:}
 \begin{prooftree}
 \AxiomC{%
 $\Gamma \vdash f:\Pi_{(x:A)}B$%
@@ -1841,11 +1876,12 @@ necessary condition. The generated record's verification label alone does
 not resolve this discrepancy in its displayed statement.
 \end{remark}
 
-Let $B$ be a family term.\\
-So $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$ is a family of classes.\\
+Let $B$ be a family term. Its interpretation
+$B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$ is a family of classes.
 %Let $B$ be a family of classes.\\
 
-For this model the judgement ``$\pmb{(f:\Pi B)}$'' is interpreted as a proposition ``$(f:\Pi B)$''.
+In this model, the judgement ``$\pmb{(f:\Pi B)}$'' is interpreted as
+the proposition ``$(f:\Pi B)$''.
 \begin{definition}[judgement as a proposition]
 \[
 \mantiquoteleft
@@ -1863,7 +1899,7 @@ For this model the judgement ``$\pmb{(f:\Pi B)}$'' is interpreted as a propositi
 ),
 \]
 \end{definition}
-where a predicate symbol is defined the following way:
+Here the predicate is defined as follows:
 \begin{definition}[class--function $f$ respects a family $B$]
 \[
 (f:\Pi B)
@@ -1887,7 +1923,10 @@ f\text{ class--function})
 )
 \]
 \end{definition}
-This predicate presentation allows the domain of $B$ to be a proper class. Any function with that domain must then itself be proper, and so cannot be a member of a class. Keeping $(f:\Pi B)$ as a predicate avoids imposing an unintended sethood condition on $f$.
+This predicate presentation allows the domain of $B$ to be a proper
+class. Any function with that domain must itself be proper and therefore
+cannot be a member of a class. Keeping $(f:\Pi B)$ as a predicate
+avoids imposing an unintended sethood condition on $f$.
 
 
 \subsubsection{The second model of $\Pi$--types as sets}
@@ -1909,7 +1948,10 @@ Thus
 ).
 \]
 Let $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$.
-For a class of set-valued sections it is enough to use class comprehension. For the displayed interpretation specifically as a set, assume in addition that $B$ is a set-indexed family of sets, so that its dependent sum and the relevant function space are sets. Then
+Class comprehension suffices to collect the set-valued sections into a
+class. For the displayed interpretation as a set, assume additionally
+that $B$ is a set-indexed family of sets. Its dependent sum and the
+relevant function space are then sets, and we put
 \[
 \mantiquoteleft
 \pmb{\Pi B}
@@ -1925,38 +1967,53 @@ they need not represent all instances of the predicate model. The size
 terminology in this proposal is local: it distinguishes syntax-level types,
 predicates admitting proper classes, classes of set instances, and sets of
 instances.
-The $\Type$ is interpreted as $\TClass$.\\
-Large types are used just for preventing primitive typing errors.\\
-Medium types are for expressing the properties of proper classes.\\
-Small types are expressing the proper classes, which contain as sets all interpretations of the terms of that type.\\
+Here $\Type$ is interpreted as $\TClass$.\\
+Large types serve to prevent primitive typing errors.\\
+Medium types express properties of proper classes.\\
+Small types are represented by proper classes containing the
+interpretations of their terms as set members.\\
 %(Another level may be here for expressing the proper classes, which contain only sets. It can be called "Small" while "Small" ones are renamed to "Tiny")\\
 %Medium1 types are for expressing the properties of proper classes.
 %Small(Maybe better call it "Tiny"?)
-Tiny types are interpreted as sets, which contain as sets all interpretations of the terms of that type.\\
+Tiny types are interpreted as sets containing the interpretations of
+all their terms as members.
 
 One class-valued candidate is:
 \begin{definition}[dependent product, variant A]
 \[
 \Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
 \]
-The expression $\Dom(B)$ is used to include the case when $B$ is a proper family, not just a function.
+Using $\Dom(B)$ includes the case where $B$ is a proper family,
+rather than a function.
 \end{definition}
 \begin{definition}[dependent product, variant B]
-(Note: For sets the following definition is also okey:
+For sets, the following is another definition:
 \[
 \Pi B = \cc{f\in \left(\union\ran(B)\right)^{\Dom(B)}}{\forall (x\in\dom(f)) ,\ (f(x) \in B(x))},
 \]
-but it is not working well for classes)
-
-(This variant is intended for set-indexed, set-valued families; extending its size range requires a separate argument.)
+This variant is intended for set-indexed, set-valued families. Extending
+it to class families requires a separate argument.
 \end{definition}
 
 \begin{definition}[dependent product, variant C]
-Another definition:\\
+Let $w$ be a specified family. Its collected set-sized sections are
 \[
-\prod w \eqdef \cc{f}{\exists D,\ (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D,\ f(x) \in w(x))}
+\prod w \eqdef \cc{f}{(f\text{ class--function})
+ \land (\dom(f)=\Dom(w))
+ \land (\forall x\in\Dom(w),\ f(x)\in w(x))}.
 \]
+Guarded comprehension retains only set graphs. The represented domain
+$\Dom(w)$ includes indices with proper-class fibres; the smaller
+$\dom(w)$ includes only indices whose values are sets.
 \end{definition}
+For example, in the canonical family convention take
+$w=\{(0,\{q\}):q\in\V\}$. Then $\Dom(w)=\{0\}$ and
+$w(0)=\V$, whereas $\dom(w)=\emptyclass$. Using $\dom(w)$ in
+the section condition would incorrectly admit the empty function,
+which has no value at the represented index $0$. The definition above
+retains that index. On a proper represented domain it collects no
+sections, since a set graph has a set domain; the earlier predicate
+model still describes proper-class function sections on such domains.
 
 \begin{definition}[sections of a family]
 \[
@@ -2085,7 +2142,8 @@ A W-type describes well-founded trees: a label $a$ determines the type
 $B(a)$ of branches. The rules first state the intended interface. The
 finite-stage model developed afterward is restricted to finite branching,
 that is, finite $B(a)$ for each label $a$. This restriction is what allows
-all branches of a node to fit in one finite stage. Infinite branching requires a further construction: after constructing
+all branches of a node to fit in one finite stage. Infinite branching
+requires a further construction: after constructing
 the M-type, we obtain the general set-arity W-type as its well-founded
 part. It is not supplied by the finite-stage formulas alone.
 
@@ -2093,11 +2151,11 @@ part. It is not supplied by the finite-stage formulas alone.
 \underline{Formation of W--type:}\\
 Let $B$ be a family of types.\\
 Then $\W B$ is also a type.\\
-\underline{Introduction of terms of W--type:}\\
+\underline{Introduction of terms of W--type:}
 \[
 \sup(B):\prod_{(a\in \Dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
-\underline{Elimination of terms of W--type:}\\
+\underline{Elimination of terms of W--type:}
 \[
 \begin{aligned}
 \mbox{W}_\mathrm{rect}:{}&
@@ -2109,7 +2167,7 @@ Then $\W B$ is also a type.\\
 &\quad\to\left(\prod_{(w : \mathrm{W}B)} P(w)\right)
 \end{aligned}
 \]
-\underline{Computation of terms of W--type:}\\
+\underline{Computation of terms of W--type:}
 \[
 \mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f))
 \eqdef e(a, f, \lambda(b:B(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
@@ -2117,10 +2175,15 @@ Then $\W B$ is also a type.\\
 \pagebreak
 \subsubsection{Model of $\text{W}$--types}
 % https://tex.stackexchange.com/questions/151549/mathscr-latex-or-xelatex
-\underline{Formation of W--type:}\\
+\underline{Formation of W--type:}
 
-Assume $B$ is a family of classes with a class $A$ being its domain.
-(a.k.a. ``some dependent class $B$, which depends on $\Dom(B)$'', where $\Dom(B)=A$.)
+Assume $B$ is a family of classes with domain $A$.
+Equivalently, regard $B$ as a dependent class indexed by $\Dom(B)$,
+where $\Dom(B)=A$.
+The following stage formulas retain that general proposal. Constructor
+closure below assumes finite branch sets $B(a)$; the set-model recursion
+theorem additionally assumes that $A$ is a set. Neither argument asserts
+the unrestricted class-valued elimination rule.
 
 %\EuScript{W}
 %\mathscr{W}
@@ -2140,8 +2203,8 @@ Equivalently, when all stages are sets, this is the union of the range:
 \]
 The range alone collects the stages, whereas its union collects their trees.
 
-A variant of a definition, which works only for definable families and that uses %class--theoretic implementations of
-the sigma types and the empty type:
+A variant for definable families uses %class--theoretic implementations of
+sigma types and the empty type:
 \[
 \mbox{W}_{\mathrm{fun}}':\text{Family.Expression}
 \to
@@ -2173,7 +2236,7 @@ For the finite-branching model, the intended fixed-point equation is
 \[
 F(X)\cong X,
 \]
-where a functor $F$ is defined to be a polynomial functor $P_B$:
+where the functor $F$ is the polynomial functor $P_B$:
 \[
 P_B(X)
 \cequiv
@@ -2192,7 +2255,7 @@ P_{\text{fun}}(0)\equivdef \text{Void}
 \[
 P_{\text{fun}}(n+1)\equivdef P(P_{\text{fun}}(n))
 \]
-and the corresponding fixpoint type is
+and the corresponding fixed-point type is
 \[
 \text{Fix}(P) \equivdef \bigsqcup_{n:\textbf{Nat}} P_{\text{fun}}(n).
 \]
@@ -2224,7 +2287,7 @@ To show:
 \subseteq
 (\mbox{W}_{\mathrm{fun}}B)(n+2).
 \]
-It follows from the assumption, that
+The induction hypothesis gives
 \[
 (B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n))
 \subseteq
@@ -2236,7 +2299,7 @@ Therefore
 \subseteq
 \sum_{(r\in \Dom(B))} (B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n+1)).
 \]
-And finally,
+Hence
 \[
 (\mbox{W}_{\mathrm{fun}}B)(n+1)
 \subseteq
@@ -2253,7 +2316,15 @@ For fixed function $B$,
 \[
 \sup(B):\prod_{(a\in \Dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
-Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since the branch set $B(a)$ is finite, its image $s[B(a)]$ is finite. If this image is nonempty, let $m$ be the maximum of the least stage indices of its elements; if it is empty, take $m=0$. Then $s[B(a)]\subseteq (\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $s:B(a)\to(\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $(a,s)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
+Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since the branch
+set $B(a)$ is finite, its image $s[B(a)]$ is finite. If this image is
+nonempty, let $m$ be the maximum of the least stage indices of its
+elements; if it is empty, take $m=0$. Then
+$s[B(a)]\subseteq (\mbox{W}_{\mathrm{fun}}B)(m)$, so
+$s:B(a)\to(\mbox{W}_{\mathrm{fun}}B)(m)$. It follows that
+$(a,s)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$, which is a subset of
+$\mbox{W}B$, and hence $(a,s)\in\mbox{W}B$. We can therefore define
+$\sup$ by
 \[
 \sup(B) \eqdef ((a\in \Dom(B))\mapsto ((s:B(a)\to\mbox{W}B)\mapsto (a,s)) ).
 \]
@@ -2281,7 +2352,7 @@ W_rect
 \end{lstlisting}
 \end{definition}
 
-\underline{Computation of terms of W--type:}\\
+\underline{Computation of terms of W--type:}
 
 By finiteness of each branch set $B(a)$ and $(\mbox{W}_{\mathrm{fun}}B)(0)=\emptyclass$, it holds that
 \[
@@ -2306,8 +2377,12 @@ function $r$ on $W$ with $r(w)\in E(w)$ and
 \[
 r((a,s))=e\bigl(a,s,b\mapsto r(s(b))\bigr).
 \]
-This is the interpretation of the displayed $\mathrm W_{\mathrm{rect}}$
-and its computation rule in this set model.
+This interprets the displayed $\mathrm W_{\mathrm{rect}}$ elimination
+and computation equations in this set model. Interpreting a formation
+rule that additionally asserts $\mathrm WB\in\Un$ requires closure of
+the chosen universe under this construction. Sethood alone does not
+give that membership; Proposition~\ref{prop:WM_universe_closure} below
+provides one sufficient universe condition.
 \end{theorem}
 \Proof
 Powerset and replacement make every function set $W_n^{B(a)}$ and
@@ -2695,13 +2770,123 @@ union. Its address relation is founded by the grafting lemma, and its
 ordinal height is $\omega$. This is precisely the extra behavior supplied
 by arbitrary set arities.
 
+\begin{lemma}[Indexed unions from the tight set-universe condition]
+\label{lem:tight_universe_indexed_union}
+Let $U$ be a wellorderable transitive set containing $\omega$ as an
+element and closed under unordered pairing. Suppose that
+\[
+B\subseteq U\quad\Longrightarrow\quad
+(B\prec U\iff B\in U).
+\]
+Here, for these wellorderable sets, $B\prec U$ means $|B|<|U|$;
+equivalently there is no injection $U\to B$. Then for every specified
+set family $(X_i)_{i\in I}$ with $I\in U$ and every $X_i\in U$, one
+has $\bigcup_{i\in I}X_i\in U$.
+\end{lemma}
+\Proof
+Fix a wellordering of $U$, and write $\kappa=|U|$. Transitivity and
+the displayed condition give $|I|<\kappa$ and $|X_i|<\kappa$.
+For any function $f:I\to U$, use the ordinary Kuratowski graph.
+Since $i\in I\in U$, transitivity gives $i\in U$; pairing closure
+then puts $(i,f(i))=\{\{i\},\{i,f(i)\}\}$ in $U$. Thus the graph
+of $f$ is a subset of $U$ of cardinality $|I|<\kappa$, and the
+displayed condition gives $f\in U$.
+
+Put $Y=\bigcup_{i\in I}X_i$. Transitivity gives $Y\subseteq U$.
+If $I$ is empty, then $Y=\emptyclass\in U$ by the displayed condition.
+Otherwise suppose $Y\notin U$. Since $Y$ and $U$ are wellorderable,
+the condition implies $|Y|=\kappa$; fix a bijection $e:Y\to U$.
+For each $i\in I$, form
+\[
+D_i=\{f(i):f\in e[X_i],\ f\text{ is a function }I\to U\}.
+\]
+This image has cardinality at most $|X_i|<\kappa$: the functions
+being evaluated form a subset of $e[X_i]$, and its inherited
+wellordering selects a least preimage for each value. Therefore
+$U\setminus D_i$ is nonempty. Let $t(i)$ be its least element in the
+fixed wellordering. Replacement gives a function $t:I\to U$, and
+the graph argument above gives $t\in U$. Surjectivity of $e$ gives
+$t\in e[X_j]$ for some $j\in I$, so the definition of $D_j$ gives
+$t(j)\in D_j$, contrary to the choice of $t(j)$. Hence $Y\in U$.
+\Done
+
+This lemma uses only a wellordering of the particular set $U$; set
+choice suffices to provide one, and Global Choice is not needed.
+Obelisk's \texttt{DefTightClass} (3.47) uses this condition, with its
+injection comparison (3.40, 3.42). Consider a wellorderable \emph{set}
+satisfying its universe definition, \texttt{DefGrothendieckUniverse}
+(3.68). It has the indexed-union closure just proved.
+Its \texttt{Pairful} and \texttt{Powerful} clauses and $\omega\in U$
+supply the other hypotheses of the following proposition. This is a
+proved bridge for set universes, not an assertion of cardinal
+comparability for arbitrary proper classes.
+
+\begin{proposition}[A sufficient universe condition for W- and M-types]
+\label{prop:WM_universe_closure}
+Let $\Un$ be a transitive set containing $\omega$ as an element. Assume
+that $x,y\in\Un$ implies $\{x,y\}\in\Un$, that $x\in\Un$ implies
+$\power x\in\Un$, and that for every specified set family
+$(X_i)_{i\in I}$ with $I\in\Un$ and every $X_i\in\Un$, one has
+$\bigcup_{i\in I}X_i\in\Un$. If $A\in\Un$ and every $B(a)\in\Un$,
+then the finite-address carriers $M_B$ and $W_B^{\mathrm{wf}}$ belong
+to $\Un$. No finiteness of the arities is required. When the arities
+are finite, the earlier finite-stage carrier $W$ also belongs to $\Un$.
+\end{proposition}
+\Proof
+First, every subset $Y\subseteq X\in\Un$ belongs to $\Un$: it is an
+element of $\power X\in\Un$, and $\Un$ is transitive. The pairing and
+indexed-union assumptions give binary unions. With ordinary Kuratowski
+pair coding, $X\times Y\subseteq\power\power(X\cup Y)$, so products
+of two members of $\Un$ also belong to $\Un$ by subset closure.
+
+For each $a\in A$, transitivity gives $a\in\Un$, pairing gives
+$\{a\}\in\Un$, and hence $\{a\}\times B(a)\in\Un$.
+The union indexed by $A$ therefore gives
+$C=\sum_{a\in A}B(a)\in\Un$. Each $n\in\omega$ belongs to $\Un$.
+The function set $C^n$ is a subset of $\power(n\times C)$, so belongs
+to $\Un$. The union indexed by $\omega$ now gives
+$T=C^{<\omega}\in\Un$. A tree is a functional graph contained in
+$T\times A$, so
+\[
+M_B\subseteq\power(T\times A)\in\Un.
+\]
+Subset closure yields $M_B\in\Un$, and then
+$W_B^{\mathrm{wf}}\subseteq M_B$ gives $W_B^{\mathrm{wf}}\in\Un$.
+The predicates defining these subsets need not be decidable for this
+argument; separation and the proved subset closure suffice.
+
+For the earlier representation, $W_0=\emptyclass\in\Un$.
+If $W_n\in\Un$, each function set $W_n^{B(a)}$ belongs to $\Un$
+by the same product and powerset argument, and its dependent sum over
+$A$ gives $W_{n+1}\in\Un$. The $\omega$-indexed union therefore
+belongs to $\Un$. Under finite arities it is the earlier W-carrier.
+\Done
+
+These hypotheses are a sufficient condition on a local universe, not
+an additional assumption on every model in this chapter. The earlier
+sum and product closure conditions alone do not ensure W-closure.
+For example, the set $V_\omega$ of hereditarily finite sets is closed
+under dependent sums and products indexed by its members: there are
+only finitely many finite fibres, and all their set encodings remain
+hereditarily finite. But two labels, one nullary and one unary, give
+distinct finite trees of every natural-number height. Their W-carrier
+is infinite and therefore is not an element of $V_\omega$. In particular,
+$\omega\notin V_\omega$, so this example does not satisfy the stronger
+hypotheses of the proposition. The same distinction between sethood
+and membership in a chosen universe applies to the M-carrier.
+
 \paragraph{Relation to the larger class-valued proposal.}
 The original sketch described collections of paths with finite or
 countably infinite domains and a compatibility condition on common
 prefixes. The finite-address construction supplies that compatibility
 and the destructor/corecursion rules for set labels and set arities.
-It does not construct a set of all trees when the labels or branch
-collections are proper classes. That larger proposal still requires an
-explicit ambient size convention and a representation theorem; its
-universal property cannot be inferred merely from the set case.
+Section~\ref{sec:class_polynomial_trees} extends this construction to a
+possibly proper class of set labels, retaining set arities. It proves
+class-valued initiality and finality directly; the resulting carriers
+need not be sets, although every individual tree is a set. Neither
+construction treats proper-class arities or labels that are themselves
+proper classes. Nor do they assert a representation theorem for the
+original finite-or-infinite-path encoding. Those further proposals still
+require an explicit ambient size convention and their own representation
+arguments.
 \input{END.tex}

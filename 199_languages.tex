@@ -145,10 +145,10 @@ $.
 \end{axiom}
 
 \begin{definition}[$\conseq :: (\Type \cimplies \OptionType)$]
-Taking the range type $\beta$ of a function type $\alpha\to\beta$.\\
-The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
+This operation extracts the range type $\beta$ of a function type
+$\alpha\to\beta$. Define its optional result by cases on $\gamma$:
 \begin{enumerate}
-\item If the type $\gamma$ is made out of constant type, then return $\None$.
+\item If $\gamma$ is an atomic constant type, return $\None$.
 \item If the type $\gamma$ is a function type $\alpha\to\beta$ for some $\alpha$ and $\beta$, then return $\Some(\beta)$.
 \item If the type $\gamma$ is a pair type $\alpha\times\beta$ for some $\alpha$ and $\beta$, then return $\None$.
 \end{enumerate}
@@ -156,7 +156,8 @@ The option type $\conseq(\gamma)$ is defined by recursion on $\gamma$:
 %\conseq(\alpha\to\beta)\ceq \Some(\beta)
 %\conseq(\_)\ceq \None
 %\]
-So the function that takes a consequent of function type is defined. Each value of it has the $\OptionType$ kind, therefore the following inference rule is admissible:
+Every case returns a value of kind $\OptionType$, so the following
+inference rule is admissible:
 \[
 (\alpha::\Type) \CImplies (\conseq(\alpha)::\OptionType),
 \]
@@ -185,15 +186,15 @@ metatheoretic obligations.
 
 
 \item In case it is $(x^\alpha.s)$, then
-the value of $\TypeOf((x^\alpha.s))$ is defined by induction on
-$\TypeOf(s)$:
+determine $\TypeOf((x^\alpha.s))$ by cases on the recursively computed
+result $\TypeOf(s)$:
 \begin{enumerate}
 \item In case it is $\None$, then return $\None$.
 \item In case it is $\Some(\beta)$, then return $\Some(\alpha\to\beta)$.
 \end{enumerate}
 \item In case it is $(g(t))$, then
-the value of $\TypeOf(g(t))$ is defined by induction on
-$\TypeOf(g)$:
+determine $\TypeOf(g(t))$ by cases on the recursively computed
+result $\TypeOf(g)$:
 \begin{enumerate}
 \item In case it is $\None$, then return $\None$.
 \item In case it is $\Some(\gamma)$, then return $\conseq(\gamma)$.

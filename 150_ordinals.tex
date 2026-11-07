@@ -277,7 +277,7 @@ If $R$ is a relation, then
 To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
 Fix $k\in K$. To show: $k\in\cc{x}{(R\mathrm{\ on\ }K)^\top[\{x\}]\subclass K}$.\\
 To show: $(R\mathrm{\ on\ }K)^\top[\{k\}]\subclass K$.\\
-Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
+Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.
 \[
 (w\in (R\mathrm{\ on\ }K)^\top[\{k\}])
 \IMPLIES
@@ -298,7 +298,7 @@ Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
 
 
 \begin{corollary}[alternative induction principle on $R_1$--well--founded class]
-This formulation of inductive principle corresponds to the exercise 9.22 of ``Introduction to Axiomatic Set Theory''(Takeuti,Zaring).
+This formulation of induction corresponds to Exercise 9.22 of ``Introduction to Axiomatic Set Theory'' by Takeuti and Zaring.
 \[
 (R_1\mathrm{\ Fr\ } K)
 \implies
@@ -345,7 +345,7 @@ $\inf(\emptyclass)=\On$.
 \]
 \end{definition}
 \begin{definition}[limit class]
-Note, that this definition is a bit unconventional: usually it must also be nonempty.
+This convention includes the empty class; the usual limit convention also requires nonemptiness.
 \[
 \LimClass(X)
 \iffdef
@@ -354,7 +354,7 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \]
 \end{definition}
 \begin{definition}[limit ordinal]
-Note, that this definition is a bit unconventional: usually it must also be nonempty.
+This convention includes zero; the usual definition of a limit ordinal also requires nonemptiness.
 \[
 \LimOrd(X)
 \iffdef
@@ -363,12 +363,25 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \]
 \end{definition}
 
-\begin{definition}[ordinal numbers] It can be interchangeably called ``ordinal sets''.
+\begin{definition}[ordinal numbers] These are also called ``ordinal sets''.
 \[
 \On\ \eqdef\ \cc{x}{\Ord(x)}
 \labeltagd{def}{ordinalNumbers}
 \]
 \end{definition}
+\paragraph{Comprehension for ordinal sets.}
+The expanded predicate $\Ord(x)$ contains a class quantifier through
+foundedness, so its literal use in comprehension is permitted by MK.
+Under heredity, the displayed definition also has an elementary
+form suitable for NBG comprehension. Indeed, for a set $x$, every
+class $S\subseteq x$ is a set. Foundedness on $x$ is therefore
+equivalent to saying that every nonempty \emph{set} $S\subseteq x$
+has a membership-minimal element. The remaining transitivity and
+ordering conditions quantify only over set elements. Replacing the
+foundedness clause by this equivalent set-quantified condition constructs
+$\On$ by elementary comprehension. This reduction concerns the set
+instances collected in $\On$; it does not restrict the predicate
+$\Ord$ itself to sets or assume global regularity.
 
 \begin{definition}[supremum]
 \[
@@ -567,7 +580,7 @@ ordinal class.
 \labeltagd{lem}{trunonss}
 \]
 \Proof
-Fix $x\in\bigcup A$, and $y\in x$. To show: $\exists z\in A,\ y\in z$.\\
+Fix $x\in\bigcup A$, and $y\in x$. To show: $\exists z\in A,\ y\in z$.
 \[
 \left(x\in\bigcup A\right)
 \IMPLIES
@@ -652,25 +665,30 @@ uses the relevant global choice or limitation-of-size principle.
 \[
 |\cdot|:\V \to \On
 \]
-Actually, since $|\cdot|$ is a functional symbol, the following is meant:
+Since $|\cdot|$ is a functional symbol, the intended assertion is:
 \[
 (x\mapsto |x|):\V \to \On
 \]
-Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
+The functional symbol accepts any class as its argument, while
+$(x\mapsto |x|)$ is defined on sets only. Under the stated set-size
+assumption, this class function has graph
+\[
+\cc{\langle x, |x|\rangle }{ x \any\set}.
+\]
 \end{iaxiom}
-Actually, we can use the following axiom:
+Equivalently, we can state the axiom pointwise:
 \begin{axiom*}[alternative set-size formulation]
 \[
 (x\set)\implies(|x|\in\On)
 \]
 \end{axiom*}
-or even
+We can also require only sethood of the value:
 \begin{axiom*}[alternative set-size formulation]
 \[
 (x\set)\implies(|x|\set)
 \]
 \end{axiom*}
-as the following theorem shows that
+The following theorem explains why this last formulation suffices.
 \begin{theorem*}[cardinality is an ordinal]
 \[
 (x\set)\implies \Ord(|x|)
@@ -712,7 +730,35 @@ Let $X$ and $Y$ be terms, then
 \labeltagd{def}{notstrongercard}
 \]
 \end{definition}
-The intended behaviour of this definition is to have cardinality of argument if the argument of a functional symbol is a set, and $\On$ if the argument is a proper class.\\
+\begin{proposition}[Elementary comprehension for ordinal-set bounds]
+Assume heredity, the set-image principle, and ordinary set-pair
+formation. For every class $K$ and set $a$, the assertion
+$K\preccurlyeq a$ is equivalent to the existence of a \emph{set}
+graph that is an injection from $K$ into $a$. Consequently the primary
+candidate class $\cc{a\in\On}{K\preccurlyeq a}$ exists by elementary
+NBG comprehension under these assumptions. No choice principle is needed.
+\end{proposition}
+\begin{proof}
+Let $f:K\to a$ be a class injection. Its range $D\subseteq a$ is a
+set by heredity. The inverse graph is a class function on $D$, with
+image $K$, so set-image makes $K$ a set. Ordinary set-pair formation
+and elementary comprehension give the class function
+$x\mapsto(x,f(x))$ on $K$. Its image is exactly the graph $f$;
+set-image therefore makes $f$ a set. The converse is immediate, since
+a set graph is also a class graph.
+
+The set-graph assertion uses only set quantifiers, with $K$ as a class
+parameter: its domain condition is
+$\forall x\in\V,\ (x\in K\iff x\in\operatorname{dom}(f))$,
+and functionality, injectivity, and containment of its range in $a$
+also quantify only over sets. Combine this reduction with the preceding
+elementary definition of $\On$. The resulting candidate class and its
+intersection are thus available by elementary comprehension. Without
+these reductions, the literal formula containing an unrestricted
+quantifier over class injections is directly licensed by MK, rather
+than being itself an instance of the NBG comprehension schema.
+\end{proof}
+Under the stated set-size assumption, this definition gives the cardinality of a set argument and the default value $\On$ for a proper-class argument.
 %%
 %%%%\subsection{Cardinality}
 %%
@@ -770,6 +816,14 @@ at least one direction.
 The next proposal intersects ordinal classes, rather than only ordinal sets.
 Its agreement with the preceding definition depends on the class-size
 assumptions; it is not a purely syntactic reformulation.
+For the displayed comprehension, use MK: $A$ ranges over classes, and
+the expanded injection predicate also quantifies over class relations.
+A weaker comprehension scheme needs a separate existence argument.
+Proposition~\ref{prop:cardinality_proposals_agree} below characterizes
+the resulting class by cases in terms of the primary cardinality and
+$\V$; whenever those classes exist, this also provides a pointwise
+existence justification without treating the displayed impredicative
+formula as an instance of NBG comprehension.
 \begin{definition}[cardinality of a class]
 %One of the following statements can be used as a definition of cardinality function. We will use the second one. %\On \cap
 %\[
@@ -825,7 +879,7 @@ The assertion $(x\mapsto|x|):\V\to\On$ separately uses the set
 well-ordering assumption; the default for proper classes does not prove it.
 \end{remark}
 
-The function $| \cdot |$ has interesting properties.
+We next verify the basic properties of $| \cdot |$ under the primary convention.
 
 \subsection{Soundness}
 \begin{lemma}[the universal class does not inject into an ordinal set]
@@ -931,7 +985,7 @@ Extensionality yields $\lambda=\kappa$, as required.
 \]
 \end{lemma}
 \begin{proof}
-Fix $(a\in X)$. Fix $(b\in (\bigcap X))$. To show: $(b\in a)$.\\
+Fix $(a\in X)$. Fix $(b\in (\bigcap X))$. To show: $(b\in a)$.
 \[
 \left(b\in \left(\bigcap X\right)\right)
 \LAND
@@ -1054,7 +1108,8 @@ is itself a witness to Infinity.
 \begin{proposition}[From set regularity to class foundedness]
 \label{thm:set_regularity_class_foundedness}
 Assume Infinity, pairing, union, heredity, set-image, class comprehension,
-and the set-valued ordinal recursion proved earlier. Then ordinary set
+and the set-valued ordinal recursion theorem in the induction and
+recursion chapter. Then ordinary set
 regularity, namely that every nonempty set has a membership-minimal
 element, is equivalent to foundedness of membership on $\V$: every
 nonempty class has a membership-minimal element.
@@ -1261,8 +1316,9 @@ the intended branch of the recursion step applies. Uniqueness follows
 from the same recursion theorem. Each $r(b)+1$ is at most $r(a)$, giving
 strict increase along every $R$-edge.
 
-Conversely, let $S$ be a nonempty subclass of $A$. The nonempty ordinal
-class $q[S]$ has a least element. Take $a\in S$ with that value.
+Conversely, let $S$ be a nonempty subclass of $A$. The nonempty class
+of ordinal sets $q[S]$ has a least element by the least-member property
+of $\On$. Take $a\in S$ with that value.
 If $b\in S$ and $bRa$, then $q(b)<q(a)$, contradicting minimality.
 Thus $a$ has no predecessor in $S$, proving foundedness.
 \end{proof}
@@ -1402,6 +1458,7 @@ meaning is intended.
 \end{remark}
 
 \begin{proposition}[When the two cardinality proposals agree]
+\label{prop:cardinality_proposals_agree}
 Write $c(K)$ for the primary ordinal-set definition and $d(K)$ for the
 predicate-indexed intersection over ordinal classes. If
 $K\preccurlyeq\On$, then $c(K)=d(K)$. If no injection
@@ -1513,8 +1570,8 @@ global choice function on proper classes.
 
 \subsection{Ordinal addition and the height convention}
 \label{sec:ordinal_addition}
-We use the set-valued transfinite-recursion theorem from the earlier
-recursion chapter, together with pairing, union, and set-image. That
+We use the set-valued transfinite-recursion theorem from the induction
+and recursion chapter, together with pairing, union, and set-image. That
 theorem does not use ordinal addition. The following construction therefore
 also supplies the arithmetic facts used later in that chapter's height
 discussion, despite their present placement in the book.

@@ -4,6 +4,7 @@
 *.log
 *.out
 *.pdf
+!pictures/dynamical_potential_locality.pdf
 *.synctex.gz
 *.toc
 *.bcf

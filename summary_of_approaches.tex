@@ -168,7 +168,13 @@ recursion in the induction chapter. Return to the ordinal chapter for
 set-like relation recursion, collapse, and Hartogs' theorem; the recursive
 pairing proof uses the membership-recursion result. The book retains its
 historical chapter order, so some of these prerequisites occur after their
-first application. The union argument has a different role: its ordinal
+first application. In particular, the set-valued transfinite-recursion
+theorem at the start of the induction chapter is the prerequisite for the
+ordinal chapter's later founded-recursion and ordinal-addition arguments;
+it uses elementary ordinal ordering, not those later constructions.
+The W-type height arguments then apply founded recursion to individual
+address sets before establishing foundedness of the relation between trees.
+The union argument has a different role: its ordinal
 facts are supplied as local assumptions, and its proof does not invoke
 later recursion results that themselves assume union. The finite and
 hereditarily finite models in the class overview help distinguish these
@@ -176,7 +182,11 @@ assumptions from bare comprehension.
 
 \paragraph{From concrete types to their universal properties.}
 The classes-as-types chapter constructs Boolean, option, list, W-, and
-M-type models in explicit set-sized settings. The language chapter
+M-type models in explicit set-sized settings. The following chapter
+extends the finite-address models to a possibly proper class of set
+labels with set arities. Its initiality and finality quantify over class
+structure maps in the stated NBG setting; individual trees remain sets.
+The language chapter
 separately studies a specified simple syntax: type checking, substitution,
 preservation, normalization, and confluence. Its Boolean operational
 extension adds a two-point type and conditionals with both branches
@@ -211,6 +221,27 @@ integrable families.
 The examples distinguish sequences from nets and finite measure from
 infinite counting measure; those changes of setting matter to the
 conclusions. Each chapter records the choice assumptions actually used.
+
+The Schr\"odinger chapters give a further analytic route: the free heat
+equation and its uniqueness class, an abstract criterion for separately
+continuous kernels, bounded-potential semigroups, and quantitative
+regularity of dynamically defined kernels. They explicitly import
+Fourier--Plancherel and the self-adjoint spectral theorem, then prove the
+perturbation, kernel-continuity and parameter estimates. The same chapters
+form the standalone thesis in \texttt{thesis\_schrodinger.tex}.
+They also use ordinary multivariable calculus and Lebesgue product
+integration, including Tonelli and Fubini, as analytic background; the
+preceding measure chapter does not construct product measures.
+First spatial derivatives and smooth positive-time dependence are proved
+without differentiating the potential; a discontinuous-potential example
+explains why classical second spatial derivatives require more care.
+The dynamical discussion distinguishes weighted regularity of a canonical
+kernel from strong or norm continuity of the complete operator family.
+Its final spectral application proves a Euclidean specialization of the
+Beckus--Takase localization method from the Gaussian first moment and the
+localized operator estimate. It compares closed heat-spectrum unions over
+invariant subsystems, rather than spectra at arbitrary individual phases;
+the general group theorem is a separate comparison, not a proof premise.
 
 The assembled book also includes exploratory sections from approaches 3--5;
 these do not inherit the active implementation's conventions merely by

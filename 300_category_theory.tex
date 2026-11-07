@@ -359,6 +359,123 @@ The proof is the same factorization argument with arrows reversed.
 All Hom-sets here are sets by local smallness; no collection of all
 proper-class-valued diagrams is being formed.
 
+\subsection{Small limits from products and equalizers}
+A \emph{small diagram} here is a functor $D:J\to C$, where the
+objects and arrows of the indexing category $J$ form sets in the chosen
+size convention. No smallness of all of $C$ is assumed. A cone from
+$X$ to $D$ is a family $u_j:X\to D(j)$ satisfying
+\[
+D(\alpha)\circ u_i=u_j\qquad(\alpha:i\to j\text{ in }J).
+\]
+A limit is a cone $(L,(\ell_j))$ such that each cone $(X,(u_j))$
+has a unique factorization $u_j=\ell_j\circ h$ for all $j$, with
+$h:X\to L$. For a set-indexed family, a product has the same
+factorization property without compatibility equations between its
+components; an empty product is therefore a terminal object.
+
+\begin{theorem}[Construction of a small limit]
+\label{thm:small_limits_products_equalizer}
+For the specified small diagram $D$, suppose the two products
+\[
+A=\prod_{j\in\Ob_J}D(j),\qquad
+B=\prod_{\alpha:i\to j\text{ in }J}D(j)
+\]
+exist in $C$. Let $p_j:A\to D(j)$ be the first product's projections,
+and let $q_\alpha:B\to D(j)$ be the second product's projections.
+There are unique arrows $s,t:A\to B$ determined by
+\[
+q_\alpha\circ s=D(\alpha)\circ p_i,\qquad
+q_\alpha\circ t=p_j\qquad(\alpha:i\to j).
+\]
+If an equalizer $e:L\to A$ of $s,t$ exists, then
+$\ell_j=p_j\circ e$ makes $L$ a limit of $D$.
+Consequently a category with all small products and equalizers has
+limits of every small diagram.
+\end{theorem}
+\Proof
+The product property of $B$ gives $s,t$ from the displayed families
+of arrows with common source $A$. Since $s\circ e=t\circ e$,
+for every $\alpha:i\to j$ we have
+\[
+D(\alpha)\circ\ell_i
+=q_\alpha\circ s\circ e
+=q_\alpha\circ t\circ e=\ell_j.
+\]
+Thus the proposed family is a cone.
+
+Given any cone $(X,(u_j))$, the product property of $A$ gives a
+unique $u:X\to A$ with $p_j\circ u=u_j$ for all $j$.
+For each $\alpha:i\to j$,
+\[
+q_\alpha\circ s\circ u=D(\alpha)\circ u_i
+=u_j=q_\alpha\circ t\circ u.
+\]
+Uniqueness in the product property of $B$ gives $s\circ u=t\circ u$.
+The equalizer property therefore gives a unique $h:X\to L$ with
+$e\circ h=u$, and hence $\ell_j\circ h=u_j$.
+If $h':X\to L$ has the same cone components, then
+$p_j\circ e\circ h'=u_j$ for all $j$. Product uniqueness gives
+$e\circ h'=u$, and equalizer uniqueness gives $h'=h$.
+This proves the limit property.
+
+If $J$ has no objects, it has no arrows. Both products are terminal
+objects, and $s=t$ is the unique arrow between them. One may take
+$e=1_A$ as their equalizer, giving the terminal object $A$ as the
+limit of the empty diagram. More generally the preceding argument
+shows that any chosen equalizer in this case is terminal.
+The proof constructs the limit for one specified diagram from specified
+products and an equalizer; it requires no simultaneous choice of limits
+for a class of diagrams.
+\Done
+
+\begin{proposition}[Hom preserves and detects the limit property]
+\label{prop:hom_small_limits}
+A cone $(L,(\ell_j))$ to a small diagram $D:J\to C$ is a limit
+if and only if, for every $X\in C$, the map
+\[
+\begin{split}
+\Hom_C(X,L)&\longrightarrow\operatorname{Cone}(X,D),\\
+h&\longmapsto(\ell_j\circ h)_{j\in\Ob_J}
+\end{split}
+\]
+is bijective. The set on the right consists of the compatible families
+in the product
+\[
+\prod_{j\in\Ob_J}\Hom_C(X,D(j)).
+\]
+These bijections are natural in $X$. In particular, the covariant
+functor $\Hom_C(X,-)$ preserves every existing small limit.
+\end{proposition}
+\Proof
+Local smallness and the set-sized index make the displayed product
+of Hom-sets, and its subset of compatible families, sets in the stated
+ambient convention. A cone determines the displayed map because
+precomposing its compatibility equations by $h$ gives those for the
+resulting family. Surjectivity is existence of a factorization for
+each cone, and injectivity is its uniqueness. This proves the first
+assertion in both directions.
+
+The compatible-family set is the limit in $\Set$ of the diagram
+$j\mapsto\Hom_C(X,D(j))$, whose arrow action is postcomposition by
+$D(\alpha)$. Indeed, the coordinate projections form a cone; any
+compatible family of functions from a set $S$ determines a unique
+function from $S$ into the compatible-family set by evaluation at each
+$s\in S$. Thus the preceding bijection says precisely that
+$\Hom_C(X,-)$ preserves the given limit.
+For an arrow $k:Y\to X$, both routes send $h:X\to L$ to the
+family $(\ell_j\circ h\circ k)_j$, by associativity. This proves
+naturality in the test object. In the empty-diagram case the
+compatible-family set is the singleton containing the empty family,
+so the criterion reduces to having exactly one arrow $X\to L$
+from each $X$, as required for a terminal object.
+\Done
+
+The indexing restriction is essential to the size claim: local
+smallness controls individual Hom-sets, not arbitrary proper-class
+products of them. These theorems assert the stated universal properties
+inside the chosen framework and do not construct limits of every
+class-indexed diagram.
+
 \subsection{Initial algebras, final coalgebras, and fixed points}
 Let $P:C\to C$ be an endofunctor. A $P$-algebra is an arrow
 $a:P(A)\to A$. An algebra morphism from $(A,a)$ to $(B,b)$ is an

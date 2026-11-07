@@ -180,6 +180,27 @@ estimate. The zero-measure case is included: each of these quotient
 spaces then consists of its zero class.
 \Done
 
+\begin{example}[Conditioning on a finite partition]
+Let $A_1,\ldots,A_m$ be a finite measurable partition of $\Omega$,
+and let $\mathcal G$ consist of its unions of atoms. For $f\in L^1(\mu)$,
+\[
+P_{\mathcal G}f
+=\sum_{\substack{1\leq j\leq m\\\mu(A_j)>0}}
+ \frac{\int_{A_j}f\,d\mu}{\mu(A_j)}\mathbf1_{A_j}
+\quad\text{as an almost-everywhere class}.
+\]
+Indeed the displayed function is $\mathcal G$-measurable and integrable.
+On a positive-measure atom its integral agrees with that of $f$ by
+construction; on a null atom both integrals are zero. Finite additivity
+therefore gives the defining identity on every union of atoms, and
+uniqueness proves the formula. The displayed representative is zero on
+null atoms. Any other finite constants on those atoms give the same
+class and remain $\mathcal G$-measurable; there is no division by their
+zero measures. Thus conditioning on this finite partition averages the
+input over each observable atom without assigning a determined numerical
+average on a null event.
+\end{example}
+
 For $f\in L^2$, the construction also gives the familiar orthogonality
 identity $\int u(f-P_{\mathcal G}f)\,d\mu=0$ for
 $u\in L^2(\mathcal G)$. Taking $u=P_{\mathcal G}f$ and expanding
@@ -231,20 +252,47 @@ $P_{\mathcal G}f$ already has an $\mathcal H$-measurable
 representative, so the projection property applies.
 \Done
 
-\begin{corollary}[Preservation of uniform integrability]
-For a fixed $\mathcal G$, if $K\subseteq L^1(\mu;\mathbb R)$ is
-uniformly integrable, then $P_{\mathcal G}[K]$ is uniformly integrable.
+\begin{corollary}[Uniform integrability under varying conditional expectations]
+\label{cor:conditional_expectation_uniform_UI}
+On the fixed finite positive measure space, let
+$K\subseteq L^1(\mu;\mathbb R)$ be uniformly integrable and let
+$(\mathcal G_i)_{i\in I}$ be any set-indexed family of
+sub-sigma-algebras of $\mathcal A$, each containing $\Omega$.
+Then
+\[
+\{P_{\mathcal G_i}f:f\in K,\ i\in I\}
+\]
+is uniformly integrable. In particular this holds for a fixed
+sub-sigma-algebra.
 \end{corollary}
 \Proof
-Viewed as an operator into ambient $L^1(\mu)$, $P_{\mathcal G}$ is
-bounded and real-linear. It is therefore weakly continuous: composing
-any continuous linear functional with it gives another such functional.
-By Theorem~\ref{thm:DP_weak_compact_finite}, the weak closure of $K$
-is compact. Its image under $P_{\mathcal G}$ is compact and therefore
-closed in the Hausdorff weak topology. It contains $P_{\mathcal G}[K]$,
-so the latter's weak closure is a closed subset of a compact set and
-is compact. The same Dunford--Pettis theorem gives uniform integrability.
-The empty family satisfies the conclusion directly.
+The conclusion is immediate if $K$ or $I$ is empty. Otherwise finite
+measure and uniform integrability give $C=\sup_{f\in K}\|f\|_1<\infty$.
+Positivity and linearity, applied to $-|f|\leq f\leq|f|$, give
+\[
+|P_{\mathcal G_i}f|\leq P_{\mathcal G_i}|f|
+\quad\text{almost everywhere}.
+\]
+Choose a $\mathcal G_i$-measurable representative of the output, and
+for $M>0$ put $A=\{|P_{\mathcal G_i}f|>M\}\in\mathcal G_i$.
+The $L^1$ contraction and Markov's inequality give $\mu(A)\leq C/M$.
+For any $R>0$, the defining integral identity for conditional
+expectation, now applied to $|f|$, yields
+\[
+\begin{split}
+\int_A|P_{\mathcal G_i}f|\,d\mu
+&\leq\int_A P_{\mathcal G_i}|f|\,d\mu
+ =\int_A|f|\,d\mu\\
+&\leq\int_{\{|f|>R\}}|f|\,d\mu+R\mu(A)
+ \leq\int_{\{|f|>R\}}|f|\,d\mu+\frac{RC}{M}.
+\end{split}
+\]
+Given $\varepsilon>0$, choose $R$ making the first term less than
+$\varepsilon/2$ uniformly for $f\in K$, and then choose $M$ making
+$RC/M<\varepsilon/2$. These choices are independent of both $f$
+and $i$, proving uniform integrability. This direct estimate uses
+neither weak compactness nor a choice of representatives simultaneously
+for the whole indexed family.
 \Done
 
 \subsection{Probability densities and compactness}

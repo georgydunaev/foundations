@@ -51,7 +51,7 @@ common evaluation notation for the encodings under consideration.
 
 \begin{definition}[Domain of relation/function/family/protected family]
 \[
-\Dom(F)\ceq \cc{x}{\exists s,\ (x,s)\in F}=:\dom(F)
+\Dom(F)\ceq \cc{x}{\exists s\in V,\ (x,s)\in F}=:\dom(F)
 \]
 \end{definition}
 
@@ -59,7 +59,7 @@ common evaluation notation for the encodings under consideration.
 The relational range collects the stored second components. It can differ
 from the collection of values obtained by evaluating the family.
 \[
-\ran(R)\ceq \cc{y}{\exists x,\ (x,y)\in R}
+\ran(R)\ceq \cc{y}{\exists x\in V,\ (x,y)\in R}
 \]
 \end{definition}
 
@@ -154,19 +154,22 @@ The following candidate canonicalizations encode membership using singleton
 records. Their treatment of empty values distinguishes the variants:
 \begin{definition}[Canonicalization of a family of nonempty classes]
 \[
-\canonize0(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}
+\canonize0(F) = \cc{(x,\{q\})}{\exists y\in V,\ ((x,y)\in F)\land (q\in y)}
 \]
 
 \end{definition}
 \begin{definition}[Canonicalization allowing empty values]
 \[
-\canonize1(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\cc{(x,\emptyclass)}{x\in\Dom(F)}
+\canonize1(F) = \cc{(x,\{q\})}{\exists y\in V,\ ((x,y)\in F)\land (q\in y)}\cup\cc{(x,\emptyclass)}{x\in\Dom(F)}
 \]
 \[
-\canonize2(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\cc{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
+\begin{aligned}
+\canonize2(F) ={}& \cc{(x,\{q\})}{\exists y\in V,\ ((x,y)\in F)\land (q\in y)}\\
+&\cup\cc{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass)}.
+\end{aligned}
 \]
 \[
-\canonize3(F) = \cc{(x,s)}{\exists y,\ ((x,y)\in F)\land (s\subseteq y) \land (!q,\ q\in s)}
+\canonize3(F) = \cc{(x,s)}{\exists y\in V,\ ((x,y)\in F)\land (s\subseteq y) \land (!q,\ q\in s)}
 \]
 \end{definition}
 

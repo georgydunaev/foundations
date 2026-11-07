@@ -588,6 +588,45 @@ these three conditions.
 \DoneNoPar
 \end{theorem}
 
+\begin{example}[Why a common measurable carrier matters]
+If every sigma-algebra in $Q$ has the same carrier $X$, then
+$X\in\sigma$ for every $\sigma\in Q$. Hence
+$X\in\mathcal I=\bigcap Q\subseteq\power X$, which gives
+$\bigcup\mathcal I=X\in\mathcal I$. Thus the additional hypothesis
+in the sigma-algebra intersection theorem is automatic on a common
+carrier. The same argument applies to Dynkin systems.
+
+It is not automatic for varying carriers. For this example use the
+classical real line and countable choice, so a countable union of
+countable sets is countable. Let $Y=[0,\infty)$ and put
+\[
+\begin{split}
+\Sigma&=\{A\subseteq\mathbb R:
+      A\text{ is countable or }\mathbb R\setminus A
+                         \text{ is countable}\},\\
+\Lambda&=\power Y.
+\end{split}
+\]
+The family $\Sigma$ is a sigma-algebra on $\mathbb R$:
+complements interchange the two alternatives, and a countable union
+is countable if all members are countable; if one member has countable
+complement, the union has countable complement as well. The family
+$\Lambda$ is a sigma-algebra on $Y$.
+Since $\mathbb R\setminus Y$ is uncountable, no subset of $Y$ has
+countable complement in $\mathbb R$. Consequently
+\[
+\Sigma\cap\Lambda=\{A\subseteq Y:A\text{ is countable}\}.
+\]
+Every singleton of $Y$ belongs to this intersection, so its union is
+$Y$. But $Y$ is uncountable and is not a member. The intersection
+therefore fails the carrier axiom, although it is closed under
+countable unions and relative differences. Since sigma-algebras are
+Dynkin systems, the same pair also shows why the carrier hypothesis
+in that intersection theorem cannot be dropped. This is a difference
+between fixed-carrier and recovered-carrier settings, not a failure of
+the usual intersection theorem for sigma-algebras on one fixed space.
+\end{example}
+
 \subsection{Topological properties}
 This subsection proposes a local classification by ``hereditary'' and
 ``weakly hereditary'' properties. The intended inheritance relation is
@@ -608,6 +647,51 @@ further restrict attention to closed subspaces. The local terms here
 need an explicit definition before they can be compared with those
 conventions. In particular, the proposed examples should be read within
 that eventual local definition.
+
+\paragraph{A precise preservation result for continuous images.}
+The following supplies one definite preservation statement for three of
+the named properties, without identifying it with the proposed hierarchy.
+A space is \emph{separable} if it has a countable dense subset, where
+density means meeting every nonempty open set. A space is
+\emph{connected} if it cannot be partitioned into two disjoint nonempty
+open sets. Compactness has its open-cover meaning, stated below.
+
+\begin{proposition}[Continuous-image preservation]
+\label{prop:continuous_image_properties}
+Let $f:X\to Y$ be continuous, and give $f[X]$ its subspace topology.
+If $X$ is compact, separable, or connected, respectively, then $f[X]$
+has that same property. No separation axiom or Choice assumption is
+needed.
+\end{proposition}
+\Proof
+Compactness is the continuous-image assertion proved in
+Theorem~\ref{thm:compactness_transport}. If $D\subseteq X$ is countable
+and dense, then $f[D]$ is countable. Every nonempty relatively open
+$U\subseteq f[X]$ has nonempty open inverse image in $X$. That inverse
+image meets $D$, so $U$ meets $f[D]$. Thus $f[D]$ is dense in $f[X]$.
+Countability of the image uses no selection of preimages: an enumeration
+of a nonempty countable $D$, composed with $f$, enumerates its image;
+the empty case is immediate.
+
+If $f[X]$ were partitioned into two nonempty disjoint relatively open
+sets, their inverse images would be nonempty disjoint open sets
+partitioning $X$. This contradicts connectedness of $X$. Empty spaces
+cause no exception to any of these statements.
+\Done
+
+The operation matters. Connectedness does not pass even to closed
+subspaces: $\{0,1\}$ is a disconnected closed subspace of the connected
+interval $[0,1]$. For completeness, a separation of an interval would
+give points $a<b$ in opposite open parts. The supremum $c$ of the first
+part within $[a,b]$ can belong to neither part: if it belongs to the
+first, openness and $c<b$ give a larger point in that part; if it belongs
+to the second, openness and $c>a$ exclude first-part points immediately
+below $c$, contradicting its supremum property. This proves the asserted
+connectedness. The two endpoints themselves have disjoint open singleton
+neighbourhoods in their subspace. Thus continuous-image preservation does
+not determine a classification by subspaces or intersections. Defining
+the proposed hierarchy still requires specifying the permitted operation
+and whether its carrier is fixed or recovered.
 
 \iftrue
 \pagebreak
@@ -764,7 +848,7 @@ $\forall U\in\mathcal{T},\ \exists W\in\power\mathfrak{B},\ U=\union W$\\
 or\\
 $\mathcal{T}\subseteq \cc{\union W }{  W\in\power\mathfrak{B}}$\\
 or\\
-$\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.\\
+$\mathcal{T}$ is a subset of unions of subsets of $\mathfrak{B}$.
 \end{definition}
 %\fi
 
@@ -781,7 +865,7 @@ or
 \subseteq
 \cc{\union W }{  W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }}
 \]
-or $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
+or $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.
 \end{definition}
 With the open-set condition just stated, a generator is also called a
 subbase. This is the second use of that word in this chapter; unlike the
@@ -813,8 +897,7 @@ $\mathfrak{B}_1$ is coarser than base $\mathfrak{B}_2$ iff
 
 %\pagebreak
 \subsection{Alexandrov's correspondence between topology and order}
-This subsection gives the planned Alexandrov topic a precise meaning:
-topologies closed under arbitrary intersections correspond to preorders.
+Topologies closed under arbitrary intersections correspond to preorders.
 The result connects the point--neighbourhood presentation with the order
 theory developed earlier; see \cite[Section 1.6]{MayPishevarFiniteSpaces}.
 We use the convention that open sets are \emph{upper} sets. Reversing
@@ -933,6 +1016,78 @@ In fact $\mathcal{A}$ is a subbasis.
 \[
 \Tau_\mathcal{A}\eqdef\intersection\cc{\Tau}{(\Tau\mbox{ topology on }X)\land (\mathcal{A}\subseteq\Tau) }
 \]
+
+\begin{proposition}[Finite-coordinate basis and the product property]
+\label{prop:product_topology_basis}
+Let $\mathcal B$ consist of the sets
+\[
+\bigcap_{i\in J}\pi_i^{-1}[U_i],
+\qquad J\subseteq I\text{ finite},\quad U_i\in\Tau_{X_i}.
+\]
+The intersection for $J=\emptyclass$ is $X$. Then the product topology
+is exactly the family of unions of members of $\mathcal B$. For any
+topological space $Y$ and any function $f:Y\to X$, the following are
+equivalent:
+\begin{enumerate}
+\item $f$ is continuous;
+\item every coordinate map $\pi_i\circ f:Y\to X_i$ is continuous.
+\end{enumerate}
+These assertions require no Choice assumption and include empty products
+and products with empty carrier.
+\end{proposition}
+\Proof
+The family $\mathcal B$ contains $X$ and is closed under binary
+intersections. Indeed, combine the two finite sets of restricted
+coordinates, and at a repeated coordinate replace the two open sets
+by their intersection. Its unions therefore contain $\emptyclass,X$
+and are closed under arbitrary unions. The intersection of two such
+unions is the union of all pairwise intersections of their members,
+so these unions form a topology $\mathcal S$.
+
+Every subbasic inverse image belongs to $\mathcal B$, hence to
+$\mathcal S$. Conversely, any topology containing $\mathcal A$
+contains its finite intersections and all their unions. It therefore
+contains $\mathcal S$. Thus $\mathcal S$ equals the displayed
+intersection defining $\Tau_{\mathcal A}$; that intersection is over
+a nonempty set of topologies, since the discrete topology $\power X$
+is one of them. This proves the basis assertion and the coarsest-topology
+characterization simultaneously. In particular each $\pi_i$ is continuous.
+
+If $f$ is continuous, inverse images under $\pi_i\circ f$ are obtained
+by taking two continuous inverse images, so each coordinate map is
+continuous. Conversely, suppose every coordinate map is continuous.
+The inverse image under $f$ of a member of $\mathcal B$ is the finite
+intersection of the corresponding open coordinate inverse images.
+It is open, including when the intersection is empty and its inverse
+image is $Y$. Since inverse images commute with unions, $f$ is
+continuous on every product-open set.
+
+When $I=\emptyclass$, $X$ is the singleton containing the empty
+function, $\mathcal B=\{X\}$, and every map into it is continuous.
+When $X=\emptyclass$, the only topology on it is $\{\emptyclass\}$;
+a function $Y\to X$ exists only for $Y=\emptyclass$, and both
+conditions then hold. The construction never assumes that a product
+of nonempty carriers has a point.
+\Done
+
+For a specified point $x\in X$, the basis assertion says more locally:
+$N\subseteq X$ is a neighbourhood of $x$ exactly when it contains
+some finite-coordinate basic set containing $x$. In a binary product
+$E\times F$, this is equivalently the condition
+\[
+\exists A\in\mathrm{nghb}_E(a),\quad
+\exists B\in\mathrm{nghb}_F(b),\quad A\times B\subseteq N,
+\qquad x=(a,b).
+\]
+Indeed an open basic rectangle gives such $A,B$. Conversely, choose
+open neighbourhoods $U,V$ with $a\in U\subseteq A$ and
+$b\in V\subseteq B$; then $U\times V$ is an open neighbourhood
+inside $N$. Thus the earlier function $\mathrm{pfb}((a,b))$ really
+is a filter base generating precisely the product neighbourhood filter.
+It is nonempty, all its members contain $(a,b)$, and intersecting two
+members gives another neighbourhood rectangle. This connects the
+pointwise filter construction with the open-set definition.
+
 \fi %iftrue
 %Classification based on
 \subsection{Cardinality--based topological definitions}

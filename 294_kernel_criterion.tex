@@ -12,7 +12,7 @@ conclusion is separate continuity, not joint continuity. We give the
 proof, including the dual-pair argument needed on a noncompact space.
 
 \subsection{Measures, representatives, and the dual pair}
-Let $X$ be a nonempty separable locally compact metric space, and let
+Let $(X,d)$ be a nonempty separable locally compact metric space, and let
 $\nu$ be a positive locally finite Radon measure on $X$. Write
 $C_b(X)$ for the complex bounded continuous functions, with supremum
 norm, and $\mathcal M(X)$ for the finite complex Radon measures, with
@@ -20,23 +20,77 @@ total variation norm. A function $f\in L^1(X,\nu)$ determines the
 measure $f\nu\in\mathcal M(X)$, with
 $\|f\nu\|_{\mathrm{TV}}=\|f\|_1$. Local compactness and separability
 make $X$ a countable union of compact sets; in particular $\nu$ is
-$\sigma$-finite. Integrable densities define finite Radon measures
-(the usual approximation by bounded densities on compact sets proves
-inner regularity). All measures below are on the Borel sets. In this
+$\sigma$-finite. The next lemma justifies the Radon property of the
+finite density measures, including for the wider measure convention
+discussed below. All measures here are on the Borel sets. In this
 metric setting the Baire and Borel sigma algebras coincide: each closed
 set is the zero set of its continuous distance function.
+
+\begin{lemma}[Regularity of the finite measures used here]
+\label{lem:kernel_finite_measure_regularity}
+Every finite positive Borel measure $\mu$ on $X$ is outer regular
+by open sets and inner regular by compact sets. Consequently every
+finite complex Borel measure on $X$ is a finite Radon measure.
+\end{lemma}
+\begin{proof}
+Separability and metrizability give a countable base. Local compactness
+then gives a countable cover by relatively compact open sets: choose
+a relatively compact neighborhood at each point and extract a
+countable subcover using the base. Finite unions of their closures
+form increasing compact sets $K_n$ with union $X$.
+
+We first establish approximation by closed and open sets. Let
+$\mathcal R$ be the class of Borel sets $E$ for which, for every
+$\epsilon>0$, there are a closed $F$ and an open $G$ with
+$F\subseteq E\subseteq G$ and $\mu(G\setminus F)<\epsilon$.
+Every open set $G\ne X$ belongs to $\mathcal R$: the closed sets
+$\{x:d(x,X\setminus G)\geq1/n\}$ increase to $G$, and continuity
+from below gives the required approximation. The set $X$ itself is
+immediate. The class $\mathcal R$ is closed under complements by
+interchanging the complements of $F,G$.
+
+For $E=\bigcup_{j\geq1}E_j$ with $E_j\in\mathcal R$, choose
+$F_j\subseteq E_j\subseteq G_j$ with
+$\mu(G_j\setminus F_j)<\epsilon 2^{-j}/3$. Since $\mu$ is finite,
+choose $N$ with
+$\mu(E\setminus\bigcup_{j\leq N}E_j)<\epsilon/3$.
+Then $F=\bigcup_{j\leq N}F_j$ is closed,
+$G=\bigcup_{j\geq1}G_j$ is open, and
+\[
+\begin{aligned}
+\mu(G\setminus F)
+&\leq\sum_{j\geq1}\mu(G_j\setminus E_j)
+ +\mu\left(E\setminus\bigcup_{j\leq N}E_j\right)\\
+&\quad +\sum_{j\leq N}\mu(E_j\setminus F_j)<\epsilon.
+\end{aligned}
+\]
+Thus $\mathcal R$ is a sigma algebra containing the open sets, so it
+contains every Borel set. For a closed inner approximant $F$,
+$F\cap K_n$ is compact and increases to $F$; continuity from below
+therefore improves closed inner approximation to compact inner
+approximation. The same argument applied to the finite positive
+total variation of a complex measure proves the final assertion.
+\end{proof}
 
 Use the bilinear pairing
 \[
 \langle\mu,g\rangle=\int_X g\,d\mu,
 \qquad \mu\in\mathcal M(X),\quad g\in C_b(X).
 \]
+For $x\in X$, the Dirac measure $\delta_x$ is the unit point mass at
+$x$, so $\langle\delta_x,g\rangle=g(x)$.
 Here $\sigma(\mathcal M,C_b)$ means convergence against every fixed
 $g\in C_b$, and $\sigma(C_b,\mathcal M)$ means convergence against
 every fixed $\mu\in\mathcal M$. These definitions apply to nets,
 not only to sequences. They specify a dual pair; they do not identify
 $\mathcal M(X)$ with the full Banach dual of $C_b(X)$, an identification
 that is generally false on a noncompact space.
+For completeness, the pairing separates both spaces. Dirac measures
+separate continuous functions. If a finite complex measure integrates
+every bounded continuous function to zero, apply this to
+$\max(0,1-n d(x,F))$ for each nonempty closed $F$. Dominated convergence
+gives $\mu(F)=0$. Closed inner approximation with respect to $|\mu|$
+then gives $\mu(E)=0$ for every Borel $E$, so $\mu=0$.
 
 Let $J:C_b(X)\to L^\infty(X,\nu)$ take the almost-everywhere class.
 A bounded operator $T:L^1(\nu)\to L^\infty(\nu)$ has an extension
@@ -44,7 +98,9 @@ $S:\mathcal M(X)\to C_b(X)$ in the sense used here if
 \[
 J(S(f\nu))=Tf\qquad(f\in L^1(\nu)).
 \]
-This is an equality of equivalence classes. If $\nu$ has full support,
+This is an equality of equivalence classes. Full support means that
+every nonempty open subset of $X$ has positive $\nu$-measure.
+If $\nu$ has full support,
 $J$ is injective and isometric: a continuous function exceeding a bound
 at one point exceeds it on an open set of positive measure. Without
 full support, continuous representatives need not be unique.
@@ -196,6 +252,38 @@ namely $S\mu=0$ and $S\mu=\mu(X)\mathbf1$. Thus full support alone
 does not ensure uniqueness for arbitrary nonsemifinite Borel measures.
 This explains the measure hypotheses rather than assigning a broader
 meaning to the source's Baire-measure convention.
+
+\subsection{Why weak continuity is part of the hypothesis}
+Norm boundedness of an extension alone is insufficient, even when the
+reference measure has full support. On $X=\mathbb R$ with Lebesgue
+measure, let $T:L^1\to L^\infty$ be zero and define
+\[
+(S\mu)(x)=\mu(\{0\})\qquad(x\in\mathbb R).
+\]
+This is a bounded linear map $\mathcal M(\mathbb R)\to C_b(\mathbb R)$
+of norm one. It extends $T$, since every density $f\,dx$ assigns zero
+mass to the singleton. Nevertheless it differs from the zero extension.
+
+To see exactly which hypothesis fails, put
+\[
+d\mu_n(x)=\frac n2\mathbf1_{(-1/n,1/n)}(x)\,dx.
+\]
+For every $g\in C_b(\mathbb R)$,
+\[
+\left|\int g\,d\mu_n-g(0)\right|
+\leq\sup_{|x|<1/n}|g(x)-g(0)|\longrightarrow0.
+\]
+Thus $\mu_n\to\delta_0$ in $\sigma(\mathcal M,C_b)$, whereas
+$S\mu_n=0$ and $S\delta_0=\mathbf1$. Evaluation at zero is a test
+in the target weak topology, so $S$ fails the required weak continuity.
+
+This approximation is not convergence in total variation:
+$\|\mu_n-\delta_0\|_{\mathrm{TV}}=2$. The partition into $\{0\}$
+and its complement gives the lower bound two, and the triangle
+inequality gives the upper bound. Consequently the uniqueness of the
+extension in the theorem comes from the specified weak topology,
+rather than from a nonexistent norm density of $L^1$ densities among
+all finite measures.
 
 \subsection{What the criterion does and does not assert}
 No full-support assumption was used for the equivalence. It was used

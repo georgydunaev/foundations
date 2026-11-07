@@ -83,10 +83,11 @@ numeric mode when using another version.
 
 The compiler sequences were tested with archived TeX Live 2024, using
 pdfTeX 1.40.26 and its matching Biber 2.20. Both PdfLaTeX/Biber/PdfLaTeX
-twice and LaTeX/Biber/LaTeX twice compiled both the 32-page standalone
-thesis and the 343-page full book. The thesis logs have no warnings or
-overfull/underfull boxes; the book retains underfull-box notices in older
-material, as recorded in `LATEX_AUDIT_REPORT.md`. Separate
+twice and LaTeX/Biber/LaTeX twice compiled both the 52-page standalone
+thesis and the 383-page full book. The thesis logs have no warnings or
+overfull/underfull boxes; the PDF book is also free of those notices.
+The DVI book retains one underfull bibliography line, whose rendered output
+was inspected, as recorded in `LATEX_AUDIT_REPORT.md`. Separate
 temporary output directories kept the PDF and DVI auxiliary files apart.
 The test installation lives outside the repository; the executable path
 prefix differs from the supplied `/usr/local/texlive/2024`, but the engine
@@ -98,6 +99,12 @@ The illustration is selected without a filename extension: PDF engines use
 was rendered independently and its RGB pixels matched the original image
 composited on white. Keep the PNG as the source when regenerating this asset.
 The DVI preamble uses `breakurl` so long web and bibliography links can wrap.
+
+The dynamical-potential illustration likewise has PDF and EPS versions in
+`pictures/`, selected automatically by the output engine. Both are included
+assets; Python is not needed to compile the manuscript. To regenerate them,
+run `python3 scripts/plot_dynamical_potential.py` with NumPy and Matplotlib
+installed. The curves evaluate the displayed cosine potentials directly.
 
 ## Packages and fonts
 

@@ -1,0 +1,219 @@
+\def\topic{Capture-avoiding de Bruijn substitution}
+\input{BEGIN.tex}
+\section{A complete de Bruijn substitution example}
+\label{sec:debruijn_substitution}
+The preceding listing is preserved as a historical prototype. The
+following construction completes its substitution and stopping cases
+in a separate, executable example. Terms here are untyped finite trees
+\[
+t::=\operatorname{Var}(k)\mid\operatorname{Lam}(t)
+       \mid\operatorname{App}(t,t),\qquad k\in\mathbb N.
+\]
+Index zero refers to the nearest binder or the first slot in the
+surrounding context. Open terms are allowed. This implementation is
+not an implementation of the typed calculus or checker developed in
+the next section, and no normalization claim for arbitrary untyped
+terms is made.
+
+\subsection{Scope and insertion of context slots}
+Write $\operatorname{sc}_n(t)$ when $t$ is well scoped in a context
+of $n$ slots, numbered $0,\ldots,n-1$ from nearest to furthest:
+\[
+\begin{aligned}
+\operatorname{sc}_n(\operatorname{Var}(k))&\iff 0\leq k<n,\\
+\operatorname{sc}_n(\operatorname{Lam}(b))&\iff\operatorname{sc}_{n+1}(b),\\
+\operatorname{sc}_n(\operatorname{App}(f,a))
+ &\iff\operatorname{sc}_n(f)\land\operatorname{sc}_n(a).
+\end{aligned}
+\]
+In particular $\operatorname{sc}_0$ describes closed terms.
+For nonnegative integers $a,c$, define a shift $\uparrow^a_c$ by
+\[
+\begin{aligned}
+\uparrow^a_c\operatorname{Var}(k)
+ &=\begin{cases}\operatorname{Var}(k),&k<c,\\
+                  \operatorname{Var}(k+a),&k\geq c,\end{cases}\\
+\uparrow^a_c\operatorname{Lam}(b)
+ &=\operatorname{Lam}(\uparrow^a_{c+1}b),\\
+\uparrow^a_c\operatorname{App}(f,u)
+ &=\operatorname{App}(\uparrow^a_c f,\uparrow^a_c u).
+\end{aligned}
+\]
+The cutoff protects the nearest $c$ slots; it increases under a binder
+so that variables bound inside the term are protected as well.
+
+\begin{lemma}[Insertion of slots preserves scope and variable reference]
+\label{lem:debruijn_shift_scope}
+If $\operatorname{sc}_{n+c}(t)$, then
+$\operatorname{sc}_{n+c+a}(\uparrow^a_c t)$.
+More precisely, let $\Delta$ be a list of $c$ distinct context names
+and $\Gamma$ a list of $n$ further names. Inserting $a$ fresh names
+between $\Delta$ and $\Gamma$ while shifting by $\uparrow^a_c$
+preserves the named term represented by $t$, up to renaming its bound
+variables.
+\end{lemma}
+\Proof
+Induct on $t$. A variable $k<c$ remains in the same slot of $\Delta$.
+For $k\geq c$, its new index $k+a$ refers to the same slot of
+$\Gamma$ and is less than $n+c+a$. An abstraction puts one new name
+at the front of $\Delta$; apply the induction hypothesis with $c+1$
+to its body and retain the abstraction node. For an application apply
+the hypothesis to both children. Named binders may be chosen fresh
+from an infinite set of names; all terms and context lists involved
+are finite. Thus no inserted name is captured, proving both assertions.
+\Done
+
+\subsection{Removing one binder by substitution}
+Let $R_d(s,t)$ remove slot $d$ from $t$ and replace its occurrences
+by the outer-context term $s$. The nearest $d$ slots are local binders
+crossed on the way to the occurrence. Define
+\[
+\begin{aligned}
+R_d(s,\operatorname{Var}(k))
+ &=\begin{cases}
+   \operatorname{Var}(k),&k<d,\\
+   \uparrow^d_0s,&k=d,\\
+   \operatorname{Var}(k-1),&k>d,
+   \end{cases}\\
+R_d(s,\operatorname{Lam}(b))
+ &=\operatorname{Lam}(R_{d+1}(s,b)),\\
+R_d(s,\operatorname{App}(f,u))
+ &=\operatorname{App}(R_d(s,f),R_d(s,u)).
+\end{aligned}
+\]
+The argument $s$ remains in its original outer context during the
+recursion. It is shifted only when inserted. The final variable case
+decrements indices because a context slot has been removed, and
+cannot produce a negative index since $k>d\geq0$.
+
+\begin{theorem}[Scope and capture avoidance for binder removal]
+\label{thm:debruijn_replacement}
+If $\operatorname{sc}_n(s)$ and $\operatorname{sc}_{n+d+1}(t)$, then
+$\operatorname{sc}_{n+d}(R_d(s,t))$.
+Read $t$ in the named context $\Delta,x,\Gamma$, where
+$|\Delta|=d$, $|\Gamma|=n$, and all names are distinct, and read $s$
+in $\Gamma$. Then reading $R_d(s,t)$ in $\Delta,\Gamma$ gives the
+capture-avoiding substitution of the reading of $s$ for $x$ in the
+reading of $t$, up to bound-variable renaming.
+\end{theorem}
+\Proof
+Induct on $t$, allowing every $d$ in the induction hypothesis.
+If $t=\operatorname{Var}(k)$ and $k<d$, its unchanged index is less
+than $n+d$ and names the same local variable. If $k=d$, the shift
+lemma with cutoff zero gives
+$\operatorname{sc}_{n+d}(\uparrow^d_0s)$; its named reading is precisely
+that of $s$, with the $d$ local names inserted before its context.
+Those names are distinct from $\Gamma$, so this insertion captures no
+free variable of $s$. If $k>d$, the bound $k<n+d+1$ gives
+$k-1<n+d$, and decrementing the index refers to the same name in
+$\Gamma$ after $x$ has been removed.
+
+For an abstraction, the body has scope $n+d+2$. Apply the induction
+hypothesis with depth $d+1$, obtaining a body of scope $n+d+1$,
+and restore the abstraction. For its named interpretation choose a
+binder fresh for all context names and the free names of $s$.
+The induction hypothesis therefore computes ordinary capture-avoiding
+substitution under that binder. For an application, both scope and
+the substitution identity follow from the two induction hypotheses.
+These cases prove the result.
+\Done
+
+In particular, if $\operatorname{sc}_{n+1}(b)$ and
+$\operatorname{sc}_n(s)$, beta contraction is
+\[
+\operatorname{App}(\operatorname{Lam}(b),s)
+\longrightarrow R_0(s,b).
+\]
+The theorem proves both its scope preservation and agreement with the
+named beta rule. This is binder-eliminating substitution, not an
+operation which replaces a slot while keeping the old context length.
+For example, in a one-slot outer context,
+\[
+\operatorname{App}(\operatorname{Lam}(\operatorname{Lam}(\operatorname{Var}(1))),
+                   \operatorname{Var}(0))
+\longrightarrow\operatorname{Lam}(\operatorname{Var}(1)).
+\]
+The outer variable remains free; returning
+$\operatorname{Lam}(\operatorname{Var}(0))$ would capture it.
+
+\subsection{One step, normal forms, and a finite computation budget}
+The function \texttt{step} below contracts an outer application redex
+first. Otherwise it searches an abstraction's body, or an application's
+left child before its right child. Thus it performs one leftmost-outermost
+compatible beta step, including steps under abstractions.
+
+\begin{proposition}[The step and fuel contracts]
+\label{prop:debruijn_step_fuel}
+On valid finite terms, \texttt{step} terminates. It returns
+\texttt{NONE} exactly for terms containing no beta redex; a result
+\texttt{SOME u} is one compatible beta step to $u$. Every step
+preserves $\operatorname{sc}_n$ for each applicable $n$.
+For a nonnegative budget $N$, \texttt{run N t} terminates. A result
+\texttt{Normal u} gives a beta-normal form reached in at most $N$
+steps. A result \texttt{OutOfFuel u} means that exactly $N$ steps
+were performed and $u$ still has a redex.
+\end{proposition}
+\Proof
+Every recursive search call in \texttt{step} uses a proper subtree;
+replacement and shifting are also structural recursions. Its variable
+case has no redex, its abstraction case delegates exactly to the body,
+and its application cases either contract the root redex or search
+both children in the stated order. Induction on the tree therefore
+proves termination, the normal-form test, and the single-step claim.
+At a contracted root the replacement theorem preserves scope. Under
+an abstraction use that theorem or the induction hypothesis in scope
+$n+1$; under an application use scope $n$ for each child.
+
+In \texttt{run}, a successful step either decreases the budget by one
+or, if the budget is zero, returns the current term as
+\texttt{OutOfFuel}. The loop therefore terminates. Induction on the
+budget proves the two return-value assertions. At budget zero it
+still tests for a redex, so an already normal term is reported as
+normal, including one reached by the last allowed step. This test
+computes a possible next term but does not commit an additional step.
+\Done
+
+Fuel exhaustion alone does not distinguish a divergent term from one
+which needs more steps. There is, however, a direct divergence proof
+for the historical example. Put
+\[
+\delta=\operatorname{Lam}(\operatorname{App}(\operatorname{Var}(0),
+                                            \operatorname{Var}(0))),
+\qquad \Omega=\operatorname{App}(\delta,\delta).
+\]
+Its only redex is the root, and contracting that redex returns
+$\Omega$. Thus every finite reduction sequence stays at this nonnormal
+term, so $\Omega$ has no beta-normal form, and \texttt{run} exhausts
+every finite budget on it. On the other hand,
+$\operatorname{App}(\operatorname{Lam}(I),\Omega)$, where
+$I=\operatorname{Lam}(\operatorname{Var}(0))$, reaches $I$ in one
+step: the argument need not be normalized before substitution.
+No general theorem about the termination or completeness of unbounded
+normal-order evaluation is needed for these assertions.
+
+\subsection{Executable Standard ML}
+The following file is self-contained. It uses \texttt{IntInf.int}
+for indices and fuel. Its computational operations reject negative
+indices, depths, cutoffs, shifts, or fuel with \texttt{Domain};
+\texttt{scoped} instead returns false for a negative context size or
+any negative index. The structural scope predicate remains an explicit test: a nonnegative
+index alone need not fit a particular surrounding context. The public
+signature hides the unchecked recursive helpers.
+\begin{nolinenumbers}
+\lstinputlisting{examples/debruijn.ML}
+\end{nolinenumbers}
+For example, after loading the file in Poly/ML, evaluate
+\begin{lstlisting}
+open DeBruijn;
+val identity = Lam (Var 0);
+val duplicate = Lam (App (Var 0, Var 0));
+val omega = App (duplicate, duplicate);
+val terminating = run 1 (App (Lam identity, omega));
+val exhausted = run 20 omega;
+\end{lstlisting}
+The first result is \texttt{Normal identity}; the second is
+\texttt{OutOfFuel omega}. Repository tests also compare bounded
+families of open terms with an independent named-substitution oracle,
+check scope preservation, and exercise the neutral-application stopping
+case missing from the historical sketch.
+\input{END.tex}
