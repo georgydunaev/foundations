@@ -13,7 +13,8 @@ of context.
 
 ## Schrödinger thesis
 
-The standalone manuscript is [thesis_schrodinger.tex](thesis_schrodinger.tex).
+The standalone manuscript is [thesis_schrodinger.tex](thesis_schrodinger.tex);
+the locally built reading copy is [thesis_schrodinger.pdf](thesis_schrodinger.pdf).
 It develops the free heat equation, the separately continuous kernel criterion,
 bounded-potential Schrödinger semigroups, and quantitative Lipschitz regularity
 for dynamically defined potentials. The four chapters are also included in the

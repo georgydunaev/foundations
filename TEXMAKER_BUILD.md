@@ -83,7 +83,10 @@ numeric mode when using another version.
 
 The compiler sequences were tested with archived TeX Live 2024, using
 pdfTeX 1.40.26 and its matching Biber 2.20. Both PdfLaTeX/Biber/PdfLaTeX
-twice and LaTeX/Biber/LaTeX twice compiled the full manuscript. Separate
+twice and LaTeX/Biber/LaTeX twice compiled both the 32-page standalone
+thesis and the 343-page full book. The thesis logs have no warnings or
+overfull/underfull boxes; the book retains underfull-box notices in older
+material, as recorded in `LATEX_AUDIT_REPORT.md`. Separate
 temporary output directories kept the PDF and DVI auxiliary files apart.
 The test installation lives outside the repository; the executable path
 prefix differs from the supplied `/usr/local/texlive/2024`, but the engine
