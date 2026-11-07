@@ -102,13 +102,20 @@ A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x,\ xR_1A\implies xR_2B)
 \[
 (A\stackrel{R}{\subclass} B)
 \iffdef
-(A\stackrel{R\E}{\subclass} B)
+(\forall x,\ xRA\implies x\in B)
 \labeltagd{def}{Rsubclass}
 \]
 \end{definition}
+The target $B$ may be a proper class. Therefore the final membership
+test is primitive membership, not $x\E B$: the relation $\E$ only
+contains records whose second coordinate is a set. When $B$ is a set,
+this definition agrees with $A\stackrel{R\E}{\subclass}B$; for a
+proper $B$ those expressions need not agree. For example, a nonempty
+predecessor class is contained in $\V$, although none of its elements
+is $\E$-related to the proper class $\V$.
 \begin{lemma}[$R$ subclass]
 \[
-k\stackrel{R\E}{\subclass} X \iff  R^{\top}[\{k\}]\subclass X
+k\stackrel{R}{\subclass} X \iff  R^{\top}[\{k\}]\subclass X
 \labeltagd{lem}{Rsubset}
 \]
 \end{lemma}
@@ -118,10 +125,22 @@ belongs to $X$.
 \end{proof}
 \begin{definition}[powerclass w.r.t. relation $R$]
 \[
-\power_R X\ \eqdef\ \cc{ k}{k\stackrel{R\E}{\subclass}X}
+\power_R X\ \eqdef\ \cc{ k}{k\stackrel{R}{\subclass}X}
 \labeltagd{def}{RpowerClass}
 \]
 \end{definition}
+\begin{lemma}[Membership predecessors and the powerclass]
+For every class $X$, including proper classes,
+\[
+\power_{\E}X=\power X.
+\]
+\end{lemma}
+\begin{proof}
+Both comprehensions contain only sets. For a set $k$, the defining
+condition for $k\in\power_{\E}X$ is that every $x$ with $x\E k$+belongs to $X$. Since $k$ is a set, $x\E k$ is equivalent to
+$x\in k$. The condition is therefore exactly $k\subseteq X$,
+which defines $k\in\power X$. Class extensionality proves the equality.
+\end{proof}
 
 \begin{definition}[class is closed under R-predecessors]
 This is the meaning of ``$R$-transitive class'' here. It is different from

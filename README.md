@@ -48,23 +48,23 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **100_class_theory.tex**: Finite and hereditarily finite countermodels separating minimal class axioms from stronger existence principles. *(Active Draft)*
 - **110_family_evaluation.tex**: Theory of families and evaluation maps. *(Active Draft)*
 - **120_induction_recursion.tex**: Induction and recursion principles for classes. *(Active Draft)*
-- **130_classes_as_types.tex**: Active predicates/formulas-as-types discipline, with older classes-as-types attempts explicitly marked outdated. *(Active Draft with Historical Sections)*
+- **130_classes_as_types.tex**: Active predicates/formulas-as-types discipline, a scoped predicate/storage interface and option models, with older classes-as-types attempts explicitly marked outdated. *(Active Draft with Historical Sections)*
 - **140_setness.tex**: Exploration of setness versus classness. *(Active Draft)*
 - **150_ordinals.tex**: Development of ordinal numbers within the class framework. *(Active Draft)*
 - **160_some_order_theory.tex**: Bounds, extrema, complete lattices, and the Knaster–Tarski fixed-point theorem. *(Active Draft)*
 - **170_paradoxes.tex**: Analysis of classical paradoxes. *(Active Draft)*
 - **180_many-valued.tex**: Many-valued and uncertain-value experiments accompanying Alternative 3. *(Preserved Alternative 3)*
 - **190_union_intersection.tex**: Formal treatment of union and intersection operations on classes. *(Active Draft)*
-- **199_languages.tex**: Simple-type checking, denotational semantics, strong normalization, confluence, and decidable conversion. *(Active Draft)*
+- **199_languages.tex**: Simple-type checking, denotational semantics, strong normalization, confluence, and decidable conversion, including a proved Boolean conditional extension. *(Active Draft)*
 - **200_relations.tex**: Theory of relations between classes. *(Active Draft)*
 - **200_uniqueness.tex**: Uniqueness principles and their applications. *(Active Draft)*
 - **210_partial_functions_semantics.tex**: Farmer's PFOL, iota-definedness, and Kleene equality. *(Preserved Alternative 4)*
 - **220_simpler_img_thms.tex**: Simpler image theorems for functions between classes. *(Active Draft)*
 - **230_analysis.tex**: Foundations of real analysis within the class framework. *(Active Draft)*
-- **250_topology.tex**: Basic topology built on the class framework. *(Active Draft)*
+- **250_topology.tex**: Basic topology, proper ultrafilters, the ultrafilter criterion for compactness, and set-indexed Tychonoff under Choice. *(Active Draft)*
 - **260_linear_algebra.tex**: Linear algebraic structures expressed via classes. *(Active Draft)*
 - **270_measure_theory.tex**: Measure construction tools, integral convergence, and completeness of function spaces. *(Active Draft)*
-- **280_functional_analysis.tex**: Duality, Banach-space principles, Vitali convergence, and a proved sequential finite-measure Dunford–Pettis theorem. *(Active Draft)*
+- **280_functional_analysis.tex**: Duality, Banach-space principles, Vitali convergence, and finite-measure Dunford–Pettis in both sequential and topological weak-compactness forms. *(Active Draft)*
 - **290_probability_theory.tex**: Probability theory within the class framework. *(Active Draft)*
 - **300_category_theory.tex**: Categorical foundations compatible with Morse–Kelley theory. *(Active Draft)*
 - **310_differential_geometry.tex**: Local Euclidean structure, connected components, and path connectedness. *(Active Draft)*
@@ -108,10 +108,12 @@ outlines. The active citations now have a local `references.bib`; its comments
 record the restored sources and the replacement of an unidentified citation.
 The companion Dunford–Pettis source is absent, but chapters 260–290 are now
 included in the assembled book and develop the analytic prerequisites.
-The sequential finite-measure Dunford–Pettis equivalence now has both
-directions proved, together with its functional-analytic prerequisites.
-This does not assert the separate equivalence with topological weak
-compactness without an additional theorem.
+For real L1 on a finite positive measure space, the Dunford–Pettis
+equivalence is now proved in full: uniform integrability is equivalent
+to compactness of the weak closure and to the weak subsequence criterion.
+The proof supplies its topological prerequisites explicitly, including
+weak compactness of Hilbert balls and weakly convergent subsequences
+from weakly compact subsets of normed spaces.
 
 ## Mathematical Development in This Revision
 
@@ -125,13 +127,21 @@ comprehension and closure assumptions do not imply.
 The descriptor chapters now contain scoped finite models, normalization,
 conservativity, and selector-transport results. Ordinal-ranked class-parameter
 selection supplies the proposed witness equivalence under explicit stronger
-assumptions. The type chapter proves finite-stage W-recursion, constructs set-level
+assumptions. The type chapter separates schematic predicates from class
+objects: collecting set instances preserves exactly the set-valued part
+of a predicate, and option storage is proved with explicit sethood guards.
+A countable-syntax diagonal argument records the limits of finite closed
+denotations; no uniform internal truth predicate is asserted. The chapter
+also proves finite-stage W-recursion, constructs set-level
 M-types by finite addresses, and obtains W-types for arbitrary set arities
 from their well-founded trees. The logic chapter proves substitution and
 locality for its classical fragment, a diagonal construction under an
 explicit coding hypothesis, and Löb's theorem under explicit derivability
 hypotheses. The language chapter proves simple-type checking,
 preservation, strong normalization, confluence, and decidable conversion.
+Its separate Boolean extension adds a two-point model and typed
+conditionals, with the new substitution, progress, reducibility, and
+confluence cases proved explicitly.
 The categorical development connects recursion and coinduction to universal
 properties. Independent reviewers checked these clusters and corrected
 capture conditions and provability-soundness assumptions.
@@ -140,10 +150,13 @@ The analytic chapters prove completeness of the main function spaces,
 monotone and dominated convergence, Hahn–Banach, Baire and uniform
 boundedness, real Hilbert representation,
 finite-measure L1 duality, Vitali convergence, and both directions of the
-sequential Dunford–Pettis criterion. Compact-operator approximation and
+sequential Dunford–Pettis criterion. Proper ultrafilters and Tychonoff
+under Choice then support a direct proof of the full weak-compactness
+criterion by uniformly controlled truncations. Compact-operator approximation and
 Schur's theorem provide further contrasts between weak and norm convergence.
 Probability applications distinguish
-weak, setwise, in-measure, L1, and total-variation convergence. Each result
+weak, setwise, in-measure, L1, and total-variation convergence; the weakly
+closed set of probability densities gives compactness applications. Each result
 states its local setting rather than importing every assumption used elsewhere.
 
 ## Building a Reading Copy
@@ -164,5 +177,7 @@ margin line numbers for an editing copy. The repository checks run with
 
 - Keep the active semantics and alternative systems explicitly separated.
 - Require precise source/target semantics and proved metatheory for any future translation.
-- Complete the identified proof obligations under their stated local assumptions,
-  then check any claimed connection with the implemented encodings.
+- Specify the intended Alexandrov and Strang theorems before completing those
+  planned topics; retain application outlines as outlines until their claims are fixed.
+- Extend the scoped type/storage interface only with explicit soundness proofs
+  for additional constructors, and check any claimed connection with implemented encodings.

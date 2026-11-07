@@ -93,7 +93,15 @@ are syntactic objects; their representations in SML are not object-theoretic
 classes. The chapter
 \texttt{130\_\allowbreak classes\_\allowbreak as\_\allowbreak types.tex}
 preserves older proposals under local \texttt{[OUTDATED]} labels alongside
-its explicit set models.
+its explicit set models. Its scoped predicate/type interface treats
+$\operatorname{Emb}(A)$ as a supplied schematic predicate, not as an
+object containing all values. The collection operation $\kappa$ retains
+only set instances: collecting and then testing membership recovers a
+predicate exactly when all its instances are sets. Option storage has
+explicit sethood guards, and a countable-syntax diagonal argument limits
+what finite closed expressions can denote. These results do not supply
+a uniform internal truth predicate or a soundness theorem for every
+proposed constructor.
 The local discussion explains why identifying every type with $\top$
 conflicts with the intended uniqueness of the term--type relation. This
 objection concerns that interpretation, rather than every possible use of
@@ -157,7 +165,11 @@ assumptions from bare comprehension.
 The classes-as-types chapter constructs Boolean, option, list, W-, and
 M-type models in explicit set-sized settings. The language chapter
 separately studies a specified simple syntax: type checking, substitution,
-preservation, normalization, and confluence. The category chapter explains
+preservation, normalization, and confluence. Its Boolean operational
+extension adds a two-point type and conditionals with both branches
+typed; the new substitution, progress, normalization, and confluence
+cases are proved separately, yielding decidable typed conversion.
+The category chapter explains
 recursion and corecursion through initial algebras and final coalgebras,
 and derives fusion, induction, and coinduction principles. A semantic
 model and a syntactic decision procedure are distinct results, even when
@@ -165,12 +177,24 @@ they use the same type names.
 
 \paragraph{The analytic route.}
 Metric compactness and finite-dimensional normed spaces supply the
-topological preliminaries. Measure theory constructs the integral and
+initial topological preliminaries. The topology chapter also proves
+proper ultrafilter extension, the ultrafilter criterion for compactness,
+and set-indexed Tychonoff in an explicit classical setting with Choice. Measure theory constructs the integral and
 proves its convergence theorems and function-space completeness.
 Functional analysis then develops duality and Banach-space principles,
 compact operators, uniform integrability, and the sequential
-finite-measure Dunford--Pettis criterion. The probability applications
-compare weak, setwise, in-measure, and total-variation convergence.
+finite-measure Dunford--Pettis criterion. A further argument proves
+the full topological equivalence for real $L^1$ on a finite positive
+measure space: uniform integrability, compactness of the weak closure,
+and the weak subsequence criterion are equivalent. Its prerequisites
+include Hilbert-ball weak compactness via products and Riesz
+representation, preservation of uniform integrability under weak
+closure, and weak subsequences in weakly compact subsets of normed
+spaces; uniformly controlled truncations provide the ultrafilter proof.
+The probability applications compare weak, setwise, in-measure, and
+total-variation convergence and prove that probability densities form
+a weakly closed set, giving compactness results for their uniformly
+integrable families.
 The examples distinguish sequences from nets and finite measure from
 infinite counting measure; those changes of setting matter to the
 conclusions. Each chapter records the choice assumptions actually used.
@@ -185,7 +209,8 @@ The chapter \texttt{020\_\allowbreak descriptors.tex} supplies the descriptor co
 its finite selection model.
 The historical iota and family constructions introduce further local variants.
 A heading marked as an outline or a proof sketch indicates the extent of the
-current development. The files
+current development. In particular, the planned Alexandrov and Strang
+topics still require a specified theorem and hypotheses. The files
 \texttt{025\_\allowbreak unified\_\allowbreak descriptors.tex} and
 \texttt{035\_\allowbreak unified\_\allowbreak type\_\allowbreak semantics.tex} are retained only as rejected,
 non-normative drafts marked \texttt{[OUTDATED]}.

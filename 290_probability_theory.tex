@@ -151,6 +151,61 @@ is $K$. The empty family, including the only possible family when
 $\mu(\Omega)=0$, satisfies the conclusions directly.
 \Done
 
+\begin{theorem}[Attainment under domination and moment constraints]
+\label{thm:attained_density_expectations}
+Let $h\in L^1(\mu;\mathbb R)$ be nonnegative almost everywhere.
+Let $(\phi_i)_{i\in I}$ be a set-indexed family in $L^\infty(\mu;\mathbb R)$
+and $(c_i)_{i\in I}$ a family of real numbers. Suppose the family
+\[
+C=\left\{f\in\mathcal D_\mu:
+ f\leq h\text{ a.e.},\quad
+ \int\phi_i f\,d\mu=c_i\text{ for every }i\in I\right\}
+\]
+is nonempty. Then $C$ is weakly compact. For every bounded observable
+$\psi\in L^\infty(\mu;\mathbb R)$, there are $f_-,f_+\in C$ such that
+\[
+\int\psi f_-\,d\mu
+ \leq\int\psi f\,d\mu
+ \leq\int\psi f_+\,d\mu\qquad(f\in C).
+\]
+No countability or finiteness condition on $I$ is required.
+\end{theorem}
+\Proof
+The condition $f\leq h$ almost everywhere is equivalent to
+\[
+\int_A f\,d\mu\leq\int_A h\,d\mu\qquad(A\in\mathcal A).
+\]
+One implication is monotonicity of the integral. For the converse,
+apply the positivity argument from Proposition~\ref{prop:density_set_weak_closed}
+to $h-f$: its integral on every measurable set is nonnegative, so
+$h-f\geq0$ almost everywhere. Each displayed inequality defines a
+weakly closed half-space. Together with the weakly closed density set
+and the weakly closed moment hyperplanes, these inequalities express
+$C$ as an intersection of weakly closed sets. Thus $C$ is weakly closed,
+also for an arbitrary set of moment constraints.
+
+All its members satisfy $0\leq f\leq h$ almost everywhere. Consequently
+\[
+\sup_{f\in C}\int_{\{f>M\}} f\,d\mu
+ \leq\int_{\{h>M\}}h\,d\mu\longrightarrow0.
+\]
+The vanishing-tail lemma makes $C$ uniformly integrable. Theorem~
+\ref{thm:DP_weak_compact_finite} now gives weak compactness, since $C$
+is already weakly closed. The objective $f\mapsto\int\psi f\,d\mu$
+is weakly continuous, so its image is a nonempty compact subset of
+$\mathbb R$. Such a subset has a minimum and maximum: it is bounded,
+and its infimum and supremum belong to it by closedness. Their preimages
+in $C$ give $f_-$ and $f_+$.
+\Done
+
+The nonemptiness hypothesis is a genuine feasibility condition on the
+moments. Without moment constraints, the dominated density family is
+nonempty exactly when $\int h\,d\mu\geq1$. Necessity follows by
+integrating $f\leq h$. For sufficiency put
+$H=\int h\,d\mu\geq1$ and take $f=h/H$: this is a density and
+$0\leq f\leq h$. Extra prescribed moments may make the family empty,
+so the theorem does not assert feasibility of arbitrary numerical data.
+
 \begin{proposition}[Setwise testing for densities]
 For probability densities $f_n$ and $f$, the following are equivalent:
 \[
@@ -399,7 +454,8 @@ measures. But $\|f_n-1\|_1=\|r_n\|_1=1$, so their total variation
 distance from Lebesgue probability measure is always $1/2$.
 Even uniform boundedness of the densities does not turn setwise
 convergence into total variation convergence. It does supply uniform
-integrability and the weaker subsequence compactness conclusion above.
+integrability and hence compactness of the weak closure, as well as the
+weak subsequence conclusion above. Neither conclusion is norm compactness.
 \end{example}
 
 \input{END.tex}

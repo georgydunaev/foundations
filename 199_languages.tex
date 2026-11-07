@@ -1175,6 +1175,35 @@ step preserves the unique normal form, and agreement exhibits a
 conversion by reversing one normalization path.
 \Done
 
+\begin{proposition}[Conservativity over the original simple calculus]
+Let $\Gamma$, $\alpha$, and the terms in question use only the original
+simple signature: no $\mathsf{Bool}$ in types or annotations, and no
+Boolean constants or conditional constructors. Such a judgement
+$\Gamma\vdash e:\alpha$ is derivable in the extended calculus if and
+only if it is derivable in the original calculus. For two such terms
+typed at $\alpha$ in $\Gamma$, conversion in the extended calculus
+holds if and only if original beta--projection conversion holds,
+even when an extended conversion path passes through new syntax.
+\end{proposition}
+\Proof
+The extended checker has unchanged clauses on every original
+constructor. Structural induction therefore gives the same result
+on an original term in an original context. Correctness of the two
+checkers proves the typing claim; the converse also follows by
+retaining the original typing derivation.
+
+Every reduct of an original term is again original: beta substitution
+and projection introduce no new constructors or type annotations.
+No Boolean contraction is available in such a term. Thus its old
+and extended reduction sequences, and hence its normal form, agree.
+If two original terms are convertible in the extension, extended
+confluence makes these normal forms equal modulo alpha-conversion.
+Their original normalization paths then witness original conversion.
+Conversely every original conversion step is an allowed extended
+step. This proves the claim without assuming that an arbitrary
+extended conversion path stays inside the original syntax.
+\Done
+
 A closed Boolean term has normal form either $\mathsf{false}$ or
 $\mathsf{true}$. Indeed, a full normal form permits no call-by-value
 step, so progress makes it a value, and Boolean canonical forms give
