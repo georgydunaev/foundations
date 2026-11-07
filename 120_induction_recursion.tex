@@ -1,30 +1,74 @@
 \def\topic{Induction \& Recursion}
 \input{BEGIN.tex}
-\section{Well--founded class and regularity reformulation}
+\section{Well-founded sets and a reformulation of regularity}
+The first construction identifies the least class closed under forming set
+subclasses. It uses MK comprehension, since the defining predicate
+quantifies over classes. Regularity is introduced afterward as the claim
+that every set belongs to this class. The transfinite recursion theorem below uses the ordinary set-image,
+pairing, and union principles in addition to the ordinal results. These
+assumptions are stated here because the separate union-theorem chapter
+asks which of them can be derived from a smaller basis.
+All auxiliary graphs in this section use ordinary Kuratowski pairs of
+sets. Their formation does not depend on the recursive pairing construction
+that will use membership recursion.
+
 %Theorems about transifinite- and epsilon- induction and recursion.
-\begin{recall}[transfinite recursion]
-Let $G:\V\to\V$, then $\exists! F:\Ord\to\V$, such that
-$F(a) = G(F\restriction a)$.
-\end{recall}
-offtopic:
-Variable is a syntatic atom.\\
-Object is a semantic atom.\\
+\begin{theorem}[Transfinite recursion with set-valued stages]
+Assume class comprehension, pairing of sets, the set-image principle,
+heredity (separation), the union axiom, and the ordinal ordering results. For a class function
+$G:\V\to\V$, there is a unique class function $F:\On\to\V$ such that
+\[
+F(\alpha)=G(F\restriction\alpha)\qquad(\alpha\in\On).
+\]
+The domain is $\On$, the class of ordinal sets, rather than the predicate
+$\Ord$. Each restriction $F\restriction\alpha$ is a set graph, so it is
+an admissible argument of $G$.
+\end{theorem}
+\begin{proof}
+Call a set function $p$ an approximation if its domain is an ordinal
+$\beta$ and $p(\gamma)=G(p\restriction\gamma)$ for each $\gamma<\beta$.
+Every restriction of an approximation to an initial ordinal segment is
+an approximation. Any two
+approximations agree on their common domain: otherwise their least index
+of disagreement has identical earlier restrictions, and applying $G$
+gives identical values there, a contradiction.
 
-Functional is a syntactic function.\\
-Family is a semantic function.\\
+By ordinal induction, there is an approximation on every ordinal domain.
+The empty graph handles zero. Given the approximation $p$ on $\beta$,
+extend it by the pair $(\beta,G(p))$ to obtain one on $\beta+1$.
+Pairing and union make this extended graph a set. At a nonzero limit
+$\lambda$, the unique approximations $p_\beta$ for $\beta<\lambda$
+form a set by the set-image principle. Their union is a set function by
+compatibility, has domain $\lambda$, and satisfies the same recurrence:
+for $\gamma<\lambda$, any stage beyond $\gamma$ supplies its value and
+all earlier values. This completes the induction.
 
-Evaluation is a syntactic image.
+Define $F$ by collecting the pairs appearing in some approximation.
+This is class comprehension over set graphs, not a collection of proper
+classes. Compatibility makes $F$ a function, and the approximations on
+successor domains show that its domain is all of $\On$. For each ordinal
+$\alpha$, its restriction is the unique set approximation on $\alpha$,
+so the recurrence holds. Finally, two class solutions would have a least
+ordinal of disagreement; the same earlier-restriction argument excludes
+that disagreement. Thus the solution is unique.
+\end{proof}
+\paragraph{Syntax and interpretation.}
+A variable is a syntactic symbol, while its assigned value belongs to the
+semantic domain. Similarly, a functional symbol belongs to the language;
+a family is a mathematical object that can interpret suitable instances of
+function notation. Keeping these levels separate is useful when formalizing
+recursion.
 
 \begin{definition}[class of well--founded sets W]
-The class of well--founded sets $\W$ is being defined as an intersection of all those classes, which contain each of their subsets in themselves.
+The class of well--founded sets $\W$ is defined as the intersection of all classes $Q$ satisfying $\power Q\subseteq Q$. Here a subset means a subclass that is a set.
 \[
 \W
 \eqdef
 \cc{x}{\forall Q,\ ((\power Q\subclass Q)\implies (x\in Q))}
 \]
 \end{definition}
-\begin{notation}[?]
-For such intersections of proper classes satisfying some property the following notation may be used:
+\begin{notation}[intersection over a class predicate]
+An intersection indexed by a predicate on classes can be written as follows. Its index range is not itself assumed to be a class:
 %\[
 %\W\eqdef \bigwedge_Q (\power Q\subclass Q).
 %\]
@@ -40,13 +84,16 @@ For such intersections of proper classes satisfying some property the following 
 %)
 \fi
 \[
-\bigcap_{\psi(Q)} t(Q) 
+\bigcap_{\psi(Q)} t(Q)
 \eqdef
 \cc{x}{\forall Q, \psi(Q) \implies x\in t(Q)}
 \]
 
 
 
+For the following image notation, assume every $t(y)$, for $y\in Y$,
+is a set. If values may be proper classes, use the predicate-indexed binder
+instead, since ordinary class comprehension retains only set values.
 \[
 \bigcap_{y\in Y} t(y)
 =\bigcap\cc{t(y)}{y\in Y}
@@ -63,11 +110,11 @@ For such intersections of proper classes satisfying some property the following 
 = \bigcap (y\mapsto t(y))[Y]
 \]
 \end{notation}
-\begin{recall}[epsilon recursion]
-If $G:\V\to \V$, then  $\exists! F:\W\to\V$, s.t. $F(a) = G(F\restriction a)$.
-\end{recall}
-\begin{lemma}[W is well--founded]
-The class of well--foundead sets is well--founded itself.
+The membership-recursion theorem will be proved below, after establishing
+transitivity and induction on $\W$. Its existence proof also needs the
+set-formation principles used to collect compatible local solutions.
+\begin{lemma}[minimality of W]
+The class $\W$ is contained in every class closed under taking set subclasses.
 \[
 \forall Q,\ (\power Q\subclass Q) \implies (\W\subclass Q)
 \]
@@ -80,14 +127,14 @@ To show: $m\in Q$.
 \[
 (m\in\W)
 \IMPLIES
-\forall D,\ ((\power D\subclass D)\implies (x\in D))
+\forall D,\ ((\power D\subclass D)\implies (m\in D))
 \]
 Set $D:=Q$.\\
 The assumption $(\power Q\subclass Q)$ together with the last statement lead to $(m\in Q)$ via specification and modus ponens.
 %So the statement $(\W\subclass Q)$ is proven.
 \DoneNoPar
 \end{lemma}
-\begin{note}[?]
+\begin{note}[regularity as exhaustion of the universe]
 Due to this lemma, the axiom of regularity may be formulated as $(\V\subclass\W)$.
 \end{note}
 \begin{theorem}[W contains its subsets]
@@ -108,7 +155,7 @@ To show: $(x\set)\land(\forall Q,\ (\power Q\subclass Q)\implies (x\in Q))$.\\
 Fix $Q$.\\
 Assume $(\power Q\subclass Q)$.\\
 To show $(x\in Q)$.\\
-The propostion $(\W\subclass Q)$ is proven by the specification of the previous lemma and then by modus ponens of the result together with the assumption.
+The proposition $(\W\subclass Q)$ is proven by the specification of the previous lemma and then by modus ponens of the result together with the assumption.
 \[
 (x\subclass\W)
 \LAND
@@ -134,163 +181,177 @@ The propostion $(\W\subclass Q)$ is proven by the specification of the previous 
 \Done
 \end{theorem}
 %In fact, the regularity axiom i
+\begin{theorem}[Transitivity and induction on W]
+Without assuming that every set is well-founded,
+\[
+\W=\power\W.
+\]
+In particular, every member of a member of $\W$ belongs to $\W$.
+For every class $A$, the following local induction principle holds:
+\[
+\W\cap\power A\subseteq A\quad\Longrightarrow\quad\W\subseteq A.
+\]
+\end{theorem}
+\begin{proof}
+We already know $\power\W\subseteq\W$. Monotonicity of the powerclass
+operation gives $\power(\power\W)\subseteq\power\W$. Thus
+$\power\W$ is one of the closed classes in the defining intersection,
+and minimality gives $\W\subseteq\power\W$. This proves the equality
+and transitivity.
+
+For induction, suppose $\W\cap\power A\subseteq A$ and put
+$Q=A\cup(\V\setminus\W)$. If a set $x$ is a subclass of $Q$, either
+$x\notin\W$, in which case $x\in Q$, or $x\in\W$. In the latter
+case all members of $x$ lie in $\W$, so $x\subseteq Q$ implies
+$x\subseteq A$. The induction hypothesis gives $x\in A\subseteq Q$.
+Hence $\power Q\subseteq Q$. Minimality yields $\W\subseteq Q$,
+which is exactly $\W\subseteq A$.
+\end{proof}
+
+\begin{corollary}[Foundedness on W]
+Every nonempty subclass $S$ of $\W$ has a member $m$ with
+$m\cap S=\emptyclass$.
+\end{corollary}
+\begin{proof}
+Otherwise every member of $S$ has a member in $S$. Put
+$A=\W\setminus S$. If $x\in\W$ and $x\subseteq A$, then $x$ cannot
+belong to $S$, so $x\in A$. Induction gives $\W\subseteq A$, contrary
+to nonemptiness of $S$.
+\end{proof}
+
+\begin{lemma}[Set transitive closures inside W]
+Assume additionally Infinity, pairing, union, heredity, and the set-image
+principle. For each $x\in\W$ there is a least transitive set $T_x$
+containing $x$ as an element, and $T_x\subseteq\W$.
+\end{lemma}
+\begin{proof}
+Form $B_0=\{x\}$ and $B_{n+1}=\bigcup B_n$ for $n<\omega$, and put
+$T_x=\bigcup\{B_n:n<\omega\}$. The sequence exists by the already
+proved transfinite-recursion theorem restricted to $\omega$; its rule
+uses only the preceding term. Thus this step does not assume membership
+recursion. Pairing and union make each term a set, and Infinity,
+set-image, and union make $T_x$ a set.
+
+If $z\in T_x$, then $z\in B_n$ for some $n$, so every member of $z$
+belongs to $B_{n+1}\subseteq T_x$. Thus $T_x$ is transitive. A transitive
+class containing $x$ contains every $B_n$ as a subclass, by induction on
+$n$, and therefore contains $T_x$. Finally, transitivity of $\W$ and
+$x\in\W$ give $B_n\subseteq\W$ for every $n$, hence $T_x\subseteq\W$.
+\end{proof}
+
+\begin{theorem}[Membership recursion on W]
+\label{thm:membership_recursion_on_W}
+Assume MK comprehension and the set-formation and ordinal principles used
+above. For every class function $G:\V\to\V$ there is a unique class
+function $F:\W\to\V$ satisfying
+\[
+F(x)=G(F\restriction x)\qquad(x\in\W).
+\]
+Every restriction in this equation is a set graph. The assertion does not
+require the global regularity axiom $\W=\V$.
+\end{theorem}
+\begin{proof}
+An approximation is a set function $p$ with a transitive domain
+$D\subseteq\W$ such that
+$p(t)=G(p\restriction t)$ for every $t\in D$. The restrictions are sets
+by heredity. Two approximations agree on their common domain: if their
+disagreement class were nonempty, foundedness on $\W$ would give a
+member $t$ with no earlier disagreement. Both transitive domains contain
+every member of $t$, so the restrictions at $t$ agree. Applying $G$
+contradicts disagreement at $t$.
+
+We prove by induction on $\W$ that an approximation exists on $T_x$.
+Suppose this is known for every $y\in x$. Compatibility makes the
+approximation $p_y$ on $T_y$ unique. The set-image principle therefore
+collects $\{p_y:y\in x\}$ into a set; no choice of local solutions is
+needed. Its union $q$ is a set function with transitive domain
+$D=\bigcup_{y\in x}T_y$. For each $t\in D$, one of the $p_y$ contains
+$t$ and every member of $t$ in its domain, so compatibility gives
+$q(t)=G(q\restriction t)$. Thus $q$ is an approximation, and $x\subseteq D$.
+
+If $x\in D$, retain $q$. Otherwise adjoin the single pair
+$(x,G(q\restriction x))$. The enlarged domain $D\cup\{x\}$ is
+transitive, and the old equations remain valid: no member of $D$ has
+$x$ as a member, by transitivity of $D$. The new equation at $x$ holds
+by construction. In either case the resulting transitive domain contains
+$x$, hence contains $T_x$ by minimality. Restricting the graph to $T_x$
+gives the required approximation. This completes the induction.
+
+Let $F$ collect the pairs belonging to some approximation. Comprehension
+quantifies over set graphs, and compatibility makes this class a function
+with domain $\W$. The approximation on $T_x$ agrees with $F$ on $x$
+and at $x$, so $F\restriction x$ is a set and the recurrence holds.
+If $F_1,F_2$ both satisfy the recurrence, induction on $\W$ makes them
+agree: agreement on the members of $x$ gives equal restricted graphs and
+then equal values at $x$. This proves uniqueness.
+\end{proof}
+
 \begin{axiom}[reformulation of regularity/epsilon induction axiom]
 \[
 (\V\subclass \W)
 \]
 \end{axiom}
 \section{Height of a set}
+Two related measures occur in this investigation. The first records finite
+membership depth, with $\omega$ representing unbounded finite depth. The
+second records ordinal rank. They agree on finite ordinals, but their
+recursions differ at and above limit stages; they are kept separate below.
+Assume regularity, well-founded recursion, and sethood of the ordinal images
+used in the recursions.
 
-\begin{definition}[height function]
-Let $h(x)$ denote the height of a the set, which is the maximum length, minus one, of a $\ni$--chain, started from $x$.
-\end{definition}
-
-\begin{example*}[computations]
-$h(\emptyclass)$=0,\\
-$h(\{\emptyclass\})$=1,\\
-$h(\{\emptyclass,\{\emptyclass\}\})$=2,\\
-and in general if $n$ is a finite ordinal number, then $h(n)=n$.
-\end{example*}
+\subsection{Depth with left ordinal addition}
 \begin{definition}[height]
 \label{height}
-The height function is defined via $\in$--recursion:\\
-Base:
+The author's height convention is
 \[
-h(\emptyset) \ceq 0.
+h(\emptyclass)\ceq 0,\qquad
+h(x)\ceq 1+\sup\cc{h(y)}{y\in x}\quad(x\ne\emptyclass).
 \]
-Step: (in case if $x\neq \emptyset$)
-\[
-h(x) \ceq 1+\sup \cc{ h(y) }{ y \in x}.
-\]
-(It is important here, that 1 (one) is added from the left side, so $1+\omega = \omega$ in case if the heights of elements of a set $x$ are not bounded. If it is added from the right, then, i will also keep track of the amounts of arbitrary deep elements, so it will have a different, more nuanced, meaning.)
-\iffalse
-If maximum exists, then
-\[
-h(x) \ceq 1+\max \cc{ h(y) }{ y \in x}.
-\]
-else
-\[
-h(x) \ceq \sup \cc{ h(y) }{ y \in x}.(BAD!)
-\]
-New:
-\[
-h(x) \ceq \inf(\On\setminus \sup \cc{ h(y) }{ y \in x}).
-\]fi
-New:
-\fi
-It is also possible to define it the following way:
-\[
-h(x) \ceq \inf\cc{\alpha\in\On}{h[x]\subseteq \alpha}.
-\]
-(this variant depends on both regularity and also limitation of size axioms, otherwise it may not be totally defined on $\V$)
+The addition is ordinal addition with $1$ on the left. In particular,
+$1+\omega=\omega$, so once the depths of members are unbounded among the
+finite ordinals, this measure records $\omega$.
 \end{definition}
-\iffalse
-Property:
-\[
-h(x) = \sup h[x]
-\]
-$G(R) \ceq \sup(\ran(R)) = \union(\ran(R))$\\
-via epsilon recursion.\\
-$h : \V\to\V$\\
-$h(a) = \sup(\ran(h\restriction a) )$\\
-\fi
 
-% height = depth
-\begin{lemma}[set's height is an ordinal less or equal to omega]
-The height of any set is an ordinal.
-%Without regularity axiom, which forbids infinite membership chains:
+\begin{example*}[finite values]
 \[
-(h:\V\to\omega\cup\{\omega\})
+h(\emptyclass)=0,\qquad
+h(\{\emptyclass\})=1,\qquad
+h(\{\emptyclass,\{\emptyclass\}\})=2.
+\]
+More generally, $h(n)=n$ for each finite ordinal $n$.
+\end{example*}
+
+\begin{lemma}[height is at most omega]
+\[
+h:\V\to\omega\cup\{\omega\}.
 \label{lem:depthinon}
-\]%\omega
+\]
 \end{lemma}
-\ProofNoPar\ (first variant)\\
-Using the epsilon induction.\\
-Base of the epsilon induction:%, which may be ommited:
-\iffalse
-\[
-h(\emptyclass) = \sup_\N h[\emptyclass] = \sup_\N \emptyclass = 0
-\]
-\fi
-\[
-h(\emptyclass) = 0 \in \omega
-\]
+\begin{proof}
+Use membership induction. The empty set has height $0$. Suppose the
+heights of all members of a nonempty set $x$ lie in
+$\omega\cup\{\omega\}$. Their supremum is either finite or $\omega$.
+Adding $1$ on the left gives a finite ordinal in the first case and
+$\omega$ in the second. Thus $h(x)$ also lies in the stated range.
+\end{proof}
 
-Step of the epsilon induction:\\
-Assume $\forall y\in x,\ h(y)\in \On$.\\
-To show: $h(x)\in\On$.\\
-It follows from the assupmtion, that $h[x]\subclass\On$.\\
-\[
-\forall B, \left(B\subclass\On\middle) \implies \middle(\Ord\middle(\union B\middle)\right)
-\]
-The $x$ is a set; $h$ with a domain restricted to x is a function.\\
-Therefore $h[x]$ is also a set.\\
-Therefore $\union h[x]$ is also a set.\\
+This measure need not decrease strictly along membership: for example,
+$h(\omega)=h(\{\omega\})=\omega$. It therefore cannot automatically replace
+ordinal rank in an argument requiring a strictly decreasing measure.
 
+\subsection{The least strict ordinal bound: rank}
+The alternative construction from the draft is best given a separate
+symbol, $r$, so that its recurrence is not confused with that of $h$:
 \[
-\left(\union h[x]\set\middle)
-\LAND
-\Ord\middle(\union h[x]\middle)
-\IMPLIES 
-\middle(\union h[x]\in\On\right)
+r(x)\ceq\inf\cc{\alpha\in\On}{r[x]\subseteq\alpha}
+       =\sup\cc{r(y)+1}{y\in x}.
 \]
-\[
-h(x) = \sup h[x] = \union h[x]
-\]
-Therefore $(h(x)\in\On)$.
-\Done
-
-\ProofNoPar\ (second variant)\\
-Using the epsilon induction.\\
-\[
-((\power Q\subclass Q) \implies (\V\subclass Q))
-\]
-\[
-Q\eqdef \cc{x\in\V}{h(x)\in\On}
-\]
-If $\V\subclass Q$ then $\forall x\in\V,\ h(x)\in\On$, and the proof is done.\\
-To Show: $\power Q\subclass Q$, or, equivalently, $\forall x,\ (x\set)\land (x\subclass Q) \implies (x\in Q)$.\\
-\[
-(x\subclass Q)
-\IMPLIES
-(h[x]\subclass \On).
-\]
-\[
-\IMPLIES
-\Ord\left(\union h[x]\right)
-\]
-\[
-\IMPLIES
-\Ord(\sup h[x])
-\]
-\[
-\IMPLIES
-\Ord(h(x))
-\]
-\dots
-
-\[
-(s\set)
-\LAND
-(h\text{ set--valued function})
-\IMPLIES
-(h(x)\set)
-\]
-\[
-(h(x)\set)
-\LAND
-\Ord(h(x))
-\IMPLIES
-(h(x)\in\On)
-\]
-\[
-(x\in\V)
-\LAND
-(h(x)\in\On)
-\IMPLIES
-(x\in Q)
-\]
-\Done
-
+The condition $r[x]\subseteq\alpha$ says that every member-height is
+strictly below $\alpha$. This is the usual rank recurrence, with
+$r(\emptyclass)=0$. For example,
+$r(\omega)=\omega$ but $r(\{\omega\})=\omega+1$.
+The displayed infimum requires the set of member-ranks to have an ordinal
+bound. Under the assumptions stated at the start of this section, recursion
+and the boundedness of sets of ordinals provide that bound.
 
 \input{END.tex}

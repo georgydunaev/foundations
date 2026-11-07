@@ -1,41 +1,77 @@
 \def\topic{}
 \input{BEGIN.tex}
 %(Previous implementation)
-\section{Relational image/glare theorems}
+\section{Relational image and glare}
+In this section, relations have set arguments: $F\subseteq\V\times\V$.
+The image uses an existential condition; the author's term \emph{glare}
+uses the corresponding universal condition. We write $F^{-1}$ and
+$F^\top$ interchangeably for the converse relation.
+The remarks about families examine a different encoding and should be
+read as comparisons, rather than as definitions of relational membership.
+Throughout the relational calculations, the domain and range are graph
+projections:
+\[
+\dom(F)=\cc{x}{\exists y\in\V,\ (x,y)\in F},\qquad
+\ran(F)=\cc{y}{\exists x\in\V,\ (x,y)\in F}.
+\]
+These are not defined by testing the sethood of a totalized evaluation.
+In particular, the domain of $\Sigma F$ below is its relational domain,
+even when that relation is not a functional or canonical family.
+
 \begin{definition}[(relational) membership relation]
 \[
 \mbox{E} \ceq \cc{(x,y)}{x\in y}
 \]
 \end{definition}
-\begin{remark}[no "familial membership relation"]
-There is a loss of meaning, when consider "familial membership relation", because it is "one--to--many", not functional, what is required for a family.
-\[
-``\mbox{E}_{\mathrm{fam}}" = \cc{(x,b)|(x\in Y)\land(b\sss Y)\} = V\times(\{\emptyclass\}\cup\{\{q\}}{q\in V}) = (x \mapsto V)
-\]
+\begin{remark}[Membership and family evaluation]
+Membership is generally one-to-many, so it is not itself the graph of a
+single-valued function. Encoding all possible outputs by a family and
+then taking their union loses the individual membership relation: for a
+fixed set $x$, every set $q$ belongs to some set $Y$ containing $x$ (take
+$Y=\{x,q\}$). Thus the union of those possible outputs is $\V$.
 \end{remark}
 \begin{definition}[(relational) inverse membership relation]
 \[
 \invE \ceq \cc{(y,x)}{x\in y} = \mbox{E}^{-1}
 \]
 \end{definition}
-\begin{remark}[no "familial inverse membership relation"]
-There is a loss of meaning, when consider "familial inverse membership relation", because it is "one--to--many", not functional, what is required for a family.
-%There is familial inverse membership relation, is also not functional, and it is, in fact, equal to "familial equality relation of sets", which itself is functional. 
-\[
-``\invE_{\mathrm{fam}}" = \cc{(y,b)}{(x\in y)\land(b\sss x)} = \left(y \mapsto \left(\union y\right)\right).
-\]
+\begin{remark}[Inverse membership and family evaluation]
+Likewise, the inverse membership relation lists the individual members
+of a set $y$. Combining those outputs by union produces $\union y$.
+This union-valued operation is a useful family evaluation, but it does
+not retain the graph of the original one-to-many relation.
 \end{remark}
 \begin{definition}[relational image]
 \[
 F[A]\ceq \cc{b}{\exists a\in A,\  (a,b)\in F}
 \]
 \end{definition}
+\begin{note}[Graph image and evaluation image]
+The newer Obelisk entry \texttt{Def\allowbreak{}Relational\allowbreak{}Image} (3.26) defines an
+\emph{evaluation image},
+\[
+\cc{b}{\exists a\in A,\ f(a)=b},
+\]
+using its own evaluation operation. The definition immediately above is the
+\emph{graph image}, which retains each output separately. They agree
+for an ordinary single-valued graph on inputs in its domain, but can
+differ for a relation with several outputs.
+
+For example, put $0=\emptyclass$, $1=\{0\}$, and
+$F=\{(0,0),(0,1)\}$. The graph image of $\{0\}$ is $\{0,1\}$.
+Union evaluation combines the two outputs into
+$F(0)=\union\{0,1\}=1$, so its evaluation image is $\{1\}$.
+The image--union and glare--intersection theorems here use the graph
+convention throughout; the catalog's evaluation image is a separately
+scoped construction.
+\end{note}
+
 \begin{definition}[relational glare]
 \[
 F\langle A \rangle\ceq \cc{b}{\forall a\in A,\  (a,b)\in F}
 \]
 \end{definition}
-\begin{theorem}[?]
+\begin{theorem}[Union as a relational image]
 \[
 \invE[A] = \union A
 \]
@@ -58,7 +94,7 @@ So $(w,a)\in \mbox{E}$.
 So $(a,w)\in \mbox{E}^{\top}$.
 From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A])$.\\
 \Done
-\begin{theorem}[?]
+\begin{theorem}[Intersection as a relational glare]
 \[
 \invE \langle A \rangle = \intersection A
 \]
@@ -68,8 +104,10 @@ From $(a,w)\in \mbox{E}^{\top}$ and $(a\in A)$, we have $(w\in \mbox{E}^{\top}[A
 %(or even "$\reflectbox{$\mbox{E}$}\langle A\rangle = \intersection A$")
 \end{theorem}
 \Proof
+Fix a set $v$. This restriction supplies the sethood condition in each
+comprehension, including when $A$ is empty. Then
 \[
-v\in \mbox{E}^{\top}\langle A \rangle 
+v\in \mbox{E}^{\top}\langle A \rangle
 \IFF
 \forall a\in A,\ (a,v)\in \mbox{E}^{\top}
 \]
@@ -86,33 +124,180 @@ v\in \mbox{E}^{\top}\langle A \rangle
 v \in \intersection A
 \]
 \Done
-\begin{theorem}[?]
-$(\dom(\Sigma F))\cup (F^{\top}[\{\emptyclass\}]) = \dom(F)$\\
-$
-(\dom(\Sigma F))\cap (F^{\top}[\{\emptyclass\}]) = \emptyclass
-$
-\end{theorem}
-\Proof
-\Done
-\begin{theorem}[?]
-If $(F\subseteq V\times V)$ and $(F \functional)$ and $(\emptyclass\notin\mbox{ran}(F))$ then
+\subsection{The order structure behind glare}
+The universal quantifier in glare reverses inclusion in the input.
+This is a different operation from relational image, which preserves it.
+The distinction yields a useful closure construction without a choice axiom.
+
+\begin{proposition}[Image and glare under unions]
+For classes $A,A',B$ and a relation $F\subseteq\V\times\V$,
 \[
-F=\cc{(x,(\Sigma F)[\{x\}])}{x\in \dom(\Sigma F)}
+A\subseteq A'\implies F[A]\subseteq F[A'],
+\qquad
+A\subseteq A'\implies F\langle A'\rangle\subseteq F\langle A\rangle.
+\]
+Moreover,
+\[
+F[A\cup B]=F[A]\cup F[B],
+\qquad
+F\langle A\cup B\rangle=F\langle A\rangle\cap F\langle B\rangle.
+\]
+The empty-input identities are $F[\emptyclass]=\emptyclass$ and
+$F\langle\emptyclass\rangle=\V$.
+\end{proposition}
+\Proof
+An existential witness in $A$ remains a witness in $A'$. A universal
+condition on $A'$ implies its restriction to $A$. Existential
+quantification over a binary union is a disjunction of the two
+existential conditions, while universal quantification over that union
+is their conjunction. The empty cases follow from absence of witnesses
+and vacuity, respectively. All resulting memberships concern sets.
+\Done
+
+\begin{proposition}[The polarity induced by a relation]
+Write $p(A)=F\langle A\rangle$ and
+$q(B)=F^\top\langle B\rangle$. Then
+\[
+B\subseteq p(A)\iff A\subseteq q(B).
+\]
+The operator $c(A)=q(p(A))$ is extensive, monotone, and idempotent:
+\[
+A\subseteq c(A),\qquad
+A\subseteq A'\implies c(A)\subseteq c(A'),\qquad
+c(c(A))=c(A).
+\]
+\end{proposition}
+\Proof
+Both sides of the equivalence say that $(a,b)\in F$ for every $a\in A$
+and $b\in B$. Applying it to $B=p(A)$ gives extensivity. Since both
+$p$ and $q$ reverse inclusion, their composite preserves it.
+The symmetric argument gives $B\subseteq p(q(B))$ for every $B$.
+Taking $B=p(A)$ yields $p(A)\subseteq p(q(p(A)))$. Applying $p$ to
+$A\subseteq q(p(A))$ gives the reverse inclusion. Hence
+$p(q(p(A)))=p(A)$, and applying $q$ proves idempotence.
+\Done
+
+\begin{example}[An order relation]
+Let $P$ be a partially ordered set and
+$F=\{(x,y)\in P\times P:x\leq y\}$. To keep bounds inside $P$, use
+$p_P(A)=P\cap F\langle A\rangle$ and
+$q_P(B)=P\cap F^\top\langle B\rangle$ for $A,B\subseteq P$.
+The same proof gives a closure operator $q_Pp_P$ on subsets of $P$:
+it sends a subset to the lower bounds of its upper bounds.
+If $A$ has a least upper bound $s$ in $P$, this closure is exactly
+$\{x\in P:x\leq s\}$. Indeed, $s$ is one of the upper bounds, so a
+lower bound of all upper bounds lies below $s$; conversely, $s$ lies
+below every upper bound, so every $x\leq s$ lies below them all.
+The restrictions to $P$ matter for empty inputs: unrestricted glare of
+an empty class is $\V$, whereas the upper bounds of the empty subset
+in $P$ are precisely $P$.
+\end{example}
+
+\begin{proposition}[The right adjoint of relational image]
+For a class $B$ define
+\[
+F^{\forall}(B)=\cc{x}{\forall y\in\V,\ (x,y)\in F\implies y\in B}.
+\]
+Then, for all classes $A,B$,
+\[
+F[A]\subseteq B\iff A\subseteq F^{\forall}(B).
+\]
+\end{proposition}
+\Proof
+The left condition says that every output paired with any $a\in A$
+belongs to $B$. This is exactly the statement that each such $a$ satisfies
+the defining universal condition on the right. Both implications use the
+same pair witnesses, so no functionality or choice assumption is needed.
+\Done
+
+Unlike glare, this operation is monotone in $B$: enlarging the permitted
+output class makes its universal condition easier to satisfy. It also
+contains every input outside $\dom(F)$ by vacuity. Thus glare, direct
+image, and this universal inverse operation are three distinct
+constructions. For example, for the identity relation on a set $P$ and
+$B\subseteq P$, one has
+$F^{\forall}(B)=(\V\setminus P)\cup B$, whereas its restriction to $P$
+is just $B$.
+
+\subsection{Further identities for the relational encoding}
+Here fix the expansion convention explicitly. For a relation
+$F\subseteq\V\times\V$, define
+\[
+\Sigma F=\cc{(x,z)}{\exists y\in\V,\ (x,y)\in F\land z\in y}.
+\]
+Thus $(\Sigma F)[\{x\}]$ is the union of all graph outputs at $x$.
+This definition uses only set arguments and outputs; it does not presume
+that an absent value has any particular total-evaluation default.
+
+\begin{theorem}[Domain decomposition]
+If $F$ is functional, then
+\[
+\dom(\Sigma F)\cup F^\top[\{\emptyclass\}]=\dom(F),
+\qquad
+\dom(\Sigma F)\cap F^\top[\{\emptyclass\}]=\emptyclass.
 \]
 \end{theorem}
 \Proof
+An input belongs to $\dom(\Sigma F)$ precisely when it has a nonempty
+output in $F$: an element of that output supplies the witness $z$ in
+the definition. It belongs to $F^\top[\{\emptyclass\}]$ precisely when
+$(x,\emptyclass)\in F$. Every output is either empty or nonempty, so the
+union is $\dom(F)$, even without functionality. If an input belonged to
+both pieces, functionality would identify its nonempty output with the
+empty set, a contradiction. This proves disjointness.
 \Done
-\begin{theorem}[?]
+
+\begin{theorem}[Recovery from nonempty values]
+If $F\subseteq\V\times\V$ is functional and
+$\emptyclass\notin\mbox{ran}(F)$, then
+\[
+F=\cc{(x,(\Sigma F)[\{x\}])}{x\in\dom(\Sigma F)}.
+\]
+\end{theorem}
+\Proof
+For $(x,y)\in F$, functionality gives
+\[
+z\in(\Sigma F)[\{x\}]\iff z\in y
+\]
+for every set $z$: any other output used in the expansion must equal
+$y$. Thus the fibre is the set $y$. The nonempty-value hypothesis and
+domain decomposition give $\dom(\Sigma F)=\dom(F)$. Replacing each
+output by its equal fibre therefore gives exactly the displayed graph.
+\Done
+
+\begin{remark}[What expansion forgets]
+For an arbitrary functional $F$, the same recovery formula is valid if
+its indexing domain is replaced by $\dom(F)$. The domain is then extra
+data: expansion alone forgets empty values. In particular, the empty
+relation and $\{(\emptyclass,\emptyclass)\}$ both have empty expansion,
+although their domains differ. Functionality also matters: the relation
+$\{(0,0),(0,1)\}$, with $1=\{0\}$, has the same expansion as
+$\{(0,1)\}$ and cannot be recovered from that expansion.
+\end{remark}
+
+\begin{theorem}[Image of a composite relation]
 \[
 (F \circ G)[X]=F[G[X]]
 \]
 \end{theorem}
 \Proof
+For a set $z$, membership in the left side means that there are $x\in X$
+and a set $y$ with $(x,y)\in G$ and $(y,z)\in F$. This is exactly the
+condition that $y\in G[X]$ for some $y$ with $(y,z)\in F$, or equivalently
+$z\in F[G[X]]$. Class extensionality gives the equality.
 \Done
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A choice function and the epsilon operator}
-\begin{definition}[?]
-Epsilon operator for sets, may be defined this way:
+This is a local proposal for a choice-based descriptor. Let $c$ be a
+choice function on nonempty sets, and put $S_\varphi=\cc{y}{\varphi}$.
+The formula below defines a chosen witness whenever $S_\varphi$ is a
+nonempty set. A nonempty proper class lies outside the stated domain of
+$c$; merely having a witness does not establish that $S_\varphi$ is a set.
+For empty inputs, a separate partial-value or default-value convention
+is needed.
+
+\begin{definition}[Choice-based epsilon on nonempty sets]
+For $S_\varphi\in\V\setminus\{\emptyclass\}$, define
 \[
 (\varepsilon y,\  \varphi) = c\left(\cc{y}{\varphi}\right)
 \labeltagd{def}{epsilon operator for sets}
@@ -124,63 +309,128 @@ Here the constant $\text{c}$ denotes a class--function of global choice(see \myr
 \[
 \text{c}(X)\in X
 \]
-Existence of such function follows from the axiom of limitation of size(below).\\
-Other notable facts are that axiom of limitation of size implies axiom of global choice, axiom of replacement, axiom of separation, and axiom of union.
+In the class framework with the ordinal prerequisites used in the
+L\'evy chapter, limitation of size supplies such a function by the
+construction below. The union and closure consequences have their
+own arguments and prerequisites in the corresponding chapters; they
+are not additional consequences of this definition alone.
 \end{definition}
 
-\begin{theorem}[?]
+\begin{remark}[Why the original class extension needs more data]
+The intended equivalence
 \[
-((\epsilon y,\  \varphi) \set)
-\iff
-(\exists(y\set),\ \varphi)
+((\epsilon y,\varphi)\set)
+\iff (\exists(y\set),\varphi)
 \]
+cannot follow merely by applying the preceding $c$ to the class
+$\{y:\varphi\}$. A nonempty proper class is not an argument in the
+stated domain of that class function. Moreover, an empty-set default
+would itself be a set and would make the left side true even when
+there is no witness. The next construction proves the intended
+statement in a precise stronger setting, using a proper-class default.
+It is a class-parameter operation, not an ordinary class graph with
+proper classes as members.
+\end{remark}
+
+\begin{theorem}[An ordinal-ranked descriptor for arbitrary classes]
+Work in the classical class setting with comprehension, $\V$ a proper
+class, and a fixed injective class function $j:\V\to\On$. Assume the
+usual ordinal fact that every nonempty class of ordinals has a least
+member. For every class $C$, define $E_j(C)$ as follows:
+\[
+E_j(C)=
+\begin{cases}
+\text{the unique }c\in C\text{ with least }j(c),&C\ne\emptyclass,\\
+\V,&C=\emptyclass.
+\end{cases}
+\]
+This operation is well defined and extensional in $C$, and
+\[
+E_j(C)\set\iff C\ne\emptyclass.
+\]
+When $C\ne\emptyclass$, it also satisfies $E_j(C)\in C$.
+Its restriction to nonempty sets is represented by an ordinary global
+choice class function.
 \end{theorem}
 \Proof
-$(\Rightarrow)$\\
-Assume $((\epsilon y,\  \phi) \set)$. To show: $(\exists(y\set),\ \phi)$.
+Suppose $C$ is nonempty. Its ordinal image $j[C]$ is a nonempty
+class, so it has a least member $\alpha$. Some $c\in C$ has
+$j(c)=\alpha$, and injectivity of $j$ makes this $c$ unique. It is
+a set because it is a member of $C$. If $C$ is empty, the assigned
+value is $\V$, which is not a set by hypothesis. This proves both
+the equivalence and the witness property. Equal classes have the
+same ordinal images and hence the same selected member, or are both
+empty, so the operation is extensional.
+
+For the restriction, class comprehension forms the graph
 \[
-((\epsilon y,\ \phi) \set)
-\IMPLIES
-(c(\cc{y}{\phi})\set)
+G=\{(A,c):A\in\V,\ A\ne\emptyclass,\ c\in A,
+              \ \forall z\in A,\ j(c)\leq j(z)\}.
 \]
-\[
-(c(\cc{y}{\phi})\set)
-\IMPLIES
-(\cc{y}{\phi}\in\dom(c))
-\tag{by some variant of \myref{thm:pair in function} }
-\]
-\[
-(\cc{y}{\phi}\in\dom(c))
-\IMPLIES
-(\cc{y}{\phi}\nonempty)
-\]
-\[
-(\cc{y}{\phi}\nonempty)
-\IMPLIES
-(\exists y,\ \phi)
-\]
-$(\Leftarrow)$\\
-Assume $(\exists(y\set),\ \phi)$. To show: $((\epsilon y,\  \phi) \set)$.
-\[
-(\exists y,\ \phi)
-\IMPLIES
-(\cc{y}{\phi}\nonempty)
-\]
-\[
-(\cc{y}{\phi}\nonempty)
-\IMPLIES
-(\cc{y}{\phi}\in\dom(c))
-\]
-\[
-(\cc{y}{\phi}\in\dom(c))
-\IMPLIES
-(c(\cc{y}{\phi})\set)
-\tag{by some variant of \myref{thm:pair in function} }
-\]
-\[
-(c(\cc{y}{\phi})\set)
-\IMPLIES
-((\epsilon y,\ \phi) \set)
-\]
+Both coordinates here are sets, so ordinary set-pair coding suffices.
+The preceding existence and uniqueness show that $G$ is a class
+function on all nonempty sets and $G(A)\in A$.
 \Done
+
+The least-member fact used here does not assume that $j[C]$ is a set:
+given one $\alpha_0\in j[C]$, separate
+$j[C]\cap(\alpha_0+1)$ inside the set ordinal $\alpha_0+1$ and take
+its least element. It is also least in the whole class. Under the
+prerequisites used in the L\'evy chapter, the book's surjective-image
+limitation-of-size axiom supplies the injection $j$ by choosing the
+least ordinal preimage of each set. Thus the present hypothesis is a
+specific established route, not an assertion that every arbitrary
+choice function already acts on proper classes.
+
+\begin{corollary}[The proposed witness equivalence, now with a setting]
+For a formula $\varphi$ and its bound variable $y$, put
+\[
+(\epsilon_j y,\varphi):=E_j(\{y:\varphi\}).
+\]
+Under the preceding hypotheses,
+\[
+((\epsilon_j y,\varphi)\set)
+\iff (\exists(y\set),\varphi).
+\]
+Whenever these conditions hold, the selected value satisfies
+$\varphi$ under capture-avoiding substitution for $y$.
+\end{corollary}
+\Proof
+Guarded class comprehension says that $\{y:\varphi\}$ is nonempty
+exactly when there is a set witness for $\varphi$. Apply the theorem.
+In that case its membership conclusion and comprehension give
+$\varphi$ of the selected member. The substitution assertion uses the
+ordinary total class-language semantics and its freshness conditions.
+\Done
+
+\begin{corollary}[Preserving an already chosen set selector]
+If $c$ is the global choice function originally fixed on nonempty sets,
+then the class-parameter operation
+\[
+E_{c,j}(C)=
+\begin{cases}
+c(C),&C\text{ is a nonempty set},\\
+E_j(C),&\text{otherwise}
+\end{cases}
+\]
+agrees with $c$ throughout its original domain and has the same
+sethood and witness properties as $E_j$.
+\end{corollary}
+\Proof
+For a nonempty set, the choice property gives a member of $C$, which
+is a set. For a nonempty proper class or the empty class, the preceding
+theorem gives exactly the required conclusion. These cases exhaust
+the class arguments in the stated classical setting.
+\Done
+
+The ranked operator depends on the fixed $j$; a different ranking may
+select a different witness. Its restriction $G$ need not equal a
+previously chosen $c$, whereas the patched operation $E_{c,j}$ does
+preserve that choice. Neither variation changes the proved witness
+property. The empty-case value is a genuine proper
+class, so this construction is not an interpretation of a descriptor
+whose values are required always to be sets. It also makes no claim
+that one class graph can collect pairs with arbitrary proper-class
+inputs. These distinctions retain the proposed idea without identifying
+it with the finite candidate semantics or with PFOL undefinedness.
 \input{END.tex}

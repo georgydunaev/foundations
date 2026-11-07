@@ -1,116 +1,233 @@
-%\iffalse
 \def\topic{Proof assistant}
 \input{BEGIN.tex}
-\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 \section{[OUTDATED] Proof assistant based on the developed theory}
-\subsection{A presentation of the encoded theory with comments}
+This section preserves an earlier presentation of the proof assistant and
+illustrates its intended use of contexts. A sequent $\Gamma\vdash\phi$
+means that $\phi$ is derivable from the assumptions listed in $\Gamma$.
+The proof trees below explain ordinary structural and logical steps; they
+do not assert that the displayed source listing verifies every theorem in
+the book.
+
+\subsection{The encoded theory}
+The accompanying Standard ML listing records the local implementation.
+Its definitions and proof constructors must be read with the assumptions
+of that implementation.
+\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm}
 \lstinputlisting[basicstyle=\ttfamily\footnotesize]{presentation.ML}
-%\scriptsize
 \restoregeometry
-\subsection{Graphical representation of some proofs}
-Details:
+
+\subsection{Proof trees}
+The first example unfolds the definition of inclusion and then uses the
+membership assumption to instantiate the restricted universal statement.
+For readability, write $\Gamma=(x\in A,\ A\subseteq B)$ for the common context.
 \begin{prooftree}
-\AxiomC{$
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A) \vdash (x\in A)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in A)
-$}
-\RightLabel{by }
-
-\AxiomC{$
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(A\subseteq B) \vdash (A\subseteq B)
-$}
-\RightLabel{by}
-\UnaryInfC{$
-(A\subseteq B) \vdash (\forall x\in A:x\in B)
-$}
-\RightLabel{by weakening}
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (\forall x\in A:x\in B)
-$}
-\RightLabel{by }
-\BinaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in B)
-$}
-
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A),(A\subseteq B) \vdash (x\in B)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-(x\in A) \vdash (A\subseteq B) \to (x\in B)
-$}
-\RightLabel{by }
-\UnaryInfC{$
-\vdash (x\in A) \land (A\subseteq B) \to (x\in B)
-$}
+\AxiomC{$x\in A\vdash x\in A$}
+\RightLabel{weakening}
+\UnaryInfC{$\Gamma\vdash x\in A$}
+\AxiomC{$A\subseteq B\vdash A\subseteq B$}
+\RightLabel{\shortstack[l]{definition of\\inclusion}}
+\UnaryInfC{$A\subseteq B\vdash\forall u\in A,\ u\in B$}
+\RightLabel{weakening}
+\UnaryInfC{$\Gamma\vdash\forall u\in A,\ u\in B$}
+\RightLabel{\shortstack[l]{restricted universal\\elimination}}
+\BinaryInfC{$\Gamma\vdash x\in B$}
+\RightLabel{\shortstack[l]{discharge and conjunction\\of assumptions}}
+\UnaryInfC{$\vdash ((x\in A)\land(A\subseteq B))\to(x\in B)$}
 \end{prooftree}
 
-Other idea:
+The next tree starts from an already established derivation of $R$ under
+three assumptions. Its top sequent is a premise of the transformation,
+not an identity axiom asserting an arbitrary conclusion.
 \begin{prooftree}
-\AxiomC{}
-\RightLabel{Assume/Ident}
-\UnaryInfC{$
-P_3,P_2,P_1 \vdash R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-P_3,P_2 \vdash P_1 \to R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-P_3 \vdash P_2 \land P_1 \to R
-$}
-\RightLabel{by }
-\UnaryInfC{$
-\vdash P_3 \land P_2 \land P_1 \to R
-$}
+\AxiomC{$P_3,P_2,P_1\vdash R$}
+\RightLabel{implication introduction}
+\UnaryInfC{$P_3,P_2\vdash P_1\to R$}
+\RightLabel{discharge and propositional equivalence}
+\UnaryInfC{$P_3\vdash(P_2\land P_1)\to R$}
+\RightLabel{discharge and propositional equivalence}
+\UnaryInfC{$\vdash(P_3\land P_2\land P_1)\to R$}
 \end{prooftree}
 
-
-
-
-%\begin{prooftree}
-%\AxiomC{A}
-%\UnaryInfC{B}
-%\AxiomC{C}
-%\BinaryInfC{D}
-%\AxiomC{E}
-%\AxiomC{F}
-%\BinaryInfC{G}
-%\UnaryInfC{H}
-%\BinaryInfC{J}
-%\end{prooftree}
-
-Details:
+Finally, sethood follows directly from membership in a class. The variable
+$Y$ in the existential statement is chosen fresh.
 \begin{prooftree}
-\AxiomC{}
-\RightLabel{Assume/Ident}
-\UnaryInfC{$
-(B\in A) \vdash (B\in A)
-$}
-\RightLabel{by $\exists$--intro}
-\UnaryInfC{$
-(B\in A) \vdash (\exists A: B\in A)
-$}
-\RightLabel{by def--intro/set--intro}
-\UnaryInfC{$
-(B\in A) \vdash (B\set)
-$}
-\RightLabel{deduction/ImplR/implies--intro}
-\UnaryInfC{$
-\vdash (B\in A)\to (B\set)
-$}
+\AxiomC{$B\in A\vdash B\in A$}
+\RightLabel{existential introduction, witness $A$}
+\UnaryInfC{$B\in A\vdash\exists Y,\ B\in Y$}
+\RightLabel{definition of sethood}
+\UnaryInfC{$B\in A\vdash B\set$}
+\RightLabel{implication introduction}
+\UnaryInfC{$\vdash(B\in A)\to(B\set)$}
 \end{prooftree}
-%\end{theorem}
+
+\subsection{Why the context matters for generalisation}
+\begin{lemma}[Sound generalisation under assumptions]
+In ordinary classical first-order semantics, suppose every assignment
+satisfying all formulas in $\Gamma$ satisfies $\phi$. If $x$ is not free
+in any formula of $\Gamma$, then every such assignment also satisfies
+$\forall x\,\phi$.
+\end{lemma}
+\Proof
+Let $v$ satisfy $\Gamma$. For every value $a$ of the sort of $x$,
+the assignment $v[x\mapsto a]$ still satisfies $\Gamma$, by coincidence
+of assignments and the freshness hypothesis. The premise therefore gives
+$\phi$ under each $v[x\mapsto a]$. This is exactly the truth condition
+for $\forall x\,\phi$ under $v$.
+\Done
+
+The freshness hypothesis cannot be dropped. In a two-element domain,
+interpret $P$ as a singleton and assign its member to $x$. Then $P(x)$
+is true but $\forall x\,P(x)$ is false. Hence the otherwise tempting
+step from $P(x)\vdash P(x)$ to $P(x)\vdash\forall x\,P(x)$ is unsound.
+Discharging that assumption would give the false formula
+$P(x)\to\forall x\,P(x)$. This counterexample explains why the discharge
+steps in the preceding trees are purely propositional, and why the
+logical chapter's deduction principle places a condition on any
+intervening generalisation. Quoted contexts and reflection rules need
+separate checks; this elementary semantic argument covers neither by
+mere reuse of the sequent notation.
+
+\subsection{Composing finite derivations}
+The following results concern ordinary total first-order natural deduction
+with finite proof trees, an unlimited supply of variables of each sort,
+and the usual introduction and elimination rules. They are statements
+about mathematical derivations, not a correctness certificate for the
+Standard ML listing. Formula substitution is capture-avoiding. Assumptions
+are occurrences at leaves, with discharge labels recording exactly which
+occurrences an introduction or elimination rule discharges. Two leaves
+bearing the same formula need not have the same discharge label.
+An occurrence is \emph{open} if no rule above it discharges it.
+
+We use the parameter form of the quantifier rules. Universal introduction
+passes from $\phi(a)$ to $\forall x\,\phi(x)$, with the parameter $a$
+absent from the conclusion and all open assumptions of its premise.
+Existential elimination has a subsidiary derivation from a temporary
+assumption $\phi(a)$; its parameter $a$ must be absent from the conclusion,
+the existential premise, and the other open assumptions of the subsidiary
+derivation. The indicated occurrences of $\phi(a)$ are discharged.
+These conditions allow consistent renaming of the local parameter in its
+premise subtree, including its temporary assumptions, while leaving the
+rule's conclusion and the external assumptions unchanged.
+
+\begin{lemma}[Finite freshening]
+Given a finite derivation and a finite collection of other finite
+expressions, its local eigenparameters and discharge labels can be
+renamed to avoid the latter collection and to be pairwise distinct.
+The conclusion and formulas at open assumption occurrences are unchanged.
+\end{lemma}
+\Proof
+There are only finitely many local parameters, labels, and symbols to
+avoid. At each quantifier rule choose a variable of the required sort
+outside the symbols occurring in the trees already under consideration.
+Rename the eigenparameter throughout its local premise subtree. Its side
+condition says that this parameter is absent from the external formulas
+that must be preserved. Renaming bound variables first if necessary makes
+the operation capture-avoiding; every rule instance remains an instance
+of the same rule. Repeating this for the finitely many quantifier rules
+provides distinct fresh parameters. Discharge labels can independently
+be replaced throughout each labelled group of leaves and its discharging
+rule. Labels do not occur in formulas, so this changes no formula.
+\Done
+
+\begin{theorem}[Grafting derivations; admissibility of cut]
+Let $\mathcal D$ be a finite derivation of $B$. Select any finite
+collection of its open assumption occurrences. For each selected
+occurrence with formula $A_i$, supply a finite derivation $\mathcal E_i$
+of that same formula. There is a derivation of $B$ whose open leaves
+are precisely the unselected open leaves of $\mathcal D$, together
+with the open leaves of the supplied derivations, with multiplicity.
+In particular, for finite contexts,
+\[
+\Gamma,A\vdash B,\qquad\Delta\vdash A
+\quad\Longrightarrow\quad\Gamma,\Delta\vdash B.
+\]
+Here the context notation permits repeated use of assumptions; it does
+not require the resulting proof to use each permitted assumption.
+\end{theorem}
+\Proof
+Make a separate copy of a supplied proof for every selected occurrence.
+Freshen the local parameters of $\mathcal D$ away from every symbol in
+these copies, and then freshen the local parameters of the copies away
+from the resulting tree and from each other. Rename all discharge labels
+so that distinct original discharge groups and distinct inserted copies
+have distinct labels. Replace each selected leaf by its corresponding
+proof, identifying its conclusion $A_i$ with the old leaf formula.
+
+We verify the resulting tree from the replaced leaves upwards. Inside
+an inserted proof all rule instances are unchanged. At an original
+propositional rule, the premise conclusions have not changed; its rule
+instance therefore still applies. Its original discharge labels still
+identify exactly the original temporary assumptions: no inserted open
+leaf shares those labels. The same observation handles the discharged
+assumptions of existential elimination. At an original universal
+introduction or existential elimination, any newly open assumptions
+come from inserted proofs. The original eigenparameter is absent from
+all their formulas by freshening. Its other freshness requirements,
+including absence from the rule conclusion, are unchanged. Thus these
+quantifier rules also remain valid. Quantifier eliminations and
+existential introductions retain their original terms and formulas,
+so their substitution side conditions are unchanged. This checks every
+rule of the chosen calculus, and the stated description of open leaves
+follows from the preserved discharge labels.
+
+For the displayed contextual instance, select all open leaves licensed
+by the extra assumption $A$ and insert a copy of the proof from $\Delta$
+at each. If there are no such leaves, nothing is inserted. If several
+are present, the proof from $\Delta$ is copied finitely many times;
+ordinary natural deduction permits this reuse. Any other open leaves
+are licensed by $\Gamma$. Hence all resulting open leaves are licensed
+by $\Gamma,\Delta$.
+\Done
+
+\begin{corollary}[Weakening and finite support]
+A finite derivation can be used in any larger context of permitted
+assumptions. If $\Gamma\vdash B$ has a finite derivation, then
+$\Gamma_0\vdash B$ for some finite $\Gamma_0\subseteq\Gamma$.
+\end{corollary}
+\Proof
+For weakening, keep the same tree: every open leaf licensed by the old
+context is licensed by the larger one. Quantifier side conditions here
+concern the actual open assumptions of a premise subtree, so merely
+permitting additional assumptions changes no rule instance. In a notation
+that writes a finite permitted context at every node, freshen the local
+parameters away from the additional context first; this gives the usual
+explicit weakening rule with its freshness conditions.
+For finite support, a finite tree has finitely many open leaves. Take
+$\Gamma_0$ to be the set of their formulas. All leaves are still licensed
+and all discharge and eigenparameter conditions remain the same.
+\Done
+
+For an infinite $\Gamma$, the notation $\Gamma\vdash B$ in this paragraph
+means that a finite tree has its open leaves in $\Gamma$; it does not
+require infinitely many unused assumptions to be written at every node.
+Finite support is a syntactic fact about finitary proofs. It does not,
+without a completeness theorem, establish semantic compactness.
+
+\begin{example}[Reusing the inclusion proof]
+The first displayed tree gives a derivation of $x\in B$ with open
+assumptions $x\in A$ and $A\subseteq B$. Suppose separate derivations
+establish $\Delta\vdash x\in A$ and $\Theta\vdash A\subseteq B$.
+Grafting them at the corresponding leaves gives
+\[
+\Delta,\Theta\vdash x\in B.
+\]
+No new membership axiom is involved: the established derivations supply
+the inputs of the existing proof. Likewise, grafting this result into
+an inclusion proof with $B\subseteq C$ gives
+$\Delta,\Theta,B\subseteq C\vdash x\in C$. This is composition of
+proofs through their open assumptions, rather than substitution of
+terms for free variables.
+\end{example}
+
+The occurrence bookkeeping is essential. An assumption introduced
+inside a proof and later discharged cannot be replaced as though it
+were an open dependency, and an inserted open assumption must not
+accidentally acquire an old discharge label. For a calculus with quoted
+sequents or reflection, each additional rule needs its own preservation
+argument: replacing a derivation can change the context represented in
+a quotation or the data tested by a reflection rule. The grafting theorem
+above therefore does not assert cut admissibility for arbitrary encoded
+reflection principles or for the earlier implementation merely because
+they display the same sequent symbol.
 
 \input{END.tex}

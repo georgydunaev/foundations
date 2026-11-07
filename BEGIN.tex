@@ -9,12 +9,19 @@
 
 \input{\mypath 000_preamble.tex}
 
-%\addbibresource{\mypath ../THESIS/TEX/references.bib}
-\addbibresource{/home/user/000/GITHUB/THESIS/TEX/references.bib}
+\IfFileExists{references.bib}{
+  \addbibresource{references.bib}
+}{
+  \IfFileExists{../THESIS/TEX/references.bib}{
+    \addbibresource{../THESIS/TEX/references.bib}
+  }{
+    \PackageWarning{foundations}{Bibliography source not found; citations need the companion references.bib}
+  }
+}
 
 \ifdefined\topic
 \else
-\def\topic{No Titel}
+\def\topic{Foundations of Mathematics}
 \fi
 
 \title{\topic}

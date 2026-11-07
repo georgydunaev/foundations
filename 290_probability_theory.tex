@@ -1,4 +1,365 @@
-\def\topic{}
+\def\topic{Probability theory}
 \input{BEGIN.tex}
 \section{Probability theory}
+For the measure-theoretic setting, a probability space is a measure
+space $(\Omega,\mathcal{A},\mathbb{P})$ with
+$\mathbb{P}(\Omega)=1$. A real random variable is a measurable function
+$X:\Omega\to\mathbb{R}$. Its expectation is the integral
+$\mathbb{E}X=\int_\Omega X\,d\mathbb{P}$ when $X$ is integrable;
+no default value for an undefined signed integral is implicit.
+
+In $L^1(\mathbb{P})$, random variables are identified when they agree
+almost surely. The finite-measure conventions of the functional-analysis
+section therefore apply directly. In particular, uniform integrability
+controls more than boundedness of the expectations of absolute values.
+
+Two uses of ``weak convergence'' should be distinguished. Weak convergence
+in the Banach space $L^1(\mathbb{P})$ tests
+$\mathbb{E}(ZX_n)$ against each fixed $Z\in L^\infty(\mathbb{P})$.
+Convergence in distribution of real random variables instead tests
+$\mathbb{E}(h(X_n))$ against bounded continuous functions
+$h:\mathbb{R}\to\mathbb{R}$. The latter concerns their laws; it does
+not even require the random variables to be defined on a common
+probability space. A later theorem comparing these notions must state
+its assumptions rather than identifying them by terminology.
+
+\subsection{Two separations between modes of convergence}
+The following examples make the distinction concrete; all variables
+are defined on a single probability space.
+
+\begin{example}[The same law need not give weak $L^1$ convergence]
+Let $X$ take values $1$ and $-1$, each with probability $1/2$, and put
+$X_n=(-1)^nX$. Every $X_n$ has the same law as $X$, so their laws
+converge to the law of $X$. Nevertheless, testing weak $L^1$
+convergence against the bounded random variable $Z=X$ gives
+\[
+\mathbb{E}(ZX_n)=(-1)^n,
+\]
+which does not converge. Thus the sequence has no weak $L^1$ limit.
+Even uniform boundedness of the variables does not repair this
+implication: information about joint position on the probability
+space is absent from a law.
+\end{example}
+
+\begin{example}[Weak $L^1$ convergence need not give convergence in probability]
+On $[0,1)$ with Lebesgue probability measure, let
+\[
+r_n(t)=(-1)^{\lfloor2^nt\rfloor},\qquad n\geqslant1.
+\]
+The functions $r_n$ have norm one in $L^2$ and are pairwise orthogonal.
+Indeed, for $m<n$, $r_m$ is constant on each dyadic interval of length
+$2^{-m}$, whereas $r_n$ takes each sign on half of that interval.
+For any real $g\in L^\infty$, put $c_n=\int_0^1gr_n$.
+Expanding a square gives, for each $N$,
+\[
+0\leqslant\left\|g-\sum_{n=1}^Nc_nr_n\right\|_2^2
+=\|g\|_2^2-\sum_{n=1}^Nc_n^2.
+\]
+Thus $c_n\to0$. The finite-measure identification of the $L^1$ dual
+with $L^\infty$ shows $r_n\rightharpoonup0$ in $L^1$.
+But $\mathbb{P}(|r_n|>1/2)=1$, so there is no convergence in
+probability to zero. Their laws are all the symmetric two-point law,
+not a sequence converging to the law of zero: the bounded continuous
+test function $h(x)=\min(1,|x|)$ has expectation one for every $r_n$
+and value zero at zero.
+\end{example}
+
+In contrast, convergence in probability together with uniform
+integrability gives $L^1$ convergence by
+Theorem~\ref{thm:vitali_finite}. It then gives convergence of
+expectations because
+$|\mathbb{E}X_n-\mathbb{E}X|\leqslant\mathbb{E}|X_n-X|$.
+The concentration example $X_n=n\mathbf{1}_{(0,1/n)}$ shows why
+uniform integrability is needed: $X_n\to0$ in probability while
+$\mathbb{E}X_n=1$ for all $n$.
+
+\begin{corollary}[Weak convergence together with convergence in probability]
+On a probability space, suppose $X_n\rightharpoonup X$ in $L^1$ and
+$X_n\to Y$ in probability, where $Y$ is a measurable real random
+variable. Then $Y=X$ almost surely and $\|X_n-X\|_1\to0$.
+\end{corollary}
+\Proof
+Theorem~\ref{thm:weak_sequence_UI} gives uniform integrability of
+$\{X_n:n\geq1\}$. Vitali's theorem gives $Y\in L^1$ and
+$\|X_n-Y\|_1\to0$. For every bounded $Z$, both convergences then give
+$\mathbb E(ZX)=\mathbb E(ZY)$. Taking $Z=\operatorname{sgn}(X-Y)$
+yields $\mathbb E|X-Y|=0$, so $X=Y$ almost surely. Replacing $Y$ by
+its equal $L^1$ class proves the norm-convergence statement.
+\Done
+
+\subsection{Probability densities and compactness}
+Fix a finite positive measure space $(\Omega,\mathcal A,\mu)$.
+A probability density relative to $\mu$ is an $f\in L^1(\mu)$ with
+$f\geq0$ almost everywhere and $\int f\,d\mu=1$. It determines the
+probability measure $\nu_f(A)=\int_A f\,d\mu$. If $\mu(\Omega)=0$,
+there are no such densities; the statements about a sequence of them
+then have no instances.
+
+\begin{proposition}[Weak limits and subsequences of densities]
+A weak $L^1$ limit of probability densities is a probability density.
+Consequently every uniformly integrable sequence of probability densities
+has a subsequence converging weakly in $L^1$ to a probability density.
+\end{proposition}
+\Proof
+Suppose $f_n\rightharpoonup f$ in $L^1$. Testing against $1$ gives
+$\int f=1$. Testing against $\mathbf1_A$ for each measurable $A$ gives
+$\int_A f=\lim_n\int_A f_n\geq0$. In particular, for
+$A_k=\{f\leq-1/k\}$ we have
+$0\leq\int_{A_k}f\leq-\mu(A_k)/k$, hence $\mu(A_k)=0$.
+Their countable union is $\{f<0\}$, so $f\geq0$ almost everywhere.
+The subsequence assertion now follows from the finite-measure
+Dunford--Pettis theorem, Theorem~\ref{thm:DP_sequential_finite}.
+\Done
+
+\begin{proposition}[Setwise testing for densities]
+For probability densities $f_n$ and $f$, the following are equivalent:
+\[
+f_n\rightharpoonup f\text{ in }L^1(\mu),
+\qquad
+\nu_{f_n}(A)\longrightarrow\nu_f(A)
+\text{ for every }A\in\mathcal A.
+\]
+\end{proposition}
+\Proof
+Weak convergence implies the displayed convergence by testing indicators.
+Conversely, the assumption gives convergence of integrals against every
+real measurable simple function. For $g\in L^\infty$, choose a bounded
+representative and a simple $s$ with $\|g-s\|_\infty<\varepsilon$.
+Then
+\[
+\left|\int g(f_n-f)\,d\mu\right|
+\leq\left|\int s(f_n-f)\,d\mu\right|
+ +\varepsilon(\|f_n\|_1+\|f\|_1)
+=\left|\int s(f_n-f)\,d\mu\right|+2\varepsilon.
+\]
+Take the upper limit in $n$, then let $\varepsilon$ decrease to zero.
+The dual identification in Theorem~\ref{thm:L1_dual_finite} gives weak
+$L^1$ convergence. The uniform norm bound, here exactly one, is what
+allows indicators to be extended to all bounded tests.
+\Done
+
+\subsection{Convergence tested on a generating algebra}
+Continue with the finite positive measure space
+$(\Omega,\mathcal A,\mu)$. An \emph{algebra of sets} on $\Omega$
+contains $\Omega$ and is closed under complements relative to
+$\Omega$ and finite unions. It is therefore a $\pi$-system as well.
+Let $\mathcal B\subseteq\mathcal A$ be such an algebra with
+$\sigma(\mathcal B)=\mathcal A$. No countability assumption on
+$\mathcal B$ is imposed.
+
+\begin{lemma}[Approximation by a generating algebra]
+\label{lem:algebra_measure_approximation}
+For every $A\in\mathcal A$ and every $\varepsilon>0$ there is
+$B\in\mathcal B$ with $\mu(A\mathbin\triangle B)<\varepsilon$.
+\end{lemma}
+\Proof
+Let $\mathcal D$ consist of the measurable sets with this approximation
+property for every positive tolerance. It contains $\mathcal B$ and
+hence $\Omega$. It is closed under complements because
+\[
+(\Omega\setminus A)\mathbin\triangle(\Omega\setminus B)
+=A\mathbin\triangle B,
+\]
+and complements of members of $\mathcal B$ remain in $\mathcal B$.
+
+Suppose $A_n\in\mathcal D$ are pairwise disjoint and put
+$A=\bigcup_nA_n$. Since $\mu$ is finite, countable additivity gives
+$\sum_n\mu(A_n)=\mu(A)<\infty$. Given $\varepsilon>0$, choose
+$N\geq1$ with $\mu(\bigcup_{n>N}A_n)<\varepsilon/2$.
+For $1\leq n\leq N$, choose $B_n\in\mathcal B$ with
+$\mu(A_n\mathbin\triangle B_n)<\varepsilon/(2N)$.
+The set $B=\bigcup_{n=1}^N B_n$ is in $\mathcal B$, and
+\[
+A\mathbin\triangle B
+\subseteq\bigcup_{n>N}A_n\ \cup
+          \bigcup_{n=1}^N(A_n\mathbin\triangle B_n).
+\]
+Subadditivity gives $\mu(A\mathbin\triangle B)<\varepsilon$.
+Thus $\mathcal D$ is a Dynkin system containing the $\pi$-system
+$\mathcal B$. Theorem~\ref{thm:pi_lambda} gives
+$\mathcal A=\sigma(\mathcal B)\subseteq\mathcal D$, proving the
+claim. Only finitely many approximating sets were chosen for each
+fixed tolerance; no enumeration of $\mathcal B$ was needed.
+\Done
+
+\begin{theorem}[A generating-algebra test for weak $L^1$ convergence]
+\label{thm:generating_algebra_weak_L1}
+Let $f_n,f\in L^1(\mu;\mathbb R)$. Then $f_n$ converges weakly
+to $f$ if and only if $\{f_n:n\geq1\}$ is uniformly integrable and
+\[
+\int_B f_n\,d\mu\longrightarrow\int_B f\,d\mu
+\qquad\text{for every }B\in\mathcal B.
+\]
+The functions need not be positive or normalized densities.
+\end{theorem}
+\Proof
+Weak convergence gives the displayed limits by testing indicators,
+and gives uniform integrability by
+Theorem~\ref{thm:weak_sequence_UI}.
+
+For the converse, adjoin $f$ to the uniformly integrable family.
+Its vanishing tail integrals show that the enlarged family is still
+uniformly integrable. The uniform-small-set lemma therefore gives,
+for every $\eta>0$, a $\delta>0$ such that
+\[
+\mu(C)<\delta\ \Longrightarrow\quad
+\int_C|f_n|\,d\mu<\eta/2\text{ for all }n,
+\quad \int_C|f|\,d\mu<\eta/2.
+\]
+For an arbitrary $A\in\mathcal A$, choose $B\in\mathcal B$ with
+$\mu(A\mathbin\triangle B)<\delta$ using the lemma. Then
+\[
+\left|\int_A(f_n-f)\,d\mu\right|
+\leq\left|\int_B(f_n-f)\,d\mu\right|
+  +\int_{A\mathbin\triangle B}(|f_n|+|f|)\,d\mu.
+\]
+The first term tends to zero by hypothesis and the second is less
+than $\eta$, uniformly in $n$. Since $\eta$ is arbitrary,
+$\int_A(f_n-f)\to0$ for every measurable $A$. Taking finite linear
+combinations gives convergence against every real measurable simple
+function.
+
+Uniform integrability on the finite measure space also gives
+$C=\sup_n\|f_n\|_1+\|f\|_1<\infty$.
+For $g\in L^\infty$, choose a bounded measurable representative.
+For each $a>0$, rounding its values to a sufficiently fine finite
+grid gives a measurable simple $s$ with $\|g-s\|_\infty<a$.
+Consequently
+\[
+\left|\int g(f_n-f)\,d\mu\right|
+\leq\left|\int s(f_n-f)\,d\mu\right|+aC.
+\]
+Take the upper limit in $n$, then let $a$ decrease to zero. Thus all
+bounded-test integrals converge, and the dual identification in
+Theorem~\ref{thm:L1_dual_finite} proves weak $L^1$ convergence.
+\Done
+
+For densities, this criterion permits setwise convergence to be checked
+on a generating algebra once uniform integrability is established.
+The four-point example in the measure chapter only had agreement on
+an arbitrary generating family. Its generated algebra also contains
+$\{1\}$, which distinguishes the two measures. Here closure under
+the algebra operations supplies the needed testing sets, while uniform
+integrability makes approximation in $\mu$-measure control the integrals
+uniformly throughout the sequence.
+
+\begin{example}[Algebra tests and bounded norms do not replace uniform integrability]
+Let $\Omega=[0,1]$ with its Borel sigma-algebra and Lebesgue measure
+restricted to that sigma-algebra. Let $\mathcal B$ be the algebra
+formed by finite Boolean combinations, relative to $\Omega$, of the
+sets $\Omega\cap(p,q)$ with rational $p<q$. It generates the Borel
+sigma-algebra: these sets form a countable base for the relative usual
+topology, so every relatively open set is a countable union of them;
+conversely all the generators are Borel. We use the Borel space here,
+without asserting that this algebra generates the completed Lebesgue
+sigma-algebra.
+
+Fix an irrational $a\in(0,1)$ and put
+\[
+\delta_n=\frac{\min(a,1-a)}{n+1},\qquad
+f_n=\delta_n^{-1}
+\bigl(\mathbf1_{(a,a+\delta_n)}-\mathbf1_{(a-\delta_n,a)}\bigr).
+\]
+Both intervals lie in $[0,1]$, are disjoint, and have length
+$\delta_n$. Hence $\int f_n=0$ and $\|f_n\|_1=2$.
+
+Each fixed $B\in\mathcal B$ is constant in membership on some open
+interval about $a$. Indeed, its finite Boolean expression involves
+only finitely many rational endpoints, none equal to $a$; choose a
+small interval avoiding all these endpoints. Every generator in that
+expression, and therefore $B$ itself, either contains this entire
+interval or misses it. For all sufficiently large $n$, the support
+of $f_n$ lies in that interval. Thus
+\[
+\int_B f_n\,d\mu=0\quad\text{eventually for every fixed }B\in\mathcal B.
+\]
+These tests converge to the corresponding integrals of $f=0$.
+Nevertheless the bounded Borel test $g=\mathbf1_{(a,1]}$ satisfies
+$\int gf_n\,d\mu=1$ for every $n$, so $f_n$ does not converge
+weakly to zero. The family also fails uniform integrability directly:
+for any $M>0$, choose $n$ with $\delta_n^{-1}>M$. Then
+\[
+\int_{\{|f_n|>M\}}|f_n|\,d\mu=2.
+\]
+The bounded norms and convergence on the entire generating algebra
+therefore do not suffice without the uniform-integrability condition.
+\end{example}
+
+\subsection{Total variation of probability densities}
+\begin{theorem}[Total variation and Scheffe's lemma]
+\label{thm:scheffe_density}
+For probability densities $f,g$, define the total variation distance by
+\[
+d_{\mathrm{TV}}(\nu_f,\nu_g)
+ =\sup_{A\in\mathcal A}|\nu_f(A)-\nu_g(A)|.
+\]
+Then $d_{\mathrm{TV}}(\nu_f,\nu_g)=\tfrac12\|f-g\|_1$.
+If probability densities $f_n$ converge almost everywhere to a probability
+density $f$, then $\|f_n-f\|_1\to0$, hence their measures converge in
+this distance. The assumption that the limit has integral one is essential.
+\end{theorem}
+\Proof
+Choose nonnegative measurable representatives of the densities; changing
+them on their measurable null sets does not change any conclusion.
+Put $h=f-g$ and $h^+=\max(h,0)$, $h^-=\max(-h,0)$.
+Since $\int h=0$, their integrals agree and each is
+$\tfrac12\int|h|$. For every measurable $A$,
+\[
+-\int h^-\leq\int_A h\leq\int h^+.
+\]
+The upper bound is attained at $A=\{h\geq0\}$, proving the distance
+identity. Next, $\min(f_n,f)\to f$ almost everywhere and
+$0\leq\min(f_n,f)\leq f$. Dominated convergence gives
+$\int\min(f_n,f)\to1$. The elementary identity
+$|f_n-f|=f_n+f-2\min(f_n,f)$ therefore yields
+\[
+\|f_n-f\|_1=2-2\int\min(f_n,f)\,d\mu\longrightarrow0.
+\]
+The concentration densities $n\mathbf1_{(0,1/n)}$ on $[0,1]$ converge
+almost everywhere to zero, whose integral is zero, and their norms stay
+one. Thus the conclusion fails if the normalization of the limit is dropped.
+\Done
+
+\begin{corollary}[Convergence in measure of normalized densities]
+For probability densities $f_n,f$ relative to the fixed finite measure,
+the following are equivalent:
+\[
+f_n\to f\text{ in measure},\qquad
+\|f_n-f\|_1\to0,\qquad
+d_{\mathrm{TV}}(\nu_{f_n},\nu_f)\to0.
+\]
+In particular, convergence in measure to a normalized density supplies
+uniform integrability of the sequence; it need not be assumed separately.
+\end{corollary}
+\Proof
+Norm convergence implies convergence in measure by
+\[
+\mu(\{|f_n-f|>a\})\leq a^{-1}\|f_n-f\|_1\qquad(a>0),
+\]
+and the total variation identity proves the last equivalence.
+Suppose now that convergence in measure holds but norm convergence does
+not. Choose $\varepsilon>0$ and a subsequence with
+$\|f_{n_k}-f\|_1\geq\varepsilon$ for all $k$. The almost-everywhere
+subsequence lemma supplies a further subsequence converging to $f$
+almost everywhere. Scheffe's lemma, Theorem~\ref{thm:scheffe_density},
+makes its $L^1$ distances tend to zero, a contradiction.
+Finally, the converse Vitali implication proved in the functional-analysis
+section says that an $L^1$-convergent sequence is uniformly integrable.
+Both positivity and preservation of total mass enter through Scheffe's
+lemma; convergence in measure of arbitrary integrable functions alone
+does not give this conclusion.
+\Done
+
+\begin{example}[Setwise convergence need not be total variation convergence]
+For the Rademacher functions above, $f_n=1+r_n$ is a probability density
+on $[0,1)$: it takes values zero and two and has integral one.
+The proved weak convergence $r_n\rightharpoonup0$ gives
+$f_n\rightharpoonup1$, hence setwise convergence of the associated
+measures. But $\|f_n-1\|_1=\|r_n\|_1=1$, so their total variation
+distance from Lebesgue probability measure is always $1/2$.
+Even uniform boundedness of the densities does not turn setwise
+convergence into total variation convergence. It does supply uniform
+integrability and the weaker subsequence compactness conclusion above.
+\end{example}
+
 \input{END.tex}

@@ -3,7 +3,11 @@
 \input{BEGIN.tex}
 \section{Ordered Pairs}
 
-The active outer pairing operation for arbitrary classes is the Dunaev tagged
+Pairing is needed to encode relations while allowing the components under
+discussion to be proper classes. The two tags keep the components
+distinguishable; the full construction explains how its coding is defined.
+
+The recursive pairing construction for arbitrary classes is the Dunaev tagged
 pair defined simultaneously with the Cartesian product in
 \texttt{070\_ordered\_pair.tex}:
 \[
@@ -17,5 +21,23 @@ $\{\{a\},\{a,b\}\}$. Kuratowski pairing requires its arguments to be sets and
 therefore must not be substituted for tagged pairing when proper classes are
 allowed. The present file is only a summary; the definitions and proofs in
 \texttt{070\_ordered\_pair.tex} are authoritative.
+
+Under well-founded set recursion and replacement, the construction is
+obtained from two tags
+\[
+R(x)=\{\emptyclass\}\cup\cc{R(u)}{u\in x},\qquad
+L(x)=\cc{R(u)}{u\in x}.
+\]
+Every $R(x)$ contains the empty marker, while every $L(x)$ omits it.
+Membership induction proves that both tags are injective, and hence the
+pair $\cc{L(a)}{a\in A}\cup\cc{R(b)}{b\in B}$ has projections recovering
+$A$ and $B$. The full chapter supplies the existence, uniqueness, projection,
+and sethood proofs, with these assumptions stated explicitly.
+
+The newer Obelisk catalog uses the name \texttt{DefDunaevOrderedPair}
+for a marker-tagged encoding. It has a different value on two empty
+components. The longer chapter compares the two representations explicitly;
+its historical recursive equations are not replaced merely because another
+construction is used by a newer implementation.
 
 \input{END.tex}

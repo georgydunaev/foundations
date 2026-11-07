@@ -4,24 +4,62 @@
 %\section{Appendix 1: Alternative partial function semantics [unrelated to the rest of the article]}
 \section{Partial function semantics following W.\,Farmer}
 
-\subsection{Example of a proof (FARMER'S CALCULUS)}
-Partially based on WILLIAM M. FARMER \& JOSHUA D. GUTTMAN's article\\
-``A Set Theory with Support for Partial Functions''.\\
-For simplicity of understanding by the reader, the notation from the article is used here.\\
+This section uses partial first-order logic (PFOL). The notation
+$t\downarrow$ asserts that $t$ denotes, and $s\simeq t$ denotes Kleene
+equality: the terms either denote the same value or are both undefined.
+Variables denote; compound terms may fail to denote. Function evaluation
+is defined by a unique description, independently of the total union-based
+evaluation used in other sections.
+
+\begin{note}[Three conventions for an absent value]
+The newer Obelisk catalog's \texttt{DefValueAtArg} (3.25) uses a total
+conditional evaluation: it returns $\V$ when there is no represented
+output. Plain union evaluation, used in another local construction of
+this book, returns $\union\emptyclass=\emptyclass$ in that case.
+PFOL instead leaves the unique description undefined. These are three
+distinct conventions. For the empty relation, for example, the value at
+any argument is respectively $\V$, $\emptyclass$, or undefined.
+The definedness assertions in this section belong to the last convention.
+\end{note}
+
+\subsection{A proof in PFOL}
+The argument follows the notation of William M. Farmer and Joshua D.
+Guttman, ``A Set Theory with Support for Partial Functions''. The PFOL
+axiom numbers below refer to that presentation, especially Section~2.3;
+its guarded application constructor appears in Section~3.2.
+\footnote{William M. Farmer and Joshua D. Guttman,
+``A Set Theory with Support for Partial Functions'',
+\emph{Studia Logica} 66 (2000), 59--78.
+\url{https://web.cs.wpi.edu/~guttman/pubs/set_theory_partial_fns.pdf}.}
+For the set-theoretic statements below, indices and output variables are
+sets, ordered pairs use the usual injective encoding, and relations may
+be classes. This convention avoids treating a proper class as a component
+of a set-coded pair.
 \begin{definition}[value of a function]
 \[
 f(x) \simeq \left(\iota y, \langle x,y\rangle\in f\right)
 \]
 \end{definition}
+Here the descriptor tests uniqueness at the particular input $x$.
+Farmer--Guttman's application constructor instead includes the additional
+conjunct that $f$ is a function. The two agree for functions; they can
+differ for other relations. For example,
+\[
+r=\{\langle0,0\rangle,\langle1,0\rangle,\langle1,1\rangle\}
+\]
+has local value $r(0)=0$ and no local value at $1$, while the globally
+guarded constructor is undefined at every input because $r$ is not
+univocal. The local convention is intentional in the following results.
 
-\begin{theorem}[?]
-If $f$ is univocal, then
+\begin{theorem}[Evaluation of a univocal relation]
+If $f$ is univocal (at most one output for each input), and $x,y$ are
+variables, then
 \[
 \left(f(x)\simeq y\right)\iff \left(\langle x,y\rangle\in f\right)
 \]
 \end{theorem}
 \Proof
-($\Leftarrow$) (Obvious part) Here we use axiom PFOL$10'$ which is equaivalent to PFOL10:
+($\Leftarrow$) We use the following form PFOL$10'$ of PFOL10:
 \[
 (\iota x,\ \varphi)\downarrow
 \quad\overset{\mbox{PFOL10}'}{\Longleftrightarrow}\quad
@@ -35,7 +73,7 @@ So the proof is the following:
 \]
 \[
 f\mbox{ univocal}
-\quad\overset{\mbox{def}}{\Longleftrightarrow}\quad
+\quad\overset{\mbox{def}}{\Longrightarrow}\quad
 \left(! w,\ \langle x,w\rangle\in f\right)
 \]
 \[
@@ -51,7 +89,7 @@ f\mbox{ univocal}
 \left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow
 \]
 \[
-\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow 
+\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow
 \quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
 \langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \]
@@ -76,7 +114,7 @@ f(x) \simeq y
 (y\downarrow)\LAND((\iota w,\ \langle x,w\rangle\in f)\simeq y) \quad\overset{\mbox{PFOL7}}{\Longrightarrow}\quad
 (\iota w,\ \langle x,w\rangle\in f)\downarrow \]
 \[
-\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow 
+\left(\iota w,\ \langle x,w\rangle\in f\right)\downarrow
 \quad\overset{\mbox{PFOL11}}{\Longrightarrow}\quad
 \langle x,(\iota w,\ \langle x,w\rangle\in f)\rangle\in f
 \]
@@ -89,41 +127,139 @@ f(x) \simeq y
 \]
 \\
 \Done
-\begin{theorem}[?]
+\begin{theorem}[Domain of unique-description evaluation]
 \[
 f(x)\downarrow \iff x\in\cc{x}{\exists!y,\ \langle x,y\rangle\in f}
 \]
 \end{theorem}
 \Proof
+By the definition of $f(x)$ and PFOL$10'$, it denotes exactly when
+$\exists!y,\ \langle x,y\rangle\in f$. The displayed class collects
+precisely these inputs, giving the claimed equivalence.
 \Done
+\begin{theorem}[The graph retained by local evaluation]
+For any class relation $r$ of ordered pairs of sets, define
+\[
+U(r)=\{\langle x,y\rangle\in r:
+       \forall z\in V\ (\langle x,z\rangle\in r\to z=y)\}.
+\]
+Then $U(r)$ is univocal, $U(U(r))=U(r)$, and
+$U(r)(x)\simeq r(x)$ for every set $x$. Two relations have the same
+local evaluations at every set input if and only if their $U$-graphs
+are equal.
+\end{theorem}
+\Proof
+At an input with exactly one output, $U$ retains that output. At an
+input with no output or with at least two outputs, it retains none.
+This proves univocality and equality of the partial evaluations. Applying
+$U$ again changes no singleton or empty fibre, proving idempotence.
+If the retained graphs are equal, equality of local evaluations follows.
+Conversely, if all local evaluations agree, each retained pair on one
+side supplies a denoting value on both sides and hence is retained on
+the other. Extensionality gives equality of the retained graphs.
+\Done
+
+This operation is not monotone for inclusion of relations. With
+$0\ne1$, let $r=\{\langle0,0\rangle\}$ and
+$s=r\cup\{\langle0,1\rangle\}$. Then $r\subseteq s$, but
+$U(r)=r$ and $U(s)=\emptyclass$. Adding a possible output can destroy
+local definedness. Consequently the extensionality theorem below
+requires univocal graphs: evaluation intentionally forgets every
+ambiguous fibre of a general relation.
+
+\subsection{Equality and composition of partial evaluations}
+Strict equality $s=t$ is true only when both terms denote the same value.
+Kleene equality therefore satisfies
+\[
+s\simeq t\iff (s=t)\lor(s\uparrow\land t\uparrow),
+\qquad t=t\iff t\downarrow,
+\]
+where $t\uparrow$ abbreviates $\neg(t\downarrow)$. These identities follow
+by separating the cases in which both, one, or neither term denotes.
+Consequently the denoting-variable hypothesis in the evaluation theorem
+matters: if $f(x)$ and a term $t$ are both undefined, $f(x)\simeq t$ is
+true, while strict pair membership $\langle x,t\rangle\in f$ is false.
+
+\begin{theorem}[Extensionality of partial function graphs]
+For univocal class relations $f,g$ of ordered pairs of sets,
+\[
+f=g\iff \forall x\in V,\quad f(x)\simeq g(x).
+\]
+\end{theorem}
+\Proof
+Equal relations have the same fibres, so their evaluations either both
+fail to denote or denote the same unique member. Conversely, suppose
+all their evaluations are Kleene equal. If $\langle x,y\rangle\in f$,
+then $f(x)$ denotes $y$. Kleene equality forces $g(x)$ to denote the same
+$y$, so the evaluation theorem gives $\langle x,y\rangle\in g$.
+This proves $f\subseteq g$; exchanging the relations proves the reverse
+inclusion. Class extensionality gives equality.
+\Done
+
+\begin{theorem}[Composition and its domain]
+Let $f,g$ be univocal class relations of ordered pairs of sets, and put
+\[
+h=g\circ f=\{\langle x,z\rangle:
+       \exists y\in V\ (\langle x,y\rangle\in f
+                         \land\langle y,z\rangle\in g)\}.
+\]
+Then $h$ is univocal, and for every set $x$,
+\[
+h(x)\simeq g(f(x)),
+\qquad
+h(x)\downarrow\iff
+\exists y\in V\ (\langle x,y\rangle\in f\land y\in\dom(g)).
+\]
+\end{theorem}
+\Proof
+Two outputs of $h$ at $x$ have intermediate witnesses $y,y'$. Univocality
+of $f$ gives $y=y'$, and then univocality of $g$ identifies the outputs.
+If $f$ has no output at $x$, the composite graph has none; also $f(x)$
+is undefined. Strict pair membership makes every witness condition in
+$g(f(x))$ false, so this term is undefined too. If $f(x)$ denotes $y$,
+the fibre of $h$ at $x$ is exactly the fibre of $g$ at $y$. It is either
+empty on both sides or has the same unique output on both sides. This
+proves the Kleene equality and the stated domain criterion.
+\Done
+
+Univocality cannot be omitted from the composition theorem. Take
+\[
+f=\{\langle0,0\rangle,\langle0,1\rangle\},\qquad
+ g=\{\langle0,0\rangle,\langle1,0\rangle\}.
+\]
+Then $g\circ f=\{\langle0,0\rangle\}$, whose value at $0$ is $0$.
+But $f(0)$ is undefined under unique-description evaluation, so
+$g(f(0))$ is undefined. A multivalued intermediate relation can lose
+its ambiguity after composition; local uniqueness does not commute with
+that operation.
+
+\subsection{Extension by definitions}
+The following formulas describe how a descriptor can be introduced under
+an existence hypothesis. They are derived schemata, not further PFOL axioms.
+In particular, unique existence must be asserted under the domain
+hypothesis: placing that hypothesis inside an implication governed by
+$\exists!y$ would impose uniqueness even when the hypothesis is false.
 \pagebreak
-By extension of definitions from
+The intended conditional unique-existence premise is
 \[
-\forall f \forall x \exists! y ,\ (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,y)\in f
+\forall f \forall x,\ ((x\in \dom(f))\land (f\mbox{ univocal at }x)) \to (\exists! y,\ (x,y)\in f)
 \]
-we have
+from which the intended evaluation rule is
 \[
-\forall f \forall x (x\in \dom(f))\land (f\mbox{ univocal at }x) \to (x,f(x))\in f
-\]
-
-or from: (but it backward implication can be proven without such complications)
-\[
-\forall f \forall x \exists! y ,\ (f\mbox{ univocal at }x)\to ((x\in \dom(f)) \iff (x,y)\in f)
+\forall f \forall x,\ ((x\in \dom(f))\land (f\mbox{ univocal at }x)) \to (x,f(x))\in f
 \]
 
-
-%We need partial extension by definitions!\\
-or maybe 'Extension by new constant and function names'?\\
-% https://en.wikipedia.org/wiki/Extension_by_new_constant_and_function_names
-%no, also not possible.(it helps only get rid of uniqueness, but stil requires a proof for only one specific function and for specific argument)
+A total extension by a function symbol requires a unique value for every
+input. A partial extension instead retains the domain hypothesis above.
+The distinction is the reason for using partial descriptions in this section.
 
 In general, a closed formula
 \[
-\forall \vec{x} ,\ \exists! y,\ \varphi 
+\forall \vec{x} ,\ \exists! y,\ \varphi
 \]
 implies
 \[
-\forall \vec{x} ,\ \varphi[(Iy,\ \varphi)/y] 
+\forall \vec{x} ,\ \varphi[(\iota y,\ \varphi)/y]
 \]
 .
 \iffalse
@@ -136,31 +272,85 @@ If the context doesn't have y, the substitution of "whole phi" would be already 
 something that a lil bit concerning is that context is not seen inside I, but it may not be important.
 
 
-So 
+So
 \fi
 
-The following rules are proposed:
+The first rule below is admissible by PFOL10 and PFOL11: unique
+existence yields definedness of the descriptor, and definedness yields
+its witness formula. The second additionally requires a choice descriptor
+with its own witness axiom. In both rules, substitution must be free for
+$y$, with bound variables renamed where necessary. No generalization is
+performed, so $y\notin\mathrm{FV}(\Gamma)$ is not needed for these
+witness rules. Freshness conditions for a newly introduced symbol or an
+eigenvariable belong to different rules.
 \begin{prooftree}
 \AxiomC{$\Gamma \vdash \exists! y,\ \varphi$}
 %\RightLabel{Assume/Ident}
 %\UnaryInfC{$
 %P_3,P_2,P_1 \vdash R
 %$}
-\RightLabel{ExtByDef (if $y\notin \mbox{FV}(\Gamma)$)}
+\RightLabel{Unique witness}
 \UnaryInfC{$
-\Gamma \vdash \varphi[(\iota y,\ \varphi)/y] 
+\Gamma \vdash \varphi[(\iota y,\ \varphi)/y]
 $}
 %\RightLabel{by }
 \end{prooftree}
 and
 \begin{prooftree}
 \AxiomC{$\Gamma \vdash \exists y,\ \varphi$}
-\RightLabel{ExtByCons (if $y\notin \mbox{FV}(\Gamma)$)}
+\RightLabel{Choice witness}
 \UnaryInfC{$
-\Gamma \vdash \varphi[(\epsilon y,\ \varphi)/y] 
+\Gamma \vdash \varphi[(\epsilon y,\ \varphi)/y]
 $}
 \end{prooftree}
-%prim_specification
+\begin{theorem}[A guarded partial definition]
+Let $A(\vec x)$ and $\varphi(\vec x,y)$ be old-language formulas whose
+free variables are among those displayed, with $y$ not free in $A$.
+Suppose a theory $T$ entails
+\[
+\forall\vec x\ (A(\vec x)\to\exists!y\ \varphi(\vec x,y)).
+\]
+Assume $\vec x$ is a nonempty tuple of distinct variables. Add a new
+partial operator $k$ of that arity with the axioms
+\[
+\forall\vec x\ (k(\vec x)\downarrow\iff A(\vec x)),\qquad
+\forall\vec x\ (A(\vec x)\to\varphi(\vec x,k(\vec x))).
+\]
+Every model of $T$ has exactly one expansion interpreting $k$ subject
+to these axioms. Its value is described by
+\[
+k(\vec x)\simeq
+\bigl(\iota y,\ A(\vec x)\land\varphi(\vec x,y)\bigr).
+\]
+The extension is conservative for old-language semantic consequences.
+\end{theorem}
+\Proof
+Fix a model of $T$ and a tuple of denoting arguments. If $A$ is true,
+there is exactly one witness for $\varphi$; assign that witness as the
+value of $k$. If $A$ is false, leave $k$ undefined. This defines a
+partial operation and satisfies both axioms. Any operation satisfying
+them must be undefined in the second case and equal the unique witness
+in the first, proving uniqueness. The displayed descriptor has exactly
+this behavior: its predicate has one witness when $A$ holds and no
+witness when $A$ fails.
+
+An old-language sentence has the same truth value in a model and its
+expansion. Thus every old-language countermodel to a proposed consequence
+of $T$ expands to a countermodel of the extension. No new old-language
+semantic consequence is obtained. This is a model argument; a claim
+about derivability additionally uses completeness of the chosen calculus.
+\Done
+
+The domain axiom is essential. A guarded witness axiom alone allows
+arbitrary values away from $A$ and does not determine a unique partial
+operation. Likewise, inserting $A\to\varphi$ instead of
+$A\land\varphi$ inside the descriptor gives the wrong off-domain
+predicate: when $A$ is false, every object is a witness. In a one-object
+model the resulting descriptor even denotes there. Finally, if one
+substitutes possibly undefined terms for $\vec x$, strict operator
+application remains undefined when an argument is undefined; the theorem
+and its displayed defining equations quantify over denoting variables.
+
 
 \pagebreak
 

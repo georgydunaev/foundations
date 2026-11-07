@@ -1,8 +1,14 @@
 \def\topic{Ordered pair}
 \input{BEGIN.tex}
-\section{Ordered pair [not interesting]}
+\section{Ordered pairs of sets and classes}
 \subsection{Introduction}
-In this section different definitions of ordered pairs are studied and the new one is proposed.
+An ordered-pair construction must recover both components from the result.
+For classes, there is an additional question: can either component be a
+proper class? We first compare set-based constructions, then develop the
+author's recursive tagged construction. The same notation $(a,b)$ is reused
+locally; subscripts and subsection boundaries identify the construction in use.
+The three displayed axioms are the intended interface, whose verification
+is a separate task for each proposed model.
 \subsection{Axioms of ordered pair}
 \[
 ((a\in\Term)\land(b\in\Term))\implies((a,b)\in\Term)
@@ -22,23 +28,26 @@ In this section different definitions of ordered pairs are studied and the new o
 )
 \clabeltagd{axm}{OPairUniqueness}
 \]
-\subsection{Definition of Kuratowski's pair}
-\subsection{Dunaev Tagged Ordered Pairs (DunaevTaggedOPair)}
-In this subsection, we discuss Dunaev Tagged Ordered Pairs (DunaevTaggedOPair), which is an alternative approach to defining ordered pairs. The Dunaev Tagged Ordered Pairs (DunaevTaggedOPair) terminology aligns with the standard definitions of ordered pairs and ensures consistency in the mathematical framework.
-\begin{definition}[Dunaev Tagged Ordered Pairs (DunaevTaggedOPair)]
+\subsection{Kuratowski's ordered pair of sets}
+For sets $a$ and $b$, the usual Kuratowski construction is
+\begin{definition}[Kuratowski pair]
 \[
-(a,b)_K\ceq \{\{a,a\},\{a,b\}\}
+(a,b)_K\ceq \{\{a,a\},\{a,b\}\}.
 \]
 \end{definition}
-Projections may be defined this way:
-\begin{definition}[projections]
+The inner collections distinguish the first component from the second.
+The following comprehensions recover the singleton classes $\{a\}$ and
+$\{b\}$; taking their unions recovers the components themselves.
+\begin{definition}[Kuratowski projections]
 \[
-\fst_K(p)\ceq \cc{x}{\forall  y\in p,\ (x \in y)},
-\]
-\[
-\snd_K(p)\ceq \cc{x}{\exists! y\in p,\ (x \in y)}.
+\fst_K(p)\ceq \bigcup\cc{x}{\forall y\in p,\ x\in y},
+\qquad
+\snd_K(p)\ceq \bigcup\cc{x}{\exists! y\in p,\ x\in y}.
 \]
 \end{definition}
+These projection equations are intended for $p=(a,b)_K$ with set
+components. The equal-component case is included: then $p=\{\{a\}\}$.
+
 \begin{remark}[recall the definition]
 \[
 (\exists! y\in Q,\ \psi)
@@ -57,16 +66,16 @@ Projections may be defined this way:
 %because
 %\[
 %\exists (y\in p),\ (x \in y)
-%\IFF 
+%\IFF
 %\exists y,\ (y\in p) \land (x \in y)
 %\]
 %\[
 %\! (y\in p),\ (x \in y)
-%\IFF 
+%\IFF
 %! y,\ (y\in p) \land (x \in y)
 %\]
 %\[
-%\IFF 
+%\IFF
 %\forall y_1, y_2,\ ((y_1\in p) \land (x \in y_1))\land
 %(y_2\in p) \land (x \in y_2)
 %\implies
@@ -77,48 +86,29 @@ Projections may be defined this way:
 %\exists! y,\ (y\in p) \land (x \in y)
 %\]
 \end{remark}
-\begin{theorem}[Uniqueness of Projections]
-%\[
-%(! y,\ (y\in p) \land (x \in y))
-%\iff
-%(! y,\ (y\in p) \implies (x \in y))
-%\]
-%\Proof
-%($\Rightarrow$)\\
-%Assume $(! y,\ (y\in p) \land (x \in y))$.\\
-%Fix $y_1$, $y_2$.\\
-%Assume  $(y_1\in p) \implies (x \in y_1)$.\\
-%Assume  $(y_2\in p) \implies (x \in y_2)$.\\
-%To show $y_1=y_2$.\\
-%When $(y_1\in p) \implies (x \in y_1)$ is true and $(y_1\in p) \land (x \in %y_1)$ is not true? When $(y_1\in p)$ is false and $(x \in y_1)$ is true.
-%\[\]
-%($\Leftarrow$)\\
-%Assume $(! y,\ (y\in p) \implies (x \in y))$.\\
-%\Done
-%\end{theorem}
+\begin{theorem}[Kuratowski projections recover the components]
+For sets $a,b$, $\fst_K((a,b)_K)=a$ and $\snd_K((a,b)_K)=b$.
+\end{theorem}
+\begin{proof}
+If $a\ne b$, the elements common to $\{a\}$ and $\{a,b\}$ form
+$\{a\}$, and the elements belonging to exactly one of these two sets form
+$\{b\}$. If $a=b$, both comprehensions give $\{a\}$. Taking unions
+proves the two identities in either case.
+\end{proof}
 
-%\begin{theorem}(ALSO NOT TRUE)
-%\[
-%E x,\ ! x,\ 
-%\iff
-%\]
-%\end{theorem}
-%\Proof
-%\Done
 \subsection{Definition of Metamath's ordered pair of sets}
-The following definition is too weak:
+The following convention deliberately restricts pairing to set components:
 \begin{definition*}[Metamath's ordered pair] %maybe V somehow?
 \[
 \langle A,B \rangle=\cc{x}{(A\set)\land(B\set)\land (x\in\{\{A\},\{A,B\}\})}
 \labeltagd{def}{MM_ordered pair}
 \]
 \end{definition*}
-It doesn't work for the case of proper classes.
+When a component is proper, the defining guard fails and the result is empty. Thus this convention serves set relations, but does not provide an injective pairing of arbitrary classes.
 \subsection{Definition of Morse's ordered pair}
-There is a generalization of the ordered pair, that allows have proper classes as arguments, introduced by Morse.
-It is based on Kuratowski pair, and, then \textbf{redefines} ordered pair in the following way:
+The next construction extends pairing to class arguments by first coding their elements. The products in this display use the preceding set-pair construction; the resulting class is then taken as a new pair:
 \[
- s(x) = \{\emptyclass \} \cup \{\{t\} \mid t \in x\} 
+ s(x) = \{\emptyclass \} \cup \{\{t\} \mid t \in x\}
 \]
 \[
 (x, y) = (\{0\} \times s(x)) \cup (\{1\} \times s(y))
@@ -128,31 +118,146 @@ and also defines 3--tuple:
 (x, y, z) = (\{0\} \times s(x)) \cup (\{1\} \times s(y)) \cup (\{2\} \times s(z))
 \]
 Similar tuples which are presented in the section ``Classes as Types" are called lists in this text.\\
-Unfortunately, this approach requires defining two variants of pairs, two variants of product, two variants of projections, and so on.\\
+This approach distinguishes the auxiliary set pairs from the resulting class pairs, and correspondingly distinguishes their products and projections.\\
 
-In fact, there is a uniform definition, which works both for sets and for classes.
+The following proposal instead seeks a uniform recursive definition for sets and classes.
 
-\subsection{Dunaev Tagged Ordered Pairs (DunaevTaggedOPair)}
-%Definitions of the ordered pair for sets and classes
-In this section it will be proven that the following self--referential definition of pair and cartesian product is admissible.
-\begin{definition}
-%\noindent Simultaneous defintion:
+\subsection{Recursive Dunaev tagged pairs}
+\begin{remark}[comparison with the newer marker construction]
+The Obelisk catalog's entry \texttt{DefDunaevOrderedPair} (3.76) uses a
+separate marker-based encoding. Writing it as $D$ to avoid ambiguity,
+\[
+S_3(a)=\{\{\{a\}\}\},\qquad M(A,n)=\{\{0,n\}\}\cup\cc{\{S_3(a),n\}}{a\in A},
+D(A,B)=M(A,1)\cup M(B,2).
+\]
+In contrast, this subsection develops the recursive pair $P$ given below.
+Already $P(0,0)=\emptyclass$, whereas
+$D(0,0)=\{\{0,1\},\{0,2\}\}$. The newer catalog's projection entries
+3.77--3.78 concern $D$, so they should not be read as proofs of the
+recursive construction. Both approaches are retained in their own setting.
+\end{remark}
+
+\paragraph{Local assumptions.}
+We work with well-founded sets and use extensionality, separation,
+replacement, and well-founded set recursion. These are available in the
+usual ZF set part of NBG or MK. Class comprehension then extends the
+construction to arbitrary classes. In particular, the argument below is not
+an existence proof from extensionality and class comprehension alone.
+No choice principle is needed.
+The required membership-recursion theorem is proved in
+\ref{thm:membership_recursion_on_W}; regularity identifies its domain
+$\W$ with $\V$ in the present setting.
+
+The simultaneous equations we want to justify are
 \[
 (a,b) \ceq (\{0\}\times a)\cup (\{1\}\times b),
-\]
-\[
+\qquad
 X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
 \]
+The apparent mutual recursion disappears once the two tag maps are isolated.
+We use $0=\emptyclass$ and $1=\{0\}$. Auxiliary graphs used to invoke the
+recursion theorem may be coded by the already available Kuratowski pair;
+this does not assume the new pair construction.
+
+\begin{definition}[The two recursive tag maps]
+On sets, define $R$ by well-founded recursion and then define $L$ by
+\[
+R(x)=\{0\}\cup\cc{R(u)}{u\in x},
+\qquad
+L(x)=\cc{R(u)}{u\in x}.
+\label{def:recursive_pair_tags}
+\]
+Here each image is a set by replacement. The recursion step takes the
+already constructed values on the members of $x$, forms their image, and
+adjoins the empty set.
 \end{definition}
-%Separate definitions:
-To begin with, by substituting the second equality in the first equation, it is obtained that
+
+\begin{lemma}[Existence and separation of the tags]
+There is a unique class function $R:\V\to\V$ satisfying its displayed
+recursion. For every set $x$, $0\in R(x)$ and $0\notin L(x)$. Consequently,
+$L(x)\ne R(y)$ for all sets $x,y$.
+\end{lemma}
+\begin{proof}
+Apply well-founded set recursion to the operation sending a set-sized
+partial-value graph $g$ to $\{0\}\cup\operatorname{ran}(g)$. Its restriction
+to the members of any set is a set graph by replacement, so the operation
+has a set value at every stage. The recursion theorem gives existence;
+membership induction gives uniqueness, since agreement on every member of
+$x$ forces agreement at $x$.
+
+The definition puts $0$ in every $R(u)$, so $R(u)$ is never empty.
+Every member of $L(x)$ is some $R(u)$, hence is different from $0$.
+Thus $L(x)$ omits the marker that every $R(y)$ contains.
+\end{proof}
+
+\begin{lemma}[Injectivity of each tag]
+For sets $x,y$,
 \[
-(a,b) \ceq \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in b}.
+R(x)=R(y)\iff x=y,\qquad L(x)=L(y)\iff x=y.
+\label{lem:recursive_pair_tag_injectivity}
 \]
-So if it is defined, the cartesian product is normally defined by:
+\end{lemma}
+\begin{proof}
+For $R$, use membership induction on $x$ with the induction assertion
 \[
-X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
+\forall (y\set),\ R(x)=R(y)\implies x=y.
 \]
+Assume this assertion holds for every $u\in x$, and suppose $R(x)=R(y)$.
+If $u\in x$, then $R(u)\in R(x)=R(y)$. Since $R(u)\ne0$, it is not the
+adjoined marker; therefore $R(u)=R(v)$ for some $v\in y$. The induction
+hypothesis for $u$, which quantifies over \emph{every} set $v$, gives $u=v$.
+This proves $x\subseteq y$.
+
+Conversely, if $v\in y$, then the nonempty set $R(v)$ belongs to $R(x)$,
+so $R(v)=R(u)$ for some $u\in x$. The same induction hypothesis gives
+$u=v$, proving $y\subseteq x$. Extensionality yields $x=y$ and completes
+the induction. No induction hypothesis about the possibly unrelated set
+$y$ was needed.
+
+If $L(x)=L(y)$, adjoining $\{0\}$ to both sides gives $R(x)=R(y)$,
+hence $x=y$. The reverse implications follow by substitution of equals.
+\end{proof}
+
+\begin{definition}[The recursive pair of classes]
+For arbitrary classes $A,B$, put
+\[
+P(A,B)=\cc{L(a)}{a\in A}\cup\cc{R(b)}{b\in B}.
+\label{def:recursive_class_pair}
+\]
+All members of $A$ and $B$ are sets, so the tags in this comprehension
+have already been defined. No graph whose members have proper-class
+components is being assumed. Write $(A,B)$ for $P(A,B)$ within this
+construction, and use this pair in the associated Cartesian product.
+\end{definition}
+
+\begin{theorem}[The simultaneous equations have a unique solution]
+The construction satisfies
+\[
+P(0,x)=L(x),\qquad P(1,x)=R(x)\quad(x\set),
+\]
+and, for arbitrary classes $A,B$,
+\[
+P(A,B)=\cc{P(0,a)}{a\in A}\cup\cc{P(1,b)}{b\in B}
+       =(\{0\}\times A)\cup(\{1\}\times B).
+\]
+It is the unique class-valued operation satisfying these equations, with
+set values on pairs of sets.
+\end{theorem}
+\begin{proof}
+Since $L(0)=0$, the definition gives
+$P(0,x)=\cc{R(u)}{u\in x}=L(x)$ and
+$P(1,x)=\{L(0)\}\cup\cc{R(u)}{u\in x}=R(x)$.
+Substituting these identities proves the equations for $P$ and the product.
+
+For uniqueness, let $Q$ be another such operation. Its equations force
+$Q(0,0)=0$ and then
+\[
+Q(1,x)=\{0\}\cup\cc{Q(1,u)}{u\in x}.
+\]
+Uniqueness of set recursion gives $Q(1,x)=R(x)$ for every set $x$.
+The equation at $(0,x)$ now gives $Q(0,x)=L(x)$. Finally the equation
+for arbitrary $Q(A,B)$ expresses it using these set tags, so $Q(A,B)=P(A,B)$.
+\end{proof}
 
 \begin{remark}
 Do not confuse any of previous definitions with a family $F:2\to\mathcal{U}$.
@@ -166,20 +271,22 @@ Generally speaking,
 \[
 (a,b) :\neq [a,b]
 \]
-because then there is a guarantee that it is well--founded. (todo: check it)\\
+The extra empty marker in $\tilde K$ distinguishes an empty value from an absent fiber. The relation between this family encoding and the recursive pair construction requires its own verification.\\
 \end{remark}
 
-\subsection{Formally verified implementation}
-This subsection is not necessary for the ongoing proof, but it is very illustrative, if the reader is familiar with The Coq Proof Assistant.
+\subsection{Implementation sketch in Coq}
+The following code illustrates the recursive construction for readers familiar with Coq. It is an excerpt, rather than a standalone proof certificate; its auxiliary definitions and proof obligations belong to the surrounding development.
 
-Note, that it may be confusing that in code, the construction is done for the special type of sets of certain universe in Gallina's heavy metatheory, which is not the point here. Despite that the construction works fine for classes also, and it will be shown in the next subsection.
+The datatype $\texttt{Ens}$ represents sets in the ambient type theory. A construction on this datatype does not by itself establish the proper-class extension; that extension uses class comprehension in the mathematical development.
 
-\begin{lstlisting}(*The type of sets in for a universe.*)
-Inductive Ens : Type := 
+\begin{lstlisting}
+(* The type of sets in a universe. *)
+Inductive Ens : Type :=
     sup : forall A : Type, (A -> Ens) -> Ens.
 \end{lstlisting}
-\begin{lstlisting}(* The empty set *)
-Definition Vide : Ens := 
+\begin{lstlisting}
+(* The empty set *)
+Definition Vide : Ens :=
   sup False (fun x : False => match x return Ens with
                               end).
 Definition Pair (A B:Ens) : Ens
@@ -192,7 +299,7 @@ Definition Zero := Vide.
 Definition One  := Sing Vide.
 \end{lstlisting}
 \begin{lstlisting}
-Definition img (f:Ens -> Ens) (c:Ens) : Ens := 
+Definition img (f:Ens -> Ens) (c:Ens) : Ens :=
 match c with
 | sup C h => sup _ (fun d => f (h d))
 end.
@@ -201,7 +308,7 @@ end.
 Definition bu A B := Union (Pair A B).
 Infix "u" := bu (at level 60, right associativity).
 \end{lstlisting}
-The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built--in consistency checker cannot infer well--foundedness.
+The following straightforward implementation of the ordered pair is not accepted by the proof assistant, because the built--in termination checker does not accept the recursion as written.
 \begin{lstlisting}
 Fail
 Program Fixpoint  OPair_Zero (c : Ens) : Ens
@@ -210,277 +317,175 @@ Program Fixpoint  OPair_Zero (c : Ens) : Ens
                     := bu (img OPair_Zero One ) (img OPair_One c)
 .
 \end{lstlisting}
-In order to overcome this obstacle the known special cases are defined first:
+The first values help expose the recursion:
 \begin{lstlisting}
-Definition img_OPair_Zero_on_Zero := Vide.      
+Definition img_OPair_Zero_on_Zero := Vide.
 (* (img OPair_Zero Zero) === {(0,k)|k in 0} = emptyset *)
-Definition        OPair_Zero_Zero := Vide.      
+Definition        OPair_Zero_Zero := Vide.
 (* OPair Zero Zero === (0,0) = {(0,j)|j in 0}u{(1,k)|k in 0} = emptyset *)
-Definition img_OPair_Zero_on_One  := Sing Vide. 
+Definition img_OPair_Zero_on_One  := Sing Vide.
 (*(img OPair_Zero One) === {(0,k)|k in 1} = {(0,0)} = {emptyset}*)
-Definition        OPair_Zero_One  := Sing Vide. 
-(* OPair Zero One === (0,1) = {(0,k)|k in 0}u{(0,k)|k in 1} =
-= {} u {(0,0)} = {0} = {emptyset} *)
+Definition        OPair_Zero_One  := Sing (Sing Vide).
+(* OPair Zero One === (0,1) = {} u {(1,0)} = {{emptyset}} *)
 
 
-Program Fixpoint OPair_Zero (c:Ens):Ens :=               (img OPair_One c)
-            with OPair_One  (c:Ens):Ens := (Sing Vide) u (img OPair_One c) 
-(* OPair_Zero c = (img OPair_Zero   Zero) u (img OPair_One c) *)
-(* OPair_One  c = (img_OPair_Zero_on_One) u (img OPair_One c) *)
 \end{lstlisting}
-Finally, the ordered pair of arbitrary classes is defined:
+The mathematical reduction above uses only one recursive function. A
+structural version of its right tag can be written as follows:
+\begin{lstlisting}
+Fixpoint OPair_One (c : Ens) {struct c} : Ens :=
+  match c with
+  | sup C h =>
+      sup (unit + C)%type
+        (fun i => match i with
+                  | inl _ => Vide
+                  | inr u => OPair_One (h u)
+                  end)
+  end.
+
+Definition OPair_Zero (c : Ens) : Ens := img OPair_One c.
+\end{lstlisting}
+The left summand supplies the empty marker; the right summand recurses
+on members of the input. This makes the decrease visible in the constructor
+instead of hiding it inside a call to \texttt{img}. The excerpt illustrates
+the construction; a mechanized certificate must additionally verify the
+universe declarations and compatibility with the representation's
+extensional equality. No compilation result for this excerpt is asserted
+here.
+
+The pair operation then uses the two images:
 \begin{lstlisting}
 Definition OPair (a b: Ens) : Ens := (img OPair_Zero a) u (img OPair_One b).
 \end{lstlisting}
 
-\subsection{Model of ordered pair \& theorems}
-Now, from the definition we can obtain certain special cases, for empty set as an argument.
-%Remark 1:
-%\[
-%(a,b) \ceq \cc{(0,a_1)|a_1\in a\}\cup \{(1,b_1)}{b_1\in b}
-%\]
-%\[
-%   = \cc{\cc{(1,a_2)|a_2\in a_1\}}{a_1\in a}\cup \{(1,b_1)}{b_1\in b}
-%(0,b) = \cc{(0,a_1')|a_1'\in \emptyclass\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{%b_1\in b}
+\subsection{Projections and the ordered-pair property}
+The preceding construction explains both the recursion and the tags.
+The projections now recover arbitrary class components by comprehension.
 
-%(1,b_1)= \cc{(0,a_1')|a_1'\in \{\emptyclass\}\}\cup \{(1,b_2)}{b_2\in b_1}
-%       = \cc{(0,\emptyclass)\}\cup \{(1,b_2)}{b_2\in b_1}
-%       = \cc{(0,\emptyclass)\}\cup \cc{\{(0,\emptyclass)\}\cup \{(1,b_2)}{b_2\in b_1}}{%b_2\in b_1}
-%\]
-
+\begin{definition}[Recursive tagged projections]
+For any class $C$, define
 \[
-(a,0) = \cc{(0,a_1)}{a_1\in a}
+\pr_1(C)=\cc{a}{L(a)\in C},\qquad
+\pr_2(C)=\cc{b}{R(b)\in C}.
+\label{def:recursive_pair_projections}
 \]
+These are the original proposed formulas
 \[
-(0,b) = \cc{(1,b_1)}{b_1\in b}
+\pr_1(C)=\cc{a}{(0,a)\in C},\qquad
+\pr_2(C)=\cc{b}{(1,b)\in C},
 \]
-
-%\Proof
-
-Well--foundedness by epsilon--relation:\\
-%Checking that $(a,b)$ is well--found.
-\begin{theorem}[pairing preserves well--foundedness]
-If $a$ and $b$ are well--founded, then $(a,b)$ is well--founded.
-\end{theorem}
-\Proof
-We apply the epsilon--induction for $a$.\\ % maybe even  complete? nah, it's enough
-Assume there is no infinite $\ni$--chain in $(a_1,b)$ for any element $a_1$ of $a$.\\
-We apply the epsilon--induction for $b$.\\
-Assume there is no infinite $\ni$--chain in $(a_1,b_1)$ for any element $b_1$ of $b$.\\
-\[
-w\in (a,b)
-\]
-WLOG(``Case I''), 
-\[
-w\in \cc{(0,a_1)}{a_1\in a}
-\]
-\[
-\exists a_1\in a: w\in (0,a_1)
-\]
-
-%Case 1: a is empty.\\
-%Then it contradicts with $w\in \cc{(0,a_1)}{a_1\in a}$, so statement is exfalso proven.\\
-%Case 2: a is non--empty.\\
-
-We know that
-\[
-(a,\emptyclass) = \cc{(0,a_1)}{a_1\in a}\cup \cc{(1,b_1)}{b_1\in \emptyclass} = \cc{(0,a_1)}{a_1\in a}
-\]
-and
-\[
-(\emptyclass,b) = \cc{(0,a_1)|a_1\in \emptyclass\}\cup \cc{(1,b_1)}{b_1\in b} = \{(1,b_1)}{b_1\in b}
-\]
-.
-
-Small remark: we can compute, just for the sanity check:
-\[
-(0,0) = (\emptyclass,\emptyclass) = \cc{(1,b_1)}{b_1\in \emptyclass} = \emptyclass
-\]
-\[
-(1,0) = (\{\emptyclass\},\emptyclass) = \{(0,\emptyclass)\} = \{\emptyclass\}
-\]
-\[
-(0,1) = (\emptyclass,\{\emptyclass\}) =/\mbox{by the 2nd eq}/= \{(1,\emptyclass)\} = \{\{\emptyclass\}\},
-\]
-indeed they are all different when arguments are different, as intended. In the later theorem it will be proven for arbitrary pairs.
-
-Every chain ends with the empty set(or with an urelement in some non--extensional theories).\\
-
-If(WA) $(0,a_1)$ has an infinite chain, then (using the second equality) 
-$\cc{(1,e)}{e\in a_1}$ has it too. 
-
-So there exists $e_0\in a_1$, such that $(1,e_0)$ has an infinite chain.
-\[
-(1,e_0) = \{(0,0)\}\cup \cc{(1,e_1)}{e_1\in e_0}
-\]
-Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_1\in e_0$, such that $(1,e_1)$ has an infinite chain.
-\[
-(1,e_1) = \{(0,0)\}\cup \cc{(1,e_2)}{e_2\in e_1}
-\]
-and so on: (using here a natural number recursion/induction)
-Obviously, $\{(0,0)\}$ has no infinite chain. So there exists $e_{n+1}\in e_{n}$, such that $(1,e_{n+1})$ has an infinite chain.
-\[
-(1,e_{n+1}) = \cc{(0,0)\}\cup \{(1,e_{n+1})}{e_{n+1}\in e_n}
-\]
-
-Therefore $a$ has an infinite chain starting with $e$, contradiction.
-
-The proof is similar, for the ``Case II'', where
-\[
-(w\in \cc{(1,b_1)}{b_1\in b})
-\]
-\[
-(\exists b_1\in b, w\in (1,b_1)),
-\]
-with obtaining a contradiction with $b$ being well--founded.\\
-\Done
-
-\begin{definition}[we define a functional symbols which take the first and the second element of the pair (we can add, ``if it's an ordered pair'')]
-\[
-\pr_1(P) \ceq \fst(P) \ceq \cc{b}{(0,b)\in P}
-\]
-\[
-\pr_2(P) \ceq \snd(P) \ceq \cc{b}{(1,b)\in P}
-\]
+since comprehension ranges over set witnesses.
 \end{definition}
-\begin{theorem}[satisfies defining property]
+
+\begin{theorem}[Projection identities]
+For all classes $A,B$,
 \[
-((A_1,B_1) = (A_2,B_2)) \iff ((A_1=A_2)\land(B_1=B_2)) 
+\pr_1(P(A,B))=A,\qquad\pr_2(P(A,B))=B.
+\label{thm:recursive_pair_projections}
 \]
 \end{theorem}
-\Proof
-...\\
-\Done
-\begin{theorem}[pairing preserves well--foundedness]
-If $a$ and $b$ are well--founded, then $(a,b)$ is well--founded.
+\begin{proof}
+For a set $a$, membership $L(a)\in P(A,B)$ says either
+$L(a)=L(u)$ for some $u\in A$, or $L(a)=R(v)$ for some $v\in B$.
+The second alternative is excluded by the marker distinction. The first
+is equivalent to $a\in A$ by injectivity of $L$. Thus the first projection
+has exactly the members of $A$.
+
+Likewise, $R(b)$ can belong only to the right tagged image, and injectivity
+of $R$ makes $R(b)\in P(A,B)$ equivalent to $b\in B$. Class
+extensionality gives both identities.
+\end{proof}
+
+\begin{theorem}[The ordered-pair property]
+For arbitrary classes $A_1,B_1,A_2,B_2$,
+\[
+P(A_1,B_1)=P(A_2,B_2)
+\iff (A_1=A_2)\land(B_1=B_2).
+\label{thm:recursive_pair_uniqueness}
+\]
 \end{theorem}
-\Proof
-\[
-h((a,b)) = h(({0}\times a)\cup ({1}\times b)) = 
-\]
-\[
-=\max( \sup\cc{h(y)|y\in ({0}\times a)\}, \sup\{h(y)}{y\in ({0}\times a)} ) = /\mbox{WLOG}/
-\]
-\[
-= \sup\cc{h(y)}{y\in ({0}\times a)} = /\mbox{by def}/
-\]
-\[
-= \sup\cc{h(y)|y\in \{(0,a_1)}{a_1\in a_0\}} =
-\]
-\[
-= \sup\cc{h((0,a_1))}{a_1\in a_0)} = \dots
-\]
-\Done
+\begin{proof}
+Apply the two projections to the asserted pair equality. The projection
+identities give equality of the first and of the second components.
+The converse follows directly from the definition of $P$.
+\end{proof}
 
-\subsection{Cartesian product of numerals}
+\begin{theorem}[Sethood of a recursive pair]
+For arbitrary classes $A,B$,
+\[
+(P(A,B)\set)\iff (A\set)\land(B\set).
+\label{thm:recursive_pair_sethood}
+\]
+\end{theorem}
+\begin{proof}
+If $A,B$ are sets, replacement makes their two tagged images sets, and
+pairing and union make their union a set.
 
-Using Dunaev's ordered pair implies that corresponding cartesian product works as a conjunction of truth values on $\Prop\ceq \{\emptyclass,\{\emptyclass\}\}$
-Since $(\emptyclass, \emptyclass) = \emptyclass$,
+Conversely, suppose $P(A,B)$ is a set. Separation gives the subset
 \[
-\{\emptyclass\}\times \{\emptyclass\} = \{(\emptyclass, \emptyclass)\} = \{\emptyclass\} \in \Prop.
+\cc{c\in P(A,B)}{\exists(a\set),\ c=L(a)}.
 \]
-(It is also possible to use just intersection.)\\
+Each of its members has a unique inverse image under $L$ by tag
+injectivity. Replacement applied to this inverse relation therefore makes
+$A$ a set. The same argument with $R$ makes $B$ a set. These inverse
+images are uniquely determined, so choice is not needed.
+\end{proof}
 
-What is the Dunaev's product of 2 and 2 or even arbitrary m and n? Is there a closed formula?
-\[
-(a,b) \ceq (\{0\}\times a)\cup (\{1\}\times b),
-\]
-\[
-X\times Y \ceq \cc{(x,y)}{x\in X \land y\in Y}.
-\]
-\[
-2\ceq \{\emptyclass,\{\emptyclass\}\}
-\]
-\[
-(0,\{\emptyclass\}) = ... = \{\{\emptyclass\}\}
-\]
-\[
-a\ceq \{\emptyclass,\{\emptyclass\}\}
-\]
-\[
-b\ceq \{\emptyclass,\{\emptyclass\}\}
-\]
-\[
-(\{0\}\times a) = (\{0\}\times\{\emptyclass,\{\emptyclass\}\}) =
-\]
-\[
- = \{(0,\emptyclass),(0,\{\emptyclass\})\} =
-\]
-\[
- = \{\emptyclass,\{\{\emptyclass\}\}\}
-\]
+\paragraph{Why the height argument is unnecessary here.}
+The recursive definition uses well-founded set recursion, and its injectivity
+uses membership induction. Both are explicit assumptions of this local
+construction. There is no need to assign a new numerical height to the pair
+codes. In particular, the bounded depth measure discussed in the height
+section need not be substituted for ordinal rank: its failure to decrease
+strictly at limit values has no bearing on the tag-injectivity proof above.
+In a setting without regularity, the same argument applies to its
+well-founded part when the required recursion and replacement principles
+are available; it makes no assertion about arbitrary non-well-founded sets.
 
+\subsection{Finite examples and Cartesian products}
+The recursive tags have particularly small initial values:
 \[
-(\{1\}\times b) = (\{1\}\times\{\emptyclass,\{\emptyclass\}\}) =
+L(0)=0,\quad R(0)=1,\quad L(1)=\{1\},\quad R(1)=2,
 \]
+where $0=\emptyclass$, $1=\{0\}$, and $2=\{0,1\}$ are von Neumann
+ordinals. Thus the pair table is
 \[
- = \{(1,\emptyclass),(1,\{\emptyclass\})\} =
+\begin{array}{c|ccc}
+P & 0 & 1 & 2\\\hline
+0 & 0 & \{1\} & \{1,2\}\\
+1 & 1 & 2 & 3\\
+2 & \{0,\{1\}\} & \{0,1,\{1\}\} & \{0,1,\{1\},2\}
+\end{array}
 \]
+The row is the first component. For example,
 \[
- = \{\{\emptyclass\},2\}
+P(2,2)=\{L(0),L(1),R(0),R(1)\}
+      =\{0,\{1\},1,2\}=\power 2.
 \]
-%It's impossible to obtain two equal things!
+The number of members of a pair of finite sets is the sum of the numbers
+of members of its components, because the two tag maps are injective and
+have disjoint images. This does not make the pair operation ordinal
+addition: $P(1,2)=3$, whereas $P(2,1)=\{0,1,\{1\}\}$ is not an ordinal.
 
+The Cartesian product instead collects a pair for each choice of a member
+of each factor. Its corresponding table is
 \[
-(2,2)= (\{0\}\times 2) \cup (\{1\}\times 2)
-\]
-\[
- = \{\emptyclass,\{\{\emptyclass\}\}, \{\emptyclass\},\{\emptyclass,\{\emptyclass\}\}\}
-\]
-\[
- = \{\emptyclass, \{\emptyclass\}, \{\{\emptyclass\}\},\{\emptyclass,\{\emptyclass\}\}\}
-\]
-
-%Non--commutative multiplication table:\\
-Ordered pairing table:\\
-\begin{tabular}{|c|c|c|c|}
-\hline
-$\times$ & 0 & 1 & 2\\
-\hline
+\begin{array}{c|ccc}
+\times & 0 & 1 & 2\\\hline
 0 & 0 & 0 & 0\\
-\hline
-1 & 0 & 1 & $\{0,\{1\}\}$\\
-\hline
-2 & 0 & 2 & $\{0,\{1\},1,2\}$\\
-\hline
-\end{tabular}
+1 & 0 & 1 & \{0,\{1\}\}\\
+2 & 0 & 2 & \{0,1,\{1\},2\}
+\end{array}
+\]
+Thus $P(2,2)=2\times2=\power2$ happens for this small example; pairing
+and Cartesian product remain different operations.
 
-Computations:\\
+On the truth-value representatives $\Prop=\{0,1\}$, the product table
+restricts to Boolean conjunction: a product is $1$ exactly when both
+factors are $1$. In particular,
 \[
-(0,0) = 0
+1\times1=\{P(0,0)\}=\{0\}=1.
 \]
-\[
-(1,0) = (\{0\}\times1) \cup (\{1\}\times 0) = \{(0,0)\} \cup 0 = \{0\} = 1\\
-\]
-\[
-(0,1) = (\{0\}\times0) \cup (\{1\}\times 1) = 0 \cup \{(1,0)\} = \{\{0\}\} = \{1\}\\
-\]
-\[
-(1,1) = (\{0\}\times1) \cup (\{1\}\times 1) = \{0\} \cup \{(1,0)\} = \{0,\{0\}\} = 2\\
-\]\[
-(2,0) = (\{0\}\times2) \cup (\{1\}\times 0) = \{(0,0),(0,1)\} \cup 0 = \{0,\{1\}\}
-\]\[
-(2,1) = (\{0\}\times2) \cup (\{1\}\times 1) = \{(0,0),(0,1)\} \cup \{(1,0)\} = \{0,\{1\},1\}\\
-\]\[
-(2,2) = (\{0\}\times2) \cup (\{1\}\times 2) = \{(0,0),(0,1)\} \cup \{(1,0),(1,1)\} = \{0,\{1\},1,2\}\\
-\]
-\[
-(1,2) = (\{0\}\times1) \cup (\{1\}\times 2) = \{(0,0)\} \cup \{(1,0),(1,1)\} = \{0,1,2\} = 3
-\]
-
-% What if (-,-) works like sum, and times works like product? no, not commutative.
-
-% is it a MINIMUM FUNCTION ?
-% <a,b> \ceq (a x b) u (b x a)
-% a x b \ceq {<x,y> | x in a, y in b}
-% <0,0> = 0
-% <1,0> = 0
-% <0,1> = 0
-% <1,1> = {<0,0>} = {0} = 1
-% <2,1> = {<0,0>,<1,0>,<0,0>,<0,1>} = {0} = 1
-% <2,2> = {<0,0>,<1,0>,<0,1>,<1,1>} = {0,1} = 2
-% <3,3> = {<0,0>,<1,0>,<2,0>,<0,1>,<1,1>,<2,1>,<0,2>,<1,2>,<2,2>} = 
-% = {0,1,2} = 3
-
+Intersection gives the same conjunction on these two representatives.
 
 \input{END.tex}

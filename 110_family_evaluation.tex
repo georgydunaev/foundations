@@ -1,22 +1,33 @@
 \def\topic{Evaluation}
 \input{BEGIN.tex}
-\section{Evaluation in context of pluralistic semantic}
+\section{Evaluation under alternative semantic conventions}
+This section compares partial evaluation with two encodings of families.
+The opening discussion belongs to a semantics that distinguishes defined,
+underdefined, and uncertain expressions. The later semisingleton calculation
+explicitly switches to total union evaluation. Each convention should be
+read locally; the same notation $F(x)$ does not identify their treatment of
+arguments outside the domain.
+
 \begin{definition}[value]
 \[
-F(x) :\simeq \left(\lif ((F\family)\land(x \in \dom(F)))\ \lthen\ \union\cc{s}{(x,s)\in F}\ \lelse\ \lundef\ \lexception\_\lelse\ \lundef\right)
+F(x) :\simeq \left(\begin{aligned}
+&\lif ((F\family)\land(x \in \dom(F)))\\
+&\quad\lthen\ \union\cc{s}{(x,s)\in F}\ \lelse\ \lundef\\
+&\lexception\_\lelse\ \lundef
+\end{aligned}\right)
 \]
 \end{definition}
 \subsection{Value} % of a function.
-Definition of the value of the function:
+The following notes explore how equality should interact with partial values. The first two entries are unfinished proposals, not axioms used in the later calculation:
 %(in the context of 3--valued logic)
 \begin{definition}[semi--equality]
-\[
-I_{\Fm}(s\approx t) :\IFF 
-\]
+The interpretation of $I_{\Fm}(s\approx t)$ remains to be specified.
+Its rule must distinguish the intended behavior when either argument lacks
+a unique value.
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
 
-\begin{definition}[equality]?
+\begin{definition}[equality: specification pending]
 %\[
 %(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right),\ I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
@@ -26,26 +37,143 @@ I_{\Fm}(s\approx t) :\IFF
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
 
-\begin{definition}[quasi--equality](Note: it is good for semantics with partial functions, not the two level set--semantics i use.)
+\begin{definition}[quasi--equality in the partial-function convention]
 \[
 (s\simeq t) :\IFF (((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \]
 \end{definition}
 
-\begin{definition}[underdefined class](Note: be careful, since not every undefined class is underdefined, some are overdefined in various ways, so not even semantically equal to eachother.)
+\begin{proposition}[Three precise comparisons of partial values]
+In a local model, let each term have a candidate set $S_t\subseteq D$,
+where $D$ is a specified domain, and call it defined exactly when $S_t$
+is a singleton. Put $v_t$ equal to its sole member when defined.
+The following comparisons have different purposes:
+\begin{enumerate}
+\item Strict equality holds when both terms are defined and their values
+are equal. It is symmetric and transitive, but is reflexive only on
+defined terms.
+\item Kleene equality holds when both are undefined, or both are defined
+with equal values. It is an equivalence relation. It identifies an empty
+candidate set and a nonsingleton candidate set as undefined; it does not
+retain their distinct information.
+\item Candidate equality means $S_s=S_t$. It is an equivalence relation
+and retains that information, but answers a different question from
+whether two expressions have the same unique value.
+\end{enumerate}
+\end{proposition}
+\Proof
+For strict equality, symmetry and transitivity reduce to equality in
+$D$, and reflexivity is exactly the definedness condition. For Kleene
+equality, partition terms into one undefined class and one class for each
+defined value; equality of these classes is an equivalence relation.
+For candidate equality, use equality of subsets of $D$.
+\Done
+
+These are explicit local completions of possible equality conventions,
+not an identification of the unfinished semi-equality symbol with all
+three. Mere overlap of candidates is another possible comparison, but
+it is not transitive: $\{0\}$ overlaps $\{0,1\}$, and $\{0,1\}$
+overlaps $\{1\}$, while $\{0\}$ and $\{1\}$ do not overlap when
+$0\ne1$. Hence overlap cannot support unrestricted substitution of equals.
+The displayed implication defining quasi-equality has the Kleene reading
+only when the surrounding propositional operations and strict equality
+have the stated classical partial-function interpretation; a three-valued
+implication needs its own table.
+
+\begin{theorem}[When candidate images preserve Kleene equality]
+Let $g:D\to E$ be a total function between sets. Extend it to candidate
+sets by direct image $g_*(S)=g[S]$. Interpret definedness and Kleene
+equality as in the preceding proposition. Then $g_*$ preserves Kleene
+equality of all candidate sets if and only if $g$ is injective.
+Candidate equality is preserved by every $g_*$.
+\end{theorem}
+\Proof
+If $g$ is injective, an empty set has empty image, a singleton has its
+corresponding singleton image, and a set with at least two elements has
+at least two image elements. Thus undefined inputs remain undefined,
+and two equal defined values have equal defined images. These are the
+two cases of Kleene equality.
+Conversely, suppose $x\ne y$ but $g(x)=g(y)$. The candidate sets
+$\{x,y\}$ and $\emptyclass$ are both undefined and therefore Kleene
+equal. Their images are respectively $\{g(x)\}$ and $\emptyclass$,
+which are not Kleene equal. This contradicts preservation. Finally,
+$S=T$ always implies $g[S]=g[T]$ by extensionality.
+\Done
+
+An equivalence relation is therefore not automatically a congruence for
+all proposed term constructors. Strict partial application, which first
+requires a unique input and propagates undefinedness, behaves differently
+from taking the image of all candidates. The theorem identifies precisely
+when these two ways of forgetting information are compatible with the
+Kleene comparison; it does not prohibit either locally chosen semantics.
+
+\begin{definition}[underdefined expression]
+An expression with no possible value is distinguished here from one with
+several possible values. Both may lack a unique value, but they have
+different interpretations.
 \[
 \lundef :\simeq (\varepsilon x,\ \bot)
 \]
 \end{definition}
-What if $\varphi$ is assigned with $U$ (i.e. it is assigned with the "uncertain" truth value)?\\
-If $(I(\varphi)=U)$, then 
+For the proposed conditional, an uncertain condition is intended to yield an underdefined result. Thus if $I(\varphi)=U$, the proposed rule is
 \[
 (I((\lif\ \varphi\ \lthen\ t_1\ \lelse\ t_2))=I(\lundef))
 \]
-should follow.\\
-Btw, $I(\lundef)=\emptyclass$.\\
+In the set-valued interpretation of possibilities, $I(\lundef)=\emptyclass$: this means there are no possible values. It does not mean that the expression denotes the empty class as its unique value.\\
 \pagebreak
-\subsection{Singleton--based implementation of families(preferred)}
+\subsection{A comparison on ordinary graph fibres}
+Let $R\subseteq\V\times\V$ and put
+$R_x=\{y\in\V:(x,y)\in R\}$ for a set input $x$. Three operations
+examined in the book can be compared without identifying their meanings:
+\begin{center}
+\begin{tabular}{lccc}
+Fibre & Unconditional union & Guarded union & Unique-fibre value\\
+\hline
+$\emptyclass$ & $\emptyclass$ & $\V$ & undefined\\
+$\{v\}$ & $v$ & $v$ & $v$\\
+At least two members & $\bigcup R_x$ & $\bigcup R_x$ & undefined
+\end{tabular}
+\end{center}
+Here the guarded default is specifically $\V$, and the last column is
+the local unique-fibre convention; Farmer's globally guarded application
+has an additional functionhood condition. Every entry follows directly
+from its definition. In particular, a singleton fibre whose value is the
+empty set is represented and defined, despite having empty union.
+
+\begin{proposition}[What a fixed default can distinguish]
+Suppose a partial map has values in a set $D$, and a totalization replaces
+undefined values by a fixed $d\in D$. The totalized value alone cannot
+determine definedness uniformly over all such partial maps. If instead
+one adjoins a tagged absent value disjoint from all tagged present values,
+the totalized value determines both definedness and the original value.
+\end{proposition}
+\Proof
+At a fixed input, compare an undefined map and a map defined with value
+$d$. Both totalizations return $d$, while definedness differs.
+For the second statement, put $0=\emptyclass$, $1=\{0\}$ and use
+ordinary injective set pairs. Encode absence by $(0,0)$ and a defined
+value $v$ by $(1,v)$. Since $0\ne1$, no present code equals the absent
+code, and equality of present codes forces equality of their values.
+Testing the first coordinate recovers definedness; the second recovers
+a defined value.
+\Done
+
+For the class-theoretic guarded union convention, a proper-class default
+similarly cannot equal a set value. But when a family is allowed to have
+proper-class values, the default itself may also be a represented value.
+Then the represented domain must be retained separately, as in the family
+extensionality theorem. The tagged set construction above explains the
+information issue; it does not encode arbitrary proper classes as members
+of an ordinary set-valued graph.
+
+\subsection{Singleton--based implementation of families (preferred local encoding)}
+In both graph encodings below, stored coordinates are sets and the pair
+coding is injective on set coordinates. Accordingly the displayed binder
+$(x:\Class)$ collects records only at set inputs. Any proposed equation
+quantifying over all class inputs needs an additional encoding: an
+ordinary class of set-pair records cannot store a proper-class argument.
+The beta equations below assert evaluation only at set inputs.
+
 \begin{definition}[singleton]
 \[
 (s\ \text{singleton}) :\iff (\exists!(y:\Class),\ y\in s)
@@ -54,8 +182,10 @@ Side condition:\\
 Variable $y$ is not among free variables of a class term $s$.
 \end{definition}
 \begin{definition}[family constructor]
+The auxiliary bound variable $s$ is fresh for $t$ and distinct from $x$.
+The variable $x$ is the abstraction variable; all substitutions avoid capture.
 \[
-(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{((s\proper)\land(s\singleton)\land(s\subclass t))\lor((s\set)\land(s=t))}
+(\Lambda (x:\Class),\ t) \ceq \cc{(x,s)}{((t\proper)\land(s\singleton)\land(s\subclass t))\lor((t\set)\land(s=t))}
 \]
 (or, later, maybe
 \[
@@ -64,8 +194,8 @@ Variable $y$ is not among free variables of a class term $s$.
 )
 \end{definition}
 
-\subsection{Semisingleton--based implementation of families(outdated)}
-Theorems in this secction is outdated, because singleton--based implementation of families/class--functions/functions seems to be much more natural and uniform.
+\subsection{Semisingleton--based implementation of families (earlier encoding)}
+This earlier encoding represents each value by all of its semisingleton subclasses, including the empty class. Its calculations remain meaningful under that convention, even though the preceding construction uses a different canonical fiber. The label ``outdated'' records the development history, not a change to the assumptions of the following proofs.
 %\subsection{Some simple theorems about classes}
 \begin{definition}[some outdated syntactic sugar]
 \[
@@ -97,7 +227,7 @@ This definition doesn't work for cases when $t$ is a proper class.
 \]
 Context: ($x$:Var) ($t$:Class)\\
 Comment: Class term $t$ can contain $x$ as a free variable.\\
-Side conditions:\\ 
+Side conditions:\\
 (variable $x$ is bound by class collection in r.h.s)\\
 (variable $x$ is bound by lambda abstraction in l.h.s)\\
 %No side conditions.
@@ -120,7 +250,7 @@ f(x) \ceq \bigcup \cc{s}{(x,s)\in f}
 \]
 \end{definition*}
 % \coloneqq
-% \vcentcolon = 
+% \vcentcolon =
 
 \begin{theorem}[evaluation of a function]
 Context:\\
@@ -133,116 +263,28 @@ Context:\\
 \]
 \end{theorem}
 \Proof
-To prove the equality, we use set extensionality and MP.
+Rename the bound variable to a fresh $u$ before evaluating at the term
+$z$, and put $v=t[z/x]$. Capture-avoiding substitution and injectivity
+of the chosen set-pair coding give, for every set $b$,
 \[
-((\lambda x,\ t)(z) \subseteq t[z/x] )
-\land
-((\lambda x,\ t)(z) \supseteq t[z/x] )
-\implies
-((\lambda x,\ t)(z) = t[z/x] )
+(z,b)\in(\lambda x,t)\iff b=v.
 \]
-($\subseteq$)\\
-Assume 
-\[
-q\in (\lambda x,\ t)(z)
-\]
-By definition of $-(-)$ (evaluation),
-\[
-q\in\union \cc{b}{(z,b)\in(\lambda x,\ t)}.
-\]
-By destruction of the union,
-\[
-(\exists s\in \cc{b}{(z,b)\in(\lambda x,\ t)},\ (q\in s)).
-\]
-Note for the following step: since variable b has no free occurences in t, $t[s/b]=t$.
-\[
-s\in \cc{b}{(z,b)\in(\lambda x,\ t)}
-\IMPLIES
-(s\set) \& ((z,s)\in(\lambda x,\ t))
-\]
-By definition of $\lambda$,
-\[
-(z,s)\in(\lambda x,\ t)
-\IMPLIES
-(z,s)\in \cc{(x,t)}{\top}
-\]
-Unfolding the notation:
-\[
-(z,s)\in \cc{(x,t)}{\top}
-\IMPLIES
-(z,s)\in \cc{w}{\exists x,\ w = (x,t) \land \top}
-\]
-
-\[
-(z,s)\in \cc{w}{\exists x,\ w = (x,t) \land \top}
-\IMPLIES
-\exists x,\ (z,s) = (x,t) \land \top
-\]
-Notes: w is free in t, w is different from x. Since otherwise we would write $(x[(z,s)/w],t[(z,s)/w])$.
-
-Take such x. By defining property of ordered pairs,
-\[
-(z,s) = (x,t)
-\IMPLIES
-(z=x) \& (s=t)
-\]
-\[
-(q\in s)\& (s=t)
-\IMPLIES
-q\in t
-\]
-\[
-z=x
-\IMPLIES
-t[z/x]=t
-\]
-Therefore
-\[
-(q\in t) \& (t[z/x]=t)
-\IMPLIES
-(q \in t[z/x])
-\]
-\ \\
-\ \\
-($\supseteq$)\\
-Assume $(q \in t[z/x])$.\\
-Let $s\ceq t[z/x]$. Then $(q\in s)$.\\
-Goal1:$(z,s)\in(\lambda x,\ t)$.\\
-\[
-x[z/x]=z
-\]
-\[
-(z,t[z/x]) = (x[z/x],t[z/x])=(x,t)[z/x]
-\]
-Goal1: $(x,t)[z/x]\in\cc{(x,t)}{(x\mbox{ any})}$\\
-Goal2: $\exists x,\ (x,t)=((x,t)[z/x])$\\
-$x\ceq z$\\
-There are no free occurencies of $x$ in $((x,t)[z/x])$, because of the substitution.\\
-$c\ceq ((x,t)[z/x])$\\
-\[
-(((x,t)[z/x])=c)\implies\exists x,\ (x,t)=c
-\]
-Goal' is done.\\
-
-From the premise, $(x,t)[z/x]$ is a set.\\
-Therefore Goal1 is proven.\\
-So $(x,t)[z/x]\in (\lambda x,\ t)$.\\
-So $(z,t[z/x])\in (\lambda x,\ t)$.\\
-So $t[z/x]\in \cc{b}{(z,b)\in(\lambda x,\ t)}$.\\
-Since $(q \in t[z/x])$, we also have
-\[
-q\in \bigcup \cc{b}{(z,b)\in(\lambda x,\ t)}
-\]
-So $q\in (\lambda x,\ t)(z)$.\\
-And we are done.\\
+For the forward implication, a graph witness has first coordinate $z$;
+substitution in its second coordinate therefore yields $v$. Conversely,
+$z$ and $v$ are sets by hypothesis, so their pair is a legitimate graph
+member. Thus the fibre is exactly $\{v\}$ and its union is $v$.
+This argument uses semantic substitution, not the generally false claim
+that $t[z/x]$ has no free occurrences of $x$: the replacement term $z$
+itself may contain $x$.
 \Done
 
 
 \begin{theorem}[evaluation of family]
+Let $z$ be a set, and assume substitution of $z$ for $x$ is capture-avoiding. Under the semisingleton encoding and the local total union evaluation,
 \[
 (\Lambda x,\ t)(z) = t[z/x],
 \]
-and in particular:
+and in particular, when $x$ denotes a set:
 \[
 (\Lambda x,\ t)(x) = t.
 \]
@@ -250,7 +292,9 @@ and in particular:
 %(q Class)
 \end{theorem}
 \Proof
-By definition of family encoding $(\Lambda x,\ t) = \cc{(x, s)}{s\ \mbox{sss}\ t}$ and fiber evaluation $F(z) = \bigcup\cc{s}{(z, s) \in F}$ where $(s\ \mbox{sss}\ A) \iff ((s \subseteq A) \land \mathrm{semi\_singleton}(s))$ (noting that $\bigcup\cc{s}{s\ \mbox{sss}\ A} = A$ reconstructs the fiber class $A$ from its semi-singleton subclasses $\emptyset$ and $\{q\}$ for $q \in A$, whereas extracting the unique element $a$ from a singleton fiber $X = \{a\}$ uses unary intersection $\mathrm{Value}(X) = \bigcap\cc{y \in X}{\mathrm{semi\_singleton}(X)}$ so that $\mathrm{Value}(\{a\}) = \bigcap\{a\} = a$), for any set $z$ and any element $q$:
+Write $A=t[z/x]$. The fiber of the semisingleton encoding at $z$
+consists of the set subclasses $s\subseteq A$ with at most one member.
+Union evaluation reconstructs $A$ from those subclasses: for any set $q$,
 \[
 q \in (\Lambda x,\ t)(z)
 \iff q \in \bigcup\cc{s}{(z, s) \in (\Lambda x,\ t)}
@@ -260,12 +304,12 @@ By pair injectivity and the comprehension $(\Lambda x,\ t) = \cc{(x, s)}{s\ \mbo
 \[
 q \in (\Lambda x,\ t)(z) \iff q \in t[z/x].
 \]
-By class extensionality, $((\Lambda x,\ t)(z) = t[z/x])$. Taking $z \ceq x$ where $t[x/x] = t$ immediately yields $((\Lambda x,\ t)(x) = t)$. (Machine-checked in Obelisk Variant~1 as \texttt{family\_eval\_thm\_entry} and Variant~2 as \texttt{thm\_82\_family\_value\_eval} / \texttt{family\_fiber\_char}.)
+By class extensionality, $((\Lambda x,\ t)(z) = t[z/x])$. Taking $z \ceq x$ where $t[x/x] = t$ immediately yields $((\Lambda x,\ t)(x) = t)$.
 \Done
 
-\subsection{Lambda operatorOLD}
+\subsection{Earlier graph-based lambda operator}
 \begin{definition}[lambda operator]
-(not good anymore: doesn't work for classes!)
+This graph encoding applies to set-valued terms on set arguments. It does not by itself represent proper-class values as members of a graph.
 \[
 (\lambda x,\ t) = \cc{p}{\exists x,\ p = \langle x,t \rangle}
 \labeltagd{def}{lambda operator}

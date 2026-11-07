@@ -68,7 +68,7 @@ class TestHistoricalAlternativePreservation(unittest.TestCase):
 
     def test_old_type_interpretation_remains_marked_as_rejected(self):
         content = read("130_classes_as_types.tex")
-        self.assertIn("no! it ruins uniqueness of a term--type relation!", content)
+        self.assertIn("does not enforce the intended uniqueness of the term--type relation", content)
         self.assertIn("OUTDATED", content)
 
 

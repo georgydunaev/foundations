@@ -1,54 +1,81 @@
 \def\topic{Mechanization of Azriel Levy's Proof}
 \input{BEGIN.tex}
 \section{Azriel Levy's Union Theorem}
-This section contains the expansion of Azriel Levy's article ``On Von Neumann's Axiom System for Set Theory'' \cite{Levy68}.
+This section expands the argument attributed to Azriel Levy in
+``On Von Neumann's Axiom System for Set Theory'' \cite{Levy68}.
+The source is available at \url{https://www.jstor.org/stable/2315201}.
+The aim is to derive sethood of unions from other principles, so the union
+axiom must not be used implicitly in the intermediate steps.
 
-This section follows the article ``On Von Neumann's Axiom System for Set Theory'' by Azriel Levy (1968), available at \url{https://www.jstor.org/stable/2315201}.
+\paragraph{Local assumptions and proof status.}
+The argument uses classical logic, limitation of size, ordinal ordering,
+heredity, powerset, pairing of sets, and the principle that the image of a
+set under a class function is a set. Auxiliary graphs in this proof use
+ordinary Kuratowski pairs of sets, whose formation requires only pairing;
+they do not rely on the recursive pairing construction, whose existence
+proof elsewhere assumes the union axiom. Evaluation of an ordinary function
+means its unique graph value on its domain, with the empty class supplied
+outside that domain. This local totalization must not be replaced by the
+$V$-default convention from another section.
 
+The diagonal step below follows the author's handwritten reconstruction in
+\texttt{azriel\_levy/2.jpg} and \texttt{azriel\_levy/3.jpg}. Its essential
+point is to restrict the diagonal function to the supposed unbounded set
+before giving it an index in the enumeration of all sets. The proof remains
+relative to the stated ordinal and class-size prerequisites; it does not
+claim that those prerequisites have been derived here from a smaller list
+of axioms.
 
-%\myref{TakeutiZaring1982}
+\begin{theorem}[The ordinal-enumeration form of the union argument]
+Suppose there is a class surjection $F:\On\to\V$. Assume heredity,
+set-image, ordinary set pairing, and the following ordinal facts:
+$\On$ is proper, is transitively strictly well-ordered by membership,
+every nonempty subclass of $\On$ has a least member, and every ordinal
+set has a set successor. Then the union of every set is a set.
+\end{theorem}
+The boundedness and covering proofs below prove this statement directly.
+Full limitation of size is used only to obtain the displayed surjection;
+powerset is used below to ensure successors are sets without using union.
+In particular, neither transfinite recursion nor the later membership
+recursion theorem is invoked. Those later proofs assume union and hence
+cannot be used to establish the ordinal prerequisites of this theorem
+without a separate dependency argument. The local theorem remains valid
+with the ordinal facts explicitly supplied, irrespective of how they are
+established in another presentation.
 
-%(the proof needs theorems about ordinals done first)\\
 \subsection{Definitions}
 
 
-\begin{theorem}[The class of sets is injectible into the class of ordinal numbers]
+\begin{theorem}[The class of sets is injectable into the class of ordinal numbers]
 \[
 \exists T: \V \to \On \text{ injective}
 \]
 \Proof
-By Theorem \myref{thm:OnnotinV} from the section on set--theoretical ``paradoxes'',
+Use the properness of $\On$ from the local ordinal prerequisites.
+The actual limitation-of-size axiom, \myref{axm:limitation of size},
+gives a set-valued class function $H$ whose graph image $H[\On]$
+contains every set. For each set $y$, the class
 \[
-(\On \notin \V)
+C_y=\{\alpha\in\On\cap\dom(H):H(\alpha)=y\}
 \]
-Axiom of limitation of size:
-\[
-(\forall C,\ ((C\in \V) \iff (C<\V)))
-\]
-Definition of $<$:
-\[
-(A<B)\iffdef (\neg(B\leqslant A)),
-\]
-\[
-(\On\notin \V)\IMPLIES (\neg(\On<\V))
-\]
-\[
-\IMPLIES (\neg(\neg(\V\leqslant \On)))
-\]
-\[
-\IMPLIES (\V\leqslant \On)
-\]
-\[
-\IMPLIES (\exists T,\ \V\to\On\text{ injective})
-\]
+is therefore nonempty. By the least-member property of the ordinals,
+it has a unique least element, denoted $T(y)$. Class comprehension
+forms the graph of this assignment, so $T:\V\to\On$ is a class
+function. If $T(y)=T(z)=\alpha$, functionality of $H$ gives
+$y=H(\alpha)=z$. Thus $T$ is injective.
 
+This derives the needed injection from the book's surjective-image
+axiom, rather than silently treating the two formulations as definitions
+of one another. Least ordinal witnesses require no separate global
+choice function. The subsequent inverse-extension lemma supplies the
+surjection $\On\to\V$ used in the diagonal argument.
 \Done
 \end{theorem}
 
-\begin{lemma}[?]
+\begin{lemma}[an injection admits a surjective inverse extension]
 \[
 (\exists T: B \to C \text{ injective}),
-\implies 
+\implies
 (
 (\exists F: C \to B \text{ surjective})
 \lor
@@ -56,13 +83,18 @@ Definition of $<$:
 )
 \]
 \Proof
+If $B=\emptyclass$, the second alternative holds. Otherwise fix $b\in B$
+and an injection $T:B\to C$. Define
 \[
-F\coloneqq G^\top\cup((C\setminus T[B])\times\{b\}).
+F\coloneqq T^\top\cup((C\setminus T[B])\times\{b\}).
 \]
+The inverse graph $T^\top$ assigns to each member of $T[B]$ its unique
+preimage; the remaining members of $C$ are sent to $b$. Thus $F:C\to B$
+is a function and $F(T(u))=u$ for every $u\in B$, proving surjectivity.
 \Done
 \end{lemma}
 
-\begin{lemma}[The class of ordinal numbers is surjectible onto the class of sets]
+\begin{lemma}[The class of ordinal numbers is mapped surjectively onto the class of sets]
 %[there exist an indexing of set with ordinal numbers]
 \label{lem:exOnToVSurj}
 \[
@@ -73,7 +105,7 @@ It follows from the previous lemma, with $C\ceq\On$ and
 $B\ceq\V$, that
 \[
 (\exists T: \V \to \On \text{ injective})
-\implies 
+\implies
 (
 (\exists F:\On\to \V\text{ surjective})
 \lor
@@ -81,7 +113,7 @@ $B\ceq\V$, that
 )
 \]
 From the axiom of existence of a set, it follows that $(\V\neq\emptyclass)$.\\
-From this fact and Theorem 1.1, it follows that
+From this fact and the preceding injection theorem, it follows that
 \[
 (\exists F:\On\to \V\text{ surjective})
 \]
@@ -112,7 +144,7 @@ It follows from Lemma \myref{lem:exOnToVSurj} and Axiom \myref{axm:H} that
 \]
 
 \begin{definition}[the ``minimal'' section of $\text{F}$]
-The ``minimal'' section of $\text{F}$ returns the minimal ordinal class corresponding to the argument.
+For each set $y$, the section $\G$ chooses the least ordinal mapped to $y$ by $\F$. In particular, $\F(\G(y))=y$.
 %G_F(y)\eqdef\inf\cc{x\in\On}{F(x)=y}
 \[
 \G(y)\eqdef\inf\cc{x\in\On}{\text{F}(x)=y}
@@ -156,12 +188,12 @@ c(S)\eqdef F(\inf T[S])
 \LAND
 (S\subclass \V)
 \LAND
-(\G : \V\to \On \text{ surjective})
+(\G : \V\to \On)
 \IMPLIES
-(G[S]\neq\emptyclass)
+(\G[S]\neq\emptyclass)
 \]
-Since $(\G[S]\subclass\On)$ and $(G[S]\neq\emptyclass)$, we have $((\G[S]\intersection \On)\neq\emptyclass)$.\\
-Therefore, by Theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$.
+Since $(\G[S]\subclass\On)$ and $(\G[S]\neq\emptyclass)$, we have $((\G[S]\intersection \On)\neq\emptyclass)$.\\
+Therefore, by Theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$. Choose $s\in S$ with $\G(s)=\inf(\G[S])$. Then $c(S)=\F(\G(s))=s\in S$.
 \Done
 \end{lemma}
 
@@ -183,15 +215,21 @@ Therefore, by Theorem \myref{thm:infordmin}, $(\inf(\G[S])\in \G[S])$.
 %\ev_x(f)\ceq f(x).
 %\]
 \begin{definition}[evaluation class--function]\ \\
-Here, $f(x)=\emptyclass$ when $x\notin\dom(f)$,
+For each set $f$, first replace a nonfunction by $\emptyclass$ using
+$\tilde f$. Then evaluate by graph lookup, supplying $\emptyclass$ if
+$x$ is outside the domain:
 \[
-\ev_x\eqdef\cc{(f,f(x))}{f\in\V}
+\ev_x\eqdef\cc{(f,\tilde f(x))}{f\in\V}
 \labeltagd{def}{evclass}
 \]
+For a function graph, an output is a set because it occurs as a component
+of a set pair; the default is also a set. Thus $\ev_x:\V\to\V$ is a
+class function without using the union axiom to evaluate an arbitrary
+multivalued relation.
 \end{definition}
 \begin{definition}[R function]
 \[
-\text{R}\eqdef((\tilde{\cdot})\circ F)
+\text{R}\eqdef((\tilde{\cdot})\circ \F)
 \labeltagd{def}{Rfunc}
 \]
 \end{definition}
@@ -208,11 +246,14 @@ h(x)\eqdef\inf(\On\setminus(Q(x)))
 \labeltagd{def}{hfunc}
 \]
 \end{definition}
-\begin{definition}[an ordinal beta]
+\begin{definition}[an enumeration index for a set function]
+For each set function $u$, put
 \[
-\beta\eqdef G(h)
+\beta_u\eqdef\G(u).
 \labeltagd{def}{beta}
 \]
+Then $\beta_u\in\On$ and $\F(\beta_u)=u$. This definition requires $u$
+to be a set; it will be applied to a restricted diagonal function.
 \end{definition}
 \begin{definition}[bounded subclasses of On]
 In the context of $(b\subclass\On)$,
@@ -225,13 +266,23 @@ In the context of $(b\subclass\On)$,
 \]
 \end{definition}
 \subsection{Sets of ordinals are bounded}
-\begin{lemma}[subsets of On are bounded]
+We first record why ordinal successors are available without the union
+axiom. If $\alpha\in\On$, transitivity gives $\alpha\subseteq\power\alpha$,
+and $\alpha\in\power\alpha$. Hence
+$\alpha\cup\{\alpha\}\subseteq\power\alpha$; powerset and heredity make
+this successor a set. In particular, an unbounded subclass of $\On$ has
+an element strictly above each specified ordinal.
+\begin{lemma}[sets of ordinals are bounded]
 \[
 (b\set)\land(b\subclass\On)\implies(b\text{ bounded})
 \labeltagd{lem}{ssOnBdd}
 \]
 \Proof
-Step 1:
+Step 1: for an ordinal set $x$, the image $R[x]$ is a set by the
+set-image principle. The function $\ev_x:\V\to\V$ then makes
+$Q(x)=\ev_x[R[x]]$ a set. Since $\On$ is proper, it cannot be contained
+in $Q(x)$, by heredity. Therefore $h(x)$ exists as the least omitted
+ordinal and satisfies the following implications:
 \[
 (x\set)
 \IMPLIES
@@ -276,19 +327,45 @@ G(y)\in F^\top[\{y\}]
 \IMPLIES
 (G(y)\in\On)\land( F(G(y))=y)
 \]
+Step 3: suppose, for a contradiction, that $b$ is an unbounded set of
+ordinals. Form the restricted diagonal graph
+\[
+u\ceq\cc{(x,h(x))}{x\in b}.
+\]
+Step 1 shows that each $h(x)$ is an ordinal set. Pairing makes
+$(x,h(x))$ a set, and the image principle applied to $b$ makes $u$ a set
+function with domain $b$. We may therefore put $\beta=\G(u)$.
+By Step 2, $\F(\beta)=u$, and since $u$ is a function,
+$R(\beta)=\widetilde{\F(\beta)}=u$.
+
+Choose $x\in b$ with $\beta\in x$, using unboundedness and the ordinal
+successor fact above. Then $u\in R[x]$, so
+\[
+h(x)=u(x)=\ev_x(u)\in\ev_x[R[x]]=Q(x).
+\]
+But Step 1 gives $h(x)\notin Q(x)$. This contradiction proves that $b$
+is bounded. Restriction to $b$ is indispensable: the global rule $h$ need
+not itself be a set and cannot be assigned an index by $\G$ merely by
+writing $\G(h)$.
 \Done
 \end{lemma}
 
 \subsection{Union of a set is a set}
-\begin{lemma}[techlem]
+By the preceding boundedness lemma, for each set $b$ choose an ordinal
+$H(b)$ such that $\G[b]\subseteq H(b)$; the least such bound gives a
+class-function choice. If $a$ is a set, the image principle makes $H[a]$
+a set of ordinals. Choose $\alpha\in\On$ with $H[a]\subseteq\alpha$.
+The next lemma is stated in this context.
+
+\begin{lemma}[one ordinal image covers the union]
 \[
 F[\alpha]\supseteq \union a
 \labeltagd{lem}{techlem}
 \]
 \Proof
-Fix $\left(b\in\union a\right)$. To show: $n\in F[\alpha]$.
+Fix $n\in\union a$. To show: $n\in F[\alpha]$.
 \[
-\left(b\in\union a\right)
+\left(n\in\union a\right)
 \IMPLIES
 \exists b\in a,\ n\in b.
 \]
@@ -371,6 +448,7 @@ b\subclass F[G[b]]
 \labeltagd{thm}{unionisset}
 \]
 \Proof
+Let $a$ be an arbitrary set (the argument denoted by $A$ in the statement).
 \[
 H(b)\eqdef\inf\cc{e}{e\text{ strict upper bound of }G[b]}
 \]

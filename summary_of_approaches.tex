@@ -4,37 +4,104 @@
 \chapter*{Guide to the Five Foundational Approaches}
 \addcontentsline{toc}{chapter}{Guide to the Five Foundational Approaches}
 
-This guide separates the active proof-compiler semantics from preserved
-alternatives. Inclusion in one book does not assert that the approaches have
-a common semantics or that translations between them have been proved.
+The book explores several ways to express classes, choice, partiality, and
+types. This guide locates those approaches and distinguishes their local
+assumptions. The term \emph{active} describes the proof-compiler development;
+it is not a ranking of the mathematical value of the other sections.
+Inclusion in one book does not assert a common semantics or a proved
+translation between approaches.
+
+\paragraph{How to read a section.}
+First identify what its variables and terms denote, which quantifiers it
+uses, and how it treats an expression with no unique value. Then read its
+claims under those conventions. A total default value, an undefined term,
+and an uncertain truth value are different responses to different questions.
+When a section introduces a new convention, that convention governs its
+argument; definitions from another approach apply only when explicitly
+carried over. Labels such as \texttt{[OUTDATED]} record the history of a draft,
+not a reason to dismiss the idea it investigates.
+
+\paragraph{Notation whose scope matters.}
+\begin{itemize}
+\item $X\set$ is the assertion that $X$ is a set. Every class is a
+subclass of $\V$, but only sets are members of $\V$.
+\item $!x,\varphi$ means that at most one $x$ satisfies $\varphi$;
+$\exists!x,\varphi$ additionally asserts existence. A semisingleton
+may therefore be empty.
+\item In the class-axiom chapter, $\Dom(F)$ records represented
+arguments, including those with proper-class values; $\dom(F)$ selects
+arguments whose guarded evaluations are sets. In ordinary graph
+contexts, the usual domain is the set or class of first coordinates.
+Check the local definition when moving between these settings.
+\item A relational image collects second coordinates of records.
+An image formed from evaluated values is a different operation for
+families encoding proper-class values. The image chapter states which
+one it uses.
+\item Pair notation and descriptor notation are interfaces, not a
+guarantee that two sections use identical codes or off-domain values.
+The corresponding local definitions determine their interpretation.
+\end{itemize}
 
 \section{Active Mainline: Approaches 1 and 2}
 
-The active development uses classical two-valued Morse--Kelley/NBG class
-theory. In MK, class comprehension is impredicative. Family evaluation is
-total by class comprehension:
+The active development uses classical two-valued class theory, with
+Morse--Kelley (MK) and NBG fragments distinguished by their comprehension
+principles. In MK, comprehension permits quantification over classes; the
+NBG restriction permits only set quantifiers within the defining formula,
+while allowing class parameters. One total evaluation convention, recorded
+in the local Standard~ML prototype, is unconditional union evaluation:
 \[
 F(x)\eqdef\union\cc{s}{(x,s)\in F}.
 \]
-Ordered pairs of arbitrary classes use the Dunaev tagged construction
+The book explores the recursive Dunaev tagged construction for pairs of
+arbitrary classes, with pairing and product defined simultaneously:
 \[
 (a,b)\ceq(\{0\}\times a)\cup(\{1\}\times b),
 \]
-not an outer Kuratowski pair of proper classes. The principal sources are
-\texttt{presentation.ML}, \texttt{060\_axioms.tex}, and
-\texttt{070\_ordered\_pair.tex}.
+This is not an outer Kuratowski pair of proper classes. The newer Obelisk
+entry \texttt{DefDunaev\allowbreak OrderedPair} uses a different marker-tagged encoding.
+The ordered-pair section distinguishes these constructions and their empty
+pairs; a projection proof for one does not certify the recursive definition
+of the other.
+
+\paragraph{Two total evaluation conventions.}
+The guarded convention in the class-axiom section and in the newer Obelisk
+export \texttt{DefValueAtArg} uses
+\[
+F_V(x)=
+\begin{cases}
+\union\cc{s}{(x,s)\in F},&\text{if }\exists s,\ (x,s)\in F,\\
+V,&\text{otherwise}.
+\end{cases}
+\]
+The subscript here distinguishes conventions for the reader. Unconditional
+union evaluation returns $\emptyclass$ on an absent fibre; guarded evaluation
+returns $V$. Both are total and agree when a fibre is represented. Neither
+is the partial description used in PFOL. The newer export also displays an
+unguarded family-evaluation theorem that conflicts with its guarded
+definition on the empty family. Until the source is reconciled, that theorem
+must be read with an explicit domain hypothesis, not as evidence that the
+two defaults coincide.
+
+The principal sources are
+\texttt{presentation.ML}, \texttt{060\_\allowbreak axioms.tex}, and
+\texttt{070\_\allowbreak ordered\_\allowbreak pair.tex}.
 
 The accompanying type discipline is
 \emph{predicates/formulas-as-types, classes-as-expressions}. Class expressions
 are syntactic objects; their representations in SML are not object-theoretic
-classes. The older classes-as-types draft in
-\texttt{130\_classes\_as\_types.tex} remains marked \texttt{[OUTDATED]}.
-Its identification of every type with $\top$ is rejected because it destroys
-uniqueness of the term--type relation.
+classes. The chapter
+\texttt{130\_\allowbreak classes\_\allowbreak as\_\allowbreak types.tex}
+preserves older proposals under local \texttt{[OUTDATED]} labels alongside
+its explicit set models.
+The local discussion explains why identifying every type with $\top$
+conflicts with the intended uniqueness of the term--type relation. This
+objection concerns that interpretation, rather than every possible use of
+classes or predicates as types.
 
 \section{Preserved Alternative 3: Uncertain Descriptors}
 
-\texttt{020\_descriptors.tex} and \texttt{180\_many-valued.tex} preserve a
+\texttt{020\_\allowbreak descriptors.tex} and \texttt{180\_\allowbreak many-valued.tex} preserve a
 three-valued/uncertain calculus. Its three conventions are distinct:
 \[
 \tau\ceq\tau^{\Un},\qquad
@@ -46,8 +113,8 @@ value $U$ belongs to this alternative, not to the classical active kernel.
 
 \section{Preserved Alternative 4: Farmer's PFOL}
 
-\texttt{210\_partial\_functions\_semantics.tex} develops partial functions
-using Farmer's Partial First-Order Logic. Its iota descriptor satisfies
+\texttt{210\_\allowbreak partial\_\allowbreak functions\_\allowbreak semantics.tex} presents
+Farmer's Partial First-Order Logic. Its iota descriptor satisfies
 \[
 (\iota x,\varphi)\downarrow\iff(\exists!x,\varphi),
 \]
@@ -56,7 +123,7 @@ must not be silently identified with the active total union evaluation.
 
 \section{Preserved Alternative 5: Conglomerate-Valued Semantics}
 
-\texttt{030\_alternative\_semantics.tex} retains the outdated subset semantics
+\texttt{030\_\allowbreak alternative\_\allowbreak semantics.tex} retains the outdated subset semantics
 with assignments of the form
 \[
 A:\mathrm{Var}\to\power(K).
@@ -66,12 +133,63 @@ active formulas-as-types discipline.
 
 \section{Reading and Maintenance Rules}
 
-The main chapters develop approaches 1 and 2. Approaches 3--5 remain in their
-original standalone files as alternatives. The files
-\texttt{025\_unified\_descriptors.tex} and
-\texttt{035\_unified\_type\_semantics.tex} are retained only as rejected,
+For the class-theoretic development, begin with the logical framework,
+axioms, ordered pairs, and sethood, then continue to class operations,
+ordinals, and recursion. For descriptors and partiality, read the uncertain
+descriptor notes, the many-valued experiments, and the PFOL section as
+separate approaches. For the connection with implementation, read the
+classes-as-types discussion together with the language and proof-tree notes.
+
+\paragraph{A dependency route through the constructions.}
+For the recursive constructions, first read the elementary ordinal
+comparison results in the ordinal chapter, then ordinal and membership
+recursion in the induction chapter. Return to the ordinal chapter for
+set-like relation recursion, collapse, and Hartogs' theorem; the recursive
+pairing proof uses the membership-recursion result. The book retains its
+historical chapter order, so some of these prerequisites occur after their
+first application. The union argument has a different role: its ordinal
+facts are supplied as local assumptions, and its proof does not invoke
+later recursion results that themselves assume union. The finite and
+hereditarily finite models in the class overview help distinguish these
+assumptions from bare comprehension.
+
+\paragraph{From concrete types to their universal properties.}
+The classes-as-types chapter constructs Boolean, option, list, W-, and
+M-type models in explicit set-sized settings. The language chapter
+separately studies a specified simple syntax: type checking, substitution,
+preservation, normalization, and confluence. The category chapter explains
+recursion and corecursion through initial algebras and final coalgebras,
+and derives fusion, induction, and coinduction principles. A semantic
+model and a syntactic decision procedure are distinct results, even when
+they use the same type names.
+
+\paragraph{The analytic route.}
+Metric compactness and finite-dimensional normed spaces supply the
+topological preliminaries. Measure theory constructs the integral and
+proves its convergence theorems and function-space completeness.
+Functional analysis then develops duality and Banach-space principles,
+compact operators, uniform integrability, and the sequential
+finite-measure Dunford--Pettis criterion. The probability applications
+compare weak, setwise, in-measure, and total-variation convergence.
+The examples distinguish sequences from nets and finite measure from
+infinite counting measure; those changes of setting matter to the
+conclusions. Each chapter records the choice assumptions actually used.
+
+The assembled book also includes exploratory sections from approaches 3--5;
+these do not inherit the active implementation's conventions merely by
+appearing after a mainline chapter. Examples include
+\texttt{180\_\allowbreak many-valued.tex},
+\texttt{210\_\allowbreak partial\_\allowbreak functions\_\allowbreak semantics.tex}, and
+\texttt{030\_\allowbreak alternative\_\allowbreak semantics.tex}.
+The chapter \texttt{020\_\allowbreak descriptors.tex} supplies the descriptor comparison and
+its finite selection model.
+The historical iota and family constructions introduce further local variants.
+A heading marked as an outline or a proof sketch indicates the extent of the
+current development. The files
+\texttt{025\_\allowbreak unified\_\allowbreak descriptors.tex} and
+\texttt{035\_\allowbreak unified\_\allowbreak type\_\allowbreak semantics.tex} are retained only as rejected,
 non-normative drafts marked \texttt{[OUTDATED]}.
-\texttt{050\_unified\_interface.tex} provides navigation only: changing a
+\texttt{050\_\allowbreak unified\_\allowbreak interface.tex} provides navigation only: changing a
 \verb|\topic| title does not and cannot switch foundations.
 
 \input{END.tex}

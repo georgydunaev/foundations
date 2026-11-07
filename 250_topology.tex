@@ -3,11 +3,19 @@
 \section{Topology}
 %(\cite[p.450]{Simon1982})
 %(by \cite[p.469]{Treves1967})
-Here we try to develop some ideas about an axiomatization of topology inspired by the book ``Topological Vector Spaces, Distributions and Kernels''(\cite{Treves1967}).
+This chapter explores several descriptions of topology, inspired by
+\emph{Topological Vector Spaces, Distributions and Kernels}
+(\cite{Treves1967}). The point--neighbourhood relation, families of basic
+sets, and families of open sets provide different starting points.
+The conventions are stated locally: in particular, the first use of
+``subbase'' means an intersection-closed family, while the later
+``generator'' need not be intersection-closed.
 \subsection{Filter}
 \begin{definition}[filter]
 %\[\]
-The set $F$ is called \textit{filter} iff
+The set $F$ is called a \textit{filter} in the local convention below if
+it satisfies the following conditions. Its carrier is taken to be
+$\union F$, rather than supplied separately.
 \[
 \left( \emptyclass\notin F \vphantom\union \right),
 \tag{F$_1$}
@@ -22,13 +30,13 @@ A\in F
 B\in F
 \middle)
 \middle)
-\implies 
+\implies
 \middle(\middle(A\cap B\middle)\in F \vphantom\union \right),
 \tag{F$_2$}
 \]
 \[
 \left(F \ni A \subseteq B \subseteq \union F\middle)
-\implies 
+\implies
 \middle(B\in F\right).
 \tag{F$_3$}
 \]
@@ -46,11 +54,11 @@ A\in F
 B\in F
 \middle)
 \middle)
-\implies 
+\implies
 \middle(\middle(A\cap B\middle)\in F \vphantom\union \right),
  && \text{(F$_2$)}\\
 \left(F \ni A \subseteq B \subseteq \union F\middle)
-\implies 
+\implies
 \middle(B\in F\right).
 && \text{(F$_3$)}\\
 \end{align*}
@@ -58,6 +66,10 @@ B\in F
 %    x &=4-3 && \text{Subtract 3 from both sides}\\
 %    x &=1   && x \text{ must be one}
 \end{definition}
+These three conditions also admit $F=\emptyclass$, because the last two
+are then vacuous. Thus this convention includes an empty family. When a
+nonempty filter is required, that hypothesis will be stated separately;
+for a nonempty $F$, upward closure implies $\union F\in F$.
 \iffalse
 \subsection{Filter Base}
 \begin{definition}[filter base] TODO
@@ -67,7 +79,14 @@ B\in F
 \end{definition}
 \fi
 
-\subsection{Topology via relation}
+\subsection{Topology via a point--neighbourhood relation}
+The relation $x\mathcal{R}S$ is intended to mean that $S$ is a
+neighbourhood of $x$. In this set-sized development, take $\mathcal{R}$
+to be a set relation so that its images and the families defined below
+are sets. The carrier $E$ is recovered from the relation. Read the
+point axioms for $x\in E$ and the set axioms for $S\subseteq E$.
+The displayed axioms specify this proposed presentation; equivalence
+with other presentations requires a separate argument.
 \begin{definition}[relation between points and neighbourhoods](parameter)
 \[
 \mathcal{R}\subseteq \V\times \V
@@ -95,7 +114,7 @@ B\in F
 %(S)\ceq \reflectbox{$\mathcal{R}$}[\{S\}]
 %\]
 \end{definition}
-\begin{definition}[set of all open sets]
+\begin{definition}[Candidate family of open sets]
 \[
 \mathcal{T}\ceq \ran(\interior)
 \]
@@ -103,7 +122,7 @@ B\in F
 %\mathcal{T}\ceq \ran(\reflectbox{$\mathcal{N}$})
 %\]
 \end{definition}
-\begin{definition}[set of all neighbourhoods filters]
+\begin{definition}[Family of neighbourhood filters]
 \[
 \mathcal{N}\ceq \ran(\mathrm{tni})
 \]
@@ -146,13 +165,84 @@ x\in\intersection \mathrm{tni}(x)
 \interior(S)\in \left(N\cup\{\emptyclass\}\right)
 \]
 \end{axiom*}
-%\subsection{Filter}
+\paragraph{Scope of the proposed neighbourhood axioms.}
+Condition (N$_2$) says that a nonempty interior is a neighbourhood of
+\emph{some} point. This is weaker than requiring it to be a neighbourhood
+of every point it contains. The difference affects the intended passage
+from the relation to an ordinary topological interior.
+
+For example, let $E=\{a,b,c,d\}$, with four distinct points, and put
+\[
+U_a=\{a,b,d\},\quad U_b=\{b,c,d\},\quad
+U_c=\{c,d\},\quad U_d=\{d\}.
+\]
+Declare $x\mathcal{R}S$ exactly when $U_x\subseteq S\subseteq E$.
+Each neighbourhood family is a nonempty principal filter, and every
+neighbourhood of $x$ contains $x$, so (N$_0$) and (N$_1$) hold.
+Whenever $\interior(S)$ is nonempty, $d\in S$, hence
+$d\in\interior(S)$. Consequently $\interior(S)$ is a neighbourhood
+of $d$, proving (N$_2$). Nevertheless,
+\[
+\interior(\{a,b,d\})=\{a,d\},\qquad
+\interior(\{a,d\})=\{d\}.
+\]
+Thus this interior is not idempotent. The three axioms retain a coherent
+weaker setting, but alone do not identify $\interior$ with the interior
+operator of an ordinary topology.
+
+For that identification, a natural strengthening is the pointwise clause
+\[
+x\in\interior(S)\implies
+\interior(S)\in\mathrm{tni}(x).
+\tag{N$_2^{\mathrm{pt}}$}
+\]
+Read this with nonempty neighbourhood filters on the common carrier $E$,
+and with every neighbourhood a subset of $E$. It says that each
+neighbourhood contains an open neighbourhood of the same point.
+The subbase construction below satisfies this stronger clause too: its
+basic witness $B$ lies inside $\interior(S)$ and contains the original
+point $x$. The weaker proposal is therefore preserved without conflating
+its scope with that of the ordinary topological setting.
+
+\begin{theorem}[Recovering a topology from the pointwise axioms]
+Suppose every $\mathrm{tni}(x)$, $x\in E$, is a nonempty filter on
+$E$, every member contains $x$, and (N$_2^{\mathrm{pt}}$) holds.
+Put $I(S)=\{x\in E\mid S\in\mathrm{tni}(x)\}$ for $S\subseteq E$.
+Then
+\[
+\mathcal{T}=\{U\subseteq E\mid I(U)=U\}
+\]
+is a topology on $E$, and its neighbourhood relation is the given one.
+\end{theorem}
+\Proof
+The filter axioms give $I(E)=E$, $I(\emptyclass)=\emptyclass$, and
+$I(S\cap T)=I(S)\cap I(T)$. They also give monotonicity:
+$S\subseteq T$ implies $I(S)\subseteq I(T)$. The point condition
+gives $I(S)\subseteq S$; (N$_2^{\mathrm{pt}}$) gives
+$I(S)\subseteq I(I(S))$. Applying the first inclusion to $I(S)$
+proves equality, so $I$ is idempotent. Its range is therefore exactly
+its family of fixed points, agreeing with the earlier notation
+$\mathcal{T}=\ran(I)$.
+
+Its fixed points contain $\emptyclass,E$ and are closed under binary
+intersections. If each $U_j$ is fixed, monotonicity gives
+$U_j\subseteq I(\bigcup_j U_j)$, so their union is fixed too.
+Thus the fixed points form a topology. Finally, if
+$S\in\mathrm{tni}(x)$, then $x\in I(S)\subseteq S$ and $I(S)$ is
+open. Conversely, an open $U$ with $x\in U\subseteq S$ gives
+$U\in\mathrm{tni}(x)$ and hence $S\in\mathrm{tni}(x)$ by upward
+closure. This proves equality of the neighbourhood relations.
+\Done
+
 \subsection{Topology via (sub)base}
 \begin{definition}[subbase]
-Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subbase}.
+In this subsection, a \textit{subbase} is a set $\mathcal{B}$ closed
+under binary intersections. This is a local naming convention: the
+closure condition already provides the refinement property needed for
+a base on the carrier $\union\mathcal{B}$. Empty members are allowed.
 \begin{align*}
 \left(A\in \mathcal{B}\middle)\land \middle(B\in \mathcal{B}\middle)
-\implies 
+\implies
 \middle(A\cap B\in \mathcal{B} \vphantom\union \right),
 \end{align*}
 % && \text{(F2)}\\
@@ -162,84 +252,58 @@ Any set $\mathcal{B}$ which is closed under intersection we call a \textit{subba
 %For $p\in E$, $S\subseteq E$, and a set $\mathcal{B}\subseteq\power E$(later we will see that its elements are open), such that $\emptyclass\notin \mathcal{B}$,
 For any $p$, any $S$, and a subbase $\mathcal{B}$, we define:
 \footnote{
-Here we use $\union\mathcal{B}$ 
+Here we use $\union\mathcal{B}$
 %in order to follow the assumption that something generated by a basis is uniquely determined. E.g. ``The filter
 %generated by the [filter] basis is uniquely determined'', p.7 TVS.
-%Otherwise 
+%Otherwise
 , because otherwise
 any generated topology would always have a class of all sets as a carrier.
 %Otherwise we couldn't distinguish topology from some of its subtopologies.
 Later we will also see that elements of $\mathcal{B}$ are open.
 }
 \[
-\left(p \mathcal{R}_\mathcal{B} S \right) :\LRA 
+\left(p \mathcal{R}_\mathcal{B} S \right) :\LRA
 \left(\exists B\in\mathcal{B},\  p\in B \subseteq S \subseteq \union\mathcal{B}  \right)
 \]
 \end{definition}
-%(Note: 
+%(Note:
 %)
 
 %point--neighbourhood relation defined via filter bases is a point--neighbourhood relation
 \begin{theorem}[topology via subbase is a topology]
 The relation $\mathcal{R}_\mathcal{B}$ between points and neighbourhoods is topological.
 \ProofNoPar
+Put $E=\union\mathcal{B}$ and fix $x\in E$.
 \begin{itemize}
-\item (N$_0$) To Show:\ $(\mathcal{R}_\mathcal{B}[\{x\}]\ \mathrm{filter})$\\
-...(easy exercise)...
-%\begin{align*}
-%\text{To Show:}\\
-%(\mathcal{R}_\mathcal{B}[\{x\}]\ \mathrm{filter})
-%\end{align*}
-\item (N$_1$) To show:\ $x\in\intersection\mathcal{R}_\mathcal{B}[\{x\}]$
-\[
-x\in\intersection\mathcal{R}_\mathcal{B}[\{x\}]
-\]
-\[
-\forall S \in \mathcal{R}_\mathcal{B}[\{x\}] ,\  x\in S
-\]
-\[
-\forall S,\  (x\mathcal{R}_\mathcal{B} S) \implies x\in S
-\]
-\[
-\forall S,\  \left(\exists B\in\mathcal{B},\  p\in B\subseteq S \right) \implies x\in S
-\]
-\[
-(p\in B\subseteq S) \implies x\in S
-\]
-\item (N$_2$)\ To Show:\ $\interior_\mathcal{B}(S)\in (N_\mathcal{B}\cup \{\emptyclass\})$
-\[
-\mathcal{R}^{T}_\mathcal{B}[\{S\}]\in (N_\mathcal{B}\cup \{\emptyclass\})
-\]
-\[
-N_\mathcal{B}=\union\mathcal{N}_\mathcal{B}=\union\ran(\mathrm{tni_\mathcal{B}})=\union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])
-\]
-If $\mathcal{R}^{T}_\mathcal{B}[\{S\}]$ is empty, then we are done.\\
-If it is not, then 
-\[
-\exists x,\  x \mathcal{R}_\mathcal{B} S.
-\]
-%Therefore
-\[
-(x \mathcal{R}_\mathcal{B} S)
-\IMPLIES
-S
-\in
-\mathcal{R}_\mathcal{B}[\{x\}]
-\in
-\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}]
-\]
-\[
-S\in \union\ran(y\mapsto \mathcal{R}_\mathcal{B}[\{y\}])=N_\mathcal{B}.
-\]
+\item (N$_0$) Every neighbourhood contains $x$, so the empty set is not
+a neighbourhood. If $S$ and $T$ are neighbourhoods, choose
+$B_1,B_2\in\mathcal{B}$ with $x\in B_1\subseteq S$ and
+$x\in B_2\subseteq T$. Then $B_1\cap B_2\in\mathcal{B}$ and
+$x\in B_1\cap B_2\subseteq S\cap T$, so $S\cap T$ is a neighbourhood.
+Upward closure within $E$ follows immediately from the definition.
+There is some $B\in\mathcal{B}$ containing $x$, so $E$ itself is a
+neighbourhood and this neighbourhood family is nonempty.
+\item (N$_1$) Each member $S$ of the neighbourhood family contains a
+basic set containing $x$, hence contains $x$. Therefore $x$ belongs
+to the intersection of the family.
+\item (N$_2$) Let $I=\interior_\mathcal{B}(S)$. If $I=\emptyclass$,
+the axiom holds. Otherwise take $x\in I$ and choose
+$B\in\mathcal{B}$ with $x\in B\subseteq S\subseteq E$.
+For every $y\in B$, the same $B$ witnesses $y\mathcal{R}_\mathcal{B}S$,
+so $B\subseteq I\subseteq E$. Thus $I$ is a neighbourhood of $x$,
+and consequently $I\in N_\mathcal{B}$.
 \end{itemize}
 \DoneNoPar
 \end{theorem}
-\begin{definition}[a base for a binary product topology]
+\begin{definition}[Rectangles from neighbourhoods]
+The following family collects neighbourhood rectangles. Its local
+subfamilies at a point provide the product filter bases below. Calling
+it an open base additionally requires the rectangles to be open.
 \[
 \mathcal{B}_{E\times F} \ceq \cc{A\times B}{(A\in N_E) \land (B\in N_F)}
 \]
 \end{definition}
-It can be given also this way:
+To describe this construction at a specified point, use the notation
 \begin{notation}[neighbourhoods of a point]
 \[
 \mathrm{nghb} \ceq \mathrm{tni}
@@ -253,24 +317,27 @@ It can be given also this way:
 %\pagebreak
 %\subsection{Filter and filter base}
 \pagebreak
-\subsection{Defining topology and various algebras}
+\subsection{Topologies and intersection-closed structures}
+Here a topology or sigma-algebra carries its own underlying set: the
+carrier is the union of its members. This explains why a carrier does
+not appear as a separate argument in the definitions.
 \begin{definition}[topology]
 The set $\mathcal{T}$ is called \textit{topology} iff
 %\left( \emptyclass\notin F \vphantom\union \right),
 % && \text{(F$_1$)}\\
 \begin{align*}
 \left(S \subseteq \mathcal{T}\middle)
-\implies 
+\implies
 \middle(\middle(\union S\middle)\in \mathcal{T} \vphantom\union \right),
  && \text{(T$_1$)}\\
 \left(\middle(
 A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
-\implies 
+\implies
 \middle(\middle(A\cap B\middle)\in \mathcal{T} \vphantom\union \right),
  && \text{(T$_2$)}\\
 \end{align*}
 %\left(F \ni A \subseteq B \subseteq \union F\middle)
-%\implies 
+%\implies
 %\middle(B\in F\right).
 %&& \text{(F$_3$)}\\
 \end{definition}
@@ -287,12 +354,12 @@ S \subseteq \sigma
 |S|\leqslant \omega
 \middle)
 \middle)
-\implies ·
+\implies
 \middle(\middle(\union S\middle)\in \sigma \vphantom\union \right),
  && \text{(S$_1$)}\\
  \left(\middle(
 A\in \sigma \middle)\land \middle(B\in \sigma\middle)\middle)
-\implies 
+\implies
 \middle(\middle(A\setminus B\middle)\in \sigma \vphantom\union \right),
  && \text{(S$_2$)}\\
 \left( \left(\union \sigma\right) \in \sigma \vphantom\union \right).
@@ -300,27 +367,40 @@ A\in \sigma \middle)\land \middle(B\in \sigma\middle)\middle)
 \end{align*}
 %\left(\middle(
 %A\in \mathcal{T}\middle)\land \middle(B\in \mathcal{T}\middle)\middle)
-%\implies 
+%\implies
 %\middle(\middle(A\cap B\middle)\in \mathcal{T} \vphantom\union \right),
 % && \text{(T$_2$)}\\
 \end{definition}
+For all the intersection statements below, $Q$ is a \emph{nonempty}
+family of the indicated sets. This ensures that $\intersection Q$ is a
+set. When the structures are subspaces, closed sets, convex sets, or
+balanced sets, they lie in one fixed ambient vector space or topological
+space. Empty intersections can instead be treated relative to a stated
+ambient set; the unrestricted class convention
+$\intersection\emptyclass=\V$ is not used for these statements.
+
 \begin{theorem}[intersection of topologies]
 \begin{align*}
 \left(
 Q \subseteq \cc{\mathcal{T}}{\mathcal{T}\mathrm{\ topology}}
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ topology}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 % && \text{(S$_2$)}\\
 \Proof
-\dots
+Let $\mathcal{I}=\intersection Q$. If $S\subseteq\mathcal{I}$,
+then $S\subseteq\mathcal{T}$ for every $\mathcal{T}\in Q$, so
+$\union S\in\mathcal{T}$ for every such $\mathcal{T}$. Thus
+$\union S\in\mathcal{I}$. Binary intersections are inherited in the
+same way. Nonemptiness of $Q$ bounds $\mathcal{I}$ by a set topology,
+so $\mathcal{I}$ is a set and satisfies both defining axioms.
 \DoneNoPar
 \end{theorem}
 
@@ -331,25 +411,29 @@ Q \subseteq \cc{\mathcal{T}}{\mathcal{T}\mathrm{\ topology}}
 \middle(
 Q \subseteq \cc{\sigma}{\sigma\mathrm{\ sigma{\shortminus}algebra}}
 \middle)
-\land 
+\land
 \middle(
 \middle(
-\union\intersection Q 
+\union\intersection Q
 \middle)
 \in \intersection Q
 \middle)
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ sigma{\shortminus}algebra}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\dots
+Put $\mathcal{I}=\intersection Q$. Countable unions and relative
+differences of members of $\mathcal{I}$ belong to every sigma-algebra
+in $Q$, hence to $\mathcal{I}$. The additional displayed hypothesis
+is precisely the remaining carrier axiom
+$\union\mathcal{I}\in\mathcal{I}$.
 \DoneNoPar
 \end{theorem}
 
@@ -359,22 +443,21 @@ Q \subseteq \cc{\sigma}{\sigma\mathrm{\ sigma{\shortminus}algebra}}
 \left(
 Q \subseteq \cc{L}{L\mathrm{\ linear\ subspace}}
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ linear\ subspace}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\[
-\forall \alpha_1, \alpha_2 \in \mathbb{K},
-\forall v_1, v_2 \in L,
-((alpha_1 v_1 + \alpha_2 v_2)\in L)
-\]
-\dots
+Every member of $Q$ contains the zero vector, so their intersection
+does as well. If $v_1,v_2\in\intersection Q$ and
+$\alpha_1,\alpha_2\in\mathbb{K}$, then
+$\alpha_1v_1+\alpha_2v_2$ lies in every member of $Q$, hence in their
+intersection. Thus the intersection is a linear subspace.
 \DoneNoPar
 \end{theorem}
 
@@ -383,17 +466,19 @@ Q \subseteq \cc{L}{L\mathrm{\ linear\ subspace}}
 \left(
 Q \subseteq \cc{C}{C\mathrm{\ closed}}
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ closed}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\dots
+The complement of $\intersection Q$ in the fixed ambient space is
+the union of the complements of the members of $Q$. Each complement
+is open, so their union is open and the intersection is closed.
 \DoneNoPar
 \end{theorem}
 
@@ -402,17 +487,19 @@ Q \subseteq \cc{C}{C\mathrm{\ closed}}
 \left(
 Q \subseteq \cc{C}{C\mathrm{\ convex}}
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ convex}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\dots
+If $u,v\in\intersection Q$ and $0\leqslant t\leqslant1$, then
+$tu+(1-t)v$ belongs to every convex member of $Q$. It therefore belongs
+to the intersection, which is convex.
 \DoneNoPar
 \end{theorem}
 
@@ -421,17 +508,19 @@ Q \subseteq \cc{C}{C\mathrm{\ convex}}
 \left(
 Q \subseteq \cc{B}{B\mathrm{\ balanced}}
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ balanced}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\dots
+If $v\in\intersection Q$ and a scalar $a$ satisfies $|a|\leqslant1$,
+then $av$ belongs to every balanced member of $Q$. It therefore belongs
+to the intersection, which is balanced.
 \DoneNoPar
 \end{theorem}
 
@@ -441,43 +530,68 @@ Q \subseteq \cc{B}{B\mathrm{\ balanced}}
 \middle(
 Q \subseteq \cc{\lambda}{\lambda\mathrm{\ Dynkin}}
 \middle)
-\land 
+\land
 \middle(
 \middle(
-\union\intersection Q 
+\union\intersection Q
 \middle)
 \in \intersection Q
 \middle)
 \middle)
-\implies 
+\implies
 \middle(
 \middle(
 \intersection Q
 \middle)
 \mathrm{\ Dynkin}
-\vphantom\union 
+\vphantom\union
 \right)
 \end{align*}
 \Proof
-\dots
+Use the formulation of a Dynkin system by containment of its carrier,
+closure under differences of nested members, and closure under countable
+disjoint unions. The two closure properties pass to the intersection.
+The displayed additional hypothesis supplies its carrier, completing
+these three conditions.
 \DoneNoPar
 \end{theorem}
 
 \subsection{Topological properties}
-\begin{definition}[topological property]
-(ToDo: definition)
-\end{definition}
-To be a topology is a hereditary topological property. To be a closed set is a [trivially] weakly hereditary topological property. To be an open set is a topological property, but not even weakly hereditary. Several hereditary topological properties: being compact, being separable, being connected etc.
+This subsection proposes a local classification by ``hereditary'' and
+``weakly hereditary'' properties. The intended inheritance relation is
+still to be defined: it must specify which objects are compared and which
+operation or passage between them preserves a property. The preceding
+intersection theorems provide one possible setting for that question.
+
+The proposed classification treats being a topology as hereditary, being
+a closed set as weakly hereditary, and being an open set as failing even
+weak heredity. Compactness, separability, and connectedness are also
+listed as candidate hereditary properties. These examples record the
+intended direction of the investigation; their precise statements and
+proofs depend on the missing definition of inheritance.
+
+For terminological context, conventional topology distinguishes
+invariance under homeomorphism from inheritance by subspaces, and may
+further restrict attention to closed subspaces. The local terms here
+need an explicit definition before they can be compared with those
+conventions. In particular, the proposed examples should be read within
+that eventual local definition.
 
 \iftrue
 \pagebreak
 \subsection{Topology in older notation}
-\begin{definition}[?]
+This subsection records the same neighbourhood--interior relationship
+using $\nghbset_\topology(x)$ for the neighbourhoods of $x$. The symbol
+$\mbox{Segm}_\sigma$ denotes arbitrary unions of the displayed interval
+family; here the subscript is a union-closure notation, not a
+sigma-algebra. The relation and operator interpretations must be kept
+distinct in the inverse notation below.
+\begin{definition}[Basic intervals of the extended real line]
 \[
 \mbox{Segm} = \ccc{\beta}{[-\infty;\beta)}{\beta\in\real}\cup \ccc{\alpha}{(\alpha;+\infty]}{\alpha\in\real}\cup \ccc{\alpha,\beta}{(\alpha;\beta)}{\alpha\in\real,\beta\in\real}
 \]
 \end{definition}
-\begin{definition}[?]
+\begin{definition}[Topology of the extended real line]
 \[
 \topology_{[-\infty;+\infty]} = \mbox{Segm}_\sigma
 \]
@@ -494,28 +608,64 @@ Interior of a set V in a topology $\topology$.
 \separation{W}{\topology}{W\subseteq V}
 \]
 \end{definition}
-\begin{theorem}[?]
+\begin{theorem}[Converse point--set relations]
+Put $E=\union\topology$ and restrict the set arguments to $\power E$.
+Define the incidence relations
 \[
-(\interior = \nghbset^{-1})\LAND(\nghbset=\interior^{-1})
+\begin{aligned}
+I&=\{(x,V)\in E\times\power E:x\in\interior(V)\},\\
+N&=\{(V,x)\in\power E\times E:V\in\nghbset(x)\}.
+\end{aligned}
 \]
+Then $I=N^{-1}$ and $N=I^{-1}$. This is the precise relational
+meaning of the shorthand that interior and neighbourhood incidence
+are converse; it does not assert inverse functions.
 \end{theorem}
-\begin{theorem}[?]
+\Proof
+For $x\in E$ and $V\subseteq E$, membership in the union defining
+$\interior(V)$ means that some open $U$ satisfies $x\in U\subseteq V$.
+This is exactly $V\in\nghbset(x)$. Thus $(x,V)\in I$ if and only if
+$(V,x)\in N$, proving both identities.
+The restriction is essential: for $E=\{0\}$ with topology
+$\{\emptyclass,E\}$, the set $V=\{0,1\}$ has $0\in\interior(V)$
+but is not an allowed neighbourhood, since $V\nsubseteq E$.
+\Done
+\begin{theorem}[Common neighbourhoods and interior]
+Here $A,V\subseteq E=\union\topology$, and
+$\nghbset_\topology\langle A\rangle$ means
+$\{S\subseteq E\mid\forall x\in A,\ S\in\nghbset_\topology(x)\}$.
+For $A=\emptyclass$ this is $\power E$, so the statement also covers
+that case without using an unrestricted empty intersection.
 \[
 V\in \nghbset_\topology\langle A\rangle \iff A \subseteq \interior(V)
 \]
 \end{theorem}
-\begin{theorem}[?]
+\Proof
+The left side says that $V$ is a neighbourhood of every $x\in A$.
+By the preceding equivalence, this says precisely that every such $x$
+lies in $\interior(V)$. Both conditions are vacuous for $A=\emptyclass$.
+\Done
+\begin{note}[Order-theoretic interpretation]
+The shorthand $\cl\dashv\mbox{id}\dashv\interior$ records two
+adjunctions, with different inclusion maps understood. Closure is left
+adjoint to the inclusion of closed sets into all subsets; interior is
+right adjoint to the inclusion of open sets. Concretely, for closed $C$
+and open $U$,
 \[
-\cl \dashv \mbox{id} \dashv \interior
+\cl(S)\subseteq C\iff S\subseteq C,\qquad
+U\subseteq S\iff U\subseteq\interior(S).
 \]
-\end{theorem}
+\end{note}
 
 \newcommand*{\blipo}{\separation{W}{\topology}{W\subseteq V}}
 \renewcommand*{\blipo}{\ccc{W}{W\in\topology}{W\subseteq V}}
 \renewcommand*{\blipo}{\cc{W\in\topology}{W\subseteq V}}
 % \cc{W\in\topology}{W\subseteq V}
 %\noindent Lemma:
-\begin{theorem}[?]
+\begin{theorem}[Neighbourhood--interior correspondence]
+Let $E=\union\topology$, $x\in E$, and $V\subseteq E$.
+The carrier restriction on $V$ is needed because neighbourhoods, as
+defined here, are subsets of $E$.
 \[
 V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 \]
@@ -523,11 +673,11 @@ V\in\nghbset_\topology(x) \iff x\in \interior_\topology(V)
 $(\Rightarrow)$
 \[
 V\in \nghbset_\topology(x) \IMPLIES \exists U\in \topology,\  x\in U \subseteq V
-\tag{nghb--elim, union--elim})
+\tag{nghb--elim, union--elim}
 \]%\hfill(\text
 \[
 U\in\topology\LAND U\subseteq V \IMPLIES U \in \blipo
-\tag(specification--intro)
+\tag{specification--intro}
 \]
 \[
 x\in U \LAND U \in \blipo \IMPLIES x\in \union \blipo
@@ -551,9 +701,9 @@ W\in \cc{U\in\topology}{U\subseteq V} \IMPLIES W\in\topology\LAND W\subseteq V
 x\in W
 \LAND
 W\in\topology
-\LAND 
-W\subseteq V 
-\IMPLIES 
+\LAND
+W\subseteq V
+\IMPLIES
 \exists U\in \topology,\  x\in U \subseteq V
 \tag{and--intro, exists--intro}
 \]
@@ -566,7 +716,14 @@ V\in \nghbset_\topology(x)
 \DoneNoPar
 \end{theorem}
 \pagebreak
-\subsection{Theorems about bases}
+\subsection{Generating families and bases}
+The next two definitions retain the draft's weaker covering convention:
+every open set must be expressible using the family, but the family is
+not yet required to lie in $\mathcal{T}$. To obtain a base or subbase
+consisting of open sets, add $\mathfrak{B}\subseteq\mathcal{T}$ or
+$\mathfrak{G}\subseteq\mathcal{T}$, respectively. For finite
+intersections in the generator definition, the empty intersection means
+the fixed carrier $E=\union\mathcal{T}$.
 %\iffalse ???
 \begin{definition}[base]
 A set $\mathfrak{B}$ is a base of $\mathcal{T}$ iff\\
@@ -589,15 +746,17 @@ A set $\mathfrak{G}$ is a generator of $\mathcal{T}$ iff
 or
 \[
 \mathcal{T}
-\subseteq 
-\cc{\union W }{  W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) \}}}
+\subseteq
+\cc{\union W }{  W\in\power\cc{\intersection Q }{ (Q\subseteq \mathfrak{G}) \land (Q \mathrm{\ finite}) }}
 \]
 or $\mathcal{T}$ is a subset of unions of subsets of intersections of finite subsets of $\mathfrak{G}$.\\
 \end{definition}
-Generator set is also called a "subbase".
+With the open-set condition just stated, a generator is also called a
+subbase. This is the second use of that word in this chapter; unlike the
+earlier intersection-closed family, it need not be closed under intersections.
 %\fi
 
-\begin{definition}[a relation ``finer'' as an order on filters]
+\begin{definition}[The refinement preorder on families]
 For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathcal{C} \leq \mathcal{F}$ if and only if for every $C \in \mathcal{C}$ there exists some $F \in \mathcal{F} \text{ such that } F \subseteq C,$ in which case it is said that $\mathcal{C}$ is coarser than $\mathcal{F}$ and that $\mathcal{F}$ is finer than (or subordinate to) $\mathcal{C}$.
 \[
 (\mathcal{C} \leq \mathcal{F})
@@ -612,23 +771,26 @@ For any two families $\mathcal{C} \text{ and } \mathcal{F}$ declare that $\mathc
 \]
 \end{notation}
 
-\begin{definition}[order on bases]
-Base $\mathfrak{B}_1$ is finer than base $\mathfrak{B}_2$ iff
+\begin{definition}[Pointwise refinement of bases]
+Consistently with the preceding direction of $\leq$, base
+$\mathfrak{B}_1$ is coarser than base $\mathfrak{B}_2$ iff
 \[
 \forall x ,\  (\mathfrak{B}_1(x) \leq \mathfrak{B}_2(x))
 \]
 \end{definition}
 
 %\pagebreak
-\subsection{Alexandrov's theorem}
+\subsection{Alexandrov's theorem: planned topic}
+The intended theorem and its hypotheses remain to be specified.
 %\todo
 \pagebreak
-\subsection{Various subsets: subspace, convex hull, balanced set}
-Let \dots, then $X$ has the product topology if the topology of
+\subsection{The product topology}
+Let $(X_i,\Tau_{X_i})_{i\in I}$ be a set-indexed family of topological
+spaces. The product topology on
 \[
 X\ceq \prod_{i\in I}X_i
 \]
-is the coarsest topology s.t.
+is the coarsest topology for which the projections
 \[
 \pi_i:X\to X_i
 \]
@@ -642,9 +804,14 @@ In fact $\mathcal{A}$ is a subbasis.
 \Tau_\mathcal{A}\eqdef\intersection\cc{\Tau}{(\Tau\mbox{ topology on }X)\land (\mathcal{A}\subseteq\Tau) }
 \]
 \fi %iftrue
-%Classification based on 
+%Classification based on
 \subsection{Cardinality--based topological definitions}
-Let $(X,\Tau)$ be a topological space. Let $S$ be any $S\subseteq X$.
+Let $(X,\Tau)$ be a topological space and $S\subseteq X$. In this
+subsection, $\mathcal{N}(x)$ denotes the neighbourhood family of $x$.
+The formulas define the author's cardinality-based terminology directly.
+In particular, ``limits'' requires at least two points of $S$ in each
+neighbourhood; no separation assumption is implicit. The names
+``isolates'' and ``border'' refer to the differences displayed below.
 
 \[
 \text{closure}(S)\eqdef\cc{x\in X}{\forall N\in\mathcal{N}(x),\card(S\cap N) \geqslant 1}
@@ -673,6 +840,47 @@ Let $(X,\Tau)$ be a topological space. Let $S$ be any $S\subseteq X$.
 \[
 \text{border}(S) \eqdef \text{closure}(S)\setminus\text{interior}(S)
 \]
+
+\begin{proposition}[Comparison with the ordinary derived set]
+\label{prop:cardinality_limits_T1}
+Define the ordinary derived set by
+\[
+S'=\{x\in X:\text{every neighbourhood of }x
+                 \text{ meets }S\setminus\{x\}\}.
+\]
+In every topological space, $\text{limits}(S)\subseteq S'$.
+If $X$ is $T_1$, meaning that every singleton is closed, then
+$\text{limits}(S)=S'$. In that case $\text{isolates}(S)$ consists
+exactly of the isolated points of the subspace $S$.
+\end{proposition}
+\Proof
+If a neighbourhood contains two distinct points of $S$, at least one
+differs from $x$. This proves the first inclusion without separation
+assumptions. Conversely, suppose $X$ is $T_1$, $x\in S'$, and $N$
+is a neighbourhood of $x$. If $x\in S$, then $N$ contains $x$ and
+a different point of $S$, as required. If $x\notin S$, choose
+$y\in N\cap S$. The set $N\setminus\{y\}$ is still a
+neighbourhood of $x$: it contains the intersection of an open
+neighbourhood inside $N$ with the open set $X\setminus\{y\}$.
+Since $x\in S'$, this smaller neighbourhood meets $S$, giving a
+second point different from $y$. Thus every $N$ contains at least
+two points of $S$.
+
+If $x\in\text{closure}(S)\setminus S$, every neighbourhood meets
+$S\setminus\{x\}=S$, so $x\in S'$. Hence
+$\text{closure}(S)\setminus S'=S\setminus S'$.
+For $x\in S$, failure to belong to $S'$ means that some neighbourhood
+meets $S$ only in $x$, equivalently $\{x\}$ is open in the subspace
+$S$. This proves the assertion about isolated points.
+\Done
+
+The separation assumption cannot simply be omitted. In the indiscrete
+space $X=\{a,b\}$ with $a\ne b$, take $S=\{a\}$. The only
+neighbourhood of either point is $X$, so $S'=\{b\}$ whereas
+$\text{limits}(S)=\emptyclass$. Here the author's
+$\text{isolates}(S)=X$ even contains a point outside $S$.
+The two conventions therefore describe different notions in this setting.
+
 \iffalse
 \begin{tabular}{|l|l|}
 \hline
@@ -683,5 +891,240 @@ Cx & y \\
 %\todo
 \pagebreak
 
+
+
+\subsection{Compactness and changes of topology}
+In this subsection all spaces are set sized. A space is \emph{compact}
+if every cover by open sets has a finite subcover. A subset is compact
+when it is compact with its subspace topology. These definitions do
+not impose a separation axiom.
+
+\begin{theorem}[Transport of compactness]
+\label{thm:compactness_transport}
+A closed subset of a compact space is compact, and the continuous
+image of a compact space is compact. Every compact subset of a
+Hausdorff space is closed. Consequently a continuous bijection from
+a compact space to a Hausdorff space is a homeomorphism.
+\end{theorem}
+\Proof
+Let $F$ be closed in a compact space $X$. Write each member of a
+relative open cover of $F$ as $F\cap U$ for an ambient open set $U$.
+One need not choose representatives simultaneously: take all open
+$U$ whose intersection with $F$ is a member of the given cover.
+These sets together with $X\setminus F$ cover $X$. A finite subcover
+therefore yields a finite subcover of $F$ from the original cover.
+
+For a continuous $f:X\to Y$, the inverse images of an open cover of
+$f[X]$ cover $X$ by open sets. A finite subcover pulls forward to a
+finite subcover of $f[X]$.
+
+Let $K\subseteq Y$ be compact, with $Y$ Hausdorff, and fix
+$y\in Y\setminus K$. Consider all open sets $U$ meeting $K$ for
+which there is an open neighbourhood $V$ of $y$ disjoint from $U$.
+Hausdorff separation makes these $U$ cover $K$. Finitely many
+$U_1,\ldots,U_m$ cover $K$; choose their corresponding $V_i$.
+The finite intersection of the $V_i$ is a neighbourhood of $y$
+disjoint from $K$. For $K=\emptyclass$ the conclusion is immediate.
+Thus $Y\setminus K$ is open, proving closedness. Only finitely many
+choices of witnesses were used.
+
+Finally, a continuous bijection $f:X\to Y$ as stated sends every
+closed subset of $X$ to a compact, hence closed, subset of $Y$.
+This is exactly continuity of its inverse, since the inverse image
+under $f^{-1}$ of a closed subset $F\subseteq X$ is $f[F]$.
+\Done
+
+The Hausdorff hypothesis is substantive. On a two-point set, the
+identity from the discrete topology to the indiscrete topology is a
+continuous bijection between compact spaces. Its inverse is not
+continuous. Thus compactness alone does not recover the original
+topology from a continuous bijection.
+
+\subsection{Compactness in metric spaces}
+This subsection uses ordinary set-sized metric spaces and classical
+countable choice. A space is \emph{compact} when every open cover has
+a finite subcover; it is \emph{totally bounded} when, for every
+$\varepsilon>0$, finitely many open balls of radius $\varepsilon$
+cover it. These are distinct definitions.
+
+\begin{theorem}[The metric compactness criterion]
+For a metric space $X$, the following conditions are equivalent:
+\begin{enumerate}
+\item $X$ is compact;
+\item every sequence in $X$ has a convergent subsequence with limit in $X$;
+\item $X$ is complete and totally bounded.
+\end{enumerate}
+\end{theorem}
+\Proof
+The empty space satisfies all three conditions, so assume $X$ nonempty.
+Compactness gives total boundedness by applying the cover property to
+all balls of a fixed radius. If $(x_n)$ is Cauchy, the closed sets
+$K_n=\overline{\{x_j:j\geq n\}}$ are nonempty and nested.
+They have nonempty intersection: otherwise their open complements
+would cover $X$, and a finite subcover would make one $K_n$ empty.
+Choose $x$ in the intersection. Given $\varepsilon>0$, a sufficiently
+late tail lies in the closed ball of radius $\varepsilon/2$ about one
+of its terms; its closure contains $x$. The triangle inequality then
+places all sufficiently late $x_n$ within $\varepsilon$ of $x$.
+Thus compactness implies completeness and total boundedness.
+
+Assume completeness and total boundedness. By countable choice, fix in
+advance, for every $k\geq1$, a finite ordered list of radius $2^{-k}$
+balls covering $X$. Start with all sequence indices. At stage $k$,
+retain those indices in the first ball of the $k$th list containing
+infinitely many of the retained terms; such a ball exists because the
+list is finite. Choose $n_k$ as the least retained index greater than
+$n_{k-1}$, starting with $n_0=0$. Once the lists are fixed these are
+uniquely specified recursive operations, not dependent choices.
+For $j,l\geq k$,
+the chosen terms lie in a common ball of radius $2^{-k}$, so their
+distance is at most $2^{1-k}$. The subsequence is Cauchy and hence
+converges in $X$.
+
+Finally assume the subsequence condition. If total boundedness failed
+at some radius $r>0$, finite induction would produce, for every positive
+integer $n$, an ordered $n$-tuple with pairwise distances at least $r$:
+at each finite stage some point lies outside the finitely many radius
+$r$ balls about the points already obtained. Countable choice selects
+one such tuple for each $n$. Concatenate these finite tuples to obtain
+a sequence enumerating their union $S$. No finite collection of radius
+$r/2$ balls covers $S$, since each such ball contains at most one point
+of any selected tuple, and tuples have arbitrarily large lengths.
+Starting with the first enumerated point, recursively choose the first
+point in the enumeration outside the radius $r/2$ balls about the
+previously chosen points. This rule is uniquely specified and always
+possible by the preceding observation. It yields a sequence with pairwise
+distances at least $r/2$, and hence with no convergent subsequence.
+This contradiction proves total boundedness using only countable choice.
+For an open cover $\mathcal U$, there is a number $\delta>0$ such
+that every ball $B(x,\delta)$ is contained in some member of
+$\mathcal U$. If not, choose $x_n$ whose ball of radius $1/n$ is
+contained in no member. A convergent subsequence has limit $x$ in
+some open $U\in\mathcal U$. Choose $r>0$ with $B(x,2r)\subseteq U$.
+Eventually both $d(x_{n_k},x)<r$ and $1/n_k<r$, contradicting the
+choice of $x_{n_k}$. Now finitely many radius $\delta$ balls cover
+$X$ by total boundedness, and containing cover members give a finite
+subcover. Hence $X$ is compact.
+\Done
+
+\begin{corollary}[Relative norm compactness in a Banach space]
+A subset of a Banach space has compact norm closure if and only if it
+is totally bounded in the norm metric.
+\end{corollary}
+\Proof
+A compact closure is totally bounded, and a subset inherits that
+property (replace a covering centre outside the subset by a point of
+an intersecting smaller ball). Conversely, the closure of a totally
+bounded set is totally bounded: a finite cover by radius
+$\varepsilon/3$ balls covers its closure by radius $\varepsilon$ balls.
+The closure is complete, being closed in a complete space. Apply the
+metric criterion.
+\Done
+
+For example, the closed unit ball of the infinite-dimensional Hilbert
+space $\ell^2$ is complete and bounded, but not compact: its coordinate
+vectors have pairwise distance $\sqrt2$, so no finite collection of
+balls of radius less than $\sqrt2/2$ covers them. Total boundedness,
+not boundedness alone, is the needed condition. The equivalence with
+sequential compactness proved here is a metric theorem; it must not be
+applied to an arbitrary weak topology without a separate argument.
+
+\subsection{Contractions on complete metric spaces}
+The next result uses completeness directly and does not assume
+compactness or total boundedness. A contraction here has one fixed
+constant $q<1$ controlling all pairs of points.
+
+\begin{theorem}[Banach's contraction principle and error bounds]
+\label{thm:banach_contraction}
+Let $(X,d)$ be a nonempty complete metric space and let $T:X\to X$
+satisfy
+\[
+d(Tx,Ty)\leq q\,d(x,y)\qquad(x,y\in X),\qquad 0\leq q<1.
+\]
+There is a unique $p\in X$ with $Tp=p$. For every initial point
+$x_0\in X$, the iteration $x_{n+1}=Tx_n$ converges to $p$.
+For every $n\geq1$ it satisfies the a priori and a posteriori bounds
+\[
+d(x_n,p)\leq\frac{q^n}{1-q}d(x_1,x_0),\qquad
+d(x_n,p)\leq\frac{q}{1-q}d(x_n,x_{n-1}).
+\]
+More generally, every $x\in X$ satisfies the residual estimate
+\[
+d(x,p)\leq\frac{d(x,Tx)}{1-q}.
+\]
+In particular this last estimate also applies to the initial point.
+\end{theorem}
+\Proof
+If $q=0$, all values of $T$ coincide. Write $p=Tx_0$ for any
+$x_0\in X$. Then $Tp=p$, and $x_n=p$ for every $n\geq1$.
+The displayed iteration bounds are both zero, as required. Any fixed
+point equals this same value of $T$, so uniqueness also holds.
+
+Now suppose $0<q<1$ and fix $x_0$. Natural-number recursion uniquely
+defines the iteration; after fixing $x_0$ no arbitrary selections are
+made. Put $D=d(x_1,x_0)$. Induction gives
+\[
+d(x_{k+1},x_k)\leq q^kD\qquad(k\geq0).
+\]
+For integers $m>n\geq0$, the triangle inequality and the finite
+geometric sum give
+\[
+d(x_m,x_n)\leq\sum_{k=n}^{m-1}q^kD
+=\frac{q^n(1-q^{m-n})}{1-q}D
+\leq\frac{q^n}{1-q}D.
+\]
+Since $q^n\to0$, the sequence is Cauchy; this includes $D=0$,
+when all iterates are already equal. Completeness gives $x_n\to p$
+for some $p\in X$. The estimate
+\[
+d(Tp,p)\leq d(Tp,Tx_n)+d(x_{n+1},p)
+\leq q\,d(p,x_n)+d(x_{n+1},p)
+\]
+tends to zero, proving $Tp=p$. If $z$ is another fixed point, then
+$d(p,z)=d(Tp,Tz)\leq qd(p,z)$, hence $d(p,z)=0$ and $p=z$.
+This uniqueness also shows that all initial points lead to the same
+limit. Letting $m\to\infty$ in the preceding geometric bound proves
+the a priori estimate.
+
+For either $q=0$ or $0<q<1$ and any $x\in X$,
+\[
+d(x,p)\leq d(x,Tx)+d(Tx,Tp)
+\leq d(x,Tx)+q\,d(x,p).
+\]
+Rearranging proves the residual estimate. For $n\geq1$, contraction gives
+\[
+d(x_n,Tx_n)\leq q\,d(x_{n-1},x_n).
+\]
+Applying the residual estimate to $x_n$ now gives the a posteriori bound.
+Every denominator is positive; the
+case $q=0$ uses no expression $0^0$ in the stated iteration bounds.
+\Done
+
+\begin{corollary}[Stability of the fixed point]
+Under the theorem's assumptions, suppose another self-map $S:X\to X$
+has a fixed point $z$ and $d(Tz,Sz)\leq\eta$ for some $\eta\geq0$.
+Then
+\[
+d(p,z)\leq\frac{\eta}{1-q}.
+\]
+In particular the hypothesis holds if $d(Tx,Sx)\leq\eta$ for every
+$x\in X$ and $S$ has a fixed point.
+\end{corollary}
+\Proof
+Since $Sz=z$, the residual at $z$ is
+$d(z,Tz)=d(Sz,Tz)\leq\eta$. Apply the residual estimate.
+\Done
+
+\begin{example}[Completeness and strict contraction are essential]
+On the incomplete space $(0,1)$ with its usual metric, $T(x)=x/2$
+is a contraction with $q=1/2$ and maps the space into itself. Its
+only possible fixed point is zero, which is outside the space; its
+iterates converge to that missing endpoint in $\mathbb R$.
+On the complete space $\mathbb R$, the translation $T(x)=x+1$
+satisfies $d(Tx,Ty)=d(x,y)$ but has no fixed point. Thus the estimate
+with $q=1$ is insufficient. Nonemptiness matters too: the unique
+self-map of the empty complete metric space satisfies every displayed
+contraction inequality vacuously but has no fixed point.
+\end{example}
 
 \input{END.tex}

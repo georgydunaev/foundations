@@ -1,8 +1,23 @@
-\def\topic{}
+\def\topic{Historical Variants of Iota and Family Evaluation}
 \input{BEGIN.tex}
-\section{[OUTDATED] variants of iota definitions}
-\subsection{\nth{1} ATTEMPT: Values of functions and of families of proper classes, unified approach}
-SKIP THIS, GO TO THE NEXT SUBSECTION
+\section{[OUTDATED] Variants of Iota Definitions}
+These notes investigate two related questions: how a relation can represent
+a family with class-valued members, and how a definite descriptor can signal
+that no unique set witness exists. The subsections record successive local
+conventions, rather than cumulative definitions of one evaluation operation.
+In particular, union evaluation, protected-family evaluation, and the
+intersection-based iota descriptor have different default behavior.
+
+The symbol $!$ means at-most-one uniqueness. Class comprehension collects
+set witnesses, even when the surrounding variables range over classes.
+In the final construction, $\intersection\emptyclass=V$ supplies a
+proper-class default, so that sethood detects successful description.
+That convention belongs to this construction and is independent of the
+partial-logic treatment elsewhere in the book.
+\subsection{First Attempt: Evaluating Relations and Families}
+The initial proposal compares several encodings. Its central difficulty is
+preserving an index whose intended value is empty: a representation made
+only of members of that value loses the index when there are no members.
 \begin{definition}[value of relation/function/protected family at $x$]
 \[
 F(x)\ceq \union\cc{b}{(x,b)\in F}
@@ -10,20 +25,27 @@ F(x)\ceq \union\cc{b}{(x,b)\in F}
 \end{definition}
 \begin{definition}[value of a simple family at $x$]
 \[
-F(x) \ceq \cc{b}{(x,b)\in F}=\ran(F)
+F(x) \ceq \cc{b}{(x,b)\in F}
 \]
-(if domain is defined as usual, then the element of a simple family is intrinsicallly non--empty. if domain set to be whole class of sets, then the element of such "global simple family" can be empty. Both assumtions are weird.)
-%F(x) \ceq \union\cc{b}{(x,b)\in F}
 \end{definition}
-We need to improve the previous definitions, because:
-1) we want to have family with empty representative, we need to define.
-2) it if not possible to preserve domain if element of a family turned out to be empty.
+This is the fibre at $x$, whereas $\ran(F)$ collects second components
+at all indices. With the ordinary relational domain, every represented
+fibre is nonempty. Declaring every set to be an index permits empty fibres,
+but then the domain no longer records which indices were intended.
+The following encoding introduces a separate record for an empty value.
+This distinction also matters in the newer Obelisk catalog:
+\texttt{DefValueAtArg} returns $V$ on an absent fibre, whereas the
+unconditional union convention in this subsection returns $\emptyclass$.
+The two conventions agree when a record exists. A theorem transferring
+between them must therefore state its domain hypothesis.
 \begin{definition}[value of a protected family at $x$]
 \[
 F(x)_p \ceq \cc{b}{(x,\{b\})\in F}
-F(x)_p \ceq \union\cc{s}{(x,s)\in F}
+= \union\cc{s}{(x,s)\in F}
 \]
-The latter definition therefore is universal for any of r/f/F/PF
+For a protected family, the second components are empty sets or singletons,
+so the two displayed expressions agree. The union expression motivates a
+common evaluation notation for the encodings under consideration.
 \end{definition}
 
 
@@ -34,20 +56,23 @@ The latter definition therefore is universal for any of r/f/F/PF
 \end{definition}
 
 \begin{definition}[Range of relation]
-(!!!Note that it is in general different from range of a function or family. "R--Ran","ran","small range")
+The relational range collects the stored second components. It can differ
+from the collection of values obtained by evaluating the family.
 \[
 \ran(R)\ceq \cc{y}{\exists x,\ (x,y)\in R}
 \]
 \end{definition}
 
 \begin{definition}[in range of relation/function/family]
-It works for both R--Ran and F--Ran.
+This predicate describes evaluated values, including proper classes.
+It does not collect proper classes as members of an object-theoretic class.
 \[
 (K\mbox{ in classrange of }F) \IFF \exists x,\  (x \in \Dom(F)) \land (F(x)=K)
 \]
 \end{definition}
 \begin{definition}[in range of protected family]
-It works for both R--Ran and F--Ran.
+This predicate describes evaluated values, including proper classes.
+It does not collect proper classes as members of an object-theoretic class.
 \[
 (K\mbox{ in classrange of protected }F) \IFF \exists x,\ (x \in \Dom(F)) \land (F(x)_p=K)
 \]
@@ -67,7 +92,8 @@ It works for both R--Ran and F--Ran.
 A function is a relation which is univocal.
 \end{definition}
 \begin{definition}[protected family]
-A protected family is a relation which range of relation consists only of subsets of singletones.
+A protected family is a relation whose second components are subsets of
+singletons, hence either empty sets or singletons.
 \end{definition}
 
 
@@ -80,64 +106,195 @@ A protected family is a relation which range of relation consists only of subset
 \]
 \end{definition}
 %For every axiomatic definition, there are certain prerequisites.
-It doesn't make sense to prove anything about $(\varepsilon x,\ \varphi)$, if it is not proven that $\exists x,\  \varphi$.\\
-It doesn't make sense to prove anything about $(\iota x,\ \varphi)$, if it is not proven that $\exists! x,\  \varphi$.\\
-There is a "default value" D1 which $(\varepsilon x,\ \varphi)$ is equal to, if it is not true that $\exists x,\  \varphi$.\\
-There is a "default value" D2 which $(\iota x,\ \varphi)$ is equal to, if it is not true that $\exists x,\  \varphi$.\\
-They are not specified. (Up to now).\\
-If they are not specified, then we cannot define the "(-- defined)" predicate.
-It is because if we have take a D1 or D2 just as classes in some other application, then they will be "undefined", while they are perfectly okay.(for example, the empty set of the class of all sets)\\
-It is not possible to have a "defined" predicate, because it isn't preserved under equality.\\
-So naive "defined" requires a recursion on a term.\\
-Even if we introduce own "defined" for each constructor of the term, it still will require syntactic analysis.\\
-So the solution is to have a context under which definitions make sense.\\
-It may be a family of classes, where the first one should be non--empty, as a signal that some conditions are satisfied.\\
-It strongly reminds a notion of signature and structure.\\
+A witness property for $(\varepsilon x,\varphi)$ requires an existence
+hypothesis; a unique-witness property for $(\iota x,\varphi)$ requires
+existence and uniqueness. A total interpretation can still assign values
+when these hypotheses fail, using defaults $D_1$ and $D_2$ respectively.
 
-In the situation, when $\exists x,\  \varphi$ and $\neg\exists! x,\  \varphi$.
-"value--defined".
+A default that is also a legitimate output cannot, by its value alone,
+distinguish a failed description from a successful one. For example, if
+$D_1$ is the empty class, an empty output need not indicate failure. A
+success predicate therefore needs information about the construction or its
+context, unless the default lies outside the intended output range.
+This motivates recording a validity condition alongside the value.
 
-Relations are symmetrical, so inverse relation is defined.
+The relational inverse always exists as a relation. The protected-family
+encoding is asymmetric, however: reversing its pairs need not produce
+another protected family. Thus inversion of a representation and inversion
+within a chosen representation format are different questions.
 
-Protected families are assymetrical, so it is not always possible to define the inverse of a family.
-
-Families 
-\subsection{Non--empty families}
-All definitions in this section are local: they will not be used in other sections.
-\begin{definition}[family of non--empty classes]
+\subsection{Nonempty Values and Relational Domains}
+For the next comparison, fix an injective ordered-pair encoding of sets,
+and let $F\subseteq V\times V$ be a class relation. Write
 \[
-(F\text{ is NEF})\iffdef \dots 
+U_F(x)=\union\cc{y}{(x,y)\in F}
+\]
+for its unconditional union value, to distinguish this evaluation from the
+fibre and descriptor conventions elsewhere. The domain still means the
+relational domain: $x\in\Dom(F)$ if some record $(x,y)$ occurs in $F$.
+
+\begin{definition}[Relation with nonempty evaluated values]
+In this encoding, $F$ is a family of nonempty values when
+\[
+\forall x\in\Dom(F),\quad U_F(x)\neq\emptyclass.
 \]
 \end{definition}
+A represented fibre may be nonempty while its evaluated value is empty.
+For instance, the one-record relation $\{(x,\emptyclass)\}$ has domain
+$\{x\}$ but value $\emptyclass$ at $x$. This is exactly the case that an
+encoding of nonempty values alone cannot retain.
 
-\subsection{Unified approach to functions and of families}
+\subsection{Canonical Representations of Functions and Families}
 \begin{definition}[conglomerate of all classes]
-This symbol is not a term of our theory(MK+axGroth), because terms denote classes, and it is bigger than a class.
+Here $\mathcal{U}$ denotes the conglomerate of all classes in the
+metatheory. It is not a class-denoting term of the local theory
+(MK with the proposed universe axiom).
 \end{definition}
-Different variant of canonisations:
-\begin{definition}[canonization a family of non--empty classes]
+The following candidate canonicalizations encode membership using singleton
+records. Their treatment of empty values distinguishes the variants:
+\begin{definition}[Canonicalization of a family of nonempty classes]
 \[
 \canonize0(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}
 \]
 
 \end{definition}
-\begin{definition}[canonization( of a family of potentially empty classes])]
+\begin{definition}[Canonicalization allowing empty values]
 \[
-\canonize1(F) = \cc{(x,\cc{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{x\in\Dom(F)}
+\canonize1(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\cc{(x,\emptyclass)}{x\in\Dom(F)}
 \]
 \[
-\canonize2(F) = \cc{(x,\cc{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
+\canonize2(F) = \cc{(x,\{q\})}{\exists y,\ ((x,y)\in F)\land (q\in y)}\cup\cc{(x,\emptyclass)}{(x\in\Dom(F))\land (F(x)=\emptyclass) }
 \]
 \[
 \canonize3(F) = \cc{(x,s)}{\exists y,\ ((x,y)\in F)\land (s\subseteq y) \land (!q,\ q\in s)}
 \]
 \end{definition}
 
-\begin{definition}[family]
+In these formulas, $F(x)$ means $U_F(x)$, and all indices and stored
+components are sets. Singleton formation and replacement ensure that the
+new records are sets, so class comprehension supplies the displayed
+relations. Write $C_i(F)=\canonize i(F)$ for $i=0,1,2,3$.
+
+\begin{theorem}[Values and domains of the canonicalizations]
+For every set $x$ and each $i=0,1,2,3$,
 \[
-?
+U_{C_i(F)}(x)=U_F(x).
 \]
-\end{definition}
+Moreover,
+\[
+\Dom(C_0(F))=\cc{x\in\Dom(F)}{U_F(x)\neq\emptyclass},
+\]
+whereas $\Dom(C_i(F))=\Dom(F)$ for $i=1,2,3$. In fact
+$C_1(F)=C_3(F)$.
+\end{theorem}
+\Proof
+Put $B=U_F(x)$. The nonempty records at $x$ in $C_0(F)$ are precisely
+$(x,\{q\})$ for $q\in B$: membership in the union means that $q$ lies in
+some original component $y$. The union of those singleton components is
+$B$, and a record exists exactly when $B$ is nonempty.
+
+The first variant adds the record $(x,\emptyclass)$ at every original
+domain point. This does not change the union and restores precisely the
+indices lost by $C_0$. The second adds it only when $B=\emptyclass$;
+when $B\neq\emptyclass$, a singleton record already retains the index.
+Thus both variants preserve the original domain and all values.
+
+For the third variant, an at-most-one set $s\subseteq y$ is either empty
+or a singleton $\{q\}$ with $q\in y$. A singleton record therefore occurs
+exactly when $q\in B$, and an empty record occurs exactly when some
+original component $y$ exists. These are precisely the records of $C_1(F)$.
+\Done
+
+\begin{corollary}[Idempotence and the remaining representational choice]
+Each $C_i$ is idempotent: $C_i(C_i(F))=C_i(F)$. The canonicalizations
+$C_1$ and $C_2$ have the same values and domain, but need not be equal.
+\end{corollary}
+\Proof
+The records of $C_0(F)$ are determined solely by the values $U_F(x)$,
+which $C_0$ preserves. The records of $C_1(F)$ and $C_2(F)$ are determined
+by those values together with the domain, both of which they preserve.
+This proves idempotence for the first three maps, and $C_3=C_1$ gives the
+fourth case.
+
+If $U_F(x)\neq\emptyclass$, $C_1(F)$ contains $(x,\emptyclass)$ while
+$C_2(F)$ does not. For example, take $F=\{(x,\{q\})\}$ for sets $x,q$.
+Both canonicalizations evaluate to $\{q\}$ at $x$, but only the first
+stores the empty marker there.
+\Done
+
+The two conventions therefore solve the same value-and-domain problem
+with different normal forms. Choosing one is a representation decision,
+not a change to the represented class-valued family.
+
+\begin{theorem}[Complete normal forms for values with a domain]
+For class relations $F,G\subseteq V\times V$, the following are equivalent:
+\begin{enumerate}
+\item $\Dom(F)=\Dom(G)$ and $U_F(x)=U_G(x)$ for every set $x$;
+\item $C_1(F)=C_1(G)$;
+\item $C_2(F)=C_2(G)$.
+\end{enumerate}
+By contrast, $C_0(F)=C_0(G)$ is equivalent just to equality of all
+union values, without equality of the original domains.
+\end{theorem}
+\Proof
+Equal values determine the same singleton records. Equal domains then
+determine the same empty records for $C_1$, and, together with the
+values, for $C_2$. This proves the first condition implies both others.
+Conversely, equality of either canonicalization implies equality of its
+domain and union values, which are those of the original relation by
+the preceding theorem. For $C_0$, its only records are the singletons
+of members of the union values, and it preserves those values; hence
+each direction of the last equivalence follows too.
+\Done
+
+Thus $C_1$ and $C_2$ each select exactly one representative of a family
+specified by its domain and values. This is an assertion about the
+representations, not a claim that a quotient collection of all such
+class families is an object of the theory.
+
+Here ``select'' does not require a choice function on arbitrary
+collections of representatives. Each $C_i(F)$ is defined explicitly
+from the records of $F$, and the theorem proves that it is independent
+of which relation with the same domain and values was supplied.
+Neither a well-order of the universe nor a choice of one member from
+each nonempty value is used. Indeed, all members of a value contribute
+singleton records. This explains why canonicalizing a family here is
+a different operation from choosing a witness in the finite candidate
+model of the preceding section.
+
+\begin{theorem}[Encoding prescribed membership data]
+Let $A$ be a class of set indices and $E\subseteq A\times V$ a class
+relation describing the intended members of each value. Put
+\[
+E_x=\{q:(x,q)\in E\},\qquad
+P=\{(x,\{q\}):(x,q)\in E\}
+       \cup\{(x,\emptyclass):x\in A\}.
+\]
+Then $P$ is a protected family with domain $A$, with
+$U_P(x)=E_x$ for every set $x$, and $C_1(P)=P$. It is the unique
+$C_1$-fixed relation with this domain and these values.
+\end{theorem}
+\Proof
+Every record has a set index in $A$ and an empty or singleton component.
+The empty record ensures that each $x\in A$ is in the domain, and no
+record has an index outside $A$. The members of the union value at $x$
+are exactly the $q$ for which the singleton record $(x,\{q\})$ is
+present, namely the members of $E_x$. Its records are already precisely
+those prescribed by $C_1$, so $P$ is fixed. If $Q$ is another fixed
+relation with the same data, the normal-form theorem gives
+$Q=C_1(Q)=C_1(P)=P$.
+\Done
+
+The data $E$ are important: an arbitrary metatheoretic assignment of a
+class to every index need not be definable by a class relation in the
+chosen theory. The theorem assumes such a relation is supplied; it does
+not assert unrestricted class-valued replacement. It does allow proper
+class values. For example, for a set $a$, take $A=\{a\}$ and
+$E=\{(a,q):q\in V\}$. Then $U_P(a)=V$, although every individual
+record of $P$ is a set.
+
+The next definition describes an indexed relation before a canonical
+representation has been chosen.
 
 \begin{definition}[family]
 \[
@@ -149,33 +306,48 @@ Different variant of canonisations:
 \]
 \end{definition}
 \begin{definition}[canonical family]
-Every family has a representation which is canonical.
-If we use axiomatic approach for families, they should be indistinguishable w.r.t. all important properties.
-So agreement may be ocnsidered: ``Read canonize(F) in any statement when F is mentioned'' or ``Add (canonize(F)=F) to the definition''.
+One can interpret a family through $C_1$ or $C_2$, or require its
+representative to be fixed by the chosen canonicalization. The theorem above
+justifies preservation of values and domains, and idempotence ensures that
+applying the same convention twice makes no further change.
 \end{definition}
 
 
 
 \begin{definition}[family]
-A family is a relation which range of relation consists only of subsets of singletones.
+In this alternative convention, a family is already a protected relation.
+Its permitted second components form the class
 \[
-(F\family) \IFF (F\subseteq V\times\{-\}[\,])
+\mathsf{SS}=\{\emptyclass\}\cup\cc{\{q\}}{q\in V},
+\]
+consisting of the empty set and all singletons of sets. Equivalently,
+these are exactly the set subsets of singletons. With this explicit
+interpretation of the earlier schematic range notation $\{-\}[\,]$, put
+\[
+(F\family)\IFF(F\subseteq V\times\mathsf{SS}).
 \]
 \end{definition}
-A family is weaker than a funtional symbol, because functional symbols can take proper classes as arguments.\\
-A function is weaker than a family because it can return only sets.\\
-But the behaviour of $\{-\}$ is well--defined only on sets.
-Maybe it should be a family?\\
-What about $\{-,-\}$?\\
-Should $\{V\}$ be $\emptyclass$ or $V$?\\
-E.g. Metamath uses an empty set as a default value.\\
-So it seems to legit, because it cannot be obtained in any other way out of the unordered pair or ordered pair. At worst it would be a singleton, but never an empty set. So the choice of $\emptyclass$ as a default value is justified.\\
+These representations have different scopes. A class relation can encode
+set-indexed families with proper-class values through their members, whereas
+a function symbol may also take proper classes as arguments. An ordinary
+class function has set values because its graph stores ordered pairs of sets.
 
-It's not the same in other cases, e.g. for ``f(x)'', therefore it requires an additional assumption to be treated as ``legit''.
+The singleton notation raises a related question: how should $\{V\}$ be
+interpreted when proper classes cannot be elements? An empty-class default
+can signal failure of singleton formation, since a successfully formed
+singleton is nonempty. That reasoning does not transfer directly to function
+evaluation, where the empty class may be an ordinary value. The relevant
+criterion is whether the default is distinguishable from successful outputs.
 
 \subsection{Value of a function via set--descriptors}
-\begin{definition}[?]
-Intended use: value of a class--function. Class F is arbitrary.
+This subsection uses the intersection-based set descriptor defined below.
+Throughout this subsection assume that $V$ is proper and that
+$\intersection\emptyclass=V$, as in that construction. Its unsuccessful
+value is therefore not a set, so a set-valued result certifies successful
+description. This is different from the earlier union default.
+
+\begin{definition}[Descriptor value of a relation]
+Let $F$ be an arbitrary class.
 \[
 F(x) = \left(\iota y,\  \langle x,y\rangle\in F\right)
 \labeltagd{def}{value}
@@ -200,7 +372,7 @@ If $(F\univocalat x)\land(y\set)$, then
 \label{thm:pair in function}
 \]
 \begin{align*}
-(F\univocalat x)
+(F\univocalat x)\land(y\set)
 \implies
 \left(
 \left(\langle x,y\rangle\in F\right)
@@ -231,267 +403,32 @@ If $(F\univocalat x)\land(y\set)$, then
 \fi
 \end{theorem}
 \Proof
-For formulas to be short, let's define 
+Write $P(z)$ for $\langle x,z\rangle\in F$, choosing $z,w$ fresh
+for the fixed parameters. Use the final set-descriptor definition:
 \[
-Q\ceq \cc{y}{ (\langle x,y\rangle\in F) \land (!y,\  \langle x,y\rangle\in F)}.
+Q=\{z:P(z)\land(!(w\set),P(w))\},\qquad F(x)=\intersection Q.
 \]
-\noindent($\Leftarrow$) Assume $(\langle x,y\rangle\in F)$.
-% USELESS
-%\[
-%(F\univocal)
-%\IMPLIES
-%(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
-%\]
-% USELESS
-%\[
-%(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
-%\IMPLIES
-%(!y ,\  \langle x,y\rangle \in F)
-%\]
-\[
-(F\univocalat x)
-\IMPLIES
-(!y ,\  \langle x,y\rangle \in F)
-\tag{by \myref{def:univocalat}}
-\]
-\[
-(\langle x,y\rangle\in F)
-\IMPLIES
-(\exists y ,\  \langle x,y\rangle \in F)
-\]
-\[
-(\exists y ,\  \langle x,y\rangle \in F)
-\LAND
-(!y ,\  \langle x,y\rangle \in F)
-\IMPLIES
-(\exists! y ,\  \langle x,y\rangle \in F)
-\]
-\[
-(\exists! y ,\  \langle x,y\rangle \in F)
-\IMPLIES
-(\cc{y }{ \langle x,y\rangle \in F}\singleton)
-\]
-\[
-\left(\cc{y}{ \langle x,y\rangle\in F}\singleton\right)
-\IMPLIES
-\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
-\in
-\left(\cc{y}{ \langle x,y\rangle\in F}\right)
-\tag{by \myref{thm:intersection of singleton}}
-\]
-\[
-\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)
-\in
-\left(\cc{y}{ \langle x,y\rangle\in F}\right)
-\IMPLIES
-\langle x,\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)\rangle\in F
-\]
-\[
-(!y ,\  \langle x,y\rangle \in F)
-\LAND
-(\langle x,y\rangle\in F)
-\LAND
-\langle x,\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)\rangle\in F
-\IMPLIES
-\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=y
-\]
+The uniqueness guard ranges over sets; comprehension likewise retains
+only set witnesses. The variable $w$ is independent of the outer
+comprehension variable $z$.
 
-%\[
-%\beta
-%\IMPLIES
-%\left(
-%\alpha
-%\iff
-%(\alpha \land \beta))
-%\right)
-%\]
-\[
-\beta\implies(\alpha\iff(\alpha \land \beta)))
-\]
-\[
-(!y,\  \langle x,y\rangle\in F)
-\IMPLIES
-\left(
-(\langle x,y\rangle\in F)
-\iff
-(\langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F))
-\right)
-\]
+First assume $P(y)$, $y\set$, and $F\univocalat x$. Local univocality
+implies that at most one set satisfies $P$, and $y$ supplies such a
+set witness. Thus $Q=\{y\}$. The singleton-intersection identity gives
+$F(x)=\intersection\{y\}=y$, proving the forward membership-to-value
+implication.
 
-%(!y,\  \langle x,y\rangle\in F)
-\[
-\IMPLIES
-\left(
-\cc{y}{ \langle x,y\rangle\in F}
-=
-Q
-\right)
-\]
-
-
-%\[
-%\left(\cc{y}{ \langle x,y\rangle\in F}
-%=
-%\cc{y}{ \langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F)}\right)
-%\IMPLIES
-%\]
-\[
-\IMPLIES
-\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=
-\left(\intersection
-Q
-\right)
-\]
-
-\iffalse
-%\cc{y}{ \langle x,y\rangle\in F \land (!y,\  \langle x,y\rangle\in F)}
-\[
-\left(\cc{y}{ \langle x,y\rangle\in F}
-=
-Q
-\right)
-\LAND
-\left(\intersection\cc{y}{ \langle x,y\rangle\in F}\right)=y
-\IMPLIES
-\left(
-\intersection Q
-\right)
-=y
-\]
-
-\[
-\left(\intersection
-Q
-\right)=y
-\LAND
-(\iota y,\  (\langle x,y\rangle\in F))
-=
-\left(\intersection
-Q
-\right)
-\IMPLIES
-\left((\iota y,\  \langle x,y\rangle\in F)=y\right)
-\]
-\[
-\left((\iota y,\  \langle x,y\rangle\in F)=y\right)
-\IMPLIES
-(F(x)=y)
-\]
-So we proved that F(x)=y.
-\fi
-
-\begin{align*}
-F(x)&=\left((\iota y,\  \langle x,y\rangle\in F\right)\\
-&=\intersection Q\\
-&=\intersection \cc{y}{\langle x,y\rangle\in F\land (!y,\ \langle x,y\rangle\in F)}\\
-&=y
-\end{align*}
-So we proved that $(F(x)=y)$.\\
-\noindent($\Rightarrow$) Assume $(F(x)=y)$. To show:$(\langle x,y\rangle\in F)$
-\begin{align*}
-y&=F(x)
-\tag{by assumption}\\
-&=\left(\iota y,\ \langle x,y\rangle\in F\right)
-\tag{by def of value of a function \myref{def:value}}
-\\
-&=\left(\intersection Q\right)
-\tag{by def of $Q$ and \myref{def:iota operator}}
-\end{align*}
-%\[
-%(F(x)=y)
-%\IMPLIES
-%\left(\iota y,\  \langle x,y\rangle\in F\right)=y.
-%\]
-%\[
-%\left(\iota y,\  \langle x,y\rangle\in F\right)=y
-%\IMPLIES
-%\left(\intersection Q\right)=y.
-%\]
-\[
-(F\univocal)
-\IMPLIES
-(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
-\]
-
-\[
-(\forall x,\ \ !y ,\  \langle x,y\rangle \in F)
-\IMPLIES
-(!y ,\  \langle x,y\rangle \in F)
-\]
-
-\[
-\left(y\set\right)
-\LAND
-\left(\left(\intersection Q\right)=y\right)
-\IMPLIES
-\left(\left(\intersection Q\right)\set\right)
-\]
-
-\[
-\left(\left(\intersection Q\right)\set\right)
-\IMPLIES
-(\exists w,\  w\in Q)
-\quad(\mbox{by \myref{thm:intersection set then}}).
-\]
-
-%GOOD, BUT USELESS
-%\[
-%(w\in Q)
-%\IMPLIES
-%\langle x,w\rangle\in F
-%\land 
-%(!w,\  \langle x,w\rangle\in F)
-%\quad(\mbox{by def of Q}).
-%\]
-
-%(!w,\ w\in \cc{y}{\varphi\land (!y,\ \varphi)})
-%(!w,\ w\in \cc{y}{(\langle x,y\rangle\in F)\land (!y,\ (\langle x,y\rangle\in F))})
-\[
-(!w,\ w\in Q)
-\tag{(by thm \myref{thm:class with at most one object} with $\varphi\ceq (\langle x,y\rangle\in F)$)}
-\]
-%...
-
-\[
-(\exists w,\  w\in Q)
-\LAND
-(! w,\  w\in Q)
-\IMPLIES
-(\exists! w,\  w\in Q)
-\]
-
-\[
-(\exists! w,\  w\in Q)
-\IMPLIES
-(Q\singleton)
-\]
-
-\[
-\left(Q\singleton\right)
-\IMPLIES
-\left(\intersection Q\right)\in Q
-\tag{by \myref{thm:intersection of singleton} }
-\]
-
-\[
-\left(\intersection Q\right)\in Q
-\LAND
-\left(\intersection Q\right)=y
-\IMPLIES
-y\in Q.
-\]
-
-\[
-y\in Q
-\IMPLIES
-(\langle x,y\rangle\in F)
-\land 
-(!y,\  \langle x,y\rangle\in F)
-\quad(\mbox{by def of Q}).
-\]
-So $(\langle x,y\rangle\in F)$ is proven as intended.\\
+For the converse assume only $F(x)=y$ and $y\set$; no univocality
+hypothesis is used. If $Q$ were empty, then $F(x)=V$, contrary to
+sethood of $y$ and properness of $V$. Choose $a\in Q$. Comprehension
+gives $a\set$, $P(a)$, and at most one set satisfying $P$. Every
+member of $Q$ is such a set, so $Q=\{a\}$. Hence
+$y=F(x)=\intersection Q=a$, and equality substitution gives $P(y)$,
+which is $\langle x,y\rangle\in F$. This proves the separately
+stated reverse implication with only its sethood hypothesis.
 \Done
-\begin{theorem}[???]
+
+\begin{theorem}[Witness property of a defined set descriptor]
 \[
 ((\iota y,\ \phi)\ldefined)
 \implies
@@ -499,83 +436,41 @@ So $(\langle x,y\rangle\in F)$ is proven as intended.\\
 \]
 \end{theorem}
 \Proof
+Use the local convention that a set descriptor is defined exactly when its
+value is a set. Put
 \[
-((\iota y,\ \phi)\ldefined)
-\IFF
-((\iota y,\ \phi)\set)
-\tag{by def that is valid only for terms denoting sets}
+Q=\cc{y}{\phi\land(!(y\set),\phi)}.
 \]
-
-\[
-((\iota y,\ \phi)\set)
-\IMPLIES
-\left(\intersection\cc{y}{\phi\land(!y,\ \phi)}\set\right)
-\tag{by def of iota}
-\]
+Its intersection is the value of the descriptor. If $Q$ were empty, this
+value would be $V$, which is a proper class. Definedness therefore implies
+that $Q$ is nonempty. Its uniqueness condition makes $Q$ a singleton,
+say $Q=\{a\}$. Then $\intersection Q=a$, and membership of $a$ in $Q$
+gives the required instance of $\phi$. Substitution is understood to avoid
+capture of free variables.
 \Done
 
-\begin{theorem}[pair in function]
-If $(F\univocalat x)\land(y\set)$, then
-\[
-\left(F(x)=y\right)\iff\left(\langle x,y\rangle\in F\right)
-\labeltagd{thm}{pair in function}
-\]
-\begin{align*}
-1) & & (y\set)
-\implies
-\left(
-\left(F(x)=y\right)
-\implies
-\left(\langle x,y\rangle\in F\right)
-\right)
-\\
-2) & & (F\univocalat x)
-\implies
-\left(
-\left(\langle x,y\rangle\in F\right)
-\implies
-\left(F(x)=y\right)
-\right)
-\\
-\end{align*}
-\end{theorem}
-Alternative proof:\\
-\Proof
-\noindent($\Rightarrow$)
-\begin{align*}
-y&=F(x)
-\tag{by assumption}\\
-&=\left(\iota y,\  \langle x,y\rangle\in F\right)
-\tag{by def of value of a function \myref{def:value}}
-\end{align*}
-%&=\left(\intersection Q\right)
-%\quad(\mbox{by def of Q and def of a iota operator \myref{def:iota operator}})
-\[
-(y=\left(\iota y,\  \langle x,y\rangle\in F\right))
-\LAND
-(y\set)
-\IMPLIES
-(\left(\iota y,\  \langle x,y\rangle\in F\right) \set)
-\]
-\[
-(\left(\iota y,\  \langle x,y\rangle\in F\right) \set)
-\IMPLIES
-\left(\exists!(y\set),\ \langle x,y\rangle\in F\right)
-\tag{by \myref{thm:iota set exists unique set}}
-\]
-...\\
-\noindent($\Leftarrow$)\\
-...\\
-\Done
-\subsection{Descriptors OLD}
-\begin{axiom}[???]
+\begin{remark}[Only uniqueness among sets is needed]
+\label{thm:pair in function alternative}
+In the membership-to-value implication, the stronger assumption
+$F\univocalat x$ can be replaced by
+$!(w\set),\ \langle x,w\rangle\in F$. The proof uses exactly this
+set-restricted uniqueness together with the given set witness $y$.
+Even if the predicate also holds of a proper class, that additional
+object is not collected by $Q$ and does not affect the descriptor.
+The reverse implication instead uses sethood of the result to exclude
+$V$; it needs neither uniqueness assumption in advance and would not
+be valid with an arbitrary set default.
+\end{remark}
+
+\subsection{Earlier Set-Descriptor Axioms}
+\begin{axiom}[Choice witness]
 \[
 \exists (x\set),\ \varphi
 \implies
 (\varepsilon x,\  \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
-\begin{axiom}[???]
+\begin{axiom}[Sethood signals existence]
 \[
 (\varepsilon x,\  \varphi) \set
 \implies
@@ -583,14 +478,14 @@ y&=F(x)
 \]
 \end{axiom}
 
-\begin{axiom}[???]
+\begin{axiom}[Unique description witness]
 \[
 \exists! (x\set),\ \varphi
 \implies
 (\iota x,\  \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
-\begin{axiom}[???]
+\begin{axiom}[Sethood signals unique existence]
 %(\iota x,\  \varphi) \in \cc{x}{\varphi}
 \[
 (\iota x,\  \varphi) \set
@@ -601,14 +496,18 @@ y&=F(x)
 
 
 
-It would be nice to define iota operator both for sets and proper classes, but it is not possible in a classical setting.
+The next construction asks whether an intersection can describe a unique
+class, including a proper class:
 \[
-(I y,\  \varphi) = \intersection \cc{y}{\varphi \land (!y,\ \varphi)}
-\tag{bad ``definition''}
+(I y,\varphi)=\intersection\cc{y}{\varphi\land(!y,\varphi)}.
 \]
-In general, the problem of NBG and MK is the principal inability to collect classes. Maybe there is a good way to define iota operator "up to universe", but here it will not be researched.
-(the definition is bad, since $\varphi$ may contain a disjunction with the property of any proper class(e.g. V), so the uniqueness will not hold, since $\varphi$ will be true both for a set and for a proper class.)
-%So the following definition does not work correctly for proper classes:
+The obstacle is local to this encoding: class comprehension collects only
+set witnesses. If the unique satisfying object is a proper class, it is not
+collected. Moreover, uniqueness among all classes and uniqueness among sets
+are different conditions when $\varphi$ has witnesses of both kinds.
+The construction below therefore restricts uniqueness to set witnesses.
+A descriptor for arbitrary classes would require a different construction
+or an explicitly enlarged semantic setting.
 \begin{definition}[iota operator for sets]
 \[
 (\iota y,\  \varphi) = \intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)}
@@ -616,7 +515,7 @@ In general, the problem of NBG and MK is the principal inability to collect clas
 \label{def:iota operator}
 \end{definition}
 
-\begin{theorem}[???]
+\begin{theorem}[Sethood characterizes unique set description]
 
 %Note: it should be possible to substitute some fresh variable $w$ instead of $\varphi$.
 %This may not be true:
@@ -654,102 +553,37 @@ In general, the problem of NBG and MK is the principal inability to collect clas
 \label{thm:iota set exists unique set}
 \end{theorem}
 \Proof
-%For formulas to be short, let's locally define the term Q:
-%\[
-%Q\ceq \cc{y}{\varphi \land (!(y set),\ \varphi)}
-%\]
-\noindent$(\Rightarrow)$\\
-Assume $((\iota y,\  \varphi) \set)$. To show $(\exists!(y\set),\ \varphi)$.
-\[
-((\iota y,\  \varphi) \set)
-\IMPLIES
-\left(\intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)} \set\right)
-\tag{by def \myref{def:iota operator}}
-\]
-\[
-\left(\intersection \cc{y}{\varphi \land (!(y\set),\ \varphi)} \set\right)
-\IMPLIES
-\left(\cc{y}{\varphi \land (!(y\set),\ \varphi)}\nonempty\right)
-\]
-\[
-\left(\cc{y}{\varphi \land (!(y\set),\ \varphi)}\nonempty\right)
-\IMPLIES
-\left(\exists	y,\  y\in \cc{y}{\varphi \land (!(y\set),\ \varphi)}\right)
-\]
-\[
-\left(
-y\in \cc{y}{\varphi \land (!(y\set),\ \varphi)}
-\right)
-\IMPLIES
-\left(
-(y\set)\land \varphi\land (!(y\set),\ \varphi)
-\right)
-\]
-\[
-(y\set)
-\LAND
-\varphi
-\IMPLIES
-\left(
-\exists (y\set),\ \varphi
-\right)
-\]
-%\[
-%\left(
-%!y,\ \varphi
-%\right)
-%\IMPLIES
-%\left(
-%!(y\set),\ \varphi
-%\right)
-%\]
-\[
-\left(
-\exists (y\set),\ \varphi
-\right)
-\LAND
-\left(
-!(y\set),\ \varphi
-\right)
-\IFF
-\left(
-\exists! (y\set),\ \varphi
-\right)
-\]
+Put $Q=\cc{y}{\varphi\land(!(y\set),\varphi)}$. By definition,
+$\iota y,\varphi=\intersection Q$.
 
-\noindent$(\Leftarrow)$\\
-Assume $(\exists!(y\set),\ \phi)$. To show:$((\iota y,\ \phi)\set)$.
-%%Here $!x,\ $.
-\[
-(\exists!(y\set),\ \phi)
-\IMPLIES
-(\exists(y\set),\ \phi)
-\land
-(!(y\set),\ \phi)
-\]
-\[
-(y\set)
-\LAND
-\phi
-\LAND
-(!(y\set),\ \phi)
-\IMPLIES
-y\in\cc{y}{\phi\land(!(y\set),\ \phi)}
-\]
-\[
-y\in\cc{y}{\phi\land(!(y\set),\ \phi)}
-\IMPLIES
-(\cc{y}{\phi\land(!(y\set),\ \phi)}\nonempty)
-\]
-\[
-(\cc{y}{\varphi \land (!y,\ \varphi)}\nonempty)
-\IMPLIES
-\left(\intersection \cc{y}{\varphi \land (!y,\ \varphi)} \set\right)
-\]
-\[
-\left(\intersection \cc{y}{\varphi \land (!y,\ \varphi)} \set\right)
-\IMPLIES
-\left(\left(\iota y,\  \varphi\right) \set\right)
-\]
+If there is exactly one set witness $a$, the uniqueness condition holds and
+$Q=\{a\}$. The singleton-intersection identity gives
+$\intersection Q=a$, which is a set.
+
+Conversely, suppose $\intersection Q$ is a set. Since
+$\intersection\emptyclass=V$ and $V$ is proper, $Q$ cannot be empty.
+Choose $a\in Q$. By comprehension, $a$ is a set satisfying $\varphi$, and
+the second conjunct in the definition of $Q$ states that there is at most
+one such set. Thus there is exactly one set witness.
 \Done
+
+\begin{corollary}[The successful value and the default]
+If $a$ is the unique set satisfying $\varphi$, then
+$(\iota y,\varphi)=a$. If there is no unique set satisfying $\varphi$,
+then $(\iota y,\varphi)=V$.
+\end{corollary}
+\Proof
+The successful case was proved above. In the other case, a member of $Q$
+would supply both existence and uniqueness, a contradiction. Hence
+$Q=\emptyclass$ and its intersection is $V$.
+\Done
+
+For example, a predicate with the empty set as its unique set witness
+returns $\emptyclass$, whereas a predicate with no set witness returns $V$.
+If a predicate holds of exactly one set and also of a proper class, this
+set-restricted descriptor still returns the set. This example explains why
+its uniqueness quantifier must explicitly range over sets: it solves the
+set-description problem, not the different problem of selecting a unique
+class witness.
+
 \input{END.tex}

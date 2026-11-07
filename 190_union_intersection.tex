@@ -1,7 +1,33 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Elementary theorems about union and intersection}
+These results use class comprehension with sets as members. Thus
+$\union A$ consists of the sets belonging to some member of $A$, whereas
+$\intersection A$ consists of the sets belonging to every member of $A$.
+In particular, $\union\emptyclass=\emptyclass$ and
+$\intersection\emptyclass=\V$. The nonemptiness hypotheses below account
+for this difference.
 %Union \& Intersection
+\begin{note}[Comparison with the newer Obelisk catalog]
+The catalog definitions \texttt{DefUnaryUnion} (3.19) and
+\texttt{DefUnaryIntersection} (3.20) use the same existential and
+universal membership conditions as this section. Its library result
+\texttt{NBG-093} states the binary inclusion $A\cap B\subseteq A\cup B$.
+That binary result requires no nonemptiness hypothesis, whereas the
+unary inclusion $\intersection A\subseteq\union A$ below does: at
+$A=\emptyclass$ the two sides are $\V$ and $\emptyclass$.
+
+There is a separate difference between catalog variants concerning
+singletons. The primary comprehension definition \texttt{DefSingletonSet}
+(3.48) agrees with this section. The exported library entries
+\texttt{NBG-060} and \texttt{NBG-071} omit the sethood condition when
+introducing membership in a singleton. Under the present set-member
+semantics, only the restricted assertion $w\set\implies w\in\{w\}$
+is used. For a proper class $w$, comprehension instead gives
+$\{w\}=\emptyclass$. Thus the singleton-intersection theorem below
+explicitly assumes that $w$ is a set.
+\end{note}
+
 \begin{theorem}[member then subset of union]
 \[
 \left(B\in A\middle)
@@ -33,7 +59,7 @@ To show: $(b\in \union A)$.\\
 \left(b\in \union A\right)
 \]
 \Done
-\begin{theorem}[?]
+\begin{theorem}[intersection is contained in each member]
 \[
 \left(B\in A\middle)
 \implies
@@ -61,7 +87,8 @@ Assume $(B\in A)$, $(x\in \intersection A)$. To show: $(x\in B)$.
 \]
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[intersection of a singleton set]
+For a set $w$,
 \[\left(\intersection\{w\}=w\right)\]
 \end{theorem}
 \Proof
@@ -94,7 +121,7 @@ Intersection of a singleton is in it.
 (w\in A)\LAND(!a:a\in A)
 \IMPLIES
 \{w\}=A
-\tag{by the previous theorem}
+\tag{by extensionality and uniqueness}
 \]
 \[
 (\{w\}=A)
@@ -149,7 +176,7 @@ Intersection of a singleton is in it.
 \]
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[subclasses of a set belong to its powerclass]
 \[
 (A\set)
 \land
@@ -170,7 +197,28 @@ Intersection of a singleton is in it.
 \Done
 
 
-\begin{theorem}[UACA=ACPA]
+\begin{theorem}[Union and powerclass comparison]
+For arbitrary classes $A,B$,
+\[
+\bigcup A\subseteq B\iff A\subseteq\power B.
+\]
+This concerns the powerclass of $B$; no assertion that it is a set is needed.
+\end{theorem}
+\Proof
+If $\bigcup A\subseteq B$ and $a\in A$, then every element of $a$
+belongs to $\bigcup A$, hence to $B$. Membership already makes $a$ a
+set, so $a\in\power B$. Conversely, if $A\subseteq\power B$ and
+$x\in\bigcup A$, choose $a\in A$ with $x\in a$. Since
+$a\in\power B$, we have $a\subseteq B$, and hence $x\in B$.
+The empty case is included: both inclusions hold when $A=\emptyclass$.
+\Done
+
+The transitivity equivalence below is the special case $B=A$.
+The general form explains the different roles of these operations:
+union collects members of members, while powerclass collects all set
+subclasses of the proposed bound.
+
+\begin{theorem}[Two descriptions of transitivity]
 \[
 \left(A\subseteq \power A\middle) \iff \middle(\union A\subseteq A\right)
 \labeltagd{thm}{UACA=ACPA}
@@ -217,11 +265,6 @@ The claim is proven.
 Assume $(A\subseteq \power A)$. To show:$(\union A\subseteq A)$.\\
 Assume $(x\in\union A)$. To show:$(x\in A)$.
 \[
-(A \transitive)
-\IMPLIES
-(A\subseteq \power A)
-\]
-\[
 \left(x\in\union A\middle)
 \IMPLIES
 \middle(\exists y\in A: x\in y\right)
@@ -256,11 +299,11 @@ Assume $(x\in\union A)$. To show:$(x\in A)$.
 By \myref{thm:UACA=ACPA}.
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[intersection of a nonempty transitive class]
 \[
  \left(A\nonempty\middle)
 \land
-\middle(A\transitive\middle) 
+\middle(A\transitive\middle)
 \implies
 \middle(\left(\intersection A\right)\subseteq A\right)
 \]

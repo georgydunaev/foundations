@@ -2,25 +2,17 @@
 \input{BEGIN.tex}
 
 \section{``Paradoxes'' of mathematics}
-Famous mathematical ``paradoxes'' in this section are formulated in a way that reveals that they are not true paradoxes for the current foundations, but rather just simple theorems.
-%Регулярность:
-%(PA⊆A)→(V⊆A)
-%— это полезная аксиома.
-Let A = {W | W ∉ W}. We will prove that PA ⊆ A.
-We will prove that PA ⊆ A.
-Let's take a class B. 
-%Он множество, т.к. из PA и верно что B⊆A.
-%Каждый его элемент не принадлежит себе.
-%Поэтому если бы B принадлежал себе(т.е. был своим элементом), то он бы не %принадлежал себе.
-%Значит B не принадлежит себе.
-%Значит B тоже элемент А(т.к. B — множество, которое не принадлежит себе).
-%Доказали PA⊆A.
-%Значит из аксиомы следует, что A=V.
-%Значит для любого множества W, W∉W.
-%А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему--нибудь принадлежит.
-%Значит любой класс не принадлежит сам себе.
+The arguments below separate inconsistent unrestricted comprehension from
+valid class constructions. Each result states the logical or set-theoretic
+principle it uses. In particular, the first two arguments are intuitionistic;
+the regularity argument uses membership induction, the diagonal arguments
+use separation, and the result about nonempty intersections uses classical
+logic.
+
 \subsection{There is no formula equivalent to its negation.}
-All proofs in this section don't require the law of excluded middle.
+In this subsection, $F$ is an arbitrary formula and negation is the special
+case $C\implies\bot$. The arguments use implication introduction and
+modus ponens, without the law of excluded middle.
 \begin{lemma}[formula implies itself]
 \label{lem:CtoC}
 \[
@@ -29,27 +21,28 @@ All proofs in this section don't require the law of excluded middle.
 \Proof\ \\
 \begin{enumerate}
 \item \[(C\implies (C\implies C)) \tag{by ax.1}\]
-\item \[(C\implies ((C\implies C)\implies C))\implies 
+\item \[(C\implies ((C\implies C)\implies C))\implies
 (((C\implies (C\implies C))\implies (C\implies C)) )
 \tag{by ax.2}\]
 \item \[(C\implies ((C\implies C)\implies C)) \tag{by ax.1}\]
-\item \[(((C\implies (C\implies C))\implies (C\implies C)) \tag{by MP from steps 2 and 3}\]
-\item \[(C\implies C)\tag{by MP from steps 1 and 4}\] 
+\item \[((C\implies (C\implies C))\implies (C\implies C)) \tag{by MP from steps 2 and 3}\]
+\item \[(C\implies C)\tag{by MP from steps 1 and 4}\]
 \end{enumerate}
 \Done
 \end{lemma}
-\begin{note}[?]
+\begin{note}[Implication and classical principles]
 Via MP and the deduction theorem:
 \[
 C \implies ((C\implies F)\implies F)
 \]
-Peirce's Law:
+For comparison, Peirce's law is a classical principle and is not used in
+the arguments here:
 \[
 (((P \implies Q) \implies P)\implies P)
 \]
 \end{note}
 
-\begin{lemma}[formula implying its negation is invalid]
+\begin{lemma}[Contraction of an implication]
 \label{lem:CtoF}
 \[
 (C\implies (C\implies F))\implies (C\implies F)
@@ -71,7 +64,8 @@ Assume $(C\iff (C\implies F))$.\\
 Therefore $(C\implies (C\implies F))$ and $((C\implies F)\implies C)$.\\
 The formula $(C\implies F)$ holds by \myref{lem:CtoF} from $(C\implies (C\implies F))$.\\
 %By axiom 2 and modus ponens from $ $,
-The proof of the formula $F$ is obtained via modus ponens from $((C\implies F)\implies C)$ and $(C\implies F)$.
+Modus ponens applied to $((C\implies F)\implies C)$ and $(C\implies F)$
+first gives $C$. A second application, to $C$ and $(C\implies F)$, gives $F$.
 \Done
 \end{theorem}
 
@@ -83,64 +77,36 @@ Both in classical and in intuitionistic logic, the following holds:
 \neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)
 \]
 \Proof
-\noindent By contradiction, assume $(\exists W \forall Q,\  Q\in W \iff Q\notin Q)$. To show: $\bot$.\\
-Take such W.\\
-Set $Q\equiv W$.\\
-Therefore $((W\in W) \iff (W\notin W)$. Here a contradiction is obtained, but the proof is continued further in order to show that it doesn't require the law of excluded middle(LEM).\\
-From \myref{double neg LEM} where $P\equiv (W\in W)$, we have:
-$\neg\neg((W\in W)\lor(W\notin W))$.\\
-Therefore the goal is:
-$[((W\in W) \iff (W\notin W))] \vdash \neg((W\in W)\lor(W\notin W))$\\
-Now, using backward reasoning:\\
-$[((W\in W) \iff (W\notin W)), ((W\in W)\lor(W\notin W))] \vdash \bot$.\\
-Subgoal1:\\
-\[
-[
-(W\in W \iff W\notin W), (W\in W)
-]
-\vdash \bot
-\]
-\[
-[
-(W\in W \iff W\notin W), (W\in W)
-]
-\vdash (W\notin W).
-\]
-\[
-[
-(W\in W \iff W\notin W), (W\in W)
-]
- \vdash (W\in W)\tag{by assumption}.
-\]
-Subgoal2:\\
-\[
-[
-((W\in W) \iff (W\notin W)), (W\notin W)
-]
-\vdash
-\bot.
-\]
-\[
-[
-((W\in W) \iff (W\notin W)), (W\notin W) 
-]
-\vdash (W\in W).
-\]
-\[
-[
-((W\in W) \iff (W\notin W)), 
-(W\notin W)
-]
-\vdash
-(W\notin W)
-\tag{by assumption}
-\]
+Assume that such a class $W$ exists and substitute $Q=W$. Put
+$P\equiv(W\in W)$. The assumed equivalence gives $P\implies\neg P$
+and $\neg P\implies P$. Assuming $P$ therefore gives both $P$ and
+$\neg P$, so $\neg P$ follows by implication introduction. The second
+implication now gives $P$, hence a contradiction. No case distinction
+between $P$ and $\neg P$ is needed.
 \Done
 \end{theorem}
+\begin{theorem}[The universal class is proper without regularity]
+\label{thm:V_proper_separation}
+Assume class comprehension and separation for subclasses of a set.
+Then $\V$ is not a set. No foundation or choice axiom is needed.
+\end{theorem}
+\Proof
+Form $R=\{x\in\V:x\notin x\}$. If $\V$ were a set, separation
+would make $R$ a set, hence $R\in\V$. Its defining condition would
+then give $R\in R\iff R\notin R$, contradicting the preceding
+intuitionistic argument. Thus $\V$ is proper.
+\Done
+
+This conclusion is compatible with non-well-founded sets: it rules out
+a universal set under separation, without ruling out individual membership
+cycles. The next irreflexivity theorem uses the stronger hypothesis of
+membership induction and should not be imported into settings lacking it.
+
 %\subsection{Consequences of regularity axiom}
 \subsection{Regularity implies that all classes are irreflexive}
 \begin{theorem}[a class is not in itself]
-Both in classical and in intuitionistic logic, the epsilon relation is not reflexive:
+With membership induction, the membership relation is irreflexive in both
+classical and intuitionistic logic:
 \[
 \labeltagd{thm}{not in itself}
 \forall Y,\ Y\notin Y
@@ -180,22 +146,15 @@ We are done proving the goal $\power C\subseteq C$.\\
 %Значит для любого множества W, W∉W.
 %А если W не множество[т.е. собственный класс], то тогда он не принадлежит никакому классу по определению множества, как класса который чему--нибудь принадлежит.
 %Значит любой класс не принадлежит сам себе.
-Goal: $ \forall Y,\  Y\notin Y$.\\
-Fix $Y$.\\
-Case 1: $(Y\set)$.\\
-$(Y\set)\Longrightarrow (Y\in V)$.\\
-$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
-$(Y\in C)\Longrightarrow (Y\notin Y)$.\\
-Case 2: $\neg(Y\set)$.\\
-$\neg(Y\set) \Longrightarrow \neg(\exists Q,\ Y\in Q)$.\\
-$\neg(\exists Q,\ Y\in Q)  \Longrightarrow (\forall Q,\ Y\notin Q)$.\\
-\[
-(\forall Q,\ Y\notin Q) \Longrightarrow (Y\notin Y)\tag{by $Q\equiv Y$}
-\]
+It remains to cover arbitrary classes, including proper classes. Fix $Y$
+and assume $Y\in Y$. Membership implies that $Y$ is a set, so $Y\in V$.
+Since $V\subseteq C$, we obtain $Y\in C$ and hence $Y\notin Y$, a
+contradiction. Thus $Y\notin Y$, without deciding whether $Y$ is a set.
 \Done
 \end{theorem}
 \begin{theorem}[intersection set then nonempty]
-If intersection of a class $A$ is a set, then $A$ is nonempty. 
+In classical logic, if the intersection of a class $A$ is a set, then
+$A$ is nonempty. Here the empty intersection is the universal class $\V$.
 \[
 \left(\left(\intersection A\right)\set\middle)
 \implies
@@ -204,66 +163,12 @@ If intersection of a class $A$ is a set, then $A$ is nonempty.
 \]
 %\quad\mbox{(by lemma ... )}
 \Proof
-New goal:
-\[
-\left(\neg\exists w,\ w\in A\middle)
-\implies
-\neg\middle(\left(\intersection A\right)\set\right)
-\]
-Proof of the claim:
-\[
-\neg\exists w, w\in A
-\IMPLIES
-(A=\emptyclass)
-\]
-\[
-(A=\emptyclass)
-\IMPLIES
-\left(\intersection A\right) = \left(\intersection \emptyclass\right)
-\]
-\[
-\left(\intersection \emptyclass\right) = \V
-\]
-\[
-\left(\intersection A\right) = \left(\intersection \emptyclass\right)
-\LAND
-\left(\intersection \emptyclass\right) = \V
-\IMPLIES
-\left(\intersection A\right) = \V
-\]
-\[
-(\V\notin \V)
-\tag{by  \myref{thm:not in itself} with $Y\equiv \V$}
-\]
-\[
-(\V\notin \V)
-\IMPLIES
-\neg(\V\set)
-\tag{by  \myref{thm:sets are in V}}
-\]
-\[
-\left(
-\left(\intersection A\right) = \V
-\middle)
-\LAND
-\middle(
-\neg(\V\set)
-\middle)
-\IMPLIES
-\neg\middle(\left(\intersection A\right) \set\right)
-\]
-The claim is proven.
-\[
-\left(\left(\intersection A\right)\set\middle)
-\IMPLIES
-\middle(\exists w,\ w\in A\right)
-\tag{(from claim by contraposition)}
-\]
-%\[
-%(\left(\intersection A\right)\set)
-%\IMPLIES
-%\exists Q,\  \left(\intersection A\right)\in Q
-%\]
+If $A$ has no member, extensionality gives $A=\emptyclass$, so
+$\intersection A=\V$. Theorem~\ref{thm:V_proper_separation} says that
+$\V$ is not a set, contradicting the hypothesis. Thus $A$ is not empty;
+classical logic converts this into an existential witness $w\in A$.
+The argument uses separation to establish properness of $\V$, but does
+not use membership induction.
 \Done
 \end{theorem}
 
@@ -275,33 +180,49 @@ In classical and even in intuitionistic logic, the following holds:
 \forall (Y\set),\ \neg(\power Y \subseteq Y)
 \]
 \end{theorem}
-\begin{proof}%\Proof%\noindent %Fix Y.\\
-\[
-C\equiv \cc{w}{\neg(\power w \subseteq w)}
-\]
-Claim $\power C \subseteq C$:\\
-Fix $B\in \power C$. To show: $B\in C$\\
-$(B\in \power C)\Longrightarrow (B\set)\land(B\subseteq C)$.\\
-Assume opposite: $B\notin C$, and derive a contradiction.\\
-$(B\notin C) \Longrightarrow (\neg(B\set))\lor (\neg\neg(\power w\subseteq w))$.\\
-$(B\set), (\neg(B\set))\lor (\neg\neg(\power B\subseteq B)) \Longrightarrow \neg\neg(\power B\subseteq B)$.\\
-$\neg\neg(\power B\subseteq B)  \Longrightarrow (\power B\subseteq B)$.\\
-$ (\power B\subseteq B) \land (B\subseteq C) \Longrightarrow (\power B\subseteq C)$.\\
-$(B\in \power B)$.\\
-$(B\in \power B)\land (\power B\subseteq C) \Longrightarrow (B\in C)$.\\
-$(B\in C) \land (B\notin C)  \Longrightarrow \bot$\\
-Contradiction obtained, so the claim $\power C \subseteq C$ is proven.\\
-$(\power C \subseteq C)\Longrightarrow (V\subseteq C)$ (by regularity axiom).\\
-Fix $(Y\set)$.\\
-$(Y\set)\Longrightarrow (Y\in V)$.\\
-$(Y\in V)\land (V\subseteq C) \Longrightarrow (Y\in C)$.\\
-$(Y\in C)\Longrightarrow \neg(\power Y\subseteq Y)$.
-%By Russell's paradox(\myref{Russel's Paradox}), 
-%$\neg (\exists W \forall Q,\  Q\in W \iff Q\notin Q)$\\
-%$\forall W(\neg \forall Q,\  Q\in W \iff Q\notin Q)$\\
-%$W\equiv Y$.\\
-%\Done
+\begin{proof}
+Use separation to form the set $D=\{x\in Y:x\notin x\}$. If
+$\power Y\subseteq Y$, then $D\subseteq Y$ and sethood give
+$D\in\power Y\subseteq Y$. Consequently
+$D\in D\iff D\notin D$, a contradiction as in Russell's argument.
+This proof requires neither excluded middle nor membership induction;
+separation supplies the diagonal set.
 \end{proof}
+
+\begin{theorem}[Cantor's diagonal theorem]
+For any set $A$, no function $f$ with domain $A$ can have every subset
+of $A$ among its values. In particular, no function $A\to\power A$
+is surjective. This uses separation but not choice or foundation.
+\end{theorem}
+\Proof
+Define $D=\{x\in A:x\notin f(x)\}$ by separation. If $f(a)=D$
+for some $a\in A$, then
+\[
+a\in D\iff a\notin f(a)\iff a\notin D,
+\]
+which is impossible intuitionistically. Thus the subset $D$ is missing
+from the range. The proof does not need the powerclass to be a set;
+the powerset axiom is needed only when treating that whole collection
+as a set-valued codomain.
+\end{proof}
+
+\begin{remark}[Why the domain in Cantor's theorem is a set]
+The book's powerclass $\power C$ collects the \emph{set} subclasses
+of $C$. Consequently
+\[
+\power\V=\V:
+\]
+every set is a subclass of $\V$, and every member of a powerclass is
+a set. The identity class function on $\V$ is therefore a surjection
+onto $\power\V$. This does not contradict Cantor's theorem, whose
+domain is a set. For that identity map the diagonal class is
+$R=\{x\in\V:x\notin x\}$. It is a subclass of $\V$ but is proper:
+if $R$ were a set, then $R\in\V$ and comprehension would give
+$R\in R\iff R\notin R$. Thus $R$ is not a member of
+$\power\V$ and cannot serve as a missing value within that codomain.
+The collection of \emph{all} subclasses of $\V$, including proper
+ones, is a different, conglomerate-level object.
+\end{remark}
 
 \subsection{The conglomerate of all classes is not a class}
 \begin{theorem}[conglomerate of classes not class]
@@ -314,10 +235,11 @@ A conglomerate of all classes is not a class. (In the sense, that it ``does not 
 (\forall W \exists Q,\ Q\notin W)
 \]
 \Proof
-Fix W.\\
-Set $Q\equiv W$.\\
-By \myref{thm:not in itself}, $W\notin W$.\\
-So $Q\notin W$.
+For any class $W$, take $Q=\V$. Theorem~\ref{thm:V_proper_separation}
+shows that $Q$ is a proper class; since membership in any class implies
+sethood, $Q\notin W$. Thus the same witness works for every $W$.
+This strengthens the earlier regularity-based argument: separation
+suffices, even in the presence of non-well-founded sets.
 \Done
 \end{theorem}
 
@@ -333,7 +255,8 @@ So $Q\notin W$.
 Assume $\On\in\On$.\\
 Therefore $\in$ well--orders $\On$ as a well--founded strict linear order.\\
 In particular strict order is irreflexive.\\
-Since using assumpton, $\On$ is an element of $\On$, by irreflexetivity, we have $\On\notin\On$.\\
+Under the assumption, $\On$ is itself an element of this strictly ordered
+class, so irreflexivity gives $\On\notin\On$.\\
 Contradiction with assumption.\\
 Therefore $\On\notin\On$ is proven.
 \Done

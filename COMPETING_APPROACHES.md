@@ -3,7 +3,7 @@
 
 The five approaches are preserved, but they are not interchangeable semantic
 backends. See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) for the
-normative status and preservation rules, and
+implementation status and preservation rules, and
 [summary_of_approaches.tex](summary_of_approaches.tex) for the book guide.
 
 | # | Approach | Sources | Status |
@@ -17,3 +17,18 @@ normative status and preservation rules, and
 Approaches (1) and (2) form the active proof-compiler line. Approaches (3),
 (4), and (5) remain independent. There is no general descriptor tuple,
 semantics-selection flag, or unproved translation layer connecting them.
+
+Within the classical thread, two total evaluation conventions remain distinct:
+unconditional union evaluation has the empty default, while guarded evaluation
+uses `V` outside the represented domain. Likewise, the book's recursive pair,
+the newer marker-tagged pair, and Kuratowski pairing are different encodings.
+These distinctions are local mathematical data, not additional truth-value
+systems. The front guide explains when an explicit domain condition or a
+change of encoding is needed.
+
+The newer Obelisk exports do not automatically supersede the book. For
+example, the exported dependent-product statement omits a pointwise section
+condition that the book supplies, whereas its marker-tagged pair can be
+studied independently of the book's recursive proposal. The comparison
+therefore preserves useful ideas from each source and records concrete
+upstream corrections in `tickets/obelisk_*.md`.

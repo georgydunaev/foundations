@@ -12,6 +12,12 @@ For a univocal relation $f$, the PFOL notation is
 \[
 f(x)\simeq(\iota y,\langle x,y\rangle\in f).
 \]
+Here $\langle x,y\rangle$ denotes the ordered pair used for the relation
+$f$, and \emph{univocal} means that each input has at most one output. An
+input outside the domain has no output, so its evaluation is undefined.
+Kleene equality allows both sides of the display to be undefined together,
+or to denote the same value when defined.
+
 The descriptor is defined exactly when its witness exists uniquely:
 \[
 (\iota y,\varphi)\downarrow\iff(\exists!y,\varphi).

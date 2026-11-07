@@ -8,7 +8,16 @@
 % This part is self-contained.
 %\\\n%\\
 
-The goal is to prove axiom of limitation of size using the small amount of usual axioms and simple definitions.
+The goal is to derive a cardinal form of limitation of size from a smaller
+collection of assumptions. Here $V$ is the class of all sets, and $|K|$ is
+the ordinal-valued cardinality convention developed in the cardinal section,
+with $|V|=\On$. The displayed equivalences express the target; they are not
+additional premises of the derivation below.
+
+For the argument that follows, assume heredity, preservation of sethood
+under class-function images, the ordinal-valued cardinality definition, and
+$(K\in V)\Rightarrow(|K|\in\On)$. In particular, the last condition is a
+substantive set-size assumption, not a consequence of notation alone.
 
 \begin{iaxiom}[Limitation of Size]
 \[
@@ -18,17 +27,15 @@ The goal is to prove axiom of limitation of size using the small amount of usual
 \]
 \end{iaxiom}
 
-Some equivalent(in normal context) statements:
+With these cardinality and comparison conventions, the target can also be written:
 \[
 (K\in V)
 \iff
-(K\in V)
 (|K| \subsetneq |V|)
 \]
 \[
 (K\in V)
 \iff
-(K\in V)
 (|K| \neq |V|)
 \]
 because $|V|=\On$.
@@ -41,7 +48,7 @@ We want to prove the following statement:
 (K \in V) \iff (|K| \neq |V|)
 \]
 
-Firstly, we will prove some lemmas:
+We separate the two implications.
 
 
 
@@ -53,10 +60,10 @@ Firstly, we will prove some lemmas:
 \end{lemma}
 \begin{proof}
 Assume $(K \in V)$.\\
-By our axiom, since $(K \in V)$ we have $(|K| \in \On)$.\\
+By the stated set-size assumption, $(|K| \in \On)$.\\
 By previous lemmas we have $|V|=\On$ and $\On\notin\On$.\\
 From these three statements we deduce that $|K| \neq |V|$.\\
-\Done
+\end{proof}
 
 \begin{lemma}[Second Part of the Limitation of Size Statement]
 \label{lem:limitation_of_size_second_part}
@@ -69,13 +76,154 @@ Assume $(|K| \neq |V|)$.\\
 We know that $(|V|=\On)$, so $(|K| \neq \On)$.\\
 Recalling the definition:
 $|K|\ceq \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}$.\\
-Now we have that 
-there exists some $m \in \On$, which is not in $\bigcap \cc{a\in\On}{K\preccurlyeq a}$. (vice versa situation is not possible since any non--empty intersection of subclasses of $\On$ is subclass of $\On$)\\
-...
-\Done
+If the class $C=\cc{a\in\On}{K\preccurlyeq a}$ were empty, then
+$|K|=\On\cap\bigcap\emptyclass=\On$, contrary to the assumption.
+Thus choose $a\in C$ and an injection $f:K\to a$.
+The image $f[K]\subseteq a$ is a set by heredity. The inverse graph of $f$
+is a class function on $f[K]$ with image $K$. Preservation of sethood under
+class-function images therefore gives $K\in V$.
+\end{proof}
+
+\subsection{What this cardinal criterion does and does not establish}
+The proved equivalence uses the primary cardinal convention. Under the
+ordinary set-formation assumptions in the cardinal chapter, its set-size
+premise is equivalent to the axiom of choice for sets. It does not by
+itself construct a class injection $\V\to K$ for every proper class $K$.
+Assigning the common default $\On$ to proper classes is not a proof that
+they are equinumerous.
+
+\begin{proposition}[The extra class-size assertion]
+Assume $\V$ is proper, heredity, set-image, and class
+Schroeder--Bernstein. The following two class-size statements are equivalent:
+\begin{enumerate}
+\item every proper class $K$ receives an injection from $\V$;
+\item every proper class $K$ is in bijection with $\V$.
+\end{enumerate}
+Together with heredity and set-image, either gives the injection form
+\[
+K\text{ is a set}\iff\neg(\V\preccurlyeq K).
+\]
+\end{proposition}
+\begin{proof}
+The inclusion $K\subseteq\V$ is always injective; combine it with the
+injection in the first statement using class Schroeder--Bernstein.
+The reverse implication follows by forgetting surjectivity.
+If $K$ is a set and $f:\V\to K$ is injective, heredity makes its image
+a set and set-image applied to its inverse makes $\V$ a set, a
+contradiction. If $K$ is proper, either class-size statement supplies
+the forbidden injection. Classical case distinction proves the displayed
+equivalence.
+\end{proof}
+
+This is the stronger assertion used in the union argument of the preceding
+section. That argument obtains an ordinal enumeration of all sets from
+$\V\preccurlyeq\On$; the ordinal-valued default convention alone cannot
+supply such an enumeration. Conversely, the present two elementary
+cardinality lemmas do not use the union theorem as an intermediate step:
+their stated premises are heredity, set-image, the ordinal comparison
+facts, and the set-size hypothesis.
+
 \pagebreak
 \section{Properties Preserved by Intersections of Universes}
 \label{sec:properties_preserved_intersections}
+The relevant preservation principle concerns common operations in one
+ambient theory. It does not say that arbitrary axioms, or all properties
+called positive, survive intersection. We first isolate the closure
+argument, then apply it to candidate universes.
+
+\begin{theorem}[Least class closed under a monotone operation]
+Work in MK, so that the following quantification over classes is available.
+Let $S$ be a class and let $\Phi$ be a definable operation taking classes
+to classes, monotone in the sense that
+\[
+A\subseteq B\quad\Longrightarrow\quad\Phi(A)\subseteq\Phi(B).
+\]
+Define
+\[
+C=\cc{x}{\forall Q,\
+ (S\subseteq Q\land\Phi(Q)\subseteq Q)\implies x\in Q}.
+\]
+Then $C$ is the least class containing $S$ and closed under $\Phi$.
+Moreover,
+\[
+C=S\cup\Phi(C).
+\]
+The operation $\Phi$ here is specified by a formula or functional symbol;
+no class of proper classes is required.
+\end{theorem}
+\begin{proof}
+The class $\V$ is an admissible $Q$, since every class is a subclass of
+$\V$. Every admissible $Q$ contains $S$, so $S\subseteq C$. For such
+a $Q$, the definition gives $C\subseteq Q$, and monotonicity gives
+$\Phi(C)\subseteq\Phi(Q)\subseteq Q$. Hence $\Phi(C)\subseteq C$.
+The same definition proves minimality among the admissible classes.
+
+Put $D=S\cup\Phi(C)$. We have $D\subseteq C$, so monotonicity yields
+$\Phi(D)\subseteq\Phi(C)\subseteq D$. Since $S\subseteq D$, minimality
+gives $C\subseteq D$. Thus $C=D$.
+\end{proof}
+
+For $S=\emptyclass$ and $\Phi(Q)=\power Q$, this recovers the
+construction of $\W$ and the identity $\W=\power\W$. The identity
+describes the least fixed point selected by the closure condition; it
+does not assert that every fixed point is least.
+
+\begin{theorem}[Intersection of candidate universes]
+Let $I$ be a nonempty class of set indices, and let a predicate $U(i,x)$
+specify a class $U_i$ for each $i\in I$. Put
+\[
+U=\cc{x}{\forall i\in I,\ U(i,x)}.
+\]
+Each of the following properties of all the $U_i$ is inherited by $U$:
+\begin{enumerate}
+\item transitivity;
+\item containing a specified set $c$;
+\item closure under pairs: $a,b\in U_i\Rightarrow\{a,b\}\in U_i$;
+\item closure under union: $a\in U_i\Rightarrow\bigcup a\in U_i$;
+\item closure under the ambient powerset:
+      $a\in U_i\Rightarrow\power a\in U_i$;
+\item closure under indexed unions: if $A\in U_i$ and
+      $f:A\to\V$ is any class function with $f[A]\subseteq U_i$, then
+      $\bigcup f[A]\in U_i$.
+\end{enumerate}
+If at least one $U_i$ is a set, then $U$ is a set by heredity.
+All operations in these conditions have the same ambient interpretation
+for every index.
+\end{theorem}
+\begin{proof}
+If $a\in U$ and $b\in a$, transitivity of every $U_i$ gives
+$b\in U_i$ for every $i$, hence $b\in U$. A common specified member
+likewise belongs to the intersection. If $a,b\in U$, both are in each
+$U_i$, so their pair belongs to each $U_i$ and therefore to $U$.
+Exactly the same argument works for the uniquely specified sets
+$\bigcup a$ and $\power a$.
+
+For indexed unions, let $A\in U$ and $f[A]\subseteq U$. For each
+$i\in I$, the same set $A$ belongs to $U_i$, and the same function
+$f$ has all its values in $U_i$. Its union belongs to each $U_i$ by
+the assumed closure, hence to $U$. Finally, $U\subseteq U_i$ for every
+index, so any set among these classes bounds $U$ and heredity applies.
+\end{proof}
+
+\begin{corollary}[Intersections with the usual universe closure properties]
+A nonempty intersection of transitive set universes closed under pairs,
+ambient powersets, and the indexed unions above has those same properties.
+If each contains $\omega$, so does the intersection.
+\end{corollary}
+\begin{proof}
+Apply the theorem to each defining closure property, and use any one of
+the intersected sets to establish sethood of the intersection.
+\end{proof}
+
+These statements distinguish external closure from satisfaction of an
+internally interpreted axiom. For example, an internal powerset
+$\cc{b\in U_i}{b\subseteq a}$ can depend on $i$; the powerset clause
+above instead requires the full ambient $\power a$. An existential
+requirement also needs separate treatment: two classes can each have a
+member while their intersection is empty. Thus a common specified witness,
+such as $\omega$, is stronger than unrelated witnesses to an existence
+statement. No consistency or model-existence claim follows merely from
+the preservation results.
 
 \iffalse
 \section{Proposed foundations which axioms consist only of positive properties}

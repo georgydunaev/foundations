@@ -47,7 +47,15 @@
 
 %Это, конечно, слегка анахронизм, но пока они не перешли на Lean, пусть лучше классы пишут уверенно. (ну или скорее всего только я это буду делать если повезёт там работу найти)
 
-\addbibresource{../THESIS/TEX/references.bib}
+\IfFileExists{references.bib}{
+  \addbibresource{references.bib}
+}{
+  \IfFileExists{../THESIS/TEX/references.bib}{
+    \addbibresource{../THESIS/TEX/references.bib}
+  }{
+    \PackageWarning{foundations}{Bibliography source not found; citations need the companion references.bib}
+  }
+}
 
 % Capitalize the first, last, and all major words in a book title, headline, or first-level heading. Major words are all words except articles (a, an, the), prepositions (on, in, of, etc.), coordinating conjunctions (and, or, but, etc.), and the word to. This capitalization style is called title case.
 
@@ -121,46 +129,61 @@ with the purest and kindest heart.
 \addcontentsline{toc}{chapter}{\protect\numberline{}Introduction}  % Correctly aligns with numbered chapters
 
 
-This book is not yet finished. The author encourages the reader to skip any parts which are badly written.
-Some sections are already redundant, some are unnecessary, and lots of inconsistencies are guaranteed.
+This book develops class-theoretic foundations of mathematics alongside a
+prototype proof assistant. Its central aim is to make familiar mathematical
+reasoning explicit enough to support both readable proofs and mechanized
+checking. A second aim is exploratory: descriptors, class-valued families,
+and types offer several ways to express constructions that ordinary notation
+leaves implicit.
 
-%It appeared naturally, due to e
-%and it requires maybe a year of work.
+The chapters record more than one foundational approach. Each section should
+be read with its own stated language, assumptions, and interpretation of
+terms. In particular, a change from total evaluation to partial descriptors,
+or from classes to conglomerates, changes the context in which formulas are
+understood. The guide that follows the contents identifies these approaches
+and suggests a route through them. The implementation's chosen semantics is
+one thread of the book; the other threads retain their own mathematical
+purpose.
 
-%There is a lot of scepticism about foundations in scientific community due to various reasons.
+This is a developing manuscript. Some sections contain detailed arguments;
+others formulate proposals or record proof sketches. Local notes identify
+these differences so that an unfinished argument can be studied without
+being mistaken for an established result.
 
-%The motivation of this book is a desire to show how easily the classical set/class--theoretic foundations of mathematics can be used. 
-The motivation of this book is to simultaneously provide a framework for foundations of mathematics and to implement a proof assistant.
-% from scratch.
+One motivating proposal concerns the relation between ZFC and a system
+consisting of the logical axioms, class extensionality, unbounded class
+construction, and the assertion that at least one set exists:
+\begin{quote}
+If ZFC is contradictory, then this class-theoretic system is contradictory.
+\end{quote}
+The direction of this proposed implication matters: it would transfer
+consistency from the class-theoretic system to ZFC. Its justification requires
+precise versions of the listed axioms and a derivation or interpretation;
+the formulation here introduces the question rather than supplying that
+argument. Theorem~\ref{thm:minimal_class_countermodel} gives a two-object
+model of the bare relational comprehension principles just listed. That
+model has no infinite set, so a direct derivation of the usual set axioms
+needs additional principles. It does not address a richer language with
+extra constructors or reflection rules. Identifying those extra principles
+is part of making the motivating proposal precise.
 
+Another central idea is \emph{predicates-as-types, classes-as-expressions}.
+It connects the language used to state mathematical properties with the
+representations used to check proofs. The later type-theoretic sections
+explore this connection, including earlier variants with different
+interpretations of terms and types.
 
-This book is also a collection of original foundation--related ideas, which are just a side findings discovered in the process of writing. For example, one of them is the following:\\
-%\begin{enumerate}
-%\item 
-
-``\\
-If ZFC is contradictory, then the following axiomatic system is also contradictory:\\
-
-all logical axioms +\\
-ax. class extensionality +\\
-ax. unbounded class construction +\\
-ax. ``there exists at least one set''\\
-''.\\
-
-The idea of ``Predicates--as--Types, Classes--as--Expressions'' certainly deserves attention, as well as explicit mechanization, implementation, and refining the proofs and formulations of various theorems, axioms and principles.
-
-%The development of ordinals
-
-Everything related to this book, that was developed in programming languages will be available at\\
-\url{https://github.com/georgydunaev/class_theory_proof_assistant}.\ \\
-\vphantom\ [the repository is not yet published]\\
-
-The repository contains 3 projects:
+The accompanying work has three strands:
 \begin{enumerate}
-\item The source code of this book written using \LaTeX\ system.
-\item The source code of the proof assistant based on the theory and metatheory defined in this book, and implemented in Standard~ML.
-\item The library of interpretable dependent types for PolyML, which itself is statically typed. (It is a side project, which will become a second proof assistant, with more expressive and complicated metatheory than the draft of this book contains now.)
+\item the \LaTeX\ source of this book;
+\item a Standard~ML prototype for representing the theory, its metatheory,
+  and proof checking;
+\item experiments with interpretable dependent types for Poly/ML, intended
+  to explore a more expressive metatheory.
 \end{enumerate}
+The files in this repository document the available work. Code excerpts in
+the book are identified as prototypes where their implementation is
+incomplete.
 
 \iffalse
 The author have solid reasons to believe that this statement is possible to be proven(everything necessary is already known and published, and it seems to be just a matter of accurate compilation of know facts and constructions).\\
@@ -286,7 +309,7 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 \input{070_ordered_pair.tex}
 \pagebreak
-%\input{100_class_theory.tex} %blank
+\input{100_class_theory.tex}
 %\pagebreak
 \input{140_setness.tex}
 \pagebreak
@@ -314,27 +337,41 @@ Here I want to provide a natural modification of predicate calculus and its sema
 \pagebreak
 \input{180_many-valued.tex}
 \pagebreak
-\chapter{Undergraduate mathematics}
+\chapter{Analysis and categorical applications}
 \input{230_analysis.tex}
 \pagebreak
 %\input{240_linal_topology_etc.tex}
 \input{250_topology.tex}
 \pagebreak
-%\input{260_linear_algebra.tex}
-%\pagebreak
-%\input{270_measure_theory.tex}
-%\pagebreak
-%\input{280_functional_analysis.tex}
-%\pagebreak
-%\input{290_probability_theory.tex}
-%\pagebreak
+\input{260_linear_algebra.tex}
+\pagebreak
+\input{270_measure_theory.tex}
+\pagebreak
+\input{280_functional_analysis.tex}
+\pagebreak
+\input{290_probability_theory.tex}
+\pagebreak
 \input{300_category_theory.tex}
 \pagebreak
 %\input{310_differential_geometry.tex}
 %\pagebreak
 %Appendix 1: u
 \chapter{Various logic--related ideas}
-\section{Implementation of De Bruijn variables for untyped lambda calculus}
+\section{De Bruijn indices in the untyped lambda calculus}
+The following Standard~ML sketch represents a bound variable by its distance
+from the binder: index zero refers to the nearest enclosing abstraction.
+The constructors represent variables, abstractions, and applications.
+The natural-number constructors and support functions belong to the
+surrounding prototype and are not defined in this excerpt.
+
+This is a record of an implementation experiment. A complete substitution
+routine must preserve abstraction nodes and shift free indices when crossing
+a binder; the displayed helper does not yet implement those requirements.
+Likewise, the normalizer needs a stopping case for applications whose head
+cannot reduce. The final self-application illustrates the separate fact that
+untyped lambda terms need not have a normal form. These distinctions matter
+when turning the sketch into an executable evaluator.
+
 \begin{nolinenumbers}
 \begin{lstlisting}
 datatype Exp = 
@@ -415,9 +452,8 @@ val w = normalize ee; (* it will freeze the computations*)
 \pagebreak
 \input{110_family_evaluation.tex}
 \pagebreak
-%\input{020_descriptors.tex} 
-% good but commented due to heavy semantics
-%\pagebreak
+\input{020_descriptors.tex}
+\pagebreak
 \input{030_alternative_semantics.tex}
 \pagebreak
 \input{040_old_variant_of_iota_defs.tex}
@@ -434,7 +470,17 @@ val w = normalize ee; (* it will freeze the computations*)
 %Appendix 2: 
 \chapter{Topics related to Dunford--Pettis theorem}
 %\chapter{From foundations to applications.}
-\input{../THESIS/TEX/AcademicWriting.tex}
+\IfFileExists{../THESIS/TEX/AcademicWriting.tex}{
+  \input{../THESIS/TEX/AcademicWriting.tex}
+}{
+  This chapter is reserved for the companion manuscript on the
+  Dunford--Pettis theorem. Its source is maintained separately and is not
+  included in this checkout. The functional-analysis section supplies a
+  self-contained introduction to weak convergence and uniform integrability,
+  together with a proof of the sequential finite-measure Dunford--Pettis
+  criterion. It does not
+  replace the absent companion argument.
+}
 \pagebreak
 
 %%%%% For the code.
@@ -447,4 +493,4 @@ val w = normalize ee; (* it will freeze the computations*)
 %\pagebreak
 \printbibliography[heading=bibintoc,title={\protect\numberline{}References}]
 
-\end{document}\\
+\end{document}

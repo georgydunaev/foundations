@@ -106,11 +106,12 @@
 %\usepackage[linktocpage=true]{hyperref}
 \usepackage{hyperref}
 \hypersetup{
+    hypertexnames=false,
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={Overleaf Example},
+    pdftitle={Class-Theoretic Foundations of Mathematics and Applications},
     %pdfpagemode=FullScreen,
     }
 %\usepackage{stix-type1}%\turnediota
@@ -250,7 +251,9 @@
   {\bfseries}% name of head font
   {. \\}% punctuation between head and body
   { }% space after theorem head; " " = normal interword space
-  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}{\label{#1:#2}}}
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+% Use explicit labels: automatic name:number keys collide for unnumbered
+% environments and distinct axiom counters with the same printed heading.
 %fail!
 
 %\renewenvironment{proof}{{\bfseries Proof}}{\ }%
@@ -270,6 +273,7 @@
 \newtheorem{badaxiom}{Bad axiom}
 \newtheorem*{badaxiom*}{Bad axiom}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
 \newtheorem*{definition*}{Definition}
 \newtheorem{conjecture}{Conjecture}[section]
 \newtheorem*{conjecture*}{Conjecture}
@@ -884,7 +888,8 @@
 \usepackage{lineno}
 %\renewcommand{\linenumberfont}{\normalfont\bfseries\small\color{blue}}
 \renewcommand{\linenumberfont}{\normalfont\bfseries\small\color{red}}
-\linenumbers
+% Define \ShowLineNumbers before loading the preamble for an editing copy.
+\ifdefined\ShowLineNumbers\linenumbers\fi
 % https://tex.stackexchange.com/questions/247165/can-i-change-linenumber-colour
 %%%%%%%%%% END
 
@@ -894,7 +899,11 @@
 
 \author[1]{Georgy Dunaev}
 
-\DeclareUnicodeCharacter{2061}{} %https://tex.stackexchange.com/questions/484359/package-inputenc-error-unicode-character-u2061-inputenc-not-set-up-for
+% pdfLaTeX needs this input mapping; Unicode-native engines do not expose
+% \DeclareUnicodeCharacter. No literal U+2061 is required by the manuscript.
+\ifdefined\DeclareUnicodeCharacter
+  \DeclareUnicodeCharacter{2061}{}
+\fi
 
 \usepackage[american]{babel}
 \usepackage[style=apa,backend=biber]{biblatex}
@@ -1009,6 +1018,7 @@
 \newcommand{\mor}{{\textrm{mor}}}
 
 %% Isabelle
+\newcommand{\True}{{\textrm{True}}}
 \newcommand{\Truej}{{\textrm{Truej}}}
 \newcommand{\ITerm}{{\textrm{ITerm}}}
 \newcommand{\False}{{\textrm{False}}}

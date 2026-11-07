@@ -1,5 +1,194 @@
 \def\topic{many--valued}
 \input{BEGIN.tex}
+\section{Many-valued semantic experiments}
+These notes explore ways to distinguish absence of a value from variation
+among possible values. One proposal tracks presence and stability
+separately; another interprets a predicate by the assignments on which it
+holds. In the latter proposal, correlations between subformulas matter,
+so a single truth table on the labels ``true'', ``false'', and ``uncertain''
+need not determine compound formulas.
+
+An open formula varying with its assignment is different from a formula
+without a classical truth value under a fixed assignment. The following
+small models make that distinction precise. They develop parts of the
+proposal; they do not assert soundness of an unspecified descriptor
+calculus. The original working notes remain below in the source.
+
+\subsection{Positive evidence, negative evidence, and absence}
+Work in the metatheory with a set $D$ of possible values and a relation
+$R\subseteq D\times D$. A set $J\subseteq D\times D$ records the
+\emph{jointly admissible} values of two terms. Independent candidates
+$S,T\subseteq D$ give $J=S\times T$, but correlations may require a
+smaller joint set. Define
+\[
+\begin{split}
+E_R^+(J)&\iff J\neq\emptyclass\ \land\ J\subseteq R,\\
+E_R^-(J)&\iff J\neq\emptyclass\ \land\ J\cap R=\emptyclass.
+\end{split}
+\]
+These are assertions of uniform positive and uniform negative evidence.
+For $J=S\times T$, the first is precisely the guarded universal relation
+from the alternative-semantics section. The second uses the complement
+of $R$ on the same candidate domain. It is \emph{not} the classical
+negation of the first.
+
+\begin{theorem}[Four mutually exclusive candidate states]
+Exactly one of the following holds:
+\begin{enumerate}
+\item $J=\emptyclass$ (no jointly admissible value);
+\item $E_R^+(J)$ (uniform positive evidence);
+\item $E_R^-(J)$ (uniform negative evidence);
+\item $J\cap R\neq\emptyclass$ and $J\setminus R\neq\emptyclass$
+      (mixed evidence).
+\end{enumerate}
+If $\emptyclass\neq J'\subseteq J$, either uniform-evidence assertion
+true of $J$ remains true of $J'$.
+\end{theorem}
+\Proof
+The disjoint sets $J\cap R$ and $J\setminus R$ partition $J$. If both
+are empty, $J$ is empty. If exactly one is nonempty, its side gives the
+corresponding uniform-evidence assertion. If both are nonempty, the
+state is mixed. This proves exhaustiveness and exclusivity. A subset
+of $R$ remains a subset of $R$, and a subset of a set disjoint from $R$
+remains disjoint from $R$. Nonemptiness of $J'$ retains the existence
+guard in both cases.
+\Done
+
+For example, take $D=\{0,1\}$ and the equality relation
+$R=\{(0,0),(1,1)\}$. Independent candidates for two terms, each with
+candidate set $D$, give $J=D\times D$ and mixed evidence. Repeated
+occurrences of a \emph{single shared value} instead give
+$J=\{(0,0),(1,1)\}$ and uniform positive evidence. Thus the marginal
+candidate sets do not determine the truth of equality. With
+$J=\emptyclass$, both evidence assertions are false; with mixed $J$,
+both are again false, for a different reason. Replacing negative evidence
+by classical negation would conflate these two failures with uniform
+negative evidence.
+
+\subsection{Truth sets with an explicit absence set}
+A related experiment keeps track of the assignments themselves. Let
+$\Omega$ be a nonempty set of admissible assignments. Interpret each
+partial term $t$ by a partial map $t:\Omega\rightharpoonup D$. For a
+binary atomic formula $R(s,t)$ put
+\[
+\begin{split}
+H_{R(s,t)}&=\dom(s)\cap\dom(t),\\
+T_{R(s,t)}&=\{\omega\in H_{R(s,t)}:(s(\omega),t(\omega))\in R\},\\
+F_{R(s,t)}&=H_{R(s,t)}\setminus T_{R(s,t)},\\
+A_{R(s,t)}&=\Omega\setminus H_{R(s,t)}.
+\end{split}
+\]
+Here $H$ records presence of all required values, $T$ and $F$ record
+classical truth and falsity where values are present, and $A$ records
+absence. These are sets in the metatheory, not additional classes in the
+object language.
+
+One possible propositional extension makes absence contagious. Define
+negation by exchanging $T$ and $F$ and retaining $A$. Define conjunction
+and disjunction by
+\[
+\begin{split}
+T_{\varphi\land\psi}&=T_\varphi\cap T_\psi,\\
+F_{\varphi\land\psi}&=(F_\varphi\cap H_\psi)
+                         \cup(H_\varphi\cap F_\psi),\\
+T_{\varphi\lor\psi}&=(T_\varphi\cap H_\psi)
+                         \cup(H_\varphi\cap T_\psi),\\
+F_{\varphi\lor\psi}&=F_\varphi\cap F_\psi,\\
+A_{\varphi\land\psi}&=A_{\varphi\lor\psi}=A_\varphi\cup A_\psi,
+\end{split}
+\]
+where $H_\theta=T_\theta\cup F_\theta$. This is a precise local version
+of the draft's strict presence convention. The metatheory here is
+classical; neither $\Omega$ nor the sets of present assignments need be
+finite.
+
+\begin{lemma}[Partition and classical restriction]
+For every formula of this propositional fragment, $T_\varphi$,
+$F_\varphi$, and $A_\varphi$ partition $\Omega$. On assignments where
+all its atomic subformulas are present, its interpretation is classical.
+In particular,
+\[
+T_{\varphi\lor\neg\varphi}=H_\varphi,
+\qquad
+A_{\varphi\lor\neg\varphi}=A_\varphi.
+\]
+\end{lemma}
+\Proof
+Atomic formulas have the partition property by definition. Negation
+preserves it. For a binary connective, outside
+$H_\varphi\cap H_\psi$ the assignment lies in the specified absence
+set. Inside that intersection each input has exactly one classical truth
+value, and the displayed clauses are the ordinary Boolean clauses.
+This proves the partition property and classical restriction by induction.
+For the last display, $T_\varphi$ and $F_\varphi$ exchange under negation,
+so the disjunction's truth set is their union and its absence set is
+unchanged.
+\Done
+
+This separates two reasons for an informal label ``uncertain''. If a
+formula is present everywhere but true on only part of $\Omega$, its
+excluded middle is true everywhere. If it is absent somewhere, strict
+excluded middle remains absent there. Even among everywhere-present
+formulas, truth-set correlations matter: on
+$\Omega=\{\omega_0,\omega_1\}$ take $T_p=\{\omega_0\}$.
+Both $p$ and $\neg p$ vary, yet $p\lor\neg p$ is always true whereas
+$p\lor p$ still varies. A summary recording only ``present and varying''
+cannot determine disjunction.
+
+\begin{note}[Why guarding a partial value depends on the logic]
+Under the strict convention just defined, an implication with a false
+antecedent and an absent consequent is absent, if implication abbreviates
+$\neg\varphi\lor\psi$. In PFOL, by contrast, primitive atomic predicates
+with undefined arguments are false and the logical connectives remain
+classical. There $f(x)\downarrow\to f(x)=f(x)$ is true even off the
+domain. Thus the draft's desire for this guarded formula to hold selects
+a different treatment of absence; it is not a consequence of strict
+presence propagation. Neither convention changes what happens at
+assignments where all values are present.
+\end{note}
+\begin{proposition}[Deduction under strict absence propagation]
+For this propositional fragment and any set $\Gamma$ of formulas, write
+$\Gamma\models_T\theta$ when
+every assignment on which all formulas in $\Gamma$ are true belongs
+to $T_\theta$. Put $G=\bigcap_{\gamma\in\Gamma}T_\gamma$, with
+$G=\Omega$ for the empty context. If implication abbreviates
+$\neg\varphi\lor\psi$, then
+\[
+\Gamma\models_T(\varphi\implies\psi)
+\]
+holds exactly when both of the following conditions hold:
+\[
+G\subseteq H_\varphi\cap H_\psi,
+\qquad
+\Gamma\cup\{\varphi\}\models_T\psi.
+\]
+\end{proposition}
+\Proof
+The strict truth clauses give
+\[
+T_{\varphi\implies\psi}
+ =(F_\varphi\cap H_\psi)\cup(H_\varphi\cap T_\psi).
+\]
+In particular, this set is contained in $H_\varphi\cap H_\psi$.
+If $G$ is contained in it, then an element of $G\cap T_\varphi$
+cannot belong to $F_\varphi$, so it must belong to $T_\psi$.
+This is the stated consequence with the extra assumption.
+Conversely, suppose both conditions hold and $\omega\in G$.
+Presence makes $\varphi$ either true or false at $\omega$. In the
+false case, $\omega\in F_\varphi\cap H_\psi$; in the true case,
+the consequence condition gives $\omega\in H_\varphi\cap T_\psi$.
+Thus $\omega\in T_{\varphi\implies\psi}$.
+\Done
+
+For a concrete failure of the unqualified deduction principle, take one
+assignment where $\varphi$ is false and $\psi$ is absent. Then
+$\{\varphi\}\models_T\psi$ holds vacuously, but
+$\models_T(\varphi\implies\psi)$ fails because the implication is
+absent. Modus ponens remains sound: whenever both $\varphi$ and its
+implication to $\psi$ are true, the displayed truth-set formula forces
+$\psi$ to be true. Thus keeping an inference rule does not automatically
+justify its usual deduction-theorem transformation in this local logic.
+
 \begin{comment}
 \section{Many--valued ideas}
 
@@ -80,11 +269,11 @@ Theorem is a predicate which has the truth value "True".\\
 Idea 2:\\
 
 Actually, variables are ordered: $x_1,x_2,x_3,\dots$.
-So we can consider the following correspondence evaluation of the formula $x_2\in x_4$ via assignment function $w$, with 
+So we can consider the following correspondence evaluation of the formula $x_2\in x_4$ via assignment function $w$, with
 \[
 (1\times)\Un\times \{w(x_2)\}\times\Un\times\{w(x_4)\}\times\Un\times\Un\times\Un\dots,
 \]
-where "infinite product" is abuse of notation, which means a collection of functions $f$ from $\mathbb{N}_0$ to $\power\Un$, such that $f(0)=1$. %\subseteq 
+where "infinite product" is abuse of notation, which means a collection of functions $f$ from $\mathbb{N}_0$ to $\power\Un$, such that $f(0)=1$. %\subseteq
 
 \iffalse
 \symbol{200}\symbol{201}\symbol{202}\symbol{203}

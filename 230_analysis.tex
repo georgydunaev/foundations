@@ -1,38 +1,197 @@
 \def\topic{Analysis}
 \input{BEGIN.tex}
 \section{Analysis}
-Here there will be some theorems from Analysis I,II,III by Amann, Escher.
+This section begins a development of analysis through topological limits
+and bases, with Amann and Escher's \emph{Analysis I--III} as the intended
+point of reference. The planned treatment includes one-sided limits such
+as $f(x+0)$, limits along a base, and comparisons with the familiar
+$\varepsilon$--$\delta$ formulations.
 
-E.g. necessary def for "f(x+0)" is limit with certain base.\\
-I prefer topological definition of limit and bases.\\
-There should be some kind of theorem that will says that limit of all sequences in some class of sequences(depending on the base) is equal to the limit of function w.r.t. the base.\\
-Potential theorem: in (maybe even pseudo?)metric spaces, "sequential limit"(limit of a sequence) is equal to the limit w.r.t some base.\\
-There are wildly used esilon--delta--definitions of these limits. It would be nice to list theorems about that they are equivalent to limits w.r.t. bases.\\
+A further question is when convergence along a base can be tested by
+sequences. Such a comparison needs explicit hypotheses on the spaces and
+the base. The sequential test below supplies these hypotheses and gives
+a counterexample to extending the result to arbitrary topological spaces.
 
-%Just need to se
+\subsection{Limits along a proper filter base}
+For the limit statements in this subsection, let $A$ be a set and
+$\mathcal{B}$ a nonempty family of nonempty subsets of $A$, such that
+for $B_1,B_2\in\mathcal{B}$ there is $B_3\in\mathcal{B}$ with
+$B_3\subseteq B_1\cap B_2$. These are the local conditions for a
+\emph{proper filter base}. They exclude the empty-family case admitted
+by the exploratory filter axioms in the topology section.
 
-\begin{theorem}[?]
+Let $f:A\to Y$ be a function into a topological space. We write
+$f\to y$ along $\mathcal{B}$ when
 \[
-(\forall \varepsilon >0: a+\varepsilon \geqslant 0) \to (a \geqslant 0)
+\forall U\in\mathcal{N}_Y(y),\ \exists B\in\mathcal{B},\ f[B]\subseteq U.
+\]
+The graph of $f$ supplies a value at every point of $A$. If a formula
+for $f$ originally denotes only a partial function, its domain must
+first be restricted accordingly; a default value outside the domain
+does not automatically belong in the limit calculation.
+
+For a sequence $f:\mathbb{N}\to Y$, the tail sets
+$\{n\in\mathbb{N}\mid n\geqslant N\}$ give ordinary sequential
+convergence. For a right-hand limit at a real number $a$, use the
+nonempty sets $A\cap(a,a+\delta)$, $\delta>0$, assuming that $a$ is
+approached from the right by points of $A$. This specifies both the
+side of approach and the domain on which evaluation is meaningful.
+
+\begin{lemma}[Uniqueness of a limit in a Hausdorff space]
+A function has at most one limit along a proper filter base when its
+target space is Hausdorff.
+\end{lemma}
+\Proof
+If distinct points $y,z$ were limits, choose disjoint neighbourhoods
+$U$ of $y$ and $W$ of $z$. There would be base members $B,C$ with
+$f[B]\subseteq U$ and $f[C]\subseteq W$. A nonempty base member
+$D\subseteq B\cap C$ would then satisfy $f[D]\subseteq U\cap W
+=\emptyclass$, which is impossible.
+\Done
+
+\subsection{Locality, composition, and real limits}
+\begin{lemma}[Changing a function away from the approach region]
+Let $f,g:A\to Y$, and suppose they agree on some $B_0$ in a proper
+filter base $\mathcal B$. Then $f$ and $g$ have exactly the same limits
+along $\mathcal B$.
+\end{lemma}
+\Proof
+If $f\to y$ and $U$ is a neighbourhood of $y$, choose $B\in\mathcal B$
+with $f[B]\subseteq U$. A base refinement $C\subseteq B\cap B_0$
+satisfies $g[C]=f[C]\subseteq U$, so $g\to y$. Exchange $f,g$ for
+the reverse implication.
+\Done
+
+\begin{proposition}[Pairing and continuous composition]
+If $f:A\to Y$ and $g:A\to Z$ converge along the same proper filter
+base to $y,z$, then $a\mapsto(f(a),g(a))$ converges to $(y,z)$ in
+the product topology. If $h:Y\to Z$ is continuous at $y$ and $f\to y$,
+then $h\circ f\to h(y)$.
+\end{proposition}
+\Proof
+A neighbourhood of $(y,z)$ contains $U\times V$ for neighbourhoods
+$U,V$ of $y,z$. Choose base members making $f$ lie in $U$ and $g$
+lie in $V$, then a common refinement. On it the pair lies in the
+product. For composition, continuity supplies a neighbourhood $U$ of
+$y$ whose image lies in any prescribed neighbourhood of $h(y)$;
+the limit of $f$ supplies a base member mapped into $U$.
+\Done
+
+\begin{theorem}[Punctured metric limits]
+Let $A\subseteq X$, where $(X,d)$ is a metric space, let $a\in X$,
+and assume every punctured ball about $a$ meets $A$. The sets
+\[
+B_\delta=\{x\in A:0<d(x,a)<\delta\},\qquad\delta>0,
+\]
+form a proper filter base. For a map $f:A\to(Y,e)$ into another metric
+space and a proposed limit $y\in Y$, its limit along this base is $y$ exactly when
+\[
+\forall\varepsilon>0\ \exists\delta>0\ \forall x\in A,
+\quad 0<d(x,a)<\delta\implies e(f(x),y)<\varepsilon.
+\]
+The value at $a$, when defined, has no effect on this limit.
+\end{theorem}
+\Proof
+Nonemptiness is the approach assumption, and $B_{\min(\delta,\eta)}$
+is contained in the intersection of two base members. Metric balls
+form a neighbourhood base in $Y$, so the limit definition is exactly
+the displayed quantifier condition. Since $a$ belongs to none of the
+base members, changing its value does not change any image used here.
+\Done
+
+For a right-hand real limit, replace $0<d(x,a)<\delta$ by
+$0<x-a<\delta$ and require that every such interval meets $A$.
+The same proof gives the one-sided epsilon--delta criterion. Without
+the approach assumption, an empty base member makes the quantified
+condition vacuous for every proposed limit, which is why it cannot
+be used to infer uniqueness at an isolated point.
+
+\begin{theorem}[Squeezing along a proper base]
+Let $f,h,g:A\to\mathbb R$ satisfy $f\leq h\leq g$ on some base
+member. If both $f$ and $g$ tend to $L$ along the base, then $h\to L$.
+\end{theorem}
+\Proof
+For $\varepsilon>0$, refine the ordering base member with base members
+on which $f>L-\varepsilon$ and $g<L+\varepsilon$, respectively.
+On the common refinement,
+$L-\varepsilon<f\leq h\leq g<L+\varepsilon$, which is the limit
+condition for $h$.
+\Done
+
+\subsection{When sequences test a limit}
+A sequence $(B_n)$ of members of a filter base $\mathcal B$ is
+\emph{cofinal} if every $B\in\mathcal B$ contains some $B_n$.
+If such a sequence exists, put $C_n=\bigcap_{i=1}^n B_i$.
+Finite induction using the refinement property shows that each $C_n$
+contains a member of $\mathcal B$, and hence is nonempty. The decreasing
+sequence $(C_n)$ is a new proper filter base, equivalent to the original:
+every original member contains some $C_n$, and every $C_n$ contains an
+original member. Consequently the two bases give exactly the same limits.
+The sets $C_n$ need not themselves belong to the original base. This
+construction requires no successive choices of refinements. The following
+arguments use classical logic and countable choice for the explicitly
+indexed nonempty sets of possible sequence terms.
+
+\begin{theorem}[Sequential test for a countably based limit]
+Let $(C_n)$ be decreasing and cofinal in a proper filter base on $A$.
+For $f:A\to Y$ and $y\in Y$, the following are equivalent:
+\begin{enumerate}
+\item $f$ converges to $y$ along the base;
+\item for every sequence $a_n\in C_n$, the sequence $f(a_n)$ converges
+      to $y$ in $Y$.
+\end{enumerate}
+No countability or separation assumption on $Y$ is required.
+\end{theorem}
+\Proof
+If $U$ is a neighbourhood of $y$, convergence gives a base member
+$B$ with $f[B]\subseteq U$. Cofinality gives $C_N\subseteq B$;
+decreasingness gives $a_n\in C_n\subseteq C_N$ for $n\geq N$.
+Thus $f(a_n)$ is eventually in $U$.
+Conversely, if the base limit fails, some neighbourhood $U$ of $y$
+contains the image of no base member. Choose $a_n\in C_n$ with
+$f(a_n)\notin U$ for every $n$. This sequence contradicts the second
+condition.
+\Done
+
+\begin{corollary}[Sequential continuity at a first-countable point]
+If $X$ has a countable neighbourhood base at $x$, then a function
+$f:X\to Y$ is continuous at $x$ if and only if
+$x_n\to x$ always implies $f(x_n)\to f(x)$.
+\end{corollary}
+\Proof
+Continuity gives the forward assertion directly by inverse images of
+neighbourhoods. For the converse, choose a decreasing neighbourhood
+base $C_n$ at $x$. Every sequence $x_n\in C_n$ converges to $x$.
+The theorem therefore gives convergence of $f$ along that base to
+$f(x)$, which is precisely continuity at $x$.
+\Done
+
+\begin{example}[Why the countability hypothesis matters]
+On an uncountable set $X$, give $X$ the cocountable topology: the
+nonempty open sets are those with countable complement. A sequence
+converging to $x$ is eventually equal to $x$. Indeed, the set of its
+values different from $x$ is countable, so its complement is a
+neighbourhood of $x$ that contains no other value of the sequence.
+Consequently the identity from this topology to the discrete topology
+on $X$ preserves all convergent sequences. It is not continuous,
+because a singleton is discrete-open but not cocountable-open.
+Thus preservation of sequences alone does not characterize continuity
+on an arbitrary topological space.
+\end{example}
+
+\subsection{An elementary order argument}
+\begin{theorem}[Nonnegativity from positive perturbations]
+For a real number $a$,
+\[
+(\forall \varepsilon>0,\ a+\varepsilon\geqslant0)
+\implies a\geqslant0.
 \]
 \end{theorem}
 \Proof
+Suppose $a<0$ and choose $\varepsilon=-a/2$. Then $\varepsilon>0$, but
 \[
-a<0
-\IMPLIES
-\exists \varepsilon > 0 : a+\varepsilon < 0
+a+\varepsilon=a/2<0,
 \]
-\[
-\varepsilon \ceq \left(-\frac{a}{2}\right)
-\]
-\[
-a<0
-\IMPLIES
-\varepsilon > 0
-\]
-\[
-a+\varepsilon = \left(\frac{a}{2}\right) = -\varepsilon < 0
-\]
-
+contrary to the hypothesis. Hence $a\geqslant0$.
 \Done
 \input{END.tex}

@@ -1,11 +1,18 @@
 <!-- Approach organization: opencode-go/kimi-k3.1-pro (Capability Tier 2). -->
 # Approaches Inventory
 
-This is the authoritative inventory for the five approaches to descriptors,
+This inventory organizes the five approaches to descriptors,
 partial functions, and types in `foundations`. The approaches are not five
 interchangeable backends of one semantics.
 
-## Normative Decision
+## Implementation Choice and Local Reading
+
+The book should be read section by section: each construction is assessed
+under its stated assumptions. “Active” identifies the implementation choice,
+not a global standard for judging the independent mathematical explorations.
+Historical labels record development status; they do not replace a local
+explanation of an idea. Editorial clarification preserves those ideas while
+making changes of context explicit.
 
 The active proof-compiler line uses **approaches (1) and (2) together**:
 classical two-valued Morse–Kelley/NBG class theory, Dunaev Tagged Ordered
@@ -26,12 +33,20 @@ translation between their semantics is claimed.
   (and bound quantifiers `\forall(x \in Y), \varphi(x)` / `\exists(x \in Y), \varphi(x)`
   are short forms for `\forall(x:Class), (x \in Y) \rightarrow \varphi(x)` and
   `\exists(x:Class), (x \in Y) \land \varphi(x)`).
-- Family evaluation is total by comprehension:
-  `F(x) := union {s | (x,s) in F}`.
-- The outer ordered pair of arbitrary classes is the Dunaev tagged pair
+- Total evaluation has two locally documented conventions. The prototype
+  `presentation.ML` uses `F(x) := union {s | (x,s) in F}`, with empty default.
+  `060_axioms.tex` and the newer Obelisk export `DefValueAtArg` use that
+  union only on a represented fibre and use `V` otherwise. Preserve this
+  difference explicitly; the generated `ThmFamilyEvaluation` needs a
+  domain hypothesis under the guarded convention. See
+  `tickets/obelisk_family_evaluation_domain.md`.
+- The book explores the recursive Dunaev pair
   `(a,b) = ({0} × a) ∪ ({1} × b)`, not a Kuratowski pair of proper classes.
+  The newer Obelisk `DefDunaevOrderedPair` uses a marker-tagged construction
+  with a different empty-pair value. Keep their definitions and projection
+  claims separate; see `tickets/obelisk_classes_pair_conventions.md`.
 
-## 2. Conglomerates (Predicates on Classes) as Types, Classes as Term Interpretations
+## 2. Predicates/Formulas-as-Types, Classes-as-Expressions
 
 **Status:** active mainline, with explicitly retained historical drafts.
 
@@ -47,7 +62,9 @@ translation between their semantics is claimed.
   is not itself a class in the object theory.
 - The earlier classes-as-types/sets-as-expressions attempt remains marked
   `[OUTDATED]`. In particular, interpreting every `(A : Type)` as `top` was
-  rejected because it destroys uniqueness of the term–type relation.
+  found insufficient for the intended uniqueness of the term–type relation.
+  That is a local objection to the displayed interpretation, not a judgment
+  on all possible class-as-type systems.
 
 ## 3. Three-Valued / Uncertain Descriptor Calculus
 
@@ -86,18 +103,20 @@ secondary drafts; the source above is authoritative for this alternative.
 **Source:** `030_alternative_semantics.tex`.
 
 Assignments are conglomerate-valued, schematically
-`A : Var → P(K)`. This semantics is retained verbatim as a historical
-alternative. Its assignment and definedness conventions must not be mixed
-into the active classical semantics.
+`A : Var → P(K)`. This semantics is retained as an independent historical
+alternative, with explanatory context. Its assignment and definedness
+conventions must not be mixed into the active classical semantics.
 
 ## Book Organization
 
 1. `summary_of_approaches.tex` is the reader-facing guide and is included at
    the front of `001_foundations.tex`.
-2. The main chapters develop approaches (1) and (2).
-3. Approaches (3), (4), and (5) remain in their original standalone files and
-   are presented as alternatives or historical material, not as kernel
-   configuration options.
+2. The class-theoretic thread develops approaches (1) and (2), but individual
+   chapters also contain explicitly scoped experiments.
+3. Approaches (3), (4), and (5) remain in their original files. The assembled
+   book includes the many-valued, PFOL, and subset-semantics discussions;
+   `020_descriptors.tex` supplies the included descriptor comparison. These are independent
+   mathematical approaches, not kernel configuration options.
 4. `025_unified_descriptors.tex` and `035_unified_type_semantics.tex` are
    retained only as explicitly `[OUTDATED]` rejected unification drafts.
    `050_unified_interface.tex` is a navigation document, not a semantics or a
@@ -107,5 +126,7 @@ into the active classical semantics.
 
 No theorem, translation, or compatibility claim follows merely from putting
 these approaches in one repository. Any future bridge must state its source
-and target semantics and prove the required metatheory. The original source
-files for approaches (3), (4), and (5) remain intact.
+and target semantics and prove the required metatheory. The mathematical
+ideas of approaches (3), (4), and (5) are preserved in
+their source files. Presentation edits may clarify their own assumptions and
+proof obligations without replacing them with the active semantics.

@@ -9,28 +9,40 @@
 \newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 \section{Example of the proof assistant's output}
 
-This is a screenshot of tests using one of two kernels(the one which actually stores the proofs, which is not necessary), just for the illustration purposes.
+This chapter develops several related projects: a notation for manipulating
+syntax in a proof assistant, a classical predicate calculus, and a framework
+for comparing effective proof with an ideal, non-effective foundational theory.
+Each project has its own assumptions. In particular, a computation on syntax,
+a derivation in a theory, and truth in an intended interpretation are different
+notions; the notation introduced below is intended to make their interaction
+explicit. The historical semantic experiments retained in the source use
+additional conventions of their own.
 
-The original idea of including metatheory within the theory \textit{syntactically} seems to be impossible, because a constructor or function that reflects a metatheoretic statement inside the theory. 
+The screenshot below illustrates tests of a kernel that stores proof objects.
+Storing the entire derivation is an implementation choice; it is distinct from
+checking that each inference is licensed by the kernel.
 
-The other possibility is to include the theory \textit{semantically}(as an inner model), which was done many times for various systems, but that has very limited value.
+The motivating question is how much metatheory can be represented
+\textit{syntactically} inside the theory. Encoding a metatheoretic statement is
+only the first step: a rule that reflects that statement back into the theory
+needs its own justification. A related approach represents a theory
+\textit{semantically}, through an inner model. These approaches serve different
+purposes. The later sections explore a framework for discussing incompleteness
+while keeping these levels visible.
 
-Nevertheless, during the development, a framework draft for working with incompletness has been developed. 
 % тип полностью или неполнстью определён
 % тип написан как объект (и это возможно)
 % тип написан как терм, но можно было как объект
 % тип написан как объект (и это было невозможно) -- неполная имплементация/ошибка
 % тип написан как терм, но можно было как объект
 
-\begin{informaldefinition}[syntactically representable type]
-\end{informaldefinition}
-\begin{informaldefinition}[syntactic and semantic types of the system(informal definition)]
+\begin{informaldefinition}[syntactic and semantic types]
 A guest type $A$ in a [conglomerate--level] type theory of this book is called \textit{syntactic} if its intended meaning -- as a ``collection'' of ``elements'' of some size -- is ``bijectively representable'' in the host language. That is, there exists a host type $T$ such that:
 \begin{enumerate}
 \item There is a bijection between the ``intended meanings'' of the terms of the guest type $A$ and the terms of the host type $T$.
 %\item    Every element $a$ of the collection denoted by $A$ corresponds to a unique term $t$ of type $T$, and
 %\item    Every term $t$ of type $T$ corresponds to a unique element $a$ of the collection denoted by $A$.
-\item    In particular, the interpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: it must be obvious (somehow) for a reader, given a term of type $T$, which element of $A$ it represents.
+\item    In particular, the interpretation of $A$ as a ``collection'' is ``effectively'' given by its image in $T$: the representation must specify how a term of type $T$ is read as an element of $A$. This is an informal representability requirement; a claim of computability would additionally require an explicit encoding and decoding procedure.
 \end{enumerate}
 \end{informaldefinition}
 
@@ -42,36 +54,52 @@ A guest type $A$ in a [conglomerate--level] type theory of this book is called \
 %\newgeometry{left=1cm, right=3cm, top=3cm, bottom=3cm} 
 
 \section{Type theory of the proof assistant}
-Since this is a very early draft, it may be useful just to prive type theory being used. (Then, based on this code, the section about metalanguage will be written).
-The idea is that a book on foundations is simultaneously is a documentation for a proof assistant, with architecture inspired by so--called ``LCF approach'' (\url{https://en.wikipedia.org/wiki/Logic_for_Computable_Functions}), which is used in proof assistants like HOL, HOL4, HOL Light(\& Candle), Isabelle.
+The book also documents a proof assistant. Its architecture is inspired by the
+LCF approach: a small kernel controls the construction of certified theorems,
+while higher-level code organises proofs. The type notation below describes
+syntactic objects manipulated by that implementation. It must be distinguished
+from the classes and types discussed inside an object theory.
 
 %\iffalse
+\IfFileExists{../set_theory_prover/program/CONTENT.ML}{%
 \begin{nolinenumbers}
-\lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set\_theory\_prover/program/CONTENT.ML}
+\lstinputlisting[basicstyle=\ttfamily\footnotesize]{../set_theory_prover/program/CONTENT.ML}
 \end{nolinenumbers}
+}{%
+\begin{note}[companion implementation]
+The full datatype listing belongs to the companion proof-assistant project
+and is not included in this checkout. The definitions and notation below
+provide the reading conventions needed for this chapter.
+\end{note}
+}
 %\fi
 
 \restoregeometry
 \subsection{Primitive definitions and notation}
 \begin{definition}[variable]
-An ordered and heterogeneous pair of a string called \textit{name} and a natural number called a \textit{level} is called a \textit{variable}.
+A \textit{variable} is an ordered pair consisting of a string, called its \textit{name}, and a natural number, called its \textit{level}. The two components record the identifier and its metalevel in the syntactic representation.
 \end{definition}
-This and other prinmitive definitions can be simply restored from the code above, so there is no need to state them twice. %(Especially during the development.)\\
+The companion code gives the corresponding datatype constructors. The mathematical notation below suppresses some of those constructors, so the translation conventions are stated explicitly. %(Especially during the development.)\\
 %For any variables $x$,$\phi$,\dots , define
 %\subsection{Meaning of dots and bold symbols}%Second bold notation
-Meanwhile, the difference between notation for the proof assistant(which is quite natural for dealing with types), and the standard logical/mathematical notation makes the presence of the following subsection necessary.
+The following examples connect the typed notation of the implementation with ordinary mathematical notation.
 %this subsection. 
 %the following subsection.
 
-It explains how to follow the traditional mathematical notation, with only miniscule differences in the formula's display. Compare:
-\begin{theorem*}[representation theorem in the traditional notation]
+The comparison begins with representability in arithmetic, then records the proposed encoding in the notation of this book:
+\begin{definition*}[representability in the traditional notation]
 Let $\mathbb{N}$ be the set of natural numbers. A %first--order
 theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. for all $m_1, \dots, m_k \in \mathbb{N}$, if $f(m_1, \dots, m_k) =  n$ then \[
 T \vdash \forall y (\varphi_f (\overline{m_1}, \dots, \overline{m_k}, y) \iff y = \overline{n} ).
 \]
 (\url{https://en.wikipedia.org/wiki/Diagonal_lemma#Representation_Theorem})
-\end{theorem*}
-\begin{theorem*}[representation theorem in the higher--order notation of this book]
+\end{definition*}
+\begin{example*}[representability in the proposed higher-order notation]
+The displays below explore how to encode the preceding definition. Their
+intended common meaning is the preceding representability condition. A fully
+typed translation still requires the domains of quotation, antiquotation,
+and substitution to be fixed; the displays are not separate representation
+theorems.
 Let $\mathbb{N}$ be the set of natural numbers. 
 A% first--order
  theory $T$ in the language of arithmetic containing $\mathsf{Q}$ ``represents'' the $k$--ary recursive function $f: \mathbb{N}^k\rightarrow\mathbb{N}$ if there is a formula $\varphi_f(x_1, \dots, x_k, y)$ in the language of $T$ s.t. 
@@ -84,21 +112,20 @@ T \vdash \Quote\Fm(\forall y (\Antiquote\Fm(\varphi_f)[\Antiquote\Class(m_1)/x_1
 \[
 T \vdash \Quote\Fm(\forall y (\Antiquote\Fm(\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote(y)/y]) \leftrightarrow (y = \Antiquote(n)) )).
 \]
-or, equivalently(this is a questionable formula, it may not be even wrong),
+A proposed alternative display, whose typing remains to be checked, is
 \[
 T \vdash (\forall \Quote(y), ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \iff (\Quote\Class(y) = n) )).
 \]
-or, equivalently,
+Another proposed display is
 \[
 T \vdash (\forall y, ((\varphi_f[m_1/x_1, \dots, m_k/x_k, \Quote\Class(y)/y]) \iff (\Quote\Class(y) = n) )).
 \]
-or, equivalently,
-(OFFTOPIC:
+For comparison, the shorter assertion notation is:
 \[
 T \vdash \llcorner \pmb{\varphi} \lrcorner
 \]
 
-)
+The corresponding expanded display is
 \[
 T \vdash \llcorner
 \pmb{ \forall } \pmb{y} \pmb{(}\pmb{\varphi}_{\pmb{f}} \pmb{(}\boldmeta{m_1}\pmb{,} \pmb{\dots}\pmb{,} \boldmeta{m_k}\pmb{,} \pmb{y}\pmb{)} \pmb{\leftrightarrow} \pmb{y} = \boldmeta{n} \pmb{)}\lrcorner,
@@ -123,9 +150,10 @@ For any formula $\phi$,
 \equiv
 \phi.
 \]
-\end{theorem*}
+\end{example*}
 \begin{example}[extension rule]
-Another (NOT YET FINISHED) example is the \textit{extension rule}:
+The following proposed \textit{extension rule} records a further design question.
+The question marks mark domains that have not yet been specified:
 \[
 \forall (\varphi:\Fm),\ %
 (\Fau \vdash \forall (n:?),\ \llcorner \pmb{\varphi}(\boldmeta{n}) \lrcorner)
@@ -139,7 +167,10 @@ Another (NOT YET FINISHED) example is the \textit{extension rule}:
 (\Fau \vdash \forall (n:\Class),\ \varphi(n) ),
 \]
 
-where $\varphi(n)$ means (...).
+Here the operation denoted by $\varphi(n)$, the domains of the two quantifiers,
+and the hypotheses licensing passage from all instances to a universal
+statement remain to be defined. This example is a proposed rule, not an
+admissibility result.
 \end{example}
 
 \iffalse % VERY GOOD, BUT DISTRACTING
@@ -154,7 +185,7 @@ val xb1 : Class = (QuoteClass (CV (namelvl (`x',zero))))
 val yb1 : Class = (QuoteClass (CV (namelvl (`y',zero))))
 ...
 \end{lstlisting}
-or the same, but in a mathematical notation, where not all constructors are printed,
+Equivalently, suppressing datatype constructors in the mathematical notation,
 \[
 \pmb{x} \equivdef \Quote\Var( x_{(0)} ),
 \]
@@ -173,7 +204,7 @@ val phib1 : Class = (QuoteFm (FmVar vphi))
 val psib1 : Class = (QuoteFm (FmVar vpsi))
 ...
 \end{lstlisting}
-or the same, but in a mathematical notation, where not all constructors are printed,
+Equivalently, suppressing datatype constructors in the mathematical notation,
 \[
 \pmb{\phi} \equivdef \Quote\Fm( \phi_{(0)} ),
 \]
@@ -193,9 +224,12 @@ All bald functional and predicate symbols written boldly simply mean the same co
 
 \subsection{Meaning of dots and bold symbols}%Second bold notation
 %The second bold notation may be introduced in a situation when it is useful to show that 
-All higher--order statements actually have a translation to the first--order statements, via the combination of two involutions of coding and meta--level shifting. 
+The intended translation represents higher-order syntax by first-order codes,
+using encoding/decoding together with quotation/antiquotation. The identities
+below specify the intended behaviour on well-formed inputs; they do not by
+themselves establish a translation theorem for the entire framework.
 
-In this subsection the type $\Fm$ is being used for the demonstration purposes, but all definitions are similar for every other types: $\Ctx$, $\Class$, $\Theory$, etc.%labeled by : for
+This subsection uses $\Fm$ as the running example. Analogous conventions are intended for the other syntactic types: $\Ctx$, $\Class$, $\Theory$, etc.%labeled by : for
 \begin{definition}[functions Bold and Dot]
 Let $\circ$ be an infix operator of composition of functional symbols here. Then
 \[
@@ -227,7 +261,7 @@ For any class variable $t$, its antiquotation is denoted with a dot:
 
 \begin{note}[non--commutativity of notation]
 %Contrary to the first notation,
-Properties ``being bold'' and ``having a dot'' are not commutative here: together they mean precisely following order of applications
+Boldface and a dot denote operations applied in a specified order:
 %\iffalse good
 \iffalse
 \[
@@ -247,7 +281,7 @@ and
 \text{DotFm} \equivdef (\text{Antiquote} \circ \DecFm).
 \]
 \fi
-So, as a result, the properties cancel each other:
+After the corresponding decoding step, the round trip is intended to recover the original formula:
 \iffalse
 \[
 \meta{\pmb{\phi}} 
@@ -313,7 +347,7 @@ So the following computational equality is an identity:
 
 \subsubsection{Notation for variables}
 \begin{notation}[bold variables for terms]
-For any lower--case Latin letter(e.g. `x'), define a bold lower-case Latin letter to denote
+For a lower-case Latin letter, such as ``x'', boldface denotes the encoded variable:
 \iftrue
 \begin{lstlisting}
 val xb : Class = (EncClass (CV (namelvl ("x", Nat.zero))))
@@ -323,7 +357,7 @@ val yb : Class = (EncClass (CV (namelvl ("y", Nat.zero))))
 \fi
 \begin{lstlisting}
 \end{lstlisting}
-or the same, but in a mathematical notation, where not all constructors are printed,
+Equivalently, suppressing datatype constructors in the mathematical notation,
 \[
 \pmb{x} \equivdef \EncClass(x_{(0)} ),
 \]
@@ -342,7 +376,7 @@ val phib : Class = (EncFm (FmVar vphi))
 val psib : Class = (EncFm (FmVar vpsi))
 ...
 \end{lstlisting}
-or the same, but in a mathematical notation, where not all constructors are printed,
+Equivalently, suppressing datatype constructors in the mathematical notation,
 \[
 \pmb{\phi} \equivdef \EncFm(\phi_{(0)} ),
 \]
@@ -355,18 +389,20 @@ or the same, but in a mathematical notation, where not all constructors are prin
 \end{notation}
 
 \subsubsection{Notation for functional and predicate symbols}
-All bold functional and predicate symbols written boldly simply mean the first--order constructions which intended arguments are just codes. So the encoding of higher order is inductive in nature:
+Bold function and predicate notation denotes constructors acting on codes.
+Encoding is therefore described inductively, one syntactic constructor at a time:
 
 \begin{definition}[computation of the encoding of statements]
-For any term $\Wau$ of type Theory, for any term of type Ctx,  for any term of type Fm,
+For a theory term $\Wau$, a context term $\Gamma$, and a formula term $\phi$,
 \[
 \EncStmt(\Wau,\,\Gamma\vdash \phi)
 \equiv
 \pmb{(} \EncTheory(\Wau) \pmb{,}\, \EncCtx(\Gamma)\pmb{\pmb{\vdash}} \EncFm(\phi)\pmb{)}
 \]
 \end{definition}
-The expression on the right hand side is an application of a first--order \underline{functional} %predicate 
-symbol to three arguments, which are codes of three terms, and which returns a term with meaning of a code of a statement. The computation of the encoding of other types is done in the same way.
+The right-hand side applies a first-order function symbol to the codes of the
+three arguments. Its value represents the code of the whole statement. Other
+syntactic constructors are encoded in the same way.
 
 \iffalse
 \begin{definition}
@@ -396,7 +432,7 @@ This could lead to a contradiction (Girard's Paradox) in case if this typing sys
 %class constants, corresponding to codes of syntactic entities
 \begin{definition}[sets of codes]
 %Let $\circ$ be a composition of functional symbols here, then t
-The class constants, corresponding to formulas, classes, contexts, etc are defined the following way:
+The following class constants represent the codes of formulas, class terms, contexts, and the other syntactic datatypes:
 \[
 \text{FmCode} 
 \equivdef
@@ -460,12 +496,18 @@ It seems possible to identify $\ClassTerm$ and $\TClass$, but it will not be don
 \end{notation}
 \fi
 \subsection{Typed quantification and its notation}
+Typed quantification over syntactic objects is represented below by
+quantification over their codes. A code variable must be fresh for the body,
+and every displayed substitution is capture-avoiding. Quantification over
+semantic classes is a separate issue: the set- and class-quantifier schemes
+later in this subsection are proposed axioms, not consequences of the
+coding convention alone.
 \begin{definition}[quantifiers with a bound variable of type $\Fm$]
 Let $\phi$ be a variable for formulas.\\
 Let $\psi$ be a formula.\\
 % such that $\phi_code$ is not free in $\phi$.
 %Not enough.
-Assume also that the substitution 
+Choose a fresh code variable $\phi_\code$. Assume also that the substitution
 $\psi[(\DecFm(\phi_\code))/\phi]$ is computed successfully, i.e. without raising an exception or error.
 Then
 %Then the following formula 
@@ -489,8 +531,12 @@ Then
 % bad1: (\text{Enc}\circ\text{VTyp})
 % bad2: (\text{ValToFm}\circ\text{Dec})
 \begin{notation}[naming prefix of labels]
-In Standard~ML, the notions of types and terms do not intersect. Which one is being used is easy to restore from the context. That's why it is even possible for them to have identical names. Nevertheless, in order to avoid  confusion, the constructors of the (SML) type Type, are called with prefix ``T'': e.g. ``TFm'', ``TClass'', ``TCtx'', etc. \\
-But due to aesthetical reasons, the notation will be safely abused just a bit in a following manner: instead of more precise expression
+Standard~ML distinguishes type names from values. Here the datatype named
+Type has value constructors with the prefix ``T'', such as ``TFm'',
+``TClass'', and ``TCtx''. The prefix helps distinguish a syntactic type label
+from the datatype of expressions that carry that label.\\
+In mathematical displays we suppress the prefix when the context determines
+its meaning. Thus, instead of the explicit label
 \[
 ``(\forall(\phi:\TFm),\ \dots)",
 \]
@@ -512,21 +558,21 @@ it will be written
 Note, that the letter $f$ here is a vareiable for the code of the formula, not for the formula itself, as was above where the symbol ``:'' was used.
 \end{notation}
 \fi
-In general, any other abuse of notation should be avoided and will be avoided.% at all costs.
+Other changes between syntactic and semantic notation will be stated explicitly.% at all costs.
 
 
 %Now the tricky part, te
 
 \begin{axiom}[set terms quantification unfolds via itself]
-The quantifiers with a bound variable of type Set can be unfolded similarly, with a differnce they will still contain a TClass type label:
+The proposed set-quantifier scheme retains a set-typed code quantifier:
 \[
 (\forall (t:\TSet),\ \psi)
 \iffaxm
 \]
 \[
 \iffaxm
-(\forall (\phi_\code:\TSet),\ %
-(\phi_\code\in \Emb(\TSet))
+(\forall (t_\code:\TSet),\ %
+(t_\code\in \Emb(\TSet))
 \implies
 \psi[
 \DecSet(t_\code)
@@ -535,7 +581,9 @@ t
 ]
 )
 \]
-That is why it is an axiom, because otherwise it would be a circular definition. (The author believes that it might be the reason why terms are called ``a term'': they are ``terminal'' in the sense of being expressed not throught other types, but only via themselves.)
+Here $t_\code$ is fresh for $\psi$. The scheme is stated as an axiom because
+the same quantifier appears on both sides; it is not a recursive definition.
+Its semantic justification is an additional obligation of this proposed model.
 \end{axiom}
 \begin{notation}[overloading class bindings]
 Again, as previously for formulas, a formula
@@ -560,16 +608,17 @@ can be likewise unambiguously written as
 %########################## Class
 
 \begin{axiom}[class terms quantification unfolds via itself]
-The quantifiers with a bound variable of type Set can be unfolded similarly, with a differnce they will still contain a TClass type label:
-(see the model of pi--types for the explanation)
+The analogous proposed class-quantifier scheme retains a class-typed code
+quantifier. Its typing predicate requires the interpretation supplied by the
+model of pi-types.
 \[
 (\forall (t:\TClass),\ \psi)
 \iffaxm
 \]
 \[
 \iffaxm
-(\forall (\phi_\code:\TClass),\ %
-(\phi_\code : \Emb(\TClass))
+(\forall (t_\code:\TClass),\ %
+(t_\code : \Emb(\TClass))
 \implies
 \psi[
 \DecClass(t_\code)
@@ -578,7 +627,9 @@ t
 ]
 )
 \]
-That is why it is an axiom, because otherwise it would be a circular definition. (The author believes that it might be the reason why terms are called ``a term'': they are ``terminal'' in the sense of being expressed not throught other types, but only via themselves.)
+Here $t_\code$ is fresh for $\psi$. The scheme is stated as an axiom because
+the same quantifier appears on both sides; it is not a recursive definition.
+Its semantic justification is an additional obligation of this proposed model.
 \end{axiom}
 \begin{notation}[overloading class bindings]
 Again, as previously for formulas, a formula
@@ -594,13 +645,14 @@ can be written as
 % ###
 
 \begin{notation}[the default type]
-Finally, when the type is ommited, it is assumed to be ``Class''. So, unsurprisingly, a ``Class'' is a default type of the class theory.
+In class-theoretic formulas, an omitted type annotation means ``Class'':
 \[
 (\forall K,\ \psi)
 \iffnot
 (\forall (K:\Class),\ \psi)
 \]
-So, linguistically, any time ``a term'' is written, without mentioning type, the meaning behind it is ``a term of the type Class''. It may not be the case, in context of the proof assistant's implementation.
+Thus an unqualified ``term'' in that context means a class term. In discussions
+of implementation or syntax, the relevant datatype is stated separately.
 \end{notation}
 \iffalse% METALANG
 \section{Metalanguage[section is not yet finished]}
@@ -617,7 +669,7 @@ During reading the string of symbols, it is important to distinguish entities wh
 
 
 %%%%% May be useful:
-%%%%% Currently, they are often ommited, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
+%%%%% Currently, they are often omitted, but the the rule of thumb is that in chapters devoted to logic, syntactic entities are written, and in chapters devoted to mathematics, semantic entities are written. Moreover, to avoid confusion, and due to computational properties of syntactic entities, it is natural to use a naive type theory for logic parts, so it makes it is easy to distinguish syntax from semantics.
 
 
 A sufficiently expressive programming language of reader's choice, may be used for implementing functions and structures which operate with terms, formulas, etc.
@@ -897,7 +949,7 @@ It is a bit tricky to display dots in Linux terminal, so the following notation 
 \begin{definition}[translation of variables for formulas]% into the language]
 %(This is a main definition.)
 
-For each variable wiht a name in the group ``a lowercase letter of Greek alphabet'',  
+For each variable with a name in the group ``a lowercase letter of Greek alphabet'',
 
 \iffalse
 (in case of type of formulas, a name is
@@ -968,7 +1020,7 @@ For any \underline{formulas}'s terms $\phi$ and $\psi$, the function for encodin
 \equivdef
 \pmb{(}\EncFm(\phi) \pmb{\implies} \EncFm(\psi)\pmb{)}
 \]
-A bold writing schrift of a predicate symbol notation symbols here means that, if the number of dots is interpreted simply like just a part of the variable's name, then it will be a first--order predicate symbol occurence in a first--order class term. (After the encoding of both subformulas will be fully computed, of course.)
+A bold writing schrift of a predicate symbol notation symbols here means that, if the number of dots is interpreted simply like just a part of the variable's name, then it will be a first--order predicate symbol occurrence in a first--order class term. (After the encoding of both subformulas will be fully computed, of course.)
 \end{definition}
 
 \begin{theorem}[]
@@ -980,7 +1032,7 @@ For any formula terms $\phi$,
 \end{theorem}
 
 %If a variable of an arbitrary type is being encoded, then the the quotation marks are used for brevity.\\
-For example, if a class--term $t$ is an occurence of a variable $\pmb{x}$, then
+For example, if a class--term $t$ is an occurrence of a variable $\pmb{x}$, then
 
 Left and right sides of these definitional equalities are computationally equivalent.(Conversions)
 TODO: DOUBLE CHECK HERE
@@ -1123,7 +1175,7 @@ Antiquotation:
 \end{definition}
 \fi
 \begin{metadefinition}[free variables of]
-The function, which returns the free variables of a syntactyc object, e.g. of the term:(ToDo)
+The function, which returns the free variables of a syntactic object, e.g. of the term:(ToDo)
 \[
 \FV : \text{Syntax} \to \List(\Var)
 \]
@@ -1305,17 +1357,21 @@ is a notation for
 
 \pagebreak
 %\sub
-\subsection{Axioms for the predicate calculus}[under construction]
+\subsection{Axioms for the predicate calculus}
 %\sub
-In this subsection, the requirements are listed, for which a set of closed formulas $\Wau$ must satisfy, in order to be called a \textit{theory} $\Wau$.\\
+This subsection specifies the classical calculus used locally. A theory
+$\Wau$ includes the logical axiom schemes and is closed under the stated
+inference rules. A displayed scheme stands for its well-formed instances;
+where axioms are required to be closed, take their universal closures.\\
 %, the following must hold:\\
 %In this subsection, the a theory $\Wau$ with all purely logical predicate calculus axioms is defined. Later, two $\Tau$ and $\Fau$ are defined, as certain extensions of $\Wau$. In particular, it holds that
-It is assumed that both $\Tau$ and $\Fau$ are the theories, requirements for $\Wau$ are also requirements for both $\Tau$ and $\Fau$.
+Both $\Tau$ and $\Fau$ are assumed to satisfy these requirements. Their
+additional principles are introduced separately below.
 %\[
 %\Wau \subsetneq \Tau \subsetneq \Fau.
 %\]
 \subsubsection{Propositional part}
-\begin{metaaxiom}[all tautolagies are derivable in $\Wau$]%$\Tau$ and $\Fau$
+\begin{metaaxiom}[classical propositional axiom schemes]%$\Tau$ and $\Fau$
 For all formulas $A$, $B$, $C$, for all contexts,
 %(and additionally for LEM "such that all terms they contain are defined(i.e. exists and unique)")
 the following formulas %axiom schemes %and%xor
@@ -1379,14 +1435,14 @@ B
 %Meta:
 \subsubsection{Propositional part expressed via metastatements.}
 \begin{notation}[``antiquotation'' of a term]%metation
-The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the varible belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ (of arbitrary type) is antiquoted, then it can be simply written "Antiquote($t$)"(without the quotation marks which are written here).
+The bullet symbol on top of a variable $\meta{A}$ (or $A_{(1)}$) means that the variable belongs to the metalevel; $\mmeta{A}$ (or $A_{(2)}$) belongs to the metametalevel, and so on. If a term $t$ (of arbitrary type) is antiquoted, then it can be simply written "Antiquote($t$)"(without the quotation marks which are written here).
 \end{notation}
 \begin{note}[requirement for the implementation]
 \underline{For a formula $\phi$ to be well--formed, all antiquotations in it must be quoted.}\\
 \iffalse
 $n$--times--metavariables must be contained inside $n$--times--nested double quotation marks\ ``$\cdot$''. Of course, the upper corner--brackets($\ulcorner\cdot\urcorner$) and constructors defined above are also counted as a quotation, since they contain the quotation marks by their very definitions.\\
 \fi
-(Otherwise, it would not be a formula, but rather kinda predicate--like symbol, which needs some arguments.)\\
+(A free antiquotation would instead describe a template that still needs an argument.)\\
 This requirement is also important, since the proof assistant requires a ground term in certain sense, without ``free antiquotations'', in order to definitively check whether the side conditions like ``is free in'', ``is free for substitution'', etc are met.\\ %\underline{
 \fbox{This agreement makes the side conditions decidable.}\\
 The ``yes/no'' answer is computed on the highest meta--level of the formula, otherwise the exception is raised, in case if there are ``unbound metavariables''.
@@ -1426,7 +1482,9 @@ Everything that is derivable in $\Tau$ is also derivable in $\Fau$:
 \[
 \forall (\phi:\Fm),\ ((\Tau \vdash \phi) \implies (\Fau \vdash \phi))
 \]
-Both of the following statements are necessary, because one is not implies the other(in general):
+Modus ponens is required for each derivability relation separately: inclusion
+of the theorems of $\Tau$ in those of $\Fau$ does not itself specify how
+derivations with arbitrary contexts behave.
 \iffalse WRONG,
 \[
 \forall A,B \in \Fm,
@@ -1484,7 +1542,10 @@ Both of the following statements are necessary, because one is not implies the o
 (The symbol $\equiv$ is an unnecessary informal notation for $=$, for a single purpose of giving a hint, that equality is not only propositional, but also computational. For the purpose of this book, their difference can be safely ignored by the reader.)
 
 %_{(1)}
-\subsubsection{Predicational part}
+\subsubsection{Quantifier rules}
+The variable and the substituting term in each rule have the same type.
+Contexts are denoted by $\Gamma$. Freshness conditions apply to all undischarged
+assumptions, not merely to the displayed conclusion.
 %% maybe use $.\sqdot\sqcdot$
 
 %In chapters devoted to logic, set/class-theoretics symbos
@@ -1495,7 +1556,7 @@ Both of the following statements are necessary, because one is not implies the o
 %
 
 \underline{Specification axiom scheme:}\\
-For any variable $x$, for any type $X$, for any term $t$ of that type, for any formula $\phi$ such that term $t$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
+For any variable $x$, for any type $X$, for any term $t$ of that type, for any formula $\phi$ such that term $t$ is free for [the substitution of it instead of the free occurrences of the variable] $x$ in $\phi$, the following formulas are derivable in $\Wau$:
 \[
 (\forall (x:X),\phi) \implies \phi[t/x]
 \labeltagd{axm}{S1}
@@ -1576,7 +1637,7 @@ For any variable $x$, for any type $X$, for any term $t$ of that type, for any f
 )
 )
 %\mquoteright
-\clabeltagd{axm}{MetaMetaS2}
+\clabeltagd{axm}{MetaMetaS2Bold}
 \]%%%%%%%%%%%%%%
 %
 %
@@ -1611,7 +1672,7 @@ The signatures of the functions implementing the predicates
 }\]
 and 
 \[\text{
-``($\cdot$~occures~free~in~$\cdot$)''
+``($\cdot$~occurs~free~in~$\cdot$)''
 }\]
 are given in the listing below:
 \begin{lstlisting}
@@ -1620,7 +1681,7 @@ isFree : Variable * Value -> bool
 \end{lstlisting}
 (The quantification ``for any type $X$'' is purely metatheoretical here for simplicity, but it may be included if the dependent types will be implemented.)\\
 \underline{Epsilon calculus axiom scheme:}\\%(experimental)
-For any type $X$, for any variable $x$ and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
+For any type $X$, for any variable $x$ and the formula $\phi$ such that the term $(\Henkin (x:X),\varphi)$ is free for [the substitution of it instead of the free occurrences of the variable] $x$ in $\phi$, the following formula is derivable in $\Fau$:
 \[
 (\exists (x:X),\varphi)
 \implies
@@ -1643,8 +1704,11 @@ For any type $X$, for any variable $x$ and the formula $\phi$ such that the term
 (This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
-For any variable $x$, for any type $X$, for any formulas $\psi$ and $\phi$ such that the variable $x$ is not free in $\psi$, then
-the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability of $(\psi \implies (\forall (x:X),\varphi))$ and $((\exists (x:X),\varphi)\implies \psi)$ in $\Wau$.
+For a variable $x$ of type $X$ and formulas $\psi,\varphi$, assume that
+$x$ is free in neither $\psi$ nor the context $\Gamma$. The first rule moves
+a universal quantifier into the consequent; the second moves an existential
+quantifier into the antecedent. Notice the different order of $\psi$ and
+$\varphi$ in their premises.
 % following formulas are derivable $\Tau$($\Fau$)
 \[
 \frac{
@@ -1669,9 +1733,11 @@ the derivability of $(\psi \implies \varphi)$ in $\Wau$ implies the derivability
 
 
 \subsubsection{Simplification of rules B1 and B2}
-For our purposes in the classical setting, it is possible to simplify these abstraction rule requirements, down to the the generalisation rule and the classical definition of the existence quantifier.%For the case of classical predicate logic, it is enough to have 
+In the classical setting, the intended presentation uses generalisation and
+the dual definition of the existential quantifier. The type-size conventions
+below belong to this particular proposed typed calculus.%For the case of classical predicate logic, it is enough to have
 \begin{note}[sizes of types terminology]
-Types are divided in three sizes:
+This local proposal distinguishes three sizes of types:
 \begin{enumerate}
 \item ``small'': types, which are interpreted as sets.
 \item ``medium'': types, which are interpreted as classes.
@@ -1679,20 +1745,22 @@ Types are divided in three sizes:
 \end{enumerate}
 \end{note}
 \begin{note}[judgements]
-The following judging rules are assumed:
+The following typing conventions are assumed in this proposal:
 \begin{itemize}
 \item All small terms have small types.
 \item All small types are also small terms, but not vice versa.
-\item So therefore any small type have some (other) small type.\\
-Moreover, a type of a small type is required to be a universe. Therefore a type of a universe is also a universe. And all of universes are small types. 
+\item Thus each small type has a small type of its own.\\
+Moreover, a type of a small type is required to be a universe. Therefore a type of a universe is also a universe. All these universes are small types.
 \item All medium types have a large type ``Type''.
 \item Large types have no types. There are only two of them: ``Type'' and ``Class''. 
 \end{itemize}
 \end{note}
 
 \begin{note}[on quantifications over all types]
-It seems to be impossible(due to paradoxes--related reasons) to ``uniformly'' write a metatheoretical statement that expresses, for example, generalisation rule for all types.
-The proposed solution for this problem is just to write it separately as two statements: one which is quantified over all medium types and one specifically for the only finite amount of large types manually called (there are two: ``Class'' and ``Type''), and it seems to be enough.
+To avoid assuming a type of all types, the proposal separates a scheme over
+medium types from explicitly stated instances for the two large types,
+``Class'' and ``Type''. This is the intended reading of ``for any type''
+in the generalisation rule below.
 \end{note}
 \begin{definition}[generalisation rule(s)]%underline
 %It is not possible to write a generalisation rule for every large type
@@ -1741,13 +1809,19 @@ v
 \clabeltag{MetaGen}
 \]
 %\meta{x}
-It is interesting here, that if the variable is specialised, then it is being substituted even in the place which is ``bound''. The explanation, is that occurrences of type $X$ are being bound.
-How is the clash of the variable names avoided here?
+Specialising the metatheoretic variable $v$ supplies an object-language
+identifier, including at the binder position. This is different from
+substituting a term for a free occurrence in the resulting object formula.
+The following distinction explains the relevant freshness checks.
 \begin{remark}[Metatheoretic variables ($v_x, v_y, v_C, v_s$) vs.\ metatheoretic constants ($c_x, c_y, c_C$) and capture avoidance]
 In metalevel rules such as \eqref{MetaGen}, symbols $v, v_x, v_y, v_C, v_s : \Var$ are \emph{metatheoretic variables} universally quantified over the datatype $\Var$ of object-language variable identifiers, whereas fixed concrete variable identifiers (such as the literal identifier for ``$x$'') are \emph{metatheoretic constants} denoted $c_x, c_y, c_C : \Var$. Inside a quoted formula $\mquote{(\forall (\antiquote{v}:X),\,\mantiquote{\phi})}$, the antiquotation $\antiquote{v}$ splices the variable identifier denoted by $v$ into the binder position. Accidental variable capture (name clash) is prevented by decidable boolean side conditions evaluated on the syntax trees:
 \begin{enumerate}
 \item In \eqref{MetaGen}, the side condition $(v \notin \FV(\Gamma))$ (checked by $\mathrm{NFV}(v, \gamma) = \True$ for every $\gamma \in \Gamma$) guarantees that the generalized variable identifier $v$ does not occur free in any assumption of $\Gamma$.
-\item In universal instantiation and existential elimination, the decidable predicate $\mathrm{FFI}(t, v_x, \phi) = \True$ (``term expression $t$ is free for metavariable $v_x$ in $\phi$'') recursively verifies that no free variable identifier occurring in $t : \Class.\Expr$ becomes bound by an inner quantifier when $t$ is substituted for free occurrences of $v_x$ in $\phi : \Fm$.
+\item In universal instantiation and existential elimination, the decidable predicate
+\[
+\mathrm{FFI}(t, v_x, \phi) = \True
+\]
+(``term expression $t$ is free for metavariable $v_x$ in $\phi$'') recursively verifies that no free variable identifier occurring in $t : \Class.\Expr$ becomes bound by an inner quantifier when $t$ is substituted for free occurrences of $v_x$ in $\phi : \Fm$.
 \end{enumerate}
 \end{remark}
 \end{definition}
@@ -1838,7 +1912,11 @@ c(S)\ceq (\Henkin (x:\Class),\ (x\in S))
 \]
 \end{definition}
 
-Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type Val)
+The following schemes describe \textit{provable equivalence} of syntactic
+objects. The term ``effective'' would require a separate decision procedure;
+the definitions themselves only refer to derivability in $\Fau$. Every
+substitution below is subject to the same typing and capture-avoidance
+conditions as the quantifier rules.
 %\[\]
 \[
 (t_1 \sim t_2)
@@ -1890,21 +1968,26 @@ Axioms of effective equivalence on syntax. (I.e. an equivalence relation on type
 \implies
 ((\Fau, \Gamma\vdash\phi_1) \sim (\Fau, \Gamma\vdash\phi_2))
 \]
-Generally speaking, it may be true, that
+The interaction between provable equivalence and encoding is a separate
+design question. The draft records the possibility that
 \[
 (\vec{\exists})((t_1 \sim t_2)
 \not\implies
 (\encode(t_1) \sim_\Tau \encode(t_2))),
 \]
-but maybe it is possible assume. (As a result the encoding algorithm may be very ineffective: e.g. via testing all smaller codes.) (The alternative architecture, which uses the De Brujin notation might be useful here.)
+A proposed encoding that identifies equivalent terms would need a precise
+construction. Searching for a least equivalent code need not be an effective
+procedure. The use of de Bruijn notation addresses variable binding, but does
+not by itself decide provable equivalence.
 
-But in $\Fau$,
+For $\Fau$, the intended additional compatibility principle is
 \[
 (t_1 \sim t_2)
 \implies
 (\encode(t_1) \sim_\Fau \encode(t_2)).
 \]
-The same may not be possible in $\Tau$.%(sure?)
+Its justification depends on the chosen encoding and equivalence relation;
+the corresponding principle for $\Tau$ is a separate question.%(sure?)
 \iffalse
 \begin{definition}[meta-definition]
 \[
@@ -2485,7 +2568,10 @@ I_\Class^v(u[t/\xi])=I_\Class^{\upd(v,\xi,I^v(t))}(u)
 \Done
 \fi %GOOD, BUT NOT USEFUL IF METATHEORY=THEORY
 
-\subsection{Admissible rules [unfinished section]}
+\subsection{Admissible rules}
+An admissibility claim says that every derivation of the premises can be
+transformed into a derivation of the conclusion. The context and the
+substitution side conditions are therefore part of the claim.
 %An axiom is a statement which is valid consensually.
 %A theorem is a statement with a proof of it.\\
 %An axiom is a theorem which proof is both consensual.
@@ -2493,7 +2579,12 @@ I_\Class^v(u[t/\xi])=I_\Class^{\upd(v,\xi,I^v(t))}(u)
 Inference rules are metaaxioms.\\
 Admissible rules are metatheorems.
 \begin{metatheorem}[simultaneous substitution]%\ \\
-Let $x_1, \dots, x_n$ be variables, $t_1, \dots, t_n$ be terms, and $\phi$ be a formula, such that $t_1, \dots, t_n$ is free for $x_1, \dots, x_n$ in $\phi$, then the inference rule
+Work in the ordinary total first-order fragment. Assume its nonlogical
+axiom schemes and inference rules are stable under substitution. Terms denote
+values of their sorts and universal instantiation is available for them.
+Let $x_1,\dots,x_n$ be distinct variables and let $t_1,\dots,t_n$ be
+terms of their respective types, free for simultaneous substitution in
+$\phi$. With no undischarged assumptions, the following rule
 \begin{prooftree}
 \AxiomC{$\phi$}
 \RightLabel{SimSubst}
@@ -2501,11 +2592,30 @@ Let $x_1, \dots, x_n$ be variables, $t_1, \dots, t_n$ be terms, and $\phi$ be a 
 \phi[t_1, \dots, t_n/x_1, \dots, x_n]
 $}
 \end{prooftree}
-is admissible.
+is admissible. With a nonempty context, the same substitution must also be
+applied to that context.
 \end{metatheorem}
+\begin{proof}
+For an empty context, generalise over the free variables to be replaced,
+using fresh bound identifiers if necessary. Instantiate the resulting
+universal quantifiers with the specified terms. Freshness and the free-for
+conditions ensure that the result is the simultaneous substitution rather
+than a sequence that changes an earlier replacement. For a derivation
+from assumptions, first rename generalisation variables fresh for the
+substitution terms, then substitute throughout the derivation. Axiom
+stability and the substitution-compatible rule schemes preserve every
+step and transform the assumptions to the substituted context.
+\end{proof}
+This does not assert unrestricted substitution for a partial or uncertain
+language. For example, a denoting variable satisfies $x\ldefined$, but
+replacing it by an undefined term makes that assertion false. A term with
+several candidates similarly need not preserve a variable's uniqueness.
+Such languages require their own guarded rules and semantic substitution
+lemmas, as discussed in the evaluation sections.
 
 \begin{metatheorem}[substitution property / Leibniz's law]%\ \\
-Informally:\\
+Assume equality has its substitutivity axioms, and that both substitutions
+below are well-typed and capture-avoiding. Informally:\\
 ``If $a = b$, then, for any well--formed formula $\phi$, $\phi (a)\IMPLIES \phi (b)$.''\\
 Formally:
 \[
@@ -2517,7 +2627,9 @@ Formally:
 
 \end{metatheorem}
 \begin{proof}
-ToDo
+Apply the assumed equality-substitution scheme to $a$, $b$, and $\phi$.
+It gives $(a=b)\implies(\phi[a/x]\implies\phi[b/x])$. Modus ponens
+with the given derivation of $a=b$ yields the required implication.
 \end{proof}
 
 % https://en.wikipedia.org/wiki/Substitution_(logic)
@@ -2582,7 +2694,7 @@ So the dot sometimes mean actual string of length one, containing a dot.
 \[
 )\ceq ")"
 \]
-It is used together with a convention, that operation of concatination is almost always ommited: as long as we have two strings written consequently, it means that they are concatenated.
+It is used together with a convention, that operation of concatenation is almost always omitted: as long as we have two strings written consequently, it means that they are concatenated.
 \[
 ,\ceq ","
 \]
@@ -2662,15 +2774,89 @@ A proof is a list of formulas, such that each is either an axiom, or obtained fr
 
 
 %\sub
-\subsection{Substitution}%Basic definitions}
-...
-\begin{definition} Simultaneous substitution.
+\subsection{Substitution}
+\begin{definition}[Simultaneous substitution in the first-order fragment]
+Fix distinct variables $W_1,\ldots,W_n$ and replacement terms
+$Z_1,\ldots,Z_n$ of the corresponding sorts. Write $\sigma$ for this
+finite substitution. On variables, $W_i\sigma=Z_i$ and $x\sigma=x$
+when $x$ is not listed. On a compound term, substitution acts on each
+argument; it does not act again inside a replacement term inserted at a
+variable. On atomic formulas and Boolean connectives it acts componentwise.
+
+For a quantified formula $Qx\,\psi$, with $Q\in\{\forall,\exists\}$,
+first rename the bound variable to a fresh variable $z$ of the same sort,
+chosen outside the variables occurring in $\psi$, the replacement terms,
+and the substitution domain. Then put
 \[
-\varphi[Z_1/W_1,...,Z_n/W_n]
+(Qx\,\psi)\sigma=Qz\bigl((\psi[z/x])\sigma\bigr).
 \]
-The definition is not yet written, but it is implemented as functions ending with ``\_simsubst'' in the project \url{https://github.com/georgydunaev/set_theory_prover/blob/main/program/checker.ML}.
+The renaming affects the occurrences bound by this quantifier only.
+Terms are finite and the variable supply of each sort is infinite, so a
+fresh $z$ exists. Different choices give alpha-equivalent formulas.
+This defines the ordinary first-order fragment; additional binding
+constructors require their own typed clauses.
 \end{definition}
-\noindent
+
+\begin{lemma}[Coincidence of assignments]
+In a classical many-sorted first-order structure with total operations,
+the value of a term depends only on its free variables, and the truth
+of a formula depends only on its free variables.
+\end{lemma}
+\Proof
+Use structural induction. A variable is read from its own assignment
+coordinate. A compound term uses only the coordinates used by its
+arguments. Atomic predicates and equality therefore have the same truth
+under assignments agreeing on their free variables, and the Boolean
+steps follow from the induction hypotheses. For $Qx\,\psi$, let $v,w$
+agree on the free variables other than the bound $x$. For every value
+$a$ of the appropriate sort, $v[x\mapsto a]$ and $w[x\mapsto a]$ agree
+on all free variables of $\psi$. The induction hypothesis gives the
+same truth for each $a$, hence the same universal or existential truth.
+\Done
+
+\begin{lemma}[Substitution and evaluation]
+\label{lem:classical_substitution_evaluation}
+Let $M$ be a classical many-sorted first-order structure with nonempty
+sort domains and total operations, and let $v$ be a sort-correct assignment.
+Define $v_\sigma(x)=\llbracket x\sigma\rrbracket_v$. Then
+\[
+\llbracket t\sigma\rrbracket_v=\llbracket t\rrbracket_{v_\sigma},
+\qquad
+M,v\models\phi\sigma\iff M,v_\sigma\models\phi.
+\]
+\end{lemma}
+\Proof
+Induct simultaneously on terms and formulas. The variable clause is the
+definition of $v_\sigma$. The compound-term case follows by applying the
+same interpreted operation to equal argument values. Atomic equality
+and predicate cases follow from the term result; Boolean cases follow
+from the induction hypotheses and their truth tables.
+
+For a quantifier, use the fresh variable $z$ from the definition.
+For every value $a$ of its sort, freshness ensures
+\[
+(v[z\mapsto a])_\sigma=v_\sigma[z\mapsto a].
+\]
+Indeed, no replacement term contains $z$, and $z$ is not substituted.
+Apply the induction hypothesis to the renamed body with each such $a$.
+Universal quantification says all these instances hold, and existential
+quantification says at least one holds. Bound-variable renaming preserves
+evaluation by the same assignment-update clause. This proves both cases.
+\Done
+
+\begin{example}[Simultaneous substitution and capture]
+For $\sigma=[y/x,x/y]$, the formula $x=y$ becomes $y=x$, not $x=x$.
+In $(\forall y,\ x=y)[y/x]$, rename the binder first: the result is
+$\forall z,\ y=z$ for a fresh $z$. The unrenamed expression
+$\forall y,\ y=y$ is generally inequivalent: in a domain with two
+elements the former is false and the latter true. These examples explain
+why sequential replacement and textual replacement under a binder are
+not implementations of simultaneous capture-avoiding substitution.
+\end{example}
+
+The proof is scoped to the total classical fragment. It does not by
+itself establish substitution soundness for the later conglomerate-valued
+interpretation or for quotation and reflection constructors.
 
 \pagebreak
 %%% Example labeling
@@ -2701,8 +2887,17 @@ Let $w$ be an assignment of variables:\\
 w:\Var\to \power \mathcal{U}\setminus\{\emptyclass\}
 \]
 
-But we are interested mostly into variable interpreted as "class-singletones" of any(even proper) class, as an actual object of interest.
-Here we assume existence of such conglomerates. So the our chosen naive metatheory is weakly stronger than the theory presented (in sense that it is not weaker). If we chose not to define (- exist), (- unique), (- defined), we could use the theory itself as its own metatheory. Actually, there is a translation of theorems that collapses all terms to be defined.
+The intended ordinary values are classes, represented in singleton
+assignments by singleton conglomerates. Existence of the surrounding
+conglomerates and of the products used below is an assumption of the
+ambient semantic framework. These objects need not be classes of the
+object theory: a proper class cannot be a member of an ordinary class.
+The proposal therefore does not establish that the theory interprets its
+own full semantics. Likewise, a translation making every term defined
+would require an explicit definition and a preservation proof; omitting
+predicates for definedness alone does not supply such a translation.
+The nonemptiness restriction on $w(x)$ concerns variable assignments;
+it does not forbid a composite partial term from having no candidates.
 
 %\subsubsection{NEW VERSION, GOOD: Precise definitions}
 %\sub
@@ -2710,12 +2905,13 @@ Here we assume existence of such conglomerates. So the our chosen naive metatheo
 Traditional assignment is an univocal correspondence between variables and sets. In this text, the global assignment is introduced as an univocal correspondence between variables and conglomerates%-singletons
  of classes. 
 The whole this section is devoted to definition of interpretation functions for terms and formulas under the global assignment.\\ 
- The adjective ``global" will soon be completely ommited for brevity, because all assignments mentioned are assignments in the global sense.\\
+ The adjective ``global" will soon be completely omitted for brevity, because all assignments mentioned are assignments in the global sense.\\
 A global assignment is called singleton-assignment if all elements of its range are singleton conglomerates, containing exactly one class.\\
 
-% assignment and under assigmnent with singletones.\\
+% assignment and under assigmnent with singletons.\\
 %Firstly, we define evalua.
-We simultaneously define evaluation of formula with a singleton-assignment, and extend it to an arbitrary assignment:
+Assume a truth relation on singleton assignments has been specified.
+Its proposed extension to arbitrary assignments is:
 \[
 \left(w\models\varphi\vphantom\prod\right)\IFF
 \left(\forall \left(v\in\prod w\middle):
@@ -2734,14 +2930,82 @@ I^w_\Fm(\varphi)\ceq
 \ \lelse
 \ \lFalse,
 \]
-Also, for terms:
+For terms, let $J_v(t)$ be the candidate collection supplied by the
+singleton semantics at $v^*$. Define the extension by
 \[
-I^w_\Class(t)\ceq 
-\bigcup \left\{ I^{v^*}_\ClassTerm 
-\middle|v\in\prod w\right\}
+I^w_\Class(t)\ceq\bigcup_{v\in\prod w}J_v(t).
 \]
+This is an aggregation rule, not a recursive definition of $J_v$.
 
-Semantical consequence $\left(v^*\models\varphi\right)$ is defined recursively by cases of the formula $\varphi$.
+
+\begin{proposition}[What universal selection preserves]
+Fix a nonempty collection $S$ of singleton assignments on which formulas
+have classical truth values. Define $S\models_\forall\phi$ to mean that
+$v\models\phi$ for every $v\in S$. Then
+\[
+S\models_\forall(\phi\land\psi)
+\iff (S\models_\forall\phi\ \hbox{and}\ S\models_\forall\psi).
+\]
+If $S\models_\forall\phi$ and $S\models_\forall(\phi\implies\psi)$,
+then $S\models_\forall\psi$. However, universal selection does not in
+general commute with negation or disjunction.
+\end{proposition}
+\Proof
+The conjunction equivalence exchanges two universal conditions.
+For the second claim, at each $v\in S$ ordinary modus ponens proves
+$\psi$; hence it holds at all selections. For the failures, take two
+assignments at which an atomic formula $P$ is respectively true and
+false. Neither $P$ nor $\neg P$ holds at every selection, but
+$P\lor\neg P$ does. Thus failure of universal truth for $P$ is not
+universal truth of $\neg P$, and universal truth of a disjunction need
+not come from either disjunct being universally true.
+\Done
+
+This explains why the two-valued output of the displayed $I^w_\Fm$
+cannot simply be substituted into every classical truth table at the
+global level. Classical evaluation occurs inside each selection before
+universal aggregation. If $\prod w$ is empty, the universal clause makes
+every formula true, including a contradiction. Nonempty coordinate
+values alone do not prove that an arbitrary product has a selection
+without an appropriate choice principle. One may instead work over a
+specified nonempty selection family, or restrict to finitely many
+relevant variables and finite products; the latter requires a locality
+proof for the chosen language. These are semantic assumptions, not
+consequences of the displayed definition.
+
+\begin{proposition}[Finite-support selection in the classical fragment]
+Fix a one-sorted classical structure with nonempty set domain $D$ and
+a nonempty subset $w(x)\subseteq D$ for each variable. For a formula
+$\phi$, let $J$ be its finite set of free variables. Define its local
+universal truth by checking every $s\in\prod_{x\in J}w(x)$, evaluating
+$\phi$ under any extension of $s$ to an assignment into $D$.
+This truth is well defined, and the finite product is nonempty without
+assuming the axiom of choice. It is unchanged if $J$ is enlarged to any
+finite set $K$ of variables. If the full product $\prod_xw(x)$ is
+nonempty, local universal truth agrees with the full-product definition.
+\end{proposition}
+\Proof
+Choose one $d\in D$ and extend $s$ by assigning $d$ outside $J$.
+The coincidence lemma makes the truth independent of this extension.
+A finite family of nonempty sets has a selection by induction on its
+number of indices: extend a selection by one witness from the last set.
+The empty-index product contains the empty assignment. The same argument
+extends every selection on $J$ to one on finite $K$, while restrictions
+of selections on $K$ belong to the product on $J$. Coincidence now proves
+the equality of the two tests.
+
+If $r\in\prod_xw(x)$ exists, every local selection $s$ extends to a full
+one by using $s$ on $J$ and $r$ elsewhere. Conversely every full selection
+restricts to a local one. Coincidence again identifies the truth tests.
+\Done
+
+This is a proved local semantics for the stated classical fragment.
+For the author's larger language, binders, quotations, and predicates
+about collections of possible values still require matching coincidence
+lemmas; the proposition does not silently supply those clauses.
+
+To complete the singleton semantics, satisfaction must be defined
+recursively for every formula constructor. One intended clause is:
 \[
 (v^*\models(t\ \lunique))\IFF (I^{v^*}_\Class(t)\ \semisingleton)
 \]
@@ -2759,30 +3023,35 @@ For example, if Isabelle is used, then\\
 ``i=>o'' corresponds to BFm,\\
 and so on.\\
 
-TODO: to prove semantics of\\
-https://isabelle.in.tum.de/dist/library/FOL/FOL/IFOL.html\\
-Paulson1989\_Article\_TheFoundationOfAGenericTheorem.pdf\\
-%Paulson1989_Article_TheFoundationOfAGenericTheorem.pdf\\
-
-There are symbols.\\
-Symbol has meaning.\\
-Symbol $S$ has valency $\val(S)$.\\
+A typed signature assigns each symbol $S$ a finite arity $n$, input
+sorts $\tau_1,\ldots,\tau_n$, and an output sort $\rho$. After choosing
+semantic carriers $D_\tau$, an operation symbol is interpreted by a map
 \[
-\Symb\ceq \sum_{n\in\N}\sum_{D:\{1,\dots,n\}\to\Type}\prod_{k\in \{1,\dots,n\}}
+I(S):\prod_{k=1}^nD_{\tau_k}\longrightarrow D_\rho.
 \]
-For a symbol S, the meaning of S is a function from $val(S)$ with domains $D_S(1),\dots,D_S(n)$ to the range of a symbol $R_S$.\\
-
-Assume $P$ is a predicate symbol.\\
+For a predicate symbol the target is $\{\mathsf T,\mathsf F\}$.
+For example, a unary predicate on the term carrier is evaluated by
 \[
-I_\PredSymb(P) : \left(\prod_{k\in\{1,\dots,\val(P)\}}D(P,k)\right)...
+v^*\models P(t)\iff
+I(P)(I^{v^*}_{\Class}(t))=\mathsf T.
 \]
+If that carrier consists of candidate collections, the uniqueness
+predicate specifically tests whether the collection has at most one
+member; an arbitrary predicate need not perform that test. Nullary
+symbols use the singleton empty product. A binding symbol still needs
+its own assignment-update clause: a type profile alone does not specify
+how it binds a variable. The correspondence with a higher-order proof
+assistant requires proving those clauses compatible with its syntax;
+no such full compatibility theorem is asserted here.
 
-If it takes a term $t$ as an argument, then
-\[
-(v^*\models(P(t))\IFF I_\PredSymb(P)(I^{v^*}_\Class(t)\ \semisingleton)
-\]
 \begin{example*}
-Let $w\ceq \{(``x",\{0,1\})\}$, but even in such situation, variables are keeping being defined, i.e. the following holds: $w\models(x\ \lunique)$.
+Take $w(x)=\{0,1\}$ and fix singleton choices for all other variables.
+At each selection, the variable $x$ has one candidate, so
+$w\models(x\lunique)$ under universal selection. Yet its aggregated
+candidate collection is $I^w_\Class(x)=\{0,1\}$. Thus testing uniqueness
+after aggregation gives a different answer from aggregating the truth of
+the uniqueness predicate. The example illustrates the chosen evaluation
+order; it does not equate those two tests.
 \end{example*}
 
 \begin{definition}(function(star) from the standard assignment to the ``big assignment'')
@@ -2800,173 +3069,158 @@ v^*(a)\ceq \{v(a)\}
 \]
 \end{definition}
 
-\begin{theorem}
-The definitions of interpretation coincide on singleton-assignments.
-For all $l:\Var\to\Domain$.
+\begin{theorem}[Product of singleton assignments]
+Let $l$ be an ordinary assignment on an index collection $J$, and put
+$l^*(x)=\{l(x)\}$ for $x\in J$. Interpret the product in the ambient
+framework as the collection of functions on $J$ whose value at $x$
+belongs to $l^*(x)$. Then
 \[
-\left(\prod (l^*)\right)=\{l\}
+\prod(l^*)=\{l\}.
 \]
+The ambient framework must admit these functions and collections. In
+particular, this formula is not an object-theoretic singleton of a
+proper-class graph.
 \end{theorem}
 \Proof
-%% ==== Standard proof for function coded as relation.
-\[
-l=\cc{(a,l(a))}{a\in\dom(l)}
-\]
-\[
-l^*=\cc{(a,\{l(a)\})}{a\in\dom(l)}
-\]
-\[
-\left(\prod (l^*)\right)=
-\cc{\cc{(x,y)}{(x\in \dom(l^*)) \land (y\in l^*(x))}}{\top}
-\]
-\[
-=\cc{(x,y)|(x\in \dom(l)) \land (y\in \{l(x)\})\}}{\top}
-\]
-\[
-=\cc{\cc{(x,l(x))}{x\in\dom(l)}}{\top}
-\]
-\[
-=\cc{l}{\top}
-\]
-\[
-=\{l\}
-\]
-%\iffalse
-\iftrue
-==== Alternative proof for function coded as family.(unfinished)\\
-recall: (naive)
-\[
-\prod w \ceq \cc{f }{ \exists D: (f\family) \land (D = \dom(f)=\dom(w)) \land (\forall x\in D: f(x) \in w(x)) }
-\]
-To show: (here we need to fix something with ``unification function''(tilda), which decomposes values in set of singletones)
-\[
-\left(\prod (l^*)\right)=\{l\}
-\]
+The assignment $l$ itself belongs to the product because
+$l(x)\in\{l(x)\}$ for every $x$. Conversely, if $q$ belongs to the
+product, then $q(x)\in\{l(x)\}$, hence $q(x)=l(x)$ at every index.
+The functions have the same domain, so function extensionality gives
+$q=l$. This also covers an empty index collection: the only function
+on it is the empty function. No choice principle is used, because the
+particular section $l$ is already supplied.
+\Done
 
+\begin{note}[Assignment values versus their records]
+The preceding equality concerns assignments as extensional functions.
+If an assignment is represented by a family of semisingleton records,
+the corresponding product must either require a canonical record for
+each function or identify records having the same evaluated values and
+domain. Otherwise two distinct encodings of the same assignment would
+be counted as different product elements, and the displayed singleton
+identity would not be a statement about those raw records. The family
+normalization results elsewhere address this separate representation
+question; they are not needed for the extensional product proof above.
+\end{note}
+
+\begin{theorem}[Candidate aggregation extends singleton evaluation]
+Suppose the singleton semantics assigns a candidate collection $J_l(t)$
+to each term $t$ and ordinary assignment $l$. Define its extension by
 \[
-l=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l(x)))}
+I^w_{\Class}(t)=\bigcup_{v\in\prod w}J_v(t).
 \]
-\[
-l^*=\cc{(a,d)}{((a\in\dom(l))\land (d \mbox{ sss } l^*(x)))}
-\]
-\[
-\left(\prod (l^*)\right)=
-\cc{\cc{(x,b)}{(x\in \dom(l^*)) \land (b \mbox{ sss } l^*(x))}}{\top}
-\]
-\[
-=\cc{\cc{(x,b)}{(x\in \dom(l)) \land (b \mbox{ sss } \{l(x)\})}}{\top}
-\]
-\[
-=\cc{\cc{(x,b)}{(x\in \dom(l)) \land ((b\isempty)\lor(b=\{l(x)\}))}}{\top}
-\]
-\[
-=\cc{\cc{(x,\emptyclass)|x\in\dom(l)\}\cup\{(x,\{l(x)\})}{x\in\dom(l)}}{\top}
-\]
-???
-==== Alternative proof2 for function coded as family.
-\[
-\left(\prod (l^*)\right)=
-\cc{(x\in \dom(l^*) \mapsto h(x) \in l^*(x))\}}{ h any}
-\]
-\fi
-\Done
-\begin{theorem}(def of Truth extends)\\
-Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
-\[
-\left(l^*\models\varphi\vphantom\prod\right)\IFF
-\left(\forall \left(v\in\prod l^*\right):
-\left(v^*\models\varphi\right)\right)
-\]
+Then $I^{l^*}_{\Class}(t)=J_l(t)$ for every $l,t$.
+The collections and this union belong to the stated ambient semantic
+framework; they are not asserted to be object-theoretic sets of proper classes.
 \end{theorem}
 \Proof
-\[
-\left(\forall \left(v\in\prod l^*\right):
-\left(v^*\models\varphi\right)\right)\IFF
-\]
-\[
-\left(\forall \left(v\in\{l\}\right):
-\left(v^*\models\varphi\right)\right)\IFF
-\]
-\[
-\left(l^*\models\varphi\right).
-\]
+The preceding product calculation gives $\prod(l^*)=\{l\}$. Hence
+$I^{l^*}_{\Class}(t)=\bigcup\{J_l(t)\}=J_l(t)$, by the membership
+definition of union in the ambient framework. This shows compatibility
+of the extension with an already specified singleton semantics; it does
+not construct that singleton semantics or prove its soundness.
 \Done
-\begin{theorem}(def of Truth extends)\\
-Definition of truthness for the arbitrary assignment is a proper extension of it for the assignment with singletones.
-\[
-I^{l^*}_\Class(t)=
-\bigcup \left\{ I^{v^*}_\ClassTerm 
-|v\in\prod l^*\right\}
-\]
+\begin{theorem}[Universal truth extends singleton truth]
+If $w\models\phi$ means $v^*\models\phi$ for every $v\in\prod w$,
+then $l^*\models\phi$ in the extended semantics exactly when it holds
+in the original singleton semantics.
 \end{theorem}
 \Proof
-\[
-\bigcup \left\{ I^{v^*}_\ClassTerm 
-|v\in\prod l^*\right\}=
-\]
-\[
-\bigcup \left\{ I^{v^*}_\ClassTerm 
-|v\in\{l\}\right\}=
-\]
-\[
-\bigcup \left\{ I^{l^*}_\Class\right\}=
-\]
-\[
-I^{l^*}_\Class
-\]
+Again $\prod(l^*)=\{l\}$, so the universal condition has exactly the
+one instance $l^*\models\phi$ in the original semantics.
 \Done
 
 %\sub
 \subsection{Interpretation, special cases}
-\[
-I^{v^*}_\Fm((\varepsilon x.\varphi))\ceq \{\}
-\]
+In the partial candidate convention, the term $\varepsilon x,\bot$
+has the empty candidate collection. This is a term interpretation, not a
+formula truth value. The value of $\varepsilon x,\varphi$ for a general
+$\varphi$ must depend on its witnesses and the chosen descriptor clause;
+it cannot be uniformly assigned the empty collection.
 
 %\sub
 \subsection{Lemmas for axiom validation}
-Some lemmas useful for proving validity of the axioms. The following lemma has several parts, which are proved simultaneously.\\
-\begin{lemma}(substituition equals changing the assignment)
-\end{lemma}
+Lemma~\ref{lem:classical_substitution_evaluation} proves that substitution
+corresponds to changing an assignment in the total first-order fragment.
+For the extended language here, the same claim requires recursive clauses
+for every additional constructor and a proof of their substitution cases.
+The singleton-extension theorem alone does not imply it: it compares
+assignments, whereas substitution can insert a term with its own candidate
+correlations. The following validation sketches must be read subject to
+those additional semantic clauses.
 %\sub
 \subsection{Validation of axioms and rules}
-\begin{theorem}(Generalization rule)
-\[
-\frac{
-\models \psi
-}{
-\models (\forall x.\psi)
-}
-\]
-\end{theorem}
+\begin{lemma}[Full validity and singleton validity]
+Suppose the allowed global assignments include $v^*$ for every ordinary
+assignment $v$, and each element of an allowed product is such an ordinary
+assignment. Then truth at every selection of every allowed global
+assignment is equivalent to truth at every singleton assignment.
+\end{lemma}
 \Proof
-The premise is equivalent to the following statement:
-\[
-\forall \left(w:\assignmentTYPE\right):
-\forall \left(v\in\prod w\right).
-(v^*\models \psi)
-\]
-To show:
-\[
-\forall \left(w:\assignmentTYPE\right).
-\forall \left(v\in\prod w\right).
-\forall \left(q\in\Domain\right).
-((v+(x,q))^*\models \psi)
-\]
-Denote $w$ from the premise as $w_{pre}$.\\
-Denote $w$ from the conclusion $w_{con}$.\\
-Fix $w_{con}$. Fix $v_{con}$. Fix $q\in\Domain$.\\
-Set $w_{pre}\ceq w_{con} + (x,\{q\})$. It satisfies $w_{pre}:\assignmentTYPE$.\\
-Set $v_{pre}\ceq v_{con} + (x,q)$. It satisfies $v_{pre}:\prod w_{pre}$.\\
-Therefore from the assumption, $(v+(x,q))^*\models \psi$ is obtained.\\
+For the forward implication, use the allowed assignment $v^*$ and the
+identity $\prod(v^*)=\{v\}$. For the reverse implication, each selection
+of each allowed product is among the ordinary assignments covered by the
+premise. An empty product contributes a vacuous condition and does not
+remove the tests supplied by singleton assignments.
 \Done
 
-\begin{theorem}(specification rule)
+\begin{theorem}[Generalization for full validity]
+Assume ordinary assignments are closed under updating a variable by any
+value of its sort, and singleton satisfaction has the usual universal
+quantifier clause. Under the full-validity convention of the preceding
+lemma,
 \[
-\models ((t\lexists)\land(\forall x.\psi))\implies\psi[t/x]
+\models\psi\quad\Longrightarrow\quad\models\forall x\,\psi.
 \]
 \end{theorem}
 \Proof
+Full validity of $\psi$ implies its truth at every singleton assignment.
+For an arbitrary ordinary assignment $v$ and value $a$, the updated
+assignment $v[x\mapsto a]$ is another such assignment. Thus $\psi$ holds
+at every update, which is exactly the universal-quantifier clause at $v$.
+The preceding lemma returns full validity of $\forall x\,\psi$.
 \Done
+
+The conclusion concerns full validity, not truth in one restricted
+selection family. A family in which $x$ always has value $0$ makes
+$x=0$ universally true but does not validate $\forall x\,(x=0)$ in
+a domain containing another value. Context-sensitive generalization
+therefore retains its freshness and semantic-closure conditions.
+
+\begin{example}[Existence alone does not justify specification]
+The proposed rule
+\[
+((t\lexists)\land\forall x\,\psi)\implies\psi[t/x]
+\]
+is not valid for every candidate-valued semantics. Let the ordinary domain
+be $\{0,1\}$, interpret quantified variables by singleton candidates, and
+let a constant term $t$ have candidates $\{0,1\}$. Read existence as
+nonemptiness and uniqueness as having at most one candidate. For
+$\psi(x)=(x\lunique)$, every quantified instance is true and $t$ exists,
+but $\psi[t/x]$ is false. Thus a nonempty candidate collection cannot
+be silently substituted as a single ordinary value.
+\end{example}
+
+\begin{proposition}[Specification under a compatible singleton clause]
+Fix a singleton assignment $v$. Suppose $t$ has the unique value $a$,
+universal quantification ranges over ordinary values, and the semantic
+substitution equation for this term and formula holds:
+\[
+v\models\psi[t/x]\iff v[x\mapsto a]\models\psi.
+\]
+Then $v\models\forall x\,\psi$ implies $v\models\psi[t/x]$.
+\end{proposition}
+\Proof
+The universal premise supplies $v[x\mapsto a]\models\psi$ as one
+of its instances. The displayed substitution equation gives the result.
+If these hypotheses hold at every selected assignment, the result also
+holds after universal aggregation over those assignments.
+\Done
+
+The equation is proved above for the classical total fragment. For an
+extended descriptor language it must be proved from that language's
+semantic clauses; even a definedness guard cannot replace this obligation.
+
 
 \iffalse
 ============================================\\
@@ -3062,14 +3316,14 @@ I^{\text{strictly}\glob}_\Fm : \Fm \to \{\text{strictly}\lValid,\text{strictly}\
 %And we need therefore the following definition:
 %-----
 \begin{definition}(Weakly globally valid formula)\\
-A formula $\varphi$ is globally valid if it's globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletones.\\
+A formula $\varphi$ is globally valid if it's globally true for all such global assignment w, which satisfy that range of w consists only of conglomerate-singletons.\\
 %\end{definition}
 %OR
 %\begin{definition*}(Weakly globally valid formula)\\
-%The formula $\varphi$ is called globally valid if it is true under any global assignment by singletones.
+%The formula $\varphi$ is called globally valid if it is true under any global assignment by singletons.
 %\end{definition*}
-%\begin{definition}(Weakly semantically valid formula / singletone-valid formula)
-I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletones $w:\Var\to\cc{\{K\}}{K\in\Un}$.
+%\begin{definition}(Weakly semantically valid formula / singleton-valid formula)
+I.e. a formula $\varphi$ is called globally valid, iff it is true under any global assignment by singletons $w:\Var\to\cc{\{K\}}{K\in\Un}$.
 \[
 I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
 \]
@@ -3078,7 +3332,7 @@ I^{\glob}_\Fm : \Fm \to \{\lValid,\lInvalid\}
  \left(\forall \left(w:\Var\to\cc{\{K\}}{K\in\Un}\right).I^{\glob,w}_\Fm(\varphi)=\lTrue\right)
 \]
 \end{definition}
-Using singletone-valid formulas we avoid the need of explicitly state that every variable is defined.
+Using singleton-valid formulas we avoid the need of explicitly state that every variable is defined.
 %Notation:\\
 %F\ceq False\\
 %U\ceq Undefined\\
@@ -3097,7 +3351,7 @@ forall x phi  -> phi[t/x]
 \subsection{Application for "greek"--operators}
 
 We have not always well-defined epsilon operator.\\
-(tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singletone-conglomerates"(if we could collect classes).\\
+(tau operator is always well-defined, epsilon operator is well-defined only on bounded formulas which specify "singleton-conglomerates"(if we could collect classes).\\
 
 Here we come to the point, where we nee more relaxed notion of truthness, to include $P((\varepsilon X. \varphi))$, when predicate P is true for all classes "X" satisfying $\varphi$.
 
@@ -3157,7 +3411,7 @@ But they are quasi-equal (syntactically), since they are both not well-defined.\
 Remark: 
 Here by semantical equality i mean the equaly of all interpretations of two term under any assignment of values.
 
-Assigment maps each variable to some singletone.\\
+Assigment maps each variable to some singleton.\\
 Let's come back to:
 $(f\family)\land(x\in\dom(f)) \implies (f(x)=f(x))$\\
 For the case when something goes wrong, "(f(x)=f(x))" is not true, since it being true assumes both-hand-sides to be defined.
@@ -3166,7 +3420,7 @@ For the case when something goes wrong, "(f(x)=f(x))" is not true, since it bein
 In order for lemmas from (link shen-logic-part2-2.pdf , page 137) to work, we need assign non-sigleton sets to variables.\\
 But we want to avoid tedious assumtions like the following:
 $(x_1\ldefined)\land...\land(x_n\ldefined)\implies \varphi$.\\
-Therefore for theorems on the upper level assigment are considered to be with singletones only, but within the assignment variables may be assigned to a set with non-unique values.\\
+Therefore for theorems on the upper level assigment are considered to be with singletons only, but within the assignment variables may be assigned to a set with non-unique values.\\
 The previous comment about introducing constants will patch the need for shortening of the statement while it is not possible to do via variable.\\
 But what about the cases when it should be a term, depending on some parameters?\\
 Resolution: we use only terms, and this mechanism of definitions of terms is outside the logic of the system.\\
@@ -3267,7 +3521,7 @@ In intuitionistic logic:
 \labeltagd{thm}{ILMorgan}
 \end{theorem}
 \Proof
-Using deduction theorem it is enought to show (backward reasoning):\\
+Using deduction theorem it is enough to show (backward reasoning):\\
 $\neg (A\lor B) \vdash (\neg A\land\neg B)$ (by OR-elim).\\
 Subgoal 1: $\neg (A\lor B) \vdash \neg A$ (by deduction)\\
 $\neg (A\lor B), A \vdash \bot$ (by MP $(A\lor B)\implies\bot$)\\
@@ -3286,7 +3540,7 @@ $\neg (A\lor B), B \vdash B$ (by assumption).\\
 \]
 \end{theorem}
 \Proof
-Using deduction theorem it is enought to show (backward reasoning):\\
+Using deduction theorem it is enough to show (backward reasoning):\\
 $\neg (P\lor\neg P) \vdash \bot$ (cut rule with \myref{thm:ILMorgan})\\
 $\neg P\land\neg\neg P \vdash \bot$ (by Left\_AND\_Intro)\\
 $\neg P, \neg\neg P \vdash \bot$ (by MP: $\neg P \implies \bot$).\\
@@ -3428,7 +3682,13 @@ H_1:\left(\left(\bigwedge_{`a}P\right)::\prop\right)
 (\text{spec}\ H_0\ H_1): \left(\left(P(b)\right)::\prop\right)
 }(\mbox{where }(b::`a))
 \]
-The proof-term $H_0$ has the meaning of a proof of a statement that the type `a is inhabited(i.e. non-empty).
+The proof-term $H_0$ records inhabitance of the type. In ordinary set
+semantics, an already denoting term $b$ of that type itself supplies an
+inhabitant, so the extra premise is redundant there. It can be meaningful
+in a proposed representation that distinguishes syntactic type membership
+from denotation; that distinction needs explicit rules. An empty type
+does not make ordinary universal elimination unsound, because there is
+then no denoting argument at which to apply it.
 %\CIMPLIES
 
 %\quad\quad(\mbox{where }``x"\notin\FV(\psi))
@@ -3440,11 +3700,20 @@ In our case they are classes, but it is not important for the logical part, they
 The type $o$ represents formulas about object.\\
 The type $(o \To o)$ represents unary connectives, like negation.\\
 The type $(o \To (o \To o))$ represents binary connectives.\\
-These types represent computable functions which respect the substitution within it's arguments.\\
-I.e. something like:
+A function type specifies argument and result types; it does not by
+itself imply computability or compatibility with syntactic substitution.
+For a fixed constructor $f$ whose syntax is unaffected by substitution,
+compatibility is the requirement
 \[
-f(t)[s_1/x_1,\dots,s_n/x_n] = f(t[s_1/x_1,\dots,s_n/x_n])
+f(t)\sigma=f(t\sigma).
 \]
+For a substitutable function expression, the structural equation instead
+is $(f(t))\sigma=(f\sigma)(t\sigma)$. Arbitrary computable syntax
+transformations need not satisfy the first equation. For example, the
+constant transformation returning the free-variable expression $x$
+returns $y$ after substitution $[y/x]$, but still returns $x$ when
+applied after substituting its argument. The intended connective
+constructors are fixed and act structurally on their arguments.
 
 % \Lambda  \bigwedge  \bigvee
 % \IMPLIES \CIMPLIES
@@ -3664,23 +3933,37 @@ I^v((\varepsilon x. \varphi))
 
 \section{Incompleteness, consistency, serial proofs}
 % Fnds
-The assumption of this book is that there exists a theory $\mathcal{F}$, which is complete and consistent and not recursively enumerable.
+This section adopts an ideal theory $\mathcal{F}$ that is complete,
+consistent, and not recursively enumerable. It is considered alongside an
+effective theory $\Tau$. The purpose is to distinguish what an ideal
+foundation may assert from what a program can enumerate or certify.
+
+The additional reflection principles below concern truth in an intended
+interpretation. Completeness and consistency alone do not specify that
+interpretation. Statements about truth are read in a metatheory that can
+interpret the object language; displaying them using the book's compact
+quotation notation does not remove this semantic assumption.
 
 
 \begin{enumerate}
-\item Neither Gödel's incompleteness theorem nor Löb's theorem are not applicable to such theory(actually any such theory), because it is not recursively enumerable.
+\item The usual effective incompleteness argument does not rule out such a
+non-enumerable complete theory. Applications of L\"ob's theorem also require
+specified provability predicates and derivability conditions; these must be
+checked separately for the proposed framework.
 
-\item Some useful rules become admissible instead, like the omniscience
+\item The intended semantics additionally motivates reflection principles such as
 \[
 ((\Fau \vdash \phi) \implies \mantiquote{\phi}),
-\tag{Omniscience}
+\tag{Reflection}
 \]
 \[
 \forall (\phi:\Fm),\ % 
 ((\Fau \vdash \phi) \implies \mantiquote{\phi}),
-\tag{MetaOmniscience}
+\tag{MetaReflection}
 \]%\Fau \vdash 
-which is (due to the incompleteness argument) provably false in $\Tau$:
+In the terminology used later, this direction is \emph{credibility};
+omniscience is the converse direction. The proposed obstruction to making
+reflection effective is recorded schematically as
 \[
 \Tau \vdash
 \mquote{
@@ -3689,14 +3972,24 @@ which is (due to the incompleteness argument) provably false in $\Tau$:
 ((\Tau \vdash \phi) \implies \mantiquote{\phi})
 ))
 }
-\tag{``Effective omniscience'' is impossible}
+\tag{Proposed effective-reflection obstruction}
 \]
+To read this as a theorem of $\Tau$, one must first specify an internal
+provability predicate and the meaning of formula evaluation in the display.
+The ordinary second incompleteness theorem concerns the resulting
+arithmetised consistency statement; the displayed unrestricted truth
+notation is not, by itself, such an arithmetisation.
 
 
 
-\item This kind of theories helps not to ``fall in meta'' much better. 
+\item The ideal theory is intended to reduce repeated shifts of metalevel in
+mathematical exposition, while the quotation conventions continue to record
+where those shifts occur.
 
-\item This type of theories are still implementable in code, of course, incompletely(that's the price), and still controllably(nothing new is proven that was not already widely accepted).
+\item An implementation can certify a specified fragment of the ideal theory.
+It cannot enumerate all of its theorems. The correspondence between the
+implemented rules and the intended semantics must therefore be established
+for that fragment.
 %\item 
 \end{enumerate}
 % so the change is almost purely philosophical, deliberate change of an interpretation
@@ -3932,7 +4225,7 @@ Since a given formula (of $\Tau$) is already somehow defined in the proof assist
 \[
 \forall v_{(0)}\in \Var,\ (\Fau\vdash \ulcorner((v_{(1)} \set)\implies (v_{(1)}\in \{v_{(1)}\}))\urcorner)
 \]
-(It reminds De Brujin indices\dots Also $x_{(-1)}$ is ``x'' (quotated once).)\\%$\ulcorner x\urcorner$
+(It reminds de Bruijn indices\dots Also $x_{(-1)}$ is ``x'' (quotated once).)\\%$\ulcorner x\urcorner$
 Technically, the type of the theories can be inductively defined with $\Tau$ and $\Fau$ as constants.
 In general, such trick is in the following: types can be easily immersed into terms.
 Moreover ``$\vdash$'' can be defined as a higher--order functional symbol which takes a pair: a term(or a theory as above) and a formula.(But let's not to.)\\
@@ -4040,17 +4333,78 @@ The constant that represents the alphabet is actually an alphabet.
 \end{axiom*}
 \fi %BIGGIGIGI
 \section{Informal definitions}
+We now distinguish the effective calculus from its proposed ideal extension.
+These conventions apply to the following discussion of $\Tau$ and $\Fau$;
+they do not replace the local foundations of the other chapters.
 
 \begin{definition*}[informal definition of language $\Lau$]%\ \\
-Let $\Lau$ be a language, that contains exactly all of functional symbols of this book.%, except for  this section.%, no less, no more.
+Let $\Lau$ be the object language of the chosen foundational development,
+including its function and predicate symbols. Its effective syntax must be
+fixed before the claims about enumerability below are applied.%, except for  this section.%, no less, no more.
 \end{definition*}
 
 \begin{definition*}[informal definition of theory $\Tau$]%\ \\
-Let $\Tau$ be an enumerable and incomplete theory, that contains exactly all of axioms of this book and is closed w.r.t. the inference rules of this book.
+Let $\Tau$ be the deductive closure of the chosen effective foundational
+axioms under their effective inference rules. The ideal reflection principles
+for $\Fau$ are additional metatheoretic assumptions. Under the consistency
+and arithmetic-strength hypotheses used below, $\Tau$ is incomplete.
 %, except for  this section.%, no less, no more.
 \end{definition*}
 
+\subsection{Theory parameters and explicit evaluation}
+The companion Obelisk presentation distinguishes four roles that are useful
+here. $\Wau$ is a schematic variable ranging over theories; $\Tau$ is the
+chosen effective base theory; $\Fau$ is the proposed ideal extension; and
+$\mathcal{E}$ denotes a metatheory in which a particular result about
+$\Tau$ is formalised. Choosing $\mathcal{E}$ requires the hypotheses of that
+result. These roles do not by themselves assign a fixed universe level to
+each theory, or identify the schematic $\Wau$ with a fourth distinguished
+theory.
+
+Write $\operatorname{eval}_M(\phi)$ for the truth of a sentence $\phi$ in the
+chosen interpretation $M$. For an open formula, evaluation also needs an
+assignment, written $\operatorname{eval}_{M,s}(\phi)$. This makes explicit the
+semantic operation that some of the earlier displays leave implicit. The
+companion entries 3.72--3.75 then have the intended readings
+\[
+(\Tau\vdash\phi)\implies\operatorname{eval}_M(\phi),
+\qquad
+(\Fau\vdash\phi)\implies\operatorname{eval}_M(\phi),
+\]
+\[
+\operatorname{eval}_M(\phi)\implies(\Fau\vdash\phi),
+\qquad
+(\Tau,\Gamma\vdash\phi)\implies(\Fau,\Gamma\vdash\phi).
+\]
+The first three are semantic principles in the surrounding setting; the last
+preserves a context when passing to an extension. In particular, none of
+these displays asserts that $\Tau$ proves its own soundness. An internal
+version must name its ambient theory and the language interpreted by
+$\operatorname{eval}_M$.
+
+The third display is called \emph{omniscience} below.
+The distinct notion of \emph{negation-completeness} decides each sentence
+or its negation.
+In a fixed classical interpretation, soundness together with
+negation-completeness implies omniscience: if $\phi$ is true, soundness rules
+out a proof of $\neg\phi$, so completeness supplies a proof of $\phi$.
+Conversely, omniscience and semantic bivalence supply a proof of one of the
+two sentences. These are conditional connections between the notions, not
+interchangeable definitions without their hypotheses.
+
+% Companion evidence: generated/metatheory.html and generated/theory_db.json,
+% AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory,
+% AxmCompletenessOfFullTheory, AxmBaseSubtheoryOfFull;
+% generated/symbols/theory-wau.html and theory-eau.html.
+% Local source-level discrepancies are tracked in tickets/obelisk_logic_*.md.
+
 \section{Formal statements}
+In the definitions of completeness and disjunctiveness below, formulas are
+\emph{sentences}, that is, formulas with no free variables. The displayed
+quantifiers over $\Fm$ are restricted accordingly. This avoids confusing a
+decision of a sentence with a uniform decision of an open formula for every
+possible assignment. The same sentence convention is used in the later
+truth and provability comparison.
 \begin{definition}[consistent theory]%\ \\
 Let $\Wau$ be a theory.
 It is called \textit{consistent}, if ``false'' is not derivable in $\Wau$.
@@ -4063,7 +4417,8 @@ It is called \textit{consistent}, if ``false'' is not derivable in $\Wau$.
 
 \begin{axiom}[$\Tau$ is consistent]%\ \\
 We %informally 
-accept without a proof that it is not possible to derive a contradiction from $\Tau$.
+assume, in the surrounding metatheory, that $\Tau$ does not derive a
+contradiction. This assumption is not asserted to be a theorem of $\Tau$.
 \[
 \neg (\Tau \vdash \bot)
 \]
@@ -4089,9 +4444,11 @@ It is called \textit{complete}, if for every formula, either its negation is der
 
 \begin{definition}[Henkin theory]%\ \\
 Let $\Wau$ be a theory in language $\Lau$.
-It is said that it has \textit{a Henkin property}(for classes), if %for any type $X$ and
+It has the \textit{Henkin property} for classes if %for any type $X$ and
 for every existential statement there is a witnessing term %of type $X$
-in $\Lau$.% w.r.t }\Lau
+in $\Lau$, with a well-formed, capture-avoiding substitution. In the display,
+$t$ ranges over closed class terms, and $x$ is the only possible free variable
+of $\phi$.% w.r.t }\Lau
 \[
 (\Wau\text{ Henkin})
 \iffdef
@@ -4105,7 +4462,8 @@ in $\Lau$.% w.r.t }\Lau
 \end{definition}
 \begin{definition}[disjunctive theory]
 Let $\Wau$ be a theory in language $\Lau$.
-It is said that it is \textit{disjunctive}, if for every derivable disjunctve formula, at least one of its disjuncts is also derivable.
+It is \textit{disjunctive} if, whenever a disjunction of sentences is
+derivable, at least one of its disjuncts is derivable.
 \[
 (\Wau\text{ disjunctive})
 \iffdef
@@ -4121,11 +4479,13 @@ It is said that it is \textit{disjunctive}, if for every derivable disjunctve fo
 ))
 )
 \]
-It immediately follows from this definition, that there are no non--standard elements in such theory $\Wau$.
+The disjunction property concerns which sentences the theory derives. Any
+further conclusion about standard elements requires a specified model and an
+additional argument; it is not part of this definition.
 \end{definition}
 
 \begin{lemma}[disjunctive property implies completeness]
-For any theory $\Wau$,
+For any classical theory $\Wau$ satisfying excluded middle,
 \[
 (\Wau\text{ disjunctive})
 \implies
@@ -4165,7 +4525,11 @@ Therefore, it follows by Modus Ponens from the assumption, that
 \]
 \end{proof}
 \begin{definition*}[foundational theory $\mathcal{F}$]%\ \\
-Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that contains $\Tau$. 
+The intended foundational theory $\mathcal{F}$ is a complete, consistent
+extension of $\Tau$, together with the stronger semantic requirement of
+reflexivity defined below. The following choice notation records that
+requirement; it presupposes that a theory satisfying it is available in the
+chosen metatheory.
 \iffalse
 \[
 \Fau
@@ -4190,11 +4554,23 @@ Let $\mathcal{F}$ be some (non--enumerable) complete and consistent theory, that
 (\Henkin (F:\Theory),\ (F\text{ reflexive}))
 \]
 
-Its existence is provided by Lindenbaum's lemma, which can be proven in $\Tau$. Technically, the inference system for $\Fau$ is already relies on its existence, so it is safer to state, that its existence is also an axiom.
+For a consistent theory in the usual classical setting, Lindenbaum's lemma
+supplies a complete consistent extension. The displayed reflexivity condition
+is stronger: it also connects derivability with truth in a chosen
+interpretation. Its existence is an additional assumption of this framework,
+not a consequence of completion alone. One semantic reading is to take the
+sentences true in a fixed intended structure, provided that structure
+satisfies $\Tau$ and the relevant language is fixed.
 \end{definition*}
 
 \section{G\"odel--L\"ob polymodal logic}
-\begin{inferencerule}[v2]
+The following is a proposed hierarchy of theories and reflection rules,
+inspired by polymodal provability logic. The notation $\square_n$ refers to
+provability at level $n$. The stage construction and its serial-property
+operator must be specified before this sketch yields a formal calculus or a
+soundness theorem. In particular, the next displayed rule is a proposal for
+relating levels, rather than the usual necessitation rule.
+\begin{inferencerule}[proposed transfer between levels]
 \[
 \frac{
 \Theta_0 \vdash \square_n \psi
@@ -4212,7 +4588,8 @@ theory. For example it can be the Peano Arithmetic, ZFC, NBG, but the intended u
 
 The abbreviation ``GLP'' stands for ``G\"odel--L\"ob polymodal logic''.
 \begin{notation}[provability]%\ \\
-In context of provability modal logics, a modal logic symbol square means a provability in some theory $\Tau$ which is obvious from the context,
+In this section, the unindexed box abbreviates provability in the fixed
+theory $\Tau$:
 \[
 \square\phi
 \iffdef
@@ -4222,13 +4599,19 @@ Here it is defined for \textit{the} theory $\Tau$, which is a constant.%n alread
 %(\cite{Japaridze1986})
 \end{notation}
 
-\begin{definition}[Japaridze's procedure of ``standartisation'' of a theory]%\ \\
-For any theory $\Theta$, define using the ordinal recursion, the following sequence:
+\begin{definition}[proposed standardisation of a theory]%\ \\
+For a theory $\Theta$, the intended recursion has the following form.
+The successor-stage operator is schematic until ``axiom generated by a
+serial property'' has been defined, and the last line denotes the union of
+all ordinal stages in a metatheory capable of forming it:
 \[
 \Theta_0 \eqdef \Theta
 \]
 \[
-\Theta_{n+1} \eqdef \Theta_n\cup\cc{A}{A\text{ is an axiom generated by a serial property of all terms in the language of $\Tau_n$}}
+\Theta_{n+1} \eqdef \Theta_n\cup\cc{A}{\begin{gathered}
+A\text{ is an axiom generated by a serial property}\\
+\text{of all terms in the language of $\Theta_n$}
+\end{gathered}}
 \]
 \[
 \Theta_{\lambda} \eqdef \union_{\alpha<\lambda}\Theta_\alpha
@@ -4241,37 +4624,260 @@ For any theory $\Theta$, define using the ordinal recursion, the following seque
 \end{definition}
 \pagebreak
 \section{Incompleteness of the theory $\Tau$}
+For the incompleteness theorem in this section, fix a consistent,
+effectively axiomatised theory at each stage to which the theorem is applied,
+with enough arithmetic to represent proofs and a standard provability
+predicate satisfying the required derivability conditions. A transfinite
+union from the preceding sketch need not retain these effective properties.
+Thus the theorem is applied stage by stage under its stated hypotheses.
 
-\begin{definition}[provability predicate]
+\begin{note}[where the incompleteness statement is proved]
+The companion notation makes the ambient metatheory explicit. For example,
+with $\operatorname{Con}(\Tau)$ abbreviating
+$\neg\operatorname{Pr}_{\Tau}(\ulcorner\bot\urcorner)$, the formalised statement
+has the shape
 \[
-\square_n\phi
-\iffdef
-(\Tau_n \vdash \phi)
+\mathcal{E}\vdash
+\operatorname{Con}(\Tau)\implies
+\neg\operatorname{Pr}_{\Tau}(\ulcorner\operatorname{Con}(\Tau)\urcorner).
 \]
-%(\cite{Japaridze1986})
+Here $\operatorname{Pr}_{\Tau}$ is the specified arithmetised provability
+predicate, and corner brackets denote syntactic codes. The metatheory proves
+an implication; it need not prove its consistency premise. If
+$\mathcal{E}=\Tau$ is allowed by the formalisation, this still does not assert
+$\Tau\vdash\operatorname{Con}(\Tau)$. The accompanying proof representation
+and derivability conditions must be checked for that choice.
+\end{note}
+
+\begin{definition}[Arithmetised provability in this subsection]
+Fix a theory $T$ and write
+\[
+\square\phi:=\operatorname{Pr}_T(\ulcorner\phi\urcorner),
+\qquad \operatorname{Con}(T):=\neg\square\bot.
+\]
+Here $\square\phi$ is a sentence of arithmetic, whereas $T\vdash\phi$
+is the external assertion that a derivation exists. The notation
+$\square_n$ uses $T=\Tau_n$. In the intended arithmetic interpretation,
+the chosen predicate represents finite $T$-proofs; its internal reasoning
+properties must also be verified, not inferred from the name ``provability''.
 \end{definition}
 
-\begin{theorem}[G\"odel's second incompleteness theorem]
+\begin{proposition}[Direction of a relative-consistency argument]
+Let $S,T$ be theories. Suppose a metatheoretically specified transformation
+sends every $S$-derivation of a sentence $\phi$ to a $T$-derivation of
+its translation $\phi^*$, and suppose $T\vdash\bot^*\implies\bot$.
+Then inconsistency of $S$ implies inconsistency of $T$; equivalently,
 \[
-\neg\square_n\bot
-\implies
-\neg\square_n\neg\square_n\bot
+\operatorname{Con}(T)\implies\operatorname{Con}(S)
 \]
-(\cite{Beklemishev2011})
+in that metatheory. To claim the displayed implication as a theorem
+inside a particular metatheory, the transformation and its correctness
+must themselves be formalized there.
+\end{proposition}
+\Proof
+An $S$-proof of $\bot$ translates into a $T$-proof of $\bot^*$.
+Append the assumed implication and modus ponens to obtain a $T$-proof
+of $\bot$. Contraposition gives the consistency implication.
+\Done
+
+This is a criterion for a relative-consistency proof, not a construction
+of an interpretation. In particular, to establish the motivating
+implication from inconsistency of ZFC to inconsistency of a proposed
+class theory, one needs a translation from ZFC into that theory with
+these properties. A translation in the reverse direction proves the
+reverse consistency implication.
+
+\begin{lemma}[Diagonal construction under a represented substitution operation]
+Work in a first-order arithmetical language with numerals $\overline n$,
+classical logic, and equality with substitution. Fix an effective coding
+of finite formulas by natural numbers, with decidable valid codes and
+an effective decoding procedure. Write $\#\theta$ for the external
+natural-number code of a formula $\theta$, distinguishing it from the
+term $\overline{\#\theta}$ denoting that number inside arithmetic.
+Let $d(n)$, for the code $n$ of a formula $\theta(x)$ with its only
+possible free variable $x$, be the code of the sentence
+$\theta(\overline n)$. This is an effective operation on finite syntax;
+it may be extended to invalid codes by the fixed output zero.
+
+Assume $T$ has a formula $D(x,y)$, with no other free variables, such
+that for every valid standard code $n$,
+\[
+T\vdash\forall y\,
+ \bigl(D(\overline n,y)\iff y=\overline{d(n)}\bigr).
+\]
+This numeralwise exactness is a hypothesis on the chosen coding and its
+representation in $T$; it is not inferred just from having a numeral
+notation. Then for every formula $\psi(y)$ with no other free variables
+there is a sentence $G$ such that
+\[
+T\vdash G\iff\psi(\overline{\#G}).
+\]
+\end{lemma}
+\Proof
+Rename bound variables as necessary, and choose $x$ fresh for $\psi$.
+Use distinct names $x,y$, renaming the two free argument positions of
+$D$ consistently if needed. Form the formula
+\[
+\theta(x):=\exists y\,\bigl(D(x,y)\land\psi(y)\bigr).
+\]
+Its only possible free variable is $x$. Put $k=\#\theta$ and let
+$G$ be the sentence $\theta(\overline k)$. By the definition of the
+external syntactic operation, $d(k)=\#G$. Numerals are closed, so
+this substitution introduces no free variables and captures none.
+The assumed representation property at the particular code $k$ gives
+\[
+T\vdash\forall y\,
+ \bigl(D(\overline k,y)\iff y=\overline{\#G}\bigr).
+\]
+Consequently, by first-order logic and substitution of equals,
+\[
+\begin{aligned}
+T\vdash G
+&\iff\exists y\,\bigl(D(\overline k,y)\land\psi(y)\bigr)\\
+&\iff\exists y\,\bigl(y=\overline{\#G}\land\psi(y)\bigr)\\
+&\iff\psi(\overline{\#G}).
+\end{aligned}
+\]
+For the final equivalence, a witness on the left yields the instance
+on the right by equality substitution; conversely the numeral
+$\overline{\#G}$ supplies a witness, using equality reflexivity.
+The first equivalence simply unfolds the sentence constructed above.
+Thus the construction proves the required equivalence inside $T$.
+It introduces no truth predicate: $D$ describes a syntactic code
+operation, and $\psi$ is the given arithmetic formula.
+\Done
+
+For the provability notation used here, an occurrence
+$\operatorname{Pr}_T(\ulcorner\chi\urcorner)$ inside an arithmetic
+formula means $\operatorname{Pr}_T(\overline{\#\chi})$.
+For a sentence $\phi$, apply the lemma to
+$\psi(y)=(\operatorname{Pr}_T(y)\implies\phi)$, choosing $y$ fresh
+for $\phi$. It gives a sentence $L$ with
+\[
+T\vdash L\iff(\square L\implies\phi),
+\]
+which is the fixed point used in the next proof. This application still
+requires the specified representation property for $D$ in the language
+of $T$; quotation of class expressions alone does not provide it.
+
+\begin{theorem}[L\"ob's theorem with explicit hypotheses]
+\label{thm:local_Lob}
+Suppose $T$ contains classical propositional logic, is closed under modus
+ponens, and its specified box satisfies, for sentences $\alpha,\beta$:
+\begin{enumerate}
+\item if $T\vdash\alpha$, then $T\vdash\square\alpha$;
+\item $T\vdash\square(\alpha\implies\beta)\implies
+(\square\alpha\implies\square\beta)$;
+\item $T\vdash\square\alpha\implies\square\square\alpha$.
+\end{enumerate}
+Assume also the fixed-point lemma in the required language: for each
+sentence $\phi$ there is a sentence $L$ such that
+$T\vdash L\iff(\square L\implies\phi)$.
+Then
+\[
+T\vdash(\square\phi\implies\phi)\quad\Longrightarrow\quad
+T\vdash\phi.
+\]
 \end{theorem}
+\Proof
+Choose the displayed fixed point. From
+$T\vdash L\implies(\square L\implies\phi)$, conditions 1 and 2 give
+\[
+T\vdash\square L\implies\square(\square L\implies\phi).
+\]
+Another application of condition 2 gives
+\[
+T\vdash\square L\implies
+ (\square\square L\implies\square\phi).
+\]
+Condition 3 and propositional reasoning therefore give
+$T\vdash\square L\implies\square\phi$. Under the hypothesis
+$T\vdash\square\phi\implies\phi$, it follows that
+$T\vdash\square L\implies\phi$. The reverse direction of the
+fixed-point equivalence now yields $T\vdash L$. Condition 1 yields
+$T\vdash\square L$, and modus ponens yields $T\vdash\phi$.
+All uses of condition 1 apply to theorems of $T$, not to formulas under
+an undischarged extra assumption.
+\Done
+
+The proof isolates the syntactic ingredients; consistency and semantic
+soundness are not needed for L\"ob's implication itself. The preceding
+lemma constructs the fixed point when the diagonal code operation has
+the stated representation. Establishing that coding hypothesis and the
+three derivability conditions for a proposed theory such as $\Tau$
+remains necessary; neither follows merely from quotation notation.
+The arithmetical setting and the second incompleteness theorem are discussed
+in \cite[Section~2]{Beklemishev2010}.
+
+\begin{corollary}[G\"odel's second incompleteness theorem]
+If $T$ is consistent and satisfies the preceding hypotheses, then
+\[
+T\nvdash\operatorname{Con}(T).
+\]
+In particular this applies to $T=\Tau_n$ whenever that stage has the
+stated proof predicate and fixed-point properties.
+\end{corollary}
+\Proof
+A proof of $\operatorname{Con}(T)$ is a proof of
+$\square\bot\implies\bot$. L\"ob's theorem with $\phi=\bot$ would
+then give $T\vdash\bot$, contrary to consistency.
+\Done
+
+\begin{corollary}[Internal reflection is not an unrestricted axiom]
+Under the same hypotheses and consistency, $T$ cannot prove
+$\square\phi\implies\phi$ for any sentence $\phi$ unprovable in $T$.
+Conversely, if $T\vdash\phi$, propositional logic proves that implication.
+Thus provability of this particular reflection instance is equivalent to
+provability of $\phi$ itself.
+\end{corollary}
+\Proof
+The first implication is L\"ob's theorem. For the converse apply the
+propositional theorem $\phi\implies(\square\phi\implies\phi)$.
+\Done
+
+\begin{proposition}[An external extraction rule has different hypotheses]
+Suppose the intended standard interpretation makes
+$\operatorname{Pr}_T(\ulcorner\phi\urcorner)$ true exactly when a finite
+$T$-proof of $\phi$ exists. If every theorem of $T$ of this provability
+form is true in that interpretation, then the theorem-level rule
+\[
+\frac{T\vdash\square\phi}{T\vdash\phi}
+\]
+is admissible. For a usual $\Sigma_1$ proof predicate, $\Sigma_1$-soundness
+is a sufficient condition for this hypothesis.
+\end{proposition}
+\Proof
+The premise and assumed soundness give truth of the specified provability
+sentence. Its intended interpretation supplies an actual finite proof of
+$\phi$, which is exactly the conclusion. This metatheoretic argument
+does not construct a $T$-proof of the internal implication
+$\square\phi\implies\phi$ and does not permit applying the rule beneath
+arbitrary additional assumptions. Consistency alone is not the soundness
+hypothesis used in this argument.
+\Done
 
 \begin{conjecture}[generalisation of Artemov's serial consistency theorem from PA to $\Tau$]
 \[
 \square_{n+1}\neg\square_n\bot
 \]
 (\cite{artemov2024serialpropertiesselectorproofs})
+This is a proposed statement about the next theory in the hierarchy.
+A selector proof for a sequence of instances must be distinguished from a
+proof of the single arithmetised consistency sentence. Establishing the
+connection with this successor-stage claim is part of the conjecture.
 \end{conjecture}
 
 \begin{note}[structural rules convention]
-All rules of inference in this book are supposed to be structural. It means that any substitution of variables in them leads to an inferene rule which also holds. 
+The rules in this development are intended to be structural: admissible
+substitutions give further instances of a rule. ``Admissible'' includes the
+typing, freshness, and capture-avoidance conditions of that rule.
 \end{note}
 
-\begin{inferencerule}[deduction]%(must be wrong?)
+\begin{inferencerule}[deduction]
+For the ordinary predicate-calculus rules, the deduction theorem applies
+when no generalisation in the derivation uses a variable free in the
+assumption being discharged. Any added reflection or serial rule requires a
+separate check that this transformation remains valid.
 %\l_abel{ru_le:ded_uction}
 %\Tau_n,
 \[
@@ -4283,6 +4889,7 @@ All rules of inference in this book are supposed to be structural. It means that
 \]
 \end{inferencerule}
 
+For a finite context $\Gamma$, and subject to the same restrictions,
 \[
 \frac{
 \Wau,\Gamma \vdash \phi
@@ -4294,8 +4901,9 @@ All rules of inference in this book are supposed to be structural. It means that
 
 
 \begin{inferencerule}[effective necessitation]
-The theory $\Tau$(this symbol is a constant) is strong enough, so for any %first-order
- theory $\Wau$(this symbol is a variable),
+The intended rule represents a given certified derivation inside $\Tau$.
+It requires a representation of the theory $\Wau$ and of the particular
+proof, together with a proof-checking relation available in $\Tau$:
 \[
 \frac{
 \Wau \vdash \psi
@@ -4304,7 +4912,11 @@ The theory $\Tau$(this symbol is a constant) is strong enough, so for any %first
 }
 \labeltagd{rule}{Effective Necessitation}
 \]
-For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
+The author also proposes taking $\Wau=\mathcal{F}$. For that instance, the
+representation requirement applies to the certified fragment being used;
+non-enumerability prevents treating all $\Fau$-derivations as the output of
+one effective proof enumeration. The extension to arbitrary ideal
+derivations remains an additional requirement of the framework.
 \iffalse % rejected
 \[
 \frac{
@@ -4327,7 +4939,9 @@ For example, $\Wau$ may be substituted with $\mathcal{F}$ itself.
 \end{inferencerule}
 %usage is discouraged, since
 \begin{badinferencerule*}[it leads to contradictions, if accepted]%\ \\
-This is forbidden inference rule, because it makes it impossible to implement such system in reality.
+The following unrestricted passage from truth to effective provability is
+excluded from the effective calculus. Unlike the preceding rule, its premise
+does not provide a certified derivation that the implementation can encode.
 \[
 \frac{
 \psi
@@ -4338,7 +4952,11 @@ This is forbidden inference rule, because it makes it impossible to implement su
 \]%%\square \psi
 \end{badinferencerule*}
 \begin{note}[philosophical]
-Computer can't store an ``abstract truthness'' of formula $\psi$ per se, but it can store a proof of $\psi$, which is a real--life alternative of it. That proof is also not an ``abstract truthness'' of $\square\psi$, it is only partially and conditionally: it depends inevitably on various technical premises, so it is also only an ``evidence''.
+A computer stores a representation of a proof and checks it against specified
+rules. The connection between that certificate and truth depends on the
+interpretation and soundness of those rules. Keeping the certificate and its
+semantic interpretation distinct is the point of the effective/ideal
+comparison.
 \end{note}
 
 \begin{badaxiom}[``cotransitivity'']
@@ -4347,7 +4965,16 @@ It is not possible to have an ``axiom'' scheme like
 \square\square_n\psi \implies \square_n\psi,
 \labeltagd{badaxm}{``cotransitivity''}
 \]
-because it leads to contradiction due to the second incompleteness theorem.
+as an unrestricted scheme in a consistent effective theory whose theorems
+of provability form are true in the intended interpretation. The exact
+obstruction is worth distinguishing from consistency alone. For the
+self-instance, L\"ob's theorem applied to the sentence $\square\psi$
+turns a proof of $\square\square\psi\implies\square\psi$ into a proof
+of $\square\psi$. Taking $\psi=\bot$ contradicts provability-soundness
+for a consistent theory. Bare consistency does not exclude a proof of
+$\square\bot$: that is a sentence asserting inconsistency, not itself
+an actual proof of $\bot$. Applications to different indices require the
+interpretation of each box and the relation between the stages to be fixed.
 %!The solution is either add the inference rule of creed and skew 
 %the inference rules, so the deduction theorem become complicated. (it becomes proof-dependent ?)Or
 
@@ -4355,8 +4982,61 @@ because it leads to contradiction due to the second incompleteness theorem.
 The symbol ``$\implies$'' is strong: it means that the right hand side of it is derived from the left hand side of it without the use of Credo inference rule.
 \fi
 \end{badaxiom}
+
+\begin{proposition}[Consistency does not imply provability-soundness]
+Let $S$ be a consistent, effectively axiomatised classical arithmetic
+theory satisfying the hypotheses of second incompleteness, and put
+$T=S+\neg\operatorname{Con}(S)$. Use standard proof predicates such
+that inclusion of $S$-proofs among $T$-proofs is formalised in $S$:
+\[
+S\vdash\operatorname{Pr}_S(\ulcorner\bot\urcorner)
+\implies\operatorname{Pr}_T(\ulcorner\bot\urcorner).
+\]
+Assume the usual derivability conditions for the predicate of $T$.
+Then $T$ is consistent but $T\vdash\operatorname{Pr}_T(\ulcorner\bot\urcorner)$.
+Indeed, writing $\square_T$ for this predicate, for every sentence $\psi$,
+\[
+T\vdash\square_T\square_T\psi\implies\square_T\psi.
+\]
+Thus consistency alone cannot rule out all these cotransitivity instances.
+\end{proposition}
+\Proof
+If $T$ were inconsistent, the ordinary deduction theorem would give
+$S\vdash\neg\operatorname{Con}(S)\implies\bot$. Classical logic would
+then give $S\vdash\operatorname{Con}(S)$, contrary to second
+incompleteness and consistency of $S$. Hence $T$ is consistent.
+Its added axiom, with classical double-negation elimination, gives
+$T\vdash\operatorname{Pr}_S(\ulcorner\bot\urcorner)$. The specified
+proof-inclusion implication gives $T\vdash\square_T\bot$.
+For any $\psi$, the propositional theorem $\bot\implies\psi$ and
+conditions 1 and 2 yield
+$T\vdash\square_T\bot\implies\square_T\psi$. Therefore
+$T\vdash\square_T\psi$, and propositional logic gives the displayed
+cotransitivity implication. Its conclusion is already a theorem of $T$;
+no reflection or extraction of an actual proof of $\psi$ was used.
+\Done
+
+Externally, consistency of $T$ makes its asserted provability of
+contradiction false in the intended interpretation. The example concerns
+ordinary deductive consistency, not credibility. The formalised inclusion
+hypothesis is justified in usual arithmetical presentations by viewing a
+finite $S$-derivation as a $T$-derivation; it must be checked for a different
+choice of proof coding.
+
 \pagebreak
 \section{Completeness of the theory $\Fau$}
+We return to the ideal semantic setting. In this section, ``validity'' means
+truth in the fixed intended interpretation, not truth in every structure.
+When a formula $\phi$ appears on the truth side of an implication, read it as
+its metatheoretic assertion of truth. Quantification over $\Fm$ is restricted
+to sentences, as above. This convention explains the compact displays; a
+fully internal truth predicate would require its own language, typing, and
+consistency analysis.
+
+The iterated displays below record the author's proposed treatment of
+metalevels. Their internal readings are additional principles to be justified
+for that treatment; they do not follow merely by suppressing quotation marks
+in an external semantic equivalence.
 \begin{definition}[credible theory]
 Let $\Wau$ be a theory. It is called \textit{credible}, if the derivability of any formula in it implies the validity of the formula.
 \[
@@ -4366,7 +5046,8 @@ Let $\Wau$ be a theory. It is called \textit{credible}, if the derivability of a
 \]
 \end{definition}
 \begin{definition}[omniscient theory]
-Let $\Wau$ be a theory. It is called \textit{omniscient}, if the the validity of any formula implies derivability of the formula in $\Wau$.
+Let $\Wau$ be a theory. It is \textit{omniscient} if every sentence true
+in the intended interpretation is derivable in $\Wau$.
 \[
 (\Wau\text{ omniscient})
 \iffdef
@@ -4381,7 +5062,7 @@ Let $\Wau$ be a theory. It is called \textit{reflexive}, if the derivability of 
 (\forall (\phi:\Fm),\ ((\Wau\vdash \phi) \iff \phi))
 \]
 \end{definition}
-It is trivial to see, that the following holds:
+The definitions immediately give:
 \[
 (\Wau\text{ reflexive})
 \iff
@@ -4436,7 +5117,11 @@ And it is treated in a special way: the function isFree which checks whether var
 This simple trick allows to avoid explicit writing of encoding and decoding of syntactic objects, and simplify the implementation.% is special or \ulcorner \urcorner
 \end{note}
 
-The modal provability logic of $\Fau$ collapses into an underlying logic, which is being used. Why then one should bother to write $(\Fau\vdash\dots)$ at all? Because it provides a syntax which allows us to unambiguously write meta statements, and distinguish them from the statements of the theory. %This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
+Under the stated reflexivity convention, provability in $\Fau$ and truth
+coincide for the sentences in question. The notation $(\Fau\vdash\dots)$
+still records a syntactic assertion about derivability and makes the
+metalevel explicit. This distinction remains useful even when the intended
+semantics validates their equivalence. %This is done for clarity in implementation and to avoid unnecessary circular reasoning. It is not possible to get rid of it completely, because the reasoning itself needs a starting point of accepting something.
 
 % \Tau = \mathcal{T}
 \iffalse
@@ -4527,28 +5212,55 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 
 \end{inferencerule}
 
-\begin{theorem}[credibility implies consistency(unfinished)]
+\begin{theorem}[credibility implies consistency]
 \[
 (\Wau\text{ credible})
 \implies
-(\Wau\text{ consistent})
+(\Wau\text{ consistent}).
 \]
 \end{theorem}
 \begin{proof}
-%Let $\phi \equivdef \bot$ in \ref{axm:Credo}, then:
-\[
-\neg(\mathcal{W}\vdash\bot)
-\tag{by \ref{axm:Credo} for $\phi \equivdef \bot$}
-\]
-
-\[
-(\mathcal{W}\not\vdash\bot)
-\implies
-(\mathcal{W}\not\vdash(\mathcal{W}\vdash\bot))
-\tag{by \ref{rule:MetaCredo} for $\phi \equivdef \bot$}
-%\labeltagd{rule}{MetaCredoBot}
-\]%(to be )
+Assume that $\Wau$ is credible. If $\Wau\vdash\bot$, credibility applied to
+the sentence $\bot$ would make $\bot$ true in the intended interpretation.
+Since $\bot$ is false there, $\Wau\not\vdash\bot$. This is precisely the
+definition of consistency. The argument uses credibility of $\Wau$ itself;
+it does not apply a rule reserved for $\Fau$ to an arbitrary theory.
 \end{proof}
+
+\begin{remark}[co-necessitation and the two contexts]
+The companion rule 4.03 retains a context inside the quoted sequent:
+\[
+\frac{
+\Fau,[]\vdash\langle\Fau,\Gamma\vdash\phi\rangle
+}{
+\Fau,\Gamma\vdash\phi
+}.
+\]
+Here $\langle\Fau,\Gamma\vdash\phi\rangle$ denotes the formula representing
+that particular sequent. The \emph{outer} derivation has empty context;
+$\Gamma$ is the \emph{inner} context being represented. Consequently this
+rule does not remove the empty-context restriction on creed and does not
+assert $\phi$ independently of $\Gamma$.
+
+Its intended justification is to instantiate soundness of $\Fau$ at the
+quoted sequent, then use the specified evaluation law
+\[
+\operatorname{eval}_M(\langle\Fau,\Gamma\vdash\phi\rangle)
+\iff (\Fau,\Gamma\vdash\phi).
+\]
+This argument is conditional on the quotation being in the domain of the
+chosen valuation, with all parameters interpreted. In a stratified language,
+soundness of a lower-level language cannot automatically be applied to a
+new formula about its own truth or provability.
+
+For an arbitrary effective theory, admissibility of an external rule that
+extracts a derivation must be distinguished from an implication proved
+inside that theory. Under the usual derivability conditions, an unrestricted
+internal self-reflection scheme has the familiar L\"ob obstruction; this
+observation does not forbid the syntactic representation of a theory's own
+proofs. Soundness assumptions sufficient for an external extraction argument
+must be stated for its particular proof predicate.
+\end{remark}
 
 \begin{inferencerule}[omniscience]%\ \\
 \[
@@ -4578,7 +5290,7 @@ Note, that the context must be empty: there should be only ``$\mathcal{F}$'' on 
 \labeltagd{axm}{MetaOmniscience}
 \]
 \end{inferencerule}
-\begin{lemma}[credibility and omniscience implies disjunctive property]
+\begin{lemma}[credibility and omniscience imply the disjunction property]
 \[
 (
 (\Wau\text{ credible})
@@ -4606,7 +5318,7 @@ Fix $(\Wau:\Theory)$. By definition,
 ))
 )
 \]
-So fix $(\chi_1:\Fm)$, $(\chi_2:\Fm)$, and assume $((\Wau \vdash (\chi_1\lor\chi_2))$.\\
+So fix $(\chi_1:\Fm)$, $(\chi_2:\Fm)$, and assume $(\Wau \vdash (\chi_1\lor\chi_2))$.\\
 Using the omniscience property and specification, it is shown for these formulas that:
 \[
 (
@@ -4626,7 +5338,7 @@ Therefore, via several propositional axioms, the following holds:
 \[
 (\chi_1\lor \chi_2)
 \implies
-((\Wau\vdash\chi_1)\lor((\Wau\vdash\chi_2)).
+((\Wau\vdash\chi_1)\lor(\Wau\vdash\chi_2)).
 \]
 By virtue of credibility rule,
 \[
@@ -4638,10 +5350,10 @@ Finally, by transitivity of implication,
 \[
 (\Wau\vdash(\chi_1\lor \chi_2))
 \implies
-((\Wau\vdash\chi_1)\lor((\Wau\vdash\chi_2)).
+((\Wau\vdash\chi_1)\lor(\Wau\vdash\chi_2)).
 \]
 \end{proof}
-\begin{theorem}[reflexivity implies consistensy and completeness]
+\begin{theorem}[reflexivity implies consistency and completeness]
 \[
 (\Wau\text{ reflexive})
 \implies
@@ -4653,7 +5365,10 @@ Finally, by transitivity of implication,
 \]
 \end{theorem}
 \begin{proof}
-By combining all previous lemmas, we have all desired properties. 
+Reflexivity gives credibility and omniscience. Credibility implies
+consistency, and credibility together with omniscience gives the disjunction
+property. The disjunction property, combined with classical excluded middle,
+gives completeness.
 \end{proof}
 
 

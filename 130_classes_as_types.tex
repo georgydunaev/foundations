@@ -1,34 +1,53 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{A type expresses an unary predicate.}
+\section{Types as predicates on classes}
 
 %\section{[OUTDATED] Classes--as--types, sets--as--expressions approach}
 
 %\subsection{Classes--as--Types semantics}
-In this section, we will see, that there is a semantic of $\Pi$--, $\Sigma$--, $W$--, $M$--types in classes.
+This section investigates interpretations of dependent sums, dependent
+products, and inductive and coinductive types using classes. Its central
+idea is that a type specifies a unary predicate on possible term values.
+The instances may include proper classes, so their collection need not
+itself be a class in the object theory.
 
-First of all, we (loosely) define the semantics.
+\paragraph{Local models and earlier proposals.}
+The subsections compare several representations; they do not assert that
+all displayed models are interchangeable. In particular, a class of set
+values, a predicate on arbitrary classes, and a syntactic type expression
+belong to different levels. A soundness claim must identify which of these
+is being interpreted and which family encoding it uses.
 
-Since, everything is a class in MK, we have:
+\begin{note}[OUTDATED: the unrestricted class-as-type proposal]
+An earlier proposal assigned truth to every type declaration:
 \[
-\semantics(``(A:\Type)")\eqdef \top.\text{(no! it ruins uniqueness of a term--type relation!)}
+\semantics(``(A:\Type)")\eqdef\top.
 \]
-Dependent types are treated as families.
+This does not enforce the intended uniqueness of the term--type relation.
+It is retained as motivation for interpreting types by explicit predicates.
+In that earlier family-based proposal, a dependent declaration was written
 \[
-\semantics(``(x:A\vdash B(x):\Type)")\eqdef (B\family)\land(\Dom(B)\subseteq A).
+\semantics(``(x:A\vdash B(x):\Type)")
+\eqdef (B\family)\land(\Dom(B)\subseteq A),
 \]
-OUTDATED:
+and the semisingleton encoding was
 \[
-(\Lambda x,\ t) = \cc{(x,s)}{(s\subseteq t)\land (s\ \mbox{ss})}
+(\Lambda x,\ t)=\cc{(x,s)}{(s\subseteq t)\land(s\ \mbox{ss})}.
 \]
+The domain condition and evaluation rules for a dependent type must be
+specified in the particular model; this sketch does not supply them all.
+\end{note}
 
 \subsection{Explicit typed term interpretation ($\mu_A$ / $I$)}
 Throughout this chapter, the background model of the class theory (NBG/MK) is fixed (though unspecified), and the valuation of free variables is likewise fixed (though unspecified).
-Rather than ranging over the class of all models, the interpretation map $\mu_A$ (written $I(a)$ or $\mu_A(a)$ below, and rendered as \texttt{\textbackslash mu\_A} in the Obelisk SML kernel \texttt{typetheory.ML}) is an \emph{explicit typed term interpretation} (or \emph{valuation homomorphism}; cf.\ Tarski 1936, Enderton 2001 \S2.2, Jacobs 1999):
+With that context fixed, the interpretation map $\mu_A$ (written $I(a)$ or $\mu_A(a)$ below, and rendered as \texttt{\textbackslash mu\_A} in the Obelisk SML kernel \texttt{typetheory.ML}) is an \emph{explicit typed term interpretation} (an expression-level interpretation map):
 \[
 \mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression},
 \]
-which transforms any typed expression $a : A$ into an untyped expression $\mu_A(a) \equiv I(a)$ of sort $\mathsf{Class}$ while respecting the fixed variable valuation.
+which translates a typed expression $a:A$ into a class expression $\mu_A(a)\equiv I(a)$. Evaluating the translated expression in the fixed model is a further semantic operation; the expression itself is not a class object. The term \emph{valuation homomorphism}
+can be used for the resulting semantic interpretation when preservation of
+the relevant constructors has been proved. That preservation is an
+obligation of the model, not a consequence of the map's displayed type.
 
 \begin{note}[advanced semantic setting: terms as classes, conglomerates (= predicates on classes) as types]
 Unlike the standard set-theoretic setting where terms are interpreted as sets and classes are interpreted as types, we work in a one-level-higher setting:
@@ -37,31 +56,37 @@ Unlike the standard set-theoretic setting where terms are interpreted as sets an
 \item \textbf{Types are interpreted as conglomerates}, which we use interchangeably with \textbf{predicates on the conglomerate of all classes} ($\Class \to \Bool$). In particular, the type $\Class$ is the constant-true predicate on classes $\lambda (C:\Class).\ \top$ (informally, a constant conglomerate-function to $\Bool$, representing the conglomerate of all classes).
 \item \textbf{$\Class$ is the default type}: it is implicitly assumed whenever a quantifier or comprehension omits an explicit type ($\forall x,\ \varphi(x) :\equiv \forall (x:\Class),\ \varphi(x)$) and in \textbf{bound (bounded) quantifiers}:
 \[
-\forall (x\in Y),\ \varphi(x) \iffdef \forall (x:\Class),\ (x\in Y)\implies \varphi(x),
-\qquad
-\exists (x\in Y),\ \varphi(x) \iffdef \exists (x:\Class),\ (x\in Y)\land \varphi(x).
+\begin{aligned}
+\forall (x\in Y),\ \varphi(x) &\iffdef \forall (x:\Class),\ (x\in Y)\implies \varphi(x),\\
+\exists (x\in Y),\ \varphi(x) &\iffdef \exists (x:\Class),\ (x\in Y)\land \varphi(x).
+\end{aligned}
 \]
 \end{enumerate}
 \end{note}
 
 \subsection{Storage [unfinished]}
-Only finite objects can be stored in computer's memory.\\
-Functions are stored as an ordered pairs ``variable'' and ``term''.\\
-Types are needed merely for getting rid of nonsense expressions.\\
-Semantics with sets and classes is used as a safeguard: if something "paradoxical" is obtained, then there is a cntradiction in foundation of mathematics, what is a sensationally rare event.\\
-
-
+Computer memory stores finite representations. A function expression can
+therefore be stored as a bound variable together with a term, rather than
+as a list of all its argument--value pairs. Types rule out expressions
+that do not fit the intended interfaces. A semantic interpretation then
+provides proof obligations for the implementation: the rules must preserve
+the interpretation, and a failed obligation may reveal an implementation
+error or a missing hypothesis.
 
 \iffalse
 Is the following okey ???
 \[
-(B\family)\iff\exists t : B = (\Lambda x: t) 
+(B\family)\iff\exists t : B = (\Lambda x: t)
 \]
 \fi
 \pagebreak
-\subsection{Implementing the boolean type [unfinished]}
+\subsection{Implementing the boolean type}
 
-\subsubsection{Axioms of  boolean type}
+\subsubsection{Axioms of the boolean type}
+The class-valued conditional below has two computation laws. We then
+give a set model of the Boolean type with its dependent elimination rule.
+These are related constructions: a Boolean value is an element of a
+two-element set, whereas a proposition is a formula.
 
 \subsubsection{Model of boolean type}
 \underline{Formation of boolean type:}\\
@@ -88,11 +113,69 @@ Side conditions:\\
 \]
 \end{theorem}
 
-\subsubsection{Soundness of boolean type}
+\subsubsection{Soundness of the boolean type}
+Under $\varphi$, the comprehension defining $\lifdep$ has exactly the
+members of $t_1$; under $\neg\varphi$, it has exactly the members of $t_2$.
+Extensionality therefore proves the displayed computation laws. Each
+conditional implication holds intuitionistically; selecting a branch for
+an arbitrary formula requires deciding that formula.
 
 
+
+\begin{definition}[The two-element set model]
+Put $0=\emptyclass$, $1=\{0\}$ and
+$\mathrm{Bool}=\{0,1\}$. Interpret $\mathsf{false}$ by $0$ and
+$\mathsf{true}$ by $1$. Pairing and the empty-set axiom make these sets.
+They are distinct because $0\in1$ but $0$ has no members. Thus every
+$b\in\mathrm{Bool}$ is exactly one of these constructors.
+\end{definition}
+
+\begin{theorem}[Dependent Boolean elimination]
+Let $E$ be a set-valued family on $\mathrm{Bool}$ and suppose
+$e_0\in E(0)$, $e_1\in E(1)$. There is a unique function $r$ with
+domain $\mathrm{Bool}$ such that $r(b)\in E(b)$ and
+\[
+r(0)=e_0,\qquad r(1)=e_1.
+\]
+For every dependent function $q$ on $\mathrm{Bool}$, elimination with
+branches $q(0)$ and $q(1)$ returns $q$ itself.
+\end{theorem}
+\Proof
+Use the graph $\{(0,e_0),(1,e_1)\}$ with ordinary injective set pairs.
+Distinctness of $0,1$ makes it functional with precisely the desired
+domain, and its values have the required types by hypothesis.
+Any other function satisfying the equations agrees at both possible
+arguments and hence equals it by extensionality. Taking $e_i=q(i)$
+proves the last assertion, the extensional Boolean eta law.
+\Done
+
+\begin{corollary}[Boolean induction]
+If a predicate $P$ holds at $0$ and $1$, it holds at every element of
+$\mathrm{Bool}$.
+\end{corollary}
+\Proof
+Membership in $\{0,1\}$ gives $b=0$ or $b=1$. Substitute in the
+corresponding premise. This uses the definition of the pair set, not a
+law deciding every proposition in the surrounding logic.
+\Done
+
+For a decidable formula $\phi$, the Boolean characteristic value is $1$
+when $\phi$ and $0$ when $\neg\phi$. Applying elimination with branches
+$t_2,t_1$ agrees with the earlier conditional when these branch values
+are sets. That agreement follows by the two cases. Arbitrary class-valued
+branches still have the earlier comprehension-based conditional, but they
+cannot both be stored as values of an ordinary set graph unless they are
+sets. This is the same size distinction encountered in family encodings.
 
 \subsection{Implementing option types}
+The concrete semisingleton model below concerns set-valued instances of
+$A$: the empty class represents no value, and a singleton represents one
+value. It does not directly encode a proper-class value as a singleton.
+The draft uses both $\Emb(A)$ as a predicate and its collected extension
+$\kappa(\Emb(A))$; these must be distinguished whenever membership notation
+is used. The displayed typing rules record the intended interface while
+the set-class calculations establish the concrete model's basic cases.
+
 %Axioms:\\
 \subsubsection{Axioms of option types}
 \begin{axiom}[None--ax]
@@ -100,7 +183,7 @@ Side conditions:\\
 \None:\Option(A)
 \]
 \[
-I(\None)\in\Emb(\Option(A))
+I(\None)\in\kappa(\Emb(\Option(A)))
 \]
 \end{axiom}
 \begin{axiom}[Some--ax]
@@ -111,7 +194,7 @@ I(\None)\in\Emb(\Option(A))
 (I(a)\in \kappa(\Emb(A)))\implies(I(\Some(a))\in\kappa(\Emb(\Option(A))))
 \]
 \end{axiom}
-(todo: add $\kappa$ to every $\Emb$ in this section, because it was changed to be $\Predicate$ )
+Completing the predicate-level presentation requires a uniform definition of $\Emb$ and its extension operator $\kappa$; the older class-level equations below are retained with that scope.
 \subsubsection{Model of option types}
 %Model:\\
 \begin{definition}[None--def]
@@ -121,7 +204,7 @@ I(\None) \eqdef \emptyclass
 \end{definition}
 \begin{definition}[Some--def]
 \[
-I(\Some(a)) \eqdef \{a\}
+I(\Some(a)) \eqdef \{I(a)\}
 \]
 \end{definition}
 \begin{definition}[Option--def](sic!)
@@ -130,86 +213,158 @@ I(\Some(a)) \eqdef \{a\}
 \]
 \end{definition}
 \subsubsection{Soundness of option types}
-%Theorems:\\
-\[
-(\Emb:\CongType\to\Predicate)
-\]
-\begin{theorem}[?]
-\[
-I(\None)\in\kappa(\Emb(\Option(A)))
-\]
-\end{theorem}
+The following calculations prove the class-level semisingleton model.
+They use the empty-set and set-pairing axioms, in addition to comprehension.
+Write $O(A)=\{b:b\sss A\}$ for a class $A$. To interpret these as the
+proposed typed judgments involving $\Emb$, $\kappa$, $\term$, and
+$\type$, those translation operations must identify the option extension
+with $O(A)$ and the two constructors with the following class expressions.
+Their uniform definitions remain part of the predicate-level proposal;
+the class calculation does not itself define them.
 
-\begin{theorem}[OUTDATED]
+\begin{theorem}[None in the semisingleton model]
+For every class $A$,
 \[
-\emptyclass\in\cc{b}{(b \sss A)} 
+\emptyclass\in O(A).
 \]
 \end{theorem}
 \Proof
-1. The set $\emptyclass$ is a semisingleton, by def of semisingletones.\\
-2. By thm \dots, $\emptyclass \subseteq A$.\\
-3. From 1 and 2, it follows that $(\emptyclass \sss A)$ by \dots .\\
-4. By ax \dots\myref{axm:emptyset}, $(\emptyclass\set)$.\\
-5. From 3 and 4, it follows that $\emptyclass \in \cc{b}{b \sss A}$.\\
+The empty class is a set by the empty-set axiom. It is a subclass of
+$A$ and has at most one member, since it has none. Thus
+$\emptyclass\sss A$, and guarded class comprehension gives
+$\emptyclass\in O(A)$. With $I(\None)=\emptyclass$, this proves the
+intended None introduction law in this model.
 \Done
-\begin{theorem}[?]
+
+\begin{theorem}[Some in the semisingleton model]
+For every class $A$ and every $a\in A$,
 \[
-(a\in A)\implies(\Some(\term(a))\in\kappa(\Option(\type(A))))
-\]
-or, equivalently,(OUTDATED)
-\[
-(a\in A)\implies (\{a\}\in\cc{b}{(b \sss A)} 
+\{a\}\in O(A).
 \]
 \end{theorem}
 \Proof
-1. Assume $(a\in A)$.\\
-2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
-3. $(\{a\} \semisingleton)$, by \dots .\\
-%4. $(a set) \IMPLIES (\{a\} set)$, by \dots .\\
-4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by \dots .\\
-5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
-6. From 2 and 5, it follows that $(\{a\}\in\cc{b}{(b \sss A)}$, by \dots .\\
+Membership $a\in A$ implies that $a$ is a set. Pairing therefore makes
+$\{a\}$ a set. Its only member is $a$, so it is a semisingleton
+subclass of $A$. Comprehension gives $\{a\}\in O(A)$, proving the
+intended Some introduction law under $I(\Some(a))=\{I(a)\}$.
+Moreover $a\in\{a\}$ makes this code nonempty, so it differs from
+None. Equality $\{a\}=\{a'\}$ for set values implies $a=a'$ by
+singleton membership. Thus the constructors are disjoint and Some is
+injective on the set values represented by $A$.
 \Done
+
+\begin{theorem}[The small option carrier and its cases]
+In the ordinary classical set model, if $A$ is a set, then $O(A)$
+is a set. Every $b\in O(A)$ is either $\emptyclass$ or $\{a\}$
+for a unique $a\in A$, and these alternatives are disjoint.
+\end{theorem}
+\Proof
+Every member of $O(A)$ is a set subclass of $A$, so
+\[
+O(A)=\{b\in\mathcal P(A):b\text{ has at most one member}\}
+\]
+is a set by powerset and separation. Given $b\in O(A)$, classical
+logic distinguishes whether $b$ has a member. If it has none,
+extensionality gives $b=\emptyclass$. Otherwise take $a\in b$.
+Then $a\in A$, and the at-most-one condition makes every member of
+$b$ equal to $a$, so $b=\{a\}$. The earlier constructor properties
+give uniqueness of $a$ and disjointness from the empty case.
+\Done
+
+Thus this semisingleton carrier is a model of the tagged alternative
+``no value or one value'' in the stated classical setting. The case
+split is part of the argument: for arbitrary semisingleton subsets in
+an intuitionistic setting, decidability of inhabitation cannot be
+silently assumed. When $A=\emptyclass$, the carrier is
+$O(A)=\{\emptyclass\}$. If $\emptyclass\in A$, Some of that value
+is $\{\emptyclass\}$, distinct from None, which is $\emptyclass$.
+
+\begin{theorem}[Dependent option elimination and its computation laws]
+Let $A$ be a set and $(E(b))_{b\in O(A)}$ a specified family of sets.
+Suppose an element $e_0\in E(\emptyclass)$ and a function $e_1$ on
+$A$ are supplied, with $e_1(a)\in E(\{a\})$ for each $a\in A$.
+There is a unique function $r$ on $O(A)$ such that
+\[
+r(b)\in E(b),\qquad
+r(\emptyclass)=e_0,\qquad r(\{a\})=e_1(a)\quad(a\in A).
+\]
+Consequently, reconstructing any section from its values on None and
+Some returns that section; this is the semantic eta law for elimination.
+\end{theorem}
+\Proof
+Use ordinary injective set-pair coding to form the graph
+\[
+r=\{(\emptyclass,e_0)\}
+  \cup\{(\{a\},e_1(a)):a\in A\}.
+\]
+Pairing and replacement make this a set. The two cases have distinct
+inputs, and injectivity of singleton formation identifies $a$ whenever
+two inputs in the second case agree. Hence the graph is functional.
+The case theorem says that its domain is exactly $O(A)$, and the
+assumed types of $e_0,e_1(a)$ give $r(b)\in E(b)$.
+Its graph directly proves the two computation equations. Any other
+section satisfying them agrees with $r$ at the empty input and at
+every singleton input; those exhaust the domain, so extensionality
+proves uniqueness. For eta, take a given section $q$ and supply
+$e_0=q(\emptyclass)$ and $e_1(a)=q(\{a\})$. The section $q$ satisfies
+the same equations, so the reconstructed section equals $q$.
+\Done
+
+The data $e_0$ and $e_1$ are supplied, rather than chosen from merely
+nonempty fibres; this elimination theorem uses no choice axiom.
+It proves equality of functions in the set model, not an additional
+judgmental conversion rule for the proposed type checker.
+
+\begin{corollary}[Option induction]
+Let $A$ be a set and let $Q(b)$ be a predicate on $O(A)$. If
+$Q(\emptyclass)$ holds and $Q(\{a\})$ holds for every $a\in A$,
+then $Q(b)$ holds for every $b\in O(A)$.
+\end{corollary}
+\Proof
+The case theorem makes each $b$ either the empty set or one of the
+singletons covered by the hypotheses. Substitute that equality into
+its corresponding hypothesis.
+\Done
+
 \pagebreak
 \subsection{Implementing ordered pairs}
-(see section, devoted to ordered pairs and cartesian productis)
+The ordered-pair section gives the intended constructor, sethood condition, and injectivity property, and compares several candidate models. The type-theoretic presentation here relies on the selected model satisfying that interface.
 %\dots\\
 \subsubsection{Axioms of ordered pairs}
-\dots
+Use the constructor, sethood, and injectivity interface stated in the ordered-pair section.
 \subsubsection{Model of ordered pairs}
-\dots
+Choose one of the pair constructions described there, with its stated domain.
 \subsubsection{Soundness of ordered pairs}
-\dots
+This requires the constructor and projection equations for that chosen model.
 \pagebreak
 
 \subsection{Implementing list as a medium type}
 %of classes[not good]}
 Lists of classes are modelled as a family with some initial (and finite) segment of ordinals as a domain.
-The type $\ClassList$ is introduced. 
+The type $\ClassList$ is introduced.
 \subsubsection{Axioms}
 \begin{axiom}[nil]
 \[
-[] : \ClassList 
+[] : \ClassList
 \]
 \end{axiom}
 \begin{axiom}[cons]
 String ``::'' is the infix notation of a constructor ``cons''.
 Parentheses around it make the prefix notation out of infix notation.
 \[
-(::):\ \Class \to \ClassList \to \ClassList 
+(::):\ \Class \to \ClassList \to \ClassList
 \]
 \end{axiom}
 \begin{axiom}[concat]
 \[
-(\concat):\ \ClassList \to \ClassList \to \ClassList 
+(\concat):\ \ClassList \to \ClassList \to \ClassList
 \]
 \end{axiom}
 \subsubsection{Model}
 %Model:\\
-A ``model'' of a medium type is not a set or class, because it's terms are interpreted as proper classes.
-It is a property(sic!), which all type's terms interpretations satisfy.
+For a medium type, some term interpretations may be proper classes. The model is therefore a predicate on classes, rather than necessarily a set or class containing those interpretations as members.
 \begin{definition}[inClassList]
-The interpretation of a term of a class list type property:
+The historical representation proposal for class-list terms is:
 %\ClassList\eqdef ? %\cc{(F\family)}{\dom(F)\in \omega}
 \[
 (F\text{ in ClassList})
@@ -221,78 +376,511 @@ The interpretation of a term of a class list type property:
 )
 \]%\omega\cup\{\omega\}
 \end{definition}
-Valuation function:
+Interpretation of list expressions:
 \[
-I:\Type\to\Class
+I:\ClassList.\mathsf{Expression}\to\Class.\mathsf{Expression}.
 \]
 \begin{definition}[nil]
 \[
 I([]) \eqdef \emptyclass
 \]
 \end{definition}
+
+\subsubsection{A canonical model with arbitrary class entries}
+The preceding predicate needs a fixed meaning of ``family.'' In the
+class-axiom chapter, a set value has a single concentrated record;
+the semisingleton encoding instead retains an empty record and all
+singleton member-records. Thus the latter's cons operation need not
+preserve the former family predicate. We now specify a local model
+using the canonicalization $C_1$ from the historical family chapter,
+with the same ordinary injective set-pair coding throughout this model.
+This makes the representation choice explicit while retaining arbitrary
+classes as possible entries.
+
+For a class relation $F\subseteq\V\times\V$, write
+\[
+U_F(i)=\bigcup\{s:(i,s)\in F\},\qquad N(F)=C_1(F).
+\]
+By the canonicalization theorem, $N$ preserves the represented domain
+and every union value, is idempotent, and satisfies
+\[
+N(F)=\{(i,\emptyclass):i\in\Dom(F)\}
+ \cup\{(i,\{q\}):i\in\Dom(F),\ q\in U_F(i)\}.
+\]
+Define the canonical class-list predicate by
+\[
+\operatorname{CL}(F)\iff
+ F\subseteq\V\times\V\ \land\ N(F)=F\ \land\ \Dom(F)\in\omega.
+\]
+For such an $F$, its length is the unique natural ordinal
+$n=\Dom(F)$. Every relation with finite ordinal domain can be converted
+to this model by $N$, preserving its entries and length. In particular
+this applies to the historical family proposal, even though the resulting
+records can differ. Equal lengths and equal values at every represented
+index determine equal canonical lists, by the complete-normal-form
+theorem for $C_1$.
+
+\begin{definition}[Class-parameter cons and concatenation]
+For any class $H$ and canonical class lists $F,G$, put
+\[
+\begin{aligned}
+\operatorname{Cons}(H,F)
+ &=\{(0,\emptyclass)\}\cup\{(0,\{q\}):q\in H\}
+   \cup\{(i+1,s):(i,s)\in F\},\\
+\operatorname{App}(F,G)
+ &=F\cup\{(n+i,s):(i,s)\in G\},\qquad n=\Dom(F).
+\end{aligned}
+\]
+Nil is $\emptyclass$, agreeing with $I([])$ above. The numbers and
+their sums in these formulas are natural ordinals.
+\end{definition}
+
+These are operations defined by formulas with class parameters.
+Every stored coordinate is a set: $q\in H$ makes $q$ a set, hence
+$\{q\}$ and its record are sets, even when $H$ is proper. Class
+comprehension forms the displayed results; it does not collect a pair
+whose coordinate is the proper class $H$ or a proper class list.
+No ordinary class function graph on all such arguments is asserted.
+
+\begin{theorem}[Class-list domains and values]
+Nil is canonical with domain zero. If $F,G$ are canonical with lengths
+$n,m$, respectively, then $\operatorname{Cons}(H,F)$ and
+$\operatorname{App}(F,G)$ are canonical, and
+\[
+\begin{aligned}
+\Dom(\operatorname{Cons}(H,F))&=n+1,&
+U_{\operatorname{Cons}(H,F)}(0)&=H,\\
+&&U_{\operatorname{Cons}(H,F)}(i+1)&=U_F(i)\quad(i<n),\\
+\Dom(\operatorname{App}(F,G))&=n+m,&
+U_{\operatorname{App}(F,G)}(i)&=U_F(i)\quad(i<n),\\
+&&U_{\operatorname{App}(F,G)}(n+j)&=U_G(j)\quad(j<m).
+\end{aligned}
+\]
+\end{theorem}
+\Proof
+The empty relation has empty domain and is fixed by $N$.
+For cons, index zero has exactly the empty record and all singleton
+records from $H$. Their union is $H$: each $q\in H$ occurs in
+$\{q\}$, and no other element is contributed. For each $i<n$,
+the fibre at $i+1$ is exactly the fibre of $F$ at $i$. Successor is
+injective on natural ordinals and never zero, so these fibres do not
+overlap. They are all nonempty because each contains the empty record.
+The domain is therefore $\{0\}\cup\{i+1:i<n\}=n+1$.
+Every fibre has precisely the form prescribed by $N$, proving canonicality
+as well as the asserted values.
+
+For concatenation, every $k<n+m$ lies uniquely either below $n$ or
+has the form $n+j$ with $j<m$. Thus the first part of the union gives
+exactly the fibres of $F$ below $n$, and the shifted part gives exactly
+the fibres of $G$ at the remaining indices. Every such fibre is
+nonempty and canonical, and there are no others. This proves the domain,
+canonicality, and both value equations, including the cases $n=0$ or
+$m=0$.
+\Done
+
+\begin{corollary}[Class-list concatenation identities and associativity]
+For canonical class lists $F,G,K$,
+\[
+\operatorname{App}(\emptyclass,F)=F
+ =\operatorname{App}(F,\emptyclass),\qquad
+\operatorname{App}(\operatorname{App}(F,G),K)
+ =\operatorname{App}(F,\operatorname{App}(G,K)).
+\]
+\end{corollary}
+\Proof
+Concatenating with nil leaves the domain and every represented value
+unchanged by the theorem, so canonical extensionality gives both
+identities. For associativity, write the three lengths as $n,m,p$.
+Both outputs have length $(n+m)+p=n+(m+p)$. Splitting the indices
+into the consecutive intervals of lengths $n,m,p$, the theorem gives
+respectively the values of $F,G,K$ on each side. On the final interval
+the two shifts agree because $(n+m)+j=n+(m+j)$. Hence all values and
+domains agree, and canonical extensionality proves equality.
+\Done
+
+For example, $\operatorname{Cons}(\V,\emptyclass)$ is a one-entry
+list whose value is a proper class, represented entirely by set records.
+For the empty class as head, the one-entry list is instead
+$\{(0,\emptyclass)\}$; it is distinct from nil despite its empty value.
+On noncanonical input relations, the corresponding operations first
+apply $N$, so an identity law returns $N(F)$ rather than necessarily
+the original records $F$. We have proved class-parameter construction
+and equality laws, not an initial-algebra property for a collection of
+all proper-class-valued lists. The set-valued model below uses these
+same canonical fibres and admits a separate set-level recursion theorem.
+
+The newer Obelisk export's entry 3.51, \texttt{DefClassLists}, records
+another construction using explicit markers and one-based positions.
+The present model uses zero-based positions and ordinary set-pair
+records. These are different representations of the intended entries;
+neither literal equality of their codes nor interchangeability of their
+projection formulas follows. The ordered-pair chapter explains the
+separate marker convention. Transport between the encodings must
+preserve length and decoded entries explicitly.
 %\subsection{Self--contained presentation of dependent types}
 %\subsection{Families of definable classes, abstraction and evaluation.}
+\subsubsection{Transport to the catalog's finite marker lists}
+The newer Obelisk catalog's \texttt{DefClassLists} (3.51), still marked
+\texttt{TBI}, proposes a different representation. Its displayed payload
+$\{\{\{a\}\},k\}$ is an \emph{unordered} pair: one member is
+$\{\{a\}\}$ and the other is the tag $k$. To keep the brace depth
+explicit, put
+\[
+e(a)=\{\{a\}\},\qquad
+\operatorname{mark}_2(H,k)
+ =\{\{0,k\}\}\cup\{\{e(a),k\}:a\in H\}.
+\]
+Here $a$ ranges over set members of $H$, while $k$ is a positive finite
+ordinal. The subscript records the two singleton operations in $e$.
+This is the convention of entry 3.51; the separate tagged-pair entry
+\texttt{DefDunaevOrderedPair} (3.76) uses three singleton operations
+in its payload. The two formulas are not asserted to be literally equal.
+We prove the finite-list interpretation of 3.51, rather than inferring
+its correctness from the generated entry's label.
+
+\begin{lemma}[Separation of markers and payloads]
+For sets $a,b$ and positive natural ordinals $k,l$, the following hold:
+\[
+\begin{gathered}
+\{0,k\}=\{0,l\}\iff k=l,\\
+\{e(a),k\}=\{e(b),l\}\iff (a=b\text{ and }k=l),\\
+\{0,k\}\ne\{e(a),l\}.
+\end{gathered}
+\]
+\end{lemma}
+\Proof
+The set $e(a)$ is a singleton and cannot be an ordinal. Indeed, the
+only singleton ordinal is $1=\{0\}$: a nonempty ordinal contains zero,
+so its sole member must be zero. Equality $e(a)=1$ would force
+$\{a\}=0$, contrary to $a\in\{a\}$. Thus a payload
+$\{e(a),k\}$ has exactly one natural-ordinal member, namely $k$,
+and exactly one nonordinal member, namely $e(a)$. Equality of two
+payloads identifies these members separately. Two applications of
+singleton injectivity then give $a=b$. A marker $\{0,k\}$ has
+only ordinal members, so cannot equal a payload; its unique nonzero
+member is $k$, proving marker injectivity. The reverse implications
+follow directly from equality substitution.
+\Done
+
+For a canonical class list $F$ of length $n$, define its marker encoding
+by a single class comprehension, written as the following union:
+\[
+\mathcal M(F)=\{\{0,i+1\}:i<n\}
+ \cup\{\{e(a),i+1\}:i<n,\ a\in U_F(i)\}.
+\]
+All members of this class are sets. The expression uses the class
+parameter $F$ and its definable values, rather than forming a set or
+class whose members are those possibly proper-class values.
+For a class $L$ and positive natural $k$, define the decoded entry
+\[
+D_k(L)=\{a:\{e(a),k\}\in L\}.
+\]
+As usual comprehension retains set values of $a$; its auxiliary binders
+are fresh for the class parameters.
+
+\begin{theorem}[Faithful transport between the two list representations]
+For canonical class lists $F,G$, the marker encoding retains both
+length and entries. More explicitly, if $\Dom(F)=n$, then
+\[
+\{k\in\omega\setminus\{0\}:\{0,k\}\in\mathcal M(F)\}
+ =\{i+1:i<n\},
+\qquad D_{i+1}(\mathcal M(F))=U_F(i)\quad(i<n).
+\]
+Consequently $\mathcal M(F)=\mathcal M(G)$ if and only if $F=G$.
+For arbitrary classes $H,K$ it also satisfies
+\[
+\begin{aligned}
+\mathcal M(\emptyclass)&=\emptyclass,\\
+\mathcal M(\operatorname{Cons}(H,\emptyclass))
+ &=\operatorname{mark}_2(H,1),\\
+\mathcal M(\operatorname{Cons}(H,\operatorname{Cons}(K,\emptyclass)))
+ &=\operatorname{mark}_2(H,1)\cup\operatorname{mark}_2(K,2).
+\end{aligned}
+\]
+\end{theorem}
+\Proof
+By separation of markers and payloads, the marker $\{0,k\}$ occurs
+exactly when $k=i+1$ for some $i<n$. The same lemma says that a
+payload $\{e(a),i+1\}$ occurs exactly when $i<n$ and $a\in U_F(i)$.
+These are the first two assertions by extensionality. In particular an
+empty entry still contributes its marker and cannot shorten the list.
+The finite tag set is empty exactly when $n=0$, and otherwise has
+maximum $n$; hence it determines $n$ uniquely.
+
+If two encodings are equal, their marker sets give equal lengths and
+the decoding formulas give equal entries at every represented index.
+The $C_1$ normal-form theorem then gives $F=G$. Conversely equal
+canonical lists give equal marker comprehensions. Finally nil has no
+indices; the one-entry cons list has domain $1$ and value $H$ at zero;
+the two-entry cons list has domain $2$ and values $H,K$ at zero and
+one. Substituting these domain and value equations into $\mathcal M$
+gives the three displayed identities.
+\Done
+
+The last two identities give precisely the catalog's singleton-list and
+two-entry-list formulas, and $D_1,D_2$ give its stated projections on
+their represented indices. They concern a translation of representations,
+not equality of a semisingleton-record list with its marker encoding.
+The proof allows proper-class entries but only finite natural tags;
+it does not verify any unstated kernel conversion rules or an extension
+to arbitrary class-valued tags.
+
 \subsection{Implementing list of values having a small type}
-Let $A$ be a small type. Any list of terms of type $A$ is a small term, and al of them together form a small type.
-\subsubsection{Axioms}%:\\
-\begin{axiom}[nil]
+Fix a set $A$ interpreting the small type. We use the author's
+semisingleton family encoding, rather than the concentrated-fibre
+convention used in some other sections. Work with Infinity, powerset,
+replacement, union, and ordinary injective pairs of sets. Every value
+$h\in A$ is a set; no proper-class entry is being stored in this model.
+The displayed type interface below will follow from the construction.
+
+\subsubsection{The encoded list carrier}
+For a set $h$, write
 \[
-[]\in\List(A) 
+\mathcal S(h)=\{s\subseteq h:s\text{ has at most one member}\}.
 \]
-\end{axiom}
-\begin{axiom}[cons]
+Thus $s\sss h$ means $s\in\mathcal S(h)$. This is a set by
+powerset and separation. It contains $\emptyclass$ and every singleton
+$\{q\}$ for $q\in h$, and
 \[
-(::)\ :\ A \to \List(A) \to \List(A) 
+\bigcup\mathcal S(h)=h.
 \]
-\end{axiom}
-\begin{definition}[inc\_fst--def]
+Indeed each member of a semisingleton subclass lies in $h$, and each
+$q\in h$ occurs in its singleton subclass. In particular
+$\mathcal S(\emptyclass)=\{\emptyclass\}$, not the empty family.
+
+For an ordinary function graph $f:n\to A$, where $n\in\omega$, define
 \[
-\mathrm{inc\_fst}(r) \eqdef \cc{(x\cup\{x\},y) }{ (x,y) \in R}
+L(n,f)=\{(i,s):i\in n,\ s\in\mathcal S(f(i))\}.
 \]
+Put
+\[
+\mathcal L_n(A)=\{L(n,f):f:n\to A\},\qquad
+\List(A)=\bigcup_{n\in\omega}\mathcal L_n(A).
+\]
+The graph $f$ is an auxiliary code. The list value is $L(n,f)$,
+which generally has several records at each index and is not an
+ordinary single-valued graph. Here list evaluation means union of the
+fibre, and its represented domain means the indices having a record.
+
+\begin{lemma}[Sethood and recovery of the sequence code]
+The collection $\List(A)$ is a set. For every $f:n\to A$,
+\[
+\Dom(L(n,f))=n,\qquad
+\bigcup\{s:(i,s)\in L(n,f)\}=f(i)\quad(i\in n).
+\]
+Consequently $L(n,f)=L(m,g)$ if and only if $n=m$ and $f=g$.
+\end{lemma}
+\Proof
+For each $i\in n$, the set of records
+$\{(i,s):s\in\mathcal S(f(i))\}$ is a set by replacement.
+Replacement over $n$ and union make $L(n,f)$ a set. The ordinary
+function space $A^n$ is a set, as a separated subclass of
+$\mathcal P(n\times A)$. Replacement therefore makes $\mathcal L_n(A)$
+a set. Replacement over $\omega$ and union give $\List(A)$.
+
+Every $i\in n$ has the record $(i,\emptyclass)$, and no other index
+occurs, proving the domain equation. Injectivity of pair coding makes
+the fibre at $i$ precisely $\mathcal S(f(i))$, whose union is $f(i)$.
+Equality of two encoded lists therefore gives equal domains, and then
+equal values at every index. Function extensionality gives $f=g$.
+The reverse implication follows from the defining comprehension.
+\Done
+
+The unique $n$ in this lemma is the length $\ell(t)$ of the list
+$t=L(n,f)$. An empty entry cannot disappear: its fibre contains the
+empty record. This domain information distinguishes the one-entry list
+with entry $\emptyclass$ from the empty list.
+
+\subsubsection{Constructors and their computation rules}
+\begin{definition}[Nil and the author's cons operation]
+Put $[]=\emptyclass$ and retain the definitions
+\[
+\mathrm{inc\_fst}(r)
+ =\{(i\cup\{i\},s):(i,s)\in r\},
+\qquad
+h::t=\{(\emptyclass,s):s\sss h\}\cup\mathrm{inc\_fst}(t).
+\]
+On a list's natural-number indices, $i\cup\{i\}=i+1$.
 \end{definition}
-\begin{definition}[cons]
+
+\begin{theorem}[List constructors and unique decomposition]
+One has $[]\in\List(A)$, and $h::t\in\List(A)$ for every
+$h\in A$, $t\in\List(A)$. Their lengths satisfy
 \[
-(h::t) \eqdef \cc{(\emptyclass,b)}{(b\sss h)}\cup \mathrm{inc\_fst}(t)
+\ell([])=0,\qquad \ell(h::t)=\ell(t)+1.
 \]
-\end{definition}
-%Theorems:
-\subsubsection{Soundness}
-\begin{theorem}[?]
+Every list is either $[]$ or has the form $h::t$ for unique
+$h\in A$ and $t\in\List(A)$, and these cases are disjoint.
+Thus the constructors realize the intended interface
 \[
-[]\in\List(A) 
-\]
-or, equivalently,
-\[
-\emptyclass\in\List(A) 
+[]:\List(A),\qquad (::):A\to\List(A)\to\List(A).
 \]
 \end{theorem}
 \Proof
-\dots
-%1. Assume $(a\in A)$.\\
-%2. $(a\in A) \IMPLIES (a \set)$, by \dots .\\
-%3. $(\{a\} \semisingleton)$, by \dots .\\
-%4. $(a\in A) \IMPLIES (\{a\} \subseteq A)$, by \dots .\\
-%5. From 3 and 4, it follows that $(\{a\}\sss A)$, by \dots .\\
-%6. From 2 and 5, it follows that $(\cc{a\}\in\{b}{(b \sss A)}$, by \dots .\\
-\Done
-\iffalse
-\begin{theorem}[?]
+The unique graph $f:0\to A$ is empty and $L(0,f)=\emptyclass$,
+so nil is a list. For $t=L(n,f)$, define the ordinary graph
+$g:n+1\to A$ by
 \[
-::\ :\ A \to \List(A) \to \List(A)
+g(0)=h,\qquad g(i+1)=f(i)\quad(i\in n).
 \]
-or, equivalently,
+Every nonzero natural number below $n+1$ has a unique predecessor
+below $n$. The record at index zero comes from the first term of cons,
+and the records at index $i+1$ are precisely those in the fibre of
+$t$ at $i$. Hence the defining equations give $h::t=L(n+1,g)$.
+This proves closure and the length formulas. In particular every cons
+has $(0,\emptyclass)$ as a record, so it cannot equal nil.
+
+Conversely, if $L(n,f)$ is not nil, its domain is not zero. Write
+$n=m+1$, put $h=f(0)$, and let $f_-(i)=f(i+1)$ for $i\in m$.
+The same fibre calculation gives
+$L(n,f)=h::L(m,f_-)$. Recovery of the sequence code proves uniqueness:
+the head is the value at zero, and all tail entries are the subsequent
+values in their order. This also proves that $h::t=h'::t'$ implies
+$h=h'$ and $t=t'$.
+\Done
+
+For example, if $\emptyclass\in A$, then
+$\emptyclass::[]=\{(0,\emptyclass)\}$ has length one, although its
+only evaluated entry is empty. No out-of-domain default is used to
+recover its length. If $A=\emptyclass$, there are no positive-length
+sequence graphs into $A$, so $\List(A)=\{[]\}$.
+
+\subsubsection{Induction and recursion on length}
+\begin{theorem}[List induction and recursion]
+A predicate that holds at nil and is preserved by cons holds at every
+member of $\List(A)$. Given a set $X$, an element $z\in X$, and a
+function $c:A\times X\to X$, there is a unique function
+$r:\List(A)\to X$ satisfying
 \[
-::\ :\ A \to \List(A) \to \List(A)
+r([])=z,\qquad r(h::t)=c(h,r(t)).
 \]
 \end{theorem}
 \Proof
-\dots
+For induction, induct on the natural-number length. The zero-length
+list is nil, and every list of length $n+1$ uniquely decomposes as
+$h::t$ with $\ell(t)=n$. The corresponding induction premise and
+cons step prove the assertion at that length.
+
+For recursion, define functions $r_n:\mathcal L_n(A)\to X$.
+On $\mathcal L_0(A)=\{[]\}$ set $r_0([])=z$. Given $r_n$, the
+unique decomposition lets us define
+\[
+r_{n+1}(h::t)=c(h,r_n(t))\qquad(t\in\mathcal L_n(A)).
+\]
+Replacement collects this graph, and natural-number recursion produces
+the sequence $(r_n)$. Distinct length classes are disjoint by code
+recovery, so $r=\bigcup_{n\in\omega}r_n$ is a function with domain
+$\List(A)$ and values in $X$. Replacement and union make its graph
+a set. The stage equations give the required computation rules.
+Any other solution agrees on length zero, and agreement on length $n$
+forces agreement on length $n+1$ by unique decomposition. Induction
+therefore gives equality everywhere, proving uniqueness.
 \Done
-\fi
+
+This is the usual initial-algebra property for the tagged sum functor
+$X\mapsto 1+(A\times X)$ on sets: the nil and cons branches specify
+an algebra, and the two recursion equations specify its unique morphism
+from the encoded list algebra. The disjoint alternatives are supplied
+by the tags in that functor, while the represented list domain already
+distinguishes nil from cons in the concrete encoding. This result does
+not assert an initial-algebra property for the class-parameter model
+in the preceding subsection.
+
+\subsubsection{Concatenation and maps of small lists}
+For each $u\in\List(A)$, apply list recursion with target $\List(A)$,
+nil value $u$, and step $(h,v)\mapsto h::v$. Write its value at $t$
+as $t\mathbin{+\!\!+}u$. Thus
+\[
+[]\mathbin{+\!\!+}u=u,\qquad
+(h::t)\mathbin{+\!\!+}u=h::(t\mathbin{+\!\!+}u).
+\]
+Uniqueness specifies the operation for every pair $(t,u)$, and replacement
+on $\List(A)\times\List(A)$ makes it a set function. This realizes
+the earlier concatenation interface for small lists in this encoding.
+
+\begin{proposition}[Concatenation laws]
+For $t,u,v\in\List(A)$,
+\[
+\begin{gathered}
+t\mathbin{+\!\!+}[]=t,\qquad
+(t\mathbin{+\!\!+}u)\mathbin{+\!\!+}v
+ =t\mathbin{+\!\!+}(u\mathbin{+\!\!+}v),\\
+\ell(t\mathbin{+\!\!+}u)=\ell(t)+\ell(u),\\
+t\mathbin{+\!\!+}u=t\mathbin{+\!\!+}v\quad\Longrightarrow\quad u=v.
+\end{gathered}
+\]
+Together with the defining nil equation, nil is a two-sided identity.
+\end{proposition}
+\Proof
+For the right identity, the function $t\mapsto t\mathbin{+\!\!+}[]$
+and the identity on $\List(A)$ both take nil to nil and satisfy the
+same cons equation. Recursion uniqueness makes them equal.
+
+Fix $u,v$. As functions of $t$, both sides of the associativity equation
+take nil to $u\mathbin{+\!\!+}v$. Applying either function to $h::t$
+gives $h$ consed onto its value at $t$, by the two defining equations.
+Recursion uniqueness again proves equality.
+
+For length, induct on $t$. At nil the equation is
+$\ell(u)=0+\ell(u)$. At $h::t$, concatenation and the length formula
+give $\ell(t\mathbin{+\!\!+}u)+1$; the induction hypothesis makes
+this $\ell(t)+\ell(u)+1=(\ell(t)+1)+\ell(u)$, as required by
+natural-number arithmetic. Finally, induct on the common left list
+for cancellation. At nil the hypothesis is already $u=v$.
+At $h::t$, constructor injectivity cancels $h$ from
+$h::(t\mathbin{+\!\!+}u)=h::(t\mathbin{+\!\!+}v)$, and the
+induction hypothesis gives $u=v$.
+\Done
+
+For a set function $f:A\to B$, list recursion with target $\List(B)$,
+nil value $[]$, and step $(h,v)\mapsto f(h)::v$ defines
+$\operatorname{map}_f:\List(A)\to\List(B)$, with
+\[
+\operatorname{map}_f([])=[],\qquad
+\operatorname{map}_f(h::t)=f(h)::\operatorname{map}_f(t).
+\]
+These equations use the same semisingleton list encoding on both sides;
+the operation replaces list entries, not individual records in a fibre.
+
+\begin{proposition}[Mapping identities, composition, and concatenation]
+For set functions $f:A\to B$, $g:B\to C$,
+\[
+\begin{gathered}
+\operatorname{map}_{1_A}=1_{\List(A)},\qquad
+\operatorname{map}_{g\circ f}=\operatorname{map}_g\circ\operatorname{map}_f,\\
+\operatorname{map}_f(t\mathbin{+\!\!+}u)
+ =\operatorname{map}_f(t)\mathbin{+\!\!+}\operatorname{map}_f(u).
+\end{gathered}
+\]
+\end{proposition}
+\Proof
+For the identity equation, both functions send nil to nil and send
+$h::t$ to $h$ consed onto their value at $t$. For composition, both
+send nil to nil and send $h::t$ to $g(f(h))$ consed onto their value
+at $t$. Each comparison is therefore an application of recursion
+uniqueness with the indicated target set and step operation.
+
+For the last equation fix $u$. As functions of $t$, both sides take
+nil to $\operatorname{map}_f(u)$. The cons and mapping equations make
+both send $h::t$ to $f(h)$ consed onto their value at $t$. Recursion
+uniqueness with that nil value proves the claimed compatibility.
+\Done
+
+All constructions in this subsection have set-valued entries and set
+carriers. The medium-type concatenation laws above have their separate
+class-parameter proof; the present recursion and mapping arguments do
+not assert a recursion principle for arbitrary class-valued entries.
 \pagebreak
 
 
 \subsection{Implementing functions}
+This subsection records class operations and compares two canonical family
+encodings. A relation is a class of encoded set pairs. A family may use
+several entries in a fiber to represent a proper-class value, so relational
+composition and family evaluation must not be interchanged without checking
+the representation. The historical conversion laws below explicitly return
+to semisingleton fibers and total union evaluation.
+
 %\subsection{Relational basics}
 \subsubsection{Family basics}
 \iffalse %OUTDATED
@@ -407,6 +995,7 @@ F^\intercal\eqdef\cc{(F(x),x)}{x\in \dom(F)}
 \end{definition}
 
 \subsubsection{Family}
+A family combines its domain with the chosen fiber representation. The preceding family-evaluation section gives the two encodings compared here.
 \iffalse %OUTDATED
 \begin{definition}[family]
 Def is ommited!
@@ -420,7 +1009,7 @@ Def is ommited!
 
 \begin{definition}[value]% again, no "undefined" case
 \[
-F(x) \eqdef \bigcup\cc{b}{((x,b)\in F)}
+F(x) \eqdef \bigcup\cc{c}{((x,c)\in F)}
 \]
 \iffalse
 \[
@@ -448,7 +1037,7 @@ F(x) \eqdef \cc{w}{\exists b, (w\in b) \land ((x,b)\in F)}
 %= \cc{p}{\exists x, (p = (x,t)) \land (x\in A)}
 %\]
 \begin{baddefinition*}[set--valued abstraction]
-The following attempt of definition requires the value to be set:
+This graph abstraction represents set values. It can be used when $t$ is set-valued on $A$; extending it to proper-class values requires another encoding:
 \[
 (x\in A \mapsto t)
 \eqbaddef
@@ -459,15 +1048,19 @@ The following attempt of definition requires the value to be set:
 %a binder
 \end{baddefinition*}
 
+In both following abstractions, $x$ is not free in the fixed domain $A$,
+and the auxiliary variable $b$ is distinct from $x$ and fresh for $A,t$.
+Rename auxiliary variables before substitution whenever needed.
+
 \begin{definition}[OUTDATED class--valued abstraction]
 \[
 (x\in A \mapsto t)
 \eqdef
 \ccc{x,b}{(x,b)}{(x\in A)\land (b \sss t)}
-\clabeltagd{def}{classvaluedabstraction}
+\clabeltagd{def}{classvaluedabstraction-old}
 \]
 \end{definition}
-NEW:
+In the singleton-based variant, a set value is stored directly and a proper-class value is represented by singleton subclasses:
 \begin{definition}[class--valued abstraction]
 \[
 (x\in A \mapsto t)
@@ -475,10 +1068,10 @@ NEW:
 \ccc{x,b}{(x,b)}{
 (x\in A)\land
 (
-%\lif\ 
+%\lif\
 ((t\set)\land(b=t))
 \lor
-%\ \lthen\ 
+%\ \lthen\
 ((t\proper)\land(b\singleton)\land(b\subset t))
 )
 }
@@ -524,7 +1117,7 @@ jjj
 % lam q := cc (x. exists x, (p = (x,t)) \land (x\in A) )
 \subsubsection{Alpha--equivalence}
 
-Alpha--equivalence is a consequence of alpha--equivalence of the class constructors.
+Renaming the bound variable in an abstraction preserves its meaning, provided the new variable is fresh and the renaming avoids capture. This follows from the same renaming property for class comprehension.
 
 \subsubsection{Beta--conversion}
 \begin{definition}[conditional operator]
@@ -544,10 +1137,15 @@ For any formula $\phi$ and for any class terms $t_1$ and $t_2$, the conditional 
 \begin{theorem}[OUTDATED $\beta$--conversion]
 This theorem assumes the outdated implementation:
 \[
-F(x) \eqdef \bigcup\cc{b}{((x,b)\in F)}
+F(x) \eqdef \bigcup\cc{c}{((x,c)\in F)}
 \]
 
-Let $A$ be a class term, then%(or term?)... todo: write premises
+All auxiliary fibre variables below are chosen fresh for $A,t,a,F$;
+the inner abstraction uses a different variable $c$ from the outer fibre
+variable $b$. Let $A$ be a class term with $x$ not free in $A$, let
+$a$ be a set-valued argument term, and let substitution of $a$ for $x$
+avoid capture. The body value $t[a/x]$ may be a proper class. For the
+semisingleton abstraction,
 \[
 (x\in A \mapsto t)(a) = (\lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
 \clabeltagd{thm}{fam--beta}
@@ -562,7 +1160,7 @@ Let $A$ be a class term, then%(or term?)... todo: write premises
 \]
 \[
 =
-\bigcup\cc{b}{((a,b)\in \ccc{x}{(x,b)}{(x\in A)\land (b \sss t)})}
+\bigcup\cc{b}{((a,b)\in \ccc{x,c}{(x,c)}{(x\in A)\land (c \sss t)})}
 \]
 \[
 =
@@ -570,22 +1168,34 @@ Let $A$ be a class term, then%(or term?)... todo: write premises
 \]
 \[
 =
-\bigcup (\lif\ (x\in A)\ \lthen\ \cc{b}{(b \sss t[a/x])}\ \lelse\  \emptyclass\ \lfi)
+\bigcup (\lif\ (a\in A)\ \lthen\ \cc{b}{(b \sss t[a/x])}\ \lelse\  \emptyclass\ \lfi)
 \]
 \[
 =
-(\lif\ (x\in A)\ \lthen\ \bigcup\cc{b}{(b \sss t[a/x])}\ \lelse\  \bigcup\emptyclass\ \lfi)
+(\lif\ (a\in A)\ \lthen\ \bigcup\cc{b}{(b \sss t[a/x])}\ \lelse\  \bigcup\emptyclass\ \lfi)
 \]
 \[
 =
-(\lif\ (x\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
+(\lif\ (a\in A)\ \lthen\ t[a/x]\ \lelse\ \emptyclass\ \lfi)
 \]
 \Done
 \end{theorem}
+The set-argument hypothesis is the scope in which the chosen set-pair
+encoding justifies identifying graph coordinates in this calculation.
+It does not restrict the represented body values to sets. An extension
+of the equation to proper-class arguments would require a specified
+pair encoding and evaluation law for those arguments. The empty result
+outside $A$ belongs to this local unguarded union convention.
 
 \subsubsection{Eta--conversion}
 \begin{theorem}[OUTDATED $\eta$--conversion]
-Assume that $F$ is a family and $\dom(F)=A$, then
+Assume that $F$ uses canonical semisingleton fibers on its represented
+domain $A$, and in this local notation write $\dom(F)=A$. Choose the
+abstraction variable $x$ fresh for the class expressions $F$ and $A$;
+choose the fibre variables $b,c$ distinct from $x$ and fresh for those
+expressions. Thus $F$ remains a fixed family when the binder is introduced.
+The abstraction and evaluation use the same local semisingleton and
+unguarded union conventions as in the preceding theorem. Then
 \[
 (x\in \dom(F) \mapsto F(x))=F.
 \clabeltagd{thm}{fam--eta}
@@ -595,16 +1205,16 @@ Assume that $F$ is a family and $\dom(F)=A$, then
 (x\in \dom(F) \mapsto F(x))
 \]
 \[
-=\ccc{x}{(x,b)}{(x\in A)\land (b \sss F(x))}
+=\ccc{x,b}{(x,b)}{(x\in A)\land (b \sss F(x))}
 \]
 \[
-=\ccc{x}{(x,b)}{\left(x\in A\middle)\land \middle(b \sss \bigcup\cc{b}{((x,b)\in F)}\right)}
+=\ccc{x,b}{(x,b)}{\left(x\in A\middle)\land \middle(b \sss \bigcup\cc{c}{((x,c)\in F)}\right)}
 \]
 \[
-=\ccc{x}{(x,b)}{\left(x\in A\middle)\land \middle(b \in \cc{b}{((x,b)\in F)}\right)}
+=\ccc{x,b}{(x,b)}{\left(x\in A\middle)\land \middle(b \in \cc{c}{((x,c)\in F)}\right)}
 \]
 \[
-=\ccc{x}{(x,b)}{((x,b)\in F)}
+=\ccc{x,b}{(x,b)}{((x,b)\in F)}
 \]
 \[
 =F
@@ -614,92 +1224,66 @@ Assume that $F$ is a family and $\dom(F)=A$, then
 
 %\section{Class theory}
 %\subsection{Basic class--theoretic operations}
-\subsubsection{Basic classes}
-\iffalse
-Notation:\\
+\subsubsection{Relations and their induced operators}
+Fix set carriers $X,Y$ and a relation $R\subseteq X\times Y$.
+Write $R[A]=\{y\in Y:\exists x\in A,\ (x,y)\in R\}$ and
+$R^\top[B]=\{x\in X:\exists y\in B,\ (x,y)\in R\}$.
+The direct-image operator $R^{\rightarrow}:\power X\to\power Y$
+and inverse-image operator $R^{\leftarrow}:\power Y\to\power X$
+are the functions sending a subset to these respective images.
+They are functions even when $R$ is not functional: each subset has a
+uniquely specified image, though an individual point may have many outputs.
+The identity relation $I_X=\{(x,x):x\in X\}$ is a subset of
+$X\times X$, since both coordinates of each record belong to $X$.
+Restriction $R|_A$ retains exactly the records whose first coordinate
+belongs to $A$.
 
-Starting here and for the rest of the document, we will use usual symbol of equality "=" for quasi--equality (before it was "$\simeq$") and "$\equiv$" for equality (before it was "=").
-\fi
-\iffalse %DUPLICATE
-\begin{definition}[identity]
+\begin{theorem}[Images preserve unions]
+For $\mathcal M\subseteq\power X$ and
+$\mathcal N\subseteq\power Y$,
 \[
-I = \cc{(x,x)}{\top}
-\clabeltagd{def}{identity}
+R[\bigcup\mathcal M]=\bigcup R^{\rightarrow}[\mathcal M],
+\qquad
+R^\top[\bigcup\mathcal N]=\bigcup R^{\leftarrow}[\mathcal N].
 \]
-\end{definition}
-\fi %DUPLICATE
-\begin{lemma}[identity is a relation]
-\[
-(I \relation)
-\clabeltagd{lem}{identity is relation}
-\]
-\[
-\text{i.e. }(I\subseteq V\times V)\text{                     }
-\]
-\end{lemma}
-
-
-\begin{definition}[``F on X'']
-\[
-\text{``F on X''} \eqdef (F\restriction X)
-\]
-\end{definition}
-
-
-\begin{definition}[?]
-\[
-(y\in f[A])
-\iff
-(\exists x\in A,\ \langle x,y\rangle\in f)
-\]
-\end{definition}
-
-\begin{definition}[?]
-\[
-(y\in f\langle A\rangle)
-\iff
-(\forall x\in A,\ \langle x,y\rangle\in f)
-\]
-\end{definition}
-\begin{theorem}[?]
-\[
-(X\subseteq \power Y)
-\iff
-(\union X \subseteq Y)
-\]
+Neither functionality nor injectivity of $R$ is required.
 \end{theorem}
-\begin{theorem}[?]
-\[
-(g\functional)
-\land
-(M \countable)
-\implies
-(g[M] \countable)
-\]
-\end{theorem}
-\begin{theorem}[?]
-\[
-(f^\leftarrow \univocal)
-\]
-\end{theorem}
+\Proof
+Membership in the first left side means that some $A\in\mathcal M$
+contains an $x$ with $(x,y)\in R$. Equivalently, $y\in R[A]$ for
+some $A\in\mathcal M$, which is membership in the right side.
+Apply the same argument to $R^\top$ for the second equality.
+The empty indexing families give empty images on both sides.
+\Done
 
-\begin{theorem}[?]
-\[
-\left(f\injective\middle)
-\implies
-\middle(f\left[\union M\right] = \union f^{\rightarrow}\left[M\right]\right)
-\]
-\end{theorem}
+The fixed set carriers ensure that all image values used as members of
+the right-hand families are sets. For arbitrary class relations an image
+can be proper, and a class graph cannot store that value as a member.
+An extension to that setting must use the family's class-value encoding
+or retain the quantified membership formulation instead.
 
-\begin{theorem}[?]
-\[
-\left(f\univocal\middle)
-\implies
-\middle(
-f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
-\right)
-\]
+\begin{theorem}[Functional images of countable sets]
+If $M$ admits an injection $j:M\to\omega$ and $g$ is a set-valued
+class function, then $g[M]$ is countable, where only arguments in the
+domain of $g$ contribute to the graph image.
 \end{theorem}
+\Proof
+First $j[M]\subseteq\omega$ is a set by separation, and the inverse
+class function $j^{-1}$ on $j[M]$ has image $M$. Replacement therefore
+makes $M$ a set and then makes $g[M]$ a set. For each $y\in g[M]$, let $k(y)$
+be the least $j(x)$ among $x\in M\cap\dom(g)$ with $g(x)=y$. Such a natural
+number exists by the definition of image and well-ordering of $\omega$.
+If $k(y)=k(z)$, injectivity of $j$ identifies the two witnessing inputs,
+and functionality of $g$ gives $y=z$. Thus $k:g[M]\to\omega$ is
+injective. The empty image is included. Least witnesses avoid any appeal
+to a choice axiom.
+\Done
+
+The union--powerclass comparison
+$A\subseteq\power B\iff\bigcup A\subseteq B$ was proved in the
+union and intersection section. It is a statement about arbitrary classes;
+it is distinct from the set-carrier restrictions needed to form the
+image operators here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%% END
 
@@ -722,20 +1306,19 @@ f^{\top}\left[\union M\right] =\union f^{\leftarrow}\left[M\right]
 \pagebreak
 \subsection{Implementing $\Sigma$--types}
 \subsubsection{Axioms of $\Sigma$--types}
-In type theory, the formatin rule for a $\Sigma$--type is
-Formation of $\Sigma$--type:
+The formation rule for a dependent sum is:
 \begin{prooftree}
 \AxiomC{
 $(A:\Type)$\quad\quad$(x:A\vdash B(x):\Type)$
 }
 \RightLabel{$\Sigma$--form}
 \UnaryInfC{$
-\vdash \Sigma_{(x:A)}B(x):\Type  
+\vdash \Sigma_{(x:A)}B(x):\Type
 $}
 \end{prooftree}
 
 \subsubsection{Model of $\Sigma$--types}
-In every theorem of this section, it is assumed, that $(B\family)$.
+Throughout this subsection, $B$ is a family. The dependent sum consists of pairs of an index in its domain and a member of the corresponding value. The domain guard is explicit so that an out-of-domain default contributes no extra pairs.
 \iffalse
 \begin{definition}[dependent sum]
 \iffalse %OUTDATED: functional transposition vs relational transposition
@@ -750,7 +1333,7 @@ In every theorem of this section, it is assumed, that $(B\family)$.
 \fi
 \begin{definition}[dependent sum of a family]
 \[
-\Sigma B\eqdef\cc{(x,y)}{y\in B(x)}
+\Sigma B\eqdef\cc{(x,y)}{(x\in\Dom(B))\land(y\in B(x))}
 \]
 \end{definition}
 %10,11
@@ -778,24 +1361,26 @@ Then:
 \item \textbf{Elimination (Projections):} For every $(p \in \Sigma B)$, writing $p = (x, y)$ with $(x \in \Dom(B))$ and $(y \in B(x))$, ordered-pair injectivity yields $(\pr_1(p) = x \in \Dom(B))$ and $(\pr_2(p) = y \in B(\pr_1(p)))$.
 \item \textbf{$\beta$- and $\eta$-Computation:} $(\pr_1((x, y)) = x)$, $(\pr_2((x, y)) = y)$, and $(( \pr_1(p), \pr_2(p) ) = p)$ for all $(p \in \Sigma B)$.
 \end{enumerate}
-(Formalized in Obelisk Variant~1 as \texttt{sigma\_model\_def\_entry} (Item~3.70) and Variant~2 as \texttt{thm\_83\_sigma\_model\_proj} and \texttt{sigma\_dependent\_sum\_intro}.)
+The newer catalog records the dependent-sum membership interface as \texttt{DefSigmaModel} (3.38). The projection and computation claims additionally use the selected pairing model; that entry alone is not a certificate for every rule displayed here.
 \end{theorem}
 
-\subsubsection{Implementation of (small?) $\Sigma$--types}
+\subsubsection{Rules for small $\Sigma$--types}
+For these rules, $\Un$ denotes a chosen universe closed under the dependent
+sum construction. That closure is an assumption on this local universe.
 \underline{Formation of terms of $\Sigma$--type:}\\
 \[
 \Sigma : \Pi((A:\Un)\mapsto((A\to \Un)\to \Un))
 \]
 \underline{Introduction of terms of $\Sigma$--type:}\\
 \[
-\textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ I\ B))))
+\textrm{pair} : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto\Pi((x:A)\mapsto(B\ x\to\Sigma\ A\ B))))
 \]
 \underline{Elimination of terms of $\Sigma$--type:}\\
 \[
 \textrm{pr}_1 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto ((\Sigma\ A\ B) \to A)))
 \]
 \[
-\textrm{pr}_2 : \Pi((I:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B\ (\pr_1\ p))))
+\textrm{pr}_2 : \Pi((A:\Un)\mapsto\Pi((B:A\to \Un)\mapsto \Pi((p:\Sigma\ A\ B)\mapsto B\ (\pr_1\ p))))
 \]
 \underline{Computation of terms of $\Sigma$--type:}\\
 \[
@@ -807,17 +1392,19 @@ Then:
 \[
 \textrm{pair}\ A\ B\ (\pr_1\ p)\ (\pr_2\ p) \equiv p
 \]
-\subsubsection{Properties of $\Sigma$--types}
-\begin{lemma}[?]
+\subsubsection{The membership expansion of a family}
+For an ordinary set-valued class function $B$, the dependent sum has
+records $(x,y)$ with $x\in\dom(B)$ and $y\in B(x)$. Hence
 \[
-\invE = \Sigma \I
+\Sigma B=\invE\circ B.
 \]
-\end{lemma}
-\begin{lemma}[?]
-\[
-\Sigma B = \invE \circ B
-\]
-\end{lemma}
+Indeed, a record in the composite supplies a set $z$ with $(x,z)\in B$
+and $y\in z$; functionality identifies $z=B(x)$, and the converse
+uses that same witness. In particular, for the identity class function
+$I=\{(x,x):x\in\V\}$, this gives $\Sigma I=\invE$.
+These equalities concern ordinary set-valued graphs; applying the same
+notation to a proper-class-valued encoded family requires its separately
+specified expansion convention.
 \pagebreak
 \subsection{Implementing $\Pi$--types}
 \begin{notation}[Fm]
@@ -828,11 +1415,11 @@ The terms for propositions are called \textit{formulas}.
 \end{notation}
 \begin{notation}[typecong]
 There are no conglomerate--level terms except conglomerate--level types and virtualisations of them.
-That is the reason why ``typecong'' is a keyword, that makes a judgment out of class--level term and conglomeerate--level type.
+That is the reason why ``typecong'' is a keyword, that makes a judgment out of class--level term and conglomerate--level type.
 There are exactly two variants of judgements: it is either a typing $(a:A)$ or declaring a conglomerate--level type.
 \end{notation}
 \begin{notation}[conglomerate--level types]
-Any formula (e.g. $\mquote{(x \set)}:\Prop\Term$), which is constructed out of an unary predicate symbol is semantically written like this:
+Any formula (e.g. $\mquote{(x \set)}:\Prop\Term$), which is constructed out of a unary predicate symbol is semantically written like this:
 \[
 (x \set),
 \]
@@ -840,10 +1427,10 @@ while a typing judgement and variable's binding are syntactically written like t
 \[
 (x:\Set).
 \]
-The former is the valuation of the latter. To be precise, specifically, it holds under one special assignment which maps all letters to corresponding variables of the current context. 
+The former is the valuation of the latter. To be precise, specifically, it holds under one special assignment which maps all letters to corresponding variables of the current context.
 \end{notation}
 %\[
-%\forall (B\family), 
+%\forall (B\family),
 %\]
 \subsubsection{Axioms of $\Pi$--types}
 \underline{Formation of terms of $\Pi$--type:}\\
@@ -905,16 +1492,21 @@ $\Wau \vdash (A:\text{Set})$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\text{Set})$
 \Wau \vdash (\Pi_{(x:A)}B(x)):\text{Set}
 $}
 \end{prooftree}
+For the tiny formation rule, assume additionally that the chosen universe
+$\Un$ is closed under dependent products: if $A\in\Un$ and a specified
+family has $B(a)\in\Un$ for all $a\in A$, then its dependent product
+belongs to $\Un$. The dependent-sum closure assumed earlier does not by
+itself supply this requirement.
 \begin{prooftree}
 \AxiomC{
 $\Wau \vdash (A:\Un)$\quad\quad$\Wau, [(x:A)]\vdash (B(x):\Un)$
 }
 \RightLabel{$\Pi$--form(tiny)}
 \UnaryInfC{$
-\Gamma \vdash \Pi_{(x:A)}B(x):\Un  
+\Wau \vdash \Pi_{(x:A)}B(x):\Un
 $}
 \end{prooftree}
-Subtypes are forbidden(due to many complications), but subsorts are allowed, since there are only two sorts: Set and Class(so it's easy to implement).
+The following implementation proposal omits general subtyping and instead permits the two-sort inclusion from Set to Class. This is a local design choice for these rules.
 \begin{prooftree}
 \AxiomC{
 $(A:\text{Set})$
@@ -924,6 +1516,10 @@ $(A:\text{Set})$
 (A:\text{Class})
 $}
 \end{prooftree}
+In the contextual rules below, $x$ is fresh for $\Gamma$, all displayed
+contexts and types are well formed, and substitutions avoid capture.
+The bound name in the eta rule is chosen fresh for $f$ as well as for
+$\Gamma$. These conventions permit alpha-renaming of local binders.
 \underline{Introduction of terms of $\Pi$--type:}\\
 \begin{prooftree}
 \AxiomC{
@@ -969,6 +1565,18 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$
 \end{prooftree}
 
 \subsubsection{The first model of $\Pi$--types as predicates on classes}
+\begin{remark}[a section needs more than a common domain]
+The newer Obelisk record \texttt{DefPiPredicateModel} (3.39) displays an
+implication from ``$B$ and $f$ are families with the same domain'' to
+$\forall x\in\Dom(B),\ f(x)\in B(x)$. The pointwise membership condition
+must instead be part of the section predicate or a typing hypothesis.
+For example, take $B=f=\{(0,\emptyclass)\}$. Both domains are $\{0\}$,
+but $f(0)=B(0)=\emptyclass$, so the claimed membership would be
+$\emptyclass\in\emptyclass$. The predicate defined below retains the
+necessary condition. The generated record's verification label alone does
+not resolve this discrepancy in its displayed statement.
+\end{remark}
+
 Let $B$ be a family term.\\
 So $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$ is a family of classes.\\
 %Let $B$ be a family of classes.\\
@@ -984,7 +1592,7 @@ For this model the judgement ``$\pmb{(f:\Pi B)}$'' is interpreted as a propositi
 \mantiquoteleft
 \pmb{f}
 \mantiquoteright^{\Class}_v
-:\Pi 
+:\Pi
 \mantiquoteleft
 \pmb{B}
 \mantiquoteright^{\Class}_v
@@ -1015,8 +1623,7 @@ f\text{ class--function})
 )
 \]
 \end{definition}
-This is done, because the meaning of $\Pi B$ is too large to be a class.
-Because whenever $B$ is valuated as a proper class--function, then the valuation of the term $f$ must also be a proper class--function, which is impossible for an element to be, since any element is a set(and vice versa), by the very definition of what a ``set'' is.
+This predicate presentation allows the domain of $B$ to be a proper class. Any function with that domain must then itself be proper, and so cannot be a member of a class. Keeping $(f:\Pi B)$ as a predicate avoids imposing an unintended sethood condition on $f$.
 
 
 \subsubsection{The second model of $\Pi$--types as sets}
@@ -1036,8 +1643,7 @@ Note, that
 ).
 \]
 Let $B\eqdef\mantiquoteleft \pmb{B} \mantiquoteright^{\Family}_v$.
-Assume that the domain of family $B$ is a set.
-Then
+For a class of set-valued sections it is enough to use class comprehension. For the displayed interpretation specifically as a set, assume in addition that $B$ is a set-indexed family of sets, so that its dependent sum and the relevant function space are sets. Then
 \[
 \mantiquoteleft
 \pmb{\Pi B}
@@ -1047,17 +1653,22 @@ Then
 \]
 
 
-\subsubsection{The third model of $\Pi$--types as a restriction of the first model?}
+\subsubsection{Further class-valued models of $\Pi$--types}
+The following variants collect set-sized sections. On a proper-class domain,
+they need not represent all instances of the predicate model. The size
+terminology in this proposal is local: it distinguishes syntax-level types,
+predicates admitting proper classes, classes of set instances, and sets of
+instances.
 The $\Type$ is interpreted as $\TClass$.\\
 Large types are used just for preventing primitive typing errors.\\
 Medium types are for expressing the properties of proper classes.\\
 Small types are expressing the proper classes, which contain as sets all interpretations of the terms of that type.\\
 %(Another level may be here for expressing the proper classes, which contain only sets. It can be called "Small" while "Small" ones are renamed to "Tiny")\\
 %Medium1 types are for expressing the properties of proper classes.
-%Small(Maybe better call it "Tiny"?) 
+%Small(Maybe better call it "Tiny"?)
 Tiny types are interpreted as sets, which contain as sets all interpretations of the terms of that type.\\
 
-In MK, a $\Pi$--types has the following interpretation:
+One class-valued candidate is:
 \begin{definition}[dependent product, variant A]
 \[
 \Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
@@ -1067,11 +1678,11 @@ The expression $\Dom(B)$ is used to include the case when $B$ is a proper family
 \begin{definition}[dependent product, variant B]
 (Note: For sets the following definition is also okey:
 \[
-\Pi B = \cc{f\in \left(\union\ran(B)\right)^{\dom(f)}}{\forall (x\in\dom(f)) ,\ (f(x) \in B(x))},
+\Pi B = \cc{f\in \left(\union\ran(B)\right)^{\Dom(B)}}{\forall (x\in\dom(f)) ,\ (f(x) \in B(x))},
 \]
 but it is not working well for classes)
 
-(Maybe TODO: improve definition so it includes families [only]. It may not be useful.)
+(This variant is intended for set-indexed, set-valued families; extending its size range requires a separate argument.)
 \end{definition}
 
 \begin{definition}[dependent product, variant C]
@@ -1093,29 +1704,72 @@ Another definition:\\
 \]
 \end{definition}
 
-\begin{definition}[dependent product, variant D]
-\begin{lemma}[?]
+\begin{theorem}[Sections and dependent function graphs]
+Let $A$ be a set and let $B(a)$ be a set for every $a\in A$.
+Use injective set-pair coding, and put
 \[
-\Pi B = \cc{f\in \power \Sigma B }{ (f\functional) \land (\dom(f)=\Dom(B)) }
+S=\{(a,b):a\in A,\ b\in B(a)\}.
 \]
-\end{lemma}
-\end{definition}
+Then $S$ is a set, and there is a bijection between the set of functions
+$f$ on $A$ with $f(a)\in B(a)$ and the set of sections
+$s:A\to S$ of the projection $\pr_1:S\to A$. The mutually inverse maps are
+\[
+f\longmapsto(a\mapsto(a,f(a))),\qquad
+s\longmapsto\pr_2\circ s.
+\]
+In particular the product is the set
+\[
+\{f\in\power S:f\text{ is functional and }\dom(f)=A\}.
+\]
+\end{theorem}
+\Proof
+Replacement collects the sets $\{a\}\times B(a)$, and union gives $S$.
+A function graph contained in $S$ has exactly the required pointwise
+values when its domain is $A$. Separation inside $\power S$ therefore
+forms the product set. For such an $f$, replacement forms the graph of
+$s(a)=(a,f(a))$, and $\pr_1\circ s=\operatorname{id}_A$.
+Conversely, for a section $s$, write $s(a)=(c,b)\in S$.
+The section equation gives $c=a$, hence $b\in B(a)$. Thus
+$\pr_2\circ s$ is a member of the product. Applying the two constructions
+in either order preserves every value, by the two projection equations
+and injectivity of pairing. Function extensionality proves they are inverse.
+\Done
+
+This correspondence uses no choice axiom: it transforms supplied sections
+and functions. It does not assert that the product is inhabited merely
+because every $B(a)$ is nonempty. For arbitrary set-indexed families that
+assertion is precisely the set axiom of choice. When $A=\emptyclass$,
+both the product and the set of sections contain exactly the empty
+function, so the correspondence includes the empty-index case.
+
 \subsubsection{Soundness of $\Pi$--types}
 \begin{theorem}[Soundness of $\Pi B$ Formation, Abstraction, Application, and $\beta$/$\eta$ Rules]
-Let $B$ be a family of classes over domain $A = \Dom(B)$, and let
+Let $B$ be a family of classes over a set domain $A=\Dom(B)$, and assume sethood of the graphs constructed below (as supplied by the class-function image principle). Let
 \[
 \Pi B = \cc{f \in \power \Sigma B}{(f\functional) \land (\dom(f) = \Dom(B)) \land (\forall (x \in \Dom(B)),\ (f(x) \in B(x)))}.
 \]
 Then:
 \begin{enumerate}
-\item \textbf{Introduction ($\lambda$-Abstraction):} If for every $(x \in \Dom(B))$ the term $t(x)$ is a set satisfying $(t(x) \in B(x))$, then the functional graph $(\lambda (x \in \Dom(B)),\, t(x)) = \cc{(x, t(x))}{x \in \Dom(B)}$ is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (x \in \Dom(B)),\, t(x)) \in \Pi B)$.
+\item \textbf{Introduction ($\lambda$-Abstraction):} If for every $(x \in \Dom(B))$ the term $t(x)$ is a set satisfying $(t(x) \in B(x))$, then the functional graph
+\[
+(\lambda (x \in \Dom(B)),\, t(x)) = \cc{(x, t(x))}{x \in \Dom(B)}
+\]
+is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (x \in \Dom(B)),\, t(x)) \in \Pi B)$.
 \item \textbf{Elimination (Dependent Application):} If $(f \in \Pi B)$ and $(a \in \Dom(B))$, then the singleton fiber $\cc{y}{(a, y) \in f} = \{f(a)\}$ has unique element $f(a) = \mathrm{Value}(\cc{y}{(a, y) \in f}) = \bigcap\cc{y}{(a, y) \in f}$ satisfying $(f(a) \in B(a))$.
 \item \textbf{$\beta$- and $\eta$-Computation:} For all $(a \in \Dom(B))$, $(((\lambda (x \in \Dom(B)),\, t(x)))(a) = t(a))$, and for every $(f \in \Pi B)$, $((\lambda (x \in \Dom(B)),\, f(x)) = f)$ by functional extensionality.
 \end{enumerate}
-(Formalized in Obelisk Variant~1 as \texttt{pi\_predicate\_model\_def\_entry} (Item~3.71) and Variant~2 as \texttt{thm\_84\_pi\_model\_elim} and \texttt{pi\_dependent\_product\_elim}.)
+These rules use the explicitly restricted product defined in this theorem. They do not follow from the unrestricted same-domain implication in the generated \texttt{DefPiPredicateModel} record discussed above.
 \end{theorem}
 \pagebreak
 \subsection{Implementing W--types}
+A W-type describes well-founded trees: a label $a$ determines the type
+$B(a)$ of branches. The rules first state the intended interface. The
+finite-stage model developed afterward is restricted to finite branching,
+that is, finite $B(a)$ for each label $a$. This restriction is what allows
+all branches of a node to fit in one finite stage. Infinite branching requires a further construction: after constructing
+the M-type, we obtain the general set-arity W-type as its well-founded
+part. It is not supplied by the finite-stage formulas alone.
+
 \subsubsection{Axioms of W--types}
 \underline{Formation of W--type:}\\
 Let $B$ be a family of types.\\
@@ -1126,15 +1780,20 @@ Then $\W B$ is also a type.\\
 \]
 \underline{Elimination of terms of W--type:}\\
 \[
-\mbox{W}_\mathrm{rect}:
-\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}
-  \left(\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)} \left(\prod_{(f : B(a))} P(w(f))\right)  \to P (\sup(B)(a)(w))\right) \to
-      \left(\prod_{(w : \mathrm{W}B)} P(w)\right)
+\begin{aligned}
+\mbox{W}_\mathrm{rect}:{}&
+\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}\\
+&\quad\left(\begin{aligned}
+&\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)}\\
+&\quad\left(\prod_{(f : B(a))} P(w(f))\right)\to P(\sup(B)(a)(w))
+\end{aligned}\right)\\
+&\quad\to\left(\prod_{(w : \mathrm{W}B)} P(w)\right)
+\end{aligned}
 \]
 \underline{Computation of terms of W--type:}\\
 \[
-\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f)) 
-\eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
+\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f))
+\eqdef e(a, f, \lambda(b:B(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
 \]
 \pagebreak
 \subsubsection{Model of $\text{W}$--types}
@@ -1147,7 +1806,7 @@ Assume $B$ is a family of classes with a class $A$ being its domain.
 %\EuScript{W}
 %\mathscr{W}
 \[
-(\EuScript{W}_{\mathrm{fun}}B)(0)\eqdef \emptyclass 
+(\EuScript{W}_{\mathrm{fun}}B)(0)\eqdef \emptyclass
 \]
 \[
 (\EuScript{W}_{\mathrm{fun}}B)(n+1)\eqdef \cc{(r,s)}{ (r\in \Dom(B))\land (s:B(r)\to (\EuScript{W}_{\mathrm{fun}}B)(n) )}
@@ -1156,12 +1815,13 @@ Assume $B$ is a family of classes with a class $A$ being its domain.
 \[
 \EuScript{W}B \eqdef\bigcup_{n\in\omega}((\EuScript{W}_{\mathrm{fun}}B)(n)),
 \]
-or even simply
+Equivalently, when all stages are sets, this is the union of the range:
 \[
-\EuScript{W}B \eqdef\ran(\EuScript{W}_{\mathrm{fun}}B).
+\EuScript{W}B \eqdef\bigcup\ran(\EuScript{W}_{\mathrm{fun}}B).
 \]
+The range alone collects the stages, whereas its union collects their trees.
 
-A variant of a definition, which works only for definable families and that uses %class--theoretic implementations of 
+A variant of a definition, which works only for definable families and that uses %class--theoretic implementations of
 the sigma types and the empty type:
 \[
 \mbox{W}_{\mathrm{fun}}':\text{Family.Expression}
@@ -1177,7 +1837,7 @@ the sigma types and the empty type:
 (\mbox{W}_{\mathrm{fun}}'B)(0)\equivdef \mathrm{Void}
 \]
 \[
-(\mbox{W}_{\mathrm{fun}}'B)(n+1)\ \equivdef 
+(\mbox{W}_{\mathrm{fun}}'B)(n+1)\ \equivdef
 \sum_{(r: \Dom(B))} (B(r)\to (\mbox{W}_{\mathrm{fun}}'B)(n) )
 \]
 %\Pi\Sigma\mathop{\dum}\limits_{(r\in \Dom(B))} \sum
@@ -1189,7 +1849,7 @@ the sigma types and the empty type:
 \mbox{W}'B\equivdef\bigsqcup_{n:\mathbb{N}} ((\mbox{W}_{\mathrm{fun}}'B)(n))
 \]
 
-Note: this type is a solution of the fixed--point equation
+For the finite-branching model, the intended fixed-point equation is
 %=
 \[
 F(X)\cong X,
@@ -1200,13 +1860,13 @@ P_B(X)
 \cequiv
 \sum_{a:A}
 (B(a)
-\to 
+\to
 X)
 \]
 \[
 F(X)\cequiv P_B(X)
 \]
-For every polynomial functor $P$, define
+For a polynomial functor $P$ with finite arities, define
 \[
 P_{\text{fun}}(0)\equivdef \text{Void}
 \]
@@ -1245,7 +1905,7 @@ To show:
 \subseteq
 (\mbox{W}_{\mathrm{fun}}B)(n+2).
 \]
-It follows from the assumption, that 
+It follows from the assumption, that
 \[
 (B(r)\to(\mbox{W}_{\mathrm{fun}}B)(n))
 \subseteq
@@ -1274,7 +1934,7 @@ For fixed function $B$,
 \[
 \sup(B):\prod_{(a\in \Dom(B))}((B(a)\to\mbox{W}B)\to \mbox{W}B)
 \]
-Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\Dom(B)$ is finite(?), then $s[B(a)]$ is finite. Therefore there is a maximal level $m$ of elements of $s[B(a)]$, so $s[B(a)]\subseteq (\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $s:B(a)\to(\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $(a,s)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
+Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since the branch set $B(a)$ is finite, its image $s[B(a)]$ is finite. If this image is nonempty, let $m$ be the maximum of the least stage indices of its elements; if it is empty, take $m=0$. Then $s[B(a)]\subseteq (\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $s:B(a)\to(\mbox{W}_{\mathrm{fun}}B)(m)$. Therefore $(a,s)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$, which is a subset of $\mbox{W}B$, so $(a,s)\in\mbox{W}B$. Therefore we can define $\sup$ this way:
 \[
 \sup(B) \eqdef ((a\in \Dom(B))\mapsto ((s:B(a)\to\mbox{W}B)\mapsto (a,s)) ).
 \]
@@ -1284,10 +1944,15 @@ Assume $(a\in \Dom(B))$ and $(s:B(a)\to\mbox{W}B)$. Since $\Dom(B)$ is finite(?)
 \underline{Elimination of terms of W--type:}\\
 \begin{definition}[destructor of W--type]
 \[
-\mbox{W}_\mathrm{rect}:
-\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}
-  \left(\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)} \left(\prod_{(f : B(a))} P(w(f))\right)  \to P (\sup(B)(a)(w))\right) \to
-      \left(\prod_{(w : \mathrm{W}B)} P(w)\right)
+\begin{aligned}
+\mbox{W}_\mathrm{rect}:{}&
+\prod_{(A : \Un)} \prod_{(B : A \to \Un)} \prod_{(P : \mathrm{W}B\to \Un)}\\
+&\quad\left(\begin{aligned}
+&\prod_{(a : A)} \prod_{(w : B(a) \to \mathrm{W}B)}\\
+&\quad\left(\prod_{(f : B(a))} P(w(f))\right)\to P(\sup(B)(a)(w))
+\end{aligned}\right)\\
+&\quad\to\left(\prod_{(w : \mathrm{W}B)} P(w)\right)
+\end{aligned}
 \]
 \begin{lstlisting}
 W_rect
@@ -1299,54 +1964,425 @@ W_rect
 
 \underline{Computation of terms of W--type:}\\
 
-Due to finiteness of $A$ and $(\mbox{W}_{\mathrm{fun}}B)(0)=\emptyclass$, it holds that $\sup(B,a,f)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)$ for some $m\in\N$.
-
-
-Assume $(A : \Un)$ $(B : A \to \Un)$ $(E : \mathrm{W}B\to \Un)$.\\
-Definition of $\mbox{W}_{\mathrm{rect}}$ is done by induction on $n$.\\
-Base:\\
-n=0.
-Step:\\
-Assume $\mbox{W}_{\mathrm{rect}} (A,B,E,e,w)$ is defined for every $w\in (\mbox{W}_{\mathrm{fun}}B)(n)$.\\
-(todo\dots)
-
-\begin{theorem}[computation of W--type]
+By finiteness of each branch set $B(a)$ and $(\mbox{W}_{\mathrm{fun}}B)(0)=\emptyclass$, it holds that
 \[
-\mbox{W}_{\mathrm{rect}} (A,B,E,e,\sup(B,a,f)) 
-\eqdef e(a, f, \lambda(b:E(a))\mapsto \mbox{W}_{\mathrm{rect}} (A,B,E,e, f(b)))
-\clabeltagd{thm}{Wcomp}
+\sup(B,a,f)\in (\mbox{W}_{\mathrm{fun}}B)(m+1)
 \]
-\Proof
-Base of induction $n=0$:\\
-For all elements $w$ of $\mbox{W}B(0)$,
+for some $m\in\N$.
+
+
+\begin{theorem}[Dependent recursion for the finite-branching set model]
+\label{thm:Wcomp}
+Work in the usual set theory with powerset, replacement, and recursion on
+$\omega$. Let $A$ be a set and each $B(a)$ a finite set. Write $W_n$ for
+the stage above and $W=\bigcup_{n<\omega}W_n$, using ordinary injective
+set-pair coding. Let $E(w)$ be a set for each $w\in W$. Suppose a
+specified step operation assigns
 \[
-\mbox{W}_{\mathrm{rect}} (A,B,e,w) 
+e(a,s,h)\in E((a,s))
 \]
-is vacuously defined, since there are none.\\
-Step of induction $n\mapsto(n+1)$:\\
-Assume function is defined on $\mbox{W}B(n)$.\\
-Then via the last equation, it is defined on $\mbox{W}B(n+1)$ as well.\\
-It's definition doesn't depend on $n$.\\
-Therefore it is univocally defined on whole $\mbox{W}B$, because it's a union of all "levels".
-\Done
+whenever $s:B(a)\to W$ and $h$ is a function with
+$h(b)\in E(s(b))$ for every $b\in B(a)$. Then there is exactly one
+function $r$ on $W$ with $r(w)\in E(w)$ and
+\[
+r((a,s))=e\bigl(a,s,b\mapsto r(s(b))\bigr).
+\]
+This is the interpretation of the displayed $\mathrm W_{\mathrm{rect}}$
+and its computation rule in this set model.
 \end{theorem}
+\Proof
+Powerset and replacement make every function set $W_n^{B(a)}$ and
+hence each stage
+\[
+W_{n+1}=\sum_{a\in A}W_n^{B(a)}
+\]
+a set.
+Recursion on $\omega$, replacement, and union give the set $W$.
+The earlier cumulative-stage and finite-branching arguments show that
+$W$ is closed under $(a,s)$ and that each node has a unique such
+decomposition. In particular, a node in $W_{n+1}$ has every child in
+$W_n$.
 
-\subsubsection{Soundness of W--types}
-\dots
+Put $r_0=\emptyclass$. Given $r_n$ on $W_n$, define on $W_{n+1}$
+\[
+r_{n+1}((a,s))=e\bigl(a,s,b\mapsto r_n(s(b))\bigr).
+\]
+The inductive typing assertion makes the right side defined and in
+$E((a,s))$; replacement collects its graph. The crucial compatibility
+assertion is $r_{n+1}|_{W_n}=r_n$. For $n=0$ it is vacuous. For the
+step, a node $(a,s)\in W_{n+1}$ has children in $W_n$, where
+$r_{n+1}$ and $r_n$ already agree. Thus its values under $r_{n+2}$
+and $r_{n+1}$ are applications of the same $e$ to identical arguments.
+This proves compatibility at the next stage.
+
+The union $r=\bigcup_n r_n$ is therefore a function on $W$, with the
+required typing. Every child family fits into some $W_n$, so the
+stage equation gives the claimed computation equation. If $q$ is
+another such function, induction on $n$ proves $q|_{W_n}=r_n$:
+the base is empty and the step uses the computation equation on
+children in $W_n$. Their unions agree, proving uniqueness.
+\Done
+
+\begin{corollary}[Structural induction and initiality]
+If a predicate $Q$ on $W$ holds at $(a,s)$ whenever it holds at every
+$s(b)$, then it holds everywhere on $W$. Furthermore, for every set $X$
+and map $\alpha:P_B(X)\to X$ there is exactly one $r:W\to X$ such that
+\[
+r((a,s))=\alpha(a,r\circ s).
+\]
+Thus the constructor $P_B(W)\to W$ is an initial $P_B$-algebra.
+\end{corollary}
+\Proof
+For induction, prove $Q$ on $W_n$ by induction on $n$; each node at the
+next stage has all children at the preceding one. For initiality, use
+the theorem with constant family $E(w)=X$ and
+$e(a,s,h)=\alpha(a,h)$. Its uniqueness clause is exactly uniqueness of
+the algebra morphism. The argument includes $X=\emptyclass$: a step
+map into the empty set exists only when its domain is empty, and the
+theorem then still applies.
+\Done
+
+\begin{remark}[Stages are identified along their inclusions]
+In this cumulative set model, the notation $\bigsqcup_n W_n$ above
+must mean the union, or equivalently the colimit along the inclusions
+$W_n\subseteq W_{n+1}$. It cannot mean the disjoint union of the stages:
+that would retain a separate tagged copy of a tree at each later stage,
+and the proof would not identify their recursor values automatically.
+The compatibility argument above supplies precisely the identification
+needed by the model. A model with a proper class of labels or genuinely
+class-valued dependent outputs requires additional representation and
+recursion arguments and is not asserted by this set-model theorem.
+\end{remark}
+
+\begin{example}[Why the finite-stage proof needs finite branching]
+Take distinct labels $z,u,c$, with $B(z)=\emptyclass$,
+$B(u)=\{0\}$, and $B(c)=\omega$. The finite trees $t_0=(z,\emptyclass)$ and
+$t_{n+1}=(u,\{(0,t_n)\})$ have unbounded finite heights.
+Their sequence is a function $s:\omega\to W$, but its image is not
+contained in any single $W_m$. Thus $(c,s)$ belongs to $P_B(W)$ but
+not to the union of the finite stages. The missing root is well founded;
+it merely has children of unbounded finite height. This shows failure
+of this construction for infinite branching, not failure of the general
+notion of a W-type.
+\end{example}
+
 \pagebreak
-\subsection{Implementing M--types [not present]} %unfinished
-\subsubsection{Axioms of M--types}
-\dots
-\subsubsection{Model of M--types}
+\subsection{Implementing M--types by finite paths}
+An M-type allows infinite depth. The author's path-based proposal can be
+made precise using finite addresses: a potentially infinite tree is
+specified by all its finite observations. We now give a set-level model
+and prove its universal property. No finite-branching hypothesis is needed.
+
+Fix a set $A$ and a set family $(B(a))_{a\in A}$. Put
 \[
-\text{M}B \eqdef \cc{Q\in\mathcal{P}\cc{f:D \to\Sigma B}{ (D\in\omega)\lor(D=\omega)}}{ \dots }
+C=\sum_{a\in A}B(a),\qquad
+C^{<\omega}=\bigcup_{n<\omega} C^n.
 \]
+Elements of $C^{<\omega}$ are finite words; the empty word is $\epsilon$,
+and concatenation is denoted by $pq$. A letter $(a,b)$ records the
+parent label as well as its branch index, so overlapping branch sets do
+not cause ambiguity.
+
+\begin{definition}[Trees described by finite addresses]
+Let $M_B$ consist of the partial functions $t:C^{<\omega}\rightharpoonup A$
+with domain $D_t$ satisfying:
+\begin{enumerate}
+\item $\epsilon\in D_t$;
+\item $D_t$ is prefix closed;
+\item if $p\in D_t$ and $c\in C$, then
 \[
-\forall f,g\in Q, \forall \mbox{i initial segment of }\omega: ((\mathrm{pr}_1 \circ f)\restriction i)=((\mathrm{pr}_1 \circ g) \restriction i) \longrightarrow f \restriction i =  g \restriction i\}
+pc\in D_t\iff c=(t(p),b)\text{ for some }b\in B(t(p)).
 \]
+\end{enumerate}
+These are conditions on a subset of $C^{<\omega}\times A$, so powerset
+and separation make $M_B$ a set. In particular $M_B=\emptyclass$ if
+$A=\emptyclass$. Partial functions here are ordinary functional graphs;
+their values are used only on their stated domains.
+\end{definition}
+
+For $t\in M_B$, let $a=t(\epsilon)$. For each $b\in B(a)$ define its
+subtree $t_b$ by
 \[
-\inf : \dots
+D_{t_b}=\{q:(a,b)q\in D_t\},\qquad t_b(q)=t((a,b)q).
 \]
-\subsubsection{Soundness of M--types}
-\dots
+The tree axioms immediately give $t_b\in M_B$. Thus the destructor is
+\[
+\delta:M_B\longrightarrow P_B(M_B),\qquad
+\delta(t)=(a,b\mapsto t_b).
+\]
+
+\begin{lemma}[Grafting and decomposition]
+The destructor $\delta$ is bijective. Its inverse sends $(a,s)$, where
+$s:B(a)\to M_B$, to the tree with root label $a$ and subtrees $s(b)$.
+\end{lemma}
+\Proof
+Define $t$ on the set
+\[
+D_t=\{\epsilon\}\cup
+\{(a,b)q:b\in B(a),\ q\in D_{s(b)}\}
+\]
+by $t(\epsilon)=a$ and $t((a,b)q)=s(b)(q)$.
+Each nonempty address has a unique first letter and suffix, so this
+is well defined. Prefix closure and the exact-child condition follow
+at the root from the indexing set $B(a)$, and below it from the
+corresponding conditions on each $s(b)$. Hence $t\in M_B$, with
+$\delta(t)=(a,s)$. Conversely, decomposing any tree and grafting its
+subtrees recovers every nonempty address and its label, as well as the
+root. The constructions are inverse.
+\Done
+
+\begin{theorem}[Final coalgebra and corecursion]
+\label{thm:M_final_coalgebra}
+For every set $X$ and map $\gamma:X\to P_B(X)$ there is exactly one
+$h:X\to M_B$ satisfying
+\[
+\delta\circ h=P_B(h)\circ\gamma,
+\qquad P_B(h)(a,s)=(a,h\circ s).
+\]
+Thus $(M_B,\delta)$ is a final coalgebra for $P_B$ on sets.
+Here $P_B$ is a functor: postcomposition preserves identities and
+composition, so $P_B(\operatorname{id})=\operatorname{id}$ and
+$P_B(k\circ h)=P_B(k)\circ P_B(h)$.
+\end{theorem}
+\Proof
+Write $\gamma(x)=(a_x,s_x)$, where $s_x:B(a_x)\to X$.
+Starting from a state $x$, define the state reached at a finite address
+recursively on its length. The empty address reaches $x$. If $p$ reaches
+$y$, then precisely the letters $(a_y,b)$ with $b\in B(a_y)$ are
+admissible next, and $p(a_y,b)$ reaches $s_y(b)$. A word whose prefix
+is inadmissible remains inadmissible. This is finite recursion with
+unique transitions, and replacement collects the reached states on
+each length; union over $\omega$ collects all valid addresses.
+
+Label each valid address by $a_y$ for its reached state $y$. The result
+$t_x$ satisfies the tree axioms by construction. Its root label is $a_x$,
+and its subtree at $b$ is $t_{s_x(b)}$, because both use the identical
+transition rule starting from $s_x(b)$. Thus $h(x)=t_x$ satisfies the
+coalgebra equation. Replacement gives a set function $h$.
+
+If $k:X\to M_B$ satisfies that equation, its root at $x$ has label
+$a_x$ and its $b$-subtree is $k(s_x(b))$. Induction on address length
+therefore proves that $k(x)$ and $t_x$ have exactly the same admissible
+addresses of each length and the same labels there. Every address is
+finite, so their graphs coincide. Consequently $k=h$.
+The proof uses no selection of an infinite path and no choice function.
+\Done
+
+\begin{theorem}[Coinduction by bisimulation]
+Let $R\subseteq M_B\times M_B$ have the following property: whenever
+$t\mathrel R u$, their root labels agree, say with value $a$, and
+$t_b\mathrel R u_b$ for every $b\in B(a)$. Then $t\mathrel R u$
+implies $t=u$. In particular, equality is the largest such relation.
+\end{theorem}
+\Proof
+For any related pair, the root labels agree. Inductively, equal labels
+at a common address give exactly the same admissible next letters.
+At each of those letters the corresponding subtrees are again related,
+so their labels agree by the hypothesis. Induction on length proves
+identical address domains and labels at every finite level. The trees
+are their graphs on finite addresses, hence are equal. Equality itself
+has the stated property, proving the final assertion.
+\Done
+
+\begin{example}[Streams and the difference from finite trees]
+Let $A=S$ be a set of labels and $B(a)=\{0\}$ for every $a\in S$.
+A tree then has exactly one address at each length, so reading successive
+labels identifies $M_B$ with the stream set $S^\omega$. The destructor
+reads the first label and the tail. If $S$ is nonempty, a constant stream
+exists, while the finite-stage W-construction is empty: it has no
+nullary label with which to start. If $S=\emptyclass$, both sets are
+empty. Thus algebraic and coalgebraic fixed points have different
+universal properties, even for the same polynomial functor.
+\end{example}
+
+\begin{proposition}[Finite trees inside the M-type]
+Under the finite-branching assumptions of the W-model, there is a
+canonical injective map $j:W\to M_B$. Its image consists exactly of
+trees whose valid addresses have bounded finite length.
+\end{proposition}
+\Proof
+Use the initiality of $W$ with the grafting algebra
+$\delta^{-1}:P_B(M_B)\to M_B$. The resulting map satisfies
+$j((a,s))=\delta^{-1}(a,j\circ s)$. Induction on the W-stage shows that
+$j(w)$ has bounded address length.
+
+To prove injectivity, use structural induction on $w$ with the stronger
+assertion that for every $v\in W$, equality $j(w)=j(v)$ implies $w=v$.
+Write $w=(a,s)$ and $v=(d,t)$. Applying $\delta$ to the equality gives
+$a=d$ and $j(s(b))=j(t(b))$ for each $b\in B(a)$. The induction
+hypotheses for the children $s(b)$ apply to these arbitrary children
+$t(b)$, giving $s(b)=t(b)$. Function extensionality then gives $s=t$
+and hence $w=v$.
+
+Conversely, induct on an upper bound $n$ for the address lengths of a
+tree $u$. If $n=0$, the root has no children, so its label $a$ has
+$B(a)=\emptyclass$ and $u=j((a,\emptyclass))$. If $n>0$, every root
+subtree has address lengths at most $n-1$, hence is $j(w_b)$ for some
+$w_b\in W$. Injectivity makes each $w_b$ unique, so replacement gives
+the function $b\mapsto w_b$ without a choice axiom. Constructor closure
+of $W$ gives the node $(a,b\mapsto w_b)$, and its image under $j$ is
+$u$ by grafting. This completes the induction.
+\Done
+
+\subsection{W-types with arbitrary set arities}
+The finite-stage construction fails for some infinite arities, but the
+M-type supplies a set in which to isolate the well-founded trees. Keep
+$A$ and every $B(a)$ sets; no finiteness assumption is made here.
+
+\begin{definition}[The well-founded part of the M-type]
+For $t\in M_B$, put $q\prec_t p$ when $q$ is an immediate child address
+of $p$ in $D_t$. Say that $t$ is well founded if every nonempty subset
+of $D_t$ has a $\prec_t$-minimal member. Define
+\[
+W_B^{\mathrm{wf}}=\{t\in M_B:\prec_t\text{ is well founded}\}.
+\]
+Separation makes this a set. Well-foundedness here is the minimal-member
+condition, not merely an assertion that no infinite path has been chosen.
+\end{definition}
+
+\begin{lemma}[Grafting preserves and detects well-foundedness]
+For $t=\delta^{-1}(a,s)$, one has
+\[
+t\in W_B^{\mathrm{wf}}
+\iff s(b)\in W_B^{\mathrm{wf}}\text{ for every }b\in B(a).
+\]
+Consequently grafting restricts to a bijection
+$P_B(W_B^{\mathrm{wf}})\to W_B^{\mathrm{wf}}$.
+\end{lemma}
+\Proof
+A nonempty subset of addresses of $s(b)$ lifts by prefixing $(a,b)$
+to a nonempty subset of $D_t$. A minimal member of the latter gives a
+minimal member of the former, since immediate children stay in that
+subtree. This proves the forward direction.
+
+Conversely, let $S\subseteq D_t$ be nonempty. If it contains only the
+root, that root is minimal. Otherwise choose one nonroot address in
+$S$, and let $(a,b)$ be its first letter. The suffixes of the addresses
+of $S$ beginning with this letter form a nonempty subset of $D_{s(b)}$.
+Choose a minimal suffix there. Its prefixed address is minimal in all
+of $S$, because every immediate child has the same first letter.
+Thus $t$ is well founded. The bijection now follows from the already
+proved grafting/decomposition bijection on $M_B$.
+\Done
+
+\begin{lemma}[Ordinal heights and the subtree relation]
+Every $t\in W_B^{\mathrm{wf}}$ has a uniquely determined ordinal height
+$h(t)$, with
+\[
+h(t)=\sup_{b\in B(t(\epsilon))}\bigl(h(t_b)+1\bigr).
+\]
+The relation $u\prec t$ on $W_B^{\mathrm{wf}}$ meaning that $u$ is an
+immediate root subtree of $t$ is set-like and well founded.
+\end{lemma}
+\Proof
+Apply the ordinal-rank construction for a founded set relation to
+$(D_t,\prec_t)$. It assigns ordinals $r_t(p)$ satisfying
+\[
+r_t(p)=\sup_{q\prec_t p}(r_t(q)+1).
+\]
+All predecessor collections are sets, so replacement and ordinal union
+supply the suprema. Define $h(t)=r_t(\epsilon)$. The suffix bijection
+between $D_{t_b}$ and the addresses of $t$ beginning with
+$(t(\epsilon),b)$ preserves the child relation. Restriction of $r_t$
+therefore satisfies exactly the rank recursion for $t_b$; uniqueness
+of founded recursion gives
+$h(t_b)=r_t((t(\epsilon),b))$. This proves the displayed height formula,
+and in particular $h(t_b)<h(t)$.
+
+The immediate subtrees form the image of the set $B(t(\epsilon))$,
+so the subtree relation is set-like. For any nonempty subset $S$ of
+$W_B^{\mathrm{wf}}$, replacement collects the set of its heights.
+Choose its least ordinal and a tree in $S$ of that height. A predecessor
+in $S$ would have smaller height, which is impossible. Hence the relation
+is well founded. This argument constructs heights from founded address
+relations first; it does not assume foundedness of the subtree relation.
+Finally, if another ordinal assignment satisfies the displayed height
+equation, founded induction on this now-established subtree relation
+makes it agree with $h$ at every tree: agreement on all immediate
+subtrees makes the two suprema identical.
+\Done
+
+\begin{theorem}[Dependent recursion for arbitrary set arities]
+\label{thm:general_W_recursion}
+Let $(E(t))_{t\in W_B^{\mathrm{wf}}}$ be a specified family of sets. Suppose a
+specified operation assigns
+\[
+e(a,s,k)\in E(\delta^{-1}(a,s))
+\]
+whenever $s:B(a)\to W_B^{\mathrm{wf}}$ and $k$ is a function on $B(a)$
+with $k(b)\in E(s(b))$ for every $b\in B(a)$. There is exactly one function
+$r$ with domain $W_B^{\mathrm{wf}}$, values $r(t)\in E(t)$, and
+\[
+r(\delta^{-1}(a,s))=e(a,s,b\mapsto r(s(b))).
+\]
+\end{theorem}
+\Proof
+Use Theorem~\ref{thm:setlike_class_recursion} on the founded immediate-
+subtree relation. Given a function $g$ on the predecessors of
+$t=\delta^{-1}(a,s)$, form $k(b)=g(s(b))$. If every such value belongs
+to $E(s(b))$, use $e(a,s,k)$ as the recursion step; otherwise use the
+empty set as a temporary default. For any other set input, including
+a nonfunction or a function whose domain is not the predecessor set,
+also return the empty set. This defines a total set-valued step,
+so founded recursion gives a function $r$.
+Founded induction shows that its values are correctly typed: assuming
+$r(u)\in E(u)$ at every predecessor, the first branch of the step applies
+and yields $r(t)\in E(t)$. Thus the temporary default never occurs,
+and the required equation holds everywhere. Replacement makes the graph
+a set. Two typed solutions agree on each tree as soon as they agree
+on its predecessors; founded induction therefore proves uniqueness.
+Repeated identical subtrees cause no ambiguity, since $k$ uses the same
+value of $g$ at each occurrence.
+\Done
+
+\begin{corollary}[Structural induction and the general initial algebra]
+A predicate on $W_B^{\mathrm{wf}}$ that is preserved by grafting from
+all immediate subtrees holds everywhere. The grafting map makes
+$W_B^{\mathrm{wf}}$ an initial algebra for $P_B$ on sets.
+\end{corollary}
+\Proof
+The induction assertion is founded induction for the subtree relation.
+Given any algebra $\alpha:P_B(X)\to X$, apply the recursion theorem
+with constant family $E(t)=X$ and $e(a,s,k)=\alpha(a,k)$.
+The resulting unique $r$ satisfies
+$r\circ\delta^{-1}=\alpha\circ P_B(r)$, exactly the algebra-morphism
+condition. This includes the empty cases: existence of the specified
+step operation is part of the hypothesis.
+\Done
+
+\begin{proposition}[Agreement with the finite-stage model]
+If every $B(a)$ is finite, the canonical map $j:W\to M_B$ constructed
+above identifies $W$ with $W_B^{\mathrm{wf}}$.
+\end{proposition}
+\Proof
+A tree with address lengths bounded by a natural number is founded:
+in any nonempty subset of its addresses choose one of greatest length;
+none of its immediate children can belong to that subset. Conversely,
+apply founded induction to a tree in $W_B^{\mathrm{wf}}$ and the
+property of having bounded finite address lengths. If every immediate
+subtree has that property, let $n_b$ be its least natural-number bound.
+These bounds are uniquely specified, so replacement collects them.
+There are finitely many children; taking the maximum of their bounds
+and adding one bounds the whole tree. At a leaf the bound is zero.
+Thus every founded tree has bounded finite height. The preceding
+characterization of the image of $j$ now proves the assertion.
+No equivalence between pathlessness and foundedness, and no selection of
+an infinite branch, is used.
+\Done
+
+The earlier infinitely branching root with children of all finite heights
+belongs to $W_B^{\mathrm{wf}}$ although it is absent from the finite-stage
+union. Its address relation is founded by the grafting lemma, and its
+ordinal height is $\omega$. This is precisely the extra behavior supplied
+by arbitrary set arities.
+
+\paragraph{Relation to the larger class-valued proposal.}
+The original sketch described collections of paths with finite or
+countably infinite domains and a compatibility condition on common
+prefixes. The finite-address construction supplies that compatibility
+and the destructor/corecursion rules for set labels and set arities.
+It does not construct a set of all trees when the labels or branch
+collections are proper classes. That larger proposal still requires an
+explicit ambient size convention and a representation theorem; its
+universal property cannot be inferred merely from the set case.
 \input{END.tex}

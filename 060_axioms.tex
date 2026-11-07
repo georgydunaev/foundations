@@ -1,69 +1,42 @@
 \def\topic{}
 \input{BEGIN.tex}
 \section{Setting}
-In some sense, sets are ``terminal'', ``ground zero'' objects.\\
-Classes are properties of sets.\\
+In the author's motivating picture, sets are ``terminal'' objects: they
+are the objects on which class membership is grounded. Classes are properties of sets.
+The formal theory expresses this picture through membership, comprehension,
+and the distinction between sets and proper classes.
 
-If a class is also a set, it means that there is a set, all elements of which are exactly all sets which satisfy the property and only them.\\
+Class theory lets us describe a collection before deciding whether it is a
+set. A class is determined by its set members; a class is itself a set when
+it can occur as a member of another class. Thus a definition by class
+comprehension need not first supply an ambient set. The separate task of
+proving sethood can be postponed until a construction requires it.
 
+The distinction between Morse--Kelley (MK) and von Neumann--Bernays--G\"odel
+(NBG) comprehension concerns the formulas admitted in that construction.
+In MK, those formulas may quantify over classes. In NBG comprehension,
+quantified variables range over sets, although class parameters are allowed.
+In the one-sorted notation used here, set quantifiers are expressed by
+restriction to $\V$. A restriction to another class also forces its bound
+variable to be a set, since only sets can be members of classes.
 
-A class theory provides a framework, in which a mathematician is required to do less while defining various entities: pair, domain, etc, because it is possible to use class comprehension axiom scheme instead of set specification axiom scheme, so no need find and to provide a superset of the entity being defined.
+\paragraph{How to read the axioms.}
+This section develops class comprehension, elementary class operations,
+and several additional principles governing sethood. The displayed axioms
+specify the local assumptions; they are not all consequences of
+comprehension alone. In particular, heredity, powerset, regularity, and
+limitation of size are stated separately so that their uses remain visible.
+The discussion of functions and families also records a local evaluation
+convention with default value $\V$. That convention should be read with
+its own definitions, rather than silently substituted into sections using
+empty-class defaults or partial evaluation.
 
-So the work of proving that something is a set is being postponed, and if it turns out that to be unnecessary for the current task, then it is useful.\\
-%Moreover, it allows to write expressive statements.
+Types provide a second way to describe which objects a construction accepts.
+A predicate on classes can serve as a type even when its instances cannot
+be collected into a class. The section on types develops this distinction
+between a class of sets and a predicate that may also hold of proper classes.
 
-(Being a subset of a set and being an element of a set are equivalent things, in case of presence of several widely accepted axioms of the set theory: heredity, powerclass, powerset, etc.)\\
-
-
-
-Q: But what kind of properties? Can a property include a quantifier ``for all properties''?\\
-A: If ``no'', then the class theory being constructed is NBG, which is a conservative extension of ZFC.
-If ``yes'', then the class theory being constructed is MK, which is strictly stronger than ZFC.\\
-
-
-Q: What if a property has only bounded (by classes) quantifiers?
-A: Then it is expressed through the properties of one universe $\V$.
-%It makes it less useful, because then
-
-
-\url{https://math.stackexchange.com/questions/1745516/what-is-the-exact-consistency-strength-of-mk}
-\iffalse
-@MISC {1746450,
-    TITLE = {What is the *exact* consistency strength of $MK$?},
-    AUTHOR = {JDH (https://math.stackexchange.com/users/413/jdh)},
-    HOWPUBLISHED = {Mathematics Stack Exchange},
-    NOTE = {URL:https://math.stackexchange.com/q/1746450 (version: 2016-04-17)},
-    EPRINT = {https://math.stackexchange.com/q/1746450},
-    URL = {https://math.stackexchange.com/q/1746450}
-}
-\fi
-
-Q: Why introducing various kinds of types?\\
-
-A:
-
-Tiny:\\
-Small:\\
-Medium:\\
-Large:\\
-
-Q: Why not NBG, which is conservative extension?
-
-A:
-
-
-Q: How do you deal with bounded variables?
-How to
-
-1)
-
-
-------\\
-
-It is also possible to use universes for the same purpose: a property can be expressed as a function $f:\Un \to \Bool$.\\
-
-
-\section{Axioms and definitions of class theory}
+\section{Axioms and definitions of class theory}\label{sec:axioms}
 %Developing set--theoretic foundations
 \begin{constructor}[membership relation]
 If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
@@ -92,20 +65,26 @@ If $A$ and $B$ are terms, then $(A\in B)$ is a formula. %classes
 If $A$ and $B$ are terms, then $(A\subseteq B)$ is a formula. %classes
 \end{constructor}
 \begin{definition}[subclass relation]
-Let $A$ and $B$ be terms, and $x$ a variable not free neither in $A$, nor in $B$, then
+Let $A$ and $B$ be terms, and $x$ a variable free in neither $A$ nor $B$, then
 \[
 (A\subseteq B)\iffdef(\forall x\in A,\ x\in B)
 \labeltagd{def}{subclass}
 \]
 \end{definition}
 
-Note, if a variant of the logic being used doesn't have equality, then add the following constructor and definition:
+\paragraph{An equality experiment.}
+The next display records an attempt to define equality by membership
+profiles in a language without primitive equality. Its scope must be kept
+separate from the extensional identity used below: two proper classes have
+no containing classes, so the displayed membership-profile condition alone
+does not distinguish them. A language using this experiment needs an
+additional account of identity before it can support ordinary class equality.
 \begin{constructor}[equality]%\\
 If $A$ and $B$ are terms, then $(A=B)$ is a formula.
 \end{constructor}
 \begin{definition}[equality]
-This definition is for the case if the underlying \nth{1} order logic is provided without equality.\\
-If $Y$ is not a free variable neither in $A$ nor in $B$, then:
+This proposed definition concerns first-order logic without primitive equality.\\
+If $Y$ is free in neither $A$ nor $B$, then:
 \[
 (A=B) \iffdef (\forall Y\mydot A\in Y \iff B\in Y)
 \labeltagd{def}{equality}
@@ -119,7 +98,7 @@ If $Y$ is not a free variable neither in $A$ nor in $B$, then:
 \]
 \end{axiom}
 \begin{axiom*}[extensionality]
-This is an other variant of the definition, with requirement that $X$ is a variable different from both $A$ and $B$. If we understand $A$ and $B$ as variables, then it is enough; if as terms, then the variable $X$ should not be free neither in $A$ nor in $B$.
+Equivalently, classes are equal exactly when they have the same members. The variable $X$ must be free in neither term $A$ nor term $B$.
 \[
 (A = B)
 \iff
@@ -190,13 +169,17 @@ A pair of a bound formula $\phi_x$ and a formula $\psi$ is called a restricted (
 \begin{definition}[informal]
 A class is an arbitrary collection of sets.
 \end{definition}
-\begin{note}[comprehesibility is not stronger than definability]
-Each comprehesible class is definable, and,
-contrapositively, each undefinable class is certainly incomprehesible.
+\begin{note}[definability and comprehension]
+A comprehension term describes a class using a formula admitted by the
+chosen schema. What counts as definable depends on the language, permitted
+parameters, and surrounding model. A descriptor may specify an object
+without providing a comprehension formula in that same language.
 \end{note}
-\begin{note}[philosophical]
-There may(or may not) be a definable classes, which are not comprehensible, for example, something which is defined using the epsilon calculus.\\
-For example, is we denote a class of definable sets by $\text{L}$, then the ``axiom of constructibility'' $\V=\text{L}$ implies that there are no non--definable sets. It may be restrictive for the reader. The question whether one should accept or reject the ``axiom of constructibility'' is outside of the scope of this book, but it looks quite restrictive.
+\begin{note}[constructibility]
+The constructible universe $L$ is a particular hierarchy of sets. The axiom
+$\V=L$ should not be read as saying that every set is definable without
+parameters. Constructibility and definability are distinct notions; this
+section makes no assumption that $\V=L$.
 \end{note}
 
 \begin{constructor}[class comprehension]
@@ -219,11 +202,11 @@ PROBLEM: type ambihuity!
 \cc{{t_{\vv{x}}}}{\phi_{\vv{x}}}
 \]
 \end{notation}
-If the list of variable is empty, then the singleton is defined:
+If the list of variables is empty, generalized comprehension gives the following singleton expression. As always, class comprehension retains only set members; thus $\{r\}=\emptyclass$ when $r$ is a proper class:
 \[
 \{r\}=\cc{p}{(p=r)\land\top}=\ccc{\,[\,]}{r}{\,\top},
 \]
-or it may be a set--level ``if'' operator:
+For a set $r$, it also gives a set-level conditional:
 \[
 \ccc{\,[\,]}{r}{\,\phi}
 =
@@ -239,8 +222,11 @@ or it may be a set--level ``if'' operator:
 (\lif\ \phi\ \lthen\ r\ \lelse\ \emptyclass\ \lfi)
 \]
 
-\begin{note}[MK vs NBG]
-There are no restrictions on $\varphi$ in Morse--Kelley class theory, which is being used. It is the only difference between MK and NBG: in NBG only those formulas are accepted which has only restricted quantifiers($``\forall(x\in C),\dots"$, etc).
+\begin{note}[MK and NBG comprehension]
+In MK, $\varphi$ may contain unrestricted class quantifiers. In the NBG
+fragment, its internal quantifiers must range over sets; class parameters
+may still occur. These restrictions concern the comprehension schema,
+not the availability of class quantifiers elsewhere in the language.
 \end{note}
 %\begin{axiom}(OLD Class comprehension)
 %\labeltagd{axm}{comprehension}
@@ -267,7 +253,7 @@ Then
 
 \begin{definition}[universal closure]
 There is an order on a set of variables $\Var$.\\
-Let $v_1, \dots, v_n$ be a free variables of $\phi$, a suborder.\\
+List the free variables of $\phi$ as $v_1, \dots, v_n$ in that order.\\
 \\
 Then define the closure via the formula
 \[
@@ -280,11 +266,15 @@ Then define the closure via the formula
 
 Also the closure can be easier to use as a part of the definition of a formula.
 
-Every axiom is assumed to have the outermost closure operator.
+Every displayed axiom schema is understood with its universal closure.
 
 %Also, there is no need for closure, since $\Fau \vdash \phi$ is effectively the same. %NO!
 %Namely,
-There is no need to explicitly choose formulas which must be formulas in $\Fau$, since it cannot be recursively axiomatized, and since it has no effect on statements being proved, only on the organisation of their proofs.
+This convention only specifies the binding of free variables. The choice
+of an axiom collection $\Fau$ remains substantive: different collections
+can prove different statements. Whether a particular collection is
+recursively axiomatizable depends on its definition; no nonaxiomatizability
+claim follows from the closure notation itself.
 \end{definition}
 
 %...maybe
@@ -300,22 +290,25 @@ If a term is just a variable, then there is no need to specify it twice:
 \end{notation}
 
 \begin{axiom}[class comprehension]%NEW
-For any formula $\phi$, any variable $w$,
+For any formula $\varphi$ admitted by the chosen comprehension schema and
+any variable $w$,
 \[
 (\vv{\forall})(\forall (w:\Class),\ ((w\in\cc{w}{\varphi}) \iff ((w\set)\land \varphi)))
 \clabeltagd{axm}{varComprehension}
 \]
-The comprehension for the all the rest small types is simpler. Namely, since they are modelled by the sets, there is no need for the setness check:
+For a small type whose interpretation is a set, the typing condition already ensures sethood. In that case the explicit sethood guard can be omitted:
 \[
-(\vv{\forall})(\forall (W\text{ isSmallType}) \forall (w:W),\ ((w\in\cc{w:W}{\varphi}) \iff \varphi)
+(\vv{\forall})(\forall (W\text{ isSmallType}) \forall (w:W),\ ((w\in\cc{w:W}{\varphi}) \iff \varphi))
 \clabeltagd{axm}{varSmallTypeComprehension}
 \]
 \end{axiom}
-\begin{notation}[ommiting types]
+\begin{notation}[omitting types]
 Due to lack of space in class--builder notation, it may be written just $\vv{x}$ instead of $(\vv{x}:\vv{X})$, if it is easy to restore the types from the context.
 \end{notation}
 \begin{axiom}[class term comprehension]%(optional axiom, todo?)
-For any formula $\phi$ and any term $t$, such that $\FV(t)\cap \FV(s)=\emptyclass$,
+Let $s,t$ be class terms and $\varphi$ an admitted formula. Rename the
+distinct bound variables $\vv{x}$, if necessary, so that
+$\FV(t)\cap\{\vv{x}\}=\emptyclass$. Then
 \[
 (\vv{\forall})((t\in\ccc{\vv{x}}{s}{\varphi})
 \iff
@@ -323,6 +316,9 @@ For any formula $\phi$ and any term $t$, such that $\FV(t)\cap \FV(s)=\emptyclas
 \clabeltagd{axm}{termComprehension}
 \]
 It may be called ``class--builder notation''.
+The terms $s$ and $t$ may share free parameters; disjointness of their
+free-variable sets is neither needed nor a substitute for freshness of
+the actual binders. Every substitution in this schema avoids capture.
 \end{axiom}
 \begin{notation}[class comprehension with a term's evaluation agreement]
 If a term is an evaluation of a function $f$ (technically, it is an arbitrary term $f$), and if the argument is a variable, then it is agreed to be restored from the argument in the following way:
@@ -343,32 +339,26 @@ If necessary, the class constructor can be restored from its truncated version v
 \ceq
 \cc{w}{\exists (\vv{x}:\vv{X}),\ (w=t) \land \phi}.
 \]
+Here $w$ is fresh for the bound-variable list, the terms, the formula,
+and the type expressions. Renaming bound variables before expansion keeps
+the same parameters free on both sides.
 \end{note}
 
-%In particular, it justifies a notation \hyperref[notation:cccxx]{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:\\
-%In particular, it justifies a notation \ref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
-
-In particular, it justifies a notation \myref{notation:cccxx} for the case when $w$ is not a free variable of a formula $\phi$:
+%In particular, this explains the notation \myref{notation:cccxx}:
 \[
 \ccc{x}{x}{\phi}
-\equiv
-\cc{w}{\exists x,\ (w=x) \land \phi}
-=
-\cc{w}{\exists x,\ (w=x) \land \phi[x/w]}
-=
+=\cc{w}{\exists x,\ (w=x)\land\phi}
+=\cc{w}{\phi[w/x]}
+=\cc{x}{\phi}.
 \]
-\[
-=
-\cc{x}{\exists x,\ (x=x) \land \phi[x/w]}
-=
-\cc{x}{\exists x,\ \phi[x/w]}
-=
-\cc{x}{\exists x,\ \phi}
-\]
-%\equiv
-%\cc{w}{\exists x,\ (x=x) \land \phi}
-From this observation, we can derive the following maxima.\\
-\textbf{Principle:} \textit{In a proof assistant, as soon as propositional equality have been proven, if it has a ``preferable direction of simplification'', then it better be accepted as a definitional equality as well!}
+Here $w$ is fresh, substitution is capture-avoiding, and the final equality
+renames the bound variable. Keeping these conditions explicit prevents an
+inner quantifier from accidentally capturing the comprehension variable.
+
+\textbf{Implementation principle.} A proved equality with a preferred
+direction can motivate a simplification rule in a proof assistant. Promoting
+it to definitional equality is a further design decision: the resulting
+conversion procedure must still have the properties required by the kernel.
 
 \iffalse
 
@@ -399,7 +389,7 @@ Now, let's prove "old class comprehesion" statement.
 \fi
 
 \begin{theorem}[example of changing the variables]
-If a variable $Y$ is not a free in formula $\varphi$, then:
+Assume that $X$ and $Y$ are fresh for $\varphi$ except at the indicated substitution positions, and that both substitutions avoid capture. Then:
 \[
 (Y\in\cc{X}{\varphi[X/W]}) \iff ((Y\set)\land(\varphi[Y/W])).
 \]
@@ -417,7 +407,9 @@ Assume $Y\in\cc{X}{\varphi[X/W]}$.\\
 )
 \]
 
-to be continued\dots
+The substitution composition law gives
+$\varphi[X/W][Y/X]=\varphi[Y/W]$. Substituting this into the comprehension
+axiom proves the displayed equivalence, including its reverse implication.
 \end{proof}
 
 
@@ -482,7 +474,7 @@ Let the symbol $\V$ be a constant of the language of the class theory being disc
 \]
 \end{definition}
 
-Later it will be used as a default value for ``undefined'' values. They are not defined, indeed, in set--theoretic sense, but they are defined in class--theoretic sense.
+In the local convention used in the next subsection, $\V$ serves as a distinguished default for an argument outside a family's domain. The resulting expression still denotes a class; the default records a domain failure rather than a third truth value.
 \begin{definition}[default nonset]
 \[
 \text{nonset}\eqdef\V
@@ -495,7 +487,7 @@ Later it will be used as a default value for ``undefined'' values. They are not 
 \clabeltagd{def}{not set}
 \]
 \end{definition}
-The definitions above seem to be the best solution to avoid many--valued logics and other semantical or syntactical complications of the theorem's statements. So when a not involved in logic mathematician says ``undefined'', it usually means ``not set'' in the terminology of this book, and also sometimes ``undefined'', in the sense of ``was not yet defined''.
+This convention keeps evaluation within a two-valued class language. It is one possible treatment of domain failures, alongside the separate partial and many-valued experiments. In this subsection, ``not set'' is a precise predicate; it should not be used as a synonym for every ordinary use of ``undefined''.
 \begin{example}[intersection of the empty set]
 \[
 \left(\left(\bigcap \emptyset\right)\text{ not set}\right)
@@ -508,19 +500,36 @@ The definitions above seem to be the best solution to avoid many--valued logics 
 \end{example}
 \pagebreak
 \subsection{Functions and families}
+The local encoding distinguishes a set value, stored as one fiber entry,
+from a proper-class value, represented by its singleton subclasses.
+$\Dom(F)$ records represented arguments, while $\dom(F)$ records arguments
+with set values. The proposed extensionality statements require canonical
+fibers and a relation consisting entirely of encoded pairs; arbitrary extra
+members must be excluded. These representation conditions are part of the
+family construction, not consequences of the default value alone.
+For this subsection, fix an injective ordered-pair encoding on sets with
+set-valued pairs and definable projections; ordinary Kuratowski pairs
+suffice. Every stored record has two set coordinates. The off-domain
+value \textnormal{nonset} is one fixed proper class, for example $\V$.
+We use the set-image principle and union when proving that a small family
+has only set values.
+
 \begin{definition}[big domain ``Dom'' including proper values]
-Assume $F$ is a family. (Reminder: $F$ can be also a class--function or a function as well, since they both are families too.)
-The the domain(in a ``big sense'' which works for any family, not only for [class--] functions) is the following:
+For any set-record relation $F\subseteq\V\times\V$, define its
+represented domain by
 \[
 \Dom(F) \eqdef \cc{x}{\exists (b\in\V),\ (x,b)\in F}
 \clabeltagd{def}{bigdomain}
 \]
-(note1: the role of $b$ in the formula is to either be $F(x)$ if it is a set, otherwise its role is to be any singleton subset of a proper class $F(x)$. It works due to the law of excluded middle, and because the proper classes are nonempty, following from numerous well--established %consensual
-axioms, e.g. from empty set axiom.)\\
-(note2: it seems like ``$\in\V$'' can be safely ommited, since if a pair of classes is in some class, then it is quite natural to require the pair to be a set too; )
+The preliminary domain, image, and evaluation operations apply to arbitrary
+such relations. The family predicate below selects their canonical
+representations, so its definition does not presuppose that evaluation is
+already restricted to families. For a canonical family, the second
+coordinate will either be its set value or a singleton member-record of
+its proper-class value, as proved below.
 \end{definition}
 \begin{notation}[``in the big domain of'' relation]
-The common abuse of notation: since the more common ``logic of truthness'' is used instead of more rare and cumbersom ``logic of definitness'', the predicate ``$(\cdot\text{ defined})$'' is not given. Moreover, it seems to be impossible to define it. Instead of it, the following notation is introduced:
+The common abuse of notation: since the more common ``logic of truth'' is used instead of more rare and cumbersome ``logic of definedness'', the predicate ``$(\cdot\text{ defined})$'' is not given. Moreover, it seems to be impossible to define it. Instead of it, the following notation is introduced:
 \[
 (F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})
 \IFFnot
@@ -528,17 +537,29 @@ The common abuse of notation: since the more common ``logic of truthness'' is us
 \]
 This is a predicate symbol of two arguments, in a sense that ``$F\textcolor{blue}{(\textcolor{black}{x})}$'' is not a term in this notation, but rather a way of writing the arguments. So in the code it is written as something like ``inDomOf(F,x)''), but it is displayed as ``$(F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})$''.
 
-In this formula, ``$(\cdot\textcolor{blue}{(\textcolor{black}{\cdot})}\text{ defined})$'' is a predicate symbol of the valence two, and the internal parentheses are an essential part of its name. The coloring of the internal parentheses may be ommited as an abuse of notation.
+In this formula, ``$(\cdot\textcolor{blue}{(\textcolor{black}{\cdot})}\text{ defined})$'' is a predicate symbol of the valence two, and the internal parentheses are an essential part of its name. The coloring of the internal parentheses may be omitted as an abuse of notation.
 \end{notation}
 \begin{definition}[image]
-Let $F$ be arbirtrary family, and let $A$ be any class. Define the image of a family as the class of only those values of $F$ on the arguments from $A$, which are sets, i.e.:
+Let $F\subseteq\V\times\V$ be any relation and $A$ any class. This is its relational
+image: it collects the stored second coordinates at arguments from $A$.
+For a set-valued family these coordinates are the values themselves. At a
+proper-class value they are singleton records, not the evaluated value:
 \[
 F[A] \eqdef \cc{b}{\exists (a\in A),\ (a,b)\in F}.
 \clabeltagd{def}{image}
 \]
 \end{definition}
+The newer Obelisk catalog's \texttt{DefRelationalImage} (3.26) instead
+uses the evaluated-image expression
+$\cc{b}{\exists a\in A,\ F(a)=b}$. These agree for class functions with
+the proper-class off-domain default, but not for general families. If the
+value at $x$ is a proper class $P$, the evaluated image of $\{x\}$ is
+empty, while its relational image contains the singleton records
+$\{q\}$ for $q\in P$. The union in the following evaluation formula
+therefore uses the relational-image convention explicitly defined here.
 \begin{definition}[evaluation of a family]
-Let $F$ be arbirtrary family, and let $x$ be any class(note, that it w).
+Let $F\subseteq\V\times\V$ be any relation and $x$ a class.
+Evaluation is defined by:
 \[
 F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{nonset}\ \lfi\right)
 \]
@@ -547,7 +568,7 @@ F(x) \eqdef \left(\lif\ (x\in\Dom(F))\ \lthen\ \union(F[\{x\}])\ \lelse \ \text{
 \dom(F) \eqdef \cc{x}{\exists (y\set),\ F(x)=y}
 \]\fi
 \begin{definition}[small domain ``dom'']
-Let $f$ be a family.
+For any set-record relation $f$, put
 \[
 \dom(f) \eqdef \cc{x}{f(x)\set}
 \]
@@ -570,11 +591,17 @@ Let $f$ be a family.
 \end{definition}
 \begin{definition}[signature of a function]
 \[
-(f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\function))
+(f:X\to Y) \iffdef ((\dom(f)=X)\land(\ran(f)\subseteq Y)\land(f\text{ class--function}))
 \]
+Thus arrows between arbitrary classes denote set-valued class functions.
+When $X$ is a set, the set-image principle applied to
+$x\mapsto(x,f(x))$ makes the graph a set, so this notation also gives an
+ordinary small function. Requiring a set graph for every arrow would
+incorrectly exclude the class functions $\V\to\V$ used in recursion.
 \end{definition}
 \begin{definition}[family]
-A class $f$ is called \textit{family} if it satisfies two conditions:
+A class $f$ is called a \textit{family} if $f\subseteq\V\times\V$ and
+it satisfies the following two conditions:
 \[
 \forall (x\in\Dom(f)),\ %
 (
@@ -584,7 +611,7 @@ f(x)
 )
 \implies
 (
-\exists! y,\ %
+\exists! (y\in\V),\ %
 ((x,y)\in f)
 )
 )
@@ -599,7 +626,7 @@ f(x)
 )
 \implies
 (
-\forall b,\ %
+\forall (b\in\V),\ %
 (
 ((x,b)\in f)
 \implies
@@ -610,6 +637,35 @@ f(x)
 \tag{flat proper values}
 \]
 \end{definition}
+\begin{lemma}[Canonical fibers and graph reconstruction]
+Let $f$ be a family and $x\in\Dom(f)$. If $v=f(x)$ is a set, then
+\[
+f[\{x\}]=\{v\}.
+\]
+If $v$ is proper, then
+\[
+f[\{x\}]=\cc{\{q\}}{q\in v}.
+\]
+Consequently, the family is determined by its domain and evaluated values.
+It is set-valued exactly when $f=\Gamma(f)$.
+\end{lemma}
+\begin{proof}
+In the set-valued case there is exactly one second coordinate $b$.
+Evaluation gives $v=\bigcup\{b\}=b$, proving the first formula.
+In the proper-valued case every second coordinate is a singleton.
+If that coordinate is $\{q\}$, then $q$ belongs to their union $v$.
+Conversely, $q\in v$ supplies a second coordinate containing $q$;
+as that coordinate is a singleton, it must be $\{q\}$. This proves
+the second formula. Injectivity of the pair coding and the absence of
+nonrecord members now reconstruct $f$ from these fibers.
+
+If all values are sets, the first formula says precisely that the records
+are $(x,f(x))$ for $x\in\Dom(f)=\dom(f)$, hence $f=\Gamma(f)$.
+Conversely, the graph $\Gamma(f)$ stores only the set values at the
+arguments in $\dom(f)$; equality with $f$ therefore leaves no represented
+proper-class value. This also verifies agreement between the two local
+definitions of class function.
+\end{proof}
 \begin{definition}[set--valued]
 A class $f$ is called \textit{set--valued}, if all of its values are sets.
 \[
@@ -663,20 +719,19 @@ Every function is a class--function(but not vice versa).
 \]
 \end{theorem}
 \begin{proof}
-Assume the opposite: $f$ function, but not a class--function:
-\[
-(f\text{ family}),
-\]
-\[
-(f\text{ set}),
-\]
-\[
-(\exists (x\in\Dom(f)),\ (f(x)\text{ proper})).
-\]
-Since $f$ is a set, a union of its union is also a set.\\
-(Assuming here that the ordered pair is defined a--la Kuratowsky.)\\
-Using ``flat proper values'' property, it is easy to construct an injective map from the proper class $f(x)$ into the aforementioned union. It contradicts the limitation of size axiom.\\
-(todo: expand on the proof)
+Project the second coordinates of the set of records $f$. The projection
+is a class function, so its range $D$ is a set by the set-image principle.
+For $x\in\Dom(f)$, the fiber $f[\{x\}]\subseteq D$ is a set by heredity.
+Its union is a set by the union axiom, and that union is $f(x)$.
+Thus every represented value is a set, so $f$ is a class function.
+The conclusion that represented values are sets holds for every set
+relation under union evaluation; concluding that the original records
+form a class function also uses the canonical-family hypothesis.
+Neither conclusion here requires limitation of size.
+
+The converse fails: the identity graph on $\V$ is a class function.
+If it were a set, projecting its first coordinates would make $\V$ a
+set, a contradiction.
 \end{proof}
 
 \begin{theorem}[family extensionality]
@@ -707,6 +762,20 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 \]
 \fi
 \end{theorem}
+\begin{proof}
+Equal domains specify exactly the represented arguments. At each such
+argument, equal values have identical canonical fibers by the preceding
+lemma, whether those values are sets or proper classes. Every member of
+either family is a record, so the two families are equal by extensionality.
+\end{proof}
+\begin{example}[Why the domain is retained for proper values]
+Take the default to be $\V$, fix a set $x$, and let
+$F=\cc{(x,\{q\})}{q\in\V}$. This is a family with domain $\{x\}$
+and proper value $F(x)=\V$. At every other argument its default is also
+$\V$. Thus $F$ and the empty family have identical evaluations everywhere,
+but different domains and different records. Family extensionality needs
+the domain hypothesis; class-function extensionality below does not.
+\end{example}
 \begin{theorem}[class--function extensionality]
 \[
 \forall (F_1 \text{ class--function}),\ %
@@ -721,6 +790,12 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 )
 \]
 \end{theorem}
+\begin{proof}
+For a class function, the domain is exactly the class of arguments where
+evaluation is a set; the fixed proper-class default excludes every other
+argument. Equality of all evaluations therefore implies equality of the
+domains, and family extensionality applies.
+\end{proof}
 \begin{theorem}[function extensionality]
 \[
 \forall (f_1 \text{ function}),\ %
@@ -735,27 +810,29 @@ Using ``flat proper values'' property, it is easy to construct an injective map 
 )
 \]
 \end{theorem}
+\begin{proof}
+Small families are class functions by the preceding theorem, so the
+class-function extensionality result applies.
+\end{proof}
 \begin{theorem}[function extensionality for a set--theoretic foundations]
 \[
-\forall (f_1 \text{ function}),\ %
-\forall (f_2 \text{ function}),\ %
-\forall X,\ %
-(X=\dom(f_1)=\dom(f_2))
-\implies
-(
-(
-\forall (x\in X),\ %
-(f_1(x) = f_2(x))
-)
-\implies
-(f_1 = f_2)
-)
+\begin{aligned}
+&\forall (f_1 \text{ function}),\
+\forall (f_2 \text{ function}),\ \forall X,\\
+&\quad (X=\dom(f_1)=\dom(f_2))\implies
+\bigl((\forall (x\in X),\ (f_1(x)=f_2(x)))\implies(f_1=f_2)\bigr)
+\end{aligned}
 \]
 \end{theorem}
+\begin{proof}
+Both graphs consist precisely of the pairs $(x,f_i(x))$ with $x\in X$.
+Agreement on $X$ gives the same pairs in each graph. Unlike the preceding
+formulation, this argument needs no convention for off-domain evaluation.
+\end{proof}
 
 
 \begin{axiom}[ordered pair of proper classes is a proper class]
-The following a little bit non--traditional agreement(the axiom) may be useful for this section, but it is not yet obvious that it is needed:
+The following additional pairing assumption is recorded as an option for this local encoding. Its use must be stated when a result depends on it:
 \[
 (
 (
@@ -769,8 +846,13 @@ The following a little bit non--traditional agreement(the axiom) may be useful f
 \]
 \end{axiom}
 \subsection{Unions}
+In the unary union and intersection formulas below, auxiliary variables
+$x,a,y$ are chosen distinct and fresh for the argument class term $A$.
+For a restricted binder with fixed indexing term $s$, its bound variable
+$y$ is not free in $s$. These conventions preserve the free parameters
+of the argument when the binders are expanded.
 \begin{definition}[elementary union]
-This is an admissible and ``elementary'' definition of a union of an arbitrary class A, which is proved to be a theorem later in this section.%Union of an arbitrary class A.
+The elementary union of a class $A$ collects the members of its members. Below we recover the same expression from the more general binder notation.%Union of an arbitrary class A.
 \[
 \union A \eqdef \cc{x}{\exists (a\in A),\ x\in a}
 \clabeltagd{def}{elementary union}
@@ -789,7 +871,7 @@ This is an admissible and ``elementary'' definition of a union of an arbitrary c
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.\\
-(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
+(Note: this definition includes a second--order class construction, which is available in MK, but not available in NBG.)
 
 %Side conditions:\\
 %1) variable $x$ is not free in formula $\psi$,\\
@@ -816,7 +898,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 \bigcup_{y\in A} y
 \]
 \end{definition}
-\begin{theorem}[``elementary def of intersection'']
+\begin{theorem}[Elementary membership description of union]
 \[
 \union A = \cc{x}{\exists a\in A,\ x\in a}
 \labeltagd{thm}{union}
@@ -838,7 +920,7 @@ If a formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then
 
 \subsection{Intersections}
 \begin{definition}[elementary intersection]
-This is an admissible and ``elementary'' definition of an intersection of an arbitrary class $A$, which is proved to be a theorem later in this section.
+The elementary intersection of $A$ collects the sets belonging to every member of $A$. In particular, the empty intersection is $\V$, since its membership condition is vacuous.
 \[
 \intersection A \eqdef \cc{x}{\forall (a\in A),\ x\in a}
 \labeltagd{def}{intersection}
@@ -858,7 +940,7 @@ For any formula $\psi$, any class term $t$, any variables $x$ and $y$, in case a
 1) formula $\psi$ must not depend on variable $x$,\\
 2) term $t$ must not depend on variable $x$,\\
 3) variable $y$ is different from variable $x$.\\
-(Note: this definition includes a second--order class construction, which is availible in MK, but not availible in NBG.)
+(Note: this definition includes a second--order class construction, which is available in MK, but not available in NBG.)
 \end{definition}
 
 
@@ -903,11 +985,9 @@ If formula has form $``(y\in s)"$, and if $y$ is also its bound variable, then i
 \subsection{Powerclass}
 %A theory is conservatively extended with a functional  class comprehension.
 \begin{definition}[powerclass]
-A powerclass is a class of all subsets. (A subset is a subclass which is a set.)
-%For any class term $X$, for any variable $x$ which is not free in $X$,
+A powerclass collects all set subclasses. For a class term $X$, choose
+a fresh bound variable $x$ not free in $X$, and define
 \[
-\forall (x:\Var),\ %
-\forall (X:\Class),\ %
 \power X \eqdef \cc{x}{x\subseteq X}
 \labeltagd{def}{powerclass}
 \]%\tag{def. Powerclass}
@@ -933,7 +1013,7 @@ A subclass of a set is also a set.
 \end{axiom}
 \subsection{Powerset}
 \begin{axiom}[powerset]
-A power class of a set is also a set.
+The powerclass of a set is also a set.
 %For any class term $A$,
 \[
 \forall (A:\Class),\ %
@@ -946,7 +1026,7 @@ A power class of a set is also a set.
 \]
 \end{axiom}
 \begin{note}[the powerset axiom is weak here]
-This is a weak version, but it is okey, since together with axiom of heredity it is equivalent to the strong version.
+The powerclass contains only set subclasses by comprehension. Heredity ensures that every subclass of a set occurs in this powerclass, so the two axioms together express the usual powerset requirement.
 \end{note}
 
 %\begin{axiom} $\in$--induction. (variant that uses formulas)
@@ -1039,6 +1119,6 @@ The opposite direction forbids certain situations. It makes proofs shorter. It r
 \implies
 \neg(X\set)
 \]
-It seems like positive properties don't have problems with each other. At worst they can trivialize the theory, but a positive and a negative property together may or may not lead to a contradiction.
+This terminology distinguishes two roles an axiom can play in the proposed development. It is a heuristic for organizing assumptions, not a consistency theorem: compatibility of a collection of axioms still requires a separate argument.
 \end{note}
 \input{END.tex}

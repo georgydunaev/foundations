@@ -1,52 +1,339 @@
-\def\topic{Alternative semantics}
+\def\topic{Alternative Semantics}
 \input{BEGIN.tex}
 \section{[OUTDATED]Alternative semantics}
-%\subsection{ Alternative subset semantics [todo: merge with 020\_logic.tex]}
-%\subsection{Logic}
-%\subsubsection{Syntax}
-\subsection{Axioms}
-There are several possible ways of interpreting "in" relation: 
-Here X and Y are some terms(sic! not just variables).\\
-1) Weak
-$X\in Y$ is valid iff for any assignment any class--element of I(X) is in any class--element of I(Y).\\
 
-Hypothesis:
-\[A(\varepsilon x,\ A)\iff \exists x,\ A(x)\]
+This historical proposal interprets a term by a collection of possible
+classes rather than by a single class. It investigates how membership,
+choice, and definedness might be expressed under that interpretation.
+The label records its place in the development; the definitions below are
+to be read in this local setting.
 
-Axiom schema
+\subsection{Assignments and truth}
+Let $K$ denote the conglomerate of all classes in the intended model $M$.
+Both $K$ and $\power(K)$ are metatheoretic collections here; the notation
+does not assert the existence of a class of all classes inside NBG or MK.
+An assignment has the form
+\[A:\mbox{Var}\to \power(K).\]
+Thus a variable, and more generally a term, may have no candidate value,
+one candidate, or several candidates. The subscripts in
+$I_A^{\mathrm{Term}}$ and $I_A^{\mathrm{Fm}}$ distinguish term interpretation
+from formula interpretation under the same assignment.
 
-Following class existence metatheorem for NBG, we can introduce an axiom schema.\\
-To begin with let's introduce recursive function on formulas: it substitutes class variables with set variables.
-
-The resulting formula contain only set variables.
-
-If $\varphi$ contains only set variables, then 
-$\cc{x }{ \varphi}$ is defined.
-\[(\varphi\in\mathrm{setify}[\mathrm{Fm}])\stackrel{meta}{\IFF} ( \vdash (\cc{x }{ \varphi}\downarrow)) \]
-
-\subsection{Semantics}
-"super--large" model.\\
-$K$ -- conglomerate of all classes.\\
-
-Assignment:\\
-\[A:\mbox{Var}\to \power(K)\]
-
-\[I^{\mathrm{Fm}}_A(S\downarrow) \iff (I^{\mathrm{Term}}_A(S)\neq\emptyclass)\]
-
-Definiton of truth:
-\[\mbox{Bool} \ceq \{\mbox{False}, \mbox{True}\}\]
-\[M,A\vDash \varphi \stackrel{meta}{\Longleftrightarrow} I_A(\varphi)=\mbox{True}\]
-
+The proposed definedness clause is
+\[
+I^{\mathrm{Fm}}_A(S\downarrow)
+\iff (I^{\mathrm{Term}}_A(S)\neq\emptyclass).
+\]
+Here definedness means nonemptiness of the candidate collection, not
+uniqueness of its member. Formula interpretation is intended to remain
+two-valued:
+\[\mbox{Bool} \ceq \{\mbox{False}, \mbox{True}\}.\]
+Satisfaction under an assignment and validity in the model are distinguished
+by
+\[
+M,A\vDash \varphi \stackrel{meta}{\Longleftrightarrow}
+I_A^{\mathrm{Fm}}(\varphi)=\mbox{True},
+\]
 \[
 (M\vDash \varphi)
 \stackrel{meta}{\Longleftrightarrow}
-(\forall (A:\mbox{Assignment}),\ M,A\vDash \varphi)\]
+(\forall (A:\mbox{Assignment}),\ M,A\vDash \varphi).
+\]
+The quantifier in the second display ranges over the assignments admitted
+by this semantics.
 
-%I_A(\varphi)=\mbox{True}
+\subsection{Candidate membership and choice}
+One proposed clause for membership, called ``weak'' in the draft, is
+\[
+M,A\vDash X\in Y
+\quad\Longleftrightarrow\quad
+\forall C\in I_A^{\mathrm{Term}}(X)\,
+\forall D\in I_A^{\mathrm{Term}}(Y),\ C\in D.
+\]
+Here $X$ and $Y$ are arbitrary terms. Validity of $X\in Y$ additionally
+quantifies over assignments. The clause compares every candidate on the
+left with every candidate on the right. With ordinary universal
+quantification it is vacuously true if either candidate collection is
+empty; whether to add a nonemptiness condition is a further design choice.
 
-%\ifdefined\alternativesemanticsflag
-%\undef\alternativesemanticsflag
-%\end{document}
-%\fi
+\paragraph{A precise relational fragment.}
+To isolate what this clause says, work in the metatheory with a set $D$ of
+candidate objects and a binary relation $R\subseteq D\times D$. No
+assumption that $D$ contains all classes is needed for this fragment. For
+$S,T\subseteq D$, put
+\[
+R^{\forall}(S,T)\iff
+\forall s\in S\,\forall t\in T,\ (s,t)\in R.
+\]
+The proposed membership clause is the same construction with the actual
+membership relation on its candidate domain.
+
+\begin{lemma}[Singletons, refinement, and absence]
+The lifted relation has the following properties:
+\begin{enumerate}
+\item $R^{\forall}(\{s\},\{t\})$ holds exactly when $(s,t)\in R$.
+\item If $R^{\forall}(S,T)$, $S'\subseteq S$, and $T'\subseteq T$, then
+  $R^{\forall}(S',T')$.
+\item $R^{\forall}(\emptyclass,T)$ and
+  $R^{\forall}(S,\emptyclass)$ hold for every $S,T$.
+\end{enumerate}
+\end{lemma}
+\Proof
+In the first claim the two quantifiers range over one pair. For the second,
+each pair in $S'\times T'$ is already in $S\times T$, where the relation
+holds by hypothesis. In the third, there is no pair on which the relation
+could fail.
+\Done
+
+This gives a conservative reading of atomic formulas on single-valued
+assignments and explains why narrowing the candidate collections preserves
+a true atomic membership claim. It also proves that this membership clause
+alone cannot imply definedness. For example, assigning no candidates to
+$X$ makes $X\in Y$ true while $X\downarrow$ is false.
+
+If an application needs membership to imply existence of both values, it
+can instead use the separately named guarded lift
+\[
+R^+(S,T)\iff
+(S\neq\emptyclass)\land(T\neq\emptyclass)\land R^{\forall}(S,T).
+\]
+The singleton property remains valid, and refinement preserves truth when
+the refined candidate collections remain nonempty. These conclusions follow
+from the lemma and the two guards. The guarded lift is an optional variant;
+the original unguarded clause is retained above.
+
+\paragraph{Repeated occurrences and equality.}
+A candidate collection records possible values but not correlations among
+occurrences. If equality is lifted by the same independent-pair rule, then
+\[
+\operatorname{Eq}^{\forall}(S,S)\iff \forall s,t\in S,\ s=t.
+\]
+For nonempty $S$, this holds exactly when $S$ is a singleton: fix one
+$s\in S$ and use the displayed condition to identify every other member
+with it. Thus a term with two distinct candidates would fail reflexivity
+under independent-pair equality. This is not an objection to the proposed
+membership clause; it shows why the equality clause requires a separate
+choice. Equality of candidate collections is reflexive, while evaluation
+under a shared selection preserves the correlation between repeated
+occurrences. Those alternatives answer different questions and must not be
+silently identified.
+
+The proposed choice principle is
+\[
+P(\varepsilon x,\ P)\iff \exists x,\ P(x).
+\]
+The letter $P$ denotes a predicate, leaving $A$ for assignments. This formula
+is a hypothesis about a future descriptor interpretation. The membership
+and definedness clauses alone do not establish it; the meaning of
+$\varepsilon$ and of substitution into $P$ must also be specified.
+
+\subsection{A finite model of candidate choice}
+The preceding clauses admit a complete small interpretation once the
+quantifier range and the descriptor are fixed. This is a local model of
+a fragment, not a model of the intended class theory or its comprehension
+scheme.
+
+Fix a finite nonempty set $D$, a relation $R\subseteq D\times D$, and
+a linear ordering of $\mathcal P(D)$. Use the set $\mathcal P(D)$ as
+the domain of semantic objects. Variables range over candidate sets
+$S\subseteq D$; a constant $c_S$ names each such set. Interpret the
+binary relation symbol by $R^{\forall}$, equality by equality of candidate
+sets, and $t\downarrow$ by nonemptiness of the candidate set denoted
+by $t$. Give Boolean connectives and quantifiers their ordinary
+classical meanings on this domain. Thus $\exists x$ ranges over
+\emph{all candidate sets}, including the empty candidate set, rather
+than just over individual candidates in $D$.
+
+For a formula $\varphi$ and assignment $a$, let
+\[
+\mathcal W_{\varphi,a}
+ =\{S\subseteq D:M,a[x\mapsto S]\vDash\varphi\}.
+\]
+Interpret the descriptor $\varepsilon x,\varphi$ as the first member
+of $\mathcal W_{\varphi,a}$ in the fixed ordering if this set is
+nonempty, and as $\emptyclass$ otherwise. The formula inside a
+descriptor is a shorter expression, so these clauses define term and
+formula interpretation simultaneously by recursion. No choice axiom is
+needed for this finite model.
+
+\begin{lemma}[Substitution and extensionality of finite choice]
+For a term $t$, write $\llbracket t\rrbracket_a$ for its candidate-set
+value. If substitution is capture-avoiding, then
+\[
+\llbracket r[t/z]\rrbracket_a
+ =\llbracket r\rrbracket_{a[z\mapsto\llbracket t\rrbracket_a]},
+\]
+and the analogous equivalence holds for satisfaction of formulas.
+Furthermore, formulas with the same witness collection under $a$ have
+equal descriptor values under $a$.
+\end{lemma}
+\Proof
+Use simultaneous structural induction on terms and formulas. Variables,
+constants, predicates, Boolean connectives, and quantifiers obey the
+usual assignment-update clauses. At a descriptor $\varepsilon x,\psi$,
+rename its binder so that $x\ne z$ and $x$ is not free in $t$.
+For each candidate set $S$, the induction hypothesis identifies the
+truth of $\psi[t/z]$ under $a[x\mapsto S]$ with the truth of $\psi$
+under $a[z\mapsto\llbracket t\rrbracket_a][x\mapsto S]$.
+Here the value of $t$ is unchanged by updating $x$: a simultaneous
+induction on expressions proves that values and satisfaction depend
+only on free variables. Thus the two witness collections are equal.
+Their first members in the fixed ordering are equal, or both collections
+are empty and both defaults are empty. This proves the descriptor case.
+The same reasoning proves the last assertion directly, without any
+substitution: the choice rule depends on the witness collection, not
+on the syntax used to describe it.
+\Done
+
+This extensionality is a property of the specified selector. A bare
+axiom saying only that a descriptor chooses some witness would not force
+two syntactically different descriptions with the same multiple-witness
+collection to make the same choice.
+
+\paragraph{Choice and a change of labels.}
+Extensional choice need not be invariant under every relabelling of its
+objects. The order used above is additional structure, and it must be
+transported when the model is transported.
+
+\begin{proposition}[No fully permutation-invariant selector]
+Let $B$ be a set with at least two elements. There is no function
+\[
+c:\mathcal P(B)\setminus\{\emptyclass\}\longrightarrow B,
+\qquad c(W)\in W,
+\]
+such that $c(\pi[W])=\pi(c(W))$ for every permutation $\pi$ of $B$
+and every nonempty $W\subseteq B$.
+\end{proposition}
+\Proof
+Put $b=c(B)$ and choose $b'\in B$ different from $b$. The permutation
+that exchanges $b$ and $b'$ and fixes all other elements satisfies
+$\pi[B]=B$. The required identity would give
+$b=c(B)=c(\pi[B])=\pi(c(B))=b'$, a contradiction.
+\Done
+
+This obstruction also applies to the candidate model even if only
+relabellings of the underlying $D$ are allowed. When $D$ has at least
+two elements, the witness collection
+$W=\{\{d\}:d\in D\}$ is invariant under every such relabelling.
+A selector must choose one singleton; exchanging its member with
+another member of $D$ fixes $W$ but moves that singleton. Thus even
+equality of the transported witness collections cannot by itself ensure
+equivariance of the selected value. This is a statement about selectors
+on all nonempty collections; it does not assert that every such
+collection is definable by the formulas of a given smaller language.
+
+\begin{proposition}[Transport of ordered finite choice]
+Let $(B,\leq)$ and $(B',\leq')$ be finite nonempty linearly ordered
+sets, and let $h:B\to B'$ be an order-isomorphism. For each nonempty
+$W\subseteq B$, put $c_{\leq}(W)=\min_{\leq}W$. Then
+\[
+c_{\leq'}(h[W])=h(c_{\leq}(W)).
+\]
+If the selectors are extended to empty collections by defaults
+$b_0\in B$ and $b'_0\in B'$, the same identity holds for every
+$W\subseteq B$ exactly when $b'_0=h(b_0)$.
+\end{proposition}
+\Proof
+The element $m=\min_{\leq}W$ belongs to $W$ and satisfies $m\leq w$
+for all $w\in W$. Hence $h(m)$ belongs to $h[W]$ and is below each
+of its elements in the order $\leq'$. It is therefore its minimum.
+For the empty collection the identity is precisely $b'_0=h(b_0)$.
+\Done
+
+For example, a bijection $f:D\to D'$ induces
+$h:\mathcal P(D)\to\mathcal P(D')$, $h(S)=f[S]$.
+Transport the relation by
+$R'=\{(f(d),f(e)):(d,e)\in R\}$, the assignment by
+$a'(x)=h(a(x))$, and each constant $c_S$ to $c_{h(S)}$.
+Transport the order by declaring $h(S)\leq' h(T)$ exactly when
+$S\leq T$. The default is respected because $h(\emptyclass)=\emptyclass$.
+Simultaneous induction on terms and formulas now shows that term
+values are carried by $h$ and formula truth is preserved. The relation
+case follows by transporting every pair of candidates; quantifiers
+use the bijectivity of $h$. At a descriptor, the induction hypothesis
+transports its witness collection to its direct image under $h$, and
+the preceding proposition transports the selected value.
+
+Keeping the old order while permuting the objects is a different
+operation: it need not preserve descriptor values. None of this
+conflicts with the substitution lemma, which compares assignments
+inside one fixed ordered model and identifies the witness collections
+there literally. Nor does renaming a bound variable change the order
+on semantic objects. Syntactic renaming, substitution, and transport
+of a semantic structure are three distinct operations.
+
+\begin{theorem}[Choice and candidate presence are distinct]
+For this interpretation, with capture-avoiding substitution,
+\[
+M,a\vDash\varphi[(\varepsilon x,\varphi)/x]
+\quad\Longleftrightarrow\quad
+M,a\vDash\exists x\,\varphi.
+\]
+Nevertheless, the truth of either side need not imply
+$(\varepsilon x,\varphi)\downarrow$.
+\end{theorem}
+\Proof
+If there is a witness candidate set, the descriptor denotes one of the
+witness sets, so substitution yields a true formula. If there is none,
+$\varphi$ is false at every candidate set, including the default
+$\emptyclass$, so the substituted formula is false. The substitution
+step follows by induction on expressions, as in ordinary first-order
+semantics; the descriptor case uses the same set of witnesses under the
+two corresponding assignments.
+
+For the last claim, take $\varphi=\neg(x\downarrow)$. Its unique
+witness in $\mathcal P(D)$ is the empty candidate set. The existential
+formula and the descriptor witness formula are therefore true, but the
+descriptor's candidate-presence assertion is false.
+\Done
+
+\begin{corollary}[Choice with an explicit presence guard]
+Define the term
+\[
+e_\varphi=(\varepsilon x,\ x\downarrow\land\varphi).
+\]
+Then
+\[
+e_\varphi\downarrow\iff\exists x\,(x\downarrow\land\varphi),
+\qquad
+ e_\varphi\downarrow\ \Longrightarrow\ \varphi[e_\varphi/x].
+\]
+\end{corollary}
+\Proof
+When a nonempty witness candidate set exists, the descriptor selects
+such a set and it satisfies $\varphi$. Otherwise the witness collection
+for the guarded predicate is empty and the descriptor has the empty
+default, so its presence assertion is false.
+\Done
+
+In this model every term denotes a semantic object, which may itself be
+an empty collection of candidates. Thus $t\downarrow$ is an internal
+presence predicate, not the metatheoretic assertion that term
+interpretation exists. PFOL makes a different distinction: an undefined
+term has no denotation. The finite model establishes consistency of the
+candidate clauses with their stated choice principle, while identifying
+exactly which meaning of quantification makes that claim true. It does
+not settle a semantics in which quantifiers range only over singleton
+candidate sets.
+
+\subsection{A proposed comprehension scheme}
+The class-existence principle motivates a syntactic operation
+$\mathrm{setify}$ on formulas. Its intended role is to restrict the relevant
+variables and quantifiers to sets. A recursive definition must state how it
+handles binders and free class parameters; those clauses are not yet given
+in this draft.
+
+The proposed characterization was
+\[
+(\varphi\in\mathrm{setify}[\mathrm{Fm}])
+\stackrel{meta}{\IFF}
+(\vdash (\cc{x}{\varphi}\downarrow)).
+\]
+The right-hand side is a claim of provability, so the equivalence requires
+a specified calculus as well as semantics. In particular, the reverse
+direction says that the syntactic transformation captures \emph{every}
+provably defined comprehension, which is stronger than a sufficient
+formation condition. The display records that intended characterization;
+its two directions remain separate proof obligations.
 
 \input{END.tex}

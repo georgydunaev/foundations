@@ -1,226 +1,563 @@
-% Documentation update: opencode-go/kimi-k3.1-pro (Capability Tier 2).
-\def\topic{Yoneda embedding lemma}
+\def\topic{Category theory and the Yoneda lemma}
 \input{BEGIN.tex}
-% TODO: Upgrade the old proofs in this chapter.
 \section{Category theory}
 
-Notes and notation:\\
-$\Ob_C$ and $C$ are used interchangeably (e.g. $\Ob_\Set$ and $\Set$).\\
-Duality: $\Ob_C = \Ob_{C^\op}$ and
-$\forall x,y \in \Ob_C. \Hom_C(x,y) = \Hom_{C^\op}(y,x)$.\\
-$\circ : \Pi(C\in \Cat).\Pi(X,Y,Z\in C).\Hom_C(X,Y)\times\Hom_C(Y,Z)\to\Hom_C(X,Z)$
+This section develops the author's Hom-functor construction and its
+Yoneda correspondence. The essential distinction is between
+\emph{precomposition}, which changes the source of a morphism, and
+\emph{postcomposition}, which changes its target.
 
-\subsection{Yoneda embedding lemma}
-Let $C$ be a locally small category.\\
-Let $\Set$ be the category of sets.\\
-$[C^\op,\Set]$ denotes the corresponding functor category.\\
+We write $C$ for a category and, when the context is clear, also for its
+collection of objects $\Ob_C$. Composition is read from right to left:
+if $g:X\to Y$ and $f:Y\to Z$, then $f\circ g:X\to Z$. Thus its typed form is
+\[
+\circ:\Hom_C(Y,Z)\times\Hom_C(X,Y)\longrightarrow\Hom_C(X,Z).
+\]
+The opposite category has the same objects and
+$\Hom_{C^\op}(X,Y)=\Hom_C(Y,X)$, with composition reversed.
 
+We assume that $C$ is locally small: each $\Hom_C(X,Y)$ is a set.
+The notation $\Set$ denotes the category of sets in the chosen size
+convention. Functors and natural transformations are considered in an
+ambient framework large enough to contain them; local smallness alone
+does not make the collection of all functors a set. One may, for example,
+work with a small $C$ relative to a chosen universe and use a larger
+ambient universe for the functor category. The calculations below are
+componentwise and do not depend on this particular choice of framework.
+
+\begin{note}[Comparison with the Obelisk Yoneda summary]
+The newer portal's \texttt{yoneda\_ai.html} gives the same correspondence
+$\eta\mapsto\eta_A(1_A)$ and inverse $u\mapsto(f\mapsto G(f)(u))$
+proved below. Its discussion of ``functor classes'' needs a size
+interpretation: an individual functor may have a class-sized graph,
+while a collection of all such graphs can lie at a higher level.
+Impredicative class comprehension still has sets as members, so it does
+not by itself turn proper-class graphs into members of a class.
+The ambient convention stated above makes this distinction explicit
+without changing the componentwise Yoneda argument.
+\end{note}
+
+\subsection{Functors and the contravariant Hom-functor}
 \begin{definition}[Functor]
-Let $C$, $D$ be categories.\\
-$(F, \FMor)$ is a (covariant) functor iff
-\begin{enumerate}
-\item $F:C \to D$
-\item $\FMor:\Pi(A\ B:C).\Hom_C(A,B) \to \Hom_D(F(A), F(B))$
-\item $\forall A\in \Ob_C, \FMor^{A,A}(1_A)=1_{F(A)}$
-\item $\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$
-\end{enumerate}
+A covariant functor from $C$ to $D$ consists of an object map $F$ and
+maps on morphisms
+\[
+\FMor^{A,B}:\Hom_C(A,B)\longrightarrow\Hom_D(F(A),F(B))
+\]
+that preserve identities and composition:
+\[
+\FMor^{A,A}(1_A)=1_{F(A)},\qquad
+\FMor(f\circ g)=\FMor(f)\circ\FMor(g).
+\]
+When no ambiguity arises, we write $F(f)$ for $\FMor(f)$.
 \end{definition}
 
-\begin{definition}[Functors between categories]
-Let $C$, $D$ be categories.\\
-$[C,D]$ is the set of functors from $C$ to $D$.\\
+\begin{definition}[Functor category]
+The notation $[C,D]$ denotes the category whose objects are functors
+$C\to D$ and whose morphisms are natural transformations. A natural
+transformation $\eta:F\to G$ consists of components
+$\eta_A:F(A)\to G(A)$ satisfying
+\[
+G(f)\circ\eta_A=\eta_B\circ F(f)
+\quad\text{for every }f:A\to B.
+\]
 \end{definition}
 
 \begin{definition}[Morphism action of the Hom-functor]
-Let $f\in\Hom_{C}(A,B)$.
+Fix $x\in C$. On objects, put $h_x(A)=\Hom_C(A,x)$. For a morphism
+$f:A\to B$ of $C$, define precomposition by
 \[
-\Hom_C: \Ob_C \times \Ob_C \to \Set
+\HomMor_C^{A,B}(f,x):\Hom_C(B,x)\longrightarrow\Hom_C(A,x),
+\qquad g\longmapsto g\circ f.
 \]
-\[
-\Hom_C(-,x): \Ob_C \to \Set
-\]
-\[
-\HomMor^{A,B}_C(f,x) : \Hom_C(B,x) \to \Hom_C(A,x)
-\]
-\[
-\HomMor^{A,B}_C(f,x) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f))
-\]
-With the codomain made explicit, this is
-\[
-\HomMor^{A,B}_C(f,x) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(A,x)).
-\]
-Another notation for the same map is
-\[
-\widetilde{\Hom_C(-,x)}^{A,B}(f) \eqdef (g \in\Hom_C(B,x) \mapsto (g \circ_C f) \in\Hom_C(A,x)).
-\]
+This is the morphism action of $h_x$ on the corresponding arrow
+$B\to A$ of $C^\op$. The notations $\Hom_C(-,x)$ and $h_x$ denote the
+same functor; $\HomMor_C(f,x)$ makes its morphism action explicit.
 \end{definition}
 
 \begin{lemma}[Contravariant Hom-functor]
-\[
-\Hom_C(-, x) \in [C^\op,\Set]
-\]
+For each $x\in C$, the construction above gives
+$h_x=\Hom_C(-,x)\in[C^\op,\Set]$.
 \end{lemma}
+\Proof
+The object values are sets by local smallness. Precomposition has the
+displayed source and target, because composition in $C$ is defined for
+these morphisms. It preserves identities since $g\circ1_A=g$.
+For $f:A\to B$, $k:B\to D$, and $g:D\to x$, associativity gives
+\[
+\HomMor_C(k\circ f,x)(g)
+ =g\circ(k\circ f)
+ =(g\circ k)\circ f
+ =\bigl(\HomMor_C(f,x)\circ\HomMor_C(k,x)\bigr)(g).
+\]
+This reversed order is exactly the composition law for a functor on
+$C^\op$. Equality on each argument gives equality of the corresponding
+maps.
+\Done
 
-\myprf\\
-Substitution:\\
-$C \coloneqq C^\op$,
-$D \coloneqq \Set$,
-$F \coloneqq \Hom_C(-,x)$,
-$\FMor \coloneqq \HomMor_C(-,x)$\\
-\begin{enumerate}
-\item $\Hom(-, x) : C^\op \to \Set$\ \ \ by definition of $\Hom$.
-\item $\HomMor(-, x) :\Pi(A\ B:C).\Hom_{C^\op}(A,B) \to \Hom_\Set(\Hom_C(A,x), \Hom_C(B,x))$\\
-$\HomMor_C^{A,B}(f\in\Hom_{C^\op}(A,B), x) = (g \in\Hom_C(A,x) \mapsto (g \circ_C f) \in\Hom_C(B,x))$\ (this is a definition).\\
-In other words, fix the $A,B\in C$ and $f\in\Hom_{C^\op}(A,B)$.\\
-$\HomMor_C^{A,B}(f, x) = (g\mapsto (g \circ_C f))$\\
-$\HomMor_C^{A,B}(f, x) : \Hom_C(A,x) \to \Hom_C(B,x)$
-\\
-$\HomMor$ is total since $f:\Hom_{C^\op}(A,B), \Rightarrow f\in\Hom_C(B,A)$ by definition of dual category. (It follows that composition is defined, so it is total.)
-\item $1_A\in\Hom_{C^\op}(A,A)$\\
-$\HomMor^{A,A}(1_A, x) = \left(g \in\Hom_C(A,x)\mapsto g \circ_C 1_A\right) = $\\
-$\quad = \left(g \in\Hom_C(A,x) \mapsto g \in\Hom_C(A,x)\right) =$\\
-$\quad \quad = 1_{\Hom_C(A,x)} \in \Hom_\Set\left(\Hom_C(A,x), \Hom_C(A,x)\right).$\\
-since $g \circ_C 1_A = g$\\
-\item Now we need to do a substitution in
-$\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$ and prove it.\\
-Again, $C \coloneqq C^\op$,
-$D \coloneqq \Set$,
-$F \coloneqq \Hom_C(-,x)$,
-$\FMor \coloneqq \HomMor_C(-,x)$\\
-So $\FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor(f)\circ_D^{F(X),F(Y),F(Z)} \FMor(g)$ becomes\\
-$\HomMor_C^{X,Z}(f\circ_C^{X,Y,Z} g, x)=\HomMor_C(f,x)\circ_D^{F(X),F(Y),F(Z)} \HomMor_C(g,x)$.\\
-Equivalently, $\HomMor_C^{X,Z}(f\circ_{C^\op}^{X,Y,Z} g, x)=$\\ $=\HomMor_C^{Y,Z}(f,x)\circ_\Set^{\HomMor_C(X,x),\HomMor_C(Y,x),\HomMor_C(Z,x)} \HomMor_C^{X,Y}(g,x)$.\\
-We'll omit some notation for arrow composition below.\\
-$\HomMor_C^{X,Z}(f\circ_{C^\op}^{X,Y,Z} g, x)=\HomMor_C(f,x)\circ_\Set \HomMor_C(g,x)$,\\
-where $f\in\Hom_{C^\op}(Y,Z)$ and $g\in\Hom_{C^\op}(X,Y)$.\\
-So $f\in\Hom_{C}(Z,Y)$ and $g\in\Hom_{C}(Y,X)$.\\
-$f\circ_{C^\op}^{X,Y,Z} g = g\circ_{C}^{Z,Y,X} f$\\
-So it's enough to prove that $\HomMor_C(g\circ_C f, x) = \HomMor_C(f, x) \circ_\Set \HomMor_C(g, x)$\\
-$a)\ \HomMor_C(g\circ_C f, x) = (h \in\Hom_C(Z,x) \mapsto (h \circ_C (g\circ_C f))\in\Hom_C(X,x))$\\
-$b)\ \HomMor_C(f, x) = \left(u \in\Hom_C(Z,x) \mapsto (u \circ_C f)\in\Hom_C(Y,x)\right)$\\
-$c)\ \HomMor_C(g, x) = \left(v \in\Hom_C(Y,x) \mapsto (v \circ_C g)\in\Hom_C\left(X,x\right)\right)$\\
+\subsection{The Yoneda functor}
+\begin{definition}[Yoneda functor]
+On objects, the Yoneda functor sends $x$ to $h_x=\Hom_C(-,x)$.
+For $f:x\to y$, define $h_f:h_x\to h_y$ by postcomposition:
+\[
+(h_f)_w:\Hom_C(w,x)\longrightarrow\Hom_C(w,y),
+\qquad g\longmapsto f\circ g.
+\]
+This component family is the transformation denoted by $\eta$ in the
+construction below.
+\end{definition}
+
+\begin{lemma}[Naturality of postcomposition]
+For every $f:x\to y$, the family $\eta=h_f$ is a natural transformation.
+\end{lemma}
+\Proof
+An arrow $m:a\to b$ in $C^\op$ is an arrow $m:b\to a$ in $C$.
+For $g:a\to x$, the two sides of the naturality square give
+\[
+\bigl(\eta_b\circ\HomMor_C(m,x)\bigr)(g)=f\circ(g\circ m),
+\]
+\[
+\bigl(\HomMor_C(m,y)\circ\eta_a\bigr)(g)=(f\circ g)\circ m.
+\]
+Associativity makes them equal. This also identifies the source and
+target of both maps as $\Hom_C(a,x)\to\Hom_C(b,y)$.
+\Done
+
+\begin{lemma}[Functoriality of the Yoneda construction]
+The assignments $x\mapsto h_x$ and $f\mapsto h_f$ define a functor
+$h_-:C\to[C^\op,\Set]$.
+\end{lemma}
+\Proof
+For every $g:w\to x$, $(h_{1_x})_w(g)=1_x\circ g=g$, so identities
+are preserved. If $f:x\to y$ and $k:y\to z$, then
+\[
+(h_{k\circ f})_w(g)=(k\circ f)\circ g
+ =k\circ(f\circ g)
+ =\bigl((h_k)_w\circ(h_f)_w\bigr)(g).
+\]
+Natural transformations compose componentwise, so composition is
+preserved as well.
+\Done
+
+\subsection{The Yoneda correspondence}
+\begin{lemma}[Yoneda lemma, contravariant version]
+Let $G:C^\op\to\Set$ and $A\in C$. There is a bijection
+\[
+\Nat(h_A,G)\longrightarrow G(A),\qquad
+\Psi\longmapsto\Psi_A(1_A).
+\]
+Its inverse sends $u\in G(A)$ to the transformation $\Phi^u$ with
+\[
+\Phi^u_x(f)=G(f)(u)\qquad(f:x\to A\text{ in }C).
+\]
+Here $G(f):G(A)\to G(x)$ denotes the action on the corresponding
+arrow of $C^\op$.
+\end{lemma}
+\Proof
+First verify that the inverse formula defines a natural transformation.
+For $m:y\to x$ and $f:x\to A$ in $C$, functoriality gives
+\[
+G(m)\bigl(\Phi^u_x(f)\bigr)
+ =G(m)\bigl(G(f)(u)\bigr)
+ =G(f\circ m)(u)
+ =\Phi^u_y(f\circ m).
+\]
+This is the naturality condition for $\Phi^u:h_A\to G$.
+Its component at the identity recovers the chosen element:
+\[
+\Phi^u_A(1_A)=G(1_A)(u)=u.
+\]
+Thus different choices of $u$ give different transformations.
+
+Conversely, let $\Psi:h_A\to G$ be natural and put
+$u=\Psi_A(1_A)$. For any $f:x\to A$, naturality on the corresponding
+arrow $A\to x$ in $C^\op$ gives
+\[
+\Psi_x(f)
+ =\Psi_x(1_A\circ f)
+ =G(f)\bigl(\Psi_A(1_A)\bigr)
+ =G(f)(u)
+ =\Phi^u_x(f).
+\]
+The equality holds for every $x$ and every $f$, so $\Psi=\Phi^u$.
+The two displayed constructions are therefore inverse bijections.
+\Done
+
+The correspondence is natural in both parameters. A transformation
+$\alpha:G\to H$ sends $\Psi_A(1_A)$ to
+$\alpha_A(\Psi_A(1_A))$, which is the element corresponding to
+$\alpha\circ\Psi$. For an arrow $k:A\to B$, precomposing
+$\Psi:h_B\to G$ with $h_k$ gives the element
+\[
+(\Psi\circ h_k)_A(1_A)=\Psi_A(k)
+ =G(k)\bigl(\Psi_B(1_B)\bigr).
+\]
+These identities state precisely how the bijection respects a change of
+functor or representing object.
+
+\begin{lemma}[Yoneda embedding]
+The functor $h_-:C\to[C^\op,\Set]$ is fully faithful.
+\end{lemma}
+\Proof
+Apply the Yoneda correspondence with $A=x$ and $G=h_y$. It gives
+\[
+\Nat(h_x,h_y)\longrightarrow\Hom_C(x,y),\qquad
+\eta\longmapsto\eta_x(1_x).
+\]
+The inverse sends $f:x\to y$ to the transformation with components
+$g\mapsto f\circ g$, exactly $h_f$. Hence the map induced by $h_-$
+on each Hom-set is a bijection: it is surjective (full) and injective
+(faithful).
+\Done
+
+\subsection{Universal elements and uniqueness of representations}
+A representation is more than an object whose elements have the desired
+shape: it includes a natural identification. The following formulation
+makes that extra structure explicit.
+
+\begin{definition}[Universal element]
+For $G:C^\op\to\Set$, an element $u\in G(A)$ is universal if, for every
+object $X$ and $v\in G(X)$, there is exactly one morphism $f:X\to A$
+with $G(f)(u)=v$.
+\end{definition}
+
+\begin{proposition}[Universal-element criterion]
+The functor $G$ is naturally isomorphic to $h_A$ if and only if it has a
+universal element in $G(A)$. If $(A,u)$ and $(B,v)$ are two such choices,
+there is a unique isomorphism $k:A\to B$ satisfying $G(k)(v)=u$.
+\end{proposition}
+\Proof
+The Yoneda transformation $\Phi^u_X:f\mapsto G(f)(u)$ is natural.
+Universality says exactly that every component is bijective. The inverses
+are natural: from
+$G(m)\Phi^u_X=\Phi^u_Yh_A(m)$ for $m:Y\to X$, compose with the inverse
+components to obtain
+$(\Phi^u_Y)^{-1}G(m)=h_A(m)(\Phi^u_X)^{-1}$.
+Conversely, for a natural isomorphism $\Phi:h_A\to G$, put
+$u=\Phi_A(1_A)$. Yoneda gives $\Phi=\Phi^u$, and componentwise bijectivity
+gives universality.
+
+For two universal elements there are unique arrows $k:A\to B$ and
+$l:B\to A$ with $G(k)(v)=u$ and $G(l)(u)=v$. Contravariance gives
+\[
+G(l\circ k)(u)=G(k)G(l)(u)=u,
+\qquad
+G(k\circ l)(v)=G(l)G(k)(v)=v.
+\]
+Uniqueness for $(A,u)$ and $(B,v)$ respectively implies
+$l\circ k=1_A$ and $k\circ l=1_B$. The condition on $k$ already determines
+it uniquely.
+\Done
+
+\begin{example}[Products as representing objects]
+Fix objects $B,D$ in $C$ and define
+$G(X)=\Hom_C(X,B)\times\Hom_C(X,D)$, with
+$G(m)(b,d)=(b\circ m,d\circ m)$. Identity and composition laws follow
+componentwise from those in $C$. An element of $G(P)$ is a pair of arrows
+$p:P\to B$, $q:P\to D$. Its universality says exactly that every pair
+$b:X\to B$, $d:X\to D$ factors uniquely as
+\[
+p\circ f=b,\qquad q\circ f=d\qquad(f:X\to P).
+\]
+Thus a categorical product represents this functor. The preceding
+proposition proves uniqueness up to the unique isomorphism preserving
+both projections. It does not assert that products exist in every category.
+\end{example}
+
+\begin{proposition}[Yoneda detects isomorphisms]
+An arrow $f:A\to B$ is an isomorphism if and only if every map
+\[
+\Hom_C(X,A)\longrightarrow\Hom_C(X,B),\qquad g\longmapsto f\circ g
+\]
+is bijective.
+\end{proposition}
+\Proof
+An inverse to $f$ supplies the inverse maps by postcomposition.
+Conversely, surjectivity at $X=B$ gives $g:B\to A$ with $f\circ g=1_B$.
+Then $f\circ(g\circ f)=f=f\circ1_A$. Injectivity at $X=A$ gives
+$g\circ f=1_A$, so $g$ is an inverse.
+\Done
+
+The quantifier over all test objects is essential. In the category of
+abelian groups, the zero group is terminal, and there is just one arrow
+from it to any group. Testing only that object therefore makes every
+arrow appear bijective on these Hom-sets, including the noninvertible
+arrow from the zero group to $\mathbb Z$. In $\Set$, by contrast,
+maps from a singleton identify with elements, and this particular test
+object does detect bijections.
+
+
+\subsection{Cancellation and pointwise tests}
+\begin{proposition}[What Hom-functors detect about cancellation]
+An arrow $f:A\to B$ is a monomorphism if and only if postcomposition
+$\Hom_C(X,A)\to\Hom_C(X,B)$ is injective for every $X$.
+It is an epimorphism if and only if precomposition
+$\Hom_C(B,X)\to\Hom_C(A,X)$ is injective for every $X$.
+By contrast, postcomposition is surjective for every $X$ if and only
+if $f$ has a right inverse.
+\end{proposition}
+\Proof
+The first two equivalences are precisely left and right cancellation,
+respectively: $f\circ g=f\circ h$ implies $g=h$, or
+$g\circ f=h\circ f$ implies $g=h$, for each permissible source or
+target. If postcomposition is surjective at $X=B$, the identity of $B$
+has a preimage $s:B\to A$, so $f\circ s=1_B$. Conversely, such an
+$s$ lifts every $g:X\to B$ to $s\circ g:X\to A$, proving surjectivity
+at all $X$.
+\Done
+
+\begin{example}[An epimorphism need not give pointwise surjectivity]
+In the category of abelian groups, the quotient
+$q:\mathbb Z\to\mathbb Z/2\mathbb Z$ is an epimorphism: two
+homomorphisms agreeing after $q$ agree on every element, because $q$
+is surjective as a set map. But it has no right inverse. Any
+homomorphism $s:\mathbb Z/2\mathbb Z\to\mathbb Z$ sends the generator
+to an integer $n$ satisfying $2n=0$, so $n=0$ and $s=0$.
+Thus postcomposition with $q$ is not surjective on the Hom-set with
+source $\mathbb Z/2\mathbb Z$. This distinguishes cancellation in the
+category from pointwise surjectivity of the corresponding natural
+transformation $h_q$; the latter is the stronger split-epimorphism
+condition proved above.
+\end{example}
+
+
+\subsection{Hom-functors and universal constructions}
+There are two variances to keep apart. For a fixed source $X$, the
+\emph{covariant} functor $\Hom_C(X,-)$ sends a target arrow to
+postcomposition. For a fixed target $A$, the earlier $h_A=\Hom_C(-,A)$
+is contravariant. The next statement concerns the former functor.
+
+\begin{proposition}[Products and equalizers tested by Hom]
+If $P$ with projections $p:P\to B$, $q:P\to D$ is a product, then
+for every $X$ the map
+\[
+\Hom_C(X,P)\longrightarrow\Hom_C(X,B)\times\Hom_C(X,D),
+\qquad u\longmapsto(p\circ u,q\circ u)
+\]
+is bijective. If $e:E\to B$ is an equalizer of $f,g:B\to D$, then
+postcomposition with $e$ gives a bijection
+\[
+\Hom_C(X,E)\longrightarrow
+\{u\in\Hom_C(X,B):f\circ u=g\circ u\}.
+\]
+Both bijections are natural in the test object $X$.
+\end{proposition}
+\Proof
+The product property gives existence and uniqueness of $u$ with any
+prescribed two components, which proves the first bijection. The
+equalizer property says exactly that every arrow $u$ satisfying the
+displayed equality has a unique factorization $u=e\circ v$, proving
+the second. For $k:Y\to X$, precomposing $u$ or $v$ by $k$ precomposes
+all displayed components by $k$, by associativity. This proves naturality.
+\Done
+
+These statements prove preservation of the indicated limits by
+$\Hom_C(X,-)$; they do not assume those limits exist in every category.
+Dually, the contravariant $h_A$ takes an existing coproduct to a product
+of Hom-sets and an existing coequalizer to an equalizer of Hom-sets.
+The proof is the same factorization argument with arrows reversed.
+All Hom-sets here are sets by local smallness; no collection of all
+proper-class-valued diagrams is being formed.
+
+\subsection{Initial algebras, final coalgebras, and fixed points}
+Let $P:C\to C$ be an endofunctor. A $P$-algebra is an arrow
+$a:P(A)\to A$. An algebra morphism from $(A,a)$ to $(B,b)$ is an
+arrow $u:A\to B$ with
+\[
+u\circ a=b\circ P(u).
+\]
+Identities satisfy the equation because $P(1_A)=1_{P(A)}$.
+For algebra morphisms $u:(A,a)\to(B,b)$ and $v:(B,b)\to(D,c)$,
+\[
+(v\circ u)\circ a
+=v\circ b\circ P(u)
+=c\circ P(v)\circ P(u)
+=c\circ P(v\circ u).
+\]
+Thus composition is inherited from $C$, and its associativity and identity
+laws are inherited as well. These objects and arrows therefore form an
+algebra category in the chosen ambient size convention.
+An algebra is \emph{initial} when it has exactly one
+algebra morphism to every algebra. Dually, a coalgebra is an arrow
+$d:M\to P(M)$, a coalgebra morphism $u:(M,d)\to(N,e)$ satisfies
+$e\circ u=P(u)\circ d$, and a coalgebra is \emph{final} when every
+coalgebra has exactly one morphism to it. The analogous composition
+calculation, with the structure arrows reversed, verifies the coalgebra
+category laws.
+
+\begin{lemma}[Lambek's lemma]
+\label{lem:lambek}
+The structure map of an initial algebra is an isomorphism. The
+structure map of a final coalgebra is also an isomorphism.
+\end{lemma}
+\Proof
+Let $(A,a)$ be initial. The arrow $P(a):P(P(A))\to P(A)$ is another
+algebra, so there is a unique algebra morphism
+$h:(A,a)\to(P(A),P(a))$. The arrow $a$ itself is an algebra morphism
+in the reverse direction: its required equation is the identity
+$a\circ P(a)=a\circ P(a)$. Thus $a\circ h$ is an endomorphism of
+the initial algebra, and uniqueness gives $a\circ h=1_A$.
+The equation for $h$ now gives
+\[
+h\circ a=P(a)\circ P(h)=P(a\circ h)=1_{P(A)}.
+\]
+Hence $h$ is an inverse to $a$.
+
+For a final coalgebra $(M,d)$, let
+$k:(P(M),P(d))\to(M,d)$ be its unique coalgebra morphism.
+The arrow $d$ is a coalgebra morphism in the other direction, so finality
+gives $k\circ d=1_M$. Its morphism equation yields
+\[
+d\circ k=P(k)\circ P(d)=P(k\circ d)=1_{P(M)}.
+\]
+Thus $k$ is an inverse to $d$.
+\Done
+
+\begin{proposition}[Uniqueness with structure]
+Two initial $P$-algebras are uniquely isomorphic as algebras, and two
+final $P$-coalgebras are uniquely isomorphic as coalgebras.
+\end{proposition}
+\Proof
+For initial algebras, take their unique morphisms in the two directions.
+Each composite is an endomorphism of an initial object, hence equals
+its identity. The two morphisms are therefore inverse, and uniqueness
+is part of initiality. Reverse the arrows for final coalgebras.
+\Done
+
+For the polynomial functor
+$P_B(X)=\sum_{a\in A}X^{B(a)}$ on sets, the W-type construction in
+Theorem~\ref{thm:general_W_recursion} supplies an initial algebra, and
+Theorem~\ref{thm:M_final_coalgebra} supplies the finite-address M-type
+as a final coalgebra.
+Lambek's lemma explains their fixed-point equations without treating a
+bare equation $P_B(X)\cong X$ as a substitute for the universal property.
+The recursion and corecursion theorems supply the unique structure-preserving
+maps; the preceding proposition then makes the constructions independent
+of their particular encodings, up to those unique isomorphisms.
+
+\subsection{Fusion, induction, and coinduction}
+Keep the same endofunctor $P:C\to C$. For an initial algebra $(A,a)$,
+write $\operatorname{fold}_b:A\to B$ for the unique morphism to an
+algebra $(B,b)$. For a final coalgebra $(M,d)$, write
+$\operatorname{unfold}_c:X\to M$ for the unique morphism from a
+coalgebra $(X,c)$. These names refer to the universal properties,
+not to an additional algorithm or a choice of encodings.
+
+\begin{proposition}[Recursion and corecursion fusion]
+If $h:(B,b)\to(D,e)$ is an algebra morphism, then
+\[
+h\circ\operatorname{fold}_b=\operatorname{fold}_e.
+\]
+If $h:(X,c)\to(Y,e)$ is a coalgebra morphism, then
+\[
+\operatorname{unfold}_e\circ h=\operatorname{unfold}_c.
+\]
+\end{proposition}
+\Proof
+For the algebra assertion, the defining equations and functoriality give
 \[
 \begin{aligned}
-u &\stackrel{\HomMor_C(f,x)}{\longmapsto} u \circ_C f
-  \stackrel{\HomMor_C(g,x)}{\longmapsto} (u \circ_C f) \circ_C g,\\
-\Hom_C(Z,x)
-  &\stackrel{\HomMor_C(f,x)}{\longrightarrow} \Hom_C(Y,x)
-  \stackrel{\HomMor_C(g,x)}{\longrightarrow} \Hom_C(X,x).
+(h\circ\operatorname{fold}_b)\circ a
+ &=h\circ b\circ P(\operatorname{fold}_b)\\
+ &=e\circ P(h)\circ P(\operatorname{fold}_b)\\
+ &=e\circ P(h\circ\operatorname{fold}_b).
 \end{aligned}
 \]
-\end{enumerate}
-\myqed
-\begin{definition}[Yoneda functor]
-The Yoneda functor between the categories $C$ and $[C^\op,\Set]$ is defined on objects by
+Thus the composite is an algebra morphism from the initial algebra to
+$(D,e)$, so uniqueness identifies it with $\operatorname{fold}_e$.
+For the coalgebra assertion, similarly,
 \[
-h_x = \Hom_C(-, x).
+\begin{aligned}
+d\circ(\operatorname{unfold}_e\circ h)
+ &=P(\operatorname{unfold}_e)\circ e\circ h\\
+ &=P(\operatorname{unfold}_e)\circ P(h)\circ c\\
+ &=P(\operatorname{unfold}_e\circ h)\circ c.
+\end{aligned}
 \]
-\end{definition}
+The composite is therefore a coalgebra morphism to the final coalgebra,
+and uniqueness identifies it with $\operatorname{unfold}_c$.
+\Done
 
-\begin{definition}[Function $\eta$]
-\[
-\eta : \Pi(w\in C^\op).\Hom_C(w,x)\to \Hom_C(w,y)
-\]
-\[
-\eta = \lambda (w\in C^\op).\,\lambda g\in\Hom_C(w,x).\,(f\circ_C^{w,x,y} g)
-\]
-\end{definition}
-We now show that $\eta$ is a natural transformation between objects of $[C^\op,\Set]$.\\
-\begin{lemma}[Naturality of $\eta$]
-We have:\\
-$F=\Hom_C(-,x)\in [C^\op,\Set]$\\
-$G=\Hom_C(-,y)\in [C^\op,\Set]$\\
-$f\in\Hom_C(x,y)$\\
-We want to define a natural transformation $\eta$ from $\Hom_C(-,x)$ to $\Hom_C(-,y)$ and prove its naturality.\\
-\end{lemma}
-Fix $w\in C^\op$. $\eta_w = ?$.\\
-$\eta_w\in\Hom_\Set(\Hom_C(w,x),\Hom_C(w,y))$\\
-$\eta_w: \Hom_C(w,x)\to \Hom_C(w,y)$\\
+For the polynomial W-types, the first identity says that transforming
+a recursively computed result by a map preserving the constructor
+operations gives the same result as the corresponding recursion into
+the new target. For the M-types, the second says that a map of state
+systems preserving their labelled transitions does not change their
+unfolded trees. The preservation equations for $h$ are essential;
+arbitrary maps need not satisfy these identities.
 
-% The following substitutions expose the naturality condition.
-Substitution:\\
-$C \coloneqq C^\op$, $D \coloneqq \Set$, $F \coloneqq \Hom_C(-,x)$, $G \coloneqq \Hom_C(-,y)$, $x \coloneqq a$, $y \coloneqq b$, $f \coloneqq m$
-\begin{lemma}[Naturality condition]
+\begin{proposition}[Subalgebra and quotient rigidity]
+Suppose $(A,a)$ is initial and an algebra morphism
+$m:(S,s)\to(A,a)$ has an underlying arrow $m:S\to A$ that is a
+monomorphism in $C$. Then $m$ is an isomorphism of algebras.
+Dually, suppose $(M,d)$ is final and a coalgebra morphism
+$q:(M,d)\to(Q,e)$ has an underlying arrow $q:M\to Q$ that is an
+epimorphism in $C$. Then $q$ is an isomorphism of coalgebras.
+\end{proposition}
+\Proof
+Initiality supplies an algebra morphism $h:(A,a)\to(S,s)$.
+The composite $m\circ h$ is an endomorphism of the initial algebra,
+so it equals $1_A$. Consequently
 \[
-\forall a,b\in C^\op. \forall m\in \Hom_{C^\op}(a,b).\eta_b \circ_\Set \Hom_C(m,x)=\Hom_C(m,y)\circ_\Set\eta_a
+m\circ(h\circ m)=(m\circ h)\circ m=m=m\circ1_S.
 \]
-\end{lemma}
-\myprf\\
-Fix $a$, $b$ and $m\in\Hom_C(b,a)$.\\
-Aim: $(\lambda g_1 \in \Hom_C(b,x). f\circ^{b,x,y}_C g_1)\circ_\Set \HomMor_C^{b,a}(m,x) = $\\
-$=\HomMor_C^{b,a}(m,y) \circ_\Set (\lambda g_2 \in \Hom_C(a,x). f\circ^{a,x,y}_C g_2)$.\\
-Note that $(f\circ^{a,x,y}_C g_2) \in \Hom_C(a,y)$\\
-$\HomMor_C^{b,a}(m,y) \eqdef (\lambda g_3 \in \Hom_C(a,y). g_3\circ^{b,a,y}_C m)$\\
-$\HomMor_C^{b,a}(m,y) : \Hom_C(a,y) \to \Hom_C(b,y)$\\
-RightHandSide $= \lambda g_2 \in \Hom_C(a,x). ((f \circ_C^{a,x,y} g_2) \circ_C^{b,a,y} m )$\\
-RHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
-$\HomMor_C^{b,a}(m,x) \eqdef (\lambda g_4 \in \Hom_C(a,x). g_4\circ^{b,a,x}_C m)$\\
-LeftHandSide $= \lambda g_2 \in \Hom_C(a,x). (f \circ_C^{b,x,y} (g_2 \circ_C^{b,a,x} m ))$\\
-LHS:$\Hom_C(a,x) \to \Hom_C(b,y)$\\
-LHS=RHS
-\myqed
-\begin{lemma}[Yoneda embedding]
-$h_{-}:C\to [C^\op,\Set]$ is a fully faithful functor.
-\end{lemma}
-\myprf
-\begin{itemize}
-\item $h_-$ is a functor.\\
-$\widetilde{h}_-$ = ...\\
-Substitution: $C\coloneqq C$, $D\coloneqq [C^\op,\Set]$, $F\coloneqq h_-$,
-\begin{enumerate}
-\item $F:C \to D$
-\item $\FMor:\Pi(A\ B:C).\Hom_C(A,B) \to \Hom_D(F(A), F(B))$
-\item $\forall A\in \Ob_C, \FMor^{A,A}(1_A)=1_{F(A)}$
-\item $\forall X,Y,Z \in \Ob_C.\forall f\in\Hom_C(Y,Z).\forall g\in\Hom_C(X,Y). \FMor^{X,Z}(f\circ_C^{X,Y,Z} g)=\FMor^{Y,Z}(f)\circ_D^{F(X),F(Y),F(Z)} \FMor^{X,Y}(g)$
-\end{enumerate}
-\item $h_-$ is full.
-\item $h_-$ is faithful.
-\item $h_-$ is injective on morphisms.
-\end{itemize}
-\myqed
-\begin{lemma}[Yoneda lemma, contravariant version]
-$G : C^\op \to \Set$\\
-$h_A = \Hom_C(-,A)$\\
-$h_A : C^\op \to \Set$\\
-$\Nat(h_A,G)\sim G(A)$\\
-(There is a bijection between $G(A)$ and the natural transformations from $h_A$ to $G$.)
-\end{lemma}
-\myprf\\
-Let $u\in G(A)$. Let's define a natural transformation $\Phi$ from $h_A$ to $G$.\\
-$\Phi:\Pi(x\in C^\op).h_A(x)\to G(x)$ (because it's a Hom in Set)\\
-1) Let $\Phi^u_A(\id_A)\eqdef u$. \\
-Now we need to define $\Phi_x(f)$ for arbitrary $x\in C$ and\\
-$f\in h_A(x).$ $=\Hom_C(x,A).$ $=\Hom_{C^\op}(A,x). \Longrightarrow$\\
-$\Longrightarrow$ therefore $\GMor ^{A,x}(f):G(A)\to G(x)$ is defined.\\
-So the definition will be $\Phi^u_x(f)\eqdef (\GMor^{A,x}(f))(u)$.\\
-Now we need to show the correctness of the definition.\\
-$\Phi^u_A(\id_A)\eqdef (\GMor^{A,A}(f))(\id_A) = (\id_{G(A)})(u) = u$. The correctness is proved.
-2) The next aim is proving commutativity of natural transformation with functor applied to morphisms.\\
-$\forall x,y\in C^\op.\forall f\in \Hom_{C^\op}(x,y).(G(f)\circ_\Set \Phi_x) = (\Phi_y \circ_\Set (\Hom_C(f,A)))$
-Fix  $x,y\in C^\op$ and $f\in \Hom_{C^\op}(x,y)$.\\
-Aim: $(G(f)\circ_\Set \Phi_x) = (\Phi_y \circ_\Set (\Hom_C(f,A)))$.
-Fix $g\in \Hom_C(x,A)$. Recall that $\Hom_C(f,A)=(-\circ^{y,x,a})$.\\
-Aim: $(G(f)\circ_\Set \Phi_x)(g) = (\Phi_y \circ_\Set (\Hom_C(f,A)))(g)$.\\
-Equivalently, $(G(f)\circ_\Set \Phi_x)(g) = \Phi_y (g\circ_C^{y,x,A} f)$.\\
-LHS $\coloneqq (G(f)\circ_\Set \Phi_x)(g) =($def of $\Phi)= \GMor^{x,y}(f)\left(\left(\GMor^{A,x}\left(g\right)\right)\left(u\right)\right) =$\\
-$ =\GMor^{A,y}\left(g\circ_C f\right)(u)$\\
-Then since $g\circ_C f = f\circ_{C^\op} g$ and $\GMor(f\circ_{C^\op} g)=  \GMor(f)\circ_\Set \GMor(g)$ we have:\\
-RHS $\coloneqq \Phi^u_y(g\circ f)=($def of $\Phi)=\GMor^{A,y}\left(g\circ_C f\right)(u)$\\
-This LHS=RHS holds therefore we obtained a natural transformation $\Phi\in\Nat(h_A,G)$ using the $u\in G(A)$.\\
-We already know that the relation between $G(A)$ and $\Phi\in\Nat(h_A,G)$ is functional and total on $G(A)$.
-The next step is to prove its injectivity and surjectivity on $\Phi\in\Nat(h_A,G)$.\\
-Injectivity: $u_1,u_2\in G(A)$, $u_1\neq u_2$.\\
-$\Phi_{1,A}(\id(A))= u_1\neq u_2 = \Phi_{2,A}(\id(A))\quad \Longrightarrow \quad \Phi_1 \neq \Phi_2$. It's proved. \\
-Surjectivity on $\Nat(h_A,G)$.:\\
-Let $\Psi\in\Nat(h_A,G)$. Let's show that $\exists u\in G(A).\Phi^u=\Psi$.\\
-$u\coloneqq \Psi_A(\id_A)$\\
-$\Psi:\Pi(x\in C). h_A(x)\to G(x)$\\
-$\Phi^u_x(f) \eqdef (\GMor^{A,x}(f))(u)$.\\
-Fix $x\in C$ and $f\in\Hom_C(x,A)$. $\Psi_x(f)=\ ?$.
-In other words, there is a $\Psi\in\Nat(h_A,G)$, and it is known that $\Psi_A(\id_A) = u$. Find $\Psi_x(f)$.\\
-Firstly, $\id_A \in \Hom_C(A,A)$. $\Longrightarrow (\id_A \circ_C^{x,A,A} f) \in \Hom_C(x,A)$. $\Longrightarrow \Psi_x(\id_A \circ_C^{x,A,A} f)\in G(A)$. $\Longrightarrow \Psi_x(f)\in G(A)$.\\
-Secondly, $\id_A \in \Hom_C(A,A)$. $\Longrightarrow \Psi_A(\id_A) \in G(A)$. Since $\Psi_A(\id_A)=u$ we have $G(f)(u)\in G(x)$.\\
-Since $\Psi$ is a natural transformation we obtained that $\Psi_x(f)=G(f)(u),$ which is equal to $\Phi^u_x(f)$.\\
-This equality holds for any argument $f\in \Hom_C(x,A)$ then $\forall x\in C. \Psi_x=\Phi^u_x$ by functional extensionality. Therefore the relation is surjective on $\Nat(h_A,G)$.
-\myqed\\
+Left cancellation by $m$ gives $h\circ m=1_S$. Thus $m$ and $h$
+are inverse algebra morphisms.
+
+For the dual assertion, finality supplies a coalgebra morphism
+$k:(Q,e)\to(M,d)$, and $k\circ q=1_M$ by uniqueness of the
+endomorphism of the final coalgebra. Hence
+\[
+(q\circ k)\circ q=q\circ(k\circ q)=q=1_Q\circ q.
+\]
+Right cancellation by $q$ gives $q\circ k=1_Q$, so $q$ and $k$
+are inverse coalgebra morphisms.
+\Done
+
+Both assertions assume that the displayed structure on the subobject
+or quotient already exists and makes the indicated arrow a morphism.
+They do not claim that every subobject is closed under the operations,
+or that every quotient admits a compatible coalgebra structure. No
+preservation of monomorphisms or epimorphisms by $P$ is assumed.
+
+In sets, this gives a direct form of structural induction for the
+W-type in Theorem~\ref{thm:general_W_recursion}. Let $S\subseteq W$
+be a subset such that grafting any labelled family of children in $S$
+again gives an element of $S$. Restricting grafting defines
+$s:P_B(S)\to S$, and the inclusion $m:S\hookrightarrow W$ satisfies
+$m\circ s=a\circ P_B(m)$. It is a monomorphism, so the proposition
+makes it an isomorphism. Since it is the inclusion, this says $S=W$.
+This derives induction from initiality for predicates whose extension
+is a specified subset, independently of a particular tree encoding.
+
+There is also a useful direct coinduction consequence of finality.
+If $(T,c)$ is a coalgebra and $u,v:(T,c)\to(M,d)$ are coalgebra
+morphisms, then $u=v$, since the target is final. In particular, let
+$R\subseteq M_B\times M_B$ satisfy the polynomial bisimulation
+condition: for each $(t,u)\in R$, the root labels agree, say at $a$,
+and $(t_b,u_b)\in R$ for every $b\in B(a)$. Then
+\[
+(t,u)\longmapsto\bigl(a,\ b\longmapsto(t_b,u_b)\bigr)
+\]
+defines a coalgebra structure on the set $R$. Both projections from
+$R$ to $M_B$ are coalgebra morphisms, by the displayed matching of
+labels and children. Finality in Theorem~\ref{thm:M_final_coalgebra}
+makes the projections equal, so every related pair has $t=u$.
+The structure on $R$ is explicitly constructed; no arbitrary lifting
+of relations through an endofunctor or choice of matching successors
+is being assumed. This recovers the tree coinduction principle from
+its universal property.
+
+\begin{example}[A fixed-point equation alone does not give initiality]
+Take $P$ to be the identity functor on sets. The map $1_X:X\to X$ is
+an isomorphism for every set $X$, so every such $X$ satisfies the bare
+fixed-point equation. But the singleton algebra $(\{0\},1_{\{0\}})$
+is not initial: there is no map from it to the empty algebra.
+Dually, the empty coalgebra is not final because the singleton coalgebra
+has no map into it. For this functor the empty identity algebra is
+initial, and the singleton identity coalgebra is final. Thus even an
+invertible structure map is strictly less information than the relevant
+universal property.
+\end{example}
+
 \input{END.tex}

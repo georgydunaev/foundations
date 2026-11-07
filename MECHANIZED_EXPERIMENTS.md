@@ -8,23 +8,34 @@ The file defines an inductive type `Ens` with a single constructor `sup` that ta
 
 ### Pair Definition
 
-The `Pair` function is defined using the `sup` constructor. It takes two `Ens` values `A` and `B` and returns an `Ens` that represents the ordered pair of `A` and `B`.
+The `Pair` definition uses `sup bool` to enumerate `A` and `B`. It therefore
+represents the unordered pair `{A,B}` under extensional equality. An ordered
+pair requires an additional encoding; the identifier `Pair` alone does not
+provide ordered projections.
 
 ### Equality of Sets
 
-The `EQ` function is defined to check the extensional equality of two sets. It uses a fixpoint to recursively compare the elements of the sets.
+`EQ` recursively defines a proposition expressing extensional equality:
+each represented member on either side has an equal member on the other.
+Its result type is `Prop`; this is not a claimed decision procedure.
 
 ### Membership
 
-The `IN` function is defined to check if an element is a member of a set.
+`IN` defines a membership proposition by existence of an extensionally equal
+member in the represented family. It does not compute a Boolean membership
+test.
 
 ### Sound Predicates
 
-The `SoundPred` and `SoundPredOf` functions are defined to ensure that predicates are sound with respect to the equality relation.
+`SoundPred` and `SoundPredOf` express the condition that a predicate respects
+the chosen equality relation. Establishing that condition requires a proof;
+the definitions do not enforce it automatically.
 
 ### Transitivity and Symmetry of Equality
 
-The `EQ_tran` and `EQ_sym` functions are defined to prove the transitivity and symmetry of the equality relation.
+The source contains proof definitions `EQ_tran` and `EQ_sym` for transitivity
+and symmetry. These observations describe the source, not a fresh Coq replay
+or a certification of the entire experimental file.
 
 ## Isabelle `code/IFOLD.thy`
 
@@ -54,29 +65,86 @@ The file defines the propositional logic operators `False`, `conj`, `disj`, and 
 
 ## Obelisk Proof Assistant Cross-Reference (`set_theory_prover`)
 
-The active Morse–Kelley / NBG formulations in `110_family_evaluation.tex`, `130_classes_as_types.tex`, and `190_union_intersection.tex` are mechanized in both variants of `set_theory_prover` (105 exported 1st-order kernel entries in `program/types/foundations.ML`, 100/100 verified higher-order records in `program/verified_theorems.ML`, and 35/35 compiled `.nbg` theorems in `examples/nbg_verified_programs.nbg`):
+The local Obelisk website checkout provides useful newer formulations, but
+its generated output is evidence about the export, not independent evidence
+that every displayed statement has been proved. The comparison below uses
+`../obeliskproofassistant.github.io` at commit
+`bb346f112ae91d1649940068c7f210a53b8674bf` (inspected 2026-11-07).
+No files in that checkout were edited.
 
-| `foundations` Chapter | Mathematical Concept | Catalog Entry | 1st-Order Kernel (`foundations.ML`) | Higher-Order (`verified_theorems.ML` & `.nbg`) |
-| :--- | :--- | :--- | :--- | :--- |
-| `110_family_evaluation.tex` | Semi-Singleton Subsets (`isSSS`) | `3.67` | `isSSS_def_entry` (`3.35`) | `thm_81_semi_singleton_sub_char`, `semi_singleton_subset_uniqueness` |
-| `110_family_evaluation.tex` | Class Family (`isFamily`) | `3.68` | `isFamily_def_entry` (`3.36`) | `thm_82_family_value_eval` |
-| `110_family_evaluation.tex` | Family Evaluation (`F(x)`) | `3.69` | `family_eval_def_entry` (`3.37`) | `thm_82_family_value_eval` |
-| `130_classes_as_types.tex` | Dependent Sum Model ($\Sigma B$) | `3.70` | `sigma_model_def_entry` (`3.38`) | `thm_83_sigma_model_proj`, `sigma_dependent_sum_intro` |
-| `130_classes_as_types.tex` | Dependent Product Models ($\Pi B$) | `3.71` | `pi_predicate_model_def_entry` (`3.39`) | `thm_84_pi_model_elim`, `pi_dependent_product_elim` |
-| `190_union_intersection.tex` | Subclass Antisymmetry | `3.72` | `A02_extensionality_axm` (`3.02`) | `thm_96_subset_antisym`, `thm_95_emptyset_subset_all` |
-| `190_union_intersection.tex` | Singleton & Intersection Inclusions | `3.73` | `binary_inter_def_entry` (`3.18`) | `thm_91`–`thm_94`, `inter_sub_union`, `singleton_sub_upair_left` |
-| `140_setness.tex` | Universal Subclass Criterion & $\mathcal{P}(\omega) \in \mathrm{V}$ | `3.74` | `universal_class_def_entry` (`3.05`) | `thm_97`–`thm_100`, `inter_sub_both` |
+`generated/theory_db.json` reports 106 entries, names
+`set_theory_prover/program/newchecker.ML` as its source, and identifies
+`program/html_generator.ML` as its generator. `data/theory_database.json` uses a different numbering scheme and sometimes
+different prose. Prefer a semantic ID together with its source path and
+snapshot over an unqualified item number.
+
+Previous versions of this document reported “105 exported entries”,
+“100/100 verified higher-order records”, and “35/35 compiled `.nbg`
+theorems”. Those are historical reports, not checks performed in this
+workspace. The producing ML source and a runnable proof checker are not
+present here; these counts must not be presented as certification of the
+edited chapters or of the current generated statements.
+
+| Book discussion | Generated semantic ID / item | Separate catalog mapping | Reading decision |
+| :--- | :--- | :--- | :--- |
+| `110_family_evaluation.tex`: at-most-one classes | `DefSemiSingleton`, 3.35 | 3.67 | Distinguish a predicate's defining body from its universal assertion. |
+| Semi-singleton subsets | `DefSemiSingletonSubclass`, 3.36 | 3.68 | The extra subclass condition matters; this is not the family predicate. |
+| Guarded evaluation in `060_axioms.tex` | `DefValueAtArg`, 3.25 | Source ID is more reliable than a catalog number | Uses `V` on an absent fibre. |
+| Family evaluation | `ThmFamilyEvaluation`, 3.37 | 3.69 | The displayed theorem needs a domain hypothesis with that guarded default. |
+| `130_classes_as_types.tex`: dependent sums | `DefSigmaModel`, 3.38 | 3.70 | Interpret under its stated family encoding and size assumptions. |
+| Dependent products | `DefPiPredicateModel`, 3.39 | 3.71 | Matching domains alone do not imply membership in the dependent product; pointwise membership is an additional condition. |
+| Metatheoretic principles | Use semantic IDs and hypotheses | 3.72–3.74 have changed meanings across catalogs | Do not carry over the old table's subclass/sethood descriptions solely by number. |
+
+The family-evaluation discrepancy has a concrete empty-family counterexample;
+see [the upstream ticket](tickets/obelisk_family_evaluation_domain.md).
+Other comparison tickets in `tickets/obelisk_*.md` distinguish actual
+same-setting conflicts from differences of notation, representation, or
+background assumptions. Corrections belong in the upstream ML definitions,
+proofs, or generators, followed by regeneration; generated HTML/JSON is not
+an editing surface.
 
 ### Explicit Typed Term Interpretation ($\mu_A$ / $I$)
 
-In `130_classes_as_types.tex` and the Obelisk kernel (`program/types/typetheory.ML`, `program/Presentation.ML`), the operator $\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression}$ (written $I(a)$ or $\mu_A(a)$ in `130_classes_as_types.tex` and `\mu_A` in SML) denotes the **explicit typed term interpretation** (valuation homomorphism; cf. Tarski 1936, Enderton 2001 §2.2, Jacobs 1999) under a fixed (unspecified) background model and a fixed (unspecified) variable valuation, rather than the collection of all models.
+In `130_classes_as_types.tex`, the operator
+$\mu_A : A.\mathsf{Expression} \to \mathsf{Class}.\mathsf{Expression}$
+(written $I(a)$ or $\mu_A(a)$) is an **explicit typed term interpretation**
+at the expression level: it translates a typed expression into a class
+expression. The Obelisk documentation attributes related machinery to
+`program/types/typetheory.ML` and `program/Presentation.ML`; those upstream
+sources have not been inspected here.
+
+Evaluating the translated expression in a fixed model and valuation is a
+further operation. The resulting semantic interpretation is a valuation
+homomorphism only when preservation of the relevant constructors has been
+established. Neither that preservation nor the existence of a suitable
+model follows from the displayed function type alone.
 
 ### Four-Theory Metatheoretic Hierarchy ($\mathcal{W}, \mathcal{E}, \mathcal{T}, \mathcal{F}$)
 
-The metatheoretic layer (`3.72`–`3.73`, `4.03`, `5.01`–`5.03` in `program/types/foundations.ML` and `program/demo_newchecker.ML`) is stratified into four theories:
+The book distinguishes the theories $\mathcal{W}, \mathcal{E},
+\mathcal{T}, \mathcal{F}$ by their roles in each argument. The generated
+catalog is useful for locating related claims, but those roles must not be
+inferred from names alone:
 
-1. $\mathcal{W}$ (`\mathcal{W}`): weakest syntactic base theory.
-2. $\mathcal{E} \in \{I\Sigma_1, \mathcal{T}, \mathrm{NBG}, \mathrm{MK}\}$ (`\mathcal{E}`, `sEau`): elementary metatheory extending $I\Sigma_1$ used in Löb's theorem (`5.01`) and Gödel's second incompleteness theorem (`5.02`). Robinson's arithmetic $Q$ is intentionally excluded because $Q$ lacks the $\Sigma_1$-induction needed to verify the third Hilbert–Bernays–Löb derivability condition D3 ($\vdash_{\mathcal{E}} \Box_{\mathcal{T}}\varphi \to \Box_{\mathcal{T}}\Box_{\mathcal{T}}\varphi$) and to make Gödel's second incompleteness theorem meaningful (Hájek & Pudlák 1993, *Metamathematics of First-Order Arithmetic*, Ch. I & III; Bezboruah & Shepherdson 1976, *JSL* 41(2):503–512; Boolos 1993, *The Logic of Provability*, Ch. 2).
-3. $\mathcal{T}$ (`\mathcal{T}`, `sTau`): recursively enumerable (r.e.) base object theory (NBG/MK).
-4. $\mathcal{F}$ (`\mathcal{F}`, `sFau`): **non-r.e.** sound Henkin-complete extension of $\mathcal{T}$ (`3.72` Completeness $(\vdash_{\mathcal{F}}\neg\varphi)\lor(\vdash_{\mathcal{F}}\varphi)$, `3.73` Soundness $(\vdash_{\mathcal{F}}\varphi)\implies\varphi$), for which the Co-Necessitation meta-inference (`4.03`, $\varphi \vdash \Box_{\mathcal{F}}\varphi$) is justified by Soundness (`3.73`).
+1. $\mathcal{W}$ is a theory parameter in several schemes; its strength and
+   soundness are hypotheses, not automatic properties of the letter.
+2. $\mathcal{E}$ supplies the elementary metatheory needed for a chosen
+   provability predicate and its derivability conditions. The export's
+   listed examples include $I\Sigma_1$, $\mathcal{T}$, NBG, and MK, subject
+   to the actual hypotheses of the theorem being considered.
+3. $\mathcal{T}$ is the effective object theory in the incompleteness
+   discussion. Recursive enumerability, coding, and consistency assumptions
+   must remain explicit.
+4. $\mathcal{F}$ is an ideal non-effective theory considered under a chosen
+   intended-truth interpretation. Soundness, syntactic negation-completeness,
+   and containment of every intended truth are distinct properties. A
+   Co-Necessitation rule needs the stated relationship between truth and
+   theoremhood; a slogan about soundness alone does not specify its scope.
 
+The earlier notes cite Bezboruah & Shepherdson 1976 in connection with weak
+arithmetic. That citation is not a reason to declare every incompleteness
+formulation over Robinson arithmetic meaningless: the exact provability
+predicate and available derivability conditions determine which theorem can
+be used. The revised logical framework states the needed conditions locally.
+See its Obelisk comparison remarks and the logic tickets for conflicts among
+the generated formulas, descriptions, and verification labels.

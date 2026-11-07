@@ -1,4 +1,1242 @@
-\def\topic{}
+\def\topic{Functional analysis}
 \input{BEGIN.tex}
 \section{Functional analysis}
+\label{sec:functional_analysis}
+This section specifies a setting for the intended applications to
+Dunford--Pettis compactness. The spaces here have set-sized carriers and
+use classical real and complex analysis. The earlier class-theoretic framework can
+express their constructions, but proper-class-valued families and
+partial descriptors do not alter the analytic definitions by default.
+For Hahn--Banach and the subsequent analytic development, we work in
+classical set theory with Choice. Zorn's lemma is used in the extension
+argument; the nested constructions in Baire's theorem and the open
+mapping theorem use dependent choice. Some individual results need
+less, as their proofs indicate. This convention does not strengthen
+the assumptions of the separate countable-choice metric theorem.
+
+The companion manuscript on the Dunford--Pettis theorem is not included
+in this checkout. The development below supplies proofs of the sequential
+finite-measure criterion and its analytic prerequisites. It does not
+reconstruct that missing manuscript or assert a formalization in Obelisk.
+
+\subsection{Linear structure and topology}
+Fix the scalar field $\mathbb{K}=\mathbb{R}$ or $\mathbb{C}$. A
+\emph{topological vector space} is a vector space $E$ equipped with a
+topology for which addition $E\times E\to E$ and scalar multiplication
+$\mathbb{K}\times E\to E$ are continuous, using the product topologies.
+When Hausdorffness is needed, it is an explicit assumption. A locally
+convex topology has a base of convex neighbourhoods of zero.
+
+A norm $\|\cdot\|$ gives the metric $d(x,y)=\|x-y\|$ and hence a
+Hausdorff vector-space topology. A \emph{Banach space} is a normed
+vector space in which every Cauchy sequence converges in this metric.
+Completeness is a condition on the specified norm topology; it is not
+implied by the existence of an algebraic vector-space structure.
+
+\begin{lemma}[Bounded linear maps and continuity]
+For a linear map $T:E\to F$ between normed spaces, continuity is
+equivalent to the existence of $C\geqslant0$ such that
+\[
+\|Tx\|_F\leqslant C\|x\|_E\qquad(x\in E).
+\]
+\end{lemma}
+\Proof
+The inequality gives
+$\|Tx-Ty\|_F\leqslant C\|x-y\|_E$, hence continuity.
+Conversely, continuity at zero supplies $\delta>0$ such that
+$\|u\|_E<\delta$ implies $\|Tu\|_F<1$. For $x\ne0$, apply this to
+$u=\delta x/(2\|x\|_E)$ and use linearity to obtain
+$\|Tx\|_F\leqslant(2/\delta)\|x\|_E$. The inequality at zero follows
+from $T0=0$.
+\Done
+An operator defined only on a subspace $D(T)\subseteq E$ has that
+subspace as its domain. Calling such an operator unbounded does not
+supply values at points outside $D(T)$.
+
+\subsection{Weak topology and the continuous dual}
+Let $E'$ be the space of continuous linear maps $\ell:E\to\mathbb{K}$.
+The weak topology $\sigma(E,E')$ is the coarsest topology on $E$
+making every $\ell\in E'$ continuous. A basic neighbourhood of $x$
+is determined by finitely many functionals and positive tolerances:
+\[
+\{y\in E\mid |\ell_j(y-x)|<\varepsilon_j,
+  \ j=1,\ldots,m\}.
+\]
+Thus a net $x_i$ converges weakly to $x$ exactly when
+$\ell(x_i)\to\ell(x)$ for every $\ell\in E'$. The same criterion
+applies to sequences. For a normed space $E$, norm convergence implies weak convergence,
+because $|\ell(x_i-x)|\leqslant\|\ell\|\,\|x_i-x\|$.
+
+Weak convergence uses all continuous linear functionals on $E$.
+On a dual space $E'$, the weak-star topology $\sigma(E',E)$ instead
+uses evaluations $\ell\mapsto\ell(x)$ at vectors $x\in E$.
+These are distinct definitions; a compactness statement must identify
+which topology it uses.
+
+\subsection{Dual completeness and what weak convergence detects}
+The operator norm on $E'$ is
+\[
+\|\ell\|=\sup_{\|x\|\leqslant1}|\ell(x)|.
+\]
+The bounded-map lemma makes this finite and gives
+$|\ell(x)|\leqslant\|\ell\|\,\|x\|$. It is a norm: in particular,
+vanishing on the unit ball implies vanishing everywhere by scaling.
+
+\begin{theorem}[The continuous dual is complete]
+For every normed space $E$, its continuous dual $E'$ is a Banach space,
+even if $E$ itself is not complete.
+\end{theorem}
+\Proof
+Let $(\ell_n)$ be Cauchy in operator norm. For each $x\in E$,
+\[
+|\ell_n(x)-\ell_m(x)|\leqslant\|\ell_n-\ell_m\|\,\|x\|,
+\]
+so completeness of the scalar field gives a limit $\ell(x)$.
+Passing to limits in addition and scalar multiplication shows that
+$\ell$ is linear. A Cauchy sequence is norm bounded, say
+$\|\ell_n\|\leqslant C$, and passage to the limit gives
+$|\ell(x)|\leqslant C\|x\|$. Thus $\ell\in E'$.
+For any $\varepsilon>0$, choose $N$ so that
+$\|\ell_n-\ell_m\|<\varepsilon$ for $n,m\geqslant N$.
+Letting $m$ tend to infinity gives
+$|\ell_n(x)-\ell(x)|\leqslant\varepsilon\|x\|$ for every $x$ and
+$n\geqslant N$. Taking the supremum on the unit ball proves
+$\|\ell_n-\ell\|\leqslant\varepsilon$, hence norm convergence.
+\Done
+
+\begin{theorem}[Norm-preserving Hahn--Banach extension]
+Assume Zorn's lemma in the surrounding set theory. A bounded linear
+functional $f$ on a linear subspace $D$ of a real or complex normed
+space $E$ extends to a bounded linear functional on $E$ with the same
+norm. The subspace need not be closed.
+\end{theorem}
+\Proof
+First work over the reals. We prove the more general extension statement
+for a sublinear function $p:E\to\mathbb R$: assume $p(x+y)\leq p(x)+p(y)$,
+$p(tx)=tp(x)$ for $t\geq0$, and $f(x)\leq p(x)$ on $D$.
+If $a\notin D$, extend to $D+\mathbb Ra$ by
+$g(x+ta)=f(x)+tc$. Domination by $p$ holds exactly when
+\[
+\sup_{y\in D}\{f(y)-p(y-a)\}
+\leq c\leq
+\inf_{x\in D}\{p(x+a)-f(x)\}.
+\]
+The left quantities do not exceed the right quantities: for $x,y\in D$,
+\[
+f(x)+f(y)=f(x+y)\leq p(x+y)\leq p(x+a)+p(y-a).
+\]
+Both indexing sets are nonempty, and fixing one element on either side
+bounds the other. Completeness of $\mathbb R$ therefore supplies such a
+$c$. For $t>0$, apply the upper inequality to $x/t$ and multiply by $t$;
+for $t<0$, apply the lower inequality to $x/(-t)$ and multiply by $-t$.
+These give $g(x+ta)\leq p(x+ta)$; the case $t=0$ is the original bound.
+
+Order all dominated linear extensions of $f$ by extension of their
+graphs. This is a set, since each graph is a subset of $E\times\mathbb R$.
+A nonempty chain has an upper bound obtained by union: its domains form
+an increasing family of subspaces, and compatibility makes the union a
+linear dominated extension. For the empty chain, the original $f$ is
+an upper bound. Zorn's lemma gives a maximal extension.
+The one-dimensional construction shows its domain is all of $E$.
+Taking $p(x)=\|f\|\,\|x\|$ and applying domination to $x$ and $-x$
+gives $|g(x)|\leq\|f\|\,\|x\|$. Restriction to $D$ gives the reverse
+norm inequality, so the norm is preserved (also when $D=\{0\}$).
+
+For a complex space, extend the real-linear functional
+$u=\operatorname{Re}f$ from the underlying real subspace of $D$ to a
+real-linear $g:E\to\mathbb R$ with bound $\|f\|$ by the real result.
+Set $F(x)=g(x)-i g(ix)$. Real linearity and
+$F(ix)=iF(x)$ imply complex linearity. On $D$, the identity
+$\operatorname{Re}f(ix)=-\operatorname{Im}f(x)$ gives $F=f$.
+For $F(x)\ne0$, choose a scalar $\lambda$ with $|\lambda|=1$ and
+$\lambda F(x)=|F(x)|$. Then
+\[
+|F(x)|=\operatorname{Re}F(\lambda x)=g(\lambda x)
+\leq\|f\|\,\|\lambda x\|=\|f\|\,\|x\|.
+\]
+The same bound is immediate if $F(x)=0$. Restriction again proves
+$\|F\|=\|f\|$.
+\Done
+
+The choice principle enters at Zorn's lemma, not at the elementary
+one-dimensional extension. The following consequences use this theorem
+in the classical analytic setting; they are not asserted in every
+choice-free foundational setting explored earlier.
+
+\begin{proposition}[Norming functionals and weak separation]
+For every $x\in E$,
+\[
+\|x\|=\sup_{\ell\in E',\ \|\ell\|\leqslant1}|\ell(x)|.
+\]
+Consequently $\sigma(E,E')$ is Hausdorff, and a weak limit is unique.
+\end{proposition}
+\Proof
+The inequality from right to left follows from the operator-norm bound.
+For $x\ne0$, define on the one-dimensional subspace spanned by $x$
+the functional $a x\mapsto a\|x\|$. Its norm is one over either
+scalar field. Hahn--Banach extends it to $\ell\in E'$ of norm one,
+with $\ell(x)=\|x\|$. At $x=0$ both sides vanish.
+If $x\ne y$, a norming functional for $x-y$ has
+$\ell(x)\ne\ell(y)$. Disjoint scalar neighbourhoods of those values
+have disjoint weakly open inverse images containing $x$ and $y$.
+This is Hausdorffness; uniqueness of limits follows by intersecting
+the corresponding eventual neighbourhood conditions.
+\Done
+
+\begin{corollary}[Weak lower semicontinuity of the norm]
+Every norm-closed ball is weakly closed. If a sequence $x_n$ converges
+weakly to $x$, then
+\[
+\|x\|\leqslant\liminf_n\|x_n\|.
+\]
+\end{corollary}
+\Proof
+For $r\geqslant0$, the norming formula gives
+\[
+\{y:\|y-x\|\leqslant r\}
+=\bigcap_{\ell\in E',\ \|\ell\|\leqslant1}
+ \{y:|\ell(y-x)|\leqslant r\}.
+\]
+Every set on the right is weakly closed, by continuity of its defining
+functional. For the sequential assertion, if $x\ne0$, choose a norming
+functional $\ell$ for $x$. Then
+$|\ell(x_n)|\to\|x\|$ and $|\ell(x_n)|\leqslant\|x_n\|$.
+Taking lower limits proves the inequality. The case $x=0$ is immediate.
+\Done
+
+\begin{proposition}[Weak neighbourhoods in infinite dimensions]
+If $E$ is infinite-dimensional, every weak neighbourhood of zero
+contains an unbounded linear subspace. Hence the weak and norm
+topologies on $E$ are different.
+\end{proposition}
+\Proof
+Such a neighbourhood contains one defined by finitely many functionals
+$\ell_1,\ldots,\ell_m$ and positive tolerances. It contains their common
+kernel. Choose $m+1$ linearly independent vectors in $E$. Their images
+under $x\mapsto(\ell_1(x),\ldots,\ell_m(x))\in\mathbb K^m$ are linearly
+dependent, so a nonzero linear combination of the chosen vectors lies
+in the common kernel. All scalar multiples of this nonzero vector
+also lie there, and their norms are unbounded. The norm unit ball
+therefore cannot be a weak neighbourhood of zero, although it is a
+norm neighbourhood. Norm convergence still implies weak convergence;
+the topologies need not coincide.
+\Done
+
+This final argument uses only finite-dimensional linear dependence,
+not Hahn--Banach. It also explains why finitely many tests cannot
+control norm size in an infinite-dimensional space, even though the
+whole dual determines the norm by the preceding proposition.
+
+\subsection{Completeness and uniform boundedness}
+\begin{lemma}[Baire's theorem for complete metric spaces]
+In a nonempty complete metric space, the intersection of countably many
+dense open sets is dense. Equivalently, such a space cannot be the union
+of countably many closed sets all having empty interior.
+\end{lemma}
+\Proof
+Let $G_n$ be dense and open, and let $U$ be any nonempty open set.
+Choose a closed ball $B_1$ of positive radius at most $2^{-1}$ contained
+in $U\cap G_1$. Inductively choose a closed ball $B_{n+1}$ of positive
+radius at most $2^{-(n+1)}$ contained in the intersection of $G_{n+1}$
+with the open ball having the same centre and radius as $B_n$.
+Density and openness make each choice possible; balls with slightly
+smaller radii ensure closed containment. Their centres form a Cauchy
+sequence because the balls are nested and their diameters tend to zero.
+Completeness gives a limit $x$. Each $B_n$ is closed and contains all
+later centres, so $x\in B_n$ for every $n$. Thus
+$x\in U\cap\bigcap_nG_n$. Taking complements proves the equivalent
+closed-set statement. The successive choices are made in the classical
+set-theoretic setting of this chapter.
+\Done
+
+\begin{theorem}[Uniform boundedness principle]
+Let $E$ be Banach, $F$ a normed space, and $(T_i)_{i\in I}$ a set-indexed
+family of bounded linear maps $E\to F$. If
+$\sup_{i\in I}\|T_i x\|<\infty$ for every $x\in E$, then
+$\sup_{i\in I}\|T_i\|<\infty$.
+\end{theorem}
+\Proof
+The empty family is immediate. Put
+\[
+A_n=\{x\in E:\|T_i x\|\leq n\text{ for every }i\in I\},
+\qquad n=1,2,\ldots.
+\]
+Continuity makes each $A_n$ closed, and pointwise boundedness gives
+$E=\bigcup_nA_n$. Baire's theorem gives an $A_n$ containing an open
+ball of radius $r>0$ about some $x_0$. For $\|h\|<r$, both $x_0+h$
+and $x_0$ belong to $A_n$, hence
+$\|T_i h\|\leq\|T_i(x_0+h)\|+\|T_i x_0\|\leq2n$ for every $i$.
+For any $u$ with $\|u\|\leq1$, take $h=(r/2)u$ to obtain
+$\|T_i u\|\leq4n/r$, uniformly in $i$. Taking suprema proves the claim.
+Completeness of $F$ is not used.
+\Done
+
+\begin{corollary}[Weakly convergent sequences are norm bounded]
+If a sequence $(x_n)$ in a normed space $E$ converges weakly, then
+$\sup_n\|x_n\|<\infty$. The space $E$ need not be complete.
+\end{corollary}
+\Proof
+On the Banach space $E'$, consider the bounded linear maps
+$J_n:E'\to\mathbb K$, $J_n(\ell)=\ell(x_n)$.
+For each $\ell$, weak convergence makes $(J_n(\ell))$ a convergent,
+hence bounded, scalar sequence. Uniform boundedness gives
+$\sup_n\|J_n\|<\infty$. The norming-functional formula gives
+$\|J_n\|=\|x_n\|$, proving the assertion.
+\Done
+
+The sequential hypothesis is significant. A convergent net need not
+have bounded range: convergence controls only a tail, and the part
+outside that tail need not be finite. For example, index a net by
+$\mathbb R$ in its usual order, put $x_t=-t$ for $t<0$ and $x_t=0$
+for $t\geq0$. It converges in norm to zero but its range is unbounded.
+
+\begin{proposition}[A weakly null net with no bounded tail]
+\label{prop:weak_net_unbounded_tails}
+In an infinite-dimensional normed space $E$, there is a net converging
+weakly to zero such that every tail is unbounded in norm. No simultaneous
+choice of vectors and no Hahn--Banach theorem is needed.
+\end{proposition}
+\Proof
+Let $I$ consist of triples $(F,n,u)$ where $F$ is a finite subset of
+$E'$, $n$ is a positive integer, and $u$ is a unit vector in the common
+kernel of $F$. Such a vector exists for each finite $F$ by the finite
+linear-dependence argument used for weak neighbourhoods. Include all
+these vectors in the index set, rather than selecting one for each $F$.
+For the empty $F$, the common kernel is $E$.
+
+Order triples by equality or by
+\[
+(F,n,u)<(G,m,v)\quad\Longleftrightarrow\quad F\subseteq G\ \text{and}\ n<m.
+\]
+This is a partial order. Two triples have an upper bound: use their
+union of functionals, an integer larger than both integers, and any
+one unit vector in the resulting common kernel. This is a single
+existence argument for each pair of indices, not a choice function.
+
+Define $x_{(F,n,u)}=nu$. Given $\ell\in E'$, an index with
+$F=\{\ell\}$ exists, and every later index annihilates $\ell$.
+Thus the net converges weakly to zero. Above a fixed $(F,n,u)$ lie
+all $(F,m,u)$ with $m>n$, whose vectors have norm $m$. Every tail
+is therefore unbounded. The construction is a function on the explicit
+set of all triples and makes no simultaneous selections.
+\Done
+
+For each individual functional, the scalar values in this example vanish
+on a suitable tail. Those tails depend on the functional; they do not
+supply the common pointwise-bounded family needed to apply uniform
+boundedness. In particular, weak convergence of a general net does not
+imply even eventual norm boundedness.
+
+\subsection{Open mappings and closed graphs}
+\begin{theorem}[Open mapping theorem]
+\label{thm:open_mapping}
+Let $E,F$ be Banach spaces and let $T:E\to F$ be bounded, linear,
+and surjective. Then $T$ maps open sets to open sets.
+\end{theorem}
+\Proof
+Write $\overline B_E=\{x:\|x\|\leq1\}$. Surjectivity gives
+\[
+F=\bigcup_{n\geq1}T(n\overline B_E)
+ \subseteq\bigcup_{n\geq1}\overline{T(n\overline B_E)}=F.
+\]
+By Baire's theorem, one of the closed sets on the right contains an
+open ball $B_F(y_0,r)$, with $r>0$. Subtracting its centre gives
+\[
+B_F(0,r)\subseteq
+\overline{T(n\overline B_E)}-\overline{T(n\overline B_E)}
+\subseteq\overline{T(2n\overline B_E)}.
+\]
+For the last inclusion, approximate the two terms by image points,
+subtract their preimages, and use the triangle inequality. Scaling
+therefore gives a number $\delta>0$ such that
+\[
+B_F(0,\delta)\subseteq\overline{T(\overline B_E)}.
+\]
+This is only a closure statement; the next step removes the closure.
+
+Fix $y$ with $\|y\|<\delta/2$. By the scaled closure inclusion,
+choose $x_1$ with $\|x_1\|\leq1/2$ and
+$\|y-Tx_1\|<\delta/4$. Inductively, if the residual after $k-1$
+terms has norm less than $\delta2^{-k}$, choose $x_k$ with
+\[
+\|x_k\|\leq2^{-k},\qquad
+\left\|y-T\sum_{j=1}^k x_j\right\|<\delta2^{-(k+1)}.
+\]
+Completeness of $E$ makes the series converge to $x$ with $\|x\|\leq1$.
+Continuity of $T$ and the residual estimate give $Tx=y$. Hence
+$B_F(0,\delta/2)\subseteq T(\overline B_E)$. Scaling once more yields
+\[
+B_F(0,\delta/4)\subseteq T(\tfrac12\overline B_E)
+\subseteq T(B_E(0,1)).
+\]
+Translation and scaling give, for every $a>0$,
+\[
+B_F(Tx_0,a\delta/4)\subseteq T(B_E(x_0,a)).
+\]
+Every open neighbourhood of $x_0$ contains one of these domain balls.
+Taking such balls at every point proves openness. Completeness of $F$
+was used in Baire's theorem, and completeness of $E$ in summing the lifts.
+\Done
+
+\begin{corollary}[Bounded inverse theorem]
+\label{thm:bounded_inverse}
+A bounded linear bijection between Banach spaces has a bounded linear
+inverse.
+\end{corollary}
+\Proof
+The inverse is linear by bijectivity and linearity of the original map.
+Openness of the original map says precisely that its inverse is
+continuous. The bounded-map lemma then gives boundedness.
+\Done
+
+\begin{theorem}[Closed graph theorem]
+\label{thm:closed_graph}
+Let $E,F$ be Banach spaces and let $T:E\to F$ be an everywhere-defined
+linear map. Then $T$ is bounded if and only if its graph
+$G=\{(x,Tx):x\in E\}$ is closed in $E\times F$.
+\end{theorem}
+\Proof
+If $T$ is bounded and $(x_n,Tx_n)\to(x,y)$, continuity gives
+$Tx_n\to Tx$, so $y=Tx$. This proves closedness, since the product
+is metrizable. Conversely, equip $E\times F$ with the norm
+$\|(x,y)\|=\|x\|+\|y\|$. Coordinatewise convergence of Cauchy
+sequences proves its completeness. A closed subspace is complete,
+so $G$ is Banach. The projection $p:G\to E$, $(x,Tx)\mapsto x$,
+is a bounded linear bijection; surjectivity uses that $T$ is defined
+on all of $E$. The bounded inverse theorem makes $p^{-1}$ bounded.
+The second-coordinate projection $q:G\to F$ is bounded, and
+$T=q\circ p^{-1}$ is therefore bounded.
+\Done
+
+\begin{example}[Why completeness and the domain matter]
+Give the vector space $\ell^1$ first its usual norm and then the
+supremum norm. The identity from the first normed space to the second
+is bounded and bijective, but its inverse is unbounded: a vector with
+$n$ coordinates equal to one has supremum norm one and $\ell^1$ norm
+$n$. The target is incomplete. The finite truncations of $(1/k)_{k\geq1}$
+are Cauchy in supremum norm but have no supremum-norm limit in $\ell^1$.
+This does not contradict the bounded inverse theorem.
+
+For the domain restriction, on $\ell^2$ put
+\[
+D(T)=\{x\in\ell^2:(n x_n)_{n\geq1}\in\ell^2\},
+\qquad (Tx)_n=n x_n.
+\]
+Its graph is closed: if $x^{(k)}\to x$ and $Tx^{(k)}\to y$ in
+$\ell^2$, coordinate convergence gives $y_n=nx_n$; since $y\in\ell^2$,
+this means $x\in D(T)$ and $Tx=y$. Nevertheless
+$\|Te_n\|=n$ while $\|e_n\|=1$, so $T$ is unbounded for the inherited
+$\ell^2$ norm on its domain. The domain is proper: $(1/n)_{n\geq1}$
+belongs to $\ell^2$ but its image would be the constant sequence one.
+Its finite truncations belong to $D(T)$ and converge to it in $\ell^2$,
+so $D(T)$ is not complete for its inherited norm.
+Thus closedness of a graph cannot replace the everywhere-defined
+hypothesis of the theorem. The graph norm $\|x\|+\|Tx\|$ does make
+$D(T)$ Banach, by its isometric identification with the closed graph.
+\end{example}
+
+\subsection{Compact operators and norm approximation}
+Let $E,F$ be normed spaces over the same scalar field. Write
+$B_E=\{x\in E:\|x\|\leq1\}$ for the closed unit ball.
+A bounded linear map $T:E\to F$ is \emph{compact} if
+$\overline{T(B_E)}$, with closure taken in $F$, is norm compact.
+For bounded linear maps use the operator norm
+\[
+\|T\|=\sup_{x\in B_E}\|Tx\|.
+\]
+The bounded-map lemma and scaling give
+$\|Tx\|\leq\|T\|\,\|x\|$. The metric compactness criterion and
+its classical countable-choice convention continue to apply here.
+
+\begin{proposition}[Sequential characterization of compact operators]
+\label{prop:compact_operator_sequences}
+A bounded linear map $T:E\to F$ is compact if and only if every
+bounded sequence $(x_n)$ in $E$ has a subsequence whose images
+$Tx_{n_k}$ converge in norm to an element of $F$.
+Neither space needs to be complete.
+\end{proposition}
+\Proof
+If $T$ is compact and $\|x_n\|\leq R$ for some $R>0$, the images
+belong to $R\overline{T(B_E)}$, a compact set. The metric compactness
+criterion gives a convergent subsequence.
+Conversely, let $(y_n)$ be any sequence in $\overline{T(B_E)}$.
+Choose $x_n\in B_E$ with $\|Tx_n-y_n\|<1/n$. The assumed property
+gives $Tx_{n_k}\to y$ in $F$, hence $y_{n_k}\to y$ as well.
+Closedness places $y$ in $\overline{T(B_E)}$. This closure is
+sequentially compact and therefore compact by the metric criterion.
+The approximations $x_n$ use countable choice.
+\Done
+
+\begin{corollary}[Finite rank and the identity]
+Every bounded linear map with finite-dimensional range is compact.
+The identity on a normed space is compact if and only if that space
+is finite-dimensional.
+\end{corollary}
+\Proof
+The linear-algebra chapter's result on finite-dimensional ranges says
+exactly that the image of the unit ball has compact closure. For the
+identity, the image is the closed unit ball itself, so its compactness
+is equivalent to finite dimension by the compact-unit-ball theorem
+in that chapter. Neither assertion requires ambient completeness.
+\Done
+
+\begin{proposition}[Sums and compositions]
+The compact maps $E\to F$ form a vector subspace of the bounded
+linear maps. If $T:E\to F$ is compact and $A:D\to E$ and
+$B:F\to G$ are bounded linear maps between normed spaces, then
+$BTA:D\to G$ is compact.
+\end{proposition}
+\Proof
+For compact $S,T$ and a bounded sequence in $E$, first extract a
+subsequence on which the $S$ images converge, and from it one on
+which the $T$ images converge. Every fixed linear combination of
+the two images then converges. The sequential characterization proves
+closure under linear combinations; the zero map is compact too.
+For the composition, $A$ sends bounded sequences to bounded sequences,
+$T$ supplies a subsequence with convergent images, and continuity of
+$B$ preserves that convergence. Apply the same characterization.
+\Done
+
+\begin{theorem}[Norm limits of compact operators]
+\label{thm:compact_operator_norm_limit}
+Let $E$ be normed and $F$ Banach. If compact operators $T_n:E\to F$
+converge in operator norm to a bounded linear map $T:E\to F$, then
+$T$ is compact. In particular, the compact operators form a closed
+subspace of the bounded linear operators in the operator norm.
+\end{theorem}
+\Proof
+Given $\varepsilon>0$, choose $n$ with
+$\|T-T_n\|<\varepsilon/4$. Compactness of
+$\overline{T_n(B_E)}$ makes $T_n(B_E)$ totally bounded. Choose
+$x_1,\ldots,x_m\in B_E$ whose images under $T_n$ form a finite
+$\varepsilon/4$-net for that image. For every $x\in B_E$, some
+$j$ satisfies
+\[
+\begin{split}
+\|Tx-Tx_j\|
+&\leq\|(T-T_n)x\|+\|T_nx-T_nx_j\|+\|(T_n-T)x_j\|\\
+&<3\varepsilon/4<\varepsilon.
+\end{split}
+\]
+Thus $T(B_E)$ is totally bounded. Its closure remains totally bounded
+and is complete because $F$ is Banach. The metric compactness criterion
+therefore makes this closure compact. Sequential closedness is
+closedness in the operator-norm metric, giving the final assertion.
+\Done
+
+\begin{example}[Why completeness of the target enters]
+Let $c_{00}$ denote the real or complex sequences with finite support,
+equipped with the $\ell^2$ norm. Take $E=F=c_{00}$ and define
+\[
+(Tx)_j=x_j/j,\qquad
+(T_mx)_j=\begin{cases}x_j/j,&j\leq m,\\0,&j>m.\end{cases}
+\]
+These maps preserve finite support. Each $T_m$ is bounded and has
+finite rank, hence is compact. Directly from the norm formula,
+\[
+\|(T-T_m)x\|_2\leq\frac{\|x\|_2}{m+1},\qquad
+\|T-T_m\|=\frac1{m+1},
+\]
+where equality is obtained at the coordinate vector $e_{m+1}$.
+Nevertheless $T$ is not compact. Put
+$x^{(N)}_j=1/(2j)$ for $j\leq N$ and zero otherwise. These vectors
+belong to $B_E$, since
+$\sum_{j\geq1}j^{-2}\leq2$ (for $j\geq2$, compare with
+$1/(j(j-1))$ and telescope). Every norm-convergent subsequence of
+$Tx^{(N)}$ would converge coordinatewise to the sequence
+$(1/(2j^2))_{j\geq1}$, which has infinite support and is not in $F$.
+There is therefore no such subsequence in $F$, contradicting the
+sequential characterization if $T$ were compact.
+The target is indeed incomplete: $(x^{(N)})$ is Cauchy by convergence
+of $\sum j^{-2}$, but a limit in $c_{00}$ would have coordinates
+$1/(2j)$ for every $j$, which is impossible.
+\end{example}
+
+\begin{proposition}[Compact operators on weakly convergent sequences]
+\label{prop:compact_weak_to_norm}
+If $T:E\to F$ is compact and $x_n\to x$ weakly in $E$, then
+$Tx_n\to Tx$ in norm. The spaces need not be Banach; this assertion
+uses the earlier Hahn--Banach consequences for normed spaces.
+\end{proposition}
+\Proof
+The weakly convergent sequence is norm bounded. Suppose its images do
+not converge in norm to $Tx$. Then some subsequence satisfies
+$\|Tx_{n_k}-Tx\|\geq\varepsilon$ for a fixed $\varepsilon>0$.
+Compactness gives a further subsequence converging in norm to some
+$y\in F$. For every $\ell\in F'$, the functional $\ell\circ T$
+belongs to $E'$, so weak convergence gives
+$\ell(Tx_{n_k})\to\ell(Tx)$ along this further subsequence.
+Norm convergence gives the limit $\ell(y)$ as well. The continuous
+dual separates points by Hahn--Banach, hence $y=Tx$, contradicting
+the distance bound. Thus the whole image sequence converges in norm.
+\Done
+
+\subsection{The Schur property of $\ell^1$}
+For $\mathbb K=\mathbb R$ or $\mathbb C$, put
+\[
+\ell^1(\mathbb K)=
+\left\{x=(x_j)_{j\geq1}:\sum_{j=1}^\infty|x_j|<\infty\right\},
+\qquad \|x\|_1=\sum_{j=1}^\infty|x_j|.
+\]
+The scalar triangle inequality makes this a normed vector space.
+Convergence of the nonnegative series implies
+$\sum_{j>m}|x_j|\to0$ for each $x\in\ell^1$.
+This space is also $L^1$ for counting measure on the positive integers:
+integration is summation, by monotone convergence applied to finite
+truncations. Counting measure has infinite total mass. The theorem
+below therefore concerns a different measure setting from the
+finite-measure Dunford--Pettis criterion that follows.
+
+For a bounded scalar sequence $b=(b_j)$ the formula
+\[
+L_b(x)=\sum_{j=1}^\infty b_jx_j
+\]
+defines a continuous linear functional on $\ell^1$. Indeed, the series
+converges absolutely and
+$|L_b(x)|\leq(\sup_j|b_j|)\|x\|_1$; absolute convergence justifies
+termwise addition and scalar multiplication. Coordinate evaluation is
+a special case, so weak convergence implies convergence of each
+coordinate. We only need these explicit functionals, not a theorem
+identifying every member of the dual.
+
+\begin{theorem}[Schur's theorem]
+\label{thm:schur_ell1}
+A sequence in real or complex $\ell^1$ converges weakly to $x$ if
+and only if it converges to $x$ in norm.
+\end{theorem}
+\Proof
+Norm convergence implies weak convergence in every normed space.
+For the converse, subtract the weak limit and write the resulting
+weakly null sequence as $(y_n)$. Suppose its norms do not tend to
+zero. There is $\varepsilon>0$ such that infinitely many indices
+satisfy $\|y_n\|_1\geq\varepsilon$.
+
+We construct increasing indices $n_k$ and increasing nonnegative
+integers $m_k$, starting with $n_0=m_0=0$. Having chosen $m_{k-1}$,
+coordinatewise convergence to zero ensures that, for all sufficiently
+large $n$,
+\[
+\sum_{j\leq m_{k-1}}|(y_n)_j|<\varepsilon/8.
+\]
+Choose $n_k>n_{k-1}$ among the infinitely many indices
+with norm at least $\varepsilon$, also satisfying that prefix bound,
+and set $z_k=y_{n_k}$. Since $z_k\in\ell^1$, choose
+$m_k>m_{k-1}$ so that its tail satisfies
+\[
+\sum_{j\leq m_{k-1}}|(z_k)_j|<\varepsilon/8,
+\qquad
+\sum_{j>m_k}|(z_k)_j|<\varepsilon/8.
+\]
+Each integer choice may be made as the least admissible integer;
+the recursion requires no simultaneous selection of vectors.
+The mass on the intervening block therefore satisfies
+\[
+\sum_{m_{k-1}<j\leq m_k}|(z_k)_j|>3\varepsilon/4.
+\]
+
+The disjoint blocks $(m_{k-1},m_k]$ cover the positive integers,
+since $m_k\geq k$. Define a single coefficient sequence by
+\[
+b_j=\begin{cases}
+\overline{(z_k)_j}/|(z_k)_j|,&
+ m_{k-1}<j\leq m_k\text{ and }(z_k)_j\ne0,\\
+0,&m_{k-1}<j\leq m_k\text{ and }(z_k)_j=0.
+\end{cases}
+\]
+In the real case the first expression is the usual sign.
+We have $|b_j|\leq1$, so $L_b$ is a continuous linear functional.
+On the $k$th block, $b_j(z_k)_j=|(z_k)_j|$; outside that block,
+the total absolute contribution is less than $\varepsilon/4$.
+Consequently
+\[
+\operatorname{Re}L_b(z_k)
+\geq\sum_{m_{k-1}<j\leq m_k}|(z_k)_j|
+ -\sum_{j\leq m_{k-1}}|(z_k)_j|
+ -\sum_{j>m_k}|(z_k)_j|
+>\varepsilon/2.
+\]
+Here $\operatorname{Re}$ is redundant over the reals. This contradicts
+weak nullity, which requires $L_b(z_k)\to0$. Hence
+$\|y_n\|_1\to0$, proving the theorem.
+\Done
+
+\begin{corollary}[Weak-to-norm preservation does not imply compactness]
+The identity on $\ell^1$ sends every weakly convergent sequence to a
+norm-convergent sequence, but is not compact.
+\end{corollary}
+\Proof
+The first assertion is Schur's theorem. For the second, the coordinate
+vectors $e_j$ form a bounded sequence with
+$\|e_j-e_k\|_1=2$ whenever $j\ne k$. Their images under the identity
+have no norm-convergent subsequence, so the sequential compact-operator
+criterion excludes compactness.
+\Done
+
+The vectors $e_j$ do converge coordinatewise to zero, but they do not
+converge weakly to zero: the bounded coefficient sequence $b_j=1$
+gives $L_b(e_j)=1$. Thus coordinate tests alone would miss exactly
+the obstruction detected by the block functional in the proof.
+
+Schur's theorem is a statement about sequences, not equality of
+topologies. The space $\ell^1$ is infinite-dimensional, so its weak
+neighbourhoods of zero contain unbounded linear subspaces and its weak topology
+differs from its norm topology, as proved earlier. Proposition~
+\ref{prop:weak_net_unbounded_tails} even gives a weakly null net in
+$\ell^1$ with every tail norm-unbounded. The sequence result thus does
+not extend to arbitrary nets. Nor does it hold in every $L^1$ space:
+the Rademacher sequence on $[0,1)$ in the probability chapter is weakly
+null in $L^1$ and has norm one throughout. Infinite counting measure
+and a finite nonatomic measure produce different examples; the
+finite-measure compactness criterion below does not identify these
+settings.
+
+A set is relatively weakly compact when its closure in the weak
+topology is compact. For clarity, the criterion below is stated in
+sequential form: every sequence from the family has a subsequence
+converging weakly to an element of the ambient space. The limit need
+not belong to the original family.
+
+\subsection{A finite-measure Dunford--Pettis criterion}
+Fix a finite positive measure space $(\Omega,\mathcal{A},\mu)$ and
+use the real space $L^1(\mu)$. A family $K\subseteq L^1(\mu)$ is
+\emph{uniformly integrable} in the convention used here when
+\[
+\lim_{M\to\infty}\sup_{f\in K}
+ \int_{\{|f|>M\}}|f|\,d\mu=0.
+\]
+For the empty family the condition is taken to hold. The formula is
+independent of the measurable representatives of its members.
+
+\begin{lemma}[Uniform small-set control]
+For a family $K\subseteq L^1(\mu)$ on this finite measure space,
+uniform integrability is equivalent to the conjunction of
+\[
+\sup_{f\in K}\|f\|_1<\infty
+\]
+and the following condition: for every $\varepsilon>0$ there is
+$\delta>0$ such that
+\[
+\mu(A)<\delta\implies
+\sup_{f\in K}\int_A|f|\,d\mu<\varepsilon
+\qquad(A\in\mathcal{A}).
+\]
+\end{lemma}
+\Proof
+Assume uniform integrability. Choosing a positive $M$ whose tail
+integrals are at most one gives
+$\|f\|_1\leqslant M\mu(\Omega)+1$ for all $f\in K$.
+Given $\varepsilon>0$, instead choose $M>0$ with all tail integrals
+less than $\varepsilon/2$. Then
+\[
+\int_A|f|\,d\mu
+\leqslant M\mu(A)+\int_{\{|f|>M\}}|f|\,d\mu
+<\varepsilon
+\]
+whenever $\mu(A)<\varepsilon/(2M)$.
+
+Conversely, let $C$ bound the norms and choose $\delta$ for the
+small-set condition. For $M>0$,
+$\mu(\{|f|>M\})\leqslant C/M$ for every $f\in K$.
+Choosing $M>C/\delta$ makes each such set small enough that its
+integral is less than $\varepsilon$. This is uniform integrability.
+The empty family satisfies both conditions by convention.
+\Done
+
+\begin{theorem}[Vitali convergence theorem]
+\label{thm:vitali_finite}
+Suppose $f_n\in L^1(\mu)$ and $f$ is a measurable real function, the family $\{f_n:n\geqslant1\}$ is
+uniformly integrable, and $f_n\to f$ in measure, meaning
+\[
+\mu(\{|f_n-f|>a\})\longrightarrow0\quad\text{for every }a>0.
+\]
+Then $f\in L^1(\mu)$ and $\|f_n-f\|_1\to0$.
+\end{theorem}
+\Proof
+The small-set lemma gives $C=\sup_n\|f_n\|_1<\infty$.
+By Lemma~\ref{lem:measure_subsequence}, choose a subsequence converging
+to $f$ almost everywhere. Fatou's lemma gives
+\[
+\int_\Omega|f|\,d\mu\leqslant
+\liminf_k\int_\Omega|f_{n_k}|\,d\mu\leqslant C.
+\]
+Thus integrability of the limit is a conclusion, not an assumption.
+An individual integrable function has vanishing tail integrals, so
+adjoining $f$ preserves uniform integrability. By the lemma, for a
+given $\varepsilon>0$ choose $\delta>0$ such that
+$\mu(A)<\delta$ implies both
+$\int_A|f_n|\,d\mu<\varepsilon/3$ for every $n$ and
+$\int_A|f|\,d\mu<\varepsilon/3$.
+Choose $a>0$ with $a\mu(\Omega)<\varepsilon/3$.
+For all sufficiently large $n$, the set
+$A_n=\{|f_n-f|>a\}$ has measure less than $\delta$. Hence
+\[
+\|f_n-f\|_1
+\leqslant a\mu(\Omega)+\int_{A_n}|f_n|\,d\mu
+                   +\int_{A_n}|f|\,d\mu
+<\varepsilon.
+\]
+This proves norm convergence.
+\Done
+
+The proof uses Fatou's lemma and the basic Lebesgue-integral fact that
+an integrable function has vanishing tails. A related presentation is
+\href{https://mathweb.ucsd.edu/~bdriver/280_06-07/Lecture_Notes/N23_2p.pdf}
+{B. Driver, \emph{Probability Theory}, Theorem~11.31}.
+The theorem just proved yields weak convergence as well, by the norm
+estimate for the $L^\infty$ pairing. It strengthens the next criterion
+when convergence in measure is already known: the whole sequence then
+converges in norm, rather than merely possessing weakly convergent
+subsequences.
+
+\begin{proposition}[The converse and an $L^1$ convergence criterion]
+On the finite measure space above, if $f_n\to f$ in $L^1$, then
+$f_n\to f$ in measure and $\{f_n:n\geqslant1\}$ is uniformly integrable.
+Consequently, for measurable real $f$ and $f_n\in L^1$, convergence
+in measure together with uniform integrability is equivalent to
+$f\in L^1$ and convergence to $f$ in $L^1$.
+\end{proposition}
+\Proof
+For $a>0$, the inequality
+$a\mu(\{|f_n-f|>a\})\leqslant\|f_n-f\|_1$ proves convergence
+in measure. The sequence of norms is bounded by the triangle inequality.
+To prove uniform small-set control, fix $\varepsilon>0$. Choose $N$
+so that $\|f_n-f\|_1<\varepsilon/2$ for $n\geqslant N$.
+The finite family $f,f_1,\ldots,f_{N-1}$ has uniformly small integrals
+on sets of sufficiently small measure: for each member this follows
+by splitting at a large height, and one takes the minimum of finitely
+many positive bounds for the measure. Choose such a bound so that
+each integral is less than $\varepsilon/2$. Then, for $n\geqslant N$,
+\[
+\int_A|f_n|\,d\mu\leqslant\|f_n-f\|_1+\int_A|f|\,d\mu
+<\varepsilon;
+\]
+the finitely many earlier terms satisfy the same conclusion.
+The small-set lemma proves uniform integrability. The reverse
+implication is Theorem~\ref{thm:vitali_finite}.
+\Done
+
+\begin{corollary}[Domination with convergence in measure]
+Let $f_n$ and $f$ be measurable real functions. If
+$|f_n|\leqslant h$ almost everywhere for one $h\in L^1$, and
+$f_n\to f$ in measure on this finite measure space, then
+$f\in L^1$ and $\|f_n-f\|_1\to0$.
+\end{corollary}
+\Proof
+Replace $h$ by $|h|$ if necessary. The bound
+\[
+\int_{\{|f_n|>M\}}|f_n|\,d\mu
+\leqslant\int_{\{h>M\}}h\,d\mu
+\]
+gives uniform integrability; apply the theorem. In particular,
+convergence almost everywhere implies the conclusion here, since
+on a finite measure space the decreasing sets
+$\bigcup_{n\geqslant N}\{|f_n-f|>a\}$ have measures tending to zero
+for every $a>0$. This last argument uses continuity of measure from
+above and is precisely where finiteness enters.
+\Done
+
+\subsection{Stability of uniform integrability}
+The finite-measure setting continues throughout this subsection. These
+facts distinguish norm compactness from the weak subsequence property
+in Theorem~\ref{thm:DP_sequential_finite}.
+
+\begin{proposition}[Closure and convex combinations]
+If $K\subseteq L^1(\mu)$ is uniformly integrable, then its norm-closed
+convex hull is uniformly integrable. More generally, the same is true
+for the norm closure of all finite sums $\sum_{j=1}^m a_jf_j$, where
+$f_j\in K$, $a_j\in\mathbb R$, and $\sum_j|a_j|\leqslant1$.
+\end{proposition}
+\Proof
+Let $C$ be a bound for the norms of members of $K$. Every such sum has
+norm at most $C$, and for any measurable $A$,
+\[
+\int_A\left|\sum_j a_jf_j\right|\,d\mu
+ \leqslant\sum_j|a_j|\int_A|f_j|\,d\mu
+ \leqslant\sup_{f\in K}\int_A|f|\,d\mu.
+\]
+The uniform small-set condition therefore passes to these sums.
+It also passes to their norm closure: for a norm limit $g_n\to g$,
+\[
+\left|\int_A|g_n|\,d\mu-\int_A|g|\,d\mu\right|
+\leqslant\|g_n-g\|_1.
+\]
+For a prescribed $\varepsilon>0$, choose the original small-set bound
+with $\varepsilon/2$; limits then have integrals at most
+$\varepsilon/2<\varepsilon$. Norm bounds likewise pass to limits.
+Apply the small-set characterization. The empty-family case is
+immediate, taking the allowed empty sum to be zero.
+\Done
+
+\begin{proposition}[Norm compactness implies uniform integrability]
+Every relatively norm-compact subset $K\subseteq L^1(\mu)$ is
+uniformly integrable.
+\end{proposition}
+\Proof
+Its norm closure is compact and hence bounded: the open balls centered
+at zero with positive integer radii cover it, and a finite subcover
+supplies a bound. For $\varepsilon>0$, compactness also gives a finite
+$\varepsilon/2$-net $g_1,\ldots,g_m$ in $L^1$. The finite family has
+uniformly small integrals on small measurable sets, by the same
+finite-minimum argument used in the converse Vitali theorem. Choose
+$\delta>0$ so that $\mu(A)<\delta$ implies
+$\int_A|g_j|\,d\mu<\varepsilon/2$ for every $j$. For any $f\in K$,
+choose $j$ with $\|f-g_j\|_1<\varepsilon/2$. Then
+\[
+\int_A|f|\,d\mu\leqslant\|f-g_j\|_1+\int_A|g_j|\,d\mu
+<\varepsilon.
+\]
+The characterization proves uniform integrability.
+\Done
+
+The converse is false. The Rademacher functions in the probability
+section are bounded by one and hence uniformly integrable, but any
+two distinct ones have $L^1$ distance one: they disagree on a set of
+measure $1/2$, where their difference has absolute value two. Thus
+no subsequence is norm Cauchy. Their weak convergence is compatible
+with this failure of norm compactness.
+
+\subsection{Hilbert representation and the dual of real $L^1$}
+\begin{theorem}[Representation of a real Hilbert-space functional]
+Let $H$ be a real Hilbert space. For each continuous linear functional
+$\ell:H\to\mathbb R$ there is a unique $g\in H$ such that
+\[
+\ell(x)=\langle x,g\rangle\quad(x\in H),\qquad \|\ell\|=\|g\|.
+\]
+\end{theorem}
+\Proof
+For $\ell=0$, take $g=0$. Otherwise the closed affine set
+$S=\{z:\ell(z)=1\}$ is nonempty. Its distance $d$ from zero satisfies
+$d\geq1/\|\ell\|>0$. Choose $z_n\in S$ with $\|z_n\|\to d$.
+Since $(z_n+z_m)/2\in S$, the parallelogram identity gives
+\[
+\|z_n-z_m\|^2
+=2\|z_n\|^2+2\|z_m\|^2-4\|(z_n+z_m)/2\|^2
+\leq2\|z_n\|^2+2\|z_m\|^2-4d^2.
+\]
+Thus $(z_n)$ is Cauchy. Completeness and closedness give a limit
+$z\in S$ of norm $d$. For $v\in\ker\ell$ and every real $t$,
+$z+tv\in S$, so
+$0\leq2t\langle z,v\rangle+t^2\|v\|^2$.
+Considering positive and negative sufficiently small $t$ shows
+$\langle z,v\rangle=0$.
+
+For each $x$, the vector $x-\ell(x)z$ lies in the kernel. Hence
+$\langle x,z\rangle=\ell(x)\|z\|^2$, and $g=z/\|z\|^2$ gives
+the desired representation. Cauchy--Schwarz gives $\|\ell\|\leq\|g\|$;
+testing on $g/\|g\|$ gives the reverse inequality when $g\ne0$.
+If $g'$ is another representing vector, testing their difference on
+$x=g-g'$ gives $\|g-g'\|^2=0$, proving uniqueness.
+\Done
+
+\begin{theorem}[The dual of real $L^1$ on a finite measure space]
+\label{thm:L1_dual_finite}
+Let $(\Omega,\mathcal A,\mu)$ be a finite positive measure space.
+The map
+\[
+L^\infty(\mu)\longrightarrow (L^1(\mu))',\qquad
+ g\longmapsto\left(f\longmapsto\int fg\,d\mu\right)
+\]
+is a linear isometric bijection, with functions identified almost everywhere.
+No completeness assumption on the measure is needed.
+\end{theorem}
+\Proof
+For $g\in L^\infty$, the integral defines a bounded functional
+$\ell_g$ with $\|\ell_g\|\leq\|g\|_\infty$.
+If $0\leq r<\|g\|_\infty$, the measurable set $A=\{|g|>r\}$ has
+positive, finite measure. Testing on
+$f=\operatorname{sgn}(g)\mathbf1_A/\mu(A)$ gives $\|f\|_1=1$ and
+$\ell_g(f)>r$. Letting $r$ increase to $\|g\|_\infty$ proves norm
+equality; for $g=0$ it is immediate. This also proves injectivity.
+
+For surjectivity let $\ell\in(L^1)'$ and put $C=\|\ell\|$.
+Cauchy--Schwarz gives
+$\|f\|_1\leq\mu(\Omega)^{1/2}\|f\|_2$, so restriction of $\ell$
+to $L^2$ is continuous. Theorem~\ref{thm:L2_complete} and real Hilbert
+representation supply $g\in L^2$ with
+$\ell(h)=\int hg\,d\mu$ for every $h\in L^2$.
+For $\varepsilon>0$, put $A_\varepsilon=\{|g|>C+\varepsilon\}$.
+The function $h=\operatorname{sgn}(g)\mathbf1_{A_\varepsilon}$ is in
+$L^2$ and $L^1$ because the measure is finite. Therefore
+\[
+(C+\varepsilon)\mu(A_\varepsilon)
+\leq\int_{A_\varepsilon}|g|\,d\mu
+=\ell(h)\leq C\|h\|_1=C\mu(A_\varepsilon).
+\]
+It follows that $\mu(A_\varepsilon)=0$. Taking the union over
+$\varepsilon=1/n$ shows $|g|\leq C$ almost everywhere, so
+$g\in L^\infty$.
+
+For any $f\in L^1$, its bounded truncations
+$f_m=\max(-m,\min(f,m))$ belong to $L^2$ and converge in $L^1$ to $f$,
+by the vanishing integrable-tail lemma. Continuity of $\ell$ and
+$|\int(f-f_m)g\,d\mu|\leq C\|f-f_m\|_1$ now give
+$\ell(f)=\int fg\,d\mu$. This proves surjectivity and the theorem.
+If $\mu(\Omega)=0$, both spaces consist of the zero equivalence class,
+and the same conclusion is immediate.
+\Done
+
+In particular, convergence of all the bounded-test integrals below is
+exactly weak convergence in real $L^1$, not merely convergence against
+an unspecified subset of its continuous dual. The finite-measure
+hypothesis enters both the inclusion $L^2\subseteq L^1$ and the use
+of bounded test functions in $L^2$.
+
+\subsection{A proved direction of the compactness criterion}
+The following argument uses the Hilbert structure of $L^2(\mu)$ proved
+in Theorem~\ref{thm:L2_complete}.
+We supply the weak subsequence argument rather than assuming reflexive
+weak compactness. The finite-measure dual identification in
+Theorem~\ref{thm:L1_dual_finite} identifies convergence of all bounded
+integrals with weak convergence.
+
+\begin{lemma}[Bounded sequences in a Hilbert space]
+Every bounded sequence $(u_n)$ in a Hilbert space has a weakly convergent
+subsequence.
+\end{lemma}
+\Proof
+The closed linear span $H_0$ of the sequence has a finite or countable
+orthonormal basis $(e_j)$: apply Gram--Schmidt to the ordered list
+$u_1,u_2,\ldots$, discarding zero remainders, and take the closed span.
+If no vector remains, the sequence is zero. If $\|u_n\|\leq C$,
+repeated scalar subsequence extraction followed by diagonalization makes
+every coordinate converge, say
+$\langle u_{n_k},e_j\rangle\to a_j$ (inner products linear in the first
+argument). Finite-dimensional Pythagoras gives
+$\sum_{j=1}^m|a_j|^2\leq C^2$ for every $m$.
+Thus the orthogonal series $u=\sum_j a_je_j$ converges by completeness
+and has norm at most $C$. Coordinate convergence gives convergence
+against finite linear combinations of the $e_j$. Approximating any
+vector of $H_0$ in norm by such combinations, and using
+$\|u_{n_k}-u\|\leq2C$, gives convergence against all of $H_0$.
+For an arbitrary $y$ in the Hilbert space, Bessel's inequality constructs
+$y_0=\sum_j\langle y,e_j\rangle e_j$; its difference from $y$ is
+orthogonal to every $e_j$ and hence to $H_0$. Pairing against $y$ is
+therefore the same as pairing against $y_0$ for these vectors.
+
+To obtain weak convergence in the sense of \emph{all} continuous linear
+functionals, let $\ell$ be such a functional and set $b_j=\ell(e_j)$.
+For $v_m=\sum_{j=1}^m\overline{b_j}e_j$, boundedness gives
+\[
+\sum_{j=1}^m|b_j|^2=|\ell(v_m)|\leq\|\ell\|\Bigl(\sum_{j=1}^m|b_j|^2\Bigr)^{1/2}.
+\]
+Thus $\sum_j|b_j|^2\leq\|\ell\|^2$. In the real case conjugation is
+omitted. On $H_0$, norm convergence of orthonormal expansions and
+continuity imply $\ell(v)=\sum_j\langle v,e_j\rangle b_j$.
+The tail after $m$ is bounded by
+$\|v\|(\sum_{j>m}|b_j|^2)^{1/2}$ by Cauchy--Schwarz.
+Apply this bound to $v=u_{n_k}-u$, whose norm is at most $2C$;
+the finite part tends to zero by coordinate convergence, and the tail
+bound tends to zero with $m$. Therefore $\ell(u_{n_k})\to\ell(u)$.
+This proves weak convergence without invoking Riesz representation.
+\Done
+
+\begin{theorem}[Uniform integrability gives weak subsequences]
+\label{thm:UI_weak_subsequence}
+On the finite measure space under consideration, every uniformly
+integrable sequence $(f_n)$ in real $L^1$ has a subsequence and an
+$f\in L^1$ such that
+\[
+\int h f_{n_k}\,d\mu\longrightarrow\int h f\,d\mu
+\qquad(h\in L^\infty).
+\]
+\end{theorem}
+\Proof
+For positive integers $m$ let $T_m(t)=\max(-m,\min(t,m))$ and put
+\[
+\varepsilon_m=\sup_n\|f_n-T_m(f_n)\|_1.
+\]
+Uniform integrability implies $\varepsilon_m\to0$, since
+$|t-T_m(t)|\leq |t|\mathbf1_{\{|t|>m\}}$.
+For each fixed $m$, the functions $T_m(f_n)$ have $L^2$ norm at most
+$m\mu(\Omega)^{1/2}$. Apply the Hilbert lemma successively for
+$m=1,2,\ldots$ and take a diagonal subsequence. It gives functions
+$g_m\in L^2$ such that $T_m(f_{n_k})$ converges weakly in $L^2$ to
+$g_m$ for every fixed $m$.
+
+For $m,l$, the triangle inequality gives
+\[
+\|T_m(f_{n_k})-T_l(f_{n_k})\|_1\leq\varepsilon_m+\varepsilon_l.
+\]
+The bounded measurable function $h=\operatorname{sgn}(g_m-g_l)$
+belongs to $L^2$ because the measure is finite. Test both weak limits
+against this $h$ to obtain
+\[
+\|g_m-g_l\|_1
+=\lim_k\int h\bigl(T_m(f_{n_k})-T_l(f_{n_k})\bigr)\,d\mu
+\leq\varepsilon_m+\varepsilon_l.
+\]
+Here $g_m\in L^1$ follows from Cauchy--Schwarz and finite measure.
+Completeness of $L^1$ now gives $g_m\to f$ in $L^1$.
+Finally fix $h\in L^\infty$, which also belongs to $L^2$. For fixed $m$,
+\[
+\begin{split}
+\left|\int h(f_{n_k}-f)\,d\mu\right|
+&\leq \|h\|_\infty\varepsilon_m
+ +\left|\int h(T_m(f_{n_k})-g_m)\,d\mu\right|\\
+&\quad+\|h\|_\infty\|g_m-f\|_1.
+\end{split}
+\]
+First let $k\to\infty$ and then $m\to\infty$. The bound tends to zero,
+proving the result. If the measure is zero all spaces here consist of
+the zero equivalence class and the conclusion is immediate.
+\Done
+
+\subsection{The converse: small sets and the measure algebra}
+The reverse implication can be proved directly from Baire's theorem,
+without importing the full Vitali--Hahn--Saks theorem. The auxiliary
+complete metric space consists of measurable sets modulo null differences.
+
+\begin{lemma}[Completeness of the finite measure algebra]
+\label{lem:finite_measure_algebra_complete}
+On $\mathcal A$ identify $A$ and $B$ when $\mu(A\mathbin\triangle B)=0$.
+The quotient has a complete metric
+\[
+d([A],[B])=\mu(A\mathbin\triangle B).
+\]
+For every $h\in L^1(\mu)$, the function
+$[A]\mapsto\int_Ah\,d\mu$ is well defined and continuous.
+\end{lemma}
+\Proof
+The triangle inequality follows from
+$A\mathbin\triangle C\subseteq(A\mathbin\triangle B)\cup
+(B\mathbin\triangle C)$; null differences make the metric independent
+of representatives. Given a Cauchy sequence, select a subsequence with
+representatives $A_k$ such that
+$\mu(A_k\mathbin\triangle A_{k+1})<2^{-k}$.
+Let $A=\liminf_k A_k$, a measurable set. For each $k$,
+\[
+A_k\mathbin\triangle A
+\subseteq\bigcup_{j\geq k}(A_j\mathbin\triangle A_{j+1}).
+\]
+Indeed, if membership never changes after stage $k$, membership in the
+liminf agrees with membership at that stage. Thus
+$d([A_k],[A])\leq\sum_{j\geq k}2^{-j}\to0$.
+The original Cauchy sequence converges to the same limit by the triangle
+inequality. Finally,
+\[
+\left|\int_Ah-\int_Bh\right|
+\leq\int_{A\mathbin\triangle B}|h|,
+\]
+and absolute continuity of the integral proves continuity. These arguments
+use measurable representatives throughout, not completeness of the measure.
+\Done
+
+\begin{theorem}[Weak convergence gives uniform integrability]
+\label{thm:weak_sequence_UI}
+If $f_n$ converges weakly to $f$ in real $L^1(\mu)$, with $\mu$ finite,
+then $\{f_n:n\geq1\}$ is uniformly integrable.
+\end{theorem}
+\Proof
+Put $h_n=f_n-f$ and $\nu_n(A)=\int_Ah_n\,d\mu$.
+Weak convergence against indicators gives $\nu_n(A)\to0$ for every
+measurable $A$. Fix $\varepsilon>0$ and, in the complete measure algebra,
+put
+\[
+E_N=\{[A]:|\nu_n(A)|\leq\varepsilon
+                  \text{ for every }n\geq N\}.
+\]
+Each $E_N$ is closed by Lemma~\ref{lem:finite_measure_algebra_complete},
+and their union is the
+whole measure algebra by pointwise convergence. Baire's theorem supplies
+$N$, a measurable representative $A_0$, and $\delta>0$ such that the
+open $\delta$-ball about $[A_0]$ is contained in $E_N$.
+
+If $\mu(B)<\delta$, both $[A_0\setminus B]$ and $[A_0\cup B]$
+are in this ball, as is $[A_0]$. Additivity gives, for $n\geq N$,
+\[
+|\nu_n(B\cap A_0)|\leq2\varepsilon,
+\qquad |\nu_n(B\setminus A_0)|\leq2\varepsilon,
+\]
+and hence $|\nu_n(B)|\leq4\varepsilon$.
+Apply this bound separately to
+$B\cap\{h_n\geq0\}$ and $B\cap\{h_n<0\}$ to obtain
+\[
+\int_B|h_n|\,d\mu\leq8\varepsilon\qquad(n\geq N).
+\]
+Both subsets have measure less than $\delta$, so the same uniform bound
+applies even though they depend on $n$.
+
+For any desired tolerance $\eta>0$, begin with
+$\varepsilon=\eta/16$. The finitely many functions $h_1,\ldots,h_{N-1}$
+have a common small-set bound by absolute continuity of their integrals;
+shrinking $\delta$ therefore gives
+$\sup_n\int_B|h_n|<\eta$ whenever $\mu(B)<\delta$.
+Adding the single integrable function $f$ proves the same uniform
+small-set property for the $f_n$. Their norms are bounded by the earlier
+weak-sequence boundedness corollary. The uniform-small-set lemma now
+implies uniform integrability.
+\Done
+
+\subsection{The full sequential compactness criterion}
+\begin{theorem}[Dunford--Pettis, sequential finite-measure form]
+\label{thm:DP_sequential_finite}
+Let $(\Omega,\mathcal A,\mu)$ be a finite positive measure space and
+$K\subseteq L^1(\mu;\mathbb R)$. Then $K$ is uniformly integrable
+if and only if
+every sequence in $K$ has a subsequence converging weakly in $L^1(\mu)$.
+Here weak convergence means
+\[
+\int_\Omega gf_n\,d\mu\longrightarrow\int_\Omega gf\,d\mu
+\qquad\text{for every }g\in L^\infty(\mu).
+\]
+\end{theorem}
+\Proof
+The forward implication is Theorem~\ref{thm:UI_weak_subsequence}.
+Conversely, suppose the stated subsequence property holds but uniform
+integrability fails. Since tail integrals decrease as the threshold
+increases, there is $\varepsilon>0$ such that, for every positive integer
+$n$, one can choose $f_n\in K$ with
+\[
+\int_{\{|f_n|>n\}}|f_n|\,d\mu>\varepsilon.
+\]
+(The tolerance may be halved if a supremum is not attained.)
+A weakly convergent subsequence $f_{n_k}$ is uniformly integrable by
+Theorem~\ref{thm:weak_sequence_UI}. Choose $M$ so that all its tail integrals above $M$
+are less than $\varepsilon$. For $n_k\geq M$, its tail above $n_k$ is
+no larger, a contradiction. The empty family and zero-measure case
+satisfy both conditions directly.
+\Done
+
+Both directions are now proved in the real finite-measure setting,
+including the needed dual identification. For comparison, the
+\href{https://sites.math.rutgers.edu/courses/592/dunfordpettis.pdf}
+{\emph{Notes on the Dunford--Pettis compactness criterion}, Theorem~1}
+give a probability-space treatment whose converse invokes
+Vitali--Hahn--Saks. The measure-algebra argument here supplies the
+uniform small-set conclusion needed for this sequential result.
+No equivalence of sequential and topological weak compactness has been
+used or proved here.
+\paragraph{Why the hypotheses matter.}
+The small-set lemma shows why both norm boundedness and control of
+concentration matter. An $L^1$ bound alone does not control concentration
+on small sets.
+For example, on $[0,1]$ with Lebesgue measure, let
+$f_n=n\mathbf{1}_{(0,1/n)}$. Every $f_n$ has norm one, but for
+$n>M$ its tail integral above $M$ is still one. This family therefore
+fails the displayed uniform-integrability condition. It also has no
+weakly convergent subsequence: testing against
+$\mathbf{1}_{[\delta,1]}$, for each $\delta>0$, forces a putative
+limit to vanish on $(0,1]$, while the constant test function one
+would give integral one. More explicitly, the same test works for
+every measurable subset of $[\delta,1]$, so the conclusion is
+almost-everywhere vanishing, not merely zero integral on an interval.
+
+Nor should the finite-measure hypothesis be dropped silently. On
+$\mathbb{R}$ with Lebesgue measure, the functions
+$f_n=\mathbf{1}_{[n,n+1)}$ satisfy the tail condition, since they are
+bounded by one. They have no weakly convergent subsequence in $L^1$:
+a putative weak limit has integral zero over every bounded measurable
+set and hence is zero almost everywhere, whereas testing against the
+constant function one would give integral one. This example exhibits
+mass escaping the finite regions of the carrier. A criterion for an
+infinite measure space needs additional hypotheses or a stronger
+uniform-integrability convention.
+
+Here ``Dunford--Pettis'' denotes the proved sequential compactness
+criterion for subsets of real $L^1$ on a finite measure space.
+The compact-operator results earlier in the chapter concern norm-compact
+images and their consequences for weakly convergent sequences. An
+operator property or an integrability notion for vector-valued functions
+requires its own definition and hypotheses, even when it shares the
+Dunford--Pettis name.
 \input{END.tex}

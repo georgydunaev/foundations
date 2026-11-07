@@ -1,6 +1,72 @@
-\def\topic{}
+\def\topic{Differential geometry}
 \input{BEGIN.tex}
 \section{Differential geometry}
-Remark 1.1.8:\\
-Every connected 0--dimesional manifold $M$ is given by a single point: $M=\{point\}$.
+Here a manifold is a topological space locally homeomorphic to open
+subsets of $\mathbb R^n$, for a fixed finite $n\geq0$. The results below
+use only this local Euclidean property: neither differentiability nor
+the usual additional Hausdorff and second-countability axioms enter
+their proofs. All connectedness assertions refer to the topology of
+the manifold, not to a graph of coordinate names.
+
+\begin{lemma}[Small path-connected coordinate neighbourhoods]
+Every point of a manifold has a base of open path-connected
+neighbourhoods.
+\end{lemma}
+\begin{proof}
+Let $p\in M$ and let $O$ be an open neighbourhood of $p$. Choose a
+chart $\varphi:U\to V\subseteq\mathbb R^n$ with $p\in U$. The set
+$\varphi[U\cap O]$ is open and contains $\varphi(p)$, so it contains
+an open Euclidean ball $B$ centred at $\varphi(p)$. The open set
+$\varphi^{-1}[B]\subseteq O$ is path connected: the straight segment
+between any two points of $B$ stays in $B$, and its composition with
+$\varphi^{-1}$ is a path in the manifold. This also works for $n=0$,
+when $B$ is the one-point space.
+\end{proof}
+
+\begin{theorem}[Components of a manifold]
+The connected components of a manifold are open and are exactly its
+path components. In particular, a nonempty connected manifold is
+path connected.
+\end{theorem}
+\begin{proof}
+Paths define an equivalence relation: constant paths give reflexivity,
+reversing the parameter gives symmetry, and concatenating two paths
+on the two halves of $[0,1]$ gives transitivity. Fix a path component
+$C$. For each $q\in C$, a path-connected open neighbourhood of $q$
+lies in $C$, since its paths concatenate with a path from a fixed
+point of $C$ to $q$. Thus every path component is open. Their partition
+also makes every path component closed, as its complement is the
+union of the others.
+
+A path-connected set is connected: a separation would pull back
+along a path joining its two sides to a separation of $[0,1]$.
+Conversely, any connected subset meeting $C$ must lie in $C$, since
+the relatively open sets obtained from $C$ and its complement would
+otherwise separate it. Hence $C$ is precisely the maximal connected
+subset containing any of its points. These are the connected
+components, which proves both assertions.
+\end{proof}
+
+\begin{corollary}[Locally constant data on a connected manifold]
+If $M$ is nonempty and connected and $f:M\to D$ is locally constant,
+then $f$ is constant. Equivalently, every continuous map from $M$ to
+a discrete space has one-point image.
+\end{corollary}
+\begin{proof}
+Every fibre of a locally constant map is open, and its complement is
+the union of the other open fibres. Choose $p\in M$. The nonempty
+fibre of $f(p)$ is therefore both open and closed, so connectedness
+makes it all of $M$. A map into a discrete space is continuous exactly
+when all its fibres are open, which is exactly local constancy. In
+fact this argument applies to every connected topological space.
+\end{proof}
+
+\begin{remark}[Connected zero-dimensional manifolds]
+Every nonempty connected zero-dimensional manifold $M$ consists of a
+single point. Indeed, a coordinate neighbourhood is homeomorphic to the
+one-point space $\mathbb{R}^0$, so every point of $M$ is open. Thus $M$ is
+discrete, and a discrete space with at least two points is disconnected.
+The nonemptiness hypothesis excludes the empty manifold if it is allowed
+by the chosen convention.
+\end{remark}
 \input{END.tex}

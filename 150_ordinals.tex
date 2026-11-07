@@ -1,18 +1,29 @@
 \def\topic{Ordinals}
 \input{BEGIN.tex}
-\section{Ordinals \& Induction principles}
-The definitions in this section are the improved version of definitions from the Metamath system, because they are a bit chaotic there.
+\section{Ordinals and induction principles}
+This section organizes the ordinal constructions around an arbitrary
+relation, then specializes to membership. The aim is to make the assumptions
+behind each induction principle visible. The notation distinguishes a
+transitive relation from a class closed under taking predecessors, and an
+ordinal class from an ordinal set. The elementary comparison results come
+first; the later recursion, collapse, and cardinal results state their
+additional set-existence and choice assumptions explicitly. They are not
+consequences of ordinal notation alone.
 \subsection{Ordinal classes in general setting}
-Context: (it may be ignored potentially, but it is an ``intended use'')\\
-The parameter $A$ is an arbitrary class(so no assumptions, just a note that it is not necessary a set, it may be a proper class),\\
-The parameter $R$ is an arbitrary class and a relation, i.e. $R\subclass \V\times \V$.
+Let $A$ be a class, possibly proper, and let
+$R\subseteq\V\times\V$ be a relation on sets. Write $xRy$ for
+$(x,y)\in R$. Relational images use the orientation
+$R[S]=\cc{y}{\exists x\in S,\ xRy}$, so $R^\top[\{y\}]$ is the class of
+predecessors of $y$. The experimental family-based notation immediately
+below is an alternative representation; subsequent relation proofs use
+the ordinary pair-membership interpretation unless explicitly stated.
 \begin{definition}[related]
 \[
 ARB \iffdef (A,B) \in R
 \labeltagd{def}{related}
 \]
 \end{definition}
-\begin{definition*}[related(experimental)]
+\begin{definition*}[related (alternative family representation)]
 \[
 ARB \iffdef \exists (i\set),\ (R((i,0))=A)\land(R((i,1))=B)
 \labeltagd{def}{relatedexper}
@@ -20,7 +31,7 @@ ARB \iffdef \exists (i\set),\ (R((i,0))=A)\land(R((i,1))=B)
 \end{definition*}
 \begin{definition}[epsilon relation]
 \[
-\E\ \eqdef\ \cc{(x,y)}{x\in y}
+\E\ \eqdef\ \cc{(x,y)}{(y\set)\land(x\in y)}
 \labeltagd{def}{epsilonRelation}
 \]
 \end{definition}
@@ -51,13 +62,15 @@ xRy \land yRz \implies xRz)
 \labeltagd{def}{linearOn}
 \]
 \end{definition}
-\begin{definition}[relation is strictly completely ordered on]
+\begin{definition}[relation is strictly linearly ordered on]
 \[
 (R\mathrm{\ Or\ }A)\iffdef ((R\mathrm{\ Po\ }A) \land (R\mathrm{\ Lin\ }A))
 \labeltagd{def}{sOn}
 \]
 \end{definition}
 \begin{definition}[relation is founded on]
+The condition says that every nonempty subclass of $A$ has an element with
+no predecessor in that subclass.
 \[
 (R\mathrm{\ Fr\ }A)
 \iffdef
@@ -82,7 +95,7 @@ S=\emptyclass)
 \begin{definition}[$R_1R_2$ subclass]
 \[
 A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x,\ xR_1A\implies xR_2B)
-\labeltagd{def}{RRsubclass}	
+\labeltagd{def}{RRsubclass}
 \]
 \end{definition}
 \begin{definition}[$R$ subclass]
@@ -95,12 +108,13 @@ A\stackrel{R_1R_2}{\subclass} B \iffdef  (\forall x,\ xR_1A\implies xR_2B)
 \end{definition}
 \begin{lemma}[$R$ subclass]
 \[
-k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
+k\stackrel{R\E}{\subclass} X \iff  R^{\top}[\{k\}]\subclass X
 \labeltagd{lem}{Rsubset}
 \]
 \end{lemma}
 \begin{proof}
-(TODO)
+Unfolding the definition, both sides say that every $R$-predecessor of $k$
+belongs to $X$.
 \end{proof}
 \begin{definition}[powerclass w.r.t. relation $R$]
 \[
@@ -109,7 +123,9 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \]
 \end{definition}
 
-\begin{definition}[class is transitive w.r.t. relation $R$]
+\begin{definition}[class is closed under R-predecessors]
+This is the meaning of ``$R$-transitive class'' here. It is different from
+transitivity of $R$ as a binary relation.
 \[
 (R\ \Tr\ K)
 \iffdef
@@ -170,16 +186,20 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \]
 \end{theorem}
 \begin{proof}
-(TODO)
+The universally quantified conditions remain true after restricting the
+variables from $A$ to $B$. For foundedness, every subclass of $B$ is also
+a subclass of $A$. Combining these facts gives the claims for strict
+partial orders and well-orders. Closure under predecessors is excluded:
+a subclass can omit a predecessor that was present in $A$.
 \end{proof}
-\begin{lemma}[?]
+\begin{lemma}[predecessors of a minimal counterexample]
 \[
 (R^\top[\{m\}]\subclass K)
 \LAND
 (m\notin R[K\setminus A])
 \IMPLIES
 (R^\top[\{m\}]\subclass A)
-\labeltagd{lem}{Rind}
+\labeltagd{lem}{Rindlem}
 \]
 \end{lemma}
 \ProofNoPar
@@ -206,116 +226,19 @@ k\stackrel{R\E}{\subclass} X \iffdef  R^{\top}[\{k\}]\subclass X
 \labeltagd{thm}{Rind}
 \]
 \end{theorem}
-\Proof
-Assume $(R\ \Tr\ K)$, $(R\mathrm{\ Fr\ }K)$, $((K\cap\power_R A)\subclass A)$. To show: $K\subclass A$.\\
-Fix $k$. Assume $k\in K$. To show $k\in A$.\\
-Assume opposite $k\notin A$. To show $\bot$.
-\[
-(k\in K)
-\LAND
-(k\notin A)
-\IMPLIES
-(k\in K\setminus A)
-\]
-\[
-(k\in K\setminus A)
-\IMPLIES
-(K\setminus A\neq\emptyclass)
-\]
-\[
-(R\mathrm{\ Fr\ }K)
-\IFF
-(\forall S\subclass K,\ %
-S\subclass R[S]
-\implies
-S=\emptyclass)
-\]
-\[
-S\ceq (K\setminus A)
-\]
-\[
-(R\mathrm{\ Fr\ }K)
-\LAND
-(K\setminus A\neq\emptyclass)
-\LAND
-(K\setminus A\subclass K)
-\IMPLIES
-\neg(S\subclass R[S])
-\]
-\[
-\IMPLIES
-(\exists m\in S,\ m\notin R[S])
-\]
-\[
-\IMPLIES
-(\exists m\in (K\setminus A),\ % m\notin R[(K\setminus A)])
-\]
-\[
-(R\mathrm{\ Tr\ }K)
-\IFF
-(K\subclass \power_R(K))
-\]
-\[
-(m\in K)
-\LAND
-(R\mathrm{\ Tr\ }K)
-\IMPLIES
-(m\in \power_R(K))
-\]
-\[
-(m\in \power_R(K)
-\IMPLIES
-(m\stackrel{R\E}{\subclass}K)
-\]
-\[
-(m\stackrel{R\E}{\subclass}K)
-\IMPLIES
-(R^\top[\{m\}]\subclass K)
-\]
-\[
-(R^\top[\{m\}]\subclass K)
-\LAND
-(m\notin R[K\setminus A])
-\IMPLIES
-(R^\top[\{m\}]\subclass A)
-\tag{\myref{lem:Rindlem}}
-%\quad(\mbox{lemma\ }\myref{lem:Rindlem})
-\]
-\[
-((K\cap\power_R A)\subclass A)
-\IFF
-(
-\cc{k\in K}{(R^\top[\{m\}]\subclass A)}
-\subclass A
-)
-\]
-\[
-(m\in K)
-\LAND
-(R^\top[\{m\}]\subclass A)
-\IMPLIES
-(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)})
-\]
-\[
-(m\in\cc{k\in K}{(R^\top[\{m\}]\subclass A)})
-\LAND
-(
-\cc{k\in K}{(R^\top[\{m\}]\subclass A)}
-\subclass A
-)
-\IMPLIES
-(m\in A)
-\]
-\[
-(m\in K\setminus A)
-\LAND
-(m\in A)
-\IMPLIES
-\bot
-\]
-\Done %the proof is finished
+\begin{proof}
+Assume $K$ is closed under $R$-predecessors, $R$ is founded on $K$, and
+$K\cap\power_R A\subseteq A$. If $K\nsubseteq A$, the nonempty class
+$S=K\setminus A$ has an $R$-minimal element $m$: $m\notin R[S]$.
+Since $m\in K$, all predecessors of $m$ lie in $K$. None lies in $S$,
+so all lie in $A$. Thus $m\in\power_R A$, and the induction assumption
+implies $m\in A$, contradicting $m\in S$.
+\end{proof} %the proof is finished
 
-\begin{definition}[restriction of relation]
+\begin{definition}[restriction of the predecessor coordinate]
+This local operation restricts the first coordinate only. It is chosen to
+make $K$ closed under predecessors; it is not the usual two-coordinate
+restriction $R\cap(K\times K)$.
 \[
 (x(R\mathrm{\ on\ }K)y)
 \iffdef
@@ -323,7 +246,7 @@ S\ceq (K\setminus A)
 \labeltagd{def}{restrrel}
 \]
 \end{definition}
-\begin{lemma}[restriction of relation is transitive on class]
+\begin{lemma}[the restricted relation makes K predecessor-closed]
 If $R$ is a relation, then
 \[
 ((R\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)
@@ -332,7 +255,7 @@ If $R$ is a relation, then
 \end{lemma}
 \Proof
 To Show: $K\subclass \power_{(R\mathrm{\ on\ }K)}K$.\\
-Fix $k\in K$. To show: $k\in\cc{x}{(R\mathrm{\ on\ }K)^\top[\{x\}]}\subclass K$.\\
+Fix $k\in K$. To show: $k\in\cc{x}{(R\mathrm{\ on\ }K)^\top[\{x\}]\subclass K}$.\\
 To show: $(R\mathrm{\ on\ }K)^\top[\{k\}]\subclass K$.\\
 Fix $w\in (R\mathrm{\ on\ }K)^\top[\{k\}]$. To show: $(w\in K)$.\\
 \[
@@ -366,43 +289,23 @@ This formulation of inductive principle corresponds to the exercise 9.22 of ``In
 )
 \labeltagd{thm}{RindAlt}
 \]
-\Proof
-Assume $(R_1\mathrm{\ on\ }K)$.\\
-Let be $R\ceq (R_1\mathrm{\ on\ }K)$.\\
-By lemma \myref{lem:restrreltran}, $((R_1\mathrm{\ on\ }K)\mathrm{\ Tr\ }K)$.\\
-I.e. $(R\mathrm{\ Tr\ }K)$.\\
-Therefore, $(R\mathrm{\ Fr\ }K)
-\implies
-(
-((K\cap(\power_R A))\subclass A)
-\implies
-(K\subclass A)
-)
-$ by theorem \myref{thm:Rind}.\\
-
-Since $R\subclass R_1$(it follows from the local definition of $R$), then by theorem \myref{thm:inheritable}
-\[
-(R_1\mathrm{\ on\ }K)
-\implies
-(R\mathrm{\ on\ }K)
-\]
-This allows us to obtain the following:
-\[
-(
-((K\cap(\power_R A))\subclass A)
-\implies
-(K\subclass A)
-)
-.\]
-Finally, we have $(
-((K\cap(\power_{(R_1\mathrm{\ on\ }K)} A))\subclass A)
-\implies
-(K\subclass A)
-)$ by unfolding $R_1$.
-\Done
+\begin{proof}
+Set $R=R_1\mathrm{\ on\ }K$. The preceding lemma makes $K$
+$R$-predecessor-closed. Since $R\subseteq R_1$, any nonempty subclass of
+$K$ with an $R_1$-minimal element also has an $R$-minimal element. Thus
+$R_1$-foundedness implies $R$-foundedness. Apply
+\myref{thm:Rind} to $R$ and expand its definition.
+\end{proof}
 \end{corollary}
 
-\subsection{Case of membership relation E as R}
+\subsection{Specialization to membership}
+Now take $R=\E$. The predicate $\Ord(X)$ applies to classes, while
+$\On$ collects only the set instances of that predicate. The limit
+convention deliberately includes the empty ordinal. The operations
+$\sup$ and $\inf$ below first discard nonordinal members of their argument;
+in particular, $\sup(\emptyclass)=\emptyclass$ and
+$\inf(\emptyclass)=\On$.
+
 \begin{definition}[class is transitive (w.r.t. epsilon relation)]
 \[
 \Tr(X)
@@ -435,12 +338,12 @@ Note, that this definition is a bit unconventional: usually it must also be none
 \[
 \LimOrd(X)
 \iffdef
-((\Ord(X))\land(\LimClass(X))
+((\Ord(X))\land(\LimClass(X)))
 \labeltagd{def}{limitOrdinal}
 \]
 \end{definition}
 
-\begin{definition}[ordinal numbers] It can be interchangebly called ``ordinal sets''.
+\begin{definition}[ordinal numbers] It can be interchangeably called ``ordinal sets''.
 \[
 \On\ \eqdef\ \cc{x}{\Ord(x)}
 \labeltagd{def}{ordinalNumbers}
@@ -465,96 +368,21 @@ Note, that this definition is a bit unconventional: usually it must also be none
 ((A\cap\On)\neq\emptyclass)\implies(\inf(A)\in A)
 \labeltagd{thm}{infordmin}
 \]
-\Proof
-\[
-((A\cap\On)\neq\emptyclass)
-\IMPLIES
-(\exists q,\ q\in(A\cap\On))
-\]
-\[
-\forall r\in R,\ \left(\bigcap R\right)  \subclass r
-\]
-\[
-(q\in(A\cap\On))
-\IMPLIES
-\left(\bigcap (A\cap\On)\right)  \subclass q
-\]
-\[
-(q\in\On)
-\IMPLIES
-(q\subseteq\On)
-\]
-\[
-\left(\left(\bigcap (A\cap\On)\right)  \subclass q\right)
-\LAND
-(q\subseteq\On)
-\IMPLIES
-\left(\left(\bigcap (A\cap\On)\right) \subclass \On\right)
-\]
-Therefore if it is proven that  $\left(\bigcap (A\cap\On)\right)$ is transitive, then it will follow that it is an ordinal(due to the lemma \ref{thm:dford5}).\\
-1) Then its interesection with On, doesn't change it.\\ 
-2) So $(\inf(A)\subseteq A)$.\\
-3) Since $\Ord(\inf(A))$ and $(\inf(A)\subseteq A)$, it gives two opportunities:\\
-either $(\inf(A)\in A)$ or $(\inf(A)=A)$ due to the lemma (\ref{lem:ordlem2}).\\
-4) $(\inf(A)=A)$ is impossible, since the
-\[
-(\inf(A)=A)
-\LAND
-(\inf(A) \subseteq q)
-\IMPLIES
-(A\subseteq q)
-\]
-\[
-(A\subseteq q)
-\LAND
-(q\in A)
-\IMPLIES
-(q\in q)
-\]
-Which is a contradiction.\\
-5) Therefore $(\inf(A)\in A)$.(QED)
-
-6) It is left to show that $\left(\bigcap (A\cap\On)\right)$ is actually transitive.\\
-Fix $y\in \left(\bigcap (A\cap\On)\right)$, fix $z\in y$.
-To show: $z \in\bigcap (A\cap\On)$.%\left(\right)
-I.e. to show:
-\[
-\forall b\in (A\cap\On), z\in b.
-\]
-We have
-\[
-\left(y\in \left(\bigcap (A\cap\On)\right)\middle)
-\IMPLIES
-\middle(\forall b\in (A\cap\On),\ (y\in b)\right).
-\]
-\[
-b\in\On
-\IMPLIES
-\Tr(b)
-\]
-\[
-(y\in b)
-\LAND
-\Tr(b)
-\IMPLIES
-(y\subseteq b)
-\]
-\[
-(z\in y)
-\LAND
-(y\subseteq b)
-\IMPLIES
-(z\in b)
-\]
-So the transitivity is proven. The proof is done, the only ommited part is a proof of the lemma \ref{lem:ordlem2}.
-(for example, the proof of the main statement of the theorem can be found here \url{https://us.metamath.org/mpeuni/tz7.7.html})
-\Done
-\end{theorem}
 \begin{proof}
-(TODO)
+Use the well-ordering of $\On$ under membership, recorded below as
+\myref{thm:ordon}. The nonempty class $C=A\cap\On$ has a least member
+$m$. For every $q\in C$, ordinal comparison gives $m\subseteq q$.
+Hence $m\subseteq\bigcap C$. Since $m\in C$, also
+$\bigcap C\subseteq m$. Therefore
+$\inf(A)=\On\cap\bigcap C=\On\cap m=m\in A$.
+This argument makes the ordinal well-ordering prerequisite explicit.
 \end{proof}
+\end{theorem}
 
 \subsection{Properties of ordinals}
+The following lemmas establish the ordinal comparison and closure facts
+used elsewhere. Their proofs use the general well-order definition, so
+global regularity is not silently introduced.
 \iffalse
 \begin{theorem}[]
 \labeltagd{thm}{}
@@ -570,7 +398,11 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]
 \end{lemma}
 \begin{proof}
-(TODO)
+If $x\in y$ and $y$ is a set, then $x$ is a set as well; the set pair
+$(x,y)$ belongs to the comprehension defining $\E$. Conversely, membership
+in that relation supplies set components $u,v$ with $u\in v$ and
+$(x,y)=(u,v)$. Injectivity of the chosen set-pair coding gives $x=u$ and
+$y=v$, hence $x\in y$ and $y$ is a set.
 \end{proof}
 
 \begin{lemma}[an element is a proper subset]
@@ -585,7 +417,9 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]
 \end{lemma}
 \begin{proof}
-(TODO)
+Let $B\in A$. Transitivity gives $B\subseteq A$. If $B=A$, then
+$A\in A$, so $A$ is itself an element of the carrier $A$ and
+irreflexivity on that carrier gives $A\notin A$. Thus $B\ne A$.
 \end{proof}
 \begin{lemma}[a proper subclass is an element]
 %(\mathrm{ })\land
@@ -606,7 +440,16 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]
 \end{lemma}
 \begin{proof}
-(TODO)
+Let $B\subsetneq A$. The nonempty class $A\setminus B$ has an
+$\E$-minimal member $m$. Since $m\in A$ and $A$ is transitive,
+$m\subseteq A$. Minimality excludes every member of $m$ from
+$A\setminus B$, hence $m\subseteq B$.
+
+For the reverse inclusion, take $b\in B$. Both $b$ and $m$ belong to
+$A$, so linearity gives $b\in m$, $b=m$, or $m\in b$. The second
+alternative puts $m$ in $B$; the third does so by transitivity of $B$.
+Both contradict $m\notin B$. Therefore $b\in m$, so $B\subseteq m$.
+Extensionality yields $B=m\in A$.
 \end{proof}
 
 \begin{theorem}[proper subclass iff element]
@@ -625,7 +468,8 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]
 \end{theorem}
 \begin{proof}
-(TODO)
+An ordinal class is transitive, and membership on it is irreflexive,
+linear, and founded. Apply the preceding two lemmas.
 \end{proof}
 \begin{theorem}[transitive subclass of ordinal numbers iff it is an ordinal class]
 \[
@@ -642,6 +486,14 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]
 \url{https://us.metamath.org/mpeuni/dford5.html}
 \end{theorem}
+\begin{proof}
+If $\Ord(A)$, then every member of $A$ is a set ordinal by
+\myref{thm:tz7.6}; therefore $A\subseteq\On$, and transitivity is part
+of the definition. Conversely, if $A\subseteq\On$ and $A$ is transitive,
+its membership order is inherited from the well-order of $\On$, proved
+in \myref{thm:ordon}. Hence $\Ord(A)$. The proof of that latter theorem
+uses the preceding proper-subclass criterion, not this characterization.
+\end{proof}
 \begin{theorem}[element of ordinal is ordinal]
 \[
 \Ord(A)\land(a\in A)\implies \Ord(a)
@@ -649,7 +501,11 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \]%(7.6 Takeuti--Zaring)
 \end{theorem}
 \begin{proof}
-(TODO)
+Let $a\in A$ and $\Ord(A)$. Transitivity of $A$ gives $a\subseteq A$,
+so membership inherits its strict well-order from $A$. To check
+transitivity of $a$, take $z\in y\in a$. All three objects $z,y,a$
+lie in $A$, by transitivity of $A$. Transitivity of membership on $A$
+then gives $z\in a$. Thus $a$ is transitive and well-ordered by membership.
 \end{proof}
 \begin{theorem}[class of ordinal numbers is ordinal class]
 \[
@@ -659,6 +515,29 @@ So the transitivity is proven. The proof is done, the only ommited part is a pro
 \labeltagd{thm}{ordon}
 \]
 \end{theorem}
+\begin{proof}
+First compare any two ordinal classes $A,B$. Their intersection
+$C=A\cap B$ is transitive. If $C$ were a proper subclass of both,
+\myref{thm:subiffel} would give $C\in A$ and $C\in B$, hence $C\in C$.
+Since $C\in A$, this contradicts irreflexivity on $A$. Thus $A\subseteq B$
+or $B\subseteq A$; if the inclusion is proper, the smaller class is a
+member of the larger, again by \myref{thm:subiffel}.
+
+If $a\in\On$ and $b\in a$, then $b$ is a set and is ordinal by
+\myref{thm:tz7.6}, so $b\in\On$. Hence $\On$ is transitive.
+The comparison just proved gives linearity of membership on $\On$;
+transitivity follows because its members are transitive. A self-member
+$a\in a$ would contradict irreflexivity on the ordinal carrier $a$.
+
+Finally, let $S\subseteq\On$ be nonempty and choose $a\in S$.
+If $S\cap a$ is empty, then $a$ is minimal in $S$. Otherwise choose
+its least member $m$ using the well-order on $a$. Any $b\in S\cap m$
+would also lie in $a$, by transitivity of $a$, contradicting minimality
+of $m$ in $S\cap a$. Thus $m$ is minimal in $S$. Membership on $\On$
+is founded, completing the proof of $\Ord(\On)$. No global regularity
+axiom was needed: foundedness was included in the definition of each
+ordinal class.
+\end{proof}
 
 \begin{lemma}[union of subclass of ordinals is transitive class]
 \[
@@ -677,7 +556,7 @@ Fix $x\in\bigcup A$, and $y\in x$. To show: $\exists z\in A,\ y\in z$.\\
 \[
 (a\in A)
 \LAND
-(\Tr(a))
+(A\subclass\On)
 \IMPLIES
 \Ord(a)
 \]
@@ -706,7 +585,7 @@ z\ceq a
 \[
 (a\in A)
 \LAND
-(a\in A)
+(y\in a)
 \IMPLIES
 (\exists z\in A:y\in z)
 \]
@@ -715,7 +594,8 @@ z\ceq a
 
 
 
-\begin{theorem}[criterion in the context of the regularity axiom](note: it is not yet checked by me)
+\begin{theorem}[criterion in the context of the regularity axiom]
+Under global regularity, ordinality has the following shorter characterization.
 \[
 (\E\mathrm{\ Fr\ }V)
 \implies
@@ -726,12 +606,29 @@ z\ceq a
 \]
 \end{theorem}
 \begin{proof}
-(TODO)
+The forward direction follows from transitivity and the fact that each
+member of an ordinal class is ordinal, hence transitive.
+
+Conversely, suppose $X$ and every member of $X$ are transitive.
+Regularity makes membership founded on $X$. If
+$a\in X\cap\power\On$, then $a$ is transitive and $a\subseteq\On$;
+\myref{thm:dford5} gives $\Ord(a)$. Since $a$ is a set, $a\in\On$.
+Thus $X\cap\power\On\subseteq\On$. Apply the induction theorem
+\myref{thm:Rind} to the transitive, founded class $X$, with target class
+$\On$. It yields $X\subseteq\On$, and \myref{thm:dford5} now gives
+$\Ord(X)$.
 \end{proof}
 
 \section{Cardinals}
+Here cardinality is extended from sets to classes by assigning $\On$ when
+no ordinal set receives an injection from the argument. This is a local
+convention for a class-valued functional symbol; $\On$ is not being declared
+a set cardinal. The intended set-cardinal behavior requires the stated
+well-ordering or size assumptions. Comparison of all classes additionally
+uses the relevant global choice or limitation-of-size principle.
+
 \subsection{Axioms}
-\begin{iaxiom}[si]
+\begin{iaxiom}[set cardinality is an ordinal set]
 \[
 |\cdot|:\V \to \On
 \]
@@ -742,25 +639,30 @@ Actually, since $|\cdot|$ is a functional symbol, the following is meant:
 Functional symbol is defined on any class as argument, while $(x\mapsto |x|)$ is defined on sets only. By definition, $(x\mapsto |x|)$ is a class function defined as a class of pairs $\cc{\langle x, |x|\rangle }{ x \any\set}$.
 \end{iaxiom}
 Actually, we can use the following axiom:
-\begin{axiom*}[?]
+\begin{axiom*}[alternative set-size formulation]
 \[
 (x\set)\implies(|x|\in\On)
 \]
 \end{axiom*}
 or even
-\begin{axiom*}[?]
+\begin{axiom*}[alternative set-size formulation]
 \[
 (x\set)\implies(|x|\set)
 \]
 \end{axiom*}
-since later it will be proven that
+as the following theorem shows that
 \begin{theorem*}[cardinality is an ordinal]
 \[
 (x\set)\implies \Ord(|x|)
 \]
 \end{theorem*}
 \begin{proof}
-(TODO)
+Put $C=\cc{a\in\On}{x\preccurlyeq a}$. If $C$ is nonempty, the
+infimum theorem identifies $|x|=\inf C$ with a member of $C$, hence an
+ordinal set. If $C$ is empty, the definition gives $|x|=\On$, which is
+an ordinal class by \myref{thm:ordon}. Thus ordinality holds in either
+case; the additional set-size axiom excludes the second case for set
+arguments.
 \end{proof}
 \begin{iaxiom}[heredity]
 Sets are hereditary:
@@ -770,7 +672,7 @@ Sets are hereditary:
 \end{iaxiom}
 
 \subsection{Implementation}
-Here $|\cdot|$ is a functional symbol defined as following.
+The following definitions implement the proposed cardinality symbol.
 \begin{definition}[cardinality of a class]
 \[
 |K|\eqdef \On \cap \bigcap \cc{a\in\On}{K\preccurlyeq a}
@@ -811,14 +713,21 @@ The intended behaviour of this definition is to have cardinality of argument if 
 \]
 \end{definition}
 
-\begin{theorem}[$\preccurlyeq$ is a strongly connected reflexive transitive order on all classes]
-Using the statement of well--ordering theorem and transitivity, it is possible to prove that for any classes $A$ and $B$,
+\begin{theorem}[comparability of classes under the size assumptions]
+Assume the set well-ordering theorem and the class-size principle that
+every proper class is in bijection with $\V$. Then for arbitrary classes
+$A,B$,
 \[
 ((A\preccurlyeq B)\lor(B\preccurlyeq A))
 \]
 \end{theorem}
 \begin{proof}
-(TODO)
+If both classes are sets, well-order them and compare their ordinal
+cardinalities. If both are proper, their bijections with $\V$ give a
+bijection with each other. If exactly one is proper, the other is a
+subclass of $\V$; compose its inclusion into $\V$ with the bijection
+from $\V$ to the proper class. In each case there is an injection in
+at least one direction.
 \end{proof}
 \iffalse
 \begin{definition}[$X$ is smaller than or equal to $Y$ in cardinality]
@@ -837,8 +746,12 @@ Using the statement of well--ordering theorem and transitivity, it is possible t
 
 %\exists f: (f:X\to Y)\land (f \injective))
 %(\exists f: (f:X\to Y)\land (f \injective))
+\paragraph{A predicate-indexed variant.}
+The next proposal intersects ordinal classes, rather than only ordinal sets.
+Its agreement with the preceding definition depends on the class-size
+assumptions; it is not a purely syntactic reformulation.
 \begin{definition}[cardinality of a class]
-%One of the following statements can be used as a definition of cardinality function. We will use the second one. %\On \cap 
+%One of the following statements can be used as a definition of cardinality function. We will use the second one. %\On \cap
 %\[
 %|K|\ceq \bigcap \cc{a\in\On}{K\preccurlyeq a}
 %\]
@@ -876,28 +789,27 @@ it will be a theorem
 Here $\V$ denotes a class of all sets, and $\On$ denotes the class of all ordinal numbers.
 
 
-\begin{remark}[?]
-Here we use the intersection of a class which is defined by 
-$
-(x\in\bigcap Q)\iff(\forall q\in Q,\ x\in q)
-$, therefore $\bigcap\emptyclass = \V$.
-In this case,
-\[
-(x\mapsto|x|):\V\to\On.
-\]
-This definition also allows to obtain a cardinality of any proper class $P$, in particular
-\[
-|P|=\On
-\]
-This definition is natural since it agrees with the axiom of limitation of size which implies bijection between $\V$ and any proper class.
+\begin{remark}[The default value and the chosen convention]
+For the primary ordinal-set definition, every proper class $P$ has
+$|P|=\On$: an injection into an ordinal set would, by heredity and
+set-image applied to its inverse, make $P$ a set. The empty-candidate
+intersection is $\V$, and the explicit intersection with $\On$ gives
+the stated default.
+
+For the predicate-indexed variant, the conclusion additionally requires
+$P\preccurlyeq\On$. Under full limitation of size this follows from
+$P\subseteq\V\preccurlyeq\On$. Without that additional injection the
+variant instead returns $\V$, as proved below. Thus the two displayed
+proposals are not interchangeable merely because they share a symbol.
+The assertion $(x\mapsto|x|):\V\to\On$ separately uses the set
+well-ordering assumption; the default for proper classes does not prove it.
 \end{remark}
 
 The function $| \cdot |$ has interesting properties.
 
 \subsection{Soundness}
-\begin{lemma}[a class of sets is not injectible in an ordinal]
-A class of sets is not injectible in an ordinal.
-(Isn't it just a consequence of V being proper class?)
+\begin{lemma}[the universal class does not inject into an ordinal set]
+The universal class cannot inject into an ordinal set under the size assumptions used here.
 %A class of all ordinal
 \[
 \cc{a\in\On}{\V\preccurlyeq a}
@@ -906,98 +818,14 @@ A class of sets is not injectible in an ordinal.
 \]
 \end{lemma}
 \begin{proof}
-Fix $a$. Assume $(a\in\On)$ and $ (\V\preccurlyeq a)$.
-\[
-(\V\preccurlyeq a)
-\iff
-(
-\exists g,\ %
-(g:\V\to a)
-\land 
-(g \injective)
-)
-\tagd{by def}{notstrongercard}
-\]
-\[
-(\V\preccurlyeq a)
-\IFF
-(
-\exists f,\ %
-(f^\top:\V\to a)
-\land 
-(f^\top \injective)
-)
-\]
-\[
-\IFF
-(
-\exists f,\ %
-(f^\top:\V\to a)
-\land 
-(f\text{ functional})
-)
-\]
-\[
-\IFF
-(
-\exists f,\ %
-(f^\top \text{ functional})
-\land
-(\dom(f^\top) = \V)
-\land
-(\ran(f^\top) \subclass a)
-\land
-(f\text{ functional})
-)
-\]
-\[
-\IMPLIES
-(
-\exists f,\ %
-(f \text{ injective})
-\land
-(\ran(f) \supclass \V)
-\land
-(\dom(f) \subclass a)
-)
-\]
-\[
-(\dom(f) \subclass a)
-\IMPLIES%\implies
-(\ran(f) = f[a])
-\]
-\[
-(\ran(f) \supclass \V)
-\LAND
-(\ran(f) = f[a])
-\IMPLIES
-(\V \subclass f[a])
-\]
-\[
-\IMPLIES
-(
-\exists f,\ %
-(f \text{ injective})
-\land
-(\V \subclass f[a])
-)
-\]
-\[
-\IMPLIES
-(
-a\text{ nonset}
-)
-\]
-\[
-(a\text{ nonset})
-\LAND
-(a\in \On)
-\IMPLIES
-\bot
-\]
-Contradiction obtained, therefore it is impossible for $\cc{a\in\On}{\V\preccurlyeq a}$ to have elements.
+Suppose $g:\V\to a$ is injective for an ordinal set $a$. The range
+$D=g[\V]\subseteq a$ is a set by heredity. The inverse graph gives a
+class function $g^\top:D\to\V$, and its image on its actual domain is
+$g^\top[D]=\V$. The set-image principle would make $\V$ a set,
+contradicting its properness. Thus no such $a$ exists. Using the actual
+domain $D$ makes the argument independent of off-domain default values.
 \end{proof}
-\begin{theorem}[?]
+\begin{theorem}[cardinality of the universal class]
 \[
 |\V|=\On
 \]
@@ -1061,98 +889,19 @@ New? no need: is it ok? not really: extended def of function! It doesn't  matter
 \labeltagd{thm}{cardproj}
 \]
 \end{theorem}
-\Proof
-Fix class $K$. To show: $||K||=|K|$.
-\[
-|K| = \inf(\cc{a\in\On}{K\preccurlyeq a})
-\]
-\[
-A
-:=
-\cc{a\in\On}{K\preccurlyeq a}
-\]
-Case 1: $A=\emptyset$.
-\[
-\inf(\emptyset) = \V
-\]
-\[
-|\V| =  \inf(\cc{a\in\On}{\V \preccurlyeq a}) = \inf(\emptyset) = \V
-\]
-Case 2: $A\neq\emptyset$.\\
-Due to lemma ... , using $((A\cap\On)\neq\emptyclass)$,
-\[
-\inf(\cc{a\in\On}{K\preccurlyeq a})
-\in
-\cc{a\in\On}{K\preccurlyeq a}
-\]
-\[
-|K|\in \cc{a\in\On}{K\preccurlyeq a}
-\]
-\[
-(|K|\in\On)\land(K\preccurlyeq |K|)
-\]
+\begin{proof}
+Use the ordinal-set definition
+$|K|=\inf C$, where $C=\cc{a\in\On}{K\preccurlyeq a}$.
+If $C$ is empty, then $|K|=\On$. Under the size assumptions, the proper
+class $\On$ cannot inject into an ordinal set, so $|\On|=\On$ as well.
 
-Similarly,
-\[
-||K|| = \inf(\cc{a\in\On}{|K|\preccurlyeq a})
-\]
-Due to lemma ... , using $((A\cap\On)\neq\emptyclass)$,
-\[
-\inf(\cc{a\in\On}{|K|\preccurlyeq a})
-\in
-\cc{a\in\On}{|K|\preccurlyeq a}
-\]
-\[
-||K||\in \cc{a\in\On}{|K|\preccurlyeq a}
-\]
-\[
-(||K||\in\On)\land(|K|\preccurlyeq ||K||)
-\]
-Now,
-\[
-|K|\in\cc{a\in\On}{|K|\preccurlyeq a}
-\]
-\[
-||K||\in\cc{a\in\On}{||K||\preccurlyeq a}
-\]
-
-\iffalse
-
-\fi
-Using lemma property of intersection,
-\iffalse
-\[
-|K|\in \cc{a\in\On}{K\preccurlyeq a}
-\IMPLIES
-(\bigcap\cc{a\in\On}{K\preccurlyeq a} \subclass |K|)
-\]
-\fi
-\[
-|K|\in \cc{a\in\On}{|K|\preccurlyeq a}
-\IMPLIES
-\left(\bigcap\cc{a\in\On}{|K|\preccurlyeq a} \subclass |K|\right)
-\]
-
-\[
-\inf(A) = \On\cap\left(\bigcap (\On\cap A)\right)
-\tag{by \ref{def:infimum}}
-\]
-
-\[
-(\bigcap\cc{a\in\On}{|K|\preccurlyeq a} \subclass |K|)
-\IMPLIES
-((\On\cap\bigcap\cc{a\in\On}{|K|\preccurlyeq a}) \subclass |K|)
-\]
-\[
-\IMPLIES
-(\On\cap\bigcap(\On\cap\cc{a\in\On}{|K|\preccurlyeq a}) \subclass |K|
-\]
-\[
-\IMPLIES
-||K|| \subclass |K|
-\]
-(TODO)
-\Done
+If $C$ is nonempty, its least member $\kappa=|K|$ receives an injection
+from $K$. Let $\lambda=|\kappa|$. The identity injection of $\kappa$
+shows that $\lambda\subseteq\kappa$. Composing injections
+$K\preccurlyeq\kappa\preccurlyeq\lambda$ shows $\lambda\in C$,
+so minimality of $\kappa$ gives $\kappa\subseteq\lambda$.
+Extensionality yields $\lambda=\kappa$, as required.
+\end{proof}
 
 
 
@@ -1181,15 +930,49 @@ Fix $(a\in X)$. Fix $(b\in (\bigcap X))$. To show: $(b\in a)$.\\
 
 
 
-\begin{theorem}[construction of a bijection between $\V$ and $\On$]
-\[
-?
-\labeltagd{thm}{vonbij}
-\]
-\Proof
-\dots
-\Done
+\begin{theorem}[Schroeder--Bernstein for classes]
+Assume MK comprehension and let $f:A\to B$ and $g:B\to A$ be
+injective class functions. Then there is a class bijection $h:A\to B$.
 \end{theorem}
+\begin{proof}
+Put $A_0=A\setminus g[B]$. Let $C$ be the least subclass of $A$
+containing $A_0$ and closed under $g\circ f$. It exists by the
+intersection construction for a monotone operation, and its fixed-point
+identity is
+\[
+C=A_0\cup g[f[C]].
+\]
+For completeness, intersect all subclasses $Q$ of $A$ with
+$A_0\subseteq Q$ and $g[f[Q]]\subseteq Q$. The intersection has these
+properties; applying minimality to $A_0\cup g[f[C]]$ proves the identity.
+Define $h(a)=f(a)$ for $a\in C$ and $h(a)=g^{-1}(a)$ for
+$a\in A\setminus C$. The latter value exists uniquely because
+$A_0\subseteq C$ and $g$ is injective.
+
+The two branches are injective. Their images are disjoint: if
+$f(c)=g^{-1}(a)$ with $c\in C$ and $a\notin C$, then
+$a=g(f(c))\in C$, a contradiction. Thus $h$ is injective.
+For surjectivity, take $b\in B$. If $b\in f[C]$, it is already in
+$h[C]$. Otherwise $g(b)\notin C$: if it belonged to $C$, it could not
+belong to $A_0$, so the displayed identity would give
+$g(b)=g(f(c))$ for some $c\in C$, contradicting injectivity of $g$
+and $b\notin f[C]$. Hence $h(g(b))=b$ on the second branch.
+This proves surjectivity. All graphs use set coordinates; no proper
+class is collected as a member of another class.
+\end{proof}
+
+\begin{corollary}[Bijection between the universal and ordinal classes]
+Under the limitation-of-size assumption supplying an injection
+$\V\to\On$, there is a class bijection $\V\to\On$.
+\end{corollary}
+\begin{proof}
+The inclusion $\On\subseteq\V$ supplies an injection in the opposite
+direction. Apply the preceding theorem. The needed injection from
+$\V$ is derived from limitation of size in the union-theorem chapter;
+it does not follow merely from writing $|\V|=\On$ under the
+ordinal-valued cardinality convention.
+\end{proof}
+
 %\dots
 
 
@@ -1220,15 +1003,42 @@ which directly expresses simple countable mathematical (Peano) induction up to $
 )
 \]
 \end{corollary}
-\begin{corollary}[epsilon induction]
-If well--foundness of the class of all sets (i.e. $(\E\text{ Fr }\V)$) is assumed, then
+\begin{proof}
+Apply \myref{thm:Rind} to membership. Transitivity of $K$ says exactly
+that every member of any $x\in K$ again lies in $K$. For a set $x$,
+all membership predecessors of $x$ lie in $A$ exactly when $x\subseteq A$,
+which is the condition $x\in\power A$. Thus the relational induction
+hypothesis becomes precisely the displayed hypothesis.
+\end{proof}
+\begin{corollary}[Epsilon induction and foundedness]
+Membership is founded on $\V$ if and only if, for every class $A$,
 \[
 ((\power A)\subclass A)
 \implies
 (\V\subclass A).
 \]
-And vice versa is also true.
+Here $\power A$ consists of the set subclasses of $A$, even when $A$
+is proper. The converse concerns the induction principle for all classes
+$A$, not one particular instance of the implication.
 \end{corollary}
+\begin{proof}
+The class $\V$ is transitive: members of sets are sets. Also
+$\power A\subseteq\V$ by the definition of powerclass. Foundedness
+on $\V$ therefore makes the preceding corollary applicable with
+$K=\V$, giving the forward implication.
+
+Conversely, assume the displayed induction principle for every class.
+Let $S\subseteq\V$ have no membership-minimal element, so every
+$x\in S$ has some $y\in S\cap x$. Put $A=\V\setminus S$.
+We show $\power A\subseteq A$. If $x\in\power A$, then $x$ is a
+set and $x\subseteq A$. Were $x\in S$, the absence of minimal elements
+would supply $y\in S\cap x$, contradicting $x\subseteq A$.
+Thus $x\notin S$, and, since $x$ is a set, $x\in A$.
+Induction gives $\V\subseteq A$, forcing $S=\emptyclass$. This is
+exactly foundedness as defined above: every subclass with no minimal
+element is empty. The argument uses class complements and set elements;
+it never treats a proper class as a member of itself or of $\V$.
+\end{proof}
 \begin{corollary}[transfinite induction]
 \[
 ((\On\cap(\power A))\subclass A)
@@ -1237,21 +1047,91 @@ And vice versa is also true.
 \]
 \end{corollary}
 \begin{proof}
-It's enough to show that $\Tr(\On)$ and $(\E\mathrm{\ Fr\ }\On)$.\\
-1)$\Tr(\On)$(...).\\
-2)$(\E\mathrm{\ Fr\ }\On)$(...).\\
+By \myref{thm:ordon}, $\On$ is transitive and membership is founded
+on it. Apply \myref{thm:Rind} with $R=\E$ and $K=\On$.
 \end{proof}
 \begin{corollary}[induction up to ordinal class $\beta$]
+Assume $\Ord(\beta)$. Then
 \[
 ((\beta\cap(\power A))\subclass A)
 \implies
 (\beta\subclass A)
 \]
 \end{corollary}
+\begin{proof}
+By the definition of an ordinal class, $\beta$ is transitive and
+membership is founded on it. Apply the first corollary of this subsection
+with $K=\beta$. The proof does not require $\beta$ to be a set: every
+element considered in the induction is a set, even for a proper ordinal
+class such as $\On$.
+\end{proof}
 
 
-\subsection{Recursion principles (ToDo)}
-\iffalse 
+\subsection{Recursion on a set-like founded relation}
+The following generalization uses the class comprehension, Infinity,
+pairing, union, heredity, set-image, and ordinal-recursion principles used
+in the induction and recursion section. Global regularity is not needed:
+foundedness is imposed on the particular relation being used. Auxiliary
+graphs use ordinary Kuratowski pairs.
+
+\begin{definition}[Set-like relation]
+For $R\subseteq A\times A$ and $a\in A$, put
+\[
+P_a=\cc{b\in A}{bRa}.
+\]
+The relation is set-like on $A$ when each $P_a$ is a set. A subclass $D$
+of $A$ is predecessor-closed when $a\in D$ implies $P_a\subseteq D$.
+\end{definition}
+
+\begin{theorem}[Set-valued recursion on a founded class]
+\label{thm:setlike_class_recursion}
+Let $R$ be founded and set-like on $A$, and let
+$H:A\times\V\to\V$ be a class function. There is a unique class
+function $F:A\to\V$ such that
+\[
+F(a)=H(a,F\restriction P_a)\qquad(a\in A).
+\]
+\end{theorem}
+\begin{proof}
+First form the least predecessor-closed set $T_a$ containing $a$.
+Starting with $B_0=\{a\}$, put
+\[
+B_{n+1}=\bigcup\{P_b:b\in B_n\},\qquad
+T_a=\bigcup\{B_n:n<\omega\}.
+\]
+Recursion on $\omega$ constructs this sequence independently of recursion
+on $R$. Set-likeness and set-image make the family of predecessor sets
+at each step a set; union and set-image then make $T_a$ a set.
+It is predecessor-closed because the predecessors of a member of $B_n$
+belong to $B_{n+1}$. Induction on $n$ proves minimality.
+
+An approximation is a set function $p$ on a predecessor-closed set
+$D\subseteq A$ satisfying $p(t)=H(t,p\restriction P_t)$ for $t\in D$.
+Any two approximations agree on their common domain. Otherwise an
+$R$-minimal disagreement has all its predecessors in both domains, with
+equal values there, and hence equal values after applying $H$, a
+contradiction.
+
+Founded induction now constructs an approximation on $T_a$. Suppose the
+unique approximations $p_b$ on $T_b$ exist for all $b\in P_a$.
+Set-image on the set $P_a$ collects these graphs, and their union $q$ is
+a set function by compatibility. Its domain
+$D=\bigcup_{b\in P_a}T_b$ is predecessor-closed and contains $P_a$;
+compatibility also preserves all its recursion equations. If $a\in D$,
+retain $q$. Otherwise adjoin $(a,H(a,q\restriction P_a))$. The domain
+remains predecessor-closed, and old equations are unaffected because
+no member of $D$ has $a$ as a predecessor. Restrict to $T_a$, which is
+contained in this domain by minimality. This gives the desired
+approximation. The induction used here follows from a minimal
+counterexample, or equivalently from \myref{thm:RindAlt}.
+
+Collecting all approximation pairs by class comprehension produces $F$.
+Compatibility makes it a function, and the solutions on $T_a$ give its
+domain and equation. Each restriction to $P_a$ is part of such a set
+approximation. Finally, a minimal disagreement between two class solutions
+is impossible by the same argument, proving uniqueness.
+\end{proof}
+\iffalse
 \subsection{older Inductions and recursions thms}%
 There exist unique class--function rec, such that:
 \[
@@ -1262,27 +1142,300 @@ There exist unique class--function rec, such that:
 \]
 %\pagebreak
 \fi
-\subsection{Well--ordering theorem (ToDo)}
+\begin{theorem}[Ordinal ranks for a set-like founded relation]
+Under the preceding assumptions, a founded set-like relation $R$ on $A$
+has a unique class function $r:A\to\On$ satisfying
+\[
+r(a)=\sup\{r(b)+1:bRa\}.
+\]
+In particular, $bRa$ implies $r(b)<r(a)$. Conversely, for any relation
+on a class $A$, existence of a class function $q:A\to\On$ with
+$bRa\Rightarrow q(b)<q(a)$ implies foundedness. The converse does not
+require set-likeness.
+\end{theorem}
+\begin{proof}
+For a set function graph $g$ whose range consists of ordinals, let the
+recursion step be the supremum of the successors of its values; use zero
+on other inputs. Replacement makes that successor collection a set, and
+its union is an ordinal, including zero for the empty collection.
+The preceding recursion theorem therefore gives a set-valued function.
+Founded induction shows that all its values are ordinals and that it
+satisfies the displayed equation: predecessor values are ordinals, so
+the intended branch of the recursion step applies. Uniqueness follows
+from the same recursion theorem. Each $r(b)+1$ is at most $r(a)$, giving
+strict increase along every $R$-edge.
 
-\subsection{Mostowski collapse lemma (ToDo)}
+Conversely, let $S$ be a nonempty subclass of $A$. The nonempty ordinal
+class $q[S]$ has a least element. Take $a\in S$ with that value.
+If $b\in S$ and $bRa$, then $q(b)<q(a)$, contradicting minimality.
+Thus $a$ has no predecessor in $S$, proving foundedness.
+\end{proof}
 
-\subsection{Further theorems}
-Plan:
-%1. Ordinals are linearly ordered: irreflexive, transitive, antisymmetric.\\
-%2. Ordinals are well--ordered.\\
-\begin{enumerate}
-\item Assuming choice, a set can be well--ordered.
-\item Ordinal induction.
-\item Ordinal recursion.
-\item recursion and induction for natural numbers.
-\item recursion and induction for finite intervals.
-\item definitions and properties of addtion and multipliation, etc.
-\item Mostowski collapse lemma.
-\item \dots
-\end{enumerate}
+The rank need not be injective: two distinct minimal points both have
+rank zero. It measures the depth of a relation, whereas the subsequent
+collapse recovers its entire predecessor structure and therefore needs
+extensionality. For membership on $\W$, the equation specializes to the
+ordinal rank introduced in the recursion chapter, not its separate
+left-addition depth convention.
+
+\subsection{Mostowski collapse}
+\begin{theorem}[Collapse of a set-like extensional founded relation]
+\label{thm:mostowski_collapse}
+Let $R\subseteq A\times A$ be founded and set-like. Assume it is
+extensional on $A$: $P_a=P_b$ implies $a=b$ for $a,b\in A$.
+There is a unique transitive class $M$ and a unique isomorphism
+\[
+\pi:(A,R)\longrightarrow(M,\in).
+\]
+If $A$ is a set, then $M$ is a set.
+\end{theorem}
+\begin{proof}
+Apply \ref{thm:setlike_class_recursion} with
+$H(a,g)=\operatorname{ran}(g)$ on set function graphs, extending it by
+the empty set on other inputs. Set-image makes these values sets.
+The result satisfies
+\[
+\pi(a)=\{\pi(b):bRa\}.
+\]
+We prove injectivity by founded induction on $a$, with the assertion
+quantified over \emph{every} $c\in A$: if $\pi(a)=\pi(c)$, then $a=c$.
+For $bRa$, equality of the displayed sets gives $dRc$ with
+$\pi(b)=\pi(d)$. The induction hypothesis at $b$ gives $b=d$, so
+$bRc$. Conversely, for $dRc$ equality gives some $bRa$ with the same
+image, and the same induction hypothesis gives $d=b$. Hence
+$P_a=P_c$, and extensionality gives $a=c$. No induction hypothesis at
+$c$ has been assumed.
+
+Let $M=\pi[A]$. The recursion equation makes $M$ transitive, and
+injectivity gives both directions of
+$bRa\iff\pi(b)\in\pi(a)$. Thus $\pi$ is the required isomorphism.
+If another isomorphism $\rho$ has transitive range, every member of
+$\rho(a)$ belongs to that range and so is $\rho(b)$ for some $b\in A$.
+The isomorphism property then gives
+$\rho(a)=\{\rho(b):bRa\}$. Recursion uniqueness yields $\rho=\pi$,
+and their ranges are equal. When $A$ is a set, set-image makes $M$ a set.
+\end{proof}
+
+\begin{example}[Why the class collapse needs set-likeness]
+Order a copy of $\On$ and adjoin one new greatest point. More explicitly,
+use the carrier $(\{0\}\times\On)\cup\{(1,0)\}$, order its first
+part by the ordinal coordinate, and put every member of that part below
+$(1,0)$. This is a founded extensional class order, but the greatest
+point has a proper class of predecessors. In a transitive collapse the
+point $(0,\alpha)$ would have image $\alpha$, by ordinal induction.
+The greatest point would therefore have image $\On$, which is proper
+and cannot be the value of a class function into $\V$. Thus dropping
+set-likeness would make the stated collapse theorem false.
+\end{example}
+
+\begin{corollary}[Ordinal type of a set well-order]
+\label{thm:set_wellorder_type}
+Every strictly well-ordered set $(X,R)$ is isomorphic to a unique ordinal
+set. Its isomorphism to that ordinal is unique.
+\end{corollary}
+\begin{proof}
+The predecessor sets are subclasses of the set $X$. They distinguish
+points: if $xRy$, then $x\in P_y$ but $x\notin P_x$.
+Thus the collapse theorem applies. Its image is a transitive set whose
+membership relation is a well-order, hence an ordinal set by definition.
+Any ordinal isomorphism is a collapse to a transitive range, so uniqueness
+also follows from that theorem.
+\end{proof}
+
+\begin{lemma}[Increasing maps do not shorten ordinals]
+If $e:\alpha\to\beta$ is strictly increasing between ordinal sets, then
+$\xi\leq e(\xi)$ for every $\xi<\alpha$, and $\alpha\leq\beta$.
+Consequently the order type of a subset of $\beta$ is at most $\beta$.
+\end{lemma}
+\begin{proof}
+By ordinal induction, for each $\eta<\xi$ we have
+$\eta\leq e(\eta)<e(\xi)$. Thus every member of $\xi$ belongs to
+$e(\xi)$, proving $\xi\subseteq e(\xi)$. If $\beta<\alpha$, applying
+this at $\xi=\beta$ contradicts $e(\beta)<\beta$.
+The increasing enumeration of a subset exists by its ordinal order type,
+so the same conclusion applies to it.
+\end{proof}
+
+\begin{theorem}[The least ordinal bound is an ordinal representative]
+Let $X$ be a set that injects into some ordinal set. For the primary
+ordinal-set definition, $\kappa=|X|$ is equinumerous with $X$ and is
+an initial ordinal: no smaller ordinal is equinumerous with $\kappa$.
+Moreover $|\kappa|=\kappa$.
+\end{theorem}
+\begin{proof}
+The nonempty class of candidate ordinal bounds has least member
+$\kappa$, so there is an injection $f:X\to\kappa$. Give its image
+$S$ the inherited well-order. Its ordinal type $\beta$ is at most
+$\kappa$ by the lemma. The isomorphism $S\to\beta$ composed with $f$
+is a bijection $X\to\beta$. Hence $\beta$ is a candidate bound and
+minimality gives $\kappa\leq\beta$. Thus $\beta=\kappa$ and the
+required bijection exists.
+
+If an ordinal $\gamma<\kappa$ received an injection from $\kappa$,
+composition with this bijection would make $\gamma$ a candidate for
+$X$, a contradiction. In particular no smaller ordinal is equinumerous
+with $\kappa$. The identity makes $\kappa$ its own candidate bound,
+and the preceding exclusion of smaller bounds gives $|\kappa|=\kappa$.
+\end{proof}
+
+\begin{corollary}[Comparison of well-orderable sets]
+For well-orderable sets $X,Y$,
+\[
+X\preccurlyeq Y\iff |X|\leq|Y|.
+\]
+They are equinumerous exactly when $|X|=|Y|$.
+\end{corollary}
+\begin{proof}
+Transport an injection along the bijections to their ordinal representatives.
+If $|Y|<|X|$, such an injection contradicts the minimality of $|X|$.
+Conversely, ordinal inclusion gives an injection whenever
+$|X|\leq|Y|$. Equal representatives give a bijection by composition;
+a bijection gives injections in both directions and hence equality.
+\end{proof}
+
+\begin{remark}[The comparison convention needs its hypotheses]
+The earlier notation $X\prec Y$ was defined by
+$\neg(Y\preccurlyeq X)$. Under comparability this is equivalent to
+$X\preccurlyeq Y$ together with the failure of the reverse injection.
+Without comparability, two incomparable classes would satisfy both
+$X\prec Y$ and $Y\prec X$. Thus the notation is not an unconditional
+strict-order assertion in a setting without the stated size principles.
+For arbitrary classes one may instead explicitly use
+$X\preccurlyeq Y\land\neg(Y\preccurlyeq X)$ when that asymmetric
+meaning is intended.
+\end{remark}
+
+\begin{proposition}[When the two cardinality proposals agree]
+Write $c(K)$ for the primary ordinal-set definition and $d(K)$ for the
+predicate-indexed intersection over ordinal classes. If
+$K\preccurlyeq\On$, then $c(K)=d(K)$. If no injection
+$K\to\On$ exists, then
+\[
+c(K)=\On,\qquad d(K)=\V.
+\]
+In particular, an assumption giving $\V\preccurlyeq\On$ makes the two
+proposals agree for all classes.
+\end{proposition}
+\begin{proof}
+Every ordinal class is a subclass of $\On$, since its members are
+ordinal sets. If such a class $C$ is a proper subclass of $\On$, choose
+$\alpha\in\On\setminus C$. Ordinal comparison gives $C\subseteq\alpha$
+(the alternative $\alpha\subsetneq C$ would give $\alpha\in C$).
+Heredity makes $C$ a set. Thus the ordinal classes are precisely the
+ordinal sets and $\On$.
+
+If there is an ordinal-set bound for $K$, its least member belongs to
+both collections of bounds and is contained in all their members.
+Both intersections therefore give that least member. If the only
+ordinal-class bound is $\On$, then $d(K)=\On$ and the empty-candidate
+default also gives $c(K)=\On$. Finally, if $K$ does not inject into
+$\On$, it cannot inject into any ordinal class; the predicate-indexed
+intersection is then the empty intersection $\V$, whereas the primary
+formula explicitly intersects its empty-intersection value with $\On$.
+Every class embeds in $\V$ by inclusion, proving the last assertion.
+\end{proof}
+
+\subsection{Hartogs' bound and the set well-ordering theorem}
+This subsection additionally assumes Powerset. The bound is constructed
+without choice; a choice function enters only in the subsequent enumeration.
+
+\begin{theorem}[An ordinal too large to inject into a given set]
+\label{thm:hartogs_bound}
+For every set $X$ there is a least ordinal $\mathfrak h(X)$ which does
+not inject into $X$.
+\end{theorem}
+\begin{proof}
+All pairs $(B,R)$ with $B\subseteq X$ and $R\subseteq X\times X$
+form a set, by powerset and the ordinary set-product construction.
+Separate those with $R\subseteq B\times B$ for which $R$ is a strict
+well-order on $B$. Their unique
+ordinal types form a set $H$ by \ref{thm:set_wellorder_type} and
+set-image. An ordinal belongs to $H$ exactly when it injects into $X$:
+an order isomorphism supplies such an injection, and any injection
+transports the ordinal order onto its image in $X$.
+
+If $\alpha\in H$ and $\beta\in\alpha$, restrict the injection
+$\alpha\to X$ to $\beta$ to get $\beta\in H$. Thus $H$ is a
+transitive set of ordinals, hence itself an ordinal. It cannot inject
+into $X$, since that would give $H\in H$, contradicting ordinal
+irreflexivity. Every smaller ordinal is a member of $H$ and does inject
+into $X$. Set $\mathfrak h(X)=H$.
+\end{proof}
+
+\begin{theorem}[Well-ordering from a choice function]
+If a set $X$ has a choice function $c$ on its nonempty subsets, then
+$X$ can be well-ordered. Conversely, a well-order of $X$ supplies such
+a choice function.
+\end{theorem}
+\begin{proof}
+Use transfinite recursion to select
+\[
+f(\alpha)=
+\begin{cases}
+c(X\setminus\operatorname{ran}(f\restriction\alpha)),
+ & X\setminus\operatorname{ran}(f\restriction\alpha)\ne\emptyclass,\\
+\emptyclass,&\text{otherwise}.
+\end{cases}
+\]
+The step is a set-valued rule on earlier set graphs, so the recursion
+theorem applies. If the remainder were nonempty at every
+$\alpha<\mathfrak h(X)$, these choices would be distinct members of
+$X$, giving an injection $\mathfrak h(X)\to X$, a contradiction.
+Let $\gamma<\mathfrak h(X)$ be the least stage with empty remainder.
+Before that stage the choices are distinct, and exhaustion says that
+they cover $X$. Hence $f\restriction\gamma$ is a bijection
+$\gamma\to X$. Transport the ordinal well-order along this bijection.
+The case $X=\emptyclass$ has $\gamma=0$.
+
+Conversely, send each nonempty subset of a well-ordered $X$ to its least
+element. Uniqueness and set-image give a choice function on the set
+$\power X\setminus\{\emptyclass\}$.
+\end{proof}
+
+\begin{corollary}[The strength of the set-size assumption]
+Under these set-formation assumptions, the following statements are
+equivalent: every set can be well-ordered; every set injects into an
+ordinal set; and every set $X$ has $|X|\in\On$ for the ordinal-set
+cardinality convention of this chapter. They are also equivalent to the
+axiom of choice for set-indexed families of nonempty sets.
+\end{corollary}
+\begin{proof}
+A set well-order gives an ordinal isomorphism; an injection into an ordinal
+pulls back a well-order. In the cardinality definition, the candidate
+class is nonempty exactly when such an injection exists. Its infimum is
+then its least member, an ordinal set; if it is empty, the value is the
+proper class $\On$. Properness follows because $\Ord(\On)$ together
+with sethood would give $\On\in\On$.
+
+Choice applied to all nonempty subsets of $X$ gives the choice function
+used above. Conversely, for a set-indexed family of nonempty sets,
+well-order their union and choose the least element of each member.
+The union is a set, and set-image collects the choices into a function.
+This proves the equivalence with set choice, without introducing a
+global choice function on proper classes.
+\end{proof}
+
+Ordinal arithmetic requires a separate recursive development. In
+particular, the height convention in the recursion chapter uses left
+ordinal addition; its behavior at limits must not be replaced by the
+successor operation used in the rank recurrence.
 
 \subsection{Ordinals' definition if the axiom of regularity is present}
-In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
+This final comparison assumes regularity locally. The shorter
+characterization is justified by \myref{thm:ordViaReg}; the earlier
+definition by transitivity and membership well-ordering remains available
+without global regularity.
+
+The newer Obelisk export \texttt{DefOrdinalClass} (3.16) uses precisely
+this shorter condition, in a catalog that also assumes
+\texttt{AxmRegularity} (3.14). Its \texttt{ThmTransitiveClassInduction}
+(3.71) consequently need not repeat foundedness in each statement.
+The extra hypothesis in this chapter's general induction theorem records
+a different local setting, rather than a contradiction between the results.
+The site's prose dossier \texttt{docs/axioms/ordinals.md} additionally
+restricts ``ordinal'' to sets, whereas the generated predicate and this
+chapter also admit ordinal classes. The set instances are collected in
+$\On$; the predicate itself must not be identified with membership in $\On$.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
 \tr(X) \iff (\forall Z\in X,\ Z\subseteq X)
@@ -1314,7 +1467,21 @@ etc \dots
 \]
 \end{definition}
 
-In this text we will consider the simplest definition of ordinals which assumes that axiom of regularity holds. It is done for shortness, and can be done with a definition that doesn't require the regularity axiom.
+This final comparison assumes regularity locally. The shorter
+characterization is justified by \myref{thm:ordViaReg}; the earlier
+definition by transitivity and membership well-ordering remains available
+without global regularity.
+
+The newer Obelisk export \texttt{DefOrdinalClass} (3.16) uses precisely
+this shorter condition, in a catalog that also assumes
+\texttt{AxmRegularity} (3.14). Its \texttt{ThmTransitiveClassInduction}
+(3.71) consequently need not repeat foundedness in each statement.
+The extra hypothesis in this chapter's general induction theorem records
+a different local setting, rather than a contradiction between the results.
+The site's prose dossier \texttt{docs/axioms/ordinals.md} additionally
+restricts ``ordinal'' to sets, whereas the generated predicate and this
+chapter also admit ordinal classes. The set instances are collected in
+$\On$; the predicate itself must not be identified with membership in $\On$.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
 tr(X) \iff (\forall Z\in X: Z\subclass X)

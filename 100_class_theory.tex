@@ -4,7 +4,11 @@
 \section{Class Theory Overview}
 \label{sec:class_theory_overview}
 
-This section summarizes the foundational concepts of Morse--Kelley (MK) and von Neumann--Bernays--G\"odel (NBG) class theory used throughout the book, bridging the axiomatic kernel of Section~\ref{sec:axioms} (`060_axioms.tex`) with family evaluation (`110_family_evaluation.tex`), sethood (`140_setness.tex`), and union/intersection (`190_union_intersection.tex`).
+This section summarizes the Morse--Kelley (MK) and
+von Neumann--Bernays--G\"odel (NBG) principles used in the classical
+class-theoretic chapters. It connects the axiomatic kernel of
+Section~\ref{sec:axioms} with family evaluation, sethood, and the
+union and intersection operations.
 
 \subsection{Classes, Sets, and Proper Classes}
 \label{subsec:classes_sets_proper}
@@ -18,30 +22,197 @@ A class $x$ is a \emph{set} if and only if it belongs to some class ($x \in V \i
 \subsection{Morse--Kelley Class Comprehension and Separation}
 \label{subsec:mk_comprehension_separation}
 
-For any formula $\phi(x)$ (where every bound variable $x$ is a \emph{class variable} of default type $\mathsf{Class}$; in full Morse--Kelley $\phi(x)$ may contain unrestricted class binders, whereas in Stage~I predicative NBG internal binders in $\phi(x)$ are restricted/bounded class binders $\forall (y \in C),\ \dots \equiv \forall (y:\mathsf{Class}),\ (y \in C) \to \dots$, and class comprehension is \emph{never} altered to use a ``$\mathsf{Set}$'' variable type), the class comprehension term $\cc{x}{\phi(x)}$ satisfies the comprehension equivalence:
+For an admitted formula $\phi(x)$, the class comprehension term $\cc{x}{\phi(x)}$ satisfies the comprehension equivalence:
 \[
 \forall z,\quad z \in \cc{x}{\phi(x)} \iff (z \in V) \land \phi(z).
 \]
+The default sort of variables is $\mathsf{Class}$. Full MK permits class
+quantification inside $\phi$; NBG comprehension restricts its internal
+quantifiers to sets while allowing class parameters. In one-sorted syntax,
+a set quantifier can be written as a class quantifier restricted to $V$.
+
 Notice the mandatory sethood guard $z \in V$: substituting the Russell class $R \eqdef \cc{x}{x \notin x}$ yields $R \in R \iff (R \in V) \land (R \notin R)$, which proves $\lnot(R \in V)$ (i.e., $R$ is a proper class) rather than a contradiction.
 
 Given any set $a \in V$ and any class $P$ (or formula $\phi$), the \emph{Separation Principle} (Subsets / Intersection with a Set) states that the intersection
 \[
 a \cap P = \cc{x \in a}{x \in P} = \cc{x}{(x \in a) \land (x \in P)}
 \]
-is again a set: $(a \in V) \implies (a \cap P \in V)$. In Morse--Kelley class theory, Separation follows from Limitation of Size (`090_proving_limitation_of_size.tex`) since $a \cap P \subseteq a$ and $|a \cap P| \le |a| < |V|$.
+is again a set: $(a \in V) \implies (a \cap P \in V)$. In the axiom presentation used here, this is the heredity principle.
+In presentations based on limitation of size it can instead be derived
+from the relevant size axioms. A derivation of limitation of size must keep
+track of which of these principles it assumes, to avoid circularity.
+
+\subsection{What the minimal comprehension principles do not imply}
+\begin{theorem}[A finite model of the minimal relational fragment]
+\label{thm:minimal_class_countermodel}
+Consider classical one-sorted first-order logic in the language of equality
+and membership, with sethood defined by
+$\operatorname{Set}(x)\iff\exists Y\,(x\in Y)$. Take the following
+nonlogical assumptions only: class extensionality, the schema of
+set-guarded class comprehension, and existence of at least one set.
+This fragment has a model with two class objects and only one set.
+Consequently it does not imply the usual pairing or infinity axioms.
+\end{theorem}
+\Proof
+Let the domain consist of two distinct objects $e,v$, and interpret
+membership by the single ordered pair $(e,v)$. Thus $e$ has no members,
+$v$ has the sole member $e$, and the objects satisfying $\operatorname{Set}$
+are exactly $e$. Extensionality holds because the two objects have
+different members; the existence-of-a-set assertion holds because
+$e\in v$.
+
+Fix any comprehension formula $\phi(x)$ and any assignment of its
+parameters. The required extension
+$\{x:\operatorname{Set}(x)\land\phi(x)\}$ is either empty or $\{e\}$,
+according as $\phi(e)$ is false or true in this structure. It is
+represented respectively by $e$ or $v$. This verifies every instance
+of the schema, including formulas with unrestricted quantifiers over
+the two class objects. The comprehension output variable is, as usual,
+fresh for $\phi$; no satisfaction predicate is added to the language.
+
+The only set is the empty object $e$. A set containing $e$, as required
+by pairing applied to $e,e$, would have to be $v$, which is not a set.
+Thus pairing fails. No set contains even the empty set, so no inductive
+set exists and the usual infinity axiom fails. Soundness of first-order
+logic gives the nonderivability conclusions.
+\Done
+
+This is a diagnostic for exactly the listed relational assumptions, not
+a model of every system proposed in this book. Stronger principles about
+constructors, typed interpretation, reflection, or additional set existence
+can exclude this model. Any proposed interpretation of ZFC in a richer
+system must identify those additional principles and prove the required
+interpretation properties. Merely naming unrestricted class comprehension
+and one set does not supply the missing set-existence axioms.
+
+\begin{theorem}[Finite closure principles do not supply infinity]
+Work externally in ZF set theory, with its axiom of infinity. There is a
+set-sized model of the one-sorted class language satisfying full
+set-guarded class comprehension, extensionality, empty set, pairing,
+union, powerset, separation, and replacement for class functions, but
+not the axiom of infinity. In this model every internal set is externally
+finite. The result concerns these explicitly listed principles, not an
+unspecified stronger reflection or universe principle.
+\end{theorem}
+\Proof
+Let $H=V_\omega$ be the set of hereditarily finite sets in the external
+theory, and take the class-object domain to be $\mathcal P(H)$.
+Interpret membership as ordinary membership restricted to that domain.
+Since $H$ is transitive, every member of $H$ is a subset of $H$ and
+therefore an object of the structure. An object $x$ belongs to another
+object exactly when $x\in H$: one implication follows because every
+object is a subset of $H$; for the other, the object $\{x\}$ witnesses
+membership. Thus internal sethood is precisely membership in $H$.
+
+All members of an object are themselves in the domain, so external
+extensionality gives internal class extensionality. For any formula
+$\phi(x)$ and parameters, including formulas quantifying over all class
+objects, its required comprehension extension is
+\[
+\{x\in H:\phi(x)\text{ holds in the structure}\}.
+\]
+This is a subset of $H$, hence an object. The verification is external
+and applies instance by instance; it introduces no internal truth
+predicate.
+
+The empty set belongs to $H$. Pairs of members of $H$, unions of
+members of $H$, and powersets of members of $H$ again belong to $H$:
+all these constructions yield finite sets of hereditarily finite
+objects. Every subclass of an internal set $a$ is an external subset
+of a finite hereditarily finite set, hence is again in $H$. Finally,
+a class function with internal set domain $a$ has only finitely many
+inputs. Its image is a finite set of members of $H$, and therefore is
+in $H$. This proves class replacement, regardless of how the class
+function was defined. Ordinary finite graphs are also in $H$.
+
+If an internal set were inductive, it would contain the external empty
+set and, by external induction, every finite von Neumann ordinal.
+Those ordinals are distinct, contradicting external finiteness of the
+internal set. Thus infinity fails.
+\Done
+
+\begin{corollary}[Even class limitation of size does not force infinity]
+The preceding hereditarily finite model also satisfies the following
+class-size principle: an internal class is proper if and only if it is
+in internal bijection with the universal class. Thus adding this
+principle to the listed closure axioms still does not imply infinity.
+\end{corollary}
+\Proof
+Externally, $H$ has a fixed bijection with $\omega$. One explicit coding
+is the recursive finite-set code
+$c(x)=\sum_{y\in x}2^{c(y)}$. Induction on finite ranks and uniqueness
+of binary expansion prove injectivity. Conversely, strong induction on
+$n$ constructs a set with code $n$ from the sets coding its binary
+exponents, all of which are smaller than $n$ when $n>0$. Hence $c$ is
+bijective. This coding and the increasing enumeration below use no
+external choice axiom. The natural numbers here are external indices;
+they are not being asserted to form an internal set.
+
+An object $A\subseteq H$ is an internal set exactly when it is
+externally finite: every finite subset of $H$ is hereditarily finite,
+and every member of $H$ is finite. If $A$ is proper, its codes form an
+infinite subset of $\omega$. Listing them in increasing order gives an
+external bijection $H\to A$. Its graph consists of ordinary ordered
+pairs of hereditarily finite sets, which are themselves hereditarily
+finite; hence that graph is a subset of $H$ and is an internal class
+object. It witnesses the required internal bijection. Conversely, an
+internal bijection from $H$ to an internal set would externally biject
+an infinite set with a finite one, which is impossible.
+
+This also verifies the book's surjective-image formulation of limitation
+of size: for proper $A$, the inverse of the coded bijection $H\to A$
+is an internal class function $T$ with $H=T[A]$. If $A$ is an
+internal set, every set-valued class function has finite image on $A$,
+so no such image can contain the infinite universal class $H$.
+\Done
+
+\begin{corollary}[Regularity and global choice in the same model]
+The hereditarily finite model also satisfies class foundation and has a
+class choice function on all nonempty internal sets. These principles
+therefore do not repair its failure of infinity.
+\end{corollary}
+\Proof
+For a nonempty internal class $A\subseteq H$, the external finite ranks
+of its members form a nonempty subset of $\omega$ and have a least
+value. Choose one member $a$ of that rank. If $b\in a\cap A$, then
+$b$ has strictly smaller rank, a contradiction. Thus $a\cap A$ is
+empty. This verifies class foundation, and in particular set regularity.
+It makes no assertion that the class of all finite ordinals is an
+internal set.
+
+For a nonempty $a\in H$, select its member with least Ackermann code
+$c(x)$. The code is injective, so the selected member is unique.
+The graph of this operation consists of ordered pairs of members of
+$H$, hence is a subset of $H$ and an internal class. Its domain is
+exactly the nonempty internal sets and its value at $a$ belongs to $a$.
+This is the claimed global choice function. All choices used to define
+it were uniquely determined by the fixed coding.
+\Done
+
+The two models isolate different missing assumptions. The two-object
+model shows that comprehension and one set do not even give pairing.
+The hereditarily finite model shows that adding the listed set-closure
+principles still does not give infinity. These are relative model
+constructions in an external theory; neither is a claim that the
+book's stronger proposed systems have the same models. They provide
+concrete tests for any claimed derivation of set-existence principles.
 
 \subsection{Binders: Quantifiers, Class Comprehension, and Descriptors}
 \label{subsec:binders_overview}
 
-Throughout this book (`010_logic.tex`, `020_descriptors.tex`, `060_axioms.tex`), variable-binding syntactic constructs are referred to collectively as \emph{binders} (or \emph{variable-binding operators}) rather than merely ``quantifiers,'' since the language includes both formula-valued and term-valued binders whose bound variable defaults to $\mathsf{Class}$:
+A \emph{binder} is a syntactic construction that binds a variable.
+The following list is a guide to the notation encountered in different
+sections, not a claim that every listed binder has the same semantics in
+all of them. The default class sort applies to the classical setting;
+partial and uncertain semantics supply their own interpretation rules.
 \begin{enumerate}
   \item \textbf{Formula-Valued Logical Quantifiers}: universal ($\forall x,\ \phi(x)$), existential ($\exists x,\ \phi(x)$), uniqueness ($\exists! x,\ \phi(x)$ and $!x,\ \phi(x)$), and bounded quantifiers ($\forall (x \in Y),\ \phi(x)$ and $\exists (x \in Y),\ \phi(x)$).
   \item \textbf{Class Comprehension Binder ($\kappa$-binder)}: $\cc{x}{\phi(x)}$ (and generalized comprehension $\ccc{\vec{x}}{t(\vec{x})}{\phi(\vec{x})}$), binding a class variable $x:\mathsf{Class}$ to form a class term.
-  \item \textbf{Definite Description ($\iota$-binder)}: $\iota x,\ \phi(x)$, denoting the unique class satisfying $\phi(x)$ when $\exists! x,\ \phi(x)$ holds (and defaulting to $\emptyset$ otherwise).
-  \item \textbf{Indefinite Description / Choice Descriptors ($\tau$-, $\epsilon$-, $\varepsilon$-binders, Section~\ref{sec:descriptors} / \texttt{020\_descriptors.tex})}:
-    \begin{itemize}
-      \item $\tau x,\ \phi(x) \eqdef \tau^{\mathrm{Un}} x,\ \phi(x)$ (Bourbaki's $\tau$-operator with universal class fallback),
-      \item $\epsilon x,\ \phi(x) \eqdef \tau^{\exists!}_{\emptyset} x,\ \phi(x)$ (unique-existence descriptor with $\emptyset$ fallback),
-      \item $\varepsilon x,\ \phi(x) \eqdef \tau^{\emptyset} x,\ \phi(x)$ (Hilbert's $\varepsilon$-operator with $\emptyset$ fallback).
-    \end{itemize}
+  \item \textbf{Definite Description ($\iota$-binder)}: $\iota x,\ \phi(x)$, denoting the unique class satisfying $\phi(x)$ when $\exists! x,\ \phi(x)$ holds (with its behavior in other cases specified by the local descriptor convention).
+  \item \textbf{Choice and Partial Descriptors} ($\tau$, $\epsilon$,
+  $\varepsilon$; Section~\ref{sec:descriptors}): the descriptor experiment
+  distinguishes an arbitrary-class default for $\tau$, an empty-class
+  default for $\epsilon$, and no default for partial $\varepsilon$.
+  These are local conventions. In particular, an undefined expression is
+  not automatically identified with a term denoting the empty class.
 \end{enumerate}

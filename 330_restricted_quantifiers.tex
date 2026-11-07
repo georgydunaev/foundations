@@ -1,5 +1,68 @@
 \def\topic{}
 \input{BEGIN.tex}
+\section{Restricted quantifiers: notation and a syntactic proposal}
+For an explicitly specified bound variable $x$ that is not free in $A$,
+restricted quantifiers abbreviate ordinary quantification with a condition:
+\[
+(\forall x\in A,\ Q)\iff(\forall x,\ x\in A\implies Q),
+\qquad
+(\exists x\in A,\ Q)\iff(\exists x,\ x\in A\land Q).
+\]
+Likewise, $(!x\in A,\ Q)$ means $(!x,\ x\in A\land Q)$, with $!$
+expressing at most one witness. All substitutions are capture-avoiding.
+
+The commented draft below explores a more compressed syntax in which a
+bound variable would be recovered from the first term of the restriction.
+That proposal needs an explicit rule for selecting the variable and
+handling terms with several free variables. Until such a rule is fixed,
+the explicit-binder notation above determines the meaning unambiguously.
+\subsection{A precise version of inferred binders}
+One way to make the proposed compressed notation unambiguous is to
+supply a syntactic parameter context $P$: a finite set of variable names
+that are parameters, not candidates for the new binder. For a restriction
+formula $R$, compute $\mathrm{FV}(R)\setminus P$. Permit the abbreviation
+only when this set is a singleton $\{x\}$. Then expand
+\[
+\forall[R]\,Q\quad\text{as}\quad\forall x\,(R\implies Q),
+\qquad
+\exists[R]\,Q\quad\text{as}\quad\exists x\,(R\land Q).
+\]
+The analogous at-most-one abbreviation expands to $!x\,(R\land Q)$.
+When there are no candidates or several, require an explicit binder;
+do not choose a variable from its alphabetical order or an accidental
+presentation order. This is one formal realization of the proposal,
+not a claim that the current checker implements it.
+
+\begin{proposition}[Hygiene of the elaborated restriction]
+Once the binder has been determined, capture-avoiding substitution for
+parameters commutes with the displayed expansion, provided the binder
+is first renamed fresh for all replacement terms. Bijective renaming
+of variable names, applied also to $P$, preserves the inference rule.
+\end{proposition}
+\Proof
+For the universal abbreviation, expansion yields $\forall x(R\implies Q)$.
+Freshness makes its substitution exactly
+$\forall x(R\sigma\implies Q\sigma)$, which is the expansion with the
+same explicitly retained binder and substituted components. Existential
+and at-most-one cases use the identical argument with conjunction.
+A bijective renaming $\rho$ sends the candidate set to
+$\rho(\mathrm{FV}(R)\setminus P)$, because free occurrences and parameter
+names are renamed together. A singleton remains the singleton
+$\{\rho(x)\}$, so the inferred binder is renamed consistently.
+\Done
+
+\begin{example}[Inference precedes substitution]
+With $P=\{A\}$, the restriction $x\in A$ has the unique candidate $x$.
+If $A$ is replaced by the variable $y$ while the parameter context is
+left unchanged, the unelaborated restriction $x\in y$ has two candidate
+names. Repeating inference would reject it or select a different binder
+under an arbitrary heuristic. Elaborating first retains the intended
+binder $x$, and ordinary capture-avoiding substitution gives
+$\forall x(x\in y\implies Q\sigma)$. A parameter-context update could
+also record $y$ explicitly; it must not be implicit in the mathematical
+meaning of an already parsed expression.
+\end{example}
+
 %\section{Restricted quantifiers}
 %TODO:\\
 %The first formula is the ... .\\

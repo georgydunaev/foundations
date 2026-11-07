@@ -1,6 +1,12 @@
 \def\topic{}
 \input{BEGIN.tex}
-\section{Setness}
+\section{Sethood and elementary class reasoning}
+This section derives basic membership and inclusion facts from
+comprehension, extensionality, and the definition of sethood. The notation
+$X\set$ means that $X$ is a member of some class. In particular, $\V$
+contains all sets, while every class is a subclass of $\V$; these are
+statements about membership and inclusion respectively.
+
 \iftrue
 %The following theorem requires finding a fresh variable. But since it is always possible, the variant of it without the side contion may be added as and axiom, just to reduce the proofs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMENTED OUT
@@ -11,20 +17,16 @@
 (\exists (y\set),\ \psi)
 \]
 \end{theorem}
-\Proof
-\noindent$(\Rightarrow)$\\
-\[
-(\cc{y}{\psi}\nonempty)
-\IMPLIES
-(\exists (y\set),\ \psi)
-\]
-\noindent$(\Leftarrow)$\\
-\dots
-\Done
+\begin{proof}
+A class is nonempty exactly when it has a member. By comprehension,
+$z\in\cc{y}{\psi}$ holds exactly when $z$ is a set and $\psi[z/y]$ holds.
+Thus a member of the comprehension supplies the required witness, and any
+such set witness is a member of the comprehension.
+\end{proof}
 \fi
 
 \begin{theorem}[V is maximal]
-Any class is a subclass of class of all sets.
+Every class is a subclass of the class of all sets.
 \[
 (C\subseteq \V)
 \]
@@ -79,11 +81,11 @@ The claim is proven.
 (X\set)\LAND\top[X/W]\IMPLIES(X\in \cc{x}{\top[x/W]})
 \]
 \[
-(X\in \cc{x}{\top[x/W]}=\cc{x}{\top}=\V)\IMPLIES (x\in \V)
+(X\in \cc{x}{\top[x/W]}=\cc{x}{\top}=\V)\IMPLIES (X\in \V)
 \]
 %\[(a\in\{a\})\LAND(\{a\}=\{w\})\IMPLIES(a\in\{w\})\]
 \Done
-\begin{theorem}[?]
+\begin{theorem}[antisymmetry of inclusion]
 \[
 (A \subseteq B)\land (B\subseteq A) \implies (A=B)
 \]
@@ -99,7 +101,7 @@ Assume $(x\in A)$. To show: $(x\in B)$\\
 (A\subseteq B)
 \IMPLIES
 (x\in B)
-\tag{by \myref{thm:element of subset}}
+\tag{by \myref{thm:element of subclass}}
 \]
 $(\Leftarrow)$\\
 Assume $(x\in B)$. To show: $(x\in A)$\\
@@ -109,7 +111,7 @@ Assume $(x\in B)$. To show: $(x\in A)$\\
 (B\subseteq A)
 \IMPLIES
 (x\in A)
-\tag{by thm \myref{thm:element of subset}}
+\tag{by thm \myref{thm:element of subclass}}
 \]
 The claim has been proven.
 \[
@@ -121,7 +123,7 @@ The claim has been proven.
 \Done
 
 \begin{theorem}[empty set is minimal]
-For all class $A$,
+For every class $A$,
 \[
 (\emptyclass\subseteq A)
 \clabeltagd{thm}{empty class is subclass}
@@ -148,7 +150,7 @@ The claim is proven.
 (\forall x\in \emptyclass, x\in A)
 \IMPLIES
 (\emptyclass\subseteq A)
-\tag{by \myref{def:empty class}}
+\tag{by \myref{def:emptyclass}}
 \]
 \Done
 
@@ -208,22 +210,33 @@ The claim is proven.
 %(A=\emptyclass)
 %\]
 \Done
-\begin{theorem}[?]
+\begin{theorem}[emptiness criterion]
 \[
 \neg\exists w,\  w\in A
 \iff
 (A\isempty)
 \]
 \end{theorem}
-\begin{theorem}[?]
+\Proof
+By the preceding theorem, having no member implies equality with
+$\emptyclass$. Conversely, equality with $\emptyclass$ implies having
+no member, since the empty class has none. This is exactly the stated
+criterion for $A\isempty$.
+\Done
+\begin{theorem}[nonemptiness criterion]
 \[
 \exists w,\  w\in A
 \iff
 (A\nonempty)
 \]
 \end{theorem}
+\Proof
+Negate the emptiness criterion and use classical double-negation
+elimination. Thus $A\ne\emptyclass$ holds exactly when
+$\exists w\,(w\in A)$.
+\Done
 
-\begin{theorem}[?]
+\begin{theorem}[membership in a subclass]
 Any element of a subclass is in the class.
 \[
 (x\in A)\land(A\subseteq B)\implies(x\in B)
@@ -258,27 +271,30 @@ For any terms $A$ and $B$,
 \label{thm:in class then set}
 \end{theorem}
 \Proof
-Assume $(B\in A)$. To show: $(B\set)$.
+Assume $(B\in A)$. To show: $(B\set)$. Choose a variable $Y$
+not free in either term $A$ or $B$.
 \[
 (B\in A)
 \IMPLIES
-(\exists A,\  B\in A)
+(\exists Y,\  B\in Y)
 \tag{by right--exists--intro}.
 \]
 \[
-(\exists A,\  B\in A)
+(\exists Y,\  B\in Y)
 \IMPLIES
 (B\set)
 \tag{introduced by set's definition}.
 \]
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[a class with exactly one member]
 \[
 (w\in A) \land (!a,\ a\in A) \implies (\{w\}=A)
 \]
 \end{theorem}
-\Proof Assume $(w\in A)$ and $(!a,\ a\in A)$\\
+\Proof Assume $(w\in A)$ and $(!a,\ a\in A)$. Membership implies
+that $w$ and every other member of $A$ are sets, so singleton introduction
+is legitimate in the following argument.\\
 \noindent($\subseteq$) Assume $(q\in \{w\})$.
 \[
 (q\in \{w\})\IMPLIES(q=w).

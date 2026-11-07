@@ -2,7 +2,17 @@
 \input{BEGIN.tex}
 
 %Some order theory.
-\section{Supremum \& Infimum}
+\section{Suprema and infima}
+The first construction retains the inherited order on the class of bounds.
+This allows it to describe preorders, where a least element need not be
+unique as an object, as well as partial orders, where it is unique when it
+exists. For the image-based construction first, $(P,\leq)$ is a set-sized
+ambient order and $S\subseteq P$. Its upper and lower sections are then
+sets, so they can be collected by the displayed image notation. For a
+proper-class carrier, use the predicate-based bound classes given later;
+ordinary class images cannot collect proper classes as members. Whenever a carrier is restricted, the order relation is
+restricted to that carrier as well.
+
 \subsection{Up or down sets of an element of an order}%Upward/downward closed set}
 \begin{definition}[up set of an element of an order]%(Upward closed set)
 \[
@@ -26,7 +36,7 @@
 \mathrm{Mi}_{(P,\leq)}S\ceq \left(P\cap\intersection \downarrow_{(P,\leq)}[S],\leq\right)
 \]
 \end{definition}
-\subsection{Ordered set of greatest or least elemenents of an order}
+\subsection{Ordered set of greatest or least elements of an order}
 \begin{definition}[ordered set of greatest elements of an order]
 \[
 \mathrm{Greatest}_{(P,\leq)}\ceq \mathrm{Ma}_{(P,\leq)}P
@@ -37,22 +47,30 @@
 \mathrm{Least}_{(P,\leq)}\ceq \mathrm{Mi}_{(P,\leq)}P
 \]
 \end{definition}
-\subsection{Ordered set of supremums or infimums of a subset of an order}
-\begin{definition}[ordered set of supremums of a subset of an order]
+\subsection{Ordered set of suprema or infima of a subset of an order}
+\begin{definition}[ordered set of suprema of a subset of an order]
 \[
 \mathrm{Sup}_{(P,\leq)}S\ceq \mathrm{Least}_{\mathrm{Ma}_{(P,\leq)}S}
 \]
 \end{definition}
-\begin{definition}[ordered set of infimums of a subset of an order]
+\begin{definition}[ordered set of infima of a subset of an order]
 \[
 \mathrm{Inf}_{(P,\leq)}S\ceq \mathrm{Greatest}_{\mathrm{Mi}_{(P,\leq)}S}
 \]
 \end{definition}
 \subsection{Essential supremum}
+Here the context changes to a measure space and a measurable real-valued
+function $f$. This value depends only on the almost-everywhere equivalence
+class of $f$: changing $f$ on a measurable null set does not change which
+real numbers are essential upper bounds. Take the infimum in the extended real line, so that the
+expression also covers an unbounded function: an empty set of real upper
+bounds has infimum $+\infty$. The displayed condition means that $M$ is an
+upper bound except on a set of measure zero.
+
 \begin{definition}[essential supremum; it depends on a measure $\mu$]
 \[
-\esssup f 
-\ceq 
+\esssup f
+\ceq
 \inf
 \cc{M\in\real}{\mu(\cc{x\in \dom(f)}{f(x)>M})=0}
 \]
@@ -73,15 +91,15 @@
 %\Done
 \subsection{Some theorems of the order theory}
 
-Here presented some bad older definitions, but good theorems
-\begin{definition}[?]bad
+The following reformulation uses classes of bounds directly. An ordinary
+relational image $R[S]$ describes points above \emph{some} member of $S$;
+upper bounds must lie above \emph{every} member. This distinction motivates
+the universal definitions below. They express the intended meaning of the
+earlier image-based sketches.
+\begin{definition}[upper and lower bounds]
 \[
-\UB_R(S) = R[S]
-\]
-\end{definition}
-\begin{definition}[?]bad
-\[
-\LB_R(S) = R^{-1}[S]
+\UB_R(S)\ceq\cc{y\in P}{\forall x\in S,\ xRy},\qquad
+\LB_R(S)\ceq\cc{y\in P}{\forall x\in S,\ yRx}.
 \]
 \end{definition}
 
@@ -93,14 +111,11 @@ $R \ceq \leq$\\
 $\leq = \geq^{-1}$\\
 $\geq = \leq^{-1}$\\
 
-\begin{remark}[?]
-If $\leq$ is transitive then $\leqslant$ is transitive only on non--empty(sic!) sets.
+\begin{remark}[why the middle class must be nonempty]
+Define $A\leqslant B$ to mean that every element of $A$ is at most every element of $B$. If $A\leqslant B$ and $B\leqslant C$, transitivity of $\leq$ gives $A\leqslant C$ provided the middle class $B$ is nonempty. Without that hypothesis, both premises can hold vacuously.
 \end{remark}
 \Proof
-(transitivity on nonempty sets)\\
-easy...\\
-(and only on them)\\
-By contradiction. Assume additionally, and just for fun, that $H,S$ are elements oof the order, and $S<H$. If the order were transitive, then the following deduction would be possible:
+Choose $b\in B$. For arbitrary $a\in A$ and $c\in C$, we have $a\leq b\leq c$, hence $a\leq c$. For the failure with an empty middle class, take $S<H$. The familiar wordplay illustrates the two vacuous premises:
 \begin{quote}
 Nothing is better than eternal happiness. \null\hfill ($\{H\}<\emptyclass$)\\
 A sandwich is better than nothing. \null\hfill ($\emptyclass<\{S\}$)\\
@@ -110,75 +125,257 @@ We obtained $H<S$ (by definition of an order on sets). The statement together wi
 \Done
 \noindent
 
-\begin{definition}[?]good
+\begin{definition}[all-to-all comparison]
 \[
 (A \leqslant B)
 \iffdef
 (\forall a\in A \forall b\in B,\ a\leq b)
 \]
 \end{definition}
-\begin{definition}[?]bad
+\begin{definition}[bound classes]
 \[
-\UB(S) = \leq [S]
+\UB(S) \ceq \UB_{\leq}(S)
 \]
 \end{definition}
-\begin{definition}[?]bad
+\begin{definition}[bound classes]
 \[
-\LB(S) = \geq [S]
+\LB(S) \ceq \LB_{\leq}(S)
 \]
 \end{definition}
-\begin{theorem}[?]maybe
+\begin{theorem}[comparison by bounds]
 \[
 (A\leqslant B)
 \iff
 (B\subseteq \UB(A))
 \]
 \end{theorem}
-\begin{theorem}[?]maybe
+\begin{theorem}[comparison by bounds]
 \[
-(A\leqslant B) 
+(A\leqslant B)
 \Longleftrightarrow
 (A\subseteq \LB(B))
 \]
 \end{theorem}
-\begin{definition}[?]bad
+\begin{definition}[bound classes]
 \[
 \Sup(S) = \UB(S)\cap \LB(\UB(S))
 \]
 \end{definition}
-\begin{definition}[?]bad
+\begin{definition}[bound classes]
 \[
 \Inf(S) = \LB(S)\cap \UB(\LB(S))
 \]
 \end{definition}
-\begin{definition}[?]maybe
+\begin{definition}[descriptor for the unique extremum]
 \[
 \mbox{sup}(S) = (\iota x,\ x\in \mathrm{Sup}(S))
 \]
 \end{definition}
-\begin{definition}[?]maybe
+\begin{definition}[descriptor for the unique extremum]
 \[
 \mbox{inf}(S) \eqdef (\iota x,\ x\in \mathrm{Inf}(S))
 \]
 \end{definition}
-\begin{theorem}[?]good
+A descriptor for a supremum or infimum denotes the desired extremum only
+when the corresponding bound class has exactly one member. Its behavior
+otherwise is governed by the descriptor convention chosen locally.
+\begin{theorem}[comparison of existing extrema]
+Assume the ambient order is a partial order, and both $\Sup(A)$ and
+$\Inf(B)$ are nonempty.
 \[
 (A \leqslant B)
 \Longrightarrow
 (A\leqslant \Sup(A)\leqslant \Inf(B)\leqslant B)
 \]
 \end{theorem}
-\begin{theorem}[?]doubt
+\begin{proof}
+Let $s$ and $i$ be the unique elements of $\Sup(A)$ and $\Inf(B)$.
+Every $b\in B$ is an upper bound of $A$, so the least-upper-bound
+property gives $s\leq b$. Thus $s$ is a lower bound of $B$, and the
+greatest-lower-bound property gives $s\leq i$. The outer comparisons
+$a\leq s$ for $a\in A$ and $i\leq b$ for $b\in B$ follow from the
+definitions of upper and lower bounds. This proves the displayed chain.
+\end{proof}
+
+\begin{theorem}[monotone convergence of a real sequence]
 \[
 (a:\mathbb{N}\rightarrow \real)
 \land
 (\{a_n\}_n \mbox{bdd above in }\real)
 \land
 ((a_n)_n\mbox{ non--decreasing})
-\implies 
+\implies
 (a \converges \sup \{a_n\}_n)
 \]
 \end{theorem}
+\begin{proof}
+The range of the sequence is nonempty and bounded above, so completeness
+of the real numbers supplies its real supremum $s$. For every $\varepsilon>0$,
+$s-\varepsilon$ is not an upper bound; choose $N$ with
+$s-\varepsilon<a_N$. Monotonicity gives
+\[
+s-\varepsilon<a_N\leq a_n\leq s\qquad(n\geq N).
+\]
+Hence $|a_n-s|<\varepsilon$ for $n\geq N$, which is exactly convergence
+to $s$. This argument uses a real supremum, not an off-domain descriptor
+value or the ordinal infimum convention from another section.
+\end{proof}
+
+\subsection{Bounds, closure, and fixed points}
+We now return from the real-number examples to a set-sized partially
+ordered set $P$. Bound classes are always restricted to this carrier.
+The equivalence
+\[
+B\subseteq\UB(A)\quad\Longleftrightarrow\quad A\subseteq\LB(B)
+\qquad(A,B\subseteq P)
+\]
+is the order instance of the relational polarity proved in the section
+``The order structure behind glare.'' In that notation the two maps are
+$p_P=\UB$ and $q_P=\LB$. In particular,
+\[
+c(A)=\LB(\UB(A))
+\]
+is extensive, monotone, and idempotent, and
+$\UB(\LB(\UB(A)))=\UB(A)$. These statements include empty subsets:
+$\UB(\emptyclass)=P$. When $s=\sup A$ exists, $c(A)=\downarrow s$.
+Thus the bound construction already supplies an example of a closure
+operator. We next establish a more general existence theorem, which
+requires monotonicity but not extensivity or idempotence.
+
+\begin{definition}[Complete lattice and fixed-point inequalities]
+A set-sized partially ordered set $L$ is a complete lattice if every
+subset $A\subseteq L$ has a supremum $\bigvee_L A$ and an infimum
+$\bigwedge_L A$ in $L$, including the empty subset. Write
+$\bot=\bigvee_L\emptyclass$ and $\top=\bigwedge_L\emptyclass$.
+For a monotone function $f:L\to L$, put
+\[
+\begin{aligned}
+\operatorname{Pre}(f)&=\{x\in L:f(x)\leq x\},\\
+\operatorname{Post}(f)&=\{x\in L:x\leq f(x)\},\\
+\operatorname{Fix}(f)&=\{x\in L:f(x)=x\}.
+\end{aligned}
+\]
+The first two conditions are called pre-fixed and post-fixed,
+respectively; this specifies the direction of the terminology.
+\end{definition}
+
+\begin{theorem}[Complete lattice of fixed points: Knaster--Tarski]
+Let $f:L\to L$ be monotone on a set-sized complete lattice. Its fixed
+points form a complete lattice in the inherited order. More explicitly,
+for $A\subseteq\operatorname{Fix}(f)$ define
+\[
+\begin{aligned}
+U_A&=\{x\in L:f(x)\leq x\text{ and }\forall a\in A,\ a\leq x\},\\
+D_A&=\{x\in L:x\leq f(x)\text{ and }\forall a\in A,\ x\leq a\}.
+\end{aligned}
+\]
+Then the join and meet in the fixed-point lattice are
+\[
+\bigvee_{\operatorname{Fix}(f)}A=\bigwedge_L U_A,
+\qquad
+\bigwedge_{\operatorname{Fix}(f)}A=\bigvee_L D_A.
+\]
+In particular, the least and greatest fixed points are
+\[
+\mu f=\bigwedge_L\operatorname{Pre}(f),\qquad
+\nu f=\bigvee_L\operatorname{Post}(f).
+\]
+The element $\mu f$ lies below every pre-fixed point, and $\nu f$
+lies above every post-fixed point.
+\end{theorem}
+\Proof
+The set $U_A$ contains $\top$. Put $j=\bigwedge_L U_A$.
+Each $a\in A$ is a lower bound of $U_A$, so $a\leq j$.
+For each $x\in U_A$, monotonicity gives
+$f(j)\leq f(x)\leq x$. Thus $f(j)\leq j$. It follows that
+$f(f(j))\leq f(j)$, so $f(j)$ is pre-fixed. Also, for $a\in A$,
+$a=f(a)\leq f(j)$. Hence $f(j)\in U_A$, and the infimum property
+gives $j\leq f(j)$. Antisymmetry proves $f(j)=j$.
+Finally, every fixed upper bound $b$ of $A$ belongs to $U_A$, so
+$j\leq b$. Therefore $j$ is precisely the join among fixed points.
+
+For completeness, the dual argument is as follows. The set $D_A$
+contains $\bot$. Put $m=\bigvee_L D_A$. Every $a\in A$ is an upper
+bound of $D_A$, so $m\leq a$. If $x\in D_A$, then
+$x\leq f(x)\leq f(m)$, whence $m\leq f(m)$. Therefore
+$f(m)\leq f(f(m))$, and for each $a\in A$ we have
+$f(m)\leq f(a)=a$. Thus $f(m)\in D_A$ and $f(m)\leq m$.
+Antisymmetry makes $m$ fixed. Every fixed lower bound $b$ of $A$
+belongs to $D_A$, so $b\leq m$. This proves the meet assertion.
+
+Taking $A=\emptyclass$ gives $U_A=\operatorname{Pre}(f)$ and
+$D_A=\operatorname{Post}(f)$, yielding the last assertions as well as
+nonemptiness of the fixed-point lattice. All bound sets used here are
+subsets of $L$. The proof uses neither a transfinite iteration nor a
+choice of approximating elements.
+\Done
+
+\begin{example}[A join can change when restricted to fixed points]
+On the powerset lattice of $\{a,b,c\}$, with these three elements
+distinct, define
+\[
+f(X)=\begin{cases}
+X\cup\{c\},&\{a,b\}\subseteq X,\\
+X,&\text{otherwise}.
+\end{cases}
+\]
+This map is monotone: enlarging $X$ preserves its members and cannot
+turn off an already satisfied condition $\{a,b\}\subseteq X$.
+Both $\{a\}$ and $\{b\}$ are fixed, but their ambient join
+$\{a,b\}$ is not fixed. Their join among fixed points is
+$\{a,b,c\}$, since every fixed set containing both $a$ and $b$ must
+also contain $c$. Thus the theorem does not assert that fixed points
+are closed under the ambient joins and meets. Its displayed formulas
+specify the bounds in their own inherited order.
+\end{example}
+
+\begin{corollary}[Least closed subset containing prescribed data]
+Let $X$ be a set, $S\subseteq X$, and let
+$\Phi:\mathcal P(X)\to\mathcal P(X)$ be monotone. There is a least
+subset $C\subseteq X$ containing $S$ and satisfying $\Phi(C)\subseteq C$.
+It is given by
+\[
+C=\bigcap\{Q\subseteq X:S\subseteq Q\text{ and }\Phi(Q)\subseteq Q\},
+\qquad C=S\cup\Phi(C).
+\]
+\end{corollary}
+\Proof
+Apply the theorem in the inclusion-ordered complete lattice
+$\mathcal P(X)$ to $f(Q)=S\cup\Phi(Q)$. Its pre-fixed points are
+exactly the subsets in the displayed intersection, a nonempty family
+because it contains $X$. The least fixed point is below every such
+subset and is itself one of them. Its fixed-point equation is exactly
+$C=S\cup\Phi(C)$.
+\Done
+
+This is the set-sized counterpart of the least-class closure theorem in
+Section~\ref{sec:properties_preserved_intersections}. That theorem uses
+MK comprehension over classes; it is not obtained by treating the
+collection of all proper classes as a set-sized complete lattice.
+
+\begin{example}[Reachability as a least fixed point]
+Let $R\subseteq X\times X$ be a relation on a set and $S\subseteq X$.
+Use graph image, $R[Q]=\{y\in X:\exists x\in Q,\ (x,y)\in R\}$.
+This operation is monotone, so the preceding corollary gives the least
+$R$-closed subset $C$ containing $S$, with $C=S\cup R[C]$.
+It has the concrete description
+\[
+C=\bigcup_{n\in\mathbb N}C_n,\qquad
+C_0=S,\quad C_{n+1}=C_n\cup R[C_n].
+\]
+Indeed, the union contains $S$. If $x$ belongs to it and $(x,y)\in R$,
+then $x\in C_n$ for some $n$ and $y\in C_{n+1}$; hence the union is
+$R$-closed. Conversely, induction shows that every $R$-closed set
+containing $S$ contains every $C_n$, and therefore their union.
+By induction on $n$, $C_n$ consists precisely of points reached from
+$S$ by paths of at most $n$ edges: a new image point appends one edge,
+and every nonzero-length path has a penultimate point. Thus $C$
+records finite reachability, with zero-length paths retaining $S$.
+This explicit countable iteration is justified for relational image;
+monotonicity alone in an arbitrary complete lattice does not assert
+that countably many iteration stages suffice.
+\end{example}
+
 %\ifdefined\ordertheoryflag
 %\undef\ordertheoryflag
 %\end{document}

@@ -1,18 +1,213 @@
-\def\topic{}
+\def\topic{Linear algebra}
 \input{BEGIN.tex}
 \section{Linear algebra}
-\begin{definition}Matrix over a set S.
+These preliminary definitions describe matrices and the combination of
+maps before imposing algebraic operations on their values.
+
+\begin{definition}[Matrix over a set]
+A matrix $A$ over a set $S$ is a function
 \[
-\mbox{"A is a matrix over a set S"}
-\iff
-\exists m, n \in \mathbb{N}: \{1,\dots,m\}\times \{1,\dots,n\} \implies S \]
+A:\{1,\ldots,m\}\times\{1,\ldots,n\}\longrightarrow S
+\]
+for specified nonnegative integer dimensions $m,n$. Its entry in row $i$ and column $j$ is
+$A(i,j)$. If zero dimensions are allowed, the corresponding index set is
+empty. Addition and multiplication of matrices require further structure
+on $S$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Combining matching graph entries]
+For functions $f_1$ and $f_2$, define
 \[
-\mbox{combine}(f_1,f_2) \ceq \cc{(((m,k),(m,v)),(m,(k,v)))}{ (m,k)\in f_1 \land (m,v)\in f_2}
+\mbox{combine}(f_1,f_2)
+ \ceq\cc{(((m,k),(m,v)),(m,(k,v)))}
+ {(m,k)\in f_1\land(m,v)\in f_2}.
 \]
 \end{definition}
-(A combination is a product of morphisms in the category sets and functions.)
+This relation combines two graph entries with the same input $m$ into a
+single entry with paired output $(k,v)$. When $f_1:M\to K$ and
+$f_2:M\to L$, it records the graph-level construction of the map
+$m\mapsto(f_1(m),f_2(m))$ into $K\times L$. This is the pairing of maps
+with a common domain in the category of sets and functions.
+
+\subsection{Finite-dimensional normed spaces}
+The following results use set-sized real or complex vector spaces in the
+classical analytic setting. Completeness of $\mathbb R$ and $\mathbb C$
+is assumed. The metric compactness criterion from the topology chapter
+supplies the only compactness implication used below. Its classical
+countable-choice convention is retained here; in particular, the proof
+of coordinate-sphere compactness uses that criterion.
+
+\begin{lemma}[Compact coordinate spheres]
+For $n\geq1$, the set
+\[
+S_n=\{a\in\mathbb K^n:\max_j|a_j|=1\},
+\qquad \mathbb K\in\{\mathbb R,\mathbb C\},
+\]
+is compact in the coordinate maximum metric.
+\end{lemma}
+\Proof
+A Cauchy sequence of vectors is Cauchy in each coordinate; scalar
+completeness gives a coordinatewise limit, which is also a limit in the
+maximum metric because there are only finitely many coordinates.
+The maximum norm is continuous, so $S_n$ is closed and complete.
+Every bounded coordinate box is totally bounded: partition a containing
+real interval into finitely many intervals of length less than a prescribed
+$\varepsilon$, and take the finite product grid. In the complex case do
+this for real and imaginary parts, with mesh small enough to bound the
+complex modulus. A subset inherits total boundedness, by keeping only
+balls that meet the subset and recentering them at such points with
+twice the radius. Thus $S_n$ is totally bounded. The metric compactness
+criterion gives compactness.
+\Done
+
+\begin{theorem}[Coordinate estimates and equivalence of norms]
+\label{thm:finite_dimensional_norms}
+Let $e_1,\ldots,e_n$ be a basis of a nonzero finite-dimensional normed
+space $E$ over $\mathbb K$. There are constants $c,C>0$ such that
+\[
+c\max_j|a_j|\leq\Bigl\|\sum_{j=1}^n a_je_j\Bigr\|
+\leq C\max_j|a_j|\qquad(a\in\mathbb K^n).
+\]
+Consequently any two norms on a finite-dimensional vector space are
+equivalent and give the same topology.
+\end{theorem}
+\Proof
+For the upper bound take $C=\sum_j\|e_j\|>0$ and use the triangle
+inequality. The map $a\mapsto\|\sum_j a_je_j\|$ is continuous in the
+coordinate maximum metric, since the reverse triangle inequality bounds
+its change by $C\max_j|a_j-b_j|$. On $S_n$ it is strictly positive,
+by linear independence. Compactness supplies a positive lower bound:
+each point has a neighbourhood on which the function exceeds half its
+value there; finitely many such neighbourhoods cover $S_n$, and the
+minimum of their finitely many positive bounds is positive. Call it $c$.
+For $a\ne0$, apply this bound to $a/\max_j|a_j|$ and rescale. The
+zero vector satisfies both inequalities directly.
+
+Apply these estimates separately to two norms, using the same basis;
+each norm bounds and is bounded by positive multiples of the coordinate
+maximum norm, hence of the other norm. The zero-dimensional space has
+only its zero vector, so the conclusion there is immediate.
+\Done
+
+\begin{corollary}[Completeness and closedness in finite dimensions]
+Every finite-dimensional normed space is complete. Every finite-dimensional
+linear subspace of an arbitrary normed space is closed.
+\end{corollary}
+\Proof
+For a Cauchy sequence in a finite-dimensional space, the lower coordinate
+estimate makes each coordinate sequence Cauchy. Scalar completeness gives
+limits for all coordinates, and the upper estimate proves convergence to
+their linear combination. This also covers the zero-dimensional space.
+Now let $M$ be a finite-dimensional subspace of a normed space $E$,
+and take $x\notin M$. Adjoin $x$ to a basis of $M$ and apply the lower
+coordinate estimate in the finite-dimensional span of $M\cup\{x\}$.
+The coefficient of $x$ in $x-m$ is one for every $m\in M$, so
+$\|x-m\|\geq c>0$ for a fixed $c$. Thus the ball of radius $c$ about
+$x$ misses $M$. Every point outside $M$ has such a neighbourhood,
+which proves that $M$ is closed without a successive-choice argument.
+\Done
+
+The weak topology is the coarsest topology making every continuous
+linear functional continuous. Basic neighbourhoods impose finitely many
+scalar inequalities; the functional-analysis chapter develops this
+definition further.
+
+\begin{corollary}[Finite-dimensional compactness and weak topology]
+In a finite-dimensional normed space, every closed bounded set is compact,
+and the weak topology agrees with the norm topology.
+\end{corollary}
+\Proof
+The coordinate estimates carry bounded sets into bounded coordinate boxes
+and carry finite coordinate nets back to finite norm nets. Hence a bounded
+set is totally bounded. A closed set is complete by the preceding
+corollary, so closed bounded sets are compact by the metric criterion.
+
+Each coordinate functional $\ell_j(\sum_k a_ke_k)=a_j$ is continuous,
+since $|\ell_j(x)|\leq\|x\|/c$. For every $\varepsilon>0$ the weakly
+open set
+\[
+\{x:|\ell_j(x)|<\varepsilon/C\text{ for }1\leq j\leq n\}
+\]
+is contained in the norm ball of radius $\varepsilon$ by the upper
+estimate. Translations give the same conclusion at any centre, so every
+norm-open set is weakly open. Conversely every continuous linear
+functional is norm-continuous by definition, so the weak topology is
+coarser than the norm topology. They are equal. In the zero-dimensional
+case there is only one topology.
+\Done
+
+\begin{corollary}[Linear maps and finite-dimensional range]
+Every linear map from a finite-dimensional normed space $E$ into a
+normed space $F$ is bounded. More generally, if a linear map $T:E\to F$
+is bounded and its range is finite-dimensional, then the image of the
+closed unit ball has compact closure in $F$. Neither space needs to be
+complete in this latter assertion.
+\end{corollary}
+\Proof
+If $E\ne\{0\}$, choose a basis $e_1,\ldots,e_n$ and the lower
+coordinate constant $c>0$. Linearity and the triangle inequality give
+\[
+\left\|T\left(\sum_j a_je_j\right)\right\|
+\leq \left(\sum_j\|Te_j\|\right)\max_j|a_j|
+\leq \frac{\sum_j\|Te_j\|}{c}\left\|\sum_j a_je_j\right\|.
+\]
+This is boundedness; a map on the zero space is zero and is bounded too.
+For the second assertion, the range $M=T[E]$ is a closed
+finite-dimensional subspace of $F$. Boundedness of $T$ makes the unit-ball
+image bounded in $M$. Its closure in $F$ stays in $M$ and remains bounded;
+it is closed in $M$, hence compact by finite-dimensional compactness.
+\Done
+
+The second assertion explains why bounded finite-rank operators are
+compact, where an operator is called compact when its unit-ball image
+has compact closure. Finite rank controls the size of the range;
+boundedness separately controls the images of bounded sets.
+
+\subsection{The unit ball detects finite dimension}
+\begin{lemma}[Riesz's separation lemma]
+Let $M$ be a proper closed linear subspace of a normed space $E$, and
+let $0<\theta<1$. There is a unit vector $x$ with
+\[
+\inf_{m\in M}\|x-m\|>\theta.
+\]
+\end{lemma}
+\Proof
+Choose $z\notin M$. Closedness gives
+$d=\inf_{m\in M}\|z-m\|>0$. By the definition of infimum, choose
+$m_0\in M$ with $\|z-m_0\|<d/\theta$, and put
+$x=(z-m_0)/\|z-m_0\|$. For any $m\in M$,
+\[
+\|x-m\|=
+\frac{\|z-(m_0+\|z-m_0\|m)\|}{\|z-m_0\|}
+\geq\frac d{\|z-m_0\|}>\theta.
+\]
+The same lower bound holds for the infimum, proving the claim.
+\Done
+
+\begin{theorem}[Compact unit balls and dimension]
+In the usual classical setting with countable dependent choices, the
+closed unit ball of a normed space is compact if and only if the space
+is finite-dimensional. No completeness assumption on the space is needed.
+\end{theorem}
+\Proof
+The finite-dimensional implication is the preceding compactness corollary.
+If $E$ is infinite-dimensional, start with any unit vector $x_1$.
+Having chosen $x_1,\ldots,x_n$, their span is finite-dimensional,
+closed, and proper. Riesz's lemma with $\theta=1/2$ supplies a unit
+vector $x_{n+1}$ at distance greater than $1/2$ from that span.
+Consequently $\|x_i-x_j\|>1/2$ for all distinct indices. A ball of
+radius $1/4$ cannot contain two of these vectors, by the triangle
+inequality. The closed unit ball therefore has no finite cover by
+such balls and is not totally bounded, hence not compact.
+The sequence of successive selections is the place where the stated
+choice convention is used; finite-dimensional closedness did not
+require this infinite construction.
+\Done
+
+This theorem concerns the norm topology. Infinite-dimensional closed
+unit balls may be compact in a weaker topology; the distinction is
+central to the functional-analysis chapter. Nor does closedness of a
+subspace alone imply finite dimension: the finite-dimensional hypothesis
+above is a sufficient condition for closedness, not a characterization.
 
 \input{END.tex}

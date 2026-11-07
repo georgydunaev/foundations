@@ -1,65 +1,68 @@
 \def\topic{Uniqueness quantifier}
 \input{BEGIN.tex}
-\section{The unique and its properties}
+\section{Uniqueness and its properties}
+The quantifier $!$ means \emph{at most one}; it does not assert existence.
+The notation $\exists!$ combines existence with this uniqueness condition.
+This distinction is essential when a defining condition has no solution.
 \subsection{Uniqueness quantifier}
 \begin{definition}[uniqueness quantifier]
 Uniqueness quantifier for classes:\\
-If $Y_1$, $Y_2$ are not free in $\phi$ and they are free for Y in $\phi$, then:
+Choose distinct fresh variables $Y_1,Y_2$ that are free for $Y$ in
+$\varphi$. Then:
 \[
 (!Y,\ \varphi)\iff (\forall Y_1\forall Y_2,\ \varphi[Y_1/Y]\land\varphi[Y_2/Y]\implies Y_1=Y_2)
 \labeltagd{def}{uniqueness quantifier}
 \]
 %%(We will not use much this definition.)
 \end{definition}
-\begin{note}[?]
-Definite and indefinite descriptions described here only work properly for sets, not for proper classes. This is inevitable (in classical semantics) due to the nature of descriptors which should return something even if nothing  satisfies the requirements.\\
-I have a notion of non--classical models, in which this is not a problem, but then logical rules become much more advanced, and all well--studied field of the first--order logic need to be re--done for such models. Therefore it is too expensive, especially in presence of possibility of using Grothendieck universes for large objects instead of classes. That is why descriptor are designed for sets only: it is enough for potential purposes.\\
+\begin{note}[Scope of descriptions]
+The description constructions considered in these notes are intended to
+select sets. This is a local design choice: class comprehension collects
+set witnesses, and a default value must be specified when no witness
+exists. Other sections explore descriptions of classes and partial
+semantics under their own assumptions. Large objects can alternatively be
+handled relative to a chosen universe, when the required universe
+assumption is available.
 \end{note}
 \begin{definition}[restricted uniqueness quantifier]
 Restricted uniqueness quantifier for sets only
 \begin{align*}
 (!(y\set),\ \varphi)
-&\iff 
+&\iff
 (!y,\ (y\set)\land\varphi)
 \\
-&\iff 
+&\iff
 (\forall (y_1\set)\forall (y_2\set),\ \varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
 \label{def:restricted uniqueness quantifier}
 \end{align*}
 %(\forall y_1\forall y_2,\ \varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
 \end{definition}
 
+\begin{note}[Predicate bodies in the Obelisk export]
+The newer catalog calls the property $(!x,\ x\in s)$
+``semi-singleton'' (\texttt{DefSemiSingleton}, 3.35), and combines it
+with $s\subseteq A$ in \texttt{DefSemiSingletonSubclass} (3.36).
+The exported formulas display universal closures of these predicate
+bodies without the predicate heads. Here they are read as the bodies of
+local definitions, rather than assertions that every class has at most
+one member or that every class is a subclass of every other class.
+For example, $\{\emptyclass,\{\emptyclass\}\}$ has two distinct members.
+The explicit at-most-one definition above avoids this ambiguity.
+\end{note}
+
 \subsection{Singleton set}
 \begin{definition}[Singleton (functional symbol)]
-(side note: because of big amount of side conditions, we state that all different variables are different. 
-It should not be possible to use it in such way: "$\{x\}=\cc{x}{x=x}$".
-How to determine whether during substitution it can be fixed?
-I want it to happen automatically, but i don't want the proof to depend on implementation.
-What causes proofs(as list of actions) to be inapplicable in different cases.
-
-Everything is solved by the simple maxima: we don't need developed metatheory, because all those theorems can be proven for a model, and then added to the program if they are useful.
-
-How to implement definitions? see comments in source code here
-
-%Проблема со схемами -- их надо вручную добавлять, код менять.
-
-%Но! Можно задать новый язык формул, с подстановками, требованиями к различности переменных. -- это непонятно: как.
-
-%Боковые условия -- они как дополнительный навесок на теорему.
-
-%(можно, ещё, генерировать, а можно просто рэйзить эксепшены, если что-то не выполняется. Тогда получается язык для определений СХЕМ.
-
-%как логгировать пруф? сохранять состояние последнего успешного шага.
-)
-
-)
-
-
+The bound variable $x$ must be fresh for the expression $w$; substitution
+is capture-avoiding. Distinct variable names here are syntactic names,
+not an assertion that their values are distinct. In particular, replacing
+$w$ by $x$ requires renaming the bound variable first.
 
 \[
 \{w\} = \cc{x}{x=w}
 \]
 \end{definition}
+For a set $w$, this class has the sole member $w$. If $w$ is a proper
+class, the same comprehension is empty, because only sets can be members.
 
 \begin{definition}[singleton (a predicate symbol)]
 \[
@@ -69,8 +72,9 @@ How to implement definitions? see comments in source code here
 
 
 \subsection{Properties}
-\begin{theorem}[?]
-A class constructed with conjugation of a formula and the uniqueness of object satisfying the same formula has at most one element.
+\begin{theorem}[Comprehension with a uniqueness condition]
+Conjoining a formula with the assertion that it has at most one witness
+produces a class with at most one member.
 \[
 (!w,\ w\in \cc{y}{\varphi\land (!y,\ \varphi)})
 \clabeltagd{thm}{class with at most one object}
@@ -102,13 +106,13 @@ w_2\in \cc{y}{\varphi\land (!y,\ \varphi)}
 \LAND
 (w_1\set)\land\varphi[w_1/y]
 \LAND
-(w_1\set)\land\varphi[w_2/y]
+(w_2\set)\land\varphi[w_2/y]
 \IMPLIES
 (w_1=w_2)
 \]
 \Done
 
-\begin{theorem}[?]
+\begin{theorem}[Uniqueness passes to subclasses]
 \[
 (A\subseteq B)\land(!x,\ x\in B)\implies (!x,\ x\in A)
 \]
@@ -123,7 +127,7 @@ Assume $(A\subseteq B)$ and $(!x,\ x\in B)$.
 \]
 The claim: $(\forall x_1\forall x_2,\  x_1\in A \land x_2\in A \implies x_1=x_2)$.\\
 Fix $x_1$ and $x_2$.
-Assume $x_1\in A$ and $x_2\in A$. 
+Assume $x_1\in A$ and $x_2\in A$.
 \[
 A\subseteq B
 \LAND
@@ -155,4 +159,54 @@ The claim is proven.
 \tag{by \myref{def:uniqueness quantifier}}
 \]
 \Done
+
+\subsection{Unique witnesses and replacement}
+\begin{theorem}[Unique choice requires no choice axiom]
+Work in classical class theory with the comprehension instance for
+$\varphi(x,y)$, replacement, and ordinary set-pair coding. Suppose $A$
+is a set and
+\[
+\forall x\in A,\ \exists! (y\set),\ \varphi(x,y).
+\]
+Then there is a unique function $f$ with domain $A$, set values, and
+$\varphi(x,f(x))$ for every $x\in A$. Its graph and range are sets.
+\end{theorem}
+\Proof
+Comprehension forms the class relation
+\[
+R=\cc{(x,y)}{x\in A\land(y\set)\land\varphi(x,y)}.
+\]
+The hypothesis makes it functional with domain exactly $A$.
+Replacement applied to its set-valued outputs gives the set
+$B=\{y:\exists x\in A,\ \varphi(x,y)\}$.
+Apply replacement once more, now to the uniquely determined set pair
+$x\mapsto(x,y)$ with $\varphi(x,y)$. Its image is exactly the graph
+$R$, so the graph is a set without a further appeal to separation or
+a product-set construction. It is the required $f$. Any other function satisfying these
+conditions has the same output at every input by uniqueness of witnesses,
+and therefore has the same graph by extensionality. If $A$ is empty,
+the graph and range are both empty and the conclusion still holds.
+\Done
+
+The theorem separates two operations often both called ``choosing''.
+When every input has a unique output, comprehension and replacement
+collect already determined values. A choice axiom addresses a family of
+nonempty sets whose possible outputs need not be unique. Also, replacing
+``unique set witness'' above by ``unique class witness'' does not justify
+the set conclusion: a proper class cannot be a value in an ordinary
+set-coded graph. The singleton input with the prescribed value $\V$
+already demonstrates this size obstruction.
+
+\begin{lemma}[Inhabited semi-singletons]
+Assume the empty set and singleton sets exist. A class $S$ with at most one member is either
+empty or a singleton set. Consequently $S$ itself is a set.
+\end{lemma}
+\Proof
+If $S$ has no member, extensionality gives $S=\emptyclass$. Otherwise
+choose a witness $s\in S$; membership makes $s$ a set. At-most-one
+uniqueness implies that every member of $S$ equals $s$, while $s$ belongs
+to $S$. Thus $S=\{s\}$ by extensionality. The case split uses classical
+logic and a single existential witness, not a global choice function.
+\Done
+
 \input{END.tex}

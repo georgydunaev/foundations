@@ -1,4 +1,571 @@
-\def\topic{}
+\def\topic{Measure theory}
 \input{BEGIN.tex}
 \section{Measure theory}
+The functional-analytic applications require a specified measure space,
+not merely a collection called a sigma-algebra. The following conventions
+connect the earlier closure axioms with spaces of integrable functions.
+The Lebesgue integral is constructed below from nonnegative simple
+functions. Its convergence theorems then support the completeness,
+duality, and compactness arguments here and in the following chapter.
+
+\subsection{Carrier and measure}
+Fix a set $\Omega$ and a sigma-algebra $\mathcal{A}\subseteq\power\Omega$
+with $\Omega\in\mathcal{A}$. Thus the carrier is explicit; it also equals
+$\union\mathcal{A}$, in agreement with the earlier convention.
+A positive measure is a function
+\[
+\mu:\mathcal{A}\longrightarrow[0,+\infty]
+\]
+with $\mu(\emptyclass)=0$ and
+\[
+\mu\left(\bigcup_{n=1}^{\infty}A_n\right)
+ =\sum_{n=1}^{\infty}\mu(A_n)
+\]
+for every sequence of pairwise disjoint members of $\mathcal{A}$.
+The measure is finite when $\mu(\Omega)<\infty$.
+Finiteness is an additional hypothesis, not a consequence of the carrier
+being a set.
+
+A statement holds \emph{almost everywhere} if it fails only on a subset
+of a measurable set of measure zero. When the measure is not complete,
+that subset need not itself belong to $\mathcal{A}$. Measurability
+requirements must therefore still be stated separately.
+
+\subsection{Generating classes and uniqueness of finite measures}
+All families in this subsection are families of subsets of the same
+fixed set $\Omega$. A \emph{$\pi$-system} is a family closed under
+binary intersections; we permit the empty family. A \emph{Dynkin
+system}, or \emph{$\lambda$-system}, is a family $\mathcal D$ that
+contains $\Omega$, contains $\Omega\setminus A$ whenever it contains
+$A$, and contains the union of every countable pairwise disjoint
+sequence of its members. In particular $\emptyclass\in\mathcal D$.
+For nested $A\subseteq B$ in $\mathcal D$, it also contains
+\[
+B\setminus A
+=\Omega\setminus\bigl(A\cup(\Omega\setminus B)\bigr),
+\]
+since the two sets inside the union are disjoint. This recovers the
+nested-difference formulation used in the topology chapter; conversely,
+that formulation gives complements by taking $B=\Omega$.
+
+Write $\sigma(\mathcal P)$ for the smallest sigma-algebra on
+$\Omega$ containing a family $\mathcal P$, and $\lambda(\mathcal P)$
+for the smallest Dynkin system on $\Omega$ containing it. These are
+intersections of all the corresponding families containing
+$\mathcal P$. Such collections are nonempty, since $\power\Omega$
+belongs to them. The earlier intersection results apply, with the
+common carrier $\Omega$ present in every family.
+
+\begin{theorem}[Dynkin's $\pi$--$\lambda$ theorem]
+\label{thm:pi_lambda}
+If $\mathcal P$ is a $\pi$-system of subsets of $\Omega$, then
+$\lambda(\mathcal P)=\sigma(\mathcal P)$. Consequently, every
+Dynkin system containing $\mathcal P$ contains $\sigma(\mathcal P)$.
+\end{theorem}
+\Proof
+Put $\mathcal P_0=\mathcal P\cup\{\Omega\}$. This is still a
+$\pi$-system, even when $\mathcal P$ is empty, and adjoining
+$\Omega$ changes neither of the generated families. Let
+$\mathcal D=\lambda(\mathcal P_0)$. For any fixed $A\in\mathcal D$
+consider
+\[
+\mathcal D_A=\{B\in\mathcal D:A\cap B\in\mathcal D\}.
+\]
+This is a Dynkin system on $\Omega$. It contains $\Omega$ because
+$A\cap\Omega=A$. If $B\in\mathcal D_A$, then
+$\Omega\setminus B\in\mathcal D$ and
+\[
+A\cap(\Omega\setminus B)=A\setminus(A\cap B)\in\mathcal D
+\]
+by the nested-difference property. Thus it is closed under complements.
+If $B_n\in\mathcal D_A$ are pairwise disjoint, their union is in
+$\mathcal D$, and the sets $A\cap B_n$ are pairwise disjoint members
+of $\mathcal D$. Their union is $A\cap\bigcup_nB_n$, which belongs
+to $\mathcal D$. This proves the required disjoint-union closure.
+
+First take $A\in\mathcal P_0$. Closure of $\mathcal P_0$ under
+intersections gives $\mathcal P_0\subseteq\mathcal D_A$.
+Minimality of $\mathcal D$ then gives
+$\mathcal D\subseteq\mathcal D_A$. We have proved that
+$A\cap B\in\mathcal D$ whenever $A\in\mathcal P_0$ and
+$B\in\mathcal D$.
+
+Next fix an arbitrary $B\in\mathcal D$. The preceding conclusion
+and symmetry of intersection give
+$\mathcal P_0\subseteq\mathcal D_B$. Since $\mathcal D_B$ is a
+Dynkin system, minimality again gives
+$\mathcal D\subseteq\mathcal D_B$. Thus $\mathcal D$ is closed
+under intersections of any two of its members.
+
+Complements and intersections now give finite unions and differences.
+For any sequence $A_n\in\mathcal D$, the sets
+\[
+C_n=A_n\setminus\bigcup_{j<n}A_j
+\]
+belong to $\mathcal D$, are pairwise disjoint, and have union
+$\bigcup_nA_n$. Disjoint-union closure therefore gives arbitrary
+countable unions. Hence $\mathcal D$ is a sigma-algebra containing
+$\mathcal P$, so $\sigma(\mathcal P)\subseteq\mathcal D$.
+The reverse inclusion holds because every sigma-algebra is a Dynkin
+system. Equality and the final assertion follow.
+\Done
+
+\begin{theorem}[Uniqueness from a generating $\pi$-system]
+\label{thm:finite_measure_uniqueness}
+Let $\mu,\nu$ be finite positive measures on
+$(\Omega,\mathcal A)$ with $\mu(\Omega)=\nu(\Omega)$.
+If $\mathcal P\subseteq\mathcal A$ is a $\pi$-system with
+$\sigma(\mathcal P)=\mathcal A$ and
+$\mu(P)=\nu(P)$ for every $P\in\mathcal P$, then $\mu=\nu$.
+If $\Omega\in\mathcal P$, equality of the total masses is already
+part of the agreement assumption.
+\end{theorem}
+\Proof
+The agreement class
+\[
+\mathcal D=\{A\in\mathcal A:\mu(A)=\nu(A)\}
+\]
+contains $\Omega$ by the total-mass assumption. For $A\in\mathcal D$,
+finiteness permits subtraction and gives
+\[
+\mu(\Omega\setminus A)=\mu(\Omega)-\mu(A)
+=\nu(\Omega)-\nu(A)=\nu(\Omega\setminus A).
+\]
+For pairwise disjoint $A_n\in\mathcal D$, countable additivity gives
+\[
+\mu\left(\bigcup_nA_n\right)=\sum_n\mu(A_n)
+=\sum_n\nu(A_n)=\nu\left(\bigcup_nA_n\right).
+\]
+Thus $\mathcal D$ is a Dynkin system containing $\mathcal P$.
+The $\pi$--$\lambda$ theorem implies
+$\mathcal A=\sigma(\mathcal P)\subseteq\mathcal D$, proving equality
+on every measurable set. If $\mathcal P$ is empty, its generated
+sigma-algebra is $\{\emptyclass,\Omega\}$ and the same argument
+applies; when $\Omega$ is empty this family has just one member.
+\Done
+
+\begin{example}[An arbitrary generating family is insufficient]
+Take $\Omega=\{1,2,3,4\}$ and
+$A=\{1,2\}$, $B=\{1,3\}$. The family
+$\mathcal G=\{\Omega,A,B\}$ generates $\power\Omega$ as a
+sigma-algebra: its singleton atoms are
+$A\cap B$, $A\setminus B$, $B\setminus A$, and
+$\Omega\setminus(A\cup B)$. But $\mathcal G$ is not a
+$\pi$-system, since $A\cap B=\{1\}\notin\mathcal G$.
+Define probability measures on all subsets by
+\[
+\mu(C)=\tfrac12|C\cap\{1,4\}|,\qquad
+\nu(C)=\tfrac12|C\cap\{2,3\}|.
+\]
+The bars denote finite cardinalities. These finite sums of point masses are
+countably additive: a point belongs to at most one member of a
+pairwise disjoint sequence. Both measures give $\Omega$ mass one
+and give $A$ and $B$ mass $1/2$, but
+$\mu(\{1\})=1/2$ and $\nu(\{1\})=0$.
+Thus agreement on generators alone does not replace agreement on a
+generating intersection-closed family.
+\end{example}
+
+The uniqueness theorem lets probability laws be compared on a smaller
+class of testing sets, provided that class is a generating $\pi$-system.
+The proof used finite total masses when taking complements; no
+infinite-measure uniqueness assertion is being inferred from it.
+
+\subsection{Constructing the integral}
+The construction in this subsection works for every positive measure
+space; neither finite total measure nor completeness of the measure is
+assumed. All functions mentioned as integrands are measurable.
+
+\begin{lemma}[Continuity from below]
+If $A_n\subseteq A_{n+1}$ are measurable, then
+$\mu(\bigcup_nA_n)=\lim_n\mu(A_n)$, with infinity allowed.
+\end{lemma}
+\Proof
+Write the union as the disjoint union of $A_1$ and
+$A_{n+1}\setminus A_n$ for $n\geq1$. Countable additivity identifies its
+measure with the sum of their measures; the $n$th partial sum is exactly
+$\mu(A_n)$. No subtraction of infinite measures is involved.
+\Done
+
+\begin{lemma}[Continuity from above]
+\label{lem:measure_continuity_above}
+If measurable sets satisfy $A_{n+1}\subseteq A_n$ and
+$\mu(A_1)<\infty$, then
+\[
+\mu\Bigl(\bigcap_{n\geq1}A_n\Bigr)=\lim_{n\to\infty}\mu(A_n).
+\]
+\end{lemma}
+\Proof
+The sets $B_n=A_1\setminus A_n$ increase to
+$A_1\setminus\bigcap_n A_n$. Finite additivity and the finite measure
+of $A_1$ give $\mu(B_n)=\mu(A_1)-\mu(A_n)$; the same identity holds
+for their union and the complementary intersection. Apply continuity
+from below and subtract the resulting finite quantities from
+$\mu(A_1)$. This gives the stated limit without an expression of the
+form $\infty-\infty$.
+\Done
+
+The finiteness hypothesis cannot be omitted: with counting measure on
+$\mathbb N$, the decreasing tails $A_n=\{k:k\geq n\}$ all have
+infinite measure, whereas their intersection is empty. On a finite
+measure space the hypothesis is automatic, as used later when passing
+from almost-everywhere convergence to convergence in measure.
+
+For later use, countable subadditivity also follows from countable
+additivity. Given measurable $A_n$, replace them by the disjoint sets
+$B_n=A_n\setminus\bigcup_{k<n}A_k$, which have the same union.
+Monotonicity of measure follows from disjoint decomposition of an inclusion;
+thus $\mu(B_n)\leq\mu(A_n)$ and
+$\mu(\bigcup_nA_n)=\sum_n\mu(B_n)\leq\sum_n\mu(A_n)$.
+
+A nonnegative simple function is a measurable function with finitely many
+finite nonnegative values. For a disjoint measurable partition and
+$s=\sum_{j=1}^m a_j\mathbf1_{A_j}$, define
+\[
+\int s\,d\mu=\sum_{j=1}^m a_j\mu(A_j),\qquad 0\cdot\infty=0.
+\]
+A common refinement of two finite partitions proves independence of the
+representation, additivity, nonnegative homogeneity, and monotonicity for
+simple functions: on each cell these assertions are the corresponding
+scalar identities or inequalities. For $f:\Omega\to[0,\infty]$, put
+\[
+\int f\,d\mu=\sup\{\int s\,d\mu:0\leq s\leq f,
+\ s\text{ simple}\}.
+\]
+The zero function is admissible. Simple monotonicity shows that this
+extends the simple integral; the definition immediately gives monotonicity
+for arbitrary nonnegative integrands. Integrating over $A$ means integrating
+$f\mathbf1_A$, where its value off $A$ is defined to be zero even if
+$f$ takes the value infinity there.
+
+\begin{theorem}[Monotone convergence]
+\label{thm:monotone_convergence}
+If $0\leq f_n\uparrow f$ pointwise, then
+$\int f_n\,d\mu\uparrow\int f\,d\mu$.
+\end{theorem}
+\Proof
+Let $L=\sup_n\int f_n$. Monotonicity gives $L\leq\int f$.
+Fix a nonnegative simple $s\leq f$ and $0<c<1$. The measurable sets
+$E_n=\{f_n\geq cs\}$ increase to $\Omega$: at a point where $s>0$,
+the limiting value is at least $s>cs$, and where $s=0$ the inequality
+holds for every $n$. Since $cs\mathbf1_{E_n}\leq f_n$, simple
+monotonicity and the definition give
+\[
+L\geq c\int s\mathbf1_{E_n}\,d\mu.
+\]
+Apply continuity from below to the finitely many level sets of $s$
+intersected with $E_n$. It follows that
+$L\geq c\int s$. Let $c\uparrow1$ (the assertion is also valid if
+$\int s=\infty$), and then take the supremum over $s$. Thus
+$L\geq\int f$, proving equality.
+\Done
+
+Every nonnegative measurable $f$ admits an increasing simple approximation:
+round $\min(f,n)$ down to the nearest multiple of $2^{-n}$, treating
+$\min(\infty,n)=n$. These simple functions increase to $f$.
+For $f,g\geq0$, choose these approximations $s_n,t_n$. Then
+$s_n+t_n\uparrow f+g$, so simple additivity and monotone convergence give
+\[
+\int(f+g)\,d\mu=\int f\,d\mu+\int g\,d\mu.
+\]
+Likewise $\int cf=c\int f$ for $c\geq0$, with the same zero convention.
+All these expressions avoid an undefined difference $\infty-\infty$.
+Applying monotone convergence to partial sums also proves
+$\int\sum_n f_n=\sum_n\int f_n$ for nonnegative measurable $f_n$.
+
+\begin{lemma}[Null sets and finite integrals]
+For $f\geq0$, $\int f=0$ if and only if $f=0$ almost everywhere.
+If $\int f<\infty$, then $f<\infty$ almost everywhere. Nonnegative
+measurable functions equal almost everywhere have equal integrals.
+\end{lemma}
+\Proof
+For every $a>0$, comparison with $a\mathbf1_{\{f>a\}}$ gives
+$a\mu(\{f>a\})\leq\int f$. If the integral is zero, the measurable
+set $\{f>0\}=\bigcup_{n\geq1}\{f>1/n\}$ is null. Conversely, a
+simple function below $f$ has every positive level supported on that
+null set, hence has integral zero. If $\int f=C<\infty$, comparison
+with $m\mathbf1_{\{f=\infty\}}$ gives
+$\mu(\{f=\infty\})\leq C/m$ for every positive integer $m$, so this
+set is null. Finally, decompose each of two almost-everywhere equal
+functions into its restrictions to a measurable null exceptional set
+and its complement. The null-supported parts have integral zero and
+the other parts agree. Additivity proves equality of their integrals.
+All exceptional sets used here are measurable; no completion is needed.
+\Done
+
+\begin{theorem}[Fatou's lemma]
+\label{thm:fatou}
+For nonnegative measurable $f_n$,
+\[
+\int\liminf_n f_n\,d\mu\leq\liminf_n\int f_n\,d\mu.
+\]
+\end{theorem}
+\Proof
+The measurable functions $g_n=\inf_{k\geq n}f_k$ increase to the lower
+limit. For every $k\geq n$, monotonicity gives $\int g_n\leq\int f_k$,
+hence $\int g_n\leq\inf_{k\geq n}\int f_k$. Take increasing limits
+and apply monotone convergence to $g_n$.
+\Done
+
+For a real measurable $f$ with $\int|f|<\infty$, define
+$\int f=\int f^+-\int f^-$, where $f^+=\max(f,0)$ and
+$f^-=\max(-f,0)$. Both integrals are finite. This gives a linear
+integral on such functions. First, $|f+g|\leq|f|+|g|$ and the
+nonnegative additivity already proved show that $f+g$ is integrable.
+Additivity then follows by integrating
+\[
+f^++g^++(f+g)^-=f^-+g^-+(f+g)^+
+\]
+and rearranging finite quantities; homogeneity follows by positive scaling
+and interchange of positive and negative parts. Define the complex
+integral by real and imaginary parts. In either case,
+$|\int f|\leq\int|f|$: in the complex case choose a unit scalar making
+$\int f$ real nonnegative and use $\operatorname{Re}(\lambda f)\leq|f|$.
+The real case is the same estimate with a sign.
+
+\begin{theorem}[Dominated convergence in norm]
+\label{thm:dominated_convergence}
+Let $f_n,f$ be measurable real or complex functions, with $f_n\to f$
+almost everywhere and $|f_n|\leq g$ almost everywhere for some
+nonnegative $g$ with $\int g<\infty$. Then $f$ and every $f_n$ are
+integrable and
+\[
+\int|f_n-f|\,d\mu\longrightarrow0,
+\qquad \int f_n\,d\mu\longrightarrow\int f\,d\mu.
+\]
+\end{theorem}
+\Proof
+Remove one measurable null set containing the convergence exception,
+all the countably many domination exceptions, and $\{g=\infty\}$.
+Set all functions to zero there; the resulting functions remain measurable.
+The preceding null-invariance lemma applies first to their nonnegative
+absolute values. For the modified functions $|f|\leq g$ everywhere,
+so they are integrable; equality of the absolute-value integrals then
+proves integrability of the original functions as well. Positive and
+negative parts (or real and imaginary parts) show that their integrals
+are unchanged.
+Put $h_n=|f_n-f|$. Then $0\leq h_n\leq2g$ and $h_n\to0$.
+Fatou applied to $2g-h_n$ gives
+\[
+2\int g\leq\liminf_n\left(2\int g-\int h_n\right)
+=2\int g-\limsup_n\int h_n.
+\]
+All quantities subtracted are finite, so $\limsup_n\int h_n\leq0$.
+Nonnegativity proves convergence to zero. The integral inequality
+$|\int f_n-\int f|\leq\int h_n$ proves the final assertion.
+\Done
+
+\subsection{Functions and their almost-everywhere classes}
+With this integral, the real space
+$L^1(\mu)$ consists of equivalence classes of measurable functions
+$f:\Omega\to\mathbb{R}$ satisfying
+\[
+\int_\Omega |f|\,d\mu<\infty,
+\]
+where two functions represent the same element when they agree almost
+everywhere. Its norm is
+\[
+\|[f]\|_1=\int_\Omega |f|\,d\mu.
+\]
+The integral is unchanged by changing the representative on a null set.
+Point evaluation $[f]\mapsto f(\omega)$, however, generally is not
+well-defined on the quotient. This is a different issue from the book's
+choice of a default value for an unevaluated class expression.
+
+The complex version of $L^1$ uses complex measurable representatives
+and the same absolute-value norm; all the integral estimates remain valid.
+The scalar field is fixed when discussing either version as a vector space.
+
+The space $L^\infty(\mu)$ consists of essentially bounded measurable
+functions over that field, modulo the same equality almost everywhere.
+Its norm is
+\[
+\|[g]\|_\infty=\inf\{C\geq0:|g|\leq C\text{ almost everywhere}\}.
+\]
+The essential bound at this infimum is attained. If its value is $M$,
+then $|g|\leq M+1/n$ almost everywhere for each positive integer $n$:
+by the definition of infimum, some admissible bound is less than
+$M+1/n$. Remove the union of these countably many measurable null
+exceptional sets and let $n\to\infty$ to get $|g|\leq M$ there.
+This also proves that norm zero means the zero almost-everywhere class.
+Homogeneity and the triangle inequality follow by combining attained
+bounds off the union of the exceptional sets. Thus the expression is
+indeed a norm, independent of the representative; no completeness of
+the measure is required. For
+$g\in L^\infty(\mu)$ and $f\in L^1(\mu)$, the pairing
+\[
+\langle g,f\rangle=\int_\Omega gf\,d\mu
+\]
+is independent of representatives and satisfies
+$|\langle g,f\rangle|\leqslant\|g\|_\infty\|f\|_1$.
+It is this pairing, rather than pointwise evaluation, that enters the
+weak-convergence statements below. The following arguments derive
+completeness from the convergence theorems just proved.
+
+\subsection{Convergence and completeness}
+In this subsection we use Theorems~\ref{thm:monotone_convergence}
+and~\ref{thm:fatou}. These integral properties do not alter the earlier
+choices of class evaluation.
+A Banach space is a normed vector space complete for its norm metric.
+A Hilbert space is an inner-product space complete for the norm induced
+by its inner product.
+
+\begin{lemma}[Tail integrals and small sets]
+For $f\in L^1(\mu)$ on any positive measure space,
+\[
+\int_{\{|f|>M\}}|f|\,d\mu\longrightarrow0
+\quad(M\to\infty).
+\]
+Consequently, for every $\varepsilon>0$ there is $\delta>0$ such that
+$\mu(A)<\delta$ implies $\int_A|f|\,d\mu<\varepsilon$.
+\end{lemma}
+\Proof
+The functions $|f|\mathbf1_{\{|f|\leqslant m\}}$ increase pointwise
+to $|f|$ as the positive integers $m$ tend to infinity. Monotone
+convergence and finiteness of $\int|f|$ imply that their complementary
+tail integrals tend to zero. Monotonicity in the real parameter $M$
+gives the stated limit. Choose $M>0$ with tail integral less than
+$\varepsilon/2$, and put $\delta=\varepsilon/(2M)$. Splitting $A$
+into the regions $|f|\leqslant M$ and $|f|>M$ gives
+\[
+\int_A|f|\,d\mu\leqslant M\mu(A)
+ +\int_{\{|f|>M\}}|f|\,d\mu<\varepsilon.
+\]
+No finiteness assumption on $\mu(\Omega)$ enters this argument.
+\Done
+
+For $a>0$, the same integral comparison gives
+$a\mu(\{|f|>a\})\leqslant\|f\|_1$. This inequality will turn
+norm convergence into convergence in measure. Here convergence in
+measure means $\mu(\{|f_n-f|>a\})\to0$ for every $a>0$; on an
+infinite-measure space this is a global condition, not merely convergence
+on each finite-measure subset.
+
+\begin{lemma}[A subsequence converging almost everywhere]
+\label{lem:measure_subsequence}
+If measurable real functions $f_n$ converge in measure to a measurable
+real function $f$, then some subsequence converges to $f$ almost everywhere.
+The measure space need not have finite measure.
+\end{lemma}
+\Proof
+Choose increasing indices $n_k$ with
+$\mu(\{|f_{n_k}-f|>2^{-k}\})<2^{-k}$. If $E_k$ denotes this
+exceptional set, countable subadditivity gives
+\[
+\mu\left(\bigcap_{m\geqslant1}\bigcup_{k\geqslant m}E_k\right)
+\leqslant\sum_{k\geqslant m}2^{-k}
+\quad\text{for every }m.
+\]
+Thus the limsup of the $E_k$ is a measurable null set. Outside it,
+$|f_{n_k}-f|\leqslant2^{-k}$ eventually, which proves the assertion.
+\Done
+
+\begin{theorem}[Completeness of $L^1$]
+For any positive measure space, $L^1(\mu)$ is a Banach space.
+\end{theorem}
+\Proof
+Let $(f_n)$ be Cauchy in norm. Choose a subsequence $(f_{n_k})$ with
+$\|f_{n_{k+1}}-f_{n_k}\|_1\leqslant2^{-k}$, and choose measurable
+representatives. Monotone convergence applied to the partial sums gives
+\[
+\int_\Omega\sum_{k=1}^\infty
+ |f_{n_{k+1}}-f_{n_k}|\,d\mu\leqslant1.
+\]
+Consequently this series is finite outside a measurable null set.
+There the telescoping series defines a finite limit $f$; put $f=0$
+on the exceptional set. This gives a measurable function, even when
+the measure is not complete, since the exceptional set is measurable.
+The pointwise bound
+\[
+|f|\leqslant |f_{n_1}|+
+\sum_{k=1}^\infty|f_{n_{k+1}}-f_{n_k}|
+\quad\text{almost everywhere}
+\]
+shows that $f\in L^1$. Moreover,
+\[
+\|f-f_{n_j}\|_1\leqslant\sum_{k=j}^\infty2^{-k}\longrightarrow0.
+\]
+The Cauchy property and the triangle inequality now imply that the
+whole sequence converges to $f$ in norm.
+\Done
+
+\begin{theorem}[Completeness of $L^\infty$]
+For any positive measure space, $L^\infty(\mu)$ is a Banach space.
+\end{theorem}
+\Proof
+Given a norm-Cauchy sequence, choose a subsequence with successive
+norm distances at most $2^{-k}$. For measurable representatives,
+the bounds $|f_{n_{k+1}}-f_{n_k}|\leqslant2^{-k}$ and the essential
+bound for $f_{n_1}$ hold simultaneously off a measurable null set:
+only countably many exceptional sets have been removed. The telescoping
+series converges uniformly on that complement to a bounded function.
+Extending the limit by zero on the exceptional set gives a measurable,
+essentially bounded function $f$ with
+$\|f-f_{n_j}\|_\infty\leqslant\sum_{k\geqslant j}2^{-k}$.
+As before, the original Cauchy sequence has the same norm limit.
+\Done
+
+\subsection{The Hilbert space used by truncation}
+For the real or complex scalar field, define $L^2(\mu)$ to be the
+almost-everywhere classes of measurable functions with $\int|f|^2<\infty$.
+Put
+\[
+\langle f,g\rangle=\int f\overline g\,d\mu,
+\qquad \|f\|_2=\left(\int|f|^2\,d\mu\right)^{1/2}.
+\]
+Conjugation is omitted over the reals. The same measurable-null-set
+convention applies as for $L^1$.
+Here the angle brackets denote the $L^2$ inner product; over complex
+scalars it conjugates the second factor. The earlier $L^\infty$--$L^1$
+pairing $\int gf\,d\mu$ is bilinear and uses no conjugation.
+
+\begin{lemma}[Cauchy--Schwarz and the $L^2$ norm]
+The pairing is a well-defined inner product, linear in its first
+argument, and
+\[
+|\langle f,g\rangle|\leq\|f\|_2\|g\|_2,
+\qquad \|f+g\|_2\leq\|f\|_2+\|g\|_2.
+\]
+\end{lemma}
+\Proof
+The bound $2|f\overline g|\leq|f|^2+|g|^2$ proves integrability of
+the product. Linearity, conjugate symmetry, and independence of
+representatives follow from the integral. A nonnegative function has
+zero integral precisely when it is zero almost everywhere, so the
+pairing is positive definite on the quotient. If $\|g\|_2>0$, expand
+$0\leq\|f-cg\|_2^2$ with
+$c=\langle f,g\rangle/\|g\|_2^2$ to obtain Cauchy--Schwarz. If
+$\|g\|_2=0$, its equivalence class is zero and the result is immediate.
+Expanding $\|f+g\|_2^2$ and applying Cauchy--Schwarz gives the triangle
+inequality. Closure under sums follows already from
+$|f+g|^2\leq2|f|^2+2|g|^2$.
+\Done
+
+\begin{theorem}[Completeness of $L^2$]
+\label{thm:L2_complete}
+For any positive measure space, $L^2(\mu)$ is a Hilbert space.
+\end{theorem}
+\Proof
+For a Cauchy sequence choose a subsequence with differences
+$d_k=f_{n_{k+1}}-f_{n_k}$ satisfying $\|d_k\|_2\leq2^{-k}$,
+and choose measurable representatives. The triangle inequality gives
+\[
+\left\|\sum_{k=j}^N|d_k|\right\|_2
+\leq\sum_{k=j}^N2^{-k}.
+\]
+By monotone convergence applied to the squares, the measurable
+nonnegative function $H_j=\sum_{k=j}^\infty|d_k|$ satisfies
+\[
+\int H_j^2\,d\mu\leq\left(\sum_{k=j}^\infty2^{-k}\right)^2.
+\]
+In particular $H_1$ is finite outside a measurable null set. The
+corresponding telescoping series converges there to a finite measurable
+function $f$; define $f=0$ on the exceptional set.
+The bound $|f|\leq|f_{n_1}|+H_1$ almost everywhere proves $f\in L^2$.
+Also $|f-f_{n_j}|\leq H_j$ almost everywhere, hence
+$\|f-f_{n_j}\|_2\leq\sum_{k\geq j}2^{-k}\to0$.
+The Cauchy property supplies convergence of the whole sequence. No
+finiteness or completeness assumption on the measure is needed.
+\Done
+
 \input{END.tex}

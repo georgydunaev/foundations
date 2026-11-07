@@ -1,162 +1,324 @@
 \def\topic{Descriptors}
 \input{BEGIN.tex}
 \section{Descriptors}
-Note 1:\\
-Some things are undefined because of "plural" interpretation, some because of "nullar" interpretation. Only those which have "singular" interpretation are defined.\\
-Note 2:\\
-Technically almost everywhere where we use "defined" we mean well-defined, but write just "defined" for shortness.\\
-Note 3:\\
-If we explicitly assume the global choice, then epsilon operator may be assumed to be defined.\\
-If we didn't, epsilon operator is can still be defined, but not well--defined.\\
+\label{sec:descriptors}
 
-Now, let's talk about how to understand Hilbert's definition of quantifiers via predicate and epsilon operater: (note the two different epsilon operators!)
+This section explores descriptors whose values need not be determined
+uniquely by their defining predicates. Its local semantics distinguishes
+absence of a candidate, multiplicity of candidates, and a selected value.
+It also allows an uncertain truth value $U$. The purpose is to make those
+distinctions visible in notation, especially when a descriptor occurs inside
+a formula. The final subsection records a separate proposal for axioms of
+set-valued descriptors.
+
+\subsection{Existence, uniqueness, and selection}
+A predicate can have no satisfying objects (the \emph{nullary} case), exactly
+one (the \emph{singular} case), or several (the \emph{plural} case). These
+are properties of its possible witnesses. A choice interpretation adds a
+further ingredient: it selects one witness when candidates exist. Several
+possible witnesses therefore need not make a term ambiguous once a fixed
+choice interpretation has been supplied.
+
+The draft uses ``defined'' in places where ``well-defined under the chosen
+interpretation'' is intended. We will keep the distinction explicit:
+existence concerns whether a value is available; uniqueness concerns whether
+the predicate determines it; selection concerns which available value an
+interpretation chooses. Invoking choice requires specifying the collection
+on which it operates. In particular, a choice principle for sets does not by
+itself specify a selector for every predicate on arbitrary classes.
+
+\subsection{Three conventions for a default value}
+The superscript in $\tau^D$ describes the admissible default values when the
+predicate has no witness. It does not select among several actual witnesses.
+There are three conventions:
+\begin{enumerate}
+\item $\tau^\emptyclass$ supplies no default value. In the nullary case,
+  the value is absent; ``at most one'' must not be confused with existence.
+\item $\tau^{\{K\}}$ supplies a specified default $K$. The notation
+  $\tau^{\exists!}_K$ emphasizes that the default is uniquely specified.
+\item $\tau^\Un$ allows any class as a default, where $\Un$ is the
+  conglomerate of all classes. This convention leaves the default
+  undetermined until an interpretation selects it.
+\end{enumerate}
+Here the superscript is semantic notation for a collection of admissible
+values. If $K$ is a proper class, $\{K\}$ in this notation is not an
+object-theoretic singleton class containing $K$.
+
+Our conventions are:
+\begin{itemize}
+\item $\tau \ceq \tau^\Un$;
+\item $\epsilon \ceq \tau^{\exists!}_\emptyclass = \tau^{\{\emptyclass\}}$;
+\item $\varepsilon \ceq \tau^\emptyclass$.
+\end{itemize}
+The total $\epsilon$-operator uses the empty class when no witness exists;
+the partial $\varepsilon$-operator supplies no value in that case. The
+operators are intended here for definable conglomerates, namely collections
+of classes described by predicates in the chosen language. The precise
+language and the interpretation of choice are part of the local setting.
+
+\subsection{Quantifiers and total choice}
+The following notation separates existence from at-most-one uniqueness:
 \[
-((\varepsilon x:\varphi) \lunique) \IFF (! x:\varphi)
-\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+((\varepsilon x:\varphi) \lunique) \IFF (!x:\varphi),
+\qquad
+((\varepsilon x:\varphi) \lexists) \IFF (\exists x:\varphi).
 \]
-%:\IFF \varphi[(\epsilon x:\varphi)/x]
-%\]
+Here $!x:\varphi$ means that there is at most one witness, whereas
+$\exists!x:\varphi$ asserts both existence and uniqueness. The displayed
+conditions describe the witness collection; they are not claims that a
+partial term can be substituted without a definedness condition.
+
+With a fixed total choice interpretation, Hilbert-style quantifier clauses
+use the total operator $\epsilon$:
 \[
-((\varepsilon x:\varphi) \lexists) \IFF (\exists x:\varphi):\IFF \varphi[(\epsilon x:\varphi)/x]
+(\exists x:\varphi) :\IFF \varphi[(\epsilon x:\varphi)/x],
+\qquad
+(\forall x:\varphi) :\IFF \varphi[(\epsilon x:\neg\varphi)/x].
 \]
+Substitution is capture-avoiding. The existential clause selects a witness
+when one exists. The universal clause tests a selected counterexample when
+one exists; if there is none, every value satisfies $\varphi$, including the
+default. This explanation assumes a nonempty domain and ordinary two-valued
+predicates under the fixed selection. Extending these clauses to predicates
+that themselves take the value $U$ requires further semantic clauses.
+
+The corresponding notation for universal satisfaction is
 \[
-(\neg((\varepsilon x:\neg\varphi) \lexists)) \IFF (\forall x:\varphi):\IFF \varphi[(\epsilon x:\neg\varphi)/x]
+((\varepsilon x:\varphi) \lforall)
+:\IFF (\neg((\varepsilon x:\neg\varphi) \lexists)).
 \]
-If $(\varepsilon x:\varphi)$ is not well--defined for particular $\varpi$, then the whole predicate $\varphi[(\varepsilon x:\varphi)/x]$ is interpreted, in general, as an "uncertain".\\
-Therefore for such definition we need a well--defined(total) variant. (extended with some default value)
-\\
-Btw,
+If a partial descriptor has no determined value, substituting it into a
+predicate may instead produce the uncertain value $U$. In the strict
+connective convention considered here, any connective with an uncertain
+argument has uncertain output, including equivalence. Consequently, an
+object-language equivalence involving such terms cannot automatically serve
+as a two-valued metalinguistic definition. This is the reason to distinguish
+the total choice clauses from the partial-descriptor experiment.
+
+\subsection{A two-candidate example}
+Let $a$ and $b$ be distinct sets, and consider
 \[
-((\varepsilon x:\varphi) \lforall) :\IFF (\neg((\varepsilon x:\neg\varphi) \lexists)).
+c\ceq (\varepsilon x:\ x\in\{a,b\}).
 \]
-For all connectives, if there is a U value, then the otcome will also be U.\\
-Including equivalences!\\
-Therefore "definition" is working correctly, only in the case, when $(\varepsilon x:\varphi)$ is well--defined.\\
-We can distinguisch $\epsilon$ which is total, and $\varepsilon$ which is not defined on the empty predicates.\\
-Frankly speaking, since it assumes the uniqueness of the value, we need to talk about\\
+The predicate does not uniquely determine $c$. With a fixed choice
+interpretation, however, $c$ denotes one of the two witnesses, so
+\[
+(a=c)\lor(b=c)
+\]
+holds under that interpretation. Its individual disjuncts may vary when the
+choice interpretation varies. This distinguishes a statement about all
+permitted selections from a statement about one selected value.
 
-There are 3 natural ways of dealing with a default value of the choice.\\
-1) $\tau^\emptyclass$. Here no value is given. It is unique, but it doesn't exist.\\
-2) $\tau^{\exists!}$. Here one particular value is set as a default. It may even be specified: e.g. $\tau^{\exists!}_\emptyclass$, or $\tau^{\exists!}_\Un$ or, in general, $\tau^{\exists!}_K$, which is the same as even better: $\tau^{\{K\}}$.\\
-3) $\tau^\Un$. Here any class from the conglomerate of all classes $\Un$ value is a potential default value. It exists, but it isn't unique.\\
+The exploratory alternative is to leave $c$ unresolved, treating it as a
+descriptor with several candidates rather than as an already selected
+witness. Then the meanings of $a=c$, $a\simeq c$, and their disjunctions
+must be specified before those formulas can be evaluated. A strict
+uncertainty convention need not validate the same formulas as fixed choice.
+The original question can therefore be stated precisely: which laws of
+substitution and equality express membership among the candidates when no
+selection has been made?
 
+Introducing a new constant can keep the descriptor visible in the syntax,
+but does not by itself answer this semantic question. Likewise, replacing
+ordinary equality by $\simeq$ only helps after its interpretation has been
+given. These are open design questions for this local calculus, rather than
+counterexamples to the ordinary laws of fixed choice.
 
-Our convention:\\
-$\tau \ceq \tau^\Un$\\
-$\epsilon \ceq \tau^{\exists!}_\emptyclass = \tau^{\{\emptyclass\}}$\\
-$\varepsilon \ceq \tau^\emptyclass$\\
-In usual mathematics, usually either $\tau^{\exists!}$ or $\epsilon$ are used.\\
+\subsection{A finite selection model for comparison}
+The two-candidate example admits a precise model that keeps track of
+correlations between occurrences of a descriptor. This model is a comparison
+with the strict $U$ convention, not a replacement for it.
 
-%1) $t$ -- total choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
-%2) $\tau$ -- partial choice functional symbol ($\tau$, since it reminds both bourbaki notation and starting letter of the word "total");\\
+Let $\Omega=\{\omega_a,\omega_b\}$ be two permitted selections. Interpret
+$c$ as $a$ at $\omega_a$ and as $b$ at $\omega_b$, keeping the distinct
+parameters $a,b$ fixed. Evaluate formulas classically at each selection,
+and use the \emph{same} selection at every occurrence of $c$ in a formula.
+For a formula $\psi$, let
+\[
+[\psi]=\{\omega\in\Omega:\psi\text{ is true at }\omega\}.
+\]
+These brackets denote a set of selections, not an object-theoretic truth
+predicate for the whole language. Define a summary value by
+\[
+v(\psi)=
+\begin{cases}
+T,&[\psi]=\Omega,\\
+F,&[\psi]=\emptyclass,\\
+U,&\emptyclass\subsetneq[\psi]\subsetneq\Omega.
+\end{cases}
+\]
+Thus $U$ means variation among permitted classical selections; it does not
+mean failure of classical evaluation at any one selection.
 
-%2) $c$ -- choice functional symbol (it works also on proper classes. It is not a strict extension of usual global choice, since from global choice proper classes are bijective with classs of all sets, and it has an element, let's say the empty set. But, is it necessary to choose th choice fuction? I don't know.);\\
-%3) total $\epsilon$--operator, which returns empty set in case of definable everywhere false predicates is given as an argument;\\
-%4) partial $\varepsilon$--operator, which is undefined on everywhere false definable predicates.\\
+\begin{theorem}[Uncertainty summaries lose correlations]
+In this model, $v(a=c)=v(b=c)=U$, but
+\[
+v\bigl((a=c)\lor(b=c)\bigr)=T.
+\]
+There is no binary truth function on $\{T,F,U\}$ that computes the summary
+of every disjunction from the two summaries alone.
+\end{theorem}
+\Proof
+Put $p\equiv(a=c)$. Its truth set is $\{\omega_a\}$, while the truth
+set of $b=c$, equivalently $\neg p$ in this model, is $\{\omega_b\}$.
+Both summaries are $U$, and the union of their truth sets is $\Omega$.
+On the other hand, $p\lor p$ has the same truth set as $p$, so its summary
+is $U$. The same input pair $(U,U)$ would therefore require both outputs
+$T$ and $U$, which no truth function can provide.
+\Done
 
-Note 1: operators work only on definable conglomerates.\\
-Note 2: I think predicate is a little bit more general than the bounded formula since bounded formulas are corresponding to definable conglomerates.\\
- 
-For Hilbert's variant of the definition of quantifiers, it is handy to use \#3: the total $\epsilon$--operator.
- 
-%$\bdbvbH$
-%\symbol{216}
+The full truth sets do determine the connectives:
+\[
+[\neg\psi]=\Omega\setminus[\psi],\qquad
+[\psi\lor\chi]=[\psi]\cup[\chi],\qquad
+[\psi\land\chi]=[\psi]\cap[\chi].
+\]
+These equations follow by evaluating at an arbitrary selection. They make
+precise the information that is discarded when a truth set is replaced by
+one of the three labels. In particular, $c=c$ is true at every selection,
+even though $c$ has two candidates. Treating its two occurrences as
+independent choices would describe a different experiment.
 
-%$\symbol{208}$
-%qqqq
+The strict convention introduced earlier instead propagates $U$ through
+every connective. It can therefore assign $U$ to the displayed disjunction.
+The two answers express different meanings of uncertainty: strict propagation
+from an unresolved term, versus invariance across complete selections.
+A calculus should say which meaning it implements before adopting either
+set of laws.
 
-%$\uncert$
-%ggggg
+\subsection{Substitution must transport the selections}
+The shared-selection interpretation distinguishes truth throughout one
+specified experiment from logical validity under all assignments.
+This distinction matters when a rule permits substitution. The following
+result does not require finitely many selections: $\Omega$ is a supplied
+set of complete assignments. It does not assert that every family of
+nonempty candidate sets admits a complete selection, and thus does not
+introduce a hidden choice principle.
 
-================
+\begin{theorem}[Transport of truth sets under substitution]
+Work with a classical first-order structure whose terms have total values,
+and let $\Omega$ be a nonempty set of assignments. For a finite,
+sort-correct, capture-avoiding simultaneous substitution $\sigma$, define
+\[
+F_\sigma(v)(x)=\llbracket x\sigma\rrbracket_v\quad(v\in\Omega),
+\qquad \Omega_\sigma=F_\sigma[\Omega].
+\]
+Here $F_\sigma$ has domain $\Omega$ and codomain $\Omega_\sigma$;
+the inverse image below is taken for this restricted map. Writing
+$[\phi]_S$ for the assignments in $S$ satisfying $\phi$,
+\[
+[\phi\sigma]_\Omega
+ =F_\sigma^{-1}\bigl([\phi]_{\Omega_\sigma}\bigr).
+\]
+In particular, $\phi\sigma$ holds throughout $\Omega$ exactly when
+$\phi$ holds throughout $\Omega_\sigma$. If
+$\Omega_\sigma\subseteq\Omega$, truth throughout $\Omega$ is preserved
+by this substitution.
+\end{theorem}
+\Proof
+The ordinary substitution lemma gives
+$v\models\phi\sigma$ if and only if $F_\sigma(v)\models\phi$.
+This proves the inverse-image equality. Every member of $\Omega_\sigma$
+has a preimage by its definition, so universal truth on the two sides is
+equivalent. The inclusion in the last claim lets truth on $\Omega$ be
+restricted to $\Omega_\sigma$.
+\Done
 
+\begin{example}[Universal truth in an experiment is not substitution validity]
+Let $D=\{0,1\}$, and let $\Omega$ consist of assignments in which
+$x=y$, allowing both common values. Then $x=y$ is true throughout
+$\Omega$. Substituting the constants $0$ and $1$ for $x$ and $y$
+produces $0=1$, which is false throughout $\Omega$. The transported
+assignments have $x=0,y=1$ and lie outside $\Omega$.
+There is no conflict with classical substitution of valid formulas:
+$x=y$ was valid only on this restricted experiment, not on all assignments.
+\end{example}
 
-Recall:\\
-1) The term $(\varepsilon x: x \in \{a,b\})$ is not unique.\\
-2) The formula $a=(\varepsilon x: x \in \{a,b\})$ is not stable under differen assignment.\\
-3) Something of the following gives impression of something that should be true:
-$(a=(\varepsilon x: x \in \{a,b\}))\lor(b=(\varepsilon x: x \in \{a,b\}))$(bad)\\
-$z=(\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
-$z\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=z)\lor(b=z)$(bad)\\
-$t\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
-$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a=t)\lor(b=t)$(bad)\\
-$t:\simeq (\varepsilon x: x \in \{a,b\}) \implies (a\simeq t)\lor(b\simeq t)$(bad)\\
-We need to determine what is valid and what is not.\\
-Resolution:\\
-We should not use variables for definitions, because definitions are not always well--defined. And variables are always well--defined.\\
-We must use new constants instead.\\
-It is a more delicate mechanism than just the use of quasi--equality(as in W.Farmer's article).\\
-So we have a constant $c\ceq (\varepsilon x,\ x \in \{a,b\})$.
-But still $(a\simeq c)\lor(b\simeq c)$ is false.
-Maybe $(\exists q\in\{a,b\}:c=q)$? No.(YES or NO? i'm not sure)
+\begin{proposition}[Marginal equality does not justify correlated replacement]
+Equality of the candidate sets of two terms need not permit substitution
+of one for the other in shared-selection formulas.
+\end{proposition}
+\Proof
+On $\Omega=\{\omega_0,\omega_1\}$, take $c(\omega_i)=i$ and
+$d(\omega_i)=1-i$. Both terms have candidate set $\{0,1\}$.
+Nevertheless, the context $z=c$ is true everywhere after substituting
+$c$ for $z$, and false everywhere after substituting $d$ for $z$.
+Their marginal sets agree, but their joint values with $c$ do not.
+\Done
 
+This does not invalidate equality of candidate sets in the alternative
+powerset-domain model: there a candidate set is itself the semantic object,
+and no further selection correlation is retained. In a shared-selection
+model, the sufficient replacement condition is pointwise agreement
+$s(v)=t(v)$ at every admitted assignment (together with the ordinary
+binder freshness conditions). Equality of their ranges is weaker.
 
+\subsection{Proposed axioms for set-valued descriptors}
+This subsection uses descriptors restricted to set witnesses. Read the
+following formulas as proposed local axiom schemes. The notation
+$\ldefined$ concerns the descriptor's value; the earlier strict propagation
+rule for $U$ does not supply a semantics for these schemes on its own.
 
-\subsection{Descriptors NEW}
-\begin{axiom}
+\begin{axiom}[Choice of an existing set witness]
 \[
 \exists (x\set):\varphi
 \implies
 (\varepsilon (x\set): \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
-\begin{axiom}
-
+\begin{axiom}[Existence required for partial choice]
 \[
 (\varepsilon (x\set): \varphi) \ldefined
 \implies
 \exists (x\set):\varphi
 \]
 \end{axiom}
-
-\begin{axiom}
+\begin{axiom}[Description of a unique set witness]
 \[
 (\exists! (x\set):\varphi)
 \implies
 (\iota (x\set): \varphi) \in \cc{x}{\varphi}
 \]
 \end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \cc{x}{\varphi}
+\begin{axiom}[Uniqueness required for description]
 \[
 (\iota (x\set): \varphi) \ldefined
 \implies
 \exists! (x\set):\varphi
 \]
 \end{axiom}
-qqqqqqqqqqqq
-\begin{axiom}
+
+A related encoding represents an unsuccessful description by a proper-class
+default, so that sethood can detect success. Under that additional convention
+one proposes
 \[
 (\iota (x\set): \varphi) \ldefined
 \iff
-(\iota (x\set): \varphi) \set
+(\iota (x\set): \varphi) \set.
 \]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \cc{x}{\varphi}
+This is an encoding of definedness for set-valued descriptions, not a claim
+that proper classes are intrinsically undefined.
+
+The intended combined specification is
 \[
 (\iota (x\set): \varphi) \ldefined
 \iff
-\exists! (x\set):\varphi
+\exists! (x\set):\varphi,
 \]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \cc{x}{\varphi}
+with the witness property
 \[
 (\iota (x\set): \varphi) \ldefined
 \implies
-(\iota (x\set): \varphi)  \in \cc{x}{\varphi}
+(\iota (x\set): \varphi) \in \cc{x}{\varphi}.
 \]
-\end{axiom}
-\begin{axiom}
-%(\iota x: \varphi) \in \cc{x}{\varphi}
+For example, if $x$ is a set satisfying $\varphi$ and there is at most one set
+witness, the description is defined:
 \[
-\varphi\land (!x:\varphi)
+(x\set)\land\varphi\land (!(x\set):\varphi)
 \implies
-(\iota (x\set): \varphi) \ldefined
+(\iota (x\set): \varphi) \ldefined.
 \]
-\end{axiom}
-
-
+The free occurrence of $x$ in the premise supplies existence. The sethood
+condition makes explicit the witness domain used by this subsection.
 
 \input{END.tex}
