@@ -1,6 +1,14 @@
 # Obelisk: remove the circular ordinal-comparison proof dependency
 
-Status: proposed source-level proof repair; website files unchanged.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:41:00Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `set_theory_prover/program/ordinal_theorems.ML`, `set_theory_prover/tests/test_ordinal_theorems.py`, `set_theory_prover/formal/ORDINAL_THEOREMS_PROOFS.md`, and `obeliskproofassistant.github.io/docs/ORDINAL_THEOREMS_PROOFS.md`.
 
 ## Evidence
 

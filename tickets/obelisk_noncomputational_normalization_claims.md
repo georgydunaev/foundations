@@ -1,7 +1,14 @@
 # Obelisk: separate non-computational semantics from normalization and checking
 
-Status: open; preserve the verification-only architecture and correct its
-mathematical justification.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:45:00Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `docs/COMPILER_SEMANTICS_NON_COMPUTATIONAL.md` and `docs/QUOTATION_AND_ANTIQUOTATION_IN_OBELISK.md` across both `set_theory_prover` and `obeliskproofassistant.github.io`.
 
 Read-only evidence checkout: `/home/gdunaev/obeliskproofassistant.github.io`,
 commit `bb346f112ae91d1649940068c7f210a53b8674bf`.

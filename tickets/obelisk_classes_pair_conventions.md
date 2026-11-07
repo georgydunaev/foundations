@@ -1,6 +1,14 @@
 # Distinguish recursive, marker-tagged, and Kuratowski pair conventions
 
-Status: upstream notation/context correction requested; no website files edited.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:48:00Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `obeliskproofassistant.github.io/docs/axioms/45_tagged_pairs.md`, `set_theory_prover/program/symbol_pages.ML`, and regenerated `obeliskproofassistant.github.io/generated/symbols/*.html`.
 
 Compared on 2026-11-07 against the read-only checkout at
 `/home/gdunaev/obeliskproofassistant.github.io`.

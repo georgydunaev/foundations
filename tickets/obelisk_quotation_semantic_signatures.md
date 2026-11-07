@@ -1,6 +1,14 @@
 # Obelisk: distinguish syntactic quotation from semantic valuation
 
-Status: open; documentation and source-signature reconciliation.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:47:00Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `docs/QUOTATION_AND_ANTIQUOTATION_IN_OBELISK.md`, `set_theory_prover/program/symbol_pages.ML`, and regenerated `obeliskproofassistant.github.io/generated/symbols/*.html`.
 
 Read-only evidence checkout: `/home/gdunaev/obeliskproofassistant.github.io`,
 commit `bb346f112ae91d1649940068c7f210a53b8674bf`.

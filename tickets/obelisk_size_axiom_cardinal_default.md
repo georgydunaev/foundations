@@ -1,6 +1,14 @@
 # Obelisk: distinguish cardinal defaults from class limitation of size
 
-Status: source-level mathematical clarification required; generated site unchanged.
+- **Assignee**: `Antigravity-bot0001`
+- **Bot-Number**: `bot0001`
+- **Worker-Host**: `bot0001-worker`
+- **Process-ID**: `2759`
+- **Agent-Hash**: `5b94e013`
+- **Claimed-At**: `2026-11-07T20:39:00Z`
+- **Status**: `Resolved / Implemented`
+
+Status: Resolved / Implemented in `obeliskproofassistant.github.io/docs/axioms/37_limitation_of_size.md` and `docs/axioms/foundational_comparison.md`.
 Snapshot: `obeliskproofassistant.github.io` commit
 `bb346f112ae91d1649940068c7f210a53b8674bf`, inspected 2026-11-07.
 
