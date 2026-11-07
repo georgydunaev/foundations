@@ -1,0 +1,293 @@
+\def\topic{Dynamically defined Schrodinger kernels}
+\input{BEGIN.tex}
+\section{Dynamically defined Schrodinger kernels}
+\label{sec:dynamical_schrodinger}
+We address the parameter-regularity question for a compact dynamical
+system. The argument gives a quantitative Lipschitz estimate under the
+stated linear growth bound for the action. It is a proof under these
+hypotheses, not a claim that the result is new in the literature.
+
+\subsection{The hypotheses and translation convention}
+Let $(Z,d_Z)$ be a nonempty compact metric space, and let
+$T:\mathbb R^d\times Z\to Z$ be a continuous action:
+\[
+T(0,z)=z,\qquad T(g,T(h,z))=T(g+h,z).
+\]
+Assume that a constant $C\geq0$ satisfies
+\[
+d_Z(T(g,z),T(g,w))\leq C(1+|g|)d_Z(z,w).
+\tag{D}\label{eq:dynamic_action_bound}
+\]
+Let $v:Z\to\mathbb R$ have Lipschitz constant $L$, and put
+$M=\|v\|_\infty<\infty$. Define
+\[
+V_z(g)=v(T(g,z)),\qquad H_z=H_0+V_z,\qquad
+H_0=-\sum_{j=1}^d\partial_j^2.
+\]
+Each $V_z$ is continuous and bounded by $M$. Write
+$K_z(t,g,h)=k_{V_z}(t,g,h)$ for its continuous kernel and set
+\[
+k_t(z,r)=K_z(t,0,r),\qquad t>0.
+\]
+The actual potential difference is bounded by $2M$ and also satisfies
+\[
+|V_z(u)-V_w(u)|\leq LC(1+|u|)d_Z(z,w).
+\tag{P}\label{eq:dynamic_potential_difference}
+\]
+The latter bound grows in $u$; it will be integrated against a Gaussian,
+not used as a uniform bound for a multiplication operator.
+
+\begin{proposition}[Pointwise covariance]
+\label{prop:dynamic_covariance}
+For $t>0$ and $g,h\in\mathbb R^d$,
+\[
+K_z(t,g,h)=k_t(T(g,z),h-g).
+\tag{C}\label{eq:dynamic_covariance}
+\]
+Consequently, for every $\psi\in L^2(\mathbb R^d)$,
+\[
+(e^{-tH_z}\psi)(g)
+ =\int_{\mathbb R^d}k_t(T(g,z),h-g)\psi(h)\,dh,
+\]
+where the left side denotes the continuous representative constructed
+in Theorem~\ref{thm:bounded_schrodinger_kernel}.
+\end{proposition}
+\Proof
+The action law gives $V_{T(g,z)}(u)=V_z(u+g)$. Translation invariance
+of the Gaussian and a change of variable in each Dyson integral give,
+by induction on its order,
+\[
+k_n^{V_{T(g,z)}}(t,a,b)=k_n^{V_z}(t,a+g,b+g).
+\]
+Summing the absolutely convergent series and taking $a=0$, $b=h-g$
+proves the pointwise identity. The integral against $\psi$ converges
+absolutely by the Gaussian bound and Cauchy--Schwarz; the kernel theorem
+identifies it with the stated continuous representative.
+\Done
+
+The sign is fixed by the potential convention. If instead
+$\widetilde V_z(g)=v(T(-g,z))$, the same proof gives
+\[
+(e^{-t\widetilde H_z}\psi)(g)
+ =\int_{\mathbb R^d}\widetilde k_t(T(-g,z),h-g)\psi(h)\,dh.
+\]
+Thus the minus sign in the proposed thesis formula requires this latter
+potential convention. Keeping $V_z(g)=v(T(g,z))$ requires the plus sign.
+All estimates below hold in either convention, since the action bound
+also applies to $-g$.
+
+\subsection{A pointwise Duhamel comparison}
+\begin{lemma}[Comparison of continuous kernel representatives]
+\label{lem:kernel_duhamel_comparison}
+Let $V,W$ be real bounded measurable potentials with norms at most $M$.
+At every $t>0$ and every $x,y\in\mathbb R^d$,
+\[
+\begin{split}
+k_V(t,x,y)-k_W(t,x,y)
+=-\int_0^t\int_{\mathbb R^d}
+ &k_V(t-s,x,u)[V(u)-W(u)]\\[-2pt]
+ &\hspace{12mm}\cdot k_W(s,u,y)\,du\,ds.
+\end{split}
+\tag{DK}\label{eq:kernel_duhamel_comparison}
+\]
+The integral is absolutely convergent and jointly continuous in $t,x,y$.
+\end{lemma}
+\Proof
+The two operators have common domain $D(H_0)$. Differentiating
+$e^{-(t-s)(H_0+V)}e^{-s(H_0+W)}f$ there, as in
+Lemma~\ref{lem:schrodinger_duhamel}, and then extending by density gives
+\[
+e^{-t(H_0+V)}-e^{-t(H_0+W)}
+=-\int_0^t e^{-(t-s)(H_0+V)}(V-W)e^{-s(H_0+W)}\,ds.
+\]
+This is initially a strong operator identity. Gaussian convolution
+bounds the absolute spatial integral of its proposed kernel by
+$e^{Mt}\|V-W\|_\infty p_t(x-y)$, independently of $s$.
+The double integral is therefore absolutely convergent and bounded by
+$t e^{Mt}\|V-W\|_\infty p_t(x-y)$.
+
+We check continuity before evaluating at a particular point such as
+$x=0$. Put $s=t\theta$ and first retain
+$\varepsilon\leq\theta\leq1-\varepsilon$. On compact parameter sets
+with $t$ bounded away from zero, both kernels are continuous and the
+integrand has an integrable Gaussian envelope in $u$. Dominated
+convergence gives continuity of the truncated integral. The omitted
+intervals contribute at most
+\[
+2\varepsilon t e^{Mt}\|V-W\|_\infty p_t(x-y),
+\]
+uniformly on these compact sets. The full integral is continuous.
+Fubini against bounded compactly supported test functions identifies
+its operator with the strong Duhamel integral. Continuous-kernel
+uniqueness now proves the formula everywhere, not just almost everywhere.
+\Done
+
+\subsection{The Gaussian moment controlling parameter regularity}
+\begin{lemma}[Weighted Gaussian convolution]
+\label{lem:gaussian_bridge_moment}
+For $0<s<t$ and $r\in\mathbb R^d$,
+\[
+\begin{split}
+\int_{\mathbb R^d}(1+|u|)p_{t-s}(u)p_s(r-u)\,du
+\leq p_t(r)\left(1+\frac{t-s}{t}|r|
+                     +\sqrt{\frac{2d s(t-s)}{t}}\right).
+\end{split}
+\]
+Consequently, with $c_d=\pi\sqrt{2d}/8$,
+\[
+\int_0^t\int_{\mathbb R^d}(1+|u|)p_{t-s}(u)p_s(r-u)\,du\,ds
+\leq p_t(r)\left[t\left(1+\frac{|r|}{2}\right)+c_dt^{3/2}\right].
+\]
+\end{lemma}
+\Proof
+Completing the square gives
+\[
+p_{t-s}(u)p_s(r-u)=p_t(r)p_a(u-m),\qquad
+a=\frac{s(t-s)}t,\quad m=\frac{t-s}t r.
+\]
+The density $p_a$ has mass one and second moment
+$\int |q|^2p_a(q)\,dq=2da$, by one-dimensional Gaussian integration
+in each coordinate. The triangle inequality and Cauchy--Schwarz give
+\[
+\int |u|p_a(u-m)\,du\leq |m|+\sqrt{2da}.
+\]
+This proves the first estimate. The mean term integrates to $t|r|/2$,
+and the square-root term integrates to
+\[
+\sqrt{2d}\,t^{3/2}\int_0^1\sqrt{\theta(1-\theta)}\,d\theta
+=\frac{\pi\sqrt{2d}}8t^{3/2}.
+\]
+Indeed, $\theta=(1+q)/2$ makes the integral one quarter of the area
+under the upper unit semicircle, namely $\pi/8$. Adding the integral
+$t$ of the constant term proves the result.
+\Done
+
+\begin{theorem}[Lipschitz dependence on the dynamical parameter]
+\label{thm:dynamic_kernel_lipschitz}
+Under \eqref{eq:dynamic_action_bound}, the canonical kernel satisfies
+\[
+\begin{split}
+|k_t(z,r)-k_t(w,r)|\leq{}&
+ LC e^{Mt}d_Z(z,w)p_t(r)\\
+&\cdot\left[t\left(1+\frac{|r|}{2}\right)+c_dt^{3/2}\right],
+\qquad c_d=\frac{\pi\sqrt{2d}}8.
+\end{split}
+\tag{L}\label{eq:dynamic_kernel_lipschitz}
+\]
+It is jointly continuous on $(0,\infty)\times Z\times\mathbb R^d$.
+\end{theorem}
+\Proof
+Apply Lemma~\ref{lem:kernel_duhamel_comparison} to $V_z,V_w$ at
+$x=0,y=r$. Their actual difference is bounded, so that lemma applies.
+In its absolute integrand use the sharper bound
+\eqref{eq:dynamic_potential_difference} and both Gaussian kernel bounds.
+The result is at most
+\[
+LC e^{Mt}d_Z(z,w)
+\int_0^t\int(1+|u|)p_{t-s}(u)p_s(r-u)\,du\,ds.
+\]
+Lemma~\ref{lem:gaussian_bridge_moment} proves the estimate. Its coefficient
+is bounded on compact positive time intervals and bounded sets of $r$.
+For fixed $z$, continuity in $t,r$ is already proved. At a converging
+triple $(t,z,r)$, insert and subtract $k_t(z_0,r)$; this locally uniform
+Lipschitz bound and continuity for fixed $z_0$ prove joint continuity.
+\Done
+
+\subsection{Exponential decay and weighted norms}
+For $a\geq0$, let $C_a(\mathbb R^d)$ consist of continuous functions $f$
+such that $e^{a|r|}f(r)$ tends to zero as $|r|\to\infty$, with norm
+\[
+\|f\|_a=\sup_{r\in\mathbb R^d}e^{a|r|}|f(r)|.
+\]
+Multiplication by $e^{a|r|}$ identifies this with the Banach space
+$C_0(\mathbb R^d)$. Completeness follows because uniform limits preserve
+continuity and vanishing at infinity.
+
+\begin{corollary}[Weighted decay and Lipschitz bounds]
+\label{cor:dynamic_weighted_lipschitz}
+For every $t>0$ and $a\geq0$, the map $z\mapsto k_t(z,\cdot)$ takes
+values in $C_a$ and is Lipschitz. More precisely,
+\[
+\|k_t(z,\cdot)\|_a\leq(4\pi t)^{-d/2}e^{(M+a^2)t},
+\]
+and
+\[
+\begin{split}
+\|k_t(z,\cdot)-k_t(w,\cdot)\|_a
+\leq{}&LC(4\pi t)^{-d/2}e^{(M+2a^2)t}\\
+&\cdot\left[t+(c_d+e^{-1/2})t^{3/2}\right]d_Z(z,w).
+\end{split}
+\]
+The map $(t,z)\mapsto k_t(z,\cdot)$ is continuous into $C_a$ for $t>0$.
+The Lipschitz constants are uniform on every $[\tau,b]$ with
+$0<\tau\leq b<\infty$.
+\end{corollary}
+\Proof
+The Gaussian bound gives weighted decay. Completing the square gives
+$a\rho-\rho^2/(4t)\leq a^2t$, proving the first norm bound. For the
+second use
+\[
+a\rho-\frac{\rho^2}{4t}\leq2a^2t-\frac{\rho^2}{8t},
+\qquad \sup_{\rho\geq0}\rho e^{-\rho^2/(8t)}=2\sqrt{t/e},
+\]
+in \eqref{eq:dynamic_kernel_lipschitz}, and take the supremum.
+
+On $[\tau,b]$ there is the uniform weighted tail bound
+\[
+e^{a|r|}|k_t(z,r)|
+\leq e^{Mb}(4\pi\tau)^{-d/2}
+       \exp\left(a|r|-\frac{|r|^2}{4b}\right).
+\]
+It tends to zero uniformly in $t,z$ outside large balls. On a fixed
+compact ball, joint continuity is uniform on $[\tau,b]\times Z$ by
+compactness. Splitting the norm into this ball and its complement proves
+norm continuity. The Lipschitz coefficient is bounded on $[\tau,b]$.
+\Done
+
+The requested exponential decay therefore holds for every fixed
+exponential rate, with Lipschitz parameter dependence in that weighted
+norm. There is no continuity at $t=0$ in these norms:
+$k_t(z,0)\geq e^{-Mt}(4\pi t)^{-d/2}$ diverges as $t\downarrow0$.
+Nor does this establish operator-norm Lipschitz dependence on $z$ on
+all of $L^2$: the covariant formula uses $T(g,z)$, whose distortion
+need not be bounded uniformly in $g$.
+
+\subsection{Symmetry and the covariant semigroup law}
+For $s,t>0$, the canonical kernels satisfy
+\[
+k_t(z,r)=k_t(T(r,z),-r),\qquad
+k_{t+s}(z,r)=\int_{\mathbb R^d}
+             k_t(z,u)k_s(T(u,z),r-u)\,du.
+\]
+Symmetry of $K_z(t,0,r)$ and covariance at $(r,0)$ prove the first
+identity. The pointwise composition law at $(0,r)$ and covariance
+of its second factor prove the second. Gaussian convolution gives
+absolute convergence. In the negative-action convention replace
+$T(u,z)$ by $T(-u,z)$ throughout these identities.
+
+\subsection{A counterexample to mixing translation signs}
+For bounded $V$ continuous at $g$, its Dyson expansion gives
+\[
+\frac{k_V(t,g,g)}{p_t(0)}=1-tV(g)+o(t).
+\tag{S}\label{eq:kernel_short_time_diagonal}
+\]
+Here are the details needed for this use of a short-time expansion.
+After division by $p_t(0)$, terms of order at least two are bounded by
+$e^{Mt}-1-Mt=O(t^2)$. The first-order term divided by $t p_t(0)$ is
+the negative average of $V$ against Gaussians centered at $g$ with
+covariance $2t\theta(1-\theta)I$, integrated over $0<\theta<1$.
+For each such $\theta$, scaling to a fixed Gaussian and bounded
+convergence give the limit $V(g)$. Bounded convergence in $\theta$
+then proves the displayed expansion.
+
+Take $d=1$, $Z=\mathbb R/(2\pi\mathbb Z)$ with its circle metric,
+$T(g,z)=z+g$, and $v(z)=\cos z$. The action is isometric, so it
+satisfies \eqref{eq:dynamic_action_bound} with $C=1$, and $v$ is
+Lipschitz. At $z=g=\pi/4$, one has $V_z(g)=0$.
+The incorrect negative-action formula for this same potential would
+equate $K_z(t,g,g)$ with $k_t(T(-g,z),0)$, whose local potential
+at zero is $v(0)=1$. Their first-order coefficients in
+\eqref{eq:kernel_short_time_diagonal} disagree. The obstruction is
+mixing two conventions; either consistently defined family is valid.
+\input{END.tex}
+

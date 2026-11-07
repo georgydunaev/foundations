@@ -1,0 +1,200 @@
+\def\topic{Continuous integral kernels}
+\input{BEGIN.tex}
+\section{A criterion for separately continuous kernels}
+\label{sec:continuous_kernel_criterion}
+The criterion below proves a locally finite Radon-measure version of
+Simon's Theorem~A.1.3 \cite{Simon1982Semigroups}, with boundedness of
+the kernel explicit. The source uses Baire measures, asks for a
+norm-continuous and weakly continuous extension, and imposes full
+support for uniqueness. We retain the existence criterion without
+full support, and state precisely where support is needed. Its
+conclusion is separate continuity, not joint continuity. We give the
+proof, including the dual-pair argument needed on a noncompact space.
+
+\subsection{Measures, representatives, and the dual pair}
+Let $X$ be a nonempty separable locally compact metric space, and let
+$\nu$ be a positive locally finite Radon measure on $X$. Write
+$C_b(X)$ for the complex bounded continuous functions, with supremum
+norm, and $\mathcal M(X)$ for the finite complex Radon measures, with
+total variation norm. A function $f\in L^1(X,\nu)$ determines the
+measure $f\nu\in\mathcal M(X)$, with
+$\|f\nu\|_{\mathrm{TV}}=\|f\|_1$. Local compactness and separability
+make $X$ a countable union of compact sets; in particular $\nu$ is
+$\sigma$-finite. Integrable densities define finite Radon measures
+(the usual approximation by bounded densities on compact sets proves
+inner regularity). All measures below are on the Borel sets. In this
+metric setting the Baire and Borel sigma algebras coincide: each closed
+set is the zero set of its continuous distance function.
+
+Use the bilinear pairing
+\[
+\langle\mu,g\rangle=\int_X g\,d\mu,
+\qquad \mu\in\mathcal M(X),\quad g\in C_b(X).
+\]
+Here $\sigma(\mathcal M,C_b)$ means convergence against every fixed
+$g\in C_b$, and $\sigma(C_b,\mathcal M)$ means convergence against
+every fixed $\mu\in\mathcal M$. These definitions apply to nets,
+not only to sequences. They specify a dual pair; they do not identify
+$\mathcal M(X)$ with the full Banach dual of $C_b(X)$, an identification
+that is generally false on a noncompact space.
+
+Let $J:C_b(X)\to L^\infty(X,\nu)$ take the almost-everywhere class.
+A bounded operator $T:L^1(\nu)\to L^\infty(\nu)$ has an extension
+$S:\mathcal M(X)\to C_b(X)$ in the sense used here if
+\[
+J(S(f\nu))=Tf\qquad(f\in L^1(\nu)).
+\]
+This is an equality of equivalence classes. If $\nu$ has full support,
+$J$ is injective and isometric: a continuous function exceeding a bound
+at one point exceeds it on an open set of positive measure. Without
+full support, continuous representatives need not be unique.
+
+\begin{lemma}[Continuous linear functionals for the specified weak topology]
+\label{lem:kernel_weak_dual}
+Every continuous complex-linear functional $F$ on
+$(\mathcal M(X),\sigma(\mathcal M,C_b))$ has the form
+$F(\mu)=\int g\,d\mu$ for a unique $g\in C_b(X)$.
+\end{lemma}
+\begin{proof}
+Continuity at zero gives $g_1,\ldots,g_n\in C_b(X)$ and
+$\epsilon>0$ such that $|\int g_j\,d\mu|<\epsilon$ for all $j$
+implies $|F(\mu)|<1$. If all those integrals vanish, every scalar
+multiple of $\mu$ belongs to this neighborhood; linearity forces
+$F(\mu)=0$. Thus $F$ factors through the map
+$\mu\mapsto(\int g_1\,d\mu,\ldots,\int g_n\,d\mu)$ into
+$\mathbb C^n$. A linear functional on its image extends to
+$\mathbb C^n$ by extending a basis, so it is a linear combination
+of its coordinates. The same combination of the $g_j$ gives $g$.
+Testing Dirac measures $\delta_x$ proves uniqueness.
+\end{proof}
+
+\subsection{The criterion and its proof}
+\begin{theorem}[Bounded separately continuous kernel criterion]
+\label{thm:separate_kernel_criterion}
+Let $T:L^1(X,\nu)\to L^\infty(X,\nu)$ be bounded and linear.
+The following are equivalent:
+\begin{enumerate}
+\item There is a bounded function $K:X\times X\to\mathbb C$,
+continuous in each variable separately, such that
+\[
+(Tf)(x)=\int_X K(x,y)f(y)\,d\nu(y)
+\]
+for $\nu$-almost every $x$, for every $f\in L^1(\nu)$.
+\item There is a bounded linear extension
+$S:\mathcal M(X)\to C_b(X)$ of $T$ which is continuous from
+$\sigma(\mathcal M,C_b)$ to $\sigma(C_b,\mathcal M)$.
+\end{enumerate}
+In particular these conditions imply $\operatorname{Ran}T\subseteq
+J(C_b(X))$. Kernels and extensions correspond by
+\[
+K(x,y)=(S\delta_y)(x),\qquad
+(S\mu)(x)=\int_X K(x,y)\,d\mu(y),
+\]
+and $\|S\|=\sup_{x,y}|K(x,y)|$.
+If $\nu$ has full support, both the kernel and the extension are
+unique, and their norm is also $\|T\|_{L^1\to L^\infty}$.
+\end{theorem}
+\begin{proof}
+First suppose $K$ satisfies condition~1, and put
+$B=\sup_{x,y}|K(x,y)|$. The function $K$ is jointly Borel measurable,
+although it need not be jointly continuous. To verify measurability,
+choose a countable dense sequence $(a_j)$ in $X$. For each positive
+integer $n$, let $q_n(x)$ be the first $a_j$ with
+$d(x,a_j)<1/n$. Its level sets are Borel. Consequently
+$K(q_n(x),y)$ is Borel on $X\times X$, since it is given on a
+countable Borel partition in $x$ by continuous functions of $y$.
+Continuity in the first variable gives its pointwise limit $K(x,y)$.
+
+Define $S$ by the asserted integral formula. It is linear and
+$|(S\mu)(x)|\le B\|\mu\|_{\mathrm{TV}}$. If $x_n\to x$,
+separate continuity and dominated convergence with respect to $|\mu|$
+give $(S\mu)(x_n)\to(S\mu)(x)$. Since $X$ is metric, this proves
+$S\mu\in C_b(X)$. The kernel representation of $T$ proves the
+extension property.
+
+For $\lambda\in\mathcal M(X)$, define
+\[
+g_\lambda(y)=\int_X K(x,y)\,d\lambda(x).
+\]
+The same dominated-convergence argument shows $g_\lambda\in C_b(X)$.
+Fubini applies to finite total variation measures, because $K$ is
+bounded and jointly measurable, and gives
+\[
+\langle\lambda,S\mu\rangle
+=\int_X g_\lambda\,d\mu.
+\]
+Each defining scalar test of the target weak topology is therefore
+a continuous scalar test of the source weak topology. This proves
+the required continuity for nets, not merely sequential continuity.
+
+Conversely, suppose condition~2 holds and define
+$K(x,y)=(S\delta_y)(x)$. For fixed $y$, this is continuous in $x$
+because $S\delta_y\in C_b(X)$. For fixed $x$, the map
+$F_x:\mu\mapsto(S\mu)(x)$ is continuous for
+$\sigma(\mathcal M,C_b)$: evaluation at $x$ is the target test
+$\delta_x$, and $S$ is weakly continuous. By
+Lemma~\ref{lem:kernel_weak_dual}, there is $g_x\in C_b(X)$ such that
+$F_x(\mu)=\int g_x\,d\mu$. Evaluating at $\delta_y$ identifies
+$g_x(y)=K(x,y)$. This proves continuity in $y$ and, for every measure,
+the asserted integral formula for $S$. Moreover
+$|K(x,y)|\le\|S\|$, since $\|\delta_y\|_{\mathrm{TV}}=1$.
+Putting $\mu=f\nu$ and using the extension property proves condition~1.
+The formula bounds $\|S\|$ by $\sup|K|$, while Dirac measures give
+the reverse inequality. The two constructions are inverse, since
+the formula for $S\mu$ was derived for all measures.
+
+Now assume full support. For fixed $y\in X$, choose relatively
+compact open neighborhoods $U_n$ of $y$, contained in the radius
+$1/n$ ball. Then $0<\nu(U_n)<\infty$. Put
+$f_n=\mathbf1_{U_n}/\nu(U_n)$, so $\|f_n\|_1=1$.
+The continuous representative $S(f_n\nu)$ has supremum norm
+$\|Tf_n\|_\infty\le\|T\|$. For fixed $x$, continuity of $K(x,\cdot)$
+gives
+\[
+(S(f_n\nu))(x)=\frac1{\nu(U_n)}\int_{U_n}K(x,u)\,d\nu(u)
+\longrightarrow K(x,y).
+\]
+Hence $|K(x,y)|\le\|T\|$, and integration gives the reverse
+operator-norm inequality, proving norm equality.
+
+If $K_1,K_2$ represent the same $T$, the functions
+$\int(K_1(x,y)-K_2(x,y))f(y)\,d\nu(y)$ are continuous in $x$
+and vanish almost everywhere, so full support makes them zero at
+every $x$. Substitute the same $f_n$ and take the limit to get
+$K_1(x,y)=K_2(x,y)$ for every $x,y$. The already proved integral
+formula then gives equality of the corresponding extensions.
+\end{proof}
+
+\subsection{What the criterion does and does not assert}
+No full-support assumption was used for the equivalence. It was used
+only for uniqueness and comparison with the norm of $T$.
+For example, let $X=\{0,1\}$ with the discrete topology and
+$\nu=\delta_0$. Both $K=0$ and the kernel which is one at $(1,1)$
+and zero elsewhere represent the zero operator on $L^1(\nu)$,
+but their extensions to $\mathcal M(X)$ differ. In particular the
+extension norm cannot be recovered from $\|T\|$ in this setting.
+Boundedness of the kernel in the theorem is explicit: with
+$X=\mathbb R$, $\nu=\delta_0$, the unbounded separately continuous
+function $K(x,y)=y$ also represents the zero operator, but it does
+not define a bounded extension on all finite measures. Statements
+about arbitrary representatives outside the support require care.
+
+Separate continuity cannot be strengthened to joint continuity by
+this argument. On $X=\mathbb R$ with Lebesgue measure, set
+\[
+K(x,y)=
+\begin{cases}
+xy/(x^2+y^2),&(x,y)\ne(0,0),\\
+0,&(x,y)=(0,0).
+\end{cases}
+\]
+This kernel is separately continuous and bounded by $1/2$, but
+$K(t,t)=1/2$ for $t\ne0$, so it is not jointly continuous at the
+origin. It defines a bounded $L^1\to L^\infty$ operator and a
+weakly continuous extension exactly as in the theorem. Full support
+makes this its unique separately continuous kernel; there is no
+alternative jointly continuous kernel for the same operator.
+Obtaining joint continuity for a heat semigroup therefore requires
+an additional argument using that semigroup's analytic structure.
+
+\input{END.tex}

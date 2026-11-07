@@ -1,0 +1,521 @@
+\def\topic{Schrodinger semigroups with bounded potentials}
+\input{BEGIN.tex}
+\section{Schrodinger semigroups with bounded potentials}
+\label{sec:bounded_schrodinger}
+This chapter works on $\mathbb R^d$, for a positive integer $d$, with Lebesgue measure
+and complex $L^2$. Its analytic inputs are the Fourier--Plancherel
+theorem, the spectral calculus for self-adjoint operators, and the
+usual product-integration theorems. These are additional classical
+analytic results, not consequences of the abstract class conventions
+alone. We prove the bounded-potential perturbation and kernel statements
+below directly. In particular, no pointwise limit of product formulas
+is used to assert existence or continuity of a kernel.
+The imported spectral calculus says that a self-adjoint operator $A$
+has a projection-valued spectral measure $E_A$ with
+$A=\int\lambda\,dE_A(\lambda)$ on the domain determined by
+$\int\lambda^2\,d\langle E_A(\lambda)f,f\rangle<\infty$;
+bounded Borel functions of $A$ act by the corresponding spectral
+integrals. Fourier--Plancherel says that the normalized transform below
+extends to a unitary operator on $L^2$. These standard background
+theorems are used, not reproved here; see \cite{Weidmann1980Operators}.
+The concrete joint-continuity conclusion is also treated in
+\cite[Theorem~B.7.1]{Simon1982Semigroups}; the bounded-potential proof
+below supplies its own argument, distinct from the abstract
+separate-continuity criterion in Simon's Section~A.1.
+
+\subsection{The operator and its sign convention}
+Use the unitary Fourier transform
+\[
+\widehat f(\xi)=(2\pi)^{-d/2}\int_{\mathbb R^d}
+                   e^{-ix\cdot\xi}f(x)\,dx
+\]
+initially on integrable square-integrable functions and then by
+Plancherel extension. Define the nonnegative Laplacian by
+\[
+H_0=-\sum_{j=1}^d\partial_j^2,\qquad
+D(H_0)=\{f\in L^2:|\xi|^2\widehat f(\xi)\in L^2\},\qquad
+\widehat{H_0f}=|\xi|^2\widehat f.
+\]
+The differential expression agrees with this definition on smooth
+functions of compact support. Throughout, $V$ is a real essentially
+bounded measurable function, $M=\|V\|_\infty$, and multiplication by
+$V$ is denoted by the same symbol. Choose a representative with
+$|V(x)|\leq M$ everywhere. None of the resulting operators or kernels
+depends on this choice on null sets.
+
+\begin{proposition}[Bounded real perturbations]
+\label{prop:bounded_schrodinger_selfadjoint}
+The operator $H=H_0+V$ on $D(H_0)$ is self-adjoint and bounded below
+by $-M$. Its spectral semigroup $T_t=e^{-tH}$, $t\geq0$, is strongly
+continuous and satisfies $\|T_t\|_{2\to2}\leq e^{Mt}$.
+\end{proposition}
+\Proof
+The real multiplication operator $u\mapsto|\xi|^2u$ on its maximal
+domain is self-adjoint. To check the domain assertion, if $v$ belongs
+to its adjoint domain with adjoint value $w$, test against all $L^2$
+functions supported in $\{|\xi|\leq n\}$. On that set the multiplier
+is bounded, so these tests give $w=|\xi|^2v$ there. Letting $n$ increase
+proves $|\xi|^2v\in L^2$, exactly the original domain. The reverse
+inclusion follows by the integral pairing. Plancherel conjugation
+therefore makes $H_0$ self-adjoint and nonnegative; its domain is dense
+by frequency truncation.
+
+Multiplication by real $V$ is bounded self-adjoint. In general, for a
+densely defined operator $A$ and bounded operator $B$, a vector belongs
+to $D((A+B)^*)$ exactly when it belongs to $D(A^*)$: the bounded
+functional contributed by $B$ can be subtracted from the defining
+adjoint identity. Thus $(A+B)^*=A^*+B^*$ on that domain. Applying
+this with $A=H_0$ proves self-adjointness of $H$. Also
+\[
+\langle Hf,f\rangle
+ =\int |\xi|^2|\widehat f(\xi)|^2\,d\xi
+   +\int V(x)|f(x)|^2\,dx\geq-M\|f\|_2^2.
+\]
+The spectral theorem now gives $T_t$, its semigroup law and norm bound.
+Strong continuity follows by dominated convergence in each vector's
+spectral measure, since $e^{-t\lambda}\to1$ and the spectrum lies in
+$[-M,\infty)$.
+\Done
+
+This is the bounded-perturbation case of the self-adjoint perturbation
+principle: $\|Vf\|_2\leq M\|f\|_2$ gives relative bound zero with
+respect to $H_0$. The direct adjoint-domain proof avoids needing the
+more general Kato--Rellich theorem for unbounded relatively bounded
+perturbations; see \cite{Kato1995Perturbation} for that broader setting.
+
+Put $P_t=e^{-tH_0}$. The Gaussian Fourier calculation gives
+\[
+(P_tf)(x)=\int_{\mathbb R^d}p_t(x-y)f(y)\,dy,\qquad
+p_t(r)=(4\pi t)^{-d/2}\exp\bigl(-|r|^2/(4t)\bigr),\quad t>0.
+\]
+Indeed the Fourier multiplier is $e^{-t|\xi|^2}$;
+Lemma~\ref{lem:gaussian_fourier_multiplier} computes the Gaussian
+transform with precisely this normalization. In particular
+\[
+p_t\geq0,\qquad \int p_t=1,\qquad
+\int p_{t-s}(x-z)p_s(z-y)\,dz=p_t(x-y)\quad(0<s<t).
+\]
+The last identity follows either by the Fourier multipliers or by
+the square-completion calculation in Lemma~\ref{lem:free_gaussian_convolution}.
+Notice the sign:
+the heat generator is $-H_0=\sum_j\partial_j^2$.
+
+\subsection{Duhamel's equation and its kernel series}
+All time integrals below are taken after applying the operator to a
+fixed vector. For a continuous map $u:[a,b]\to L^2$, its integral is
+the norm limit of Riemann sums: uniform continuity makes these sums
+Cauchy, and completeness of $L^2$ supplies their limit. The triangle
+inequality for sums passes to the limit and gives
+\[
+\left\|\int_a^b u(s)\,ds\right\|_2
+ \leq\int_a^b\|u(s)\|_2\,ds.
+\]
+Bounded linear maps commute with this integral by passage through the
+sums. The same inequality and scalar dominated convergence justify
+the limits of continuous vector-valued integrands used below; the
+fundamental theorem for a continuously differentiable $L^2$-valued
+map follows by the usual Riemann-sum argument. Thus no operator-norm
+continuity of the free semigroup at zero is required to form these
+strong integrals.
+
+\begin{lemma}[The bounded-perturbation expansion]
+\label{lem:schrodinger_duhamel}
+For $t\geq0$,
+\[
+T_t=P_t-\int_0^t P_{t-s}VT_s\,ds
+     =\sum_{n=0}^{\infty}A_n(t),
+\]
+where $A_0(t)=P_t$ and
+\[
+A_n(t)=-\int_0^t P_{t-s}V A_{n-1}(s)\,ds,\qquad
+\|A_n(t)\|_{2\to2}\leq\frac{M^nt^n}{n!}.
+\]
+The integrals are strong integrals after application to an $L^2$
+vector, and the series converges in operator norm, uniformly on bounded
+time intervals.
+\end{lemma}
+\Proof
+For $f\in D(H_0)=D(H)$, differentiate $P_{t-s}T_sf$ for $0<s<t$.
+The spectral calculus preserves $D(H)$ under $T_s$, and
+$H_0T_sf=HT_sf-VT_sf$ is continuous in $s$ in $L^2$. The product rule
+therefore gives
+\[
+\frac{d}{ds}(P_{t-s}T_sf)=-P_{t-s}VT_sf.
+\]
+Integrating and using strong continuity at the endpoints proves the
+first equation on the dense domain. The uniform operator bound on the
+integrand extends it to every $L^2$ vector.
+
+The recursive integrals defining $A_n$ exist inductively by strong
+continuity. More explicitly, substitute $s=t\theta$ on the fixed
+interval $0\leq\theta\leq1$. The maps
+$P_{t(1-\theta)}VA_{n-1}(t\theta)f$ are continuous in $t$ for each
+$\theta$, by the induction hypothesis and the uniform bound on $P$.
+On bounded time intervals the induction bound supplies an integrable
+constant majorant. Dominated convergence therefore gives strong
+continuity of $A_n(t)$; its value at zero is zero for $n\geq1$.
+Induction and $\|P_s\|\leq1$ give
+\[
+\|A_n(t)\|\leq M\int_0^t\frac{M^{n-1}s^{n-1}}{(n-1)!}\,ds
+ =\frac{M^nt^n}{n!}.
+\]
+Consequently the series converges with the stated uniformity and
+satisfies the same integral equation, by termwise integration.
+For uniqueness, the difference $D_t$ of two locally bounded operator
+solutions satisfies $D_t=-\int_0^tP_{t-s}VD_s\,ds$.
+On $0\leq t\leq b$, iteration bounds its norm by
+$C_b M^nt^n/n!$ for every $n$, where $C_b=\sup_{s\leq b}\|D_s\|$.
+This tends to zero. Thus the sum equals $T_t$.
+\Done
+
+Define measurable kernels, for $t>0$, by
+\[
+k_0(t,x,y)=p_t(x-y),\qquad
+k_n(t,x,y)=-\int_0^t\int_{\mathbb R^d}
+ p_{t-s}(x-z)V(z)k_{n-1}(s,z,y)\,dz\,ds.
+\]
+Values at the two time endpoints need not be assigned in these
+Lebesgue integrals. Induction using Gaussian convolution proves absolute
+convergence and the pointwise estimate
+\[
+|k_n(t,x,y)|\leq\frac{M^nt^n}{n!}p_t(x-y).
+\tag{K$_n$}\label{eq:schrodinger_dyson_bound}
+\]
+For the induction step, the spatial integral after taking absolute
+values is bounded by
+\[
+\frac{M^n s^{n-1}}{(n-1)!}p_t(x-y).
+\]
+Integration over $s$ gives the result.
+Changing $V$ on a null set changes none of these integrals.
+
+\begin{theorem}[A continuous Gaussian-bounded kernel]
+\label{thm:bounded_schrodinger_kernel}
+For real $V\in L^\infty(\mathbb R^d)$ the function
+\[
+k_V(t,x,y)=\sum_{n=0}^{\infty}k_n(t,x,y)
+\]
+is jointly continuous on $(0,\infty)\times\mathbb R^d\times\mathbb R^d$
+and is an integral kernel for $e^{-tH}$, with
+\[
+|k_V(t,x,y)|\leq e^{Mt}p_t(x-y).
+\]
+For every $f\in L^2$, the integral
+$\int k_V(t,x,y)f(y)\,dy$ is absolutely convergent at every $x$ and
+gives a continuous representative of $T_tf$.
+\end{theorem}
+\Proof
+We first prove continuity of each term; measurability of $V$ alone is
+sufficient. The assertion is clear for $k_0$. In the recursion for
+$k_n$, put $s=t\theta$, and restrict first to
+$\varepsilon\leq\theta\leq1-\varepsilon$. On a compact set of
+parameters with $0<a\leq t\leq b$ and bounded $x,y$, both Gaussian
+time parameters are bounded away from zero. The induction hypothesis
+makes the integrand continuous in $t,x,y$ for each $\theta,z$, even
+though its fixed factor $V(z)$ is only measurable. Estimate
+\eqref{eq:schrodinger_dyson_bound} bounds it by an integrable Gaussian
+envelope $C\exp(-c|z|^2)$, with constants depending on this compact
+set and $\varepsilon$. Dominated convergence proves continuity of
+the truncated integral.
+
+For the two omitted time intervals, the convolution estimate gives
+the uniform bound
+\[
+\frac{M^nt^n}{(n-1)!}p_t(x-y)
+ \int_{(0,\varepsilon)\cup(1-\varepsilon,1)}
+                      \theta^{n-1}\,d\theta.
+\]
+On the stated compact parameter set this tends to zero with
+$\varepsilon$. Thus $k_n$ is a locally uniform limit of continuous
+functions and is continuous. Finally, on $a\leq t\leq b$,
+\[
+|k_n(t,x,y)|\leq\frac{(Mb)^n}{n!}(4\pi a)^{-d/2}.
+\]
+The series is therefore locally uniformly convergent and has a
+jointly continuous sum. Summing the sharper Gaussian estimates gives
+the asserted bound.
+
+To identify the operator, first take a bounded compactly supported
+function $f$. The same estimates and Tonelli's theorem for absolute
+values justify interchanging all integrals in the recursion; thus
+$A_n(t)f(x)=\int k_n(t,x,y)f(y)\,dy$ almost everywhere, inductively.
+They also justify summation under this integral. The integral operator
+defined by the sum is bounded on $L^2$: its absolute value is at most
+$e^{Mt}P_t|f|$, whose $L^2$ norm is at most $e^{Mt}\|f\|_2$.
+Density and the operator-norm series in Lemma~\ref{lem:schrodinger_duhamel}
+identify it with $T_t$ on all of $L^2$.
+
+For an arbitrary $f\in L^2$, Cauchy--Schwarz and the Gaussian bound
+give absolute convergence at each $x$. On any bounded set of $x$,
+the rows $k_V(t,x,\cdot)$ have a common Gaussian envelope in $L^2$.
+Their pointwise continuity and dominated convergence therefore imply
+continuity in $L^2$ as $x$ varies. Pairing these rows with $f$ proves
+continuity of the displayed representative. Its pointwise bound also
+gives $\|T_tf\|_\infty\leq e^{Mt}\|p_t\|_2\|f\|_2$.
+\Done
+
+\begin{corollary}[Quantitative smoothing between Lebesgue spaces]
+\label{cor:schrodinger_Lp_Lq}
+Let $1\leq p\leq q\leq\infty$, and define $r\in[1,\infty]$ by
+$1+1/q=1/p+1/r$, with $1/\infty=0$. The kernel defines a consistent
+bounded operator $T_t:L^p\to L^q$ extending the spectral operator on
+$L^p\cap L^2$, and
+\[
+\|T_tf\|_q\leq
+c_r e^{Mt}(4\pi t)^{-\frac d2(\frac1p-\frac1q)}\|f\|_p,
+\qquad
+c_r=\begin{cases}r^{-d/(2r)},&r<\infty,\\1,&r=\infty.\end{cases}
+\]
+In particular the estimate includes $p=1,q=\infty$ and
+$p=q=\infty$. No strong-continuity assertion on $L^\infty$ at time
+zero is needed here. This is the bounded-potential instance of the
+smoothing property in \cite[Theorem~2.1]{CyconFroeseKirschSimon1987}.
+\end{corollary}
+\Proof
+The Gaussian bound gives $|T_tf|\leq e^{Mt}p_t*|f|$. We record the
+convolution estimate rather than requiring an interpolation theorem.
+For finite $q$, the exponent relation gives $p,r\leq q$. H\"older's
+inequality, applied to the three factors
+\[
+\bigl(|f(y)|^{p/q}|g(x-y)|^{r/q}\bigr),\quad
+|f(y)|^{1-p/q},\quad |g(x-y)|^{1-r/q},
+\]
+with reciprocal exponents $1/q$, $1/p-1/q$, and $1/r-1/q$, gives
+\[
+|(g*f)(x)|^q
+\leq\left(\int |f(y)|^p|g(x-y)|^r\,dy\right)
+       \|f\|_p^{q-p}\|g\|_r^{q-r}.
+\]
+Factors whose reciprocal exponent is zero are omitted. Integrating in
+$x$ and using Tonelli gives $\|g*f\|_q\leq\|g\|_r\|f\|_p$.
+Zero functions are immediate; truncation justifies the calculation if
+an intermediate pointwise integral is initially infinite. For
+$q=\infty$, the relation says $1/p+1/r=1$, and the same estimate
+is H\"older directly, including its $L^1$--$L^\infty$ endpoints.
+
+Gaussian integration gives
+\[
+\|p_t\|_r=r^{-d/(2r)}(4\pi t)^{-\frac d2(1-1/r)}
+\quad(r<\infty),\qquad
+\|p_t\|_\infty=(4\pi t)^{-d/2}.
+\]
+This proves the displayed bound and absolute convergence almost
+everywhere of the defining kernel integral for every $f\in L^p$.
+The kernel is the same for all these spaces, so the operators agree
+wherever their domains overlap. On $L^p\cap L^2$, the preceding
+theorem identifies that integral with the spectral semigroup.
+\Done
+
+\subsection{Pointwise identities and positivity}
+An integral operator has a unique continuous kernel within the
+Gaussian-bounded class just constructed. Indeed, equality of two such
+operators gives zero integral of the kernel difference against every
+product of bounded compactly supported test functions in $x$ and $y$.
+If a continuous difference were nonzero at a point, multiplication by
+a scalar of modulus one and sufficiently small product neighbourhoods
+would make its real part have one strict sign there. Their indicator
+tests give a contradiction. This observation upgrades operator
+identities to pointwise kernel identities; it is stronger than merely
+choosing unrelated almost-everywhere representatives at each time.
+
+\begin{proposition}[Symmetry, composition, and two-sided bounds]
+\label{prop:schrodinger_kernel_identities}
+For $s,t>0$ and $x,y\in\mathbb R^d$,
+\[
+\begin{gathered}
+k_V(t,x,y)=k_V(t,y,x)\in\mathbb R,\\
+k_V(t+s,x,y)=\int_{\mathbb R^d}
+                     k_V(t,x,z)k_V(s,z,y)\,dz,\\
+e^{-Mt}p_t(x-y)\leq k_V(t,x,y)\leq e^{Mt}p_t(x-y).
+\end{gathered}
+\]
+In particular the semigroup preserves positivity.
+\end{proposition}
+\Proof
+Every term in the kernel series is real. Self-adjointness of $T_t$
+identifies its kernel with the transposed real kernel, and continuous
+kernel uniqueness gives symmetry everywhere. The spatial composition
+integral converges absolutely by Gaussian convolution. It is continuous
+in $x,y$: on compact parameter sets the product has an integrable
+Gaussian envelope in $z$, so dominated convergence applies. Fubini
+identifies its operator with $T_tT_s=T_{t+s}$. Kernel uniqueness gives
+the second equation pointwise.
+
+For positivity put $W=M-V$, so $0\leq W\leq2M$ almost everywhere.
+Apply the preceding kernel construction to the potential $-W$.
+All of its Dyson terms are nonnegative, since each recursion has
+factor $-(-W)=W\geq0$. Its kernel is therefore at least $p_t$.
+The operators satisfy
+\[
+H_0+V=H_0-W+M,\qquad
+e^{-t(H_0+V)}=e^{-Mt}e^{-t(H_0-W)}.
+\]
+Continuous kernel uniqueness gives $k_V=e^{-Mt}k_{-W}$, and hence
+the lower bound. The upper bound is the already proved absolute
+Gaussian bound. Integrating the nonnegative kernel against any
+nonnegative $L^2$ function proves positivity preservation.
+\Done
+
+\subsection{The extension to finite measures}
+For a fixed $t>0$, the kernel just constructed connects the concrete
+semigroup to Theorem~\ref{thm:separate_kernel_criterion}. To make the
+domains precise, its integral formula defines a bounded operator
+$T_t^{(1)}:L^1(\mathbb R^d)\to L^\infty(\mathbb R^d)$, since
+\[
+\left|\int k_V(t,x,y)f(y)\,dy\right|
+\leq e^{Mt}(4\pi t)^{-d/2}\|f\|_1.
+\]
+On $L^1\cap L^2$ this agrees with the spectral semigroup $T_t$,
+by its proved kernel representation. This intersection is dense in
+$L^1$, so $T_t^{(1)}$ is the unique bounded extension of that restriction
+with the indicated domain and codomain.
+
+Lebesgue measure has full support, and the kernel is bounded and
+jointly, hence separately, continuous. The criterion therefore gives
+the unique extension
+\[
+S_t:\mathcal M(\mathbb R^d)\longrightarrow C_b(\mathbb R^d),
+\qquad (S_t\mu)(x)=\int k_V(t,x,y)\,d\mu(y),
+\]
+which is both bounded in norm and continuous from $\sigma(\mathcal M,C_b)$ to
+$\sigma(C_b,\mathcal M)$. In particular
+\[
+(S_t\delta_y)(x)=k_V(t,x,y),\qquad
+\|S_t\|=\|T_t^{(1)}\|_{1\to\infty}
+=\sup_{x,y}|k_V(t,x,y)|
+\leq e^{Mt}(4\pi t)^{-d/2}.
+\]
+Thus evaluation on a point mass has a precise meaning even though
+the point mass is not an $L^1$ density. Joint continuity still comes
+from the Dyson-series proof above; the abstract criterion alone
+only yields separate continuity.
+
+\subsection{The Trotter product formula for bounded potentials}
+The product formula provides a second way to approximate the semigroup.
+We prove the precise bounded-potential case needed here, rather than
+importing a general product theorem with additional domain hypotheses.
+In particular the multiplication operator $e^{-hV}$ need not preserve
+$D(H_0)$.
+
+\begin{theorem}[Strong product approximation, uniformly on bounded time intervals]
+\label{thm:bounded_potential_trotter}
+For the operators of this chapter and every $f\in L^2$ and $b>0$,
+\[
+\lim_{n\to\infty}\sup_{0\leq t\leq b}
+\left\|\left(P_{t/n}e^{-(t/n)V}\right)^n f-T_tf\right\|_2=0.
+\]
+The exponential $e^{-hV}$ is multiplication by the bounded measurable
+function $x\mapsto e^{-hV(x)}$.
+\end{theorem}
+\Proof
+Put $F(h)=P_he^{-hV}$ for $h\geq0$. Then $F(0)=I$ and
+\[
+\|F(h)\|\leq e^{Mh},\qquad \|T_h\|\leq e^{Mh}.
+\]
+Let $D=D(H_0)=D(H)$, with graph norm
+$\|u\|_D=\|u\|_2+\|H_0u\|_2$.
+For $u\in D$ split the difference quotient in the order
+\[
+\frac{F(h)u-u}{h}
+ =P_h\frac{e^{-hV}-I}{h}u+\frac{P_hu-u}{h}.
+\]
+The first term tends to $-Vu$: boundedness of $V$ gives
+$(e^{-hV}-I)/h\to-V$ in operator norm, and $P_h$ tends strongly
+to $I$. The second tends to $-H_0u$ by spectral calculus on $D(H_0)$.
+Likewise $(T_hu-u)/h\to-Hu$. Consequently the linear maps
+\[
+E_h:D\longrightarrow L^2,\qquad E_hu=\frac{F(h)u-T_hu}{h},
+\quad h>0,
+\]
+converge to zero on each fixed $u\in D$. This calculation never
+applies $H_0$ to $e^{-hV}u$.
+
+We need this convergence uniformly on one compact set, so record the
+necessary bound. For $0<h\leq b$, scalar spectral estimates and
+the semigroup derivative on $D(H)$ give
+\[
+\begin{split}
+\left\|\frac{P_hu-u}{h}\right\|_2&\leq\|H_0u\|_2,\\
+\left\|\frac{e^{-hV}-I}{h}u\right\|_2
+ &\leq M e^{Mb}\|u\|_2,\\
+\left\|\frac{T_hu-u}{h}\right\|_2
+ &\leq e^{Mb}\|Hu\|_2
+ \leq e^{Mb}\bigl(\|H_0u\|_2+M\|u\|_2\bigr).
+\end{split}
+\]
+For the third displayed estimate, one can integrate
+$\frac{d}{ds}T_su=-T_sHu$ from $0$ to $h$; the integrand is
+strongly continuous. It follows that
+\[
+\|E_hu\|_2
+\leq(1+e^{Mb})\|H_0u\|_2+2Me^{Mb}\|u\|_2
+\leq C_b\|u\|_D
+\]
+with a constant independent of $h$.
+
+Here is the compactness argument explicitly. If linear maps $E_h$
+are uniformly bounded by $C_b$ from $D$ to $L^2$ and converge to
+zero at every fixed vector, then they converge uniformly on each
+graph-norm compact subset $Q$ of $D$. Indeed, choose a finite
+$\varepsilon$-net $u_1,\ldots,u_N$ in $Q$. For $u\in Q$ and a
+net point within $\varepsilon$,
+\[
+\|E_hu\|_2\leq C_b\varepsilon+
+                     \max_{1\leq j\leq N}\|E_hu_j\|_2.
+\]
+The finite maximum tends to zero; then let $\varepsilon$ tend to zero.
+
+Fix $f\in D$ and use
+$Q_f=\{T_sf:0\leq s\leq b\}$. This set is compact in the graph
+norm. In fact $s\mapsto T_sf$ is continuous in $L^2$, and
+\[
+H_0T_sf=T_sHf-VT_sf
+\]
+is continuous there as well, by the spectral domain invariance and
+commutation identity $HT_sf=T_sHf$. Thus $Q_f$ is the continuous
+image of a compact interval. In particular
+\[
+\omega_f(\delta)=
+\sup_{\substack{u\in Q_f\\0<h\leq\delta}}\|E_hu\|_2
+\longrightarrow0\quad(\delta\downarrow0).
+\]
+
+For $0<t\leq b$ put $h=t/n$. The algebraic telescoping identity,
+which requires no commutation between $F(h)$ and $T_h$, reads
+\[
+F(h)^nf-T_h^nf
+ =\sum_{j=0}^{n-1}F(h)^{n-1-j}(F(h)-T_h)T_h^jf.
+\]
+Since $T_h^jf=T_{jh}f\in Q_f$ and $T_h^n=T_t$, its norm is at
+most
+\[
+nh\,e^{Mb}\omega_f(b/n)
+\leq b e^{Mb}\omega_f(b/n),
+\]
+which tends to zero independently of $t$. At $t=0$ the difference
+vanishes exactly. This proves the theorem on $D$.
+
+Finally $D$ is dense in $L^2$. For $f\in L^2$ and $g\in D$,
+the uniform bounds on both approximants give
+\[
+\sup_{0\leq t\leq b}\|F(t/n)^nf-T_tf\|_2
+\leq2e^{Mb}\|f-g\|_2
+ +\sup_{0\leq t\leq b}\|F(t/n)^ng-T_tg\|_2.
+\]
+Take the limit superior in $n$ and then approximate $f$ by such $g$.
+\Done
+
+This theorem proves strong operator convergence, uniformly in the
+stated time range. It does not assert convergence in operator norm,
+nor pointwise convergence of the product kernels. Kernel existence,
+joint continuity and Gaussian domination were proved independently
+above, so none of them rests on an unjustified interchange of the
+product limit with point evaluation.
+
+The Gaussian normalization, the factor $e^{t\|V\|_\infty}$, and the
+restriction $t>0$ are part of these statements. At time zero the
+semigroup is the identity; the heat kernels approach a point mass,
+not a continuous function kernel of the same form. Unbounded potentials
+require additional hypotheses and are not included in this bounded
+perturbation argument.
+\input{END.tex}

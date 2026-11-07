@@ -87,6 +87,166 @@ yields $\mathbb E|X-Y|=0$, so $X=Y$ almost surely. Replacing $Y$ by
 its equal $L^1$ class proves the norm-convergence statement.
 \Done
 
+\subsection{Conditional expectation from Hilbert representation}
+Fix a finite positive measure space $(\Omega,\mathcal A,\mu)$ and a
+sub-sigma-algebra $\mathcal G\subseteq\mathcal A$ containing $\Omega$.
+All functions in this subsection are real-valued. Write $L^p(\mathcal G)$
+for the space formed using the restricted measure $\mu|_{\mathcal G}$.
+Its natural map into $L^p(\mu)$ is isometric and injective: for two
+$\mathcal G$-measurable representatives their difference and its
+nonzero set are $\mathcal G$-measurable, and the restricted measure
+has the same value on that set. We identify these spaces with their
+images. An element of $L^p(\mathcal G)$ is required to have a
+$\mathcal G$-measurable representative; arbitrary modifications on
+null subsets are not asserted to preserve that measurability.
+
+\begin{theorem}[Existence and uniqueness of conditional expectation]
+\label{thm:conditional_expectation_finite}
+For each $f\in L^1(\mu)$ there is a unique $g\in L^1(\mathcal G)$
+such that
+\[
+\int_A g\,d\mu=\int_A f\,d\mu\qquad(A\in\mathcal G).
+\]
+Write $P_{\mathcal G}f=g$, also denoted
+$\mathbb E_\mu[f\mid\mathcal G]$. This is a linear positive
+projection onto $L^1(\mathcal G)$, preserves the total integral, and
+is a contraction in $L^1$:
+\[
+\|P_{\mathcal G}f-P_{\mathcal G}k\|_1\leq\|f-k\|_1.
+\]
+The measure need not be complete, and its total mass need not be one.
+\end{theorem}
+\Proof
+First establish uniqueness using only the displayed characterization.
+If $g_1,g_2$ satisfy it, take $\mathcal G$-measurable representatives
+and put $v=g_1-g_2$. For
+$A_n=\{v\geq1/n\}\in\mathcal G$,
+\[
+0=\int_{A_n}v\,d\mu\geq\mu(A_n)/n,
+\]
+so each $A_n$ is null. Applying the same argument to $-v$ gives
+$v=0$ almost everywhere. This proves uniqueness in the quotient.
+
+For existence first suppose $f\in L^2(\mu)$. On the real Hilbert
+space $L^2(\mathcal G)$ the functional
+\[
+u\longmapsto\int fu\,d\mu
+\]
+is continuous by Cauchy--Schwarz. Completeness of $L^2$ for the
+restricted measure and Theorem~\ref{thm:real_Hilbert_representation}
+give $g\in L^2(\mathcal G)$ with
+$\int ug\,d\mu=\int uf\,d\mu$ for every $u\in L^2(\mathcal G)$.
+Finite measure implies $g,f\in L^1$ and puts every
+$\mathcal G$-indicator in $L^2(\mathcal G)$, giving the required
+characterization. The sign of a $\mathcal G$-measurable representative
+of $g$ is also in this Hilbert space, so
+\[
+\|g\|_1=\int\operatorname{sgn}(g)g\,d\mu
+ =\int\operatorname{sgn}(g)f\,d\mu\leq\|f\|_1.
+\]
+Uniqueness makes this construction linear on $L^2$: linear combinations
+of characterized outputs characterize the corresponding combinations
+of inputs. Consequently it contracts $L^1$ distances between $L^2$
+inputs.
+
+For arbitrary $f\in L^1$, let
+$f_n=\max(-n,\min(f,n))$. These are well-defined equivalence classes
+in $L^2(\mu)$ and converge to $f$ in $L^1$, by integrable-tail
+control and finite measure. The preceding contraction makes their
+outputs $g_n$ Cauchy in $L^1(\mathcal G)$. Completeness for the
+restricted measure supplies $g\in L^1(\mathcal G)$ with
+$g_n\to g$ in that norm, hence also in ambient $L^1$. For every
+$A\in\mathcal G$,
+\[
+\int_A g\,d\mu
+ =\lim_n\int_A g_n\,d\mu
+ =\lim_n\int_A f_n\,d\mu
+ =\int_A f\,d\mu.
+\]
+The limits follow from the $L^1$ bound for integrals over a set.
+This proves existence without invoking Radon--Nikodym.
+
+Linearity now follows from uniqueness for all $L^1$ inputs. Taking
+$A=\Omega$ proves preservation of the integral. If $f\geq0$ almost
+everywhere, then $\int_Ag\,d\mu\geq0$ for every $A\in\mathcal G$.
+The negative level sets $\{g\leq-1/n\}$ show, just as in the
+uniqueness argument, that $g\geq0$ almost everywhere. Thus the map
+is positive. If $f\in L^1(\mathcal G)$, it itself satisfies the
+characterization, so $P_{\mathcal G}f=f$; this proves the projection
+assertion. Finally the construction and $L^1$ convergence give
+$\|P_{\mathcal G}f\|_1=\lim_n\|g_n\|_1\leq\lim_n\|f_n\|_1
+=\|f\|_1$. Apply this to $f-k$ and use linearity for the distance
+estimate. The zero-measure case is included: each of these quotient
+spaces then consists of its zero class.
+\Done
+
+For $f\in L^2$, the construction also gives the familiar orthogonality
+identity $\int u(f-P_{\mathcal G}f)\,d\mu=0$ for
+$u\in L^2(\mathcal G)$. Taking $u=P_{\mathcal G}f$ and expanding
+the square gives
+\[
+\|f\|_2^2=\|P_{\mathcal G}f\|_2^2+
+                 \|f-P_{\mathcal G}f\|_2^2.
+\]
+The extension to $L^1$ retains the integral characterization; it does
+not assert that an arbitrary $L^1$ input has finite $L^2$ norm.
+
+\begin{proposition}[Bounded tests, pullout, and the tower identities]
+\label{prop:conditional_expectation_rules}
+For $f\in L^1(\mu)$ and $u\in L^\infty(\mathcal G)$,
+\[
+\int uP_{\mathcal G}f\,d\mu=\int uf\,d\mu,
+\qquad
+P_{\mathcal G}(uf)=uP_{\mathcal G}f.
+\]
+If $\mathcal G\subseteq\mathcal H\subseteq\mathcal A$ are
+sub-sigma-algebras on the same carrier, then
+\[
+P_{\mathcal G}P_{\mathcal H}f=P_{\mathcal G}f,
+\qquad P_{\mathcal H}P_{\mathcal G}f=P_{\mathcal G}f.
+\]
+\end{proposition}
+\Proof
+The first identity holds for $\mathcal G$-indicators by definition and
+therefore for real $\mathcal G$-measurable simple functions by linearity.
+A bounded representative of $u$ is uniformly approximated by such
+simple functions. The approximation error in the two integrals is at
+most $\|u-s\|_\infty(\|P_{\mathcal G}f\|_1+\|f\|_1)$,
+which tends to zero. This proves the bounded-test identity.
+
+The product $uP_{\mathcal G}f$ belongs to $L^1(\mathcal G)$.
+Apply the first identity to $u\mathbf1_A$ for $A\in\mathcal G$:
+its integral on $A$ equals $\int_A uf\,d\mu$. Uniqueness of
+conditional expectation proves pullout.
+
+For the first tower identity, take $A\in\mathcal G$. It also belongs
+to $\mathcal H$, so successive uses of the characterization give
+\[
+\int_A P_{\mathcal G}P_{\mathcal H}f\,d\mu
+ =\int_A P_{\mathcal H}f\,d\mu=\int_A f\,d\mu.
+\]
+The result is $\mathcal G$-measurable, hence equals
+$P_{\mathcal G}f$ by uniqueness. For the second identity,
+$P_{\mathcal G}f$ already has an $\mathcal H$-measurable
+representative, so the projection property applies.
+\Done
+
+\begin{corollary}[Preservation of uniform integrability]
+For a fixed $\mathcal G$, if $K\subseteq L^1(\mu;\mathbb R)$ is
+uniformly integrable, then $P_{\mathcal G}[K]$ is uniformly integrable.
+\end{corollary}
+\Proof
+Viewed as an operator into ambient $L^1(\mu)$, $P_{\mathcal G}$ is
+bounded and real-linear. It is therefore weakly continuous: composing
+any continuous linear functional with it gives another such functional.
+By Theorem~\ref{thm:DP_weak_compact_finite}, the weak closure of $K$
+is compact. Its image under $P_{\mathcal G}$ is compact and therefore
+closed in the Hausdorff weak topology. It contains $P_{\mathcal G}[K]$,
+so the latter's weak closure is a closed subset of a compact set and
+is compact. The same Dunford--Pettis theorem gives uniform integrability.
+The empty family satisfies the conclusion directly.
+\Done
+
 \subsection{Probability densities and compactness}
 Fix a finite positive measure space $(\Omega,\mathcal A,\mu)$.
 A probability density relative to $\mu$ is an $f\in L^1(\mu)$ with

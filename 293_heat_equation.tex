@@ -1,0 +1,218 @@
+\def\topic{The free heat equation and uniqueness}
+\input{BEGIN.tex}
+\section{The free heat equation and uniqueness}
+\label{sec:free_heat_equation}
+Work on $\mathbb R^d$, $d\geq1$, with Lebesgue measure. In this
+chapter write $L=\sum_{j=1}^d\partial_j^2$ for the differential
+Laplacian. Thus the nonnegative operator used in the next chapters is
+$H_0=-L$, and its heat equation is $u_t=Lu$.
+We use elementary multivariable differentiation, the Gaussian integral,
+and dominated convergence. The point of the uniqueness argument is its
+explicit growth class: a whole-space initial-value problem does not
+acquire unrestricted uniqueness from a bounded-domain maximum principle.
+Jost's Theorem~5.1.2 is precisely a maximum principle with such a
+growth restriction, while his Section~5.2 constructs the fundamental
+solution \cite{Jost2013PDE}.
+
+\subsection{The Gaussian and its convolution law}
+For $t>0$ put
+\[
+p_t(x)=(4\pi t)^{-d/2}\exp\bigl(-|x|^2/(4t)\bigr).
+\]
+\begin{lemma}[Elementary Gaussian identities]
+\label{lem:free_gaussian_convolution}
+The function $p_t$ is positive, has integral one, satisfies
+$\partial_tp_t=Lp_t$, and obeys
+\[
+\int_{\mathbb R^d}p_s(x-z)p_t(z-y)\,dz=p_{s+t}(x-y)
+\qquad(s,t>0).
+\]
+\end{lemma}
+\Proof
+The substitution $x=2\sqrt t\,q$ and the product formula for the
+one-dimensional Gaussian integral give $\int p_t=1$. Direct
+coordinate differentiation gives
+\[
+\partial_tp_t(x)=\left(-\frac d{2t}+\frac{|x|^2}{4t^2}\right)p_t(x),
+\qquad
+\partial_j^2p_t(x)=\left(-\frac1{2t}+\frac{x_j^2}{4t^2}\right)p_t(x),
+\]
+so summing the second identity proves the differential equation.
+For convolution complete the square:
+\[
+\frac{|x-z|^2}{s}+\frac{|z-y|^2}{t}
+=\frac{s+t}{st}\left|z-\frac{tx+sy}{s+t}\right|^2
+ +\frac{|x-y|^2}{s+t}.
+\]
+The remaining Gaussian integral is
+$(4\pi st/(s+t))^{d/2}$. Multiplying by the two normalization
+factors yields the asserted formula. All these integrals are absolutely
+convergent; their positive integrands also permit Tonelli's theorem.
+\Done
+
+\begin{lemma}[The Gaussian Fourier multiplier]
+\label{lem:gaussian_fourier_multiplier}
+For the unitary Fourier normalization
+$\widehat f(\xi)=(2\pi)^{-d/2}\int e^{-ix\cdot\xi}f(x)\,dx$,
+\[
+\widehat{p_t}(\xi)=(2\pi)^{-d/2}e^{-t|\xi|^2}.
+\]
+Consequently convolution by $p_t$ has Fourier multiplier
+$e^{-t|\xi|^2}$.
+\end{lemma}
+\Proof
+In one dimension let
+$F(a)=\int_{\mathbb R}e^{-x^2/(4t)}e^{-iax}\,dx$.
+The integrable function $|x|e^{-x^2/(4t)}$ permits differentiation
+under the integral. Since
+$x e^{-x^2/(4t)}=-2t\,\frac{d}{dx}e^{-x^2/(4t)}$,
+integration by parts, with vanishing Gaussian boundary terms, gives
+\[
+F'(a)=2it\int_{\mathbb R}
+ \frac{d}{dx}\bigl(e^{-x^2/(4t)}\bigr)e^{-iax}\,dx
+ =-2taF(a).
+\]
+Together with $F(0)=\sqrt{4\pi t}$, this scalar differential
+equation gives $F(a)=\sqrt{4\pi t}\,e^{-ta^2}$.
+Taking the product in $d$ coordinates proves the displayed transform.
+For an integrable function $f$, Fubini applied to the convolution
+integral gives
+$\widehat{p_t*f}=(2\pi)^{d/2}\widehat{p_t}\,\widehat f$,
+which proves the multiplier assertion on integrable functions.
+For $f\in L^2$, Jensen's inequality for the probability density
+$p_t$ and Tonelli give
+\[
+\|p_t*f\|_2^2
+\leq\int_{\mathbb R^d}\int_{\mathbb R^d}
+          p_t(z)|f(x-z)|^2\,dz\,dx=\|f\|_2^2.
+\]
+Approximation by $L^1\cap L^2$ functions and Fourier--Plancherel
+therefore extend the multiplier identity to $L^2$.
+\Done
+
+\begin{theorem}[The solution for bounded continuous initial data]
+\label{thm:free_heat_bounded_data}
+If $f:\mathbb R^d\to\mathbb R$ is bounded and continuous, then
+\[
+u(x,t)=\int_{\mathbb R^d}p_t(x-y)f(y)\,dy\quad(t>0),
+\qquad u(x,0)=f(x)
+\]
+is continuous on $\mathbb R^d\times[0,\infty)$, smooth for $t>0$,
+and solves $u_t=Lu$. Moreover
+$|u(x,t)|\leq\|f\|_\infty$ and $u(\cdot,t)\to f$ locally
+uniformly as $t\downarrow0$. The operators $P_tf=u(\cdot,t)$ satisfy
+$P_sP_t=P_{s+t}$.
+\end{theorem}
+\Proof
+Absolute convergence and the bound follow from $\int p_t=1$.
+Every spatial or time derivative of the Gaussian is a polynomial
+in $x-y$ times a Gaussian, with coefficients bounded when $t$ stays
+in a compact subinterval of $(0,\infty)$. For $x$ in a fixed compact
+set these derivatives admit an integrable majorant in $y$ of the form
+$C(1+|y|^N)e^{-c|y|^2}$. Differentiation under the integral is therefore
+legitimate to every order;
+Lemma~\ref{lem:free_gaussian_convolution} gives the equation.
+
+For a compact set $K$ and a number $\varepsilon>0$, continuity of
+$f$ on a compact neighbourhood of $K$ supplies $\delta>0$ such that
+$|f(x-z)-f(x)|<\varepsilon$ whenever $x\in K$ and $|z|<\delta$.
+Consequently
+\[
+\sup_{x\in K}|P_tf(x)-f(x)|
+\leq\varepsilon+2\|f\|_\infty
+                 \int_{|z|\geq\delta}p_t(z)\,dz.
+\]
+After $z=\sqrt t\,q$, the last integral is a Gaussian tail outside
+$|q|\geq\delta/\sqrt t$, and tends to zero. This proves the initial
+trace and continuity at $t=0$. Fubini, boundedness of $f$, and the
+Gaussian convolution identity prove the semigroup law. For complex
+initial data apply the construction to real and imaginary parts.
+\Done
+
+\subsection{Why the growth condition gives uniqueness}
+A classical subsolution on a time slab $[0,T]$ means a real function
+continuous up to $t=0$, with continuous second spatial derivatives
+and first time derivative for $t>0$, satisfying $u_t-Lu\leq0$.
+At the final time derivatives can be understood from the left.
+
+\begin{lemma}[Maximum principle on a bounded cylinder]
+\label{lem:heat_cylinder_maximum}
+Let $B_R=\{x:|x|<R\}$ and let $u$ be a classical subsolution on
+$\overline B_R\times[0,T]$. Its supremum is at most its supremum
+on the parabolic boundary
+$(\overline B_R\times\{0\})\cup(\partial B_R\times[0,T])$.
+\end{lemma}
+\Proof
+For $\eta>0$ consider $w=u-\eta t$, which satisfies
+$w_t-Lw\leq-\eta$. If $w$ exceeded the parabolic-boundary supremum
+of $u$, compactness would give a maximum at $(x_0,t_0)$ with
+$x_0\in B_R$ and $t_0>0$. At this point $Lw\leq0$ and
+$w_t\geq0$: at $t_0=T$ the latter follows from the left derivative,
+and at an interior time it is zero. This contradicts the strict
+differential inequality. Thus $u\leq\sup_{\partial_p}u+\eta T$;
+letting $\eta\downarrow0$ proves the claim.
+\Done
+
+\begin{theorem}[Whole-space maximum principle with Gaussian growth]
+\label{thm:heat_gaussian_growth_maximum}
+Let $T>0$ be finite and let $u$ be a classical subsolution on
+$\mathbb R^d\times[0,T]$. Suppose there are $M,\lambda>0$ with
+\[
+u(x,t)\leq M e^{\lambda|x|^2}\quad(0\leq t\leq T),
+\qquad m=\sup_{x\in\mathbb R^d}u(x,0)<\infty.
+\]
+Then $u(x,t)\leq m$ throughout the slab.
+\end{theorem}
+\Proof
+First suppose the slab length $S$ satisfies $S<1/(4\lambda)$.
+Choose $\tau$ with $S<\tau<1/(4\lambda)$ and define
+\[
+b(x,t)=(\tau-t)^{-d/2}
+       \exp\left(\frac{|x|^2}{4(\tau-t)}\right),\qquad0\leq t\leq S.
+\]
+Direct differentiation gives $b_t=Lb$. For a fixed $\varepsilon>0$,
+$w=u-m-\varepsilon b$ is a subsolution and $w(x,0)\leq0$.
+On $|x|=R$ the uniform bound
+\[
+w(x,t)\leq M e^{\lambda R^2}+|m|
+ -\varepsilon\tau^{-d/2}e^{R^2/(4\tau)}
+\]
+is negative for all sufficiently large $R$, since
+$1/(4\tau)>\lambda$. The bounded-cylinder lemma implies $w\leq0$
+inside every such cylinder. For each fixed $(x,t)$ choose a cylinder
+containing it and then let $\varepsilon\downarrow0$. Hence $u\leq m$
+on this short slab.
+
+For an arbitrary finite $T$, partition $[0,T]$ into finitely many
+slabs of length less than $1/(4\lambda)$. The same growth constants
+work on each translated slab. The first step bounds the initial
+values of the next slab by $m$, so induction gives the conclusion
+on all of them. No limit as a spatial boundary tends to infinity
+has been taken without the barrier estimate.
+\Done
+
+\begin{corollary}[Uniqueness in the stated growth class]
+\label{cor:heat_gaussian_growth_uniqueness}
+Two real classical solutions with the same continuous initial data
+coincide if, on every finite time slab, each satisfies an absolute
+bound $|u(x,t)|\leq M e^{\lambda|x|^2}$ for some slab-dependent
+constants. In particular the bounded solution in
+Theorem~\ref{thm:free_heat_bounded_data} is unique among bounded
+classical solutions. The same conclusion holds for complex solutions.
+\end{corollary}
+\Proof
+On a fixed slab the difference $w$ has zero initial data and an
+absolute Gaussian-growth bound, after increasing the two constants
+if necessary. Apply the maximum principle to $w$ and to $-w$.
+Both are at most zero, hence $w=0$. For complex solutions apply this
+to the real and imaginary parts of the difference.
+\Done
+
+The Gaussian here is a kernel of the heat semigroup, not a statement
+that the differential operator $L$ has only one distributional kernel
+or that all unrestricted classical Cauchy problems are unique.
+The $L^2$ interpretation uses Fourier--Plancherel and the spectral
+calculus in Section~\ref{sec:bounded_schrodinger}; its initial condition
+is an $L^2$ limit, whereas the present theorem assumes continuous
+initial data and proves a locally uniform limit.
+\input{END.tex}
