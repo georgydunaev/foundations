@@ -840,20 +840,349 @@ captured by it. No result in this subsection concerns eta expansion as
 a reduction, recursive constants, or a dependent type theory with
 additional conversion rules.
 
-\subsection{Basic type-theoretic definitions}
-\begin{definition}[$\Bool$]
-Inductive definition of booleans:
-\begin{enumerate}
-\item $(\lFalse:\Bool).$
-\item $(\lTrue:\Bool).$
-\end{enumerate}
-\end{definition}
-This declaration records an intended additional primitive type. The
-simple-language normalization and confluence proofs above cover only
-their explicitly listed arrow and product constructors; a Boolean
-eliminator would require additional typing and reduction cases there.
-The classes-as-types chapter separately constructs the two-element
-set model and proves its dependent elimination, computation, and
-induction principles. Thus the set model is available, while extension
-of this particular syntactic calculus is a distinct task.
+\subsection{Completing the Boolean operational extension}
+\label{sec:simple_boolean_extension}
+We now extend the proved simple calculus, rather than merely declare a
+Boolean type. Add a fresh primitive type $\mathsf{Bool}$, distinct from
+all other atomic types and from arrow and product types, and add terms
+\[
+\mathsf{false},\qquad\mathsf{true},\qquad
+\mathsf{if}(b;s;t).
+\]
+The last expression has a guard and two branches; it introduces no
+binder. Type annotations and all pre-existing constructors retain their
+previous meanings. The added typing rules, in a common context, are
+\[
+\Gamma\vdash\mathsf{false}:\mathsf{Bool},\qquad
+\Gamma\vdash\mathsf{true}:\mathsf{Bool},
+\]
+\[
+\frac{\Gamma\vdash b:\mathsf{Bool}\qquad
+      \Gamma\vdash s:\alpha\qquad\Gamma\vdash t:\alpha}
+     {\Gamma\vdash\mathsf{if}(b;s;t):\alpha}.
+\]
+Both branches must have the same type, including when the guard is a
+literal. Thus $\mathsf{if}(\mathsf{true};s;t)$ is not admitted merely
+because $s$ has the desired type while $t$ fails to type check.
+This is a simply typed conditional, not the dependent Boolean eliminator
+of the set-model chapter.
+
+\begin{proposition}[The extended checker and substitution]
+Extend $T_\Gamma$ by returning $\mathsf{Bool}$ for either Boolean
+constant. For a conditional, compute the three recursive results;
+return $\alpha$ precisely when they are
+$\mathsf{Bool},\alpha,\alpha$, and return failure otherwise.
+The extended checker terminates and returns $\alpha$ exactly when
+$\Gamma\vdash e:\alpha$. Types remain unique and typability decidable.
+Weakening and capture-avoiding typed substitution remain valid.
+\end{proposition}
+\Proof
+The new recursive calls inspect proper subexpressions, so the previous
+size argument still proves termination. Constants have just their
+stated typing rule. Inverting a conditional typing derivation gives
+exactly the three premises checked by the algorithm. Conversely,
+successful recursive checks give those premises by induction, so the
+conditional rule produces the returned type. These are all new cases
+of the correctness proof; the old syntax cases have the same final
+rules and recursive checks. Determinism of the checker gives uniqueness.
+
+For weakening, Boolean constants type in every context, and weakening
+the three conditional premises permits the same conditional rule.
+For substitution, constants are unchanged. The new structural equation is
+\[
+\mathsf{if}(b;s;t)[u/x]
+ =\mathsf{if}(b[u/x];s[u/x];t[u/x]).
+\]
+The three induction hypotheses preserve the guard type and the common
+branch type, so the substituted expression has its original type.
+No new binder case is introduced; abstraction still uses fresh names
+as in the earlier substitution proof. The same reasoning proves the
+simultaneous-substitution version needed below.
+\Done
+
+\subsubsection{Reduction and evaluation}
+Extend full compatible reduction by exactly the two new contractions
+\[
+\mathsf{if}(\mathsf{true};s;t)\longrightarrow s,\qquad
+\mathsf{if}(\mathsf{false};s;t)\longrightarrow t.
+\]
+For this full relation, reduction is allowed in the guard and in either
+branch, as well as in all earlier expression positions. Boolean
+constants themselves have no reducts. In particular we do not add
+Boolean eta reduction or a rule discarding a conditional merely because
+its two branches are syntactically identical.
+
+For call-by-value evaluation, both Boolean constants are values in
+addition to abstractions and pairs of values. Evaluate the guard of a
+conditional until it is a Boolean constant, then select the indicated
+branch without evaluating the discarded branch. Evaluation subsequently
+continues in the selected expression. The other evaluation clauses
+remain left-to-right as before.
+
+\begin{theorem}[Preservation and progress with Booleans]
+Full compatible reduction preserves typing in the extended calculus.
+Every closed well-typed term is a value or has a call-by-value step.
+The specified call-by-value step is deterministic.
+\end{theorem}
+\Proof
+For a root Boolean contraction, typing inversion supplies both branches
+at the conditional's result type, hence supplies the selected reduct
+at that type. A step within any of the three subexpressions preserves
+its type by the induction hypothesis; the conditional rule then
+reconstructs the result. The preceding substitution proposition
+supplies the beta case, and the earlier product argument supplies
+projection. Induction on the surrounding expression proves preservation
+for every compatible position, including beneath binders.
+
+The new canonical-form fact is that a value of Boolean type is either
+$\mathsf{false}$ or $\mathsf{true}$. Indeed, an abstraction has arrow
+type and a pair has product type, and the freely generated type
+constructors are disjoint. For a closed conditional, the guard induction
+hypothesis either supplies a step or makes the guard a value. Its
+Boolean type then makes one of the two contractions applicable.
+Constants are already values; all earlier progress cases use the same
+canonical forms for arrows and products, which the new constants do
+not alter. Closedness is preserved by the new contractions because a
+selected branch has no free variables outside the whole conditional.
+
+For determinism, induction on the expression shows that the evaluation
+clauses choose at most one subexpression to evaluate. In a conditional
+it is the guard until the guard is a value; after that exactly one of
+the two distinct constants selects a branch. Applications, pairs, and
+projections likewise have the unique evaluation position specified by
+their left-to-right clauses. At that position the beta, projection, and
+Boolean contraction shapes are disjoint and have unique results modulo
+alpha-conversion. Thus two evaluation steps have the same result.
+\Done
+
+\subsubsection{The two-point interpretation}
+Keep the earlier interpretations of the other atomic types, arrows,
+and products, and put $D_{\mathsf{Bool}}=\{0,1\}$. Interpret
+$\mathsf{false}$ by $0$, $\mathsf{true}$ by $1$, and define
+\[
+\llbracket\mathsf{if}(b;s;t)\rrbracket_\rho=
+\begin{cases}
+\llbracket s\rrbracket_\rho,&\llbracket b\rrbracket_\rho=1,\\
+\llbracket t\rrbracket_\rho,&\llbracket b\rrbracket_\rho=0.
+\end{cases}
+\]
+This use of $0,1$ is a semantic choice of two distinct set values;
+it does not add arithmetic operations to the term grammar.
+
+\begin{proposition}[Soundness of the Boolean interpretation]
+Typing soundness, semantic substitution, and preservation of denotation
+under full reduction hold for the extended calculus.
+\end{proposition}
+\Proof
+For typing soundness, constants lie in the designated two-point set.
+The guard induction hypothesis gives one of its two values, and both
+branch induction hypotheses give values in the same $D_\alpha$.
+The displayed selection therefore has the required value and type.
+This proves the new case, while all old constructors keep their
+previous semantic clauses.
+
+For semantic substitution, the three structural induction hypotheses
+identify the guard meanings and both branch meanings before and after
+the environment update. Equal guard meanings select the same branch,
+whose meanings are equal by the corresponding hypothesis. Constants
+are independent of the environment. Fresh binder renaming handles the
+old abstraction case exactly as before.
+
+A root Boolean contraction preserves denotation by the selection
+formula. A reduction in the guard preserves its Boolean value; a
+reduction in a branch preserves that branch's value and hence the
+conditional's value, whether or not that branch is selected. The
+previous beta proof uses the now-established substitution theorem,
+and projection uses the unchanged product interpretation. Induction
+on the expression context completes full reduction soundness.
+\Done
+
+\subsubsection{Normalization, including open conditional guards}
+Write $\mathcal R^B_\alpha$ for reducibility computed using the
+\emph{extended} full reduction relation. For every old atomic type
+and for $\mathsf{Bool}$, take all strongly normalizing well-typed
+terms of that type. Retain the arrow and product clauses:
+\[
+\begin{aligned}
+\mathcal R^B_{\alpha\times\beta}
+ &=\{t:\alpha\times\beta:
+       \pi_1(t)\in\mathcal R^B_\alpha,
+       \ \pi_2(t)\in\mathcal R^B_\beta\},\\
+\mathcal R^B_{\alpha\to\beta}
+ &=\{t:\alpha\to\beta:
+       tu\in\mathcal R^B_\beta\text{ for every }
+       u\in\mathcal R^B_\alpha\}.
+\end{aligned}
+\]
+Use disjoint infinite variable supplies for these extended types, as in
+the earlier proof, so finite free-variable contexts can be combined.
+Call a term neutral when its outer constructor is neither abstraction,
+pair, nor Boolean constant. In particular every conditional is neutral,
+even when its guard is a constant and it has a root contraction.
+Reduction is still finitely branching modulo alpha-conversion. Thus a
+strongly normalizing term has a finite maximum reduction height $h(t)$
+by the earlier ordered-redex-position argument, now for this relation.
+
+\begin{lemma}[Reducibility closure for the extended relation]
+For every type, reducible terms are strongly normalizing, reducibility
+is closed under one-step reduction, and a neutral well-typed term
+whose immediate reducts are all reducible is itself reducible.
+Variables and both Boolean constants are reducible.
+\end{lemma}
+\Proof
+Induct on the type, proving the three closure properties together.
+For an old atomic type or $\mathsf{Bool}$, reducibility is strong
+normalization. Reducts of a strongly normalizing term are strongly
+normalizing; if every immediate reduct is strongly normalizing, an
+infinite reduction from the term is impossible because it would begin
+with one of those reducts.
+
+For a product, an infinite reduction of $t$ lifts through $\pi_1$,
+contradicting strong normalization of its reducible projection. If
+$t\to t'$, each $\pi_i(t)\to\pi_i(t')$, so reduction closure at the
+component types proves closure at the product type. If $t$ is neutral,
+its projections have no root projection contraction: their operand
+is not a pair. Every immediate reduct is $\pi_i(t')$ for a reduct
+$t'$ of $t$, and is reducible by the product hypothesis on $t'$.
+Neutral expansion at the component types proves both projection
+conditions. This includes the case in which $t$ is a conditional.
+
+For an arrow, a fresh variable $z$ at the domain type is reducible
+by neutral expansion at that smaller type. Thus $tz$ is strongly
+normalizing whenever $t$ is reducible, which rules out an infinite
+reduction of $t$. Closure follows by applying codomain closure to
+$tu\to t'u$ for every reducible $u$. For neutral expansion, fix such
+a $u$ and induct on $h(u)$. The reducts of $tu$ are $t'u$, reducible
+by the assumption on $t'$, and $tu'$, reducible by the induction
+hypothesis and closure for $u'$. There is no root beta contraction
+because $t$ is not an abstraction. Neutral expansion at the codomain
+therefore makes $tu$ reducible. This proves the arrow clause, also
+when $t$ is a conditional with its own root reduction. Variables have
+no reducts and are neutral, while the two Boolean constants are
+strongly normalizing at the Boolean base type.
+\Done
+
+\begin{lemma}[Conditional elimination preserves reducibility]
+If $b\in\mathcal R^B_{\mathsf{Bool}}$ and
+$s,t\in\mathcal R^B_\alpha$, then
+$\mathsf{if}(b;s;t)\in\mathcal R^B_\alpha$.
+\end{lemma}
+\Proof
+All three terms are strongly normalizing by closure. Induct on
+$h(b)+h(s)+h(t)$. A root reduct, when available, is $s$ or $t$ and
+is reducible by hypothesis. Any other immediate reduct reduces one
+of $b,s,t$; reduction closure preserves its reducibility and strictly
+decreases the indicated height sum. The induction hypothesis then
+makes the resulting conditional reducible. These exhaust the full
+compatible one-step reducts. Since the conditional is neutral, the
+neutral-expansion property proves the assertion. This reasoning does
+not assume that an open guard reduces to a Boolean constant; it also
+covers guards whose normal form is a variable or another neutral term.
+\Done
+
+The pair and abstraction introduction properties also hold for
+$\mathcal R^B$. Here are the additional checks needed to use their
+earlier proofs with the extended relation. Capture-avoiding substitution
+commutes with the conditional constructor. Substituting into either
+new contraction retains its literal Boolean guard and contracts to
+the substituted selected branch. Hence reduction stability under
+substitution includes the new root cases. The structural substitution
+identity used for beta reduction also includes a conditional by applying
+the identity to each of its three immediate subterms. Reducing a term
+inserted at finitely many variable occurrences still reduces disjoint
+copies, now possibly inside guards or branches.
+
+Consequently the pair proof by induction on $h(u)+h(v)$ has exactly
+the same outer reducts: the selected component and reductions in a
+component. Closure and neutral expansion therefore prove both
+projection conditions. For abstraction, the hypothesis that every
+reducible substitution instance of the body is reducible first makes
+the body strongly normalizing by substituting a fresh variable.
+The beta-expansion induction on the sum of body and argument heights
+then applies: its root contractum is reducible; a body reduction
+preserves that property by substitution stability; an argument reduction
+preserves it by reducing its finitely many substituted copies. Each
+non-root case has smaller height sum. Neutral expansion gives the
+application reducible, proving the arrow introduction property. No
+new contraction can occur at the root of a pair, abstraction, or
+application merely because their subterms contain Booleans.
+
+\begin{theorem}[Strong normalization with Booleans]
+\label{thm:boolean_strong_normalization}
+Every well-typed term of the extended calculus is strongly normalizing
+for full compatible beta, projection, and Boolean reduction.
+\end{theorem}
+\Proof
+Induct on a typing derivation to prove the reducible-substitution
+assertion: replacing each free variable by a reducible term of its
+type yields a reducible result. The variable case is the substitution
+hypothesis; Boolean constants are reducible by the closure lemma.
+Application and projections use the arrow and product definitions.
+Pairing and abstraction use the introduction properties just proved,
+with fresh abstraction binders and arbitrary reducible arguments.
+For a conditional, the induction hypotheses make the substituted
+guard and both branches reducible, and the conditional-elimination
+lemma gives the result. This checks every typing constructor of the
+extended grammar. Identity substitution is reducible, so every typed
+term is reducible and therefore strongly normalizing. In particular
+the specified call-by-value evaluation terminates, since all its steps
+belong to full reduction; preservation and progress show that a closed
+well-typed term terminates at a value.
+\Done
+
+\subsubsection{Confluence and the extended decision procedure}
+\begin{theorem}[Confluence and unique normal forms with Booleans]
+\label{thm:boolean_confluence}
+Full reduction in the extended calculus is confluent on well-typed
+terms modulo alpha-conversion. Every such term has a unique normal
+form. Equality of these normal forms decides conversion by the stated
+beta, projection, and Boolean equations in a fixed context and type.
+\end{theorem}
+\Proof
+First prove local confluence by the positions of two contracted redexes.
+At the same position the root constructor and, for a conditional,
+its distinct literal guard determine a unique contractum. At disjoint
+positions the replacements commute. For nested positions, remove their
+common context. If the outer contraction is beta, an inner step in
+the body commutes by substitution stability, including its new Boolean
+cases. An inner step in the argument is reproduced in every substituted
+copy, or discarded when there are none. If the outer contraction is a
+projection, an inner step in the selected component is reproduced after
+projection, while a step in the other component is discarded. These
+are the earlier joins, and allow inner Boolean contractions as well.
+
+The new outer-redex cases are
+$\mathsf{if}(\mathsf{true};s;t)$ and
+$\mathsf{if}(\mathsf{false};s;t)$. Their literal guard has no reduct,
+so an inner step is in one of the branches. If it is in the selected
+branch, one path selects that branch and takes the inner step, while
+the other takes the inner step and selects the reduced branch. Both
+reach the same term. If it is in the discarded branch, both paths
+reach the unchanged selected branch. These exhaust nested positions;
+compatibility permits the joins to be put back in the common context.
+Preservation keeps all joining terms in the fixed context and type.
+
+Strong normalization and finite branching now supply the finite heights
+needed by the preceding proof of Newman's lemma. That proof uses only
+termination and local confluence, both now established for the extended
+relation, so it gives confluence here. Repeatedly selecting the first
+available redex terminates at a normal form; confluence makes that
+normal form unique modulo alpha-conversion. The extended syntax still
+has effective redex recognition, substitution, fresh renaming, and
+alpha comparison. Normalizing two checked terms and comparing their
+normal forms therefore decides conversion: each forward or backward
+step preserves the unique normal form, and agreement exhibits a
+conversion by reversing one normalization path.
+\Done
+
+A closed Boolean term has normal form either $\mathsf{false}$ or
+$\mathsf{true}$. Indeed, a full normal form permits no call-by-value
+step, so progress makes it a value, and Boolean canonical forms give
+these two possibilities. Open Boolean normal forms need not be
+constants. For example, in the context $b:\mathsf{Bool}$, both $b$
+and $\mathsf{if}(b;\mathsf{true};\mathsf{false})$ are distinct normal
+forms. They have the same two-point denotation but are not convertible
+by the rules just proved. Thus the extension still distinguishes
+semantic equations from its specified syntactic conversion relation.
+It adds neither recursive constants nor a dependent conditional.
 \input{END.tex}

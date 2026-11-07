@@ -64,21 +64,138 @@ Unlike the standard set-theoretic setting where terms are interpreted as sets an
 \end{enumerate}
 \end{note}
 
-\subsection{Storage [unfinished]}
-Computer memory stores finite representations. A function expression can
-therefore be stored as a bound variable together with a term, rather than
-as a list of all its argument--value pairs. Types rule out expressions
-that do not fit the intended interfaces. A semantic interpretation then
-provides proof obligations for the implementation: the rules must preserve
-the interpretation, and a failed obligation may reveal an implementation
-error or a missing hypothesis.
+\subsection{Predicate interpretation and collected extensions}
+\label{sec:predicate_type_interface}
+We now give a uniform interface for the local predicate models. The
+letters $P,Q$ stand schematically for formulas with a designated class
+argument $C$ and specified parameters; they are not members of an
+object-theoretic class of all predicates. Work with MK comprehension,
+or restrict the formulas to the comprehension instances admitted in
+the chosen NBG fragment. Fix the background model and an assignment
+$\rho$ of the free parameters.
 
-\iffalse
-Is the following okey ???
+For a type expression $A$, a specified interpretation supplies a
+predicate $P_A(C)$ on class values. Write $\Emb(A)$ for this predicate,
+not for a class that contains every value satisfying it. If $a:A$ has
+a target-language translation $\mu_A(a)$, put
 \[
-(B\family)\iff\exists t : B = (\Lambda x: t)
+v_\rho(a)=\operatorname{Val}_\rho(\mu_A(a)).
 \]
-\fi
+Thus $\mu_A(a)$ is syntax and $v_\rho(a)$ is its value. Soundness of a
+typing rule means that, for every assignment satisfying its context,
+its premises imply $P_A(v_\rho(a))$ for the conclusion $a:A$.
+This defines the obligation; it does not prove arbitrary proposed
+rules sound merely by assigning them this notation. When $I(a)$ occurs
+in a target-language equation below, its semantic reading is the value
+$v_\rho(a)$ of that class expression.
+
+For a permitted predicate $P$, define its \emph{collected extension}
+by guarded comprehension:
+\[
+\kappa(P)=\{C:C\text{ is a set and }P(C)\}.
+\]
+For a class $X$, define its membership predicate
+\[
+\Emb_{\mathrm{cl}}(X)(C)\iff C\in X.
+\]
+A type presented by the class carrier $X$ uses this last predicate.
+These are schematic operations on formulas and class parameters, not
+an ordinary class-function graph whose arguments include all predicates.
+
+\begin{theorem}[What collection preserves]
+\label{thm:predicate_extension_projection}
+For every class $C$ and every admitted predicate $P$,
+\[
+C\in\kappa(P)\iff(C\text{ is a set and }P(C)).
+\]
+Moreover $\kappa(\Emb_{\mathrm{cl}}(X))=X$ for every class $X$.
+Consequently collecting a predicate and then taking the membership
+predicate recovers exactly its restriction to set values. It recovers
+$P$ on all classes if and only if $P$ has only set instances.
+\end{theorem}
+\Proof
+The first equivalence is guarded comprehension. Every member of $X$
+is already a set, so the same equivalence with $P(C)$ given by $C\in X$
+says that $\kappa(\Emb_{\mathrm{cl}}(X))$ and $X$ have precisely the
+same members. Extensionality gives their equality. Finally,
+\[
+\Emb_{\mathrm{cl}}(\kappa(P))(C)
+\iff (C\text{ is a set and }P(C)).
+\]
+This agrees with $P(C)$ for all classes exactly when $P(C)$ implies
+sethood for every $C$.
+\Done
+
+\begin{example}[Collection forgets proper-class instances]
+Assume $\V$ is proper. The predicates $P(C)\iff\bot$ and
+$Q(C)\iff C=\V$ have the same collected extension, namely
+$\emptyclass$, although $Q(\V)$ holds and $P(\V)$ does not.
+Likewise the intended type $\Class$, interpreted by the constantly
+true predicate, has collected extension $\V$. Its original predicate
+accepts proper classes as well, whereas membership in $\V$ accepts
+only sets. Thus the type $\Class$ cannot be replaced by its collected
+extension without changing its instances.
+\end{example}
+
+The interface therefore retains the full predicate $P_A$ whenever
+proper-class values are allowed. Membership in $\kappa(\Emb(A))$
+can replace a typing predicate only for a set-valued instance or a
+model whose instances are all sets. The option model below supplies
+such a model and proves its constructor clauses; it does not discard
+the other, genuinely class-valued interpretations in this chapter.
+
+\subsection{Finite storage and semantic functions}
+A stored expression is a finite tree with a constructor tag, finitely
+many immediate subexpressions, and finite encodings of identifiers and
+type annotations. For example, an abstraction stores its bound-variable
+name, its annotation, and its body. It need not store the graph of the
+function denoted by that body. The finite syntax also makes structural
+recursion available for renaming, substitution, and the specified type
+checker. Bound names must still be treated with the freshness conditions
+proved in the language chapter.
+
+The language chapter verifies these obligations for its specified simple
+fragment: recovery of types terminates and matches the typing rules;
+substitution and reduction preserve types; denotational substitution and
+reduction preserve meanings; normalization and confluence justify its
+conversion procedure. Those are distinct results. A finite representation
+alone proves none of them, and their proofs do not automatically extend
+to every proposed dependent or class-valued constructor here.
+
+\begin{proposition}[Finite syntax does not name every semantic function]
+\label{thm:finite_syntax_limit}
+Suppose an expression language has an explicitly countable alphabet,
+and every expression is finite. Fix its interpretation. Among its closed
+expressions, consider those whose denotations are total functions
+$\mathbb N\to\{0,1\}$. Not every such function can be denoted.
+\end{proposition}
+\Proof
+Coding finite strings over the given alphabet by natural numbers gives
+a sequence of all possible expression codes. At code $n$, let $f_n$
+be the denoted binary-valued function if that code is a suitable closed
+expression; otherwise let $f_n$ be the constant-zero function. This is
+a metatheoretic definition in the fixed interpretation, not a claim
+that semantic validity is decidable. Define
+\[
+g(n)=1-f_n(n).
+\]
+For every $n$, the function $g$ differs from $f_n$ at $n$. It therefore
+differs from the denotation of every suitable closed expression, proving
+the assertion. This argument takes place in the ordinary set metatheory
+of the fixed interpretation; it does not define an internal truth or
+universal evaluation predicate in the object language.
+\Done
+
+The fixed interpretation and closed-expression restrictions matter.
+Allowing a free parameter to range over all functions can supply all
+those functions as values of one variable expression, but the varying
+parameter is additional semantic data. Similarly, a separate primitive
+name for every semantic function would violate the countable-alphabet
+hypothesis. Finite syntax is a faithful storage format for expressions,
+not an enumeration of all possible class functions or all set functions.
+Countability does not assert that each denoted function is computable:
+a fixed primitive constant may have a noncomputable interpretation.
+
 \pagebreak
 \subsection{Implementing the boolean type}
 
@@ -168,13 +285,24 @@ cannot both be stored as values of an ordinary set graph unless they are
 sets. This is the same size distinction encountered in family encodings.
 
 \subsection{Implementing option types}
-The concrete semisingleton model below concerns set-valued instances of
-$A$: the empty class represents no value, and a singleton represents one
-value. It does not directly encode a proper-class value as a singleton.
-The draft uses both $\Emb(A)$ as a predicate and its collected extension
-$\kappa(\Emb(A))$; these must be distinguished whenever membership notation
-is used. The displayed typing rules record the intended interface while
-the set-class calculations establish the concrete model's basic cases.
+The semisingleton model concerns set-valued instances: the empty class
+represents no value, and a singleton represents one set value. It does
+not encode a proper-class value by placing it inside a singleton.
+For a predicate $P$, define the set-valued option predicate by
+\[
+\begin{split}
+\operatorname{Opt}(P)(b)\iff{}& b\text{ is a set}\ \land\bigl(
+ b=\emptyclass\ \lor\\
+&\exists(a\text{ a set}),\ P(a)\land b=\{a\}\bigr).
+\end{split}
+\]
+For a type expression $A$ interpreted by $P_A$, the local option
+interpretation is $P_{\Option(A)}=\operatorname{Opt}(P_A)$.
+This clause is uniform in the supplied predicate, but its Some branch
+admits only set instances. In the following displayed introduction rules,
+$A$ is represented by a class carrier, so every instance is already a
+set. The class-valued types elsewhere in the chapter keep their full
+predicate interpretations.
 
 %Axioms:\\
 \subsubsection{Axioms of option types}
@@ -194,7 +322,9 @@ I(\None)\in\kappa(\Emb(\Option(A)))
 (I(a)\in \kappa(\Emb(A)))\implies(I(\Some(a))\in\kappa(\Emb(\Option(A))))
 \]
 \end{axiom}
-Completing the predicate-level presentation requires a uniform definition of $\Emb$ and its extension operator $\kappa$; the older class-level equations below are retained with that scope.
+The semantic constructor interpretations below verify these rules for the
+stated class-carrier model. They do not assert an unguarded Some rule for
+a proper-class instance of an arbitrary predicate type.
 \subsubsection{Model of option types}
 %Model:\\
 \begin{definition}[None--def]
@@ -207,20 +337,51 @@ I(\None) \eqdef \emptyclass
 I(\Some(a)) \eqdef \{I(a)\}
 \]
 \end{definition}
-\begin{definition}[Option--def](sic!)
+\begin{definition}[Predicate and collected option interpretations]
+For a type expression $A$ with supplied predicate interpretation,
 \[
-\Emb(\Option(A)) \eqdef \cc{b}{(b \sss A)}
+\Emb(\Option(A))=\operatorname{Opt}(\Emb(A)).
 \]
+This is an equality of predicate interpretations. For a class carrier
+$X$, write $O(X)=\{b:b\sss X\}$ for its semisingleton extension.
 \end{definition}
+
+\begin{proposition}[Option collection and its constructor laws]
+In the classical class setting, with empty set and pairing,
+\[
+\kappa(\operatorname{Opt}(P))=O(\kappa(P)).
+\]
+The empty set satisfies $\operatorname{Opt}(P)$, and if $a$ is a set
+satisfying $P$, then $\{a\}$ satisfies $\operatorname{Opt}(P)$.
+In particular, for a class carrier $X$,
+\[
+\kappa(\Emb(\Option(X)))=O(X),
+\]
+where $\Emb(X)=\Emb_{\mathrm{cl}}(X)$ is the local carrier interpretation.
+\end{proposition}
+\Proof
+The constructors are sets by the empty-set and pairing axioms, and each
+satisfies its corresponding disjunct in the definition of
+$\operatorname{Opt}(P)$. A set satisfying that definition is empty or
+a singleton of a set $a$ satisfying $P$. Such an $a$ belongs to
+$\kappa(P)$, so either case is a semisingleton subclass of $\kappa(P)$.
+Conversely, let $b\in O(\kappa(P))$. Classical logic distinguishes
+whether $b$ is empty. If it is not, choose $a\in b$. The semisingleton
+condition gives $b=\{a\}$, and $a\in\kappa(P)$ gives sethood and
+$P(a)$. Thus $b$ satisfies the option predicate in either case.
+Comprehension and extensionality prove the equality. The carrier case
+follows from $\kappa(\Emb_{\mathrm{cl}}(X))=X$.
+\Done
+
 \subsubsection{Soundness of option types}
-The following calculations prove the class-level semisingleton model.
-They use the empty-set and set-pairing axioms, in addition to comprehension.
-Write $O(A)=\{b:b\sss A\}$ for a class $A$. To interpret these as the
-proposed typed judgments involving $\Emb$, $\kappa$, $\term$, and
-$\type$, those translation operations must identify the option extension
-with $O(A)$ and the two constructors with the following class expressions.
-Their uniform definitions remain part of the predicate-level proposal;
-the class calculation does not itself define them.
+The following calculations develop the same concrete model. The preceding
+interface identifies its predicate, its collected extension, and its two
+constructor expressions. The rule for Some is justified by membership
+in the class carrier, which guarantees a set argument. For a general
+predicate admitting proper classes, the formula $P_A(v_\rho(a))$ alone
+does not justify a singleton encoding: a proper class has no singleton
+containing it in the class theory. Such an option constructor would need
+a different representation, not merely the omission of this guard.
 
 \begin{theorem}[None in the semisingleton model]
 For every class $A$,

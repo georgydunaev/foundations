@@ -1127,4 +1127,127 @@ self-map of the empty complete metric space satisfies every displayed
 contraction inequality vacuously but has no fixed point.
 \end{example}
 
+\subsection{Proper ultrafilters and compact products}
+This subsection concerns set-sized topological spaces and uses classical
+set theory with Choice. Its filters are \emph{proper filters on a fixed
+carrier}; this qualification distinguishes them from any earlier convention
+allowing empty filters or varying carriers. These results will supply the
+compactness arguments for weak topologies, where the metric subsequence
+criterion alone is insufficient.
+
+\begin{definition}[Proper filters and ultrafilters]
+A proper filter $\mathcal F$ on a set $X$ is a family of subsets of $X$
+containing $X$, excluding $\emptyclass$, closed under finite intersections,
+and upward closed among subsets of $X$. An ultrafilter is a proper filter
+maximal under inclusion among proper filters on the same carrier.
+A family $\mathcal A\subseteq\power X$ has the finite intersection
+property when every finite intersection of its members is nonempty;
+the empty intersection is $X$.
+\end{definition}
+
+\begin{theorem}[Ultrafilter extension and the dichotomy]
+\label{thm:ultrafilter_extension}
+Every family with the finite intersection property is contained in an
+ultrafilter on $X$. A proper filter $\mathcal U$ is an ultrafilter exactly
+when, for every $A\subseteq X$, exactly one of $A$ and $X\setminus A$
+belongs to $\mathcal U$.
+\end{theorem}
+\Proof
+The supersets of finite intersections from $\mathcal A$ form a proper
+filter $\mathcal F_0$. Order its proper-filter extensions by inclusion.
+The union of a nonempty chain is a proper filter: any finitely many of
+its members lie together in one chain member, and none of those filters
+contains the empty set. For the empty chain, use $\mathcal F_0$ as an
+upper bound. Zorn's lemma gives a maximal extension $\mathcal U$.
+
+If $A\notin\mathcal U$, adjoining $A$ cannot generate a proper filter,
+by maximality. Thus some $F\in\mathcal U$ has $F\cap A=\emptyclass$;
+otherwise the finite intersections from $\mathcal U\cup\{A\}$ would
+generate a proper extension. Upward closure gives
+$X\setminus A\in\mathcal U$. Both alternatives cannot occur, since
+their intersection is empty. Conversely, if the dichotomy holds and a
+proper filter extending $\mathcal U$ contained a new set $A$, it would
+also contain $X\setminus A\in\mathcal U$, a contradiction. This proves
+the characterization.
+\Done
+
+\begin{definition}[Ultrafilter convergence and direct image]
+An ultrafilter $\mathcal U$ on a topological space $X$ converges to $x$
+if every neighbourhood of $x$ belongs to $\mathcal U$. For any map
+$f:X\to Y$, define
+\[
+f_*\mathcal U=\{B\subseteq Y:f^{-1}[B]\in\mathcal U\}.
+\]
+\end{definition}
+
+\begin{lemma}[Transport and uniqueness of ultrafilter limits]
+The family $f_*\mathcal U$ is an ultrafilter, without any continuity
+assumption on $f$. If $f$ is continuous and $\mathcal U$ converges to $x$,
+then $f_*\mathcal U$ converges to $f(x)$. In a Hausdorff space an
+ultrafilter has at most one limit.
+\end{lemma}
+\Proof
+Inverse images preserve the carrier, the empty set, intersections,
+inclusions, and relative complements. The filter axioms and the dichotomy
+therefore pass to $f_*\mathcal U$. For continuity, the inverse image of
+a neighbourhood of $f(x)$ is a neighbourhood of $x$, hence belongs to
+$\mathcal U$. Finally, disjoint neighbourhoods of two distinct Hausdorff
+points cannot both belong to a proper filter.
+\Done
+
+\begin{theorem}[Compactness characterized by ultrafilters]
+\label{thm:compact_ultrafilter}
+A topological space is compact if and only if every ultrafilter on its
+carrier converges to some point of the space.
+\end{theorem}
+\Proof
+Suppose $X$ is compact and $\mathcal U$ is an ultrafilter. The closed
+sets $\overline F$, $F\in\mathcal U$, have the finite intersection
+property: the corresponding finite intersection of the $F$ is nonempty
+and contained in their closures. Compactness implies that their total
+intersection is nonempty, since otherwise the open complements would
+have a finite subcover. Choose $x$ in that intersection. If a neighbourhood
+$N$ of $x$ did not belong to $\mathcal U$, the dichotomy would put
+$X\setminus N$ in $\mathcal U$. But an open neighbourhood $O$ with
+$x\in O\subseteq N$ shows that
+$x\notin\overline{X\setminus N}$, a contradiction. Thus
+$\mathcal U$ converges to $x$.
+
+Conversely, if an open cover has no finite subcover, its complements
+have the finite intersection property. Extend them to an ultrafilter.
+A limit $x$ would lie in some open cover member $O$, putting both $O$
+and $X\setminus O$ in that ultrafilter. This is impossible. Hence the
+cover has a finite subcover. The empty space is covered by this argument:
+it is compact and carries no proper ultrafilter.
+\Done
+
+\begin{theorem}[Compactness of set-indexed products]
+\label{thm:tychonoff}
+Let $(X_i)_{i\in I}$ be a set-indexed family of compact spaces. Their
+product, with the product topology, is compact. Separation axioms on the
+factors are not required.
+\end{theorem}
+\Proof
+If the product $X$ is empty, it is compact. Otherwise let $\mathcal U$
+be an ultrafilter on $X$. For each coordinate projection $\pi_i$, the
+ultrafilter $(\pi_i)_*\mathcal U$ has a limit in $X_i$ by compactness.
+Choice selects such a limit $x_i$ for each $i$; put $x=(x_i)\in X$.
+Every basic neighbourhood of $x$ restricts only finitely many coordinates.
+Its coordinate neighbourhoods belong to the respective image ultrafilters,
+so their inverse images belong to $\mathcal U$. Their finite intersection
+therefore belongs to $\mathcal U$, and upward closure handles every
+neighbourhood of $x$. Thus $\mathcal U$ converges to $x$. The preceding
+theorem proves compactness. For $I=\emptyclass$, the product is the
+singleton consisting of the empty function, and the same finite-coordinate
+argument has no conditions to impose.
+\Done
+
+In particular, a product of closed bounded real intervals is compact.
+Each interval is complete as a closed subset of the complete real line
+and totally bounded by finite grids, so the earlier metric criterion
+proves its compactness. Product compactness here is genuinely topological;
+no sequential compactness claim for an arbitrary uncountable product has
+been substituted for it. The proof uses Choice explicitly, unlike the
+deterministic iteration in the contraction theorem.
+
 \input{END.tex}

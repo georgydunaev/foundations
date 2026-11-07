@@ -15,8 +15,9 @@ less, as their proofs indicate. This convention does not strengthen
 the assumptions of the separate countable-choice metric theorem.
 
 The companion manuscript on the Dunford--Pettis theorem is not included
-in this checkout. The development below supplies proofs of the sequential
-finite-measure criterion and its analytic prerequisites. It does not
+in this checkout. The development below proves the finite-measure criterion
+in both sequential and topological forms, together with its analytic
+prerequisites. It does not
 reconstruct that missing manuscript or assert a formalization in Obelisk.
 
 \subsection{Linear structure and topology}
@@ -691,10 +692,11 @@ finite-measure compactness criterion below does not identify these
 settings.
 
 A set is relatively weakly compact when its closure in the weak
-topology is compact. For clarity, the criterion below is stated in
-sequential form: every sequence from the family has a subsequence
-converging weakly to an element of the ambient space. The limit need
-not belong to the original family.
+topology is compact. We first prove a sequential criterion: every sequence
+from the family has a subsequence converging weakly to an element of the
+ambient space. The limit need not belong to the original family. A later
+argument proves the topological compactness statement separately, rather
+than assuming that sequences characterize an arbitrary weak topology.
 
 \subsection{A finite-measure Dunford--Pettis criterion}
 Fix a finite positive measure space $(\Omega,\mathcal{A},\mu)$ and
@@ -897,6 +899,7 @@ with this failure of norm compactness.
 
 \subsection{Hilbert representation and the dual of real $L^1$}
 \begin{theorem}[Representation of a real Hilbert-space functional]
+\label{thm:real_Hilbert_representation}
 Let $H$ be a real Hilbert space. For each continuous linear functional
 $\ell:H\to\mathbb R$ there is a unique $g\in H$ such that
 \[
@@ -1205,7 +1208,211 @@ give a probability-space treatment whose converse invokes
 Vitali--Hahn--Saks. The measure-algebra argument here supplies the
 uniform small-set conclusion needed for this sequential result.
 No equivalence of sequential and topological weak compactness has been
-used or proved here.
+used in this argument. We now supply a separate route to topological
+compactness in this setting.
+\subsection{From uniform integrability to weak compactness}
+The following arguments use the proper-ultrafilter and product-compactness
+results of the topology chapter, in the full Choice setting already
+specified here. A proper ultrafilter on a set $S$ never contains the empty
+set; convergence to a point means that every neighbourhood, intersected
+with $S$, belongs to the ultrafilter. This is distinct from the earlier
+local convention that also allowed an empty filter family.
+
+\begin{theorem}[Weak compactness of a real Hilbert ball]
+\label{thm:Hilbert_ball_weak_compact}
+If $H$ is a real Hilbert space and $R\geq0$, the closed ball
+$B_R=\{x\in H:\|x\|\leq R\}$ is compact in the weak topology.
+\end{theorem}
+\Proof
+For each $h\in H$, let $I_h=[-R\|h\|,R\|h\|]$ and define
+\[
+J:B_R\longrightarrow\prod_{h\in H}I_h,\qquad
+J(x)_h=\langle h,x\rangle.
+\]
+The product is compact by Theorem~\ref{thm:tychonoff}, since its factors
+are compact real intervals. Its subset consisting of families $v$ with
+\[
+v_{h+k}=v_h+v_k,\qquad v_{th}=t v_h
+\quad(h,k\in H,\ t\in\mathbb R)
+\]
+is closed: each equation is a closed condition on finitely many real
+coordinates. Such a family defines the continuous linear functional
+$\ell(h)=v_h$, with $|\ell(h)|\leq R\|h\|$. By
+Theorem~\ref{thm:real_Hilbert_representation}, it has the form
+$\ell(h)=\langle h,x\rangle$ for a unique $x\in H$ with
+$\|x\|=\|\ell\|\leq R$. Thus this closed subset is exactly $J[B_R]$.
+
+The map $J$ is injective: equality of all coordinates, tested on the
+difference of two points, gives equality of the points. The weak topology
+on $H$ is precisely the topology induced by these coordinates, since
+real Hilbert representation supplies every continuous linear functional.
+Hence $J$ is a homeomorphism onto its image. That image is a closed
+subset of a compact product, so $B_R$ is weakly compact. The argument
+includes $R=0$ and the zero space.
+\Done
+
+\begin{lemma}[Uniform integrability passes to weak closure]
+\label{lem:UI_weak_closure}
+On a finite positive measure space, the weak closure in real $L^1$ of
+a uniformly integrable family is uniformly integrable.
+\end{lemma}
+\Proof
+For a measurable set $A$, the function
+$q_A(f)=\int_A|f|\,d\mu$ satisfies
+\[
+q_A(f)=\sup\left\{\int fg\,d\mu:
+ g\in L^\infty,\ |g|\leq1\text{ a.e.},\ g\mathbf1_A=g\text{ a.e.}\right\}.
+\]
+The bound follows from $|g|\leq1$ on $A$; equality is attained by
+$g=\operatorname{sgn}(f)\mathbf1_A$. Each displayed test is weakly
+continuous, so $\{f:q_A(f)\leq r\}$ is weakly closed, being the
+intersection of its closed linear half-spaces. This also applies to
+$q_\Omega(f)=\|f\|_1$.
+
+Let $W$ be the weak closure of the given family $K$. Its uniform norm
+bound passes to $W$ by the closedness just proved. For $\varepsilon>0$,
+choose $\delta>0$ such that $\mu(A)<\delta$ implies
+$q_A(f)<\varepsilon/2$ for every $f\in K$. For each such $A$, the
+weakly closed set $\{f:q_A(f)\leq\varepsilon/2\}$ contains $K$ and
+therefore $W$. Thus the members of $W$ satisfy the uniform bound
+$q_A(f)\leq\varepsilon/2<\varepsilon$. The small-set characterization
+now makes $W$ uniformly integrable. Empty families cause no exception.
+\Done
+
+\begin{lemma}[Sequences in a weakly compact set]
+\label{lem:weak_compact_subsequence}
+Every sequence in a weakly compact subset $K$ of a real normed space
+$E$ has a weakly convergent subsequence with limit in $K$.
+Completeness of $E$ is not needed for this implication.
+\end{lemma}
+\Proof
+First, every norm-closed linear subspace $M\subseteq E$ is weakly closed.
+If $x\notin M$, its distance $d$ from $M$ is positive. On $M+\mathbb R x$
+the functional $\ell_0(m+tx)=t$ is well defined and satisfies
+\[
+|\ell_0(m+tx)|\leq d^{-1}\|m+tx\|.
+\]
+For $t\ne0$, this follows from $\|m+tx\|\geq |t|d$; for $t=0$
+it is immediate. Hahn--Banach extends $\ell_0$ to a continuous linear
+functional on $E$ that vanishes on $M$ but not on $x$. Thus $M$ is the
+intersection of the kernels of the continuous functionals vanishing on
+it, proving weak closedness.
+
+Given a sequence $(x_n)$ in $K$, let $M$ be its norm-closed linear span.
+Finite rational linear combinations of its terms form a countable dense
+subset of $M$. If $M=\{0\}$, the conclusion is immediate. Otherwise,
+normalizing the nonzero elements of that dense subset gives a countable
+dense sequence $(u_j)$ in the unit sphere of $M$. Choose norm-one
+functionals $\ell_j\in E'$ with $\ell_j(u_j)=1$ by Hahn--Banach.
+They separate points of $M$: for $z\ne0$, choose $u_j$ within $1/2$ of
+$z/\|z\|$; then $|\ell_j(z/\|z\|)|>1/2$.
+
+The set $C=K\cap M$ is weakly compact, as a closed subset of $K$.
+The map
+\[
+C\longrightarrow\mathbb R^{\mathbb N},\qquad
+x\longmapsto(\ell_j(x))_j
+\]
+is continuous and injective. By the compact-to-Hausdorff theorem,
+it is a homeomorphism onto its image. The countable product is
+metrizable, for example by
+\[
+d(a,b)=\sum_{j\geq1}2^{-j}\min(1,|a_j-b_j|).
+\]
+Finite-coordinate conditions control the initial part of this sum,
+and its uniformly small tails give the converse neighbourhood
+comparison, so this metric induces the product topology.
+Thus $C$, with its weak topology, is compact and metrizable. The metric
+compactness criterion supplies a convergent subsequence of $(x_n)$
+with limit in $C\subseteq K$, proving the claim. This argument concerns
+sequences inside a weakly compact set; it does not metrize the weak
+topology on all of $E$ or identify general nets with sequences.
+\Done
+
+\begin{theorem}[Dunford--Pettis, finite-measure weak compactness]
+\label{thm:DP_weak_compact_finite}
+Let $(\Omega,\mathcal A,\mu)$ be a finite positive measure space and
+$K\subseteq L^1(\mu;\mathbb R)$. The following are equivalent:
+\begin{enumerate}
+\item $K$ is uniformly integrable;
+\item its weak closure is weakly compact;
+\item every sequence in $K$ has a subsequence converging weakly to an
+      element of $L^1(\mu)$.
+\end{enumerate}
+\end{theorem}
+\Proof
+The first and third conditions are equivalent by
+Theorem~\ref{thm:DP_sequential_finite}. The second implies the third by
+Lemma~\ref{lem:weak_compact_subsequence}, applied to the weak closure.
+It remains to prove that the first implies the second.
+
+Let $W$ be the weak closure of $K$. By Lemma~\ref{lem:UI_weak_closure},
+it is uniformly integrable. If $W$ is empty, it is compact. Otherwise,
+fix an arbitrary proper ultrafilter $\mathcal U$ on $W$.
+Set $\varepsilon_j=2^{-j}$ and choose positive integers $m_j$ such that,
+with the pointwise truncation $T_j f=\max(-m_j,\min(f,m_j))$,
+\[
+\sup_{f\in W}\|f-T_jf\|_1\leq\varepsilon_j.
+\]
+Uniform integrability gives these bounds because truncation error is
+bounded by the corresponding tail integral. Each $T_jf$ lies in the
+$L^2$ ball of radius $m_j\mu(\Omega)^{1/2}$. This ball is weakly
+compact by Theorem~\ref{thm:Hilbert_ball_weak_compact} and completeness
+of $L^2$. The image ultrafilter under $T_j$ therefore converges weakly
+in $L^2$ to some $u_j$ in that ball. The limit is unique because the
+weak Hilbert topology is Hausdorff. No continuity of the truncation
+map from weak $L^1$ to weak $L^2$ is asserted or needed: it is simply
+a map used to push forward an ultrafilter.
+
+Every $g\in L^\infty$ is in $L^2$ on the finite measure space, so the
+map $h\mapsto\int gh\,d\mu$ is a continuous functional on $L^2$.
+For every $f\in W$,
+\[
+\left|\int g(T_jf-T_kf)\,d\mu\right|
+ \leq\|g\|_\infty(\varepsilon_j+\varepsilon_k).
+\]
+Passing to the scalar limits along $\mathcal U$ preserves this closed
+inequality and gives the same bound with $u_j-u_k$ in place of
+$T_jf-T_kf$. Here sums and differences of scalar ultrafilter limits
+are justified by intersecting the finitely many required filter sets.
+Both $u_j,u_k$ belong to $L^1$ by the finite-measure inclusion
+$L^2\subseteq L^1$. Taking $g=\operatorname{sgn}(u_j-u_k)$ gives
+\[
+\|u_j-u_k\|_1\leq\varepsilon_j+\varepsilon_k.
+\]
+Completeness of $L^1$ yields $u_j\to f_*$ in norm for some $f_*\in L^1$;
+letting $k$ tend to infinity in this estimate gives
+$\|u_j-f_*\|_1\leq\varepsilon_j$.
+
+For each $g\in L^\infty$ and $f\in W$,
+\[
+\left|\int g(f-f_*)\,d\mu\right|
+\leq 2\|g\|_\infty\varepsilon_j
+   +\left|\int g(T_jf-u_j)\,d\mu\right|.
+\]
+First choose $j$ making the first term arbitrarily small; the second
+tends to zero along $\mathcal U$ by the weak $L^2$ limit. Therefore
+$\int gf$ tends along $\mathcal U$ to $\int gf_*$ for every bounded
+test $g$. The dual identification in Theorem~\ref{thm:L1_dual_finite}
+and finite intersections of filter sets show that $\mathcal U$
+converges to $f_*$ in the weak topology of $L^1$.
+
+Since $W$ is weakly closed, this limit lies in $W$: otherwise its open
+complement would give an empty trace on $W$ in a proper ultrafilter.
+Every proper ultrafilter on $W$ thus converges in $W$.
+Theorem~\ref{thm:compact_ultrafilter} makes $W$ weakly compact.
+The zero-measure case is included, since both function spaces then
+consist of their zero equivalence class.
+\Done
+
+This establishes topological weak compactness in the finite-measure
+$L^1$ setting, not an unrestricted theorem that every sequentially
+compact subset of every topological vector space is compact. The
+ultrafilter proof uses weak compactness of Hilbert balls and uniform
+truncation; the reverse implication uses the separable span of a given
+sequence. These extra arguments are the bridge that a bare reference
+to convergence of sequences would omit.
+
 \paragraph{Why the hypotheses matter.}
 The small-set lemma shows why both norm boundedness and control of
 concentration matter. An $L^1$ bound alone does not control concentration

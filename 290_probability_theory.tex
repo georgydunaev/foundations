@@ -95,20 +95,60 @@ probability measure $\nu_f(A)=\int_A f\,d\mu$. If $\mu(\Omega)=0$,
 there are no such densities; the statements about a sequence of them
 then have no instances.
 
-\begin{proposition}[Weak limits and subsequences of densities]
-A weak $L^1$ limit of probability densities is a probability density.
-Consequently every uniformly integrable sequence of probability densities
-has a subsequence converging weakly in $L^1$ to a probability density.
+\begin{proposition}[The density set is weakly closed]
+\label{prop:density_set_weak_closed}
+The set
+\[
+\mathcal D_\mu=\{f\in L^1(\mu;\mathbb R):f\geq0\text{ a.e.},\ \int f\,d\mu=1\}
+\]
+is weakly closed in $L^1(\mu;\mathbb R)$.
 \end{proposition}
 \Proof
-Suppose $f_n\rightharpoonup f$ in $L^1$. Testing against $1$ gives
-$\int f=1$. Testing against $\mathbf1_A$ for each measurable $A$ gives
-$\int_A f=\lim_n\int_A f_n\geq0$. In particular, for
-$A_k=\{f\leq-1/k\}$ we have
-$0\leq\int_{A_k}f\leq-\mu(A_k)/k$, hence $\mu(A_k)=0$.
-Their countable union is $\{f<0\}$, so $f\geq0$ almost everywhere.
-The subsequence assertion now follows from the finite-measure
-Dunford--Pettis theorem, Theorem~\ref{thm:DP_sequential_finite}.
+The indicator of every measurable set $A$ is a bounded test function,
+so $f\mapsto\int_A f\,d\mu$ is weakly continuous. The same holds
+for the total integral, using the constant test function one. Therefore
+\[
+\left\{f:\int f\,d\mu=1\right\}
+ \cap\bigcap_{A\in\mathcal A}\left\{f:\int_A f\,d\mu\geq0\right\}
+\]
+is weakly closed. We claim it equals $\mathcal D_\mu$. Every density
+belongs to it. Conversely, for a member $f$ choose a measurable
+representative and put $A_k=\{f\leq-1/k\}$. The asserted integral
+inequalities give
+\[
+0\leq\int_{A_k}f\,d\mu\leq-\mu(A_k)/k,
+\]
+so $\mu(A_k)=0$. Their countable union is $\{f<0\}$, proving
+$f\geq0$ almost everywhere. Its total integral is already one,
+which proves the claimed equality and weak closedness.
+\Done
+
+\begin{corollary}[Weak limits and subsequences of densities]
+Every weak $L^1$ limit of a net of probability densities is a
+probability density. In particular every uniformly integrable sequence
+of probability densities has a subsequence converging weakly in $L^1$
+to a probability density.
+\end{corollary}
+\Proof
+The weakly closed density set contains every limit of a net taking
+values in it. For a uniformly integrable sequence,
+Theorem~\ref{thm:DP_sequential_finite} supplies a weakly convergent
+subsequence; its limit belongs to $\mathcal D_\mu$ by closedness.
+\Done
+
+\begin{corollary}[Weak compactness of families of densities]
+For $K\subseteq\mathcal D_\mu$, uniform integrability is equivalent
+to compactness of its weak closure in $L^1$. When these conditions
+hold, every member of that compact closure is still a probability
+density. In particular, a weakly closed uniformly integrable family
+of probability densities is weakly compact.
+\end{corollary}
+\Proof
+The equivalence is Theorem~\ref{thm:DP_weak_compact_finite}. Since
+$\mathcal D_\mu$ is weakly closed and contains $K$, it contains the
+weak closure of $K$. If $K$ itself is weakly closed, that closure
+is $K$. The empty family, including the only possible family when
+$\mu(\Omega)=0$, satisfies the conclusions directly.
 \Done
 
 \begin{proposition}[Setwise testing for densities]
