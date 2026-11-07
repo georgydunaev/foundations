@@ -1051,6 +1051,41 @@ inclusion, hence $\omega=\bigcup\omega$ is a nonzero limit ordinal.
 Finally, if $\omega$ is a set, its already proved successor-inductiveness
 is itself a witness to Infinity.
 \end{proof}
+\begin{proposition}[From set regularity to class foundedness]
+\label{thm:set_regularity_class_foundedness}
+Assume Infinity, pairing, union, heredity, set-image, class comprehension,
+and the set-valued ordinal recursion proved earlier. Then ordinary set
+regularity, namely that every nonempty set has a membership-minimal
+element, is equivalent to foundedness of membership on $\V$: every
+nonempty class has a membership-minimal element.
+\end{proposition}
+\begin{proof}
+Only the forward implication needs proof. Let $S$ be a nonempty class
+and choose $a\in S$. We first build a transitive set containing $a$
+as an element, without assuming that $a$ already belongs to $\W$.
+By recursion on the set $\omega$, form
+\[
+B_0=\{a\},\qquad B_{n+1}=\bigcup B_n,\qquad
+T=\bigcup\{B_n:n\in\omega\}.
+\]
+Pairing and union make each $B_n$ a set. Set-image on $\omega$ and
+union make $T$ a set, with $a\in T$. If $z\in T$, then
+$z\in B_n$ for some $n$, and every member of $z$ belongs to
+$B_{n+1}\subseteq T$. Thus $T$ is transitive. This construction uses
+only ordinal recursion and the stated set-formation axioms, not
+membership induction or the regularity conclusion being established.
+
+The class $D=S\cap T$ is a nonempty set by heredity, since $a\in D$.
+Set regularity supplies $m\in D$ with $m\cap D=\emptyclass$.
+If $z\in m\cap S$, then $m\in T$ and transitivity give $z\in T$,
+so $z\in m\cap D$, a contradiction. Hence $m\cap S=\emptyclass$,
+as required. Conversely, apply class foundedness to each nonempty set.
+\end{proof}
+This bridge permits a proof stated with set regularity to use a minimal
+element of a proper class only after the additional set-closure
+prerequisites have been supplied. The ordinal comparison proofs earlier
+in this chapter instead use foundedness built into their ordinal
+definition; they do not need this global regularity principle.
 \begin{corollary}[induction on a transitive and well--founded by membership relation class]
 \[
 (\Tr(K))

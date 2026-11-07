@@ -26,6 +26,10 @@ commit `bb346f112ae91d1649940068c7f210a53b8674bf`.
    `130_classes_as_types.tex` uses `μ_A : A.Expression → Class.Expression`,
    indexed by a type, as an expression translation. This is a genuine
    signature difference, not an identity between syntax and its denotation.
+   The conflict also occurs within the site itself: the comment on
+   `DefMetaGeneralisation` (4.02) in both JSON exports explicitly gives
+   `μ_Variable : Variable.Expression → Class.Expression` as a typed
+   term interpretation, unlike the valuation signature on the symbol page.
 4. Section 5.1 of the quotation document asserts that fixed finite
    stratification preserves all mathematical expressiveness. Finite depth
    of each individual syntax tree does not imply one common depth bound

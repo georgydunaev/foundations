@@ -2046,6 +2046,19 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \labeltag{Gen}
 \]
 \end{definition}
+\begin{note}[Theorem rules and rules under assumptions]
+The companion catalog's short generalisation display (2.06) lists no
+freshness condition, whereas its context-indexed version (4.02) explicitly
+requires that the variable not occur free in $\Gamma$. These presentations
+agree when the short rule acts on theorems with no undischarged assumptions
+and the background axioms are closed. They do not justify an unrestricted
+rule from an arbitrary assumption $\varphi$ to $\forall x\,\varphi$.
+For example, on $\{0,1\}$ with $P=\{0\}$, the context $P(x)$ is true
+at $x=0$, but $\forall x\,P(x)$ is false. The abstraction rules B1 and
+B2 likewise require the context freshness stated above, in addition to
+freshness for the unchanged formula. The proof of
+Proposition~\ref{prop:local_deduction} retains these restrictions explicitly.
+\end{note}
 \begin{definition}[generalisation rule, written on the meta--level]
 \[
 \forall (X::\Type),\ %

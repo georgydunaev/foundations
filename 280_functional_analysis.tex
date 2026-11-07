@@ -1416,6 +1416,113 @@ truncation; the reverse implication uses the separable span of a given
 sequence. These extra arguments are the bridge that a bare reference
 to convergence of sequences would omit.
 
+\subsection{Passing from real to complex scalars}
+The preceding real proofs also give the complex finite-measure criterion.
+The passage uses the underlying real space, rather than silently changing
+the scalar field in a representation theorem.
+
+\begin{lemma}[Realification preserves the weak topology]
+\label{lem:realification_weak}
+Let $E$ be a complex normed space and $E_{\mathbb R}$ its underlying
+real normed space. Their weak topologies on the common carrier agree.
+\end{lemma}
+\Proof
+The real and imaginary parts of every continuous complex-linear
+functional are continuous real-linear functionals. Thus that complex
+functional is continuous for the real weak topology. Conversely, for a
+continuous real-linear functional $\ell$ put
+\[
+L(x)=\ell(x)-i\ell(ix).
+\]
+Real linearity and $L(ix)=iL(x)$ show complex linearity, and
+$|L(x)|\leq2\|\ell\|\,\|x\|$ gives continuity. Since
+$\ell=\operatorname{Re}L$, every real test is continuous for the complex
+weak topology. The two defining families therefore induce the same
+topology. No completeness assumption is needed.
+\Done
+
+For a finite positive measure $\mu$, write $R=L^1(\mu;\mathbb R)$
+and $E=L^1(\mu;\mathbb C)$. The maps
+\[
+J:E_{\mathbb R}\longrightarrow R\times R,\qquad
+J(f)=(\operatorname{Re}f,\operatorname{Im}f),\qquad
+J^{-1}(u,v)=u+iv
+\]
+are well defined on almost-everywhere classes and are inverse real-linear
+bounded maps. Indeed,
+\[
+\|u+iv\|_1\leq\|u\|_1+\|v\|_1\leq2\|u+iv\|_1.
+\]
+Every continuous real-linear functional on the product with its sum norm
+has the form $(u,v)\mapsto\ell_1(u)+\ell_2(v)$, by restriction to the
+two axes; conversely every such sum is continuous. Hence its weak topology
+is the product of the two real weak topologies. Composing functionals
+with $J$ and $J^{-1}$ and using the lemma shows that $J$ is a
+homeomorphism from complex weak $L^1$ onto this weak product.
+
+In particular, a net converges weakly in complex $L^1$ precisely when
+its real and imaginary parts converge weakly in real $L^1$. Equivalently,
+all integrals $\int gf\,d\mu$ converge for $g\in L^\infty(\mu;\mathbb C)$.
+For the converse in this last assertion it suffices to take real bounded
+$g$: the real and imaginary parts of these integrals test both real
+coordinates, whose duals were identified above. For the forward direction,
+$f\mapsto\int gf\,d\mu$ is complex-linear and bounded by
+$\|g\|_\infty\|f\|_1$. This pairing is bilinear; no conjugation of
+$g$ is implicit. A sesquilinear notation would replace $g$ by its
+conjugate and give the same family of tests.
+
+\begin{theorem}[Dunford--Pettis for complex scalars]
+\label{thm:DP_complex_finite}
+For $K\subseteq L^1(\mu;\mathbb C)$ on a finite positive measure space,
+the following are equivalent:
+\begin{enumerate}
+\item $K$ is uniformly integrable, with tails defined using $|f|$;
+\item its closure in the complex weak topology is compact;
+\item every sequence in $K$ has a subsequence converging weakly to an
+      element of complex $L^1$.
+\end{enumerate}
+\end{theorem}
+\Proof
+Put $K_1=\{\operatorname{Re}f:f\in K\}$ and
+$K_2=\{\operatorname{Im}f:f\in K\}$. First, $K$ is uniformly
+integrable if and only if both coordinate families are. One implication
+follows from $|\operatorname{Re}f|,|\operatorname{Im}f|\leq|f|$:
+each coordinate tail integral above $M$ is bounded by the corresponding
+$|f|$ tail integral. Conversely, uniform integrability of $K_1,K_2$
+gives uniform norm bounds and uniform small-set integral bounds.
+The inequality $|u+iv|\leq|u|+|v|$ gives both bounds for $K$.
+If $C$ bounds its norms, then
+$\mu(\{|f|>M\})\leq C/M$; applying the small-set bound to these
+sets proves the required uniform tail estimate. This is the same
+small-set argument as in the real case and uses no ordering on complex
+values.
+
+If $K$ is uniformly integrable, the real theorem makes the weak closures
+$C_1,C_2$ of $K_1,K_2$ compact. Their product is compact and Hausdorff.
+The weak closure of $J[K]$ is contained in $C_1\times C_2$, since this
+product is closed, and is closed there. It is therefore compact.
+The weak homeomorphism $J$ proves the second condition. Conversely,
+if the weak closure of $K$ is compact, its two coordinate images are
+compact, hence closed in the Hausdorff real weak spaces. They contain
+$K_1,K_2$, so each coordinate weak closure is a closed subset of a
+compact set. The real theorem gives coordinate uniform integrability,
+and the preceding equivalence gives uniform integrability of $K$.
+
+For the sequential assertion, coordinate uniform integrability first
+gives a subsequence with weakly convergent real parts. From it extract
+a further subsequence with weakly convergent imaginary parts. The real
+parts still converge, and $J^{-1}$ gives a complex weak limit.
+Conversely, suppose every sequence in $K$ has such a subsequence.
+Any sequence in $K_1$ can be lifted to a sequence in $K$ by choosing
+one preimage of each term, using the Choice convention of this chapter.
+A complex weakly convergent subsequence gives a real weakly convergent
+subsequence of the original coordinate sequence. The same holds for
+$K_2$. The real sequential theorem makes both coordinate families
+uniformly integrable, and hence makes $K$ uniformly integrable.
+If $K$ is empty all conditions hold directly; if $\mu(\Omega)=0$,
+both real and complex spaces consist only of their zero class.
+\Done
+
 \paragraph{Why the hypotheses matter.}
 The small-set lemma shows why both norm boundedness and control of
 concentration matter. An $L^1$ bound alone does not control concentration
@@ -1443,7 +1550,8 @@ infinite measure space needs additional hypotheses or a stronger
 uniform-integrability convention.
 
 Here ``Dunford--Pettis'' denotes the equivalent weak-compactness and
-sequential criteria proved for subsets of real $L^1$ on a finite measure space.
+sequential criteria proved for subsets of real or complex $L^1$ on a finite
+measure space.
 The compact-operator results earlier in the chapter concern norm-compact
 images and their consequences for weakly convergent sequences. An
 operator property or an integrability notion for vector-valued functions
