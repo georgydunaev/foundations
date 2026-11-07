@@ -24,7 +24,7 @@ Compactness makes the potentials uniformly bounded. If \(K_z(t,x,y)\) is the ful
 K_z(t,g,h)=k_t(T(g,z),h-g).
 \]
 
-The requested expression with \(T(-g,z)\) instead corresponds to defining (V_z(g)=v\(T(-g,z)\)). Keep either convention consistently; do not mix their signs. The action is a parameterization of autonomous operators, not a time-dependent potential in a nonautonomous evolution equation.
+The requested expression with \(T(-g,z)\) instead corresponds to defining \(V_z(g)=v(T(-g,z))\). Keep either convention consistently; do not mix their signs. The action is a parameterization of autonomous operators, not a time-dependent potential in a nonautonomous evolution equation.
 
 ## Source verification
 

@@ -5,6 +5,14 @@
 \renewcommand{\chaptername}{Chapter}
 \counterwithin{section}{chapter}
 \addbibresource{references.bib}
+\definecolor{thesislink}{rgb}{0,0.18,0.38}
+\hypersetup{%
+  linkcolor=thesislink,%
+  citecolor=thesislink,%
+  urlcolor=thesislink,%
+  pdftitle={Schrodinger Semigroups and Dynamical Potentials},%
+  pdfauthor={Georgy Dunaev}%
+}
 \title{Schr\"odinger Semigroups\\and Dynamical Potentials\\
 \large Continuous kernels and quantitative parameter regularity}
 \date{\today}
@@ -24,7 +32,10 @@ dynamical system, we prove a quantitative Lipschitz estimate in the
 dynamical parameter. Under a linear spatial growth bound for the action,
 the estimate holds in every exponentially weighted supremum norm at
 positive times. The proof uses a pointwise Duhamel identity and an explicit
-Gaussian moment. Translation conventions are stated consistently:
+Gaussian moment. We also treat Hölder sampling functions and construct
+a family whose kernels satisfy the weighted Lipschitz estimate while
+its semigroups fail to be continuous in operator norm. Translation
+conventions are stated consistently:
 the potential $V_z(g)=v(T(g,z))$ gives the parameter $T(g,z)$ in the
 covariant kernel formula; the negative-action convention gives $T(-g,z)$.
 \end{abstract}
@@ -92,19 +103,18 @@ adjoint-domain proof of the relevant case of Kato--Rellich.
 \paragraph{How the source statements fit.}
 Jost's Theorem~5.1.2 is a whole-space maximum principle, from which
 uniqueness follows by applying it to both signs of a difference;
-Section~5.2 constructs the Gaussian solution \cite{Jost2013PDE}.
+Section~5.2 constructs the Gaussian solution \parencite{Jost2013PDE}.
 Simon's Theorem~A.1.3 concerns separately continuous kernels, while his
 Theorem~B.7.1 concerns the joint continuity relevant to Schr\"odinger
-semigroups \cite{Simon1982Semigroups}. Our measure-theoretic formulation
+semigroups \parencite{Simon1982Semigroups}. Our measure-theoretic formulation
 makes the boundedness, support, and dual-pair conventions explicit.
 Kato's bounded-perturbation expansion provides another formulation of
-the series method \cite[Chapter IX, Section 2]{Kato1995Perturbation}.
+the series method \parencite[Chapter IX, Section 2]{Kato1995Perturbation}.
 The established results and the derivations in this manuscript should
 not be confused with a claim of bibliographic novelty for the final
 parameter estimate.
 
-Broderix, Hundertmark and Leschke
-\cite[Theorems~5.1 and~6.1]{BroderixHundertmarkLeschke2000}
+\textcite[Theorems~5.1 and~6.1]{BroderixHundertmarkLeschke2000}
 treat magnetic operators with Kato-decomposable scalar potentials.
 Under their local Kato convergence hypotheses and uniform small-scale
 Kato control of the negative parts, potential approximation gives
@@ -120,10 +130,17 @@ These distinct continuity statements are compared without claiming
 novelty for the quantitative estimate.
 
 Both Simon and Broderix--Hundertmark--Leschke use the free operator
-$-\tfrac12\sum_j\partial_j^2$, whose heat kernel is
-$(2\pi t)^{-d/2}\exp(-|r|^2/(2t))$. Our convention
-$-\sum_j\partial_j^2$ instead gives
-$(4\pi t)^{-d/2}\exp(-|r|^2/(4t))$; constants must be compared
+$-\tfrac12\sum_j\partial_j^2$. The two normalizations give
+\[
+\begin{array}{c|c}
+\text{Free operator}&\text{Heat kernel}\\
+-\tfrac12\sum_j\partial_j^2
+ &(2\pi t)^{-d/2}\exp(-|r|^2/(2t))\\
+-\sum_j\partial_j^2
+ &(4\pi t)^{-d/2}\exp(-|r|^2/(4t)).
+\end{array}
+\]
+We use the second convention throughout; constants must be compared
 with this normalization in mind.
 
 \chapter{The free heat equation}
@@ -142,17 +159,22 @@ continuous, positive kernel with two-sided Gaussian bounds. Under the
 stated dynamical hypotheses, its canonical kernel is Lipschitz in the
 parameter, with an explicit Gaussian-weighted estimate. In particular,
 every fixed exponential spatial weight is allowed at positive times.
-The two translation conventions give equivalent formulations when the
-definition of the potential is changed consistently.
+The argument extends to Hölder sampling functions, and isometric
+actions admit a sharper bound. The two translation conventions give
+equivalent formulations when the definition of the potential is changed
+consistently.
 
 The arguments separate three issues that require different hypotheses:
 uniqueness of a PDE solution in a growth class, uniqueness of a continuous
 kernel representative under full measure support, and uniform parameter
 regularity after integration against Gaussian kernels. Neither separate
 continuity nor an almost-everywhere operator identity alone substitutes
-for the pointwise assertions proved here. No assertion of supremum-norm
-continuity at time zero, or of operator-norm Lipschitz dependence for the
-whole covariant operator family, is inferred from the parameter estimate.
+for the pointwise assertions proved here. The canonical kernel cannot be continuous at time zero in these weighted
+supremum norms. The operator family is strongly continuous in its
+parameter, uniformly on bounded time intervals; the shear-torus example
+proves that operator-norm continuity can nevertheless fail even under
+the original Lipschitz hypotheses. Thus the distinction between a
+canonical row and the full covariant operator has a concrete consequence.
 
 \printbibliography[heading=bibintoc,title={References}]
 \end{document}

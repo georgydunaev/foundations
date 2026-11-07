@@ -11,33 +11,65 @@ quantifiers, or proof assumptions change. Obelisk's newer generated material
 was used as comparative evidence, not as an automatic replacement for the
 book.
 
-The current verification checkpoint covers the extended mathematical pass:
+The current verification checkpoint includes the standalone Schrödinger thesis
+and its four chapters integrated into the book:
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran 90 tests, all passing.
-  A temporary Poly/ML 5.7.1 installation enabled the previously skipped
-  SML syntax check. These are repository regression checks, not a formal
-  verification of the mathematics or an executable proof-kernel audit.
-- `git diff --check` reported no whitespace errors.
-- A supplemental source scan found balanced active braces and environments
-  in the 41 numbered body files. The scan strips comments, listings, and
-  disabled draft branches and accounts for the book's proof macros. It is
-  a limited source check, not a TeX interpreter.
-- The assembled manuscript's 34 files had 236 distinct recognized labels
-  and 54 distinct referenced keys, with no duplicate labels or unresolved
-  keys among the recognized commands. This covers ordinary references and
-  the custom label commands; Biber separately resolved five active citation
-  keys.
-- The complete 286-page book compiled successfully with Tectonic 0.17.0
-  and Biber 2.17 using a temporary toolchain outside the repository. The
-  latest log has no overfull boxes, undefined references or citations,
-  duplicate labels, missing characters, or dropped listing text. Extracted
-  PDF text contains no Unicode replacement characters.
-- The inspected Obelisk checkout remained unchanged. Thirteen local tickets
-  record source-level corrections, clarifications, and proposed development.
+- The **32-page thesis** and **343-page book** compile with archived TeX Live
+  2024 (pdfTeX 1.40.26 and Biber 2.20), using PdfLaTeX → Biber → PdfLaTeX
+  twice. The corresponding LaTeX/DVI sequences also succeed. Texmaker's
+  configured backend sequence was tested; its GUI was not launched.
+- The final thesis logs contain no warnings, overfull boxes, underfull boxes,
+  undefined references or citations. The book has no undefined references,
+  citations, duplicate-label warnings, missing-character warnings or overfull
+  boxes. Its older material still produces 40 underfull-box notices in PDF
+  mode and 41 in DVI mode; these are recorded rather than hidden.
+- PDF inspection found all fonts embedded, no invalid internal links, no text
+  outside page boundaries and no Unicode replacement characters. The thesis
+  has 75 links and 30 bookmarks; the book has 437 links and 263 bookmarks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 run_tests.py` ran **92 tests, all passing**,
+  with temporary TeX Live and Poly/ML installations. These include both the
+  present and absent companion-listing branches. Regression tests do not
+  constitute a formal proof check of the mathematics.
+- `git diff --check` passed. No unmerged Git entries or conflict markers were
+  found. Decorative lines of equals signs in historical material are not
+  merge conflicts.
+- A limited active-source scan found balanced braces and environments in
+  all 46 numbered body files and the standalone thesis wrapper. It strips
+  comments, listings and disabled drafts and accounts for the proof macros;
+  it is not a TeX interpreter.
+- The assembled book's 37 files have 307 recognized labels and 89 distinct
+  referenced keys, with no duplicates or unresolved keys. Compilation and
+  Biber separately check the active document's references and citations.
+- The Obelisk checkout remains unchanged. **23 local tickets** record
+  source-level corrections, clarifications and proposed development.
 
-These checks do not certify every mathematical claim. The mathematical
-review is documented separately below; any later source edits require
-relevant checks to be rerun.
+The thesis's core arguments and extensions received independent mathematical
+review by other agents. Fourier–Plancherel and the self-adjoint spectral
+calculus remain explicitly stated background inputs. The manuscript establishes
+the bounded-potential and dynamical results with proofs; it does not claim
+research novelty or reproduce the full unbounded Kato-class theory. The exact
+Weidmann theorem number supplied in the programme remains unverified, while
+the needed bounded Trotter formula is proved directly.
+
+## Thesis result and scope
+
+`thesis_schrodinger.tex` assembles chapters 293–296. They prove the Gaussian
+construction and maximum principle, a precise version of Simon's abstract
+kernel criterion, bounded self-adjoint perturbation, the Dyson kernel series,
+joint continuity, Gaussian bounds, all-endpoint smoothing, and the strong
+Trotter formula. The dynamical chapter proves covariance, pointwise Duhamel,
+explicit Lipschitz estimates in exponentially weighted norms, a Hölder
+extension, and stronger estimates for isometric actions.
+
+The sign in the proposed covariant formula is corrected: the convention
+`V_z(g)=v(T(g,z))` requires `T(g,z)` in the formula. The negative action gives
+the negative sign consistently. A short-time counterexample explains why
+these conventions cannot be mixed. A separate shear-torus example shows that
+weighted canonical-kernel regularity and strong semigroup continuity can
+coexist with failure of operator-norm continuity.
+
+See `THESIS_RESEARCH_PLAN.md` for verified source statements and the proposed
+schedule, and `TEXMAKER_BUILD.md` for master-file and backend settings.
 
 ## Correct interpretation of custom macros
 
@@ -110,6 +142,7 @@ ticket is a proposed theorem development, not a contradiction report:
 | Quotation and semantic interpretation signatures | [Quotation signatures](tickets/obelisk_quotation_semantic_signatures.md) |
 | Noncomputational constants versus normalization | [Normalization claims](tickets/obelisk_noncomputational_normalization_claims.md) |
 | Context freshness in quantifier rules | [Quantifier contexts](tickets/obelisk_logic_context_freshness.md) |
+| Ambiguous quantifier scope in application exports | [Quantifier-scope rendering](tickets/obelisk_applications_quantifier_scope_rendering.md) |
 
 The inspected site snapshot is commit
 `bb346f112ae91d1649940068c7f210a53b8674bf` in
