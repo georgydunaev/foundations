@@ -165,6 +165,38 @@ $K_1(x,y)=K_2(x,y)$ for every $x,y$. The already proved integral
 formula then gives equality of the corresponding extensions.
 \end{proof}
 
+\paragraph{The measure convention and a wider formulation.}
+The source allows a Baire measure which need not have finite total
+mass. Our locally finite Radon convention already includes Lebesgue
+measure on $\mathbb R^d$. In fact the bounded-kernel equivalence above
+holds for every positive Borel measure $\nu$ on the same space $X$,
+without local finiteness: each $f\in L^1(\nu)$ defines a finite complex
+Borel measure $f\nu$, and finite Borel measures on a separable locally
+compact metric space are Radon. The proof integrates against these
+finite measures, so its dominated-convergence and Fubini arguments
+remain valid; it does not need a product of two possibly non-sigma-finite
+copies of $\nu$.
+
+For the uniqueness and norm-equality conclusions it suffices that
+every nonempty open set $U$ contain a Borel set $E$ with
+$0<\nu(E)<\infty$. Replace $U_n$ in the proof by such a subset
+$E_n\subset U_n$ and use $\mathbf1_{E_n}/\nu(E_n)$; continuity
+still makes its averages tend to the value at the center. This
+condition holds for locally finite measures of full support, and more
+generally for full-support semifinite measures. Here semifiniteness
+means that each measurable set of infinite measure contains a measurable
+subset of finite positive measure.
+
+A measure convention is necessary for an unrestricted full-support
+statement. The Borel measure assigning $\nu(\varnothing)=0$ and
+$\nu(E)=\infty$ to every nonempty $E$ has full support but
+$L^1(\nu)=\{0\}$. Both $K=0$ and $K=1$ then represent its zero
+operator. They yield different bounded weakly continuous extensions,
+namely $S\mu=0$ and $S\mu=\mu(X)\mathbf1$. Thus full support alone
+does not ensure uniqueness for arbitrary nonsemifinite Borel measures.
+This explains the measure hypotheses rather than assigning a broader
+meaning to the source's Baire-measure convention.
+
 \subsection{What the criterion does and does not assert}
 No full-support assumption was used for the equivalence. It was used
 only for uniqueness and comparison with the norm of $T$.

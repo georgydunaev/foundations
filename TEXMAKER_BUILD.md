@@ -1,6 +1,7 @@
 # Building the book with Texmaker and TeX Live 2024
 
-Use `001_foundations.tex` as the master document and run commands from the
+For the thesis, select `thesis_schrodinger.tex` as the master document.
+For the complete book, select `001_foundations.tex`. Run commands from the
 repository directory. Keep the source encoding UTF-8 and the build-subdirectory
 option disabled (`Tools\OutputDir=false`) for the commands below. The book uses
 BibLaTeX with the **Biber** backend and the repository's `references.bib`.

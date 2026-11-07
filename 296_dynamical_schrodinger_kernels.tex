@@ -1,6 +1,6 @@
-\def\topic{Dynamically defined Schrodinger kernels}
+\def\topic{Dynamically defined Schr\"odinger kernels}
 \input{BEGIN.tex}
-\section{Dynamically defined Schrodinger kernels}
+\section{Dynamically defined Schr\"odinger kernels}
 \label{sec:dynamical_schrodinger}
 We address the parameter-regularity question for a compact dynamical
 system. The argument gives a quantitative Lipschitz estimate under the
@@ -252,6 +252,174 @@ Nor does this establish operator-norm Lipschitz dependence on $z$ on
 all of $L^2$: the covariant formula uses $T(g,z)$, whose distortion
 need not be bounded uniformly in $g$.
 
+\subsection{Isometric actions and a torus example}
+\begin{proposition}[Sharper estimate for an isometric action]
+\label{prop:isometric_dynamic_kernel}
+Suppose, in addition, that every $T(g,\cdot)$ is an isometry of $Z$.
+For $t>0$, $r\in\mathbb R^d$, and $z,w\in Z$,
+\[
+|k_t(z,r)-k_t(w,r)|
+\leq Lt e^{Mt}p_t(r)d_Z(z,w).
+\]
+Consequently, for every $a\geq0$,
+\[
+\|k_t(z,\cdot)-k_t(w,\cdot)\|_a
+\leq Lt(4\pi t)^{-d/2}e^{(M+a^2)t}d_Z(z,w).
+\]
+\end{proposition}
+\Proof
+The isometry assumption gives the uniform spatial estimate
+\[
+|V_z(u)-V_w(u)|
+\leq Ld_Z(T(u,z),T(u,w))=Ld_Z(z,w).
+\]
+Apply Lemma~\ref{lem:kernel_duhamel_comparison} and the Gaussian
+bounds to obtain
+\[
+\begin{split}
+|k_t(z,r)-k_t(w,r)|
+&\leq Le^{Mt}d_Z(z,w)
+  \int_0^t\int_{\mathbb R^d}p_{t-s}(u)p_s(r-u)\,du\,ds\\
+&=Lt e^{Mt}p_t(r)d_Z(z,w).
+\end{split}
+\]
+The equality is Gaussian convolution. Multiplying by $e^{a|r|}$
+and using $a|r|-|r|^2/(4t)\leq a^2t$ proves the norm estimate.
+Membership in $C_a$ was already established above.
+\Done
+
+For a concrete nonconstant family, let $m\geq1$, set
+$Z=\mathbb R^m/\mathbb Z^m$, and equip this torus with
+\[
+d_Z([x],[y])=\min_{n\in\mathbb Z^m}|x-y-n|.
+\]
+The minimum exists since only finitely many lattice points can lie
+within any fixed bounded distance of $x-y$. Changing representatives
+just reindexes the lattice. This defines a metric: positivity and
+symmetry follow directly, and adding minimizing lattice vectors gives
+the triangle inequality. The quotient map is distance-decreasing, and
+its restriction to $[0,1]^m$ is surjective; hence $Z$ is compact.
+For any real $m\times d$ matrix $A$, define
+\[
+T(g,[x])=[x+Ag],\qquad v([x])=\cos(2\pi x_1).
+\]
+Translation preserves the metric, and the group-action identities are
+immediate. Joint continuity follows from
+\[
+d_Z(T(g,z),T(h,w))\leq d_Z(z,w)+\|A\|\,|g-h|.
+\]
+The sampling function is well defined and nonconstant. For a minimizing
+lattice vector $n$, periodicity and the real mean-value bound give
+\[
+|v([x])-v([y])|
+\leq2\pi|x_1-y_1-n_1|
+\leq2\pi d_Z([x],[y]).
+\]
+Thus $M=1$ and $L=2\pi$ are valid constants. The potentials are
+\[
+V_{[x]}(g)=\cos\bigl(2\pi(x_1+(Ag)_1)\bigr).
+\]
+If the first row of $A$ is nonzero, each is spatially nonconstant.
+The proposition gives the explicit estimate
+\[
+\|k_t(z,\cdot)-k_t(w,\cdot)\|_a
+\leq2\pi t(4\pi t)^{-d/2}e^{(1+a^2)t}d_Z(z,w).
+\]
+Here the parameter distortion has no spatial growth, so the Gaussian
+first-moment term needed for a general action disappears. This is a
+worked application of the proved comparison formula, not a claim of
+novelty for torus potentials.
+
+\subsection{An optional extension to H\"older sampling}
+In this subsection only, replace the Lipschitz assumption on $v$ by
+\[
+|v(z)-v(w)|\leq L_\alpha d_Z(z,w)^\alpha,
+\qquad 0<\alpha\leq1.
+\]
+Keep compactness of $Z$, continuity of the action, and
+\eqref{eq:dynamic_action_bound}. The function $v$ is still continuous
+and bounded; write $M=\|v\|_\infty$. Thus all bounded-potential kernel
+constructions and the covariance formula remain applicable.
+
+\begin{theorem}[H\"older dependence on the parameter]
+\label{thm:dynamic_kernel_holder}
+Under these local assumptions, for $t>0$,
+\[
+\begin{split}
+|k_t(z,r)-k_t(w,r)|\leq{}&
+ L_\alpha C^\alpha d_Z(z,w)^\alpha e^{Mt}t p_t(r)\\
+&\cdot\left(1+\frac{|r|}{2}+c_d\sqrt t\right)^\alpha,
+\qquad c_d=\frac{\pi\sqrt{2d}}8.
+\end{split}
+\]
+For every $a\geq0$, the kernels belong to $C_a$, and
+\[
+\begin{split}
+\|k_t(z,\cdot)-k_t(w,\cdot)\|_a
+\leq{}&L_\alpha C^\alpha d_Z(z,w)^\alpha
+       (4\pi t)^{-d/2}e^{(M+2a^2)t}\\
+&\cdot\left[t+(c_d+e^{-1/2})t^{3/2}\right].
+\end{split}
+\]
+These H\"older constants are uniform on every compact positive-time
+interval. The map $(t,z)\mapsto k_t(z,\cdot)$ is continuous into $C_a$.
+\end{theorem}
+\Proof
+Put $\delta=d_Z(z,w)$. The potential difference obeys
+\[
+|V_z(u)-V_w(u)|
+\leq L_\alpha C^\alpha\delta^\alpha(1+|u|)^\alpha.
+\]
+Its actual supremum is at most $2M$, so the pointwise Duhamel comparison
+applies without any unbounded-perturbation assumption. Gaussian bounds
+reduce the desired difference to at most
+\[
+L_\alpha C^\alpha\delta^\alpha e^{Mt}
+\int_0^t\int_{\mathbb R^d}
+ (1+|u|)^\alpha p_{t-s}(u)p_s(r-u)\,du\,ds.
+\]
+For fixed $t,r$, define the probability measure on
+$(0,t)\times\mathbb R^d$ by
+\[
+d\nu_{t,r}(s,u)
+=\frac{p_{t-s}(u)p_s(r-u)}{t p_t(r)}\,du\,ds.
+\]
+Its mass is one by Gaussian convolution, and its first spatial moment
+is finite by Lemma~\ref{lem:gaussian_bridge_moment}. In particular,
+\[
+\int(1+|u|)\,d\nu_{t,r}
+\leq1+\frac{|r|}{2}+c_d\sqrt t.
+\]
+The function $x\mapsto x^\alpha$ is increasing and concave on
+$[0,\infty)$. Jensen's inequality, applied to this probability measure,
+gives
+\[
+\int(1+|u|)^\alpha\,d\nu_{t,r}
+\leq\left(\int(1+|u|)\,d\nu_{t,r}\right)^\alpha
+\leq\left(1+\frac{|r|}{2}+c_d\sqrt t\right)^\alpha.
+\]
+Multiplication by $t p_t(r)$ proves the pointwise estimate.
+
+The base in its last factor is at least one, so its $\alpha$-power
+is bounded by the base itself. The two elementary weighted Gaussian
+inequalities used in Corollary~\ref{cor:dynamic_weighted_lipschitz}
+therefore give exactly the displayed, deliberately nonoptimal, weighted
+bound. Gaussian domination still proves membership in $C_a$ and a
+uniform weighted tail on $[\tau,b]$, $0<\tau\leq b<\infty$.
+For fixed $z$, kernel continuity is already known. The pointwise
+H\"older bound is uniform on compact sets of $(t,r)$, so insertion of
+a fixed-parameter kernel proves joint continuity in $(t,z,r)$.
+On a compact spatial ball this continuity is uniform; outside that
+ball the uniform weighted tail tends to zero. This proves continuity
+into $C_a$. The displayed coefficient is bounded on $[\tau,b]$,
+proving the asserted uniformity.
+\Done
+
+For $\alpha=1$ the pointwise estimate is precisely
+\eqref{eq:dynamic_kernel_lipschitz}. For $0<\alpha<1$ it supplies a
+proved extension to less regular sampling functions, without changing
+the assumptions of the preceding Lipschitz results.
+
 \subsection{Symmetry and the covariant semigroup law}
 For $s,t>0$, the canonical kernels satisfy
 \[
@@ -289,5 +457,114 @@ equate $K_z(t,g,g)$ with $k_t(T(-g,z),0)$, whose local potential
 at zero is $v(0)=1$. Their first-order coefficients in
 \eqref{eq:kernel_short_time_diagonal} disagree. The obstruction is
 mixing two conventions; either consistently defined family is valid.
+\subsection{Strong parameter continuity and a norm-discontinuous family}
+The continuity of a canonical kernel in $C_a$ controls a specified
+spatial row. It also implies joint continuity of the full kernel in
+$(t,z,g,h)$ for $t>0$: use the continuous action and covariance
+$K_z(t,g,h)=k_t(T(g,z),h-g)$.
+The following statements distinguish this from continuity of the full
+operator in operator norm. Write $S_z(t)=e^{-tH_z}$.
+
+\begin{proposition}[Strong continuity in the parameter]
+\label{prop:dynamic_strong_parameter_continuity}
+For this proposition it suffices that $Z$ be compact metric, the action
+be continuous, and $v:Z\to\mathbb R$ be continuous. If $z_n\to z$,
+then, for every $f\in L^2$ and $b>0$,
+\[
+\sup_{0\leq t\leq b}\|(S_{z_n}(t)-S_z(t))f\|_2\longrightarrow0.
+\]
+Neither a Lipschitz bound nor the action bound \eqref{eq:dynamic_action_bound}
+is needed here.
+\end{proposition}
+\Proof
+Compactness gives $M=\|v\|_\infty<\infty$, and continuity gives
+$V_{z_n}(x)\to V_z(x)$ at each $x$. The operator Duhamel identity gives
+\[
+(S_{z_n}(t)-S_z(t))f
+=-\int_0^t S_{z_n}(t-s)(V_{z_n}-V_z)S_z(s)f\,ds.
+\]
+Consequently the supremum in the statement is at most
+\[
+e^{Mb}\int_0^b\|(V_{z_n}-V_z)S_z(s)f\|_2\,ds.
+\]
+For each fixed $s$, dominated convergence in the spatial variable
+makes the integrand tend to zero. It is bounded by
+$2Me^{Mb}\|f\|_2$. Dominated convergence in $s$ proves the claim.
+\Done
+
+Here is a family satisfying even the original Lipschitz hypotheses
+for which operator-norm continuity fails. Let
+$Z=\mathbb R^2/\mathbb Z^2$ have the quotient Euclidean metric and set
+\[
+T(g,[x,y])=[x,y+g\sin(2\pi x)],\qquad
+v([x,y])=\cos(2\pi y),\qquad g\in\mathbb R.
+\]
+Periodicity makes both definitions independent of representatives.
+The first coordinate stays fixed, so adding the second-coordinate
+increments proves the action law; the formulas also give continuity.
+For representatives whose difference realizes the quotient distance,
+the sine Lipschitz bound and the triangle inequality give
+\[
+d_Z(T(g,z),T(g,w))
+\leq(1+2\pi|g|)d_Z(z,w)
+\leq2\pi(1+|g|)d_Z(z,w).
+\]
+Thus $C=2\pi$, $M=1$, and $L=2\pi$ are valid constants.
+
+Put $z_0=[0,0]$, $z_\varepsilon=[\varepsilon,0]$, and
+$a_\varepsilon=\sin(2\pi\varepsilon)$, with $0<\varepsilon<1/4$.
+Then $z_\varepsilon\to z_0$ as $\varepsilon\downarrow0$, whereas
+\[
+V_{z_0}(g)=1,\qquad
+V_{z_\varepsilon}(g)=\cos(2\pi a_\varepsilon g),\qquad
+\|V_{z_\varepsilon}-V_{z_0}\|_\infty=2.
+\]
+In fact, for every fixed $t>0$,
+\[
+\lim_{\varepsilon\downarrow0}
+\|S_{z_\varepsilon}(t)-S_{z_0}(t)\|_{2\to2}
+=e^t-e^{-t}>0.
+\tag{N}\label{eq:dynamic_norm_discontinuity}
+\]
+To prove the lower bound, let $b_\varepsilon=1/(2a_\varepsilon)$
+and conjugate by the unitary translation
+$(U_bf)(x)=f(x+b)$. It commutes with $H_0$ and sends multiplication
+by $V_{z_\varepsilon}$ to multiplication by
+\[
+W_\varepsilon(u)=V_{z_\varepsilon}(u+b_\varepsilon)
+=-\cos(2\pi a_\varepsilon u)\longrightarrow-1.
+\]
+The potentials $W_\varepsilon$ are bounded by one. The same Duhamel
+and dominated-convergence argument just proved, now comparing these
+potentials directly with the constant $-1$, gives
+\[
+e^{-t(H_0+W_\varepsilon)}f\longrightarrow e^tP_tf
+\qquad(f\in L^2).
+\]
+The member $S_{z_0}(t)=e^{-t}P_t$ is unchanged by translation.
+Unitary invariance of the norm therefore implies, for any unit vector $f$,
+\[
+\liminf_{\varepsilon\downarrow0}
+\|S_{z_\varepsilon}(t)-S_{z_0}(t)\|
+\geq(e^t-e^{-t})\|P_tf\|_2.
+\]
+Here $\|P_t\|_{2\to2}=1$: the upper bound is known, and a unit vector
+whose Fourier transform is supported in $\{|\xi|<\delta\}$ gives
+$\|P_tf\|_2\geq e^{-t\delta^2}$. Letting $\delta\downarrow0$
+proves the desired lower bound.
+
+For the upper bound, the two-sided Gaussian estimates with $M=1$ give
+\[
+0\leq K_{z_\varepsilon}(t,x,y)-e^{-t}p_t(x-y)
+\leq(e^t-e^{-t})p_t(x-y).
+\]
+Integration against $|f|$ and the $L^2$ contraction property of $P_t$
+show that the operator norm of the difference is at most $e^t-e^{-t}$.
+This proves \eqref{eq:dynamic_norm_discontinuity}. Nevertheless the
+strong-continuity proposition applies, and the earlier weighted
+Lipschitz estimate gives convergence of $k_t(z_\varepsilon,\cdot)$
+to $k_t(z_0,\cdot)$ in every $C_a$. The loss of operator-norm
+continuity comes from spatial translates moving out to infinity,
+which are not controlled uniformly by convergence of this single row.
 \input{END.tex}
 

@@ -11,6 +11,27 @@ while “historical” records development status; neither judges the value of
 an independent idea. The front guide explains the reading routes and changes
 of context.
 
+## Schrödinger thesis
+
+The standalone manuscript is [thesis_schrodinger.tex](thesis_schrodinger.tex).
+It develops the free heat equation, the separately continuous kernel criterion,
+bounded-potential Schrödinger semigroups, and quantitative Lipschitz regularity
+for dynamically defined potentials. The four chapters are also included in the
+book:
+
+- `293_heat_equation.tex`: Gaussian construction, maximum principle and uniqueness.
+- `294_kernel_criterion.tex`: finite-measure extensions and continuous kernels.
+- `295_schrodinger_semigroups.tex`: self-adjointness, Duhamel, kernel continuity,
+  Gaussian bounds, smoothing and the strong Trotter formula.
+- `296_dynamical_schrodinger_kernels.tex`: covariance, pointwise comparison,
+  explicit parameter estimates and exponential weights.
+
+Use PdfLaTeX → Biber → PdfLaTeX twice with the thesis master selected;
+see [Texmaker instructions](TEXMAKER_BUILD.md).
+[The source review and time plan](THESIS_RESEARCH_PLAN.md) records checked
+references and remaining bibliographic limitations. The manuscript proves its
+parameter estimate without claiming that it is new in the literature.
+
 ## Approach Policy
 
 The active proof-compiler line combines **classical two-valued MK/NBG class
