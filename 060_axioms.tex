@@ -529,7 +529,10 @@ coordinate will either be its set value or a singleton member-record of
 its proper-class value, as proved below.
 \end{definition}
 \begin{notation}[``in the big domain of'' relation]
-The common abuse of notation: since the more common ``logic of truth'' is used instead of more rare and cumbersome ``logic of definedness'', the predicate ``$(\cdot\text{ defined})$'' is not given. Moreover, it seems to be impossible to define it. Instead of it, the following notation is introduced:
+Represented definedness is the following binary predicate on a relation
+and its argument. It is definable in the ordinary two-valued class
+language and should be distinguished from a predicate on the evaluated
+value alone:
 \[
 (F\textcolor{blue}{(}x\textcolor{blue}{)}\text{ defined})
 \IFFnot
@@ -690,7 +693,7 @@ A class--function can be called ``a locally small family''.\\
 An arbitrary family can be called ``a (large) family''.
 \end{note}
 \begin{lemma}[proper value not from dom]
-For every class $f$,
+For every set-record relation $f$ and every class argument $x$,
 \[
 (f(x)\proper)
 \implies
@@ -775,6 +778,14 @@ and proper value $F(x)=\V$. At every other argument its default is also
 $\V$. Thus $F$ and the empty family have identical evaluations everywhere,
 but different domains and different records. Family extensionality needs
 the domain hypothesis; class-function extensionality below does not.
+In particular, no unary predicate $D$ on class values can satisfy
+$D(H(y))\iff y\in\Dom(H)$ uniformly for all families $H$ and
+arguments $y$: at the fixed $x$, the two families give the same value
+$\V$, but only $F$ represents that argument. This obstruction concerns
+definedness from a value alone. It does not affect the binary predicate
+already defined by domain membership. For set-valued class functions,
+sethood of the evaluated value does recover domain membership, because
+the off-domain default is proper.
 \end{example}
 \begin{theorem}[class--function extensionality]
 \[

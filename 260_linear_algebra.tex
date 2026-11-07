@@ -185,23 +185,23 @@ The same lower bound holds for the infimum, proving the claim.
 \Done
 
 \begin{theorem}[Compact unit balls and dimension]
-In the usual classical setting with countable dependent choices, the
-closed unit ball of a normed space is compact if and only if the space
-is finite-dimensional. No completeness assumption on the space is needed.
+In the classical countable-choice setting specified above, the closed
+unit ball of a normed space is compact if and only if the space is
+finite-dimensional. No completeness assumption on the space is needed.
 \end{theorem}
 \Proof
 The finite-dimensional implication is the preceding compactness corollary.
-If $E$ is infinite-dimensional, start with any unit vector $x_1$.
-Having chosen $x_1,\ldots,x_n$, their span is finite-dimensional,
-closed, and proper. Riesz's lemma with $\theta=1/2$ supplies a unit
-vector $x_{n+1}$ at distance greater than $1/2$ from that span.
-Consequently $\|x_i-x_j\|>1/2$ for all distinct indices. A ball of
-radius $1/4$ cannot contain two of these vectors, by the triangle
-inequality. The closed unit ball therefore has no finite cover by
-such balls and is not totally bounded, hence not compact.
-The sequence of successive selections is the place where the stated
-choice convention is used; finite-dimensional closedness did not
-require this infinite construction.
+Conversely, suppose the closed unit ball is compact. Cover it by the
+open balls of radius $1/2$ centered at all its points. A finite subcover
+has centers $x_1,\ldots,x_n$. Their span $M$ is finite-dimensional
+and therefore closed. If $M$ were proper, Riesz's lemma with
+$\theta=3/4$ would supply a unit vector $x$ whose distance from $M$
+exceeds $3/4$. But one of the covering balls contains $x$, giving
+$\|x-x_j\|<1/2$ for a center $x_j\in M$, a contradiction.
+Thus $E=M$ is finite-dimensional. This reverse implication uses only
+a finite subcover and a single application of Riesz's lemma; it requires
+no successive choices. The stated countable-choice convention is used
+only for the metric compactness criterion in the forward implication.
 \Done
 
 This theorem concerns the norm topology. Infinite-dimensional closed

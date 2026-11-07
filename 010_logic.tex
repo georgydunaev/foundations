@@ -433,7 +433,12 @@ This could lead to a contradiction (Girard's Paradox) in case if this typing sys
 %class constants, corresponding to codes of syntactic entities
 \begin{definition}[sets of codes]
 %Let $\circ$ be a composition of functional symbols here, then t
-The following class constants represent the codes of formulas, class terms, contexts, and the other syntactic datatypes:
+Fix a finite-tree coding for the syntactic datatypes under discussion.
+For a syntactic datatype label $A$, write $\operatorname{Code}(A)$ for
+its carrier of valid set codes, with a specified bijection between its
+syntax objects and those codes. For the finite syntax over countably
+encoded identifiers considered here, these carriers may be taken as
+subsets of $\mathbb N$. The following constants denote code carriers:
 \[
 \text{FmCode} 
 \equivdef
@@ -441,7 +446,7 @@ The following class constants represent the codes of formulas, class terms, cont
 \text{, where }
 \CFm
 \equivdef
-\Emb(\TFm)
+\operatorname{Code}(\TFm)
 \]
 \[
 \text{ClassCode} 
@@ -450,12 +455,22 @@ The following class constants represent the codes of formulas, class terms, cont
 \text{, where }
 \CClass
 \equivdef
-\Emb(\TClass)
+\operatorname{Code}(\TClass)
 \]
 \[
 \dots
 \]
 \end{definition}
+Here $\CClass$ codes finite \emph{class expressions}; it is not a
+carrier containing every semantic class. The old notation $\Emb(A)$
+for these carriers is replaced by $\operatorname{Code}(A)$ to distinguish
+it from the predicate interpretation of types in
+Section~\ref{sec:predicate_type_interface}. In that interface, a carrier
+$C$ corresponds to the membership predicate $c\mapsto c\in C$;
+collecting that predicate returns $C$. In particular,
+$\operatorname{Code}(\TClass)$ is not the collected extension of the
+semantic type $\Class$, which would be the whole class $\V$ of sets.
+An expression's code and the class it denotes are different objects.
 \iffalse
 \begin{notation}[overloading]
 Luckily, on paper, it is possible to completely avoid the necessity of coloring the constants or of writing prefixes, via simple overloading trick: 
@@ -503,6 +518,43 @@ and every displayed substitution is capture-avoiding. Quantification over
 semantic classes is a separate issue: the set- and class-quantifier schemes
 later in this subsection are proposed axioms, not consequences of the
 coding convention alone.
+\begin{proposition}[Quantification transported along a coding]
+Let $S$ be a set of syntax objects, let $C$ be its code carrier, and let
+$\operatorname{enc}:S\to C$ and $\operatorname{dec}:C\to S$ be mutually
+inverse maps. For any metatheoretic predicate $P$ on $S$,
+\[
+\begin{aligned}
+(\forall s\in S,\ P(s))
+ &\iff(\forall c\in C,\ P(\operatorname{dec}(c))),\\
+(\exists s\in S,\ P(s))
+ &\iff(\exists c\in C,\ P(\operatorname{dec}(c))).
+\end{aligned}
+\]
+Unique existence is preserved as well. No interpretation of $P$ as an
+object-language truth predicate is needed.
+\end{proposition}
+\Proof
+For the universal forward implication, apply $P$ to
+$\operatorname{dec}(c)\in S$. For the reverse implication, use
+$c=\operatorname{enc}(s)$ and
+$\operatorname{dec}(\operatorname{enc}(s))=s$. For existence, encode
+a witness in one direction and decode a witness in the other.
+If two codes satisfy the decoded predicate and $P$ has a unique
+witness, their decoded objects are equal; applying $\operatorname{enc}$
+makes the codes equal. Conversely, equal codes of any two witnesses
+give equal witnesses after decoding. Together with existence, these
+arguments prove preservation of unique existence.
+\Done
+
+The displayed formula substitution below implements this transport only
+when the decoding and substitution operations have the specified types
+and meanings. Decoding is required on valid codes; a guarded formula
+in a total language additionally needs a total extension of the decoder
+outside that carrier. One may use any fixed syntax object as default
+when the datatype is nonempty. Alternatively the display can be read as
+a bounded metatheoretic quantifier, which never applies the decoder to
+an invalid code. These conventions do not give a total semantic evaluator
+for arbitrary expressions or a code for every semantic class.
 \begin{definition}[quantifiers with a bound variable of type $\Fm$]
 Let $\phi$ be a variable for formulas.\\
 Let $\psi$ be a formula.\\
@@ -519,7 +571,7 @@ Then
 \[
 \iffdef
 (\forall (\phi_\code:\TClass),\ %
-(\phi_\code\in \Emb(\TFm))
+(\phi_\code\in \operatorname{Code}(\TFm))
 \implies
 \psi[
 \DecFm(\phi_\code)
@@ -573,7 +625,7 @@ The proposed set-quantifier scheme retains a set-typed code quantifier:
 \[
 \iffaxm
 (\forall (t_\code:\TSet),\ %
-(t_\code\in \Emb(\TSet))
+(t_\code\in \operatorname{Code}(\TSet))
 \implies
 \psi[
 \DecSet(t_\code)
@@ -610,8 +662,8 @@ can be likewise unambiguously written as
 
 \begin{axiom}[class terms quantification unfolds via itself]
 The analogous proposed class-quantifier scheme retains a class-typed code
-quantifier. Its typing predicate requires the interpretation supplied by the
-model of pi-types.
+quantifier. The code guard below concerns syntax, not the predicate that
+accepts all semantic class values.
 \[
 (\forall (t:\TClass),\ \psi)
 \iffaxm
@@ -619,7 +671,7 @@ model of pi-types.
 \[
 \iffaxm
 (\forall (t_\code:\TClass),\ %
-(t_\code : \Emb(\TClass))
+(t_\code\in \operatorname{Code}(\TClass))
 \implies
 \psi[
 \DecClass(t_\code)
@@ -1702,7 +1754,113 @@ For any type $X$, for any variable $x$ and the formula $\phi$ such that the term
 \labeltagd{axm}{MetaH}
 \]
 
-(This axiom scheme is based on assumption that $\Fau$ is a theory with Henkin property, therefore it is possible to safely introduce the additional constants.)\\
+The Henkin property defined later supplies closed witnesses for provable
+existential sentences. It does not by itself specify a uniform descriptor
+for formulas with parameters. Moreover, in total semantics a descriptor
+of type $X$ must denote even when its defining predicate has no witness;
+therefore an empty interpretation of $X$ is not permitted by this scheme.
+The following result gives a precise local justification for nonempty
+set-sized sorts. The proposed class-sized and higher-order instances
+require their own interpretation and are not consequences of this result.
+
+\begin{theorem}[A conservative total witness extension]
+\label{thm:total_witness_extension}
+Work in classical set metatheory with Choice. Let $T$ be a theory in an
+ordinary one-sorted first-order language, with total function symbols and
+nonempty set-sized domains. Extend its finite term and formula syntax by
+the binding constructor $\epsilon x\,\varphi$, with capture-avoiding
+substitution, and add all instances of the witness scheme
+\[
+(\exists x\,\varphi)\implies\varphi[\epsilon x\,\varphi/x].
+\]
+Retain the original nonlogical axioms of $T$, without extending their
+schemata to new formulas, and the classical logical axioms with their
+usual context and freshness conditions. Every model of $T$ expands to a model of this extended
+calculus. Consequently, if an old-language sentence is derivable in the
+extension, it is a semantic consequence of $T$. If the original calculus
+is complete for these structures, the extension is also conservative for
+old-language derivability.
+\end{theorem}
+\Proof
+Fix a model $M$ of $T$ with nonempty domain $D$. Choose $d_0\in D$
+and a choice function $c$ on the nonempty subsets of $D$, and put
+\[
+\widehat c(S)=
+\begin{cases}
+c(S),&S\ne\emptyclass,\\
+d_0,&S=\emptyclass.
+\end{cases}
+\]
+Interpret the new terms and formulas together by induction on their
+finite syntax trees. Keep every old interpretation clause, and define
+\[
+\llbracket\epsilon x\,\varphi\rrbracket_s
+=\widehat c\bigl(\{a\in D:M,s[x:=a]\models\varphi\}\bigr).
+\]
+The formula inside this clause is a proper subexpression of the term,
+so mutual recursion is well founded even with nested descriptors.
+Its truth set is a subset of $D$ in the metatheory. The same fixed
+$\widehat c$ is used for every assignment and every descriptor.
+
+We check the new binder case needed for the logical substitution rules.
+First, coincidence of assignments extends by mutual induction: assignments
+agreeing on the free variables of $\epsilon x\,\varphi$ give, after
+updating $x$ to each $a$, assignments agreeing on the free variables of
+$\varphi$. The induction hypothesis makes the two truth sets equal,
+so the selected values agree. The other clauses are the ordinary
+first-order clauses.
+
+For substitution of a term $t$ for a variable $z$, consider
+$e=\epsilon x\,\varphi$. If $x=z$, substitution does not enter this
+binder and coincidence gives
+$\llbracket e\rrbracket_s=
+\llbracket e\rrbracket_{s[z:=\llbracket t\rrbracket_s]}$.
+Otherwise rename $x$ fresh for $t$ and distinct from $z$. For each
+$a\in D$, the induction hypothesis for $\varphi$ gives
+\[
+M,s[x:=a]\models\varphi[t/z]
+\iff
+M,s[x:=a][z:=\llbracket t\rrbracket_{s[x:=a]}]\models\varphi.
+\]
+Coincidence and freshness give
+$\llbracket t\rrbracket_{s[x:=a]}=\llbracket t\rrbracket_s$;
+the two updates commute. Thus the set selected when evaluating $e[t/z]$
+at $s$ equals the set selected when evaluating $e$ at
+$s[z:=\llbracket t\rrbracket_s]$. Applying $\widehat c$ proves the
+term substitution clause. The formula clauses follow by the same mutual
+induction, with bound variables renamed fresh for $t$. Renaming a bound
+identifier itself preserves the truth set, since both versions range
+over the same $a\in D$; hence these choices of fresh names do not
+change the interpretation.
+
+If $M,s\models\exists x\,\varphi$, the set in the descriptor clause
+is nonempty. Its selected element satisfies $\varphi$ by the definition
+of $c$, and the substitution clause just proved identifies this with
+truth of $\varphi[\epsilon x\,\varphi/x]$ at $s$. If the existential
+is false, the witness implication is true by classical logic. All
+instances of the new scheme are therefore valid. Totality, substitution,
+and coincidence give the ordinary soundness checks for the logical
+axioms and inference rules, including the freshness condition for
+generalisation. The old axioms remain true because their interpretations
+have not changed. This proves the expansion assertion.
+
+An old-language countermodel to a proposed semantic consequence of $T$
+therefore expands to a countermodel in which every extended derivation
+is sound. No old-language sentence derivable in the extension can have
+such a countermodel. Completeness of the original calculus, when assumed,
+converts this semantic consequence into an original derivation.
+\Done
+
+The construction fixes a choice operation as semantic data; it does not
+claim that the expansion is unique or that the choice is definable in
+$M$. For finitely or set-many sorts the same argument works with
+nonempty set carriers and specified choice operations for those carriers.
+It cannot be applied to an empty carrier: even
+$\epsilon x\,(x\ne x)$ would have to denote an element of that carrier.
+For descriptors intended to range over classes, the separate ranked
+class-parameter construction in the relational-image chapter supplies a
+different, explicitly stronger setting.
+
 %\underline{Bernays' rules:}%if $x$ is not free in formula $\psi$ then
 \underline{Abstraction rules:}\\%if $x$ is not free in formula $\psi$ then
 For a variable $x$ of type $X$ and formulas $\psi,\varphi$, assume that
@@ -4624,7 +4782,7 @@ A\text{ is an axiom generated by a serial property}\\
 (following the ideas of \cite{Japaridze1986})
 \end{definition}
 \pagebreak
-\section{Incompleteness of the theory $\Tau$}
+\section{\texorpdfstring{Incompleteness of the theory $\Tau$}{Incompleteness of the theory Tau}}
 For the incompleteness theorem in this section, fix a consistent,
 effectively axiomatised theory at each stage to which the theorem is applied,
 with enough arithmetic to represent proofs and a standard provability
@@ -5026,7 +5184,7 @@ finite $S$-derivation as a $T$-derivation; it must be checked for a different
 choice of proof coding.
 
 \pagebreak
-\section{Completeness of the theory $\Fau$}
+\section{\texorpdfstring{Completeness of the theory $\Fau$}{Completeness of the theory F}}
 We return to the ideal semantic setting. In this section, ``validity'' means
 truth in the fixed intended interpretation, not truth in every structure.
 When a formula $\phi$ appears on the truth side of an implication, read it as

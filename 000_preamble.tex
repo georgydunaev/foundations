@@ -33,7 +33,7 @@
 %\DeclareFontFamily{OT1}{cmrx}{}
 %\DeclareFontShape{OT1}{cmrx}{m}{n}{<->cmr10}{}
 
-\documentclass[10pt,a4paper,tikz]{report} %if chapters are introduced
+\documentclass[10pt,a4paper]{report} %if chapters are introduced
 \renewcommand{\thechapter}{}
 \renewcommand{\chaptername}{}
 
@@ -105,6 +105,14 @@
 \usepackage{thmtools}
 %\usepackage[linktocpage=true]{hyperref}
 \usepackage{hyperref}
+% The DVI/dvips driver needs breakurl to wrap linked URLs across lines.
+% PDF-native and XeTeX drivers already handle these links themselves.
+\makeatletter
+\def\FoundationsDvipsDriver{hdvips}
+\ifx\Hy@driver\FoundationsDvipsDriver
+  \usepackage{breakurl}
+\fi
+\makeatother
 \hypersetup{
     hypertexnames=false,
     colorlinks=true,
