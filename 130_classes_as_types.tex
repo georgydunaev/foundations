@@ -498,8 +498,26 @@ the two shifts agree because $(n+m)+j=n+(m+j)$. Hence all values and
 domains agree, and canonical extensionality proves equality.
 \Done
 
+\begin{proposition}[When a canonical class list is a set]
+With pairing, separation, replacement, and union, a canonical class list $F$
+of length $n$ is a set if and only if every entry $U_F(i)$, $i<n$,
+is a set.
+\end{proposition}
+\Proof
+If $F$ is a set, separation gives its records at any fixed index.
+Replacement by the second-coordinate projection gives a set of stored
+values, and union makes $U_F(i)$ a set.
+Conversely, suppose all entries are sets. At index $i<n$, the canonical
+fibre $\{\emptyclass\}\cup\{\{q\}:q\in U_F(i)\}$ is a set by
+replacement and pairing. Its records with first coordinate $i$ form a
+set as well. Replacement collects these uniquely specified record sets
+over the set domain $n$, and their union is exactly $F$. No choice of
+representatives is involved.
+\Done
+
 For example, $\operatorname{Cons}(\V,\emptyclass)$ is a one-entry
 list whose value is a proper class, represented entirely by set records.
+The proposition shows that this list itself is proper.
 For the empty class as head, the one-entry list is instead
 $\{(0,\emptyclass)\}$; it is distinct from nil despite its empty value.
 On noncanonical input relations, the corresponding operations first

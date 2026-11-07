@@ -4694,13 +4694,14 @@ of finite formulas by natural numbers, with decidable valid codes and
 an effective decoding procedure. Write $\#\theta$ for the external
 natural-number code of a formula $\theta$, distinguishing it from the
 term $\overline{\#\theta}$ denoting that number inside arithmetic.
-Let $d(n)$, for the code $n$ of a formula $\theta(x)$ with its only
-possible free variable $x$, be the code of the sentence
-$\theta(\overline n)$. This is an effective operation on finite syntax;
-it may be extended to invalid codes by the fixed output zero.
+Call a code $n$ eligible when it represents a formula $\theta(x)$
+whose only possible free variable is $x$. For eligible $n$, let $d(n)$
+be the code of the sentence $\theta(\overline n)$. On all other inputs,
+including codes of formulas with other free variables, put $d(n)=0$.
+This is an effective operation on finite syntax.
 
 Assume $T$ has a formula $D(x,y)$, with no other free variables, such
-that for every valid standard code $n$,
+that for every eligible standard code $n$,
 \[
 T\vdash\forall y\,
  \bigl(D(\overline n,y)\iff y=\overline{d(n)}\bigr).

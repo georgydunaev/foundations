@@ -27,7 +27,7 @@ The current verification checkpoint covers the extended mathematical pass:
   keys among the recognized commands. This covers ordinary references and
   the custom label commands; Biber separately resolved five active citation
   keys.
-- The complete 285-page book compiled successfully with Tectonic 0.17.0
+- The complete 286-page book compiled successfully with Tectonic 0.17.0
   and Biber 2.17 using a temporary toolchain outside the repository. The
   latest log has no overfull boxes, undefined references or citations,
   duplicate labels, missing characters, or dropped listing text. Extracted
@@ -170,10 +170,18 @@ The PDF is generated from the edited sources. Line numbers are off for the
 reading copy; defining `\ShowLineNumbers` before loading the preamble restores
 an editing copy. Sample rendered pages were visually inspected, and oversized
 displays and proof trees received a layout pass. Remaining underfull-box and package/bookmark warnings
-are recorded by the build; a successful compilation is not a guarantee of
-perfect typography on every page.
+are recorded by the build. The temporary toolchain also reports a missing
+default Fontconfig configuration and an encoding warning inside `lineno.sty`;
+these do not prevent compilation, and the inspected PDF has neither missing
+glyphs nor replacement characters. A successful compilation is not a
+guarantee of perfect typography on every page.
 
 Some sections remain research sketches or incomplete model constructions.
-Their local proof obligations are stated rather than replaced with invented
-proofs. Further mathematical development and the absent companion application
-manuscript remain necessary for a complete publication edition.
+In particular, the uniform predicate-level translation involving `Emb` and
+`kappa`, the proposed serial-reflection hierarchy, and extension of the
+simple operational calculus to additional constructors remain separate
+obligations. The intended Alexandrov and Strang statements have not been
+identified; their headings do not assert an arbitrarily chosen theorem.
+The external companion manuscript remains unavailable. These limits are
+stated locally, and the revised mathematics has not been kernel-verified.
+Further development is therefore needed for a complete publication edition.
