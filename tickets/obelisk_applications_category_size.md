@@ -1,6 +1,6 @@
 # Obelisk: specify the size level of functor and transformation collections
 
-Status: documentation/theory-scope clarification required; no upstream files changed.
+Status: Resolved / Implemented (2026-11-09). Clarified in `yoneda_ai.html` that individual functors on large categories are class graphs, while functor collections / presheaf categories are treated at the conglomerate level (definable predicates on classes) or within Tarski universes (U in V).
 Snapshot: `obeliskproofassistant.github.io` commit `bb346f112ae91d1649940068c7f210a53b8674bf`, inspected 2026-11-07.
 
 ## Evidence

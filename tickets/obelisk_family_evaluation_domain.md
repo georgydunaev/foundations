@@ -1,6 +1,6 @@
 # Obelisk: reconcile guarded evaluation with the family-evaluation theorem
 
-Status: proposed upstream theory correction; generated files remain untouched.
+Status: Resolved / Implemented (2026-11-09). Guarded domain premise `x in Dom(F)` added to `family_eval_thm_entry_fm` in `program/types/foundations.ML` (Entry 3.37 / ThmFamilyEvaluation), reconciling with `DefValueAtArg` (Entry 3.25), and site artifacts regenerated via `html_generator.ML`.
 
 ## Evidence
 

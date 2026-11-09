@@ -1,6 +1,6 @@
 # Restore the missing dependent-product membership condition in DefPiPredicateModel
 
-Status: upstream correction requested; no website or generated files edited.
+Status: Resolved / Implemented (2026-11-09). Upstream ML source `program/types/foundations.ML` updated to include the pointwise section condition in the antecedent of `pi_predicate_model_def_entry_fm`, and site artifacts regenerated via `html_generator.ML`.
 
 Compared on 2026-11-07 against the local read-only checkout at
 `/home/gdunaev/obeliskproofassistant.github.io`.
