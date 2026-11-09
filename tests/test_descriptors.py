@@ -12,7 +12,6 @@ class TestDescriptors(unittest.TestCase):
         from pathlib import Path
         root = Path(__file__).resolve().parents[1]
         index_path = root / "MACROS_INDEX.md"
-        scope_files = (root / "000_preamble.tex", root / "BEGIN.tex")
 
         if not index_path.exists():
             self.skip("MACROS_INDEX.md does not exist")

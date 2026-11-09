@@ -3,7 +3,6 @@
 # This test suite validates the foundations of mathematics codebase,
 # covering implementations, module integrity, and LaTeX macro consistency.
 
-import os
 import sys
 import unittest
 import pathlib

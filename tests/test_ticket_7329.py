@@ -19,11 +19,13 @@ class TestTicket7329(unittest.TestCase):
         """Test core functionality"""
         with self.assertRaises(ValueError):
             ImplementationClass().process(invalid_input)
+        self.assertEqual(ImplementationClass().process(), expected_output)
 
     def test_edge_cases(self):
         """Test edge cases"""
         with self.assertRaises(ValueError):
             ImplementationClass().process(invalid_input)
+        self.assertEqual(ImplementationClass().process(None), expected_output)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,11 @@
+from pathlib import Path
 import sys
 import unittest
-sys.path.append('/botworkspace/foundations')
+
+REPO_DIR = Path(__file__).resolve().parent.parent
+if str(REPO_DIR) not in sys.path:
+    sys.path.insert(0, str(REPO_DIR))
+
 from implementation_ticket_7329 import ImplementationClass
 
 class TestImplementationClass(unittest.TestCase):

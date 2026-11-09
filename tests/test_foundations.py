@@ -1,6 +1,10 @@
-import unittest
+from pathlib import Path
 import sys
-sys.path.append('/botworkspace/foundations')
+import unittest
+
+REPO_DIR = Path(__file__).resolve().parent.parent
+if str(REPO_DIR) not in sys.path:
+    sys.path.insert(0, str(REPO_DIR))
 
 try:
     import foundations
