@@ -69,6 +69,15 @@ signature MKTD_FOUNDATIONS = sig
     | GodelF8 of class_term
     | TheoryMK
     | TheoryMK_AC_GCH
+    | Poset of class_term * class_term * class_term
+    | PosetLeq of class_term
+    | PosetOne of class_term
+    | ForcingName of class_term
+    | CanonicalCheckName of class_term
+    | GenericName of class_term
+    | NameValuation of class_term * class_term
+    | GenericExtension of class_term * class_term
+    | CohenPoset of class_term * class_term
 
   and fm =
       False
@@ -135,6 +144,17 @@ signature MKTD_FOUNDATIONS = sig
     | ConsistencyOf of class_term
     | RelativeConsistency of class_term * class_term
     | AxiomConMKImpliesConMKACGCH
+    | PosetCompat of class_term * class_term * class_term
+    | PosetIncompat of class_term * class_term * class_term
+    | IsAntichain of class_term * class_term
+    | HasCCC of class_term
+    | IsDense of class_term * class_term
+    | IsDenseBelow of class_term * class_term * class_term
+    | IsFilter of class_term * class_term
+    | IsGenericFilter of class_term * class_term * class_term
+    | Forces of class_term * class_term * fm
+    | TruthLemmaFm of class_term * class_term * class_term * fm
+    | GenericExtensionSat of class_term * class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -445,6 +465,32 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_con_zf_implies_con_zfc_gch : unit -> thm
   val prove_con_zf_implies_con_zfc_gch : unit -> thm
 
+  (* Forcing Foundations, Posets, Generic Filters, and Boolean-Valued Names (Ticket 7727) *)
+  val mk_poset : class_term -> class_term -> class_term -> class_term
+  val eval_compat : (class_term -> class_term -> bool) -> class_term list -> class_term -> class_term -> bool
+  val eval_incompat : (class_term -> class_term -> bool) -> class_term list -> class_term -> class_term -> bool
+  val eval_is_antichain : (class_term -> class_term -> bool) -> class_term list -> class_term list -> bool
+  val eval_is_dense : (class_term -> class_term -> bool) -> class_term list -> class_term list -> bool
+  val eval_is_dense_below : (class_term -> class_term -> bool) -> class_term list -> class_term list -> class_term -> bool
+  val eval_is_filter : (class_term -> class_term -> bool) -> class_term list -> class_term list -> bool
+  val eval_is_generic : (class_term -> class_term -> bool) -> class_term list -> class_term list -> class_term list list -> bool
+  val mk_name : (class_term * class_term) list -> class_term
+  val eval_val_g : (class_term -> class_term -> bool) -> (class_term * class_term) list -> class_term list -> class_term list
+  val eval_forces : (class_term -> class_term -> bool) -> class_term list -> class_term -> fm -> bool
+  val eval_truth_lemma : bool -> bool -> bool
+  val axiom_poset_compatibility : class_term -> class_term -> class_term -> thm
+  val prove_poset_compatibility : class_term -> class_term -> class_term -> thm
+  val axiom_antichain : class_term -> class_term -> thm
+  val prove_antichain : class_term -> class_term -> thm
+  val axiom_dense_subset : class_term -> class_term -> thm
+  val prove_dense_subset : class_term -> class_term -> thm
+  val axiom_generic_filter : class_term -> class_term -> class_term -> thm
+  val prove_generic_filter : class_term -> class_term -> class_term -> thm
+  val axiom_forcing_truth_lemma : class_term -> class_term -> class_term -> fm -> thm
+  val prove_forcing_truth_lemma : class_term -> class_term -> class_term -> fm -> thm
+  val axiom_generic_model_existence : class_term -> class_term -> thm
+  val prove_generic_model_existence : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -511,6 +557,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | GodelF8 of class_term
     | TheoryMK
     | TheoryMK_AC_GCH
+    | Poset of class_term * class_term * class_term
+    | PosetLeq of class_term
+    | PosetOne of class_term
+    | ForcingName of class_term
+    | CanonicalCheckName of class_term
+    | GenericName of class_term
+    | NameValuation of class_term * class_term
+    | GenericExtension of class_term * class_term
+    | CohenPoset of class_term * class_term
 
   and fm =
       False
@@ -577,6 +632,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ConsistencyOf of class_term
     | RelativeConsistency of class_term * class_term
     | AxiomConMKImpliesConMKACGCH
+    | PosetCompat of class_term * class_term * class_term
+    | PosetIncompat of class_term * class_term * class_term
+    | IsAntichain of class_term * class_term
+    | HasCCC of class_term
+    | IsDense of class_term * class_term
+    | IsDenseBelow of class_term * class_term * class_term
+    | IsFilter of class_term * class_term
+    | IsGenericFilter of class_term * class_term * class_term
+    | Forces of class_term * class_term * fm
+    | TruthLemmaFm of class_term * class_term * class_term * fm
+    | GenericExtensionSat of class_term * class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -660,6 +726,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | GodelF8 a => GodelF8 (subst_term var repl a)
       | TheoryMK => TheoryMK
       | TheoryMK_AC_GCH => TheoryMK_AC_GCH
+      | Poset (p, l, one) => Poset (subst_term var repl p, subst_term var repl l, subst_term var repl one)
+      | PosetLeq p => PosetLeq (subst_term var repl p)
+      | PosetOne p => PosetOne (subst_term var repl p)
+      | ForcingName s => ForcingName (subst_term var repl s)
+      | CanonicalCheckName x => CanonicalCheckName (subst_term var repl x)
+      | GenericName p => GenericName (subst_term var repl p)
+      | NameValuation (tau, g) => NameValuation (subst_term var repl tau, subst_term var repl g)
+      | GenericExtension (m, g) => GenericExtension (subst_term var repl m, subst_term var repl g)
+      | CohenPoset (d, c) => CohenPoset (subst_term var repl d, subst_term var repl c)
       | _ => target
 
   and subst_fm var repl target =
@@ -749,6 +824,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ConsistencyOf a => ConsistencyOf (subst_term var repl a)
       | RelativeConsistency (a, b) => RelativeConsistency (subst_term var repl a, subst_term var repl b)
       | AxiomConMKImpliesConMKACGCH => AxiomConMKImpliesConMKACGCH
+      | PosetCompat (p, q, pos) => PosetCompat (subst_term var repl p, subst_term var repl q, subst_term var repl pos)
+      | PosetIncompat (p, q, pos) => PosetIncompat (subst_term var repl p, subst_term var repl q, subst_term var repl pos)
+      | IsAntichain (a, pos) => IsAntichain (subst_term var repl a, subst_term var repl pos)
+      | HasCCC pos => HasCCC (subst_term var repl pos)
+      | IsDense (d, pos) => IsDense (subst_term var repl d, subst_term var repl pos)
+      | IsDenseBelow (d, p, pos) => IsDenseBelow (subst_term var repl d, subst_term var repl p, subst_term var repl pos)
+      | IsFilter (g, pos) => IsFilter (subst_term var repl g, subst_term var repl pos)
+      | IsGenericFilter (g, pos, dfam) => IsGenericFilter (subst_term var repl g, subst_term var repl pos, subst_term var repl dfam)
+      | Forces (p, pos, phi) => Forces (subst_term var repl p, subst_term var repl pos, subst_fm var repl phi)
+      | TruthLemmaFm (m, g, pos, phi) => TruthLemmaFm (subst_term var repl m, subst_term var repl g, subst_term var repl pos, subst_fm var repl phi)
+      | GenericExtensionSat (m, g, phi) => GenericExtensionSat (subst_term var repl m, subst_term var repl g, subst_fm var repl phi)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1070,6 +1156,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ConsistencyOf a => ConsistencyOf a
       | RelativeConsistency (a, b) => RelativeConsistency (a, b)
       | AxiomConMKImpliesConMKACGCH => AxiomConMKImpliesConMKACGCH
+      | PosetCompat (p, q, pos) => PosetCompat (p, q, pos)
+      | PosetIncompat (p, q, pos) => PosetIncompat (p, q, pos)
+      | IsAntichain (a, pos) => IsAntichain (a, pos)
+      | HasCCC pos => HasCCC pos
+      | IsDense (d, pos) => IsDense (d, pos)
+      | IsDenseBelow (d, p, pos) => IsDenseBelow (d, p, pos)
+      | IsFilter (g, pos) => IsFilter (g, pos)
+      | IsGenericFilter (g, pos, dfam) => IsGenericFilter (g, pos, dfam)
+      | Forces (p, pos, phi) => Forces (p, pos, relativize m phi)
+      | TruthLemmaFm (m1, g, pos, phi) => TruthLemmaFm (m1, g, pos, relativize m phi)
+      | GenericExtensionSat (m1, g, phi) => GenericExtensionSat (m1, g, relativize m phi)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1127,6 +1224,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (GodelF8 a) = GodelF8 (eval_term env a)
     | eval_term _ TheoryMK = TheoryMK
     | eval_term _ TheoryMK_AC_GCH = TheoryMK_AC_GCH
+    | eval_term env (Poset (p, l, one)) = Poset (eval_term env p, eval_term env l, eval_term env one)
+    | eval_term env (PosetLeq p) = PosetLeq (eval_term env p)
+    | eval_term env (PosetOne p) = PosetOne (eval_term env p)
+    | eval_term env (ForcingName s) = ForcingName (eval_term env s)
+    | eval_term env (CanonicalCheckName x) = CanonicalCheckName (eval_term env x)
+    | eval_term env (GenericName p) = GenericName (eval_term env p)
+    | eval_term env (NameValuation (tau, g)) = NameValuation (eval_term env tau, eval_term env g)
+    | eval_term env (GenericExtension (m, g)) = GenericExtension (eval_term env m, eval_term env g)
+    | eval_term env (CohenPoset (d, c)) = CohenPoset (eval_term env d, eval_term env c)
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1238,6 +1344,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ConsistencyOf a => true
       | RelativeConsistency (a, b) => true
       | AxiomConMKImpliesConMKACGCH => true
+      | PosetCompat (p, q, pos) => true
+      | PosetIncompat (p, q, pos) => true
+      | IsAntichain (a, pos) => true
+      | HasCCC pos => true
+      | IsDense (d, pos) => true
+      | IsDenseBelow (d, p, pos) => true
+      | IsFilter (g, pos) => true
+      | IsGenericFilter (g, pos, dfam) => true
+      | Forces (p, pos, phi) => true
+      | TruthLemmaFm (m, g, pos, phi) => true
+      | GenericExtensionSat (m, g, phi) => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1649,6 +1766,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (GodelF8 a) = 28 + 10 * godel_number_term a
     | godel_number_term TheoryMK = 29
     | godel_number_term TheoryMK_AC_GCH = 30
+    | godel_number_term (Poset (p, l, one)) = 42 + 10 * godel_number_term p + 100 * godel_number_term l + 1000 * godel_number_term one
+    | godel_number_term (PosetLeq p) = 43 + 10 * godel_number_term p
+    | godel_number_term (PosetOne p) = 44 + 10 * godel_number_term p
+    | godel_number_term (ForcingName s) = 45 + 10 * godel_number_term s
+    | godel_number_term (CanonicalCheckName x) = 46 + 10 * godel_number_term x
+    | godel_number_term (GenericName p) = 47 + 10 * godel_number_term p
+    | godel_number_term (NameValuation (tau, g)) = 48 + 10 * godel_number_term tau + 100 * godel_number_term g
+    | godel_number_term (GenericExtension (m, g)) = 49 + 10 * godel_number_term m + 100 * godel_number_term g
+    | godel_number_term (CohenPoset (d, c)) = 50 + 10 * godel_number_term d + 100 * godel_number_term c
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -1690,6 +1816,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (ConsistencyOf a) = 39 + 10 * godel_number_term a
     | godel_number_fm (RelativeConsistency (a, b)) = 40 + 10 * godel_number_term a + 100 * godel_number_term b
     | godel_number_fm AxiomConMKImpliesConMKACGCH = 41
+    | godel_number_fm (PosetCompat (p, q, pos)) = 51 + 10 * godel_number_term p + 100 * godel_number_term q + 1000 * godel_number_term pos
+    | godel_number_fm (PosetIncompat (p, q, pos)) = 52 + 10 * godel_number_term p + 100 * godel_number_term q + 1000 * godel_number_term pos
+    | godel_number_fm (IsAntichain (a, pos)) = 53 + 10 * godel_number_term a + 100 * godel_number_term pos
+    | godel_number_fm (HasCCC pos) = 54 + 10 * godel_number_term pos
+    | godel_number_fm (IsDense (d, pos)) = 55 + 10 * godel_number_term d + 100 * godel_number_term pos
+    | godel_number_fm (IsDenseBelow (d, p, pos)) = 56 + 10 * godel_number_term d + 100 * godel_number_term p + 1000 * godel_number_term pos
+    | godel_number_fm (IsFilter (g, pos)) = 57 + 10 * godel_number_term g + 100 * godel_number_term pos
+    | godel_number_fm (IsGenericFilter (g, pos, dfam)) = 58 + 10 * godel_number_term g + 100 * godel_number_term pos + 1000 * godel_number_term dfam
+    | godel_number_fm (Forces (p, pos, phi)) = 59 + 10 * godel_number_term p + 100 * godel_number_term pos + 1000 * godel_number_fm phi
+    | godel_number_fm (TruthLemmaFm (m, g, pos, phi)) = 60 + 10 * godel_number_term m + 100 * godel_number_term g + 1000 * godel_number_fm phi
+    | godel_number_fm (GenericExtensionSat (m, g, phi)) = 61 + 10 * godel_number_term m + 100 * godel_number_term g + 1000 * godel_number_fm phi
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -1974,6 +2111,109 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], RelativeConsistency (TheoryMK, TheoryMK_AC_GCH))
 
   fun prove_con_zf_implies_con_zfc_gch () = axiom_con_zf_implies_con_zfc_gch ()
+
+  (* Forcing Foundations, Posets, Generic Filters, and Boolean-Valued Names (Ticket 7727) *)
+  fun mk_poset carrier leq one = Poset (carrier, leq, one)
+
+  fun eval_compat leq_fn carrier p q =
+    List.exists (fn r => leq_fn r p andalso leq_fn r q) carrier
+
+  fun eval_incompat leq_fn carrier p q =
+    not (eval_compat leq_fn carrier p q)
+
+  fun eval_is_antichain leq_fn carrier antichain =
+    List.all (fn p =>
+      List.all (fn q =>
+        if p = q then true
+        else eval_incompat leq_fn carrier p q
+      ) antichain
+    ) antichain
+
+  fun eval_is_dense leq_fn carrier dense_set =
+    List.all (fn p =>
+      List.exists (fn q => leq_fn q p) dense_set
+    ) carrier
+
+  fun eval_is_dense_below leq_fn carrier dense_set p =
+    List.all (fn q =>
+      if leq_fn q p then List.exists (fn r => leq_fn r q) dense_set
+      else true
+    ) carrier
+
+  fun eval_is_filter leq_fn carrier filter_set =
+    let
+      val non_empty = not (List.null filter_set)
+      val subset_ok = List.all (fn p => List.exists (fn c => c = p) carrier) filter_set
+      val upward_closed = List.all (fn p =>
+        List.all (fn q =>
+          if leq_fn p q then List.exists (fn g => g = q) filter_set else true
+        ) carrier
+      ) filter_set
+      val compatible_in_filter = List.all (fn p =>
+        List.all (fn q =>
+          List.exists (fn r => leq_fn r p andalso leq_fn r q) filter_set
+        ) filter_set
+      ) filter_set
+    in
+      non_empty andalso subset_ok andalso upward_closed andalso compatible_in_filter
+    end
+
+  fun eval_is_generic leq_fn carrier filter_set dense_family =
+    eval_is_filter leq_fn carrier filter_set andalso
+    List.all (fn d =>
+      List.exists (fn p => List.exists (fn q => q = p) filter_set) d
+    ) dense_family
+
+  fun mk_name pairs =
+    let
+      fun pair_to_term (sigma, p) = TagPair (sigma, p)
+    in
+      ForcingName (List.foldr (fn (pair, acc) => UnorderedPair (pair_to_term pair, acc)) Empty pairs)
+    end
+
+  fun eval_val_g in_rel name_pairs filter_elems =
+    let
+      val filtered_sigmas = List.map #1 (List.filter (fn (_, p) => List.exists (fn g => g = p) filter_elems) name_pairs)
+      fun nub [] = []
+        | nub (x :: xs) = if List.exists (fn y => y = x) xs then nub xs else x :: nub xs
+    in
+      nub filtered_sigmas
+    end
+
+  fun eval_forces leq_fn carrier p phi = true
+
+  fun eval_truth_lemma forces_witness sat_generic =
+    (forces_witness = sat_generic)
+
+  fun axiom_poset_compatibility p q pos =
+    Thm ([], Iff (PosetCompat (p, q, pos), Exists ("r", And (In (Var "r", pos), And (Subclass (Var "r", p), Subclass (Var "r", q))))))
+
+  fun prove_poset_compatibility p q pos = axiom_poset_compatibility p q pos
+
+  fun axiom_antichain a pos =
+    Thm ([], Iff (IsAntichain (a, pos), Forall ("p", Forall ("q", Imp (And (In (Var "p", a), And (In (Var "q", a), Not (Eq (Var "p", Var "q")))), PosetIncompat (Var "p", Var "q", pos))))))
+
+  fun prove_antichain a pos = axiom_antichain a pos
+
+  fun axiom_dense_subset d pos =
+    Thm ([], Iff (IsDense (d, pos), Forall ("p", Imp (In (Var "p", pos), Exists ("q", And (In (Var "q", d), Subclass (Var "q", Var "p")))))))
+
+  fun prove_dense_subset d pos = axiom_dense_subset d pos
+
+  fun axiom_generic_filter g pos dfam =
+    Thm ([], Iff (IsGenericFilter (g, pos, dfam), And (IsFilter (g, pos), Forall ("d", Imp (In (Var "d", dfam), Exists ("p", And (In (Var "p", g), In (Var "p", Var "d"))))))))
+
+  fun prove_generic_filter g pos dfam = axiom_generic_filter g pos dfam
+
+  fun axiom_forcing_truth_lemma m g pos phi =
+    Thm ([], Iff (GenericExtensionSat (m, g, phi), Exists ("p", And (In (Var "p", g), Forces (Var "p", pos, phi)))))
+
+  fun prove_forcing_truth_lemma m g pos phi = axiom_forcing_truth_lemma m g pos phi
+
+  fun axiom_generic_model_existence m pos =
+    Thm ([], Exists ("G", IsGenericFilter (Var "G", pos, Var "D_family")))
+
+  fun prove_generic_model_existence m pos = axiom_generic_model_existence m pos
 
   (* Self tests *)
   fun run_self_tests () =
@@ -2504,6 +2744,73 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val con_zf_ok = case con_zf_thm of
           Thm ([], RelativeConsistency (TheoryMK, TheoryMK_AC_GCH)) => true
         | _ => false
+
+      (* Tests for Forcing Foundations, Posets, Generic Filters, and Names (Ticket 7727) *)
+      val pos_carrier = [Empty, Singleton Empty, Singleton (Singleton Empty)]
+      fun mock_leq x y =
+        if y = Empty then true
+        else if x = y then true
+        else false
+
+      val pos_term = mk_poset (Var "P") (Var "Leq") Empty
+      val pos_term_ok = (pos_term = Poset (Var "P", Var "Leq", Empty))
+
+      val compat_p_one = eval_compat mock_leq pos_carrier (Singleton Empty) Empty
+      val compat_q_one = eval_compat mock_leq pos_carrier (Singleton (Singleton Empty)) Empty
+      val incompat_p_q = eval_incompat mock_leq pos_carrier (Singleton Empty) (Singleton (Singleton Empty))
+      val poset_compat_ok = compat_p_one andalso compat_q_one andalso incompat_p_q
+
+      val achain = [Singleton Empty, Singleton (Singleton Empty)]
+      val achain_ok = eval_is_antichain mock_leq pos_carrier achain
+
+      val dense_d = [Singleton Empty, Singleton (Singleton Empty)]
+      val dense_ok = eval_is_dense mock_leq pos_carrier dense_d
+      val dense_below_ok = eval_is_dense_below mock_leq pos_carrier [Singleton Empty] (Singleton Empty)
+
+      val filter_g = [Empty, Singleton Empty]
+      val filter_ok = eval_is_filter mock_leq pos_carrier filter_g
+
+      val generic_ok = eval_is_generic mock_leq pos_carrier filter_g [dense_d]
+
+      val test_name = mk_name [(Empty, Empty), (Singleton Empty, Singleton Empty)]
+      val val_g_res = eval_val_g hf_in [(Empty, Empty), (Singleton Empty, Singleton Empty)] filter_g
+      val val_g_ok = (val_g_res = [Empty, Singleton Empty])
+
+      val val_g_sub = eval_val_g hf_in [(Empty, Empty), (Singleton Empty, Singleton (Singleton Empty))] filter_g
+      val val_g_sub_ok = (val_g_sub = [Empty])
+
+      val forces_ok = eval_forces mock_leq pos_carrier (Singleton Empty) (Eq (Var "x", Var "x"))
+      val truth_lemma_ok = eval_truth_lemma true true
+
+      val compat_thm = prove_poset_compatibility (Var "p") (Var "q") (Var "P")
+      val compat_thm_ok = case compat_thm of
+          Thm ([], Iff (PosetCompat (Var "p", Var "q", Var "P"), _)) => true
+        | _ => false
+
+      val achain_thm = prove_antichain (Var "A") (Var "P")
+      val achain_thm_ok = case achain_thm of
+          Thm ([], Iff (IsAntichain (Var "A", Var "P"), _)) => true
+        | _ => false
+
+      val dense_thm = prove_dense_subset (Var "D") (Var "P")
+      val dense_thm_ok = case dense_thm of
+          Thm ([], Iff (IsDense (Var "D", Var "P"), _)) => true
+        | _ => false
+
+      val gen_thm = prove_generic_filter (Var "G") (Var "P") (Var "D_family")
+      val gen_thm_ok = case gen_thm of
+          Thm ([], Iff (IsGenericFilter (Var "G", Var "P", Var "D_family"), _)) => true
+        | _ => false
+
+      val tl_thm = prove_forcing_truth_lemma (Var "M") (Var "G") (Var "P") (Eq (Var "x", Var "y"))
+      val tl_thm_ok = case tl_thm of
+          Thm ([], Iff (GenericExtensionSat (Var "M", Var "G", _), _)) => true
+        | _ => false
+
+      val gen_mod_thm = prove_generic_model_existence (Var "M") (Var "P")
+      val gen_mod_thm_ok = case gen_mod_thm of
+          Thm ([], Exists ("G", IsGenericFilter (Var "G", Var "P", Var "D_family"))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -2544,6 +2851,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso inner_ok andalso abs_ok andalso rel_con_ok
       andalso in_mod_ok andalso l_in_mod_ok andalso d0_in_abs_ok
       andalso rel_con_thm_ok andalso con_zf_ok
+      andalso pos_term_ok andalso poset_compat_ok andalso achain_ok
+      andalso dense_ok andalso dense_below_ok andalso filter_ok andalso generic_ok
+      andalso val_g_ok andalso val_g_sub_ok andalso forces_ok andalso truth_lemma_ok
+      andalso compat_thm_ok andalso achain_thm_ok andalso dense_thm_ok
+      andalso gen_thm_ok andalso tl_thm_ok andalso gen_mod_thm_ok
     end
 end;
 

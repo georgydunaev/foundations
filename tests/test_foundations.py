@@ -103,6 +103,40 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7727_forcing_and_generic_filters_symbols(self):
+        """Ticket 7727: verify Forcing Foundations, Posets, and Generic Filters symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "ForcingPoset",
+            "mk_poset",
+            "compat",
+            "is_compatible",
+            "incompat",
+            "is_incompatible",
+            "is_antichain",
+            "is_dense",
+            "is_dense_below",
+            "is_filter",
+            "is_generic",
+            "is_generic_filter",
+            "cohen_poset",
+            "mk_name",
+            "val_G",
+            "evaluate_name",
+            "canonical_check_name",
+            "generic_name",
+            "forces",
+            "verify_truth_lemma",
+            "proves_forcing_foundations",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7727 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

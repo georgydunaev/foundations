@@ -1062,6 +1062,130 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master_res["l_models_gch_verified"])
         self.assertEqual(master_res["pairing_device"], "dunaev_pair")
 
+    def test_forcing_foundations_posets_and_generic_filters(self):
+        """Ticket 7727: Forcing Foundations, Posets, Generic Filters, and Names V^(B)."""
+        from foundations.type_semantics import (
+            ForcingPoset,
+            mk_poset,
+            compat,
+            is_compatible,
+            incompat,
+            is_incompatible,
+            is_antichain,
+            is_dense,
+            is_dense_below,
+            is_filter,
+            is_generic,
+            is_generic_filter,
+            cohen_poset,
+            mk_name,
+            val_G,
+            evaluate_name,
+            canonical_check_name,
+            generic_name,
+            forces,
+            verify_truth_lemma,
+            proves_forcing_foundations,
+            DunaevTaggedPair,
+        )
+
+        empty = frozenset()
+        s_empty = frozenset([empty])
+        ss_empty = frozenset([s_empty])
+
+        # 1. Poset construction and compatibility
+        carrier = [empty, s_empty, ss_empty]
+
+        def leq(x, y):
+            if y == empty:
+                return True
+            return x == y
+
+        poset = mk_poset(carrier, leq, empty)
+        self.assertIsInstance(poset, ForcingPoset)
+        self.assertEqual(len(poset), 3)
+        self.assertIn(empty, poset)
+
+        # Compatibility
+        self.assertTrue(compat(s_empty, empty, poset))
+        self.assertTrue(is_compatible(ss_empty, empty, poset))
+        self.assertTrue(incompat(s_empty, ss_empty, poset))
+        self.assertTrue(is_incompatible(s_empty, ss_empty, poset))
+
+        # 2. Antichains and dense subsets
+        self.assertTrue(is_antichain([s_empty, ss_empty], poset))
+        self.assertFalse(is_antichain([empty, s_empty], poset))
+
+        dense_d = [s_empty, ss_empty]
+        self.assertTrue(is_dense(dense_d, poset))
+        self.assertTrue(is_dense_below([s_empty], s_empty, poset))
+
+        # 3. Filters and generic filters
+        filter_g1 = frozenset([empty, s_empty])
+        self.assertTrue(is_filter(filter_g1, poset))
+        self.assertTrue(is_generic(filter_g1, poset, [dense_d]))
+        self.assertTrue(is_generic_filter(filter_g1, poset, [dense_d]))
+
+        # Non-filter: incompatible elements
+        self.assertFalse(is_filter(frozenset([s_empty, ss_empty]), poset))
+
+        # 4. Cohen forcing conditions
+        c_pos = cohen_poset([0], [0, 1])
+        self.assertEqual(len(c_pos), 3)
+        self.assertIn(frozenset(), c_pos)
+        cond0 = frozenset([DunaevTaggedPair(0, 0)])
+        cond1 = frozenset([DunaevTaggedPair(0, 1)])
+        self.assertIn(cond0, c_pos)
+        self.assertIn(cond1, c_pos)
+        self.assertTrue(c_pos.leq(cond0, frozenset()))
+        self.assertTrue(incompat(cond0, cond1, c_pos))
+
+        # 5. Names and evaluation via generic filter
+        tau = mk_name([
+            (canonical_check_name(empty, empty), empty),
+            (canonical_check_name(s_empty, empty), s_empty),
+            (canonical_check_name(ss_empty, empty), ss_empty),
+        ])
+        for p in tau:
+            self.assertIsInstance(p, DunaevTaggedPair)
+
+        # val_G(tau) under filter_g1 = {empty, s_empty}
+        val_res = val_G(tau, filter_g1)
+        self.assertEqual(val_res, frozenset([empty, s_empty]))
+        self.assertEqual(evaluate_name(tau, filter_g1), frozenset([empty, s_empty]))
+
+        # Canonical check name: val_G(check(x)) == x
+        x_check = canonical_check_name(s_empty, empty)
+        self.assertEqual(val_G(x_check, filter_g1), s_empty)
+
+        # Generic name: val_G(G_dot) == G
+        g_dot = generic_name(poset)
+        self.assertEqual(val_G(g_dot, filter_g1), filter_g1)
+
+        # 6. Forcing relation and Truth Lemma
+        all_generics = [filter_g1, frozenset([empty, ss_empty])]
+        formula = ("eq", "x", "x")
+        names_env = {"x": tau}
+        self.assertTrue(forces(s_empty, formula, poset, names_env, generic_filters=all_generics))
+
+        tl_res = verify_truth_lemma(filter_g1, poset, formula, names_env, all_generics)
+        self.assertTrue(tl_res["truth_lemma_holds"])
+        self.assertTrue(tl_res["sat_in_mg"])
+        self.assertIsNotNone(tl_res["forcing_condition"])
+        self.assertEqual(tl_res["pairing_device"], "dunaev_pair")
+
+        # 7. Master forcing foundations runner
+        master_res = proves_forcing_foundations(poset)
+        self.assertTrue(master_res["forcing_foundations_proven"])
+        self.assertTrue(master_res["poset_verified"])
+        self.assertTrue(master_res["compatibility_verified"])
+        self.assertTrue(master_res["antichain_verified"])
+        self.assertTrue(master_res["dense_and_generic_verified"])
+        self.assertTrue(master_res["cohen_poset_verified"])
+        self.assertTrue(master_res["name_valuation_verified"])
+        self.assertTrue(master_res["truth_lemma_verified"])
+        self.assertEqual(master_res["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()
