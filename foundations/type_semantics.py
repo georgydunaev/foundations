@@ -7,7 +7,7 @@ Formalizes the active mainline type discipline and class theory concepts:
   - Total evaluation vs guarded evaluation conventions (110_family_evaluation.tex).
 """
 
-from typing import Any, Callable, Dict, FrozenSet, List, Optional, Sequence, Set, Tuple
+from typing import Any, Callable, Dict, FrozenSet, Iterable, List, Optional, Sequence, Set, Tuple
 
 
 class ProperClassError(TypeError):
@@ -320,4 +320,228 @@ def categorical_subobject_comprehension(
     chi = lambda x: bool(predicate(x))
     const_true = lambda x: True
     return categorical_equalizer(chi, const_true, domain_candidates)
+
+
+# Model-Theoretic Metamathematics, Tarski Truth Definition & Cumulative Hierarchy Reflection
+
+
+class TransitiveModel:
+    """Represents a model structure M = (domain, in_rel) under MKTD.
+
+    For transitive set models, in_rel is standard set membership.
+    For class models, in_rel can be evaluated over Dunaev tagged pairs or predicates.
+    """
+
+    def __init__(
+        self,
+        domain: Iterable[Any],
+        in_rel: Optional[Callable[[Any, Any], bool]] = None,
+        name: str = "M",
+    ) -> None:
+        self.domain = list(domain)
+        self.name = name
+        self.in_rel = in_rel if in_rel is not None else (lambda x, y: x in y)
+
+    def __repr__(self) -> str:
+        return f"TransitiveModel({self.name}, size={len(self.domain)})"
+
+    def satisfies(self, formula: Any, assignment: Optional[Dict[str, Any]] = None) -> bool:
+        """Evaluates whether this model satisfies formula under variable assignment."""
+        return model_satisfaction(
+            self.domain,
+            formula,
+            assignment or {},
+            in_rel=self.in_rel,
+        )
+
+
+def model_satisfaction(
+    domain: Iterable[Any],
+    formula: Any,
+    assignment: Dict[str, Any],
+    in_rel: Optional[Callable[[Any, Any], bool]] = None,
+) -> bool:
+    """Tarski truth definition for satisfaction relation M |= phi[s].
+
+    Formula is represented as nested tuples:
+      - ("in", t1, t2)
+      - ("eq", t1, t2)
+      - ("subclass", t1, t2)
+      - ("not", phi)
+      - ("and", phi, psi)
+      - ("or", phi, psi)
+      - ("imp", phi, psi)
+      - ("iff", phi, psi)
+      - ("forall", var, phi)
+      - ("exists", var, phi)
+      - ("exists_unique", var, phi)
+    """
+    domain_list = list(domain)
+    rel = in_rel if in_rel is not None else (lambda x, y: x in y)
+
+    def term_val(t: Any) -> Any:
+        if isinstance(t, str) and t in assignment:
+            return assignment[t]
+        return t
+
+    tag = formula[0]
+
+    if tag == "in":
+        return rel(term_val(formula[1]), term_val(formula[2]))
+    elif tag == "eq":
+        return term_val(formula[1]) == term_val(formula[2])
+    elif tag == "subclass":
+        a = term_val(formula[1])
+        b = term_val(formula[2])
+        return all((not rel(x, a)) or rel(x, b) for x in domain_list)
+    elif tag == "not":
+        return not model_satisfaction(domain_list, formula[1], assignment, rel)
+    elif tag == "and":
+        return model_satisfaction(domain_list, formula[1], assignment, rel) and model_satisfaction(
+            domain_list, formula[2], assignment, rel
+        )
+    elif tag == "or":
+        return model_satisfaction(domain_list, formula[1], assignment, rel) or model_satisfaction(
+            domain_list, formula[2], assignment, rel
+        )
+    elif tag == "imp":
+        return (not model_satisfaction(domain_list, formula[1], assignment, rel)) or model_satisfaction(
+            domain_list, formula[2], assignment, rel
+        )
+    elif tag == "iff":
+        return model_satisfaction(domain_list, formula[1], assignment, rel) == model_satisfaction(
+            domain_list, formula[2], assignment, rel
+        )
+    elif tag == "forall":
+        var = formula[1]
+        body = formula[2]
+        for elem in domain_list:
+            new_assign = dict(assignment)
+            new_assign[var] = elem
+            if not model_satisfaction(domain_list, body, new_assign, rel):
+                return False
+        return True
+    elif tag == "exists":
+        var = formula[1]
+        body = formula[2]
+        for elem in domain_list:
+            new_assign = dict(assignment)
+            new_assign[var] = elem
+            if model_satisfaction(domain_list, body, new_assign, rel):
+                return True
+        return False
+    elif tag == "exists_unique":
+        var = formula[1]
+        body = formula[2]
+        witnesses = 0
+        for elem in domain_list:
+            new_assign = dict(assignment)
+            new_assign[var] = elem
+            if model_satisfaction(domain_list, body, new_assign, rel):
+                witnesses += 1
+                if witnesses > 1:
+                    return False
+        return witnesses == 1
+    else:
+        raise ValueError(f"Unknown formula constructor: {tag}")
+
+
+def relativize_formula(formula: Any, model_class_name: str) -> Any:
+    """Relativizes quantifiers in formula to bounded quantifiers over model_class_name.
+
+    - forall x. phi  becomes  forall x. (In(x, M) -> phi^M)
+    - exists x. phi  becomes  exists x. (In(x, M) and phi^M)
+    """
+    tag = formula[0]
+    if tag in ("in", "eq", "subclass"):
+        return formula
+    elif tag == "not":
+        return ("not", relativize_formula(formula[1], model_class_name))
+    elif tag in ("and", "or", "imp", "iff"):
+        return (
+            tag,
+            relativize_formula(formula[1], model_class_name),
+            relativize_formula(formula[2], model_class_name),
+        )
+    elif tag == "forall":
+        var = formula[1]
+        rel_body = relativize_formula(formula[2], model_class_name)
+        return ("forall", var, ("imp", ("in", var, model_class_name), rel_body))
+    elif tag == "exists":
+        var = formula[1]
+        rel_body = relativize_formula(formula[2], model_class_name)
+        return ("exists", var, ("and", ("in", var, model_class_name), rel_body))
+    elif tag == "exists_unique":
+        var = formula[1]
+        rel_body = relativize_formula(formula[2], model_class_name)
+        return ("exists_unique", var, ("and", ("in", var, model_class_name), rel_body))
+    else:
+        return formula
+
+
+def cumulative_hierarchy_v(n: int) -> FrozenSet[Any]:
+    """Generates the cumulative hierarchy stage V_n as hereditarily finite sets.
+
+    V_0 = empty
+    V_{n+1} = Powerset(V_n)
+    """
+    v: FrozenSet[Any] = frozenset()
+    for _ in range(n):
+        elem_list = list(v)
+        k = len(elem_list)
+        subsets = [
+            frozenset(elem_list[j] for j in range(k) if (mask & (1 << j)))
+            for mask in range(1 << k)
+        ]
+        v = frozenset(subsets)
+    return v
+
+
+def reflects_formula(
+    submodel_domain: Iterable[Any],
+    ambient_domain: Iterable[Any],
+    formula: Any,
+    free_vars: Sequence[str],
+    in_rel: Optional[Callable[[Any, Any], bool]] = None,
+) -> bool:
+    """Verifies whether submodel_domain reflects formula with respect to ambient_domain.
+
+    Submodel M reflects phi iff for all assignments s : free_vars -> M:
+      (M |= phi[s]) <-> (Ambient |= phi[s])
+    """
+    sub_list = list(submodel_domain)
+    amb_list = list(ambient_domain)
+
+    def check_assignments(vars_left: Sequence[str], current_assign: Dict[str, Any]) -> bool:
+        if not vars_left:
+            sat_sub = model_satisfaction(sub_list, formula, current_assign, in_rel)
+            sat_amb = model_satisfaction(amb_list, formula, current_assign, in_rel)
+            return sat_sub == sat_amb
+        v = vars_left[0]
+        for elem in sub_list:
+            new_assign = dict(current_assign)
+            new_assign[v] = elem
+            if not check_assignments(vars_left[1:], new_assign):
+                return False
+        return True
+
+    return check_assignments(list(free_vars), {})
+
+
+def find_reflecting_stage(
+    formula: Any,
+    free_vars: Sequence[str],
+    max_stage: int = 3,
+    in_rel: Optional[Callable[[Any, Any], bool]] = None,
+) -> Optional[int]:
+    """Finds the smallest cumulative hierarchy stage V_alpha reflecting formula.
+
+    Searches stages alpha in 1..max_stage reflecting relative to V_{max_stage}.
+    """
+    ambient = cumulative_hierarchy_v(max_stage)
+    for stage in range(1, max_stage + 1):
+        v_stage = cumulative_hierarchy_v(stage)
+        if reflects_formula(v_stage, ambient, formula, free_vars, in_rel):
+            return stage
+    return None
 

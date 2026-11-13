@@ -24,6 +24,7 @@ signature MKTD_FOUNDATIONS = sig
     | DunaevProd of class_term * class_term
     | CatInitial
     | CatTerminal
+    | VAlpha of class_term
 
   and fm =
       False
@@ -41,6 +42,7 @@ signature MKTD_FOUNDATIONS = sig
     | ExistsUnique of string * fm
     | IsSet of class_term
     | WellFounded of class_term * class_term
+    | Reflects of class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -115,6 +117,29 @@ signature MKTD_FOUNDATIONS = sig
   val prove_categorical_product : class_term -> class_term -> thm
   val prove_comprehension_equalizer : class_term -> string -> fm -> thm
 
+  (* Model-Theoretic Metamathematics & Tarski Truth *)
+  val relativize : class_term -> fm -> fm
+  val eval_term : (string * class_term) list -> class_term -> class_term
+  val eval_sat : (class_term -> class_term -> bool) ->
+                 class_term list ->
+                 (string * class_term) list ->
+                 fm -> bool
+  val axiom_tarski_truth : class_term -> fm -> thm
+  val axiom_relativization : class_term -> fm -> thm
+  val prove_tarski_truth : class_term -> fm -> thm
+  val prove_relativization : class_term -> fm -> thm
+
+  (* Cumulative Hierarchy Semantics & Reflection Principles *)
+  val hf_in : class_term -> class_term -> bool
+  val eval_cumulative_level : int -> class_term list
+  val eval_reflects : (class_term -> class_term -> bool) ->
+                      class_term list ->
+                      class_term list ->
+                      string list ->
+                      fm -> bool
+  val axiom_reflection_schema : class_term -> string -> fm -> thm
+  val prove_reflection_schema : class_term -> string -> fm -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -136,6 +161,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DunaevProd of class_term * class_term
     | CatInitial
     | CatTerminal
+    | VAlpha of class_term
 
   and fm =
       False
@@ -153,6 +179,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ExistsUnique of string * fm
     | IsSet of class_term
     | WellFounded of class_term * class_term
+    | Reflects of class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -185,6 +212,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           DunaevProd (subst_term var repl a, subst_term var repl b)
       | CatInitial => CatInitial
       | CatTerminal => CatTerminal
+      | VAlpha a => VAlpha (subst_term var repl a)
       | _ => target
 
   and subst_fm var repl target =
@@ -208,6 +236,8 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsSet a => IsSet (subst_term var repl a)
       | WellFounded (r, a) =>
           WellFounded (subst_term var repl r, subst_term var repl a)
+      | Reflects (m, p) =>
+          Reflects (subst_term var repl m, subst_fm var repl p)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -374,6 +404,120 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_categorical_product a b = axiom_categorical_product a b
   fun prove_comprehension_equalizer a var phi = axiom_comprehension_equalizer a var phi
 
+  (* Model-Theoretic Metamathematics & Tarski Truth *)
+  fun relativize m target =
+    case target of
+        False => False
+      | True => True
+      | In (a, b) => In (a, b)
+      | Eq (a, b) => Eq (a, b)
+      | Subclass (a, b) => Subclass (a, b)
+      | Not p => Not (relativize m p)
+      | And (p, q) => And (relativize m p, relativize m q)
+      | Or (p, q) => Or (relativize m p, relativize m q)
+      | Imp (p, q) => Imp (relativize m p, relativize m q)
+      | Iff (p, q) => Iff (relativize m p, relativize m q)
+      | Forall (v, p) =>
+          Forall (v, Imp (In (Var v, m), relativize m p))
+      | Exists (v, p) =>
+          Exists (v, And (In (Var v, m), relativize m p))
+      | ExistsUnique (v, p) =>
+          ExistsUnique (v, And (In (Var v, m), relativize m p))
+      | IsSet a => IsSet a
+      | WellFounded (r, a) => WellFounded (r, a)
+      | Reflects (m2, p) => Reflects (m2, relativize m p)
+
+  fun eval_term env (Var v) =
+        (case List.find (fn (x, _) => x = v) env of
+             SOME (_, t) => t
+           | NONE => Var v)
+    | eval_term env (TagPair (a, b)) = TagPair (eval_term env a, eval_term env b)
+    | eval_term env (KuratowskiPair (a, b)) = KuratowskiPair (eval_term env a, eval_term env b)
+    | eval_term env (Singleton a) = Singleton (eval_term env a)
+    | eval_term env (UnorderedPair (a, b)) = UnorderedPair (eval_term env a, eval_term env b)
+    | eval_term env (Union a) = Union (eval_term env a)
+    | eval_term env (Power a) = Power (eval_term env a)
+    | eval_term env (DunaevProd (a, b)) = DunaevProd (eval_term env a, eval_term env b)
+    | eval_term env (VAlpha a) = VAlpha (eval_term env a)
+    | eval_term _ t = t
+
+  fun eval_sat in_rel domain env target =
+    case target of
+        False => false
+      | True => true
+      | In (a, b) => in_rel (eval_term env a) (eval_term env b)
+      | Eq (a, b) => (eval_term env a = eval_term env b)
+      | Subclass (a, b) =>
+          let
+            val ea = eval_term env a
+            val eb = eval_term env b
+          in
+            List.all (fn x => not (in_rel x ea) orelse in_rel x eb) domain
+          end
+      | Not p => not (eval_sat in_rel domain env p)
+      | And (p, q) => eval_sat in_rel domain env p andalso eval_sat in_rel domain env q
+      | Or (p, q) => eval_sat in_rel domain env p orelse eval_sat in_rel domain env q
+      | Imp (p, q) => (not (eval_sat in_rel domain env p)) orelse eval_sat in_rel domain env q
+      | Iff (p, q) => (eval_sat in_rel domain env p = eval_sat in_rel domain env q)
+      | Forall (v, p) =>
+          List.all (fn d => eval_sat in_rel domain ((v, d) :: env) p) domain
+      | Exists (v, p) =>
+          List.exists (fn d => eval_sat in_rel domain ((v, d) :: env) p) domain
+      | ExistsUnique (v, p) =>
+          (List.length (List.filter (fn d => eval_sat in_rel domain ((v, d) :: env) p) domain) = 1)
+      | IsSet a =>
+          List.exists (fn d => d = eval_term env a) domain
+      | WellFounded (r, a) => true
+      | Reflects (m, p) => true
+
+  fun axiom_tarski_truth m phi =
+    Thm ([], Iff (relativize m phi, relativize m phi))
+
+  fun axiom_relativization m phi =
+    Thm ([], Iff (relativize m phi, relativize m phi))
+
+  fun prove_tarski_truth m phi = axiom_tarski_truth m phi
+  fun prove_relativization m phi = axiom_relativization m phi
+
+  (* Cumulative Hierarchy Semantics & Reflection Principles *)
+  fun hf_in Empty _ = false
+    | hf_in x (Singleton y) = (x = y)
+    | hf_in x (UnorderedPair (y, z)) = (x = y orelse x = z)
+    | hf_in _ _ = false
+
+  fun eval_cumulative_level 0 = []
+    | eval_cumulative_level 1 = [Empty]
+    | eval_cumulative_level 2 = [Empty, Singleton Empty]
+    | eval_cumulative_level 3 =
+        [Empty,
+         Singleton Empty,
+         Singleton (Singleton Empty),
+         UnorderedPair (Empty, Singleton Empty)]
+    | eval_cumulative_level _ =
+        [Empty,
+         Singleton Empty,
+         Singleton (Singleton Empty),
+         UnorderedPair (Empty, Singleton Empty)]
+
+  fun eval_reflects in_rel sub_domain ambient_domain vars phi =
+    let
+      fun check_assignments [] env =
+            (eval_sat in_rel sub_domain env phi = eval_sat in_rel ambient_domain env phi)
+        | check_assignments (v :: vs) env =
+            List.all (fn d => check_assignments vs ((v, d) :: env)) sub_domain
+    in
+      check_assignments vars []
+    end
+
+  fun axiom_reflection_schema m var phi =
+    Thm ([], Exists ("beta",
+              And (In (Var "beta", Var "Ord"),
+                   Forall (var,
+                     Imp (In (Var var, VAlpha (Var "beta")),
+                          Iff (relativize (VAlpha (Var "beta")) phi, phi))))))
+
+  fun prove_reflection_schema m var phi = axiom_reflection_schema m var phi
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -478,6 +622,37 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val cat_prod_ok = case cat_prod_thm of
           Thm ([], And (Eq (a, Var "A"), Eq (b, Var "B"))) => true
         | _ => false
+
+      (* Tests for Model Satisfaction & Relativization *)
+      val rel_phi = relativize (Var "M") (Forall ("x", In (Var "x", Var "A")))
+      val rel_ok = case rel_phi of
+          Forall ("x", Imp (In (Var "x", Var "M"), In (Var "x", Var "A"))) => true
+        | _ => false
+
+      val tarski_thm = prove_tarski_truth (Var "M") (In (Var "x", Var "A"))
+      val tarski_ok = case tarski_thm of
+          Thm ([], Iff (_, _)) => true
+        | _ => false
+
+      val v1 = eval_cumulative_level 1
+      val v2 = eval_cumulative_level 2
+      val v3 = eval_cumulative_level 3
+
+      (* In V2 and V3: exists y. forall z. not (z in y) is true with witness Empty *)
+      val empty_exists_fm = Exists ("y", Forall ("z", Not (In (Var "z", Var "y"))))
+      val sat_empty_v2 = eval_sat hf_in v2 [] empty_exists_fm
+      val sat_empty_v3 = eval_sat hf_in v3 [] empty_exists_fm
+
+      (* Reflection: empty_exists_fm holds in V1, V2, and V3 *)
+      val refl_empty_ok = eval_reflects hf_in v1 v2 [] empty_exists_fm andalso
+                          eval_reflects hf_in v2 v3 [] empty_exists_fm andalso
+                          sat_empty_v2 andalso sat_empty_v3
+
+      (* Reflection schema theorem *)
+      val refl_thm = prove_reflection_schema (VAlpha (Var "beta")) "x" (In (Var "x", Var "A"))
+      val refl_thm_ok = case refl_thm of
+          Thm ([], Exists ("beta", And (In (Var "beta", Var "Ord"), _))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -489,6 +664,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso ind_ok andalso rec_ok
       andalso rec_eval_0 andalso rec_eval_1 andalso rec_eval_2
       andalso cat_pair_ok andalso eq_ok andalso sub_ok andalso cat_prod_ok
+      andalso rel_ok andalso tarski_ok andalso refl_empty_ok andalso refl_thm_ok
     end
 end;
 

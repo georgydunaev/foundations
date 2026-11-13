@@ -45,6 +45,25 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("cat_equalizer", content)
         self.assertIn("cat_subobject_comprehension", content)
         self.assertIn("prove_categorical_product", content)
+        self.assertIn("relativize", content)
+        self.assertIn("eval_sat", content)
+        self.assertIn("axiom_tarski_truth", content)
+        self.assertIn("axiom_relativization", content)
+        self.assertIn("prove_tarski_truth", content)
+        self.assertIn("eval_cumulative_level", content)
+        self.assertIn("eval_reflects", content)
+        self.assertIn("axiom_reflection_schema", content)
+        self.assertIn("prove_reflection_schema", content)
+
+    def test_strict_cakeml_polyml_ascii_purity(self):
+        """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
+        raw_bytes = MKTD_ML.read_bytes()
+        non_ascii = [b for b in raw_bytes if b >= 128]
+        self.assertEqual(
+            len(non_ascii),
+            0,
+            f"Found {len(non_ascii)} non-ASCII bytes in {MKTD_ML}, violating CakeML/PolyML portability",
+        )
 
     @unittest.skipUnless(POLY, "Poly/ML required for testing SML foundations")
     def test_poly_ml_compiles_and_passes_self_tests(self):
