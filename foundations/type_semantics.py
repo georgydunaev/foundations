@@ -545,3 +545,262 @@ def find_reflecting_stage(
             return stage
     return None
 
+
+# Categorical limits, colimits, functors, duality and slice categories in MKTD
+
+
+class ClassFunctor:
+    """Covariant functor between class categories in MKTD."""
+
+    def __init__(
+        self,
+        obj_map: Callable[[Any], Any],
+        mor_map: Callable[[Any], Any],
+        name: str = "F",
+    ) -> None:
+        self.obj_map = obj_map
+        self.mor_map = mor_map
+        self.name = name
+
+    def map_obj(self, obj: Any) -> Any:
+        return self.obj_map(obj)
+
+    def map_mor(self, mor: Any) -> Any:
+        return self.mor_map(mor)
+
+    def check_identity(self, objects: Iterable[Any]) -> bool:
+        """Verifies F(id_A) = id_{F(A)} on given objects."""
+        for obj in objects:
+            id_a = dunaev_pair(obj, obj)
+            expected_id = dunaev_pair(self.map_obj(obj), self.map_obj(obj))
+            if self.map_mor(id_a) != expected_id:
+                return False
+        return True
+
+    def check_composition(
+        self,
+        composable_triples: Iterable[Tuple[Any, Any, Any]],
+    ) -> bool:
+        """Verifies F(g circ f) = F(g) circ F(f) for (f, g, g_circ_f)."""
+        for f, g, gf in composable_triples:
+            if self.map_mor(gf) != dunaev_pair(self.map_mor(g), self.map_mor(f)):
+                return False
+        return True
+
+    def __repr__(self) -> str:
+        return f"ClassFunctor({self.name})"
+
+
+class NaturalTransformation:
+    """Natural transformation eta : F => G between class functors."""
+
+    def __init__(
+        self,
+        source: ClassFunctor,
+        target: ClassFunctor,
+        component_map: Callable[[Any], Callable[[Any], Any]],
+        name: str = "eta",
+    ) -> None:
+        self.source = source
+        self.target = target
+        self.component_map = component_map
+        self.name = name
+
+    def component(self, obj: Any) -> Callable[[Any], Any]:
+        return self.component_map(obj)
+
+    def check_naturality(
+        self,
+        morphisms: Iterable[Tuple[Any, Any, Callable[[Any], Any], Callable[[Any], Any]]],
+        domain_samples: Iterable[Any],
+    ) -> bool:
+        """Verifies G(f) circ eta_A = eta_B circ F(f) for each morphism f : A -> B.
+
+        morphisms contains tuples (obj_a, obj_b, f_mapped_fn, g_mapped_fn).
+        """
+        for obj_a, obj_b, f_mor, g_mor in morphisms:
+            eta_a = self.component(obj_a)
+            eta_b = self.component(obj_b)
+            for x in domain_samples:
+                left = g_mor(eta_a(x))
+                right = eta_b(f_mor(x))
+                if left != right:
+                    return False
+        return True
+
+    def __repr__(self) -> str:
+        return f"NaturalTransformation({self.name}: {self.source.name} => {self.target.name})"
+
+
+def dunaev_coproduct(class_a: Iterable[Any], class_b: Iterable[Any]) -> FrozenSet[DunaevTaggedPair]:
+    """Disjoint sum / coproduct of classes A +_D B = ({0} x A) U ({1} x B)."""
+    elems: List[DunaevTaggedPair] = []
+    for a in class_a:
+        elems.append(dunaev_pair(0, a))
+    for b in class_b:
+        elems.append(dunaev_pair(1, b))
+    return frozenset(elems)
+
+
+def copairing_morphism(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+) -> Callable[[DunaevTaggedPair], Any]:
+    """Universal copairing morphism [f, g] : A +_D B -> C."""
+    def copair(x: DunaevTaggedPair) -> Any:
+        tag = dunaev_fst(x)
+        val = dunaev_snd(x)
+        if tag == 0:
+            return f(val)
+        else:
+            return g(val)
+    return copair
+
+
+def pullback_class(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+    domain_a: Iterable[Any],
+    domain_b: Iterable[Any],
+) -> FrozenSet[DunaevTaggedPair]:
+    """Categorical pullback / fiber product A x_C B = {(a, b)_D in A x_D B | f(a) = g(b)}."""
+    pairs: List[DunaevTaggedPair] = []
+    for a in domain_a:
+        fa = f(a)
+        for b in domain_b:
+            if fa == g(b):
+                pairs.append(dunaev_pair(a, b))
+    return frozenset(pairs)
+
+
+def pullback_mediating_morphism(
+    h1: Callable[[Any], Any],
+    h2: Callable[[Any], Any],
+) -> Callable[[Any], DunaevTaggedPair]:
+    """Universal factorizer <h1, h2>_D : X -> A x_C B for pullback cone."""
+    return lambda x: dunaev_pair(h1(x), h2(x))
+
+
+def pushout_partition(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+    domain_c: Iterable[Any],
+    domain_a: Iterable[Any],
+    domain_b: Iterable[Any],
+) -> List[FrozenSet[DunaevTaggedPair]]:
+    """Computes pushout A +_C B equivalence classes in A +_D B identifying (0, f(c)) ~ (1, g(c))."""
+    coprod = list(dunaev_coproduct(domain_a, domain_b))
+    parent = {x: x for x in coprod}
+
+    def find(i: DunaevTaggedPair) -> DunaevTaggedPair:
+        path = []
+        while parent[i] != i:
+            path.append(i)
+            i = parent[i]
+        for node in path:
+            parent[node] = i
+        return i
+
+    def union(i: DunaevTaggedPair, j: DunaevTaggedPair) -> None:
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[ri] = rj
+
+    for c in domain_c:
+        p0 = dunaev_pair(0, f(c))
+        p1 = dunaev_pair(1, g(c))
+        if p0 in parent and p1 in parent:
+            union(p0, p1)
+
+    groups: Dict[DunaevTaggedPair, List[DunaevTaggedPair]] = {}
+    for x in coprod:
+        root = find(x)
+        groups.setdefault(root, []).append(x)
+    return [frozenset(v) for v in groups.values()]
+
+
+def equalizer_as_pullback(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+    domain_a: Iterable[Any],
+    domain_b: Iterable[Any],
+) -> FrozenSet[Any]:
+    """Characterizes Equalizer Eq(f, g) as pullback of <f, g> and diagonal Delta_B."""
+    pb = pullback_class(
+        lambda a: dunaev_pair(f(a), g(a)),
+        lambda b: dunaev_pair(b, b),
+        domain_a,
+        domain_b,
+    )
+    return frozenset(dunaev_fst(p) for p in pb)
+
+
+def pullback_as_equalizer(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+    domain_a: Iterable[Any],
+    domain_b: Iterable[Any],
+) -> FrozenSet[DunaevTaggedPair]:
+    """Characterizes pullback A x_C B as equalizer of f circ pi1 and g circ pi2 on A x_D B."""
+    prod = [dunaev_pair(a, b) for a in domain_a for b in domain_b]
+    eq = [p for p in prod if f(dunaev_fst(p)) == g(dunaev_snd(p))]
+    return frozenset(eq)
+
+
+class SliceObject:
+    """Object in slice category C / target_name, given by (domain, morphism_to_target)."""
+
+    def __init__(
+        self,
+        domain: Iterable[Any],
+        morphism: Callable[[Any], Any],
+        target_name: str = "C",
+    ) -> None:
+        self.domain: FrozenSet[Any] = frozenset(domain)
+        self.morphism = morphism
+        self.target_name = target_name
+
+    def __repr__(self) -> str:
+        return f"SliceObject(size={len(self.domain)} over {self.target_name})"
+
+
+def is_slice_morphism(
+    mor: Callable[[Any], Any],
+    slice_src: SliceObject,
+    slice_tgt: SliceObject,
+) -> bool:
+    """Checks whether mor : src -> tgt makes triangle commute: tgt.morphism circ mor = src.morphism."""
+    for x in slice_src.domain:
+        if slice_tgt.morphism(mor(x)) != slice_src.morphism(x):
+            return False
+    return True
+
+
+def slice_product(
+    slice_a: SliceObject,
+    slice_b: SliceObject,
+) -> SliceObject:
+    """Product in slice category C/C is the pullback A x_C B over C."""
+    pb = pullback_class(slice_a.morphism, slice_b.morphism, slice_a.domain, slice_b.domain)
+
+    def struct_mor(pair: DunaevTaggedPair) -> Any:
+        return slice_a.morphism(dunaev_fst(pair))
+
+    return SliceObject(domain=pb, morphism=struct_mor, target_name=slice_a.target_name)
+
+
+def slice_base_change(
+    base_mor: Callable[[Any], Any],
+    base_domain: Iterable[Any],
+    slice_a: SliceObject,
+    base_target_name: str = "B",
+) -> SliceObject:
+    """Pullback / base change functor k* : C/C -> C/B along k : B -> C."""
+    pb = pullback_class(slice_a.morphism, base_mor, slice_a.domain, base_domain)
+
+    def struct_mor(pair: DunaevTaggedPair) -> Any:
+        return dunaev_snd(pair)
+
+    return SliceObject(domain=pb, morphism=struct_mor, target_name=base_target_name)
+
+

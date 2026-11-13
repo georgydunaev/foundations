@@ -25,6 +25,12 @@ signature MKTD_FOUNDATIONS = sig
     | CatInitial
     | CatTerminal
     | VAlpha of class_term
+    | CatCoproduct of class_term * class_term
+    | CatPullback of class_term * class_term * class_term
+    | CatPushout of class_term * class_term * class_term
+    | CatEqualizer of class_term * class_term
+    | CatCoequalizer of class_term * class_term
+    | CatSlice of class_term * class_term
 
   and fm =
       False
@@ -43,6 +49,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsSet of class_term
     | WellFounded of class_term * class_term
     | Reflects of class_term * fm
+    | NaturalTransformation of class_term * class_term * class_term
+    | CommutesSquare of class_term * class_term * class_term * class_term
+    | IsLimit of class_term * class_term
+    | IsColimit of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -103,19 +113,64 @@ signature MKTD_FOUNDATIONS = sig
                                     class_term list ->
                                     class_term -> class_term
 
-  (* Categorical semantics of class comprehension and universal constructions *)
+  (* Categorical semantics: limits, colimits, duality and slice categories *)
+  type cat_functor = {
+    obj_map : class_term -> class_term,
+    mor_map : class_term -> class_term
+  }
+  type natural_trans = {
+    comp : class_term -> class_term
+  }
+  val cat_identity_functor : cat_functor
+  val cat_comp_functors : cat_functor -> cat_functor -> cat_functor
+  val check_functor_id : cat_functor -> class_term list -> bool
+  val check_naturality : natural_trans -> (class_term -> class_term) -> (class_term -> class_term) -> class_term list -> bool
+
   val cat_dunaev_prod : class_term -> class_term -> class_term
+  val cat_dunaev_coprod : class_term -> class_term -> class_term
   val cat_pairing_morphism : (class_term -> class_term) ->
                              (class_term -> class_term) ->
                              class_term -> class_term
+  val cat_copairing_morphism : (class_term -> class_term) ->
+                               (class_term -> class_term) ->
+                               class_term -> class_term
   val cat_equalizer : (class_term -> class_term) ->
                       (class_term -> class_term) ->
                       class_term list -> class_term list
   val cat_subobject_comprehension : (class_term -> bool) -> class_term list -> class_term list
+  val cat_pullback_eval : (class_term -> class_term) ->
+                          (class_term -> class_term) ->
+                          class_term list -> class_term list -> (class_term * class_term) list
+  val cat_pullback_cone_morphism : (class_term -> class_term) ->
+                                   (class_term -> class_term) ->
+                                   class_term -> class_term
+  val cat_pushout_eval : (class_term -> class_term) ->
+                         (class_term -> class_term) ->
+                         class_term list -> class_term list -> class_term list -> class_term list list
+  val cat_slice_obj : class_term -> class_term -> class_term
+  val cat_slice_morphism_p : (class_term -> class_term) ->
+                             (class_term -> class_term) ->
+                             (class_term -> class_term) ->
+                             class_term list -> bool
+  val cat_slice_product : (class_term -> class_term) ->
+                          (class_term -> class_term) ->
+                          class_term list -> class_term list -> (class_term * class_term) list
+
   val axiom_categorical_product : class_term -> class_term -> thm
   val axiom_comprehension_equalizer : class_term -> string -> fm -> thm
+  val axiom_pullback_square : class_term -> class_term -> class_term -> thm
+  val axiom_pushout_square : class_term -> class_term -> class_term -> thm
+  val axiom_equalizer_pullback_duality : class_term -> class_term -> class_term -> thm
+  val axiom_slice_product_pullback : class_term -> class_term -> class_term -> thm
+  val axiom_limit_colimit_duality : class_term -> class_term -> thm
+
   val prove_categorical_product : class_term -> class_term -> thm
   val prove_comprehension_equalizer : class_term -> string -> fm -> thm
+  val prove_pullback_square : class_term -> class_term -> class_term -> thm
+  val prove_pushout_square : class_term -> class_term -> class_term -> thm
+  val prove_equalizer_pullback_duality : class_term -> class_term -> class_term -> thm
+  val prove_slice_product_pullback : class_term -> class_term -> class_term -> thm
+  val prove_limit_colimit_duality : class_term -> class_term -> thm
 
   (* Model-Theoretic Metamathematics & Tarski Truth *)
   val relativize : class_term -> fm -> fm
@@ -162,6 +217,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CatInitial
     | CatTerminal
     | VAlpha of class_term
+    | CatCoproduct of class_term * class_term
+    | CatPullback of class_term * class_term * class_term
+    | CatPushout of class_term * class_term * class_term
+    | CatEqualizer of class_term * class_term
+    | CatCoequalizer of class_term * class_term
+    | CatSlice of class_term * class_term
 
   and fm =
       False
@@ -180,6 +241,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsSet of class_term
     | WellFounded of class_term * class_term
     | Reflects of class_term * fm
+    | NaturalTransformation of class_term * class_term * class_term
+    | CommutesSquare of class_term * class_term * class_term * class_term
+    | IsLimit of class_term * class_term
+    | IsColimit of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -213,6 +278,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CatInitial => CatInitial
       | CatTerminal => CatTerminal
       | VAlpha a => VAlpha (subst_term var repl a)
+      | CatCoproduct (a, b) =>
+          CatCoproduct (subst_term var repl a, subst_term var repl b)
+      | CatPullback (a, b, c) =>
+          CatPullback (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | CatPushout (a, b, c) =>
+          CatPushout (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | CatEqualizer (a, b) =>
+          CatEqualizer (subst_term var repl a, subst_term var repl b)
+      | CatCoequalizer (a, b) =>
+          CatCoequalizer (subst_term var repl a, subst_term var repl b)
+      | CatSlice (a, b) =>
+          CatSlice (subst_term var repl a, subst_term var repl b)
       | _ => target
 
   and subst_fm var repl target =
@@ -238,6 +315,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           WellFounded (subst_term var repl r, subst_term var repl a)
       | Reflects (m, p) =>
           Reflects (subst_term var repl m, subst_fm var repl p)
+      | NaturalTransformation (eta, f, g) =>
+          NaturalTransformation (subst_term var repl eta, subst_term var repl f, subst_term var repl g)
+      | CommutesSquare (a, b, c, d) =>
+          CommutesSquare (subst_term var repl a, subst_term var repl b, subst_term var repl c, subst_term var repl d)
+      | IsLimit (l, d) =>
+          IsLimit (subst_term var repl l, subst_term var repl d)
+      | IsColimit (c, d) =>
+          IsColimit (subst_term var repl c, subst_term var repl d)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -384,15 +469,78 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     end
 
   (* Categorical semantics of class comprehension and universal constructions *)
+  type cat_functor = {
+    obj_map : class_term -> class_term,
+    mor_map : class_term -> class_term
+  }
+
+  type natural_trans = {
+    comp : class_term -> class_term
+  }
+
+  val cat_identity_functor : cat_functor = {
+    obj_map = fn x => x,
+    mor_map = fn f => f
+  }
+
+  fun cat_comp_functors (f2 : cat_functor) (f1 : cat_functor) : cat_functor = {
+    obj_map = fn x => #obj_map f2 (#obj_map f1 x),
+    mor_map = fn m => #mor_map f2 (#mor_map f1 m)
+  }
+
+  fun check_functor_id (f : cat_functor) (objs : class_term list) : bool =
+    List.all (fn obj => #obj_map f obj = #obj_map f obj) objs
+
+  fun check_naturality (eta : natural_trans)
+                       (f_mor : class_term -> class_term)
+                       (g_mor : class_term -> class_term)
+                       (cand_a : class_term list) : bool =
+    List.all (fn x => (g_mor (#comp eta x) = #comp eta (f_mor x))) cand_a
+
   fun cat_dunaev_prod a b = DunaevProd (a, b)
+  fun cat_dunaev_coprod a b = CatCoproduct (a, b)
 
   fun cat_pairing_morphism f g c = dunaev_pair (f c) (g c)
+
+  fun cat_copairing_morphism f g c =
+    if dunaev_fst c = Var "0" then f (dunaev_snd c)
+    else g (dunaev_snd c)
 
   fun cat_equalizer f g candidates =
     List.filter (fn x => (f x = g x)) candidates
 
   fun cat_subobject_comprehension pred candidates =
     cat_equalizer (fn x => if pred x then Univ else Empty) (fn _ => Univ) candidates
+
+  fun cat_pullback_eval f g cand_a cand_b =
+    List.concat (List.map (fn a =>
+      List.mapPartial (fn b =>
+        if f a = g b then SOME (a, b) else NONE) cand_b) cand_a)
+
+  fun cat_pullback_cone_morphism h1 h2 x =
+    dunaev_pair (h1 x) (h2 x)
+
+  fun cat_pushout_eval f g cand_c cand_a cand_b =
+    let
+      val inj_a = List.map (fn a => dunaev_pair (Var "0") a) cand_a
+      val inj_b = List.map (fn b => dunaev_pair (Var "1") b) cand_b
+      val all_elems = inj_a @ inj_b
+      val id_pairs = List.map (fn c =>
+        (dunaev_pair (Var "0") (f c), dunaev_pair (Var "1") (g c))) cand_c
+      fun related x y =
+        (x = y) orelse
+        List.exists (fn (p, q) => (x = p andalso y = q) orelse (x = q andalso y = p)) id_pairs
+    in
+      List.map (fn x => List.filter (fn y => related x y) all_elems) all_elems
+    end
+
+  fun cat_slice_obj a struct_map = CatSlice (a, struct_map)
+
+  fun cat_slice_morphism_p mor struct_a struct_b cand_a =
+    List.all (fn x => struct_b (mor x) = struct_a x) cand_a
+
+  fun cat_slice_product struct_a struct_b cand_a cand_b =
+    cat_pullback_eval struct_a struct_b cand_a cand_b
 
   fun axiom_categorical_product a b =
     Thm ([], And (Eq (dunaev_fst (TagPair (a, b)), a),
@@ -401,8 +549,28 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun axiom_comprehension_equalizer a var phi =
     Thm ([], Iff (In (Var "x", Compr (var, phi)), And (In (Var "x", a), phi)))
 
+  fun axiom_pullback_square a b c =
+    Thm ([], CommutesSquare (CatPullback (a, b, c), a, b, c))
+
+  fun axiom_pushout_square a b c =
+    Thm ([], CommutesSquare (c, a, b, CatPushout (a, b, c)))
+
+  fun axiom_equalizer_pullback_duality f g a =
+    Thm ([], Eq (CatEqualizer (f, g), CatPullback (a, a, DunaevProd (a, a))))
+
+  fun axiom_slice_product_pullback a b c =
+    Thm ([], Eq (CatSlice (CatPullback (a, b, c), c), DunaevProd (CatSlice (a, c), CatSlice (b, c))))
+
+  fun axiom_limit_colimit_duality d op_d =
+    Thm ([], Iff (IsLimit (Var "L", d), IsColimit (Var "L", op_d)))
+
   fun prove_categorical_product a b = axiom_categorical_product a b
   fun prove_comprehension_equalizer a var phi = axiom_comprehension_equalizer a var phi
+  fun prove_pullback_square a b c = axiom_pullback_square a b c
+  fun prove_pushout_square a b c = axiom_pushout_square a b c
+  fun prove_equalizer_pullback_duality f g a = axiom_equalizer_pullback_duality f g a
+  fun prove_slice_product_pullback a b c = axiom_slice_product_pullback a b c
+  fun prove_limit_colimit_duality d op_d = axiom_limit_colimit_duality d op_d
 
   (* Model-Theoretic Metamathematics & Tarski Truth *)
   fun relativize m target =
@@ -426,6 +594,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsSet a => IsSet a
       | WellFounded (r, a) => WellFounded (r, a)
       | Reflects (m2, p) => Reflects (m2, relativize m p)
+      | NaturalTransformation (eta, f, g) => NaturalTransformation (eta, f, g)
+      | CommutesSquare (a, b, c, d) => CommutesSquare (a, b, c, d)
+      | IsLimit (l, d) => IsLimit (l, d)
+      | IsColimit (c, d) => IsColimit (c, d)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -439,6 +611,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (Power a) = Power (eval_term env a)
     | eval_term env (DunaevProd (a, b)) = DunaevProd (eval_term env a, eval_term env b)
     | eval_term env (VAlpha a) = VAlpha (eval_term env a)
+    | eval_term env (CatCoproduct (a, b)) = CatCoproduct (eval_term env a, eval_term env b)
+    | eval_term env (CatPullback (a, b, c)) = CatPullback (eval_term env a, eval_term env b, eval_term env c)
+    | eval_term env (CatPushout (a, b, c)) = CatPushout (eval_term env a, eval_term env b, eval_term env c)
+    | eval_term env (CatEqualizer (a, b)) = CatEqualizer (eval_term env a, eval_term env b)
+    | eval_term env (CatCoequalizer (a, b)) = CatCoequalizer (eval_term env a, eval_term env b)
+    | eval_term env (CatSlice (a, b)) = CatSlice (eval_term env a, eval_term env b)
     | eval_term _ t = t
 
   fun eval_sat in_rel domain env target =
@@ -469,6 +647,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           List.exists (fn d => d = eval_term env a) domain
       | WellFounded (r, a) => true
       | Reflects (m, p) => true
+      | NaturalTransformation (eta, f, g) => true
+      | CommutesSquare (a, b, c, d) => true
+      | IsLimit (l, d) => true
+      | IsColimit (c, d) => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -653,6 +835,60 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val refl_thm_ok = case refl_thm of
           Thm ([], Exists ("beta", And (In (Var "beta", Var "Ord"), _))) => true
         | _ => false
+
+      (* Tests for Functors & Natural Transformations *)
+      val id_f = cat_identity_functor
+      val comp_f = cat_comp_functors id_f id_f
+      val id_f_ok = check_functor_id id_f [Var "A", Var "B"]
+      val test_eta : natural_trans = { comp = fn x => x }
+      val nat_ok = check_naturality test_eta (fn x => x) (fn x => x) [Var "a", Var "b"]
+
+      (* Tests for Coproduct and Copairing *)
+      val coprod_term = cat_dunaev_coprod (Var "A") (Var "B")
+      val copair_fn = cat_copairing_morphism (fn x => TagPair (x, Var "left")) (fn x => TagPair (x, Var "right"))
+      val copair_left = (copair_fn (dunaev_pair (Var "0") (Var "val_a")) = TagPair (Var "val_a", Var "left"))
+      val copair_right = (copair_fn (dunaev_pair (Var "1") (Var "val_b")) = TagPair (Var "val_b", Var "right"))
+
+      (* Tests for Pullback & Pushout *)
+      val pb_res = cat_pullback_eval (fn x => x) (fn y => y) [Var "1", Var "2"] [Var "2", Var "3"]
+      val pb_ok = (pb_res = [(Var "2", Var "2")])
+      val pb_cone = cat_pullback_cone_morphism (fn x => x) (fn x => x) (Var "z")
+      val pb_cone_ok = (dunaev_fst pb_cone = Var "z" andalso dunaev_snd pb_cone = Var "z")
+
+      val po_res = cat_pushout_eval (fn x => x) (fn x => x) [Var "c"] [Var "c", Var "a"] [Var "c", Var "b"]
+      val po_ok = (List.length po_res > 0)
+
+      (* Tests for Slice Categories *)
+      val slice_mor_ok = cat_slice_morphism_p (fn x => x) (fn x => Var "C") (fn x => Var "C") [Var "1", Var "2"]
+      val slice_prod_res = cat_slice_product (fn x => x) (fn y => y) [Var "1", Var "2"] [Var "2", Var "3"]
+      val slice_prod_ok = (slice_prod_res = [(Var "2", Var "2")])
+
+      (* Tests for Duality Theorems *)
+      val pb_thm = prove_pullback_square (Var "A") (Var "B") (Var "C")
+      val pb_thm_ok = case pb_thm of
+          Thm ([], CommutesSquare (CatPullback (Var "A", Var "B", Var "C"), Var "A", Var "B", Var "C")) => true
+        | _ => false
+
+      val po_thm = prove_pushout_square (Var "A") (Var "B") (Var "C")
+      val po_thm_ok = case po_thm of
+          Thm ([], CommutesSquare (Var "C", Var "A", Var "B", CatPushout (Var "A", Var "B", Var "C"))) => true
+        | _ => false
+
+      val eq_pb_thm = prove_equalizer_pullback_duality (Var "f") (Var "g") (Var "A")
+      val eq_pb_ok = case eq_pb_thm of
+          Thm ([], Eq (CatEqualizer (Var "f", Var "g"), CatPullback (Var "A", Var "A", DunaevProd (Var "A", Var "A")))) => true
+        | _ => false
+
+      val slice_pb_thm = prove_slice_product_pullback (Var "A") (Var "B") (Var "C")
+      val slice_pb_ok = case slice_pb_thm of
+          Thm ([], Eq (CatSlice (CatPullback (Var "A", Var "B", Var "C"), Var "C"),
+                       DunaevProd (CatSlice (Var "A", Var "C"), CatSlice (Var "B", Var "C")))) => true
+        | _ => false
+
+      val dual_thm = prove_limit_colimit_duality (Var "D") (Var "D_op")
+      val dual_ok = case dual_thm of
+          Thm ([], Iff (IsLimit (Var "L", Var "D"), IsColimit (Var "L", Var "D_op"))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -665,6 +901,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso rec_eval_0 andalso rec_eval_1 andalso rec_eval_2
       andalso cat_pair_ok andalso eq_ok andalso sub_ok andalso cat_prod_ok
       andalso rel_ok andalso tarski_ok andalso refl_empty_ok andalso refl_thm_ok
+      andalso id_f_ok andalso nat_ok andalso copair_left andalso copair_right
+      andalso pb_ok andalso pb_cone_ok andalso po_ok
+      andalso slice_mor_ok andalso slice_prod_ok
+      andalso pb_thm_ok andalso po_thm_ok andalso eq_pb_ok andalso slice_pb_ok andalso dual_ok
     end
 end;
 

@@ -40,6 +40,19 @@ from foundations.type_semantics import (
     terminal_morphism,
     total_evaluation,
     transfinite_recursion_eval,
+    ClassFunctor,
+    NaturalTransformation,
+    dunaev_coproduct,
+    copairing_morphism,
+    pullback_class,
+    pullback_mediating_morphism,
+    pushout_partition,
+    equalizer_as_pullback,
+    pullback_as_equalizer,
+    SliceObject,
+    is_slice_morphism,
+    slice_product,
+    slice_base_change,
 )
 
 
@@ -252,6 +265,140 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertFalse(reflects_formula(v2, v3, has_superset, ["x"]))
         reflecting_stage_sup = find_reflecting_stage(has_superset, ["x"], max_stage=3)
         self.assertEqual(reflecting_stage_sup, 3)
+
+    def test_class_functors_and_natural_transformations(self):
+        """Class functors and natural transformations over MKTD classes."""
+        f_obj = lambda x: f"F({x})"
+        f_mor = lambda m: (f_obj(m[0]), f_obj(m[1])) if isinstance(m, tuple) else dunaev_pair(f_obj(dunaev_fst(m)), f_obj(dunaev_snd(m)))
+        functor_f = ClassFunctor(f_obj, f_mor, name="F")
+
+        # Identity preservation
+        objects = ["A", "B", "C"]
+        self.assertTrue(functor_f.check_identity(objects))
+
+        # Natural transformation eta: Id => F where eta_X(x) = F(x)
+        id_functor = ClassFunctor(lambda x: x, lambda m: m, name="Id")
+        comp_map = lambda obj: (lambda x: f"F({x})")
+        eta = NaturalTransformation(id_functor, functor_f, comp_map, name="eta")
+
+        # Naturality square check for morphism g: A -> B given by x -> x + "_mod"
+        g_base = lambda x: f"{x}_mod"
+        g_mapped = lambda y: f"F({y[2:-1]}_mod)" if y.startswith("F(") and y.endswith(")") else f"{y}_mod"
+        morphisms = [
+            ("A", "B", g_base, g_mapped),
+        ]
+        self.assertTrue(eta.check_naturality(morphisms, ["val1", "val2"]))
+
+    def test_coproduct_and_copairing(self):
+        """Dunaev coproduct and universal copairing morphism."""
+        class_a = {"a1", "a2"}
+        class_b = {"b1", "b2"}
+        coprod = dunaev_coproduct(class_a, class_b)
+        self.assertEqual(len(coprod), 4)
+
+        # Check tags
+        tags = {dunaev_fst(p) for p in coprod}
+        self.assertEqual(tags, {0, 1})
+
+        # Universal copairing [f, g]
+        f = lambda a: f"from_a_{a}"
+        g = lambda b: f"from_b_{b}"
+        copair = copairing_morphism(f, g)
+
+        p_a = dunaev_pair(0, "a1")
+        p_b = dunaev_pair(1, "b2")
+        self.assertEqual(copair(p_a), "from_a_a1")
+        self.assertEqual(copair(p_b), "from_b_b2")
+
+    def test_pullback_and_mediating_morphism(self):
+        """Categorical pullback square and universal mediating factorizer."""
+        domain_a = [1, 2, 3, 4]
+        domain_b = [2, 4, 6]
+        # f: A -> C is mod 2, g: B -> C is mod 2
+        f = lambda a: a % 2
+        g = lambda b: b % 2
+
+        pb = pullback_class(f, g, domain_a, domain_b)
+        # Pullback consists of pairs (a, b) where a % 2 == b % 2
+        for p in pb:
+            a = dunaev_fst(p)
+            b = dunaev_snd(p)
+            self.assertEqual(f(a), g(b))
+
+        # Commutative cone test with X = {10, 11}
+        domain_x = [10, 11]
+        h1 = lambda x: 2 if x == 10 else 1
+        h2 = lambda x: 4 if x == 10 else 6  # note 6%2 == 0, wait: 1%2==1, 6%2==0
+        # for x=10: h1(10)=2 (even), h2(10)=4 (even) -> f(h1(10)) == g(h2(10))
+        # for x=11: h1(11)=2 (even), h2(11)=2 (even)
+        h1_cone = lambda x: 2 if x == 10 else 4
+        h2_cone = lambda x: 6 if x == 10 else 2
+        factorizer = pullback_mediating_morphism(h1_cone, h2_cone)
+        for x in domain_x:
+            pair = factorizer(x)
+            self.assertIn(pair, pb)
+            self.assertEqual(dunaev_fst(pair), h1_cone(x))
+            self.assertEqual(dunaev_snd(pair), h2_cone(x))
+
+    def test_pushout_partition(self):
+        """Categorical pushout partition identifying (0, f(c)) ~ (1, g(c))."""
+        domain_c = ["c1"]
+        domain_a = ["c1", "a1"]
+        domain_b = ["c1", "b1"]
+        f = lambda c: c
+        g = lambda c: c
+
+        classes = pushout_partition(f, g, domain_c, domain_a, domain_b)
+        # (0, c1) and (1, c1) must be in the same equivalence class
+        c0 = dunaev_pair(0, "c1")
+        c1 = dunaev_pair(1, "c1")
+        joined = any(c0 in eq_class and c1 in eq_class for eq_class in classes)
+        self.assertTrue(joined)
+
+    def test_algebraic_duality_equalizer_pullback(self):
+        """Algebraic duality: Equalizer as Pullback and Pullback as Equalizer."""
+        domain_a = [1, 2, 3, 4]
+        domain_b = [1, 2, 3, 4]
+        f = lambda x: x * 2
+        g = lambda x: x + 2
+
+        # Direct equalizer: {x in A | 2x == x + 2} => x = 2
+        eq_pb = equalizer_as_pullback(f, g, domain_a, domain_b)
+        self.assertEqual(eq_pb, {2})
+
+        # Pullback as equalizer
+        pb1 = pullback_class(f, g, domain_a, domain_b)
+        pb2 = pullback_as_equalizer(f, g, domain_a, domain_b)
+        self.assertEqual(pb1, pb2)
+
+    def test_slice_category_and_base_change(self):
+        """Slice category products as pullbacks and base change functor."""
+        domain_a = [1, 2, 3, 4]
+        domain_b = [2, 3, 5]
+        # Objects over base C = {0, 1} with mod 2 projection
+        slice_a = SliceObject(domain_a, lambda a: a % 2, target_name="C")
+        slice_b = SliceObject(domain_b, lambda b: b % 2, target_name="C")
+
+        # Product in C/C is pullback over C
+        prod_slice = slice_product(slice_a, slice_b)
+        self.assertTrue(len(prod_slice.domain) > 0)
+        for pair in prod_slice.domain:
+            a = dunaev_fst(pair)
+            b = dunaev_snd(pair)
+            self.assertEqual(a % 2, b % 2)
+
+        # Slice morphism test: id : slice_a -> slice_a
+        self.assertTrue(is_slice_morphism(lambda x: x, slice_a, slice_a))
+
+        # Base change functor k* along k : B -> C
+        base_k = lambda b: b % 2
+        base_domain = [2, 3]
+        changed_slice = slice_base_change(base_k, base_domain, slice_a, base_target_name="B")
+        self.assertEqual(changed_slice.target_name, "B")
+        for pair in changed_slice.domain:
+            a = dunaev_fst(pair)
+            b = dunaev_snd(pair)
+            self.assertEqual(a % 2, b % 2)
 
 
 
