@@ -12,6 +12,18 @@ from typing import Any, Callable, Generic, Optional, Sequence, TypeVar
 
 T = TypeVar("T")
 
+__all__ = [
+    "EMPTY_CLASS",
+    "DescriptorUndefined",
+    "EmptySetClass",
+    "NonUniqueWitnessError",
+    "epsilon_descriptor",
+    "iota_descriptor",
+    "partial_varepsilon_descriptor",
+    "tau_descriptor",
+    "unique_choice_descriptor",
+]
+
 
 class DescriptorUndefined(Exception):
     """Raised when a partial descriptor has no witness and no default."""
@@ -102,3 +114,21 @@ def iota_descriptor(
     raise NonUniqueWitnessError(
         f"Multiple witnesses ({len(witnesses)}) exist for definite description iota"
     )
+
+
+def unique_choice_descriptor(
+    predicate: Callable[[T], bool],
+    candidates: Sequence[T],
+    empty_default: Any = EMPTY_CLASS,
+) -> Any:
+    """Unique choice descriptor with empty fallback (tau^{exists!}_{empty}).
+
+    If there exists a unique witness satisfying phi(x), returns that witness.
+    If no witness or multiple witnesses exist, falls back to empty_default.
+    This guarantees totality while preserving definite uniqueness semantics.
+    """
+    witnesses = [item for item in candidates if predicate(item)]
+    if len(witnesses) == 1:
+        return witnesses[0]
+    return empty_default
+

@@ -7,7 +7,7 @@ Formalizes the active mainline type discipline and class theory concepts:
   - Total evaluation vs guarded evaluation conventions (110_family_evaluation.tex).
 """
 
-from typing import Any, Callable, Dict, FrozenSet, Optional, Sequence, Set, Tuple
+from typing import Any, Callable, Dict, FrozenSet, List, Optional, Sequence, Set, Tuple
 
 
 class ProperClassError(TypeError):
@@ -162,3 +162,162 @@ def guarded_evaluation(
     if len(matches) == 1:
         return matches[0]
     return matches
+
+
+# Well-founded class relations and transfinite recursion under MKTD
+
+
+def relation_predecessors(
+    relation_pairs: Sequence[Tuple[Any, Any]],
+    element: Any,
+) -> List[Any]:
+    """Returns the list of R-predecessors of an element: {y | (y, element) in R}."""
+    return [y for (y, x) in relation_pairs if x == element]
+
+
+def is_well_founded_relation(
+    relation_pairs: Sequence[Tuple[Any, Any]],
+    domain: Set[Any],
+) -> bool:
+    """Verifies well-foundedness of relation R on class domain.
+
+    Under Morse-Kelley, a relation R is well-founded on domain A if every
+    non-empty subclass X of A has an R-minimal element:
+    exists m in X such that for all y in X, (y, m) not in R.
+    For finite test models, we verify this over all non-empty subsets.
+    """
+    domain_list = list(domain)
+    n = len(domain_list)
+    # Check all non-empty subsets
+    for i in range(1, 1 << n):
+        subset = {domain_list[j] for j in range(n) if (i & (1 << j))}
+        has_minimal = False
+        for m in subset:
+            preds = {y for (y, x) in relation_pairs if x == m and y in subset}
+            if not preds:
+                has_minimal = True
+                break
+        if not has_minimal:
+            return False
+    return True
+
+
+def transfinite_recursion_eval(
+    step_fn: Callable[[Any, Callable[[Any], Any]], Any],
+    relation_pairs: Sequence[Tuple[Any, Any]],
+    domain_elements: Sequence[Any],
+) -> Dict[Any, Any]:
+    """Evaluates transfinite recursion on well-founded class domain.
+
+    Computes F(x) = step_fn(x, F_restr), where F_restr is the restriction
+    of F to the R-predecessors of x.
+    Operates without assuming class-sized sets, applying local predecessor graphs.
+    """
+    results: Dict[Any, Any] = {}
+
+    def get_val(x: Any) -> Any:
+        if x in results:
+            return results[x]
+        preds = relation_predecessors(relation_pairs, x)
+        restr_fn = lambda y: results[y] if y in preds else None
+        val = step_fn(x, restr_fn)
+        results[x] = val
+        return val
+
+    for elem in domain_elements:
+        get_val(elem)
+
+    return results
+
+
+# Categorical semantics of class comprehension and universal constructions in MKTD
+
+
+class InitialClass:
+    """Canonical initial object 0 = Empty in the category of classes."""
+
+    def __repr__(self) -> str:
+        return "InitialClass(Empty)"
+
+
+INITIAL_CLASS = InitialClass()
+
+
+class TerminalClass:
+    """Canonical terminal object 1 = {Empty} in the category of classes."""
+
+    def __repr__(self) -> str:
+        return "TerminalClass(1)"
+
+
+TERMINAL_CLASS = TerminalClass()
+
+
+def initial_morphism(target_class: Any) -> Callable[[Any], Any]:
+    """Unique morphism from the initial object to any target class."""
+    def morphism(x: Any) -> Any:
+        raise ValueError("No elements exist in the initial object")
+    return morphism
+
+
+def terminal_morphism(source_class: Any) -> Callable[[Any], Any]:
+    """Unique morphism from any source class to the terminal object 1."""
+    return lambda x: TERMINAL_CLASS
+
+
+class DunaevProduct:
+    """Binary categorical product A cross_D B using Dunaev Tagged Ordered Pairs.
+
+    Because Dunaev tagged pairs are well-defined for proper classes,
+    categorical products exist for all classes in MKTD without Kuratowski obstruction.
+    """
+
+    def __init__(self, first_class: Any, second_class: Any) -> None:
+        self.first_class = first_class
+        self.second_class = second_class
+
+    def __repr__(self) -> str:
+        return f"DunaevProduct({self.first_class!r}, {self.second_class!r})"
+
+    def pair(self, a: Any, b: Any) -> DunaevTaggedPair:
+        return dunaev_pair(a, b)
+
+    def proj1(self, pair: DunaevTaggedPair) -> Any:
+        return dunaev_fst(pair)
+
+    def proj2(self, pair: DunaevTaggedPair) -> Any:
+        return dunaev_snd(pair)
+
+
+def dunaev_pairing_morphism(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+) -> Callable[[Any], DunaevTaggedPair]:
+    """Universal pairing morphism <f, g>_D : C to A cross_D B.
+
+    Satisfies: proj1 o <f, g>_D = f and proj2 o <f, g>_D = g.
+    """
+    return lambda c: dunaev_pair(f(c), g(c))
+
+
+def categorical_equalizer(
+    f: Callable[[Any], Any],
+    g: Callable[[Any], Any],
+    domain_candidates: Sequence[Any],
+) -> List[Any]:
+    """Categorical equalizer Eq(f, g) = {x in A | f(x) = g(x)}."""
+    return [x for x in domain_candidates if f(x) == g(x)]
+
+
+def categorical_subobject_comprehension(
+    predicate: Callable[[Any], bool],
+    domain_candidates: Sequence[Any],
+) -> List[Any]:
+    """Class comprehension as categorical equalizer.
+
+    Equalizer of characteristic morphism chi_phi and constant true morphism.
+    """
+    chi = lambda x: bool(predicate(x))
+    const_true = lambda x: True
+    return categorical_equalizer(chi, const_true, domain_candidates)
+

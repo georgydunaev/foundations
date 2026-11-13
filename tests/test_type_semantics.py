@@ -11,19 +11,29 @@ if str(REPO_DIR) not in sys.path:
 
 from foundations.type_semantics import (
     CLASS_TYPE,
+    INITIAL_CLASS,
     SET_TYPE,
+    TERMINAL_CLASS,
     UNIVERSAL_CLASS,
     ClassObject,
+    DunaevProduct,
     DunaevTaggedPair,
     KuratowskiPair,
     ProperClassError,
+    categorical_equalizer,
+    categorical_subobject_comprehension,
     dunaev_fst,
     dunaev_pair,
+    dunaev_pairing_morphism,
     dunaev_snd,
     guarded_evaluation,
     has_type,
+    is_well_founded_relation,
     kuratowski_pair,
+    relation_predecessors,
+    terminal_morphism,
     total_evaluation,
+    transfinite_recursion_eval,
 )
 
 
@@ -74,6 +84,64 @@ class TestTypeSemantics(unittest.TestCase):
         # Guarded evaluation (V default outside domain)
         self.assertEqual(guarded_evaluation(graph, "x", domain), "val_x")
         self.assertEqual(guarded_evaluation(graph, "z", domain), UNIVERSAL_CLASS)
+
+    def test_well_founded_relation_and_recursion(self):
+        """Test well-founded relation detection and transfinite recursion."""
+        domain = {0, 1, 2, 3}
+        pairs = [(0, 1), (1, 2), (2, 3), (0, 2), (0, 3), (1, 3)]
+        self.assertTrue(is_well_founded_relation(pairs, domain))
+
+        # Cyclic relation is not well-founded
+        cycle_pairs = [(0, 1), (1, 2), (2, 0)]
+        self.assertFalse(is_well_founded_relation(cycle_pairs, {0, 1, 2}))
+
+        # Transfinite recursion: compute von Neumann ordinal sets / ranks
+        # rank(0) = 0, rank(x) = 1 + max(rank(y) for y < x)
+        def rank_step(x, restr):
+            preds = relation_predecessors(pairs, x)
+            if not preds:
+                return 0
+            return 1 + max(restr(y) for y in preds)
+
+        ranks = transfinite_recursion_eval(rank_step, pairs, [0, 1, 2, 3])
+        self.assertEqual(ranks, {0: 0, 1: 1, 2: 2, 3: 3})
+
+    def test_categorical_product_and_universal_pairing(self):
+        """Categorical products with Dunaev pairs and universal property."""
+        a = UNIVERSAL_CLASS
+        b = ClassObject("Ord", is_set=False)
+        prod = DunaevProduct(a, b)
+
+        pair = prod.pair("val_a", "val_b")
+        self.assertEqual(prod.proj1(pair), "val_a")
+        self.assertEqual(prod.proj2(pair), "val_b")
+
+        # Universal pairing morphism: <f, g>
+        f = lambda c: f"f({c})"
+        g = lambda c: f"g({c})"
+        pairing = dunaev_pairing_morphism(f, g)
+        res_pair = pairing("x")
+
+        self.assertEqual(dunaev_fst(res_pair), "f(x)")
+        self.assertEqual(dunaev_snd(res_pair), "g(x)")
+
+    def test_categorical_equalizer_and_subobject_comprehension(self):
+        """Equalizers and class comprehension as categorical subobjects."""
+        candidates = [1, 2, 3, 4, 5, 6]
+        evens = categorical_subobject_comprehension(lambda x: x % 2 == 0, candidates)
+        self.assertEqual(evens, [2, 4, 6])
+
+        # Equalizer of two morphisms
+        f = lambda x: x * 2
+        g = lambda x: x + 2
+        eq_elements = categorical_equalizer(f, g, candidates)
+        self.assertEqual(eq_elements, [2])
+
+    def test_initial_and_terminal_objects(self):
+        """Initial and terminal object morphisms."""
+        term_m = terminal_morphism(UNIVERSAL_CLASS)
+        self.assertEqual(term_m("any_class"), TERMINAL_CLASS)
+
 
 
 if __name__ == "__main__":

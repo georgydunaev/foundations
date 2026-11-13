@@ -18,6 +18,7 @@ from foundations.descriptors import (
     iota_descriptor,
     partial_varepsilon_descriptor,
     tau_descriptor,
+    unique_choice_descriptor,
 )
 
 
@@ -67,6 +68,22 @@ class TestDescriptors(unittest.TestCase):
         candidates = [1, 3, 5]
         with self.assertRaises(NonUniqueWitnessError):
             iota_descriptor(lambda x: x % 2 != 0, candidates)
+
+    def test_unique_choice_descriptor_unique(self):
+        candidates = [2, 4, 7, 8]
+        res = unique_choice_descriptor(lambda x: x % 2 != 0, candidates)
+        self.assertEqual(res, 7)
+
+    def test_unique_choice_descriptor_empty_fallback(self):
+        candidates = [2, 4, 6]
+        res = unique_choice_descriptor(lambda x: x % 2 != 0, candidates)
+        self.assertEqual(res, EMPTY_CLASS)
+
+    def test_unique_choice_descriptor_non_unique_fallback(self):
+        candidates = [1, 3, 5]
+        res = unique_choice_descriptor(lambda x: x % 2 != 0, candidates)
+        self.assertEqual(res, EMPTY_CLASS)
+
 
     def test_macro_consistency(self):
         """Test that MACROS_INDEX.md documents all defined macros."""
