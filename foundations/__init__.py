@@ -138,6 +138,17 @@ from foundations.type_semantics import (
     forces,
     verify_truth_lemma,
     proves_forcing_foundations,
+    cohen_family_poset,
+    verify_ccc_poset,
+    ccc_preserves_cardinals,
+    cohen_real_name,
+    evaluate_cohen_real,
+    dense_cohen_difference,
+    verify_cohen_reals_distinct,
+    continuum_size_and_neg_ch,
+    relative_consistency_neg_ch,
+    independence_of_continuum_hypothesis,
+    proves_independence_of_ch,
 )
 
 __all__: list[str] = [
@@ -277,4 +288,15 @@ __all__: list[str] = [
     "forces",
     "verify_truth_lemma",
     "proves_forcing_foundations",
+    "cohen_family_poset",
+    "verify_ccc_poset",
+    "ccc_preserves_cardinals",
+    "cohen_real_name",
+    "evaluate_cohen_real",
+    "dense_cohen_difference",
+    "verify_cohen_reals_distinct",
+    "continuum_size_and_neg_ch",
+    "relative_consistency_neg_ch",
+    "independence_of_continuum_hypothesis",
+    "proves_independence_of_ch",
 ]

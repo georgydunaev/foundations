@@ -137,6 +137,30 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7728_independence_of_ch_and_cohen_reals_symbols(self):
+        """Ticket 7728: verify Independence of Continuum Hypothesis & Cohen Reals symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "cohen_family_poset",
+            "verify_ccc_poset",
+            "ccc_preserves_cardinals",
+            "cohen_real_name",
+            "evaluate_cohen_real",
+            "dense_cohen_difference",
+            "verify_cohen_reals_distinct",
+            "continuum_size_and_neg_ch",
+            "relative_consistency_neg_ch",
+            "independence_of_continuum_hypothesis",
+            "proves_independence_of_ch",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7728 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

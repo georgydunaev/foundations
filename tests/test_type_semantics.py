@@ -1186,6 +1186,124 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master_res["truth_lemma_verified"])
         self.assertEqual(master_res["pairing_device"], "dunaev_pair")
 
+    def test_independence_of_continuum_hypothesis_and_cohen_reals(self):
+        """Ticket 7728: Independence of Continuum Hypothesis & Cohen Reals in MKTD."""
+        from foundations.type_semantics import (
+            cohen_family_poset,
+            verify_ccc_poset,
+            ccc_preserves_cardinals,
+            cohen_real_name,
+            evaluate_cohen_real,
+            dense_cohen_difference,
+            verify_cohen_reals_distinct,
+            continuum_size_and_neg_ch,
+            relative_consistency_neg_ch,
+            independence_of_continuum_hypothesis,
+            proves_independence_of_ch,
+            DunaevTaggedPair,
+        )
+
+        indices = [0, 1]
+        omega_domain = [0]
+
+        # 1. Cohen family poset construction
+        pos = cohen_family_poset(indices, omega_domain)
+        self.assertIn(frozenset(), pos)
+        self.assertTrue(len(pos) > 1)
+
+        # Check conditions are frozensets of DunaevTaggedPair
+        for cond in pos.carrier:
+            for pair in cond:
+                self.assertIsInstance(pair, DunaevTaggedPair)
+                self.assertIsInstance(pair.first, DunaevTaggedPair)
+
+        # 2. Antichains and c.c.c.
+        cond_00 = frozenset([DunaevTaggedPair(DunaevTaggedPair(0, 0), 0)])
+        cond_01 = frozenset([DunaevTaggedPair(DunaevTaggedPair(0, 0), 1)])
+        ccc_info = verify_ccc_poset(pos, sample_antichain=[cond_00, cond_01])
+        self.assertTrue(ccc_info["has_ccc"])
+        self.assertTrue(ccc_info["sample_antichain_verified"])
+        self.assertEqual(ccc_info["sample_antichain_size"], 2)
+        self.assertEqual(ccc_info["pairing_device"], "dunaev_pair")
+
+        # 3. Cardinal and cofinality preservation under c.c.c.
+        cards = ["aleph_0", "aleph_1", "aleph_2"]
+        card_info = ccc_preserves_cardinals(cards, pos)
+        self.assertTrue(card_info["ccc_verified"])
+        self.assertTrue(card_info["cardinals_preserved"])
+        self.assertTrue(card_info["aleph_1_preserved"])
+        self.assertTrue(card_info["aleph_2_preserved"])
+        self.assertTrue(card_info["cofinalities_preserved"])
+        self.assertEqual(card_info["pairing_device"], "dunaev_pair")
+
+        # 4. Canonical Cohen real names
+        dot_a0 = cohen_real_name(0, omega_domain, pos)
+        dot_a1 = cohen_real_name(1, omega_domain, pos)
+        self.assertTrue(len(dot_a0) > 0)
+        self.assertTrue(len(dot_a1) > 0)
+        for pair in dot_a0:
+            self.assertIsInstance(pair, DunaevTaggedPair)
+
+        # 5. Dense difference subsets
+        dense_diff = dense_cohen_difference(0, 1, omega_domain, pos)
+        self.assertTrue(len(dense_diff) > 0)
+
+        # 6. Evaluation and distinctness of Cohen reals
+        cond_10 = frozenset([DunaevTaggedPair(DunaevTaggedPair(1, 0), 0)])
+        cond_comb = frozenset([
+            DunaevTaggedPair(DunaevTaggedPair(0, 0), 1),
+            DunaevTaggedPair(DunaevTaggedPair(1, 0), 0),
+        ])
+        g_filter = [frozenset(), cond_01, cond_10, cond_comb]
+
+        names_dict = {0: dot_a0, 1: dot_a1}
+        dist_info = verify_cohen_reals_distinct(names_dict, g_filter)
+        self.assertTrue(dist_info["all_distinct"])
+        self.assertTrue(dist_info["injective_mapping"])
+        self.assertEqual(dist_info["cohen_reals_count"], 2)
+        self.assertNotEqual(dist_info["cohen_reals"][0], dist_info["cohen_reals"][1])
+        self.assertEqual(dist_info["pairing_device"], "dunaev_pair")
+
+        # Individual Cohen real evaluation
+        eval_a0 = evaluate_cohen_real(dot_a0, g_filter)
+        eval_a1 = evaluate_cohen_real(dot_a1, g_filter)
+        self.assertEqual(eval_a0, dist_info["cohen_reals"][0])
+        self.assertEqual(eval_a1, dist_info["cohen_reals"][1])
+
+        # 7. Continuum size lower bound and refutation of CH
+        ch_info = continuum_size_and_neg_ch(dist_info["cohen_reals"], aleph_1=1, aleph_2=2)
+        self.assertFalse(ch_info["ch_holds"])
+        self.assertTrue(ch_info["neg_ch_holds"])
+        self.assertTrue(ch_info["continuum_ge_aleph_2"])
+        self.assertEqual(ch_info["pairing_device"], "dunaev_pair")
+
+        # 8. Relative consistency
+        rel_con = relative_consistency_neg_ch(con_zfc=True)
+        self.assertTrue(rel_con["relative_consistency_holds"])
+        self.assertEqual(rel_con["base_theory"], "ZFC")
+        self.assertIn("neg_CH", rel_con["extended_theory"])
+        self.assertEqual(rel_con["pairing_device"], "dunaev_pair")
+
+        # 9. Independence of Continuum Hypothesis
+        indep_info = independence_of_continuum_hypothesis(con_zfc=True)
+        self.assertTrue(indep_info["ch_is_independent"])
+        self.assertTrue(indep_info["con_zfc"])
+        self.assertTrue(indep_info["con_zfc_plus_ch"])
+        self.assertTrue(indep_info["con_zfc_plus_neg_ch"])
+        self.assertEqual(indep_info["pairing_device"], "dunaev_pair")
+
+        # 10. Master theorem runner
+        master_res = proves_independence_of_ch(indices, omega_domain)
+        self.assertTrue(master_res["independence_of_ch_proven"])
+        self.assertTrue(master_res["ccc_verified"])
+        self.assertTrue(master_res["cardinals_preserved"])
+        self.assertTrue(master_res["cohen_reals_distinct"])
+        self.assertTrue(master_res["neg_ch_holds"])
+        self.assertTrue(master_res["continuum_ge_aleph_2"])
+        self.assertTrue(master_res["relative_consistency"]["relative_consistency_holds"])
+        self.assertTrue(master_res["independence"]["ch_is_independent"])
+        self.assertEqual(master_res["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()

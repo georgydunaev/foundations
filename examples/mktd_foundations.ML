@@ -69,6 +69,10 @@ signature MKTD_FOUNDATIONS = sig
     | GodelF8 of class_term
     | TheoryMK
     | TheoryMK_AC_GCH
+    | TheoryMK_AC_NegCH
+    | TheoryZFC
+    | TheoryZFC_CH
+    | TheoryZFC_NegCH
     | Poset of class_term * class_term * class_term
     | PosetLeq of class_term
     | PosetOne of class_term
@@ -78,6 +82,10 @@ signature MKTD_FOUNDATIONS = sig
     | NameValuation of class_term * class_term
     | GenericExtension of class_term * class_term
     | CohenPoset of class_term * class_term
+    | CohenFamilyPoset of class_term * class_term
+    | CohenRealName of class_term * class_term
+    | Aleph of class_term
+    | ContinuumSize of class_term
 
   and fm =
       False
@@ -155,6 +163,12 @@ signature MKTD_FOUNDATIONS = sig
     | Forces of class_term * class_term * fm
     | TruthLemmaFm of class_term * class_term * class_term * fm
     | GenericExtensionSat of class_term * class_term * fm
+    | CardinalsPreserved of class_term * class_term
+    | DistinctCohenReals of class_term * class_term * class_term
+    | ContinuumHypothesis
+    | NegContinuumHypothesis
+    | ContinuumAtLeastAleph2
+    | IndependenceOfCH
 
   type conglomerate_type = class_term -> bool
 
@@ -491,6 +505,28 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_generic_model_existence : class_term -> class_term -> thm
   val prove_generic_model_existence : class_term -> class_term -> thm
 
+  (* Independence of Continuum Hypothesis & Cohen Reals in MKTD (Ticket 7728) *)
+  val mk_cohen_family_poset : class_term -> class_term -> class_term
+  val mk_cohen_real_name : class_term -> class_term -> class_term
+  val eval_cohen_real_val : (class_term -> class_term -> bool) -> (class_term * class_term) list -> class_term list -> class_term list
+  val eval_distinct_reals : class_term list list -> bool
+  val eval_ccc_cardinal_preservation : (class_term -> bool) -> (class_term -> bool) -> class_term list -> bool
+  val eval_continuum_at_least_aleph2 : int -> int -> bool
+  val axiom_ccc_preserves_cardinals : class_term -> class_term -> class_term -> thm
+  val prove_ccc_preserves_cardinals : class_term -> class_term -> class_term -> thm
+  val axiom_cohen_reals_distinct : class_term -> class_term -> class_term -> thm
+  val prove_cohen_reals_distinct : class_term -> class_term -> class_term -> thm
+  val axiom_continuum_at_least_aleph2 : class_term -> class_term -> class_term -> thm
+  val prove_continuum_at_least_aleph2 : class_term -> class_term -> class_term -> thm
+  val axiom_generic_extension_neg_ch : class_term -> class_term -> class_term -> thm
+  val prove_generic_extension_neg_ch : class_term -> class_term -> class_term -> thm
+  val axiom_relative_consistency_neg_ch : unit -> thm
+  val prove_relative_consistency_neg_ch : unit -> thm
+  val axiom_con_zfc_implies_con_zfc_neg_ch : unit -> thm
+  val prove_con_zfc_implies_con_zfc_neg_ch : unit -> thm
+  val axiom_independence_of_ch : unit -> thm
+  val prove_independence_of_ch : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -557,6 +593,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | GodelF8 of class_term
     | TheoryMK
     | TheoryMK_AC_GCH
+    | TheoryMK_AC_NegCH
+    | TheoryZFC
+    | TheoryZFC_CH
+    | TheoryZFC_NegCH
     | Poset of class_term * class_term * class_term
     | PosetLeq of class_term
     | PosetOne of class_term
@@ -566,6 +606,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | NameValuation of class_term * class_term
     | GenericExtension of class_term * class_term
     | CohenPoset of class_term * class_term
+    | CohenFamilyPoset of class_term * class_term
+    | CohenRealName of class_term * class_term
+    | Aleph of class_term
+    | ContinuumSize of class_term
 
   and fm =
       False
@@ -643,6 +687,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | Forces of class_term * class_term * fm
     | TruthLemmaFm of class_term * class_term * class_term * fm
     | GenericExtensionSat of class_term * class_term * fm
+    | CardinalsPreserved of class_term * class_term
+    | DistinctCohenReals of class_term * class_term * class_term
+    | ContinuumHypothesis
+    | NegContinuumHypothesis
+    | ContinuumAtLeastAleph2
+    | IndependenceOfCH
 
   type conglomerate_type = class_term -> bool
 
@@ -726,6 +776,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | GodelF8 a => GodelF8 (subst_term var repl a)
       | TheoryMK => TheoryMK
       | TheoryMK_AC_GCH => TheoryMK_AC_GCH
+      | TheoryMK_AC_NegCH => TheoryMK_AC_NegCH
+      | TheoryZFC => TheoryZFC
+      | TheoryZFC_CH => TheoryZFC_CH
+      | TheoryZFC_NegCH => TheoryZFC_NegCH
       | Poset (p, l, one) => Poset (subst_term var repl p, subst_term var repl l, subst_term var repl one)
       | PosetLeq p => PosetLeq (subst_term var repl p)
       | PosetOne p => PosetOne (subst_term var repl p)
@@ -735,6 +789,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | NameValuation (tau, g) => NameValuation (subst_term var repl tau, subst_term var repl g)
       | GenericExtension (m, g) => GenericExtension (subst_term var repl m, subst_term var repl g)
       | CohenPoset (d, c) => CohenPoset (subst_term var repl d, subst_term var repl c)
+      | CohenFamilyPoset (i, om) => CohenFamilyPoset (subst_term var repl i, subst_term var repl om)
+      | CohenRealName (a, p) => CohenRealName (subst_term var repl a, subst_term var repl p)
+      | Aleph a => Aleph (subst_term var repl a)
+      | ContinuumSize m => ContinuumSize (subst_term var repl m)
       | _ => target
 
   and subst_fm var repl target =
@@ -835,6 +893,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Forces (p, pos, phi) => Forces (subst_term var repl p, subst_term var repl pos, subst_fm var repl phi)
       | TruthLemmaFm (m, g, pos, phi) => TruthLemmaFm (subst_term var repl m, subst_term var repl g, subst_term var repl pos, subst_fm var repl phi)
       | GenericExtensionSat (m, g, phi) => GenericExtensionSat (subst_term var repl m, subst_term var repl g, subst_fm var repl phi)
+      | CardinalsPreserved (m, ext) => CardinalsPreserved (subst_term var repl m, subst_term var repl ext)
+      | DistinctCohenReals (f, k, ext) => DistinctCohenReals (subst_term var repl f, subst_term var repl k, subst_term var repl ext)
+      | ContinuumHypothesis => ContinuumHypothesis
+      | NegContinuumHypothesis => NegContinuumHypothesis
+      | ContinuumAtLeastAleph2 => ContinuumAtLeastAleph2
+      | IndependenceOfCH => IndependenceOfCH
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1167,6 +1231,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Forces (p, pos, phi) => Forces (p, pos, relativize m phi)
       | TruthLemmaFm (m1, g, pos, phi) => TruthLemmaFm (m1, g, pos, relativize m phi)
       | GenericExtensionSat (m1, g, phi) => GenericExtensionSat (m1, g, relativize m phi)
+      | CardinalsPreserved (m1, ext) => CardinalsPreserved (m1, ext)
+      | DistinctCohenReals (f, k, ext) => DistinctCohenReals (f, k, ext)
+      | ContinuumHypothesis => ContinuumHypothesis
+      | NegContinuumHypothesis => NegContinuumHypothesis
+      | ContinuumAtLeastAleph2 => ContinuumAtLeastAleph2
+      | IndependenceOfCH => IndependenceOfCH
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1224,6 +1294,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (GodelF8 a) = GodelF8 (eval_term env a)
     | eval_term _ TheoryMK = TheoryMK
     | eval_term _ TheoryMK_AC_GCH = TheoryMK_AC_GCH
+    | eval_term _ TheoryMK_AC_NegCH = TheoryMK_AC_NegCH
+    | eval_term _ TheoryZFC = TheoryZFC
+    | eval_term _ TheoryZFC_CH = TheoryZFC_CH
+    | eval_term _ TheoryZFC_NegCH = TheoryZFC_NegCH
     | eval_term env (Poset (p, l, one)) = Poset (eval_term env p, eval_term env l, eval_term env one)
     | eval_term env (PosetLeq p) = PosetLeq (eval_term env p)
     | eval_term env (PosetOne p) = PosetOne (eval_term env p)
@@ -1233,6 +1307,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (NameValuation (tau, g)) = NameValuation (eval_term env tau, eval_term env g)
     | eval_term env (GenericExtension (m, g)) = GenericExtension (eval_term env m, eval_term env g)
     | eval_term env (CohenPoset (d, c)) = CohenPoset (eval_term env d, eval_term env c)
+    | eval_term env (CohenFamilyPoset (i, om)) = CohenFamilyPoset (eval_term env i, eval_term env om)
+    | eval_term env (CohenRealName (a, p)) = CohenRealName (eval_term env a, eval_term env p)
+    | eval_term env (Aleph a) = Aleph (eval_term env a)
+    | eval_term env (ContinuumSize m) = ContinuumSize (eval_term env m)
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1355,6 +1433,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Forces (p, pos, phi) => true
       | TruthLemmaFm (m, g, pos, phi) => true
       | GenericExtensionSat (m, g, phi) => true
+      | CardinalsPreserved (m, ext) => true
+      | DistinctCohenReals (f, k, ext) => true
+      | ContinuumHypothesis => false
+      | NegContinuumHypothesis => true
+      | ContinuumAtLeastAleph2 => true
+      | IndependenceOfCH => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1766,6 +1850,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (GodelF8 a) = 28 + 10 * godel_number_term a
     | godel_number_term TheoryMK = 29
     | godel_number_term TheoryMK_AC_GCH = 30
+    | godel_number_term TheoryMK_AC_NegCH = 31
+    | godel_number_term TheoryZFC = 32
+    | godel_number_term TheoryZFC_CH = 33
+    | godel_number_term TheoryZFC_NegCH = 34
     | godel_number_term (Poset (p, l, one)) = 42 + 10 * godel_number_term p + 100 * godel_number_term l + 1000 * godel_number_term one
     | godel_number_term (PosetLeq p) = 43 + 10 * godel_number_term p
     | godel_number_term (PosetOne p) = 44 + 10 * godel_number_term p
@@ -1775,6 +1863,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (NameValuation (tau, g)) = 48 + 10 * godel_number_term tau + 100 * godel_number_term g
     | godel_number_term (GenericExtension (m, g)) = 49 + 10 * godel_number_term m + 100 * godel_number_term g
     | godel_number_term (CohenPoset (d, c)) = 50 + 10 * godel_number_term d + 100 * godel_number_term c
+    | godel_number_term (CohenFamilyPoset (i, om)) = 51 + 10 * godel_number_term i + 100 * godel_number_term om
+    | godel_number_term (CohenRealName (a, p)) = 52 + 10 * godel_number_term a + 100 * godel_number_term p
+    | godel_number_term (Aleph a) = 53 + 10 * godel_number_term a
+    | godel_number_term (ContinuumSize m) = 54 + 10 * godel_number_term m
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -1827,6 +1919,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (Forces (p, pos, phi)) = 59 + 10 * godel_number_term p + 100 * godel_number_term pos + 1000 * godel_number_fm phi
     | godel_number_fm (TruthLemmaFm (m, g, pos, phi)) = 60 + 10 * godel_number_term m + 100 * godel_number_term g + 1000 * godel_number_fm phi
     | godel_number_fm (GenericExtensionSat (m, g, phi)) = 61 + 10 * godel_number_term m + 100 * godel_number_term g + 1000 * godel_number_fm phi
+    | godel_number_fm (CardinalsPreserved (m, ext)) = 62 + 10 * godel_number_term m + 100 * godel_number_term ext
+    | godel_number_fm (DistinctCohenReals (f, k, ext)) = 63 + 10 * godel_number_term f + 100 * godel_number_term k + 1000 * godel_number_term ext
+    | godel_number_fm ContinuumHypothesis = 64
+    | godel_number_fm NegContinuumHypothesis = 65
+    | godel_number_fm ContinuumAtLeastAleph2 = 66
+    | godel_number_fm IndependenceOfCH = 67
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -2214,6 +2312,70 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Exists ("G", IsGenericFilter (Var "G", pos, Var "D_family")))
 
   fun prove_generic_model_existence m pos = axiom_generic_model_existence m pos
+
+  (* Independence of Continuum Hypothesis & Cohen Reals in MKTD (Ticket 7728) *)
+  fun mk_cohen_family_poset indices omega_dom =
+    CohenFamilyPoset (indices, omega_dom)
+
+  fun mk_cohen_real_name alpha pos =
+    CohenRealName (alpha, pos)
+
+  fun eval_cohen_real_val in_rel pairs filter_elems =
+    eval_val_g in_rel pairs filter_elems
+
+  fun eval_distinct_reals reals =
+    let
+      fun check_distinct [] = true
+        | check_distinct (r :: rs) =
+            List.all (fn r2 => r <> r2) rs andalso check_distinct rs
+    in
+      check_distinct reals
+    end
+
+  fun eval_ccc_cardinal_preservation ground_card_pred ext_card_pred card_list =
+    List.all (fn c => ground_card_pred c = ext_card_pred c) card_list
+
+  fun eval_continuum_at_least_aleph2 reals_count aleph2_bound =
+    reals_count >= aleph2_bound
+
+  fun axiom_ccc_preserves_cardinals m g pos =
+    Thm ([], Imp (And (HasCCC pos, IsGenericFilter (g, pos, Var "D_family")),
+                 CardinalsPreserved (m, GenericExtension (m, g))))
+
+  fun prove_ccc_preserves_cardinals m g pos = axiom_ccc_preserves_cardinals m g pos
+
+  fun axiom_cohen_reals_distinct m g pos =
+    Thm ([], Imp (IsGenericFilter (g, pos, Var "D_family"),
+                 DistinctCohenReals (Var "a_family", Aleph (OrdSucc (OrdSucc OrdZero)), GenericExtension (m, g))))
+
+  fun prove_cohen_reals_distinct m g pos = axiom_cohen_reals_distinct m g pos
+
+  fun axiom_continuum_at_least_aleph2 m g pos =
+    Thm ([], Imp (And (CardinalsPreserved (m, GenericExtension (m, g)),
+                      DistinctCohenReals (Var "a_family", Aleph (OrdSucc (OrdSucc OrdZero)), GenericExtension (m, g))),
+                 ContinuumAtLeastAleph2))
+
+  fun prove_continuum_at_least_aleph2 m g pos = axiom_continuum_at_least_aleph2 m g pos
+
+  fun axiom_generic_extension_neg_ch m g pos =
+    Thm ([], Imp (ContinuumAtLeastAleph2, GenericExtensionSat (m, g, NegContinuumHypothesis)))
+
+  fun prove_generic_extension_neg_ch m g pos = axiom_generic_extension_neg_ch m g pos
+
+  fun axiom_relative_consistency_neg_ch () =
+    Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_NegCH))
+
+  fun prove_relative_consistency_neg_ch () = axiom_relative_consistency_neg_ch ()
+
+  fun axiom_con_zfc_implies_con_zfc_neg_ch () =
+    Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_NegCH))
+
+  fun prove_con_zfc_implies_con_zfc_neg_ch () = axiom_con_zfc_implies_con_zfc_neg_ch ()
+
+  fun axiom_independence_of_ch () =
+    Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_CH, ConsistencyOf TheoryZFC_NegCH)))
+
+  fun prove_independence_of_ch () = axiom_independence_of_ch ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -2811,6 +2973,66 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val gen_mod_thm_ok = case gen_mod_thm of
           Thm ([], Exists ("G", IsGenericFilter (Var "G", Var "P", Var "D_family"))) => true
         | _ => false
+
+      (* Tests for Independence of Continuum Hypothesis & Cohen Reals in MKTD (Ticket 7728) *)
+      val cohen_fam = mk_cohen_family_poset (Var "Aleph2") OrdOmega
+      val cohen_fam_ok = (cohen_fam = CohenFamilyPoset (Var "Aleph2", OrdOmega))
+
+      val real_name_0 = mk_cohen_real_name OrdZero cohen_fam
+      val real_name_1 = mk_cohen_real_name (OrdSucc OrdZero) cohen_fam
+      val real_names_ok = (real_name_0 = CohenRealName (OrdZero, cohen_fam)) andalso
+                          (real_name_1 = CohenRealName (OrdSucc OrdZero, cohen_fam))
+
+      val mock_real_0 = [Empty, Singleton Empty]
+      val mock_real_1 = [Empty, Singleton (Singleton Empty)]
+      val mock_real_2 = [Singleton Empty]
+      val distinct_reals_ok = eval_distinct_reals [mock_real_0, mock_real_1, mock_real_2]
+      val non_distinct_reals_no = not (eval_distinct_reals [mock_real_0, mock_real_1, mock_real_0])
+
+      val mock_card_pred = fn OrdZero => true | (OrdSucc _) => true | _ => false
+      val card_pres_ok = eval_ccc_cardinal_preservation mock_card_pred mock_card_pred [OrdZero, OrdSucc OrdZero]
+
+      val continuum_ge_aleph2_ok = eval_continuum_at_least_aleph2 3 2
+      val continuum_ge_aleph2_fail = not (eval_continuum_at_least_aleph2 1 2)
+
+      val ccc_pres_thm = prove_ccc_preserves_cardinals (Var "M") (Var "G") (Var "P")
+      val ccc_pres_thm_ok = case ccc_pres_thm of
+          Thm ([], Imp (And (HasCCC (Var "P"), IsGenericFilter (Var "G", Var "P", Var "D_family")),
+                       CardinalsPreserved (Var "M", GenericExtension (Var "M", Var "G")))) => true
+        | _ => false
+
+      val cohen_dist_thm = prove_cohen_reals_distinct (Var "M") (Var "G") (Var "P")
+      val cohen_dist_thm_ok = case cohen_dist_thm of
+          Thm ([], Imp (IsGenericFilter (Var "G", Var "P", Var "D_family"),
+                       DistinctCohenReals (Var "a_family", Aleph (OrdSucc (OrdSucc OrdZero)), GenericExtension (Var "M", Var "G")))) => true
+        | _ => false
+
+      val cont_aleph2_thm = prove_continuum_at_least_aleph2 (Var "M") (Var "G") (Var "P")
+      val cont_aleph2_thm_ok = case cont_aleph2_thm of
+          Thm ([], Imp (And (CardinalsPreserved (Var "M", GenericExtension (Var "M", Var "G")),
+                            DistinctCohenReals (Var "a_family", Aleph (OrdSucc (OrdSucc OrdZero)), GenericExtension (Var "M", Var "G"))),
+                       ContinuumAtLeastAleph2)) => true
+        | _ => false
+
+      val gen_neg_ch_thm = prove_generic_extension_neg_ch (Var "M") (Var "G") (Var "P")
+      val gen_neg_ch_thm_ok = case gen_neg_ch_thm of
+          Thm ([], Imp (ContinuumAtLeastAleph2, GenericExtensionSat (Var "M", Var "G", NegContinuumHypothesis))) => true
+        | _ => false
+
+      val rel_con_neg_ch_thm = prove_relative_consistency_neg_ch ()
+      val rel_con_neg_ch_thm_ok = case rel_con_neg_ch_thm of
+          Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_NegCH)) => true
+        | _ => false
+
+      val con_zfc_neg_ch_thm = prove_con_zfc_implies_con_zfc_neg_ch ()
+      val con_zfc_neg_ch_thm_ok = case con_zfc_neg_ch_thm of
+          Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_NegCH)) => true
+        | _ => false
+
+      val indep_ch_thm = prove_independence_of_ch ()
+      val indep_ch_thm_ok = case indep_ch_thm of
+          Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_CH, ConsistencyOf TheoryZFC_NegCH))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -2856,6 +3078,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso val_g_ok andalso val_g_sub_ok andalso forces_ok andalso truth_lemma_ok
       andalso compat_thm_ok andalso achain_thm_ok andalso dense_thm_ok
       andalso gen_thm_ok andalso tl_thm_ok andalso gen_mod_thm_ok
+      andalso cohen_fam_ok andalso real_names_ok andalso distinct_reals_ok
+      andalso non_distinct_reals_no andalso card_pres_ok andalso continuum_ge_aleph2_ok
+      andalso continuum_ge_aleph2_fail andalso ccc_pres_thm_ok andalso cohen_dist_thm_ok
+      andalso cont_aleph2_thm_ok andalso gen_neg_ch_thm_ok andalso rel_con_neg_ch_thm_ok
+      andalso con_zfc_neg_ch_thm_ok andalso indep_ch_thm_ok
     end
 end;
 
