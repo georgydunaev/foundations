@@ -27,6 +27,11 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("Class_Type", content)
         self.assertIn("total_eval", content)
         self.assertIn("guarded_eval", content)
+        self.assertIn("russell_class", content)
+        self.assertIn("prove_russell_is_proper_class", content)
+        self.assertIn("prove_separation", content)
+        self.assertIn("prove_dunaev_pair_injectivity", content)
+        self.assertIn("axiom_class_comprehension", content)
 
     @unittest.skipUnless(POLY, "Poly/ML required for testing SML foundations")
     def test_poly_ml_compiles_and_passes_self_tests(self):

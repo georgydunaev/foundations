@@ -82,7 +82,10 @@ where
   defined_exists: \<open>defined(x) \<longleftrightarrow> exists(x)\<close> and
   epsI: \<open>\<lbrakk>\<exists>x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(epsilon(P))\<close> and
   eps_defined: \<open>\<lbrakk>\<exists>x. P(x); exists(x)\<rbrakk> \<Longrightarrow> defined(epsilon(P))\<close> and
-  iotaI: \<open>\<lbrakk>\<exists>!x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(iota(P))\<close>
+  iotaI: \<open>\<lbrakk>\<exists>!x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(iota(P))\<close> and
+  iota_defined: \<open>\<lbrakk>\<exists>!x. P(x); exists(x)\<rbrakk> \<Longrightarrow> defined(iota(P))\<close> and
+  iota_unique: \<open>\<lbrakk>\<exists>!x. P(x); P(y); exists(y)\<rbrakk> \<Longrightarrow> y = iota(P)\<close> and
+  iota_eqI: \<open>\<lbrakk>P(a); \<And>x. P(x) \<Longrightarrow> x = a; exists(a)\<rbrakk> \<Longrightarrow> iota(P) = a\<close>
 
 
 subsubsection \<open>Definitions\<close>
@@ -107,4 +110,23 @@ axiomatization where  \<comment> \<open>Reflection, admissible\<close>
 
 abbreviation not_equal :: \<open>['a, 'a] \<Rightarrow> o\<close>  (infixl \<open>\<noteq>\<close> 50)
   where \<open>x \<noteq> y \<equiv> \<not> (x = y)\<close>
+
+
+subsubsection \<open>Set-theoretic foundations and separation\<close>
+
+axiomatization
+  In :: \<open>['a, 'a] \<Rightarrow> o\<close>  (infixl \<open>\<in>\<close> 50) and
+  Subclass :: \<open>['a, 'a] \<Rightarrow> o\<close>  (infixl \<open>\<subseteq>\<close> 50) and
+  is_set :: \<open>'a \<Rightarrow> o\<close>
+where
+  subclassI: \<open>(\<And>x. x \<in> A \<Longrightarrow> x \<in> B) \<Longrightarrow> A \<subseteq> B\<close> and
+  subclassD: \<open>\<lbrakk>A \<subseteq> B; c \<in> A\<rbrakk> \<Longrightarrow> c \<in> B\<close> and
+  separation: \<open>\<lbrakk>is_set(A); B \<subseteq> A\<rbrakk> \<Longrightarrow> is_set(B)\<close>
+
+abbreviation not_in :: \<open>['a, 'a] \<Rightarrow> o\<close>  (infixl \<open>\<notin>\<close> 50)
+  where \<open>x \<notin> y \<equiv> \<not> (x \<in> y)\<close>
+
+definition Russell :: \<open>'a \<Rightarrow> o\<close>
+  where \<open>Russell(x) \<equiv> x \<notin> x\<close>
+
 end

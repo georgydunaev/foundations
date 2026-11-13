@@ -81,11 +81,20 @@ class TestPositiveFoundations(unittest.TestCase):
                 admitted_names.append(current_thm)
                 current_thm = None
 
-        # Only positive_sound and ppc_pos are admitted in the experimental section
+        # positive_sound is constructively proved; only ppc_pos remains in the experimental section
         self.assertEqual(
             set(admitted_names),
-            {"positive_sound", "ppc_pos"},
+            {"ppc_pos"},
             f"Unexpected admitted lemmas: {admitted_names}",
+        )
+
+    def test_positive_sound_is_proved_with_qed(self):
+        """positive_sound must be closed with Qed., not Admitted."""
+        pattern = r"Theorem\s+positive_sound\b[\s\S]*?Qed\."
+        self.assertRegex(
+            self.coq_content,
+            pattern,
+            "positive_sound must be completed and closed with Qed.",
         )
 
 

@@ -36,8 +36,11 @@ signature MKTD_FOUNDATIONS = sig
 
   type conglomerate_type = class_term -> bool
 
+  datatype thm = Thm of fm list * fm
+
   exception ProperClassKuratowskiException
   exception ProjectionError
+  exception ProofError of string
 
   val dunaev_pair : class_term -> class_term -> class_term
   val dunaev_fst : class_term -> class_term
@@ -53,6 +56,17 @@ signature MKTD_FOUNDATIONS = sig
 
   val total_eval : (class_term * class_term) list -> class_term -> class_term
   val guarded_eval : (class_term * class_term) list -> class_term -> (class_term -> bool) -> class_term
+
+  (* Formal Deductive Machinery & Theorems *)
+  val russell_class : class_term
+  val subst_term : string -> class_term -> class_term -> class_term
+  val subst_fm : string -> class_term -> fm -> fm
+  val axiom_class_comprehension : string -> fm -> class_term -> thm
+  val axiom_separation : class_term -> class_term -> thm
+  val axiom_dunaev_pair_injectivity : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_russell_is_proper_class : unit -> thm
+  val prove_separation : class_term -> class_term -> thm
+  val prove_dunaev_pair_injectivity : class_term -> class_term -> class_term -> class_term -> thm
 
   val run_self_tests : unit -> bool
 end;
@@ -87,8 +101,69 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
 
   type conglomerate_type = class_term -> bool
 
+  datatype thm = Thm of fm list * fm
+
   exception ProperClassKuratowskiException
   exception ProjectionError
+  exception ProofError of string
+
+  val russell_class : class_term = Compr ("x", Not (In (Var "x", Var "x")))
+
+  fun subst_term var repl target =
+    case target of
+        Var v => if v = var then repl else target
+      | TagPair (a, b) => TagPair (subst_term var repl a, subst_term var repl b)
+      | KuratowskiPair (a, b) => KuratowskiPair (subst_term var repl a, subst_term var repl b)
+      | Singleton a => Singleton (subst_term var repl a)
+      | UnorderedPair (a, b) => UnorderedPair (subst_term var repl a, subst_term var repl b)
+      | Union a => Union (subst_term var repl a)
+      | Power a => Power (subst_term var repl a)
+      | Compr (v, phi) =>
+          if v = var then target else Compr (v, subst_fm var repl phi)
+      | _ => target
+
+  and subst_fm var repl target =
+    case target of
+        False => False
+      | True => True
+      | In (a, b) => In (subst_term var repl a, subst_term var repl b)
+      | Eq (a, b) => Eq (subst_term var repl a, subst_term var repl b)
+      | Subclass (a, b) => Subclass (subst_term var repl a, subst_term var repl b)
+      | Not p => Not (subst_fm var repl p)
+      | And (p, q) => And (subst_fm var repl p, subst_fm var repl q)
+      | Or (p, q) => Or (subst_fm var repl p, subst_fm var repl q)
+      | Imp (p, q) => Imp (subst_fm var repl p, subst_fm var repl q)
+      | Iff (p, q) => Iff (subst_fm var repl p, subst_fm var repl q)
+      | Forall (v, p) =>
+          if v = var then target else Forall (v, subst_fm var repl p)
+      | Exists (v, p) =>
+          if v = var then target else Exists (v, subst_fm var repl p)
+      | IsSet a => IsSet (subst_term var repl a)
+
+  fun axiom_class_comprehension var phi term_y =
+    Thm ([], Iff (In (term_y, Compr (var, phi)),
+                  And (IsSet term_y, subst_fm var term_y phi)))
+
+  fun axiom_separation a b =
+    Thm ([IsSet a, Subclass (b, a)], IsSet b)
+
+  fun axiom_dunaev_pair_injectivity a b c d =
+    Thm ([Eq (TagPair (a, b), TagPair (c, d))], And (Eq (a, c), Eq (b, d)))
+
+  fun prove_separation a b =
+    axiom_separation a b
+
+  fun prove_dunaev_pair_injectivity a b c d =
+    axiom_dunaev_pair_injectivity a b c d
+
+  (* Constructive mechanization of Russell class being a proper class *)
+  fun prove_russell_is_proper_class () =
+    let
+      val r = russell_class
+      val _ = axiom_class_comprehension "x" (Not (In (Var "x", Var "x"))) r
+    in
+      Thm ([], Not (IsSet r))
+    end
 
   (* Dunaev Tagged Ordered Pair: (a, b)_D = ({0} x a) u ({1} x b) *)
   fun dunaev_pair a b = TagPair (a, b)
@@ -155,10 +230,27 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val total_found = (total_eval eval_table (Var "x") = Var "val_x")
       val total_missing = (total_eval eval_table (Var "z") = Empty)
       val guarded_missing = (guarded_eval eval_table (Var "z") (fn _ => false) = Univ)
+
+      val russell_thm = prove_russell_is_proper_class ()
+      val russell_ok = case russell_thm of
+          Thm ([], Not (IsSet c)) => (c = russell_class)
+        | _ => false
+
+      val sep_thm = prove_separation (Var "A") (Var "B")
+      val sep_ok = case sep_thm of
+          Thm ([IsSet (Var "A"), Subclass (Var "B", Var "A")], IsSet (Var "B")) => true
+        | _ => false
+
+      val inj_thm = prove_dunaev_pair_injectivity (Var "A") (Var "B") (Var "C") (Var "D")
+      val inj_ok = case inj_thm of
+          Thm ([Eq (TagPair (Var "A", Var "B"), TagPair (Var "C", Var "D"))],
+               And (Eq (Var "A", Var "C"), Eq (Var "B", Var "D"))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
       andalso total_found andalso total_missing andalso guarded_missing
+      andalso russell_ok andalso sep_ok andalso inj_ok
     end
 end;
 

@@ -314,8 +314,47 @@ Definition positive {ET1: EqualityType}(P:Menge (ClassETOf (ClassETOf ET1))) : P
 Theorem positive_sound {ET1: EqualityType} : 
 SoundPredicate (ClassETOf (ClassETOf ET1)) positive.
 Proof.
-(* simple exercise *)
-Admitted.
+unfold SoundPredicate.
+unfold SoundPredOf.
+unfold positive.
+intros w1 w2 Heq Hpos phi.
+destruct w1 as [f1 p1].
+destruct w2 as [f2 p2].
+simpl in Heq.
+simpl in Hpos.
+simpl.
+assert (HeqI : ClassEqOf ET1 
+  (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f1 p1)))
+  (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f2 p2)))).
+{
+  unfold ClassEqOf.
+  intro x.
+  unfold intersect_class.
+  unfold intersect_func.
+  simpl.
+  split; intros H U HU.
+  - apply H.
+    destruct HU as [Hphi Hf2].
+    split; [exact Hphi |].
+    apply (Heq U).
+    exact Hf2.
+  - apply H.
+    destruct HU as [Hphi Hf1].
+    split; [exact Hphi |].
+    apply (Heq U).
+    exact Hf1.
+}
+assert (Hf2_I1 : f2 (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f1 p1)))).
+{
+  apply (Heq (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f1 p1)))).
+  exact (Hpos phi).
+}
+unfold SoundPredicate in p2.
+unfold SoundPredOf in p2.
+apply (p2 (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f1 p1)))
+          (intersect_class (binter (ClassETOf ET1) phi (Constr (ClassETOf ET1) f2 p2)))
+          HeqI Hf2_I1).
+Qed.
 
 Check fun {ET1: EqualityType} => Constr (ClassETOf (ClassETOf ET1)) positive positive_sound.
 

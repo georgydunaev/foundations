@@ -42,6 +42,19 @@ class TestIFOLDSyntax(unittest.TestCase):
         """Definite description iota operator is declared with term return type."""
         self.assertIn(r"iota :: \<open>('a \<Rightarrow> o) \<Rightarrow> 'a\<close>", self.content)
 
+    def test_iota_uniqueness_and_definedness_rules(self):
+        """Definite description uniqueness and definedness rules are formalized."""
+        self.assertIn("iota_defined:", self.content)
+        self.assertIn("iota_unique:", self.content)
+        self.assertIn("iota_eqI:", self.content)
+
+    def test_separation_and_russell_axiomatization(self):
+        """Separation theorem and Russell class definition are formalized in IFOLD."""
+        self.assertIn("separation:", self.content)
+        self.assertIn(r"is_set(A); B \<subseteq> A\<rbrakk> \<Longrightarrow> is_set(B)", self.content)
+        self.assertIn("definition Russell", self.content)
+        self.assertIn(r"Russell(x) \<equiv> x \<notin> x", self.content)
+
     def test_pure_meta_premises_for_spec_and_exi(self):
         """Pure meta-implication rules must use meta-premises, not object-level conjunction."""
         self.assertNotIn(r"\<lbrakk>(\<forall>x. P(x)) \<and> (exists(x))", self.content)
