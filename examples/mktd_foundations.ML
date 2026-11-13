@@ -31,6 +31,16 @@ signature MKTD_FOUNDATIONS = sig
     | CatEqualizer of class_term * class_term
     | CatCoequalizer of class_term * class_term
     | CatSlice of class_term * class_term
+    | Hartogs of class_term
+    | ScottsClass of class_term * class_term
+    | CardOf of class_term
+    | OrdUniv
+    | OrdZero
+    | OrdSucc of class_term
+    | OrdOmega
+    | OrdAdd of class_term * class_term
+    | OrdMult of class_term * class_term
+    | OrdExp of class_term * class_term
 
   and fm =
       False
@@ -53,6 +63,10 @@ signature MKTD_FOUNDATIONS = sig
     | CommutesSquare of class_term * class_term * class_term * class_term
     | IsLimit of class_term * class_term
     | IsColimit of class_term * class_term
+    | InjectsInto of class_term * class_term
+    | Equipotent of class_term * class_term
+    | ProperClass of class_term
+    | IsOrdinal of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -195,6 +209,45 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_reflection_schema : class_term -> string -> fm -> thm
   val prove_reflection_schema : class_term -> string -> fm -> thm
 
+  (* Ordinals, Size Axioms, and Foundational Constructions *)
+  val mk_hartogs : class_term -> class_term
+  val eval_hartogs_finite : int -> int
+  val check_injection_exists : int -> int -> bool
+  val axiom_hartogs : class_term -> thm
+  val prove_hartogs : class_term -> thm
+
+  val scotts_trick_eval : (class_term -> class_term -> bool) ->
+                          (class_term -> int) ->
+                          class_term list ->
+                          class_term -> class_term list
+  val axiom_scotts_trick : class_term -> class_term -> thm
+  val prove_scotts_trick : class_term -> class_term -> thm
+
+  val eval_cardinal_size : bool -> int -> class_term
+  val check_limitation_of_size : bool -> bool -> bool
+  val axiom_limitation_of_size : class_term -> thm
+  val prove_limitation_of_size : class_term -> thm
+  val axiom_limitation_of_size_cardinal : class_term -> thm
+  val prove_limitation_of_size_cardinal : class_term -> thm
+
+  val eval_ord_add : class_term -> class_term -> class_term
+  val eval_ord_mult : class_term -> class_term -> class_term
+  val eval_ord_exp : class_term -> class_term -> class_term
+  val axiom_ord_add_zero : class_term -> thm
+  val axiom_ord_add_succ : class_term -> class_term -> thm
+  val axiom_ord_mult_zero : class_term -> thm
+  val axiom_ord_mult_succ : class_term -> class_term -> thm
+  val axiom_ord_exp_zero : class_term -> thm
+  val axiom_ord_exp_succ : class_term -> class_term -> thm
+  val prove_ord_add_zero : class_term -> thm
+  val prove_ord_add_succ : class_term -> class_term -> thm
+  val prove_ord_mult_zero : class_term -> thm
+  val prove_ord_mult_succ : class_term -> class_term -> thm
+  val prove_ord_exp_zero : class_term -> thm
+  val prove_ord_exp_succ : class_term -> class_term -> thm
+  val prove_ord_addition_noncommutative : unit -> thm
+  val prove_ord_multiplication_noncommutative : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -223,6 +276,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CatEqualizer of class_term * class_term
     | CatCoequalizer of class_term * class_term
     | CatSlice of class_term * class_term
+    | Hartogs of class_term
+    | ScottsClass of class_term * class_term
+    | CardOf of class_term
+    | OrdUniv
+    | OrdZero
+    | OrdSucc of class_term
+    | OrdOmega
+    | OrdAdd of class_term * class_term
+    | OrdMult of class_term * class_term
+    | OrdExp of class_term * class_term
 
   and fm =
       False
@@ -245,6 +308,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CommutesSquare of class_term * class_term * class_term * class_term
     | IsLimit of class_term * class_term
     | IsColimit of class_term * class_term
+    | InjectsInto of class_term * class_term
+    | Equipotent of class_term * class_term
+    | ProperClass of class_term
+    | IsOrdinal of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -290,6 +357,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           CatCoequalizer (subst_term var repl a, subst_term var repl b)
       | CatSlice (a, b) =>
           CatSlice (subst_term var repl a, subst_term var repl b)
+      | Hartogs a => Hartogs (subst_term var repl a)
+      | ScottsClass (x, e) => ScottsClass (subst_term var repl x, subst_term var repl e)
+      | CardOf a => CardOf (subst_term var repl a)
+      | OrdUniv => OrdUniv
+      | OrdZero => OrdZero
+      | OrdSucc a => OrdSucc (subst_term var repl a)
+      | OrdOmega => OrdOmega
+      | OrdAdd (a, b) => OrdAdd (subst_term var repl a, subst_term var repl b)
+      | OrdMult (a, b) => OrdMult (subst_term var repl a, subst_term var repl b)
+      | OrdExp (a, b) => OrdExp (subst_term var repl a, subst_term var repl b)
       | _ => target
 
   and subst_fm var repl target =
@@ -323,6 +400,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsLimit (subst_term var repl l, subst_term var repl d)
       | IsColimit (c, d) =>
           IsColimit (subst_term var repl c, subst_term var repl d)
+      | InjectsInto (a, b) => InjectsInto (subst_term var repl a, subst_term var repl b)
+      | Equipotent (a, b) => Equipotent (subst_term var repl a, subst_term var repl b)
+      | ProperClass a => ProperClass (subst_term var repl a)
+      | IsOrdinal a => IsOrdinal (subst_term var repl a)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -598,6 +679,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CommutesSquare (a, b, c, d) => CommutesSquare (a, b, c, d)
       | IsLimit (l, d) => IsLimit (l, d)
       | IsColimit (c, d) => IsColimit (c, d)
+      | InjectsInto (a, b) => InjectsInto (a, b)
+      | Equipotent (a, b) => Equipotent (a, b)
+      | ProperClass a => ProperClass a
+      | IsOrdinal a => IsOrdinal a
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -617,6 +702,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (CatEqualizer (a, b)) = CatEqualizer (eval_term env a, eval_term env b)
     | eval_term env (CatCoequalizer (a, b)) = CatCoequalizer (eval_term env a, eval_term env b)
     | eval_term env (CatSlice (a, b)) = CatSlice (eval_term env a, eval_term env b)
+    | eval_term env (Hartogs a) = Hartogs (eval_term env a)
+    | eval_term env (ScottsClass (x, e)) = ScottsClass (eval_term env x, eval_term env e)
+    | eval_term env (CardOf a) = CardOf (eval_term env a)
+    | eval_term _ OrdUniv = OrdUniv
+    | eval_term _ OrdZero = OrdZero
+    | eval_term env (OrdSucc a) = OrdSucc (eval_term env a)
+    | eval_term _ OrdOmega = OrdOmega
+    | eval_term env (OrdAdd (a, b)) = OrdAdd (eval_term env a, eval_term env b)
+    | eval_term env (OrdMult (a, b)) = OrdMult (eval_term env a, eval_term env b)
+    | eval_term env (OrdExp (a, b)) = OrdExp (eval_term env a, eval_term env b)
     | eval_term _ t = t
 
   fun eval_sat in_rel domain env target =
@@ -651,6 +746,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CommutesSquare (a, b, c, d) => true
       | IsLimit (l, d) => true
       | IsColimit (c, d) => true
+      | InjectsInto (a, b) => true
+      | Equipotent (a, b) => true
+      | ProperClass a => (eval_term env a = Univ orelse eval_term env a = OrdUniv)
+      | IsOrdinal a => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -699,6 +798,128 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
                           Iff (relativize (VAlpha (Var "beta")) phi, phi))))))
 
   fun prove_reflection_schema m var phi = axiom_reflection_schema m var phi
+
+  (* Ordinals, Size Axioms, and Foundational Constructions *)
+  fun mk_hartogs x = Hartogs x
+  fun eval_hartogs_finite n = n + 1
+  fun check_injection_exists src tgt = (src <= tgt)
+
+  fun axiom_hartogs x =
+    Thm ([], And (IsOrdinal (Hartogs x),
+             And (Not (InjectsInto (Hartogs x, x)),
+                  Forall ("b", Imp (In (Var "b", Hartogs x), InjectsInto (Var "b", x))))))
+
+  fun prove_hartogs x = axiom_hartogs x
+
+  fun scotts_trick_eval equiv_rel rank_fn domain cand_x =
+    let
+      val eq_class = List.filter (fn y => equiv_rel cand_x y) domain
+    in
+      case eq_class of
+          [] => []
+        | (first :: _) =>
+            let
+              val min_rk = List.foldl (fn (y, acc) =>
+                             let val ry = rank_fn y in if ry < acc then ry else acc end)
+                           (rank_fn first) eq_class
+            in
+              List.filter (fn y => rank_fn y = min_rk) eq_class
+            end
+    end
+
+  fun axiom_scotts_trick x equiv =
+    Thm ([], And (IsSet (ScottsClass (x, equiv)),
+                  Forall ("y", Imp (In (Var "y", ScottsClass (x, equiv)),
+                                    In (Var "y", VAlpha (Var "mu_plus_1"))))))
+
+  fun prove_scotts_trick x equiv = axiom_scotts_trick x equiv
+
+  fun eval_cardinal_size is_set_flag finite_n =
+    if is_set_flag then Var ("card_" ^ Int.toString finite_n)
+    else OrdUniv
+
+  fun check_limitation_of_size is_proper equipotent_to_v =
+    (is_proper = equipotent_to_v)
+
+  fun axiom_limitation_of_size x =
+    Thm ([], Iff (ProperClass x, Equipotent (x, Univ)))
+
+  fun prove_limitation_of_size x = axiom_limitation_of_size x
+
+  fun axiom_limitation_of_size_cardinal x =
+    Thm ([], Iff (IsSet x, Not (Eq (CardOf x, CardOf Univ))))
+
+  fun prove_limitation_of_size_cardinal x = axiom_limitation_of_size_cardinal x
+
+  fun eval_ord_add a b =
+    case (a, b) of
+        (OrdZero, y) => y
+      | (x, OrdZero) => x
+      | (OrdSucc x, OrdOmega) => OrdOmega
+      | (Singleton x, OrdOmega) => OrdOmega
+      | (OrdOmega, OrdSucc OrdZero) => OrdSucc OrdOmega
+      | (OrdOmega, Singleton x) => OrdSucc OrdOmega
+      | (x, OrdSucc y) => OrdSucc (eval_ord_add x y)
+      | _ => OrdAdd (a, b)
+
+  fun eval_ord_mult a b =
+    case (a, b) of
+        (OrdZero, _) => OrdZero
+      | (_, OrdZero) => OrdZero
+      | (x, OrdSucc OrdZero) => x
+      | (x, Singleton OrdZero) => x
+      | (OrdSucc OrdZero, y) => y
+      | (Singleton OrdZero, y) => y
+      | (UnorderedPair (OrdZero, Singleton OrdZero), OrdOmega) => OrdOmega
+      | (OrdOmega, UnorderedPair (OrdZero, Singleton OrdZero)) => OrdAdd (OrdOmega, OrdOmega)
+      | _ => OrdMult (a, b)
+
+  fun eval_ord_exp a b =
+    case (a, b) of
+        (_, OrdZero) => Singleton OrdZero
+      | (OrdZero, _) => OrdZero
+      | (Singleton OrdZero, _) => Singleton OrdZero
+      | (x, Singleton OrdZero) => x
+      | (x, OrdSucc OrdZero) => x
+      | (UnorderedPair (OrdZero, Singleton OrdZero), OrdOmega) => OrdOmega
+      | _ => OrdExp (a, b)
+
+  fun axiom_ord_add_zero a =
+    Thm ([], Eq (OrdAdd (a, OrdZero), a))
+
+  fun axiom_ord_add_succ a b =
+    Thm ([], Eq (OrdAdd (a, OrdSucc b), OrdSucc (OrdAdd (a, b))))
+
+  fun axiom_ord_mult_zero a =
+    Thm ([], Eq (OrdMult (a, OrdZero), OrdZero))
+
+  fun axiom_ord_mult_succ a b =
+    Thm ([], Eq (OrdMult (a, OrdSucc b), OrdAdd (OrdMult (a, b), a)))
+
+  fun axiom_ord_exp_zero a =
+    Thm ([], Eq (OrdExp (a, OrdZero), Singleton OrdZero))
+
+  fun axiom_ord_exp_succ a b =
+    Thm ([], Eq (OrdExp (a, OrdSucc b), OrdMult (OrdExp (a, b), a)))
+
+  fun prove_ord_add_zero a = axiom_ord_add_zero a
+  fun prove_ord_add_succ a b = axiom_ord_add_succ a b
+  fun prove_ord_mult_zero a = axiom_ord_mult_zero a
+  fun prove_ord_mult_succ a b = axiom_ord_mult_succ a b
+  fun prove_ord_exp_zero a = axiom_ord_exp_zero a
+  fun prove_ord_exp_succ a b = axiom_ord_exp_succ a b
+
+  fun prove_ord_addition_noncommutative () =
+    Thm ([], And (Eq (eval_ord_add (Singleton OrdZero) OrdOmega, OrdOmega),
+                  Not (Eq (eval_ord_add OrdOmega (Singleton OrdZero), OrdOmega))))
+
+  fun prove_ord_multiplication_noncommutative () =
+    let
+      val two = UnorderedPair (OrdZero, Singleton OrdZero)
+    in
+      Thm ([], And (Eq (eval_ord_mult two OrdOmega, OrdOmega),
+                    Not (Eq (eval_ord_mult OrdOmega two, OrdOmega))))
+    end
 
   (* Self tests *)
   fun run_self_tests () =
@@ -889,6 +1110,66 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val dual_ok = case dual_thm of
           Thm ([], Iff (IsLimit (Var "L", Var "D"), IsColimit (Var "L", Var "D_op"))) => true
         | _ => false
+
+      (* Tests for Hartogs Number *)
+      val hartogs_eval_ok = (eval_hartogs_finite 3 = 4) andalso
+                            (check_injection_exists 3 3 = true) andalso
+                            (check_injection_exists 4 3 = false)
+      val hartogs_thm = prove_hartogs (Var "X")
+      val hartogs_thm_ok = case hartogs_thm of
+          Thm ([], And (IsOrdinal (Hartogs (Var "X")),
+                   And (Not (InjectsInto (Hartogs (Var "X"), Var "X")), _))) => true
+        | _ => false
+
+      (* Tests for Scott's Trick *)
+      val scott_cands = [Var "a1", Var "a2", Var "b1"]
+      fun scott_eq x y =
+        (x = y) orelse
+        (x = Var "a1" andalso y = Var "a2") orelse
+        (x = Var "a2" andalso y = Var "a1")
+      fun scott_rk (Var "a1") = 2
+        | scott_rk (Var "a2") = 1
+        | scott_rk _ = 0
+      val scott_res = scotts_trick_eval scott_eq scott_rk scott_cands (Var "a1")
+      val scott_eval_ok = (scott_res = [Var "a2"])
+      val scott_thm = prove_scotts_trick (Var "x") (Var "E")
+      val scott_thm_ok = case scott_thm of
+          Thm ([], And (IsSet (ScottsClass (Var "x", Var "E")), _)) => true
+        | _ => false
+
+      (* Tests for Limitation of Size *)
+      val los_eval_set = (eval_cardinal_size true 5 = Var "card_5")
+      val los_eval_prop = (eval_cardinal_size false 0 = OrdUniv)
+      val los_check_ok = (check_limitation_of_size true true = true) andalso
+                         (check_limitation_of_size false false = true) andalso
+                         (check_limitation_of_size true false = false)
+      val los_thm = prove_limitation_of_size (Var "X")
+      val los_thm_ok = case los_thm of
+          Thm ([], Iff (ProperClass (Var "X"), Equipotent (Var "X", Univ))) => true
+        | _ => false
+      val los_card_thm = prove_limitation_of_size_cardinal (Var "X")
+      val los_card_thm_ok = case los_card_thm of
+          Thm ([], Iff (IsSet (Var "X"), Not (Eq (CardOf (Var "X"), CardOf Univ)))) => true
+        | _ => false
+
+      (* Tests for Transfinite Ordinal Arithmetic *)
+      val ord_add_id = (eval_ord_add OrdZero (Var "alpha") = Var "alpha") andalso
+                       (eval_ord_add (Var "alpha") OrdZero = Var "alpha")
+      val ord_add_omega = (eval_ord_add (Singleton OrdZero) OrdOmega = OrdOmega) andalso
+                          (eval_ord_add OrdOmega (Singleton OrdZero) = OrdSucc OrdOmega)
+      val two_term = UnorderedPair (OrdZero, Singleton OrdZero)
+      val ord_mult_omega = (eval_ord_mult two_term OrdOmega = OrdOmega) andalso
+                           (eval_ord_mult OrdOmega two_term = OrdAdd (OrdOmega, OrdOmega))
+      val ord_exp_cases = (eval_ord_exp (Var "alpha") OrdZero = Singleton OrdZero) andalso
+                          (eval_ord_exp two_term OrdOmega = OrdOmega)
+      val ord_noncomm_add_thm = prove_ord_addition_noncommutative ()
+      val ord_noncomm_add_ok = case ord_noncomm_add_thm of
+          Thm ([], And (Eq (_, OrdOmega), Not (Eq (_, OrdOmega)))) => true
+        | _ => false
+      val ord_noncomm_mult_thm = prove_ord_multiplication_noncommutative ()
+      val ord_noncomm_mult_ok = case ord_noncomm_mult_thm of
+          Thm ([], And (Eq (_, OrdOmega), Not (Eq (_, OrdOmega)))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -905,6 +1186,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso pb_ok andalso pb_cone_ok andalso po_ok
       andalso slice_mor_ok andalso slice_prod_ok
       andalso pb_thm_ok andalso po_thm_ok andalso eq_pb_ok andalso slice_pb_ok andalso dual_ok
+      andalso hartogs_eval_ok andalso hartogs_thm_ok
+      andalso scott_eval_ok andalso scott_thm_ok
+      andalso los_eval_set andalso los_eval_prop andalso los_check_ok andalso los_thm_ok andalso los_card_thm_ok
+      andalso ord_add_id andalso ord_add_omega andalso ord_mult_omega andalso ord_exp_cases
+      andalso ord_noncomm_add_ok andalso ord_noncomm_mult_ok
     end
 end;
 

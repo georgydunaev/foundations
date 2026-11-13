@@ -804,3 +804,278 @@ def slice_base_change(
     return SliceObject(domain=pb, morphism=struct_mor, target_name=base_target_name)
 
 
+# ---------------------------------------------------------------------------
+# Ordinals, Hartogs Number, Scott's Trick, and Size Axioms
+# ---------------------------------------------------------------------------
+
+def hartogs_number(domain: Iterable[Any]) -> int:
+    """Calculates the Hartogs number h(X) of a finite domain X.
+
+    The Hartogs number is the least ordinal (here represented as a finite
+    von Neumann ordinal n + 1) that does not inject into X.
+    """
+    n = len(list(domain))
+    return n + 1
+
+
+def can_inject(src_card: int, tgt_card: int) -> bool:
+    """Returns True iff an injection exists from a domain of size src_card into tgt_card."""
+    return src_card <= tgt_card
+
+
+def construct_hartogs_ordinals(domain: Iterable[Any]) -> Set[int]:
+    """Returns the set of ordinals {0, 1, ..., n} that inject into domain."""
+    n = len(list(domain))
+    return set(range(n + 1))
+
+
+def hartogs_well_ordering_types(domain: Iterable[Any]) -> List[int]:
+    """Returns the order types of all strict well-orderings of subsets of domain."""
+    n = len(list(domain))
+    return list(range(n + 1))
+
+
+def scotts_trick_representative(
+    x: Any,
+    equiv_rel: Callable[[Any, Any], bool],
+    domain: Iterable[Any],
+    rank_fn: Callable[[Any], int],
+) -> FrozenSet[Any]:
+    """Scott's trick (Dana Scott 1955) for selecting a canonical set-sized representative
+    from an equivalence class that may be a proper class.
+
+    Finds the minimum cumulative rank mu among all elements equivalent to x, and
+    returns the subset of equivalent elements having rank exactly equal to mu.
+    By Separation and the Axiom of Foundation, this subset is guaranteed to be a set
+    bounded in V_{mu + 1}.
+    """
+    eq_class = [y for y in domain if equiv_rel(x, y)]
+    if not eq_class:
+        return frozenset()
+    min_rank = min(rank_fn(y) for y in eq_class)
+    return frozenset(y for y in eq_class if rank_fn(y) == min_rank)
+
+
+def limitation_of_size_holds(is_proper_class: bool, equipotent_to_universe: bool) -> bool:
+    """von Neumann's Limitation of Size Axiom:
+    A class X is a proper class (not a set) iff X is equipotent to V (X ~ V).
+    """
+    return is_proper_class == equipotent_to_universe
+
+
+def cardinal_size(class_obj: ClassObject, finite_cardinality: Optional[int] = None) -> Any:
+    """Returns the cardinal size of class_obj.
+
+    If class_obj is a set, returns its set-cardinality (or least ordinal).
+    If class_obj is a proper class, returns the default boundary convention 'On'.
+    """
+    if class_obj.is_set:
+        return finite_cardinality if finite_cardinality is not None else len(class_obj.elements)
+    return "On"
+
+
+def limitation_of_size_cardinal_criterion(
+    class_obj: ClassObject,
+    finite_cardinality: Optional[int] = None,
+    card_univ: str = "On",
+) -> bool:
+    """Validates the cardinal formulation of Limitation of Size:
+    (K in V) iff (|K| != |V|).
+    """
+    card = cardinal_size(class_obj, finite_cardinality)
+    is_set = class_obj.is_set
+    return is_set == (card != card_univ)
+
+
+class Ordinal:
+    """Transfinite ordinal represented in Cantor Normal Form:
+    alpha = sum_{i=0}^{k-1} omega^{beta_i} * c_i
+    where beta_0 > beta_1 > ... > beta_{k-1} are Ordinals, and c_i are positive integers.
+    """
+
+    def __init__(self, terms: Sequence[Tuple["Ordinal", int]] = ()) -> None:
+        clean_terms: List[Tuple["Ordinal", int]] = []
+        for exp, coeff in terms:
+            if coeff > 0:
+                clean_terms.append((exp, coeff))
+        self.terms: Tuple[Tuple["Ordinal", int], ...] = tuple(clean_terms)
+
+    @classmethod
+    def zero(cls) -> "Ordinal":
+        return cls(())
+
+    @classmethod
+    def one(cls) -> "Ordinal":
+        return cls.from_int(1)
+
+    @classmethod
+    def from_int(cls, n: int) -> "Ordinal":
+        if n < 0:
+            raise ValueError("Ordinals cannot be negative")
+        if n == 0:
+            return cls(())
+        return cls(((cls.zero(), n),))
+
+    @classmethod
+    def omega(cls) -> "Ordinal":
+        return cls(((cls.one(), 1),))
+
+    def is_zero(self) -> bool:
+        return len(self.terms) == 0
+
+    def is_finite(self) -> bool:
+        if self.is_zero():
+            return True
+        return len(self.terms) == 1 and self.terms[0][0].is_zero()
+
+    def to_int(self) -> Optional[int]:
+        if self.is_zero():
+            return 0
+        if self.is_finite():
+            return self.terms[0][1]
+        return None
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, int):
+            other = Ordinal.from_int(other)
+        if isinstance(other, Ordinal):
+            return self.terms == other.terms
+        return False
+
+    def __hash__(self) -> int:
+        return hash(self.terms)
+
+    def __lt__(self, other: Any) -> bool:
+        if isinstance(other, int):
+            other = Ordinal.from_int(other)
+        if not isinstance(other, Ordinal):
+            return NotImplemented
+        min_len = min(len(self.terms), len(other.terms))
+        for i in range(min_len):
+            (e1, c1) = self.terms[i]
+            (e2, c2) = other.terms[i]
+            if e1 != e2:
+                return e1 < e2
+            if c1 != c2:
+                return c1 < c2
+        return len(self.terms) < len(other.terms)
+
+    def __le__(self, other: Any) -> bool:
+        return self == other or self < other
+
+    def __add__(self, other: Any) -> "Ordinal":
+        if isinstance(other, int):
+            other = Ordinal.from_int(other)
+        if not isinstance(other, Ordinal):
+            return NotImplemented
+        if self.is_zero():
+            return other
+        if other.is_zero():
+            return self
+        leading_exp = other.terms[0][0]
+        kept_terms: List[Tuple["Ordinal", int]] = []
+        for exp, coeff in self.terms:
+            if exp > leading_exp:
+                kept_terms.append((exp, coeff))
+            elif exp == leading_exp:
+                kept_terms.append((exp, coeff + other.terms[0][1]))
+                break
+            else:
+                break
+        if not any(exp == leading_exp for exp, _ in kept_terms):
+            kept_terms.append(other.terms[0])
+        kept_terms.extend(other.terms[1:])
+        return Ordinal(kept_terms)
+
+    def __mul__(self, other: Any) -> "Ordinal":
+        if isinstance(other, int):
+            other = Ordinal.from_int(other)
+        if not isinstance(other, Ordinal):
+            return NotImplemented
+        if self.is_zero() or other.is_zero():
+            return Ordinal.zero()
+        if other == Ordinal.one():
+            return self
+        if self == Ordinal.one():
+            return other
+        if other.is_finite():
+            res = Ordinal.zero()
+            for _ in range(other.terms[0][1]):
+                res = res + self
+            return res
+        res_terms: List[Tuple["Ordinal", int]] = []
+        alpha_0 = self.terms[0][0]
+        for exp, coeff in other.terms:
+            if not exp.is_zero():
+                res_terms.append((alpha_0 + exp, coeff))
+            else:
+                res_part = Ordinal(res_terms)
+                finite_part = Ordinal.zero()
+                for _ in range(coeff):
+                    finite_part = finite_part + self
+                return res_part + finite_part
+        return Ordinal(res_terms)
+
+    def __pow__(self, other: Any) -> "Ordinal":
+        if isinstance(other, int):
+            other = Ordinal.from_int(other)
+        if not isinstance(other, Ordinal):
+            return NotImplemented
+        if other.is_zero():
+            return Ordinal.one()
+        if self.is_zero():
+            return Ordinal.zero()
+        if self == Ordinal.one():
+            return Ordinal.one()
+        if other == Ordinal.one():
+            return self
+        if other.is_finite():
+            res = Ordinal.one()
+            for _ in range(other.terms[0][1]):
+                res = res * self
+            return res
+        if self.is_finite():
+            if other == Ordinal.omega():
+                return Ordinal.omega()
+            leading_exp = other.terms[0][0]
+            if leading_exp == Ordinal.one():
+                return Ordinal(((Ordinal.from_int(other.terms[0][1]), 1),))
+            return Ordinal.omega()
+        if self == Ordinal.omega():
+            return Ordinal(((other, 1),))
+        alpha_0 = self.terms[0][0]
+        return Ordinal(((alpha_0 * other, 1),))
+
+    def __repr__(self) -> str:
+        if self.is_zero():
+            return "0"
+        parts = []
+        for exp, coeff in self.terms:
+            if exp.is_zero():
+                parts.append(str(coeff))
+            elif exp == Ordinal.one():
+                parts.append("omega" if coeff == 1 else f"omega*{coeff}")
+            else:
+                parts.append(f"omega^({exp!r})" if coeff == 1 else f"omega^({exp!r})*{coeff}")
+        return " + ".join(parts)
+
+
+def ordinal_add(alpha: Any, beta: Any) -> Ordinal:
+    a = Ordinal.from_int(alpha) if isinstance(alpha, int) else alpha
+    b = Ordinal.from_int(beta) if isinstance(beta, int) else beta
+    return a + b
+
+
+def ordinal_mult(alpha: Any, beta: Any) -> Ordinal:
+    a = Ordinal.from_int(alpha) if isinstance(alpha, int) else alpha
+    b = Ordinal.from_int(beta) if isinstance(beta, int) else beta
+    return a * b
+
+
+def ordinal_exp(alpha: Any, beta: Any) -> Ordinal:
+    a = Ordinal.from_int(alpha) if isinstance(alpha, int) else alpha
+    b = Ordinal.from_int(beta) if isinstance(beta, int) else beta
+    return a ** b
+
+
+

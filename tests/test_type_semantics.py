@@ -53,6 +53,18 @@ from foundations.type_semantics import (
     is_slice_morphism,
     slice_product,
     slice_base_change,
+    hartogs_number,
+    can_inject,
+    construct_hartogs_ordinals,
+    hartogs_well_ordering_types,
+    scotts_trick_representative,
+    limitation_of_size_holds,
+    cardinal_size,
+    limitation_of_size_cardinal_criterion,
+    Ordinal,
+    ordinal_add,
+    ordinal_mult,
+    ordinal_exp,
 )
 
 
@@ -399,6 +411,125 @@ class TestTypeSemantics(unittest.TestCase):
             a = dunaev_fst(pair)
             b = dunaev_snd(pair)
             self.assertEqual(a % 2, b % 2)
+
+    def test_hartogs_number_construction_and_injectivity(self):
+        """Hartogs number h(X) is least ordinal not injecting into X."""
+        empty_set = set()
+        self.assertEqual(hartogs_number(empty_set), 1)
+        self.assertTrue(can_inject(0, 0))
+        self.assertFalse(can_inject(1, 0))
+
+        finite_set = {"a", "b", "c"}
+        h_finite = hartogs_number(finite_set)
+        self.assertEqual(h_finite, 4)
+        for k in range(4):
+            self.assertTrue(can_inject(k, 3))
+        self.assertFalse(can_inject(h_finite, 3))
+
+        ordinals = construct_hartogs_ordinals(finite_set)
+        self.assertEqual(ordinals, {0, 1, 2, 3})
+        types = hartogs_well_ordering_types(finite_set)
+        self.assertEqual(types, [0, 1, 2, 3])
+
+    def test_scotts_trick_equivalence_classes_sethood(self):
+        """Scott's trick selects set-sized minimal-rank representative for equivalence classes."""
+        domain = [1, 4, 7, 10, 2, 5, 8]
+        equiv_mod_3 = lambda x, y: (x % 3) == (y % 3)
+        rank_fn = lambda x: x // 3
+
+        # Elements equiv to 4: 1 (rank 0), 4 (rank 1), 7 (rank 2), 10 (rank 3)
+        rep_from_4 = scotts_trick_representative(4, equiv_mod_3, domain, rank_fn)
+        self.assertEqual(rep_from_4, frozenset({1}))
+
+        # Canonical: rep from 1, 4, 7, 10 are all identical
+        rep_from_1 = scotts_trick_representative(1, equiv_mod_3, domain, rank_fn)
+        rep_from_7 = scotts_trick_representative(7, equiv_mod_3, domain, rank_fn)
+        self.assertEqual(rep_from_1, rep_from_4)
+        self.assertEqual(rep_from_7, rep_from_4)
+
+        # Rep for class of 2: 2 (rank 0), 5 (rank 1), 8 (rank 2) => {2}
+        rep_from_5 = scotts_trick_representative(5, equiv_mod_3, domain, rank_fn)
+        self.assertEqual(rep_from_5, frozenset({2}))
+
+        # Non-existent element returns empty
+        rep_none = scotts_trick_representative(99, lambda x, y: False, domain, rank_fn)
+        self.assertEqual(rep_none, frozenset())
+
+    def test_von_neumann_limitation_of_size_and_cardinal_defaults(self):
+        """Limitation of size: X is proper class iff X ~ V, and cardinal default convention."""
+        # Axiom equivalence: proper_class <=> equipotent_to_V
+        self.assertTrue(limitation_of_size_holds(is_proper_class=True, equipotent_to_universe=True))
+        self.assertTrue(limitation_of_size_holds(is_proper_class=False, equipotent_to_universe=False))
+        self.assertFalse(limitation_of_size_holds(is_proper_class=True, equipotent_to_universe=False))
+        self.assertFalse(limitation_of_size_holds(is_proper_class=False, equipotent_to_universe=True))
+
+        # Default boundary convention: |V| = On
+        univ = UNIVERSAL_CLASS
+        self.assertEqual(cardinal_size(univ), "On")
+
+        set_a = ClassObject("A", is_set=True, elements={"x", "y", "z"})
+        self.assertEqual(cardinal_size(set_a), 3)
+
+        prop_b = ClassObject("Ord", is_set=False)
+        self.assertEqual(cardinal_size(prop_b), "On")
+
+        # Criterion: K in V iff |K| != |V|
+        self.assertTrue(limitation_of_size_cardinal_criterion(set_a))
+        self.assertTrue(limitation_of_size_cardinal_criterion(prop_b))
+        self.assertTrue(limitation_of_size_cardinal_criterion(univ))
+
+    def test_transfinite_ordinal_arithmetic_identities_and_noncommutativity(self):
+        """Transfinite ordinal arithmetic: addition, multiplication, exponentiation base cases."""
+        z = Ordinal.zero()
+        one = Ordinal.one()
+        two = Ordinal.from_int(2)
+        three = Ordinal.from_int(3)
+        omega = Ordinal.omega()
+
+        # Addition identity
+        self.assertEqual(z + omega, omega)
+        self.assertEqual(omega + z, omega)
+        self.assertEqual(ordinal_add(0, omega), omega)
+
+        # Addition non-commutativity: 1 + omega = omega != omega + 1
+        one_plus_omega = one + omega
+        omega_plus_one = omega + one
+        self.assertEqual(one_plus_omega, omega)
+        self.assertNotEqual(omega_plus_one, omega)
+        self.assertNotEqual(one_plus_omega, omega_plus_one)
+
+        # omega + omega = omega * 2
+        self.assertEqual(omega + omega, omega * two)
+
+        # Multiplication identity
+        self.assertEqual(z * omega, z)
+        self.assertEqual(omega * z, z)
+        self.assertEqual(one * omega, omega)
+        self.assertEqual(omega * one, omega)
+
+        # Multiplication non-commutativity: 2 * omega = omega != omega * 2
+        two_times_omega = two * omega
+        omega_times_two = omega * two
+        self.assertEqual(two_times_omega, omega)
+        self.assertNotEqual(omega_times_two, omega)
+        self.assertNotEqual(two_times_omega, omega_times_two)
+
+        # omega * omega = omega^2
+        omega_sq = omega * omega
+        self.assertEqual(ordinal_mult(omega, omega), omega_sq)
+
+        # Exponentiation base cases
+        self.assertEqual(omega ** z, one)
+        self.assertEqual(omega ** one, omega)
+        self.assertEqual(z ** z, one)
+        self.assertEqual(z ** omega, z)
+        self.assertEqual(one ** omega, one)
+
+        # 2^omega = omega != omega^2
+        two_to_omega = two ** omega
+        self.assertEqual(two_to_omega, omega)
+        self.assertNotEqual(two_to_omega, omega_sq)
+        self.assertEqual(ordinal_exp(2, omega), omega)
 
 
 
