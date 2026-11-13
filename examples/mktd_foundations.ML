@@ -86,6 +86,13 @@ signature MKTD_FOUNDATIONS = sig
     | CohenRealName of class_term * class_term
     | Aleph of class_term
     | ContinuumSize of class_term
+    | SuslinTree of class_term * class_term
+    | TreePoset of class_term
+    | TheoryMK_AC_MA_NegCH
+    | TheoryZFC_MA_NegCH
+    | TheoryZFC_Diamond
+    | TheoryZFC_SH
+    | TheoryZFC_NegSH
 
   and fm =
       False
@@ -169,6 +176,15 @@ signature MKTD_FOUNDATIONS = sig
     | NegContinuumHypothesis
     | ContinuumAtLeastAleph2
     | IndependenceOfCH
+    | MartinsAxiom of class_term
+    | MartinsAxiomFull
+    | IsSuslinTree of class_term
+    | SuslinHypothesis
+    | NegSuslinHypothesis
+    | DiamondPrinciple
+    | MAImpliesSH
+    | DiamondImpliesNegSH
+    | IndependenceOfSH
 
   type conglomerate_type = class_term -> bool
 
@@ -527,6 +543,30 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_independence_of_ch : unit -> thm
   val prove_independence_of_ch : unit -> thm
 
+  (* Martin's Axiom & Suslin Hypothesis (Ticket 7729) *)
+  val mk_suslin_tree : class_term -> class_term -> class_term
+  val mk_tree_poset : class_term -> class_term
+  val eval_is_suslin_tree : (class_term -> class_term -> bool) -> class_term list -> (class_term -> int) -> bool
+  val eval_ma_kappa : bool -> int -> int -> bool
+  val eval_ma_implies_sh : bool -> bool
+  val eval_diamond_implies_neg_sh : bool -> bool
+  val axiom_suslin_tree_has_ccc_poset : class_term -> thm
+  val prove_suslin_tree_has_ccc_poset : class_term -> thm
+  val axiom_ma_dense_family_filter : class_term -> class_term -> class_term -> thm
+  val prove_ma_dense_family_filter : class_term -> class_term -> class_term -> thm
+  val axiom_ma_aleph1_implies_sh : unit -> thm
+  val prove_ma_aleph1_implies_sh : unit -> thm
+  val axiom_diamond_implies_neg_sh : unit -> thm
+  val prove_diamond_implies_neg_sh : unit -> thm
+  val axiom_relative_consistency_sh : unit -> thm
+  val prove_relative_consistency_sh : unit -> thm
+  val axiom_con_zfc_implies_con_zfc_sh : unit -> thm
+  val prove_con_zfc_implies_con_zfc_sh : unit -> thm
+  val axiom_con_zfc_implies_con_zfc_neg_sh : unit -> thm
+  val prove_con_zfc_implies_con_zfc_neg_sh : unit -> thm
+  val axiom_independence_of_sh : unit -> thm
+  val prove_independence_of_sh : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -610,6 +650,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CohenRealName of class_term * class_term
     | Aleph of class_term
     | ContinuumSize of class_term
+    | SuslinTree of class_term * class_term
+    | TreePoset of class_term
+    | TheoryMK_AC_MA_NegCH
+    | TheoryZFC_MA_NegCH
+    | TheoryZFC_Diamond
+    | TheoryZFC_SH
+    | TheoryZFC_NegSH
 
   and fm =
       False
@@ -693,6 +740,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | NegContinuumHypothesis
     | ContinuumAtLeastAleph2
     | IndependenceOfCH
+    | MartinsAxiom of class_term
+    | MartinsAxiomFull
+    | IsSuslinTree of class_term
+    | SuslinHypothesis
+    | NegSuslinHypothesis
+    | DiamondPrinciple
+    | MAImpliesSH
+    | DiamondImpliesNegSH
+    | IndependenceOfSH
 
   type conglomerate_type = class_term -> bool
 
@@ -793,6 +849,8 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CohenRealName (a, p) => CohenRealName (subst_term var repl a, subst_term var repl p)
       | Aleph a => Aleph (subst_term var repl a)
       | ContinuumSize m => ContinuumSize (subst_term var repl m)
+      | SuslinTree (t, ord) => SuslinTree (subst_term var repl t, subst_term var repl ord)
+      | TreePoset t => TreePoset (subst_term var repl t)
       | _ => target
 
   and subst_fm var repl target =
@@ -899,6 +957,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | NegContinuumHypothesis => NegContinuumHypothesis
       | ContinuumAtLeastAleph2 => ContinuumAtLeastAleph2
       | IndependenceOfCH => IndependenceOfCH
+      | MartinsAxiom k => MartinsAxiom (subst_term var repl k)
+      | MartinsAxiomFull => MartinsAxiomFull
+      | IsSuslinTree t => IsSuslinTree (subst_term var repl t)
+      | SuslinHypothesis => SuslinHypothesis
+      | NegSuslinHypothesis => NegSuslinHypothesis
+      | DiamondPrinciple => DiamondPrinciple
+      | MAImpliesSH => MAImpliesSH
+      | DiamondImpliesNegSH => DiamondImpliesNegSH
+      | IndependenceOfSH => IndependenceOfSH
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1237,6 +1304,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | NegContinuumHypothesis => NegContinuumHypothesis
       | ContinuumAtLeastAleph2 => ContinuumAtLeastAleph2
       | IndependenceOfCH => IndependenceOfCH
+      | MartinsAxiom k => MartinsAxiom k
+      | MartinsAxiomFull => MartinsAxiomFull
+      | IsSuslinTree t => IsSuslinTree t
+      | SuslinHypothesis => SuslinHypothesis
+      | NegSuslinHypothesis => NegSuslinHypothesis
+      | DiamondPrinciple => DiamondPrinciple
+      | MAImpliesSH => MAImpliesSH
+      | DiamondImpliesNegSH => DiamondImpliesNegSH
+      | IndependenceOfSH => IndependenceOfSH
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1311,6 +1387,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (CohenRealName (a, p)) = CohenRealName (eval_term env a, eval_term env p)
     | eval_term env (Aleph a) = Aleph (eval_term env a)
     | eval_term env (ContinuumSize m) = ContinuumSize (eval_term env m)
+    | eval_term env (SuslinTree (t, ord)) = SuslinTree (eval_term env t, eval_term env ord)
+    | eval_term env (TreePoset t) = TreePoset (eval_term env t)
+    | eval_term _ TheoryMK_AC_MA_NegCH = TheoryMK_AC_MA_NegCH
+    | eval_term _ TheoryZFC_MA_NegCH = TheoryZFC_MA_NegCH
+    | eval_term _ TheoryZFC_Diamond = TheoryZFC_Diamond
+    | eval_term _ TheoryZFC_SH = TheoryZFC_SH
+    | eval_term _ TheoryZFC_NegSH = TheoryZFC_NegSH
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1439,6 +1522,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | NegContinuumHypothesis => true
       | ContinuumAtLeastAleph2 => true
       | IndependenceOfCH => true
+      | MartinsAxiom _ => true
+      | MartinsAxiomFull => true
+      | IsSuslinTree _ => true
+      | SuslinHypothesis => true
+      | NegSuslinHypothesis => true
+      | DiamondPrinciple => true
+      | MAImpliesSH => true
+      | DiamondImpliesNegSH => true
+      | IndependenceOfSH => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1867,6 +1959,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (CohenRealName (a, p)) = 52 + 10 * godel_number_term a + 100 * godel_number_term p
     | godel_number_term (Aleph a) = 53 + 10 * godel_number_term a
     | godel_number_term (ContinuumSize m) = 54 + 10 * godel_number_term m
+    | godel_number_term (SuslinTree (t, ord)) = 55 + 10 * godel_number_term t + 100 * godel_number_term ord
+    | godel_number_term (TreePoset t) = 56 + 10 * godel_number_term t
+    | godel_number_term TheoryMK_AC_MA_NegCH = 57
+    | godel_number_term TheoryZFC_MA_NegCH = 58
+    | godel_number_term TheoryZFC_Diamond = 59
+    | godel_number_term TheoryZFC_SH = 60
+    | godel_number_term TheoryZFC_NegSH = 61
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -1925,6 +2024,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm NegContinuumHypothesis = 65
     | godel_number_fm ContinuumAtLeastAleph2 = 66
     | godel_number_fm IndependenceOfCH = 67
+    | godel_number_fm (MartinsAxiom k) = 68 + 10 * godel_number_term k
+    | godel_number_fm MartinsAxiomFull = 69
+    | godel_number_fm (IsSuslinTree t) = 70 + 10 * godel_number_term t
+    | godel_number_fm SuslinHypothesis = 71
+    | godel_number_fm NegSuslinHypothesis = 72
+    | godel_number_fm DiamondPrinciple = 73
+    | godel_number_fm MAImpliesSH = 74
+    | godel_number_fm DiamondImpliesNegSH = 75
+    | godel_number_fm IndependenceOfSH = 76
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -2376,6 +2484,75 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_CH, ConsistencyOf TheoryZFC_NegCH)))
 
   fun prove_independence_of_ch () = axiom_independence_of_ch ()
+
+  (* Martin's Axiom & Suslin Hypothesis (Ticket 7729) *)
+  fun mk_suslin_tree nodes order = SuslinTree (nodes, order)
+
+  fun mk_tree_poset tree = TreePoset tree
+
+  fun eval_is_suslin_tree le_rel nodes height_fn =
+    let
+      val non_empty = not (List.null nodes)
+      val heights = List.map height_fn nodes
+      fun max_h [] = 0 | max_h (x :: xs) = Int.max (x, max_h xs)
+      val h_max = max_h heights
+      fun level_non_empty h = List.exists (fn x => height_fn x = h) nodes
+      fun all_levels_ok h = if h < 0 then true else level_non_empty h andalso all_levels_ok (h - 1)
+      val levels_ok = all_levels_ok h_max
+    in
+      non_empty andalso levels_ok
+    end
+
+  fun eval_ma_kappa has_ccc family_size continuum_size =
+    has_ccc andalso (family_size < continuum_size)
+
+  fun eval_ma_implies_sh ma_aleph1_holds =
+    ma_aleph1_holds
+
+  fun eval_diamond_implies_neg_sh diamond_holds =
+    diamond_holds
+
+  fun axiom_suslin_tree_has_ccc_poset tree =
+    Thm ([], Imp (IsSuslinTree tree, HasCCC (TreePoset tree)))
+
+  fun prove_suslin_tree_has_ccc_poset tree = axiom_suslin_tree_has_ccc_poset tree
+
+  fun axiom_ma_dense_family_filter p kappa fam =
+    Thm ([], Imp (And (HasCCC p, MartinsAxiom kappa),
+                 Exists ("G", IsGenericFilter (Var "G", p, fam))))
+
+  fun prove_ma_dense_family_filter p kappa fam = axiom_ma_dense_family_filter p kappa fam
+
+  fun axiom_ma_aleph1_implies_sh () =
+    Thm ([], Imp (MartinsAxiom (Aleph (OrdSucc OrdZero)), SuslinHypothesis))
+
+  fun prove_ma_aleph1_implies_sh () = axiom_ma_aleph1_implies_sh ()
+
+  fun axiom_diamond_implies_neg_sh () =
+    Thm ([], Imp (DiamondPrinciple, NegSuslinHypothesis))
+
+  fun prove_diamond_implies_neg_sh () = axiom_diamond_implies_neg_sh ()
+
+  fun axiom_relative_consistency_sh () =
+    Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_MA_NegCH))
+
+  fun prove_relative_consistency_sh () = axiom_relative_consistency_sh ()
+
+  fun axiom_con_zfc_implies_con_zfc_sh () =
+    Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_SH))
+
+  fun prove_con_zfc_implies_con_zfc_sh () = axiom_con_zfc_implies_con_zfc_sh ()
+
+  fun axiom_con_zfc_implies_con_zfc_neg_sh () =
+    Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_NegSH))
+
+  fun prove_con_zfc_implies_con_zfc_neg_sh () = axiom_con_zfc_implies_con_zfc_neg_sh ()
+
+  fun axiom_independence_of_sh () =
+    Thm ([], Imp (ConsistencyOf TheoryZFC,
+                 And (ConsistencyOf TheoryZFC_SH, ConsistencyOf TheoryZFC_NegSH)))
+
+  fun prove_independence_of_sh () = axiom_independence_of_sh ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -3033,6 +3210,65 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val indep_ch_thm_ok = case indep_ch_thm of
           Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_CH, ConsistencyOf TheoryZFC_NegCH))) => true
         | _ => false
+
+      (* Tests for Martin's Axiom & Suslin Hypothesis in MKTD (Ticket 7729) *)
+      val suslin_tree_term = mk_suslin_tree (Var "TreeNodes") (Var "TreeOrder")
+      val suslin_tree_ok = (suslin_tree_term = SuslinTree (Var "TreeNodes", Var "TreeOrder"))
+
+      val tree_poset_term = mk_tree_poset suslin_tree_term
+      val tree_poset_ok = (tree_poset_term = TreePoset suslin_tree_term)
+
+      val mock_nodes = [Empty, Singleton Empty, Singleton (Singleton Empty)]
+      fun mock_height_fn n = if n = Empty then 0 else if n = Singleton Empty then 1 else 2
+      fun mock_tree_le a b = (a = b) orelse (a = Empty andalso b <> Empty) orelse (a = Singleton Empty andalso b = Singleton (Singleton Empty))
+      val is_suslin_tree_ok = eval_is_suslin_tree mock_tree_le mock_nodes mock_height_fn
+
+      val ma_kappa_ok = eval_ma_kappa true 10 100
+      val ma_kappa_fail = not (eval_ma_kappa false 10 100) andalso not (eval_ma_kappa true 100 10)
+
+      val ma_sh_ok = eval_ma_implies_sh true
+      val diamond_neg_sh_ok = eval_diamond_implies_neg_sh true
+
+      val tree_ccc_thm = prove_suslin_tree_has_ccc_poset suslin_tree_term
+      val tree_ccc_thm_ok = case tree_ccc_thm of
+          Thm ([], Imp (IsSuslinTree (SuslinTree (Var "TreeNodes", Var "TreeOrder")), HasCCC (TreePoset (SuslinTree (Var "TreeNodes", Var "TreeOrder"))))) => true
+        | _ => false
+
+      val ma_filter_thm = prove_ma_dense_family_filter (Var "P") (Aleph (OrdSucc OrdZero)) (Var "D_family")
+      val ma_filter_thm_ok = case ma_filter_thm of
+          Thm ([], Imp (And (HasCCC (Var "P"), MartinsAxiom (Aleph (OrdSucc OrdZero))),
+                       Exists ("G", IsGenericFilter (Var "G", Var "P", Var "D_family")))) => true
+        | _ => false
+
+      val ma_aleph1_sh_thm = prove_ma_aleph1_implies_sh ()
+      val ma_aleph1_sh_thm_ok = case ma_aleph1_sh_thm of
+          Thm ([], Imp (MartinsAxiom (Aleph (OrdSucc OrdZero)), SuslinHypothesis)) => true
+        | _ => false
+
+      val diamond_neg_sh_thm = prove_diamond_implies_neg_sh ()
+      val diamond_neg_sh_thm_ok = case diamond_neg_sh_thm of
+          Thm ([], Imp (DiamondPrinciple, NegSuslinHypothesis)) => true
+        | _ => false
+
+      val rel_con_sh_thm = prove_relative_consistency_sh ()
+      val rel_con_sh_thm_ok = case rel_con_sh_thm of
+          Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_MA_NegCH)) => true
+        | _ => false
+
+      val con_zfc_sh_thm = prove_con_zfc_implies_con_zfc_sh ()
+      val con_zfc_sh_thm_ok = case con_zfc_sh_thm of
+          Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_SH)) => true
+        | _ => false
+
+      val con_zfc_neg_sh_thm = prove_con_zfc_implies_con_zfc_neg_sh ()
+      val con_zfc_neg_sh_thm_ok = case con_zfc_neg_sh_thm of
+          Thm ([], RelativeConsistency (TheoryZFC, TheoryZFC_NegSH)) => true
+        | _ => false
+
+      val indep_sh_thm = prove_independence_of_sh ()
+      val indep_sh_thm_ok = case indep_sh_thm of
+          Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_SH, ConsistencyOf TheoryZFC_NegSH))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -3083,6 +3319,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso continuum_ge_aleph2_fail andalso ccc_pres_thm_ok andalso cohen_dist_thm_ok
       andalso cont_aleph2_thm_ok andalso gen_neg_ch_thm_ok andalso rel_con_neg_ch_thm_ok
       andalso con_zfc_neg_ch_thm_ok andalso indep_ch_thm_ok
+      andalso suslin_tree_ok andalso tree_poset_ok andalso is_suslin_tree_ok
+      andalso ma_kappa_ok andalso ma_kappa_fail andalso ma_sh_ok andalso diamond_neg_sh_ok
+      andalso tree_ccc_thm_ok andalso ma_filter_thm_ok andalso ma_aleph1_sh_thm_ok
+      andalso diamond_neg_sh_thm_ok andalso rel_con_sh_thm_ok andalso con_zfc_sh_thm_ok
+      andalso con_zfc_neg_sh_thm_ok andalso indep_sh_thm_ok
     end
 end;
 

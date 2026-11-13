@@ -161,6 +161,29 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7729_martins_axiom_and_suslin_hypothesis_symbols(self):
+        """Ticket 7729: verify Martin's Axiom, Suslin Hypothesis, and c.c.c. Forcing symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "martins_axiom_kappa",
+            "suslin_tree",
+            "tree_to_forcing_poset",
+            "dense_levels_in_tree",
+            "ma_derivation_no_suslin_tree",
+            "jensen_diamond_implies_neg_sh",
+            "relative_consistency_sh",
+            "relative_consistency_neg_sh",
+            "independence_of_suslin_hypothesis",
+            "proves_martins_axiom_and_suslin_hypothesis",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7729 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

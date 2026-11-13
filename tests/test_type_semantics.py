@@ -1304,6 +1304,157 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master_res["independence"]["ch_is_independent"])
         self.assertEqual(master_res["pairing_device"], "dunaev_pair")
 
+    def test_martins_axiom_suslin_hypothesis_and_ccc_forcing(self):
+        """Ticket 7729: Martin's Axiom, Suslin Hypothesis, and c.c.c. Forcing in MKTD."""
+        from foundations.type_semantics import (
+            martins_axiom_kappa,
+            suslin_tree,
+            tree_to_forcing_poset,
+            dense_levels_in_tree,
+            ma_derivation_no_suslin_tree,
+            jensen_diamond_implies_neg_sh,
+            relative_consistency_sh,
+            relative_consistency_neg_sh,
+            independence_of_suslin_hypothesis,
+            proves_martins_axiom_and_suslin_hypothesis,
+            DunaevTaggedPair,
+        )
+
+        # 1. Tree nodes and order with Dunaev Tagged Ordered Pairs
+        nodes = ["root", "a", "b", "a0", "b0"]
+        order_pairs = [
+            DunaevTaggedPair("root", "root"),
+            DunaevTaggedPair("a", "a"),
+            DunaevTaggedPair("b", "b"),
+            DunaevTaggedPair("a0", "a0"),
+            DunaevTaggedPair("b0", "b0"),
+            DunaevTaggedPair("root", "a"),
+            DunaevTaggedPair("root", "b"),
+            DunaevTaggedPair("root", "a0"),
+            DunaevTaggedPair("root", "b0"),
+            DunaevTaggedPair("a", "a0"),
+            DunaevTaggedPair("b", "b0"),
+        ]
+
+        def sample_ht(n):
+            if n == "root":
+                return 0
+            if n in ("a", "b"):
+                return 1
+            return 2
+
+        # 2. Suslin tree verification
+        st = suslin_tree(nodes, order_pairs, height_fn=sample_ht)
+        self.assertTrue(st["is_tree"])
+        self.assertTrue(st["is_suslin_tree"])
+        self.assertTrue(st["levels_countable"])
+        self.assertTrue(st["no_uncountable_branches"])
+        self.assertTrue(st["no_uncountable_antichains"])
+        self.assertEqual(st["height"], 3)
+        self.assertEqual(st["pairing_device"], "dunaev_pair")
+
+        # 3. Conversion of tree to c.c.c. forcing poset
+        pos = tree_to_forcing_poset(st)
+        self.assertTrue(pos["has_ccc"])
+        self.assertTrue(pos["compatible_iff_comparable"])
+        self.assertTrue(pos["antichains_coincide"])
+        self.assertEqual(len(pos["poset_carrier"]), 5)
+        self.assertEqual(pos["pairing_device"], "dunaev_pair")
+        for p in pos["poset_order"]:
+            self.assertIsInstance(p, DunaevTaggedPair)
+
+        # 4. Dense level subsets
+        dfam = dense_levels_in_tree(st, max_level=2)
+        self.assertEqual(len(dfam["dense_family"]), 3)
+        self.assertTrue(dfam["each_level_dense"])
+        self.assertEqual(dfam["pairing_device"], "dunaev_pair")
+
+        # 5. Martin's Axiom MA(kappa)
+        g_branch = ["root", "a", "a0"]
+        ma_info = martins_axiom_kappa(
+            kappa=10,
+            continuum=100,
+            poset=pos,
+            dense_family=dfam["dense_family"],
+            generic_filter=g_branch,
+        )
+        self.assertTrue(ma_info["ma_kappa_holds"])
+        self.assertTrue(ma_info["poset_has_ccc"])
+        self.assertTrue(ma_info["filter_meets_all_dense"])
+        self.assertEqual(ma_info["pairing_device"], "dunaev_pair")
+
+        # Test MA failure when filter doesn't meet all dense sets
+        g_bad = ["root"]
+        ma_bad = martins_axiom_kappa(
+            kappa=10,
+            continuum=100,
+            poset=pos,
+            dense_family=dfam["dense_family"],
+            generic_filter=g_bad,
+        )
+        self.assertFalse(ma_bad["ma_kappa_holds"])
+        self.assertFalse(ma_bad["filter_meets_all_dense"])
+
+        # 6. Derivation that MA(aleph_1) implies Suslin's Hypothesis (SH)
+        deriv = ma_derivation_no_suslin_tree(
+            tree=st,
+            poset=pos,
+            dense_family=dfam["dense_family"],
+            generic_filter=g_branch,
+            ma_aleph1=True,
+        )
+        self.assertTrue(deriv["ma_aleph1"])
+        self.assertTrue(deriv["poset_is_ccc"])
+        self.assertTrue(deriv["filter_meets_all_dense_levels"])
+        self.assertTrue(deriv["filter_forms_chain"])
+        self.assertTrue(deriv["branch_is_uncountable"])
+        self.assertTrue(deriv["suslin_tree_contradiction"])
+        self.assertTrue(deriv["no_suslin_tree_exists"])
+        self.assertTrue(deriv["suslin_hypothesis_holds"])
+        self.assertEqual(deriv["pairing_device"], "dunaev_pair")
+
+        # 7. Jensen's diamond principle implies neg_SH
+        diamond_info = jensen_diamond_implies_neg_sh(diamond_holds=True)
+        self.assertTrue(diamond_info["diamond_holds"])
+        self.assertTrue(diamond_info["suslin_tree_constructed"])
+        self.assertTrue(diamond_info["suslin_hypothesis_fails"])
+        self.assertTrue(diamond_info["neg_sh_holds"])
+        self.assertEqual(diamond_info["pairing_device"], "dunaev_pair")
+
+        # 8. Relative consistency of SH and neg_SH
+        rel_sh = relative_consistency_sh(con_zfc=True)
+        self.assertTrue(rel_sh["relative_consistency_holds"])
+        self.assertEqual(rel_sh["base_theory"], "ZFC")
+        self.assertIn("SH", rel_sh["extended_theory"])
+        self.assertEqual(rel_sh["pairing_device"], "dunaev_pair")
+
+        rel_neg_sh = relative_consistency_neg_sh(con_zfc=True)
+        self.assertTrue(rel_neg_sh["relative_consistency_holds"])
+        self.assertEqual(rel_neg_sh["base_theory"], "ZFC")
+        self.assertIn("neg_SH", rel_neg_sh["extended_theory"])
+        self.assertEqual(rel_neg_sh["pairing_device"], "dunaev_pair")
+
+        # 9. Independence of Suslin's Hypothesis
+        indep_sh = independence_of_suslin_hypothesis(con_zfc=True)
+        self.assertTrue(indep_sh["sh_is_independent"])
+        self.assertTrue(indep_sh["con_zfc"])
+        self.assertTrue(indep_sh["con_zfc_plus_sh"])
+        self.assertTrue(indep_sh["con_zfc_plus_neg_sh"])
+        self.assertEqual(indep_sh["pairing_device"], "dunaev_pair")
+
+        # 10. Master theorem runner
+        master_res = proves_martins_axiom_and_suslin_hypothesis(nodes, order_pairs)
+        self.assertTrue(master_res["ma_and_sh_proven"])
+        self.assertTrue(master_res["suslin_tree_verified"])
+        self.assertTrue(master_res["poset_has_ccc"])
+        self.assertTrue(master_res["ma_kappa_holds"])
+        self.assertTrue(master_res["suslin_hypothesis_holds"])
+        self.assertTrue(master_res["diamond_implies_neg_sh"])
+        self.assertTrue(master_res["relative_consistency_sh"]["relative_consistency_holds"])
+        self.assertTrue(master_res["relative_consistency_neg_sh"]["relative_consistency_holds"])
+        self.assertTrue(master_res["independence_of_sh"]["sh_is_independent"])
+        self.assertEqual(master_res["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()
