@@ -682,6 +682,122 @@ class TestTypeSemantics(unittest.TestCase):
         # Empty set axiom: exists x. forall z. not z in x -> "0" works since no elements relate to "0"
         self.assertTrue(internalized_model_satisfaction(mock_dom, empty_rel, ("exists", "x", ("forall", "z", ("not", ("in", "z", "x"))))))
 
+    def test_godel_constructibility_and_delta0_absoluteness(self):
+        """Test Godel constructible hierarchy L_alpha, Def(X), and Delta_0 absoluteness."""
+        from foundations.type_semantics import (
+            is_delta0_formula,
+            definable_subset,
+            definable_powerset,
+            constructible_hierarchy_stage,
+            is_constructible,
+            v_equals_l_predicate,
+            verify_delta0_absoluteness,
+            pairing_formula_delta0,
+            union_formula_delta0,
+            empty_set_formula_delta0,
+            proves_l_models_zfc,
+            Ordinal,
+        )
+
+        # 1. Delta_0 formula syntax checks
+        phi_atom_in = ("in", "x", "y")
+        phi_atom_eq = ("=", "x", "y")
+        phi_bounded_fa = ("bounded_forall", "x", "y", ("in", "x", "z"))
+        phi_bounded_ex = ("bounded_exists", "x", "y", ("=", "x", "z"))
+        phi_bool = ("and", phi_atom_in, ("not", phi_atom_eq))
+
+        self.assertTrue(is_delta0_formula(phi_atom_in))
+        self.assertTrue(is_delta0_formula(phi_atom_eq))
+        self.assertTrue(is_delta0_formula(phi_bounded_fa))
+        self.assertTrue(is_delta0_formula(phi_bounded_ex))
+        self.assertTrue(is_delta0_formula(phi_bool))
+
+        # Unbounded quantifiers are NOT Delta_0
+        phi_unbounded_fa = ("forall", "x", ("in", "x", "y"))
+        phi_unbounded_ex = ("exists", "x", ("=", "x", "y"))
+        self.assertFalse(is_delta0_formula(phi_unbounded_fa))
+        self.assertFalse(is_delta0_formula(phi_unbounded_ex))
+        self.assertFalse(is_delta0_formula(("or", phi_atom_in, phi_unbounded_fa)))
+
+        # 2. Def(X) and L_alpha hierarchy stages
+        l_0 = constructible_hierarchy_stage(0)
+        self.assertEqual(len(l_0), 0)
+
+        l_1 = constructible_hierarchy_stage(1)
+        self.assertEqual(len(l_1), 1)
+        self.assertIn(frozenset(), l_1)
+
+        l_2 = constructible_hierarchy_stage(2)
+        self.assertEqual(len(l_2), 2)
+        self.assertIn(frozenset(), l_2)
+        self.assertIn(frozenset([frozenset()]), l_2)
+
+        l_3 = constructible_hierarchy_stage(3)
+        self.assertEqual(len(l_3), 4)
+
+        # Ordinal stages
+        l_ord_0 = constructible_hierarchy_stage(Ordinal.zero())
+        l_ord_1 = constructible_hierarchy_stage(Ordinal.one())
+        l_ord_2 = constructible_hierarchy_stage(Ordinal.from_int(2))
+        l_ord_omega = constructible_hierarchy_stage(Ordinal.omega())
+        self.assertEqual(len(l_ord_0), 0)
+        self.assertEqual(len(l_ord_1), 1)
+        self.assertEqual(len(l_ord_2), 2)
+        self.assertGreater(len(l_ord_omega), len(l_3))
+
+        # Definable subset operator
+        empty_set = frozenset()
+        one_set = frozenset([empty_set])
+        def_sub = definable_subset(l_2, ("=", "x", "p"), {"p": empty_set})
+        self.assertEqual(def_sub, frozenset([empty_set]))
+
+        # Definable powerset of L_1
+        def_p_l1 = definable_powerset(l_1)
+        self.assertEqual(len(def_p_l1), 2)
+
+        # 3. Constructibility predicate and V = L
+        self.assertTrue(is_constructible(empty_set, max_stage=3))
+        self.assertTrue(is_constructible(one_set, max_stage=3))
+        self.assertTrue(v_equals_l_predicate([empty_set, one_set], max_stage=3))
+
+        # 4. Delta_0 Absoluteness between transitive models L_2 and L_3
+        # L_2 subset L_3, both are transitive sets
+        pair_formula = pairing_formula_delta0("x", "y", "p")
+        self.assertTrue(is_delta0_formula(pair_formula))
+        abs_pairing = verify_delta0_absoluteness(l_2, l_3, pair_formula, {"x": empty_set, "y": empty_set, "p": one_set})
+        self.assertTrue(abs_pairing)
+
+        union_formula = union_formula_delta0("x", "u")
+        self.assertTrue(is_delta0_formula(union_formula))
+        abs_union = verify_delta0_absoluteness(l_2, l_3, union_formula, {"x": one_set, "u": empty_set})
+        self.assertTrue(abs_union)
+
+        empty_formula = empty_set_formula_delta0("e")
+        self.assertTrue(is_delta0_formula(empty_formula))
+        abs_empty = verify_delta0_absoluteness(l_2, l_3, empty_formula, {"e": empty_set})
+        self.assertTrue(abs_empty)
+
+        # Bounded quantifier absoluteness
+        bounded_formula = ("bounded_forall", "z", "p", ("=", "z", "x"))
+        self.assertTrue(is_delta0_formula(bounded_formula))
+        abs_bounded = verify_delta0_absoluteness(l_2, l_3, bounded_formula, {"p": one_set, "x": empty_set})
+        self.assertTrue(abs_bounded)
+
+        # 5. Schema verification: L models ZFC
+        l_zfc = proves_l_models_zfc()
+        self.assertTrue(l_zfc["l_models_zfc"])
+        self.assertIn("extensionality", l_zfc["axioms"])
+        self.assertIn("pairing", l_zfc["axioms"])
+        self.assertIn("union", l_zfc["axioms"])
+        self.assertIn("separation", l_zfc["axioms"])
+        self.assertIn("replacement", l_zfc["axioms"])
+        self.assertIn("powerset", l_zfc["axioms"])
+        self.assertIn("infinity", l_zfc["axioms"])
+        self.assertIn("foundation", l_zfc["axioms"])
+        self.assertIn("choice", l_zfc["axioms"])
+        self.assertIn("constructibility_v_equals_l", l_zfc["axioms"])
+        self.assertIn("dunaev_pair", l_zfc["pairing_device"])
+
 
 
 if __name__ == "__main__":

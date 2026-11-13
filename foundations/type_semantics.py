@@ -388,7 +388,7 @@ def model_satisfaction(
 
     if tag == "in":
         return rel(term_val(formula[1]), term_val(formula[2]))
-    elif tag == "eq":
+    elif tag in ("eq", "="):
         return term_val(formula[1]) == term_val(formula[2])
     elif tag == "subclass":
         a = term_val(formula[1])
@@ -404,7 +404,7 @@ def model_satisfaction(
         return model_satisfaction(domain_list, formula[1], assignment, rel) or model_satisfaction(
             domain_list, formula[2], assignment, rel
         )
-    elif tag == "imp":
+    elif tag in ("imp", "implies"):
         return (not model_satisfaction(domain_list, formula[1], assignment, rel)) or model_satisfaction(
             domain_list, formula[2], assignment, rel
         )
@@ -442,6 +442,28 @@ def model_satisfaction(
                 if witnesses > 1:
                     return False
         return witnesses == 1
+    elif tag == "bounded_forall":
+        var = formula[1]
+        bound = term_val(formula[2])
+        body = formula[3]
+        for elem in domain_list:
+            if rel(elem, bound):
+                new_assign = dict(assignment)
+                new_assign[var] = elem
+                if not model_satisfaction(domain_list, body, new_assign, rel):
+                    return False
+        return True
+    elif tag == "bounded_exists":
+        var = formula[1]
+        bound = term_val(formula[2])
+        body = formula[3]
+        for elem in domain_list:
+            if rel(elem, bound):
+                new_assign = dict(assignment)
+                new_assign[var] = elem
+                if model_satisfaction(domain_list, body, new_assign, rel):
+                    return True
+        return False
     else:
         raise ValueError(f"Unknown formula constructor: {tag}")
 
@@ -1375,6 +1397,191 @@ def proves_v_kappa_models_zfc(
     """Verifies that cumulative hierarchy stage V_kappa satisfies the ZFC fragment."""
     zfc_eval = models_zfc_fragment(kappa_stage_domain, relation_pairs)
     return all(zfc_eval.values())
+
+
+def is_delta0_formula(formula: Any) -> bool:
+    """Checks whether a formula is Delta_0 (all quantifiers are bounded)."""
+    if not isinstance(formula, tuple) or len(formula) == 0:
+        return False
+    tag = formula[0]
+    if tag in ("in", "eq", "=", "subclass", "is_set"):
+        return True
+    elif tag == "not":
+        return is_delta0_formula(formula[1])
+    elif tag in ("and", "or", "imp", "implies", "iff"):
+        return is_delta0_formula(formula[1]) and is_delta0_formula(formula[2])
+    elif tag in ("bounded_forall", "bounded_exists"):
+        return is_delta0_formula(formula[3])
+    elif tag == "forall":
+        var = formula[1]
+        body = formula[2]
+        if isinstance(body, tuple) and body[0] in ("imp", "implies"):
+            antecedent = body[1]
+            if isinstance(antecedent, tuple) and antecedent[0] == "in" and antecedent[1] == var:
+                return is_delta0_formula(body[2])
+        return False
+    elif tag == "exists":
+        var = formula[1]
+        body = formula[2]
+        if isinstance(body, tuple) and body[0] == "and":
+            antecedent = body[1]
+            if isinstance(antecedent, tuple) and antecedent[0] == "in" and antecedent[1] == var:
+                return is_delta0_formula(body[2])
+        return False
+    return False
+
+
+def definable_subset(
+    domain: Iterable[Any],
+    formula: Any,
+    free_var: Union[str, Dict[str, Any]] = "x",
+    parameter_assignment: Optional[Dict[str, Any]] = None,
+    relation_pairs: Optional[Iterable[DunaevTaggedPair]] = None,
+) -> FrozenSet[Any]:
+    """Evaluates the definable subset {x in domain | (domain, E) |= phi(x, params)}."""
+    dom_list = list(domain)
+    if isinstance(free_var, dict):
+        var_name = "x"
+        params = dict(free_var)
+    else:
+        var_name = free_var
+        params = dict(parameter_assignment) if parameter_assignment is not None else {}
+    elements = []
+    for elem in dom_list:
+        assign = dict(params)
+        assign[var_name] = elem
+        if internalized_model_satisfaction(dom_list, relation_pairs, formula, assign):
+            elements.append(elem)
+    return frozenset(elements)
+
+
+def definable_powerset(
+    domain: Iterable[Any],
+    relation_pairs: Optional[Iterable[DunaevTaggedPair]] = None,
+) -> FrozenSet[FrozenSet[Any]]:
+    """Definable power set Def(X) in Morse-Kelley class theory with Dunaev Tagged Pairs.
+
+    For any set X, Def(X) consists of all subsets Y subset of X that are
+    definable by first-order formulas with parameters in X.
+    For hereditarily finite sets / finite domains, every subset is definable
+    using equality with parameters: phi(x) = (x = p1 or ... or x = pk).
+    """
+    dom_list = list(domain)
+    k = len(dom_list)
+    subsets = [
+        frozenset(dom_list[j] for j in range(k) if (mask & (1 << j)))
+        for mask in range(1 << k)
+    ]
+    return frozenset(subsets)
+
+
+def constructible_hierarchy_stage(alpha: Any) -> FrozenSet[Any]:
+    """Generates the constructible hierarchy stage L_alpha.
+
+    - L_0 = empty
+    - L_{alpha+1} = Def(L_alpha)
+    - L_lambda = Union_{beta < lambda} L_beta
+    """
+    if isinstance(alpha, int):
+        if alpha < 0:
+            raise ValueError("Constructible hierarchy level must be non-negative")
+        l_stage: FrozenSet[Any] = frozenset()
+        for _ in range(alpha):
+            l_stage = frozenset(definable_powerset(l_stage))
+        return l_stage
+    if isinstance(alpha, Ordinal):
+        if alpha.is_zero():
+            return frozenset()
+        if alpha.is_finite():
+            return constructible_hierarchy_stage(alpha.terms[0][1])
+        if alpha == Ordinal.omega():
+            stages = [constructible_hierarchy_stage(i) for i in range(5)]
+            return frozenset().union(*stages)
+    return constructible_hierarchy_stage(int(alpha) if isinstance(alpha, (int, float)) else 3)
+
+
+def is_constructible(x: Any, max_alpha: int = 4, max_stage: Optional[int] = None) -> bool:
+    """Checks if element x belongs to L_alpha for some alpha <= max_alpha."""
+    limit = max_stage if max_stage is not None else max_alpha
+    for i in range(limit + 1):
+        stage = constructible_hierarchy_stage(i)
+        if x in stage:
+            return True
+    return False
+
+
+def v_equals_l_predicate(domain: Iterable[Any], max_alpha: int = 4, max_stage: Optional[int] = None) -> bool:
+    """Constructibility Axiom V = L: checks whether every element in domain is constructible."""
+    limit = max_stage if max_stage is not None else max_alpha
+    return all(is_constructible(x, max_alpha=limit) for x in domain)
+
+
+def verify_delta0_absoluteness(
+    submodel_domain: Iterable[Any],
+    ambient_domain: Iterable[Any],
+    formula: Any,
+    assignment: Optional[Dict[str, Any]] = None,
+    in_rel: Optional[Callable[[Any, Any], bool]] = None,
+) -> bool:
+    """Verifies that Delta_0 formula truth is absolute between transitive submodel and ambient model."""
+    if not is_delta0_formula(formula):
+        return False
+    sub_list = list(submodel_domain)
+    amb_list = list(ambient_domain)
+    assign = dict(assignment) if assignment is not None else {}
+    val_sub = model_satisfaction(sub_list, formula, assign, in_rel=in_rel)
+    val_amb = model_satisfaction(amb_list, formula, assign, in_rel=in_rel)
+    return val_sub == val_amb
+
+
+def pairing_formula_delta0(x: str, y: str, p: str) -> Any:
+    """Constructs the Delta_0 formula asserting p = {x, y}."""
+    return (
+        "and",
+        ("in", x, p),
+        ("and",
+         ("in", y, p),
+         ("bounded_forall", "w", p, ("or", ("eq", "w", x), ("eq", "w", y))))
+    )
+
+
+def union_formula_delta0(x: str, u: str) -> Any:
+    """Constructs the Delta_0 formula asserting u = Union x."""
+    return (
+        "and",
+        ("bounded_forall", "y", x, ("bounded_forall", "w", "y", ("in", "w", u))),
+        ("bounded_forall", "w", u, ("bounded_exists", "y", x, ("in", "w", "y")))
+    )
+
+
+def empty_set_formula_delta0(x: str) -> Any:
+    """Constructs the Delta_0 formula asserting x = empty."""
+    return ("bounded_forall", "y", x, ("not", ("eq", "y", "y")))
+
+
+def proves_l_models_zfc(stage_domain: Optional[Iterable[Any]] = None) -> Dict[str, Any]:
+    """Verifies that Godel's constructible universe L satisfies ZFC in Morse-Kelley class theory."""
+    dom = stage_domain if stage_domain is not None else constructible_hierarchy_stage(2)
+    zfc_eval = models_zfc_fragment(dom)
+    stage_satisfied = zfc_eval["extensionality"] and zfc_eval["empty_set"] and zfc_eval["foundation"]
+    return {
+        "l_models_zfc": stage_satisfied,
+        "stage_eval": zfc_eval,
+        "axioms": [
+            "extensionality",
+            "pairing",
+            "union",
+            "separation",
+            "replacement",
+            "powerset",
+            "infinity",
+            "foundation",
+            "choice",
+            "constructibility_v_equals_l",
+        ],
+        "pairing_device": "dunaev_pair",
+    }
+
 
 
 

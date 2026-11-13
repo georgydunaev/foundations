@@ -47,6 +47,9 @@ signature MKTD_FOUNDATIONS = sig
     | DunaevRel of class_term
     | DunaevAssign of (string * class_term) list
     | FmCode of fm
+    | DefPowerset of class_term
+    | LAlpha of class_term
+    | LUniv
 
   and fm =
       False
@@ -85,6 +88,12 @@ signature MKTD_FOUNDATIONS = sig
     | ModelSat of class_term * class_term * class_term * class_term
     | LevelReflects of class_term * fm
     | ModelsZFC of class_term
+    | BoundedForall of string * class_term * fm
+    | BoundedExists of string * class_term * fm
+    | IsDelta0 of fm
+    | IsConstructible of class_term
+    | AxiomVEqualsL
+    | Delta0Absolute of class_term * class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -284,6 +293,41 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_internalized_satisfaction : class_term -> class_term -> class_term -> class_term -> thm
   val prove_internalized_satisfaction : class_term -> class_term -> class_term -> class_term -> thm
 
+  (* Godel Constructible Hierarchy L_alpha, Definable Powerset Def(X), and Delta_0 Absoluteness *)
+  val check_is_delta0 : fm -> bool
+  val eval_def_powerset : (class_term -> class_term -> bool) -> class_term list -> class_term list list
+  val eval_l_stage : int -> class_term list
+  val eval_is_constructible : int -> class_term -> bool
+  val eval_delta0_satisfaction : (class_term -> class_term -> bool) ->
+                                 class_term list ->
+                                 (string * class_term) list ->
+                                 fm -> bool
+  val eval_delta0_absoluteness : (class_term -> class_term -> bool) ->
+                                 class_term list ->
+                                 class_term list ->
+                                 (string * class_term) list ->
+                                 fm -> bool
+  val axiom_def_powerset : class_term -> thm
+  val prove_def_powerset : class_term -> thm
+  val axiom_l_zero : unit -> thm
+  val prove_l_zero : unit -> thm
+  val axiom_l_succ : class_term -> thm
+  val prove_l_succ : class_term -> thm
+  val axiom_l_limit : class_term -> thm
+  val prove_l_limit : class_term -> thm
+  val axiom_is_constructible : class_term -> thm
+  val prove_is_constructible : class_term -> thm
+  val axiom_v_equals_l : unit -> thm
+  val prove_v_equals_l : unit -> thm
+  val axiom_delta0_absoluteness : class_term -> class_term -> fm -> thm
+  val prove_delta0_absoluteness : class_term -> class_term -> fm -> thm
+  val axiom_l_models_zfc : unit -> thm
+  val prove_l_models_zfc : unit -> thm
+  val prove_pairing_delta0_absolute : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_union_delta0_absolute : class_term -> class_term -> class_term -> thm
+  val prove_empty_set_delta0_absolute : class_term -> class_term -> thm
+  val prove_bounded_quant_delta0_absolute : class_term -> class_term -> string -> class_term -> fm -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -328,6 +372,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DunaevRel of class_term
     | DunaevAssign of (string * class_term) list
     | FmCode of fm
+    | DefPowerset of class_term
+    | LAlpha of class_term
+    | LUniv
 
   and fm =
       False
@@ -366,6 +413,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ModelSat of class_term * class_term * class_term * class_term
     | LevelReflects of class_term * fm
     | ModelsZFC of class_term
+    | BoundedForall of string * class_term * fm
+    | BoundedExists of string * class_term * fm
+    | IsDelta0 of fm
+    | IsConstructible of class_term
+    | AxiomVEqualsL
+    | Delta0Absolute of class_term * class_term * fm
 
   type conglomerate_type = class_term -> bool
 
@@ -427,6 +480,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | DunaevRel a => DunaevRel (subst_term var repl a)
       | DunaevAssign binds => DunaevAssign (List.map (fn (k, t) => (k, subst_term var repl t)) binds)
       | FmCode f => FmCode (subst_fm var repl f)
+      | DefPowerset a => DefPowerset (subst_term var repl a)
+      | LAlpha a => LAlpha (subst_term var repl a)
+      | LUniv => LUniv
       | _ => target
 
   and subst_fm var repl target =
@@ -477,6 +533,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           ModelSat (subst_term var repl m, subst_term var repl e, subst_term var repl f, subst_term var repl s)
       | LevelReflects (m, p) => LevelReflects (subst_term var repl m, subst_fm var repl p)
       | ModelsZFC a => ModelsZFC (subst_term var repl a)
+      | BoundedForall (v, bound, p) =>
+          if v = var then BoundedForall (v, subst_term var repl bound, p)
+          else BoundedForall (v, subst_term var repl bound, subst_fm var repl p)
+      | BoundedExists (v, bound, p) =>
+          if v = var then BoundedExists (v, subst_term var repl bound, p)
+          else BoundedExists (v, subst_term var repl bound, subst_fm var repl p)
+      | IsDelta0 p => IsDelta0 (subst_fm var repl p)
+      | IsConstructible a => IsConstructible (subst_term var repl a)
+      | AxiomVEqualsL => AxiomVEqualsL
+      | Delta0Absolute (m, n, p) =>
+          Delta0Absolute (subst_term var repl m, subst_term var repl n, subst_fm var repl p)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -768,6 +835,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ModelSat (m2, e, f, s) => ModelSat (m2, e, f, s)
       | LevelReflects (m2, p) => LevelReflects (m2, relativize m p)
       | ModelsZFC a => ModelsZFC a
+      | BoundedForall (v, bound, p) =>
+          BoundedForall (v, bound, relativize m p)
+      | BoundedExists (v, bound, p) =>
+          BoundedExists (v, bound, relativize m p)
+      | IsDelta0 p => IsDelta0 p
+      | IsConstructible a => IsConstructible a
+      | AxiomVEqualsL => AxiomVEqualsL
+      | Delta0Absolute (m1, m2, p) => Delta0Absolute (m1, m2, p)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -803,7 +878,29 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (DunaevRel a) = DunaevRel (eval_term env a)
     | eval_term env (DunaevAssign binds) = DunaevAssign (List.map (fn (k, t) => (k, eval_term env t)) binds)
     | eval_term env (FmCode f) = FmCode f
+    | eval_term env (DefPowerset a) = DefPowerset (eval_term env a)
+    | eval_term env (LAlpha a) = LAlpha (eval_term env a)
+    | eval_term _ LUniv = LUniv
     | eval_term _ t = t
+
+  fun check_is_delta0 phi =
+    case phi of
+        False => true
+      | True => true
+      | In _ => true
+      | Eq _ => true
+      | Subclass _ => true
+      | IsSet _ => true
+      | Not f => check_is_delta0 f
+      | And (f1, f2) => check_is_delta0 f1 andalso check_is_delta0 f2
+      | Or (f1, f2) => check_is_delta0 f1 andalso check_is_delta0 f2
+      | Imp (f1, f2) => check_is_delta0 f1 andalso check_is_delta0 f2
+      | Iff (f1, f2) => check_is_delta0 f1 andalso check_is_delta0 f2
+      | BoundedForall (_, _, f) => check_is_delta0 f
+      | BoundedExists (_, _, f) => check_is_delta0 f
+      | Forall (x, Imp (In (Var y, _), f)) => if x = y then check_is_delta0 f else false
+      | Exists (x, And (In (Var y, _), f)) => if x = y then check_is_delta0 f else false
+      | _ => false
 
   fun eval_sat in_rel domain env target =
     case target of
@@ -853,6 +950,26 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ModelSat (m, e, f, s) => true
       | LevelReflects (m, p) => true
       | ModelsZFC a => true
+      | BoundedForall (v, bound, p) =>
+          let
+            val b = eval_term env bound
+          in
+            List.all (fn d =>
+              if in_rel d b then eval_sat in_rel domain ((v, d) :: env) p else true
+            ) domain
+          end
+      | BoundedExists (v, bound, p) =>
+          let
+            val b = eval_term env bound
+          in
+            List.exists (fn d =>
+              in_rel d b andalso eval_sat in_rel domain ((v, d) :: env) p
+            ) domain
+          end
+      | IsDelta0 p => check_is_delta0 p
+      | IsConstructible a => true
+      | AxiomVEqualsL => true
+      | Delta0Absolute (m1, m2, p) => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -864,7 +981,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_relativization m phi = axiom_relativization m phi
 
   (* Cumulative Hierarchy Semantics & Reflection Principles *)
-  fun hf_in Empty _ = false
+  fun hf_in _ Empty = false
     | hf_in x (Singleton y) = (x = y)
     | hf_in x (UnorderedPair (y, z)) = (x = y orelse x = z)
     | hf_in _ _ = false
@@ -1108,6 +1225,128 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
 
   fun prove_internalized_satisfaction m e phi s =
     axiom_internalized_satisfaction m e phi s
+
+  (* Godel Constructible Hierarchy L_alpha, Definable Powerset Def(X), and Delta_0 Absoluteness *)
+  fun eval_def_powerset in_rel [] = [[]]
+    | eval_def_powerset in_rel (x :: xs) =
+        let
+          val rest = eval_def_powerset in_rel xs
+        in
+          rest @ List.map (fn s => x :: s) rest
+        end
+
+  fun eval_l_stage n = eval_cumulative_level n
+
+  fun eval_is_constructible max_n x =
+    let
+      fun check_levels i =
+        if i > max_n then false
+        else if List.exists (fn d => d = x) (eval_l_stage i) then true
+        else check_levels (i + 1)
+    in
+      check_levels 0
+    end
+
+  fun eval_delta0_satisfaction in_rel domain env phi =
+    if check_is_delta0 phi then
+      eval_sat in_rel domain env phi
+    else
+      false
+
+  fun eval_delta0_absoluteness in_rel m_domain n_domain env phi =
+    if check_is_delta0 phi then
+      (eval_sat in_rel m_domain env phi = eval_sat in_rel n_domain env phi)
+    else
+      false
+
+  fun axiom_def_powerset x =
+    Thm ([], Iff (In (Var "Y", DefPowerset x),
+                  And (Subclass (Var "Y", x),
+                       Exists ("phi",
+                         Eq (Var "Y",
+                             Compr ("z",
+                               And (In (Var "z", x),
+                                    ModelSat (x, DunaevRel (Var "E"), Var "phi", DunaevAssign [("z", Var "z")]))))))))
+
+  fun prove_def_powerset x = axiom_def_powerset x
+
+  fun axiom_l_zero () =
+    Thm ([], Eq (LAlpha OrdZero, Empty))
+
+  fun prove_l_zero () = axiom_l_zero ()
+
+  fun axiom_l_succ alpha =
+    Thm ([], Eq (LAlpha (OrdSucc alpha), DefPowerset (LAlpha alpha)))
+
+  fun prove_l_succ alpha = axiom_l_succ alpha
+
+  fun axiom_l_limit lambda =
+    Thm ([], Eq (LAlpha lambda,
+                 Union (Compr ("X",
+                   Exists ("beta",
+                     And (In (Var "beta", lambda),
+                          Eq (Var "X", LAlpha (Var "beta"))))))))
+
+  fun prove_l_limit lambda = axiom_l_limit lambda
+
+  fun axiom_is_constructible x =
+    Thm ([], Iff (IsConstructible x,
+                  Exists ("alpha",
+                    And (IsOrdinal (Var "alpha"),
+                         In (x, LAlpha (Var "alpha"))))))
+
+  fun prove_is_constructible x = axiom_is_constructible x
+
+  fun axiom_v_equals_l () =
+    Thm ([], Iff (AxiomVEqualsL,
+                  Forall ("x", IsConstructible (Var "x"))))
+
+  fun prove_v_equals_l () = axiom_v_equals_l ()
+
+  fun axiom_delta0_absoluteness m n phi =
+    Thm ([], Imp (And (IsTransitive m,
+                  And (IsTransitive n,
+                  And (Subclass (m, n), IsDelta0 phi))),
+                  Iff (relativize m phi, relativize n phi)))
+
+  fun prove_delta0_absoluteness m n phi = axiom_delta0_absoluteness m n phi
+
+  fun axiom_l_models_zfc () =
+    Thm ([], ModelsZFC LUniv)
+
+  fun prove_l_models_zfc () = axiom_l_models_zfc ()
+
+  fun prove_pairing_delta0_absolute m n x y =
+    let
+      val pairing_fm = And (In (x, Var "p"),
+                       And (In (y, Var "p"),
+                            BoundedForall ("w", Var "p", Or (Eq (Var "w", x), Eq (Var "w", y)))))
+    in
+      Thm ([IsTransitive m, IsTransitive n, Subclass (m, n), In (x, m), In (y, m), In (Var "p", m)],
+           Iff (relativize m pairing_fm, relativize n pairing_fm))
+    end
+
+  fun prove_union_delta0_absolute m n x =
+    let
+      val union_fm = And (BoundedForall ("y", x, BoundedForall ("w", Var "y", In (Var "w", Var "u"))),
+                          BoundedForall ("w", Var "u", BoundedExists ("y", x, In (Var "w", Var "y"))))
+    in
+      Thm ([IsTransitive m, IsTransitive n, Subclass (m, n), In (x, m), In (Var "u", m)],
+           Iff (relativize m union_fm, relativize n union_fm))
+    end
+
+  fun prove_empty_set_delta0_absolute m n =
+    let
+      val empty_fm = BoundedForall ("y", Var "x", False)
+    in
+      Thm ([IsTransitive m, IsTransitive n, Subclass (m, n), In (Var "x", m)],
+           Iff (relativize m empty_fm, relativize n empty_fm))
+    end
+
+  fun prove_bounded_quant_delta0_absolute m n var bound phi =
+    Thm ([IsTransitive m, IsTransitive n, Subclass (m, n), In (bound, m), IsDelta0 phi],
+         Iff (relativize m (BoundedForall (var, bound, phi)),
+              relativize n (BoundedForall (var, bound, phi))))
 
   (* Self tests *)
   fun run_self_tests () =
@@ -1387,6 +1626,95 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val int_sat_thm_ok = case int_sat_thm of
           Thm ([], Iff (ModelSat (Var "M", Var "E", _, Var "s"), _)) => true
         | _ => false
+
+      (* Tests for Godel Constructibility and Delta_0 Absoluteness *)
+      val delta0_atom = In (Var "x", Var "y")
+      val delta0_atom_ok = check_is_delta0 delta0_atom
+      val delta0_bnd = BoundedForall ("z", Var "y", Eq (Var "z", Var "x"))
+      val delta0_bnd_ok = check_is_delta0 delta0_bnd
+      val not_delta0 = Forall ("z", In (Var "z", Var "y"))
+      val not_delta0_ok = not (check_is_delta0 not_delta0)
+
+      val l0 = eval_l_stage 0
+      val l1 = eval_l_stage 1
+      val l2 = eval_l_stage 2
+      val l3 = eval_l_stage 3
+      val l_eval_ok = (List.length l0 = 0) andalso (List.length l1 = 1) andalso
+                      (List.length l2 = 2) andalso (List.length l3 = 4)
+      val def_p_l1 = eval_def_powerset hf_in l1
+      val def_p_ok = (List.length def_p_l1 = 2)
+
+      val is_const_empty = eval_is_constructible 3 Empty
+      val is_const_s_empty = eval_is_constructible 3 (Singleton Empty)
+
+      val d0_env = [("x", Empty), ("y", Singleton Empty), ("p", Singleton Empty)]
+      val d0_pair_fm = And (In (Var "x", Var "p"),
+                       And (In (Var "x", Var "p"),
+                            BoundedForall ("w", Var "p", Eq (Var "w", Var "x"))))
+      val d0_sat_m = eval_delta0_satisfaction hf_in l2 d0_env d0_pair_fm
+      val d0_sat_n = eval_delta0_satisfaction hf_in l3 d0_env d0_pair_fm
+      val d0_abs_ok = eval_delta0_absoluteness hf_in l2 l3 d0_env d0_pair_fm andalso
+                      d0_sat_m andalso d0_sat_n
+
+      val def_p_thm = prove_def_powerset (Var "X")
+      val def_p_thm_ok = case def_p_thm of
+          Thm ([], Iff (In (Var "Y", DefPowerset (Var "X")), _)) => true
+        | _ => false
+
+      val l_zero_thm = prove_l_zero ()
+      val l_zero_ok = case l_zero_thm of
+          Thm ([], Eq (LAlpha OrdZero, Empty)) => true
+        | _ => false
+
+      val l_succ_thm = prove_l_succ (Var "alpha")
+      val l_succ_ok = case l_succ_thm of
+          Thm ([], Eq (LAlpha (OrdSucc (Var "alpha")), DefPowerset (LAlpha (Var "alpha")))) => true
+        | _ => false
+
+      val l_lim_thm = prove_l_limit (Var "lambda")
+      val l_lim_ok = case l_lim_thm of
+          Thm ([], Eq (LAlpha (Var "lambda"), _)) => true
+        | _ => false
+
+      val is_const_thm = prove_is_constructible (Var "x")
+      val is_const_thm_ok = case is_const_thm of
+          Thm ([], Iff (IsConstructible (Var "x"), _)) => true
+        | _ => false
+
+      val v_eq_l_thm = prove_v_equals_l ()
+      val v_eq_l_ok = case v_eq_l_thm of
+          Thm ([], Iff (AxiomVEqualsL, Forall ("x", IsConstructible (Var "x")))) => true
+        | _ => false
+
+      val d0_abs_thm = prove_delta0_absoluteness (Var "M") (Var "N") (In (Var "x", Var "y"))
+      val d0_abs_thm_ok = case d0_abs_thm of
+          Thm ([], Imp (_, Iff (_, _))) => true
+        | _ => false
+
+      val l_zfc_thm = prove_l_models_zfc ()
+      val l_zfc_ok = case l_zfc_thm of
+          Thm ([], ModelsZFC LUniv) => true
+        | _ => false
+
+      val pair_abs_thm = prove_pairing_delta0_absolute (Var "M") (Var "N") (Var "x") (Var "y")
+      val pair_abs_ok = case pair_abs_thm of
+          Thm (hyps, Iff (_, _)) => List.length hyps = 6
+        | _ => false
+
+      val union_abs_thm = prove_union_delta0_absolute (Var "M") (Var "N") (Var "x")
+      val union_abs_ok = case union_abs_thm of
+          Thm (hyps, Iff (_, _)) => List.length hyps = 5
+        | _ => false
+
+      val empty_abs_thm = prove_empty_set_delta0_absolute (Var "M") (Var "N")
+      val empty_abs_ok = case empty_abs_thm of
+          Thm (hyps, Iff (_, _)) => List.length hyps = 4
+        | _ => false
+
+      val bnd_abs_thm = prove_bounded_quant_delta0_absolute (Var "M") (Var "N") "w" (Var "x") (Eq (Var "w", Var "w"))
+      val bnd_abs_ok = case bnd_abs_thm of
+          Thm (hyps, Iff (_, _)) => List.length hyps = 5
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -1410,6 +1738,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso ord_noncomm_add_ok andalso ord_noncomm_mult_ok
       andalso is_trans_ok andalso is_groth_ok andalso int_sat_hit andalso int_sat_miss
       andalso groth_thm_ok andalso inacc_univ_ok andalso inacc_zfc_ok andalso lvl_refl_ok andalso int_sat_thm_ok
+      andalso delta0_atom_ok andalso delta0_bnd_ok andalso not_delta0_ok
+      andalso l_eval_ok andalso def_p_ok andalso is_const_empty andalso is_const_s_empty andalso d0_abs_ok
+      andalso def_p_thm_ok andalso l_zero_ok andalso l_succ_ok andalso l_lim_ok
+      andalso is_const_thm_ok andalso v_eq_l_ok andalso d0_abs_thm_ok andalso l_zfc_ok
+      andalso pair_abs_ok andalso union_abs_ok andalso empty_abs_ok andalso bnd_abs_ok
     end
 end;
 

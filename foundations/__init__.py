@@ -79,6 +79,17 @@ from foundations.type_semantics import (
     internalized_model_satisfaction,
     models_zfc_fragment,
     proves_v_kappa_models_zfc,
+    is_delta0_formula,
+    definable_subset,
+    definable_powerset,
+    constructible_hierarchy_stage,
+    is_constructible,
+    v_equals_l_predicate,
+    verify_delta0_absoluteness,
+    pairing_formula_delta0,
+    union_formula_delta0,
+    empty_set_formula_delta0,
+    proves_l_models_zfc,
 )
 
 __all__: list[str] = [
@@ -159,4 +170,15 @@ __all__: list[str] = [
     "internalized_model_satisfaction",
     "models_zfc_fragment",
     "proves_v_kappa_models_zfc",
+    "is_delta0_formula",
+    "definable_subset",
+    "definable_powerset",
+    "constructible_hierarchy_stage",
+    "is_constructible",
+    "v_equals_l_predicate",
+    "verify_delta0_absoluteness",
+    "pairing_formula_delta0",
+    "union_formula_delta0",
+    "empty_set_formula_delta0",
+    "proves_l_models_zfc",
 ]
