@@ -109,6 +109,21 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("prove_ord_addition_noncommutative", content)
         self.assertIn("prove_ord_multiplication_noncommutative", content)
 
+        # Grothendieck Universes, Inaccessible Cardinals, and Internalized Satisfaction
+        self.assertIn("axiom_grothendieck_universe", content)
+        self.assertIn("prove_grothendieck_universe", content)
+        self.assertIn("axiom_inaccessible_universe", content)
+        self.assertIn("prove_inaccessible_universe", content)
+        self.assertIn("axiom_inaccessible_models_zfc", content)
+        self.assertIn("prove_inaccessible_models_zfc", content)
+        self.assertIn("axiom_level_reflection", content)
+        self.assertIn("prove_level_reflection", content)
+        self.assertIn("axiom_internalized_satisfaction", content)
+        self.assertIn("prove_internalized_satisfaction", content)
+        self.assertIn("eval_is_transitive", content)
+        self.assertIn("eval_is_grothendieck", content)
+        self.assertIn("eval_internalized_sat", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

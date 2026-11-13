@@ -531,6 +531,157 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertNotEqual(two_to_omega, omega_sq)
         self.assertEqual(ordinal_exp(2, omega), omega)
 
+    def test_grothendieck_universe_predicates_and_replacement(self):
+        """Grothendieck Universes: transitivity, pairing, powerset, union, and replacement."""
+        from foundations.type_semantics import (
+            is_transitive_set,
+            is_closed_under_pairing,
+            is_closed_under_powerset,
+            is_closed_under_union,
+            is_grothendieck_universe,
+            grothendieck_universe_satisfies_replacement,
+            cumulative_hierarchy_v,
+        )
+
+        v0 = cumulative_hierarchy_v(0)
+        v1 = cumulative_hierarchy_v(1)
+        v2 = cumulative_hierarchy_v(2)
+
+        # Transitivity
+        self.assertTrue(is_transitive_set(v0))
+        self.assertTrue(is_transitive_set(v1))
+        self.assertTrue(is_transitive_set(v2))
+
+        # Non-transitive set: { { {0} } }
+        non_trans = frozenset({frozenset({frozenset({0})})})
+        self.assertFalse(is_transitive_set(non_trans))
+
+        # Pairing closure: v0 is vacuously closed
+        self.assertTrue(is_closed_under_pairing(v0))
+        # v1 = { empty }; {empty, empty} = {empty} is in v2, not in v1
+        self.assertFalse(is_closed_under_pairing(v1))
+        # v2 = { empty, {empty} }; pairing of {empty} with itself gives {{empty}} not in v2
+        self.assertFalse(is_closed_under_pairing(v2))
+
+        # Powerset closure: P(empty) = {empty} in v1; but P({empty}) = {empty, {empty}} not in v1
+        self.assertFalse(is_closed_under_powerset(v1))
+
+        # Grothendieck universe verification
+        self.assertTrue(is_grothendieck_universe(frozenset(), allow_finite=True))
+        self.assertFalse(is_grothendieck_universe(v1, allow_finite=True))
+        self.assertFalse(is_grothendieck_universe(v2, allow_finite=True))
+
+        # Replacement / indexed union closure
+        index_set = frozenset({0, 1})
+        domain = frozenset({frozenset(), frozenset({0}), frozenset({1}), frozenset({0, 1}), index_set})
+        self.assertTrue(
+            grothendieck_universe_satisfies_replacement(
+                domain,
+                index_set,
+                lambda i: frozenset({i}),
+            )
+        )
+
+    def test_strongly_inaccessible_cardinals_and_cumulative_stages(self):
+        """Strongly inaccessible cardinals: regularity, strong limit, and cumulative stages."""
+        from foundations.type_semantics import (
+            is_regular_cardinal,
+            is_strong_limit_cardinal,
+            is_strongly_inaccessible_cardinal,
+            cumulative_hierarchy_stage,
+            Ordinal,
+        )
+
+        omega = Ordinal.omega()
+        self.assertTrue(is_regular_cardinal(omega))
+        self.assertTrue(is_strong_limit_cardinal(omega))
+        # omega is countable, so not strongly inaccessible
+        self.assertFalse(is_strongly_inaccessible_cardinal(omega))
+        self.assertFalse(is_strongly_inaccessible_cardinal(42))
+
+        # Mock strongly inaccessible cardinal
+        class InaccessibleCardinal:
+            is_regular = True
+            is_strong_limit = True
+            is_strongly_inaccessible = True
+
+        kappa = InaccessibleCardinal()
+        self.assertTrue(is_strongly_inaccessible_cardinal(kappa))
+
+        # Cumulative hierarchy stages
+        v_0 = cumulative_hierarchy_stage(0)
+        v_1 = cumulative_hierarchy_stage(1)
+        v_2 = cumulative_hierarchy_stage(2)
+        v_3 = cumulative_hierarchy_stage(3)
+        self.assertEqual(len(v_0), 0)
+        self.assertEqual(len(v_1), 1)
+        self.assertEqual(len(v_2), 2)
+        self.assertEqual(len(v_3), 4)
+
+        # Ordinal stages
+        v_ord_0 = cumulative_hierarchy_stage(Ordinal.zero())
+        v_ord_1 = cumulative_hierarchy_stage(Ordinal.one())
+        v_ord_omega = cumulative_hierarchy_stage(Ordinal.omega())
+        self.assertEqual(len(v_ord_0), 0)
+        self.assertEqual(len(v_ord_1), 1)
+        self.assertGreater(len(v_ord_omega), len(v_3))
+
+    def test_internalized_model_satisfaction_with_dunaev_pairs(self):
+        """Internalized Tarskian satisfaction and ZFC fragments using Dunaev Tagged Pairs."""
+        from foundations.type_semantics import (
+            dunaev_pair,
+            dunaev_fst,
+            dunaev_snd,
+            dunaev_relation_from_predicate,
+            internalized_valuation,
+            internalized_valuation_lookup,
+            internalized_model_satisfaction,
+            models_zfc_fragment,
+            proves_v_kappa_models_zfc,
+            cumulative_hierarchy_v,
+        )
+
+        domain = ["a", "b", "c"]
+        # E = {(a, b), (b, c)}
+        rel_pairs = dunaev_relation_from_predicate(domain, lambda x, y: (x, y) in [("a", "b"), ("b", "c")])
+        self.assertEqual(len(rel_pairs), 2)
+        self.assertIn(dunaev_pair("a", "b"), rel_pairs)
+
+        assign = {"x": "a", "y": "b"}
+        val_pairs = internalized_valuation(assign)
+        self.assertEqual(internalized_valuation_lookup(val_pairs, "x"), "a")
+        self.assertEqual(internalized_valuation_lookup(val_pairs, "y"), "b")
+
+        # Atomic satisfaction
+        phi_in = ("in", "x", "y")
+        self.assertTrue(internalized_model_satisfaction(domain, rel_pairs, phi_in, assign))
+        self.assertTrue(internalized_model_satisfaction(domain, rel_pairs, phi_in, val_pairs))
+
+        phi_in_rev = ("in", "y", "x")
+        self.assertFalse(internalized_model_satisfaction(domain, rel_pairs, phi_in_rev, assign))
+
+        # Quantified satisfaction: exists z. in(x, z)
+        phi_exists = ("exists", "z", ("in", "x", "z"))
+        self.assertTrue(internalized_model_satisfaction(domain, rel_pairs, phi_exists, {"x": "a"}))
+        self.assertFalse(internalized_model_satisfaction(domain, rel_pairs, phi_exists, {"x": "c"}))
+
+        # ZFC fragment evaluation on V_2 = {empty, {empty}}
+        v2 = cumulative_hierarchy_v(2)
+        zfc_eval_v2 = models_zfc_fragment(v2)
+        self.assertTrue(zfc_eval_v2["extensionality"])
+        self.assertTrue(zfc_eval_v2["empty_set"])
+        self.assertTrue(zfc_eval_v2["foundation"])
+
+        # Model with full fragment satisfaction
+        class MockZFCModel:
+            pass
+
+        mock_dom = ["0"]
+        # Structure with 1 element and empty relation satisfies extensionality, empty set, foundation
+        empty_rel = dunaev_relation_from_predicate(mock_dom, lambda x, y: False)
+        # Empty set axiom: exists x. forall z. not z in x -> "0" works since no elements relate to "0"
+        self.assertTrue(internalized_model_satisfaction(mock_dom, empty_rel, ("exists", "x", ("forall", "z", ("not", ("in", "z", "x"))))))
+
 
 
 if __name__ == "__main__":

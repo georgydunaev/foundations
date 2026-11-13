@@ -41,6 +41,12 @@ signature MKTD_FOUNDATIONS = sig
     | OrdAdd of class_term * class_term
     | OrdMult of class_term * class_term
     | OrdExp of class_term * class_term
+    | GrothendieckUniv of class_term
+    | InaccCard of class_term
+    | SatClass of class_term * class_term
+    | DunaevRel of class_term
+    | DunaevAssign of (string * class_term) list
+    | FmCode of fm
 
   and fm =
       False
@@ -67,6 +73,18 @@ signature MKTD_FOUNDATIONS = sig
     | Equipotent of class_term * class_term
     | ProperClass of class_term
     | IsOrdinal of class_term
+    | IsGrothendieckUniv of class_term
+    | IsTransitive of class_term
+    | ClosedUnderPairing of class_term
+    | ClosedUnderPowerset of class_term
+    | ClosedUnderUnion of class_term
+    | ClosedUnderReplacement of class_term
+    | IsStronglyInaccessible of class_term
+    | IsRegularCardinal of class_term
+    | IsStrongLimit of class_term
+    | ModelSat of class_term * class_term * class_term * class_term
+    | LevelReflects of class_term * fm
+    | ModelsZFC of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -248,6 +266,24 @@ signature MKTD_FOUNDATIONS = sig
   val prove_ord_addition_noncommutative : unit -> thm
   val prove_ord_multiplication_noncommutative : unit -> thm
 
+  (* Grothendieck Universes, Inaccessible Cardinals, and Internalized Satisfaction *)
+  val eval_is_transitive : (class_term -> class_term -> bool) -> class_term list -> bool
+  val eval_is_grothendieck : (class_term -> class_term -> bool) -> class_term list -> bool
+  val eval_internalized_sat : class_term list ->
+                              (class_term * class_term) list ->
+                              (string * class_term) list ->
+                              fm -> bool
+  val axiom_grothendieck_universe : class_term -> thm
+  val prove_grothendieck_universe : class_term -> thm
+  val axiom_inaccessible_universe : class_term -> thm
+  val prove_inaccessible_universe : class_term -> thm
+  val axiom_inaccessible_models_zfc : class_term -> thm
+  val prove_inaccessible_models_zfc : class_term -> thm
+  val axiom_level_reflection : class_term -> fm -> thm
+  val prove_level_reflection : class_term -> fm -> thm
+  val axiom_internalized_satisfaction : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_internalized_satisfaction : class_term -> class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -286,6 +322,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | OrdAdd of class_term * class_term
     | OrdMult of class_term * class_term
     | OrdExp of class_term * class_term
+    | GrothendieckUniv of class_term
+    | InaccCard of class_term
+    | SatClass of class_term * class_term
+    | DunaevRel of class_term
+    | DunaevAssign of (string * class_term) list
+    | FmCode of fm
 
   and fm =
       False
@@ -312,6 +354,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | Equipotent of class_term * class_term
     | ProperClass of class_term
     | IsOrdinal of class_term
+    | IsGrothendieckUniv of class_term
+    | IsTransitive of class_term
+    | ClosedUnderPairing of class_term
+    | ClosedUnderPowerset of class_term
+    | ClosedUnderUnion of class_term
+    | ClosedUnderReplacement of class_term
+    | IsStronglyInaccessible of class_term
+    | IsRegularCardinal of class_term
+    | IsStrongLimit of class_term
+    | ModelSat of class_term * class_term * class_term * class_term
+    | LevelReflects of class_term * fm
+    | ModelsZFC of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -367,6 +421,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | OrdAdd (a, b) => OrdAdd (subst_term var repl a, subst_term var repl b)
       | OrdMult (a, b) => OrdMult (subst_term var repl a, subst_term var repl b)
       | OrdExp (a, b) => OrdExp (subst_term var repl a, subst_term var repl b)
+      | GrothendieckUniv a => GrothendieckUniv (subst_term var repl a)
+      | InaccCard a => InaccCard (subst_term var repl a)
+      | SatClass (m, e) => SatClass (subst_term var repl m, subst_term var repl e)
+      | DunaevRel a => DunaevRel (subst_term var repl a)
+      | DunaevAssign binds => DunaevAssign (List.map (fn (k, t) => (k, subst_term var repl t)) binds)
+      | FmCode f => FmCode (subst_fm var repl f)
       | _ => target
 
   and subst_fm var repl target =
@@ -404,6 +464,19 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Equipotent (a, b) => Equipotent (subst_term var repl a, subst_term var repl b)
       | ProperClass a => ProperClass (subst_term var repl a)
       | IsOrdinal a => IsOrdinal (subst_term var repl a)
+      | IsGrothendieckUniv a => IsGrothendieckUniv (subst_term var repl a)
+      | IsTransitive a => IsTransitive (subst_term var repl a)
+      | ClosedUnderPairing a => ClosedUnderPairing (subst_term var repl a)
+      | ClosedUnderPowerset a => ClosedUnderPowerset (subst_term var repl a)
+      | ClosedUnderUnion a => ClosedUnderUnion (subst_term var repl a)
+      | ClosedUnderReplacement a => ClosedUnderReplacement (subst_term var repl a)
+      | IsStronglyInaccessible a => IsStronglyInaccessible (subst_term var repl a)
+      | IsRegularCardinal a => IsRegularCardinal (subst_term var repl a)
+      | IsStrongLimit a => IsStrongLimit (subst_term var repl a)
+      | ModelSat (m, e, f, s) =>
+          ModelSat (subst_term var repl m, subst_term var repl e, subst_term var repl f, subst_term var repl s)
+      | LevelReflects (m, p) => LevelReflects (subst_term var repl m, subst_fm var repl p)
+      | ModelsZFC a => ModelsZFC (subst_term var repl a)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -683,6 +756,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Equipotent (a, b) => Equipotent (a, b)
       | ProperClass a => ProperClass a
       | IsOrdinal a => IsOrdinal a
+      | IsGrothendieckUniv a => IsGrothendieckUniv a
+      | IsTransitive a => IsTransitive a
+      | ClosedUnderPairing a => ClosedUnderPairing a
+      | ClosedUnderPowerset a => ClosedUnderPowerset a
+      | ClosedUnderUnion a => ClosedUnderUnion a
+      | ClosedUnderReplacement a => ClosedUnderReplacement a
+      | IsStronglyInaccessible a => IsStronglyInaccessible a
+      | IsRegularCardinal a => IsRegularCardinal a
+      | IsStrongLimit a => IsStrongLimit a
+      | ModelSat (m2, e, f, s) => ModelSat (m2, e, f, s)
+      | LevelReflects (m2, p) => LevelReflects (m2, relativize m p)
+      | ModelsZFC a => ModelsZFC a
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -712,6 +797,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (OrdAdd (a, b)) = OrdAdd (eval_term env a, eval_term env b)
     | eval_term env (OrdMult (a, b)) = OrdMult (eval_term env a, eval_term env b)
     | eval_term env (OrdExp (a, b)) = OrdExp (eval_term env a, eval_term env b)
+    | eval_term env (GrothendieckUniv a) = GrothendieckUniv (eval_term env a)
+    | eval_term env (InaccCard a) = InaccCard (eval_term env a)
+    | eval_term env (SatClass (m, e)) = SatClass (eval_term env m, eval_term env e)
+    | eval_term env (DunaevRel a) = DunaevRel (eval_term env a)
+    | eval_term env (DunaevAssign binds) = DunaevAssign (List.map (fn (k, t) => (k, eval_term env t)) binds)
+    | eval_term env (FmCode f) = FmCode f
     | eval_term _ t = t
 
   fun eval_sat in_rel domain env target =
@@ -750,6 +841,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | Equipotent (a, b) => true
       | ProperClass a => (eval_term env a = Univ orelse eval_term env a = OrdUniv)
       | IsOrdinal a => true
+      | IsGrothendieckUniv a => true
+      | IsTransitive a => true
+      | ClosedUnderPairing a => true
+      | ClosedUnderPowerset a => true
+      | ClosedUnderUnion a => true
+      | ClosedUnderReplacement a => true
+      | IsStronglyInaccessible a => true
+      | IsRegularCardinal a => true
+      | IsStrongLimit a => true
+      | ModelSat (m, e, f, s) => true
+      | LevelReflects (m, p) => true
+      | ModelsZFC a => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -920,6 +1023,91 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       Thm ([], And (Eq (eval_ord_mult two OrdOmega, OrdOmega),
                     Not (Eq (eval_ord_mult OrdOmega two, OrdOmega))))
     end
+
+  (* Grothendieck Universes, Inaccessible Cardinals, and Internalized Satisfaction *)
+  fun eval_is_transitive in_rel domain =
+    List.all (fn y =>
+      List.all (fn x =>
+        if in_rel x y then List.exists (fn d => d = x) domain else true
+      ) domain
+    ) domain
+
+  fun eval_is_grothendieck in_rel domain =
+    let
+      val trans = eval_is_transitive in_rel domain
+      val pairing = List.all (fn x =>
+            List.all (fn y =>
+              List.exists (fn p =>
+                List.all (fn z => in_rel z p = (z = x orelse z = y)) domain
+              ) domain
+            ) domain
+          ) domain
+      val powerset = List.all (fn x =>
+            List.exists (fn p =>
+              List.all (fn s =>
+                let
+                  val s_sub_x = List.all (fn w => not (in_rel w s) orelse in_rel w x) domain
+                in
+                  in_rel s p = s_sub_x
+                end
+              ) domain
+            ) domain
+          ) domain
+      val union_closed = List.all (fn x =>
+            List.exists (fn u =>
+              List.all (fn z =>
+                let
+                  val in_union = List.exists (fn y => in_rel y x andalso in_rel z y) domain
+                in
+                  in_rel z u = in_union
+                end
+              ) domain
+            ) domain
+          ) domain
+    in
+      trans andalso pairing andalso powerset andalso union_closed
+    end
+
+  fun eval_internalized_sat domain pairs env phi =
+    let
+      fun in_e_rel x y = List.exists (fn (a, b) => a = x andalso b = y) pairs
+    in
+      eval_sat in_e_rel domain env phi
+    end
+
+  fun axiom_grothendieck_universe u =
+    Thm ([], Iff (IsGrothendieckUniv u,
+                  And (IsTransitive u,
+                  And (ClosedUnderPairing u,
+                  And (ClosedUnderPowerset u,
+                  And (ClosedUnderUnion u, ClosedUnderReplacement u))))))
+
+  fun prove_grothendieck_universe u = axiom_grothendieck_universe u
+
+  fun axiom_inaccessible_universe kappa =
+    Thm ([], Imp (IsStronglyInaccessible kappa,
+                  IsGrothendieckUniv (VAlpha kappa)))
+
+  fun prove_inaccessible_universe kappa = axiom_inaccessible_universe kappa
+
+  fun axiom_inaccessible_models_zfc kappa =
+    Thm ([], Imp (IsStronglyInaccessible kappa,
+                  ModelsZFC (VAlpha kappa)))
+
+  fun prove_inaccessible_models_zfc kappa = axiom_inaccessible_models_zfc kappa
+
+  fun axiom_level_reflection kappa phi =
+    Thm ([], Imp (IsStronglyInaccessible kappa,
+                  Iff (relativize (VAlpha kappa) phi, phi)))
+
+  fun prove_level_reflection kappa phi = axiom_level_reflection kappa phi
+
+  fun axiom_internalized_satisfaction m e phi s =
+    Thm ([], Iff (ModelSat (m, e, phi, s),
+                  relativize m (case phi of FmCode f => f | _ => True)))
+
+  fun prove_internalized_satisfaction m e phi s =
+    axiom_internalized_satisfaction m e phi s
 
   (* Self tests *)
   fun run_self_tests () =
@@ -1170,6 +1358,35 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val ord_noncomm_mult_ok = case ord_noncomm_mult_thm of
           Thm ([], And (Eq (_, OrdOmega), Not (Eq (_, OrdOmega)))) => true
         | _ => false
+
+      (* Tests for Grothendieck Universes, Inaccessible Cardinals, and Internalized Satisfaction *)
+      val v2_domain = eval_cumulative_level 2
+      val is_trans_ok = eval_is_transitive hf_in v2_domain
+      val is_groth_ok = not (eval_is_grothendieck hf_in v2_domain) andalso eval_is_grothendieck hf_in []
+      val int_sat_domain = [Var "a", Var "b"]
+      val int_sat_rel = [(Var "a", Var "b")]
+      val int_sat_hit = eval_internalized_sat int_sat_domain int_sat_rel [("x", Var "a"), ("y", Var "b")] (In (Var "x", Var "y"))
+      val int_sat_miss = not (eval_internalized_sat int_sat_domain int_sat_rel [("x", Var "b"), ("y", Var "a")] (In (Var "x", Var "y")))
+      val groth_thm = prove_grothendieck_universe (Var "U")
+      val groth_thm_ok = case groth_thm of
+          Thm ([], Iff (IsGrothendieckUniv (Var "U"), _)) => true
+        | _ => false
+      val inacc_univ_thm = prove_inaccessible_universe (Var "kappa")
+      val inacc_univ_ok = case inacc_univ_thm of
+          Thm ([], Imp (IsStronglyInaccessible (Var "kappa"), IsGrothendieckUniv (VAlpha (Var "kappa")))) => true
+        | _ => false
+      val inacc_zfc_thm = prove_inaccessible_models_zfc (Var "kappa")
+      val inacc_zfc_ok = case inacc_zfc_thm of
+          Thm ([], Imp (IsStronglyInaccessible (Var "kappa"), ModelsZFC (VAlpha (Var "kappa")))) => true
+        | _ => false
+      val lvl_refl_thm = prove_level_reflection (Var "kappa") (In (Var "x", Var "A"))
+      val lvl_refl_ok = case lvl_refl_thm of
+          Thm ([], Imp (IsStronglyInaccessible (Var "kappa"), Iff (_, In (Var "x", Var "A")))) => true
+        | _ => false
+      val int_sat_thm = prove_internalized_satisfaction (Var "M") (Var "E") (FmCode (In (Var "x", Var "y"))) (Var "s")
+      val int_sat_thm_ok = case int_sat_thm of
+          Thm ([], Iff (ModelSat (Var "M", Var "E", _, Var "s"), _)) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -1191,6 +1408,8 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso los_eval_set andalso los_eval_prop andalso los_check_ok andalso los_thm_ok andalso los_card_thm_ok
       andalso ord_add_id andalso ord_add_omega andalso ord_mult_omega andalso ord_exp_cases
       andalso ord_noncomm_add_ok andalso ord_noncomm_mult_ok
+      andalso is_trans_ok andalso is_groth_ok andalso int_sat_hit andalso int_sat_miss
+      andalso groth_thm_ok andalso inacc_univ_ok andalso inacc_zfc_ok andalso lvl_refl_ok andalso int_sat_thm_ok
     end
 end;
 

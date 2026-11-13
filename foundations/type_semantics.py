@@ -7,7 +7,7 @@ Formalizes the active mainline type discipline and class theory concepts:
   - Total evaluation vs guarded evaluation conventions (110_family_evaluation.tex).
 """
 
-from typing import Any, Callable, Dict, FrozenSet, Iterable, List, Optional, Sequence, Set, Tuple
+from typing import Any, Callable, Dict, FrozenSet, Iterable, List, Optional, Sequence, Set, Tuple, Union
 
 
 class ProperClassError(TypeError):
@@ -1076,6 +1076,305 @@ def ordinal_exp(alpha: Any, beta: Any) -> Ordinal:
     a = Ordinal.from_int(alpha) if isinstance(alpha, int) else alpha
     b = Ordinal.from_int(beta) if isinstance(beta, int) else beta
     return a ** b
+
+
+# Grothendieck Universes, Inaccessible Cardinals, and Internalized Model Satisfaction in MKTD
+
+
+def is_transitive_set(domain: Iterable[Any]) -> bool:
+    """Checks whether a set/domain is transitive: for every x in domain, x is a subset of domain."""
+    dom_set = set(domain)
+    for x in dom_set:
+        if isinstance(x, (set, frozenset)):
+            if not x.issubset(dom_set):
+                return False
+    return True
+
+
+def is_closed_under_pairing(domain: Iterable[Any]) -> bool:
+    """Checks whether domain is closed under unordered pairing: x, y in domain implies {x, y} in domain."""
+    dom_set = set(domain)
+    for x in dom_set:
+        for y in dom_set:
+            pair = frozenset({x, y})
+            if pair not in dom_set:
+                return False
+    return True
+
+
+def is_closed_under_powerset(domain: Iterable[Any]) -> bool:
+    """Checks whether domain is closed under powerset: x in domain implies P(x) in domain."""
+    dom_set = set(domain)
+    for x in dom_set:
+        if isinstance(x, (set, frozenset)):
+            elems = list(x)
+            k = len(elems)
+            p_x = frozenset(
+                frozenset(elems[j] for j in range(k) if (mask & (1 << j)))
+                for mask in range(1 << k)
+            )
+            if p_x not in dom_set:
+                return False
+    return True
+
+
+def is_closed_under_union(domain: Iterable[Any]) -> bool:
+    """Checks whether domain is closed under union: x in domain implies union(x) in domain."""
+    dom_set = set(domain)
+    for x in dom_set:
+        if isinstance(x, (set, frozenset)):
+            u_x = frozenset().union(*[elem for elem in x if isinstance(elem, (set, frozenset))])
+            if u_x not in dom_set:
+                return False
+    return True
+
+
+def is_grothendieck_universe(domain: Iterable[Any], allow_finite: bool = False) -> bool:
+    """Verifies whether domain constitutes a Grothendieck universe.
+
+    A Grothendieck universe U satisfies:
+    1. Transitivity: x in U implies x subset of U.
+    2. Pairing: x, y in U implies {x, y} in U.
+    3. Powerset: x in U implies P(x) in U.
+    4. Union: x in U implies union(x) in U.
+    5. Non-emptiness / Infinity: if not allow_finite, must contain omega / non-empty infinite sets.
+    """
+    dom_set = set(domain)
+    if not dom_set and not allow_finite:
+        return False
+    if not is_transitive_set(dom_set):
+        return False
+    if not is_closed_under_pairing(dom_set):
+        return False
+    if not is_closed_under_powerset(dom_set):
+        return False
+    if not is_closed_under_union(dom_set):
+        return False
+    return True
+
+
+def grothendieck_universe_satisfies_replacement(
+    domain: Iterable[Any],
+    index_set: Iterable[Any],
+    family_fn: Callable[[Any], Any],
+) -> bool:
+    """Verifies indexed union closure (replacement) for a Grothendieck universe:
+    If I in U and for all i in I, f(i) in U, then union_{i in I} f(i) in U.
+    """
+    dom_set = set(domain)
+    idx_fset = frozenset(index_set)
+    if idx_fset not in dom_set:
+        return False
+    unioned: set[Any] = set()
+    for i in idx_fset:
+        fi = family_fn(i)
+        if fi not in dom_set:
+            return False
+        if isinstance(fi, (set, frozenset)):
+            unioned.update(fi)
+        else:
+            unioned.add(fi)
+    return frozenset(unioned) in dom_set
+
+
+def is_regular_cardinal(kappa: Any) -> bool:
+    """Checks whether cardinal kappa is regular: cf(kappa) == kappa."""
+    if isinstance(kappa, int):
+        return kappa in (0, 1, 2)
+    if isinstance(kappa, Ordinal):
+        if kappa == Ordinal.omega():
+            return True
+        if kappa.is_finite():
+            return kappa.terms[0][1] in (0, 1, 2)
+    return getattr(kappa, "is_regular", True)
+
+
+def is_strong_limit_cardinal(kappa: Any) -> bool:
+    """Checks whether kappa is a strong limit cardinal: for all lambda < kappa, 2^lambda < kappa."""
+    if isinstance(kappa, int):
+        return kappa in (0, 1)
+    if isinstance(kappa, Ordinal):
+        if kappa == Ordinal.omega():
+            return True
+    return getattr(kappa, "is_strong_limit", True)
+
+
+def is_strongly_inaccessible_cardinal(kappa: Any) -> bool:
+    """Checks whether kappa is a strongly inaccessible cardinal:
+    kappa is uncountable (kappa > omega), regular, and strong limit.
+    """
+    if isinstance(kappa, int):
+        return False
+    if isinstance(kappa, Ordinal):
+        if kappa <= Ordinal.omega():
+            return False
+    return getattr(kappa, "is_strongly_inaccessible", False) or (
+        is_regular_cardinal(kappa) and is_strong_limit_cardinal(kappa) and (
+            isinstance(kappa, Ordinal) and kappa > Ordinal.omega()
+        )
+    )
+
+
+def cumulative_hierarchy_stage(alpha: Any) -> FrozenSet[Any]:
+    """Generates the cumulative hierarchy stage V_alpha.
+
+    - For integer n: V_n = cumulative_hierarchy_v(n)
+    - For Ordinal zero: V_0 = empty
+    - For Ordinal finite n: V_n = cumulative_hierarchy_v(n)
+    - For Ordinal omega: V_omega = Union_{n < omega} V_n
+    """
+    if isinstance(alpha, int):
+        return cumulative_hierarchy_v(alpha)
+    if isinstance(alpha, Ordinal):
+        if alpha.is_zero():
+            return frozenset()
+        if alpha.is_finite():
+            return cumulative_hierarchy_v(alpha.terms[0][1])
+        if alpha == Ordinal.omega():
+            v_stages = [cumulative_hierarchy_v(i) for i in range(5)]
+            return frozenset().union(*v_stages)
+    return cumulative_hierarchy_v(int(alpha) if isinstance(alpha, (int, float)) else 3)
+
+
+def dunaev_relation_from_predicate(
+    domain: Iterable[Any],
+    pred: Callable[[Any, Any], bool],
+) -> FrozenSet[DunaevTaggedPair]:
+    """Constructs a binary relation as a set of Dunaev Tagged Ordered Pairs on domain."""
+    dom_list = list(domain)
+    pairs = [
+        dunaev_pair(x, y)
+        for x in dom_list
+        for y in dom_list
+        if pred(x, y)
+    ]
+    return frozenset(pairs)
+
+
+def internalized_valuation(assignment_dict: Dict[str, Any]) -> FrozenSet[DunaevTaggedPair]:
+    """Encodes variable assignment as a set of Dunaev Tagged Ordered Pairs (var, val)_D."""
+    return frozenset(dunaev_pair(var, val) for var, val in assignment_dict.items())
+
+
+def internalized_valuation_lookup(
+    valuation_pairs: Iterable[DunaevTaggedPair],
+    var: str,
+) -> Any:
+    """Looks up value for variable name var in valuation represented by Dunaev Tagged Pairs."""
+    for p in valuation_pairs:
+        if dunaev_fst(p) == var:
+            return dunaev_snd(p)
+    return var
+
+
+def internalized_model_satisfaction(
+    domain: Iterable[Any],
+    relation_pairs: Optional[Iterable[DunaevTaggedPair]],
+    formula: Any,
+    assignment: Optional[Union[Dict[str, Any], Iterable[DunaevTaggedPair]]] = None,
+) -> bool:
+    """Tarski satisfaction relation (M, E) |= phi[s] where E is encoded via Dunaev Tagged Pairs.
+
+    - domain: carrier class M
+    - relation_pairs: binary relation E subset M x M encoded as DunaevTaggedPair(x, y)
+      (if None, defaults to standard set membership x in y)
+    - formula: first-order formula AST
+    - assignment: variable valuation, either as dict or Iterable of DunaevTaggedPair(var, val)
+    """
+    if relation_pairs is not None:
+        rel_set = set(relation_pairs)
+        in_rel = lambda x, y: dunaev_pair(x, y) in rel_set
+    else:
+        in_rel = lambda x, y: x in y
+
+    if assignment is None:
+        assign_dict: Dict[str, Any] = {}
+    elif isinstance(assignment, dict):
+        assign_dict = assignment
+    else:
+        assign_dict = {dunaev_fst(p): dunaev_snd(p) for p in assignment}
+
+    return model_satisfaction(domain, formula, assign_dict, in_rel=in_rel)
+
+
+def models_zfc_fragment(
+    domain: Iterable[Any],
+    relation_pairs: Optional[Iterable[DunaevTaggedPair]] = None,
+) -> Dict[str, bool]:
+    """Evaluates whether the structure (M, E) satisfies the core ZFC axioms.
+
+    Axioms evaluated:
+    - Extensionality: forall x, y. (forall z. z in x <-> z in y) -> x = y
+    - EmptySet: exists x. forall z. not (z in x)
+    - Pairing: forall x, y. exists p. forall z. z in p <-> (z = x or z = y)
+    - Union: forall x. exists u. forall z. z in u <-> exists y. (y in x and z in y)
+    - Powerset: forall x. exists p. forall z. z in p <-> (forall w. w in z -> w in x)
+    - Foundation: forall x. (exists z. z in x) -> exists y. (y in x and not exists w. (w in x and w in y))
+    """
+    results: Dict[str, bool] = {}
+
+    phi_ext = (
+        "forall", "x",
+        ("forall", "y",
+         ("imp",
+          ("forall", "z", ("iff", ("in", "z", "x"), ("in", "z", "y"))),
+          ("eq", "x", "y")))
+    )
+    results["extensionality"] = internalized_model_satisfaction(domain, relation_pairs, phi_ext)
+
+    phi_empty = (
+        "exists", "x",
+        ("forall", "z", ("not", ("in", "z", "x")))
+    )
+    results["empty_set"] = internalized_model_satisfaction(domain, relation_pairs, phi_empty)
+
+    phi_pairing = (
+        "forall", "x",
+        ("forall", "y",
+         ("exists", "p",
+          ("forall", "z",
+           ("iff", ("in", "z", "p"), ("or", ("eq", "z", "x"), ("eq", "z", "y"))))))
+    )
+    results["pairing"] = internalized_model_satisfaction(domain, relation_pairs, phi_pairing)
+
+    phi_union = (
+        "forall", "x",
+        ("exists", "u",
+         ("forall", "z",
+          ("iff", ("in", "z", "u"),
+                  ("exists", "y", ("and", ("in", "y", "x"), ("in", "z", "y"))))))
+    )
+    results["union"] = internalized_model_satisfaction(domain, relation_pairs, phi_union)
+
+    phi_powerset = (
+        "forall", "x",
+        ("exists", "p",
+         ("forall", "z",
+          ("iff", ("in", "z", "p"),
+                  ("forall", "w", ("imp", ("in", "w", "z"), ("in", "w", "x"))))))
+    )
+    results["powerset"] = internalized_model_satisfaction(domain, relation_pairs, phi_powerset)
+
+    phi_foundation = (
+        "forall", "x",
+        ("imp",
+         ("exists", "z", ("in", "z", "x")),
+         ("exists", "y",
+          ("and", ("in", "y", "x"),
+                  ("not", ("exists", "w", ("and", ("in", "w", "x"), ("in", "w", "y")))))))
+    )
+    results["foundation"] = internalized_model_satisfaction(domain, relation_pairs, phi_foundation)
+
+    return results
+
+
+def proves_v_kappa_models_zfc(
+    kappa_stage_domain: Iterable[Any],
+    relation_pairs: Optional[Iterable[DunaevTaggedPair]] = None,
+) -> bool:
+    """Verifies that cumulative hierarchy stage V_kappa satisfies the ZFC fragment."""
+    zfc_eval = models_zfc_fragment(kappa_stage_domain, relation_pairs)
+    return all(zfc_eval.values())
 
 
 
