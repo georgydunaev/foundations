@@ -63,7 +63,7 @@ where
   FalseE: \<open>False \<Longrightarrow> P\<close>
 
 
-subsubsection \<open>Quantifiers\<close>
+subsubsection \<open>Quantifiers and definedness\<close>
 
 axiomatization
   All :: \<open>('a \<Rightarrow> o) \<Rightarrow> o\<close>  (binder \<open>\<forall>\<close> 10) and
@@ -71,18 +71,20 @@ axiomatization
   exists :: \<open>'a \<Rightarrow> o\<close> and
   unique :: \<open>'a \<Rightarrow> o\<close> and
   defined :: \<open>'a \<Rightarrow> o\<close> and
-  epsilon :: \<open>('a \<Rightarrow> o) \<Rightarrow> o\<close>
+  epsilon :: \<open>('a \<Rightarrow> o) \<Rightarrow> 'a\<close> and
+  iota :: \<open>('a \<Rightarrow> o) \<Rightarrow> 'a\<close>
 where
   allI: \<open>(\<And>x. P(x)) \<Longrightarrow> (\<forall>x. P(x))\<close> and
-  spec: \<open>\<lbrakk>(\<forall>x. P(x)) \<and> (exists(x)) \<rbrakk> \<Longrightarrow> P(x)\<close> and
-  exI: \<open>P(x) \<and> (exists(x)) \<Longrightarrow> (\<exists>x. P(x))\<close> and
-  exE: \<open>\<lbrakk>\<exists>x. P(x); \<And>x. P(x) \<Longrightarrow> R\<rbrakk> \<Longrightarrow> R\<close>
+  spec: \<open>\<lbrakk>\<forall>x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(x)\<close> and
+  exI: \<open>\<lbrakk>P(x); exists(x)\<rbrakk> \<Longrightarrow> (\<exists>x. P(x))\<close> and
+  exE: \<open>\<lbrakk>\<exists>x. P(x); \<And>x. P(x) \<Longrightarrow> R\<rbrakk> \<Longrightarrow> R\<close> and
+
+  defined_exists: \<open>defined(x) \<longleftrightarrow> exists(x)\<close> and
+  epsI: \<open>\<lbrakk>\<exists>x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(epsilon(P))\<close> and
+  eps_defined: \<open>\<lbrakk>\<exists>x. P(x); exists(x)\<rbrakk> \<Longrightarrow> defined(epsilon(P))\<close> and
+  iotaI: \<open>\<lbrakk>\<exists>!x. P(x); exists(x)\<rbrakk> \<Longrightarrow> P(iota(P))\<close>
 
 
-axiomatization
-
-where
-  
 subsubsection \<open>Definitions\<close>
 
 definition \<open>True \<equiv> False \<longrightarrow> False\<close>
