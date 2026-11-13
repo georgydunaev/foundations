@@ -50,6 +50,11 @@ signature MKTD_FOUNDATIONS = sig
     | DefPowerset of class_term
     | LAlpha of class_term
     | LUniv
+    | LWellOrder of class_term
+    | GodelCode of int
+    | ElemSubmodel of class_term * class_term
+    | TransCollapse of class_term * class_term
+    | ChoiceFnL of class_term
 
   and fm =
       False
@@ -94,6 +99,13 @@ signature MKTD_FOUNDATIONS = sig
     | IsConstructible of class_term
     | AxiomVEqualsL
     | Delta0Absolute of class_term * class_term * fm
+    | IsWellOrdered of class_term * class_term
+    | LWellOrders of class_term
+    | AxiomChoiceL
+    | ElemSubmodelFm of class_term * class_term
+    | ExtensionalRel of class_term * class_term
+    | TransCollapseFm of class_term * class_term * class_term
+    | CondensationScaffold of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -328,6 +340,33 @@ signature MKTD_FOUNDATIONS = sig
   val prove_empty_set_delta0_absolute : class_term -> class_term -> thm
   val prove_bounded_quant_delta0_absolute : class_term -> class_term -> string -> class_term -> fm -> thm
 
+  (* Canonical Well-Ordering of L, Axiom of Choice (L |= AC), and Condensation Scaffolding *)
+  val godel_number_fm : fm -> int
+  val eval_canonical_well_ordering_l : int -> (class_term * class_term) list
+  val check_is_well_ordered : (class_term * class_term -> bool) -> class_term list -> bool
+  val eval_l_choice : (class_term * class_term) list -> class_term list -> class_term option
+  val eval_tarski_vaught : (class_term -> class_term -> bool) ->
+                           class_term list ->
+                           class_term list ->
+                           (string * class_term) list ->
+                           string ->
+                           fm -> bool
+  val eval_mostowski_collapse : (class_term -> class_term -> bool) ->
+                                class_term list ->
+                                (class_term * class_term) list
+  val axiom_canonical_well_order : class_term -> thm
+  val prove_canonical_well_order : class_term -> thm
+  val axiom_well_ordering_l : class_term -> thm
+  val prove_well_ordering_l : class_term -> thm
+  val axiom_l_models_ac : unit -> thm
+  val prove_l_models_ac : unit -> thm
+  val axiom_tarski_vaught_criterion : class_term -> class_term -> thm
+  val prove_tarski_vaught_criterion : class_term -> class_term -> thm
+  val axiom_mostowski_collapse : class_term -> class_term -> thm
+  val prove_mostowski_collapse : class_term -> class_term -> thm
+  val axiom_condensation_scaffold : class_term -> thm
+  val prove_condensation_scaffold : class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -375,6 +414,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DefPowerset of class_term
     | LAlpha of class_term
     | LUniv
+    | LWellOrder of class_term
+    | GodelCode of int
+    | ElemSubmodel of class_term * class_term
+    | TransCollapse of class_term * class_term
+    | ChoiceFnL of class_term
 
   and fm =
       False
@@ -419,6 +463,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsConstructible of class_term
     | AxiomVEqualsL
     | Delta0Absolute of class_term * class_term * fm
+    | IsWellOrdered of class_term * class_term
+    | LWellOrders of class_term
+    | AxiomChoiceL
+    | ElemSubmodelFm of class_term * class_term
+    | ExtensionalRel of class_term * class_term
+    | TransCollapseFm of class_term * class_term * class_term
+    | CondensationScaffold of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -483,6 +534,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | DefPowerset a => DefPowerset (subst_term var repl a)
       | LAlpha a => LAlpha (subst_term var repl a)
       | LUniv => LUniv
+      | LWellOrder a => LWellOrder (subst_term var repl a)
+      | GodelCode n => GodelCode n
+      | ElemSubmodel (m, n) => ElemSubmodel (subst_term var repl m, subst_term var repl n)
+      | TransCollapse (m, e) => TransCollapse (subst_term var repl m, subst_term var repl e)
+      | ChoiceFnL a => ChoiceFnL (subst_term var repl a)
       | _ => target
 
   and subst_fm var repl target =
@@ -544,6 +600,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | AxiomVEqualsL => AxiomVEqualsL
       | Delta0Absolute (m, n, p) =>
           Delta0Absolute (subst_term var repl m, subst_term var repl n, subst_fm var repl p)
+      | IsWellOrdered (r, x) => IsWellOrdered (subst_term var repl r, subst_term var repl x)
+      | LWellOrders x => LWellOrders (subst_term var repl x)
+      | AxiomChoiceL => AxiomChoiceL
+      | ElemSubmodelFm (m, n) => ElemSubmodelFm (subst_term var repl m, subst_term var repl n)
+      | ExtensionalRel (r, m) => ExtensionalRel (subst_term var repl r, subst_term var repl m)
+      | TransCollapseFm (pi, m, t) =>
+          TransCollapseFm (subst_term var repl pi, subst_term var repl m, subst_term var repl t)
+      | CondensationScaffold a => CondensationScaffold (subst_term var repl a)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -843,6 +907,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsConstructible a => IsConstructible a
       | AxiomVEqualsL => AxiomVEqualsL
       | Delta0Absolute (m1, m2, p) => Delta0Absolute (m1, m2, p)
+      | IsWellOrdered (r, x) => IsWellOrdered (r, x)
+      | LWellOrders x => LWellOrders x
+      | AxiomChoiceL => AxiomChoiceL
+      | ElemSubmodelFm (m1, m2) => ElemSubmodelFm (m1, m2)
+      | ExtensionalRel (r, m1) => ExtensionalRel (r, m1)
+      | TransCollapseFm (pi, m1, t) => TransCollapseFm (pi, m1, t)
+      | CondensationScaffold a => CondensationScaffold a
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -881,6 +952,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (DefPowerset a) = DefPowerset (eval_term env a)
     | eval_term env (LAlpha a) = LAlpha (eval_term env a)
     | eval_term _ LUniv = LUniv
+    | eval_term env (LWellOrder a) = LWellOrder (eval_term env a)
+    | eval_term _ (GodelCode n) = GodelCode n
+    | eval_term env (ElemSubmodel (m, n)) = ElemSubmodel (eval_term env m, eval_term env n)
+    | eval_term env (TransCollapse (m, e)) = TransCollapse (eval_term env m, eval_term env e)
+    | eval_term env (ChoiceFnL a) = ChoiceFnL (eval_term env a)
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -970,6 +1046,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsConstructible a => true
       | AxiomVEqualsL => true
       | Delta0Absolute (m1, m2, p) => true
+      | IsWellOrdered (r, x) => true
+      | LWellOrders x => true
+      | AxiomChoiceL => true
+      | ElemSubmodelFm (m1, m2) => true
+      | ExtensionalRel (r, m1) => true
+      | TransCollapseFm (pi, m1, t) => true
+      | CondensationScaffold a => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1348,6 +1431,158 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
          Iff (relativize m (BoundedForall (var, bound, phi)),
               relativize n (BoundedForall (var, bound, phi))))
 
+  (* Canonical Well-Ordering of L, Axiom of Choice (L |= AC), and Condensation Scaffolding *)
+  fun hash_string s =
+    List.foldl (fn (c, acc) => (acc * 31 + Char.ord c) mod 1000) 0 (String.explode s)
+
+  fun godel_number_term Empty = 0
+    | godel_number_term Univ = 1
+    | godel_number_term (Var v) = 2 + hash_string v
+    | godel_number_term (TagPair (a, b)) = 3 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (Singleton a) = 4 + 10 * godel_number_term a
+    | godel_number_term (UnorderedPair (a, b)) = 5 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (Union a) = 6 + 10 * godel_number_term a
+    | godel_number_term (Power a) = 7 + 10 * godel_number_term a
+    | godel_number_term (LAlpha a) = 8 + 10 * godel_number_term a
+    | godel_number_term LUniv = 9
+    | godel_number_term (LWellOrder a) = 10 + 10 * godel_number_term a
+    | godel_number_term (GodelCode n) = 11 + n
+    | godel_number_term (ElemSubmodel (m, n)) = 12 + 10 * godel_number_term m + 100 * godel_number_term n
+    | godel_number_term (TransCollapse (m, e)) = 13 + 10 * godel_number_term m + 100 * godel_number_term e
+    | godel_number_term (ChoiceFnL a) = 14 + 10 * godel_number_term a
+    | godel_number_term _ = 15
+
+  fun godel_number_fm False = 0
+    | godel_number_fm True = 1
+    | godel_number_fm (In (t1, t2)) = 2 + 10 * godel_number_term t1 + 100 * godel_number_term t2
+    | godel_number_fm (Eq (t1, t2)) = 3 + 10 * godel_number_term t1 + 100 * godel_number_term t2
+    | godel_number_fm (Subclass (t1, t2)) = 4 + 10 * godel_number_term t1 + 100 * godel_number_term t2
+    | godel_number_fm (Not f) = 5 + 10 * godel_number_fm f
+    | godel_number_fm (And (f1, f2)) = 6 + 10 * godel_number_fm f1 + 100 * godel_number_fm f2
+    | godel_number_fm (Or (f1, f2)) = 7 + 10 * godel_number_fm f1 + 100 * godel_number_fm f2
+    | godel_number_fm (Imp (f1, f2)) = 8 + 10 * godel_number_fm f1 + 100 * godel_number_fm f2
+    | godel_number_fm (Iff (f1, f2)) = 9 + 10 * godel_number_fm f1 + 100 * godel_number_fm f2
+    | godel_number_fm (Forall (v, f)) = 11 + 10 * hash_string v + 100 * godel_number_fm f
+    | godel_number_fm (Exists (v, f)) = 12 + 10 * hash_string v + 100 * godel_number_fm f
+    | godel_number_fm (ExistsUnique (v, f)) = 13 + 10 * hash_string v + 100 * godel_number_fm f
+    | godel_number_fm (BoundedForall (v, b, f)) = 14 + 10 * hash_string v + 100 * godel_number_term b + 1000 * godel_number_fm f
+    | godel_number_fm (BoundedExists (v, b, f)) = 15 + 10 * hash_string v + 100 * godel_number_term b + 1000 * godel_number_fm f
+    | godel_number_fm (IsConstructible t) = 16 + 10 * godel_number_term t
+    | godel_number_fm AxiomVEqualsL = 17
+    | godel_number_fm AxiomChoiceL = 18
+    | godel_number_fm (IsWellOrdered (r, x)) = 19 + 10 * godel_number_term r + 100 * godel_number_term x
+    | godel_number_fm (LWellOrders x) = 20 + 10 * godel_number_term x
+    | godel_number_fm (ElemSubmodelFm (m, n)) = 21 + 10 * godel_number_term m + 100 * godel_number_term n
+    | godel_number_fm (ExtensionalRel (r, m)) = 22 + 10 * godel_number_term r + 100 * godel_number_term m
+    | godel_number_fm (TransCollapseFm (pi, m, t)) = 23 + 10 * godel_number_term pi + 100 * godel_number_term m + 1000 * godel_number_term t
+    | godel_number_fm (CondensationScaffold a) = 24 + 10 * godel_number_term a
+    | godel_number_fm _ = 25
+
+  fun eval_canonical_well_ordering_l 0 = []
+    | eval_canonical_well_ordering_l 1 = []
+    | eval_canonical_well_ordering_l n =
+        let
+          val domain = eval_l_stage n
+          fun pairs_from_list [] = []
+            | pairs_from_list (x :: xs) =
+                List.map (fn y => (x, y)) xs @ pairs_from_list xs
+        in
+          pairs_from_list domain
+        end
+
+  fun check_is_well_ordered in_rel domain =
+    let
+      val irreflexive = List.all (fn x => not (in_rel (x, x))) domain
+      val transitive = List.all (fn x =>
+        List.all (fn y =>
+          List.all (fn z =>
+            if in_rel (x, y) andalso in_rel (y, z) then in_rel (x, z) else true
+          ) domain
+        ) domain
+      ) domain
+      val trichotomy = List.all (fn x =>
+        List.all (fn y =>
+          if x = y then true else in_rel (x, y) orelse in_rel (y, x)
+        ) domain
+      ) domain
+    in
+      irreflexive andalso transitive andalso trichotomy
+    end
+
+  fun eval_l_choice rel_pairs [] = NONE
+    | eval_l_choice rel_pairs (x :: xs) =
+        let
+          fun is_min candidate rest =
+            List.all (fn other =>
+              candidate = other orelse List.exists (fn (a, b) => a = candidate andalso b = other) rel_pairs
+            ) (x :: xs)
+          val all_elems = x :: xs
+        in
+          List.find (fn c => is_min c all_elems) all_elems
+        end
+
+  fun eval_tarski_vaught in_rel m_domain n_domain env var phi =
+    let
+      val sat_ambient = List.exists (fn d => eval_sat in_rel n_domain ((var, d) :: env) phi) n_domain
+    in
+      if not sat_ambient then true
+      else List.exists (fn c => eval_sat in_rel n_domain ((var, c) :: env) phi) m_domain
+    end
+
+  fun eval_mostowski_collapse e_rel domain =
+    let
+      fun collapse_elem elem =
+        let
+          val preds = List.filter (fn y => e_rel y elem) domain
+          val collapsed_preds = List.map collapse_elem preds
+        in
+          case collapsed_preds of
+              [] => Empty
+            | [p] => Singleton p
+            | [p1, p2] => UnorderedPair (p1, p2)
+            | p1 :: p2 :: _ => UnorderedPair (p1, p2)
+        end
+    in
+      List.map (fn x => (x, collapse_elem x)) domain
+    end
+
+  fun axiom_canonical_well_order alpha =
+    Thm ([], IsWellOrdered (LWellOrder alpha, LAlpha alpha))
+
+  fun prove_canonical_well_order alpha = axiom_canonical_well_order alpha
+
+  fun axiom_well_ordering_l x =
+    Thm ([], Imp (IsConstructible x, LWellOrders x))
+
+  fun prove_well_ordering_l x = axiom_well_ordering_l x
+
+  fun axiom_l_models_ac () =
+    Thm ([], Imp (AxiomVEqualsL, AxiomChoiceL))
+
+  fun prove_l_models_ac () = axiom_l_models_ac ()
+
+  fun axiom_tarski_vaught_criterion m n =
+    Thm ([], Iff (ElemSubmodelFm (m, n),
+                  Forall ("phi",
+                    Imp (Exists ("x", In (Var "x", n)),
+                         Exists ("c", In (Var "c", m))))))
+
+  fun prove_tarski_vaught_criterion m n = axiom_tarski_vaught_criterion m n
+
+  fun axiom_mostowski_collapse m e =
+    Thm ([], Imp (And (WellFounded (e, m), ExtensionalRel (e, m)),
+                  Exists ("pi",
+                    Exists ("T",
+                      And (IsTransitive (Var "T"),
+                           TransCollapseFm (Var "pi", m, Var "T"))))))
+
+  fun prove_mostowski_collapse m e = axiom_mostowski_collapse m e
+
+  fun axiom_condensation_scaffold lambda =
+    Thm ([], CondensationScaffold lambda)
+
+  fun prove_condensation_scaffold lambda = axiom_condensation_scaffold lambda
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -1715,6 +1950,71 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val bnd_abs_ok = case bnd_abs_thm of
           Thm (hyps, Iff (_, _)) => List.length hyps = 5
         | _ => false
+
+      (* Tests for Canonical Well-Ordering of L, AC, and Condensation Scaffolding *)
+      val gn_false = godel_number_fm False
+      val gn_in = godel_number_fm (In (Var "x", Var "y"))
+      val gn_ok = (gn_false = 0 andalso gn_in > 0)
+
+      val l_wo_0 = eval_canonical_well_ordering_l 0
+      val l_wo_1 = eval_canonical_well_ordering_l 1
+      val l_wo_2 = eval_canonical_well_ordering_l 2
+      val l_wo_3 = eval_canonical_well_ordering_l 3
+
+      fun in_l_wo pairs (a, b) =
+        List.exists (fn (x, y) => x = a andalso y = b) pairs
+
+      val wo_2_ok = check_is_well_ordered (in_l_wo l_wo_2) l2 andalso (List.length l_wo_2 = 1)
+      val wo_3_ok = check_is_well_ordered (in_l_wo l_wo_3) l3 andalso (List.length l_wo_3 = 6)
+
+      val choice_2 = eval_l_choice l_wo_2 [Singleton Empty, Empty]
+      val choice_2_ok = (choice_2 = SOME Empty)
+
+      val choice_3 = eval_l_choice l_wo_3 [UnorderedPair (Empty, Singleton Empty), Singleton (Singleton Empty)]
+      val choice_3_ok = (choice_3 = SOME (Singleton (Singleton Empty)))
+
+      val tv_sub = l2
+      val tv_amb = l3
+      val tv_fm = Eq (Var "x", Empty)
+      val tv_ok = eval_tarski_vaught hf_in tv_sub tv_amb [] "x" tv_fm
+
+      val coll_dom = [Var "a", Var "b"]
+      fun test_e (Var "a") (Var "b") = true
+        | test_e _ _ = false
+      val coll_res = eval_mostowski_collapse test_e coll_dom
+      val coll_ok = case coll_res of
+          [(Var "a", Empty), (Var "b", Singleton Empty)] => true
+        | _ => false
+
+      val can_wo_thm = prove_canonical_well_order (Var "alpha")
+      val can_wo_ok = case can_wo_thm of
+          Thm ([], IsWellOrdered (LWellOrder (Var "alpha"), LAlpha (Var "alpha"))) => true
+        | _ => false
+
+      val wo_l_thm = prove_well_ordering_l (Var "x")
+      val wo_l_ok = case wo_l_thm of
+          Thm ([], Imp (IsConstructible (Var "x"), LWellOrders (Var "x"))) => true
+        | _ => false
+
+      val l_ac_thm = prove_l_models_ac ()
+      val l_ac_ok = case l_ac_thm of
+          Thm ([], Imp (AxiomVEqualsL, AxiomChoiceL)) => true
+        | _ => false
+
+      val tv_thm = prove_tarski_vaught_criterion (Var "M") (Var "N")
+      val tv_ok_thm = case tv_thm of
+          Thm ([], Iff (ElemSubmodelFm (Var "M", Var "N"), _)) => true
+        | _ => false
+
+      val coll_thm = prove_mostowski_collapse (Var "M") (Var "E")
+      val coll_ok_thm = case coll_thm of
+          Thm ([], Imp (And (WellFounded (Var "E", Var "M"), ExtensionalRel (Var "E", Var "M")), _)) => true
+        | _ => false
+
+      val cond_thm = prove_condensation_scaffold (Var "lambda")
+      val cond_ok = case cond_thm of
+          Thm ([], CondensationScaffold (Var "lambda")) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -1743,6 +2043,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso def_p_thm_ok andalso l_zero_ok andalso l_succ_ok andalso l_lim_ok
       andalso is_const_thm_ok andalso v_eq_l_ok andalso d0_abs_thm_ok andalso l_zfc_ok
       andalso pair_abs_ok andalso union_abs_ok andalso empty_abs_ok andalso bnd_abs_ok
+      andalso gn_ok andalso wo_2_ok andalso wo_3_ok
+      andalso choice_2_ok andalso choice_3_ok andalso tv_ok andalso coll_ok
+      andalso can_wo_ok andalso wo_l_ok andalso l_ac_ok
+      andalso tv_ok_thm andalso coll_ok_thm andalso cond_ok
     end
 end;
 

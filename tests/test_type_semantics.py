@@ -798,6 +798,99 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertIn("constructibility_v_equals_l", l_zfc["axioms"])
         self.assertIn("dunaev_pair", l_zfc["pairing_device"])
 
+    def test_canonical_well_ordering_and_choice_in_l(self):
+        """Test canonical well-ordering of L, Axiom of Choice (L |= AC), and Condensation Lemma scaffolding (Ticket 7724)."""
+        from foundations.type_semantics import (
+            godel_number_formula,
+            canonical_l_order_stage,
+            is_well_ordered,
+            l_choice_function,
+            proves_l_models_ac,
+            tarski_vaught_criterion,
+            mostowski_collapse,
+            condensation_lemma_scaffold,
+            constructible_hierarchy_stage,
+            DunaevTaggedPair,
+        )
+
+        # 1. Godel numbering of formulas
+        gn_false = godel_number_formula("false")
+        gn_true = godel_number_formula("true")
+        gn_atom = godel_number_formula(("in", "x", "y"))
+        gn_eq = godel_number_formula(("=", "x", "y"))
+        gn_and = godel_number_formula(("and", ("in", "x", "y"), ("=", "x", "y")))
+        gn_bnd = godel_number_formula(("bounded_forall", "z", "p", ("=", "z", "x")))
+
+        self.assertEqual(gn_false, 0)
+        self.assertEqual(gn_true, 1)
+        self.assertGreater(gn_atom, 0)
+        self.assertGreater(gn_eq, 0)
+        self.assertGreater(gn_and, gn_atom)
+        self.assertGreater(gn_bnd, 0)
+
+        # 2. Canonical well-ordering <_{L_alpha}
+        l_0_pairs = canonical_l_order_stage(0)
+        l_1_pairs = canonical_l_order_stage(1)
+        l_2_pairs = canonical_l_order_stage(2)
+        l_3_pairs = canonical_l_order_stage(3)
+
+        self.assertEqual(len(l_0_pairs), 0)
+        self.assertEqual(len(l_1_pairs), 0)
+        self.assertEqual(len(l_2_pairs), 1)
+        self.assertEqual(len(l_3_pairs), 6)
+
+        l_2_stage = constructible_hierarchy_stage(2)
+        l_3_stage = constructible_hierarchy_stage(3)
+
+        self.assertTrue(is_well_ordered(l_2_stage, l_2_pairs))
+        self.assertTrue(is_well_ordered(l_3_stage, l_3_pairs))
+
+        # 3. Canonical Choice function on L
+        empty = frozenset()
+        s_empty = frozenset([empty])
+        choice_2 = l_choice_function([s_empty, empty], l_2_pairs)
+        self.assertEqual(choice_2, empty)
+
+        # All pairs in L_3 have a consistent choice element
+        for a, b in l_3_pairs:
+            ch = l_choice_function([b, a], l_3_pairs)
+            self.assertEqual(ch, a)
+
+        # Empty subset raises ValueError
+        with self.assertRaises(ValueError):
+            l_choice_function([], l_3_pairs)
+
+        # 4. Godel's theorem: L models AC
+        res_ac = proves_l_models_ac(l_3_stage)
+        self.assertTrue(res_ac["l_models_ac"])
+        self.assertTrue(res_ac["is_well_ordered"])
+        self.assertGreater(res_ac["subsets_tested"], 0)
+        self.assertEqual(res_ac["pairing_device"], "dunaev_pair")
+
+        # 5. Tarski-Vaught criterion for elementary submodels
+        phi_in = ("in", "x", "p")
+        tv_holds = tarski_vaught_criterion(l_2_stage, l_3_stage, phi_in, {"p": s_empty})
+        self.assertTrue(tv_holds)
+
+        # 6. Mostowski Transitive Collapse with Dunaev Tagged Pairs
+        m_dom = [ClassObject("a", is_set=True), ClassObject("b", is_set=True)]
+        e_rel = [DunaevTaggedPair(m_dom[0], m_dom[1])]
+        collapse_map = mostowski_collapse(m_dom, e_rel)
+
+        self.assertIn(m_dom[0], collapse_map)
+        self.assertIn(m_dom[1], collapse_map)
+        self.assertEqual(collapse_map[m_dom[0]], frozenset())
+        self.assertEqual(collapse_map[m_dom[1]], frozenset([frozenset()]))
+
+        collapsed_image = frozenset(collapse_map.values())
+        self.assertEqual(collapsed_image, l_2_stage)
+
+        # 7. Condensation Lemma Scaffolding
+        cond_res = condensation_lemma_scaffold(3)
+        self.assertTrue(cond_res["condensation_holds"])
+        self.assertTrue(cond_res["is_transitive"])
+        self.assertEqual(cond_res["pairing_device"], "dunaev_pair")
+
 
 
 if __name__ == "__main__":

@@ -36,6 +36,27 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertIsNotNone(getattr(foundations, sym))
 
+    def test_ticket_7724_constructible_choice_and_collapse_symbols(self):
+        """Ticket 7724: verify canonical well-ordering, choice, and collapse symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "godel_number_formula",
+            "canonical_l_order_stage",
+            "is_well_ordered",
+            "l_choice_function",
+            "proves_l_models_ac",
+            "tarski_vaught_criterion",
+            "mostowski_collapse",
+            "condensation_lemma_scaffold",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7724 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

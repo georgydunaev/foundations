@@ -90,6 +90,14 @@ from foundations.type_semantics import (
     union_formula_delta0,
     empty_set_formula_delta0,
     proves_l_models_zfc,
+    godel_number_formula,
+    canonical_l_order_stage,
+    is_well_ordered,
+    l_choice_function,
+    proves_l_models_ac,
+    tarski_vaught_criterion,
+    mostowski_collapse,
+    condensation_lemma_scaffold,
 )
 
 __all__: list[str] = [
@@ -181,4 +189,12 @@ __all__: list[str] = [
     "union_formula_delta0",
     "empty_set_formula_delta0",
     "proves_l_models_zfc",
+    "godel_number_formula",
+    "canonical_l_order_stage",
+    "is_well_ordered",
+    "l_choice_function",
+    "proves_l_models_ac",
+    "tarski_vaught_criterion",
+    "mostowski_collapse",
+    "condensation_lemma_scaffold",
 ]
