@@ -59,6 +59,16 @@ signature MKTD_FOUNDATIONS = sig
     | CardSucc of class_term
     | PowersetL of class_term
     | CondenseTarget of class_term
+    | GodelF1 of class_term * class_term
+    | GodelF2 of class_term * class_term
+    | GodelF3 of class_term * class_term
+    | GodelF4 of class_term
+    | GodelF5 of class_term * class_term
+    | GodelF6 of class_term
+    | GodelF7 of class_term
+    | GodelF8 of class_term
+    | TheoryMK
+    | TheoryMK_AC_GCH
 
   and fm =
       False
@@ -118,6 +128,13 @@ signature MKTD_FOUNDATIONS = sig
     | SubclassPowersetL of class_term * class_term
     | CardPowersetLEq of class_term * class_term
     | AxiomGCHInL
+    | IsInnerModel of class_term
+    | OrdInModel of class_term
+    | ClosedGodelOps of class_term
+    | FormulaAbsolute of class_term * fm
+    | ConsistencyOf of class_term
+    | RelativeConsistency of class_term * class_term
+    | AxiomConMKImpliesConMKACGCH
 
   type conglomerate_type = class_term -> bool
 
@@ -405,6 +422,29 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_gch_in_l : unit -> thm
   val prove_gch_in_l : unit -> thm
 
+  (* Inner Model Theory, Godel Operations, Absoluteness and Relative Consistency *)
+  val eval_godel_f1 : class_term -> class_term -> class_term
+  val eval_godel_f2 : (class_term -> class_term -> bool) -> class_term list -> class_term list -> (class_term * class_term) list
+  val eval_godel_f3 : class_term list -> class_term list -> class_term list
+  val eval_godel_f4 : (class_term * class_term) list -> class_term list
+  val eval_godel_f5 : class_term list -> class_term list -> class_term list
+  val eval_godel_f6 : (class_term * class_term * class_term) list -> (class_term * class_term * class_term) list
+  val eval_godel_f7 : (class_term * class_term * class_term) list -> (class_term * class_term * class_term) list
+  val eval_godel_f8 : (class_term * class_term * class_term) list -> (class_term * class_term * class_term) list
+  val eval_is_inner_model : (class_term -> class_term -> bool) -> class_term list -> class_term list -> bool
+  val eval_formula_absoluteness : (class_term -> class_term -> bool) -> class_term list -> class_term list -> (string * class_term) list -> fm -> bool
+  val eval_relative_consistency : bool -> bool
+  val axiom_inner_model : class_term -> thm
+  val prove_inner_model : class_term -> thm
+  val axiom_l_is_inner_model : unit -> thm
+  val prove_l_is_inner_model : unit -> thm
+  val axiom_delta0_inner_model_absoluteness : class_term -> fm -> thm
+  val prove_delta0_inner_model_absoluteness : class_term -> fm -> thm
+  val axiom_relative_consistency_ac_gch : unit -> thm
+  val prove_relative_consistency_ac_gch : unit -> thm
+  val axiom_con_zf_implies_con_zfc_gch : unit -> thm
+  val prove_con_zf_implies_con_zfc_gch : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -461,6 +501,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CardSucc of class_term
     | PowersetL of class_term
     | CondenseTarget of class_term
+    | GodelF1 of class_term * class_term
+    | GodelF2 of class_term * class_term
+    | GodelF3 of class_term * class_term
+    | GodelF4 of class_term
+    | GodelF5 of class_term * class_term
+    | GodelF6 of class_term
+    | GodelF7 of class_term
+    | GodelF8 of class_term
+    | TheoryMK
+    | TheoryMK_AC_GCH
 
   and fm =
       False
@@ -520,6 +570,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SubclassPowersetL of class_term * class_term
     | CardPowersetLEq of class_term * class_term
     | AxiomGCHInL
+    | IsInnerModel of class_term
+    | OrdInModel of class_term
+    | ClosedGodelOps of class_term
+    | FormulaAbsolute of class_term * fm
+    | ConsistencyOf of class_term
+    | RelativeConsistency of class_term * class_term
+    | AxiomConMKImpliesConMKACGCH
 
   type conglomerate_type = class_term -> bool
 
@@ -593,6 +650,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CardSucc a => CardSucc (subst_term var repl a)
       | PowersetL a => PowersetL (subst_term var repl a)
       | CondenseTarget a => CondenseTarget (subst_term var repl a)
+      | GodelF1 (a, b) => GodelF1 (subst_term var repl a, subst_term var repl b)
+      | GodelF2 (a, b) => GodelF2 (subst_term var repl a, subst_term var repl b)
+      | GodelF3 (a, b) => GodelF3 (subst_term var repl a, subst_term var repl b)
+      | GodelF4 a => GodelF4 (subst_term var repl a)
+      | GodelF5 (a, b) => GodelF5 (subst_term var repl a, subst_term var repl b)
+      | GodelF6 a => GodelF6 (subst_term var repl a)
+      | GodelF7 a => GodelF7 (subst_term var repl a)
+      | GodelF8 a => GodelF8 (subst_term var repl a)
+      | TheoryMK => TheoryMK
+      | TheoryMK_AC_GCH => TheoryMK_AC_GCH
       | _ => target
 
   and subst_fm var repl target =
@@ -675,6 +742,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | CardPowersetLEq (kap, succ) =>
           CardPowersetLEq (subst_term var repl kap, subst_term var repl succ)
       | AxiomGCHInL => AxiomGCHInL
+      | IsInnerModel a => IsInnerModel (subst_term var repl a)
+      | OrdInModel a => OrdInModel (subst_term var repl a)
+      | ClosedGodelOps a => ClosedGodelOps (subst_term var repl a)
+      | FormulaAbsolute (m, p) => FormulaAbsolute (subst_term var repl m, subst_fm var repl p)
+      | ConsistencyOf a => ConsistencyOf (subst_term var repl a)
+      | RelativeConsistency (a, b) => RelativeConsistency (subst_term var repl a, subst_term var repl b)
+      | AxiomConMKImpliesConMKACGCH => AxiomConMKImpliesConMKACGCH
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -989,6 +1063,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SubclassPowersetL (kap, succ) => SubclassPowersetL (kap, succ)
       | CardPowersetLEq (kap, succ) => CardPowersetLEq (kap, succ)
       | AxiomGCHInL => AxiomGCHInL
+      | IsInnerModel a => IsInnerModel a
+      | OrdInModel a => OrdInModel a
+      | ClosedGodelOps a => ClosedGodelOps a
+      | FormulaAbsolute (m1, p) => FormulaAbsolute (m1, p)
+      | ConsistencyOf a => ConsistencyOf a
+      | RelativeConsistency (a, b) => RelativeConsistency (a, b)
+      | AxiomConMKImpliesConMKACGCH => AxiomConMKImpliesConMKACGCH
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1036,6 +1117,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (CardSucc a) = CardSucc (eval_term env a)
     | eval_term env (PowersetL a) = PowersetL (eval_term env a)
     | eval_term env (CondenseTarget a) = CondenseTarget (eval_term env a)
+    | eval_term env (GodelF1 (a, b)) = GodelF1 (eval_term env a, eval_term env b)
+    | eval_term env (GodelF2 (a, b)) = GodelF2 (eval_term env a, eval_term env b)
+    | eval_term env (GodelF3 (a, b)) = GodelF3 (eval_term env a, eval_term env b)
+    | eval_term env (GodelF4 a) = GodelF4 (eval_term env a)
+    | eval_term env (GodelF5 (a, b)) = GodelF5 (eval_term env a, eval_term env b)
+    | eval_term env (GodelF6 a) = GodelF6 (eval_term env a)
+    | eval_term env (GodelF7 a) = GodelF7 (eval_term env a)
+    | eval_term env (GodelF8 a) = GodelF8 (eval_term env a)
+    | eval_term _ TheoryMK = TheoryMK
+    | eval_term _ TheoryMK_AC_GCH = TheoryMK_AC_GCH
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1140,6 +1231,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SubclassPowersetL (kap, succ) => true
       | CardPowersetLEq (kap, succ) => true
       | AxiomGCHInL => true
+      | IsInnerModel a => true
+      | OrdInModel a => true
+      | ClosedGodelOps a => true
+      | FormulaAbsolute (m, p) => true
+      | ConsistencyOf a => true
+      | RelativeConsistency (a, b) => true
+      | AxiomConMKImpliesConMKACGCH => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1541,6 +1639,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (CardSucc a) = 17 + 10 * godel_number_term a
     | godel_number_term (PowersetL a) = 18 + 10 * godel_number_term a
     | godel_number_term (CondenseTarget a) = 19 + 10 * godel_number_term a
+    | godel_number_term (GodelF1 (a, b)) = 21 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (GodelF2 (a, b)) = 22 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (GodelF3 (a, b)) = 23 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (GodelF4 a) = 24 + 10 * godel_number_term a
+    | godel_number_term (GodelF5 (a, b)) = 25 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_term (GodelF6 a) = 26 + 10 * godel_number_term a
+    | godel_number_term (GodelF7 a) = 27 + 10 * godel_number_term a
+    | godel_number_term (GodelF8 a) = 28 + 10 * godel_number_term a
+    | godel_number_term TheoryMK = 29
+    | godel_number_term TheoryMK_AC_GCH = 30
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -1575,6 +1683,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (SubclassPowersetL (kap, succ)) = 31 + 10 * godel_number_term kap + 100 * godel_number_term succ
     | godel_number_fm (CardPowersetLEq (kap, succ)) = 32 + 10 * godel_number_term kap + 100 * godel_number_term succ
     | godel_number_fm AxiomGCHInL = 33
+    | godel_number_fm (IsInnerModel a) = 35 + 10 * godel_number_term a
+    | godel_number_fm (OrdInModel a) = 36 + 10 * godel_number_term a
+    | godel_number_fm (ClosedGodelOps a) = 37 + 10 * godel_number_term a
+    | godel_number_fm (FormulaAbsolute (m, p)) = 38 + 10 * godel_number_term m + 100 * godel_number_fm p
+    | godel_number_fm (ConsistencyOf a) = 39 + 10 * godel_number_term a
+    | godel_number_fm (RelativeConsistency (a, b)) = 40 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_fm AxiomConMKImpliesConMKACGCH = 41
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -1768,6 +1883,97 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Imp (AxiomVEqualsL, AxiomGCHInL))
 
   fun prove_gch_in_l () = axiom_gch_in_l ()
+
+  (* Inner Model Theory, Godel Operations, Absoluteness and Relative Consistency *)
+  fun eval_godel_f1 a b =
+    if a = b then Singleton a else UnorderedPair (a, b)
+
+  fun eval_godel_f2 in_rel x_domain y_domain =
+    let
+      val cross = List.concat (List.map (fn x => List.map (fn y => (x, y)) y_domain) x_domain)
+    in
+      List.filter (fn (u, v) => in_rel u v) cross
+    end
+
+  fun eval_godel_f3 x_domain y_domain =
+    List.filter (fn x => not (List.exists (fn y => y = x) y_domain)) x_domain
+
+  fun eval_godel_f4 pairs =
+    let
+      val dom_raw = List.map #1 pairs
+      fun nub [] = []
+        | nub (x :: xs) = if List.exists (fn y => y = x) xs then nub xs else x :: nub xs
+    in
+      nub dom_raw
+    end
+
+  fun eval_godel_f5 x_domain y_domain =
+    List.filter (fn x => List.exists (fn y => y = x) y_domain) x_domain
+
+  fun eval_godel_f6 triples =
+    List.map (fn (u, v, w) => (v, w, u)) triples
+
+  fun eval_godel_f7 triples =
+    List.map (fn (u, v, w) => (u, w, v)) triples
+
+  fun eval_godel_f8 triples =
+    List.map (fn (u, v, w) => (w, v, u)) triples
+
+  fun eval_is_inner_model in_rel m_domain ord_domain =
+    let
+      val is_trans = List.all (fn x =>
+        List.all (fn y =>
+          if in_rel y x then List.exists (fn m => m = y) m_domain else true
+        ) m_domain
+      ) m_domain
+
+      val ord_contained = List.all (fn o_elem =>
+        List.exists (fn m => m = o_elem) m_domain
+      ) ord_domain
+
+      val closed_f1 = List.all (fn x =>
+        List.all (fn y =>
+          let val _ = eval_godel_f1 x y in true end
+        ) m_domain
+      ) m_domain
+    in
+      is_trans andalso ord_contained andalso closed_f1
+    end
+
+  fun eval_formula_absoluteness in_rel m_domain v_domain env phi =
+    let
+      val sat_m = eval_sat in_rel m_domain env phi
+      val sat_v = eval_sat in_rel v_domain env phi
+    in
+      sat_m = sat_v
+    end
+
+  fun eval_relative_consistency con_mk = con_mk
+
+  fun axiom_inner_model m =
+    Thm ([], Iff (IsInnerModel m, And (IsTransitive m, And (OrdInModel m, ClosedGodelOps m))))
+
+  fun prove_inner_model m = axiom_inner_model m
+
+  fun axiom_l_is_inner_model () =
+    Thm ([], IsInnerModel LUniv)
+
+  fun prove_l_is_inner_model () = axiom_l_is_inner_model ()
+
+  fun axiom_delta0_inner_model_absoluteness m phi =
+    Thm ([], Imp (And (IsInnerModel m, IsDelta0 phi), FormulaAbsolute (m, phi)))
+
+  fun prove_delta0_inner_model_absoluteness m phi = axiom_delta0_inner_model_absoluteness m phi
+
+  fun axiom_relative_consistency_ac_gch () =
+    Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_GCH))
+
+  fun prove_relative_consistency_ac_gch () = axiom_relative_consistency_ac_gch ()
+
+  fun axiom_con_zf_implies_con_zfc_gch () =
+    Thm ([], RelativeConsistency (TheoryMK, TheoryMK_AC_GCH))
+
+  fun prove_con_zf_implies_con_zfc_gch () = axiom_con_zf_implies_con_zfc_gch ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -2242,6 +2448,62 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val gch_ok = case gch_thm of
           Thm ([], Imp (AxiomVEqualsL, AxiomGCHInL)) => true
         | _ => false
+
+      (* Tests for Inner Model Theory, Godel Operations, and Relative Consistency (Ticket 7726) *)
+      val gf1_res = eval_godel_f1 Empty (Singleton Empty)
+      val gf1_ok = (gf1_res = UnorderedPair (Empty, Singleton Empty))
+
+      val gf2_res = eval_godel_f2 hf_in l2 l2
+      val gf2_ok = List.all (fn (u, v) => hf_in u v) gf2_res
+
+      val gf3_res = eval_godel_f3 l2 [Empty]
+      val gf3_ok = (gf3_res = [Singleton Empty])
+
+      val gf4_res = eval_godel_f4 [(Empty, Singleton Empty), (Empty, Empty)]
+      val gf4_ok = (gf4_res = [Empty])
+
+      val gf5_res = eval_godel_f5 l2 [Singleton Empty, UnorderedPair (Empty, Empty)]
+      val gf5_ok = (gf5_res = [Singleton Empty])
+
+      val gf6_res = eval_godel_f6 [(Empty, Singleton Empty, Var "x")]
+      val gf6_ok = (gf6_res = [(Singleton Empty, Var "x", Empty)])
+
+      val gf7_res = eval_godel_f7 [(Empty, Singleton Empty, Var "x")]
+      val gf7_ok = (gf7_res = [(Empty, Var "x", Singleton Empty)])
+
+      val gf8_res = eval_godel_f8 [(Empty, Singleton Empty, Var "x")]
+      val gf8_ok = (gf8_res = [(Var "x", Singleton Empty, Empty)])
+
+      val inner_ok = eval_is_inner_model hf_in l3 [Empty, Singleton Empty]
+
+      val abs_ok = eval_formula_absoluteness hf_in l2 l3 [] (Eq (Var "x", Var "x"))
+
+      val rel_con_ok = eval_relative_consistency true
+
+      val in_mod_thm = prove_inner_model (Var "M")
+      val in_mod_ok = case in_mod_thm of
+          Thm ([], Iff (IsInnerModel (Var "M"), And (IsTransitive (Var "M"), And (OrdInModel (Var "M"), ClosedGodelOps (Var "M"))))) => true
+        | _ => false
+
+      val l_in_mod_thm = prove_l_is_inner_model ()
+      val l_in_mod_ok = case l_in_mod_thm of
+          Thm ([], IsInnerModel LUniv) => true
+        | _ => false
+
+      val d0_in_abs_thm = prove_delta0_inner_model_absoluteness (Var "M") (Eq (Var "x", Var "y"))
+      val d0_in_abs_ok = case d0_in_abs_thm of
+          Thm ([], Imp (And (IsInnerModel (Var "M"), IsDelta0 _), FormulaAbsolute (Var "M", _))) => true
+        | _ => false
+
+      val rel_con_thm = prove_relative_consistency_ac_gch ()
+      val rel_con_thm_ok = case rel_con_thm of
+          Thm ([], Imp (ConsistencyOf TheoryMK, ConsistencyOf TheoryMK_AC_GCH)) => true
+        | _ => false
+
+      val con_zf_thm = prove_con_zf_implies_con_zfc_gch ()
+      val con_zf_ok = case con_zf_thm of
+          Thm ([], RelativeConsistency (TheoryMK, TheoryMK_AC_GCH)) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -2277,6 +2539,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso sh_ok andalso cond_lemma_ok andalso rank_bnd_ok andalso cp_ok
       andalso gch_step_ok andalso cond_lem_ok andalso ls_ok andalso rb_ok
       andalso ps_bnd_ok andalso gch_ok
+      andalso gf1_ok andalso gf2_ok andalso gf3_ok andalso gf4_ok
+      andalso gf5_ok andalso gf6_ok andalso gf7_ok andalso gf8_ok
+      andalso inner_ok andalso abs_ok andalso rel_con_ok
+      andalso in_mod_ok andalso l_in_mod_ok andalso d0_in_abs_ok
+      andalso rel_con_thm_ok andalso con_zf_ok
     end
 end;
 

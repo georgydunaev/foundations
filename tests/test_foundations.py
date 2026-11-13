@@ -78,6 +78,31 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7726_inner_models_and_relative_consistency_symbols(self):
+        """Ticket 7726: verify Inner Model Theory and Relative Consistency symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "godel_operation_f1",
+            "godel_operation_f2",
+            "godel_operation_f3",
+            "godel_operation_f4",
+            "godel_operation_f5",
+            "godel_operation_f6",
+            "godel_operation_f7",
+            "godel_operation_f8",
+            "is_inner_model",
+            "delta0_formula_absoluteness",
+            "relative_consistency_ac_gch",
+            "proves_relative_consistency_of_ac_and_gch",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7726 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

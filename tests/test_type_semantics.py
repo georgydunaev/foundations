@@ -972,6 +972,96 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertEqual(len(gch_master["gch_steps"]), 2)
         self.assertEqual(gch_master["pairing_device"], "dunaev_pair")
 
+    def test_inner_model_theory_and_relative_consistency(self):
+        """Ticket 7726: Inner Model Theory, Godel Operations F1 to F8, and Con(ZF) implies Con(ZFC+GCH)."""
+        from foundations.type_semantics import (
+            DunaevTaggedPair,
+            constructible_hierarchy_stage,
+            godel_operation_f1,
+            godel_operation_f2,
+            godel_operation_f3,
+            godel_operation_f4,
+            godel_operation_f5,
+            godel_operation_f6,
+            godel_operation_f7,
+            godel_operation_f8,
+            is_inner_model,
+            delta0_formula_absoluteness,
+            relative_consistency_ac_gch,
+            proves_relative_consistency_of_ac_and_gch,
+        )
+
+        empty = frozenset()
+        s_empty = frozenset([empty])
+        l2 = constructible_hierarchy_stage(2)
+        l3 = constructible_hierarchy_stage(3)
+
+        # 1. Godel basic operations F1 to F8
+        f1 = godel_operation_f1(empty, s_empty)
+        self.assertEqual(f1, frozenset([empty, s_empty]))
+
+        f2 = godel_operation_f2(l2, l2)
+        self.assertEqual(len(f2), 4)
+        for p in f2:
+            self.assertIsInstance(p, DunaevTaggedPair)
+
+        f3 = godel_operation_f3(l2, [empty])
+        self.assertEqual(f3, frozenset([s_empty]))
+
+        f4 = godel_operation_f4([DunaevTaggedPair(empty, s_empty)])
+        self.assertEqual(f4, frozenset([empty]))
+
+        f5 = godel_operation_f5(l2, [s_empty, frozenset([s_empty])])
+        self.assertEqual(f5, frozenset([s_empty]))
+
+        f6 = godel_operation_f6([(1, 2, 3)])
+        self.assertEqual(f6, frozenset([(2, 3, 1)]))
+
+        f7 = godel_operation_f7([(1, 2, 3)])
+        self.assertEqual(f7, frozenset([(1, 3, 2)]))
+
+        f8 = godel_operation_f8([(1, 2, 3)])
+        self.assertEqual(f8, frozenset([(3, 2, 1)]))
+
+        # Dunaev tagged pair triple permutations
+        p_triple = DunaevTaggedPair("u", DunaevTaggedPair("v", "w"))
+        f6_d = godel_operation_f6([p_triple])
+        self.assertIn(DunaevTaggedPair("v", DunaevTaggedPair("w", "u")), f6_d)
+
+        # 2. Inner model predicate
+        ordinals = [empty, s_empty]
+        inner_res = is_inner_model(l3, ordinals)
+        self.assertTrue(inner_res["is_inner_model"])
+        self.assertTrue(inner_res["is_transitive"])
+        self.assertTrue(inner_res["ord_contained"])
+        self.assertTrue(inner_res["closed_under_godel_ops"])
+        self.assertEqual(inner_res["pairing_device"], "dunaev_pair")
+
+        # 3. Delta_0 formula absoluteness
+        abs_res = delta0_formula_absoluteness(l2, l3, ("eq", "x", "x"), {"x": empty})
+        self.assertTrue(abs_res["is_absolute"])
+        self.assertTrue(abs_res["sat_m"])
+        self.assertTrue(abs_res["sat_v"])
+        self.assertEqual(abs_res["pairing_device"], "dunaev_pair")
+
+        # 4. Relative consistency deduction
+        rel_con = relative_consistency_ac_gch(con_mk=True)
+        self.assertTrue(rel_con["relative_consistency_holds"])
+        self.assertTrue(rel_con["con_base_theory"])
+        self.assertTrue(rel_con["con_extended_theory"])
+        self.assertEqual(rel_con["base_theory"], "MK")
+        self.assertEqual(rel_con["inner_model"], "L")
+        self.assertEqual(rel_con["pairing_device"], "dunaev_pair")
+
+        # 5. Master relative consistency runner
+        master_res = proves_relative_consistency_of_ac_and_gch(max_stage=3)
+        self.assertTrue(master_res["relative_consistency_proven"])
+        self.assertTrue(master_res["inner_model_verified"])
+        self.assertTrue(master_res["godel_ops_verified"])
+        self.assertTrue(master_res["delta0_absoluteness_verified"])
+        self.assertTrue(master_res["l_models_gch_verified"])
+        self.assertEqual(master_res["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()
