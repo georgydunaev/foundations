@@ -55,6 +55,10 @@ signature MKTD_FOUNDATIONS = sig
     | ElemSubmodel of class_term * class_term
     | TransCollapse of class_term * class_term
     | ChoiceFnL of class_term
+    | SkolemHull of class_term * class_term
+    | CardSucc of class_term
+    | PowersetL of class_term
+    | CondenseTarget of class_term
 
   and fm =
       False
@@ -106,6 +110,14 @@ signature MKTD_FOUNDATIONS = sig
     | ExtensionalRel of class_term * class_term
     | TransCollapseFm of class_term * class_term * class_term
     | CondensationScaffold of class_term
+    | IsCardinal of class_term
+    | IsCardSucc of class_term * class_term
+    | CondensationLemma of class_term * class_term * class_term
+    | LowenheimSkolemReflection of class_term * class_term * class_term
+    | RankBounding of class_term * class_term * class_term
+    | SubclassPowersetL of class_term * class_term
+    | CardPowersetLEq of class_term * class_term
+    | AxiomGCHInL
 
   type conglomerate_type = class_term -> bool
 
@@ -367,6 +379,32 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_condensation_scaffold : class_term -> thm
   val prove_condensation_scaffold : class_term -> thm
 
+  (* Godel Condensation Lemma and Generalized Continuum Hypothesis in L (L |= GCH) *)
+  val eval_skolem_hull_l : (class_term -> class_term -> bool) ->
+                           class_term list ->
+                           class_term list ->
+                           class_term list
+  val eval_condensation_lemma : (class_term -> class_term -> bool) ->
+                                class_term list ->
+                                int ->
+                                int * (class_term * class_term) list
+  val eval_rank_bounding : int -> int -> int -> bool
+  val eval_constructible_powerset : (class_term -> class_term -> bool) ->
+                                    class_term list ->
+                                    class_term list ->
+                                    class_term list
+  val eval_gch_in_l : (class_term -> class_term -> bool) -> int -> int -> bool
+  val axiom_condensation_lemma : class_term -> class_term -> class_term -> thm
+  val prove_condensation_lemma : class_term -> class_term -> class_term -> thm
+  val axiom_lowenheim_skolem_l : class_term -> class_term -> class_term -> thm
+  val prove_lowenheim_skolem_l : class_term -> class_term -> class_term -> thm
+  val axiom_rank_bounding : class_term -> class_term -> class_term -> thm
+  val prove_rank_bounding : class_term -> class_term -> class_term -> thm
+  val axiom_powerset_l_bound : class_term -> thm
+  val prove_powerset_l_bound : class_term -> thm
+  val axiom_gch_in_l : unit -> thm
+  val prove_gch_in_l : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -419,6 +457,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ElemSubmodel of class_term * class_term
     | TransCollapse of class_term * class_term
     | ChoiceFnL of class_term
+    | SkolemHull of class_term * class_term
+    | CardSucc of class_term
+    | PowersetL of class_term
+    | CondenseTarget of class_term
 
   and fm =
       False
@@ -470,6 +512,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ExtensionalRel of class_term * class_term
     | TransCollapseFm of class_term * class_term * class_term
     | CondensationScaffold of class_term
+    | IsCardinal of class_term
+    | IsCardSucc of class_term * class_term
+    | CondensationLemma of class_term * class_term * class_term
+    | LowenheimSkolemReflection of class_term * class_term * class_term
+    | RankBounding of class_term * class_term * class_term
+    | SubclassPowersetL of class_term * class_term
+    | CardPowersetLEq of class_term * class_term
+    | AxiomGCHInL
 
   type conglomerate_type = class_term -> bool
 
@@ -539,6 +589,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ElemSubmodel (m, n) => ElemSubmodel (subst_term var repl m, subst_term var repl n)
       | TransCollapse (m, e) => TransCollapse (subst_term var repl m, subst_term var repl e)
       | ChoiceFnL a => ChoiceFnL (subst_term var repl a)
+      | SkolemHull (a, b) => SkolemHull (subst_term var repl a, subst_term var repl b)
+      | CardSucc a => CardSucc (subst_term var repl a)
+      | PowersetL a => PowersetL (subst_term var repl a)
+      | CondenseTarget a => CondenseTarget (subst_term var repl a)
       | _ => target
 
   and subst_fm var repl target =
@@ -608,6 +662,19 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | TransCollapseFm (pi, m, t) =>
           TransCollapseFm (subst_term var repl pi, subst_term var repl m, subst_term var repl t)
       | CondensationScaffold a => CondensationScaffold (subst_term var repl a)
+      | IsCardinal a => IsCardinal (subst_term var repl a)
+      | IsCardSucc (a, b) => IsCardSucc (subst_term var repl a, subst_term var repl b)
+      | CondensationLemma (m, lam, alp) =>
+          CondensationLemma (subst_term var repl m, subst_term var repl lam, subst_term var repl alp)
+      | LowenheimSkolemReflection (x, kap, lam) =>
+          LowenheimSkolemReflection (subst_term var repl x, subst_term var repl kap, subst_term var repl lam)
+      | RankBounding (m, alp, kap) =>
+          RankBounding (subst_term var repl m, subst_term var repl alp, subst_term var repl kap)
+      | SubclassPowersetL (kap, succ) =>
+          SubclassPowersetL (subst_term var repl kap, subst_term var repl succ)
+      | CardPowersetLEq (kap, succ) =>
+          CardPowersetLEq (subst_term var repl kap, subst_term var repl succ)
+      | AxiomGCHInL => AxiomGCHInL
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -914,6 +981,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ExtensionalRel (r, m1) => ExtensionalRel (r, m1)
       | TransCollapseFm (pi, m1, t) => TransCollapseFm (pi, m1, t)
       | CondensationScaffold a => CondensationScaffold a
+      | IsCardinal a => IsCardinal a
+      | IsCardSucc (a, b) => IsCardSucc (a, b)
+      | CondensationLemma (m1, lam, alp) => CondensationLemma (m1, lam, alp)
+      | LowenheimSkolemReflection (x, kap, lam) => LowenheimSkolemReflection (x, kap, lam)
+      | RankBounding (m1, alp, kap) => RankBounding (m1, alp, kap)
+      | SubclassPowersetL (kap, succ) => SubclassPowersetL (kap, succ)
+      | CardPowersetLEq (kap, succ) => CardPowersetLEq (kap, succ)
+      | AxiomGCHInL => AxiomGCHInL
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -957,6 +1032,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (ElemSubmodel (m, n)) = ElemSubmodel (eval_term env m, eval_term env n)
     | eval_term env (TransCollapse (m, e)) = TransCollapse (eval_term env m, eval_term env e)
     | eval_term env (ChoiceFnL a) = ChoiceFnL (eval_term env a)
+    | eval_term env (SkolemHull (m, s)) = SkolemHull (eval_term env m, eval_term env s)
+    | eval_term env (CardSucc a) = CardSucc (eval_term env a)
+    | eval_term env (PowersetL a) = PowersetL (eval_term env a)
+    | eval_term env (CondenseTarget a) = CondenseTarget (eval_term env a)
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1053,6 +1132,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ExtensionalRel (r, m1) => true
       | TransCollapseFm (pi, m1, t) => true
       | CondensationScaffold a => true
+      | IsCardinal a => true
+      | IsCardSucc (a, b) => true
+      | CondensationLemma (m1, lam, alp) => true
+      | LowenheimSkolemReflection (x, kap, lam) => true
+      | RankBounding (m1, alp, kap) => true
+      | SubclassPowersetL (kap, succ) => true
+      | CardPowersetLEq (kap, succ) => true
+      | AxiomGCHInL => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1450,7 +1537,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (ElemSubmodel (m, n)) = 12 + 10 * godel_number_term m + 100 * godel_number_term n
     | godel_number_term (TransCollapse (m, e)) = 13 + 10 * godel_number_term m + 100 * godel_number_term e
     | godel_number_term (ChoiceFnL a) = 14 + 10 * godel_number_term a
-    | godel_number_term _ = 15
+    | godel_number_term (SkolemHull (m, s)) = 16 + 10 * godel_number_term m + 100 * godel_number_term s
+    | godel_number_term (CardSucc a) = 17 + 10 * godel_number_term a
+    | godel_number_term (PowersetL a) = 18 + 10 * godel_number_term a
+    | godel_number_term (CondenseTarget a) = 19 + 10 * godel_number_term a
+    | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
     | godel_number_fm True = 1
@@ -1476,7 +1567,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (ExtensionalRel (r, m)) = 22 + 10 * godel_number_term r + 100 * godel_number_term m
     | godel_number_fm (TransCollapseFm (pi, m, t)) = 23 + 10 * godel_number_term pi + 100 * godel_number_term m + 1000 * godel_number_term t
     | godel_number_fm (CondensationScaffold a) = 24 + 10 * godel_number_term a
-    | godel_number_fm _ = 25
+    | godel_number_fm (IsCardinal t) = 26 + 10 * godel_number_term t
+    | godel_number_fm (IsCardSucc (a, b)) = 27 + 10 * godel_number_term a + 100 * godel_number_term b
+    | godel_number_fm (CondensationLemma (m, lam, alp)) = 28 + 10 * godel_number_term m + 100 * godel_number_term lam + 1000 * godel_number_term alp
+    | godel_number_fm (LowenheimSkolemReflection (x, kap, lam)) = 29 + 10 * godel_number_term x + 100 * godel_number_term kap + 1000 * godel_number_term lam
+    | godel_number_fm (RankBounding (m, alp, kap)) = 30 + 10 * godel_number_term m + 100 * godel_number_term alp + 1000 * godel_number_term kap
+    | godel_number_fm (SubclassPowersetL (kap, succ)) = 31 + 10 * godel_number_term kap + 100 * godel_number_term succ
+    | godel_number_fm (CardPowersetLEq (kap, succ)) = 32 + 10 * godel_number_term kap + 100 * godel_number_term succ
+    | godel_number_fm AxiomGCHInL = 33
+    | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
     | eval_canonical_well_ordering_l 1 = []
@@ -1582,6 +1681,93 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], CondensationScaffold lambda)
 
   fun prove_condensation_scaffold lambda = axiom_condensation_scaffold lambda
+
+  (* Godel Condensation Lemma and Generalized Continuum Hypothesis in L (L |= GCH) *)
+  fun eval_skolem_hull_l in_rel ambient_domain generators =
+    let
+      fun add_witnesses current =
+        let
+          val new_elems = List.filter (fn d =>
+            List.exists (fn g => in_rel d g) current andalso
+            not (List.exists (fn c => c = d) current)
+          ) ambient_domain
+        in
+          if List.null new_elems then current
+          else add_witnesses (current @ new_elems)
+        end
+    in
+      add_witnesses generators
+    end
+
+  fun eval_condensation_lemma in_rel submodel_domain lambda_bound =
+    let
+      val collapse_map = eval_mostowski_collapse in_rel submodel_domain
+      val collapsed_elems = List.map #2 collapse_map
+      fun find_stage alpha =
+        if alpha > lambda_bound then (lambda_bound, collapse_map)
+        else
+          let
+            val stage_elems = eval_l_stage alpha
+            fun set_eq xs ys =
+              List.all (fn x => List.exists (fn y => y = x) ys) xs andalso
+              List.all (fn y => List.exists (fn x => x = y) xs) ys
+          in
+            if set_eq collapsed_elems stage_elems then (alpha, collapse_map)
+            else find_stage (alpha + 1)
+          end
+    in
+      find_stage 0
+    end
+
+  fun eval_rank_bounding submodel_size alpha kappa_card =
+    (submodel_size = kappa_card) andalso (alpha <= kappa_card)
+
+  fun eval_constructible_powerset in_rel kappa_domain l_stage_domain =
+    List.filter (fn elem =>
+      List.all (fn child =>
+        if in_rel child elem then List.exists (fn k => k = child) kappa_domain else true
+      ) l_stage_domain
+    ) l_stage_domain
+
+  fun eval_gch_in_l in_rel kappa_stage_idx next_stage_idx =
+    let
+      val kappa_domain = eval_l_stage kappa_stage_idx
+      val l_succ = eval_l_stage next_stage_idx
+      val p_l = eval_constructible_powerset in_rel kappa_domain l_succ
+      val powerset_bounded = List.all (fn x => List.exists (fn y => y = x) l_succ) p_l
+    in
+      powerset_bounded andalso (List.length p_l <= List.length l_succ)
+    end
+
+  fun axiom_condensation_lemma m lambda alpha =
+    Thm ([], Imp (ElemSubmodelFm (m, LAlpha lambda), CondensationLemma (m, lambda, alpha)))
+
+  fun prove_condensation_lemma m lambda alpha = axiom_condensation_lemma m lambda alpha
+
+  fun axiom_lowenheim_skolem_l x kappa lambda =
+    Thm ([], Imp (In (x, PowersetL kappa),
+                  Exists ("M",
+                    And (ElemSubmodelFm (Var "M", LAlpha lambda),
+                         And (Subclass (LAlpha kappa, Var "M"),
+                              In (x, Var "M"))))))
+
+  fun prove_lowenheim_skolem_l x kappa lambda = axiom_lowenheim_skolem_l x kappa lambda
+
+  fun axiom_rank_bounding m alpha kappa =
+    Thm ([], Imp (And (Equipotent (m, kappa), CondensationLemma (m, Var "lambda", alpha)),
+                  In (alpha, CardSucc kappa)))
+
+  fun prove_rank_bounding m alpha kappa = axiom_rank_bounding m alpha kappa
+
+  fun axiom_powerset_l_bound kappa =
+    Thm ([], SubclassPowersetL (kappa, CardSucc kappa))
+
+  fun prove_powerset_l_bound kappa = axiom_powerset_l_bound kappa
+
+  fun axiom_gch_in_l () =
+    Thm ([], Imp (AxiomVEqualsL, AxiomGCHInL))
+
+  fun prove_gch_in_l () = axiom_gch_in_l ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -2015,6 +2201,47 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val cond_ok = case cond_thm of
           Thm ([], CondensationScaffold (Var "lambda")) => true
         | _ => false
+
+      (* Tests for Godel Condensation Lemma and GCH in L *)
+      val sh_gen = [Empty]
+      val sh_res = eval_skolem_hull_l hf_in l3 sh_gen
+      val sh_ok = List.exists (fn x => x = Empty) sh_res
+
+      val (cond_alp, cond_map) = eval_condensation_lemma hf_in l2 3
+      val cond_lemma_ok = (cond_alp = 2 andalso List.length cond_map = 2)
+
+      val rank_bnd_ok = eval_rank_bounding 2 2 2
+
+      val p_l1 = eval_constructible_powerset hf_in l1 l2
+      val p_l2 = eval_constructible_powerset hf_in l2 l3
+      val cp_ok = (List.length p_l1 = 2 andalso List.length p_l2 = 4)
+
+      val gch_step_ok = eval_gch_in_l hf_in 1 2 andalso eval_gch_in_l hf_in 2 3
+
+      val cond_lem_thm = prove_condensation_lemma (Var "M") (Var "lambda") (Var "alpha")
+      val cond_lem_ok = case cond_lem_thm of
+          Thm ([], Imp (ElemSubmodelFm (Var "M", LAlpha (Var "lambda")), CondensationLemma (Var "M", Var "lambda", Var "alpha"))) => true
+        | _ => false
+
+      val ls_thm = prove_lowenheim_skolem_l (Var "X") (Var "kappa") (Var "lambda")
+      val ls_ok = case ls_thm of
+          Thm ([], Imp (In (Var "X", PowersetL (Var "kappa")), _)) => true
+        | _ => false
+
+      val rb_thm = prove_rank_bounding (Var "M") (Var "alpha") (Var "kappa")
+      val rb_ok = case rb_thm of
+          Thm ([], Imp (And (Equipotent (Var "M", Var "kappa"), CondensationLemma (Var "M", Var "lambda", Var "alpha")), In (Var "alpha", CardSucc (Var "kappa")))) => true
+        | _ => false
+
+      val ps_bnd_thm = prove_powerset_l_bound (Var "kappa")
+      val ps_bnd_ok = case ps_bnd_thm of
+          Thm ([], SubclassPowersetL (Var "kappa", CardSucc (Var "kappa"))) => true
+        | _ => false
+
+      val gch_thm = prove_gch_in_l ()
+      val gch_ok = case gch_thm of
+          Thm ([], Imp (AxiomVEqualsL, AxiomGCHInL)) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -2047,6 +2274,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso choice_2_ok andalso choice_3_ok andalso tv_ok andalso coll_ok
       andalso can_wo_ok andalso wo_l_ok andalso l_ac_ok
       andalso tv_ok_thm andalso coll_ok_thm andalso cond_ok
+      andalso sh_ok andalso cond_lemma_ok andalso rank_bnd_ok andalso cp_ok
+      andalso gch_step_ok andalso cond_lem_ok andalso ls_ok andalso rb_ok
+      andalso ps_bnd_ok andalso gch_ok
     end
 end;
 

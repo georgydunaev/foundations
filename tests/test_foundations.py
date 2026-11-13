@@ -58,5 +58,26 @@ class TestFoundations(unittest.TestCase):
                 self.assertTrue(callable(getattr(foundations, sym)))
 
 
+    def test_ticket_7725_condensation_lemma_and_gch_symbols(self):
+        """Ticket 7725: verify Godel Condensation Lemma and GCH in L symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "skolem_hull_l",
+            "condensation_lemma",
+            "lowenheim_skolem_reflection_l",
+            "rank_bounding",
+            "constructible_powerset",
+            "gch_in_l",
+            "proves_l_models_gch",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7725 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+
 if __name__ == '__main__':
     unittest.main()

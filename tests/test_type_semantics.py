@@ -891,6 +891,86 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(cond_res["is_transitive"])
         self.assertEqual(cond_res["pairing_device"], "dunaev_pair")
 
+    def test_godel_condensation_lemma_and_gch_in_l(self):
+        """Ticket 7725: Godel's Condensation Lemma, Lowenheim-Skolem reflection, rank bounding, and GCH in L."""
+        from foundations.type_semantics import (
+            constructible_hierarchy_stage,
+            skolem_hull_l,
+            condensation_lemma,
+            lowenheim_skolem_reflection_l,
+            rank_bounding,
+            constructible_powerset,
+            gch_in_l,
+            proves_l_models_gch,
+        )
+
+        empty = frozenset()
+        s_empty = frozenset([empty])
+        l1 = constructible_hierarchy_stage(1)
+        l2 = constructible_hierarchy_stage(2)
+        l3 = constructible_hierarchy_stage(3)
+
+        # 1. Definable Skolem hull in L
+        hull = skolem_hull_l(l3, [empty])
+        self.assertIn(empty, hull)
+        self.assertTrue(hull.issubset(l3))
+
+        hull_l2 = skolem_hull_l(l3, l2)
+        self.assertTrue(l2.issubset(hull_l2))
+
+        # 2. Godel's Condensation Lemma
+        cond_res = condensation_lemma(l2, lambda_bound=3)
+        self.assertTrue(cond_res["condensation_holds"])
+        self.assertTrue(cond_res["is_transitive"])
+        self.assertEqual(cond_res["collapsed_stage_alpha"], 2)
+        self.assertEqual(cond_res["collapsed_image"], l2)
+        self.assertEqual(cond_res["pairing_device"], "dunaev_pair")
+
+        # 3. Lowenheim-Skolem Reflection in L
+        ls_res = lowenheim_skolem_reflection_l(s_empty, kappa_stage=2, lambda_stage=3)
+        self.assertTrue(ls_res["reflection_holds"])
+        self.assertTrue(ls_res["contains_l_kappa"])
+        self.assertTrue(ls_res["contains_subset_x"])
+        self.assertTrue(ls_res["tarski_vaught_verified"])
+        self.assertEqual(ls_res["pairing_device"], "dunaev_pair")
+
+        # 4. Rank Bounding Theorem
+        rb_res = rank_bounding(l2, cardinal_kappa=2, lambda_bound=3)
+        self.assertTrue(rb_res["rank_bounded"])
+        self.assertEqual(rb_res["collapsed_alpha"], 2)
+        self.assertEqual(rb_res["cardinal_succ_bound"], 3)
+        self.assertLess(rb_res["collapsed_alpha"], rb_res["cardinal_succ_bound"])
+        self.assertTrue(rb_res["condensation_verified"])
+        self.assertEqual(rb_res["pairing_device"], "dunaev_pair")
+
+        # 5. Constructible Powerset P(kappa) cap L
+        p_l1 = constructible_powerset(l1, stage_bound=2)
+        self.assertEqual(len(p_l1), 2)
+        self.assertIn(empty, p_l1)
+        self.assertIn(s_empty, p_l1)
+
+        p_l2 = constructible_powerset(l2, stage_bound=3)
+        self.assertEqual(len(p_l2), 4)
+
+        # 6. GCH in L steps
+        gch_1 = gch_in_l(kappa_cardinal=1, max_lambda=3)
+        self.assertTrue(gch_1["gch_holds"])
+        self.assertEqual(gch_1["powerset_l_size"], 2)
+        self.assertEqual(gch_1["pairing_device"], "dunaev_pair")
+
+        gch_2 = gch_in_l(kappa_cardinal=2, max_lambda=3)
+        self.assertTrue(gch_2["gch_holds"])
+        self.assertEqual(gch_2["powerset_l_size"], 4)
+        self.assertEqual(gch_2["pairing_device"], "dunaev_pair")
+
+        # 7. Master theorem runner: L models GCH
+        gch_master = proves_l_models_gch(max_stage=3)
+        self.assertTrue(gch_master["l_models_gch"])
+        self.assertTrue(gch_master["condensation_lemma_verified"])
+        self.assertTrue(gch_master["lowenheim_skolem_verified"])
+        self.assertTrue(gch_master["rank_bounding_verified"])
+        self.assertEqual(len(gch_master["gch_steps"]), 2)
+        self.assertEqual(gch_master["pairing_device"], "dunaev_pair")
 
 
 if __name__ == "__main__":
