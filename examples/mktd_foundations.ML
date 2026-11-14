@@ -115,6 +115,10 @@ signature MKTD_FOUNDATIONS = sig
     | LStage of class_term
     | ConstructibleUniverse
     | TheoryZFC_L
+    | RelativizedClassCompr of string * class_term * fm
+    | DunaevPName of class_term
+    | GenericVal of class_term * class_term
+    | PosetPreorder of class_term * class_term * class_term
 
   and fm =
       False
@@ -233,6 +237,11 @@ signature MKTD_FOUNDATIONS = sig
     | InL of class_term
     | LGCHTheorem of class_term
     | LWellOrderingTheorem of class_term
+    | InnerModelCriterionNBG of class_term
+    | RelativizedAxiomHolds of class_term * fm
+    | IsForcingPoset of class_term * class_term * class_term
+    | IsDunaevPName of class_term * class_term
+    | CheckNameValIdentity of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -698,6 +707,37 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_l_satisfies_gch : class_term -> thm
   val prove_l_satisfies_gch : class_term -> thm
 
+  (* Class Inner Model Relativization and Forcing Posets with Dunaev Tagged Names (Ticket 63) *)
+  val mk_relativized_class_compr : string -> class_term -> fm -> class_term
+  val mk_dunaev_p_name : (class_term * class_term) list -> class_term
+  val mk_canonical_check_name_dunaev : class_term -> class_term -> class_term
+  val mk_generic_val : class_term -> class_term -> class_term
+  val mk_poset_preorder : class_term -> class_term -> class_term -> class_term
+  val mk_inner_model_criterion_nbg : class_term -> fm
+  val mk_relativized_axiom_holds : class_term -> fm -> fm
+  val mk_is_forcing_poset : class_term -> class_term -> class_term -> fm
+  val mk_is_dunaev_p_name : class_term -> class_term -> fm
+  val mk_check_name_val_identity : class_term -> class_term -> fm
+  val relativize_nbg_axiom : class_term -> fm -> fm
+  val eval_inner_model_nbg_criterion :
+    (class_term -> class_term -> bool) -> class_term list -> class_term list -> class_term list -> fm list -> bool
+  val eval_is_forcing_poset : (class_term -> class_term -> bool) -> class_term list -> class_term -> bool
+  val eval_has_ccc_bound : (class_term -> class_term -> bool) -> class_term list -> class_term list list -> int -> bool
+  val eval_dunaev_p_name_well_formed : class_term list -> class_term -> bool
+  val eval_recursive_val_g : class_term list -> class_term -> class_term
+  val axiom_inner_model_relativization_criterion : class_term -> fm -> thm
+  val prove_inner_model_relativization_criterion : class_term -> fm -> thm
+  val axiom_forcing_poset_preorder : class_term -> class_term -> class_term -> thm
+  val prove_forcing_poset_preorder : class_term -> class_term -> class_term -> thm
+  val axiom_ccc_antichain_condition : class_term -> class_term -> thm
+  val prove_ccc_antichain_condition : class_term -> class_term -> thm
+  val axiom_dunaev_pname_well_formed : class_term -> class_term -> thm
+  val prove_dunaev_pname_well_formed : class_term -> class_term -> thm
+  val axiom_check_name_generic_val : class_term -> class_term -> thm
+  val prove_check_name_generic_val : class_term -> class_term -> thm
+  val axiom_generic_extension_inner_model : class_term -> class_term -> class_term -> fm -> thm
+  val prove_generic_extension_inner_model : class_term -> class_term -> class_term -> fm -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -810,6 +850,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | LStage of class_term
     | ConstructibleUniverse
     | TheoryZFC_L
+    | RelativizedClassCompr of string * class_term * fm
+    | DunaevPName of class_term
+    | GenericVal of class_term * class_term
+    | PosetPreorder of class_term * class_term * class_term
 
   and fm =
       False
@@ -928,6 +972,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | InL of class_term
     | LGCHTheorem of class_term
     | LWellOrderingTheorem of class_term
+    | InnerModelCriterionNBG of class_term
+    | RelativizedAxiomHolds of class_term * fm
+    | IsForcingPoset of class_term * class_term * class_term
+    | IsDunaevPName of class_term * class_term
+    | CheckNameValIdentity of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1049,6 +1098,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | LStage a => LStage (subst_term var repl a)
       | ConstructibleUniverse => ConstructibleUniverse
       | TheoryZFC_L => TheoryZFC_L
+      | RelativizedClassCompr (v, m_cls, p) =>
+          if v = var then RelativizedClassCompr (v, subst_term var repl m_cls, p)
+          else RelativizedClassCompr (v, subst_term var repl m_cls, subst_fm var repl p)
+      | DunaevPName s => DunaevPName (subst_term var repl s)
+      | GenericVal (tau, g) => GenericVal (subst_term var repl tau, subst_term var repl g)
+      | PosetPreorder (p, l, one) =>
+          PosetPreorder (subst_term var repl p, subst_term var repl l, subst_term var repl one)
       | _ => target
 
   and subst_fm var repl target =
@@ -1190,6 +1246,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | InL x => InL (subst_term var repl x)
       | LGCHTheorem k => LGCHTheorem (subst_term var repl k)
       | LWellOrderingTheorem x => LWellOrderingTheorem (subst_term var repl x)
+      | InnerModelCriterionNBG m => InnerModelCriterionNBG (subst_term var repl m)
+      | RelativizedAxiomHolds (m, phi) =>
+          RelativizedAxiomHolds (subst_term var repl m, subst_fm var repl phi)
+      | IsForcingPoset (p, l, one) =>
+          IsForcingPoset (subst_term var repl p, subst_term var repl l, subst_term var repl one)
+      | IsDunaevPName (tau, pos) =>
+          IsDunaevPName (subst_term var repl tau, subst_term var repl pos)
+      | CheckNameValIdentity (x, g) =>
+          CheckNameValIdentity (subst_term var repl x, subst_term var repl g)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1563,6 +1628,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | InL x => InL x
       | LGCHTheorem k => LGCHTheorem k
       | LWellOrderingTheorem x => LWellOrderingTheorem x
+      | InnerModelCriterionNBG m1 => InnerModelCriterionNBG m1
+      | RelativizedAxiomHolds (m1, phi) => RelativizedAxiomHolds (m1, relativize m phi)
+      | IsForcingPoset (p, l, one) => IsForcingPoset (p, l, one)
+      | IsDunaevPName (tau, pos) => IsDunaevPName (tau, pos)
+      | CheckNameValIdentity (x, g) => CheckNameValIdentity (x, g)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1666,6 +1736,12 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term env (LStage a) = LStage (eval_term env a)
     | eval_term _ ConstructibleUniverse = ConstructibleUniverse
     | eval_term _ TheoryZFC_L = TheoryZFC_L
+    | eval_term env (RelativizedClassCompr (v, m_cls, p)) =
+        RelativizedClassCompr (v, eval_term env m_cls, p)
+    | eval_term env (DunaevPName s) = DunaevPName (eval_term env s)
+    | eval_term env (GenericVal (tau, g)) = GenericVal (eval_term env tau, eval_term env g)
+    | eval_term env (PosetPreorder (p, l, one)) =
+        PosetPreorder (eval_term env p, eval_term env l, eval_term env one)
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1829,6 +1905,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | InL _ => true
       | LGCHTheorem _ => true
       | LWellOrderingTheorem _ => true
+      | InnerModelCriterionNBG _ => true
+      | RelativizedAxiomHolds (m, phi) => eval_sat in_rel domain env (relativize m phi)
+      | IsForcingPoset _ => true
+      | IsDunaevPName _ => true
+      | CheckNameValIdentity _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -2286,9 +2367,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term (LStage a) = 96 + 10 * godel_number_term a
     | godel_number_term ConstructibleUniverse = 97
     | godel_number_term TheoryZFC_L = 98
+    | godel_number_term (RelativizedClassCompr (v, m_cls, p)) =
+        99 + 10 * hash_string v + 100 * godel_number_term m_cls + 1000 * godel_number_fm p
+    | godel_number_term (DunaevPName s) = 100 + 10 * godel_number_term s
+    | godel_number_term (GenericVal (tau, g)) =
+        101 + 10 * godel_number_term tau + 100 * godel_number_term g
+    | godel_number_term (PosetPreorder (p, l, one)) =
+        102 + 10 * godel_number_term p + 100 * godel_number_term l + 1000 * godel_number_term one
     | godel_number_term _ = 20
 
-  fun godel_number_fm False = 0
+  and godel_number_fm False = 0
     | godel_number_fm True = 1
     | godel_number_fm (In (t1, t2)) = 2 + 10 * godel_number_term t1 + 100 * godel_number_term t2
     | godel_number_fm (Eq (t1, t2)) = 3 + 10 * godel_number_term t1 + 100 * godel_number_term t2
@@ -2379,6 +2467,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (InL x) = 100 + 10 * godel_number_term x
     | godel_number_fm (LGCHTheorem k) = 101 + 10 * godel_number_term k
     | godel_number_fm (LWellOrderingTheorem x) = 102 + 10 * godel_number_term x
+    | godel_number_fm (InnerModelCriterionNBG m) = 103 + 10 * godel_number_term m
+    | godel_number_fm (RelativizedAxiomHolds (m, phi)) =
+        104 + 10 * godel_number_term m + 100 * godel_number_fm phi
+    | godel_number_fm (IsForcingPoset (p, l, one)) =
+        105 + 10 * godel_number_term p + 100 * godel_number_term l + 1000 * godel_number_term one
+    | godel_number_fm (IsDunaevPName (tau, pos)) =
+        106 + 10 * godel_number_term tau + 100 * godel_number_term pos
+    | godel_number_fm (CheckNameValIdentity (x, g)) =
+        107 + 10 * godel_number_term x + 100 * godel_number_term g
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -3093,6 +3190,200 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Imp (AxiomVEqualsL, LGCHTheorem kappa))
 
   fun prove_l_satisfies_gch kappa = axiom_l_satisfies_gch kappa
+
+  (* Class Inner Model Relativization and Forcing Posets with Dunaev Tagged Names (Ticket 63) *)
+  fun mk_relativized_class_compr v m_cls phi = RelativizedClassCompr (v, m_cls, phi)
+
+  fun mk_dunaev_p_name pairs =
+    DunaevPName (
+      List.foldr (fn ((sigma, p), acc) => UnorderedPair (dunaev_pair sigma p, acc)) Empty pairs
+    )
+
+  fun mk_canonical_check_name_dunaev poset_one ground_set =
+    let
+      fun elements_of Empty = []
+        | elements_of (Singleton y) = [y]
+        | elements_of (UnorderedPair (y, z)) =
+            if y = z then [y] else [y, z]
+        | elements_of other = [other]
+      fun build x =
+        case x of
+            Empty => DunaevPName Empty
+          | Singleton _ =>
+              mk_dunaev_p_name (List.map (fn y => (build y, poset_one)) (elements_of x))
+          | UnorderedPair _ =>
+              mk_dunaev_p_name (List.map (fn y => (build y, poset_one)) (elements_of x))
+          | atom => mk_dunaev_p_name [(atom, poset_one)]
+    in
+      build ground_set
+    end
+
+  fun mk_generic_val tau g = GenericVal (tau, g)
+  fun mk_poset_preorder carrier leq one = PosetPreorder (carrier, leq, one)
+  fun mk_inner_model_criterion_nbg m = InnerModelCriterionNBG m
+  fun mk_relativized_axiom_holds m phi = RelativizedAxiomHolds (m, phi)
+  fun mk_is_forcing_poset carrier leq one = IsForcingPoset (carrier, leq, one)
+  fun mk_is_dunaev_p_name tau pos = IsDunaevPName (tau, pos)
+  fun mk_check_name_val_identity x g = CheckNameValIdentity (x, g)
+
+  fun relativize_nbg_axiom m phi =
+    case phi of
+        False => False
+      | True => True
+      | In (a, b) => In (a, b)
+      | Eq (a, b) => Eq (a, b)
+      | Subclass (a, b) => Subclass (a, b)
+      | IsSet a => In (a, m)
+      | Not p => Not (relativize_nbg_axiom m p)
+      | And (p, q) => And (relativize_nbg_axiom m p, relativize_nbg_axiom m q)
+      | Or (p, q) => Or (relativize_nbg_axiom m p, relativize_nbg_axiom m q)
+      | Imp (p, q) => Imp (relativize_nbg_axiom m p, relativize_nbg_axiom m q)
+      | Iff (p, q) => Iff (relativize_nbg_axiom m p, relativize_nbg_axiom m q)
+      | Forall (v, p) => Forall (v, Imp (In (Var v, m), relativize_nbg_axiom m p))
+      | Exists (v, p) => Exists (v, And (In (Var v, m), relativize_nbg_axiom m p))
+      | ExistsUnique (v, p) => ExistsUnique (v, And (In (Var v, m), relativize_nbg_axiom m p))
+      | BoundedForall (v, b, p) => BoundedForall (v, b, relativize_nbg_axiom m p)
+      | BoundedExists (v, b, p) => BoundedExists (v, b, relativize_nbg_axiom m p)
+      | other => relativize m other
+
+  fun eval_inner_model_nbg_criterion in_rel m_domain v_domain ord_domain axioms =
+    let
+      val non_empty = not (List.null m_domain)
+      val subset_of_v = List.all (fn x => List.exists (fn v => v = x) v_domain) m_domain
+      val is_trans_in_v = List.all (fn x =>
+        List.all (fn y =>
+          if in_rel y x then List.exists (fn m_el => m_el = y) m_domain else true
+        ) v_domain
+      ) m_domain
+      val ord_contained = List.all (fn o_el =>
+        List.exists (fn m_el => m_el = o_el) m_domain
+      ) ord_domain
+      val m_token = Var "__InnerModel_M__"
+      fun in_rel_ext x y =
+        if y = m_token then List.exists (fn m_el => m_el = x) m_domain
+        else in_rel x y
+      val axioms_relativized_ok = List.all (fn ax =>
+        let
+          val sat_m = eval_sat in_rel m_domain [] ax
+          val rel_ax = relativize_nbg_axiom m_token ax
+          val sat_v_rel = eval_sat in_rel_ext v_domain [] rel_ax
+        in
+          sat_m andalso (sat_m = sat_v_rel)
+        end
+      ) axioms
+    in
+      non_empty andalso subset_of_v andalso is_trans_in_v andalso ord_contained andalso axioms_relativized_ok
+    end
+
+  fun eval_is_forcing_poset leq_fn carrier poset_one =
+    let
+      val one_in_carrier = List.exists (fn p => p = poset_one) carrier
+      val reflexive = List.all (fn p => leq_fn p p) carrier
+      val one_is_top = List.all (fn p => leq_fn p poset_one) carrier
+      val transitive = List.all (fn r =>
+        List.all (fn q =>
+          List.all (fn p =>
+            if leq_fn r q andalso leq_fn q p then leq_fn r p else true
+          ) carrier
+        ) carrier
+      ) carrier
+    in
+      one_in_carrier andalso reflexive andalso one_is_top andalso transitive
+    end
+
+  fun eval_has_ccc_bound leq_fn carrier antichain_candidates max_card =
+    max_card >= 1 andalso
+    List.all (fn cand =>
+      if eval_is_antichain leq_fn carrier cand then List.length cand <= max_card
+      else true
+    ) antichain_candidates
+
+  fun eval_dunaev_p_name_well_formed carrier tau =
+    let
+      fun in_carrier p = List.exists (fn c => c = p) carrier
+      fun check_entry sigma p =
+        in_carrier p andalso
+        (case sigma of
+             DunaevPName _ => eval_dunaev_p_name_well_formed carrier sigma
+           | KuratowskiPair _ => false
+           | _ => true)
+      fun check_body Empty = true
+        | check_body (UnorderedPair (TagPair (sigma, p), rest)) =
+            check_entry sigma p andalso check_body rest
+        | check_body (TagPair (sigma, p)) = check_entry sigma p
+        | check_body _ = false
+    in
+      case tau of
+          DunaevPName body => check_body body
+        | _ => false
+    end
+
+  fun eval_recursive_val_g filter_elems tau =
+    let
+      fun nub [] = []
+        | nub (x :: xs) =
+            x :: nub (List.filter (fn y => not (y = x)) xs)
+      fun set_term_of_list [] = Empty
+        | set_term_of_list [a] = Singleton a
+        | set_term_of_list [a, b] = UnorderedPair (a, b)
+        | set_term_of_list (a :: rest) = UnorderedPair (a, set_term_of_list rest)
+      fun extract_pairs Empty = []
+        | extract_pairs (UnorderedPair (TagPair (sigma, p), rest)) =
+            (sigma, p) :: extract_pairs rest
+        | extract_pairs (TagPair (sigma, p)) = [(sigma, p)]
+        | extract_pairs (KuratowskiPair _) =
+            raise ProperClassKuratowskiException
+        | extract_pairs _ = []
+    in
+      case tau of
+          DunaevPName body =>
+            let
+              val pairs = extract_pairs body
+              val active = List.filter (fn (_, p) => List.exists (fn g => g = p) filter_elems) pairs
+              val evaluated = nub (List.map (fn (sigma, _) => eval_recursive_val_g filter_elems sigma) active)
+            in
+              set_term_of_list evaluated
+            end
+        | KuratowskiPair _ => raise ProperClassKuratowskiException
+        | atom => atom
+    end
+
+  fun axiom_inner_model_relativization_criterion m phi =
+    Thm ([], Imp (InnerModelCriterionNBG m, Iff (RelativizedAxiomHolds (m, phi), relativize_nbg_axiom m phi)))
+
+  fun prove_inner_model_relativization_criterion m phi =
+    axiom_inner_model_relativization_criterion m phi
+
+  fun axiom_forcing_poset_preorder carrier leq one =
+    Thm ([], Imp (IsForcingPoset (carrier, leq, one), In (one, carrier)))
+
+  fun prove_forcing_poset_preorder carrier leq one =
+    axiom_forcing_poset_preorder carrier leq one
+
+  fun axiom_ccc_antichain_condition pos a =
+    Thm ([], Imp (And (HasCCC pos, IsAntichain (a, pos)), IsSet a))
+
+  fun prove_ccc_antichain_condition pos a =
+    axiom_ccc_antichain_condition pos a
+
+  fun axiom_dunaev_pname_well_formed tau pos =
+    Thm ([], Imp (IsDunaevPName (tau, pos), IsSet tau))
+
+  fun prove_dunaev_pname_well_formed tau pos =
+    axiom_dunaev_pname_well_formed tau pos
+
+  fun axiom_check_name_generic_val x g =
+    Thm ([], Imp (CheckNameValIdentity (x, g), Eq (GenericVal (CanonicalCheckName x, g), x)))
+
+  fun prove_check_name_generic_val x g =
+    axiom_check_name_generic_val x g
+
+  fun axiom_generic_extension_inner_model m g pos phi =
+    Thm ([], Imp (And (InnerModelCriterionNBG m, IsGenericFilter (g, pos, m)),
+                  InnerModelCriterionNBG (GenericExtension (m, g))))
+
+  fun prove_generic_extension_inner_model m g pos phi =
+    axiom_generic_extension_inner_model m g pos phi
 
   (* Self tests *)
   fun run_self_tests () =
@@ -4043,6 +4334,124 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val l_sat_gch_thm_ok = case l_sat_gch_thm of
           Thm ([], Imp (AxiomVEqualsL, LGCHTheorem (Var "Kappa"))) => true
         | _ => false
+
+      (* Tests for Class Inner Model Relativization and Forcing Posets with Dunaev Names (Ticket 63) *)
+      val rel_compr_term = mk_relativized_class_compr "x" (Var "M") (In (Var "x", Var "x"))
+      val rel_compr_ok = (rel_compr_term = RelativizedClassCompr ("x", Var "M", In (Var "x", Var "x")))
+
+      val poset_pre_term = mk_poset_preorder (Var "P") (Var "Leq") (Var "OneP")
+      val poset_pre_ok = (poset_pre_term = PosetPreorder (Var "P", Var "Leq", Var "OneP"))
+
+      val gen_val_term = mk_generic_val (Var "Tau") (Var "G")
+      val gen_val_ok = (gen_val_term = GenericVal (Var "Tau", Var "G"))
+
+      val im_crit_fm = mk_inner_model_criterion_nbg (Var "M")
+      val im_crit_fm_ok = (im_crit_fm = InnerModelCriterionNBG (Var "M"))
+
+      val rel_ax_fm = mk_relativized_axiom_holds (Var "M") True
+      val rel_ax_fm_ok = (rel_ax_fm = RelativizedAxiomHolds (Var "M", True))
+
+      val is_fposet_fm = mk_is_forcing_poset (Var "P") (Var "Leq") (Var "OneP")
+      val is_fposet_fm_ok = (is_fposet_fm = IsForcingPoset (Var "P", Var "Leq", Var "OneP"))
+
+      val is_dpname_fm = mk_is_dunaev_p_name (Var "Tau") (Var "P")
+      val is_dpname_fm_ok = (is_dpname_fm = IsDunaevPName (Var "Tau", Var "P"))
+
+      val check_id_fm = mk_check_name_val_identity (Var "x") (Var "G")
+      val check_id_fm_ok = (check_id_fm = CheckNameValIdentity (Var "x", Var "G"))
+
+      val ax_empty_exists = Exists ("e", Forall ("x", Not (In (Var "x", Var "e"))))
+      val ax_extensionality =
+        Forall ("x", Forall ("y",
+          Imp (Forall ("z", Iff (In (Var "z", Var "x"), In (Var "z", Var "y"))),
+               Eq (Var "x", Var "y"))))
+      val ax_isset_witness = Exists ("x", IsSet (Var "x"))
+      val rel_isset_check =
+        (relativize_nbg_axiom (Var "M") ax_isset_witness =
+         Exists ("x", And (In (Var "x", Var "M"), In (Var "x", Var "M"))))
+
+      val v2_stage = eval_cumulative_level 2
+      val v3_stage = eval_cumulative_level 3
+      val ord_v2 = [Empty, Singleton Empty]
+      val inner_nbg_ok =
+        eval_inner_model_nbg_criterion hf_in v2_stage v3_stage ord_v2
+          [ax_empty_exists, ax_extensionality, ax_isset_witness]
+      val non_trans_stage = [Singleton Empty]
+      val inner_nbg_non_trans_fail =
+        not (eval_inner_model_nbg_criterion hf_in non_trans_stage v3_stage [Singleton Empty]
+               [ax_empty_exists])
+
+      val p_one = Var "1_P"
+      val p_left = Var "p_0"
+      val p_right = Var "p_1"
+      val t63_carrier = [p_one, p_left, p_right]
+      fun t63_leq x y = (y = p_one) orelse (x = y)
+      fun t63_bad_leq x y = (x = p_left andalso y = p_one)
+      val fposet_eval_ok = eval_is_forcing_poset t63_leq t63_carrier p_one
+      val fposet_eval_fail = not (eval_is_forcing_poset t63_bad_leq t63_carrier p_one)
+
+      val t63_antichains = [[p_left], [p_right], [p_left, p_right], [p_one, p_left]]
+      val ccc_bound_ok = eval_has_ccc_bound t63_leq t63_carrier t63_antichains 2
+      val ccc_bound_fail = not (eval_has_ccc_bound t63_leq t63_carrier t63_antichains 1)
+
+      val check_0 = mk_canonical_check_name_dunaev p_one Empty
+      val check_1 = mk_canonical_check_name_dunaev p_one (Singleton Empty)
+      val check_2 = mk_canonical_check_name_dunaev p_one (UnorderedPair (Empty, Singleton Empty))
+      val custom_tau = mk_dunaev_p_name [(check_0, p_left), (check_1, p_right)]
+      val bad_kuratowski_tau = DunaevPName (KuratowskiPair (check_0, p_left))
+
+      val dpname_wf_ok =
+        eval_dunaev_p_name_well_formed t63_carrier check_0
+        andalso eval_dunaev_p_name_well_formed t63_carrier check_1
+        andalso eval_dunaev_p_name_well_formed t63_carrier check_2
+        andalso eval_dunaev_p_name_well_formed t63_carrier custom_tau
+      val dpname_wf_kuratowski_rejected =
+        not (eval_dunaev_p_name_well_formed t63_carrier bad_kuratowski_tau)
+
+      val g_right = [p_one, p_right]
+      val t63_generic_ok = eval_is_generic t63_leq t63_carrier g_right [[p_left, p_right], [p_one]]
+      val val_check_0_ok = (eval_recursive_val_g g_right check_0 = Empty)
+      val val_check_1_ok = (eval_recursive_val_g g_right check_1 = Singleton Empty)
+      val val_check_2_ok =
+        (eval_recursive_val_g g_right check_2 = UnorderedPair (Empty, Singleton Empty))
+      val val_custom_tau_ok =
+        (eval_recursive_val_g g_right custom_tau = Singleton (Singleton Empty))
+      val val_kuratowski_raises =
+        (let val _ = eval_recursive_val_g g_right bad_kuratowski_tau in false end
+         handle ProperClassKuratowskiException => true)
+
+      val im_rel_crit_thm = prove_inner_model_relativization_criterion (Var "M") ax_empty_exists
+      val im_rel_crit_thm_ok = case im_rel_crit_thm of
+          Thm ([], Imp (InnerModelCriterionNBG (Var "M"),
+                       Iff (RelativizedAxiomHolds (Var "M", _), _))) => true
+        | _ => false
+
+      val fposet_pre_thm = prove_forcing_poset_preorder (Var "P") (Var "Leq") p_one
+      val fposet_pre_thm_ok = case fposet_pre_thm of
+          Thm ([], Imp (IsForcingPoset (Var "P", Var "Leq", _), In (_, Var "P"))) => true
+        | _ => false
+
+      val ccc_ac_thm = prove_ccc_antichain_condition (Var "P") (Var "A")
+      val ccc_ac_thm_ok = case ccc_ac_thm of
+          Thm ([], Imp (And (HasCCC (Var "P"), IsAntichain (Var "A", Var "P")), IsSet (Var "A"))) => true
+        | _ => false
+
+      val dpname_wf_thm = prove_dunaev_pname_well_formed (Var "Tau") (Var "P")
+      val dpname_wf_thm_ok = case dpname_wf_thm of
+          Thm ([], Imp (IsDunaevPName (Var "Tau", Var "P"), IsSet (Var "Tau"))) => true
+        | _ => false
+
+      val check_val_thm = prove_check_name_generic_val (Var "x") (Var "G")
+      val check_val_thm_ok = case check_val_thm of
+          Thm ([], Imp (CheckNameValIdentity (Var "x", Var "G"),
+                       Eq (GenericVal (CanonicalCheckName (Var "x"), Var "G"), Var "x"))) => true
+        | _ => false
+
+      val gen_ext_im_thm = prove_generic_extension_inner_model (Var "M") (Var "G") (Var "P") True
+      val gen_ext_im_thm_ok = case gen_ext_im_thm of
+          Thm ([], Imp (And (InnerModelCriterionNBG (Var "M"), IsGenericFilter (Var "G", Var "P", Var "M")),
+                       InnerModelCriterionNBG (GenericExtension (Var "M", Var "G")))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -4122,6 +4531,17 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso eval_l_ac_ok andalso eval_l_gch_ok andalso eval_l_gch_fail
       andalso l_stage_def_thm_ok andalso constr_trans_thm_ok andalso cond_lem_thm_ok
       andalso l_sat_ac_thm_ok andalso l_sat_gch_thm_ok
+      andalso rel_compr_ok andalso poset_pre_ok andalso gen_val_ok
+      andalso im_crit_fm_ok andalso rel_ax_fm_ok andalso is_fposet_fm_ok
+      andalso is_dpname_fm_ok andalso check_id_fm_ok andalso rel_isset_check
+      andalso inner_nbg_ok andalso inner_nbg_non_trans_fail
+      andalso fposet_eval_ok andalso fposet_eval_fail
+      andalso ccc_bound_ok andalso ccc_bound_fail
+      andalso dpname_wf_ok andalso dpname_wf_kuratowski_rejected
+      andalso t63_generic_ok andalso val_check_0_ok andalso val_check_1_ok
+      andalso val_check_2_ok andalso val_custom_tau_ok andalso val_kuratowski_raises
+      andalso im_rel_crit_thm_ok andalso fposet_pre_thm_ok andalso ccc_ac_thm_ok
+      andalso dpname_wf_thm_ok andalso check_val_thm_ok andalso gen_ext_im_thm_ok
     end
 end;
 

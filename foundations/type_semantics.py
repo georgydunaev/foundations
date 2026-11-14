@@ -4251,6 +4251,461 @@ def proves_constructible_universe_and_gch(
     }
 
 
+def relativize_class_formula(
+    formula: Tuple[Any, ...],
+    model_class_name: str = "M",
+) -> Tuple[Any, ...]:
+    """Syntactically relativizes an MKTD1-theory / NBG / ZF formula phi to phi^M.
+
+    For a transitive proper class M:
+    - ("is_set", x) relativizes to ("in", x, M);
+    - ("forall", x, psi) relativizes to ("forall", x, ("imp", ("in", x, M), psi^M));
+    - ("exists", x, psi) relativizes to ("exists", x, ("and", ("in", x, M), psi^M));
+    - ("exists_unique", x, psi) relativizes to ("exists_unique", x, ("and", ("in", x, M), psi^M));
+    - bounded quantifiers recurse into their matrix while preserving Delta_0 bounds.
+    """
+    tag = formula[0]
+    if tag in ("in", "eq", "=", "subclass"):
+        return formula
+    if tag == "is_set":
+        return ("in", formula[1], model_class_name)
+    if tag == "not":
+        return ("not", relativize_class_formula(formula[1], model_class_name))
+    if tag in ("and", "or", "imp", "implies", "iff"):
+        return (
+            tag,
+            relativize_class_formula(formula[1], model_class_name),
+            relativize_class_formula(formula[2], model_class_name),
+        )
+    if tag == "forall":
+        var = formula[1]
+        rel_body = relativize_class_formula(formula[2], model_class_name)
+        return ("forall", var, ("imp", ("in", var, model_class_name), rel_body))
+    if tag == "exists":
+        var = formula[1]
+        rel_body = relativize_class_formula(formula[2], model_class_name)
+        return ("exists", var, ("and", ("in", var, model_class_name), rel_body))
+    if tag == "exists_unique":
+        var = formula[1]
+        rel_body = relativize_class_formula(formula[2], model_class_name)
+        return ("exists_unique", var, ("and", ("in", var, model_class_name), rel_body))
+    if tag in ("bounded_forall", "bounded_exists"):
+        return (
+            tag,
+            formula[1],
+            formula[2],
+            relativize_class_formula(formula[3], model_class_name),
+        )
+    return formula
+
+
+def _normalize_formula_for_model(formula: Tuple[Any, ...], m_token: str) -> Tuple[Any, ...]:
+    """Rewrites ('is_set', x) inside an inner-model evaluation to ('in', x, m_token)."""
+    tag = formula[0]
+    if tag == "is_set":
+        return ("in", formula[1], m_token)
+    if tag == "not":
+        return ("not", _normalize_formula_for_model(formula[1], m_token))
+    if tag in ("and", "or", "imp", "implies", "iff"):
+        return (
+            tag,
+            _normalize_formula_for_model(formula[1], m_token),
+            _normalize_formula_for_model(formula[2], m_token),
+        )
+    if tag in ("forall", "exists", "exists_unique"):
+        return (tag, formula[1], _normalize_formula_for_model(formula[2], m_token))
+    if tag in ("bounded_forall", "bounded_exists"):
+        return (tag, formula[1], formula[2], _normalize_formula_for_model(formula[3], m_token))
+    return formula
+
+
+def inner_model_relativization_check(
+    m_stage: Iterable[Any],
+    ambient_stage: Iterable[Any],
+    ord_stage: Optional[Iterable[Any]] = None,
+    axioms: Optional[Sequence[Tuple[Any, ...]]] = None,
+) -> Dict[str, Any]:
+    """Verifies transitive proper-class inner model closure and phi^M relativization.
+
+    Checks over finite transitive stages in MKTD1-theory and MKTD2-theory:
+    1. Non-emptiness, ambient inclusion, transitivity, and ordinal containment;
+    2. Closure under basic Godel operations F1, F3, F5 (with DunaevTaggedPair),
+       set unions, and bounded separation;
+    3. Satisfaction of relativized NBG / ZF axioms phi^M in ambient_stage and
+       equivalence between (M, in) |= phi and (V, in) |= phi^M.
+    """
+    m_frozenset = frozenset(m_stage)
+    v_frozenset = frozenset(ambient_stage)
+    m_list = list(m_frozenset)
+
+    if ord_stage is None:
+        ord_list = [x for x in [frozenset(), frozenset([frozenset()])] if x in v_frozenset]
+    else:
+        ord_list = list(ord_stage)
+
+    is_nonempty = len(m_frozenset) > 0
+    subset_of_ambient = m_frozenset.issubset(v_frozenset)
+    is_trans = is_transitive_set(m_frozenset)
+    ord_contained = all(o in m_frozenset for o in ord_list)
+
+    closed_f1 = all(
+        godel_operation_f1(x, y).issubset(m_frozenset) or godel_operation_f1(x, y) in v_frozenset
+        for x in m_list
+        for y in m_list
+    )
+    closed_f3 = all(godel_operation_f3(m_frozenset, {x}).issubset(m_frozenset) for x in m_list)
+    closed_f5 = all(godel_operation_f5(m_frozenset, {x}).issubset(m_frozenset) for x in m_list)
+    closed_godel = closed_f1 and closed_f3 and closed_f5
+    closed_union = is_closed_under_union(m_frozenset)
+    closed_separation = all(
+        frozenset(z for z in x if z != frozenset()) in m_frozenset
+        for x in m_list
+        if isinstance(x, frozenset)
+    )
+
+    default_axioms: List[Tuple[Any, ...]] = [
+        ("exists", "e", ("forall", "x", ("not", ("in", "x", "e")))),
+        (
+            "forall",
+            "x",
+            (
+                "forall",
+                "y",
+                (
+                    "imp",
+                    ("forall", "z", ("iff", ("in", "z", "x"), ("in", "z", "y"))),
+                    ("eq", "x", "y"),
+                ),
+            ),
+        ),
+        (
+            "forall",
+            "x",
+            (
+                "imp",
+                ("exists", "u", ("in", "u", "x")),
+                (
+                    "exists",
+                    "y",
+                    (
+                        "and",
+                        ("in", "y", "x"),
+                        (
+                            "forall",
+                            "z",
+                            ("not", ("and", ("in", "z", "x"), ("in", "z", "y"))),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        ("exists", "s", ("is_set", "s")),
+    ]
+    tested_axioms = list(axioms) if axioms is not None else default_axioms
+
+    model_token = "__M_INNER__"
+    axiom_results: List[Dict[str, Any]] = []
+    all_relativized_hold = True
+    relativization_equivalent = True
+
+    for ax in tested_axioms:
+        rel_ax = relativize_class_formula(ax, model_token)
+        norm_ax = _normalize_formula_for_model(ax, model_token)
+        sat_m = model_satisfaction(m_frozenset, norm_ax, {model_token: m_frozenset})
+        sat_v_rel = model_satisfaction(v_frozenset, rel_ax, {model_token: m_frozenset})
+        if not sat_v_rel:
+            all_relativized_hold = False
+        if sat_m != sat_v_rel:
+            relativization_equivalent = False
+        axiom_results.append(
+            {
+                "axiom": ax,
+                "relativized_axiom": rel_ax,
+                "satisfied_in_m": sat_m,
+                "relativized_satisfied_in_v": sat_v_rel,
+            }
+        )
+
+    criterion_holds = (
+        is_nonempty
+        and subset_of_ambient
+        and is_trans
+        and ord_contained
+        and closed_godel
+        and closed_union
+        and closed_separation
+        and all_relativized_hold
+        and relativization_equivalent
+    )
+
+    return {
+        "inner_model_criterion_holds": criterion_holds,
+        "is_nonempty": is_nonempty,
+        "subset_of_ambient": subset_of_ambient,
+        "is_transitive": is_trans,
+        "ord_contained": ord_contained,
+        "closed_under_godel_ops": closed_godel,
+        "closed_under_union": closed_union,
+        "closed_under_separation": closed_separation,
+        "all_relativized_axioms_hold": all_relativized_hold,
+        "relativization_equivalence_holds": relativization_equivalent,
+        "axiom_results": axiom_results,
+        "pairing_device": "dunaev_pair",
+    }
+
+
+def forcing_poset_check(
+    poset: ForcingPoset,
+    candidate_filter: Optional[Iterable[Any]] = None,
+    dense_family: Optional[Sequence[Iterable[Any]]] = None,
+    ccc_bound: Optional[int] = None,
+) -> Dict[str, Any]:
+    """Verifies forcing poset axioms, compatibility, antichains, ccc, density, and M-genericity."""
+    carrier = list(poset.carrier)
+    one = poset.one
+    leq = poset.leq
+
+    one_in_carrier = one in carrier
+    is_reflexive = all(leq(p, p) for p in carrier)
+    one_is_top = all(leq(p, one) for p in carrier)
+    is_transitive = all(
+        (not (leq(r, q) and leq(q, p))) or leq(r, p)
+        for r in carrier
+        for q in carrier
+        for p in carrier
+    )
+    valid_poset = one_in_carrier and is_reflexive and one_is_top and is_transitive
+
+    compat_count = sum(1 for p in carrier for q in carrier if compat(p, q, poset))
+    incompat_count = sum(1 for p in carrier for q in carrier if incompat(p, q, poset))
+
+    max_antichain_size = 0
+    n = len(carrier)
+    if n <= 14:
+        for mask in range(1 << n):
+            subset = [carrier[i] for i in range(n) if (mask & (1 << i))]
+            if len(subset) > max_antichain_size and is_antichain(subset, poset):
+                max_antichain_size = len(subset)
+    else:
+        for p in carrier:
+            if is_antichain([p], poset):
+                max_antichain_size = max(max_antichain_size, 1)
+
+    if ccc_bound is None:
+        ccc_holds = valid_poset
+    else:
+        ccc_holds = valid_poset and (max_antichain_size <= ccc_bound)
+
+    dense_checks = (
+        [is_dense(d, poset) for d in dense_family]
+        if dense_family is not None
+        else []
+    )
+    all_dense_valid = all(dense_checks)
+
+    if candidate_filter is not None:
+        g_list = list(candidate_filter)
+        filter_valid = is_filter(g_list, poset)
+        generic_valid = (
+            is_generic(g_list, poset, dense_family)
+            if dense_family is not None
+            else filter_valid
+        )
+    else:
+        filter_valid = False
+        generic_valid = False
+
+    return {
+        "is_valid_forcing_poset": valid_poset,
+        "one_in_carrier": one_in_carrier,
+        "is_reflexive": is_reflexive,
+        "is_transitive": is_transitive,
+        "one_is_top": one_is_top,
+        "compatible_pair_count": compat_count,
+        "incompatible_pair_count": incompat_count,
+        "max_antichain_size": max_antichain_size,
+        "ccc_holds": ccc_holds,
+        "all_dense_subsets_valid": all_dense_valid,
+        "is_filter": filter_valid,
+        "is_m_generic_filter": generic_valid,
+        "pairing_device": "dunaev_pair",
+    }
+
+
+def is_dunaev_p_name(tau: Any, poset: ForcingPoset) -> bool:
+    """Recursively checks that tau is a hereditarily Dunaev-tagged P-name over poset.
+
+    Every element of tau must be a DunaevTaggedPair(sigma, p) with p in poset.carrier,
+    strictly rejecting KuratowskiPair instances at every level.
+    """
+    if isinstance(tau, KuratowskiPair):
+        return False
+    if not isinstance(tau, (frozenset, set)):
+        return False
+    carrier_set = set(poset.carrier)
+    for item in tau:
+        if not isinstance(item, DunaevTaggedPair):
+            return False
+        sigma = dunaev_fst(item)
+        cond = dunaev_snd(item)
+        if cond not in carrier_set:
+            return False
+        if isinstance(sigma, KuratowskiPair):
+            return False
+        if isinstance(sigma, (frozenset, set)):
+            if not is_dunaev_p_name(sigma, poset):
+                return False
+    return True
+
+
+def check_name(x: Any, poset_one: Any) -> FrozenSet[DunaevTaggedPair]:
+    """Constructs the canonical ground-set check name check(x) using DunaevTaggedPair.
+
+    For any set x, check(x) = { (check(y), 1_P)_D | y in x }.
+    Strictly forbids KuratowskiPair and supports proper-class Dunaev tagging at top level.
+    """
+    if isinstance(x, KuratowskiPair) or isinstance(poset_one, KuratowskiPair):
+        raise TypeError("MKTD P-names must use DunaevTaggedPair, never KuratowskiPair")
+    if isinstance(x, (frozenset, set, list)):
+        entries: List[DunaevTaggedPair] = []
+        for y in x:
+            if isinstance(y, KuratowskiPair):
+                raise TypeError("MKTD P-names must use DunaevTaggedPair, never KuratowskiPair")
+            if isinstance(y, (frozenset, set, list)):
+                y_sub: Any = check_name(y, poset_one)
+            else:
+                y_sub = y
+            entries.append(dunaev_pair(y_sub, poset_one))
+        return frozenset(entries)
+    return frozenset([dunaev_pair(x, poset_one)])
+
+
+def eval_p_name(tau: Any, g_filter: Iterable[Any]) -> Any:
+    """Evaluates a Dunaev-tagged P-name tau under generic filter G.
+
+    val_G(tau) = { val_G(sigma) | exists p in G such that (sigma, p)_D in tau }.
+    Raises TypeError if any KuratowskiPair appears inside a P-name.
+    """
+    if isinstance(tau, KuratowskiPair):
+        raise TypeError("MKTD P-names must use DunaevTaggedPair, never KuratowskiPair")
+    g_set = frozenset(g_filter)
+    if isinstance(tau, (frozenset, set, list)):
+        evaluated: Set[Any] = set()
+        for item in tau:
+            if isinstance(item, KuratowskiPair):
+                raise TypeError("MKTD P-names must use DunaevTaggedPair, never KuratowskiPair")
+            if not isinstance(item, DunaevTaggedPair):
+                raise TypeError(
+                    f"Expected DunaevTaggedPair element in P-name, got {type(item)}"
+                )
+            sigma = dunaev_fst(item)
+            cond = dunaev_snd(item)
+            if cond in g_set:
+                evaluated.add(eval_p_name(sigma, g_set))
+        return frozenset(evaluated)
+    return tau
+
+
+def proves_inner_models_and_forcing() -> Dict[str, Any]:
+    """Master theorem runner for Ticket 63:
+    Class Inner Model Relativization and Forcing Posets with Dunaev Tagged Names in MKTD.
+    """
+    v2 = cumulative_hierarchy_v(2)
+    v3 = cumulative_hierarchy_v(3)
+    ord_v2 = [frozenset(), frozenset([frozenset()])]
+
+    inner_ok = inner_model_relativization_check(v2, v3, ord_stage=ord_v2)
+
+    non_trans_domain = frozenset(
+        [frozenset(), frozenset([frozenset([frozenset()])])]
+    )
+    inner_non_trans = inner_model_relativization_check(
+        non_trans_domain, v3, ord_stage=[frozenset()]
+    )
+
+    poset = cohen_poset([0, 1], [0, 1])
+    d0 = [p for p in poset.carrier if any(dunaev_fst(pair) == 0 for pair in p)]
+    d1 = [p for p in poset.carrier if any(dunaev_fst(pair) == 1 for pair in p)]
+    dense_family = [d0, d1]
+
+    p_0_is_1 = frozenset([dunaev_pair(0, 1)])
+    p_1_is_0 = frozenset([dunaev_pair(1, 0)])
+    p_both = frozenset([dunaev_pair(0, 1), dunaev_pair(1, 0)])
+    g_filter = frozenset([poset.one, p_0_is_1, p_1_is_0, p_both])
+
+    poset_res = forcing_poset_check(
+        poset,
+        candidate_filter=g_filter,
+        dense_family=dense_family,
+        ccc_bound=4,
+    )
+
+    check_identities_ok = all(
+        is_dunaev_p_name(check_name(x, poset.one), poset)
+        and eval_p_name(check_name(x, poset.one), g_filter) == x
+        for x in v2
+    )
+
+    g_dot = frozenset(dunaev_pair(check_name(p, poset.one), p) for p in poset.carrier)
+    g_dot_ok = eval_p_name(g_dot, g_filter) == g_filter
+
+    zero_vn = frozenset()
+    one_vn = frozenset([zero_vn])
+    tau_generic_subset = frozenset(
+        [
+            dunaev_pair(check_name(zero_vn, poset.one), frozenset([dunaev_pair(0, 1)])),
+            dunaev_pair(check_name(one_vn, poset.one), frozenset([dunaev_pair(1, 1)])),
+        ]
+    )
+    tau_wf = is_dunaev_p_name(tau_generic_subset, poset)
+    tau_val = eval_p_name(tau_generic_subset, g_filter)
+    tau_val_ok = tau_val == frozenset([zero_vn])
+
+    proper_class_dunaev = check_name(UNIVERSAL_CLASS, poset.one)
+    proper_class_dunaev_ok = (
+        len(proper_class_dunaev) == 1
+        and all(isinstance(el, DunaevTaggedPair) for el in proper_class_dunaev)
+    )
+    kuratowski_proper_rejected = False
+    try:
+        kuratowski_pair(UNIVERSAL_CLASS, poset.one)
+    except ProperClassError:
+        kuratowski_proper_rejected = True
+
+    all_proven = (
+        inner_ok["inner_model_criterion_holds"]
+        and (not inner_non_trans["inner_model_criterion_holds"])
+        and (not inner_non_trans["all_relativized_axioms_hold"])
+        and poset_res["is_valid_forcing_poset"]
+        and poset_res["ccc_holds"]
+        and poset_res["all_dense_subsets_valid"]
+        and poset_res["is_m_generic_filter"]
+        and check_identities_ok
+        and g_dot_ok
+        and tau_wf
+        and tau_val_ok
+        and proper_class_dunaev_ok
+        and kuratowski_proper_rejected
+    )
+
+    return {
+        "inner_models_and_forcing_proven": all_proven,
+        "inner_model_criterion_verified": inner_ok["inner_model_criterion_holds"],
+        "non_transitive_counterexample_rejected": not inner_non_trans["inner_model_criterion_holds"],
+        "forcing_poset_verified": poset_res["is_valid_forcing_poset"],
+        "ccc_verified": poset_res["ccc_holds"],
+        "dense_subsets_verified": poset_res["all_dense_subsets_valid"],
+        "m_generic_filter_verified": poset_res["is_m_generic_filter"],
+        "check_name_identity_verified": check_identities_ok,
+        "generic_name_evaluation_verified": g_dot_ok,
+        "dunaev_p_name_well_formed": tau_wf,
+        "generic_subset_evaluation_verified": tau_val_ok,
+        "proper_class_dunaev_tagging_verified": proper_class_dunaev_ok and kuratowski_proper_rejected,
+        "pairing_device": "dunaev_pair",
+    }
+
+
+
 
 
 

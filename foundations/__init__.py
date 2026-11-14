@@ -230,6 +230,13 @@ from foundations.type_semantics import (
     condensation_lemma_check,
     l_cardinal_exponentiation,
     proves_constructible_universe_and_gch,
+    relativize_class_formula,
+    inner_model_relativization_check,
+    forcing_poset_check,
+    is_dunaev_p_name,
+    check_name,
+    eval_p_name,
+    proves_inner_models_and_forcing,
 )
 
 __all__: list[str] = [
@@ -460,4 +467,11 @@ __all__: list[str] = [
     "condensation_lemma_check",
     "l_cardinal_exponentiation",
     "proves_constructible_universe_and_gch",
+    "relativize_class_formula",
+    "inner_model_relativization_check",
+    "forcing_poset_check",
+    "is_dunaev_p_name",
+    "check_name",
+    "eval_p_name",
+    "proves_inner_models_and_forcing",
 ]

@@ -1762,6 +1762,83 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master["relative_consistency_gch"])
         self.assertEqual(master["pairing_device"], "dunaev_pair")
 
+    def test_inner_models_and_forcing_ticket_gl063(self):
+        """Ticket 63: Class Inner Model Relativization and Forcing Posets with Dunaev Names."""
+        from foundations.type_semantics import (
+            UNIVERSAL_CLASS,
+            DunaevTaggedPair,
+            ProperClassError,
+            check_name,
+            cohen_poset,
+            cumulative_hierarchy_v,
+            dunaev_fst,
+            dunaev_pair,
+            eval_p_name,
+            forcing_poset_check,
+            inner_model_relativization_check,
+            is_dunaev_p_name,
+            kuratowski_pair,
+            mk_poset,
+            proves_inner_models_and_forcing,
+        )
+
+        # Broken poset (non-reflexive) fails forcing_poset_check
+        bad_poset = mk_poset([0, 1], lambda x, y: False, 0)
+        bad_res = forcing_poset_check(bad_poset)
+        self.assertFalse(bad_res["is_reflexive"])
+        self.assertFalse(bad_res["is_valid_forcing_poset"])
+
+        # Valid Cohen poset Fn({0}, {0, 1})
+        c_pos = cohen_poset([0], [0, 1])
+        d0 = [p for p in c_pos.carrier if any(dunaev_fst(pair) == 0 for pair in p)]
+        g_left = frozenset([c_pos.one, frozenset([dunaev_pair(0, 0)])])
+        c_res = forcing_poset_check(
+            c_pos, candidate_filter=g_left, dense_family=[d0], ccc_bound=2
+        )
+        self.assertTrue(c_res["is_valid_forcing_poset"])
+        self.assertEqual(c_res["max_antichain_size"], 2)
+        self.assertTrue(c_res["ccc_holds"])
+        self.assertTrue(c_res["is_m_generic_filter"])
+
+        # Generic subset evaluation with DunaevTaggedPair
+        zero = frozenset()
+        one = frozenset([zero])
+        tau = frozenset(
+            [
+                DunaevTaggedPair(check_name(zero, c_pos.one), frozenset([dunaev_pair(0, 0)])),
+                DunaevTaggedPair(check_name(one, c_pos.one), frozenset([dunaev_pair(0, 1)])),
+            ]
+        )
+        self.assertTrue(is_dunaev_p_name(tau, c_pos))
+        self.assertEqual(eval_p_name(tau, g_left), frozenset([zero]))
+
+        # Inner model relativization on V_2 inside V_3
+        im_v2 = inner_model_relativization_check(
+            cumulative_hierarchy_v(2), cumulative_hierarchy_v(3)
+        )
+        self.assertTrue(im_v2["inner_model_criterion_holds"])
+
+        # Proper class rejection for Kuratowski vs support for Dunaev
+        with self.assertRaises(ProperClassError):
+            kuratowski_pair(UNIVERSAL_CLASS, c_pos.one)
+        self.assertEqual(len(check_name(UNIVERSAL_CLASS, c_pos.one)), 1)
+
+        # Master runner
+        res = proves_inner_models_and_forcing()
+        self.assertTrue(res["inner_models_and_forcing_proven"])
+        self.assertTrue(res["inner_model_criterion_verified"])
+        self.assertTrue(res["non_transitive_counterexample_rejected"])
+        self.assertTrue(res["forcing_poset_verified"])
+        self.assertTrue(res["ccc_verified"])
+        self.assertTrue(res["dense_subsets_verified"])
+        self.assertTrue(res["m_generic_filter_verified"])
+        self.assertTrue(res["check_name_identity_verified"])
+        self.assertTrue(res["generic_name_evaluation_verified"])
+        self.assertTrue(res["dunaev_p_name_well_formed"])
+        self.assertTrue(res["generic_subset_evaluation_verified"])
+        self.assertTrue(res["proper_class_dunaev_tagging_verified"])
+        self.assertEqual(res["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()

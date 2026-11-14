@@ -304,6 +304,121 @@ class TestFoundations(unittest.TestCase):
                     f"Symbol '{sym}' for Logic & Binder Hygiene is missing from foundations",
                 )
 
+    def test_ticket_gl063_inner_models_and_forcing_symbols(self):
+        """Ticket 63: verify inner model relativization and Dunaev-tagged forcing symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "relativize_class_formula",
+            "inner_model_relativization_check",
+            "forcing_poset_check",
+            "is_dunaev_p_name",
+            "check_name",
+            "eval_p_name",
+            "proves_inner_models_and_forcing",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 63 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+    def test_ticket_gl063_inner_model_relativization_and_forcing_behavior(self):
+        """Ticket 63: test inner model relativization, forcing posets, and Dunaev P-names."""
+        self.assertTrue(HAS_FOUNDATIONS)
+
+        # 1. Syntactic relativization phi^M for MKTD1-theory / NBG formulas
+        fm_isset = ("exists", "x", ("is_set", "x"))
+        rel_isset = foundations.relativize_class_formula(fm_isset, "M")
+        self.assertEqual(rel_isset, ("exists", "x", ("and", ("in", "x", "M"), ("in", "x", "M"))))
+
+        fm_univ = ("forall", "x", ("exists_unique", "y", ("eq", "x", "y")))
+        rel_univ = foundations.relativize_class_formula(fm_univ, "M")
+        self.assertEqual(
+            rel_univ,
+            (
+                "forall",
+                "x",
+                (
+                    "imp",
+                    ("in", "x", "M"),
+                    ("exists_unique", "y", ("and", ("in", "y", "M"), ("eq", "x", "y"))),
+                ),
+            ),
+        )
+
+        # 2. Inner model criterion over finite transitive stages vs non-transitive stage
+        v2 = foundations.cumulative_hierarchy_v(2)
+        v3 = foundations.cumulative_hierarchy_v(3)
+        im_ok = foundations.inner_model_relativization_check(v2, v3)
+        self.assertTrue(im_ok["inner_model_criterion_holds"])
+        self.assertTrue(im_ok["is_transitive"])
+        self.assertTrue(im_ok["all_relativized_axioms_hold"])
+        self.assertTrue(im_ok["relativization_equivalence_holds"])
+        self.assertEqual(im_ok["pairing_device"], "dunaev_pair")
+
+        non_trans = frozenset([frozenset(), frozenset([frozenset([frozenset()])])])
+        im_bad = foundations.inner_model_relativization_check(
+            non_trans, v3, ord_stage=[frozenset()]
+        )
+        self.assertFalse(im_bad["is_transitive"])
+        self.assertFalse(im_bad["all_relativized_axioms_hold"])
+        self.assertFalse(im_bad["inner_model_criterion_holds"])
+
+        # 3. Forcing poset, compatibility, antichains, ccc, dense subsets, M-genericity
+        poset = foundations.cohen_poset([0, 1], [0, 1])
+        d0 = [p for p in poset.carrier if any(foundations.dunaev_fst(pair) == 0 for pair in p)]
+        d1 = [p for p in poset.carrier if any(foundations.dunaev_fst(pair) == 1 for pair in p)]
+        p0 = frozenset([foundations.dunaev_pair(0, 1)])
+        p1 = frozenset([foundations.dunaev_pair(1, 0)])
+        p01 = frozenset([foundations.dunaev_pair(0, 1), foundations.dunaev_pair(1, 0)])
+        g_gen = frozenset([poset.one, p0, p1, p01])
+
+        pos_ok = foundations.forcing_poset_check(
+            poset, candidate_filter=g_gen, dense_family=[d0, d1], ccc_bound=4
+        )
+        self.assertTrue(pos_ok["is_valid_forcing_poset"])
+        self.assertEqual(pos_ok["max_antichain_size"], 4)
+        self.assertTrue(pos_ok["ccc_holds"])
+        self.assertTrue(pos_ok["all_dense_subsets_valid"])
+        self.assertTrue(pos_ok["is_filter"])
+        self.assertTrue(pos_ok["is_m_generic_filter"])
+
+        pos_tight_ccc = foundations.forcing_poset_check(
+            poset, candidate_filter=frozenset([poset.one]), dense_family=[d0, d1], ccc_bound=2
+        )
+        self.assertFalse(pos_tight_ccc["ccc_holds"])
+        self.assertTrue(pos_tight_ccc["is_filter"])
+        self.assertFalse(pos_tight_ccc["is_m_generic_filter"])
+
+        # 4. Dunaev-tagged P-names, check_name, eval_p_name, and Kuratowski rejection
+        for elem in v3:
+            cname = foundations.check_name(elem, poset.one)
+            self.assertTrue(foundations.is_dunaev_p_name(cname, poset))
+            self.assertEqual(foundations.eval_p_name(cname, g_gen), elem)
+
+        k_pair = foundations.kuratowski_pair(frozenset(), poset.one)
+        self.assertFalse(foundations.is_dunaev_p_name(k_pair, poset))
+        self.assertFalse(foundations.is_dunaev_p_name([k_pair], poset))
+        self.assertFalse(foundations.is_dunaev_p_name(frozenset([(frozenset(), poset.one)]), poset))
+        with self.assertRaises(TypeError):
+            foundations.check_name(k_pair, poset.one)
+        with self.assertRaises(TypeError):
+            foundations.check_name([k_pair], poset.one)
+        with self.assertRaises(TypeError):
+            foundations.eval_p_name([k_pair], g_gen)
+        with self.assertRaises(foundations.ProperClassError):
+            foundations.kuratowski_pair(foundations.UNIVERSAL_CLASS, poset.one)
+
+        proper_tagged = foundations.check_name(foundations.UNIVERSAL_CLASS, poset.one)
+        self.assertEqual(len(proper_tagged), 1)
+
+        # 5. Master theorem runner
+        master = foundations.proves_inner_models_and_forcing()
+        self.assertTrue(master["inner_models_and_forcing_proven"])
+        self.assertEqual(master["pairing_device"], "dunaev_pair")
+
 
 if __name__ == '__main__':
     unittest.main()
