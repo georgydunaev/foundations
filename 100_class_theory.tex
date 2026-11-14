@@ -199,6 +199,29 @@ constructions in an external theory; neither is a claim that the
 book's stronger proposed systems have the same models. They provide
 concrete tests for any claimed derivation of set-existence principles.
 
+\subsection{Ordered Pairs of Classes: Dunaev Tagged Ordered Pairs vs.\ Kuratowski Pairs}
+\label{subsec:dunaev_vs_kuratowski_pairs}
+
+In Morse-Kelley class theory, class comprehension ranges over sets: a class
+$X$ is a member of $\cc{x}{\phi(x)}$ only when $X \in V$. Consequently, the
+singleton $\{A\} = \cc{x}{x = A}$ equals the empty class $\emptyclass$ whenever
+$A \notin V$ is a proper class, and the Kuratowski pair
+$\kuratowskipair{A}{B} = \{\{A\}, \{A, B\}\}$ collapses to $\{\emptyclass\}$
+whenever $A$ and $B$ are proper classes, destroying injectivity of projections.
+Therefore, Kuratowski pairs must never be used for proper classes or general
+class-level pairing. Instead, class-level ordered pairs use Dunaev Tagged
+Ordered Pairs (Sections~\ref{sec:ordered_pairs_foundations} and~\ref{sec:dunaev_tagged_ordered_pair}):
+\[
+\pair{A}{B} \eqdef \cc{z}{\exists x,\ (z = \kuratowskipair{\emptyclass}{x} \land x \in A) \lor (z = \kuratowskipair{\{\emptyclass\}}{x} \land x \in B)}.
+\]
+Because the tag coordinates $\emptyclass$ and $\{\emptyclass\}$ and the element
+witnesses $x \in A \subseteq V$ and $x \in B \subseteq V$ are always sets,
+every member of $\pair{A}{B}$ is a set in $V$ regardless of whether $A$ and $B$
+are sets or proper classes, and the projections
+$\Fst(P) = \cc{x}{\kuratowskipair{\emptyclass}{x} \in P}$ and
+$\Snd(P) = \cc{x}{\kuratowskipair{\{\emptyclass\}}{x} \in P}$ recover $A$ and $B$
+uniquely for all classes $A, B$.
+
 \subsection{Binders: Quantifiers, Class Comprehension, and Descriptors}
 \label{subsec:binders_overview}
 

@@ -2050,16 +2050,30 @@ the derivability of $\varphi$  implies the derivability of $(\forall (x:X),\varp
 \]
 \end{definition}
 \begin{note}[Theorem rules and rules under assumptions]
-The companion catalog's short generalisation display (2.06) lists no
-freshness condition, whereas its context-indexed version (4.02) explicitly
-requires that the variable not occur free in $\Gamma$. These presentations
-agree when the short rule acts on theorems with no undischarged assumptions
-and the background axioms are closed. They do not justify an unrestricted
-rule from an arbitrary assumption $\varphi$ to $\forall x\,\varphi$.
+In the \texttt{MKTD1-system} (\texttt{MKTD1-theory}) entity database exported by
+\texttt{program/export\_theory\_db.ML} from \texttt{program/types/foundations.ML},
+the Section~2 quantifier inference rules---\texttt{RulForallAbstraction} (2.04,
+\texttt{FA\_rul}, rule B1), \texttt{RulExistsAbstraction} (2.05, \texttt{EA\_rul},
+rule B2), and \texttt{RulGeneralisation} (2.06, \texttt{Generalisation\_rul})---are
+presented as theorem-level displays specialized to the empty undischarged
+assumption context $\Gamma = []$. Accordingly, the short generalisation display
+(2.06) lists no object-level context freshness condition (as $\neg\operatorname{Ctx.IFV}(x,[])$
+holds vacuously when the undischarged context is empty and background axioms are
+closed), while 2.04 and 2.05 carry the formula freshness side condition
+$\operatorname{NFV}(X, x, \beta)$ ($x \notin \FV(\beta)$). By contrast, the
+context-indexed metatheoretic generalisation rule \texttt{DefMetaGeneralisation}
+(4.02, \texttt{generalisation\_def\_entry\_fm}) and the primitive sequent kernel
+constructors \texttt{PForaR\_prf} and \texttt{PExisL\_prf} explicitly enforce the
+context freshness restriction $\neg\operatorname{Ctx.IFV}(v, \Gamma)$ ($v \notin \FV(\Gamma)$).
+These presentations agree when the Section~2 rules act on theorems with empty
+undischarged context $[]$ and closed background axioms. They do not justify an
+unrestricted rule from an arbitrary open assumption $\varphi$ to $\forall x\,\varphi$.
 For example, on $\{0,1\}$ with $P=\{0\}$, the context $P(x)$ is true
-at $x=0$, but $\forall x\,P(x)$ is false. The abstraction rules B1 and
-B2 likewise require the context freshness stated above, in addition to
-freshness for the unchanged formula. The proof of
+at $x=0$, but $\forall x\,P(x)$ is false. The abstraction rules B1 (2.04) and
+B2 (2.05) likewise require the context freshness restriction
+$\neg\operatorname{Ctx.IFV}(x, \Gamma)$ whenever applied under a non-empty
+assumption context $\Gamma$, in addition to formula freshness $\operatorname{NFV}(X, x, \beta)$
+for the unchanged formula $\beta$. The proof of
 Proposition~\ref{prop:local_deduction} retains these restrictions explicitly.
 \end{note}
 \begin{definition}[generalisation rule, written on the meta--level]
@@ -4690,37 +4704,70 @@ theory.
 Write $\operatorname{eval}_M(\phi)$ for the truth of a sentence $\phi$ in the
 chosen interpretation $M$. For an open formula, evaluation also needs an
 assignment, written $\operatorname{eval}_{M,s}(\phi)$. This makes explicit the
-semantic operation that some of the earlier displays leave implicit. The
-companion entries 3.72--3.75 then have the intended readings
+semantic operation that some of the earlier displays leave implicit. In the
+\texttt{MKTD1-system} (\texttt{MKTD1-theory}) database exported by
+\texttt{program/export\_theory\_db.ML}, the companion metatheoretic entries have
+the explicit forms
 \[
-(\Tau\vdash\phi)\implies\operatorname{eval}_M(\phi),
+(\Tau,[]\vdash\phi)\implies\operatorname{eval}_M(\phi),
 \qquad
-(\Fau\vdash\phi)\implies\operatorname{eval}_M(\phi),
+(\Fau,[]\vdash\phi)\implies\operatorname{eval}_M(\phi),
 \]
 \[
-\operatorname{eval}_M(\phi)\implies(\Fau\vdash\phi),
+\operatorname{eval}_M(\phi)\implies(\Fau,[]\vdash\phi),
+\qquad
+\neg(\Fau,[]\vdash\neg\phi)\implies(\Fau,[]\vdash\phi),
 \qquad
 (\Tau,\Gamma\vdash\phi)\implies(\Fau,\Gamma\vdash\phi).
 \]
-The first three are semantic principles in the surrounding setting; the last
-preserves a context when passing to an extension. In particular, none of
-these displays asserts that $\Tau$ proves its own soundness. An internal
-version must name its ambient theory and the language interpreted by
-$\operatorname{eval}_M$.
+The first two are the soundness axioms \texttt{AxmSoundnessOfBaseTheory} (3.71)
+and \texttt{AxmSoundnessOfFullTheory} (3.72); the fifth is the subtheory inclusion
+\texttt{AxmBaseSubtheoryOfFull} (3.75), which preserves an assumption context
+$\Gamma$ when passing from $\Tau$ to $\Fau$. None of these displays asserts that
+$\Tau$ proves its own soundness; an internal version must name its ambient theory
+and the language interpreted by $\operatorname{eval}_M$.
 
-The third display is called \emph{omniscience} below.
-The distinct notion of \emph{negation-completeness} decides each sentence
-or its negation.
-In a fixed classical interpretation, soundness together with
-negation-completeness implies omniscience: if $\phi$ is true, soundness rules
-out a proof of $\neg\phi$, so completeness supplies a proof of $\phi$.
-Conversely, omniscience and semantic bivalence supply a proof of one of the
-two sentences. These are conditional connections between the notions, not
-interchangeable definitions without their hypotheses.
+The third and fourth displays carefully distinguish \emph{semantic completeness}
+(\emph{omniscience}) from \emph{syntactic negation-completeness} for the full
+theory $\Fau$:
+\begin{enumerate}
+  \item \textbf{Semantic Completeness / Omniscience} (\texttt{AxmSemanticCompletenessOfFullTheory},
+  retained under the legacy alias \texttt{AxmCompletenessOfFullTheory}, Entry~3.73,
+  kernel constructor \texttt{POmnis\_prf}, defined in \texttt{program/types/foundations.ML}
+  by \texttt{completeness\_of\_F\_axm\_entry\_fm}):
+  \[
+  \forall (\phi:\Fm),\ \operatorname{eval}_M(\phi) \implies (\Fau, [] \vdash \phi).
+  \]
+  This semantic principle relates truth under the evaluation operator
+  $\operatorname{eval}_M$ (\texttt{EEval}) to derivability in $\Fau$ with empty
+  undischarged context $[]$.
+  \item \textbf{Syntactic Negation-Completeness} (\texttt{AxmNegationCompletenessOfFullTheory},
+  Entry~3.74, defined in \texttt{program/types/foundations.ML} by
+  \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
+  \[
+  \forall (\phi:\Fm),\ \neg(\Fau, [] \vdash \neg\phi) \implies (\Fau, [] \vdash \phi).
+  \]
+  This purely syntactic principle states that if the negation $\neg\phi$ is not
+  derivable in $\Fau$ from the empty context $[]$, then $\phi$ itself is derivable
+  in $\Fau$ from $[]$ (classically equivalent to the disjunctive form
+  $(\Fau, [] \vdash \phi) \lor (\Fau, [] \vdash \neg\phi)$ of Definition~complete theory below).
+\end{enumerate}
+In a fixed classical interpretation $M$, soundness of $\Fau$
+($(\Fau, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$) together with
+syntactic negation-completeness implies semantic completeness (omniscience): if
+$\operatorname{eval}_M(\phi)$ holds, soundness rules out a derivation
+$(\Fau, [] \vdash \neg\phi)$, so syntactic negation-completeness supplies a
+derivation $(\Fau, [] \vdash \phi)$. Conversely, semantic completeness together
+with classical semantic bivalence ($\operatorname{eval}_M(\phi) \lor \operatorname{eval}_M(\neg\phi)$)
+implies syntactic negation-completeness. Separating Entry~3.73
+(\texttt{AxmSemanticCompletenessOfFullTheory} / \texttt{AxmCompletenessOfFullTheory},
+\texttt{POmnis\_prf}) from Entry~3.74 (\texttt{AxmNegationCompletenessOfFullTheory})
+keeps these two notions distinct and records the exact hypotheses linking them.
 
 % Companion evidence: generated/metatheory.html and generated/theory_db.json,
 % AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory,
-% AxmCompletenessOfFullTheory, AxmBaseSubtheoryOfFull;
+% AxmSemanticCompletenessOfFullTheory (alias AxmCompletenessOfFullTheory, POmnis_prf),
+% AxmNegationCompletenessOfFullTheory, AxmBaseSubtheoryOfFull;
 % generated/symbols/theory-wau.html and theory-eau.html.
 % Local source-level discrepancies are tracked in tickets/obelisk_logic_*.md.
 

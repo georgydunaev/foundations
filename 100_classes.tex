@@ -1,0 +1,76 @@
+\def\topic{Morse-Kelley class comprehension, separation, and Dunaev tagged ordered pairs}
+\input{BEGIN.tex}
+\section{Morse-Kelley Class Separation and Dunaev Tagged Ordered Pairs}
+\label{sec:mk_classes_audit_summary}
+
+This standalone unit summarizes the core Morse-Kelley (MK) class-theoretic
+principles established in \texttt{100\_class\_theory.tex}, \texttt{010\_ordered\_pairs.tex},
+and \texttt{070\_ordered\_pair.tex}, focusing on class comprehension, the
+Separation Principle for sets intersected with arbitrary classes, and the
+mandate to use Dunaev Tagged Ordered Pairs rather than Kuratowski pairs for
+general classes.
+
+\subsection{Universal Class, Sethood, and Class Comprehension}
+
+Let $V$ denote the universal class of all sets:
+\[
+V \eqdef \cc{x}{\top}.
+\]
+A class $A$ is a \emph{set} if $A \in V$, and a \emph{proper class} if $A \notin V$.
+For every formula $\phi(x)$ in the language of Morse-Kelley class theory (in
+which bound variables may range over arbitrary classes), the Class Comprehension
+Axiom Schema provides a class $\cc{x}{\phi(x)}$ satisfying
+\[
+\forall z,\ z \in \cc{x}{\phi(x)} \iff (z \in V) \land \phi(z).
+\]
+In particular, the Russell class $R \eqdef \cc{x}{x \notin x}$ satisfies
+$R \in R \iff (R \in V) \land (R \notin R)$, which yields $R \notin V$; hence $R$
+is a proper class.
+
+\subsection{Separation Principle (Aussonderung)}
+
+In Morse-Kelley class theory, intersecting a set $a \in V$ with an arbitrary
+class $P$ (which may be defined by an impredicative formula quantifying over all
+classes) yields the subclass
+\[
+a \cap P = \cc{x}{x \in a \land x \in P}.
+\]
+The Separation Principle states that every subclass of a set is itself a set:
+\[
+\forall a,\ \forall P,\ (a \in V) \implies (a \cap P \in V).
+\]
+As shown in Theorem~\ref{thm:two_object_model} of \texttt{100\_class\_theory.tex},
+class comprehension and extensionality alone determine the extension of $a \cap P$
+as a class, whereas its sethood $a \cap P \in V$ is an independent set-existence
+axiom (derivable in full MK from the Limitation of Size or Replacement plus the
+empty-set axiom).
+
+\subsection{Adherence to Dunaev Tagged Ordered Pairs for Classes}
+
+For sets $a, b \in V$, the Kuratowski pair
+\[
+\kuratowskipair{a}{b} \eqdef \{\{a\}, \{a, b\}\}
+\]
+relies on $\{a\} \in V$ and $\{a, b\} \in V$. For a proper class $A \notin V$,
+however, $\{A\} = \cc{x}{x = A} = \emptyclass$, so $\kuratowskipair{A}{B}$
+collapses when $A$ or $B$ is a proper class. Accordingly, Kuratowski pairs must
+never be used for proper classes.
+
+To form ordered pairs of arbitrary classes $A$ and $B$ without sethood
+restrictions, the development uses \emph{Dunaev Tagged Ordered Pairs}:
+\[
+\pair{A}{B} \eqdef \cc{z}{\exists x,\ (z = \kuratowskipair{\emptyclass}{x} \land x \in A) \lor (z = \kuratowskipair{\{\emptyclass\}}{x} \land x \in B)},
+\]
+with projections
+\[
+\Fst(P) \eqdef \cc{x}{\kuratowskipair{\emptyclass}{x} \in P},
+\qquad
+\Snd(P) \eqdef \cc{x}{\kuratowskipair{\{\emptyclass\}}{x} \in P}.
+\]
+Because every element $x \in A$ or $x \in B$ is a set in $V$ and the tags
+$\emptyclass, \{\emptyclass\}$ are distinct sets in $V$, the tagged elements
+$\kuratowskipair{\emptyclass}{x}$ and $\kuratowskipair{\{\emptyclass\}}{x}$ are
+always sets in $V$. Consequently, $\Fst(\pair{A}{B}) = A$, $\Snd(\pair{A}{B}) = B$,
+and $\pair{A}{B} = \pair{C}{D} \iff (A = C \land B = D)$ hold unconditionally for
+all classes $A, B, C, D$, whether sets or proper classes.
+\input{END.tex}

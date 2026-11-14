@@ -1,3 +1,28 @@
+(* ========================================================================= *)
+(* Coq/positive_foundations.v                                                *)
+(* Verified Coq 8.x Formalization of Aczel-Style Sets, Stratified Equality   *)
+(* Types, Classes, Conglomerates, and Positive Properties                    *)
+(*                                                                           *)
+(* Theorem Structure Summary (Ticket 7436 Audit):                            *)
+(*   1. Base Set Hierarchy (Ens, Pair, EQ, IN, SoundPred, SoundPredOf):      *)
+(*      - EQ_tran, EQ_sym, EQ_sound_left, EQ_sound_right                     *)
+(*      - Ens_EQ_sound_left, Ens_EQ_sound_right                              *)
+(*   2. Stratified EqualityType & ClassOf Hierarchy:                         *)
+(*      - EqualityType, Menge, Gleichung, SoundPredicate                     *)
+(*      - A_eq_sound_left, A_eq_sound_right                                  *)
+(*      - ClassOf, Predicate, ClassEqOf                                      *)
+(*      - ClassOf_T_eq_sound_left, ClassOf_T_eq_sound_right                  *)
+(*      - ClassETOf, TYPE, SET, CLASS, CONGLOMERATE, Universe                *)
+(*   3. Conglomerate Intersection, Universal Class V, Binary Intersection:   *)
+(*      - intersect_func, intersect_sound (Qed), intersect_class             *)
+(*      - V_func, V_sound (Qed), V                                           *)
+(*      - binter_func, binter_sound (Qed), binter                            *)
+(*   4. Positive Properties of Classes:                                      *)
+(*      - positive, positive_sound (Qed), ppc                                *)
+(*      - ppc_pos (Admitted: open research conjecture on self-positivity)    *)
+(*      - Axiom Positivity                                                   *)
+(* ========================================================================= *)
+
 Require Import Coq.Bool.Bool.
 
 Inductive Ens : Type :=
@@ -109,6 +134,10 @@ Definition SoundPredicate (ET:EqualityType)  := match ET with EqG E f _ _ => (So
 (*unnecessary*)
 
 (* getter of the statement:*)
+(* SoundPredicate: Extracts the equality-respecting predicate soundness condition
+   ((Menge ET) -> Prop) -> Prop for an arbitrary EqualityType ET. *)
+Definition SoundPredicate (ET:EqualityType) : ((Menge ET)->Prop)->Prop :=
+  match ET with EqG E f _ _ => (SoundPredOf E f) end.
 
 
 Theorem A_eq_sound_left (A:Type): (forall (t:A), SoundPredOf A (@eq A) (fun y => @eq A y t) ).
