@@ -171,6 +171,11 @@ from foundations.type_semantics import (
     is_measurable_cardinal,
     ultrapower_construction,
     proves_large_cardinals_and_scotts_theorem,
+    definable_power_set,
+    constructible_stage,
+    condensation_lemma_check,
+    l_cardinal_exponentiation,
+    proves_constructible_universe_and_gch,
 )
 
 __all__: list[str] = [
@@ -343,4 +348,9 @@ __all__: list[str] = [
     "is_measurable_cardinal",
     "ultrapower_construction",
     "proves_large_cardinals_and_scotts_theorem",
+    "definable_power_set",
+    "constructible_stage",
+    "condensation_lemma_check",
+    "l_cardinal_exponentiation",
+    "proves_constructible_universe_and_gch",
 ]

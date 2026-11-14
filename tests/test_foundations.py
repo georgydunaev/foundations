@@ -222,6 +222,24 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7732_constructible_universe_and_gch_symbols(self):
+        """Ticket 7732: verify Constructible Universe L, Condensation Lemma, and GCH symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "definable_power_set",
+            "constructible_stage",
+            "condensation_lemma_check",
+            "l_cardinal_exponentiation",
+            "proves_constructible_universe_and_gch",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7732 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

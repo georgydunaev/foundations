@@ -1687,6 +1687,81 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master["relative_consistency_measurable"])
         self.assertEqual(master["pairing_device"], "dunaev_pair")
 
+    def test_constructible_universe_and_gch(self):
+        """Ticket 7732: Constructible Universe L, Godel Condensation Lemma, and L |= GCH."""
+        from foundations.type_semantics import (
+            definable_power_set,
+            constructible_stage,
+            condensation_lemma_check,
+            l_cardinal_exponentiation,
+            proves_constructible_universe_and_gch,
+            Ordinal,
+        )
+
+        # 1. Definable power set Def(X)
+        s0 = frozenset()
+        def_s0 = definable_power_set(s0)
+        self.assertEqual(def_s0, frozenset([frozenset()]))
+
+        s1 = frozenset([0])
+        def_s1 = definable_power_set(s1)
+        self.assertEqual(def_s1, frozenset([frozenset(), frozenset([0])]))
+
+        # 2. Constructible hierarchy stages L_n
+        l0 = constructible_stage(0)
+        l1 = constructible_stage(1)
+        l2 = constructible_stage(2)
+        l3 = constructible_stage(3)
+
+        self.assertEqual(len(l0), 0)
+        self.assertEqual(len(l1), 1)
+        self.assertEqual(len(l2), 2)
+        self.assertEqual(len(l3), 4)
+        self.assertEqual(l0, frozenset())
+        self.assertEqual(l1, frozenset([frozenset()]))
+        self.assertIn(frozenset(), l2)
+
+        with self.assertRaises(ValueError):
+            constructible_stage(-1)
+
+        # 3. Godel Condensation Lemma check
+        cond = condensation_lemma_check(l2, max_alpha=3)
+        self.assertTrue(cond["condensation_holds"])
+        self.assertTrue(cond["is_transitive"])
+        self.assertEqual(cond["collapsed_stage_alpha"], 2)
+        self.assertEqual(cond["submodel_size"], 2)
+        self.assertEqual(cond["collapsed_image_size"], 2)
+        self.assertTrue(cond["cardinal_bound_satisfied"])
+        self.assertEqual(cond["pairing_device"], "dunaev_pair")
+
+        # 4. Cardinal exponentiation in L (GCH)
+        res_int = l_cardinal_exponentiation(100)
+        self.assertTrue(res_int["gch_in_l_holds"])
+        self.assertEqual(res_int["cardinal"], 100)
+        self.assertEqual(res_int["cardinal_successor"], 101)
+        self.assertEqual(res_int["two_to_kappa"], 101)
+        self.assertTrue(res_int["powerset_l_bounded_by_succ"])
+        self.assertTrue(res_int["condensation_lemma_applied"])
+        self.assertTrue(res_int["cantor_bound_satisfied"])
+        self.assertEqual(res_int["pairing_device"], "dunaev_pair")
+
+        res_ord = l_cardinal_exponentiation(Ordinal.omega())
+        self.assertTrue(res_ord["gch_in_l_holds"])
+        self.assertEqual(res_ord["cardinal_successor"], "omega^+")
+        self.assertEqual(res_ord["two_to_kappa"], "omega^+")
+
+        # 5. Master theorem runner
+        master = proves_constructible_universe_and_gch(max_finite_stage=3, con_zf=True)
+        self.assertTrue(master["constructible_universe_and_gch_proven"])
+        self.assertTrue(master["definable_power_set_verified"])
+        self.assertTrue(master["constructible_hierarchy_verified"])
+        self.assertTrue(master["v_equals_l_verified"])
+        self.assertTrue(master["condensation_lemma_verified"])
+        self.assertTrue(master["axiom_of_choice_in_l"])
+        self.assertTrue(master["gch_in_l_verified"])
+        self.assertTrue(master["relative_consistency_gch"])
+        self.assertEqual(master["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()

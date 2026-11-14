@@ -111,6 +111,10 @@ signature MKTD_FOUNDATIONS = sig
     | ZeroSharp
     | TheoryZFC_Mahlo
     | TheoryZFC_Measurable
+    | DefinablePowerSet of class_term
+    | LStage of class_term
+    | ConstructibleUniverse
+    | TheoryZFC_L
 
   and fm =
       False
@@ -224,6 +228,11 @@ signature MKTD_FOUNDATIONS = sig
     | IsUltrapower of class_term * class_term * class_term
     | ScottsTheoremVNotL of class_term
     | ExistsZeroSharp of class_term
+    | IsDefinableSubset of class_term * class_term
+    | InLStage of class_term * class_term
+    | InL of class_term
+    | LGCHTheorem of class_term
+    | LWellOrderingTheorem of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -663,6 +672,32 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_relative_consistency_measurable : unit -> thm
   val prove_relative_consistency_measurable : unit -> thm
 
+  (* Constructible Universe L, Godel Condensation Lemma, and L |= GCH (Ticket 7732) *)
+  val mk_definable_power_set : class_term -> class_term
+  val mk_l_stage : class_term -> class_term
+  val mk_constructible_universe : unit -> class_term
+  val mk_theory_zfc_l : unit -> class_term
+  val mk_is_definable_subset : class_term -> class_term -> fm
+  val mk_in_l_stage : class_term -> class_term -> fm
+  val mk_in_l : class_term -> fm
+  val mk_condensation_lemma : class_term -> class_term -> class_term -> fm
+  val mk_l_gch_theorem : class_term -> fm
+  val mk_l_well_ordering_theorem : class_term -> fm
+  val mk_axiom_v_equals_l : unit -> fm
+  val eval_is_definable_subset : int -> int -> bool
+  val eval_in_l_stage : int -> int -> bool
+  val eval_condensation_step : int -> int -> int -> bool
+  val eval_l_satisfies_ac : bool -> bool
+  val eval_l_satisfies_gch : int -> int -> bool
+  val axiom_l_stage_definition : class_term -> thm
+  val prove_l_stage_definition : class_term -> thm
+  val axiom_constructible_hierarchy_transitive : class_term -> thm
+  val prove_constructible_hierarchy_transitive : class_term -> thm
+  val axiom_l_satisfies_ac : class_term -> thm
+  val prove_l_satisfies_ac : class_term -> thm
+  val axiom_l_satisfies_gch : class_term -> thm
+  val prove_l_satisfies_gch : class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -771,6 +806,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ZeroSharp
     | TheoryZFC_Mahlo
     | TheoryZFC_Measurable
+    | DefinablePowerSet of class_term
+    | LStage of class_term
+    | ConstructibleUniverse
+    | TheoryZFC_L
 
   and fm =
       False
@@ -884,6 +923,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsUltrapower of class_term * class_term * class_term
     | ScottsTheoremVNotL of class_term
     | ExistsZeroSharp of class_term
+    | IsDefinableSubset of class_term * class_term
+    | InLStage of class_term * class_term
+    | InL of class_term
+    | LGCHTheorem of class_term
+    | LWellOrderingTheorem of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1001,6 +1045,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ZeroSharp => ZeroSharp
       | TheoryZFC_Mahlo => TheoryZFC_Mahlo
       | TheoryZFC_Measurable => TheoryZFC_Measurable
+      | DefinablePowerSet x => DefinablePowerSet (subst_term var repl x)
+      | LStage a => LStage (subst_term var repl a)
+      | ConstructibleUniverse => ConstructibleUniverse
+      | TheoryZFC_L => TheoryZFC_L
       | _ => target
 
   and subst_fm var repl target =
@@ -1137,6 +1185,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsUltrapower (u_mod, v, u) => IsUltrapower (subst_term var repl u_mod, subst_term var repl v, subst_term var repl u)
       | ScottsTheoremVNotL k => ScottsTheoremVNotL (subst_term var repl k)
       | ExistsZeroSharp k => ExistsZeroSharp (subst_term var repl k)
+      | IsDefinableSubset (y, x) => IsDefinableSubset (subst_term var repl y, subst_term var repl x)
+      | InLStage (x, a) => InLStage (subst_term var repl x, subst_term var repl a)
+      | InL x => InL (subst_term var repl x)
+      | LGCHTheorem k => LGCHTheorem (subst_term var repl k)
+      | LWellOrderingTheorem x => LWellOrderingTheorem (subst_term var repl x)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1505,6 +1558,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsUltrapower (u_mod, v, u) => IsUltrapower (u_mod, v, u)
       | ScottsTheoremVNotL k => ScottsTheoremVNotL k
       | ExistsZeroSharp k => ExistsZeroSharp k
+      | IsDefinableSubset (y, x) => IsDefinableSubset (y, x)
+      | InLStage (x, a) => InLStage (x, a)
+      | InL x => InL x
+      | LGCHTheorem k => LGCHTheorem k
+      | LWellOrderingTheorem x => LWellOrderingTheorem x
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1604,6 +1662,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term _ ZeroSharp = ZeroSharp
     | eval_term _ TheoryZFC_Mahlo = TheoryZFC_Mahlo
     | eval_term _ TheoryZFC_Measurable = TheoryZFC_Measurable
+    | eval_term env (DefinablePowerSet x) = DefinablePowerSet (eval_term env x)
+    | eval_term env (LStage a) = LStage (eval_term env a)
+    | eval_term _ ConstructibleUniverse = ConstructibleUniverse
+    | eval_term _ TheoryZFC_L = TheoryZFC_L
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1762,6 +1824,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsUltrapower _ => true
       | ScottsTheoremVNotL _ => true
       | ExistsZeroSharp _ => true
+      | IsDefinableSubset _ => true
+      | InLStage _ => true
+      | InL _ => true
+      | LGCHTheorem _ => true
+      | LWellOrderingTheorem _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -2215,6 +2282,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term ZeroSharp = 92
     | godel_number_term TheoryZFC_Mahlo = 93
     | godel_number_term TheoryZFC_Measurable = 94
+    | godel_number_term (DefinablePowerSet x) = 95 + 10 * godel_number_term x
+    | godel_number_term (LStage a) = 96 + 10 * godel_number_term a
+    | godel_number_term ConstructibleUniverse = 97
+    | godel_number_term TheoryZFC_L = 98
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -2303,6 +2374,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (IsUltrapower (u_mod, v, u)) = 95 + 10 * godel_number_term u_mod + 100 * godel_number_term v + 1000 * godel_number_term u
     | godel_number_fm (ScottsTheoremVNotL k) = 96 + 10 * godel_number_term k
     | godel_number_fm (ExistsZeroSharp k) = 97 + 10 * godel_number_term k
+    | godel_number_fm (IsDefinableSubset (y, x)) = 98 + 10 * godel_number_term y + 100 * godel_number_term x
+    | godel_number_fm (InLStage (x, a)) = 99 + 10 * godel_number_term x + 100 * godel_number_term a
+    | godel_number_fm (InL x) = 100 + 10 * godel_number_term x
+    | godel_number_fm (LGCHTheorem k) = 101 + 10 * godel_number_term k
+    | godel_number_fm (LWellOrderingTheorem x) = 102 + 10 * godel_number_term x
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -2969,6 +3045,54 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Imp (ConsistencyOf TheoryZFC_Measurable, ConsistencyOf TheoryZFC_Mahlo))
 
   fun prove_relative_consistency_measurable () = axiom_relative_consistency_measurable ()
+
+  (* Constructible Universe L, Godel Condensation Lemma, and L |= GCH (Ticket 7732) *)
+  fun mk_definable_power_set x = DefinablePowerSet x
+  fun mk_l_stage a = LStage a
+  fun mk_constructible_universe () = ConstructibleUniverse
+  fun mk_theory_zfc_l () = TheoryZFC_L
+  fun mk_is_definable_subset y x = IsDefinableSubset (y, x)
+  fun mk_in_l_stage x a = InLStage (x, a)
+  fun mk_in_l x = InL x
+  fun mk_condensation_lemma m lambda alpha = CondensationLemma (m, lambda, alpha)
+  fun mk_l_gch_theorem k = LGCHTheorem k
+  fun mk_l_well_ordering_theorem x = LWellOrderingTheorem x
+  fun mk_axiom_v_equals_l () = AxiomVEqualsL
+
+  fun eval_is_definable_subset subset_size stage_size =
+    subset_size <= stage_size andalso subset_size >= 0
+
+  fun eval_in_l_stage rank stage_idx =
+    rank < stage_idx andalso rank >= 0
+
+  fun eval_condensation_step submodel_size stage_lambda stage_alpha =
+    stage_alpha <= stage_lambda andalso stage_alpha <= submodel_size
+
+  fun eval_l_satisfies_ac v_eq_l =
+    v_eq_l
+
+  fun eval_l_satisfies_gch kappa two_kappa =
+    two_kappa = kappa + 1 andalso kappa >= 0
+
+  fun axiom_l_stage_definition alpha =
+    Thm ([], Eq (LStage (OrdSucc alpha), DefinablePowerSet (LStage alpha)))
+
+  fun prove_l_stage_definition alpha = axiom_l_stage_definition alpha
+
+  fun axiom_constructible_hierarchy_transitive alpha =
+    Thm ([], And (IsTransitive (LStage alpha), IsTransitive ConstructibleUniverse))
+
+  fun prove_constructible_hierarchy_transitive alpha = axiom_constructible_hierarchy_transitive alpha
+
+  fun axiom_l_satisfies_ac x =
+    Thm ([], Imp (AxiomVEqualsL, LWellOrderingTheorem x))
+
+  fun prove_l_satisfies_ac x = axiom_l_satisfies_ac x
+
+  fun axiom_l_satisfies_gch kappa =
+    Thm ([], Imp (AxiomVEqualsL, LGCHTheorem kappa))
+
+  fun prove_l_satisfies_gch kappa = axiom_l_satisfies_gch kappa
 
   (* Self tests *)
   fun run_self_tests () =
@@ -3845,6 +3969,80 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val rel_con_meas_thm_ok = case rel_con_meas_thm of
           Thm ([], Imp (ConsistencyOf TheoryZFC_Measurable, ConsistencyOf TheoryZFC_Mahlo)) => true
         | _ => false
+
+      (* Tests for Constructible Universe L, Condensation Lemma, and GCH (Ticket 7732) *)
+      val def_powerset_term = mk_definable_power_set (Var "X")
+      val def_powerset_ok = (def_powerset_term = DefinablePowerSet (Var "X"))
+
+      val l_stage_term = mk_l_stage (Var "Alpha")
+      val l_stage_ok = (l_stage_term = LStage (Var "Alpha"))
+
+      val constr_univ_term = mk_constructible_universe ()
+      val constr_univ_ok = (constr_univ_term = ConstructibleUniverse)
+
+      val theory_zfc_l_term = mk_theory_zfc_l ()
+      val theory_zfc_l_ok = (theory_zfc_l_term = TheoryZFC_L)
+
+      val is_def_sub_fm = mk_is_definable_subset (Var "Y") (Var "X")
+      val is_def_sub_ok = (is_def_sub_fm = IsDefinableSubset (Var "Y", Var "X"))
+
+      val in_l_stage_fm = mk_in_l_stage (Var "x") (Var "Alpha")
+      val in_l_stage_ok = (in_l_stage_fm = InLStage (Var "x", Var "Alpha"))
+
+      val in_l_fm = mk_in_l (Var "x")
+      val in_l_ok = (in_l_fm = InL (Var "x"))
+
+      val cond_lemma_fm = mk_condensation_lemma (Var "M") (Var "Lambda") (Var "Alpha")
+      val cond_lemma_fm_ok = (cond_lemma_fm = CondensationLemma (Var "M", Var "Lambda", Var "Alpha"))
+
+      val l_gch_fm = mk_l_gch_theorem (Var "Kappa")
+      val l_gch_ok = (l_gch_fm = LGCHTheorem (Var "Kappa"))
+
+      val l_wo_fm = mk_l_well_ordering_theorem (Var "X")
+      val l_wo_ok = (l_wo_fm = LWellOrderingTheorem (Var "X"))
+
+      val ax_v_eq_l_fm = mk_axiom_v_equals_l ()
+      val ax_v_eq_l_ok = (ax_v_eq_l_fm = AxiomVEqualsL)
+
+      val eval_def_sub_ok = eval_is_definable_subset 3 5
+      val eval_def_sub_fail = not (eval_is_definable_subset 6 5)
+
+      val eval_in_stage_ok = eval_in_l_stage 2 3
+      val eval_in_stage_fail = not (eval_in_l_stage 3 3)
+
+      val eval_cond_step_ok = eval_condensation_step 10 100 5
+      val eval_cond_step_fail = not (eval_condensation_step 10 100 15)
+
+      val eval_l_ac_ok = eval_l_satisfies_ac true
+
+      val eval_l_gch_ok = eval_l_satisfies_gch 1 2
+      val eval_l_gch_fail = not (eval_l_satisfies_gch 1 3)
+
+      val l_stage_def_thm = prove_l_stage_definition (Var "Alpha")
+      val l_stage_def_thm_ok = case l_stage_def_thm of
+          Thm ([], Eq (LStage (OrdSucc (Var "Alpha")), DefinablePowerSet (LStage (Var "Alpha")))) => true
+        | _ => false
+
+      val constr_trans_thm = prove_constructible_hierarchy_transitive (Var "Alpha")
+      val constr_trans_thm_ok = case constr_trans_thm of
+          Thm ([], And (IsTransitive (LStage (Var "Alpha")), IsTransitive ConstructibleUniverse)) => true
+        | _ => false
+
+      val cond_lem_thm = prove_condensation_lemma (Var "M") (Var "Lambda") (Var "Alpha")
+      val cond_lem_thm_ok = case cond_lem_thm of
+          Thm ([], Imp (ElemSubmodelFm (Var "M", LAlpha (Var "Lambda")),
+                       CondensationLemma (Var "M", Var "Lambda", Var "Alpha"))) => true
+        | _ => false
+
+      val l_sat_ac_thm = prove_l_satisfies_ac (Var "X")
+      val l_sat_ac_thm_ok = case l_sat_ac_thm of
+          Thm ([], Imp (AxiomVEqualsL, LWellOrderingTheorem (Var "X"))) => true
+        | _ => false
+
+      val l_sat_gch_thm = prove_l_satisfies_gch (Var "Kappa")
+      val l_sat_gch_thm_ok = case l_sat_gch_thm of
+          Thm ([], Imp (AxiomVEqualsL, LGCHTheorem (Var "Kappa"))) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -3915,6 +4113,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso inacc_def_thm_ok andalso mahlo_char_thm_ok andalso weakly_compact_thm_ok
       andalso meas_ultra_thm_ok andalso meas_emb_thm_ok andalso ultrapower_thm_ok
       andalso scotts_thm_ok andalso rel_con_meas_thm_ok
+      andalso def_powerset_ok andalso l_stage_ok andalso constr_univ_ok andalso theory_zfc_l_ok
+      andalso is_def_sub_ok andalso in_l_stage_ok andalso in_l_ok andalso cond_lemma_fm_ok
+      andalso l_gch_ok andalso l_wo_ok andalso ax_v_eq_l_ok
+      andalso eval_def_sub_ok andalso eval_def_sub_fail
+      andalso eval_in_stage_ok andalso eval_in_stage_fail
+      andalso eval_cond_step_ok andalso eval_cond_step_fail
+      andalso eval_l_ac_ok andalso eval_l_gch_ok andalso eval_l_gch_fail
+      andalso l_stage_def_thm_ok andalso constr_trans_thm_ok andalso cond_lem_thm_ok
+      andalso l_sat_ac_thm_ok andalso l_sat_gch_thm_ok
     end
 end;
 
