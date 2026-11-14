@@ -240,6 +240,70 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_logic_and_binder_hygiene_symbols(self):
+        """Verify Logic, Uniqueness Binder Hygiene, and Reflection Scope symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "BinderHygieneError",
+            "ReflectionScopeError",
+            "ProofVerificationError",
+            "Term",
+            "Var",
+            "Formula",
+            "TrueFm",
+            "FalseFm",
+            "Eq",
+            "Neq",
+            "In",
+            "Pred",
+            "Not",
+            "And",
+            "Or",
+            "Imp",
+            "Iff",
+            "Forall",
+            "Exists",
+            "AtMostOne",
+            "ExistsUnique",
+            "free_variables",
+            "bound_variables",
+            "all_variables",
+            "fresh_variable",
+            "fresh_variable_pair",
+            "substitute_term",
+            "substitute_formula",
+            "check_uniqueness_hygiene",
+            "expand_at_most_one",
+            "naive_expand_at_most_one",
+            "are_alpha_equivalent",
+            "eval_formula",
+            "eval_at_most_one_predicate",
+            "eval_exists_unique_predicate",
+            "VerificationStatus",
+            "FormulaConstructor",
+            "ProofConstructor",
+            "TheoremLevel",
+            "DerivabilityConditions",
+            "DerivationStep",
+            "ProofCertificate",
+            "verify_proof_certificate",
+            "build_loeb_certificate",
+            "build_second_incompleteness_certificate",
+            "TheoryLevel",
+            "TheorySpecification",
+            "get_standard_theories",
+            "validate_soundness_axiom_scope",
+            "apply_meta_conecessitation",
+            "check_reflection_soundness",
+            "proves_foundations_logic_and_binder_hygiene",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' for Logic & Binder Hygiene is missing from foundations",
+                )
+
 
 if __name__ == '__main__':
     unittest.main()

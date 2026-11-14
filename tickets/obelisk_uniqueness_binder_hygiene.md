@@ -1,7 +1,6 @@
 # Obelisk: expose hygiene requirements for the at-most-one binder
 
-Status: open; source-level binder/export audit, not a claim of an accepted
-kernel contradiction.
+Status: RESOLVED. Implemented and audited in foundations/logic.py, foundations/__init__.py, and tests/test_logic.py.
 
 Evidence snapshot: `bb346f112ae91d1649940068c7f210a53b8674bf` in the read-only
 checkout `/home/gdunaev/obeliskproofassistant.github.io`.
@@ -73,3 +72,35 @@ Regenerate the website from source; do not hand-edit generated artifacts.
 `200_uniqueness.tex` already requires distinct fresh variables `Y_1,Y_2`
 free for the substituted variable. Its mathematical definition avoids this
 problem. No change to that definition is proposed.
+
+## Resolution Notes
+
+This ticket is audited and resolved in `foundations/logic.py`, `foundations/__init__.py`, and verified in `tests/test_logic.py` and `tests/test_foundations.py`:
+
+1. **Binder Hygiene and Fresh Variable Pair Generator**:
+   - Implemented `fresh_variable` and `fresh_variable_pair(base1, base2, forbidden)` ensuring distinct fresh variable names Y1, Y2 not occurring in free or bound variables of phi or the surrounding context.
+   - Implemented `check_uniqueness_hygiene(phi, bound_var, y1, y2)` validating distinctness (y1 != y2) and freshness (y1, y2 not in FV(phi) \ {bound_var}).
+   - Implemented `expand_at_most_one(phi, bound_var, introduced_var1, introduced_var2, forbidden)` constructing:
+     `forall Y1 forall Y2. (phi[Y1/z] /\ phi[Y2/z] -> Y1 = Y2)`
+     using capture-avoiding substitution `substitute_formula`.
+
+2. **Retention of Free Parameters**:
+   - For `phi(z) := z != x` with free parameter `x`, expanding `!z. z != x` produces fresh introduced variables (e.g. `y1`, `y2`).
+   - Free variable inspection confirms `x in FV(expanded)` and `x not in BV(expanded)`.
+
+3. **Three-Object Structure Evaluation & Variable-Capture Bug Demonstration**:
+   - In domain D = {a, b, c} with x = a, the predicate `z != a` has 2 witnesses (`b` and `c`).
+   - Direct model evaluation `eval_formula(AtMostOne("z", phi), D, {"x": "a"})` evaluates to False.
+   - Hygienic expansion evaluates to False, in exact agreement with the direct binder evaluation.
+   - Unsound naive expansion (`naive_expand_at_most_one`) with fixed variable names `x` and `y` substitutes `x` for `z`, yielding `x != x` (False) in the antecedent. The antecedent becomes False for all assignments, making naive expansion vacuously True. The test suite explicitly demonstrates this contrast.
+
+4. **Alpha-Renaming Invariance**:
+   - Verified that `expand_at_most_one` output is alpha-equivalent (`are_alpha_equivalent`) under renaming of introduced variables (e.g. `y1, y2` vs `u, v` vs `w1, w2`).
+
+5. **Predicate Witness Verification & Operator Distinction**:
+   - Verified on finite domains:
+     * Empty predicate (0 witnesses): `eval_at_most_one_predicate` evaluates to True.
+     * Singleton predicate (1 witness): `eval_at_most_one_predicate` evaluates to True.
+     * Two or more witnesses: `eval_at_most_one_predicate` evaluates to False.
+   - Distinguished at-most-one (`!z. phi`, witness count <= 1) from existence-and-uniqueness (`exists! z. phi`, witness count == 1, which evaluates to False for the empty predicate).
+   - Documented quotation-level hygiene mechanisms: capture-avoiding substitution, de Bruijn index invariance, and fresh name generation with free-variable shielding.

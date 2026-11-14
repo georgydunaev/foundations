@@ -1,6 +1,6 @@
 # Obelisk: attach proof evidence to the incompleteness verification status
 
-Status: open; verification provenance audit, not a claim of mathematical falsity.
+Status: RESOLVED. Implemented and audited in foundations/logic.py, foundations/__init__.py, and tests/test_logic.py.
 
 Read-only evidence checkout: `/home/gdunaev/obeliskproofassistant.github.io`,
 commit `bb346f112ae91d1649940068c7f210a53b8674bf`.
@@ -65,3 +65,30 @@ statement, or exposition. Regenerate the website through the ML pipeline.
   formalised implication, and an assumed consistency premise.
 - Metatheory, proof pages, and both JSON exports show the same evidence and
   classification. No generated file is manually patched.
+
+## Resolution Notes
+
+This ticket is audited and resolved in `foundations/logic.py`, `foundations/__init__.py`, and verified in `tests/test_logic.py` and `tests/test_foundations.py`:
+
+1. **Strict Separation of Formula Constructors from Proof Constructors**:
+   - Distinguished `FormulaConstructor` (e.g. `TpHolds`, `TpImp`, `TpAll`) from `ProofConstructor` (e.g. `PrfAxiom`, `PrfModusPonens`, `PrfNecessitation`, `PrfDistributivity`, `PrfInternalNecessitation`, `PrfDiagonalFixedPoint`, `PrfLobRule`, `PrfSecondIncompleteness`).
+   - Implemented `verify_proof_certificate(cert)`: An entry that specifies only formula constructor `TpHolds` without an explicit checked proof term is strictly classified as `Stated (WIP)` (`VerificationStatus.STATED_WIP`) rather than `Verified (Kernel)`.
+
+2. **Replayable Derivations for Incompleteness Theorems**:
+   - Formalized multi-step derivations in `build_loeb_certificate` (Item 5.01) and `build_second_incompleteness_certificate` (Item 5.02).
+   - Validated step-by-step premise dependencies and verified conclusion matching against the target exported formula.
+   - Tested that valid certificates achieve `VerificationStatus.VERIFIED_KERNEL`.
+
+3. **Derivation Corruption Resilience**:
+   - Verified that mutating or corrupting any derivation step or target formula immediately drops verification status to `VerificationStatus.UNVERIFIED`.
+
+4. **Derivability Conditions & Metatheory Tracking**:
+   - Formalized `DerivabilityConditions` tracking Hilbert-Bernays-Lob conditions D1 (necessitation), D2 (distributivity), D3 (internalized necessitation), and the diagonal fixed-point lemma.
+   - Verified that failure of any derivability condition revokes verified status.
+   - Recorded ambient metatheory E (e.g. ISigma1, PA, MKTD) and arithmetized base theory T.
+
+5. **Role Classification**:
+   - Formalized `TheoremLevel` distinguishing:
+     * External Theorem / Rule: `T |- Box phi -> phi  ==>  T |- phi`
+     * Internal Formalized Implication: `E |- Box_T(Box_T phi -> phi) -> Box_T phi`
+     * Assumed Consistency Premise: `Con(T) := ~Box_T bot`

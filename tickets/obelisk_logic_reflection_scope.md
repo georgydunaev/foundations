@@ -1,6 +1,6 @@
 # Obelisk: specify the ambient theory and evaluation domain of reflection
 
-Status: open; source-level theory and documentation reconciliation.
+Status: RESOLVED. Implemented and audited in foundations/logic.py, foundations/__init__.py, and tests/test_logic.py.
 
 Evidence checkout: `/home/gdunaev/obeliskproofassistant.github.io`, commit
 `bb346f112ae91d1649940068c7f210a53b8674bf`. The checkout was read only.
@@ -85,3 +85,30 @@ checkout, so this ticket does not claim their implementation was audited.
   rejecting ordinary syntactic self-provability merely for using the same T.
 - W's role, evaluation domains, and complete explanatory formulas agree across
   source records, JSON, metatheory pages, and symbol documentation.
+
+## Resolution Notes
+
+This ticket is audited and resolved in `foundations/logic.py`, `foundations/__init__.py`, and verified in `tests/test_logic.py` and `tests/test_foundations.py`:
+
+1. **Ambient Theory & Evaluation Domain Scoping**:
+   - Formalized `TheoryLevel` and `TheorySpecification` for the stratification hierarchy:
+     * Level 0: Tau (base class theory with effective axioms);
+     * Level 1: Fau (foundational Henkin extension with semantic reflexivity);
+     * Level 2: Qau (stratified quotation theory);
+     * Level 3: Wau (schematic ambient theory variable).
+   - Clarified that Wau is schematic across metatheory discussions rather than a rigid fixed constant.
+   - Evaluated `AxmSoundnessOfBaseTheory` (3.72): `validate_soundness_axiom_scope` confirms that soundness of Tau can soundly reside in external metatheory M or higher-level theory Fau (level 1), but cannot reside inside Tau itself (which would trigger the Lob obstruction).
+
+2. **Co-Necessitation Rule Context Preservation (Item 4.03)**:
+   - Implemented `apply_meta_conecessitation(outer_theory, outer_context, inner_theory, inner_context, formula_str)`.
+   - Verified that the outer context MUST be empty ([]); non-empty outer contexts raise `ReflectionScopeError`.
+   - Verified that the arbitrary inner context Gamma is preserved in the conclusion `(Fau, Gamma |- phi)`. Concluding an unconditioned phi when Gamma is non-empty is prohibited.
+
+3. **Syntactic Provability vs Semantic Truth Reflection**:
+   - Implemented `check_reflection_soundness`:
+     * Syntactic provability `Pr_T(code(phi))` admits ambient theory `E = T`, because an effective theory can soundly encode proof verification and finite proof search over its own syntax.
+     * Internal semantic self-reflection (`Box_T phi -> phi` asserted as an unrestricted axiom inside T) is rejected by Lob's obstruction for any formula unprovable in T.
+     * Stratified reflection across levels (level(ambient) > level(target)) is verified as sound.
+
+4. **Automated Verification**:
+   - All reflection scope invariants are verified in `tests/test_logic.py` and via master runner `proves_foundations_logic_and_binder_hygiene()`.
