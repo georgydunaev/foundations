@@ -204,6 +204,24 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7731_large_cardinals_and_scotts_theorem_symbols(self):
+        """Ticket 7731: verify Large Cardinals, Ultrafilters, and Scott's Theorem symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "is_inaccessible_cardinal",
+            "is_mahlo_cardinal",
+            "is_measurable_cardinal",
+            "ultrapower_construction",
+            "proves_large_cardinals_and_scotts_theorem",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7731 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

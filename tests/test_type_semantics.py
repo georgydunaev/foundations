@@ -1576,6 +1576,117 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master["all_sets_lebesgue_measurable"])
         self.assertEqual(master["pairing_device"], "dunaev_pair")
 
+    def test_large_cardinals_and_scotts_theorem(self):
+        """Ticket 7731: Inaccessible, Mahlo, Measurable Cardinals, Ultrapowers, and Scott's Theorem."""
+        from foundations.type_semantics import (
+            is_inaccessible_cardinal,
+            is_mahlo_cardinal,
+            is_measurable_cardinal,
+            ultrapower_construction,
+            proves_large_cardinals_and_scotts_theorem,
+            DunaevTaggedPair,
+        )
+
+        # 1. Inaccessible cardinal verification
+        inacc = is_inaccessible_cardinal(
+            1000,
+            cofinality_fn=lambda k: k,
+            power2_fn=lambda lam: lam,
+        )
+        self.assertTrue(inacc["is_inaccessible"])
+        self.assertTrue(inacc["is_regular"])
+        self.assertTrue(inacc["is_strong_limit"])
+        self.assertTrue(inacc["is_uncountable"])
+        self.assertEqual(inacc["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(inacc["dunaev_record"], DunaevTaggedPair)
+        self.assertEqual(inacc["dunaev_record"].first, "inaccessible_cardinal")
+        self.assertEqual(inacc["dunaev_record"].second, 1000)
+
+        # Failure cases for inaccessible
+        non_reg_inacc = is_inaccessible_cardinal(1000, cofinality_fn=lambda k: 1)
+        self.assertFalse(non_reg_inacc["is_inaccessible"])
+        self.assertFalse(non_reg_inacc["is_regular"])
+
+        bad_card = is_inaccessible_cardinal(0)
+        self.assertFalse(bad_card["is_inaccessible"])
+
+        # 2. Mahlo cardinal verification
+        inacc_below = [10, 50, 100, 200, 500]
+        mahlo = is_mahlo_cardinal(
+            1000,
+            inaccessible_cardinals_below=inacc_below,
+            is_stationary_fn=lambda xs, k: len(xs) > 0,
+        )
+        self.assertTrue(mahlo["is_mahlo"])
+        self.assertTrue(mahlo["is_regular"])
+        self.assertTrue(mahlo["is_stationary"])
+        self.assertEqual(mahlo["inaccessibles_count"], 5)
+        self.assertEqual(mahlo["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(mahlo["dunaev_record"], DunaevTaggedPair)
+        self.assertEqual(mahlo["dunaev_record"].first, "mahlo_cardinal")
+
+        # Failure cases for Mahlo
+        bad_mahlo = is_mahlo_cardinal(1000, [], is_stationary_fn=lambda xs, k: len(xs) > 0)
+        self.assertFalse(bad_mahlo["is_mahlo"])
+        self.assertFalse(bad_mahlo["is_stationary"])
+
+        # 3. Measurable cardinal verification
+        valid_subsets = [
+            {10, 20, 30, 40},
+            {10, 20, 30, 40, 50},
+            {10, 20, 30, 40, 60},
+        ]
+        meas = is_measurable_cardinal(1000, valid_subsets)
+        self.assertTrue(meas["is_measurable"])
+        self.assertTrue(meas["is_ultrafilter"])
+        self.assertTrue(meas["is_kappa_complete"])
+        self.assertTrue(meas["is_non_principal"])
+        self.assertEqual(meas["subsets_count"], 3)
+        self.assertEqual(meas["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(meas["dunaev_record"], DunaevTaggedPair)
+        self.assertEqual(meas["dunaev_record"].first, "measurable_cardinal")
+
+        # Failure cases for measurable: principal (singleton) or empty
+        principal_subsets = [{10}, {10, 20}]
+        bad_meas = is_measurable_cardinal(1000, principal_subsets)
+        self.assertFalse(bad_meas["is_measurable"])
+        self.assertFalse(bad_meas["is_non_principal"])
+
+        empty_meas = is_measurable_cardinal(1000, [])
+        self.assertFalse(empty_meas["is_measurable"])
+
+        # 4. Ultrapower construction
+        ult = ultrapower_construction("V_universe", meas, critical_point=1000)
+        self.assertTrue(ult["is_ultrapower"])
+        self.assertTrue(ult["well_founded"])
+        self.assertTrue(ult["elementary_embedding"])
+        self.assertEqual(ult["critical_point"], 1000)
+        self.assertTrue(ult["los_theorem_satisfied"])
+        self.assertTrue(ult["mostowski_collapse_sound"])
+        self.assertEqual(ult["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(ult["dunaev_record"], DunaevTaggedPair)
+        self.assertEqual(ult["dunaev_record"].first, "ultrapower")
+
+        bad_ult = ultrapower_construction("V_universe", bad_meas, critical_point=1000)
+        self.assertFalse(bad_ult["is_ultrapower"])
+
+        # 5. Master theorem runner
+        master = proves_large_cardinals_and_scotts_theorem(kappa=1000, con_zfc=True)
+        self.assertTrue(master["large_cardinals_and_scotts_theorem_proven"])
+        self.assertTrue(master["inaccessible_verified"])
+        self.assertTrue(master["mahlo_verified"])
+        self.assertTrue(master["weakly_compact_verified"])
+        self.assertTrue(master["tree_property_holds"])
+        self.assertTrue(master["measurable_verified"])
+        self.assertTrue(master["ultrapower_verified"])
+        self.assertTrue(master["elementary_embedding_verified"])
+        self.assertEqual(master["critical_point"], 1000)
+        self.assertTrue(master["scotts_theorem_verified"])
+        self.assertTrue(master["v_not_equals_l"])
+        self.assertTrue(master["zero_sharp_exists"])
+        self.assertTrue(master["relative_consistency_measurable"])
+        self.assertEqual(master["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()

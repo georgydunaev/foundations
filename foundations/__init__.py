@@ -166,6 +166,11 @@ from foundations.type_semantics import (
     levy_collapse,
     solovay_model_foundations,
     proves_easton_and_levy_collapse,
+    is_inaccessible_cardinal,
+    is_mahlo_cardinal,
+    is_measurable_cardinal,
+    ultrapower_construction,
+    proves_large_cardinals_and_scotts_theorem,
 )
 
 __all__: list[str] = [
@@ -333,4 +338,9 @@ __all__: list[str] = [
     "levy_collapse",
     "solovay_model_foundations",
     "proves_easton_and_levy_collapse",
+    "is_inaccessible_cardinal",
+    "is_mahlo_cardinal",
+    "is_measurable_cardinal",
+    "ultrapower_construction",
+    "proves_large_cardinals_and_scotts_theorem",
 ]

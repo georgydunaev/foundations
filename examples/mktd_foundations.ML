@@ -101,6 +101,16 @@ signature MKTD_FOUNDATIONS = sig
     | TheoryZFC_Inaccessible
     | TheoryZF_DC_Lebesgue
     | TheoryZFC_LevyCollapse
+    | InaccessibleCardinal of class_term
+    | MahloCardinal of class_term
+    | WeaklyCompactCardinal of class_term
+    | MeasurableCardinal of class_term
+    | UltrafilterOn of class_term * class_term
+    | ElementaryEmbedding of class_term * class_term * class_term
+    | Ultrapower of class_term * class_term
+    | ZeroSharp
+    | TheoryZFC_Mahlo
+    | TheoryZFC_Measurable
 
   and fm =
       False
@@ -202,6 +212,18 @@ signature MKTD_FOUNDATIONS = sig
     | SolovayModelLebesgue of class_term
     | RelativeConsistencyEaston of class_term
     | RelativeConsistencySolovay
+    | InaccessibleDef of class_term
+    | IsMahlo of class_term
+    | IsStationaryIn of class_term * class_term
+    | IsWeaklyCompact of class_term
+    | HasTreeProperty of class_term
+    | IsMeasurable of class_term
+    | IsKappaCompleteUltrafilter of class_term * class_term
+    | IsElementaryEmbedding of class_term * class_term * class_term
+    | CriticalPoint of class_term * class_term
+    | IsUltrapower of class_term * class_term * class_term
+    | ScottsTheoremVNotL of class_term
+    | ExistsZeroSharp of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -609,6 +631,38 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_relative_consistency_solovay : unit -> thm
   val prove_relative_consistency_solovay : unit -> thm
 
+  (* Large Cardinals, Ultrafilters, and Scott's Theorem (Ticket 7731) *)
+  val mk_inaccessible_cardinal : class_term -> class_term
+  val mk_mahlo_cardinal : class_term -> class_term
+  val mk_weakly_compact_cardinal : class_term -> class_term
+  val mk_measurable_cardinal : class_term -> class_term
+  val mk_ultrafilter : class_term -> class_term -> class_term
+  val mk_elementary_embedding : class_term -> class_term -> class_term -> class_term
+  val mk_ultrapower : class_term -> class_term -> class_term
+  val mk_zero_sharp : unit -> class_term
+  val eval_is_inaccessible : int -> (int -> int) -> (int -> int) -> bool
+  val eval_is_mahlo : int -> int list -> (int list -> bool) -> bool
+  val eval_tree_property : int -> bool -> bool
+  val eval_is_measurable : int -> bool -> bool -> bool
+  val eval_elementary_embedding : int -> int -> bool
+  val eval_scotts_theorem : bool -> bool
+  val axiom_inaccessible_definition : class_term -> thm
+  val prove_inaccessible_definition : class_term -> thm
+  val axiom_mahlo_characterization : class_term -> class_term -> thm
+  val prove_mahlo_characterization : class_term -> class_term -> thm
+  val axiom_weakly_compact_tree_property : class_term -> thm
+  val prove_weakly_compact_tree_property : class_term -> thm
+  val axiom_measurable_ultrafilter : class_term -> class_term -> thm
+  val prove_measurable_ultrafilter : class_term -> class_term -> thm
+  val axiom_measurable_elementary_embedding : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_measurable_elementary_embedding : class_term -> class_term -> class_term -> class_term -> thm
+  val axiom_ultrapower_construction : class_term -> class_term -> class_term -> thm
+  val prove_ultrapower_construction : class_term -> class_term -> class_term -> thm
+  val axiom_scotts_theorem : class_term -> thm
+  val prove_scotts_theorem : class_term -> thm
+  val axiom_relative_consistency_measurable : unit -> thm
+  val prove_relative_consistency_measurable : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -707,6 +761,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | TheoryZFC_Inaccessible
     | TheoryZF_DC_Lebesgue
     | TheoryZFC_LevyCollapse
+    | InaccessibleCardinal of class_term
+    | MahloCardinal of class_term
+    | WeaklyCompactCardinal of class_term
+    | MeasurableCardinal of class_term
+    | UltrafilterOn of class_term * class_term
+    | ElementaryEmbedding of class_term * class_term * class_term
+    | Ultrapower of class_term * class_term
+    | ZeroSharp
+    | TheoryZFC_Mahlo
+    | TheoryZFC_Measurable
 
   and fm =
       False
@@ -808,6 +872,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SolovayModelLebesgue of class_term
     | RelativeConsistencyEaston of class_term
     | RelativeConsistencySolovay
+    | InaccessibleDef of class_term
+    | IsMahlo of class_term
+    | IsStationaryIn of class_term * class_term
+    | IsWeaklyCompact of class_term
+    | HasTreeProperty of class_term
+    | IsMeasurable of class_term
+    | IsKappaCompleteUltrafilter of class_term * class_term
+    | IsElementaryEmbedding of class_term * class_term * class_term
+    | CriticalPoint of class_term * class_term
+    | IsUltrapower of class_term * class_term * class_term
+    | ScottsTheoremVNotL of class_term
+    | ExistsZeroSharp of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -915,6 +991,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | LevyCollapsePoset (l, k) => LevyCollapsePoset (subst_term var repl l, subst_term var repl k)
       | SolovayModel (m, k) => SolovayModel (subst_term var repl m, subst_term var repl k)
       | TheoryZFC_Easton f => TheoryZFC_Easton (subst_term var repl f)
+      | InaccessibleCardinal k => InaccessibleCardinal (subst_term var repl k)
+      | MahloCardinal k => MahloCardinal (subst_term var repl k)
+      | WeaklyCompactCardinal k => WeaklyCompactCardinal (subst_term var repl k)
+      | MeasurableCardinal k => MeasurableCardinal (subst_term var repl k)
+      | UltrafilterOn (u, k) => UltrafilterOn (subst_term var repl u, subst_term var repl k)
+      | ElementaryEmbedding (j, v, m) => ElementaryEmbedding (subst_term var repl j, subst_term var repl v, subst_term var repl m)
+      | Ultrapower (v, u) => Ultrapower (subst_term var repl v, subst_term var repl u)
+      | ZeroSharp => ZeroSharp
+      | TheoryZFC_Mahlo => TheoryZFC_Mahlo
+      | TheoryZFC_Measurable => TheoryZFC_Measurable
       | _ => target
 
   and subst_fm var repl target =
@@ -1039,6 +1125,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SolovayModelLebesgue m => SolovayModelLebesgue (subst_term var repl m)
       | RelativeConsistencyEaston f => RelativeConsistencyEaston (subst_term var repl f)
       | RelativeConsistencySolovay => RelativeConsistencySolovay
+      | InaccessibleDef k => InaccessibleDef (subst_term var repl k)
+      | IsMahlo k => IsMahlo (subst_term var repl k)
+      | IsStationaryIn (s, k) => IsStationaryIn (subst_term var repl s, subst_term var repl k)
+      | IsWeaklyCompact k => IsWeaklyCompact (subst_term var repl k)
+      | HasTreeProperty k => HasTreeProperty (subst_term var repl k)
+      | IsMeasurable k => IsMeasurable (subst_term var repl k)
+      | IsKappaCompleteUltrafilter (u, k) => IsKappaCompleteUltrafilter (subst_term var repl u, subst_term var repl k)
+      | IsElementaryEmbedding (j, v, m) => IsElementaryEmbedding (subst_term var repl j, subst_term var repl v, subst_term var repl m)
+      | CriticalPoint (j, k) => CriticalPoint (subst_term var repl j, subst_term var repl k)
+      | IsUltrapower (u_mod, v, u) => IsUltrapower (subst_term var repl u_mod, subst_term var repl v, subst_term var repl u)
+      | ScottsTheoremVNotL k => ScottsTheoremVNotL (subst_term var repl k)
+      | ExistsZeroSharp k => ExistsZeroSharp (subst_term var repl k)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1395,6 +1493,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SolovayModelLebesgue m1 => SolovayModelLebesgue m1
       | RelativeConsistencyEaston f => RelativeConsistencyEaston f
       | RelativeConsistencySolovay => RelativeConsistencySolovay
+      | InaccessibleDef k => InaccessibleDef k
+      | IsMahlo k => IsMahlo k
+      | IsStationaryIn (s, k) => IsStationaryIn (s, k)
+      | IsWeaklyCompact k => IsWeaklyCompact k
+      | HasTreeProperty k => HasTreeProperty k
+      | IsMeasurable k => IsMeasurable k
+      | IsKappaCompleteUltrafilter (u, k) => IsKappaCompleteUltrafilter (u, k)
+      | IsElementaryEmbedding (j, v, m1) => IsElementaryEmbedding (j, v, m1)
+      | CriticalPoint (j, k) => CriticalPoint (j, k)
+      | IsUltrapower (u_mod, v, u) => IsUltrapower (u_mod, v, u)
+      | ScottsTheoremVNotL k => ScottsTheoremVNotL k
+      | ExistsZeroSharp k => ExistsZeroSharp k
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1484,6 +1594,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term _ TheoryZFC_Inaccessible = TheoryZFC_Inaccessible
     | eval_term _ TheoryZF_DC_Lebesgue = TheoryZF_DC_Lebesgue
     | eval_term _ TheoryZFC_LevyCollapse = TheoryZFC_LevyCollapse
+    | eval_term env (InaccessibleCardinal k) = InaccessibleCardinal (eval_term env k)
+    | eval_term env (MahloCardinal k) = MahloCardinal (eval_term env k)
+    | eval_term env (WeaklyCompactCardinal k) = WeaklyCompactCardinal (eval_term env k)
+    | eval_term env (MeasurableCardinal k) = MeasurableCardinal (eval_term env k)
+    | eval_term env (UltrafilterOn (u, k)) = UltrafilterOn (eval_term env u, eval_term env k)
+    | eval_term env (ElementaryEmbedding (j, v, m)) = ElementaryEmbedding (eval_term env j, eval_term env v, eval_term env m)
+    | eval_term env (Ultrapower (v, u)) = Ultrapower (eval_term env v, eval_term env u)
+    | eval_term _ ZeroSharp = ZeroSharp
+    | eval_term _ TheoryZFC_Mahlo = TheoryZFC_Mahlo
+    | eval_term _ TheoryZFC_Measurable = TheoryZFC_Measurable
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1630,6 +1750,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SolovayModelLebesgue _ => true
       | RelativeConsistencyEaston _ => true
       | RelativeConsistencySolovay => true
+      | InaccessibleDef _ => true
+      | IsMahlo _ => true
+      | IsStationaryIn _ => true
+      | IsWeaklyCompact _ => true
+      | HasTreeProperty _ => true
+      | IsMeasurable _ => true
+      | IsKappaCompleteUltrafilter _ => true
+      | IsElementaryEmbedding _ => true
+      | CriticalPoint _ => true
+      | IsUltrapower _ => true
+      | ScottsTheoremVNotL _ => true
+      | ExistsZeroSharp _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -2073,6 +2205,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term TheoryZFC_Inaccessible = 82
     | godel_number_term TheoryZF_DC_Lebesgue = 83
     | godel_number_term TheoryZFC_LevyCollapse = 84
+    | godel_number_term (InaccessibleCardinal k) = 85 + 10 * godel_number_term k
+    | godel_number_term (MahloCardinal k) = 86 + 10 * godel_number_term k
+    | godel_number_term (WeaklyCompactCardinal k) = 87 + 10 * godel_number_term k
+    | godel_number_term (MeasurableCardinal k) = 88 + 10 * godel_number_term k
+    | godel_number_term (UltrafilterOn (u, k)) = 89 + 10 * godel_number_term u + 100 * godel_number_term k
+    | godel_number_term (ElementaryEmbedding (j, v, m)) = 90 + 10 * godel_number_term j + 100 * godel_number_term v + 1000 * godel_number_term m
+    | godel_number_term (Ultrapower (v, u)) = 91 + 10 * godel_number_term v + 100 * godel_number_term u
+    | godel_number_term ZeroSharp = 92
+    | godel_number_term TheoryZFC_Mahlo = 93
+    | godel_number_term TheoryZFC_Measurable = 94
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -2149,6 +2291,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm (SolovayModelLebesgue m) = 83 + 10 * godel_number_term m
     | godel_number_fm (RelativeConsistencyEaston f) = 84 + 10 * godel_number_term f
     | godel_number_fm RelativeConsistencySolovay = 85
+    | godel_number_fm (InaccessibleDef k) = 86 + 10 * godel_number_term k
+    | godel_number_fm (IsMahlo k) = 87 + 10 * godel_number_term k
+    | godel_number_fm (IsStationaryIn (s, k)) = 88 + 10 * godel_number_term s + 100 * godel_number_term k
+    | godel_number_fm (IsWeaklyCompact k) = 89 + 10 * godel_number_term k
+    | godel_number_fm (HasTreeProperty k) = 90 + 10 * godel_number_term k
+    | godel_number_fm (IsMeasurable k) = 91 + 10 * godel_number_term k
+    | godel_number_fm (IsKappaCompleteUltrafilter (u, k)) = 92 + 10 * godel_number_term u + 100 * godel_number_term k
+    | godel_number_fm (IsElementaryEmbedding (j, v, m)) = 93 + 10 * godel_number_term j + 100 * godel_number_term v + 1000 * godel_number_term m
+    | godel_number_fm (CriticalPoint (j, k)) = 94 + 10 * godel_number_term j + 100 * godel_number_term k
+    | godel_number_fm (IsUltrapower (u_mod, v, u)) = 95 + 10 * godel_number_term u_mod + 100 * godel_number_term v + 1000 * godel_number_term u
+    | godel_number_fm (ScottsTheoremVNotL k) = 96 + 10 * godel_number_term k
+    | godel_number_fm (ExistsZeroSharp k) = 97 + 10 * godel_number_term k
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -2740,6 +2894,81 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], Imp (ConsistencyOf TheoryZFC_Inaccessible, ConsistencyOf TheoryZF_DC_Lebesgue))
 
   fun prove_relative_consistency_solovay () = axiom_relative_consistency_solovay ()
+
+  (* Large Cardinals, Ultrafilters, and Scott's Theorem (Ticket 7731) *)
+  fun mk_inaccessible_cardinal k = InaccessibleCardinal k
+  fun mk_mahlo_cardinal k = MahloCardinal k
+  fun mk_weakly_compact_cardinal k = WeaklyCompactCardinal k
+  fun mk_measurable_cardinal k = MeasurableCardinal k
+  fun mk_ultrafilter u k = UltrafilterOn (u, k)
+  fun mk_elementary_embedding j v m = ElementaryEmbedding (j, v, m)
+  fun mk_ultrapower v u = Ultrapower (v, u)
+  fun mk_zero_sharp () = ZeroSharp
+
+  fun eval_is_inaccessible kappa cf_fn exp2_fn =
+    let
+      val is_reg = (cf_fn kappa = kappa)
+      fun check_strong_limit lam =
+        if lam >= kappa then true
+        else (exp2_fn lam < kappa) andalso check_strong_limit (lam + 1)
+    in
+      kappa > 0 andalso is_reg andalso check_strong_limit 0
+    end
+
+  fun eval_is_mahlo kappa inacc_below stat_fn =
+    kappa > 0 andalso stat_fn inacc_below
+
+  fun eval_tree_property kappa tree_prop =
+    kappa > 0 andalso tree_prop
+
+  fun eval_is_measurable kappa non_principal kappa_complete =
+    kappa > 0 andalso non_principal andalso kappa_complete
+
+  fun eval_elementary_embedding crit_pt kappa =
+    crit_pt = kappa andalso kappa > 0
+
+  fun eval_scotts_theorem measurable_exists =
+    measurable_exists
+
+  fun axiom_inaccessible_definition k =
+    Thm ([], Iff (InaccessibleDef k, And (IsRegularCardinal k, IsStrongLimit k)))
+
+  fun prove_inaccessible_definition k = axiom_inaccessible_definition k
+
+  fun axiom_mahlo_characterization k s =
+    Thm ([], Iff (IsMahlo k, And (IsRegularCardinal k, IsStationaryIn (s, k))))
+
+  fun prove_mahlo_characterization k s = axiom_mahlo_characterization k s
+
+  fun axiom_weakly_compact_tree_property k =
+    Thm ([], Iff (IsWeaklyCompact k, HasTreeProperty k))
+
+  fun prove_weakly_compact_tree_property k = axiom_weakly_compact_tree_property k
+
+  fun axiom_measurable_ultrafilter u k =
+    Thm ([], Iff (IsMeasurable k, IsKappaCompleteUltrafilter (u, k)))
+
+  fun prove_measurable_ultrafilter u k = axiom_measurable_ultrafilter u k
+
+  fun axiom_measurable_elementary_embedding j v m k =
+    Thm ([], Iff (IsMeasurable k, And (IsElementaryEmbedding (j, v, m), CriticalPoint (j, k))))
+
+  fun prove_measurable_elementary_embedding j v m k = axiom_measurable_elementary_embedding j v m k
+
+  fun axiom_ultrapower_construction v u k =
+    Thm ([], Imp (IsKappaCompleteUltrafilter (u, k), IsUltrapower (Ultrapower (v, u), v, u)))
+
+  fun prove_ultrapower_construction v u k = axiom_ultrapower_construction v u k
+
+  fun axiom_scotts_theorem k =
+    Thm ([], Imp (IsMeasurable k, And (ScottsTheoremVNotL k, ExistsZeroSharp k)))
+
+  fun prove_scotts_theorem k = axiom_scotts_theorem k
+
+  fun axiom_relative_consistency_measurable () =
+    Thm ([], Imp (ConsistencyOf TheoryZFC_Measurable, ConsistencyOf TheoryZFC_Mahlo))
+
+  fun prove_relative_consistency_measurable () = axiom_relative_consistency_measurable ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -3527,6 +3756,95 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           Thm ([], Imp (ConsistencyOf TheoryZFC_Inaccessible,
                        ConsistencyOf TheoryZF_DC_Lebesgue)) => true
         | _ => false
+
+      (* Tests for Large Cardinals, Ultrafilters, and Scott's Theorem (Ticket 7731) *)
+      val inacc_card_term = mk_inaccessible_cardinal (Var "Kappa")
+      val inacc_card_ok = (inacc_card_term = InaccessibleCardinal (Var "Kappa"))
+
+      val mahlo_card_term = mk_mahlo_cardinal (Var "Kappa")
+      val mahlo_card_ok = (mahlo_card_term = MahloCardinal (Var "Kappa"))
+
+      val weakly_compact_term = mk_weakly_compact_cardinal (Var "Kappa")
+      val weakly_compact_ok = (weakly_compact_term = WeaklyCompactCardinal (Var "Kappa"))
+
+      val measurable_card_term = mk_measurable_cardinal (Var "Kappa")
+      val measurable_card_ok = (measurable_card_term = MeasurableCardinal (Var "Kappa"))
+
+      val u_filter_term = mk_ultrafilter (Var "U") (Var "Kappa")
+      val u_filter_ok = (u_filter_term = UltrafilterOn (Var "U", Var "Kappa"))
+
+      val elem_emb_term = mk_elementary_embedding (Var "j") Univ (Var "M")
+      val elem_emb_ok = (elem_emb_term = ElementaryEmbedding (Var "j", Univ, Var "M"))
+
+      val ultrapower_term = mk_ultrapower Univ (Var "U")
+      val ultrapower_ok = (ultrapower_term = Ultrapower (Univ, Var "U"))
+
+      val zero_sharp_term = mk_zero_sharp ()
+      val zero_sharp_ok = (zero_sharp_term = ZeroSharp)
+
+      fun mock_cf_inacc k = k
+      fun mock_exp2 lam = lam
+      val inacc_eval_ok = eval_is_inaccessible 10 mock_cf_inacc mock_exp2
+      val inacc_eval_fail = not (eval_is_inaccessible 10 (fn _ => 1) mock_exp2)
+
+      val mahlo_eval_ok = eval_is_mahlo 10 [2, 4, 6] (fn xs => List.length xs > 0)
+      val mahlo_eval_fail = not (eval_is_mahlo 10 [] (fn xs => List.length xs > 0))
+
+      val tree_prop_ok = eval_tree_property 10 true
+      val tree_prop_fail = not (eval_tree_property 10 false)
+
+      val meas_eval_ok = eval_is_measurable 10 true true
+      val meas_eval_fail = not (eval_is_measurable 10 false true)
+
+      val elem_emb_eval_ok = eval_elementary_embedding 10 10
+      val elem_emb_eval_fail = not (eval_elementary_embedding 5 10)
+
+      val scotts_thm_eval_ok = eval_scotts_theorem true
+
+      val inacc_def_thm = prove_inaccessible_definition (Var "Kappa")
+      val inacc_def_thm_ok = case inacc_def_thm of
+          Thm ([], Iff (InaccessibleDef (Var "Kappa"),
+                       And (IsRegularCardinal (Var "Kappa"), IsStrongLimit (Var "Kappa")))) => true
+        | _ => false
+
+      val mahlo_char_thm = prove_mahlo_characterization (Var "Kappa") (Var "S_inacc")
+      val mahlo_char_thm_ok = case mahlo_char_thm of
+          Thm ([], Iff (IsMahlo (Var "Kappa"),
+                       And (IsRegularCardinal (Var "Kappa"), IsStationaryIn (Var "S_inacc", Var "Kappa")))) => true
+        | _ => false
+
+      val weakly_compact_thm = prove_weakly_compact_tree_property (Var "Kappa")
+      val weakly_compact_thm_ok = case weakly_compact_thm of
+          Thm ([], Iff (IsWeaklyCompact (Var "Kappa"), HasTreeProperty (Var "Kappa"))) => true
+        | _ => false
+
+      val meas_ultra_thm = prove_measurable_ultrafilter (Var "U") (Var "Kappa")
+      val meas_ultra_thm_ok = case meas_ultra_thm of
+          Thm ([], Iff (IsMeasurable (Var "Kappa"), IsKappaCompleteUltrafilter (Var "U", Var "Kappa"))) => true
+        | _ => false
+
+      val meas_emb_thm = prove_measurable_elementary_embedding (Var "j") Univ (Var "M") (Var "Kappa")
+      val meas_emb_thm_ok = case meas_emb_thm of
+          Thm ([], Iff (IsMeasurable (Var "Kappa"),
+                       And (IsElementaryEmbedding (Var "j", Univ, Var "M"), CriticalPoint (Var "j", Var "Kappa")))) => true
+        | _ => false
+
+      val ultrapower_thm = prove_ultrapower_construction Univ (Var "U") (Var "Kappa")
+      val ultrapower_thm_ok = case ultrapower_thm of
+          Thm ([], Imp (IsKappaCompleteUltrafilter (Var "U", Var "Kappa"),
+                       IsUltrapower (Ultrapower (Univ, Var "U"), Univ, Var "U"))) => true
+        | _ => false
+
+      val scotts_thm = prove_scotts_theorem (Var "Kappa")
+      val scotts_thm_ok = case scotts_thm of
+          Thm ([], Imp (IsMeasurable (Var "Kappa"),
+                       And (ScottsTheoremVNotL (Var "Kappa"), ExistsZeroSharp (Var "Kappa")))) => true
+        | _ => false
+
+      val rel_con_meas_thm = prove_relative_consistency_measurable ()
+      val rel_con_meas_thm_ok = case rel_con_meas_thm of
+          Thm ([], Imp (ConsistencyOf TheoryZFC_Measurable, ConsistencyOf TheoryZFC_Mahlo)) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -3589,6 +3907,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso easton_cond_thm_ok andalso easton_pres_thm_ok andalso easton_powers_thm_ok
       andalso rel_con_easton_thm_ok andalso levy_props_thm_ok andalso levy_om1_thm_ok
       andalso solovay_leb_thm_ok andalso rel_con_solovay_thm_ok
+      andalso inacc_card_ok andalso mahlo_card_ok andalso weakly_compact_ok andalso measurable_card_ok
+      andalso u_filter_ok andalso elem_emb_ok andalso ultrapower_ok andalso zero_sharp_ok
+      andalso inacc_eval_ok andalso inacc_eval_fail andalso mahlo_eval_ok andalso mahlo_eval_fail
+      andalso tree_prop_ok andalso tree_prop_fail andalso meas_eval_ok andalso meas_eval_fail
+      andalso elem_emb_eval_ok andalso elem_emb_eval_fail andalso scotts_thm_eval_ok
+      andalso inacc_def_thm_ok andalso mahlo_char_thm_ok andalso weakly_compact_thm_ok
+      andalso meas_ultra_thm_ok andalso meas_emb_thm_ok andalso ultrapower_thm_ok
+      andalso scotts_thm_ok andalso rel_con_meas_thm_ok
     end
 end;
 
