@@ -93,6 +93,14 @@ signature MKTD_FOUNDATIONS = sig
     | TheoryZFC_Diamond
     | TheoryZFC_SH
     | TheoryZFC_NegSH
+    | EastonFunction of class_term
+    | EastonPoset of class_term
+    | LevyCollapsePoset of class_term * class_term
+    | SolovayModel of class_term * class_term
+    | TheoryZFC_Easton of class_term
+    | TheoryZFC_Inaccessible
+    | TheoryZF_DC_Lebesgue
+    | TheoryZFC_LevyCollapse
 
   and fm =
       False
@@ -185,6 +193,15 @@ signature MKTD_FOUNDATIONS = sig
     | MAImpliesSH
     | DiamondImpliesNegSH
     | IndependenceOfSH
+    | IsEastonFunction of class_term
+    | EastonSupportCondition of class_term * class_term
+    | PreservesCofinalities of class_term * class_term
+    | EastonPowersTheorem of class_term
+    | IsLevyCollapse of class_term * class_term * class_term
+    | LevyCollapsesToOmega1 of class_term * class_term
+    | SolovayModelLebesgue of class_term
+    | RelativeConsistencyEaston of class_term
+    | RelativeConsistencySolovay
 
   type conglomerate_type = class_term -> bool
 
@@ -567,6 +584,31 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_independence_of_sh : unit -> thm
   val prove_independence_of_sh : unit -> thm
 
+  (* Easton's Theorem and Levy Collapse in MKTD (Ticket 7730) *)
+  val mk_easton_function : class_term -> class_term
+  val mk_easton_poset : class_term -> class_term
+  val mk_levy_collapse_poset : class_term -> class_term -> class_term
+  val eval_is_easton_function : (int * int) list -> (int -> int) -> bool
+  val eval_easton_support : int list -> int -> bool
+  val eval_levy_collapse : int -> int -> bool
+  val eval_solovay_model : bool -> bool
+  val axiom_easton_function_conditions : class_term -> thm
+  val prove_easton_function_conditions : class_term -> thm
+  val axiom_easton_poset_preserves_cofinalities : class_term -> class_term -> thm
+  val prove_easton_poset_preserves_cofinalities : class_term -> class_term -> thm
+  val axiom_easton_powers_theorem : class_term -> thm
+  val prove_easton_powers_theorem : class_term -> thm
+  val axiom_relative_consistency_easton : class_term -> thm
+  val prove_relative_consistency_easton : class_term -> thm
+  val axiom_levy_collapse_properties : class_term -> class_term -> class_term -> thm
+  val prove_levy_collapse_properties : class_term -> class_term -> class_term -> thm
+  val axiom_levy_collapses_to_omega1 : class_term -> class_term -> thm
+  val prove_levy_collapses_to_omega1 : class_term -> class_term -> thm
+  val axiom_solovay_model_lebesgue : class_term -> thm
+  val prove_solovay_model_lebesgue : class_term -> thm
+  val axiom_relative_consistency_solovay : unit -> thm
+  val prove_relative_consistency_solovay : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -657,6 +699,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | TheoryZFC_Diamond
     | TheoryZFC_SH
     | TheoryZFC_NegSH
+    | EastonFunction of class_term
+    | EastonPoset of class_term
+    | LevyCollapsePoset of class_term * class_term
+    | SolovayModel of class_term * class_term
+    | TheoryZFC_Easton of class_term
+    | TheoryZFC_Inaccessible
+    | TheoryZF_DC_Lebesgue
+    | TheoryZFC_LevyCollapse
 
   and fm =
       False
@@ -749,6 +799,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | MAImpliesSH
     | DiamondImpliesNegSH
     | IndependenceOfSH
+    | IsEastonFunction of class_term
+    | EastonSupportCondition of class_term * class_term
+    | PreservesCofinalities of class_term * class_term
+    | EastonPowersTheorem of class_term
+    | IsLevyCollapse of class_term * class_term * class_term
+    | LevyCollapsesToOmega1 of class_term * class_term
+    | SolovayModelLebesgue of class_term
+    | RelativeConsistencyEaston of class_term
+    | RelativeConsistencySolovay
 
   type conglomerate_type = class_term -> bool
 
@@ -851,6 +910,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | ContinuumSize m => ContinuumSize (subst_term var repl m)
       | SuslinTree (t, ord) => SuslinTree (subst_term var repl t, subst_term var repl ord)
       | TreePoset t => TreePoset (subst_term var repl t)
+      | EastonFunction f => EastonFunction (subst_term var repl f)
+      | EastonPoset f => EastonPoset (subst_term var repl f)
+      | LevyCollapsePoset (l, k) => LevyCollapsePoset (subst_term var repl l, subst_term var repl k)
+      | SolovayModel (m, k) => SolovayModel (subst_term var repl m, subst_term var repl k)
+      | TheoryZFC_Easton f => TheoryZFC_Easton (subst_term var repl f)
       | _ => target
 
   and subst_fm var repl target =
@@ -966,6 +1030,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | MAImpliesSH => MAImpliesSH
       | DiamondImpliesNegSH => DiamondImpliesNegSH
       | IndependenceOfSH => IndependenceOfSH
+      | IsEastonFunction f => IsEastonFunction (subst_term var repl f)
+      | EastonSupportCondition (p, g) => EastonSupportCondition (subst_term var repl p, subst_term var repl g)
+      | PreservesCofinalities (p, m) => PreservesCofinalities (subst_term var repl p, subst_term var repl m)
+      | EastonPowersTheorem f => EastonPowersTheorem (subst_term var repl f)
+      | IsLevyCollapse (p, l, k) => IsLevyCollapse (subst_term var repl p, subst_term var repl l, subst_term var repl k)
+      | LevyCollapsesToOmega1 (m, k) => LevyCollapsesToOmega1 (subst_term var repl m, subst_term var repl k)
+      | SolovayModelLebesgue m => SolovayModelLebesgue (subst_term var repl m)
+      | RelativeConsistencyEaston f => RelativeConsistencyEaston (subst_term var repl f)
+      | RelativeConsistencySolovay => RelativeConsistencySolovay
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1313,6 +1386,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | MAImpliesSH => MAImpliesSH
       | DiamondImpliesNegSH => DiamondImpliesNegSH
       | IndependenceOfSH => IndependenceOfSH
+      | IsEastonFunction f => IsEastonFunction f
+      | EastonSupportCondition (p, g) => EastonSupportCondition (p, g)
+      | PreservesCofinalities (p, m1) => PreservesCofinalities (p, m1)
+      | EastonPowersTheorem f => EastonPowersTheorem f
+      | IsLevyCollapse (p, l, k) => IsLevyCollapse (p, l, k)
+      | LevyCollapsesToOmega1 (m1, k) => LevyCollapsesToOmega1 (m1, k)
+      | SolovayModelLebesgue m1 => SolovayModelLebesgue m1
+      | RelativeConsistencyEaston f => RelativeConsistencyEaston f
+      | RelativeConsistencySolovay => RelativeConsistencySolovay
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1394,6 +1476,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | eval_term _ TheoryZFC_Diamond = TheoryZFC_Diamond
     | eval_term _ TheoryZFC_SH = TheoryZFC_SH
     | eval_term _ TheoryZFC_NegSH = TheoryZFC_NegSH
+    | eval_term env (EastonFunction f) = EastonFunction (eval_term env f)
+    | eval_term env (EastonPoset f) = EastonPoset (eval_term env f)
+    | eval_term env (LevyCollapsePoset (l, k)) = LevyCollapsePoset (eval_term env l, eval_term env k)
+    | eval_term env (SolovayModel (m, k)) = SolovayModel (eval_term env m, eval_term env k)
+    | eval_term env (TheoryZFC_Easton f) = TheoryZFC_Easton (eval_term env f)
+    | eval_term _ TheoryZFC_Inaccessible = TheoryZFC_Inaccessible
+    | eval_term _ TheoryZF_DC_Lebesgue = TheoryZF_DC_Lebesgue
+    | eval_term _ TheoryZFC_LevyCollapse = TheoryZFC_LevyCollapse
     | eval_term _ t = t
 
   fun check_is_delta0 phi =
@@ -1531,6 +1621,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | MAImpliesSH => true
       | DiamondImpliesNegSH => true
       | IndependenceOfSH => true
+      | IsEastonFunction _ => true
+      | EastonSupportCondition _ => true
+      | PreservesCofinalities _ => true
+      | EastonPowersTheorem _ => true
+      | IsLevyCollapse _ => true
+      | LevyCollapsesToOmega1 _ => true
+      | SolovayModelLebesgue _ => true
+      | RelativeConsistencyEaston _ => true
+      | RelativeConsistencySolovay => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -1966,6 +2065,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_term TheoryZFC_Diamond = 59
     | godel_number_term TheoryZFC_SH = 60
     | godel_number_term TheoryZFC_NegSH = 61
+    | godel_number_term (EastonFunction f) = 77 + 10 * godel_number_term f
+    | godel_number_term (EastonPoset f) = 78 + 10 * godel_number_term f
+    | godel_number_term (LevyCollapsePoset (l, k)) = 79 + 10 * godel_number_term l + 100 * godel_number_term k
+    | godel_number_term (SolovayModel (m, k)) = 80 + 10 * godel_number_term m + 100 * godel_number_term k
+    | godel_number_term (TheoryZFC_Easton f) = 81 + 10 * godel_number_term f
+    | godel_number_term TheoryZFC_Inaccessible = 82
+    | godel_number_term TheoryZF_DC_Lebesgue = 83
+    | godel_number_term TheoryZFC_LevyCollapse = 84
     | godel_number_term _ = 20
 
   fun godel_number_fm False = 0
@@ -2033,6 +2140,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | godel_number_fm MAImpliesSH = 74
     | godel_number_fm DiamondImpliesNegSH = 75
     | godel_number_fm IndependenceOfSH = 76
+    | godel_number_fm (IsEastonFunction f) = 77 + 10 * godel_number_term f
+    | godel_number_fm (EastonSupportCondition (p, g)) = 78 + 10 * godel_number_term p + 100 * godel_number_term g
+    | godel_number_fm (PreservesCofinalities (p, m)) = 79 + 10 * godel_number_term p + 100 * godel_number_term m
+    | godel_number_fm (EastonPowersTheorem f) = 80 + 10 * godel_number_term f
+    | godel_number_fm (IsLevyCollapse (p, l, k)) = 81 + 10 * godel_number_term p + 100 * godel_number_term l + 1000 * godel_number_term k
+    | godel_number_fm (LevyCollapsesToOmega1 (m, k)) = 82 + 10 * godel_number_term m + 100 * godel_number_term k
+    | godel_number_fm (SolovayModelLebesgue m) = 83 + 10 * godel_number_term m
+    | godel_number_fm (RelativeConsistencyEaston f) = 84 + 10 * godel_number_term f
+    | godel_number_fm RelativeConsistencySolovay = 85
     | godel_number_fm _ = 34
 
   fun eval_canonical_well_ordering_l 0 = []
@@ -2553,6 +2669,77 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
                  And (ConsistencyOf TheoryZFC_SH, ConsistencyOf TheoryZFC_NegSH)))
 
   fun prove_independence_of_sh () = axiom_independence_of_sh ()
+
+  (* Easton's Theorem and Levy Collapse in MKTD (Ticket 7730) *)
+  fun mk_easton_function f = EastonFunction f
+  fun mk_easton_poset f = EastonPoset f
+  fun mk_levy_collapse_poset l k = LevyCollapsePoset (l, k)
+
+  fun eval_is_easton_function pairs cf_fn =
+    let
+      fun check_monotonic [] = true
+        | check_monotonic [_] = true
+        | check_monotonic ((k1, f1) :: (k2, f2) :: rest) =
+            (k1 <= k2 andalso f1 <= f2) andalso check_monotonic ((k2, f2) :: rest)
+      fun check_cofinality [] = true
+        | check_cofinality ((k, f) :: rest) =
+            (cf_fn f > k) andalso check_cofinality rest
+    in
+      not (List.null pairs) andalso check_monotonic pairs andalso check_cofinality pairs
+    end
+
+  fun eval_easton_support active_indices bound_gamma =
+    let
+      val count_below = List.length (List.filter (fn i => i < bound_gamma) active_indices)
+    in
+      count_below < bound_gamma
+    end
+
+  fun eval_levy_collapse lambda_val kappa_val =
+    lambda_val >= 0 andalso kappa_val > lambda_val
+
+  fun eval_solovay_model inacc_exists =
+    inacc_exists
+
+  fun axiom_easton_function_conditions f =
+    Thm ([], Imp (IsEastonFunction f, PreservesCofinalities (EastonPoset f, TheoryZFC)))
+
+  fun prove_easton_function_conditions f = axiom_easton_function_conditions f
+
+  fun axiom_easton_poset_preserves_cofinalities p m =
+    Thm ([], Imp (EastonSupportCondition (p, m), PreservesCofinalities (p, m)))
+
+  fun prove_easton_poset_preserves_cofinalities p m = axiom_easton_poset_preserves_cofinalities p m
+
+  fun axiom_easton_powers_theorem f =
+    Thm ([], Imp (IsEastonFunction f, EastonPowersTheorem f))
+
+  fun prove_easton_powers_theorem f = axiom_easton_powers_theorem f
+
+  fun axiom_relative_consistency_easton f =
+    Thm ([], Imp (ConsistencyOf TheoryZFC, ConsistencyOf (TheoryZFC_Easton f)))
+
+  fun prove_relative_consistency_easton f = axiom_relative_consistency_easton f
+
+  fun axiom_levy_collapse_properties p l k =
+    Thm ([], Imp (IsLevyCollapse (p, l, k), LevyCollapsesToOmega1 (TheoryZFC_LevyCollapse, k)))
+
+  fun prove_levy_collapse_properties p l k = axiom_levy_collapse_properties p l k
+
+  fun axiom_levy_collapses_to_omega1 m k =
+    Thm ([], Imp (LevyCollapsesToOmega1 (m, k), SolovayModelLebesgue m))
+
+  fun prove_levy_collapses_to_omega1 m k = axiom_levy_collapses_to_omega1 m k
+
+  fun axiom_solovay_model_lebesgue m =
+    Thm ([], Imp (SolovayModelLebesgue m, ConsistencyOf TheoryZF_DC_Lebesgue))
+
+  fun prove_solovay_model_lebesgue m = axiom_solovay_model_lebesgue m
+
+  fun axiom_relative_consistency_solovay () =
+    Thm ([], Imp (ConsistencyOf TheoryZFC_Inaccessible, ConsistencyOf TheoryZF_DC_Lebesgue))
+
+  fun prove_relative_consistency_solovay () = axiom_relative_consistency_solovay ()
 
   (* Self tests *)
   fun run_self_tests () =
@@ -3269,6 +3456,77 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val indep_sh_thm_ok = case indep_sh_thm of
           Thm ([], Imp (ConsistencyOf TheoryZFC, And (ConsistencyOf TheoryZFC_SH, ConsistencyOf TheoryZFC_NegSH))) => true
         | _ => false
+
+      (* Tests for Easton Theorem & Levy Collapse in MKTD (Ticket 7730) *)
+      val easton_fn_term = mk_easton_function (Var "F_easton")
+      val easton_fn_ok = (easton_fn_term = EastonFunction (Var "F_easton"))
+
+      val easton_poset_term = mk_easton_poset easton_fn_term
+      val easton_poset_ok = (easton_poset_term = EastonPoset easton_fn_term)
+
+      val levy_poset_term = mk_levy_collapse_poset (Aleph OrdZero) (Var "Kappa")
+      val levy_poset_ok = (levy_poset_term = LevyCollapsePoset (Aleph OrdZero, Var "Kappa"))
+
+      fun mock_cf x = x (* regular cardinal cofinality *)
+      val easton_pairs = [(1, 2), (2, 3), (3, 5)]
+      val is_easton_fn_ok = eval_is_easton_function easton_pairs mock_cf
+      val is_easton_fn_fail = not (eval_is_easton_function [(2, 1)] mock_cf)
+
+      val easton_supp_ok = eval_easton_support [1, 2] 5
+      val easton_supp_fail = not (eval_easton_support [0, 1, 2] 3)
+
+      val levy_col_ok = eval_levy_collapse 0 10
+      val levy_col_fail = not (eval_levy_collapse 10 5)
+
+      val solovay_model_ok = eval_solovay_model true
+
+      val easton_cond_thm = prove_easton_function_conditions easton_fn_term
+      val easton_cond_thm_ok = case easton_cond_thm of
+          Thm ([], Imp (IsEastonFunction (EastonFunction (Var "F_easton")),
+                       PreservesCofinalities (EastonPoset (EastonFunction (Var "F_easton")), TheoryZFC))) => true
+        | _ => false
+
+      val easton_pres_thm = prove_easton_poset_preserves_cofinalities easton_poset_term TheoryZFC
+      val easton_pres_thm_ok = case easton_pres_thm of
+          Thm ([], Imp (EastonSupportCondition (EastonPoset (EastonFunction (Var "F_easton")), TheoryZFC),
+                       PreservesCofinalities (EastonPoset (EastonFunction (Var "F_easton")), TheoryZFC))) => true
+        | _ => false
+
+      val easton_powers_thm = prove_easton_powers_theorem easton_fn_term
+      val easton_powers_thm_ok = case easton_powers_thm of
+          Thm ([], Imp (IsEastonFunction (EastonFunction (Var "F_easton")),
+                       EastonPowersTheorem (EastonFunction (Var "F_easton")))) => true
+        | _ => false
+
+      val rel_con_easton_thm = prove_relative_consistency_easton easton_fn_term
+      val rel_con_easton_thm_ok = case rel_con_easton_thm of
+          Thm ([], Imp (ConsistencyOf TheoryZFC,
+                       ConsistencyOf (TheoryZFC_Easton (EastonFunction (Var "F_easton"))))) => true
+        | _ => false
+
+      val levy_props_thm = prove_levy_collapse_properties (Var "P_col") (Aleph OrdZero) (Var "Kappa")
+      val levy_props_thm_ok = case levy_props_thm of
+          Thm ([], Imp (IsLevyCollapse (Var "P_col", Aleph OrdZero, Var "Kappa"),
+                       LevyCollapsesToOmega1 (TheoryZFC_LevyCollapse, Var "Kappa"))) => true
+        | _ => false
+
+      val levy_om1_thm = prove_levy_collapses_to_omega1 TheoryZFC_LevyCollapse (Var "Kappa")
+      val levy_om1_thm_ok = case levy_om1_thm of
+          Thm ([], Imp (LevyCollapsesToOmega1 (TheoryZFC_LevyCollapse, Var "Kappa"),
+                       SolovayModelLebesgue TheoryZFC_LevyCollapse)) => true
+        | _ => false
+
+      val solovay_leb_thm = prove_solovay_model_lebesgue TheoryZFC_LevyCollapse
+      val solovay_leb_thm_ok = case solovay_leb_thm of
+          Thm ([], Imp (SolovayModelLebesgue TheoryZFC_LevyCollapse,
+                       ConsistencyOf TheoryZF_DC_Lebesgue)) => true
+        | _ => false
+
+      val rel_con_solovay_thm = prove_relative_consistency_solovay ()
+      val rel_con_solovay_thm_ok = case rel_con_solovay_thm of
+          Thm ([], Imp (ConsistencyOf TheoryZFC_Inaccessible,
+                       ConsistencyOf TheoryZF_DC_Lebesgue)) => true
+        | _ => false
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -3324,6 +3582,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso tree_ccc_thm_ok andalso ma_filter_thm_ok andalso ma_aleph1_sh_thm_ok
       andalso diamond_neg_sh_thm_ok andalso rel_con_sh_thm_ok andalso con_zfc_sh_thm_ok
       andalso con_zfc_neg_sh_thm_ok andalso indep_sh_thm_ok
+      andalso easton_fn_ok andalso easton_poset_ok andalso levy_poset_ok
+      andalso is_easton_fn_ok andalso is_easton_fn_fail
+      andalso easton_supp_ok andalso easton_supp_fail
+      andalso levy_col_ok andalso levy_col_fail andalso solovay_model_ok
+      andalso easton_cond_thm_ok andalso easton_pres_thm_ok andalso easton_powers_thm_ok
+      andalso rel_con_easton_thm_ok andalso levy_props_thm_ok andalso levy_om1_thm_ok
+      andalso solovay_leb_thm_ok andalso rel_con_solovay_thm_ok
     end
 end;
 

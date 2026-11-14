@@ -184,6 +184,26 @@ class TestFoundations(unittest.TestCase):
                 )
                 self.assertTrue(callable(getattr(foundations, sym)))
 
+    def test_ticket_7730_easton_and_levy_collapse_symbols(self):
+        """Ticket 7730: verify Easton's Theorem and Levy Collapse symbols."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "is_easton_function",
+            "easton_support_product",
+            "easton_cofinality_and_cardinal_preservation",
+            "relative_consistency_easton",
+            "levy_collapse",
+            "solovay_model_foundations",
+            "proves_easton_and_levy_collapse",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' from Ticket 7730 is missing from foundations",
+                )
+                self.assertTrue(callable(getattr(foundations, sym)))
+
 
 if __name__ == '__main__':
     unittest.main()

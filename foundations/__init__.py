@@ -159,6 +159,13 @@ from foundations.type_semantics import (
     relative_consistency_neg_sh,
     independence_of_suslin_hypothesis,
     proves_martins_axiom_and_suslin_hypothesis,
+    is_easton_function,
+    easton_support_product,
+    easton_cofinality_and_cardinal_preservation,
+    relative_consistency_easton,
+    levy_collapse,
+    solovay_model_foundations,
+    proves_easton_and_levy_collapse,
 )
 
 __all__: list[str] = [
@@ -319,4 +326,11 @@ __all__: list[str] = [
     "relative_consistency_neg_sh",
     "independence_of_suslin_hypothesis",
     "proves_martins_axiom_and_suslin_hypothesis",
+    "is_easton_function",
+    "easton_support_product",
+    "easton_cofinality_and_cardinal_preservation",
+    "relative_consistency_easton",
+    "levy_collapse",
+    "solovay_model_foundations",
+    "proves_easton_and_levy_collapse",
 ]

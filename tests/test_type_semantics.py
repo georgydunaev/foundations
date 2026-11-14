@@ -1455,6 +1455,127 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(master_res["independence_of_sh"]["sh_is_independent"])
         self.assertEqual(master_res["pairing_device"], "dunaev_pair")
 
+    def test_eastons_theorem_and_levy_collapse(self):
+        """Ticket 7730: Easton's Theorem and Levy Collapse in MKTD."""
+        from foundations.type_semantics import (
+            is_easton_function,
+            easton_support_product,
+            easton_cofinality_and_cardinal_preservation,
+            relative_consistency_easton,
+            levy_collapse,
+            solovay_model_foundations,
+            proves_easton_and_levy_collapse,
+            DunaevTaggedPair,
+        )
+
+        # 1. Easton function verification
+        valid_mapping = [(1, 2), (2, 3), (3, 5)]
+        efn = is_easton_function(valid_mapping)
+        self.assertTrue(efn["is_easton_function"])
+        self.assertTrue(efn["is_monotonic"])
+        self.assertTrue(efn["satisfies_koenig_bound"])
+        self.assertEqual(efn["cardinals_count"], 3)
+        self.assertEqual(efn["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(efn["mapping"][0], DunaevTaggedPair)
+        self.assertEqual(efn["mapping"][0].first, 1)
+        self.assertEqual(efn["mapping"][0].second, 2)
+
+        # Empty mapping failure
+        empty_efn = is_easton_function([])
+        self.assertFalse(empty_efn["is_easton_function"])
+
+        # Non-monotonic failure
+        bad_monotonic = is_easton_function([(1, 3), (2, 2)])
+        self.assertFalse(bad_monotonic["is_easton_function"])
+        self.assertFalse(bad_monotonic["is_monotonic"])
+
+        # Koenig bound violation failure: cf(F(kappa)) <= kappa
+        bad_koenig = is_easton_function([(2, 2)], cofinality_fn=lambda x: 1)
+        self.assertFalse(bad_koenig["is_easton_function"])
+        self.assertFalse(bad_koenig["satisfies_koenig_bound"])
+
+        # 2. Easton support product forcing
+        conds = [
+            {1: 0, 2: 1},
+            {1: 1, 3: 0},
+        ]
+        bounds = [1, 2, 3, 5]
+        pos = easton_support_product(efn, conds, regular_bounds=bounds)
+        self.assertTrue(pos["easton_support_satisfied"])
+        self.assertTrue(pos["factorization_sound"])
+        self.assertEqual(pos["conditions_count"], 2)
+        self.assertEqual(pos["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(pos["verified_conditions"][0]["dunaev_record"], DunaevTaggedPair)
+
+        # Violating Easton support
+        bad_conds = [
+            {0: 0, 1: 0, 2: 0},  # 2 active conditions (0, 1) strictly below bound 2
+        ]
+        bad_pos = easton_support_product(efn, bad_conds, regular_bounds=[2])
+        self.assertFalse(bad_pos["easton_support_satisfied"])
+
+        # Invalid Easton function in product
+        invalid_pos = easton_support_product(bad_monotonic, conds, regular_bounds=bounds)
+        self.assertFalse(invalid_pos["easton_support_satisfied"])
+
+        # 3. Preservation of cofinalities and powers
+        pres = easton_cofinality_and_cardinal_preservation(pos)
+        self.assertTrue(pres["cardinals_preserved"])
+        self.assertTrue(pres["cofinalities_preserved"])
+        self.assertTrue(pres["powers_of_regular_cardinals_match_F"])
+        self.assertEqual(pres["pairing_device"], "dunaev_pair")
+
+        # 4. Relative consistency of Easton's theorem
+        rel_easton = relative_consistency_easton(efn, con_zfc=True)
+        self.assertTrue(rel_easton["relative_consistency_holds"])
+        self.assertEqual(rel_easton["base_theory"], "ZFC")
+        self.assertIn("F(kappa)", rel_easton["extended_theory"])
+        self.assertEqual(rel_easton["pairing_device"], "dunaev_pair")
+
+        rel_easton_fail = relative_consistency_easton(bad_monotonic, con_zfc=True)
+        self.assertFalse(rel_easton_fail["relative_consistency_holds"])
+
+        # 5. Levy collapse Col(omega, <kappa)
+        lcol = levy_collapse(lambda_card=0, kappa=10, is_inaccessible=True)
+        self.assertTrue(lcol["levy_collapse_verified"])
+        self.assertTrue(lcol["poset_has_kappa_cc"])
+        self.assertTrue(lcol["all_ordinals_below_kappa_collapsed"])
+        self.assertTrue(lcol["kappa_becomes_omega_1"])
+        self.assertTrue(lcol["cardinals_above_kappa_preserved"])
+        self.assertEqual(lcol["pairing_device"], "dunaev_pair")
+        self.assertIsInstance(lcol["sample_collapsed_ordinals"][0], DunaevTaggedPair)
+
+        # Non-inaccessible collapse failure
+        bad_lcol = levy_collapse(lambda_card=0, kappa=10, is_inaccessible=False)
+        self.assertFalse(bad_lcol["levy_collapse_verified"])
+        self.assertFalse(bad_lcol["all_ordinals_below_kappa_collapsed"])
+
+        # 6. Solovay model foundations
+        sol = solovay_model_foundations(lcol, con_zfc_inacc=True)
+        self.assertTrue(sol["solovay_model_holds"])
+        self.assertTrue(sol["zf_dc_preserved"])
+        self.assertTrue(sol["all_sets_lebesgue_measurable"])
+        self.assertTrue(sol["baire_property_holds"])
+        self.assertTrue(sol["perfect_set_property_holds"])
+        self.assertEqual(sol["pairing_device"], "dunaev_pair")
+
+        sol_fail = solovay_model_foundations(bad_lcol, con_zfc_inacc=True)
+        self.assertFalse(sol_fail["solovay_model_holds"])
+
+        # 7. Master theorem runner
+        master = proves_easton_and_levy_collapse(valid_mapping, lambda_card=0, kappa=10, con_zfc=True)
+        self.assertTrue(master["easton_and_levy_collapse_proven"])
+        self.assertTrue(master["easton_function_verified"])
+        self.assertTrue(master["easton_support_verified"])
+        self.assertTrue(master["cofinalities_preserved"])
+        self.assertTrue(master["powers_match_easton"])
+        self.assertTrue(master["relative_consistency_easton"]["relative_consistency_holds"])
+        self.assertTrue(master["levy_collapse_verified"])
+        self.assertTrue(master["kappa_becomes_omega_1"])
+        self.assertTrue(master["solovay_model_holds"])
+        self.assertTrue(master["all_sets_lebesgue_measurable"])
+        self.assertEqual(master["pairing_device"], "dunaev_pair")
+
 
 if __name__ == "__main__":
     unittest.main()
