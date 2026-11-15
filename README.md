@@ -29,7 +29,7 @@ book:
   explicit parameter estimates and exponential weights, localized operator
   continuity, and a global operator-norm discontinuity example.
 
-Use PdfLaTeX → Biber → PdfLaTeX twice with the thesis master selected;
+Use PdfLaTeX, then Biber, then PdfLaTeX twice with the thesis master selected;
 see [Texmaker instructions](TEXMAKER_BUILD.md).
 [The source review and time plan](THESIS_RESEARCH_PLAN.md) records checked
 references and remaining bibliographic limitations. The manuscript proves its
@@ -106,10 +106,15 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 
 ### Formalizations
 - **presentation.ML**: Class-theoretic foundations based on Morse–Kelley class theory and Tarski's axiom. *(Active Draft)*
+- **examples/mktd_foundations.ML**: Executable Standard ML formalization (compatible with both CakeML and Poly/ML) of Morse–Kelley class theory, Dunaev Tagged Ordered Pairs, descriptors, transfinite recursion, categorical limits and colimits, Tarski truth, cumulative hierarchy reflection, ordinals and limitation of size, Grothendieck universes, constructible hierarchy `L`, condensation and `L |= GCH`, forcing posets, Cohen reals, Martin's Axiom and Suslin Hypothesis, Easton's theorem, Levy collapse, large cardinals, and inner model relativization. *(Active Verified SML)*
+- **examples/debruijn.ML**: Executable Standard ML formalization of untyped de Bruijn substitution, shifting, beta-contraction, and fuel-bounded normal-order evaluation. *(Active Verified SML)*
 - **Coq/positive_foundations.v**: Coq formalisation of positive foundations, including inductive definitions of ensembles and ordered pairs. *(Active Draft)*
 - **code/IFOLD.thy**: Isabelle/HOL theory implementing the IFOLD construction. *(Active Draft)*
+- **foundations/**: Python formalization modules (`logic.py`, `descriptors.py`, `pfol.py`, `type_semantics.py`) implementing the logical framework, descriptor systems, Farmer's PFOL, and predicates-as-types semantics. *(Active Python Reference)*
 
 ### Additional Resources
+- **ARCHITECTURE_AND_THEOREMS.md**: Comprehensive guide summarizing every formalization, theorem, axiom system, and unfinished problem in this repository.
+- **AUDIT_REPORT.md**: Reconciliation report for semantic completeness, quantifier context freshness, Dunaev tagged pairs, and Coq positive foundations.
 - **APPROACHES_INVENTORY.md**: Inventory, implementation status, and preservation boundary for the exact five approaches.
 - **COMPETING_APPROACHES.md**: Concise comparison and links to the approach inventory.
 - **LATEX_AUDIT_REPORT.md**: Report on LaTeX documentation status.
