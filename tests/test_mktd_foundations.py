@@ -876,6 +876,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl076_quillen_model_categories_lifting_and_homotopy_category(self):
+        """Ticket 76: verify Quillen Model Categories, Lifting, and Homotopy Category in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "QuillenModelStructure",
+            "WeakFactorizationTriple",
+            "DiagonalLiftingWitness",
+            "CylinderObjectFactorization",
+            "QuillenHomotopyCategory",
+            "IsQuillenModelCategory",
+            "HasLeftRightLiftingProperty",
+            "SatisfiesTwoOutOfThreeWeakEq",
+            "IsQuillenAdjunctionPair",
+            "eval_is_quillen_model_category",
+            "eval_left_right_lifting_property",
+            "eval_two_out_of_three_weak_eq",
+            "eval_quillen_homotopy_category",
+            "eval_is_quillen_adjunction",
+            "axiom_quillen_retract_lifting_closure",
+            "prove_quillen_retract_lifting_closure",
+            "axiom_whitehead_theorem_bifibrant_objects",
+            "prove_whitehead_theorem_bifibrant_objects",
+            "axiom_total_derived_quillen_adjunction_equivalence",
+            "prove_total_derived_quillen_adjunction_equivalence",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

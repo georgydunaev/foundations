@@ -765,6 +765,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["quasi_iso_roof_calculus_verified"])
         self.assertTrue(res["derived_category_localization_verified"])
 
+    def test_ticket_gl076_quillen_model_categories_lifting_and_homotopy_category(self):
+        """Ticket 76: verify Quillen Model Categories, Weak Factorization Systems, Lifting, and Ho(M)."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_quillen_model_category",
+            "eval_left_right_lifting_property",
+            "eval_two_out_of_three_weak_eq",
+            "eval_quillen_homotopy_category",
+            "eval_is_quillen_adjunction",
+            "proves_quillen_model_categories_lifting_and_homotopy_category",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_quillen_model_categories_lifting_and_homotopy_category()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["quillen_model_category_verified"])
+        self.assertTrue(res["lifting_property_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["two_out_of_three_verified"])
+        self.assertTrue(res["homotopy_category_verified"])
+        self.assertTrue(res["quillen_adjunction_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

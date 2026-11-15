@@ -336,6 +336,12 @@ from foundations.classes import (
     eval_quasi_iso_roof_calculus,
     eval_derived_category_localization,
     proves_triangulated_categories_octahedral_and_derived_categories,
+    eval_is_quillen_model_category,
+    eval_left_right_lifting_property,
+    eval_two_out_of_three_weak_eq,
+    eval_quillen_homotopy_category,
+    eval_is_quillen_adjunction,
+    proves_quillen_model_categories_lifting_and_homotopy_category,
     proves_foundations_classes_and_families,
 )
 
@@ -672,5 +678,11 @@ __all__: list[str] = [
     "eval_quasi_iso_roof_calculus",
     "eval_derived_category_localization",
     "proves_triangulated_categories_octahedral_and_derived_categories",
+    "eval_is_quillen_model_category",
+    "eval_left_right_lifting_property",
+    "eval_two_out_of_three_weak_eq",
+    "eval_quillen_homotopy_category",
+    "eval_is_quillen_adjunction",
+    "proves_quillen_model_categories_lifting_and_homotopy_category",
     "proves_foundations_classes_and_families",
 ]

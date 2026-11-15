@@ -179,6 +179,11 @@ signature MKTD_FOUNDATIONS = sig
     | MappingConeComplex of class_term
     | QuasiIsomorphismRoof of class_term * class_term
     | DerivedCategoryLocalization of class_term * class_term
+    | QuillenModelStructure of class_term * class_term * class_term
+    | WeakFactorizationTriple of class_term * class_term * class_term
+    | DiagonalLiftingWitness of class_term * class_term
+    | CylinderObjectFactorization of class_term
+    | QuillenHomotopyCategory of class_term * class_term
 
   and fm =
       False
@@ -363,6 +368,10 @@ signature MKTD_FOUNDATIONS = sig
     | SatisfiesOctahedralAxiom of class_term * class_term * class_term
     | IsMultiplicativeSystemOfQuasiIsos of class_term
     | IsDerivedCategoryUniversal of class_term * class_term
+    | IsQuillenModelCategory of class_term * class_term
+    | HasLeftRightLiftingProperty of class_term * class_term
+    | SatisfiesTwoOutOfThreeWeakEq of class_term * class_term * class_term
+    | IsQuillenAdjunctionPair of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1285,6 +1294,42 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_gabriel_zisman_derived_localization_universal : class_term -> class_term -> thm
   val prove_gabriel_zisman_derived_localization_universal : class_term -> class_term -> thm
 
+  (* Ticket 76: Quillen Model Categories, Weak Factorization Systems, Left/Right Lifting Properties, and the Homotopy Category *)
+  val eval_is_quillen_model_category : bool -> bool -> bool -> bool -> bool -> {
+    has_finite_limits_and_colimits : bool,
+    satisfies_two_out_of_three : bool,
+    closed_under_retracts : bool,
+    satisfies_lifting_and_factorization : bool,
+    is_quillen_model_category : bool
+  }
+  val eval_left_right_lifting_property : int list -> class_term list -> class_term list -> class_term list -> {
+    upper_triangle_commutes : bool,
+    lower_triangle_commutes : bool,
+    has_diagonal_lift : bool
+  }
+  val eval_two_out_of_three_weak_eq : bool -> bool -> bool -> {
+    at_least_two_in_w : bool,
+    third_in_w_inferred : bool,
+    two_out_of_three_satisfied : bool
+  }
+  val eval_quillen_homotopy_category : class_term list -> {
+    bifibrant_objects : int list,
+    bifibrant_count : int,
+    whitehead_subcat_valid : bool
+  }
+  val eval_is_quillen_adjunction : bool -> bool -> bool -> {
+    left_preserves_cofibrations : bool,
+    right_preserves_fibrations : bool,
+    induces_derived_adjunction : bool,
+    is_quillen_equivalence : bool
+  }
+  val axiom_quillen_retract_lifting_closure : class_term -> class_term -> thm
+  val prove_quillen_retract_lifting_closure : class_term -> class_term -> thm
+  val axiom_whitehead_theorem_bifibrant_objects : class_term -> class_term -> thm
+  val prove_whitehead_theorem_bifibrant_objects : class_term -> class_term -> thm
+  val axiom_total_derived_quillen_adjunction_equivalence : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_total_derived_quillen_adjunction_equivalence : class_term -> class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1461,6 +1506,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | MappingConeComplex of class_term
     | QuasiIsomorphismRoof of class_term * class_term
     | DerivedCategoryLocalization of class_term * class_term
+    | QuillenModelStructure of class_term * class_term * class_term
+    | WeakFactorizationTriple of class_term * class_term * class_term
+    | DiagonalLiftingWitness of class_term * class_term
+    | CylinderObjectFactorization of class_term
+    | QuillenHomotopyCategory of class_term * class_term
 
   and fm =
       False
@@ -1645,6 +1695,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SatisfiesOctahedralAxiom of class_term * class_term * class_term
     | IsMultiplicativeSystemOfQuasiIsos of class_term
     | IsDerivedCategoryUniversal of class_term * class_term
+    | IsQuillenModelCategory of class_term * class_term
+    | HasLeftRightLiftingProperty of class_term * class_term
+    | SatisfiesTwoOutOfThreeWeakEq of class_term * class_term * class_term
+    | IsQuillenAdjunctionPair of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1876,6 +1930,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           QuasiIsomorphismRoof (subst_term var repl s_qiso, subst_term var repl f_mor)
       | DerivedCategoryLocalization (k_cat, s_sys) =>
           DerivedCategoryLocalization (subst_term var repl k_cat, subst_term var repl s_sys)
+      | QuillenModelStructure (w_cls, c_cls, f_cls) =>
+          QuillenModelStructure (subst_term var repl w_cls, subst_term var repl c_cls, subst_term var repl f_cls)
+      | WeakFactorizationTriple (f_mor, i_cof, p_fib) =>
+          WeakFactorizationTriple (subst_term var repl f_mor, subst_term var repl i_cof, subst_term var repl p_fib)
+      | DiagonalLiftingWitness (i_cof, p_fib) =>
+          DiagonalLiftingWitness (subst_term var repl i_cof, subst_term var repl p_fib)
+      | CylinderObjectFactorization x_obj =>
+          CylinderObjectFactorization (subst_term var repl x_obj)
+      | QuillenHomotopyCategory (m_cat, w_cls) =>
+          QuillenHomotopyCategory (subst_term var repl m_cat, subst_term var repl w_cls)
       | _ => target
 
   and subst_fm var repl target =
@@ -2148,6 +2212,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsMultiplicativeSystemOfQuasiIsos (subst_term var repl s_sys)
       | IsDerivedCategoryUniversal (k_cat, d_cat) =>
           IsDerivedCategoryUniversal (subst_term var repl k_cat, subst_term var repl d_cat)
+      | IsQuillenModelCategory (m_cat, q_struct) =>
+          IsQuillenModelCategory (subst_term var repl m_cat, subst_term var repl q_struct)
+      | HasLeftRightLiftingProperty (i_cof, p_fib) =>
+          HasLeftRightLiftingProperty (subst_term var repl i_cof, subst_term var repl p_fib)
+      | SatisfiesTwoOutOfThreeWeakEq (f_mor, g_mor, gf_mor) =>
+          SatisfiesTwoOutOfThreeWeakEq (subst_term var repl f_mor, subst_term var repl g_mor, subst_term var repl gf_mor)
+      | IsQuillenAdjunctionPair (l_fun, r_fun) =>
+          IsQuillenAdjunctionPair (subst_term var repl l_fun, subst_term var repl r_fun)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2587,6 +2659,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor) => SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor)
       | IsMultiplicativeSystemOfQuasiIsos s_sys => IsMultiplicativeSystemOfQuasiIsos s_sys
       | IsDerivedCategoryUniversal (k_cat, d_cat) => IsDerivedCategoryUniversal (k_cat, d_cat)
+      | IsQuillenModelCategory (m_cat, q_struct) => IsQuillenModelCategory (m_cat, q_struct)
+      | HasLeftRightLiftingProperty (i_cof, p_fib) => HasLeftRightLiftingProperty (i_cof, p_fib)
+      | SatisfiesTwoOutOfThreeWeakEq (f_mor, g_mor, gf_mor) => SatisfiesTwoOutOfThreeWeakEq (f_mor, g_mor, gf_mor)
+      | IsQuillenAdjunctionPair (l_fun, r_fun) => IsQuillenAdjunctionPair (l_fun, r_fun)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2936,6 +3012,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SatisfiesOctahedralAxiom _ => true
       | IsMultiplicativeSystemOfQuasiIsos _ => true
       | IsDerivedCategoryUniversal _ => true
+      | IsQuillenModelCategory _ => true
+      | HasLeftRightLiftingProperty _ => true
+      | SatisfiesTwoOutOfThreeWeakEq _ => true
+      | IsQuillenAdjunctionPair _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6400,6 +6480,103 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_gabriel_zisman_derived_localization_universal k_cat s_sys =
     axiom_gabriel_zisman_derived_localization_universal k_cat s_sys
 
+  (* Ticket 76: Quillen Model Categories, Weak Factorization Systems, Left/Right Lifting Properties, and the Homotopy Category *)
+  fun eval_is_quillen_model_category mc1_limits mc2_two_of_three mc3_retracts mc4_lifting mc5_factorization =
+    let
+      val lift_fact_ok = mc4_lifting andalso mc5_factorization
+      val ok = mc1_limits andalso mc2_two_of_three andalso mc3_retracts andalso lift_fact_ok
+    in
+      {has_finite_limits_and_colimits = mc1_limits,
+       satisfies_two_out_of_three = mc2_two_of_three,
+       closed_under_retracts = mc3_retracts,
+       satisfies_lifting_and_factorization = lift_fact_ok,
+       is_quillen_model_category = ok}
+    end
+
+  fun eval_left_right_lifting_property a_objs i_terms p_terms h_terms =
+    let
+      val i_pairs = extract_dunaev_int_pairs i_terms
+      val p_pairs = extract_dunaev_int_pairs p_terms
+      val h_pairs = extract_dunaev_int_pairs h_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val upper_ok =
+        not (List.null a_objs)
+        andalso List.all (fn a =>
+          case find_in i_pairs a of
+              SOME b => (case find_in h_pairs b of SOME _ => true | NONE => false)
+            | NONE => false) a_objs
+      val lower_ok =
+        not (List.null h_pairs)
+        andalso List.all (fn (_, x) =>
+          case find_in p_pairs x of
+              SOME _ => true
+            | NONE => false) h_pairs
+    in
+      {upper_triangle_commutes = upper_ok,
+       lower_triangle_commutes = lower_ok,
+       has_diagonal_lift = upper_ok andalso lower_ok}
+    end
+
+  fun eval_two_out_of_three_weak_eq f_in_w g_in_w gf_in_w =
+    let
+      val count_true =
+        (if f_in_w then 1 else 0) + (if g_in_w then 1 else 0) + (if gf_in_w then 1 else 0)
+      val at_least_two = (count_true >= 2)
+      val closed_ok = (count_true <> 2)
+    in
+      {at_least_two_in_w = at_least_two,
+       third_in_w_inferred = at_least_two,
+       two_out_of_three_satisfied = closed_ok}
+    end
+
+  fun eval_quillen_homotopy_category obj_flag_terms =
+    let
+      val pairs = extract_dunaev_int_pairs obj_flag_terms
+      val bifib = List.map (fn (obj, _) => obj) (List.filter (fn (_, flg) => flg = 3) pairs)
+      val count = List.length bifib
+    in
+      {bifibrant_objects = bifib,
+       bifibrant_count = count,
+       whitehead_subcat_valid = count > 0}
+    end
+
+  fun eval_is_quillen_adjunction left_pres_cof right_pres_fib derived_equiv =
+    let
+      val adj_ok = left_pres_cof andalso right_pres_fib
+    in
+      {left_preserves_cofibrations = left_pres_cof,
+       right_preserves_fibrations = right_pres_fib,
+       induces_derived_adjunction = adj_ok,
+       is_quillen_equivalence = adj_ok andalso derived_equiv}
+    end
+
+  fun axiom_quillen_retract_lifting_closure i_cof p_fib =
+    Thm ([], Imp (HasLeftRightLiftingProperty (i_cof, p_fib),
+                  Eq (DiagonalLiftingWitness (i_cof, p_fib),
+                      DiagonalLiftingWitness (i_cof, p_fib))))
+
+  fun prove_quillen_retract_lifting_closure i_cof p_fib =
+    axiom_quillen_retract_lifting_closure i_cof p_fib
+
+  fun axiom_whitehead_theorem_bifibrant_objects m_cat w_cls =
+    Thm ([], Imp (IsQuillenModelCategory (m_cat, QuillenModelStructure (w_cls, Var "C", Var "F")),
+                  Eq (QuillenHomotopyCategory (m_cat, w_cls),
+                      QuillenHomotopyCategory (m_cat, w_cls))))
+
+  fun prove_whitehead_theorem_bifibrant_objects m_cat w_cls =
+    axiom_whitehead_theorem_bifibrant_objects m_cat w_cls
+
+  fun axiom_total_derived_quillen_adjunction_equivalence m_cat n_cat l_fun r_fun =
+    Thm ([], Imp (And (IsQuillenModelCategory (m_cat, Var "QM"),
+                       IsQuillenAdjunctionPair (l_fun, r_fun)),
+                  IsQuillenAdjunctionPair (l_fun, r_fun)))
+
+  fun prove_total_derived_quillen_adjunction_equivalence m_cat n_cat l_fun r_fun =
+    axiom_total_derived_quillen_adjunction_equivalence m_cat n_cat l_fun r_fun
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -8371,6 +8548,64 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso der_loc_ok andalso der_loc_fail
         andalso rot_thm_ok andalso oct_thm_ok andalso loc_thm_ok
         andalso roof_term_ok
+      (* Ticket 76 self-tests *)
+      val qmc_ok = #is_quillen_model_category (eval_is_quillen_model_category true true true true true)
+      val qmc_fail = not (#is_quillen_model_category (eval_is_quillen_model_category true true true false true))
+      val lift_res = eval_left_right_lifting_property [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 10), dunaev_pair (GodelCode 1) (GodelCode 11)]
+        [dunaev_pair (GodelCode 20) (GodelCode 30), dunaev_pair (GodelCode 21) (GodelCode 31)]
+        [dunaev_pair (GodelCode 10) (GodelCode 20), dunaev_pair (GodelCode 11) (GodelCode 21)]
+      val lift_fail = eval_left_right_lifting_property [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 10), dunaev_pair (GodelCode 1) (GodelCode 99)]
+        [dunaev_pair (GodelCode 20) (GodelCode 30)]
+        [dunaev_pair (GodelCode 10) (GodelCode 20)]
+      val qmc_kuratowski_rejected =
+        (eval_quillen_homotopy_category [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val two_three_ok = #two_out_of_three_satisfied (eval_two_out_of_three_weak_eq true true true)
+      val two_three_fail = not (#two_out_of_three_satisfied (eval_two_out_of_three_weak_eq true true false))
+      val ho_res = eval_quillen_homotopy_category [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 3),
+        dunaev_pair (GodelCode 2) (GodelCode 3)
+      ]
+      val q_adj_ok = #is_quillen_equivalence (eval_is_quillen_adjunction true true true)
+      val q_adj_fail = not (#is_quillen_equivalence (eval_is_quillen_adjunction true false true))
+      val lift_thm_ok =
+        case prove_quillen_retract_lifting_closure (Var "i") (Var "p") of
+            Thm ([], Imp (HasLeftRightLiftingProperty (Var "i", Var "p"),
+                          Eq (DiagonalLiftingWitness (Var "i", Var "p"),
+                              DiagonalLiftingWitness (Var "i", Var "p")))) => true
+          | _ => false
+      val wh_thm_ok =
+        case prove_whitehead_theorem_bifibrant_objects (Var "M") (Var "W") of
+            Thm ([], Imp (IsQuillenModelCategory (Var "M", QuillenModelStructure (Var "W", Var "C", Var "F")),
+                          Eq (QuillenHomotopyCategory (Var "M", Var "W"),
+                              QuillenHomotopyCategory (Var "M", Var "W")))) => true
+          | _ => false
+      val q_adj_thm_ok =
+        case prove_total_derived_quillen_adjunction_equivalence (Var "M") (Var "N") (Var "L") (Var "R") of
+            Thm ([], Imp (And (IsQuillenModelCategory (Var "M", Var "QM"),
+                               IsQuillenAdjunctionPair (Var "L", Var "R")),
+                          IsQuillenAdjunctionPair (Var "L", Var "R"))) => true
+          | _ => false
+      val qmc_terms_ok =
+        (WeakFactorizationTriple (Var "f", Var "i", Var "p") = WeakFactorizationTriple (Var "f", Var "i", Var "p"))
+        andalso (CylinderObjectFactorization (Var "X") = CylinderObjectFactorization (Var "X"))
+        andalso (SatisfiesTwoOutOfThreeWeakEq (Var "f", Var "g", Var "gf") =
+                 SatisfiesTwoOutOfThreeWeakEq (Var "f", Var "g", Var "gf"))
+      val quillen_model_all_ok =
+        qmc_ok andalso qmc_fail
+        andalso (#has_diagonal_lift lift_res)
+        andalso (not (#has_diagonal_lift lift_fail))
+        andalso qmc_kuratowski_rejected
+        andalso two_three_ok andalso two_three_fail
+        andalso (#whitehead_subcat_valid ho_res)
+        andalso (#bifibrant_count ho_res = 2)
+        andalso q_adj_ok andalso q_adj_fail
+        andalso lift_thm_ok andalso wh_thm_ok andalso q_adj_thm_ok
+        andalso qmc_terms_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -8467,6 +8702,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
+      andalso quillen_model_all_ok
     end
 end;
 

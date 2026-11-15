@@ -2446,6 +2446,37 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_triangulated_categories_octahedral_and_derived_categories()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl076_quillen_model_categories_lifting_and_homotopy_category(self):
+        """Ticket 76: Quillen Model Categories, Weak Factorization Systems, Lifting, and Homotopy Category."""
+        from foundations.type_semantics import (
+            eval_is_quillen_model_category,
+            eval_left_right_lifting_property,
+            eval_two_out_of_three_weak_eq,
+            eval_quillen_homotopy_category,
+            eval_is_quillen_adjunction,
+            proves_quillen_model_categories_lifting_and_homotopy_category,
+        )
+
+        self.assertTrue(eval_is_quillen_model_category(True, True, True, True, True)["is_quillen_model_category"])
+        with self.assertRaises(ProperClassError):
+            eval_quillen_homotopy_category([KuratowskiPair(0, 3)])
+
+        self.assertTrue(
+            eval_left_right_lifting_property(
+                [0, 1],
+                [dunaev_pair(0, 10), dunaev_pair(1, 11)],
+                [dunaev_pair(20, 30), dunaev_pair(21, 31)],
+                [dunaev_pair(10, 20), dunaev_pair(11, 21)],
+            )["has_diagonal_lift"]
+        )
+        self.assertTrue(eval_two_out_of_three_weak_eq(True, True, True)["two_out_of_three_satisfied"])
+        ho_res = eval_quillen_homotopy_category([dunaev_pair(0, 1), dunaev_pair(1, 3), dunaev_pair(2, 3)])
+        self.assertEqual(ho_res["bifibrant_count"], 2)
+        self.assertTrue(eval_is_quillen_adjunction(True, True, True)["is_quillen_equivalence"])
+
+        master = proves_quillen_model_categories_lifting_and_homotopy_category()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()
