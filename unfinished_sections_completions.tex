@@ -1,0 +1,235 @@
+%% Auto-generated mathematical completions for unfinished sections in /hostramdisk/foundations
+%% Source files: 010_logic.tex (lines 862--1518, 4359--4450),
+%%               060_axioms.tex (lines 185--350),
+%%               110_family_evaluation.tex (lines 11--125)
+%% Purpose: Self-contained formal definitions, theorems, and proofs completing the unfinished sections.
+
+\section{Completed Exposition of Unfinished Sections}
+\label{sec:unfinished_sections_completions}
+
+\subsection{Predicate Calculus of Class Theory as an Object Language (\texttt{010\_logic.tex})}
+\label{subsec:object_language_predicate_calculus}
+
+In the foundational development, both the object theory and the metatheory operate over classes. To reason rigorously about syntax, substitution, and derivability without conflating object-level formulas and metalevel propositions, we formalize the object language of class theory as an inductive algebraic data type. This aligns directly with the typed abstract syntax tree architecture of the \texttt{MKTD1-framework} (\texttt{MKTD1-system} / \texttt{MKTD1-prover} / \texttt{MKTD1-theory}) and the constructive proof-term interpretation of the \texttt{MKTD2-framework} (\texttt{MKTD2-system} / \texttt{MKTD2-prover} / \texttt{MKTD2-theory}).
+
+\begin{definition}[Object-language alphabet, variables, and antiquotation fragments]
+\label{def:object_language_alphabet}
+Let $\mathrm{Alphabet}$ be a finite set of base characters and let $\Var \cong \mathrm{Alphabet}^+ \times \mathbb{N}$ be a countably infinite set of class variable identifiers equipped with a decidable linear order $<_{\Var}$.
+\begin{enumerate}
+\item A \emph{dotted string} is a finite sequence $\mathrm{DottedString} = \mathrm{List}(\mathrm{Alphabet} \times \mathbb{N})$.
+\item For any syntactic category $\alpha$, an \emph{antiquotation fragment} over $\alpha$ is an element of the sum type
+\[
+\mathrm{Fragment}(\alpha) := \mathrm{QUOTE}(\mathrm{DottedString}) \sqcup \mathrm{ANTIQUOTE}(\alpha),
+\]
+and a \emph{quoted code template} is a finite list $\mathrm{Code}(\alpha) := \mathrm{List}(\mathrm{Fragment}(\alpha))$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Simultaneous inductive definition of object-language terms and formulas]
+\label{def:mutual_ast_terms_formulas}
+The syntactic categories of class expressions ($\ClassTerm$), formula expressions ($\Fm$), and variable-bound expressions ($\BddExpr$) are defined by mutual structural induction, using only default $\Class$ variables for all binders (quantifiers $\forall, \exists, \exists!$, class comprehension $\kappa$, definite description $\iota$, and Hilbert/choice descriptors $\tau, \varepsilon$):
+\begin{enumerate}
+\item \textbf{Variable terms:} For every $x \in \Var$, $\mathrm{VarClass}(x) \in \ClassTerm$.
+\item \textbf{Binder expressions (Class comprehension and descriptors):} If $x \in \Var$ and $\varphi \in \Fm$, then:
+  \begin{itemize}
+  \item $\mathrm{Comprehension}(x, \varphi) = \cc{x}{\varphi} \in \ClassTerm$ (class comprehension binder $\kappa$),
+  \item $\mathrm{Iota}(x, \varphi) = (\iota x,\ \varphi) \in \ClassTerm$ (definite description binder $\iota$),
+  \item $\mathrm{Tau}(x, \varphi) = (\tau x,\ \varphi) \in \ClassTerm$ and $\mathrm{Epsilon}(x, \varphi) = (\varepsilon x,\ \varphi) \in \ClassTerm$ (choice descriptor binders).
+  \end{itemize}
+\item \textbf{Atomic formulas:} If $s, t \in \ClassTerm$, then $\mathrm{Mem}(s, t) = (s \in t) \in \Fm$ and $\mathrm{Eq}(s, t) = (s = t) \in \Fm$.
+\item \textbf{Propositional connectives:} If $\varphi, \psi \in \Fm$, then $\bot \in \Fm$, $\top \in \Fm$, $(\lnot \varphi) \in \Fm$, $(\varphi \land \psi) \in \Fm$, $(\varphi \lor \psi) \in \Fm$, $(\varphi \implies \psi) \in \Fm$, and $(\varphi \iff \psi) \in \Fm$.
+\item \textbf{Quantified formulas:} If $x \in \Var$ and $\varphi \in \Fm$, then $(\forall x,\ \varphi) \in \Fm$, $(\exists x,\ \varphi) \in \Fm$, and $(\exists! x,\ \varphi) \in \Fm$.
+\end{enumerate}
+The disjoint union of all syntactic sorts is denoted $\mathrm{Syntax} := \ClassTerm \sqcup \Fm \sqcup \BddExpr$.
+\end{definition}
+
+\begin{definition}[Free variables, fresh variable selection, and capture-avoiding substitution]
+\label{def:free_vars_and_substitution}
+The free-variable operator $\FV : \mathrm{Syntax} \to \mathcal{P}_{\mathrm{fin}}(\Var)$ is defined recursively by:
+\begin{align*}
+\FV(\mathrm{VarClass}(x)) &= \{x\}, \\
+\FV(\mathcal{B} x,\ \varphi) &= \FV(\varphi) \setminus \{x\} \quad \text{for every binder } \mathcal{B} \in \{\kappa, \iota, \tau, \varepsilon, \forall, \exists, \exists!\}, \\
+\FV(s \in t) = \FV(s = t) &= \FV(s) \cup \FV(t), \\
+\FV(\lnot \varphi) &= \FV(\varphi), \qquad \FV(\varphi \circ \psi) = \FV(\varphi) \cup \FV(\psi) \quad (\circ \in \{\land, \lor, \implies, \iff\}).
+\end{align*}
+Given a finite forbidden set $S \subset \Var$, the fresh-variable selector $\mathrm{fresh}(S) \in \Var \setminus S$ returns the $<_{\Var}$-least variable strictly greater than $\max_{<_{\Var}}(S)$. Capture-avoiding substitution $e[t/x]$ of a class term $t \in \ClassTerm$ for $x \in \Var$ in $e \in \mathrm{Syntax}$ is total and defined on any binder expression $(\mathcal{B} y,\ \varphi)$ by:
+\[
+(\mathcal{B} y,\ \varphi)[t/x] :=
+\begin{cases}
+\mathcal{B} y,\ \varphi & \text{if } y = x, \\
+\mathcal{B} y,\ (\varphi[t/x]) & \text{if } y \ne x \text{ and } y \notin \FV(t), \\
+\mathcal{B} z,\ \big((\varphi[\mathrm{VarClass}(z)/y])[t/x]\big) & \text{if } y \ne x \text{ and } y \in \FV(t),\ \text{where } z = \mathrm{fresh}(\FV(\varphi) \cup \FV(t) \cup \{x, y\}).
+\end{cases}
+\]
+\end{definition}
+
+\begin{theorem}[Structural encoding and unique parsing of object-language fragments]
+\label{thm:structural_encoding_unambiguous}
+Let $\mathrm{parse} : \mathrm{Code}(\mathrm{Syntax}) \rightharpoonup \mathrm{Syntax}$ be the partial structural parser (written $\#$) mapping fully parenthesized token streams with antiquotations to $\mathrm{Syntax}$. On the domain of well-formed parenthesized expressions, $\mathrm{parse}$ is injective up to $\alpha$-equivalence, and for every $e \in \mathrm{Syntax}$ and substitution $\sigma : \Var \to \ClassTerm$, anti-quoting $\sigma(x)$ into the template of $e$ coincides up to $\alpha$-equivalence with the capture-avoiding substitution $e[\sigma]$.
+\end{theorem}
+
+\begin{proof}
+Because every composite constructor in Definition~\ref{def:mutual_ast_terms_formulas} has a unique outer delimiter and arity in fully parenthesized prefix/infix normal form, unique readability holds by standard structural induction on the length of the token list. Compatibility of antiquotation splicing with capture-avoiding substitution follows by induction on the height of $e \in \mathrm{Syntax}$, using the $\alpha$-renaming clause of Definition~\ref{def:free_vars_and_substitution} at each binder node.
+\end{proof}
+
+\subsection{Primitive Definitions and Conservative Extensions (\texttt{010\_logic.tex})}
+\label{subsec:primitive_definitions_completed}
+
+In Section ``Primitive definitions'' of \texttt{010\_logic.tex} (line 4359), the problem is raised how a defining equivalence containing an internal bound variable --- such as $(A \subseteq B) \iff (\forall x \in A,\ x \in B)$ --- can be legitimately instantiated when $A$ and $B$ are replaced by arbitrary terms (for example, $x \subseteq y$ where $x$ collides with the bound variable $x$). Below we state and prove the exact syntactic and proof-theoretic resolution.
+
+\begin{definition}[Well-formed predicate and operator definitions]
+\label{def:conservative_extension_by_definition}
+Let $\Fau$ be a theory in the language $\mathcal{L}$.
+\begin{enumerate}
+\item \textbf{Predicate definition schema:} Let $\varphi(v_1, \dots, v_n)$ be an $\mathcal{L}$-formula whose free variables are contained in the distinct variables $v_1, \dots, v_n \in \Var$. Extending $\mathcal{L}$ by a fresh $n$-ary predicate symbol $P$ adds the closed defining axiom
+\[
+\forall v_1 \dots \forall v_n,\ \big( P(v_1, \dots, v_n) \iff \varphi(v_1, \dots, v_n) \big).
+\]
+For any $\mathcal{L}$-terms $t_1, \dots, t_n \in \ClassTerm$, the instantiated expansion $P(t_1, \dots, t_n) \iff \varphi[t_1/v_1, \dots, t_n/v_n]$ uses the capture-avoiding substitution of Definition~\ref{def:free_vars_and_substitution}, which automatically $\alpha$-renames all bound variables of $\varphi$ away from $\bigcup_{i=1}^n \FV(t_i)$.
+\item \textbf{Function/operator definition via descriptors:} Let $\psi(v_1, \dots, v_n, y)$ be an $\mathcal{L}$-formula with $\FV(\psi) \subseteq \{v_1, \dots, v_n, y\}$. Extending $\mathcal{L}$ by a fresh $n$-ary class-term constructor $F(v_1, \dots, v_n)$ via a binder descriptor $\mathcal{D} \in \{\kappa, \iota, \tau, \varepsilon\}$ adds the closed defining equation
+\[
+\forall v_1 \dots \forall v_n,\ F(v_1, \dots, v_n) = (\mathcal{D} y,\ \psi(v_1, \dots, v_n, y)),
+\]
+where for $\mathcal{D} = \iota$ (definite description), $\Fau$ additionally proves uniqueness $\forall v_1 \dots \forall v_n,\ \exists! y,\ \psi(v_1, \dots, v_n, y)$ (or supplies a fixed default class when uniqueness fails).
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Resolution of the bound-variable collision in $A \subseteq B$]
+\label{prop:subclass_bound_variable_resolution}
+Define the binary predicate $\subseteq$ by the closed axiom
+\[
+\forall A,\ \forall B,\ \big( (A \subseteq B) \iff (\forall w,\ (w \in A \implies w \in B)) \big),
+\]
+where $A, B, w \in \Var$ are three distinct variables. Then for any two class terms $t_1, t_2 \in \ClassTerm$ (including $t_1 = x$ and $t_2 = y$), choosing $z := \mathrm{fresh}(\FV(t_1) \cup \FV(t_2))$ yields the provable equivalence in $\Fau$:
+\[
+\Fau \vdash (t_1 \subseteq t_2) \iff (\forall z,\ (z \in t_1 \implies z \in t_2)).
+\]
+In particular, when $t_1 = x$ and $t_2 = y$, the bound variable $w$ is renamed to $z \notin \{x, y\}$, yielding $(x \subseteq y) \iff (\forall z \in x,\ z \in y)$ without variable capture.
+\end{proposition}
+
+\begin{proof}
+By universal elimination ($\forall$-instantiation) in predicate logic, if $\Fau \vdash \forall A\, \forall B\, \Phi(A, B)$, then $\Fau \vdash \Phi[t_1/A, t_2/B]$ provided the substitution is capture-avoiding. By Definition~\ref{def:free_vars_and_substitution}, substituting $t_1$ for $A$ and $t_2$ for $B$ into $\forall w,\ (w \in A \implies w \in B)$ renames the bound variable $w$ to $z = \mathrm{fresh}(\FV(t_1) \cup \FV(t_2) \cup \{A, B, w\})$, which is not free in $t_1$ or $t_2$. Hence $(\forall w,\ (w \in A \implies w \in B))[t_1/A, t_2/B]$ is syntactically identical to $\forall z,\ (z \in t_1 \implies z \in t_2)$.
+\end{proof}
+
+\begin{theorem}[Conservativity and eliminability of primitive definitions]
+\label{thm:conservativity_of_definitions}
+Let $\Fau'$ be obtained from $\Fau$ by adding finitely many predicate and descriptor-based operator definitions as in Definition~\ref{def:conservative_extension_by_definition}. Then there exists a computable translation $(\cdot)^\star : \Fm(\mathcal{L}') \to \Fm(\mathcal{L})$ such that:
+\begin{enumerate}
+\item For every $\mathcal{L}$-formula $\chi$, $\chi^\star = \chi$.
+\item For every $\mathcal{L}'$-formula $\psi$, $\Fau' \vdash (\psi \iff \psi^\star)$.
+\item $\Fau'$ is a conservative extension of $\Fau$: for every $\mathcal{L}$-formula $\chi$, $\Fau' \vdash \chi$ if and only if $\Fau \vdash \chi$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Order the definitions by stage $k = 1, \dots, m$. At a single stage extending $\mathcal{L}$ by $P(v_1, \dots, v_n) \iff \varphi(v_1, \dots, v_n)$, define $\psi^\star$ by recursively replacing every atomic subformula $P(t_1, \dots, t_n)$ with the capture-avoiding substitution $\varphi[t_1^\star/v_1, \dots, t_n^\star/v_n]$ (and for a descriptor definition $F(\vec{v}) = (\mathcal{D} y,\ \psi(\vec{v}, y))$, replacing $F(t_1, \dots, t_n)$ by $(\mathcal{D} z,\ \psi^\star[t_1^\star/v_1, \dots, t_n^\star/v_n, z/y])$ with $z$ fresh). An induction on formula structure shows $\Fau' \vdash (\psi \iff \psi^\star)$, and since the defining axiom itself translates to the logical tautology $\forall \vec{v},\ (\varphi(\vec{v}) \iff \varphi(\vec{v}))$, any $\Fau'$-derivation of an $\mathcal{L}$-formula $\chi$ translates line-by-line into an $\Fau$-derivation of $\chi^\star = \chi$.
+\end{proof}
+
+\subsection{Medium Type Comprehension and Class Term Comprehension (\texttt{060\_axioms.tex})}
+\label{subsec:medium_type_and_term_comprehension}
+
+In \texttt{060\_axioms.tex} (lines 188--196 and 308--350), two foundational questions are noted:
+(1) How to formulate \emph{medium type specification/comprehension} without syntactic ambiguity with class comprehension $\cc{x}{\varphi}$; and
+(2) How \emph{generalized class term comprehension} $\ccc{\vv{x}}{s}{\varphi}$ relates proof-theoretically to standard variable comprehension $\cc{w}{\psi}$.
+
+\begin{definition}[Disambiguated medium types versus class comprehension]
+\label{def:medium_type_disambiguation}
+In one-sorted class theory where all object variables range over $\Class$:
+\begin{enumerate}
+\item A \emph{medium type} (or \emph{ontological predicate / conglomerate specification}) is a unary formula constructor $\mathcal{T}$ assigning to each class term $A \in \ClassTerm$ a formula $\mathcal{T}(A) \in \Fm$ (written $(A : \mathcal{T})$). Unlike a class, a medium type may hold of proper classes (for example, $\Class(A) :\iff \top$, $\mathrm{Proper}(A) :\iff \lnot(A\set)$, or $\mathrm{ClassFn}(A)$).
+\item Given an existing medium type $\mathcal{T}$ and a formula $\varphi(x)$, the \emph{refined medium type specification}, denoted structurally by $\mathrm{SubType}(x : \mathcal{T},\ \varphi)$ (written $\llbracket x : \mathcal{T} \mid \varphi \rrbracket$ to avoid ambiguity with the class term $\cc{x}{\varphi}$), is the medium type defined on any class term $A \in \ClassTerm$ by
+\[
+\big(A : \llbracket x : \mathcal{T} \mid \varphi \rrbracket\big) \iffdef \mathcal{T}(A) \land \varphi[A/x].
+\]
+\item Conversely, every class term $C \in \ClassTerm$ induces a \emph{small/elementhood medium type} $\mathrm{Elem}(C)$ via $(A : \mathrm{Elem}(C)) \iffdef (A \in C)$, which automatically forces $(A\set)$.
+\item \emph{Class comprehension} $\cc{x}{\varphi} \in \ClassTerm$ always uses a default $\Class$ variable $x$ and collects exclusively the \emph{sets} satisfying $\varphi$:
+\[
+\forall (w : \Class),\ \big( w \in \cc{x}{\varphi} \iff (w\set) \land \varphi[w/x] \big).
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Equivalence of generalized class term comprehension and variable comprehension]
+\label{thm:term_comprehension_derivable}
+Let $s \in \ClassTerm$ be a class term, $\varphi \in \Fm$ a formula, and $\vv{x} = (x_1, \dots, x_n)$ a list of distinct variables with medium types $\vv{\mathcal{T}} = (\mathcal{T}_1, \dots, \mathcal{T}_n)$. Choose $w := \mathrm{fresh}(\FV(s) \cup \FV(\varphi) \cup \{x_1, \dots, x_n\})$ and define
+\[
+\ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi} \eqdef \cc{w}{\exists (x_1 : \mathcal{T}_1) \dots \exists (x_n : \mathcal{T}_n),\ (w = s) \land \varphi}.
+\]
+Then from the single-variable class comprehension schema (\texttt{varComprehension}) and the substitutivity of equality, the generalized class term comprehension axiom (\texttt{termComprehension}) is derivable: for every class term $t \in \ClassTerm$ with $\FV(t) \cap \{x_1, \dots, x_n\} = \emptyclass$,
+\[
+\big( t \in \ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi} \big) \iff \Big( (t\set) \land \exists (x_1 : \mathcal{T}_1) \dots \exists (x_n : \mathcal{T}_n),\ (t = s) \land \varphi \Big).
+\]
+\end{theorem}
+
+\begin{proof}
+By fresh-variable selection, $w \notin \FV(s) \cup \FV(\varphi) \cup \{x_1, \dots, x_n\}$. Expanding the definition of $\ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi}$ and instantiating the variable comprehension axiom (\texttt{varComprehension}) at the class term $t$ gives
+\[
+t \in \cc{w}{\exists (\vv{x} : \vv{\mathcal{T}}),\ (w = s) \land \varphi}
+\iff (t\set) \land \Big(\exists (\vv{x} : \vv{\mathcal{T}}),\ (w = s) \land \varphi\Big)[t/w].
+\]
+Because $w \notin \{x_1, \dots, x_n\}$, $\FV(t) \cap \{x_1, \dots, x_n\} = \emptyclass$, and $w \notin \FV(s) \cup \FV(\varphi)$, the substitution $[t/w]$ distributes directly inside the existential quantifiers $\exists (\vv{x} : \vv{\mathcal{T}})$ without variable capture and leaves $s$ and $\varphi$ unchanged, transforming $(w = s) \land \varphi$ into $(t = s) \land \varphi$.
+\end{proof}
+
+\subsection{Partial Values, Candidate Semantics, and Semi-Equality (\texttt{110\_family\_evaluation.tex})}
+\label{subsec:partial_values_and_semi_equality}
+
+In \texttt{110\_family\_evaluation.tex} (lines 23--48), the semantic rules for semi-equality $I_{\Fm}(s \approx t)$ and candidate-valued equality remain to be specified. Below we complete the formal candidate-set semantics distinguishing underdefined ($\S_t = \emptyclass$), uniquely defined ($|S_t| = 1$), and overdetermined/uncertain ($|S_t| \ge 2$) expressions.
+
+\begin{definition}[Candidate-set valuation and taxonomy of partial terms]
+\label{def:candidate_set_valuation}
+Let $D$ be a non-empty semantic domain of values. A \emph{candidate-set interpretation} $I_{\Term}$ assigns to each term $t$ a subset $S_t := I_{\Term}(t) \subseteq D$. We classify $t$ into three mutually exclusive states:
+\begin{enumerate}
+\item \textbf{Uniquely defined ($t \ldefined$):} $|S_t| = 1$, with unique value $v_t \in D$ such that $S_t = \{v_t\}$.
+\item \textbf{Underdefined ($t \text{ underdefined}$):} $S_t = \emptyclass$ (no candidate value exists, represented by $\lundef$).
+\item \textbf{Uncertain / multi-valued ($t \text{ uncertain}$):} $|S_t| \ge 2$ (multiple candidate values exist).
+\end{enumerate}
+A term $t$ is \emph{at most single-valued (functional)} if $|S_t| \le 1$, and \emph{non-empty (consistent)} if $S_t \ne \emptyclass$.
+\end{definition}
+
+\begin{definition}[Complete specification of semi-equality $s \approx t$ and candidate comparisons]
+\label{def:semi_equality_specification}
+Let $s, t$ be terms with candidate sets $S_s, S_t \subseteq D$. We specify the four distinct equality relations and their three-valued truth valuations $I_{\Fm}^{3\mathrm{val}}(\cdot) \in \{\ltrue, \lfalse, \lundef\}$:
+\begin{enumerate}
+\item \textbf{Strict equality ($s =_{\mathrm{strict}} t$):}
+  \[
+  I_{\Fm}(s =_{\mathrm{strict}} t) = \ltrue \iff (|S_s| = 1 \land |S_t| = 1 \land S_s = S_t).
+  \]
+\item \textbf{Directed / guarded quasi-equality ($s \simeq t$):}
+  \[
+  I_{\Fm}(s \simeq t) = \ltrue \iff \big((|S_s| = 1 \lor |S_t| = 1) \implies (|S_s| = 1 \land |S_t| = 1 \land S_s = S_t)\big).
+  \]
+\item \textbf{Semi-equality ($s \approx t$, consistency under defined selections):}
+  In the three-valued Lukasiewicz/Kleene valuation $I_{\Fm}^{3\mathrm{val}}(s \approx t)$:
+  \[
+  I_{\Fm}^{3\mathrm{val}}(s \approx t) :=
+  \begin{cases}
+  \ltrue & \text{if } |S_s| = 1,\ |S_t| = 1,\ \text{and } v_s = v_t, \\
+  \lfalse & \text{if } S_s \ne \emptyclass,\ S_t \ne \emptyclass,\ \text{and } S_s \cap S_t = \emptyclass, \\
+  \lundef & \text{otherwise (when } S_s = \emptyclass \text{ or } S_t = \emptyclass \text{ or } |S_s \cup S_t| \ge 2 \text{ with } S_s \cap S_t \ne \emptyclass\text{)}.
+  \end{cases}
+  \]
+  At the two-valued classical assertion level, \emph{strong semi-equality} holds if and only if every selection $u \in S_s$ and $v \in S_t$ agrees ($(\forall u \in S_s\, \forall v \in S_t,\ u = v) \land (S_s = \emptyclass \iff S_t = \emptyclass)$), which restricts on functional terms ($|S_s| \le 1, |S_t| \le 1$) to Kleene equality.
+\item \textbf{Candidate-set equality ($s \equiv_{\mathrm{cand}} t$):}
+  \[
+  I_{\Fm}(s \equiv_{\mathrm{cand}} t) = \ltrue \iff S_s = S_t.
+  \]
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Characterization of congruence and reduction to total union evaluation]
+\label{thm:semi_equality_congruence_and_union_bridge}
+Under Definitions~\ref{def:candidate_set_valuation} and~\ref{def:semi_equality_specification}:
+\begin{enumerate}
+\item On the subuniverse of functional partial terms ($\mathcal{D}_{\le 1} = \{t : |S_t| \le 1\}$), directed quasi-equality $s \simeq t$, Kleene equality, strong semi-equality, and candidate-set equality $S_s = S_t$ all coincide and form a congruence with respect to strict partial function application
+\[
+f^{\mathrm{strict}}(S) := \begin{cases} \{f(v)\} & \text{if } S = \{v\} \text{ and } v \in \dom(f), \\ \emptyclass & \text{otherwise.} \end{cases}
+\]
+\item When $D = \mathcal{P}(U)$ consists of classes/sets and we pass from a candidate fiber $S_{F,x} = \cc{s}{(x, s) \in F}$ to total union evaluation $\mathrm{Val}_{\cup}(F, x) := \bigcup S_{F,x}$, the union operator $\bigcup : \mathcal{P}(D) \to D$ maps the underdefined fiber $S_{F,x} = \emptyclass$ to $\emptyclass$ and any singleton fiber $S_{F,x} = \{v\}$ to $\bigcup \{v\} = v$, thereby embedding uniquely defined partial evaluations faithfully into total class terms whenever $\emptyclass \notin \operatorname{ran}(F)$ (or when domain membership $x \in \dom(F)$ is tracked explicitly alongside $\mathrm{Val}_{\cup}(F, x)$).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For (1), if $|S_s| \le 1$ and $|S_t| \le 1$, then either both $S_s$ and $S_t$ are empty (so $S_s = S_t = \emptyclass$ and neither has size $1$), or at least one is a singleton, in which case $s \simeq t$ holds if and only if both are the same singleton $\{v\}$, i.e.\ $S_s = S_t$. Under strict partial application $f^{\mathrm{strict}}$, equal subsets $S_s = S_t$ have identical images $f^{\mathrm{strict}}(S_s) = f^{\mathrm{strict}}(S_t)$, proving congruence.
+
+For (2), by the elementary union definition $\bigcup A = \cc{z}{\exists a \in A,\ z \in a}$, we have $\bigcup \emptyclass = \emptyclass$ and $\bigcup \{v\} = \cc{z}{z \in v} = v$ for every class $v$ that is a set ($v \in \V$). If $F$ is a single-valued family on $\dom(F)$, then for every $x \in \dom(F)$ the fiber $S_{F,x} = \cc{s}{(x, s) \in F} = \{F(x)\}$ is a singleton set, so $\bigcup S_{F,x} = F(x)$, whereas for $x \notin \dom(F)$, $S_{F,x} = \emptyclass$ and $\bigcup S_{F,x} = \emptyclass$.
+\end{proof}
