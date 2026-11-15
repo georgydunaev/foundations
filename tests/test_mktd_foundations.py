@@ -600,6 +600,27 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_universal_class_is_universe", content)
         self.assertIn("prove_universal_class_is_universe", content)
 
+        # Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs V^P
+        self.assertIn("CompleteBooleanAlgebra", content)
+        self.assertIn("RegularOpenCompletion", content)
+        self.assertIn("BValModel", content)
+        self.assertIn("BValTruth", content)
+        self.assertIn("IsCompleteBooleanAlgebra", content)
+        self.assertIn("BValZFCValid", content)
+        self.assertIn("ROEmbeddingPreservesIncompat", content)
+        self.assertIn("BValDunaevEquiv", content)
+        self.assertIn("eval_is_complete_boolean_algebra", content)
+        self.assertIn("eval_regular_open_completion", content)
+        self.assertIn("eval_bval_membership", content)
+        self.assertIn("eval_bval_equality", content)
+        self.assertIn("eval_bval_zfc_axioms_valid", content)
+        self.assertIn("axiom_ro_embedding_preserves_incompatibility", content)
+        self.assertIn("prove_ro_embedding_preserves_incompatibility", content)
+        self.assertIn("axiom_bval_extensionality_valid", content)
+        self.assertIn("prove_bval_extensionality_valid", content)
+        self.assertIn("axiom_bval_dunaev_pname_equivalence", content)
+        self.assertIn("prove_bval_dunaev_pname_equivalence", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

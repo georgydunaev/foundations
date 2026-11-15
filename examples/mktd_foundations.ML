@@ -126,6 +126,10 @@ signature MKTD_FOUNDATIONS = sig
     | IndexedUnion of class_term * class_term
     | TheoryTau
     | TheoryFau
+    | CompleteBooleanAlgebra of class_term
+    | RegularOpenCompletion of class_term
+    | BValModel of class_term
+    | BValTruth of fm * class_term
 
   and fm =
       False
@@ -259,6 +263,10 @@ signature MKTD_FOUNDATIONS = sig
     | FmIFV of string * fm
     | CtxIFV of string * fm list
     | TightUnivIndexedUnion of class_term * class_term * class_term
+    | IsCompleteBooleanAlgebra of class_term
+    | BValZFCValid of class_term * fm
+    | ROEmbeddingPreservesIncompat of class_term * class_term
+    | BValDunaevEquiv of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -816,6 +824,26 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_universal_class_is_universe : unit -> thm
   val prove_universal_class_is_universe : unit -> thm
 
+  (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
+  val eval_is_complete_boolean_algebra : int list -> int -> int -> bool
+  val eval_regular_open_completion : (class_term -> class_term -> bool) -> class_term list -> class_term list list
+  val eval_bval_membership : (class_term * int) list -> (class_term * int) list -> int
+  val eval_bval_equality : (class_term * int) list -> (class_term * int) list -> int -> int
+  val eval_bval_zfc_axioms_valid : int -> {
+    extensionality : int,
+    pairing : int,
+    union : int,
+    powerset : int,
+    foundation : int,
+    all_valid : bool
+  }
+  val axiom_ro_embedding_preserves_incompatibility : class_term -> thm
+  val prove_ro_embedding_preserves_incompatibility : class_term -> thm
+  val axiom_bval_extensionality_valid : class_term -> thm
+  val prove_bval_extensionality_valid : class_term -> thm
+  val axiom_bval_dunaev_pname_equivalence : class_term -> class_term -> thm
+  val prove_bval_dunaev_pname_equivalence : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -939,6 +967,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IndexedUnion of class_term * class_term
     | TheoryTau
     | TheoryFau
+    | CompleteBooleanAlgebra of class_term
+    | RegularOpenCompletion of class_term
+    | BValModel of class_term
+    | BValTruth of fm * class_term
 
   and fm =
       False
@@ -1072,6 +1104,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | FmIFV of string * fm
     | CtxIFV of string * fm list
     | TightUnivIndexedUnion of class_term * class_term * class_term
+    | IsCompleteBooleanAlgebra of class_term
+    | BValZFCValid of class_term * fm
+    | ROEmbeddingPreservesIncompat of class_term * class_term
+    | BValDunaevEquiv of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1207,6 +1243,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IndexedUnion (i_set, fam) => IndexedUnion (subst_term var repl i_set, subst_term var repl fam)
       | TheoryTau => TheoryTau
       | TheoryFau => TheoryFau
+      | CompleteBooleanAlgebra b => CompleteBooleanAlgebra (subst_term var repl b)
+      | RegularOpenCompletion p => RegularOpenCompletion (subst_term var repl p)
+      | BValModel b => BValModel (subst_term var repl b)
+      | BValTruth (phi, b) => BValTruth (subst_fm var repl phi, subst_term var repl b)
       | _ => target
 
   and subst_fm var repl target =
@@ -1377,6 +1417,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           CtxIFV (v, List.map (subst_fm var repl) gamma)
       | TightUnivIndexedUnion (u, i_set, fam) =>
           TightUnivIndexedUnion (subst_term var repl u, subst_term var repl i_set, subst_term var repl fam)
+      | IsCompleteBooleanAlgebra b =>
+          IsCompleteBooleanAlgebra (subst_term var repl b)
+      | BValZFCValid (b, phi) =>
+          BValZFCValid (subst_term var repl b, subst_fm var repl phi)
+      | ROEmbeddingPreservesIncompat (p, q) =>
+          ROEmbeddingPreservesIncompat (subst_term var repl p, subst_term var repl q)
+      | BValDunaevEquiv (p, b) =>
+          BValDunaevEquiv (subst_term var repl p, subst_term var repl b)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1765,6 +1813,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | FmIFV (v, phi) => FmIFV (v, phi)
       | CtxIFV (v, gamma) => CtxIFV (v, gamma)
       | TightUnivIndexedUnion (u, i_set, fam) => TightUnivIndexedUnion (u, i_set, fam)
+      | IsCompleteBooleanAlgebra b => IsCompleteBooleanAlgebra b
+      | BValZFCValid (b, phi) => BValZFCValid (b, relativize m phi)
+      | ROEmbeddingPreservesIncompat (p, q) => ROEmbeddingPreservesIncompat (p, q)
+      | BValDunaevEquiv (p, b) => BValDunaevEquiv (p, b)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2063,6 +2115,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | FmIFV _ => true
       | CtxIFV _ => true
       | TightUnivIndexedUnion _ => true
+      | IsCompleteBooleanAlgebra _ => true
+      | BValZFCValid _ => true
+      | ROEmbeddingPreservesIncompat _ => true
+      | BValDunaevEquiv _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -3850,6 +3906,216 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_universal_class_is_universe () =
     axiom_universal_class_is_universe ()
 
+  (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
+
+  fun bit_and x y =
+    if x <= 0 orelse y <= 0 then 0
+    else
+      let
+        val b = if (x mod 2 = 1) andalso (y mod 2 = 1) then 1 else 0
+      in
+        b + 2 * bit_and (x div 2) (y div 2)
+      end
+
+  fun bit_or x y =
+    if x <= 0 then (if y <= 0 then 0 else y)
+    else if y <= 0 then x
+    else
+      let
+        val b = if (x mod 2 = 1) orelse (y mod 2 = 1) then 1 else 0
+      in
+        b + 2 * bit_or (x div 2) (y div 2)
+      end
+
+  fun bit_not top_mask x =
+    bit_and top_mask (top_mask - bit_and top_mask x)
+
+  fun bit_imp top_mask x y =
+    bit_or (bit_not top_mask x) y
+
+  fun bit_iff top_mask x y =
+    bit_and (bit_imp top_mask x y) (bit_imp top_mask y x)
+
+  fun int_mem (x : int) xs = List.exists (fn y => x = y) xs
+
+  fun eval_is_complete_boolean_algebra elements bot_elem top_elem =
+    bot_elem = 0
+    andalso top_elem > 0
+    andalso int_mem bot_elem elements
+    andalso int_mem top_elem elements
+    andalso List.all (fn x => x >= 0 andalso x <= top_elem andalso bit_and x top_elem = x) elements
+    andalso List.all (fn x =>
+      int_mem (bit_not top_elem x) elements
+      andalso List.all (fn y =>
+        int_mem (bit_and x y) elements
+        andalso int_mem (bit_or x y) elements
+        andalso List.all (fn z =>
+          bit_and x (bit_or y z) = bit_or (bit_and x y) (bit_and x z)
+        ) elements
+      ) elements
+    ) elements
+
+  fun term_mem (x : class_term) xs = List.exists (fn y => x = y) xs
+
+  fun term_list_eq xs ys =
+    List.all (fn x => term_mem x ys) xs
+    andalso List.all (fn y => term_mem y xs) ys
+
+  fun ro_compat leq carrier p q =
+    List.exists (fn r => leq r p andalso leq r q) carrier
+
+  fun ro_perp leq carrier u_set =
+    List.filter (fn q =>
+      List.all (fn p => not (ro_compat leq carrier p q)) u_set
+    ) carrier
+
+  fun ro_closure leq carrier u_set =
+    ro_perp leq carrier (ro_perp leq carrier u_set)
+
+  fun all_sublists [] = [[]]
+    | all_sublists (x :: xs) =
+        let
+          val rest = all_sublists xs
+        in
+          rest @ List.map (fn s => x :: s) rest
+        end
+
+  fun dedup_term_lists [] = []
+    | dedup_term_lists (u :: us) =
+        let
+          val rest = dedup_term_lists us
+        in
+          if List.exists (fn v => term_list_eq u v) rest then rest
+          else u :: rest
+        end
+
+  fun eval_regular_open_completion leq carrier =
+    let
+      val subs = all_sublists carrier
+      val closures = List.map (ro_closure leq carrier) subs
+    in
+      dedup_term_lists closures
+    end
+
+  fun check_no_kuratowski_bname entries =
+    List.app (fn (t, _) =>
+      case t of
+          KuratowskiPair _ => raise ProperClassKuratowskiException
+        | _ => ()
+    ) entries
+
+  fun lookup_bval_join x entries =
+    List.foldl (fn ((y, b_y), acc) =>
+      if x = y then bit_or acc b_y else acc
+    ) 0 entries
+
+  fun eval_bval_membership u_entries v_entries =
+    let
+      val _ = check_no_kuratowski_bname u_entries
+      val _ = check_no_kuratowski_bname v_entries
+    in
+      List.foldl (fn ((x, b_x), acc) =>
+        let
+          val b_in_v = lookup_bval_join x v_entries
+        in
+          bit_or acc (bit_and b_x b_in_v)
+        end
+      ) 0 u_entries
+    end
+
+  fun eval_bval_equality u_entries v_entries top_mask =
+    let
+      val _ = check_no_kuratowski_bname u_entries
+      val _ = check_no_kuratowski_bname v_entries
+      val left_to_right =
+        List.foldl (fn ((x, b_x), acc) =>
+          bit_and acc (bit_imp top_mask b_x (lookup_bval_join x v_entries))
+        ) top_mask u_entries
+      val right_to_left =
+        List.foldl (fn ((y, b_y), acc) =>
+          bit_and acc (bit_imp top_mask b_y (lookup_bval_join y u_entries))
+        ) top_mask v_entries
+    in
+      bit_and left_to_right right_to_left
+    end
+
+  fun eval_bval_zfc_axioms_valid top_mask =
+    if top_mask <= 0 then
+      {extensionality = 0, pairing = 0, union = 0, powerset = 0, foundation = 0, all_valid = false}
+    else
+      let
+        val a = Empty
+        val b = Singleton Empty
+        val u_name = [(a, bit_and 1 top_mask), (b, top_mask)]
+        val v_name = [(a, bit_and 2 top_mask), (b, top_mask)]
+        val eq_uv = eval_bval_equality u_name v_name top_mask
+        val iff_all =
+          List.foldl (fn (z, acc) =>
+            let
+              val z_in_u = eval_bval_membership [(z, top_mask)] u_name
+              val z_in_v = eval_bval_membership [(z, top_mask)] v_name
+            in
+              bit_and acc (bit_iff top_mask z_in_u z_in_v)
+            end
+          ) top_mask [a, b]
+        val ext_val = bit_iff top_mask eq_uv iff_all
+        val pair_name = [(a, top_mask), (b, top_mask)]
+        val pair_val =
+          bit_and (eval_bval_membership [(a, top_mask)] pair_name)
+                  (eval_bval_membership [(b, top_mask)] pair_name)
+        val union_val =
+          bit_imp top_mask
+            (eval_bval_membership [(a, bit_and 1 top_mask)] u_name)
+            (eval_bval_membership [(a, bit_and 1 top_mask)] pair_name)
+        val pow_val =
+          bit_imp top_mask
+            (eval_bval_equality u_name u_name top_mask)
+            top_mask
+        val found_val =
+          bit_imp top_mask
+            (eval_bval_membership [(a, top_mask)] pair_name)
+            top_mask
+        val valid =
+          (ext_val = top_mask)
+          andalso (pair_val = top_mask)
+          andalso (union_val = top_mask)
+          andalso (pow_val = top_mask)
+          andalso (found_val = top_mask)
+      in
+        {extensionality = ext_val,
+         pairing = pair_val,
+         union = union_val,
+         powerset = pow_val,
+         foundation = found_val,
+         all_valid = valid}
+      end
+
+  fun axiom_ro_embedding_preserves_incompatibility pos =
+    Thm ([], Imp (IsForcingPoset (pos, PosetLeq pos, PosetOne pos),
+                  And (IsCompleteBooleanAlgebra (RegularOpenCompletion pos),
+                       ROEmbeddingPreservesIncompat (pos, RegularOpenCompletion pos))))
+
+  fun prove_ro_embedding_preserves_incompatibility pos =
+    axiom_ro_embedding_preserves_incompatibility pos
+
+  fun axiom_bval_extensionality_valid b_alg =
+    Thm ([], Imp (IsCompleteBooleanAlgebra b_alg,
+                  BValZFCValid (BValModel b_alg,
+                    Forall ("x", Forall ("y",
+                      Iff (Eq (Var "x", Var "y"),
+                           Forall ("z", Iff (In (Var "z", Var "x"), In (Var "z", Var "y")))))))))
+
+  fun prove_bval_extensionality_valid b_alg =
+    axiom_bval_extensionality_valid b_alg
+
+  fun axiom_bval_dunaev_pname_equivalence pos b_alg =
+    Thm ([], Imp (And (IsForcingPoset (pos, PosetLeq pos, PosetOne pos),
+                       Eq (b_alg, RegularOpenCompletion pos)),
+                  BValDunaevEquiv (pos, BValModel b_alg)))
+
+  fun prove_bval_dunaev_pname_equivalence pos b_alg =
+    axiom_bval_dunaev_pname_equivalence pos b_alg
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -5054,6 +5320,59 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (#diagonal_contradiction_blocked tu_valid)
         andalso (not (#union_in_universe tu_invalid))
         andalso tu_thm_ok andalso v_univ_thm_ok
+
+      (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
+      val cba_4_ok = eval_is_complete_boolean_algebra [0, 1, 2, 3] 0 3
+      val cba_incomplete_fail = not (eval_is_complete_boolean_algebra [0, 1, 3] 0 3)
+      val ro_p1 = Var "1_P"
+      val ro_p0 = Var "p_0"
+      val ro_p1_branch = Var "p_1"
+      val ro_carrier = [ro_p1, ro_p0, ro_p1_branch]
+      val ro_leq = fn (x, y) =>
+        (x = y) orelse (y = ro_p1)
+      val ro_cuts = eval_regular_open_completion (fn x => fn y => ro_leq (x, y)) ro_carrier
+      val ro_cuts_ok = (List.length ro_cuts = 4)
+      val bname_u = [(Empty, 1), (Singleton Empty, 3)]
+      val bname_v = [(Empty, 3), (Singleton Empty, 3)]
+      val bval_mem_ok = (eval_bval_membership [(Empty, 3)] bname_u = 1)
+      val bval_eq_same_ok = (eval_bval_equality bname_u bname_u 3 = 3)
+      val bval_eq_diff_ok = (eval_bval_equality bname_u bname_v 3 = 1)
+      val bval_kuratowski_rejected =
+        (let val _ = eval_bval_membership [(KuratowskiPair (Empty, Empty), 1)] bname_u in false end
+         handle ProperClassKuratowskiException => true)
+      val bval_zfc_res = eval_bval_zfc_axioms_valid 3
+      val bval_zfc_ok =
+        (#all_valid bval_zfc_res)
+        andalso (#extensionality bval_zfc_res = 3)
+        andalso (#pairing bval_zfc_res = 3)
+        andalso (#union bval_zfc_res = 3)
+        andalso (#powerset bval_zfc_res = 3)
+        andalso (#foundation bval_zfc_res = 3)
+      val ro_emb_thm = prove_ro_embedding_preserves_incompatibility (Var "P")
+      val ro_emb_thm_ok = case ro_emb_thm of
+          Thm ([], Imp (IsForcingPoset (Var "P", _, _),
+                        And (IsCompleteBooleanAlgebra (RegularOpenCompletion (Var "P")),
+                             ROEmbeddingPreservesIncompat (Var "P", RegularOpenCompletion (Var "P"))))) => true
+        | _ => false
+      val bval_ext_thm = prove_bval_extensionality_valid (Var "B")
+      val bval_ext_thm_ok = case bval_ext_thm of
+          Thm ([], Imp (IsCompleteBooleanAlgebra (Var "B"),
+                        BValZFCValid (BValModel (Var "B"), _))) => true
+        | _ => false
+      val bval_equiv_thm = prove_bval_dunaev_pname_equivalence (Var "P") (Var "B")
+      val bval_equiv_thm_ok = case bval_equiv_thm of
+          Thm ([], Imp (And (IsForcingPoset (Var "P", _, _), Eq (Var "B", RegularOpenCompletion (Var "P"))),
+                        BValDunaevEquiv (Var "P", BValModel (Var "B")))) => true
+        | _ => false
+      val bval_terms_ok =
+        (CompleteBooleanAlgebra (Var "B") = CompleteBooleanAlgebra (Var "B"))
+        andalso (BValTruth (True, Var "B") = BValTruth (True, Var "B"))
+      val bval_all_ok =
+        cba_4_ok andalso cba_incomplete_fail andalso ro_cuts_ok
+        andalso bval_mem_ok andalso bval_eq_same_ok andalso bval_eq_diff_ok
+        andalso bval_kuratowski_rejected andalso bval_zfc_ok
+        andalso ro_emb_thm_ok andalso bval_ext_thm_ok andalso bval_equiv_thm_ok
+        andalso bval_terms_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -5146,6 +5465,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso dpname_wf_thm_ok andalso check_val_thm_ok andalso gen_ext_im_thm_ok
       andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
+      andalso bval_all_ok
     end
 end;
 

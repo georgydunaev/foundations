@@ -465,6 +465,31 @@ class TestFoundations(unittest.TestCase):
         self.assertEqual(classes_res["ticket_class_lists_transport"]["status"], "RESOLVED")
         self.assertEqual(classes_res["ticket_family_records_and_image_conventions"]["status"], "RESOLVED")
         self.assertEqual(classes_res["ticket_universe_indexed_union_closure"]["status"], "RESOLVED")
+        self.assertEqual(classes_res["ticket_boolean_valued_models_and_ro_completion"]["status"], "RESOLVED")
+
+    def test_ticket_gl064_boolean_valued_models_and_ro_completion(self):
+        """Ticket 64: verify Complete Boolean Algebras, ro(P), and Boolean-valued models V^(B) vs V^P."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_complete_boolean_algebra",
+            "eval_regular_open_completion",
+            "eval_bval_membership",
+            "eval_bval_equality",
+            "eval_bval_zfc_axioms_valid",
+            "proves_boolean_valued_models_and_ro_completion",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_boolean_valued_models_and_ro_completion()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["cba_verified"])
+        self.assertTrue(res["regular_open_completion_verified"])
+        self.assertTrue(res["bval_zfc_axioms_valid"])
+        self.assertTrue(res["kuratowski_bname_rejected"])
+        self.assertTrue(res["dunaev_pname_bval_equivalence_verified"])
 
 
 if __name__ == '__main__':

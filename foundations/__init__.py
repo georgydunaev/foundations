@@ -263,6 +263,12 @@ from foundations.classes import (
     eval_canonical_family,
     is_subset_tight_universe,
     eval_tight_universe_indexed_union_closure,
+    eval_is_complete_boolean_algebra,
+    eval_regular_open_completion,
+    eval_bval_membership,
+    eval_bval_equality,
+    eval_bval_zfc_axioms_valid,
+    proves_boolean_valued_models_and_ro_completion,
     proves_foundations_classes_and_families,
 )
 
@@ -526,5 +532,11 @@ __all__: list[str] = [
     "eval_canonical_family",
     "is_subset_tight_universe",
     "eval_tight_universe_indexed_union_closure",
+    "eval_is_complete_boolean_algebra",
+    "eval_regular_open_completion",
+    "eval_bval_membership",
+    "eval_bval_equality",
+    "eval_bval_zfc_axioms_valid",
+    "proves_boolean_valued_models_and_ro_completion",
     "proves_foundations_classes_and_families",
 ]

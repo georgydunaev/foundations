@@ -268,4 +268,16 @@ Every tight Grothendieck universe $\mathcal{U}$ is closed under set-indexed unio
 Since $I \in \mathcal{U}$ and $A(i) \in \mathcal{U}$ for each $i \in I$, transitivity of $\mathcal{U}$ implies $A(i) \subseteq \mathcal{U}$ for every $i \in I$, and hence the range $R = \cc{y}{\exists i \in I,\ y = A(i)}$ is a subclass of $\mathcal{U}$ with $|R| \le |I|$. By subset-tightness of $\mathcal{U}$ applied to $I \in \mathcal{U}$ and $R \subseteq \mathcal{U}$, we obtain $R \in \mathcal{U}$. Applying single-set union closure (derived from powerset closure and subset-tightness inside $\mathcal{U}$) yields $\bigcup R = \bigcup_{i \in I} A(i) \in \mathcal{U}$. For $\mathcal{U} = \V$ (Item \texttt{3.69}), transitivity holds because elements of sets are sets, powerset closure holds by the Powerset Axiom, and subset-tightness and indexed-union closure hold by the Axiom of Limitation of Size (Replacement) and the Union Axiom.
 \end{proof}
 
+\subsection{Regular-Open Completion and Boolean-Valued Models over Dunaev-Tagged Names}
+\label{subsec:ro_completion_boolean_valued_models}
+
+Given a forcing preorder $(\mathbb{P}, \le, 1_{\mathbb{P}})$, for any subset $U \subseteq \mathbb{P}$ let $U^\perp \eqdef \cc{q \in \mathbb{P}}{\forall p \in U,\ \neg(p \parallel q)}$ denote the incompatible complement, and let $U^{\perp\perp} \eqdef (U^\perp)^\perp$ denote the regular-open closure. The regular-open completion $\mathrm{ro}(\mathbb{P}) \eqdef \cc{U \subseteq \mathbb{P}}{U = U^{\perp\perp}}$ ordered by inclusion forms a complete Boolean algebra $(\mathbb{B}, \wedge, \vee, \neg, 0_{\mathbb{B}}, 1_{\mathbb{B}})$ with $U \wedge W = U \cap W$, $U \vee W = (U \cup W)^{\perp\perp}$, and $\neg U = U^\perp$. The canonical map $e(p) \eqdef (\downarrow p)^{\perp\perp}$ embeds $\mathbb{P}$ densely into $\mathbb{B} \setminus \{0_{\mathbb{B}}\}$ while preserving order and incompatibility ($p \perp q \iff e(p) \wedge e(q) = 0_{\mathbb{B}}$).
+
+In both \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, a Dunaev-tagged $\mathbb{B}$-name $u \in V^{(\mathbb{B})}$ is a set of Dunaev Tagged Ordered Pairs $\pair{\sigma}{b}$ with $\sigma \in V^{(\mathbb{B})}$ and $b \in \mathbb{B}$ (rejecting Kuratowski pairs). The Boolean truth values $\llbracket u \in v \rrbracket_{\mathbb{B}}$ and $\llbracket u = v \rrbracket_{\mathbb{B}}$ are defined by mutual well-founded recursion:
+\[
+\llbracket u \in v \rrbracket_{\mathbb{B}} \eqdef \bigvee_{\pair{\sigma}{b} \in v} \big(b \wedge \llbracket u = \sigma \rrbracket_{\mathbb{B}}\big), \qquad
+\llbracket u = v \rrbracket_{\mathbb{B}} \eqdef \bigwedge_{\pair{\sigma}{b} \in u} \big(b \Rightarrow \llbracket \sigma \in v \rrbracket_{\mathbb{B}}\big) \wedge \bigwedge_{\pair{\tau}{c} \in v} \big(c \Rightarrow \llbracket \tau \in u \rrbracket_{\mathbb{B}}\big),
+\]
+under which all ZFC axioms evaluate to $1_{\mathbb{B}}$ and the forcing relation $p \Vdash \phi$ over Dunaev-tagged $\mathbb{P}$-names $V^{\mathbb{P}}$ satisfies $p \Vdash \phi \iff e(p) \le \llbracket \phi \rrbracket_{\mathrm{ro}(\mathbb{P})}$.
+
 \input{END.tex}

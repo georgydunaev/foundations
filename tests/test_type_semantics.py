@@ -1913,6 +1913,56 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertEqual(master["ticket_class_lists_transport"]["status"], "RESOLVED")
         self.assertEqual(master["ticket_family_records_and_image_conventions"]["status"], "RESOLVED")
         self.assertEqual(master["ticket_universe_indexed_union_closure"]["status"], "RESOLVED")
+        self.assertEqual(master["ticket_boolean_valued_models_and_ro_completion"]["status"], "RESOLVED")
+
+    def test_ticket_gl064_boolean_valued_models_and_ro_completion(self):
+        """Ticket 64: Complete Boolean Algebras, Regular-Open Completion ro(P), and V^(B) vs V^P."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            cohen_poset,
+            dunaev_pair,
+            eval_bval_equality,
+            eval_bval_membership,
+            eval_bval_zfc_axioms_valid,
+            eval_is_complete_boolean_algebra,
+            eval_regular_open_completion,
+            proves_boolean_valued_models_and_ro_completion,
+        )
+
+        self.assertTrue(eval_is_complete_boolean_algebra([0, 1, 2, 3], 0, 3))
+        self.assertFalse(eval_is_complete_boolean_algebra([0, 1, 3], 0, 3))
+
+        poset = cohen_poset([0], [0, 1])
+        ro_res = eval_regular_open_completion(poset)
+        self.assertEqual(ro_res["num_cuts"], 4)
+        self.assertTrue(ro_res["non_zero_embedding"])
+        self.assertTrue(ro_res["order_preserved"])
+        self.assertTrue(ro_res["incompatibility_preserved"])
+        self.assertTrue(ro_res["dense_embedding_verified"])
+
+        a = frozenset()
+        b = frozenset([a])
+        u_name = [dunaev_pair(a, 1), dunaev_pair(b, 3)]
+        v_name = [dunaev_pair(a, 3), dunaev_pair(b, 3)]
+        self.assertEqual(eval_bval_membership([dunaev_pair(a, 3)], u_name, 3), 1)
+        self.assertEqual(eval_bval_equality(u_name, u_name, 3), 3)
+        self.assertEqual(eval_bval_equality(u_name, v_name, 3), 1)
+
+        with self.assertRaises(ProperClassError):
+            eval_bval_membership([KuratowskiPair(a, 1)], u_name, 3)
+
+        zfc_res = eval_bval_zfc_axioms_valid(3)
+        self.assertTrue(zfc_res["all_valid"])
+        self.assertEqual(zfc_res["extensionality"], 3)
+        self.assertEqual(zfc_res["pairing"], 3)
+        self.assertEqual(zfc_res["union"], 3)
+        self.assertEqual(zfc_res["powerset"], 3)
+        self.assertEqual(zfc_res["foundation"], 3)
+
+        master = proves_boolean_valued_models_and_ro_completion()
+        self.assertEqual(master["status"], "RESOLVED")
+        self.assertTrue(master["dunaev_pname_bval_equivalence_verified"])
 
 
 if __name__ == "__main__":
