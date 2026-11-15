@@ -690,6 +690,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["split_fibration_verified"])
         self.assertTrue(res["grothendieck_equivalence_verified"])
 
+    def test_ticket_gl073_abelian_categories_exact_sequences_and_snake_lemma(self):
+        """Ticket 73: verify Abelian Categories, Coimage-Image Isomorphism, Exact Sequences, and Snake Lemma."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_abelian_category",
+            "eval_coimage_image_iso",
+            "eval_is_short_exact_sequence",
+            "eval_snake_connecting_morphism",
+            "eval_snake_lemma_exactness",
+            "proves_abelian_categories_exact_sequences_and_snake_lemma",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_abelian_categories_exact_sequences_and_snake_lemma()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["abelian_category_verified"])
+        self.assertTrue(res["coimage_image_iso_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["short_exact_sequence_verified"])
+        self.assertTrue(res["snake_connecting_morphism_verified"])
+        self.assertTrue(res["snake_lemma_exactness_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

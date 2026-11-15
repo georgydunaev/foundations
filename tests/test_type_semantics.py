@@ -2329,6 +2329,53 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_grothendieck_fibrations_cleavages_and_grothendieck_construction()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl073_abelian_categories_exact_sequences_and_snake_lemma(self):
+        """Ticket 73: Abelian Categories, Coimage-Image Isomorphism, Exact Sequences, and Snake Lemma."""
+        from foundations.type_semantics import (
+            eval_is_abelian_category,
+            eval_coimage_image_iso,
+            eval_is_short_exact_sequence,
+            eval_snake_connecting_morphism,
+            eval_snake_lemma_exactness,
+            proves_abelian_categories_exact_sequences_and_snake_lemma,
+        )
+
+        self.assertTrue(eval_is_abelian_category(True, True, True, True)["is_abelian"])
+        with self.assertRaises(ProperClassError):
+            eval_coimage_image_iso([0], [KuratowskiPair(0, 0)])
+
+        f_graph = [
+            dunaev_pair(0, 0),
+            dunaev_pair(1, 2),
+            dunaev_pair(2, 0),
+            dunaev_pair(3, 2),
+        ]
+        coim_res = eval_coimage_image_iso([0, 1, 2, 3], f_graph)
+        self.assertTrue(coim_res["coimage_image_iso_holds"])
+        self.assertEqual(coim_res["coimage_cardinality"], 2)
+
+        ses_f = [dunaev_pair(0, 0), dunaev_pair(1, 2)]
+        ses_g = [
+            dunaev_pair(0, 0),
+            dunaev_pair(1, 1),
+            dunaev_pair(2, 0),
+            dunaev_pair(3, 1),
+        ]
+        self.assertTrue(eval_is_short_exact_sequence([0, 1], [0, 1, 2, 3], ses_f, ses_g)["is_short_exact"])
+
+        delta = eval_snake_connecting_morphism(
+            [dunaev_pair(0, 0), dunaev_pair(1, 3)],
+            [dunaev_pair(0, 0), dunaev_pair(3, 2)],
+            [dunaev_pair(0, 0), dunaev_pair(2, 1)],
+        )
+        self.assertEqual(len(delta), 2)
+        self.assertTrue(
+            eval_snake_lemma_exactness([0], [0], [0, 1], [0, 1], [0, 1], [0, 1])["six_term_exact"]
+        )
+
+        master = proves_abelian_categories_exact_sequences_and_snake_lemma()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

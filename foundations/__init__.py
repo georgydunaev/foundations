@@ -318,6 +318,12 @@ from foundations.classes import (
     eval_is_split_fibration,
     eval_grothendieck_equivalence,
     proves_grothendieck_fibrations_cleavages_and_grothendieck_construction,
+    eval_is_abelian_category,
+    eval_coimage_image_iso,
+    eval_is_short_exact_sequence,
+    eval_snake_connecting_morphism,
+    eval_snake_lemma_exactness,
+    proves_abelian_categories_exact_sequences_and_snake_lemma,
     proves_foundations_classes_and_families,
 )
 
@@ -636,5 +642,11 @@ __all__: list[str] = [
     "eval_is_split_fibration",
     "eval_grothendieck_equivalence",
     "proves_grothendieck_fibrations_cleavages_and_grothendieck_construction",
+    "eval_is_abelian_category",
+    "eval_coimage_image_iso",
+    "eval_is_short_exact_sequence",
+    "eval_snake_connecting_morphism",
+    "eval_snake_lemma_exactness",
+    "proves_abelian_categories_exact_sequences_and_snake_lemma",
     "proves_foundations_classes_and_families",
 ]

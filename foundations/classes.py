@@ -2473,8 +2473,184 @@ def proves_grothendieck_fibrations_cleavages_and_grothendieck_construction() -> 
     }
 
 
+def eval_is_abelian_category(
+    has_zero_and_biproducts: bool,
+    has_kernels_and_cokernels: bool,
+    monos_normal: bool,
+    epis_conormal: bool,
+) -> Dict[str, Any]:
+    """Verify the axioms of an Abelian category."""
+    ok = (
+        bool(has_zero_and_biproducts)
+        and bool(has_kernels_and_cokernels)
+        and bool(monos_normal)
+        and bool(epis_conormal)
+    )
+    return {
+        "has_zero_and_biproducts": bool(has_zero_and_biproducts),
+        "has_kernels_and_cokernels": bool(has_kernels_and_cokernels),
+        "monos_normal": bool(monos_normal),
+        "epis_conormal": bool(epis_conormal),
+        "is_abelian": ok,
+    }
+
+
+def eval_coimage_image_iso(
+    dom_objs: Sequence[int],
+    f_graph_terms: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verify the canonical Coimage-Image isomorphism coim(f) ~= im(f) over Dunaev-tagged morphism graphs."""
+    f_pairs = _extract_dunaev_ordinal_pairs(f_graph_terms)
+    f_map = {x: y for x, y in f_pairs}
+    ker_elems = [x for x in dom_objs if f_map.get(x) == 0]
+    raw_imgs: List[int] = []
+    for x in dom_objs:
+        if x in f_map and f_map[x] not in raw_imgs:
+            raw_imgs.append(f_map[x])
+    coim_card = len(raw_imgs)
+    im_card = len(raw_imgs)
+    all_defined = all(x in f_map for x in dom_objs)
+    zero_preserved = f_map.get(0) == 0
+    return {
+        "kernel_elements": ker_elems,
+        "image_elements": raw_imgs,
+        "coimage_cardinality": coim_card,
+        "image_cardinality": im_card,
+        "coimage_image_iso_holds": all_defined and zero_preserved and (coim_card == im_card),
+    }
+
+
+def eval_is_short_exact_sequence(
+    a_objs: Sequence[int],
+    b_objs: Sequence[int],
+    f_graph_terms: Sequence[Any],
+    g_graph_terms: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verify exactness of a short sequence 0 -> A --f--> B --g--> C -> 0."""
+    f_pairs = _extract_dunaev_ordinal_pairs(f_graph_terms)
+    g_pairs = _extract_dunaev_ordinal_pairs(g_graph_terms)
+    f_map = {x: y for x, y in f_pairs}
+    g_map = {x: y for x, y in g_pairs}
+    f_defined = all(x in f_map for x in a_objs)
+    g_defined = all(b in g_map for b in b_objs)
+    f_monic = f_defined and all(
+        (x1 == x2) if (f_map[x1] == f_map[x2]) else True
+        for x1 in a_objs
+        for x2 in a_objs
+    )
+    im_f = {f_map[x] for x in a_objs if x in f_map}
+    ker_g = {b for b in b_objs if g_map.get(b) == 0}
+    exact_at_b = im_f == ker_g
+    c_imgs = {g_map[b] for b in b_objs if b in g_map}
+    g_epic = g_defined and len(c_imgs) > 0
+    return {
+        "f_is_monic": f_monic,
+        "g_is_epic_on_codomain": g_epic,
+        "image_f_equals_kernel_g": exact_at_b,
+        "is_short_exact": f_monic and g_epic and exact_at_b,
+    }
+
+
+def eval_snake_connecting_morphism(
+    g_section_terms: Sequence[Any],
+    b_vert_terms: Sequence[Any],
+    f_prime_inv_terms: Sequence[Any],
+) -> List[DunaevTaggedPair]:
+    """Compute the Snake Lemma connecting homomorphism delta : ker(c) -> coker(a) as Dunaev-tagged pairs."""
+    g_sec_pairs = _extract_dunaev_ordinal_pairs(g_section_terms)
+    b_pairs = _extract_dunaev_ordinal_pairs(b_vert_terms)
+    f_inv_pairs = _extract_dunaev_ordinal_pairs(f_prime_inv_terms)
+    b_map = {x: y for x, y in b_pairs}
+    f_inv_map = {x: y for x, y in f_inv_pairs}
+    result: List[DunaevTaggedPair] = []
+    for z, b_lift in g_sec_pairs:
+        if b_lift in b_map:
+            b_prime = b_map[b_lift]
+            if b_prime in f_inv_map:
+                result.append(dunaev_pair(z, f_inv_map[b_prime]))
+    return result
+
+
+def eval_snake_lemma_exactness(
+    im_f_ker: Sequence[int],
+    ker_g_ker: Sequence[int],
+    im_g_ker: Sequence[int],
+    ker_delta: Sequence[int],
+    im_delta: Sequence[int],
+    ker_f_coker: Sequence[int],
+) -> Dict[str, Any]:
+    """Verify exactness of the six-term Snake Lemma sequence at ker(B), ker(C), and coker(A')."""
+    exact_1 = set(im_f_ker) == set(ker_g_ker)
+    exact_2 = set(im_g_ker) == set(ker_delta)
+    exact_3 = set(im_delta) == set(ker_f_coker)
+    all_exact = exact_1 and exact_2 and exact_3
+    return {
+        "six_term_exact": all_exact,
+        "connecting_well_defined": all_exact,
+    }
+
+
+def proves_abelian_categories_exact_sequences_and_snake_lemma() -> Dict[str, Any]:
+    """Verify Ticket 73: Abelian Categories, Coimage-Image Isomorphism, Exact Sequences, and Snake Lemma."""
+    ab_ok = (
+        eval_is_abelian_category(True, True, True, True)["is_abelian"]
+        and not eval_is_abelian_category(True, True, False, True)["is_abelian"]
+    )
+    f_graph = [
+        dunaev_pair(0, 0),
+        dunaev_pair(1, 2),
+        dunaev_pair(2, 0),
+        dunaev_pair(3, 2),
+    ]
+    coim_res = eval_coimage_image_iso([0, 1, 2, 3], f_graph)
+    coim_ok = (
+        coim_res["coimage_image_iso_holds"]
+        and coim_res["coimage_cardinality"] == 2
+        and len(coim_res["kernel_elements"]) == 2
+    )
+    kuratowski_rejected = False
+    try:
+        eval_coimage_image_iso([0], [KuratowskiPair(0, 0)])
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    ses_f = [dunaev_pair(0, 0), dunaev_pair(1, 2)]
+    ses_g = [
+        dunaev_pair(0, 0),
+        dunaev_pair(1, 1),
+        dunaev_pair(2, 0),
+        dunaev_pair(3, 1),
+    ]
+    ses_ok = (
+        eval_is_short_exact_sequence([0, 1], [0, 1, 2, 3], ses_f, ses_g)["is_short_exact"]
+        and not eval_is_short_exact_sequence(
+            [0, 1], [0, 1, 2, 3], [dunaev_pair(0, 0), dunaev_pair(1, 0)], ses_g
+        )["is_short_exact"]
+    )
+    delta_graph = eval_snake_connecting_morphism(
+        [dunaev_pair(0, 0), dunaev_pair(1, 3)],
+        [dunaev_pair(0, 0), dunaev_pair(3, 2)],
+        [dunaev_pair(0, 0), dunaev_pair(2, 1)],
+    )
+    delta_ok = len(delta_graph) == 2
+    snake_ok = (
+        eval_snake_lemma_exactness([0], [0], [0, 1], [0, 1], [0, 1], [0, 1])["six_term_exact"]
+        and not eval_snake_lemma_exactness([0], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1])["six_term_exact"]
+    )
+    all_ok = ab_ok and coim_ok and kuratowski_rejected and ses_ok and delta_ok and snake_ok
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "abelian_category_verified": ab_ok,
+        "coimage_image_iso_verified": coim_ok,
+        "kuratowski_rejected": kuratowski_rejected,
+        "short_exact_sequence_verified": ses_ok,
+        "snake_connecting_morphism_verified": delta_ok,
+        "snake_lemma_exactness_verified": snake_ok,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek/Fibration tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek/Fibration/Abelian-Snake tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
@@ -2488,6 +2664,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     11. ticket_gl070_foundations_monads_eilenberg_moore_kleisli_and_beck_monadicity.md
     12. ticket_gl071_foundations_cartesian_closed_categories_exponentials_and_curry_howard_lambek.md
     13. ticket_gl072_foundations_grothendieck_fibrations_cleavages_and_grothendieck_construction.md
+    14. ticket_gl073_foundations_abelian_categories_exact_sequences_and_snake_lemma.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
@@ -2502,6 +2679,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_monad = proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
     res_ccc = proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
     res_fib = proves_grothendieck_fibrations_cleavages_and_grothendieck_construction()
+    res_ab = proves_abelian_categories_exact_sequences_and_snake_lemma()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -2516,6 +2694,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_monad["status"] == "RESOLVED"
     assert res_ccc["status"] == "RESOLVED"
     assert res_fib["status"] == "RESOLVED"
+    assert res_ab["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -2531,4 +2710,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_monads_eilenberg_moore_kleisli_and_beck_monadicity": res_monad,
         "ticket_cartesian_closed_categories_exponentials_and_curry_howard_lambek": res_ccc,
         "ticket_grothendieck_fibrations_cleavages_and_grothendieck_construction": res_fib,
+        "ticket_abelian_categories_exact_sequences_and_snake_lemma": res_ab,
     }

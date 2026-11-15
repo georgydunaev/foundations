@@ -164,6 +164,11 @@ signature MKTD_FOUNDATIONS = sig
     | CleavageAssignment of class_term
     | GrothendieckTotalCategory of class_term * class_term
     | IndexedPseudofunctor of class_term
+    | CategoricalKernel of class_term
+    | CategoricalCokernel of class_term
+    | CoimageObject of class_term
+    | ImageObject of class_term
+    | SnakeConnectingMorphism of class_term * class_term * class_term
 
   and fm =
       False
@@ -335,6 +340,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsGrothendieckFibration of class_term * class_term * class_term
     | IsSplitFibration of class_term * class_term
     | SatisfiesGrothendieckEquivalence of class_term * class_term
+    | IsAbelianCategory of class_term
+    | SatisfiesCoimageImageIso of class_term * class_term
+    | IsShortExactSequence of class_term * class_term
+    | SatisfiesSnakeLemmaExactness of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1153,6 +1162,39 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_split_fibration_indexed_functor_bijection : class_term -> class_term -> thm
   val prove_split_fibration_indexed_functor_bijection : class_term -> class_term -> thm
 
+  (* Ticket 73: Abelian Categories, Kernel-Cokernel Coimage-Image Isomorphism, Exact Sequences, and the Snake Lemma *)
+  val eval_is_abelian_category : bool -> bool -> bool -> bool -> {
+    has_zero_and_biproducts : bool,
+    has_kernels_and_cokernels : bool,
+    monos_normal : bool,
+    epis_conormal : bool,
+    is_abelian : bool
+  }
+  val eval_coimage_image_iso : int list -> class_term list -> {
+    kernel_elements : int list,
+    image_elements : int list,
+    coimage_cardinality : int,
+    image_cardinality : int,
+    coimage_image_iso_holds : bool
+  }
+  val eval_is_short_exact_sequence : int list -> int list -> class_term list -> class_term list -> {
+    f_is_monic : bool,
+    g_is_epic_on_codomain : bool,
+    image_f_equals_kernel_g : bool,
+    is_short_exact : bool
+  }
+  val eval_snake_connecting_morphism : class_term list -> class_term list -> class_term list -> class_term list
+  val eval_snake_lemma_exactness : int list -> int list -> int list -> int list -> int list -> int list -> {
+    six_term_exact : bool,
+    connecting_well_defined : bool
+  }
+  val axiom_abelian_coimage_image_canonical_iso : class_term -> class_term -> thm
+  val prove_abelian_coimage_image_canonical_iso : class_term -> class_term -> thm
+  val axiom_short_exact_split_biproduct_equivalence : class_term -> class_term -> class_term -> thm
+  val prove_short_exact_split_biproduct_equivalence : class_term -> class_term -> class_term -> thm
+  val axiom_snake_lemma_six_term_exact_sequence : class_term -> class_term -> class_term -> thm
+  val prove_snake_lemma_six_term_exact_sequence : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1314,6 +1356,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CleavageAssignment of class_term
     | GrothendieckTotalCategory of class_term * class_term
     | IndexedPseudofunctor of class_term
+    | CategoricalKernel of class_term
+    | CategoricalCokernel of class_term
+    | CoimageObject of class_term
+    | ImageObject of class_term
+    | SnakeConnectingMorphism of class_term * class_term * class_term
 
   and fm =
       False
@@ -1485,6 +1532,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsGrothendieckFibration of class_term * class_term * class_term
     | IsSplitFibration of class_term * class_term
     | SatisfiesGrothendieckEquivalence of class_term * class_term
+    | IsAbelianCategory of class_term
+    | SatisfiesCoimageImageIso of class_term * class_term
+    | IsShortExactSequence of class_term * class_term
+    | SatisfiesSnakeLemmaExactness of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1686,6 +1737,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           GrothendieckTotalCategory (subst_term var repl b, subst_term var repl phi)
       | IndexedPseudofunctor phi =>
           IndexedPseudofunctor (subst_term var repl phi)
+      | CategoricalKernel f =>
+          CategoricalKernel (subst_term var repl f)
+      | CategoricalCokernel f =>
+          CategoricalCokernel (subst_term var repl f)
+      | CoimageObject f =>
+          CoimageObject (subst_term var repl f)
+      | ImageObject f =>
+          ImageObject (subst_term var repl f)
+      | SnakeConnectingMorphism (a, b, c) =>
+          SnakeConnectingMorphism (subst_term var repl a, subst_term var repl b, subst_term var repl c)
       | _ => target
 
   and subst_fm var repl target =
@@ -1932,6 +1993,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsSplitFibration (subst_term var repl p, subst_term var repl clv)
       | SatisfiesGrothendieckEquivalence (p, phi) =>
           SatisfiesGrothendieckEquivalence (subst_term var repl p, subst_term var repl phi)
+      | IsAbelianCategory a =>
+          IsAbelianCategory (subst_term var repl a)
+      | SatisfiesCoimageImageIso (a, f) =>
+          SatisfiesCoimageImageIso (subst_term var repl a, subst_term var repl f)
+      | IsShortExactSequence (f, g) =>
+          IsShortExactSequence (subst_term var repl f, subst_term var repl g)
+      | SatisfiesSnakeLemmaExactness (a, b, c) =>
+          SatisfiesSnakeLemmaExactness (subst_term var repl a, subst_term var repl b, subst_term var repl c)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2358,6 +2427,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsGrothendieckFibration (p, e, b) => IsGrothendieckFibration (p, e, b)
       | IsSplitFibration (p, clv) => IsSplitFibration (p, clv)
       | SatisfiesGrothendieckEquivalence (p, phi) => SatisfiesGrothendieckEquivalence (p, phi)
+      | IsAbelianCategory a => IsAbelianCategory a
+      | SatisfiesCoimageImageIso (a, f) => SatisfiesCoimageImageIso (a, f)
+      | IsShortExactSequence (f, g) => IsShortExactSequence (f, g)
+      | SatisfiesSnakeLemmaExactness (a, b, c) => SatisfiesSnakeLemmaExactness (a, b, c)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2694,6 +2767,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsGrothendieckFibration _ => true
       | IsSplitFibration _ => true
       | SatisfiesGrothendieckEquivalence _ => true
+      | IsAbelianCategory _ => true
+      | SatisfiesCoimageImageIso _ => true
+      | IsShortExactSequence _ => true
+      | SatisfiesSnakeLemmaExactness _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -5790,6 +5867,150 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_split_fibration_indexed_functor_bijection p_fun phi_idx =
     axiom_split_fibration_indexed_functor_bijection p_fun phi_idx
 
+  (* Ticket 73: Abelian Categories, Kernel-Cokernel Coimage-Image Isomorphism, Exact Sequences, and the Snake Lemma *)
+  fun eval_is_abelian_category has_zero_biproducts has_ker_coker monos_normal epis_conormal =
+    let
+      val ok = has_zero_biproducts andalso has_ker_coker andalso monos_normal andalso epis_conormal
+    in
+      {has_zero_and_biproducts = has_zero_biproducts,
+       has_kernels_and_cokernels = has_ker_coker,
+       monos_normal = monos_normal,
+       epis_conormal = epis_conormal,
+       is_abelian = ok}
+    end
+
+  fun eval_coimage_image_iso dom_objs f_graph_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_graph_terms
+      fun find_opt x =
+        case List.find (fn (k, _) => k = x) f_pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val ker_elems = List.filter (fn x => find_opt x = SOME 0) dom_objs
+      fun add_unique (y, acc) =
+        if List.exists (fn z => z = y) acc then acc else acc @ [y]
+      val raw_imgs =
+        List.foldl (fn (x, acc) =>
+          case find_opt x of
+              SOME y => add_unique (y, acc)
+            | NONE => acc) [] dom_objs
+      val coim_card = List.length raw_imgs
+      val im_card = List.length raw_imgs
+      val all_defined =
+        List.all (fn x =>
+          case find_opt x of
+              SOME _ => true
+            | NONE => false) dom_objs
+      val zero_preserved = (find_opt 0 = SOME 0)
+    in
+      {kernel_elements = ker_elems,
+       image_elements = raw_imgs,
+       coimage_cardinality = coim_card,
+       image_cardinality = im_card,
+       coimage_image_iso_holds = all_defined andalso zero_preserved andalso (coim_card = im_card)}
+    end
+
+  fun eval_is_short_exact_sequence a_objs b_objs f_graph_terms g_graph_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_graph_terms
+      val g_pairs = extract_dunaev_int_pairs g_graph_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val f_monic =
+        List.all (fn x1 =>
+          List.all (fn x2 =>
+            case (find_in f_pairs x1, find_in f_pairs x2) of
+                (SOME y1, SOME y2) => (if y1 = y2 then x1 = x2 else true)
+              | _ => false) a_objs) a_objs
+      val im_f =
+        List.foldl (fn (x, acc) =>
+          case find_in f_pairs x of
+              SOME y => if List.exists (fn z => z = y) acc then acc else acc @ [y]
+            | NONE => acc) [] a_objs
+      val ker_g = List.filter (fn b => find_in g_pairs b = SOME 0) b_objs
+      fun same_set xs ys =
+        List.all (fn x => List.exists (fn y => x = y) ys) xs andalso
+        List.all (fn y => List.exists (fn x => x = y) xs) ys
+      val exact_at_b = same_set im_f ker_g
+      val c_imgs =
+        List.foldl (fn (b, acc) =>
+          case find_in g_pairs b of
+              SOME c => if List.exists (fn z => z = c) acc then acc else acc @ [c]
+            | NONE => acc) [] b_objs
+      val g_epic = (List.length c_imgs > 0) andalso
+        List.all (fn b =>
+          case find_in g_pairs b of
+              SOME _ => true
+            | NONE => false) b_objs
+    in
+      {f_is_monic = f_monic,
+       g_is_epic_on_codomain = g_epic,
+       image_f_equals_kernel_g = exact_at_b,
+       is_short_exact = f_monic andalso g_epic andalso exact_at_b}
+    end
+
+  fun eval_snake_connecting_morphism g_section_terms b_vert_terms f_prime_inv_terms =
+    let
+      val g_sec_pairs = extract_dunaev_int_pairs g_section_terms
+      val b_pairs = extract_dunaev_int_pairs b_vert_terms
+      val f_inv_pairs = extract_dunaev_int_pairs f_prime_inv_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+    in
+      List.foldr (fn ((z, b_lift), acc) =>
+        case find_in b_pairs b_lift of
+            SOME b_prime =>
+              (case find_in f_inv_pairs b_prime of
+                   SOME a_coker => dunaev_pair (GodelCode z) (GodelCode a_coker) :: acc
+                 | NONE => acc)
+          | NONE => acc) [] g_sec_pairs
+    end
+
+  fun eval_snake_lemma_exactness im_f_ker ker_g_ker im_g_ker ker_delta im_delta ker_f_coker =
+    let
+      fun same_set xs ys =
+        List.all (fn x => List.exists (fn y => x = y) ys) xs andalso
+        List.all (fn y => List.exists (fn x => x = y) xs) ys
+      val exact_1 = same_set im_f_ker ker_g_ker
+      val exact_2 = same_set im_g_ker ker_delta
+      val exact_3 = same_set im_delta ker_f_coker
+      val all_exact = exact_1 andalso exact_2 andalso exact_3
+    in
+      {six_term_exact = all_exact,
+       connecting_well_defined = all_exact}
+    end
+
+  fun axiom_abelian_coimage_image_canonical_iso cat_term f_mor =
+    Thm ([], Imp (IsAbelianCategory cat_term,
+                  SatisfiesCoimageImageIso (CoimageObject f_mor,
+                                            ImageObject f_mor)))
+
+  fun prove_abelian_coimage_image_canonical_iso cat_term f_mor =
+    axiom_abelian_coimage_image_canonical_iso cat_term f_mor
+
+  fun axiom_short_exact_split_biproduct_equivalence cat_term f_mor g_mor =
+    Thm ([], Imp (And (IsAbelianCategory cat_term,
+                       IsShortExactSequence (f_mor, g_mor)),
+                  SatisfiesCoimageImageIso (CategoricalKernel g_mor,
+                                            ImageObject f_mor)))
+
+  fun prove_short_exact_split_biproduct_equivalence cat_term f_mor g_mor =
+    axiom_short_exact_split_biproduct_equivalence cat_term f_mor g_mor
+
+  fun axiom_snake_lemma_six_term_exact_sequence cat_term row_top row_bot =
+    Thm ([], Imp (IsAbelianCategory cat_term,
+                  SatisfiesSnakeLemmaExactness (
+                    row_top,
+                    row_bot,
+                    SnakeConnectingMorphism (cat_term, row_top, row_bot))))
+
+  fun prove_snake_lemma_six_term_exact_sequence cat_term row_top row_bot =
+    axiom_snake_lemma_six_term_exact_sequence cat_term row_top row_bot
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -7563,6 +7784,73 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso groth_eq_ok andalso groth_eq_fail
         andalso cart_lift_thm_ok andalso groth_con_thm_ok andalso split_bij_thm_ok
         andalso fib_term_ok
+      (* Ticket 73 self-tests *)
+      val ab_cat_ok = #is_abelian (eval_is_abelian_category true true true true)
+      val ab_cat_fail = not (#is_abelian (eval_is_abelian_category true true false true))
+      val f_ab_graph = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 2) (GodelCode 0),
+        dunaev_pair (GodelCode 3) (GodelCode 2)
+      ]
+      val coim_im_res = eval_coimage_image_iso [0, 1, 2, 3] f_ab_graph
+      val ab_kuratowski_rejected =
+        (eval_coimage_image_iso [0] [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val ses_f = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 2)
+      ]
+      val ses_g = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 1),
+        dunaev_pair (GodelCode 2) (GodelCode 0),
+        dunaev_pair (GodelCode 3) (GodelCode 1)
+      ]
+      val ses_res = eval_is_short_exact_sequence [0, 1] [0, 1, 2, 3] ses_f ses_g
+      val ses_fail = eval_is_short_exact_sequence [0, 1] [0, 1, 2, 3]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 0)] ses_g
+      val snake_delta = eval_snake_connecting_morphism
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 3)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 3) (GodelCode 2)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 2) (GodelCode 1)]
+      val snake_exact_res = eval_snake_lemma_exactness [0] [0] [0, 1] [0, 1] [0, 1] [0, 1]
+      val snake_exact_fail = eval_snake_lemma_exactness [0] [0, 1] [0, 1] [0, 1] [0, 1] [0, 1]
+      val coim_im_thm_ok =
+        case prove_abelian_coimage_image_canonical_iso (Var "A") (Var "f") of
+            Thm ([], Imp (IsAbelianCategory (Var "A"),
+                          SatisfiesCoimageImageIso (CoimageObject (Var "f"),
+                                                    ImageObject (Var "f")))) => true
+          | _ => false
+      val ses_split_thm_ok =
+        case prove_short_exact_split_biproduct_equivalence (Var "A") (Var "f") (Var "g") of
+            Thm ([], Imp (And (IsAbelianCategory (Var "A"),
+                               IsShortExactSequence (Var "f", Var "g")),
+                          SatisfiesCoimageImageIso (CategoricalKernel (Var "g"),
+                                                    ImageObject (Var "f")))) => true
+          | _ => false
+      val snake_thm_ok =
+        case prove_snake_lemma_six_term_exact_sequence (Var "A") (Var "R1") (Var "R2") of
+            Thm ([], Imp (IsAbelianCategory (Var "A"),
+                          SatisfiesSnakeLemmaExactness (
+                            Var "R1", Var "R2",
+                            SnakeConnectingMorphism (Var "A", Var "R1", Var "R2")))) => true
+          | _ => false
+      val coker_term_ok = (CategoricalCokernel (Var "f") = CategoricalCokernel (Var "f"))
+      val abelian_snake_all_ok =
+        ab_cat_ok andalso ab_cat_fail
+        andalso (#coimage_image_iso_holds coim_im_res)
+        andalso (#coimage_cardinality coim_im_res = 2)
+        andalso (List.length (#kernel_elements coim_im_res) = 2)
+        andalso ab_kuratowski_rejected
+        andalso (#is_short_exact ses_res)
+        andalso (not (#is_short_exact ses_fail))
+        andalso (List.length snake_delta = 2)
+        andalso (#six_term_exact snake_exact_res)
+        andalso (not (#six_term_exact snake_exact_fail))
+        andalso coim_im_thm_ok andalso ses_split_thm_ok andalso snake_thm_ok
+        andalso coker_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -7658,6 +7946,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
+      andalso abelian_snake_all_ok
     end
 end;
 

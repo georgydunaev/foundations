@@ -794,6 +794,33 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_split_fibration_indexed_functor_bijection", content)
         self.assertIn("prove_split_fibration_indexed_functor_bijection", content)
 
+    def test_ticket_gl073_abelian_categories_exact_sequences_and_snake_lemma(self):
+        """Ticket 73: verify Abelian Categories, Coimage-Image Isomorphism, Exact Sequences, and Snake Lemma in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "CategoricalKernel",
+            "CategoricalCokernel",
+            "CoimageObject",
+            "ImageObject",
+            "SnakeConnectingMorphism",
+            "IsAbelianCategory",
+            "SatisfiesCoimageImageIso",
+            "IsShortExactSequence",
+            "SatisfiesSnakeLemmaExactness",
+            "eval_is_abelian_category",
+            "eval_coimage_image_iso",
+            "eval_is_short_exact_sequence",
+            "eval_snake_connecting_morphism",
+            "eval_snake_lemma_exactness",
+            "axiom_abelian_coimage_image_canonical_iso",
+            "prove_abelian_coimage_image_canonical_iso",
+            "axiom_short_exact_split_biproduct_equivalence",
+            "prove_short_exact_split_biproduct_equivalence",
+            "axiom_snake_lemma_six_term_exact_sequence",
+            "prove_snake_lemma_six_term_exact_sequence",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()
