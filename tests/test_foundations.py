@@ -815,6 +815,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["kan_fibration_verified"])
         self.assertTrue(res["homotopy_coherent_nerve_verified"])
 
+    def test_ticket_gl078_grothendieck_sites_sieves_sheaf_gluing_and_sheafification(self):
+        """Ticket 78: verify Grothendieck Sites, Covering Sieves, Sheaf Gluing, and Plus-Construction Sheafification."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_covering_sieve",
+            "eval_is_grothendieck_topology",
+            "eval_is_sheaf_on_site",
+            "eval_plus_sheafification",
+            "eval_sheafification_universal",
+            "proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["covering_sieve_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["grothendieck_topology_verified"])
+        self.assertTrue(res["sheaf_gluing_verified"])
+        self.assertTrue(res["plus_sheafification_verified"])
+        self.assertTrue(res["sheafification_universal_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

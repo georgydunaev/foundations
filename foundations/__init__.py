@@ -348,6 +348,12 @@ from foundations.classes import (
     eval_is_kan_fibration,
     eval_homotopy_coherent_nerve,
     proves_simplicial_sets_kan_complexes_and_quasi_categories,
+    eval_is_covering_sieve,
+    eval_is_grothendieck_topology,
+    eval_is_sheaf_on_site,
+    eval_plus_sheafification,
+    eval_sheafification_universal,
+    proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification,
     proves_foundations_classes_and_families,
 )
 
@@ -696,5 +702,11 @@ __all__: list[str] = [
     "eval_is_kan_fibration",
     "eval_homotopy_coherent_nerve",
     "proves_simplicial_sets_kan_complexes_and_quasi_categories",
+    "eval_is_covering_sieve",
+    "eval_is_grothendieck_topology",
+    "eval_is_sheaf_on_site",
+    "eval_plus_sheafification",
+    "eval_sheafification_universal",
+    "proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification",
     "proves_foundations_classes_and_families",
 ]

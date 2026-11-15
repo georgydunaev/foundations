@@ -930,6 +930,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl078_grothendieck_sites_sieves_sheaf_gluing_and_sheafification(self):
+        """Ticket 78: verify Grothendieck Sites, Covering Sieves, Sheaf Gluing, and Sheafification in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "CoveringSieve",
+            "GrothendieckSite",
+            "MatchingFamilyOnSieve",
+            "UniqueAmalgamationWitness",
+            "PlusSheafificationFunctor",
+            "IsCoveringSieve",
+            "IsGrothendieckTopology",
+            "IsSheafOnSite",
+            "SatisfiesSheafificationLeftAdjointUniversal",
+            "eval_is_covering_sieve",
+            "eval_is_grothendieck_topology",
+            "eval_is_sheaf_on_site",
+            "eval_plus_sheafification",
+            "eval_sheafification_universal",
+            "axiom_grothendieck_sieve_pullback_stability",
+            "prove_grothendieck_sieve_pullback_stability",
+            "axiom_sheaf_unique_amalgamation_gluing",
+            "prove_sheaf_unique_amalgamation_gluing",
+            "axiom_plus_plus_sheafification_exact_left_adjoint",
+            "prove_plus_plus_sheafification_exact_left_adjoint",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

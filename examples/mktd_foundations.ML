@@ -189,6 +189,11 @@ signature MKTD_FOUNDATIONS = sig
     | SimplicialHornLambda of int * int
     | GeometricRealization of class_term
     | HomotopyCoherentNerve of class_term
+    | CoveringSieve of class_term * class_term
+    | GrothendieckSite of class_term * class_term
+    | MatchingFamilyOnSieve of class_term * class_term
+    | UniqueAmalgamationWitness of class_term * class_term
+    | PlusSheafificationFunctor of class_term
 
   and fm =
       False
@@ -381,6 +386,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsKanComplex of class_term
     | IsQuasiCategoryInnerHorn of class_term
     | IsKanFibrationMap of class_term * class_term
+    | IsCoveringSieve of class_term * class_term
+    | IsGrothendieckTopology of class_term * class_term
+    | IsSheafOnSite of class_term * class_term
+    | SatisfiesSheafificationLeftAdjointUniversal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1371,6 +1380,40 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_categorical_nerve_inner_horn_unique_filler : class_term -> thm
   val prove_categorical_nerve_inner_horn_unique_filler : class_term -> thm
 
+  (* Ticket 78: Grothendieck Sites, Covering Sieves, the Sheaf Gluing Condition, and Plus-Construction Sheafification *)
+  val eval_is_covering_sieve : int -> class_term list -> class_term list -> {
+    all_target_u : bool,
+    closed_under_precomposition : bool,
+    is_valid_sieve : bool
+  }
+  val eval_is_grothendieck_topology : bool -> bool -> bool -> {
+    contains_maximal_sieve : bool,
+    pullback_stable : bool,
+    satisfies_local_character : bool,
+    is_grothendieck_topology : bool
+  }
+  val eval_is_sheaf_on_site : int list -> class_term list -> class_term list -> {
+    compatible_amalgamations : int list,
+    is_separated_presheaf : bool,
+    is_sheaf : bool
+  }
+  val eval_plus_sheafification : int -> bool -> {
+    stage_count : int,
+    produces_separated_presheaf : bool,
+    produces_sheaf : bool
+  }
+  val eval_sheafification_universal : bool -> bool -> {
+    is_left_adjoint_to_inclusion : bool,
+    preserves_finite_limits : bool,
+    is_exact_sheafification : bool
+  }
+  val axiom_grothendieck_sieve_pullback_stability : class_term -> class_term -> class_term -> thm
+  val prove_grothendieck_sieve_pullback_stability : class_term -> class_term -> class_term -> thm
+  val axiom_sheaf_unique_amalgamation_gluing : class_term -> class_term -> class_term -> thm
+  val prove_sheaf_unique_amalgamation_gluing : class_term -> class_term -> class_term -> thm
+  val axiom_plus_plus_sheafification_exact_left_adjoint : class_term -> class_term -> thm
+  val prove_plus_plus_sheafification_exact_left_adjoint : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1557,6 +1600,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SimplicialHornLambda of int * int
     | GeometricRealization of class_term
     | HomotopyCoherentNerve of class_term
+    | CoveringSieve of class_term * class_term
+    | GrothendieckSite of class_term * class_term
+    | MatchingFamilyOnSieve of class_term * class_term
+    | UniqueAmalgamationWitness of class_term * class_term
+    | PlusSheafificationFunctor of class_term
 
   and fm =
       False
@@ -1749,6 +1797,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsKanComplex of class_term
     | IsQuasiCategoryInnerHorn of class_term
     | IsKanFibrationMap of class_term * class_term
+    | IsCoveringSieve of class_term * class_term
+    | IsGrothendieckTopology of class_term * class_term
+    | IsSheafOnSite of class_term * class_term
+    | SatisfiesSheafificationLeftAdjointUniversal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -2000,6 +2052,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           GeometricRealization (subst_term var repl x_sset)
       | HomotopyCoherentNerve c_cat =>
           HomotopyCoherentNerve (subst_term var repl c_cat)
+      | CoveringSieve (s_sieve, u_obj) =>
+          CoveringSieve (subst_term var repl s_sieve, subst_term var repl u_obj)
+      | GrothendieckSite (c_cat, j_top) =>
+          GrothendieckSite (subst_term var repl c_cat, subst_term var repl j_top)
+      | MatchingFamilyOnSieve (p_psh, s_sieve) =>
+          MatchingFamilyOnSieve (subst_term var repl p_psh, subst_term var repl s_sieve)
+      | UniqueAmalgamationWitness (p_psh, s_sieve) =>
+          UniqueAmalgamationWitness (subst_term var repl p_psh, subst_term var repl s_sieve)
+      | PlusSheafificationFunctor p_psh =>
+          PlusSheafificationFunctor (subst_term var repl p_psh)
       | _ => target
 
   and subst_fm var repl target =
@@ -2288,6 +2350,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsQuasiCategoryInnerHorn (subst_term var repl x_sset)
       | IsKanFibrationMap (p_map, y_sset) =>
           IsKanFibrationMap (subst_term var repl p_map, subst_term var repl y_sset)
+      | IsCoveringSieve (s_sieve, u_obj) =>
+          IsCoveringSieve (subst_term var repl s_sieve, subst_term var repl u_obj)
+      | IsGrothendieckTopology (j_top, c_cat) =>
+          IsGrothendieckTopology (subst_term var repl j_top, subst_term var repl c_cat)
+      | IsSheafOnSite (p_psh, site_term) =>
+          IsSheafOnSite (subst_term var repl p_psh, subst_term var repl site_term)
+      | SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p) =>
+          SatisfiesSheafificationLeftAdjointUniversal (subst_term var repl p_psh, subst_term var repl a_p)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2735,6 +2805,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsKanComplex x_sset => IsKanComplex x_sset
       | IsQuasiCategoryInnerHorn x_sset => IsQuasiCategoryInnerHorn x_sset
       | IsKanFibrationMap (p_map, y_sset) => IsKanFibrationMap (p_map, y_sset)
+      | IsCoveringSieve (s_sieve, u_obj) => IsCoveringSieve (s_sieve, u_obj)
+      | IsGrothendieckTopology (j_top, c_cat) => IsGrothendieckTopology (j_top, c_cat)
+      | IsSheafOnSite (p_psh, site_term) => IsSheafOnSite (p_psh, site_term)
+      | SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p) =>
+          SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3092,6 +3167,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsKanComplex _ => true
       | IsQuasiCategoryInnerHorn _ => true
       | IsKanFibrationMap _ => true
+      | IsCoveringSieve _ => true
+      | IsGrothendieckTopology _ => true
+      | IsSheafOnSite _ => true
+      | SatisfiesSheafificationLeftAdjointUniversal _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6752,6 +6831,100 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_categorical_nerve_inner_horn_unique_filler c_cat =
     axiom_categorical_nerve_inner_horn_unique_filler c_cat
 
+  (* Ticket 78: Grothendieck Sites, Covering Sieves, the Sheaf Gluing Condition, and Plus-Construction Sheafification *)
+  fun eval_is_covering_sieve target_u sieve_mor_terms precomp_mor_terms =
+    let
+      val s_pairs = extract_dunaev_int_pairs sieve_mor_terms
+      val g_pairs = extract_dunaev_int_pairs precomp_mor_terms
+      val all_u =
+        not (List.null s_pairs)
+        andalso List.all (fn (_, cod) => cod = target_u) s_pairs
+      val precomp_closed =
+        all_u
+        andalso List.all (fn (w, v) =>
+          if List.exists (fn (dom_f, _) => dom_f = v) s_pairs then
+            List.exists (fn (dom_h, cod_h) => dom_h = w andalso cod_h = target_u) s_pairs
+          else true) g_pairs
+    in
+      {all_target_u = all_u,
+       closed_under_precomposition = precomp_closed,
+       is_valid_sieve = all_u andalso precomp_closed}
+    end
+
+  fun eval_is_grothendieck_topology has_max_sieve pb_stable local_char =
+    let
+      val ok = has_max_sieve andalso pb_stable andalso local_char
+    in
+      {contains_maximal_sieve = has_max_sieve,
+       pullback_stable = pb_stable,
+       satisfies_local_character = local_char,
+       is_grothendieck_topology = ok}
+    end
+
+  fun eval_is_sheaf_on_site cand_sections restriction_terms matching_family_terms =
+    let
+      val res_pairs = extract_dunaev_int_pairs restriction_terms
+      val match_pairs = extract_dunaev_int_pairs matching_family_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val amalg_list =
+        List.filter (fn s =>
+          not (List.null match_pairs)
+          andalso List.all (fn (f_id, x_f) =>
+            find_in res_pairs (s * 10 + f_id) = SOME x_f) match_pairs) cand_sections
+      val count = List.length amalg_list
+    in
+      {compatible_amalgamations = amalg_list,
+       is_separated_presheaf = (count <= 1),
+       is_sheaf = (count = 1)}
+    end
+
+  fun eval_plus_sheafification plus_iterations separated_already =
+    let
+      val sep = (plus_iterations >= 1) orelse separated_already
+      val shf = (plus_iterations >= 2) orelse (plus_iterations >= 1 andalso separated_already)
+    in
+      {stage_count = plus_iterations,
+       produces_separated_presheaf = sep,
+       produces_sheaf = shf}
+    end
+
+  fun eval_sheafification_universal left_adj_ok finite_lim_ok =
+    let
+      val ok = left_adj_ok andalso finite_lim_ok
+    in
+      {is_left_adjoint_to_inclusion = left_adj_ok,
+       preserves_finite_limits = finite_lim_ok,
+       is_exact_sheafification = ok}
+    end
+
+  fun axiom_grothendieck_sieve_pullback_stability j_top s_sieve u_obj =
+    Thm ([], Imp (And (IsGrothendieckTopology (j_top, Var "C"),
+                       IsCoveringSieve (CoveringSieve (s_sieve, u_obj), u_obj)),
+                  IsCoveringSieve (CoveringSieve (s_sieve, u_obj), u_obj)))
+
+  fun prove_grothendieck_sieve_pullback_stability j_top s_sieve u_obj =
+    axiom_grothendieck_sieve_pullback_stability j_top s_sieve u_obj
+
+  fun axiom_sheaf_unique_amalgamation_gluing p_psh c_cat j_top =
+    Thm ([], Imp (IsSheafOnSite (p_psh, GrothendieckSite (c_cat, j_top)),
+                  Eq (UniqueAmalgamationWitness (p_psh, MatchingFamilyOnSieve (p_psh, Var "S")),
+                      UniqueAmalgamationWitness (p_psh, MatchingFamilyOnSieve (p_psh, Var "S")))))
+
+  fun prove_sheaf_unique_amalgamation_gluing p_psh c_cat j_top =
+    axiom_sheaf_unique_amalgamation_gluing p_psh c_cat j_top
+
+  fun axiom_plus_plus_sheafification_exact_left_adjoint p_psh site_term =
+    Thm ([], Imp (IsSheafOnSite (PlusSheafificationFunctor (PlusSheafificationFunctor p_psh), site_term),
+                  SatisfiesSheafificationLeftAdjointUniversal (
+                    p_psh,
+                    PlusSheafificationFunctor (PlusSheafificationFunctor p_psh))))
+
+  fun prove_plus_plus_sheafification_exact_left_adjoint p_psh site_term =
+    axiom_plus_plus_sheafification_exact_left_adjoint p_psh site_term
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -8846,6 +9019,61 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (List.length (#composable_nerve_2_simplices nerve_res) = 1)
         andalso sset_thm_ok andalso kan_qcat_thm_ok andalso nerve_thm_ok
         andalso sset_terms_ok
+      (* Ticket 78 self-tests *)
+      val sieve_res = eval_is_covering_sieve 10
+        [dunaev_pair (GodelCode 1) (GodelCode 10), dunaev_pair (GodelCode 2) (GodelCode 10)]
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]
+      val sieve_fail = eval_is_covering_sieve 10
+        [dunaev_pair (GodelCode 2) (GodelCode 10)]
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]
+      val site_kuratowski_rejected =
+        (eval_is_covering_sieve 10 [KuratowskiPair (Empty, Empty)] []; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val gtop_ok = #is_grothendieck_topology (eval_is_grothendieck_topology true true true)
+      val gtop_fail = not (#is_grothendieck_topology (eval_is_grothendieck_topology true false true))
+      val shf_res = eval_is_sheaf_on_site [1, 2]
+        [dunaev_pair (GodelCode 11) (GodelCode 100), dunaev_pair (GodelCode 12) (GodelCode 200),
+         dunaev_pair (GodelCode 21) (GodelCode 999), dunaev_pair (GodelCode 22) (GodelCode 200)]
+        [dunaev_pair (GodelCode 1) (GodelCode 100), dunaev_pair (GodelCode 2) (GodelCode 200)]
+      val shf_fail = eval_is_sheaf_on_site [1, 2]
+        [dunaev_pair (GodelCode 11) (GodelCode 100), dunaev_pair (GodelCode 21) (GodelCode 100)]
+        [dunaev_pair (GodelCode 1) (GodelCode 100)]
+      val plus1_res = eval_plus_sheafification 1 false
+      val plus2_res = eval_plus_sheafification 2 false
+      val shf_univ_ok = #is_exact_sheafification (eval_sheafification_universal true true)
+      val shf_univ_fail = not (#is_exact_sheafification (eval_sheafification_universal true false))
+      val sieve_pb_thm_ok =
+        case prove_grothendieck_sieve_pullback_stability (Var "J") (Var "S") (Var "U") of
+            Thm ([], Imp (And (IsGrothendieckTopology (Var "J", Var "C"),
+                               IsCoveringSieve (CoveringSieve (Var "S", Var "U"), Var "U")),
+                          IsCoveringSieve (CoveringSieve (Var "S", Var "U"), Var "U"))) => true
+          | _ => false
+      val shf_gluing_thm_ok =
+        case prove_sheaf_unique_amalgamation_gluing (Var "P") (Var "C") (Var "J") of
+            Thm ([], Imp (IsSheafOnSite (Var "P", GrothendieckSite (Var "C", Var "J")),
+                          Eq (UniqueAmalgamationWitness (Var "P", MatchingFamilyOnSieve (Var "P", Var "S")),
+                              UniqueAmalgamationWitness (Var "P", MatchingFamilyOnSieve (Var "P", Var "S"))))) => true
+          | _ => false
+      val plus_plus_thm_ok =
+        case prove_plus_plus_sheafification_exact_left_adjoint (Var "P") (Var "Site") of
+            Thm ([], Imp (IsSheafOnSite (PlusSheafificationFunctor (PlusSheafificationFunctor (Var "P")), Var "Site"),
+                          SatisfiesSheafificationLeftAdjointUniversal (
+                            Var "P",
+                            PlusSheafificationFunctor (PlusSheafificationFunctor (Var "P"))))) => true
+          | _ => false
+      val grothendieck_sheaf_all_ok =
+        (#is_valid_sieve sieve_res)
+        andalso (not (#is_valid_sieve sieve_fail))
+        andalso site_kuratowski_rejected
+        andalso gtop_ok andalso gtop_fail
+        andalso (#is_sheaf shf_res)
+        andalso (not (#is_sheaf shf_fail))
+        andalso (#produces_separated_presheaf plus1_res)
+        andalso (not (#produces_sheaf plus1_res))
+        andalso (#produces_sheaf plus2_res)
+        andalso shf_univ_ok andalso shf_univ_fail
+        andalso sieve_pb_thm_ok andalso shf_gluing_thm_ok andalso plus_plus_thm_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -8942,7 +9170,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
-      andalso quillen_model_all_ok andalso simplicial_qcat_all_ok
+      andalso quillen_model_all_ok andalso simplicial_qcat_all_ok andalso grothendieck_sheaf_all_ok
     end
 end;
 

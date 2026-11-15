@@ -2509,6 +2509,44 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_simplicial_sets_kan_complexes_and_quasi_categories()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl078_grothendieck_sites_sieves_sheaf_gluing_and_sheafification(self):
+        """Ticket 78: Grothendieck Sites, Covering Sieves, Sheaf Gluing, and Plus-Construction Sheafification."""
+        from foundations.type_semantics import (
+            eval_is_covering_sieve,
+            eval_is_grothendieck_topology,
+            eval_is_sheaf_on_site,
+            eval_plus_sheafification,
+            eval_sheafification_universal,
+            proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification,
+        )
+
+        self.assertTrue(
+            eval_is_covering_sieve(
+                10, [dunaev_pair(1, 10), dunaev_pair(2, 10)], [dunaev_pair(1, 2)]
+            )["is_valid_sieve"]
+        )
+        with self.assertRaises(ProperClassError):
+            eval_is_covering_sieve(10, [KuratowskiPair(1, 10)], [])
+
+        self.assertTrue(eval_is_grothendieck_topology(True, True, True)["is_grothendieck_topology"])
+        self.assertTrue(
+            eval_is_sheaf_on_site(
+                [1, 2],
+                [
+                    dunaev_pair(11, 100),
+                    dunaev_pair(12, 200),
+                    dunaev_pair(21, 999),
+                    dunaev_pair(22, 200),
+                ],
+                [dunaev_pair(1, 100), dunaev_pair(2, 200)],
+            )["is_sheaf"]
+        )
+        self.assertTrue(eval_plus_sheafification(2, False)["produces_sheaf"])
+        self.assertTrue(eval_sheafification_universal(True, True)["is_exact_sheafification"])
+
+        master = proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()
