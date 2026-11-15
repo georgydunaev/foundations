@@ -2547,6 +2547,56 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl079_spectral_sequences_filtered_complexes_and_grothendieck_convergence(self):
+        """Ticket 79: Spectral Sequences, Filtered Complexes, Exact Couples, and Grothendieck Convergence."""
+        from foundations.type_semantics import (
+            eval_is_spectral_sequence_differential,
+            eval_spectral_page_cohomology_iso,
+            eval_converges_to_filtered_abutment,
+            eval_exact_couple_derived,
+            eval_grothendieck_spectral_convergence,
+            proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence,
+        )
+
+        diff_res = eval_is_spectral_sequence_differential(
+            2,
+            [0, 1, 2],
+            [dunaev_pair(0, 0), dunaev_pair(1, 0), dunaev_pair(2, 1)],
+            [dunaev_pair(0, 0), dunaev_pair(1, 1), dunaev_pair(2, 0)],
+        )
+        self.assertTrue(diff_res["is_valid_spectral_differential"])
+        self.assertEqual(diff_res["bidegree"], (2, -1))
+        with self.assertRaises(ProperClassError):
+            eval_is_spectral_sequence_differential(2, [0, 1], [KuratowskiPair(0, 0)], [])
+
+        iso_res = eval_spectral_page_cohomology_iso(
+            [0, 1, 2],
+            [dunaev_pair(0, 0), dunaev_pair(1, 0), dunaev_pair(2, 1)],
+            [dunaev_pair(0, 0), dunaev_pair(1, 1), dunaev_pair(2, 0)],
+        )
+        self.assertTrue(iso_res["page_iso_holds"])
+        self.assertTrue(
+            eval_converges_to_filtered_abutment(True, True, [1, 2, 1], [1, 2, 1])[
+                "converges_strongly"
+            ]
+        )
+        self.assertTrue(
+            eval_exact_couple_derived(
+                [0, 1],
+                [dunaev_pair(0, 0), dunaev_pair(1, 1)],
+                [dunaev_pair(0, 0), dunaev_pair(1, 0)],
+                [dunaev_pair(0, 0)],
+            )["is_valid_exact_couple"]
+        )
+        self.assertTrue(
+            eval_grothendieck_spectral_convergence(True, True, True)[
+                "e2_abuts_to_right_derived_composite"
+            ]
+        )
+
+        master = proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -354,6 +354,12 @@ from foundations.classes import (
     eval_plus_sheafification,
     eval_sheafification_universal,
     proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification,
+    eval_is_spectral_sequence_differential,
+    eval_spectral_page_cohomology_iso,
+    eval_converges_to_filtered_abutment,
+    eval_exact_couple_derived,
+    eval_grothendieck_spectral_convergence,
+    proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence,
     proves_foundations_classes_and_families,
 )
 
@@ -708,5 +714,11 @@ __all__: list[str] = [
     "eval_plus_sheafification",
     "eval_sheafification_universal",
     "proves_grothendieck_sites_sieves_sheaf_gluing_and_sheafification",
+    "eval_is_spectral_sequence_differential",
+    "eval_spectral_page_cohomology_iso",
+    "eval_converges_to_filtered_abutment",
+    "eval_exact_couple_derived",
+    "eval_grothendieck_spectral_convergence",
+    "proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence",
     "proves_foundations_classes_and_families",
 ]

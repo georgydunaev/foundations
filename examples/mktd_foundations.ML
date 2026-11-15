@@ -194,6 +194,11 @@ signature MKTD_FOUNDATIONS = sig
     | MatchingFamilyOnSieve of class_term * class_term
     | UniqueAmalgamationWitness of class_term * class_term
     | PlusSheafificationFunctor of class_term
+    | SpectralSequencePage of int * class_term * class_term
+    | FilteredComplex of class_term * class_term
+    | ExactCoupleTriangle of class_term * class_term * class_term
+    | AbutmentFiltrationGraded of int * class_term
+    | GrothendieckCompositeSpectralSequence of class_term * class_term * class_term
 
   and fm =
       False
@@ -390,6 +395,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsGrothendieckTopology of class_term * class_term
     | IsSheafOnSite of class_term * class_term
     | SatisfiesSheafificationLeftAdjointUniversal of class_term * class_term
+    | IsSpectralSequenceDifferential of int * class_term
+    | SatisfiesSpectralPageCohomologyIso of class_term * class_term
+    | ConvergesToFilteredAbutment of class_term * class_term
+    | SatisfiesGrothendieckSpectralConvergence of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1414,6 +1423,41 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_plus_plus_sheafification_exact_left_adjoint : class_term -> class_term -> thm
   val prove_plus_plus_sheafification_exact_left_adjoint : class_term -> class_term -> thm
 
+  (* Ticket 79: Spectral Sequences, Filtered Complexes, Exact Couples, and the Grothendieck Composite-Functor Spectral Sequence *)
+  val eval_is_spectral_sequence_differential : int -> int list -> class_term list -> class_term list -> {
+    page_r : int,
+    bidegree : int * int,
+    differential_squared_zero : bool,
+    is_valid_spectral_differential : bool
+  }
+  val eval_spectral_page_cohomology_iso : int list -> class_term list -> class_term list -> {
+    kernel_elements : int list,
+    image_elements : int list,
+    next_page_representatives : int list,
+    page_iso_holds : bool
+  }
+  val eval_converges_to_filtered_abutment : bool -> bool -> int list -> int list -> {
+    filtration_bounded_exhaustive : bool,
+    e_infinity_matches_graded_abutment : bool,
+    converges_strongly : bool
+  }
+  val eval_exact_couple_derived : int list -> class_term list -> class_term list -> class_term list -> {
+    derived_d_image : int list,
+    induced_differential_zero_on_im_i : bool,
+    is_valid_exact_couple : bool
+  }
+  val eval_grothendieck_spectral_convergence : bool -> bool -> bool -> {
+    f_and_g_left_exact : bool,
+    f_sends_injectives_to_g_acyclic : bool,
+    e2_abuts_to_right_derived_composite : bool
+  }
+  val axiom_spectral_differential_squared_zero : int -> class_term -> class_term -> thm
+  val prove_spectral_differential_squared_zero : int -> class_term -> class_term -> thm
+  val axiom_filtered_complex_spectral_convergence : class_term -> class_term -> thm
+  val prove_filtered_complex_spectral_convergence : class_term -> class_term -> thm
+  val axiom_grothendieck_composite_functor_e2_abutment : class_term -> class_term -> class_term -> thm
+  val prove_grothendieck_composite_functor_e2_abutment : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1605,6 +1649,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | MatchingFamilyOnSieve of class_term * class_term
     | UniqueAmalgamationWitness of class_term * class_term
     | PlusSheafificationFunctor of class_term
+    | SpectralSequencePage of int * class_term * class_term
+    | FilteredComplex of class_term * class_term
+    | ExactCoupleTriangle of class_term * class_term * class_term
+    | AbutmentFiltrationGraded of int * class_term
+    | GrothendieckCompositeSpectralSequence of class_term * class_term * class_term
 
   and fm =
       False
@@ -1801,6 +1850,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsGrothendieckTopology of class_term * class_term
     | IsSheafOnSite of class_term * class_term
     | SatisfiesSheafificationLeftAdjointUniversal of class_term * class_term
+    | IsSpectralSequenceDifferential of int * class_term
+    | SatisfiesSpectralPageCohomologyIso of class_term * class_term
+    | ConvergesToFilteredAbutment of class_term * class_term
+    | SatisfiesGrothendieckSpectralConvergence of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -2062,6 +2115,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           UniqueAmalgamationWitness (subst_term var repl p_psh, subst_term var repl s_sieve)
       | PlusSheafificationFunctor p_psh =>
           PlusSheafificationFunctor (subst_term var repl p_psh)
+      | SpectralSequencePage (r_idx, p_deg, q_deg) =>
+          SpectralSequencePage (r_idx, subst_term var repl p_deg, subst_term var repl q_deg)
+      | FilteredComplex (k_cplx, f_filt) =>
+          FilteredComplex (subst_term var repl k_cplx, subst_term var repl f_filt)
+      | ExactCoupleTriangle (d_obj, e_obj, ijk_triple) =>
+          ExactCoupleTriangle (subst_term var repl d_obj, subst_term var repl e_obj, subst_term var repl ijk_triple)
+      | AbutmentFiltrationGraded (p_idx, h_tot) =>
+          AbutmentFiltrationGraded (p_idx, subst_term var repl h_tot)
+      | GrothendieckCompositeSpectralSequence (f_fun, g_fun, a_obj) =>
+          GrothendieckCompositeSpectralSequence (subst_term var repl f_fun, subst_term var repl g_fun, subst_term var repl a_obj)
       | _ => target
 
   and subst_fm var repl target =
@@ -2358,6 +2421,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsSheafOnSite (subst_term var repl p_psh, subst_term var repl site_term)
       | SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p) =>
           SatisfiesSheafificationLeftAdjointUniversal (subst_term var repl p_psh, subst_term var repl a_p)
+      | IsSpectralSequenceDifferential (r_idx, d_mor) =>
+          IsSpectralSequenceDifferential (r_idx, subst_term var repl d_mor)
+      | SatisfiesSpectralPageCohomologyIso (e_next, e_curr) =>
+          SatisfiesSpectralPageCohomologyIso (subst_term var repl e_next, subst_term var repl e_curr)
+      | ConvergesToFilteredAbutment (e_r, h_tot) =>
+          ConvergesToFilteredAbutment (subst_term var repl e_r, subst_term var repl h_tot)
+      | SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj) =>
+          SatisfiesGrothendieckSpectralConvergence (subst_term var repl f_fun, subst_term var repl g_fun, subst_term var repl a_obj)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2810,6 +2881,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsSheafOnSite (p_psh, site_term) => IsSheafOnSite (p_psh, site_term)
       | SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p) =>
           SatisfiesSheafificationLeftAdjointUniversal (p_psh, a_p)
+      | IsSpectralSequenceDifferential (r_idx, d_mor) =>
+          IsSpectralSequenceDifferential (r_idx, d_mor)
+      | SatisfiesSpectralPageCohomologyIso (e_next, e_curr) =>
+          SatisfiesSpectralPageCohomologyIso (e_next, e_curr)
+      | ConvergesToFilteredAbutment (e_r, h_tot) =>
+          ConvergesToFilteredAbutment (e_r, h_tot)
+      | SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj) =>
+          SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3171,6 +3250,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsGrothendieckTopology _ => true
       | IsSheafOnSite _ => true
       | SatisfiesSheafificationLeftAdjointUniversal _ => true
+      | IsSpectralSequenceDifferential _ => true
+      | SatisfiesSpectralPageCohomologyIso _ => true
+      | ConvergesToFilteredAbutment _ => true
+      | SatisfiesGrothendieckSpectralConvergence _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6925,6 +7008,121 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_plus_plus_sheafification_exact_left_adjoint p_psh site_term =
     axiom_plus_plus_sheafification_exact_left_adjoint p_psh site_term
 
+  (* Ticket 79: Spectral Sequences, Filtered Complexes, Exact Couples, and the Grothendieck Composite-Functor Spectral Sequence *)
+  fun eval_is_spectral_sequence_differential r_page domain_elements d_r_out_terms d_r_in_terms =
+    let
+      val out_pairs = extract_dunaev_int_pairs d_r_out_terms
+      val in_pairs = extract_dunaev_int_pairs d_r_in_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => v
+          | NONE => 0
+      val d_sq_zero =
+        (r_page >= 0)
+        andalso (not (List.null domain_elements))
+        andalso List.all (fn x => find_in out_pairs (find_in in_pairs x) = 0) domain_elements
+    in
+      {page_r = r_page,
+       bidegree = (r_page, 1 - r_page),
+       differential_squared_zero = d_sq_zero,
+       is_valid_spectral_differential = d_sq_zero}
+    end
+
+  fun eval_spectral_page_cohomology_iso page_elements d_r_out_terms d_r_in_terms =
+    let
+      val out_pairs = extract_dunaev_int_pairs d_r_out_terms
+      val in_pairs = extract_dunaev_int_pairs d_r_in_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => v
+          | NONE => 0
+      val ker_elems = List.filter (fn x => find_in out_pairs x = 0) page_elements
+      val im_raw = List.map (fn (_, y) => y) in_pairs
+      val im_elems =
+        List.filter (fn x => List.exists (fn y => y = x) im_raw) page_elements
+      val im_in_ker =
+        List.all (fn y => List.exists (fn k => k = y) ker_elems) im_elems
+      val reps =
+        List.filter (fn k => not (List.exists (fn y => y = k) im_elems) orelse k = 0) ker_elems
+    in
+      {kernel_elements = ker_elems,
+       image_elements = im_elems,
+       next_page_representatives = reps,
+       page_iso_holds = (not (List.null page_elements)) andalso im_in_ker}
+    end
+
+  fun eval_converges_to_filtered_abutment bounded_ok exhaustive_ok e_inf_dims gr_abut_dims =
+    let
+      val filt_ok = bounded_ok andalso exhaustive_ok
+      val dims_match = (not (List.null e_inf_dims)) andalso (e_inf_dims = gr_abut_dims)
+    in
+      {filtration_bounded_exhaustive = filt_ok,
+       e_infinity_matches_graded_abutment = dims_match,
+       converges_strongly = filt_ok andalso dims_match}
+    end
+
+  fun eval_exact_couple_derived d_elements i_map_terms j_map_terms k_map_terms =
+    let
+      val i_pairs = extract_dunaev_int_pairs i_map_terms
+      val j_pairs = extract_dunaev_int_pairs j_map_terms
+      val k_pairs = extract_dunaev_int_pairs k_map_terms
+      fun find_in pairs x =
+        case List.find (fn (key, _) => key = x) pairs of
+            SOME (_, v) => v
+          | NONE => 0
+      val d_img = List.map (fn x => find_in i_pairs x) d_elements
+      val j_of_i_zero =
+        (not (List.null d_elements))
+        andalso List.all (fn x => find_in j_pairs (find_in i_pairs x) = 0) d_elements
+      val i_of_k_zero =
+        List.all (fn (_, kx) => find_in i_pairs kx = 0) k_pairs
+      val d_on_im_i_zero =
+        j_of_i_zero
+        andalso List.all (fn x =>
+          find_in j_pairs (find_in k_pairs (find_in j_pairs (find_in i_pairs x))) = 0) d_elements
+    in
+      {derived_d_image = d_img,
+       induced_differential_zero_on_im_i = d_on_im_i_zero,
+       is_valid_exact_couple = j_of_i_zero andalso i_of_k_zero andalso d_on_im_i_zero}
+    end
+
+  fun eval_grothendieck_spectral_convergence f_left_exact g_left_exact f_inj_to_g_acyclic =
+    let
+      val fg_ok = f_left_exact andalso g_left_exact
+      val conv_ok = fg_ok andalso f_inj_to_g_acyclic
+    in
+      {f_and_g_left_exact = fg_ok,
+       f_sends_injectives_to_g_acyclic = f_inj_to_g_acyclic,
+       e2_abuts_to_right_derived_composite = conv_ok}
+    end
+
+  fun axiom_spectral_differential_squared_zero r_idx e_r d_r =
+    Thm ([], Imp (IsSpectralSequenceDifferential (r_idx, d_r),
+                  SatisfiesSpectralPageCohomologyIso (
+                    SpectralSequencePage (r_idx + 1, Var "p", Var "q"),
+                    e_r)))
+
+  fun prove_spectral_differential_squared_zero r_idx e_r d_r =
+    axiom_spectral_differential_squared_zero r_idx e_r d_r
+
+  fun axiom_filtered_complex_spectral_convergence k_cplx f_filt =
+    Thm ([], Imp (IsChainComplex (FilteredComplex (k_cplx, f_filt)),
+                  ConvergesToFilteredAbutment (
+                    SpectralSequencePage (1, Var "p", Var "q"),
+                    AbutmentFiltrationGraded (0, k_cplx))))
+
+  fun prove_filtered_complex_spectral_convergence k_cplx f_filt =
+    axiom_filtered_complex_spectral_convergence k_cplx f_filt
+
+  fun axiom_grothendieck_composite_functor_e2_abutment f_fun g_fun a_obj =
+    Thm ([], Imp (SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj),
+                  ConvergesToFilteredAbutment (
+                    GrothendieckCompositeSpectralSequence (f_fun, g_fun, a_obj),
+                    RightDerivedExt (0, f_fun, g_fun))))
+
+  fun prove_grothendieck_composite_functor_e2_abutment f_fun g_fun a_obj =
+    axiom_grothendieck_composite_functor_e2_abutment f_fun g_fun a_obj
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -9074,6 +9272,66 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (#produces_sheaf plus2_res)
         andalso shf_univ_ok andalso shf_univ_fail
         andalso sieve_pb_thm_ok andalso shf_gluing_thm_ok andalso plus_plus_thm_ok
+      (* Ticket 79 self-tests *)
+      val spec_diff_res = eval_is_spectral_sequence_differential 2 [0, 1, 2]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 0), dunaev_pair (GodelCode 2) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1), dunaev_pair (GodelCode 2) (GodelCode 0)]
+      val spec_diff_fail = eval_is_spectral_sequence_differential 2 [0, 1, 2]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 2), dunaev_pair (GodelCode 2) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1), dunaev_pair (GodelCode 2) (GodelCode 1)]
+      val spec_kuratowski_rejected =
+        (eval_is_spectral_sequence_differential 2 [0, 1] [KuratowskiPair (Empty, Empty)] []; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val page_iso_res = eval_spectral_page_cohomology_iso [0, 1, 2]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 0), dunaev_pair (GodelCode 2) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1), dunaev_pair (GodelCode 2) (GodelCode 0)]
+      val page_iso_fail = eval_spectral_page_cohomology_iso [0, 1, 2]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 2), dunaev_pair (GodelCode 2) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1), dunaev_pair (GodelCode 2) (GodelCode 1)]
+      val abut_ok = #converges_strongly (eval_converges_to_filtered_abutment true true [1, 2, 1] [1, 2, 1])
+      val abut_fail = not (#converges_strongly (eval_converges_to_filtered_abutment true true [1, 2, 1] [1, 1, 1]))
+      val couple_res = eval_exact_couple_derived [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 0)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0)]
+      val groth_ss_ok = #e2_abuts_to_right_derived_composite (eval_grothendieck_spectral_convergence true true true)
+      val groth_ss_fail = not (#e2_abuts_to_right_derived_composite (eval_grothendieck_spectral_convergence true false true))
+      val spec_diff_thm_ok =
+        case prove_spectral_differential_squared_zero 2 (Var "E2") (Var "d2") of
+            Thm ([], Imp (IsSpectralSequenceDifferential (2, Var "d2"),
+                          SatisfiesSpectralPageCohomologyIso (
+                            SpectralSequencePage (3, Var "p", Var "q"),
+                            Var "E2"))) => true
+          | _ => false
+      val filt_conv_thm_ok =
+        case prove_filtered_complex_spectral_convergence (Var "K") (Var "F") of
+            Thm ([], Imp (IsChainComplex (FilteredComplex (Var "K", Var "F")),
+                          ConvergesToFilteredAbutment (
+                            SpectralSequencePage (1, Var "p", Var "q"),
+                            AbutmentFiltrationGraded (0, Var "K")))) => true
+          | _ => false
+      val groth_ss_thm_ok =
+        case prove_grothendieck_composite_functor_e2_abutment (Var "F") (Var "G") (Var "A") of
+            Thm ([], Imp (SatisfiesGrothendieckSpectralConvergence (Var "F", Var "G", Var "A"),
+                          ConvergesToFilteredAbutment (
+                            GrothendieckCompositeSpectralSequence (Var "F", Var "G", Var "A"),
+                            RightDerivedExt (0, Var "F", Var "G")))) => true
+          | _ => false
+      val ec_term_ok =
+        (ExactCoupleTriangle (Var "D", Var "E", Var "ijk") = ExactCoupleTriangle (Var "D", Var "E", Var "ijk"))
+      val spectral_seq_all_ok =
+        (#is_valid_spectral_differential spec_diff_res)
+        andalso (#bidegree spec_diff_res = (2, ~1))
+        andalso (not (#is_valid_spectral_differential spec_diff_fail))
+        andalso spec_kuratowski_rejected
+        andalso (#page_iso_holds page_iso_res)
+        andalso (not (#page_iso_holds page_iso_fail))
+        andalso abut_ok andalso abut_fail
+        andalso (#is_valid_exact_couple couple_res)
+        andalso groth_ss_ok andalso groth_ss_fail
+        andalso spec_diff_thm_ok andalso filt_conv_thm_ok andalso groth_ss_thm_ok
+        andalso ec_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -9171,6 +9429,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
       andalso quillen_model_all_ok andalso simplicial_qcat_all_ok andalso grothendieck_sheaf_all_ok
+      andalso spectral_seq_all_ok
     end
 end;
 

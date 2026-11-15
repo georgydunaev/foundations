@@ -957,6 +957,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl079_spectral_sequences_filtered_complexes_and_grothendieck_convergence(self):
+        """Ticket 79: verify Spectral Sequences, Filtered Complexes, Exact Couples, and Grothendieck Convergence in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "SpectralSequencePage",
+            "FilteredComplex",
+            "ExactCoupleTriangle",
+            "AbutmentFiltrationGraded",
+            "GrothendieckCompositeSpectralSequence",
+            "IsSpectralSequenceDifferential",
+            "SatisfiesSpectralPageCohomologyIso",
+            "ConvergesToFilteredAbutment",
+            "SatisfiesGrothendieckSpectralConvergence",
+            "eval_is_spectral_sequence_differential",
+            "eval_spectral_page_cohomology_iso",
+            "eval_converges_to_filtered_abutment",
+            "eval_exact_couple_derived",
+            "eval_grothendieck_spectral_convergence",
+            "axiom_spectral_differential_squared_zero",
+            "prove_spectral_differential_squared_zero",
+            "axiom_filtered_complex_spectral_convergence",
+            "prove_filtered_complex_spectral_convergence",
+            "axiom_grothendieck_composite_functor_e2_abutment",
+            "prove_grothendieck_composite_functor_e2_abutment",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

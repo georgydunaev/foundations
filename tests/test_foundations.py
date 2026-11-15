@@ -840,6 +840,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["plus_sheafification_verified"])
         self.assertTrue(res["sheafification_universal_verified"])
 
+    def test_ticket_gl079_spectral_sequences_filtered_complexes_and_grothendieck_convergence(self):
+        """Ticket 79: verify Spectral Sequences, Filtered Complexes, Exact Couples, and Grothendieck Convergence."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_spectral_sequence_differential",
+            "eval_spectral_page_cohomology_iso",
+            "eval_converges_to_filtered_abutment",
+            "eval_exact_couple_derived",
+            "eval_grothendieck_spectral_convergence",
+            "proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["spectral_differential_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["spectral_page_iso_verified"])
+        self.assertTrue(res["filtered_abutment_convergence_verified"])
+        self.assertTrue(res["exact_couple_derived_verified"])
+        self.assertTrue(res["grothendieck_spectral_convergence_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()
