@@ -543,6 +543,29 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["gale_stewart_determinacy_verified"])
         self.assertTrue(res["martin_borel_determinacy_verified"])
 
+    def test_ticket_gl067_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac(self):
+        """Ticket 67: verify Heat Semigroup Contraction, Integral Kernel Criterion, Dyson-Phillips, and Lipschitz Regularity."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_heat_semigroup_contraction",
+            "eval_integral_kernel_criterion",
+            "eval_dyson_phillips_series_bound",
+            "eval_schrodinger_lipschitz_regularity",
+            "proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["heat_semigroup_contraction_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["integral_kernel_criterion_verified"])
+        self.assertTrue(res["dyson_phillips_series_verified"])
+        self.assertTrue(res["lipschitz_and_feynman_kac_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

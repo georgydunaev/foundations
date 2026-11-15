@@ -283,6 +283,11 @@ from foundations.classes import (
     eval_gale_stewart_closed_determinacy,
     eval_martin_borel_determinacy,
     proves_borel_projective_determinacy_and_gale_stewart_games,
+    eval_heat_semigroup_contraction,
+    eval_integral_kernel_criterion,
+    eval_dyson_phillips_series_bound,
+    eval_schrodinger_lipschitz_regularity,
+    proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac,
     proves_foundations_classes_and_families,
 )
 
@@ -566,5 +571,10 @@ __all__: list[str] = [
     "eval_gale_stewart_closed_determinacy",
     "eval_martin_borel_determinacy",
     "proves_borel_projective_determinacy_and_gale_stewart_games",
+    "eval_heat_semigroup_contraction",
+    "eval_integral_kernel_criterion",
+    "eval_dyson_phillips_series_bound",
+    "eval_schrodinger_lipschitz_regularity",
+    "proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac",
     "proves_foundations_classes_and_families",
 ]

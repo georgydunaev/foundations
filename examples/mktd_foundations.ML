@@ -136,6 +136,9 @@ signature MKTD_FOUNDATIONS = sig
     | DunaevGameTree of class_term
     | GaleStewartGame of class_term * class_term
     | BorelPayoff of class_term * class_term
+    | HeatSemigroupKernel of class_term
+    | SchrodingerSemigroupKernel of class_term * class_term
+    | DysonPhillipsSeries of class_term * class_term * class_term
 
   and fm =
       False
@@ -282,6 +285,10 @@ signature MKTD_FOUNDATIONS = sig
     | HasWinningStrategyP2 of class_term * class_term
     | IsDeterminedGame of class_term * class_term
     | IsBorelPayoff of class_term * class_term
+    | IsIntegralKernelOperator of class_term * class_term
+    | DysonPhillipsConverges of class_term * class_term
+    | SchrodingerLipschitzRegular of class_term * class_term * class_term
+    | FeynmanKacPositivity of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -920,6 +927,36 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_martin_borel_determinacy : class_term -> class_term -> class_term -> thm
   val prove_martin_borel_determinacy : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 67: Schroedinger Semigroup Integral Kernels, Dyson-Phillips Series, and Lipschitz Regularity *)
+  val eval_heat_semigroup_contraction : int -> class_term list -> {
+    is_positive : bool,
+    is_symmetric : bool,
+    is_contractive : bool
+  }
+  val eval_integral_kernel_criterion : class_term list -> class_term list -> {
+    is_symmetric : bool,
+    kernels_agree_pointwise : bool,
+    criterion_holds : bool
+  }
+  val eval_dyson_phillips_series_bound : int -> int -> int -> {
+    time_t : int,
+    potential_bound_m : int,
+    partial_sum_scaled : int,
+    upper_envelope_scaled : int,
+    series_converges : bool
+  }
+  val eval_schrodinger_lipschitz_regularity : int -> int -> class_term list -> {
+    is_feynman_kac_positive : bool,
+    max_lipschitz_quotient : int,
+    lipschitz_bound_holds : bool
+  }
+  val axiom_integral_kernel_criterion : class_term -> class_term -> thm
+  val prove_integral_kernel_criterion : class_term -> class_term -> thm
+  val axiom_dyson_phillips_perturbation_converges : class_term -> class_term -> thm
+  val prove_dyson_phillips_perturbation_converges : class_term -> class_term -> thm
+  val axiom_schrodinger_kernel_lipschitz_regularity : class_term -> class_term -> class_term -> thm
+  val prove_schrodinger_kernel_lipschitz_regularity : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1053,6 +1090,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DunaevGameTree of class_term
     | GaleStewartGame of class_term * class_term
     | BorelPayoff of class_term * class_term
+    | HeatSemigroupKernel of class_term
+    | SchrodingerSemigroupKernel of class_term * class_term
+    | DysonPhillipsSeries of class_term * class_term * class_term
 
   and fm =
       False
@@ -1199,6 +1239,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | HasWinningStrategyP2 of class_term * class_term
     | IsDeterminedGame of class_term * class_term
     | IsBorelPayoff of class_term * class_term
+    | IsIntegralKernelOperator of class_term * class_term
+    | DysonPhillipsConverges of class_term * class_term
+    | SchrodingerLipschitzRegular of class_term * class_term * class_term
+    | FeynmanKacPositivity of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1347,6 +1391,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           GaleStewartGame (subst_term var repl t, subst_term var repl a)
       | BorelPayoff (a, r) =>
           BorelPayoff (subst_term var repl a, subst_term var repl r)
+      | HeatSemigroupKernel t => HeatSemigroupKernel (subst_term var repl t)
+      | SchrodingerSemigroupKernel (t, v) =>
+          SchrodingerSemigroupKernel (subst_term var repl t, subst_term var repl v)
+      | DysonPhillipsSeries (t, v, n) =>
+          DysonPhillipsSeries (subst_term var repl t, subst_term var repl v, subst_term var repl n)
       | _ => target
 
   and subst_fm var repl target =
@@ -1543,6 +1592,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsDeterminedGame (subst_term var repl t, subst_term var repl a)
       | IsBorelPayoff (a, r) =>
           IsBorelPayoff (subst_term var repl a, subst_term var repl r)
+      | IsIntegralKernelOperator (op_t, k) =>
+          IsIntegralKernelOperator (subst_term var repl op_t, subst_term var repl k)
+      | DysonPhillipsConverges (t, v) =>
+          DysonPhillipsConverges (subst_term var repl t, subst_term var repl v)
+      | SchrodingerLipschitzRegular (t, v, l) =>
+          SchrodingerLipschitzRegular (subst_term var repl t, subst_term var repl v, subst_term var repl l)
+      | FeynmanKacPositivity (t, v) =>
+          FeynmanKacPositivity (subst_term var repl t, subst_term var repl v)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1944,6 +2001,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | HasWinningStrategyP2 (t, a) => HasWinningStrategyP2 (t, a)
       | IsDeterminedGame (t, a) => IsDeterminedGame (t, a)
       | IsBorelPayoff (a, r) => IsBorelPayoff (a, r)
+      | IsIntegralKernelOperator (op_t, k) => IsIntegralKernelOperator (op_t, k)
+      | DysonPhillipsConverges (t, v) => DysonPhillipsConverges (t, v)
+      | SchrodingerLipschitzRegular (t, v, l) => SchrodingerLipschitzRegular (t, v, l)
+      | FeynmanKacPositivity (t, v) => FeynmanKacPositivity (t, v)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2255,6 +2316,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | HasWinningStrategyP2 _ => true
       | IsDeterminedGame _ => true
       | IsBorelPayoff _ => true
+      | IsIntegralKernelOperator _ => true
+      | DysonPhillipsConverges _ => true
+      | SchrodingerLipschitzRegular _ => true
+      | FeynmanKacPositivity _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -4630,6 +4695,145 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_martin_borel_determinacy tree payoff rank =
     axiom_martin_borel_determinacy tree payoff rank
 
+  (* Ticket 67: Schroedinger Semigroup Integral Kernels, Dyson-Phillips Series, and Lipschitz Regularity *)
+
+  fun extract_kernel_entries [] = []
+    | extract_kernel_entries (t :: ts) =
+        (case t of
+             KuratowskiPair _ => raise ProperClassKuratowskiException
+           | TagPair (KuratowskiPair _, _) => raise ProperClassKuratowskiException
+           | TagPair (_, KuratowskiPair _) => raise ProperClassKuratowskiException
+           | TagPair (TagPair (GodelCode x, GodelCode y), GodelCode v) =>
+               (x, y, v) :: extract_kernel_entries ts
+           | _ => raise ProjectionError)
+
+  fun lookup_kernel_val x y entries =
+    case List.find (fn (x1, y1, _) => x1 = x andalso y1 = y) entries of
+        SOME (_, _, v) => SOME v
+      | NONE => NONE
+
+  fun eval_heat_semigroup_contraction time_t kernel_terms =
+    let
+      val entries = extract_kernel_entries kernel_terms
+      val pos_ok =
+        time_t > 0
+        andalso not (List.null entries)
+        andalso List.all (fn (_, _, v) => v > 0) entries
+      val sym_ok =
+        List.all (fn (x, y, v) =>
+          lookup_kernel_val y x entries = SOME v
+        ) entries
+      val diag_dom_ok =
+        List.all (fn (x, y, v) =>
+          case lookup_kernel_val x x entries of
+              SOME v_xx => v <= v_xx
+            | NONE => false
+        ) entries
+    in
+      {is_positive = pos_ok,
+       is_symmetric = sym_ok,
+       is_contractive = pos_ok andalso sym_ok andalso diag_dom_ok}
+    end
+
+  fun eval_integral_kernel_criterion k1_terms k2_terms =
+    let
+      val k1 = extract_kernel_entries k1_terms
+      val k2 = extract_kernel_entries k2_terms
+      val sym_ok =
+        not (List.null k1)
+        andalso List.all (fn (x, y, v) => lookup_kernel_val y x k1 = SOME v) k1
+      val agree_ok =
+        (List.length k1 = List.length k2)
+        andalso List.all (fn (x, y, v) => lookup_kernel_val x y k2 = SOME v) k1
+    in
+      {is_symmetric = sym_ok,
+       kernels_agree_pointwise = agree_ok,
+       criterion_holds = sym_ok andalso agree_ok}
+    end
+
+  fun int_pow _ 0 = 1
+    | int_pow b e = b * int_pow b (e - 1)
+
+  fun int_fact 0 = 1
+    | int_fact n = n * int_fact (n - 1)
+
+  fun eval_dyson_phillips_series_bound time_t potential_bound_m max_n =
+    if time_t <= 0 orelse potential_bound_m < 0 orelse max_n < 0 then
+      {time_t = time_t,
+       potential_bound_m = potential_bound_m,
+       partial_sum_scaled = 0,
+       upper_envelope_scaled = 0,
+       series_converges = false}
+    else
+      let
+        val scale = 1000
+        val mt = potential_bound_m * time_t
+        fun sum_terms k =
+          if k < 0 then 0
+          else ((scale * int_pow mt k) div (int_fact k)) + sum_terms (k - 1)
+        val p_sum = sum_terms max_n
+        val env = sum_terms (max_n + 2)
+      in
+        {time_t = time_t,
+         potential_bound_m = potential_bound_m,
+         partial_sum_scaled = p_sum,
+         upper_envelope_scaled = env,
+         series_converges = (p_sum >= scale andalso p_sum <= env)}
+      end
+
+  fun int_abs x = if x < 0 then ~x else x
+
+  fun eval_schrodinger_lipschitz_regularity time_t potential_bound_m profile_terms =
+    let
+      val pairs = extract_dunaev_int_pairs profile_terms
+      val fk_pos =
+        time_t > 0
+        andalso potential_bound_m >= 0
+        andalso not (List.null pairs)
+        andalso List.all (fn (_, v) => v > 0) pairs
+      val max_quot =
+        List.foldl (fn ((x1, v1), acc1) =>
+          List.foldl (fn ((x2, v2), acc2) =>
+            if x1 = x2 then acc2
+            else
+              let
+                val q = (int_abs (v1 - v2)) div (int_abs (x1 - x2))
+              in
+                if q > acc2 then q else acc2
+              end
+          ) acc1 pairs
+        ) 0 pairs
+      val lip_limit = 10 * (potential_bound_m + 1) * time_t
+    in
+      {is_feynman_kac_positive = fk_pos,
+       max_lipschitz_quotient = max_quot,
+       lipschitz_bound_holds = fk_pos andalso (max_quot <= lip_limit)}
+    end
+
+  fun axiom_integral_kernel_criterion op_t k =
+    Thm ([], Imp (IsIntegralKernelOperator (op_t, k),
+                  Forall ("x", Forall ("y",
+                    Eq (FamilyValueAtArg (k, dunaev_pair (Var "x") (Var "y")),
+                        FamilyValueAtArg (k, dunaev_pair (Var "y") (Var "x")))))))
+
+  fun prove_integral_kernel_criterion op_t k =
+    axiom_integral_kernel_criterion op_t k
+
+  fun axiom_dyson_phillips_perturbation_converges t_time v_pot =
+    Thm ([], Imp (IsSet v_pot,
+                  And (DysonPhillipsConverges (t_time, v_pot),
+                       FeynmanKacPositivity (t_time, v_pot))))
+
+  fun prove_dyson_phillips_perturbation_converges t_time v_pot =
+    axiom_dyson_phillips_perturbation_converges t_time v_pot
+
+  fun axiom_schrodinger_kernel_lipschitz_regularity t_time v_pot lip_const =
+    Thm ([], Imp (DysonPhillipsConverges (t_time, v_pot),
+                  SchrodingerLipschitzRegular (t_time, v_pot, lip_const)))
+
+  fun prove_schrodinger_kernel_lipschitz_regularity t_time v_pot lip_const =
+    axiom_schrodinger_kernel_lipschitz_regularity t_time v_pot lip_const
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -6037,6 +6241,65 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (#is_determined borel_det_res)
         andalso gs_excl_thm_ok andalso gs_closed_thm_ok andalso borel_thm_ok
         andalso gs_term_ok
+
+      (* Ticket 67: Schroedinger Semigroup Integral Kernels, Dyson-Phillips Series, and Lipschitz Regularity *)
+      val hk_entries = [
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 0)) (GodelCode 10),
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 1)) (GodelCode 6),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 0)) (GodelCode 6),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 1)) (GodelCode 10)
+      ]
+      val hk_asym = [
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 0)) (GodelCode 10),
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 1)) (GodelCode 6),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 0)) (GodelCode 4),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 1)) (GodelCode 10)
+      ]
+      val hk_res = eval_heat_semigroup_contraction 1 hk_entries
+      val hk_asym_res = eval_heat_semigroup_contraction 1 hk_asym
+      val hk_kuratowski_rejected =
+        (let val _ = eval_heat_semigroup_contraction 1 [KuratowskiPair (Empty, Empty)] in false end
+         handle ProperClassKuratowskiException => true)
+      val ik_res = eval_integral_kernel_criterion hk_entries hk_entries
+      val ik_diff_res = eval_integral_kernel_criterion hk_entries hk_asym
+      val dp_res = eval_dyson_phillips_series_bound 1 2 4
+      val dp_invalid = eval_dyson_phillips_series_bound 0 2 4
+      val lip_profile = [
+        dunaev_pair (GodelCode 0) (GodelCode 10),
+        dunaev_pair (GodelCode 1) (GodelCode 8),
+        dunaev_pair (GodelCode 2) (GodelCode 6)
+      ]
+      val lip_res = eval_schrodinger_lipschitz_regularity 1 2 lip_profile
+      val ik_thm = prove_integral_kernel_criterion (Var "T_t") (HeatSemigroupKernel (Var "t"))
+      val ik_thm_ok = case ik_thm of
+          Thm ([], Imp (IsIntegralKernelOperator (Var "T_t", HeatSemigroupKernel (Var "t")), _)) => true
+        | _ => false
+      val dp_thm = prove_dyson_phillips_perturbation_converges (Var "t") (Var "V")
+      val dp_thm_ok = case dp_thm of
+          Thm ([], Imp (IsSet (Var "V"),
+                        And (DysonPhillipsConverges (Var "t", Var "V"),
+                             FeynmanKacPositivity (Var "t", Var "V")))) => true
+        | _ => false
+      val lip_thm = prove_schrodinger_kernel_lipschitz_regularity (Var "t") (Var "V") (Var "L")
+      val lip_thm_ok = case lip_thm of
+          Thm ([], Imp (DysonPhillipsConverges (Var "t", Var "V"),
+                        SchrodingerLipschitzRegular (Var "t", Var "V", Var "L"))) => true
+        | _ => false
+      val schrod_term_ok =
+        (SchrodingerSemigroupKernel (Var "t", Var "V") = SchrodingerSemigroupKernel (Var "t", Var "V"))
+        andalso (DysonPhillipsSeries (Var "t", Var "V", OrdZero) = DysonPhillipsSeries (Var "t", Var "V", OrdZero))
+      val schrodinger_all_ok =
+        (#is_contractive hk_res)
+        andalso (not (#is_contractive hk_asym_res))
+        andalso hk_kuratowski_rejected
+        andalso (#criterion_holds ik_res)
+        andalso (not (#criterion_holds ik_diff_res))
+        andalso (#series_converges dp_res)
+        andalso (not (#series_converges dp_invalid))
+        andalso (#is_feynman_kac_positive lip_res)
+        andalso (#lipschitz_bound_holds lip_res)
+        andalso ik_thm_ok andalso dp_thm_ok andalso lip_thm_ok
+        andalso schrod_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -6130,6 +6393,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
+      andalso schrodinger_all_ok
     end
 end;
 

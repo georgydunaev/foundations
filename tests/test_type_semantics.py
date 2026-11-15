@@ -2087,6 +2087,42 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_borel_projective_determinacy_and_gale_stewart_games()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl067_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac(self):
+        """Ticket 67: Heat Semigroup Contraction, Integral Kernel Criterion, Dyson-Phillips, and Lipschitz Regularity."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            dunaev_pair,
+            eval_dyson_phillips_series_bound,
+            eval_heat_semigroup_contraction,
+            eval_integral_kernel_criterion,
+            eval_schrodinger_lipschitz_regularity,
+            proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac,
+        )
+
+        hk_entries = [
+            dunaev_pair(dunaev_pair(0, 0), 10),
+            dunaev_pair(dunaev_pair(0, 1), 6),
+            dunaev_pair(dunaev_pair(1, 0), 6),
+            dunaev_pair(dunaev_pair(1, 1), 10),
+        ]
+        self.assertTrue(eval_heat_semigroup_contraction(1, hk_entries)["is_contractive"])
+        with self.assertRaises(ProperClassError):
+            eval_heat_semigroup_contraction(1, [KuratowskiPair(0, 0)])
+
+        self.assertTrue(eval_integral_kernel_criterion(hk_entries, hk_entries)["criterion_holds"])
+        self.assertTrue(eval_dyson_phillips_series_bound(1, 2, 4)["series_converges"])
+        self.assertFalse(eval_dyson_phillips_series_bound(0, 2, 4)["series_converges"])
+
+        lip_res = eval_schrodinger_lipschitz_regularity(
+            1, 2, [dunaev_pair(0, 10), dunaev_pair(1, 8), dunaev_pair(2, 6)]
+        )
+        self.assertTrue(lip_res["is_feynman_kac_positive"])
+        self.assertTrue(lip_res["lipschitz_bound_holds"])
+
+        master = proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

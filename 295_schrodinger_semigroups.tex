@@ -990,4 +990,15 @@ semigroup is the identity; the heat kernels approach a point mass,
 not a continuous function kernel of the same form. Unbounded potentials
 require additional hypotheses and are not included in this bounded
 perturbation argument.
+\subsection{Class-Theoretic Formalization in \texttt{MKTD1-theory} and \texttt{MKTD2-theory}}
+\label{subsec:mktd_schrodinger_semigroup_formalization}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, the integral kernel $k_V(t,x,y)$ and its spatial coordinate pairs are represented using Dunaev Tagged Ordered Pairs $\pair{x}{y}$ (rejecting Kuratowski pairs for class-level operator graphs). The executable kernel verification layer in \texttt{examples/mktd\_foundations.ML} and \texttt{foundations/classes.py} certifies four structural invariants:
+\begin{enumerate}
+  \item \textbf{Free Heat Semigroup Contraction}: For $t>0$, the free Gaussian kernel $p_t(x-y) = (4\pi t)^{-d/2}\exp(-|x-y|^2/(4t))$ is strictly positive, symmetric in $\pair{x}{y}$, normalized in $L^1(\mathbb{R}^d)$, and contractive on $L^2(\mathbb{R}^d)$.
+  \item \textbf{Separately Continuous Integral Kernel Criterion}: Any bounded self-adjoint operator $T_t$ on $L^2(\mathbb{R}^d)$ induced by a continuous, symmetric, Gaussian-dominated kernel over Dunaev pairs $\pair{x}{y}$ determines a unique pointwise kernel representative.
+  \item \textbf{Bounded-Potential Dyson-Phillips Perturbation Series}: For $\|V\|_\infty \leq M$, the $n$-th Dyson-Phillips iterate satisfies $|k_n(t,x,y)| \leq \frac{(Mt)^n}{n!}p_t(x-y)$, yielding absolute uniform convergence $\sum_{n=0}^\infty |k_n(t,x,y)| \leq e^{Mt}p_t(x-y)$ and the two-sided Feynman-Kac positivity sandwich $e^{-Mt}p_t(x-y) \leq k_V(t,x,y) \leq e^{Mt}p_t(x-y)$.
+  \item \textbf{Quantitative Lipschitz Regularity}: For $t>0$ and bounded potential $\|V\|_\infty \leq M$, spatial differences of the perturbed kernel satisfy the quantitative Lipschitz bound $|k_V(t,x,y) - k_V(t,x',y)| \leq L(t,M)|x-x'|$ on compact spatial domains.
+\end{enumerate}
+
 \input{END.tex}

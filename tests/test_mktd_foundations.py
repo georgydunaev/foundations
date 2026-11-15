@@ -664,6 +664,25 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_martin_borel_determinacy", content)
         self.assertIn("prove_martin_borel_determinacy", content)
 
+        # Ticket 67: Schroedinger Semigroup Integral Kernels, Dyson-Phillips Series, and Lipschitz Regularity
+        self.assertIn("HeatSemigroupKernel", content)
+        self.assertIn("SchrodingerSemigroupKernel", content)
+        self.assertIn("DysonPhillipsSeries", content)
+        self.assertIn("IsIntegralKernelOperator", content)
+        self.assertIn("DysonPhillipsConverges", content)
+        self.assertIn("SchrodingerLipschitzRegular", content)
+        self.assertIn("FeynmanKacPositivity", content)
+        self.assertIn("eval_heat_semigroup_contraction", content)
+        self.assertIn("eval_integral_kernel_criterion", content)
+        self.assertIn("eval_dyson_phillips_series_bound", content)
+        self.assertIn("eval_schrodinger_lipschitz_regularity", content)
+        self.assertIn("axiom_integral_kernel_criterion", content)
+        self.assertIn("prove_integral_kernel_criterion", content)
+        self.assertIn("axiom_dyson_phillips_perturbation_converges", content)
+        self.assertIn("prove_dyson_phillips_perturbation_converges", content)
+        self.assertIn("axiom_schrodinger_kernel_lipschitz_regularity", content)
+        self.assertIn("prove_schrodinger_kernel_lipschitz_regularity", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()
