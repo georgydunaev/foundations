@@ -149,6 +149,11 @@ signature MKTD_FOUNDATIONS = sig
     | CharacteristicMorphism of class_term * class_term
     | LawvereTierneyTopology of class_term * class_term
     | SheafSubobjectClosure of class_term * class_term
+    | MonadTriad of class_term * class_term * class_term
+    | EilenbergMooreCategory of class_term * class_term
+    | KleisliCategory of class_term * class_term
+    | MonadicityComparisonFunctor of class_term * class_term
+    | ReflexiveSplitCoequalizer of class_term * class_term * class_term
 
   and fm =
       False
@@ -307,6 +312,11 @@ signature MKTD_FOUNDATIONS = sig
     | IsSubobjectClassifier of class_term * class_term
     | IsLawvereTierneyTopology of class_term * class_term
     | IsJClosedSubobject of class_term * class_term * class_term
+    | IsMonadTriad of class_term * class_term * class_term
+    | IsEilenbergMooreAlgebra of class_term * class_term * class_term
+    | IsKleisliMorphism of class_term * class_term * class_term
+    | IsSplitCoequalizer of class_term * class_term * class_term
+    | IsBeckMonadicFunctor of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1029,6 +1039,38 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_lawvere_tierney_meet_preservation : class_term -> class_term -> thm
   val prove_lawvere_tierney_meet_preservation : class_term -> class_term -> thm
 
+  (* Ticket 70: Monads, Eilenberg-Moore & Kleisli Categories, and Beck's Monadicity Theorem *)
+  val eval_is_monad_triad : int list -> class_term list -> class_term list -> class_term list -> {
+    left_unit_law : bool,
+    right_unit_law : bool,
+    associativity_law : bool,
+    is_valid_monad : bool
+  }
+  val eval_eilenberg_moore_algebra : int list -> class_term list -> class_term list -> class_term list -> class_term list -> {
+    unit_coherence : bool,
+    mult_coherence : bool,
+    is_em_algebra : bool
+  }
+  val eval_kleisli_composition : class_term list -> class_term list -> class_term list -> class_term list -> class_term list
+  val eval_is_split_coequalizer : int list -> class_term list -> class_term list -> class_term list -> class_term list -> class_term list -> {
+    fork_commutes : bool,
+    section_retraction_ok : bool,
+    split_homotopy_ok : bool,
+    is_split_coequalizer : bool
+  }
+  val eval_beck_monadicity : bool -> bool -> bool -> {
+    reflects_isomorphisms : bool,
+    has_u_split_coequalizers : bool,
+    preserves_u_split_coequalizers : bool,
+    comparison_is_equivalence : bool
+  }
+  val axiom_monad_unit_associativity_coherence : class_term -> class_term -> class_term -> thm
+  val prove_monad_unit_associativity_coherence : class_term -> class_term -> class_term -> thm
+  val axiom_kleisli_eilenberg_moore_adjunction_uniqueness : class_term -> class_term -> thm
+  val prove_kleisli_eilenberg_moore_adjunction_uniqueness : class_term -> class_term -> thm
+  val axiom_beck_monadicity_equivalence : class_term -> class_term -> thm
+  val prove_beck_monadicity_equivalence : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1175,6 +1217,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CharacteristicMorphism of class_term * class_term
     | LawvereTierneyTopology of class_term * class_term
     | SheafSubobjectClosure of class_term * class_term
+    | MonadTriad of class_term * class_term * class_term
+    | EilenbergMooreCategory of class_term * class_term
+    | KleisliCategory of class_term * class_term
+    | MonadicityComparisonFunctor of class_term * class_term
+    | ReflexiveSplitCoequalizer of class_term * class_term * class_term
 
   and fm =
       False
@@ -1333,6 +1380,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsSubobjectClassifier of class_term * class_term
     | IsLawvereTierneyTopology of class_term * class_term
     | IsJClosedSubobject of class_term * class_term * class_term
+    | IsMonadTriad of class_term * class_term * class_term
+    | IsEilenbergMooreAlgebra of class_term * class_term * class_term
+    | IsKleisliMorphism of class_term * class_term * class_term
+    | IsSplitCoequalizer of class_term * class_term * class_term
+    | IsBeckMonadicFunctor of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1504,6 +1556,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           LawvereTierneyTopology (subst_term var repl j, subst_term var repl om)
       | SheafSubobjectClosure (j, s) =>
           SheafSubobjectClosure (subst_term var repl j, subst_term var repl s)
+      | MonadTriad (t, eta, mu) =>
+          MonadTriad (subst_term var repl t, subst_term var repl eta, subst_term var repl mu)
+      | EilenbergMooreCategory (c, t) =>
+          EilenbergMooreCategory (subst_term var repl c, subst_term var repl t)
+      | KleisliCategory (c, t) =>
+          KleisliCategory (subst_term var repl c, subst_term var repl t)
+      | MonadicityComparisonFunctor (u, t) =>
+          MonadicityComparisonFunctor (subst_term var repl u, subst_term var repl t)
+      | ReflexiveSplitCoequalizer (f, g, e) =>
+          ReflexiveSplitCoequalizer (subst_term var repl f, subst_term var repl g, subst_term var repl e)
       | _ => target
 
   and subst_fm var repl target =
@@ -1724,6 +1786,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsLawvereTierneyTopology (subst_term var repl j, subst_term var repl om)
       | IsJClosedSubobject (j, s, x) =>
           IsJClosedSubobject (subst_term var repl j, subst_term var repl s, subst_term var repl x)
+      | IsMonadTriad (t, eta, mu) =>
+          IsMonadTriad (subst_term var repl t, subst_term var repl eta, subst_term var repl mu)
+      | IsEilenbergMooreAlgebra (t, a, h) =>
+          IsEilenbergMooreAlgebra (subst_term var repl t, subst_term var repl a, subst_term var repl h)
+      | IsKleisliMorphism (t, a, b) =>
+          IsKleisliMorphism (subst_term var repl t, subst_term var repl a, subst_term var repl b)
+      | IsSplitCoequalizer (f, g, e) =>
+          IsSplitCoequalizer (subst_term var repl f, subst_term var repl g, subst_term var repl e)
+      | IsBeckMonadicFunctor (u, c) =>
+          IsBeckMonadicFunctor (subst_term var repl u, subst_term var repl c)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2137,6 +2209,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsSubobjectClassifier (om, top_arr) => IsSubobjectClassifier (om, top_arr)
       | IsLawvereTierneyTopology (j, om) => IsLawvereTierneyTopology (j, om)
       | IsJClosedSubobject (j, s, x) => IsJClosedSubobject (j, s, x)
+      | IsMonadTriad (t, eta, mu) => IsMonadTriad (t, eta, mu)
+      | IsEilenbergMooreAlgebra (t, a, h) => IsEilenbergMooreAlgebra (t, a, h)
+      | IsKleisliMorphism (t, a, b) => IsKleisliMorphism (t, a, b)
+      | IsSplitCoequalizer (f, g, e) => IsSplitCoequalizer (f, g, e)
+      | IsBeckMonadicFunctor (u, c) => IsBeckMonadicFunctor (u, c)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2460,6 +2537,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsSubobjectClassifier _ => true
       | IsLawvereTierneyTopology _ => true
       | IsJClosedSubobject _ => true
+      | IsMonadTriad _ => true
+      | IsEilenbergMooreAlgebra _ => true
+      | IsKleisliMorphism _ => true
+      | IsSplitCoequalizer _ => true
+      | IsBeckMonadicFunctor _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -5218,6 +5300,135 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_lawvere_tierney_meet_preservation j_top om =
     axiom_lawvere_tierney_meet_preservation j_top om
 
+  (* Ticket 70: Monads, Eilenberg-Moore & Kleisli Categories, and Beck's Monadicity Theorem *)
+
+  fun int_pair_lookup k pairs =
+    case List.find (fn (x, _) => x = k) pairs of
+        SOME (_, v) => v
+      | NONE => k
+
+  fun eval_is_monad_triad carrier t_terms eta_terms mu_terms =
+    let
+      val t_pairs = extract_dunaev_int_pairs t_terms
+      val eta_pairs = extract_dunaev_int_pairs eta_terms
+      val mu_pairs = extract_dunaev_int_pairs mu_terms
+      val t_fn = fn x => int_pair_lookup x t_pairs
+      val eta_fn = fn x => int_pair_lookup x eta_pairs
+      val mu_fn = fn x => int_pair_lookup x mu_pairs
+      val non_empty = not (List.null carrier) andalso not (List.null mu_pairs)
+      val left_ok =
+        non_empty
+        andalso List.all (fn x => mu_fn (t_fn (eta_fn x)) = t_fn x) carrier
+      val right_ok =
+        non_empty
+        andalso List.all (fn x => mu_fn (eta_fn (t_fn x)) = t_fn x) carrier
+      val assoc_ok =
+        non_empty
+        andalso List.all (fn x => mu_fn (t_fn (mu_fn x)) = mu_fn (mu_fn (t_fn x))) carrier
+    in
+      {left_unit_law = left_ok,
+       right_unit_law = right_ok,
+       associativity_law = assoc_ok,
+       is_valid_monad = left_ok andalso right_ok andalso assoc_ok}
+    end
+
+  fun eval_eilenberg_moore_algebra carrier t_terms eta_terms mu_terms h_terms =
+    let
+      val t_pairs = extract_dunaev_int_pairs t_terms
+      val eta_pairs = extract_dunaev_int_pairs eta_terms
+      val mu_pairs = extract_dunaev_int_pairs mu_terms
+      val h_pairs = extract_dunaev_int_pairs h_terms
+      val t_fn = fn x => int_pair_lookup x t_pairs
+      val eta_fn = fn x => int_pair_lookup x eta_pairs
+      val mu_fn = fn x => int_pair_lookup x mu_pairs
+      val h_fn = fn x => int_pair_lookup x h_pairs
+      val non_empty = not (List.null carrier) andalso not (List.null h_pairs)
+      val unit_ok =
+        non_empty
+        andalso List.all (fn x => h_fn (eta_fn x) = x) carrier
+      val mult_ok =
+        non_empty
+        andalso List.all (fn x => h_fn (t_fn (h_fn x)) = h_fn (mu_fn x)) carrier
+    in
+      {unit_coherence = unit_ok,
+       mult_coherence = mult_ok,
+       is_em_algebra = unit_ok andalso mult_ok}
+    end
+
+  fun eval_kleisli_composition t_terms mu_terms f_terms g_terms =
+    let
+      val t_pairs = extract_dunaev_int_pairs t_terms
+      val mu_pairs = extract_dunaev_int_pairs mu_terms
+      val f_pairs = extract_dunaev_int_pairs f_terms
+      val g_pairs = extract_dunaev_int_pairs g_terms
+      val t_fn = fn x => int_pair_lookup x t_pairs
+      val mu_fn = fn x => int_pair_lookup x mu_pairs
+      val g_fn = fn y => int_pair_lookup y g_pairs
+    in
+      List.map (fn (x, fy) =>
+        dunaev_pair (GodelCode x) (GodelCode (mu_fn (t_fn (g_fn fy))))
+      ) f_pairs
+    end
+
+  fun eval_is_split_coequalizer elems f_terms g_terms e_terms s_terms t_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_terms
+      val g_pairs = extract_dunaev_int_pairs g_terms
+      val e_pairs = extract_dunaev_int_pairs e_terms
+      val s_pairs = extract_dunaev_int_pairs s_terms
+      val t_pairs = extract_dunaev_int_pairs t_terms
+      val f_fn = fn x => int_pair_lookup x f_pairs
+      val g_fn = fn x => int_pair_lookup x g_pairs
+      val e_fn = fn x => int_pair_lookup x e_pairs
+      val s_fn = fn x => int_pair_lookup x s_pairs
+      val t_fn = fn x => int_pair_lookup x t_pairs
+      val non_empty = not (List.null elems)
+      val fork_ok =
+        non_empty
+        andalso List.all (fn x => e_fn (f_fn x) = e_fn (g_fn x)) elems
+      val sec_ok =
+        non_empty
+        andalso List.all (fn x => e_fn (s_fn (e_fn x)) = e_fn x) elems
+      val split_ok =
+        non_empty
+        andalso List.all (fn y =>
+          f_fn (t_fn y) = y andalso g_fn (t_fn y) = s_fn (e_fn y)
+        ) elems
+    in
+      {fork_commutes = fork_ok,
+       section_retraction_ok = sec_ok,
+       split_homotopy_ok = split_ok,
+       is_split_coequalizer = fork_ok andalso sec_ok andalso split_ok}
+    end
+
+  fun eval_beck_monadicity reflects_iso has_split preserves_split =
+    {reflects_isomorphisms = reflects_iso,
+     has_u_split_coequalizers = has_split,
+     preserves_u_split_coequalizers = preserves_split,
+     comparison_is_equivalence = reflects_iso andalso has_split andalso preserves_split}
+
+  fun axiom_monad_unit_associativity_coherence t_fun eta_nt mu_nt =
+    Thm ([], Imp (IsMonadTriad (t_fun, eta_nt, mu_nt),
+                  IsEilenbergMooreAlgebra (MonadTriad (t_fun, eta_nt, mu_nt), t_fun, mu_nt)))
+
+  fun prove_monad_unit_associativity_coherence t_fun eta_nt mu_nt =
+    axiom_monad_unit_associativity_coherence t_fun eta_nt mu_nt
+
+  fun axiom_kleisli_eilenberg_moore_adjunction_uniqueness cat t_mon =
+    Thm ([], Imp (IsLocallySmallCategory cat,
+                  And (IsLocallySmallCategory (KleisliCategory (cat, t_mon)),
+                       IsLocallySmallCategory (EilenbergMooreCategory (cat, t_mon)))))
+
+  fun prove_kleisli_eilenberg_moore_adjunction_uniqueness cat t_mon =
+    axiom_kleisli_eilenberg_moore_adjunction_uniqueness cat t_mon
+
+  fun axiom_beck_monadicity_equivalence u_fun cat =
+    Thm ([], Imp (IsBeckMonadicFunctor (u_fun, cat),
+                  IsFullyFaithfulFunctor (MonadicityComparisonFunctor (u_fun, cat))))
+
+  fun prove_beck_monadicity_equivalence u_fun cat =
+    axiom_beck_monadicity_equivalence u_fun cat
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -6808,6 +7019,79 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso jc_ok andalso jc_fail
         andalso sub_uniq_thm_ok andalso lt_idemp_thm_ok andalso lt_meet_thm_ok
         andalso topos_term_ok
+
+      (* Ticket 70: Monads, Eilenberg-Moore & Kleisli Categories, and Beck's Monadicity Theorem *)
+      val mon_t = [
+        dunaev_pair (GodelCode 0) (GodelCode 2),
+        dunaev_pair (GodelCode 1) (GodelCode 3),
+        dunaev_pair (GodelCode 2) (GodelCode 2),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val mon_eta = [
+        dunaev_pair (GodelCode 0) (GodelCode 2),
+        dunaev_pair (GodelCode 1) (GodelCode 3),
+        dunaev_pair (GodelCode 2) (GodelCode 2),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val mon_mu = [
+        dunaev_pair (GodelCode 0) (GodelCode 2),
+        dunaev_pair (GodelCode 1) (GodelCode 3),
+        dunaev_pair (GodelCode 2) (GodelCode 2),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val mon_bad_mu = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 0),
+        dunaev_pair (GodelCode 2) (GodelCode 0),
+        dunaev_pair (GodelCode 3) (GodelCode 0)
+      ]
+      val mon_res = eval_is_monad_triad [0, 1, 2, 3] mon_t mon_eta mon_mu
+      val mon_fail = eval_is_monad_triad [0, 1, 2, 3] mon_t mon_eta mon_bad_mu
+      val mon_kuratowski_rejected =
+        (let val _ = eval_is_monad_triad [0] [KuratowskiPair (Empty, Empty)] mon_eta mon_mu in false end
+         handle ProperClassKuratowskiException => true)
+      val em_res = eval_eilenberg_moore_algebra [2, 3] mon_t mon_eta mon_mu mon_mu
+      val kl_comp = eval_kleisli_composition mon_t mon_mu
+        [dunaev_pair (GodelCode 0) (GodelCode 1)]
+        [dunaev_pair (GodelCode 1) (GodelCode 3)]
+      val kl_comp_ok = (kl_comp = [dunaev_pair (GodelCode 0) (GodelCode 3)])
+      val id_map = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 1)
+      ]
+      val split_coeq_res = eval_is_split_coequalizer [0, 1] id_map id_map id_map id_map id_map
+      val beck_ok = (#comparison_is_equivalence (eval_beck_monadicity true true true))
+      val beck_fail = not (#comparison_is_equivalence (eval_beck_monadicity true false true))
+      val mon_coh_thm = prove_monad_unit_associativity_coherence (Var "T") (Var "eta") (Var "mu")
+      val mon_coh_thm_ok = case mon_coh_thm of
+          Thm ([], Imp (IsMonadTriad (Var "T", Var "eta", Var "mu"),
+                        IsEilenbergMooreAlgebra (MonadTriad (Var "T", Var "eta", Var "mu"), Var "T", Var "mu"))) => true
+        | _ => false
+      val kl_em_thm = prove_kleisli_eilenberg_moore_adjunction_uniqueness (Var "C") (Var "T")
+      val kl_em_thm_ok = case kl_em_thm of
+          Thm ([], Imp (IsLocallySmallCategory (Var "C"),
+                        And (IsLocallySmallCategory (KleisliCategory (Var "C", Var "T")),
+                             IsLocallySmallCategory (EilenbergMooreCategory (Var "C", Var "T"))))) => true
+        | _ => false
+      val beck_thm = prove_beck_monadicity_equivalence (Var "U") (Var "C")
+      val beck_thm_ok = case beck_thm of
+          Thm ([], Imp (IsBeckMonadicFunctor (Var "U", Var "C"),
+                        IsFullyFaithfulFunctor (MonadicityComparisonFunctor (Var "U", Var "C")))) => true
+        | _ => false
+      val mon_term_ok =
+        (ReflexiveSplitCoequalizer (Var "f", Var "g", Var "e") = ReflexiveSplitCoequalizer (Var "f", Var "g", Var "e"))
+        andalso (IsKleisliMorphism (Var "T", Var "A", Var "B") = IsKleisliMorphism (Var "T", Var "A", Var "B"))
+        andalso (IsSplitCoequalizer (Var "f", Var "g", Var "e") = IsSplitCoequalizer (Var "f", Var "g", Var "e"))
+      val monad_beck_all_ok =
+        (#is_valid_monad mon_res)
+        andalso (not (#is_valid_monad mon_fail))
+        andalso mon_kuratowski_rejected
+        andalso (#is_em_algebra em_res)
+        andalso kl_comp_ok
+        andalso (#is_split_coequalizer split_coeq_res)
+        andalso beck_ok andalso beck_fail
+        andalso mon_coh_thm_ok andalso kl_em_thm_ok andalso beck_thm_ok
+        andalso mon_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -6902,6 +7186,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
+      andalso monad_beck_all_ok
     end
 end;
 

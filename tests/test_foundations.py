@@ -615,6 +615,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["lawvere_tierney_topology_verified"])
         self.assertTrue(res["j_closed_subobject_verified"])
 
+    def test_ticket_gl070_monads_eilenberg_moore_kleisli_and_beck_monadicity(self):
+        """Ticket 70: verify Monads, Eilenberg-Moore and Kleisli Categories, and Beck Monadicity."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_monad_triad",
+            "eval_eilenberg_moore_algebra",
+            "eval_kleisli_composition",
+            "eval_is_split_coequalizer",
+            "eval_beck_monadicity",
+            "proves_monads_eilenberg_moore_kleisli_and_beck_monadicity",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["monad_triad_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["eilenberg_moore_algebra_verified"])
+        self.assertTrue(res["kleisli_composition_verified"])
+        self.assertTrue(res["split_coequalizer_verified"])
+        self.assertTrue(res["beck_monadicity_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

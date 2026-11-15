@@ -300,6 +300,12 @@ from foundations.classes import (
     eval_lawvere_tierney_topology,
     eval_j_closed_subobject,
     proves_topos_subobject_classifier_and_lawvere_tierney_topologies,
+    eval_is_monad_triad,
+    eval_eilenberg_moore_algebra,
+    eval_kleisli_composition,
+    eval_is_split_coequalizer,
+    eval_beck_monadicity,
+    proves_monads_eilenberg_moore_kleisli_and_beck_monadicity,
     proves_foundations_classes_and_families,
 )
 
@@ -600,5 +606,11 @@ __all__: list[str] = [
     "eval_lawvere_tierney_topology",
     "eval_j_closed_subobject",
     "proves_topos_subobject_classifier_and_lawvere_tierney_topologies",
+    "eval_is_monad_triad",
+    "eval_eilenberg_moore_algebra",
+    "eval_kleisli_composition",
+    "eval_is_split_coequalizer",
+    "eval_beck_monadicity",
+    "proves_monads_eilenberg_moore_kleisli_and_beck_monadicity",
     "proves_foundations_classes_and_families",
 ]

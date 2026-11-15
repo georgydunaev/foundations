@@ -709,4 +709,18 @@ a pullback square over Dunaev Tagged Ordered Pairs $\pair{x}{u}$. A \emph{Lawver
 \end{enumerate}
 Each Lawvere-Tierney topology $j$ induces a closure operator $S \mapsto \overline{S}^j$ on $\operatorname{Sub}_{\mathcal{E}}(X)$ with characteristic morphism $j \circ \chi_m$, and a subobject $m\colon S \rightarrowtail X$ is $j$-closed precisely when $j \circ \chi_m = \chi_m$.
 
+\subsection{Monads, Eilenberg-Moore and Kleisli Categories, and Beck Monadicity}
+\label{subsec:monads_eilenberg_moore_kleisli_beck}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, a monad on a category $\mathcal{C}$ is a triad $\pair{T}{\pair{\eta}{\mu}}$ encoded via Dunaev Tagged Ordered Pairs (rejecting Kuratowski pairs), where $T\colon \mathcal{C} \to \mathcal{C}$ is an endofunctor and $\eta\colon 1_{\mathcal{C}} \Rightarrow T$ (unit) and $\mu\colon T^2 \Rightarrow T$ (multiplication) are natural transformations satisfying the unit and associativity coherence identities:
+\[
+\mu \circ T\eta = 1_T = \mu \circ \eta T, \qquad \mu \circ T\mu = \mu \circ \mu T.
+\]
+Each monad $(T, \eta, \mu)$ canonically determines two extremal adjunctions in the category of adjunctions generating $T$:
+\begin{enumerate}
+  \item \textbf{Eilenberg-Moore Category of $T$-Algebras ($\mathcal{C}^T$, Terminal Resolution)}: Objects are Dunaev-tagged pairs $\pair{A}{h}$ where $h\colon T(A) \to A$ satisfies $h \circ \eta_A = 1_A$ and $h \circ T(h) = h \circ \mu_A$; morphisms $f\colon \pair{A}{h} \to \pair{B}{k}$ satisfy $f \circ h = k \circ T(f)$.
+  \item \textbf{Kleisli Category of Free $T$-Algebras ($\mathcal{C}_T$, Initial Resolution)}: Objects are the objects of $\mathcal{C}$, morphisms $f\colon X \rightsquigarrow Y$ in $\mathcal{C}_T$ are morphisms $f\colon X \to T(Y)$ in $\mathcal{C}$ encoded as $\pair{\pair{X}{Y}}{f}$, and Kleisli composition is given by $g \odot f = \mu_Z \circ T(g) \circ f$ with identity $\eta_X$.
+\end{enumerate}
+Given any adjunction $F \dashv U\colon \mathcal{D} \to \mathcal{C}$ inducing $T = UF$, the canonical comparison functor $K\colon \mathcal{D} \to \mathcal{C}^T$ sends $D \mapsto \pair{U(D)}{U(\varepsilon_D)}$. By Beck's Monadicity Theorem, $K$ is an equivalence of categories if and only if $U$ is conservative (reflects isomorphisms) and $\mathcal{D}$ has and $U$ preserves coequalizers of all $U$-split parallel pairs.
+
 \input{END.tex}

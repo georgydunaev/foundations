@@ -727,6 +727,29 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_lawvere_tierney_meet_preservation", content)
         self.assertIn("prove_lawvere_tierney_meet_preservation", content)
 
+        # Ticket 70: Monads, Eilenberg-Moore and Kleisli Categories, and Beck Monadicity
+        self.assertIn("MonadTriad", content)
+        self.assertIn("EilenbergMooreCategory", content)
+        self.assertIn("KleisliCategory", content)
+        self.assertIn("MonadicityComparisonFunctor", content)
+        self.assertIn("ReflexiveSplitCoequalizer", content)
+        self.assertIn("IsMonadTriad", content)
+        self.assertIn("IsEilenbergMooreAlgebra", content)
+        self.assertIn("IsKleisliMorphism", content)
+        self.assertIn("IsSplitCoequalizer", content)
+        self.assertIn("IsBeckMonadicFunctor", content)
+        self.assertIn("eval_is_monad_triad", content)
+        self.assertIn("eval_eilenberg_moore_algebra", content)
+        self.assertIn("eval_kleisli_composition", content)
+        self.assertIn("eval_is_split_coequalizer", content)
+        self.assertIn("eval_beck_monadicity", content)
+        self.assertIn("axiom_monad_unit_associativity_coherence", content)
+        self.assertIn("prove_monad_unit_associativity_coherence", content)
+        self.assertIn("axiom_kleisli_eilenberg_moore_adjunction_uniqueness", content)
+        self.assertIn("prove_kleisli_eilenberg_moore_adjunction_uniqueness", content)
+        self.assertIn("axiom_beck_monadicity_equivalence", content)
+        self.assertIn("prove_beck_monadicity_equivalence", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

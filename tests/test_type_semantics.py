@@ -2208,6 +2208,48 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl070_monads_eilenberg_moore_kleisli_and_beck_monadicity(self):
+        """Ticket 70: Monads, Eilenberg-Moore and Kleisli Categories, and Beck Monadicity."""
+        from foundations.type_semantics import (
+            eval_is_monad_triad,
+            eval_eilenberg_moore_algebra,
+            eval_kleisli_composition,
+            eval_is_split_coequalizer,
+            eval_beck_monadicity,
+            proves_monads_eilenberg_moore_kleisli_and_beck_monadicity,
+        )
+
+        carrier = [0, 1, 2]
+        t_cl = [dunaev_pair(0, 1), dunaev_pair(1, 1), dunaev_pair(2, 2)]
+        eta_cl = [dunaev_pair(0, 1), dunaev_pair(1, 1), dunaev_pair(2, 2)]
+        mu_cl = [dunaev_pair(0, 1), dunaev_pair(1, 1), dunaev_pair(2, 2)]
+
+        self.assertTrue(eval_is_monad_triad(carrier, t_cl, eta_cl, mu_cl)["is_valid_monad"])
+        with self.assertRaises(ProperClassError):
+            eval_is_monad_triad(carrier, [KuratowskiPair(0, 1)], eta_cl, mu_cl)
+
+        self.assertTrue(
+            eval_eilenberg_moore_algebra([1, 2], t_cl, eta_cl, mu_cl, mu_cl)["is_valid_algebra"]
+        )
+        kl_f = [dunaev_pair(0, 1), dunaev_pair(1, 2), dunaev_pair(2, 2)]
+        kl_g = [dunaev_pair(0, 1), dunaev_pair(1, 2), dunaev_pair(2, 2)]
+        self.assertEqual(
+            eval_kleisli_composition(t_cl, mu_cl, kl_f, kl_g),
+            [dunaev_pair(0, 2), dunaev_pair(1, 2), dunaev_pair(2, 2)],
+        )
+
+        id_map = [dunaev_pair(0, 0), dunaev_pair(1, 1)]
+        self.assertTrue(
+            eval_is_split_coequalizer([0, 1], id_map, id_map, id_map, id_map, id_map)[
+                "is_split_coequalizer"
+            ]
+        )
+        self.assertTrue(eval_beck_monadicity(True, True, True)["is_beck_monadic"])
+        self.assertFalse(eval_beck_monadicity(True, True, False)["is_beck_monadic"])
+
+        master = proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()
