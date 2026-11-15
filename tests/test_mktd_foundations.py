@@ -821,6 +821,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl074_chain_complexes_resolutions_and_derived_functors_ext_tor(self):
+        """Ticket 74: verify Chain Complexes, Resolutions, Derived Functors Ext/Tor, and Long Exact Sequences in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "ChainComplex",
+            "ProjectiveResolution",
+            "InjectiveResolution",
+            "RightDerivedExt",
+            "LeftDerivedTor",
+            "IsChainComplex",
+            "IsChainHomotopyEquivalent",
+            "IsProjectiveResolution",
+            "SatisfiesLongExactCohomologySequence",
+            "eval_is_chain_complex",
+            "eval_chain_homotopy_equivalence",
+            "eval_is_projective_resolution",
+            "eval_derived_ext_tor",
+            "eval_long_exact_cohomology_sequence",
+            "axiom_chain_boundary_squared_zero",
+            "prove_chain_boundary_squared_zero",
+            "axiom_comparison_theorem_projective_resolutions",
+            "prove_comparison_theorem_projective_resolutions",
+            "axiom_ext_tor_long_exact_sequence_naturality",
+            "prove_ext_tor_long_exact_sequence_naturality",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

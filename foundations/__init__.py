@@ -324,6 +324,12 @@ from foundations.classes import (
     eval_snake_connecting_morphism,
     eval_snake_lemma_exactness,
     proves_abelian_categories_exact_sequences_and_snake_lemma,
+    eval_is_chain_complex,
+    eval_chain_homotopy_equivalence,
+    eval_is_projective_resolution,
+    eval_derived_ext_tor,
+    eval_long_exact_cohomology_sequence,
+    proves_chain_complexes_resolutions_and_derived_functors_ext_tor,
     proves_foundations_classes_and_families,
 )
 
@@ -648,5 +654,11 @@ __all__: list[str] = [
     "eval_snake_connecting_morphism",
     "eval_snake_lemma_exactness",
     "proves_abelian_categories_exact_sequences_and_snake_lemma",
+    "eval_is_chain_complex",
+    "eval_chain_homotopy_equivalence",
+    "eval_is_projective_resolution",
+    "eval_derived_ext_tor",
+    "eval_long_exact_cohomology_sequence",
+    "proves_chain_complexes_resolutions_and_derived_functors_ext_tor",
     "proves_foundations_classes_and_families",
 ]

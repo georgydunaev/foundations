@@ -2376,6 +2376,49 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_abelian_categories_exact_sequences_and_snake_lemma()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl074_chain_complexes_resolutions_and_derived_functors_ext_tor(self):
+        """Ticket 74: Chain Complexes, Projective/Injective Resolutions, Derived Functors Ext/Tor, and Long Exact Sequences."""
+        from foundations.type_semantics import (
+            eval_is_chain_complex,
+            eval_chain_homotopy_equivalence,
+            eval_is_projective_resolution,
+            eval_derived_ext_tor,
+            eval_long_exact_cohomology_sequence,
+            proves_chain_complexes_resolutions_and_derived_functors_ext_tor,
+        )
+
+        d_next = [dunaev_pair(0, 0), dunaev_pair(1, 2)]
+        d_curr = [
+            dunaev_pair(0, 0),
+            dunaev_pair(1, 1),
+            dunaev_pair(2, 0),
+            dunaev_pair(3, 0),
+        ]
+        self.assertTrue(eval_is_chain_complex([0, 1], d_next, d_curr)["is_chain_complex"])
+        with self.assertRaises(ProperClassError):
+            eval_is_chain_complex([0], [KuratowskiPair(0, 0)], d_curr)
+
+        self.assertTrue(
+            eval_chain_homotopy_equivalence(
+                [0, 1],
+                [dunaev_pair(0, 0), dunaev_pair(1, 3)],
+                [dunaev_pair(0, 0), dunaev_pair(1, 1)],
+                [dunaev_pair(0, 0), dunaev_pair(1, 2)],
+            )["chain_homotopy_verified"]
+        )
+        self.assertTrue(eval_is_projective_resolution(True, True, True)["is_projective_resolution"])
+        ext_res = eval_derived_ext_tor(1, [0, 1, 2, 3], d_next, d_curr)
+        self.assertTrue(ext_res["is_well_defined"])
+        self.assertEqual(ext_res["derived_rank"], 1)
+        self.assertTrue(
+            eval_long_exact_cohomology_sequence([0], [0], [0, 1], [0, 1], [0, 2], [0, 2])[
+                "long_exact_verified"
+            ]
+        )
+
+        master = proves_chain_complexes_resolutions_and_derived_functors_ext_tor()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

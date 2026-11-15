@@ -762,4 +762,14 @@ A composable pair $A \xrightarrow{f} B \xrightarrow{g} C$ is \emph{exact at $B$}
 \ker(\alpha) \longrightarrow \ker(\beta) \longrightarrow \ker(\gamma) \xrightarrow{\;\delta\;} \operatorname{coker}(\alpha) \longrightarrow \operatorname{coker}(\beta) \longrightarrow \operatorname{coker}(\gamma).
 \]
 
+\subsection{Chain Complexes, Projective and Injective Resolutions, and Derived Functors $\mathrm{Ext}^n$ and $\mathrm{Tor}_n$}
+\label{subsec:chain_complexes_resolutions_derived_functors_ext_tor}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, let $\mathcal{A}$ be an Abelian category whose graded objects and differential graphs are represented via Dunaev Tagged Ordered Pairs (rejecting Kuratowski pairs). A \emph{chain complex} $(C_\bullet, d_\bullet)$ in $\mathcal{A}$ consists of a $\mathbb{Z}$-indexed family of objects $C_n \in \operatorname{Ob}(\mathcal{A})$ and boundary differentials $d_n\colon C_n \to C_{n-1}$ satisfying the fundamental nilpotency identity $d_{n-1} \circ d_n = 0$ (equivalently $\operatorname{im}(d_{n+1}) \subseteq \ker(d_n)$), with $n$-th homology object $H_n(C_\bullet) = \ker(d_n)/\operatorname{im}(d_{n+1})$. Two chain maps $f_\bullet, g_\bullet\colon C_\bullet \to D_\bullet$ are \emph{chain homotopic} ($f_\bullet \simeq g_\bullet$) via a degree-$+1$ family $s_n\colon C_n \to D_{n+1}$ when $f_n - g_n = d^D_{n+1} \circ s_n + s_{n-1} \circ d^C_n$, inducing identical morphisms $H_n(f_\bullet) = H_n(g_\bullet)$ on homology. When $\mathcal{A}$ has enough projectives (respectively enough injectives), every object $A \in \operatorname{Ob}(\mathcal{A})$ admits a \emph{projective resolution} $P_\bullet \xrightarrow{\varepsilon} A \to 0$ (respectively an \emph{injective resolution} $0 \to A \xrightarrow{\eta} I^\bullet$) unique up to chain homotopy equivalence by the Comparison Theorem; applying the homological and cohomological functors yields the left derived torsion functors and right derived extension functors
+\[
+\operatorname{Tor}_n^{\mathcal{A}}(A, B) = H_n(P_\bullet \otimes B), \qquad
+\operatorname{Ext}^n_{\mathcal{A}}(A, B) = H^n(\operatorname{Hom}_{\mathcal{A}}(P_\bullet, B)) \cong H^n(\operatorname{Hom}_{\mathcal{A}}(A, I^\bullet)),
+\]
+and every short exact sequence $0 \to A \to B \to C \to 0$ of chain complexes induces a natural \emph{long exact homology/cohomology sequence} via the Snake Lemma connecting homomorphisms $\partial_n\colon H_n(C_\bullet) \to H_{n-1}(A_\bullet)$.
+
 \input{END.tex}

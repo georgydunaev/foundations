@@ -715,6 +715,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["snake_connecting_morphism_verified"])
         self.assertTrue(res["snake_lemma_exactness_verified"])
 
+    def test_ticket_gl074_chain_complexes_resolutions_and_derived_functors_ext_tor(self):
+        """Ticket 74: verify Chain Complexes, Projective/Injective Resolutions, Ext/Tor, and Long Exact Sequences."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_chain_complex",
+            "eval_chain_homotopy_equivalence",
+            "eval_is_projective_resolution",
+            "eval_derived_ext_tor",
+            "eval_long_exact_cohomology_sequence",
+            "proves_chain_complexes_resolutions_and_derived_functors_ext_tor",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_chain_complexes_resolutions_and_derived_functors_ext_tor()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["chain_complex_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["chain_homotopy_verified"])
+        self.assertTrue(res["projective_resolution_verified"])
+        self.assertTrue(res["derived_ext_tor_verified"])
+        self.assertTrue(res["long_exact_cohomology_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

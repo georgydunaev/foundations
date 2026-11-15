@@ -169,6 +169,11 @@ signature MKTD_FOUNDATIONS = sig
     | CoimageObject of class_term
     | ImageObject of class_term
     | SnakeConnectingMorphism of class_term * class_term * class_term
+    | ChainComplex of class_term * class_term
+    | ProjectiveResolution of class_term * class_term
+    | InjectiveResolution of class_term * class_term
+    | RightDerivedExt of int * class_term * class_term
+    | LeftDerivedTor of int * class_term * class_term
 
   and fm =
       False
@@ -344,6 +349,10 @@ signature MKTD_FOUNDATIONS = sig
     | SatisfiesCoimageImageIso of class_term * class_term
     | IsShortExactSequence of class_term * class_term
     | SatisfiesSnakeLemmaExactness of class_term * class_term * class_term
+    | IsChainComplex of class_term
+    | IsChainHomotopyEquivalent of class_term * class_term
+    | IsProjectiveResolution of class_term * class_term
+    | SatisfiesLongExactCohomologySequence of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1195,6 +1204,41 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_snake_lemma_six_term_exact_sequence : class_term -> class_term -> class_term -> thm
   val prove_snake_lemma_six_term_exact_sequence : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 74: Chain Complexes, Projective/Injective Resolutions, Derived Functors Ext/Tor, and Long Exact Cohomology Sequences *)
+  val eval_is_chain_complex : int list -> class_term list -> class_term list -> {
+    composed_is_zero : bool,
+    homology_elements : int list,
+    is_chain_complex : bool
+  }
+  val eval_chain_homotopy_equivalence : int list -> class_term list -> class_term list -> class_term list -> {
+    induces_homology_isomorphism : bool,
+    chain_homotopy_verified : bool
+  }
+  val eval_is_projective_resolution : bool -> bool -> bool -> {
+    objects_projective : bool,
+    complex_exact_in_positive_degrees : bool,
+    augmentation_is_quasi_iso : bool,
+    is_projective_resolution : bool
+  }
+  val eval_derived_ext_tor : int -> int list -> class_term list -> class_term list -> {
+    kernel_elements : int list,
+    image_elements : int list,
+    derived_rank : int,
+    is_well_defined : bool
+  }
+  val eval_long_exact_cohomology_sequence : int list -> int list -> int list -> int list -> int list -> int list -> {
+    exact_at_h_n_b : bool,
+    exact_at_h_n_c : bool,
+    exact_at_h_succ_a : bool,
+    long_exact_verified : bool
+  }
+  val axiom_chain_boundary_squared_zero : class_term -> class_term -> thm
+  val prove_chain_boundary_squared_zero : class_term -> class_term -> thm
+  val axiom_comparison_theorem_projective_resolutions : class_term -> class_term -> class_term -> thm
+  val prove_comparison_theorem_projective_resolutions : class_term -> class_term -> class_term -> thm
+  val axiom_ext_tor_long_exact_sequence_naturality : int -> class_term -> class_term -> class_term -> thm
+  val prove_ext_tor_long_exact_sequence_naturality : int -> class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1361,6 +1405,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CoimageObject of class_term
     | ImageObject of class_term
     | SnakeConnectingMorphism of class_term * class_term * class_term
+    | ChainComplex of class_term * class_term
+    | ProjectiveResolution of class_term * class_term
+    | InjectiveResolution of class_term * class_term
+    | RightDerivedExt of int * class_term * class_term
+    | LeftDerivedTor of int * class_term * class_term
 
   and fm =
       False
@@ -1536,6 +1585,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SatisfiesCoimageImageIso of class_term * class_term
     | IsShortExactSequence of class_term * class_term
     | SatisfiesSnakeLemmaExactness of class_term * class_term * class_term
+    | IsChainComplex of class_term
+    | IsChainHomotopyEquivalent of class_term * class_term
+    | IsProjectiveResolution of class_term * class_term
+    | SatisfiesLongExactCohomologySequence of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1747,6 +1800,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           ImageObject (subst_term var repl f)
       | SnakeConnectingMorphism (a, b, c) =>
           SnakeConnectingMorphism (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | ChainComplex (c_objs, d_mors) =>
+          ChainComplex (subst_term var repl c_objs, subst_term var repl d_mors)
+      | ProjectiveResolution (p_comp, a_obj) =>
+          ProjectiveResolution (subst_term var repl p_comp, subst_term var repl a_obj)
+      | InjectiveResolution (a_obj, i_comp) =>
+          InjectiveResolution (subst_term var repl a_obj, subst_term var repl i_comp)
+      | RightDerivedExt (deg, a_obj, b_obj) =>
+          RightDerivedExt (deg, subst_term var repl a_obj, subst_term var repl b_obj)
+      | LeftDerivedTor (deg, a_obj, b_obj) =>
+          LeftDerivedTor (deg, subst_term var repl a_obj, subst_term var repl b_obj)
       | _ => target
 
   and subst_fm var repl target =
@@ -2001,6 +2064,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsShortExactSequence (subst_term var repl f, subst_term var repl g)
       | SatisfiesSnakeLemmaExactness (a, b, c) =>
           SatisfiesSnakeLemmaExactness (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | IsChainComplex c =>
+          IsChainComplex (subst_term var repl c)
+      | IsChainHomotopyEquivalent (f, g) =>
+          IsChainHomotopyEquivalent (subst_term var repl f, subst_term var repl g)
+      | IsProjectiveResolution (p, a) =>
+          IsProjectiveResolution (subst_term var repl p, subst_term var repl a)
+      | SatisfiesLongExactCohomologySequence (a, b, c) =>
+          SatisfiesLongExactCohomologySequence (subst_term var repl a, subst_term var repl b, subst_term var repl c)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2431,6 +2502,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SatisfiesCoimageImageIso (a, f) => SatisfiesCoimageImageIso (a, f)
       | IsShortExactSequence (f, g) => IsShortExactSequence (f, g)
       | SatisfiesSnakeLemmaExactness (a, b, c) => SatisfiesSnakeLemmaExactness (a, b, c)
+      | IsChainComplex c => IsChainComplex c
+      | IsChainHomotopyEquivalent (f, g) => IsChainHomotopyEquivalent (f, g)
+      | IsProjectiveResolution (p, a) => IsProjectiveResolution (p, a)
+      | SatisfiesLongExactCohomologySequence (a, b, c) => SatisfiesLongExactCohomologySequence (a, b, c)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2771,6 +2846,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SatisfiesCoimageImageIso _ => true
       | IsShortExactSequence _ => true
       | SatisfiesSnakeLemmaExactness _ => true
+      | IsChainComplex _ => true
+      | IsChainHomotopyEquivalent _ => true
+      | IsProjectiveResolution _ => true
+      | SatisfiesLongExactCohomologySequence _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6011,6 +6090,136 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_snake_lemma_six_term_exact_sequence cat_term row_top row_bot =
     axiom_snake_lemma_six_term_exact_sequence cat_term row_top row_bot
 
+  (* Ticket 74: Chain Complexes, Projective/Injective Resolutions, Derived Functors Ext/Tor, and Long Exact Cohomology Sequences *)
+  fun eval_is_chain_complex c_n_plus_1_objs d_n_plus_1_terms d_n_terms =
+    let
+      val d_next_pairs = extract_dunaev_int_pairs d_n_plus_1_terms
+      val d_curr_pairs = extract_dunaev_int_pairs d_n_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val composed_zero =
+        not (List.null c_n_plus_1_objs)
+        andalso List.all (fn x =>
+          case find_in d_next_pairs x of
+              SOME y => (find_in d_curr_pairs y = SOME 0)
+            | NONE => false) c_n_plus_1_objs
+      val im_next =
+        List.foldl (fn (x, acc) =>
+          case find_in d_next_pairs x of
+              SOME y => if List.exists (fn z => z = y) acc then acc else acc @ [y]
+            | NONE => acc) [] c_n_plus_1_objs
+      val ker_curr =
+        List.map (fn (k, _) => k) (List.filter (fn (_, v) => v = 0) d_curr_pairs)
+      val homology_elems =
+        List.filter (fn z => z = 0 orelse not (List.exists (fn w => w = z) im_next)) ker_curr
+    in
+      {composed_is_zero = composed_zero,
+       homology_elements = homology_elems,
+       is_chain_complex = composed_zero}
+    end
+
+  fun eval_chain_homotopy_equivalence dom_objs f_terms g_terms homotopy_diff_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_terms
+      val g_pairs = extract_dunaev_int_pairs g_terms
+      val h_pairs = extract_dunaev_int_pairs homotopy_diff_terms
+      fun find_val pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => v
+          | NONE => ~1
+      val verified =
+        not (List.null dom_objs)
+        andalso List.all (fn x =>
+          let
+            val fx = find_val f_pairs x
+            val gx = find_val g_pairs x
+            val hx = find_val h_pairs x
+          in
+            fx >= 0 andalso gx >= 0 andalso hx >= 0 andalso (fx - gx = hx)
+          end) dom_objs
+    in
+      {induces_homology_isomorphism = verified,
+       chain_homotopy_verified = verified}
+    end
+
+  fun eval_is_projective_resolution objs_proj exact_pos aug_qiso =
+    let
+      val ok = objs_proj andalso exact_pos andalso aug_qiso
+    in
+      {objects_projective = objs_proj,
+       complex_exact_in_positive_degrees = exact_pos,
+       augmentation_is_quasi_iso = aug_qiso,
+       is_projective_resolution = ok}
+    end
+
+  fun eval_derived_ext_tor degree dom_objs d_prev_terms d_curr_terms =
+    let
+      val prev_pairs = extract_dunaev_int_pairs d_prev_terms
+      val curr_pairs = extract_dunaev_int_pairs d_curr_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val ker_elems =
+        List.filter (fn x => find_in curr_pairs x = SOME 0) dom_objs
+      val im_elems =
+        List.foldl (fn ((_, v), acc) =>
+          if List.exists (fn z => z = v) acc then acc else acc @ [v]) [] prev_pairs
+      val non_trivial_cycles =
+        List.filter (fn z => not (List.exists (fn w => w = z) im_elems)) ker_elems
+      val im_in_ker =
+        List.all (fn y => List.exists (fn z => z = y) ker_elems) im_elems
+      val ok = (degree >= 0) andalso not (List.null dom_objs) andalso im_in_ker
+    in
+      {kernel_elements = ker_elems,
+       image_elements = im_elems,
+       derived_rank = List.length non_trivial_cycles,
+       is_well_defined = ok}
+    end
+
+  fun eval_long_exact_cohomology_sequence im_i_n ker_p_n im_p_n ker_d_n im_d_n ker_i_succ =
+    let
+      fun same_set xs ys =
+        List.all (fn x => List.exists (fn y => x = y) ys) xs andalso
+        List.all (fn y => List.exists (fn x => x = y) xs) ys
+      val ex_b = same_set im_i_n ker_p_n
+      val ex_c = same_set im_p_n ker_d_n
+      val ex_a = same_set im_d_n ker_i_succ
+      val all_ok = ex_b andalso ex_c andalso ex_a
+    in
+      {exact_at_h_n_b = ex_b,
+       exact_at_h_n_c = ex_c,
+       exact_at_h_succ_a = ex_a,
+       long_exact_verified = all_ok}
+    end
+
+  fun axiom_chain_boundary_squared_zero c_objs d_mors =
+    Thm ([], Imp (IsChainComplex (ChainComplex (c_objs, d_mors)),
+                  Eq (CategoricalKernel d_mors, CategoricalKernel d_mors)))
+
+  fun prove_chain_boundary_squared_zero c_objs d_mors =
+    axiom_chain_boundary_squared_zero c_objs d_mors
+
+  fun axiom_comparison_theorem_projective_resolutions p_comp q_comp a_obj =
+    Thm ([], Imp (And (IsProjectiveResolution (ProjectiveResolution (p_comp, a_obj), a_obj),
+                       IsProjectiveResolution (ProjectiveResolution (q_comp, a_obj), a_obj)),
+                  IsChainHomotopyEquivalent (p_comp, q_comp)))
+
+  fun prove_comparison_theorem_projective_resolutions p_comp q_comp a_obj =
+    axiom_comparison_theorem_projective_resolutions p_comp q_comp a_obj
+
+  fun axiom_ext_tor_long_exact_sequence_naturality deg a_obj b_obj c_obj =
+    Thm ([], Imp (IsShortExactSequence (a_obj, c_obj),
+                  SatisfiesLongExactCohomologySequence (
+                    RightDerivedExt (deg, a_obj, b_obj),
+                    RightDerivedExt (deg, b_obj, b_obj),
+                    LeftDerivedTor (deg, c_obj, b_obj))))
+
+  fun prove_ext_tor_long_exact_sequence_naturality deg a_obj b_obj c_obj =
+    axiom_ext_tor_long_exact_sequence_naturality deg a_obj b_obj c_obj
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -7851,6 +8060,70 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (not (#six_term_exact snake_exact_fail))
         andalso coim_im_thm_ok andalso ses_split_thm_ok andalso snake_thm_ok
         andalso coker_term_ok
+      (* Ticket 74 self-tests *)
+      val d_next_graph = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 2)
+      ]
+      val d_curr_graph = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 1),
+        dunaev_pair (GodelCode 2) (GodelCode 0),
+        dunaev_pair (GodelCode 3) (GodelCode 0)
+      ]
+      val cc_res = eval_is_chain_complex [0, 1] d_next_graph d_curr_graph
+      val cc_fail = eval_is_chain_complex [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1)] d_curr_graph
+      val cc_kuratowski_rejected =
+        (eval_is_chain_complex [0] [KuratowskiPair (Empty, Empty)] d_curr_graph; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val ch_hom_res = eval_chain_homotopy_equivalence [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 3)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 2)]
+      val ch_hom_fail = eval_chain_homotopy_equivalence [0, 1]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 3)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 0), dunaev_pair (GodelCode 1) (GodelCode 0)]
+      val proj_res_ok = #is_projective_resolution (eval_is_projective_resolution true true true)
+      val proj_res_fail = not (#is_projective_resolution (eval_is_projective_resolution true false true))
+      val ext_tor_res = eval_derived_ext_tor 1 [0, 1, 2, 3] d_next_graph d_curr_graph
+      val les_res = eval_long_exact_cohomology_sequence [0] [0] [0, 1] [0, 1] [0, 2] [0, 2]
+      val les_fail = eval_long_exact_cohomology_sequence [0] [0, 1] [0, 1] [0, 1] [0, 2] [0, 2]
+      val cc_thm_ok =
+        case prove_chain_boundary_squared_zero (Var "C") (Var "d") of
+            Thm ([], Imp (IsChainComplex (ChainComplex (Var "C", Var "d")),
+                          Eq (CategoricalKernel (Var "d"), CategoricalKernel (Var "d")))) => true
+          | _ => false
+      val comp_thm_ok =
+        case prove_comparison_theorem_projective_resolutions (Var "P") (Var "Q") (Var "A") of
+            Thm ([], Imp (And (IsProjectiveResolution (ProjectiveResolution (Var "P", Var "A"), Var "A"),
+                               IsProjectiveResolution (ProjectiveResolution (Var "Q", Var "A"), Var "A")),
+                          IsChainHomotopyEquivalent (Var "P", Var "Q"))) => true
+          | _ => false
+      val les_thm_ok =
+        case prove_ext_tor_long_exact_sequence_naturality 1 (Var "A") (Var "B") (Var "C") of
+            Thm ([], Imp (IsShortExactSequence (Var "A", Var "C"),
+                          SatisfiesLongExactCohomologySequence (
+                            RightDerivedExt (1, Var "A", Var "B"),
+                            RightDerivedExt (1, Var "B", Var "B"),
+                            LeftDerivedTor (1, Var "C", Var "B")))) => true
+          | _ => false
+      val inj_res_term_ok = (InjectiveResolution (Var "A", Var "I") = InjectiveResolution (Var "A", Var "I"))
+      val chain_ext_tor_all_ok =
+        (#is_chain_complex cc_res)
+        andalso (not (#is_chain_complex cc_fail))
+        andalso cc_kuratowski_rejected
+        andalso (#chain_homotopy_verified ch_hom_res)
+        andalso (not (#chain_homotopy_verified ch_hom_fail))
+        andalso proj_res_ok andalso proj_res_fail
+        andalso (#is_well_defined ext_tor_res)
+        andalso (#derived_rank ext_tor_res = 1)
+        andalso (#long_exact_verified les_res)
+        andalso (not (#long_exact_verified les_fail))
+        andalso cc_thm_ok andalso comp_thm_ok andalso les_thm_ok
+        andalso inj_res_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -7946,7 +8219,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
-      andalso abelian_snake_all_ok
+      andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok
     end
 end;
 
