@@ -74,8 +74,9 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **070_ordered_pair.tex**: Kuratowski, recursive Dunaev, and marker-tagged pair constructions with separate scopes. *(Active Draft)*
 - **080_azriel_levi_union_thm.tex**: Azriel Lévy union argument with the boundedness proof reconstructed from the author's handwritten notes, under explicit prerequisites. *(Active Draft)*
 - **090_proving_limitation_of_size.tex**: Development of limitation-of-size results. *(Active Draft)*
-- **100_class_theory.tex**: Finite and hereditarily finite countermodels separating minimal class axioms from stronger existence principles. *(Active Draft)*
-- **110_family_evaluation.tex**: Theory of families and evaluation maps. *(Active Draft)*
+- **100_class_theory.tex**: Finite and hereditarily finite countermodels separating minimal class axioms from stronger existence principles, Dunaev Tagged Ordered Pairs, finite class-lists, and tight Grothendieck universes. *(Active Draft)*
+- **100_classes.tex**: Formal Morse–Kelley class comprehension schema, sethood guards, and class separation axioms. *(Active Draft)*
+- **110_family_evaluation.tex**: Theory of families, guarded evaluation maps, relational versus evaluated images, and semi-singleton predicate-head definitions. *(Active Draft)*
 - **120_induction_recursion.tex**: Induction and recursion principles for classes. *(Active Draft)*
 - **130_classes_as_types.tex**: Active predicates/formulas-as-types discipline, a scoped predicate/storage interface and option models, with older classes-as-types attempts explicitly marked outdated. *(Active Draft with Historical Sections)*
 - **131_class_polynomial_trees.tex**: Class-valued initial algebras and final coalgebras for a class of set labels with set arities, including proofs that individual trees remain sets. *(Proved in the stated NBG setting)*
@@ -97,20 +98,25 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **270_measure_theory.tex**: Measure construction tools, integral convergence, and completeness of function spaces. *(Active Draft)*
 - **280_functional_analysis.tex**: Duality, Banach-space principles, Vitali convergence, and finite-measure Dunford–Pettis in both sequential and topological weak-compactness forms. *(Active Draft)*
 - **290_probability_theory.tex**: Probability theory within the class framework. *(Active Draft)*
+- **293_heat_equation.tex**: Gaussian heat kernel construction, parabolic maximum principle, and uniqueness. *(Active Draft / Thesis Chapter)*
+- **294_kernel_criterion.tex**: Finite-measure extensions and separately continuous integral kernel criterion. *(Active Draft / Thesis Chapter)*
+- **295_schrodinger_semigroups.tex**: Bounded-potential Schrödinger semigroups, Dyson series, Gaussian bounds, smoothing, and strong Trotter product formula. *(Active Draft / Thesis Chapter)*
+- **296_dynamical_schrodinger_kernels.tex**: Ergonomic/dynamical Schrödinger kernels, covariance, Lipschitz regularity in exponentially weighted norms, and Beckus–Takase spectral localization. *(Active Draft / Thesis Chapter)*
 - **300_category_theory.tex**: Categorical foundations compatible with Morse–Kelley theory. *(Active Draft)*
 - **310_differential_geometry.tex**: Local Euclidean structure, connected components, and path connectedness. *(Active Draft)*
 - **320_src.tex**: Source code excerpts and utilities supporting the LaTeX documents. *(Active Draft)*
 - **320_strang_thm.tex**: Unspecified Strang-theorem placeholder, retained as source but excluded from the assembled book.
 - **330_restricted_quantifiers.tex**: Treatment of restricted quantifiers in the class language. *(Active Draft)*
 - **summary_of_approaches.tex**: Front-of-book guide separating the active mainline from the three preserved alternatives. *(Active Guide)*
+- **thesis_schrodinger.tex**: Standalone master LaTeX file assembling the Schrödinger semigroup and dynamical kernel chapters (`293`–`296`). *(Active Thesis Master)*
 
 ### Formalizations
 - **presentation.ML**: Class-theoretic foundations based on Morse–Kelley class theory and Tarski's axiom. *(Active Draft)*
-- **examples/mktd_foundations.ML**: Executable Standard ML formalization (compatible with both CakeML and Poly/ML) of Morse–Kelley class theory, Dunaev Tagged Ordered Pairs, descriptors, transfinite recursion, categorical limits and colimits, Tarski truth, cumulative hierarchy reflection, ordinals and limitation of size, Grothendieck universes, constructible hierarchy `L`, condensation and `L |= GCH`, forcing posets, Cohen reals, Martin's Axiom and Suslin Hypothesis, Easton's theorem, Levy collapse, large cardinals, and inner model relativization. *(Active Verified SML)*
+- **examples/mktd_foundations.ML**: Executable Standard ML formalization (compatible with both CakeML and Poly/ML) of `MKTD1-theory` and `MKTD2-theory`, including Morse–Kelley class theory, Dunaev Tagged Ordered Pairs, descriptors, transfinite recursion, categorical limits and colimits, Tarski truth, cumulative hierarchy reflection, ordinals and limitation of size, Grothendieck universes, constructible hierarchy `L`, condensation and `L |= GCH`, forcing posets, Cohen reals, Martin's Axiom and Suslin Hypothesis, Easton's theorem, Levy collapse, large cardinals, inner model relativization, semi-singletons, finite class-lists, canonical family records, quantifier context freshness, and semantic versus negation-completeness. *(Active Verified SML)*
 - **examples/debruijn.ML**: Executable Standard ML formalization of untyped de Bruijn substitution, shifting, beta-contraction, and fuel-bounded normal-order evaluation. *(Active Verified SML)*
 - **Coq/positive_foundations.v**: Coq formalisation of positive foundations, including inductive definitions of ensembles and ordered pairs. *(Active Draft)*
 - **code/IFOLD.thy**: Isabelle/HOL theory implementing the IFOLD construction. *(Active Draft)*
-- **foundations/**: Python formalization modules (`logic.py`, `descriptors.py`, `pfol.py`, `type_semantics.py`) implementing the logical framework, descriptor systems, Farmer's PFOL, and predicates-as-types semantics. *(Active Python Reference)*
+- **foundations/**: Python formalization modules (`__init__.py`, `logic.py`, `descriptors.py`, `pfol.py`, `type_semantics.py`, `classes.py`) implementing the `MKTD1` / `MKTD2` logical framework, quantifier and uniqueness binder hygiene, descriptor systems, Farmer's PFOL, predicates-as-types semantics, Dunaev Tagged Ordered Pairs, canonical families, finite class-lists, and tight Grothendieck universes. *(Active Python Reference)*
 
 ### Additional Resources
 - **ARCHITECTURE_AND_THEOREMS.md**: Comprehensive guide summarizing every formalization, theorem, axiom system, and unfinished problem in this repository.

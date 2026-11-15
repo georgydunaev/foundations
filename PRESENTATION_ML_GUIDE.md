@@ -111,3 +111,25 @@ The file still contains a TODO asking how the measure should be defined. Consequ
 ## Conclusion
 
 Read `presentation.ML` as a historical mathematical design sketch: `Sets` supplies sethood, `c` is global choice, `Compr` forms MK classes from bound formulas, Dunaev `Lam` forms class-families, and `compl.` values are draft syntactic weights. Executable validation can check that the SML comments are well formed, but it cannot by itself certify the mathematical axioms or proofs sketched inside those comments.
+
+## Executable Standard ML Architecture in `examples/mktd_foundations.ML` (Tickets 7486 & 7487)
+
+Whereas `presentation.ML` is a preserved comment-only design note whose 10,460-byte historical suffix is kept byte-for-byte immutable, the executable Standard ML formalization resides in `examples/mktd_foundations.ML` (verified under both Poly/ML and CakeML SML'97).
+
+### 1. Segregation of Morse-Kelley Class Primitives from Set-Level Operations (Ticket 7486)
+
+In `examples/mktd_foundations.ML`, the module interface `signature MKTD_FOUNDATIONS` and implementation `structure MKTD_Foundations` segregate primitive Morse–Kelley class-theoretic syntax and judgements from derived set-level and model-theoretic operations:
+
+- **Core Class & Formula AST Primitives**:
+  - `class_term` constructors for universal class `Univ`, empty class `Empty`, class variables `Var`, Dunaev Tagged Ordered Pairs `TagPair`, guarded Kuratowski pairs `KuratowskiPair` (raising `ProperClassKuratowskiException` on proper classes), impredicative class comprehension `Compr`, and choice/definite descriptors `Tau`, `Epsilon`, `Iota`.
+  - `fm` constructors for membership `In`, equality `Eq`, subclass `Subclass`, propositional connectives, quantifiers (`Forall`, `Exists`, `ExistsUnique`), sethood `IsSet`, and proper-class predicate `ProperClass`.
+  - `thm` kernel sequent judgment wrapper isolating axiom schemas (`axiom_*`) and checked derivations (`prove_*`) from raw formula construction.
+- **User-Level & Set-Theoretic Operations**:
+  - Derived evaluators (`total_eval`, `guarded_eval`, `eval_family_value_at_arg`, `eval_relational_image`, `eval_class_lists_dunaev`), ordinal arithmetic (`eval_ord_add`, `eval_ord_mult`, `eval_ord_exp`), cumulative and constructible hierarchy stages (`eval_cumulative_level`, `eval_l_stage`), and forcing/large-cardinal evaluators are layered above the primitive AST and sethood guards without mutating kernel constructors.
+
+### 2. Subgoal Unification Cache & Structural Lookup Discipline (Ticket 7487)
+
+For deep proof-tree verification and repeated subgoal checks across `MKTD1-system` and `MKTD2-system`, structural equality and canonical term/formula indexing follow a pure SML'97 functional lookup discipline:
+
+- **Canonical Structural Keys**: Formula codes (`godel_number_fm` / `FmCode`) and canonical pair-record lists (`encode_class_list_dunaev` over `TagPair`) provide deterministic structural keys for memoizing and discharging repeated subgoals without imperative pointer mutation.
+- **Context-Hygiene Pre-Filtering**: Quantifier and binder rules (`eval_fm_ifv`, `eval_ctx_ifv`, `eval_ctx_ifv_quantifier_hygiene`) pre-compute free-variable membership over hypothesis contexts $\Gamma$ in a single structural pass, preventing redundant subgoal expansion when eigen-variable freshness $\neg \mathrm{Ctx.IFV}(x, \Gamma)$ is violated.

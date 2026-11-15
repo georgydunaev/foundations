@@ -335,3 +335,23 @@ has its own recursion proof, and the identities involving omega explicitly
 use Infinity. A transitive-set-hull argument supplies the bridge from
 set regularity to minimal elements of nonempty classes under its stated
 closure assumptions.
+
+## Chapter-by-Chapter Cosmetic, Macro, and Label Audit Matrix (Tickets 7190, 7194, 7329--7338, 7435, 7454)
+
+The following matrix records the verification status and regression test coverage for each targeted manuscript audit ticket:
+
+| Ticket | Target File(s) | Audit Scope & Mathematical Invariants | Verification & Regression Tests |
+| --- | --- | --- | --- |
+| `ticket_7190` | `001_foundations.tex`, `070_ordered_pair.tex` | English prose spelling and typography pass while preserving 100% of `\iffalse ... \fi` blocks, `%` comments, and formulas untouched. | Verified by `tests/test_approach_organization.py` and `tests/test_latex_syntax.sh` |
+| `ticket_7194` | `010_logic.tex` through `200_uniqueness.tex` | Full scan of `\label`, `\labeltag`, `\clabeltag`, `\labeltagd`, `\clabeltagd`, and `\ref` tags across chapters `010`--`200`; zero duplicate combined keys and zero unresolved references in assembled book. | Verified by `tests/test_logic.py` and `tests/test_preamble.py` |
+| `ticket_7329` | `000_preamble.tex` | Cosmetic cleanup, bracket balance, and macro header verification (`\labeltagd`, `\clabeltagd`, `\cc`, `\ccc`, `\pair`, `\kuratowskipair`, `\Proof`, `\Done`). | Verified by `tests/test_preamble.py`, `tests/test_macros_index.py`, and `tests/test_ticket_7329.py` |
+| `ticket_7330` | `010_logic.tex` | Section title hierarchy, proof header balance (`\Proof` / `\Done` and `\begin{proof}` / `\end{proof}`), `\clabeltag{MetaGen}` resolution, context freshness $\mathrm{Ctx.IFV}(x, \Gamma)$ (Fact 8), and semantic adequacy vs syntactic negation-completeness (`3.74`). | Verified by `tests/test_logic.py` |
+| `ticket_7331` | `060_axioms.tex` | Normalization of all 62 statement environments (`9` `axiom`, `1` `axiom*`, plus definitions, lemmas, theorems, notes), removal of stray placeholder backslashes, preservation of `\section{Setting}` prose, and zero trailing whitespace. | Verified by `tests/test_ticket_7331.py` |
+| `ticket_7332` | `070_ordered_pair.tex` | Alignment with Dunaev Tagged Ordered Pairs $\pair{A}{B} = (\{0\} \times A) \cup (\{1\} \times B)$ for arbitrary classes while preserving Kuratowski pairs (restricted to sets) and marker-tagged pairs with distinct scope notes. | Verified by `tests/test_approach_organization.py` and `tests/test_type_semantics.py` |
+| `ticket_7333` | `080_azriel_levi_union_thm.tex` | Cosmetic proofreading of the reconstructed Azriel Lévy boundedness and union theorem chapter, using ordinary set-pair coding without circular reliance on union-based class pairing. | Verified by `tests/test_latex_syntax.sh` |
+| `ticket_7334` | `090_proving_limitation_of_size.tex` | Header and theorem label normalization in the Limitation of Size development, distinguishing class bijections with $\V$ from ordinal-valued cardinal defaults. | Verified by `tests/test_type_semantics.py` |
+| `ticket_7335` & `ticket_7454` | `100_class_theory.tex`, `100_classes.tex` | Formal Morse–Kelley impredicative class comprehension schema $z \in \cc{x}{\phi(x)} \iff (z \in V) \land \phi(z)$, universal class $V \eqdef \cc{x}{\top}$, sethood guards, and the Separation Principle $(a \in V) \implies (a \cap P \in V)$, plus finite class-lists (`3.51`) and tight Grothendieck universes (`3.68`, `3.69`). | Verified by `tests/test_ticket_7454.py` and `tests/test_type_semantics.py` |
+| `ticket_7336` | `150_ordinals.tex` | Proofreading of explanatory prose, environment tagging, transfinite recursion, and Cantor Normal Form ordinal arithmetic. | Verified by `tests/test_type_semantics.py` |
+| `ticket_7337` | `170_paradoxes.tex` | Grammatical polish, historical citation formatting, and Russell / Burali-Forti / Cantor proper-class analysis in Morse–Kelley class theory. | Verified by `tests/test_mktd_foundations.py` |
+| `ticket_7338` | `300_category_theory.tex` | Category theory definition linting, diagram alignment, Dunaev tagged products/coproducts, pullbacks, pushouts, equalizers, and slice categories. | Verified by `tests/test_type_semantics.py` and `tests/test_mktd_foundations.py` |
+| `ticket_7435` | `200_relations.tex` | Brace balance and local macro syntax verification for `\newcommand{\classrelation}[2]{\mathcal{R}_{#1,#2}}`, confirming zero collision with `000_preamble.tex` and explicit documentation that relatees $A, B$ may be proper classes. | Verified by `tests/test_ticket_7435.py` |

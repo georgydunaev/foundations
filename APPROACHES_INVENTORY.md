@@ -131,3 +131,25 @@ and target semantics and prove the required metatheory. The mathematical
 ideas of approaches (3), (4), and (5) are preserved in
 their source files. Presentation edits may clarify their own assumptions and
 proof obligations without replacing them with the active semantics.
+
+## Unification under MKTD1 and MKTD2 and Historical Variant Cross-Reference
+
+Across the Obelisk and Foundations architecture (Tickets `7191` and `7305`), the active mainline (Approaches 1 and 2) is organized into two co-existing, strictly typed variants:
+
+1. **MKTD1 (`MKTD1-framework`, `MKTD1-system` / `MKTD1-prover`, `MKTD1-theory`)**:
+   - Sequent-calculus and typed-AST formulation built on classical Morse–Kelley / NBG statements about classes (`Class_Expre`, `Fm_Expre`, `Stmt`, `Ctx`, `Theory`, `Prf`).
+   - Enforces the Off-by-One level invariant: SML code manipulates syntactic expressions of classes (`Class_Expre`), never raw semantic classes, while all class comprehensions bind `Class` variables (`TClass`) and class-level pairing uses Dunaev Tagged Ordered Pairs (`TagPair` / `DunaevTaggedPair`).
+2. **MKTD2 (`MKTD2-framework`, `MKTD2-system` / `MKTD2-prover`, `MKTD2-theory`)**:
+   - Constructive Curry–Howard / Formulas-as-Types variant in which formulas are types (implications as function spaces, universal/existential quantifiers as dependent $\Pi$/$\Sigma$ types) and proofs are $\lambda$-terms over the same Morse–Kelley / NBG class-theoretic base.
+
+### Summary Matrix of Historical and Active Files
+
+| Approach / Variant | Primary Manuscript Files | Executable / Reference Modules | Role in `MKTD1` / `MKTD2` |
+| --- | --- | --- | --- |
+| Approach 1: Classical MK/NBG + Total Evaluation + Dunaev Pairs | `060_axioms.tex`, `070_ordered_pair.tex`, `100_class_theory.tex`, `100_classes.tex`, `110_family_evaluation.tex` | `presentation.ML`, `examples/mktd_foundations.ML`, `foundations/type_semantics.py`, `foundations/classes.py` | Active object-theory base of `MKTD1-theory` and `MKTD2-theory` |
+| Approach 2: Predicates/Formulas-as-Types, Classes-as-Expressions | `001_foundations.tex`, `010_logic.tex`, `130_classes_as_types.tex`, `131_class_polynomial_trees.tex` | `examples/mktd_foundations.ML`, `foundations/logic.py`, `foundations/type_semantics.py` | Active type and proof discipline of `MKTD1-framework` and `MKTD2-framework` |
+| Historical Iota & Family Drafts | `040_old_variant_of_iota_defs.tex` | `foundations/descriptors.py`, `foundations/classes.py` | Preserved `[OUTDATED]` historical iota and class-family canonicalization notes |
+| Approach 3: Three-Valued / Uncertain Descriptors ($\tau, \epsilon, \varepsilon$) | `020_descriptors.tex`, `180_many-valued.tex` | `foundations/descriptors.py` | Independent preserved alternative (not imported into classical kernel) |
+| Approach 4: Farmer's PFOL ($\iota$-definedness & Kleene equality $\simeq$) | `210_partial_functions_semantics.tex`, `040_partial_functions.tex`, `050_descriptor_systems.tex` | `foundations/pfol.py` | Independent preserved alternative |
+| Approach 5: Conglomerate-Valued / Subset Semantics | `030_alternative_semantics.tex` | `foundations/type_semantics.py` | Independent `[OUTDATED]` historical alternative |
+| Rejected Unification Drafts | `025_unified_descriptors.tex`, `035_unified_type_semantics.tex`, `050_unified_interface.tex` | Tested in `tests/test_approach_organization.py` | Non-normative historical notes and navigation guide |
