@@ -4705,7 +4705,25 @@ def proves_inner_models_and_forcing() -> Dict[str, Any]:
     }
 
 
-
-
-
+from foundations.classes import (  # noqa: E402
+    EMPTY_LIST_SENTINEL,
+    class_list_induction_transport,
+    decode_class_list_dunaev,
+    encode_class_list_dunaev,
+    eval_canonical_family,
+    eval_class_lists_dunaev,
+    eval_evaluated_image,
+    eval_family_value_at_arg,
+    eval_flat_values,
+    eval_has_concentrated_values,
+    eval_relational_image,
+    eval_semi_singleton,
+    eval_semi_singleton_subclass,
+    eval_tight_universe_indexed_union_closure,
+    is_canonical_pair_record,
+    is_subset_tight_universe,
+    is_valid_class_list_dunaev,
+    proves_foundations_classes_and_families,
+    verify_semi_singleton_export_heads,
+)
 

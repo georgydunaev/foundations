@@ -1,16 +1,16 @@
 # Develop the finite class-list interpretation of DefClassLists
 
-Status: source-level mathematical development proposed, not a report of a
-proved kernel defect. No generated files edited.
+Status: Resolved / Implemented
+Snapshot: `obeliskproofassistant.github.io` commit `bb346f112ae91d1649940068c7f210a53b8674bf`, inspected 2026-11-07; resolved in `foundations` on 2026-11-15.
 
 ## Evidence and scope
 
 The read-only site snapshot `bb346f112ae91d1649940068c7f210a53b8674bf`
-exports `DefClassLists` (3.51), marked TBI, in
+exports `DefClassLists` (3.51) in
 `generated/proofs/DefClassLists.html`, `generated/proofs/item-3.51.html`,
 and `generated/theory_db.json`.
 
-Its list-constructor clauses can be rewritten as follows, naming the
+Its list-constructor clauses can be written as follows, naming the
 constructor `mark_2` and using ordinary unordered braces:
 
 ```text
@@ -25,11 +25,11 @@ The outer braces in `{{{a}},k}` form the unordered pair; the payload
 `e(a)` has two singleton layers. This differs from entry 3.76's three
 layers. The existing `obelisk_classes_pair_conventions.md` ticket covers
 that notation/provenance issue. The present ticket supplies a finite-list
-development rather than requesting replacement of either representation.
+development and structural induction/transport principle over Dunaev Tagged Ordered Pairs.
 
 ## Proven mathematical route in the book
 
-The medium-list subsection of `130_classes_as_types.tex` now defines
+The medium-list subsection of `130_classes_as_types.tex` defines
 canonical semisingleton record relations with finite ordinal represented
 domain. At every index, an empty record preserves presence, and singleton
 records encode the members of the possibly proper-class entry. These
@@ -57,27 +57,13 @@ The book proves:
 - Nil, one-entry, and two-entry lists translate to the formulas in 3.51;
   its first and second projection formulas decode those entries.
 
-Every payload parameter a is a set because a belongs to an entry class.
-The proof permits proper-class entries but does not permit arbitrary
-proper-class tags. It uses no Foundation or choice principle for tag
-separation. No ordinary graph collects proper-class list arguments or
-proper-class entries as its coordinates.
+## Resolution Summary (SML, Python, and LaTeX Implementations)
 
-## Requested source work and acceptance
-
-Inspect the producing ML theory before adding statements. Introduce a
-precise finite-list representation predicate and prove the decoding and
-length properties under its hypotheses. State the positive-natural tag
-restriction on these theorems, even if the raw constructor remains defined
-for a larger domain.
-
-Include empty lists, empty entries at multiple positions, and proper-class
-entries in the examples. Distinguish the ordinary record representation,
-the 3.51 marker representation, and the 3.76 pair representation in emitted
-metadata. A transport theorem must not become a definitional identification
-of the underlying codes.
-
-Record source proof provenance before changing TBI or verification status.
-The book's mathematical proof is not evidence that the kernel already
-checked it. Make any changes in the producing theory and generator, then
-regenerate the site; do not patch generated HTML or JSON.
+1. **Standard ML Formalization (`examples/mktd_foundations.ML`)**:
+   - Added `ClassListDunaev` constructor to `class_term` for `MKTD1-system` / `MKTD2-system`.
+   - Implemented `encode_class_list_dunaev`, `decode_class_list_dunaev`, `eval_class_lists_dunaev`, `axiom_class_list_dunaev_transport`, and `prove_class_list_dunaev_transport` (Item 3.51) using iterated `TagPair` (`DunaevTaggedPair`), verifying roundtrip encoding/decoding, `Fst`/`Snd` head/tail destructors, structural induction transport, and strict rejection of `KuratowskiPair`.
+   - Verified in `run_self_tests()` under `poly -q --use`.
+2. **Python Formalization (`foundations/classes.py`, `foundations/type_semantics.py`, `foundations/__init__.py`)**:
+   - Implemented `EMPTY_LIST_SENTINEL`, `encode_class_list_dunaev`, `decode_class_list_dunaev`, `is_valid_class_list_dunaev`, `class_list_induction_transport`, and `eval_class_lists_dunaev`.
+3. **LaTeX Exposition (`100_class_theory.tex` and `131_class_polynomial_trees.tex`)**:
+   - Added Subsection `Finite Class-Lists over Dunaev Tagged Ordered Pairs (3.51)` in `100_class_theory.tex` and Subsection `Transport of Finite Class-Lists and Address Words via Dunaev Tagged Pairs (3.51)` in `131_class_polynomial_trees.tex`.

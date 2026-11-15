@@ -325,4 +325,9 @@ claim about that different interface, or about an encoding with
 proper-class term values. Those versions still require their own
 representation and recursion principles.
 
+\subsection{Transport of Finite Class-Lists and Address Words via Dunaev Tagged Pairs (\texttt{3.51})}
+\label{subsec:polynomial_tree_class_lists_transport}
+
+The finite address words $w \in \mathrm{Lists}(I)$ indexing nodes of a polynomial tree are canonically represented by the finite class-list construction of Catalog Item \texttt{3.51} (\texttt{DefClassLists}; see Subsection~\ref{subsec:class_lists_dunaev}), where the empty word is $\emptyclass$ and prepending a branch index $i \in I$ to an address word $w$ forms the Dunaev Tagged Ordered Pair $\pair{i}{w}$. By the structural induction and transport principle on $\mathrm{Lists}(I)$, every tree operation defined by recursion on address length (including subtree extraction at address $w$, root-grafting $\pair{i}{w}$, and bounded stage filtration inside a tight Grothendieck universe $\mathcal{U}$ of Item \texttt{3.68}) transports uniquely without Kuratowski pair ambiguity.
+
 \input{END.tex}

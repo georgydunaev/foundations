@@ -419,6 +419,53 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(master["inner_models_and_forcing_proven"])
         self.assertEqual(master["pairing_device"], "dunaev_pair")
 
+    def test_six_obelisk_mathematical_tickets_symbols_and_runners(self):
+        """Verify all symbols and runners for the 6 Obelisk mathematical tickets."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_fm_ifv",
+            "eval_ctx_ifv",
+            "check_forall_right_rule",
+            "check_exists_left_rule",
+            "eval_ctx_ifv_quantifier_hygiene",
+            "eval_semantic_vs_negation_completeness",
+            "EMPTY_LIST_SENTINEL",
+            "eval_semi_singleton",
+            "eval_semi_singleton_subclass",
+            "verify_semi_singleton_export_heads",
+            "encode_class_list_dunaev",
+            "decode_class_list_dunaev",
+            "is_valid_class_list_dunaev",
+            "class_list_induction_transport",
+            "eval_class_lists_dunaev",
+            "eval_family_value_at_arg",
+            "eval_relational_image",
+            "eval_evaluated_image",
+            "eval_has_concentrated_values",
+            "eval_flat_values",
+            "is_canonical_pair_record",
+            "eval_canonical_family",
+            "is_subset_tight_universe",
+            "eval_tight_universe_indexed_union_closure",
+            "proves_foundations_classes_and_families",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(
+                    hasattr(foundations, sym),
+                    f"Symbol '{sym}' for Obelisk mathematical tickets is missing from foundations",
+                )
+
+        logic_res = foundations.proves_foundations_logic_and_binder_hygiene()
+        self.assertEqual(logic_res["ticket_logic_context_freshness"]["status"], "RESOLVED")
+        self.assertEqual(logic_res["ticket_logic_completeness"]["status"], "RESOLVED")
+
+        classes_res = foundations.proves_foundations_classes_and_families()
+        self.assertEqual(classes_res["ticket_applications_semisingleton_export"]["status"], "RESOLVED")
+        self.assertEqual(classes_res["ticket_class_lists_transport"]["status"], "RESOLVED")
+        self.assertEqual(classes_res["ticket_family_records_and_image_conventions"]["status"], "RESOLVED")
+        self.assertEqual(classes_res["ticket_universe_indexed_union_closure"]["status"], "RESOLVED")
+
 
 if __name__ == '__main__':
     unittest.main()

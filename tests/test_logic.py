@@ -338,6 +338,64 @@ class TestLogicReflectionScope(unittest.TestCase):
         self.assertEqual(res["ticket_uniqueness_binder_hygiene"]["status"], "RESOLVED")
         self.assertEqual(res["ticket_logic_verification_status"]["status"], "RESOLVED")
         self.assertEqual(res["ticket_logic_reflection_scope"]["status"], "RESOLVED")
+        self.assertEqual(res["ticket_logic_context_freshness"]["status"], "RESOLVED")
+        self.assertEqual(res["ticket_logic_completeness"]["status"], "RESOLVED")
+
+
+class TestContextFreshnessAndCompleteness(unittest.TestCase):
+    """Tickets: obelisk_logic_context_freshness.md and obelisk_logic_completeness.md."""
+
+    def test_ctx_ifv_quantifier_hygiene(self):
+        from foundations.logic import (
+            check_exists_left_rule,
+            check_forall_right_rule,
+            eval_ctx_ifv,
+            eval_ctx_ifv_quantifier_hygiene,
+            eval_fm_ifv,
+        )
+
+        gamma_with_x = [Eq(Var("x"), Var("a"))]
+        gamma_without_x = [Eq(Var("y"), Var("a"))]
+        self.assertTrue(eval_fm_ifv("x", gamma_with_x[0]))
+        self.assertTrue(eval_ctx_ifv("x", gamma_with_x))
+        self.assertFalse(eval_ctx_ifv("x", gamma_without_x))
+
+        ok_fora_fresh, _ = check_forall_right_rule("x", gamma_without_x, Eq(Var("x"), Var("x")))
+        self.assertTrue(ok_fora_fresh)
+        ok_fora_captured, _ = check_forall_right_rule("x", gamma_with_x, Eq(Var("x"), Var("a")))
+        self.assertFalse(ok_fora_captured)
+
+        ok_exis_fresh, _ = check_exists_left_rule("x", gamma_without_x, FalseFm())
+        self.assertTrue(ok_exis_fresh)
+        ok_exis_ctx_captured, _ = check_exists_left_rule("x", gamma_with_x, FalseFm())
+        self.assertFalse(ok_exis_ctx_captured)
+        ok_exis_psi_captured, _ = check_exists_left_rule("x", gamma_without_x, Eq(Var("x"), Var("b")))
+        self.assertFalse(ok_exis_psi_captured)
+
+        res = eval_ctx_ifv_quantifier_hygiene()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["fora_r_sound_when_fresh"])
+        self.assertTrue(res["fora_r_rejected_when_ctx_ifv"])
+        self.assertTrue(res["fora_r_counterexample_premise_valid"])
+        self.assertTrue(res["fora_r_counterexample_conclusion_invalid"])
+        self.assertTrue(res["exis_l_sound_when_fresh"])
+        self.assertTrue(res["exis_l_rejected_when_ctx_ifv"])
+        self.assertTrue(res["exis_l_rejected_when_fm_ifv_in_psi"])
+
+    def test_semantic_vs_negation_completeness_374(self):
+        from foundations.logic import eval_semantic_vs_negation_completeness
+
+        res = eval_semantic_vs_negation_completeness()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertEqual(res["item_id"], "3.74")
+        self.assertTrue(res["tau_is_recursively_enumerable"])
+        self.assertFalse(res["fau_is_recursively_enumerable"])
+        self.assertFalse(res["tau_syntactic_negation_complete"])
+        self.assertFalse(res["tau_semantic_completeness_holds"])
+        self.assertTrue(res["fau_syntactic_negation_complete"])
+        self.assertTrue(res["fau_consistent"])
+        self.assertTrue(res["fau_semantic_completeness_holds"])
+        self.assertTrue(res["fau_semantic_biconditional_holds"])
 
 
 if __name__ == "__main__":

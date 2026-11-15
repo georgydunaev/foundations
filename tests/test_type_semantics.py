@@ -1839,6 +1839,81 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertTrue(res["proper_class_dunaev_tagging_verified"])
         self.assertEqual(res["pairing_device"], "dunaev_pair")
 
+    def test_obelisk_classes_families_lists_and_universe_tickets(self):
+        """Test 3.35, 3.36, 3.51, 3.25-3.31, and 3.68-3.69 in foundations.type_semantics / classes."""
+        from foundations.type_semantics import (
+            EMPTY_LIST_SENTINEL,
+            UNIVERSAL_CLASS,
+            KuratowskiPair,
+            class_list_induction_transport,
+            decode_class_list_dunaev,
+            dunaev_pair,
+            encode_class_list_dunaev,
+            eval_canonical_family,
+            eval_class_lists_dunaev,
+            eval_evaluated_image,
+            eval_family_value_at_arg,
+            eval_relational_image,
+            eval_semi_singleton,
+            eval_semi_singleton_subclass,
+            eval_tight_universe_indexed_union_closure,
+            is_canonical_pair_record,
+            is_valid_class_list_dunaev,
+            proves_foundations_classes_and_families,
+            verify_semi_singleton_export_heads,
+        )
+
+        # 1. Semi-singletons (3.35, 3.36)
+        self.assertTrue(eval_semi_singleton([]))
+        self.assertTrue(eval_semi_singleton(["a"]))
+        self.assertFalse(eval_semi_singleton(["a", "b"]))
+        self.assertTrue(eval_semi_singleton_subclass(["a"], ["a", "b"]))
+        self.assertFalse(eval_semi_singleton_subclass(["c"], ["a", "b"]))
+        self.assertFalse(eval_semi_singleton_subclass(["a", "b"], ["a", "b"]))
+        semi_res = verify_semi_singleton_export_heads()
+        self.assertEqual(semi_res["status"], "RESOLVED")
+        self.assertTrue(semi_res["item_335_explicit_head"])
+        self.assertTrue(semi_res["item_336_explicit_head"])
+        self.assertTrue(semi_res["body_only_export_rejected"])
+
+        # 2. Finite class-lists over Dunaev Tagged Ordered Pairs (3.51)
+        enc = encode_class_list_dunaev(["u", "v", "w"])
+        self.assertEqual(decode_class_list_dunaev(enc), ["u", "v", "w"])
+        self.assertTrue(is_valid_class_list_dunaev(enc, lambda x: x in {"u", "v", "w"}))
+        self.assertFalse(is_valid_class_list_dunaev(KuratowskiPair("u", EMPTY_LIST_SENTINEL)))
+        with self.assertRaises(TypeError):
+            encode_class_list_dunaev([KuratowskiPair("u", "v")])
+        list_len = class_list_induction_transport(enc, 0, lambda _h, _t, acc: acc + 1)
+        self.assertEqual(list_len, 3)
+        list_res = eval_class_lists_dunaev()
+        self.assertEqual(list_res["status"], "RESOLVED")
+
+        # 3. Family evaluation F(a) vs F[A] and canonical pair-records (3.25-3.31)
+        fam = [dunaev_pair("x0", "y0"), dunaev_pair("x1", "y1")]
+        self.assertEqual(eval_family_value_at_arg(fam, "x0"), "y0")
+        self.assertIs(eval_family_value_at_arg(fam, "x_absent"), UNIVERSAL_CLASS)
+        self.assertTrue(is_canonical_pair_record(fam, ["x0", "x1"], ["y0", "y1"]))
+        self.assertFalse(is_canonical_pair_record(fam + ["non_pair"], ["x0", "x1"], ["y0", "y1"]))
+
+        multi_r = [dunaev_pair("x0", "y0"), dunaev_pair("x0", "y2"), dunaev_pair("x1", "y1")]
+        self.assertIs(eval_family_value_at_arg(multi_r, "x0"), UNIVERSAL_CLASS)
+        self.assertEqual(eval_relational_image(multi_r, ["x0", "x1"]), frozenset(["y0", "y1", "y2"]))
+        self.assertEqual(eval_evaluated_image(multi_r, ["x0", "x1"]), frozenset(["y1"]))
+        fam_res = eval_canonical_family()
+        self.assertEqual(fam_res["status"], "RESOLVED")
+
+        # 4. Tight Grothendieck universe indexed-union closure (3.68, 3.69)
+        univ_res = eval_tight_universe_indexed_union_closure()
+        self.assertEqual(univ_res["status"], "RESOLVED")
+        self.assertTrue(univ_res["indexed_union_in_universe"])
+        self.assertTrue(univ_res["universal_class_is_universe_369"])
+
+        master = proves_foundations_classes_and_families()
+        self.assertEqual(master["ticket_applications_semisingleton_export"]["status"], "RESOLVED")
+        self.assertEqual(master["ticket_class_lists_transport"]["status"], "RESOLVED")
+        self.assertEqual(master["ticket_family_records_and_image_conventions"]["status"], "RESOLVED")
+        self.assertEqual(master["ticket_universe_indexed_union_closure"]["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

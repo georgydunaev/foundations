@@ -5970,6 +5970,65 @@ property. The disjunction property, combined with classical excluded middle,
 gives completeness.
 \end{proof}
 
+\subsection{Explicit Context-Freshness Side Condition $\mathrm{Ctx.IFV}(x,\Gamma)$ on Quantifier Rules}
+\label{subsec:ctx_ifv_quantifier_hygiene}
+
+In the internalized sequent and Hilbert-style proof calculi of \textsf{MKTD1-system} and \textsf{MKTD2-system} (Catalog Items \texttt{2.04}, \texttt{2.05}, \texttt{2.06}, and \texttt{4.02}), derivations are parameterized by an explicit finite hypothesis context $\Gamma$. When a quantifier rule generalizes an eigen-variable on the right or eliminates an existential witness on the left, the variable $x$ must be fresh with respect to all active assumptions in $\Gamma$. We define the formula and context free-variable predicates:
+\[
+\mathrm{Fm.IFV}(x, \phi) \iff x \in \mathrm{FV}(\phi),
+\qquad
+\mathrm{Ctx.IFV}(x, \Gamma) \iff \exists \psi \in \Gamma,\ \mathrm{Fm.IFV}(x, \psi).
+\]
+
+\begin{proposition}[Context-Freshness Hygiene for $\mathrm{ForaR}$ and $\mathrm{ExisL}$]
+\label{prop:ctx_ifv_quantifier_hygiene}
+Let $\Wau$ be a theory, $\Gamma$ a context of formulas, $\phi(x)$ and $\psi$ formulas, and $x:\mathsf{Class}$ a variable.
+\begin{enumerate}
+  \item \textbf{Right Universal Rule ($\mathrm{ForaR}$, Items \texttt{2.04}, \texttt{2.05}, \texttt{4.02})}:
+  \[
+  \big((\Wau, \Gamma \vdash \phi(x)) \land \neg \mathrm{Ctx.IFV}(x, \Gamma)\big)
+  \implies
+  (\Wau, \Gamma \vdash \forall x,\ \phi(x)).
+  \]
+  Omitting $\neg \mathrm{Ctx.IFV}(x, \Gamma)$ is unsound: for $\Gamma = [x = a]$ and $\phi(x) \equiv (x = a)$, the identity sequent $(\Wau, [x = a] \vdash x = a)$ is valid in every structure, whereas $(\Wau, [x = a] \vdash \forall x,\ x = a)$ fails in any two-element domain $\{a, b\}$ with $a \neq b$ under the valuation assigning $a$ to $x$.
+  \item \textbf{Left Existential Rule ($\mathrm{ExisL}$, Item \texttt{2.06})}:
+  \[
+  \big((\Wau, \phi(x) :: \Gamma \vdash \psi) \land \neg \mathrm{Ctx.IFV}(x, \Gamma) \land \neg \mathrm{Fm.IFV}(x, \psi)\big)
+  \implies
+  (\Wau, (\exists x,\ \phi(x)) :: \Gamma \vdash \psi).
+  \]
+  Omitting $\neg \mathrm{Ctx.IFV}(x, \Gamma)$ is unsound even when $\neg \mathrm{Fm.IFV}(x, \psi)$ holds: taking $\Gamma = [x = a]$, $\phi(x) \equiv (x = b)$ with $a \neq b$, and $\psi \equiv \bot$, the premise $(\Wau, [x = b, x = a] \vdash \bot)$ holds, whereas $(\Wau, [\exists x,\ x = b,\ x = a] \vdash \bot)$ refutes $x = a$ whenever $b$ exists.
+\end{enumerate}
+\end{proposition}
+
+\subsection{Semantic Adequacy in a Model vs.\ Syntactic Negation-Completeness (\texttt{3.74})}
+\label{subsec:semantic_vs_negation_completeness}
+
+Catalog Item \texttt{3.74} (\texttt{AxmCompletenessOfFullTheory}) states the truth-to-provability implication for the full foundational theory $\Fau$:
+\[
+\forall \phi,\ \mathrm{eval}(\phi) \implies (\Fau, [] \vdash \phi).
+\]
+To avoid conflating distinct notions of completeness across the theory hierarchy $\Tau \subset \Fau$, we distinguish two properties of a theory $\Wau$:
+\begin{enumerate}
+  \item \textbf{Semantic Adequacy (Truth-to-Provability in the Canonical Model $\mathcal{M}_{\Wau}$)}:
+  \[
+  \mathrm{SemComplete}(\Wau, \mathcal{M}_{\Wau}) \iff \forall \phi,\ \big(\mathrm{eval}_{\mathcal{M}_{\Wau}}(\phi) \implies (\Wau, [] \vdash \phi)\big).
+  \]
+  \item \textbf{Syntactic Negation-Completeness (Maximal Consistency on Closed Sentences)}:
+  \[
+  \mathrm{NegComplete}(\Wau) \iff \forall \phi\text{ closed},\ \big((\Wau, [] \vdash \phi) \lor (\Wau, [] \vdash \neg \phi)\big).
+  \]
+\end{enumerate}
+
+\begin{proposition}[Stratification of Completeness between $\Tau$ and $\Fau$]
+\label{prop:tau_vs_fau_completeness}
+In the \textsf{MKTD1-theory} and \textsf{MKTD2-theory} reflection hierarchy:
+\begin{enumerate}
+  \item The base theory $\Tau$ is recursively enumerable and consistent; by G\"odel's first incompleteness theorem, $\Tau$ is not syntactically negation-complete ($\neg \mathrm{NegComplete}(\Tau)$), and cannot satisfy unrestricted truth-to-provability with respect to the standard truth predicate $\mathrm{eval}$.
+  \item The full foundational theory $\Fau$ is constructed in the ambient metatheory as a non-recursively-enumerable Lindenbaum-Henkin maximal consistent extension of $\Tau$. Relative to its canonical Henkin model $\mathcal{M}_{\Fau}$, $\Fau$ satisfies both syntactic negation-completeness ($\mathrm{NegComplete}(\Fau)$) and the semantic adequacy biconditional $\mathrm{eval}_{\mathcal{M}_{\Fau}}(\phi) \iff (\Fau, [] \vdash \phi)$.
+\end{enumerate}
+\end{proposition}
+
 
 %\begin{conjecture}
 

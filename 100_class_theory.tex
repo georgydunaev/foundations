@@ -241,4 +241,31 @@ partial and uncertain semantics supply their own interpretation rules.
   These are local conventions. In particular, an undefined expression is
   not automatically identified with a term denoting the empty class.
 \end{enumerate}
+
+\subsection{Finite Class-Lists over Dunaev Tagged Ordered Pairs (\texttt{3.51})}
+\label{subsec:class_lists_dunaev}
+
+Catalog Item \texttt{3.51} (\texttt{DefClassLists}) defines the class $\mathrm{Lists}(A)$ of finite lists with entries in a class $A$ by impredicative intersection over all classes $C$ containing the empty sentinel $\emptyclass$ and closed under prepending elements of $A$ via Dunaev Tagged Ordered Pairs:
+\[
+\mathrm{Lists}(A) \eqdef \bigcap \Big\{ C \subseteq \V \;\Big|\; \emptyclass \in C \land \forall h \in A\,\forall t \in C,\ \pair{h}{t} \in C \Big\}.
+\]
+Because $\pair{h}{t}$ is a set whenever $h, t \in \V$ and projections $\Fst(\pair{h}{t}) = h$ and $\Snd(\pair{h}{t}) = t$ are unconditionally injective, $\mathrm{Lists}(A)$ satisfies the Peano-style list constructors and structural induction principle:
+\begin{enumerate}
+  \item \textbf{Constructor Closure and Disjointness}: $\emptyclass \in \mathrm{Lists}(A)$, and for all $h \in A$ and $t \in \mathrm{Lists}(A)$, $\pair{h}{t} \in \mathrm{Lists}(A)$ with $\pair{h}{t} \neq \emptyclass$.
+  \item \textbf{Structural Induction and Transport}: For any class property $\Phi(u)$, if $\Phi(\emptyclass)$ holds and $\forall h \in A\,\forall t \in \mathrm{Lists}(A),\ (\Phi(t) \implies \Phi(\pair{h}{t}))$, then $\forall u \in \mathrm{Lists}(A),\ \Phi(u)$.
+\end{enumerate}
+
+\subsection{Indexed-Union Closure of Tight Grothendieck Universes (\texttt{3.68}, \texttt{3.69})}
+\label{subsec:tight_universe_indexed_union}
+
+In Catalog Item \texttt{3.68} (\texttt{DefGrothendieckUniverse}), a class $\mathcal{U}$ is defined as a \emph{tight Grothendieck universe} when it is transitive ($\forall x \in \mathcal{U},\ x \subseteq \mathcal{U}$), closed under powersets ($\forall x \in \mathcal{U},\ \mathcal{P}(x) \in \mathcal{U}$), and subset-tight ($\forall x \in \mathcal{U}\,\forall y \subseteq \mathcal{U},\ |y| \le |x| \implies y \in \mathcal{U}$).
+
+\begin{proposition}[Indexed-Union Closure and Universal Class Universe Theorem (\texttt{3.68}, \texttt{3.69})]
+\label{prop:tight_universe_indexed_union}
+Every tight Grothendieck universe $\mathcal{U}$ is closed under set-indexed unions: for every index set $I \in \mathcal{U}$ and every family $A$ assigning to each $i \in I$ a set $A(i) \in \mathcal{U}$, the union $\bigcup_{i \in I} A(i)$ belongs to $\mathcal{U}$. Moreover, the universal class $\V$ satisfies \texttt{3.68} (\texttt{3.69 ThmUniversalClassIsUniverse}).
+\end{proposition}
+\begin{proof}
+Since $I \in \mathcal{U}$ and $A(i) \in \mathcal{U}$ for each $i \in I$, transitivity of $\mathcal{U}$ implies $A(i) \subseteq \mathcal{U}$ for every $i \in I$, and hence the range $R = \cc{y}{\exists i \in I,\ y = A(i)}$ is a subclass of $\mathcal{U}$ with $|R| \le |I|$. By subset-tightness of $\mathcal{U}$ applied to $I \in \mathcal{U}$ and $R \subseteq \mathcal{U}$, we obtain $R \in \mathcal{U}$. Applying single-set union closure (derived from powerset closure and subset-tightness inside $\mathcal{U}$) yields $\bigcup R = \bigcup_{i \in I} A(i) \in \mathcal{U}$. For $\mathcal{U} = \V$ (Item \texttt{3.69}), transitivity holds because elements of sets are sets, powerset closure holds by the Powerset Axiom, and subset-tightness and indexed-union closure hold by the Axiom of Limitation of Size (Replacement) and the Union Axiom.
+\end{proof}
+
 \input{END.tex}

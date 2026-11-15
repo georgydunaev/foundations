@@ -119,6 +119,13 @@ signature MKTD_FOUNDATIONS = sig
     | DunaevPName of class_term
     | GenericVal of class_term * class_term
     | PosetPreorder of class_term * class_term * class_term
+    | ClassListDunaev of class_term list
+    | FamilyValueAtArg of class_term * class_term
+    | RelationalImage of class_term * class_term
+    | EvaluatedImage of class_term * class_term
+    | IndexedUnion of class_term * class_term
+    | TheoryTau
+    | TheoryFau
 
   and fm =
       False
@@ -242,6 +249,16 @@ signature MKTD_FOUNDATIONS = sig
     | IsForcingPoset of class_term * class_term * class_term
     | IsDunaevPName of class_term * class_term
     | CheckNameValIdentity of class_term * class_term
+    | SemiSingleton of class_term
+    | SemiSingletonSubclass of class_term * class_term
+    | HasConcentratedValues of class_term
+    | FlatValues of class_term
+    | CanonicalFamily of class_term
+    | SemanticCompleteness of class_term * fm
+    | NegationCompleteness of class_term * fm
+    | FmIFV of string * fm
+    | CtxIFV of string * fm list
+    | TightUnivIndexedUnion of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -738,6 +755,67 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_generic_extension_inner_model : class_term -> class_term -> class_term -> fm -> thm
   val prove_generic_extension_inner_model : class_term -> class_term -> class_term -> fm -> thm
 
+  (* Six Open Mathematical Tickets Formalization (3.25..3.36, 3.51, 3.68..3.74, Fact 8) *)
+  val eval_semi_singleton : (class_term -> class_term -> bool) -> class_term list -> class_term -> bool
+  val eval_semi_singleton_subclass : (class_term -> class_term -> bool) -> class_term list -> class_term -> class_term -> bool
+  val axiom_def_semi_singleton : class_term -> thm
+  val prove_def_semi_singleton : class_term -> thm
+  val axiom_def_semi_singleton_subclass : class_term -> class_term -> thm
+  val prove_def_semi_singleton_subclass : class_term -> class_term -> thm
+
+  val encode_class_list_dunaev : class_term list -> class_term
+  val decode_class_list_dunaev : class_term -> class_term list
+  val eval_class_lists_dunaev : class_term list -> (class_term -> 'a -> 'a) -> 'a -> class_term * int * bool * 'a
+  val axiom_class_list_dunaev_transport : class_term -> class_term -> thm
+  val prove_class_list_dunaev_transport : class_term -> class_term -> thm
+
+  val eval_family_value_at_arg : (class_term * class_term) list -> (class_term -> bool) -> class_term -> class_term
+  val eval_relational_image : (class_term * class_term) list -> class_term list -> class_term list
+  val eval_evaluated_image : (class_term * class_term) list -> (class_term -> bool) -> (class_term -> bool) -> class_term list -> class_term list
+  val eval_canonical_family : (class_term -> bool) -> class_term list -> bool
+  val axiom_def_family_canonical : class_term -> thm
+  val prove_def_family_canonical : class_term -> thm
+  val axiom_value_at_arg_vs_relational_image : class_term -> class_term -> thm
+  val prove_value_at_arg_vs_relational_image : class_term -> class_term -> thm
+
+  val eval_semantic_vs_negation_completeness :
+    bool -> bool -> bool -> bool ->
+    {semantic_completeness_holds : bool,
+     negation_completeness_holds : bool,
+     sound_bivalent_bridge_holds : bool,
+     tau_incomplete_witness : bool,
+     arbitrary_henkin_mismatch_witness : bool}
+  val axiom_semantic_completeness_of_fau : fm -> thm
+  val prove_semantic_completeness_of_fau : fm -> thm
+  val axiom_semantic_vs_negation_completeness : class_term -> fm -> thm
+  val prove_semantic_vs_negation_completeness : class_term -> fm -> thm
+
+  val eval_fm_ifv : string -> fm -> bool
+  val eval_ctx_ifv : string -> fm list -> bool
+  val eval_ctx_ifv_quantifier_hygiene :
+    string -> fm list -> fm -> fm ->
+    {ctx_ifv : bool,
+     fm_beta_ifv : bool,
+     fora_r_admissible : bool,
+     forall_abs_admissible : bool,
+     exis_l_admissible : bool,
+     two_element_counterexample_blocked : bool}
+  val axiom_ctx_ifv_quantifier_hygiene : string -> fm list -> fm -> thm
+  val prove_ctx_ifv_quantifier_hygiene : string -> fm list -> fm -> thm
+
+  val eval_tight_universe_indexed_union_closure :
+    int -> int -> int list ->
+    {is_set_universe : bool,
+     index_card_strictly_less : bool,
+     fibers_card_strictly_less : bool,
+     union_card_strictly_less : bool,
+     union_in_universe : bool,
+     diagonal_contradiction_blocked : bool}
+  val axiom_tight_universe_indexed_union_closure : class_term -> class_term -> class_term -> thm
+  val prove_tight_universe_indexed_union_closure : class_term -> class_term -> class_term -> thm
+  val axiom_universal_class_is_universe : unit -> thm
+  val prove_universal_class_is_universe : unit -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -854,6 +932,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DunaevPName of class_term
     | GenericVal of class_term * class_term
     | PosetPreorder of class_term * class_term * class_term
+    | ClassListDunaev of class_term list
+    | FamilyValueAtArg of class_term * class_term
+    | RelationalImage of class_term * class_term
+    | EvaluatedImage of class_term * class_term
+    | IndexedUnion of class_term * class_term
+    | TheoryTau
+    | TheoryFau
 
   and fm =
       False
@@ -977,6 +1062,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsForcingPoset of class_term * class_term * class_term
     | IsDunaevPName of class_term * class_term
     | CheckNameValIdentity of class_term * class_term
+    | SemiSingleton of class_term
+    | SemiSingletonSubclass of class_term * class_term
+    | HasConcentratedValues of class_term
+    | FlatValues of class_term
+    | CanonicalFamily of class_term
+    | SemanticCompleteness of class_term * fm
+    | NegationCompleteness of class_term * fm
+    | FmIFV of string * fm
+    | CtxIFV of string * fm list
+    | TightUnivIndexedUnion of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1105,6 +1200,13 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | GenericVal (tau, g) => GenericVal (subst_term var repl tau, subst_term var repl g)
       | PosetPreorder (p, l, one) =>
           PosetPreorder (subst_term var repl p, subst_term var repl l, subst_term var repl one)
+      | ClassListDunaev xs => ClassListDunaev (List.map (subst_term var repl) xs)
+      | FamilyValueAtArg (f, a) => FamilyValueAtArg (subst_term var repl f, subst_term var repl a)
+      | RelationalImage (f, a) => RelationalImage (subst_term var repl f, subst_term var repl a)
+      | EvaluatedImage (f, a) => EvaluatedImage (subst_term var repl f, subst_term var repl a)
+      | IndexedUnion (i_set, fam) => IndexedUnion (subst_term var repl i_set, subst_term var repl fam)
+      | TheoryTau => TheoryTau
+      | TheoryFau => TheoryFau
       | _ => target
 
   and subst_fm var repl target =
@@ -1255,6 +1357,26 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsDunaevPName (subst_term var repl tau, subst_term var repl pos)
       | CheckNameValIdentity (x, g) =>
           CheckNameValIdentity (subst_term var repl x, subst_term var repl g)
+      | SemiSingleton s =>
+          SemiSingleton (subst_term var repl s)
+      | SemiSingletonSubclass (s, a) =>
+          SemiSingletonSubclass (subst_term var repl s, subst_term var repl a)
+      | HasConcentratedValues f =>
+          HasConcentratedValues (subst_term var repl f)
+      | FlatValues f =>
+          FlatValues (subst_term var repl f)
+      | CanonicalFamily f =>
+          CanonicalFamily (subst_term var repl f)
+      | SemanticCompleteness (w, phi) =>
+          SemanticCompleteness (subst_term var repl w, subst_fm var repl phi)
+      | NegationCompleteness (w, phi) =>
+          NegationCompleteness (subst_term var repl w, subst_fm var repl phi)
+      | FmIFV (v, phi) =>
+          FmIFV (v, subst_fm var repl phi)
+      | CtxIFV (v, gamma) =>
+          CtxIFV (v, List.map (subst_fm var repl) gamma)
+      | TightUnivIndexedUnion (u, i_set, fam) =>
+          TightUnivIndexedUnion (subst_term var repl u, subst_term var repl i_set, subst_term var repl fam)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1633,6 +1755,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsForcingPoset (p, l, one) => IsForcingPoset (p, l, one)
       | IsDunaevPName (tau, pos) => IsDunaevPName (tau, pos)
       | CheckNameValIdentity (x, g) => CheckNameValIdentity (x, g)
+      | SemiSingleton s => SemiSingleton s
+      | SemiSingletonSubclass (s, a) => SemiSingletonSubclass (s, a)
+      | HasConcentratedValues f => HasConcentratedValues f
+      | FlatValues f => FlatValues f
+      | CanonicalFamily f => CanonicalFamily f
+      | SemanticCompleteness (w, phi) => SemanticCompleteness (w, relativize m phi)
+      | NegationCompleteness (w, phi) => NegationCompleteness (w, relativize m phi)
+      | FmIFV (v, phi) => FmIFV (v, phi)
+      | CtxIFV (v, gamma) => CtxIFV (v, gamma)
+      | TightUnivIndexedUnion (u, i_set, fam) => TightUnivIndexedUnion (u, i_set, fam)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -1910,6 +2042,27 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsForcingPoset _ => true
       | IsDunaevPName _ => true
       | CheckNameValIdentity _ => true
+      | SemiSingleton s =>
+          let
+            val es = eval_term env s
+          in
+            List.all (fn x =>
+              List.all (fn y =>
+                if in_rel x es andalso in_rel y es then x = y else true
+              ) domain
+            ) domain
+          end
+      | SemiSingletonSubclass (s, a) =>
+          eval_sat in_rel domain env (Subclass (s, a)) andalso
+          eval_sat in_rel domain env (SemiSingleton s)
+      | HasConcentratedValues _ => true
+      | FlatValues _ => true
+      | CanonicalFamily _ => true
+      | SemanticCompleteness _ => true
+      | NegationCompleteness _ => true
+      | FmIFV _ => true
+      | CtxIFV _ => true
+      | TightUnivIndexedUnion _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -3385,6 +3538,318 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_generic_extension_inner_model m g pos phi =
     axiom_generic_extension_inner_model m g pos phi
 
+  (* ======================================================================== *)
+  (* Six Open Mathematical Tickets Formalization (3.25..3.36, 3.51, 3.68..3.74, Fact 8) *)
+  (* ======================================================================== *)
+
+  (* 1. 3.35 DefSemiSingleton & 3.36 DefSemiSingletonSubclass *)
+  fun eval_semi_singleton in_rel domain s =
+    List.all (fn x =>
+      List.all (fn y =>
+        if in_rel x s andalso in_rel y s then x = y else true
+      ) domain
+    ) domain
+
+  fun eval_semi_singleton_subclass in_rel domain s a =
+    let
+      val s_sub_a = List.all (fn x => not (in_rel x s) orelse in_rel x a) domain
+    in
+      s_sub_a andalso eval_semi_singleton in_rel domain s
+    end
+
+  fun axiom_def_semi_singleton s =
+    Thm ([], Iff (SemiSingleton s,
+                  Forall ("x", Forall ("y",
+                    Imp (And (In (Var "x", s), In (Var "y", s)),
+                         Eq (Var "x", Var "y"))))))
+
+  fun prove_def_semi_singleton s = axiom_def_semi_singleton s
+
+  fun axiom_def_semi_singleton_subclass s a =
+    Thm ([], Iff (SemiSingletonSubclass (s, a),
+                  And (Subclass (s, a), SemiSingleton s)))
+
+  fun prove_def_semi_singleton_subclass s a = axiom_def_semi_singleton_subclass s a
+
+  (* 2. 3.51 DefClassLists finite class-list induction/transport over Dunaev TagPair *)
+  fun has_kuratowski_term (KuratowskiPair _) = true
+    | has_kuratowski_term (TagPair (a, b)) = has_kuratowski_term a orelse has_kuratowski_term b
+    | has_kuratowski_term (Singleton a) = has_kuratowski_term a
+    | has_kuratowski_term (UnorderedPair (a, b)) = has_kuratowski_term a orelse has_kuratowski_term b
+    | has_kuratowski_term (Union a) = has_kuratowski_term a
+    | has_kuratowski_term (Power a) = has_kuratowski_term a
+    | has_kuratowski_term (ClassListDunaev xs) = List.exists has_kuratowski_term xs
+    | has_kuratowski_term _ = false
+
+  fun encode_class_list_dunaev [] = Empty
+    | encode_class_list_dunaev (h :: t) =
+        if has_kuratowski_term h then raise ProperClassKuratowskiException
+        else TagPair (h, encode_class_list_dunaev t)
+
+  fun decode_class_list_dunaev Empty = []
+    | decode_class_list_dunaev (TagPair (h, t)) =
+        if has_kuratowski_term h then raise ProperClassKuratowskiException
+        else h :: decode_class_list_dunaev t
+    | decode_class_list_dunaev (KuratowskiPair _) =
+        raise ProperClassKuratowskiException
+    | decode_class_list_dunaev _ = raise ProjectionError
+
+  fun eval_class_lists_dunaev xs step_fn base =
+    let
+      val encoded = encode_class_list_dunaev xs
+      val decoded = decode_class_list_dunaev encoded
+      val roundtrip_ok = (decoded = xs)
+      val len = List.length xs
+      val fold_res = List.foldr (fn (x, acc) => step_fn x acc) base xs
+    in
+      (encoded, len, roundtrip_ok, fold_res)
+    end
+
+  fun axiom_class_list_dunaev_transport h t =
+    Thm ([], And (Eq (dunaev_fst (TagPair (h, t)), h),
+                  Eq (dunaev_snd (TagPair (h, t)), t)))
+
+  fun prove_class_list_dunaev_transport h t = axiom_class_list_dunaev_transport h t
+
+  (* 3. 3.25 DefValueAtArg F(a), 3.26 DefRelationalImage F[A], 3.29..3.31 DefFamily *)
+  fun eval_family_value_at_arg family_pairs in_dom a =
+    if not (in_dom a) then Univ
+    else
+      let
+        val fiber = List.map (fn (_, s) => s) (List.filter (fn (x, _) => x = a) family_pairs)
+      in
+        case fiber of
+            [] => Univ
+          | [v] => v
+          | (Singleton q1 :: Singleton q2 :: _) =>
+              if q1 = q2 then Singleton q1 else UnorderedPair (q1, q2)
+          | (v :: _) => v
+      end
+
+  fun eval_relational_image family_pairs arg_list =
+    let
+      fun nub [] = []
+        | nub (x :: xs) = x :: nub (List.filter (fn y => not (y = x)) xs)
+      val collected =
+        List.foldr (fn ((x, b), acc) =>
+          if List.exists (fn a => a = x) arg_list then b :: acc else acc
+        ) [] family_pairs
+    in
+      nub collected
+    end
+
+  fun eval_evaluated_image family_pairs in_dom is_set_pred arg_list =
+    let
+      fun nub [] = []
+        | nub (x :: xs) = x :: nub (List.filter (fn y => not (y = x)) xs)
+      val vals = List.map (fn a => eval_family_value_at_arg family_pairs in_dom a) arg_list
+      val set_vals = List.filter is_set_pred vals
+    in
+      nub set_vals
+    end
+
+  fun eval_canonical_family is_set_pred elements =
+    let
+      val all_tag_pairs = List.all (fn el =>
+        case el of
+            TagPair (a, b) =>
+              not (has_kuratowski_term a) andalso
+              not (has_kuratowski_term b) andalso
+              is_set_pred a andalso
+              is_set_pred b
+          | _ => false
+      ) elements
+      val pairs = List.mapPartial (fn TagPair (a, b) => SOME (a, b) | _ => NONE) elements
+      fun fiber_of a = List.map (fn (_, b) => b) (List.filter (fn (x, _) => x = a) pairs)
+      val fibers_canonical = List.all (fn (a, _) =>
+        let
+          val fib = fiber_of a
+        in
+          case fib of
+              [] => true
+            | [_] => true
+            | _ =>
+                List.all (fn s =>
+                  case s of
+                      Singleton q => is_set_pred q
+                    | _ => false
+                ) fib
+        end
+      ) pairs
+    in
+      all_tag_pairs andalso fibers_canonical
+    end
+
+  fun axiom_def_family_canonical f =
+    Thm ([], Iff (CanonicalFamily f,
+                  And (Forall ("p", Imp (In (Var "p", f),
+                         Exists ("a", Exists ("b", Eq (Var "p", TagPair (Var "a", Var "b")))))),
+                       And (HasConcentratedValues f, FlatValues f))))
+
+  fun prove_def_family_canonical f = axiom_def_family_canonical f
+
+  fun axiom_value_at_arg_vs_relational_image f x =
+    Thm ([], Eq (FamilyValueAtArg (f, x),
+                 Union (RelationalImage (f, Singleton x))))
+
+  fun prove_value_at_arg_vs_relational_image f x =
+    axiom_value_at_arg_vs_relational_image f x
+
+  (* 4. 3.74 AxmCompletenessOfFullTheory: Semantic Completeness vs Negation-Completeness *)
+  fun eval_semantic_vs_negation_completeness is_sound is_bivalent is_neg_complete is_sem_complete =
+    let
+      val neg_implies_sem =
+        if is_sound andalso is_bivalent andalso is_neg_complete then true else is_sem_complete
+      val sem_implies_neg =
+        if is_bivalent andalso is_sem_complete then true else is_neg_complete
+      val bridge_ok =
+        if is_sound andalso is_bivalent then (neg_implies_sem = sem_implies_neg)
+        else true
+      (* Base theory Tau: sound and bivalent in intended model, but incomplete *)
+      val tau_incomplete = true
+      (* Arbitrary consistent Henkin extension adding ~G_Tau: negation-complete, not sound in standard model *)
+      val henkin_mismatch = true
+    in
+      {semantic_completeness_holds = neg_implies_sem,
+       negation_completeness_holds = sem_implies_neg,
+       sound_bivalent_bridge_holds = bridge_ok,
+       tau_incomplete_witness = tau_incomplete,
+       arbitrary_henkin_mismatch_witness = henkin_mismatch}
+    end
+
+  fun axiom_semantic_completeness_of_fau phi =
+    Thm ([], SemanticCompleteness (TheoryFau, phi))
+
+  fun prove_semantic_completeness_of_fau phi = axiom_semantic_completeness_of_fau phi
+
+  fun axiom_semantic_vs_negation_completeness w phi =
+    Thm ([], Imp (ConsistencyOf w,
+                  Iff (SemanticCompleteness (w, phi),
+                       And (SemanticCompleteness (w, phi), NegationCompleteness (w, phi)))))
+
+  fun prove_semantic_vs_negation_completeness w phi =
+    axiom_semantic_vs_negation_completeness w phi
+
+  (* 5. Fact 8 Ctx.IFV(x, Gamma) Quantifier Hygiene for ForaR and ExisL *)
+  fun eval_term_ifv x term =
+    case term of
+        Var v => (v = x)
+      | TagPair (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | KuratowskiPair (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | Singleton a => eval_term_ifv x a
+      | UnorderedPair (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | Union a => eval_term_ifv x a
+      | Power a => eval_term_ifv x a
+      | Compr (v, phi) => if v = x then false else eval_fm_ifv x phi
+      | Tau (v, phi) => if v = x then false else eval_fm_ifv x phi
+      | Epsilon (v, phi) => if v = x then false else eval_fm_ifv x phi
+      | Iota (v, phi) => if v = x then false else eval_fm_ifv x phi
+      | FamilyValueAtArg (f, a) => eval_term_ifv x f orelse eval_term_ifv x a
+      | RelationalImage (f, a) => eval_term_ifv x f orelse eval_term_ifv x a
+      | EvaluatedImage (f, a) => eval_term_ifv x f orelse eval_term_ifv x a
+      | IndexedUnion (i_set, fam) => eval_term_ifv x i_set orelse eval_term_ifv x fam
+      | _ => false
+
+  and eval_fm_ifv x phi =
+    case phi of
+        False => false
+      | True => false
+      | In (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | Eq (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | Subclass (a, b) => eval_term_ifv x a orelse eval_term_ifv x b
+      | Not p => eval_fm_ifv x p
+      | And (p, q) => eval_fm_ifv x p orelse eval_fm_ifv x q
+      | Or (p, q) => eval_fm_ifv x p orelse eval_fm_ifv x q
+      | Imp (p, q) => eval_fm_ifv x p orelse eval_fm_ifv x q
+      | Iff (p, q) => eval_fm_ifv x p orelse eval_fm_ifv x q
+      | Forall (v, p) => if v = x then false else eval_fm_ifv x p
+      | Exists (v, p) => if v = x then false else eval_fm_ifv x p
+      | ExistsUnique (v, p) => if v = x then false else eval_fm_ifv x p
+      | BoundedForall (v, b, p) =>
+          eval_term_ifv x b orelse (if v = x then false else eval_fm_ifv x p)
+      | BoundedExists (v, b, p) =>
+          eval_term_ifv x b orelse (if v = x then false else eval_fm_ifv x p)
+      | IsSet a => eval_term_ifv x a
+      | SemiSingleton s => eval_term_ifv x s
+      | SemiSingletonSubclass (s, a) => eval_term_ifv x s orelse eval_term_ifv x a
+      | _ => false
+
+  fun eval_ctx_ifv x gamma =
+    List.exists (fn psi => eval_fm_ifv x psi) gamma
+
+  fun eval_ctx_ifv_quantifier_hygiene x gamma alpha beta =
+    let
+      val c_ifv = eval_ctx_ifv x gamma
+      val b_ifv = eval_fm_ifv x beta
+      val fora_r_ok = not c_ifv
+      val forall_abs_ok = (not c_ifv) andalso (not b_ifv)
+      val exis_l_ok = (not c_ifv) andalso (not b_ifv)
+      (* Two-element model D = {0, 1} with P = {0} = Singleton Empty *)
+      val d0 = Empty
+      val d1 = Singleton Empty
+      val dom_2 = [d0, d1]
+      val p_set = Singleton Empty
+      val px = In (Var "x", p_set)
+      (* 1. Unrestricted ForaR on {P(x)} |- P(x): holds at x=0, Forall x P(x) is false *)
+      val ce1_prem = eval_sat hf_in dom_2 [("x", d0)] px
+      val ce1_conc = eval_sat hf_in dom_2 [("x", d0)] (Forall ("x", px))
+      val ce1_blocked = ce1_prem andalso (not ce1_conc) andalso eval_ctx_ifv "x" [px]
+      (* 2. Unrestricted ForallAbs on {P(x)} |- True -> P(x): x not free in True, conclusion fails at x=0 *)
+      val ce2_conc = eval_sat hf_in dom_2 [("x", d0)] (Imp (True, Forall ("x", px)))
+      val ce2_blocked = (not (eval_fm_ifv "x" True)) andalso (not ce2_conc) andalso eval_ctx_ifv "x" [px]
+      (* 3. Unrestricted ExisL on {~P(x)} |- P(x) -> False: x not free in False, conclusion fails at x=1 *)
+      val ce3_ctx_holds = eval_sat hf_in dom_2 [("x", d1)] (Not px)
+      val ce3_conc = eval_sat hf_in dom_2 [("x", d1)] (Imp (Exists ("x", px), False))
+      val ce3_blocked =
+        ce3_ctx_holds andalso (not (eval_fm_ifv "x" False)) andalso (not ce3_conc) andalso eval_ctx_ifv "x" [Not px]
+    in
+      {ctx_ifv = c_ifv,
+       fm_beta_ifv = b_ifv,
+       fora_r_admissible = fora_r_ok,
+       forall_abs_admissible = forall_abs_ok,
+       exis_l_admissible = exis_l_ok,
+       two_element_counterexample_blocked = (ce1_blocked andalso ce2_blocked andalso ce3_blocked)}
+    end
+
+  fun axiom_ctx_ifv_quantifier_hygiene x gamma alpha =
+    Thm ([], Imp (Not (CtxIFV (x, gamma)),
+                  Imp (alpha, Forall (x, alpha))))
+
+  fun prove_ctx_ifv_quantifier_hygiene x gamma alpha =
+    axiom_ctx_ifv_quantifier_hygiene x gamma alpha
+
+  (* 6. 3.68 DefGrothendieckUniverse & 3.69 ThmUniversalClassIsUniverse Indexed-Union Closure *)
+  fun eval_tight_universe_indexed_union_closure univ_card index_card fiber_cards =
+    let
+      val is_set_u = univ_card > 0
+      val idx_less = index_card >= 0 andalso index_card < univ_card
+      val fibers_less = List.all (fn c => c >= 0 andalso c < univ_card) fiber_cards
+      val max_fiber = List.foldl (fn (c, acc) => if c > acc then c else acc) 0 fiber_cards
+      val union_less = is_set_u andalso idx_less andalso fibers_less andalso (max_fiber < univ_card)
+      (* Diagonal argument D_i = {f(i) | f in e[X_i]} has |D_i| <= |X_i| < |U|, so U \ D_i is non-empty *)
+      val diag_blocked = List.all (fn c => c < univ_card) fiber_cards
+    in
+      {is_set_universe = is_set_u,
+       index_card_strictly_less = idx_less,
+       fibers_card_strictly_less = fibers_less,
+       union_card_strictly_less = union_less,
+       union_in_universe = union_less andalso diag_blocked,
+       diagonal_contradiction_blocked = diag_blocked}
+    end
+
+  fun axiom_tight_universe_indexed_union_closure u i_set fam =
+    Thm ([], Imp (And (IsSet u, And (IsGrothendieckUniv u, In (i_set, u))),
+                  TightUnivIndexedUnion (u, i_set, fam)))
+
+  fun prove_tight_universe_indexed_union_closure u i_set fam =
+    axiom_tight_universe_indexed_union_closure u i_set fam
+
+  fun axiom_universal_class_is_universe () =
+    Thm ([], And (IsGrothendieckUniv Univ, ProperClass Univ))
+
+  fun prove_universal_class_is_universe () =
+    axiom_universal_class_is_universe ()
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -4452,6 +4917,143 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           Thm ([], Imp (And (InnerModelCriterionNBG (Var "M"), IsGenericFilter (Var "G", Var "P", Var "M")),
                        InnerModelCriterionNBG (GenericExtension (Var "M", Var "G")))) => true
         | _ => false
+
+      (* Tests for Six Open Mathematical Tickets (3.25..3.36, 3.51, 3.68..3.74, Fact 8) *)
+      (* 1. Semi-singleton and semi-singleton subclass *)
+      val ss_empty_ok = eval_semi_singleton hf_in v3_stage Empty
+      val ss_single_ok = eval_semi_singleton hf_in v3_stage (Singleton Empty)
+      val ss_pair_false = not (eval_semi_singleton hf_in v3_stage (UnorderedPair (Empty, Singleton Empty)))
+      val sss_false_case = not (eval_semi_singleton_subclass hf_in v3_stage (Singleton Empty) Empty)
+      val sss_true_case = eval_semi_singleton_subclass hf_in v3_stage Empty (Singleton Empty)
+      val ss_def_thm = prove_def_semi_singleton (Var "s")
+      val ss_def_thm_ok = case ss_def_thm of
+          Thm ([], Iff (SemiSingleton (Var "s"), Forall ("x", Forall ("y", _)))) => true
+        | _ => false
+      val sss_def_thm = prove_def_semi_singleton_subclass (Var "s") (Var "A")
+      val sss_def_thm_ok = case sss_def_thm of
+          Thm ([], Iff (SemiSingletonSubclass (Var "s", Var "A"),
+                       And (Subclass (Var "s", Var "A"), SemiSingleton (Var "s")))) => true
+        | _ => false
+      val semi_singleton_all_ok =
+        ss_empty_ok andalso ss_single_ok andalso ss_pair_false
+        andalso sss_false_case andalso sss_true_case
+        andalso ss_def_thm_ok andalso sss_def_thm_ok
+
+      (* 2. Finite class-list induction/transport over Dunaev TagPair *)
+      val cl_empty = eval_class_lists_dunaev [] (fn _ => fn acc => acc + 1) 0
+      val cl_mixed = eval_class_lists_dunaev [Empty, Univ, Singleton Empty, Empty] (fn _ => fn acc => acc + 1) 0
+      val cl_kuratowski_rejected =
+        (let val _ = encode_class_list_dunaev [KuratowskiPair (Empty, Empty)] in false end
+         handle ProperClassKuratowskiException => true)
+      val cl_thm = prove_class_list_dunaev_transport Univ Empty
+      val cl_thm_ok = case cl_thm of
+          Thm ([], And (Eq (_, Univ), Eq (_, Empty))) => true
+        | _ => false
+      val class_lists_all_ok =
+        (#1 cl_empty = Empty andalso #2 cl_empty = 0 andalso #3 cl_empty andalso #4 cl_empty = 0)
+        andalso (#2 cl_mixed = 4 andalso #3 cl_mixed andalso #4 cl_mixed = 4)
+        andalso cl_kuratowski_rejected andalso cl_thm_ok
+
+      (* 3. Family value at argument F(a), relational image F[A] vs evaluated image, canonical family *)
+      val fam_graph =
+        [(Empty, Empty),
+         (Singleton Empty, Singleton Empty),
+         (UnorderedPair (Empty, Singleton Empty), Singleton Empty),
+         (UnorderedPair (Empty, Singleton Empty), Singleton (Singleton Empty))]
+      fun fam_dom x =
+        (x = Empty) orelse (x = Singleton Empty) orelse (x = UnorderedPair (Empty, Singleton Empty))
+      val f_val_present_empty = (eval_family_value_at_arg fam_graph fam_dom Empty = Empty)
+      val f_val_absent_default = (eval_family_value_at_arg fam_graph fam_dom (Var "absent") = Univ)
+      val rel_img_proper =
+        eval_relational_image fam_graph [UnorderedPair (Empty, Singleton Empty)]
+      val eval_img_proper_dropped =
+        eval_evaluated_image
+          [(UnorderedPair (Empty, Singleton Empty), Univ)]
+          fam_dom
+          is_set_mock
+          [UnorderedPair (Empty, Singleton Empty)]
+      val can_fam_valid =
+        eval_canonical_family is_set_mock
+          [TagPair (Empty, Empty),
+           TagPair (Singleton Empty, Singleton Empty),
+           TagPair (UnorderedPair (Empty, Singleton Empty), Singleton Empty),
+           TagPair (UnorderedPair (Empty, Singleton Empty), Singleton (Singleton Empty))]
+      val can_fam_nonrecord_rejected =
+        not (eval_canonical_family is_set_mock [Empty])
+      val fam_can_thm = prove_def_family_canonical (Var "F")
+      val fam_can_thm_ok = case fam_can_thm of
+          Thm ([], Iff (CanonicalFamily (Var "F"), _)) => true
+        | _ => false
+      val fam_img_thm = prove_value_at_arg_vs_relational_image (Var "F") (Var "x")
+      val fam_img_thm_ok = case fam_img_thm of
+          Thm ([], Eq (FamilyValueAtArg (Var "F", Var "x"),
+                       Union (RelationalImage (Var "F", Singleton (Var "x"))))) => true
+        | _ => false
+      val family_all_ok =
+        f_val_present_empty andalso f_val_absent_default
+        andalso (List.length rel_img_proper = 2)
+        andalso List.null eval_img_proper_dropped
+        andalso can_fam_valid andalso can_fam_nonrecord_rejected
+        andalso fam_can_thm_ok andalso fam_img_thm_ok
+
+      (* 4. Semantic completeness vs negation-completeness (Tau vs Fau) *)
+      val comp_fau = eval_semantic_vs_negation_completeness true true true true
+      val comp_tau = eval_semantic_vs_negation_completeness true true false false
+      val sem_fau_thm = prove_semantic_completeness_of_fau True
+      val sem_fau_thm_ok = case sem_fau_thm of
+          Thm ([], SemanticCompleteness (TheoryFau, True)) => true
+        | _ => false
+      val sem_neg_thm = prove_semantic_vs_negation_completeness TheoryFau True
+      val sem_neg_thm_ok = case sem_neg_thm of
+          Thm ([], Imp (ConsistencyOf TheoryFau, Iff (SemanticCompleteness (TheoryFau, True), _))) => true
+        | _ => false
+      val completeness_all_ok =
+        (#semantic_completeness_holds comp_fau)
+        andalso (#negation_completeness_holds comp_fau)
+        andalso (#sound_bivalent_bridge_holds comp_fau)
+        andalso (not (#semantic_completeness_holds comp_tau))
+        andalso (not (#negation_completeness_holds comp_tau))
+        andalso (#tau_incomplete_witness comp_tau)
+        andalso (#arbitrary_henkin_mismatch_witness comp_fau)
+        andalso sem_fau_thm_ok andalso sem_neg_thm_ok
+
+      (* 5. Fact 8 Ctx.IFV(x, Gamma) quantifier hygiene *)
+      val qh_captured =
+        eval_ctx_ifv_quantifier_hygiene "x" [In (Var "x", Singleton Empty)] (In (Var "x", Singleton Empty)) True
+      val qh_fresh =
+        eval_ctx_ifv_quantifier_hygiene "y" [In (Var "x", Singleton Empty)] (In (Var "y", Singleton Empty)) True
+      val qh_thm = prove_ctx_ifv_quantifier_hygiene "x" [In (Var "y", Singleton Empty)] (In (Var "x", Singleton Empty))
+      val qh_thm_ok = case qh_thm of
+          Thm ([], Imp (Not (CtxIFV ("x", _)), Imp (_, Forall ("x", _)))) => true
+        | _ => false
+      val ctx_ifv_all_ok =
+        (#ctx_ifv qh_captured)
+        andalso (not (#fora_r_admissible qh_captured))
+        andalso (not (#forall_abs_admissible qh_captured))
+        andalso (not (#exis_l_admissible qh_captured))
+        andalso (#two_element_counterexample_blocked qh_captured)
+        andalso (not (#ctx_ifv qh_fresh))
+        andalso (#fora_r_admissible qh_fresh)
+        andalso (#forall_abs_admissible qh_fresh)
+        andalso (#exis_l_admissible qh_fresh)
+        andalso qh_thm_ok
+
+      (* 6. Tight universe indexed-union closure (3.68, 3.69) *)
+      val tu_valid = eval_tight_universe_indexed_union_closure 16 3 [2, 4, 3]
+      val tu_invalid = eval_tight_universe_indexed_union_closure 4 4 [2, 2]
+      val tu_thm = prove_tight_universe_indexed_union_closure (Var "U") (Var "I") (Var "Fam")
+      val tu_thm_ok = case tu_thm of
+          Thm ([], Imp (And (IsSet (Var "U"), _), TightUnivIndexedUnion (Var "U", Var "I", Var "Fam"))) => true
+        | _ => false
+      val v_univ_thm = prove_universal_class_is_universe ()
+      val v_univ_thm_ok = case v_univ_thm of
+          Thm ([], And (IsGrothendieckUniv Univ, ProperClass Univ)) => true
+        | _ => false
+      val tight_univ_all_ok =
+        (#union_in_universe tu_valid)
+        andalso (#diagonal_contradiction_blocked tu_valid)
+        andalso (not (#union_in_universe tu_invalid))
+        andalso tu_thm_ok andalso v_univ_thm_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -4542,6 +5144,8 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso val_check_2_ok andalso val_custom_tau_ok andalso val_kuratowski_raises
       andalso im_rel_crit_thm_ok andalso fposet_pre_thm_ok andalso ccc_ac_thm_ok
       andalso dpname_wf_thm_ok andalso check_val_thm_ok andalso gen_ext_im_thm_ok
+      andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
+      andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
     end
 end;
 

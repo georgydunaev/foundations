@@ -417,4 +417,35 @@ $x=\V$ and insert $\langle\V,\emptyclass\rangle=\emptyclass$ into
 the graph. The empty class is not a Kuratowski pair of sets. The sethood
 condition on $t$ likewise excludes records for proper-class values.
 
+\subsection{Guarded Argument Evaluation $F(a)$ vs.\ Relational Image $F[A]$ and Canonical Family Records (\texttt{3.25}--\texttt{3.31})}
+\label{subsec:family_records_and_image_conventions}
+
+In \textsf{MKTD1-theory} and \textsf{MKTD2-theory}, class relations and families are encoded using Dunaev Tagged Ordered Pairs $\pair{x}{y}$ so that projections remain injective without Kuratowski collapse. Catalog Items \texttt{3.25}--\texttt{3.31} distinguish three layers of evaluation and structural hygiene:
+\begin{enumerate}
+  \item \textbf{Guarded Single-Argument Evaluation (\texttt{3.25 DefValueAtArg})}:
+  For a class $F$ and an argument $a$, single-argument evaluation uses the definite description binder with universal-class fallback:
+  \[
+  F(a) \eqdef \iota y,\ \pair{a}{y} \in F,
+  \]
+  which returns the unique set $y \in \V$ satisfying $\pair{a}{y} \in F$ when $\exists! y,\ \pair{a}{y} \in F$ holds, and evaluates to the default proper class $\V$ whenever the fiber at $a$ is empty or contains two or more distinct witnesses.
+  \item \textbf{Relational Image vs.\ Evaluated Image (\texttt{3.26 DefRelationalImage})}:
+  For a subclass $A \subseteq \V$, the relational image collects all set witnesses paired with elements of $A$:
+  \[
+  F[A] \eqdef \cc{y}{\exists x,\ (x \in A \land \pair{x}{y} \in F)}.
+  \]
+  By contrast, the evaluated image $\cc{y}{\exists x,\ (x \in A \land y = F(x))}$ collects only those values $F(x) \in \V$ where the fiber over $x$ is a singleton. When $F$ is multi-valued at $x_0 \in A$ (with $\pair{x_0}{y_1}, \pair{x_0}{y_2} \in F$ for $y_1 \neq y_2$), both $y_1$ and $y_2$ belong to $F[A]$, whereas $F(x_0) = \V \notin \V$ contributes nothing to the evaluated image. When $F$ has concentrated set values on $A$, the two images coincide: $F[A] = \cc{y}{\exists x,\ (x \in A \land y = F(x))}$.
+  \item \textbf{Canonical Pair-Record Families (\texttt{3.29 DefHasConcentratedValues}, \texttt{3.30 DefFlatValues}, \texttt{3.31 DefFamily})}:
+  A class $F$ is a \emph{canonical family} from domain $A$ to codomain $B$ if and only if: (i) every element $z \in F$ is a Dunaev Tagged Ordered Pair $z = \pair{x}{y}$ with $x \in A$ and $y \in B$ (excluding non-pair junk atoms), (ii) $F$ has concentrated values on $A$ ($\forall x \in A,\ \exists! y,\ \pair{x}{y} \in F$), and (iii) $F$ has flat set values ($y \in \V$). Under this pair-record discipline, two canonical families with the same domain $A$ and pointwise values $F(x) = G(x)$ for all $x \in A$ are extensionally equal ($F = G$).
+\end{enumerate}
+
+\subsection{Explicit Predicate-Head Biconditionals for Semi-Singletons (\texttt{3.35}, \texttt{3.36})}
+\label{subsec:semisingleton_export_heads}
+
+To ensure that Catalog Items \texttt{3.35} (\texttt{DefSemiSingleton}) and \texttt{3.36} (\texttt{DefSemiSingletonSubclass}) can be referenced compositionally in downstream definitions (such as the family and $\Lambda$-operator constructions in \texttt{3.37}), their exported statements must include explicit defined predicate heads connected by a top-level biconditional rather than bare body-only formulas:
+\begin{align}
+  \forall s,\ \Big(\mathrm{SemiSingleton}(s) &\iff \forall x\,\forall y,\ \big((x \in s \land y \in s) \implies x = y\big)\Big), \label{eq:def_semisingleton_head} \\
+  \forall s\,\forall A,\ \Big(\mathrm{Sss}(s, A) &\iff \big(s \subseteq A \land \mathrm{SemiSingleton}(s)\big)\Big). \label{eq:def_sss_head}
+\end{align}
+In particular, $\emptyclass$ and every singleton $\{q\}$ with $q \in A$ satisfy $\mathrm{Sss}(s, A)$, whereas any class $s$ containing two distinct sets $q_1 \neq q_2$ fails $\mathrm{SemiSingleton}(s)$ and hence fails $\mathrm{Sss}(s, A)$.
+
 \input{END.tex}
