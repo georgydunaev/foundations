@@ -665,6 +665,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["beta_eta_lambek_verified"])
         self.assertTrue(res["internal_simply_typed_model_verified"])
 
+    def test_ticket_gl072_grothendieck_fibrations_cleavages_and_grothendieck_construction(self):
+        """Ticket 72: verify Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and Grothendieck Construction."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_cartesian_morphism",
+            "eval_is_grothendieck_fibration",
+            "eval_grothendieck_total_category",
+            "eval_is_split_fibration",
+            "eval_grothendieck_equivalence",
+            "proves_grothendieck_fibrations_cleavages_and_grothendieck_construction",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_grothendieck_fibrations_cleavages_and_grothendieck_construction()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["cartesian_morphism_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["grothendieck_fibration_verified"])
+        self.assertTrue(res["grothendieck_total_category_verified"])
+        self.assertTrue(res["split_fibration_verified"])
+        self.assertTrue(res["grothendieck_equivalence_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -312,6 +312,12 @@ from foundations.classes import (
     eval_beta_eta_lambek_equivalence,
     eval_internal_simply_typed_model,
     proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek,
+    eval_is_cartesian_morphism,
+    eval_is_grothendieck_fibration,
+    eval_grothendieck_total_category,
+    eval_is_split_fibration,
+    eval_grothendieck_equivalence,
+    proves_grothendieck_fibrations_cleavages_and_grothendieck_construction,
     proves_foundations_classes_and_families,
 )
 
@@ -624,5 +630,11 @@ __all__: list[str] = [
     "eval_beta_eta_lambek_equivalence",
     "eval_internal_simply_typed_model",
     "proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek",
+    "eval_is_cartesian_morphism",
+    "eval_is_grothendieck_fibration",
+    "eval_grothendieck_total_category",
+    "eval_is_split_fibration",
+    "eval_grothendieck_equivalence",
+    "proves_grothendieck_fibrations_cleavages_and_grothendieck_construction",
     "proves_foundations_classes_and_families",
 ]

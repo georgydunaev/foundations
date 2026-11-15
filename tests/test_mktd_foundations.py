@@ -772,6 +772,28 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_curry_howard_lambek_beta_eta_soundness", content)
         self.assertIn("prove_curry_howard_lambek_beta_eta_soundness", content)
 
+        # Ticket 72: Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and the Grothendieck Construction
+        self.assertIn("GrothendieckCartesianLift", content)
+        self.assertIn("FiberCategoryAtBase", content)
+        self.assertIn("CleavageAssignment", content)
+        self.assertIn("GrothendieckTotalCategory", content)
+        self.assertIn("IndexedPseudofunctor", content)
+        self.assertIn("IsCartesianMorphism", content)
+        self.assertIn("IsGrothendieckFibration", content)
+        self.assertIn("IsSplitFibration", content)
+        self.assertIn("SatisfiesGrothendieckEquivalence", content)
+        self.assertIn("eval_is_cartesian_morphism", content)
+        self.assertIn("eval_is_grothendieck_fibration", content)
+        self.assertIn("eval_grothendieck_total_category", content)
+        self.assertIn("eval_is_split_fibration", content)
+        self.assertIn("eval_grothendieck_equivalence", content)
+        self.assertIn("axiom_cartesian_lift_unique_up_to_vertical_iso", content)
+        self.assertIn("prove_cartesian_lift_unique_up_to_vertical_iso", content)
+        self.assertIn("axiom_grothendieck_construction_is_fibration", content)
+        self.assertIn("prove_grothendieck_construction_is_fibration", content)
+        self.assertIn("axiom_split_fibration_indexed_functor_bijection", content)
+        self.assertIn("prove_split_fibration_indexed_functor_bijection", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

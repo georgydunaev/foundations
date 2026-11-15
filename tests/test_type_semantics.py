@@ -2285,6 +2285,50 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl072_grothendieck_fibrations_cleavages_and_grothendieck_construction(self):
+        """Ticket 72: Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and Grothendieck Construction."""
+        from foundations.type_semantics import (
+            eval_is_cartesian_morphism,
+            eval_is_grothendieck_fibration,
+            eval_grothendieck_total_category,
+            eval_is_split_fibration,
+            eval_grothendieck_equivalence,
+            proves_grothendieck_fibrations_cleavages_and_grothendieck_construction,
+        )
+
+        self.assertTrue(
+            eval_is_cartesian_morphism(1, 2, [dunaev_pair(0, 10), dunaev_pair(1, 11)])["is_cartesian"]
+        )
+        with self.assertRaises(ProperClassError):
+            eval_is_cartesian_morphism(1, 2, [KuratowskiPair(0, 10)])
+
+        clv_items = [
+            dunaev_pair(dunaev_pair(0, 10), 100),
+            dunaev_pair(dunaev_pair(0, 20), 101),
+            dunaev_pair(dunaev_pair(1, 10), 102),
+            dunaev_pair(dunaev_pair(1, 20), 103),
+        ]
+        self.assertTrue(eval_is_grothendieck_fibration([0, 1], [10, 20], clv_items)["is_fibration"])
+        self.assertEqual(
+            eval_grothendieck_total_category([0, 1], [dunaev_pair(0, 10), dunaev_pair(1, 20)])[
+                "total_count"
+            ],
+            2,
+        )
+        split_reindex = [
+            dunaev_pair(dunaev_pair(0, 10), 10),
+            dunaev_pair(dunaev_pair(0, 20), 20),
+            dunaev_pair(dunaev_pair(1, 10), 20),
+            dunaev_pair(dunaev_pair(1, 20), 20),
+            dunaev_pair(dunaev_pair(2, 10), 20),
+            dunaev_pair(dunaev_pair(2, 20), 20),
+        ]
+        self.assertTrue(eval_is_split_fibration([10, 20], split_reindex)["is_split_fibration"])
+        self.assertTrue(eval_grothendieck_equivalence(True, True)["equivalence_verified"])
+
+        master = proves_grothendieck_fibrations_cleavages_and_grothendieck_construction()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

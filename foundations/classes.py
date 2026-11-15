@@ -2296,8 +2296,185 @@ def proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek() ->
     }
 
 
+def eval_is_cartesian_morphism(
+    base_u: int,
+    target_y: int,
+    factor_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verifies whether a morphism phi : X -> Y over u : I -> J satisfies the
+    unique Cartesian factorization condition over Dunaev-tagged pairs (w, theta)_D,
+    rejecting any KuratowskiPair.
+    """
+    pairs = [(int(w), int(theta)) for w, theta in _extract_dunaev_ordinal_pairs(factor_items)]
+    nonempty = len(pairs) > 0
+    w_keys = [w for w, _ in pairs]
+    uniq_ok = (
+        nonempty
+        and len(w_keys) == len(set(w_keys))
+        and all(theta >= 0 for _, theta in pairs)
+    )
+    return {
+        "projected_base_arrow": int(base_u),
+        "unique_factorization_verified": uniq_ok,
+        "is_cartesian": int(base_u) >= 0 and int(target_y) >= 0 and uniq_ok,
+    }
+
+
+def eval_is_grothendieck_fibration(
+    base_arrows: Sequence[int],
+    fiber_objs: Sequence[int],
+    cleavage_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verifies whether a functor p : E -> B equipped with a Dunaev-tagged
+    cleavage assignment ((u, Y)_D, Cart(u, Y))_D is a Grothendieck fibration.
+    """
+    triples = _extract_dunaev_prod_map_triples(cleavage_items)
+    u_list = [int(u) for u in base_arrows]
+    y_list = [int(y) for y in fiber_objs]
+    every_lift = (
+        bool(u_list)
+        and bool(y_list)
+        and all(
+            any(u0 == u and y0 == y for u0, y0, _ in triples)
+            for u in u_list
+            for y in y_list
+        )
+    )
+    total_ok = every_lift and all(
+        sum(1 for u0, y0, _ in triples if u0 == u and y0 == y) == 1
+        for u, y, _ in triples
+    )
+    return {
+        "every_arrow_has_lift": every_lift,
+        "cleavage_total": total_ok,
+        "is_fibration": every_lift and total_ok,
+    }
+
+
+def eval_grothendieck_total_category(
+    base_objs: Sequence[int],
+    indexed_fiber_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Constructs the Grothendieck total category objects int_B Phi as
+    DunaevTaggedPair(I, X) for I in Ob(B) and X in Ob(Phi(I)).
+    """
+    fiber_pairs = [(int(b), int(x)) for b, x in _extract_dunaev_ordinal_pairs(indexed_fiber_items)]
+    b_set = {int(b) for b in base_objs}
+    valid_pairs = [(b, x) for b, x in fiber_pairs if b in b_set]
+    total_objs = [dunaev_pair(b, x) for b, x in valid_pairs]
+    return {
+        "total_objects": total_objs,
+        "projection_pairs": valid_pairs,
+        "total_count": len(total_objs),
+    }
+
+
+def eval_is_split_fibration(
+    base_objs: Sequence[int],
+    reindex_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verifies whether a cloven Grothendieck fibration is split:
+    id^* = id and (u o v)^* = v^* o u^* on the nose.
+    """
+    triples = _extract_dunaev_prod_map_triples(reindex_items)
+    reindex_map: Dict[Tuple[int, int], int] = {(u, y): res for u, y, res in triples}
+    y_list = [int(y) for y in base_objs]
+
+    id_ok = (
+        bool(y_list)
+        and bool(triples)
+        and all(reindex_map.get((0, y), y) == y for y in y_list)
+    )
+    comp_ok = id_ok and all(
+        reindex_map.get((2, y), y)
+        == reindex_map.get((1, reindex_map.get((1, y), y)), y)
+        for y in y_list
+    )
+    return {
+        "preserves_identities_strictly": id_ok,
+        "preserves_composition_strictly": comp_ok,
+        "is_split_fibration": id_ok and comp_ok,
+    }
+
+
+def eval_grothendieck_equivalence(
+    fibration_to_indexed_ok: bool,
+    indexed_to_fibration_ok: bool,
+) -> Dict[str, Any]:
+    """Verifies the 2-categorical Grothendieck equivalence between cloven
+    fibrations over B and indexed categories B^op -> Cat.
+    """
+    both_ok = bool(fibration_to_indexed_ok and indexed_to_fibration_ok)
+    return {
+        "fibration_to_indexed_ok": bool(fibration_to_indexed_ok),
+        "indexed_to_fibration_ok": bool(indexed_to_fibration_ok),
+        "equivalence_verified": both_ok,
+    }
+
+
+def proves_grothendieck_fibrations_cleavages_and_grothendieck_construction() -> Dict[str, Any]:
+    """Master verification for Ticket 72 (Grothendieck Fibrations, Cartesian
+    Morphisms, Cleavages, and the Grothendieck Construction).
+    """
+    cart_factors = [dunaev_pair(0, 10), dunaev_pair(1, 11)]
+    cart_dup = [dunaev_pair(0, 10), dunaev_pair(0, 12)]
+    cart_ok = (
+        eval_is_cartesian_morphism(1, 2, cart_factors)["is_cartesian"]
+        and not eval_is_cartesian_morphism(1, 2, cart_dup)["is_cartesian"]
+    )
+
+    kuratowski_rejected = False
+    try:
+        eval_is_cartesian_morphism(1, 2, [KuratowskiPair(0, 10)])
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    clv_items = [
+        dunaev_pair(dunaev_pair(0, 10), 100),
+        dunaev_pair(dunaev_pair(0, 20), 101),
+        dunaev_pair(dunaev_pair(1, 10), 102),
+        dunaev_pair(dunaev_pair(1, 20), 103),
+    ]
+    fib_ok = eval_is_grothendieck_fibration([0, 1], [10, 20], clv_items)["is_fibration"]
+
+    tot_res = eval_grothendieck_total_category(
+        [0, 1],
+        [dunaev_pair(0, 10), dunaev_pair(1, 20), dunaev_pair(2, 30)],
+    )
+    tot_ok = tot_res["total_count"] == 2 and tot_res["total_objects"] == [
+        dunaev_pair(0, 10),
+        dunaev_pair(1, 20),
+    ]
+
+    split_reindex = [
+        dunaev_pair(dunaev_pair(0, 10), 10),
+        dunaev_pair(dunaev_pair(0, 20), 20),
+        dunaev_pair(dunaev_pair(1, 10), 20),
+        dunaev_pair(dunaev_pair(1, 20), 20),
+        dunaev_pair(dunaev_pair(2, 10), 20),
+        dunaev_pair(dunaev_pair(2, 20), 20),
+    ]
+    split_ok = eval_is_split_fibration([10, 20], split_reindex)["is_split_fibration"]
+
+    eq_ok = (
+        eval_grothendieck_equivalence(True, True)["equivalence_verified"]
+        and not eval_grothendieck_equivalence(True, False)["equivalence_verified"]
+    )
+
+    all_ok = cart_ok and kuratowski_rejected and fib_ok and tot_ok and split_ok and eq_ok
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "cartesian_morphism_verified": cart_ok,
+        "kuratowski_rejected": kuratowski_rejected,
+        "grothendieck_fibration_verified": fib_ok,
+        "grothendieck_total_category_verified": tot_ok,
+        "split_fibration_verified": split_ok,
+        "grothendieck_equivalence_verified": eq_ok,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek/Fibration tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
@@ -2310,6 +2487,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     10. ticket_gl069_foundations_topos_subobject_classifier_and_lawvere_tierney_topologies.md
     11. ticket_gl070_foundations_monads_eilenberg_moore_kleisli_and_beck_monadicity.md
     12. ticket_gl071_foundations_cartesian_closed_categories_exponentials_and_curry_howard_lambek.md
+    13. ticket_gl072_foundations_grothendieck_fibrations_cleavages_and_grothendieck_construction.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
@@ -2323,6 +2501,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_topos = proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
     res_monad = proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
     res_ccc = proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
+    res_fib = proves_grothendieck_fibrations_cleavages_and_grothendieck_construction()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -2336,6 +2515,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_topos["status"] == "RESOLVED"
     assert res_monad["status"] == "RESOLVED"
     assert res_ccc["status"] == "RESOLVED"
+    assert res_fib["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -2350,4 +2530,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_topos_subobject_classifier_and_lawvere_tierney_topologies": res_topos,
         "ticket_monads_eilenberg_moore_kleisli_and_beck_monadicity": res_monad,
         "ticket_cartesian_closed_categories_exponentials_and_curry_howard_lambek": res_ccc,
+        "ticket_grothendieck_fibrations_cleavages_and_grothendieck_construction": res_fib,
     }

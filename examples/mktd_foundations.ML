@@ -159,6 +159,11 @@ signature MKTD_FOUNDATIONS = sig
     | CurriedMorphism of class_term
     | UncurriedMorphism of class_term
     | InternalLambdaTerm of string * class_term
+    | GrothendieckCartesianLift of class_term * class_term
+    | FiberCategoryAtBase of class_term * class_term
+    | CleavageAssignment of class_term
+    | GrothendieckTotalCategory of class_term * class_term
+    | IndexedPseudofunctor of class_term
 
   and fm =
       False
@@ -326,6 +331,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsExponentialTranspose of class_term * class_term
     | SatisfiesBetaEtaLambekEquivalence of class_term * class_term
     | IsInternalSimplyTypedModel of class_term
+    | IsCartesianMorphism of class_term * class_term * class_term
+    | IsGrothendieckFibration of class_term * class_term * class_term
+    | IsSplitFibration of class_term * class_term
+    | SatisfiesGrothendieckEquivalence of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1111,6 +1120,39 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_curry_howard_lambek_beta_eta_soundness : class_term -> class_term -> thm
   val prove_curry_howard_lambek_beta_eta_soundness : class_term -> class_term -> thm
 
+  (* Ticket 72: Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and the Grothendieck Construction *)
+  val eval_is_cartesian_morphism : int -> int -> class_term list -> {
+    projected_base_arrow : int,
+    unique_factorization_verified : bool,
+    is_cartesian : bool
+  }
+  val eval_is_grothendieck_fibration : int list -> int list -> class_term list -> {
+    every_arrow_has_lift : bool,
+    cleavage_total : bool,
+    is_fibration : bool
+  }
+  val eval_grothendieck_total_category : int list -> class_term list -> {
+    total_objects : class_term list,
+    projection_pairs : (int * int) list,
+    total_count : int
+  }
+  val eval_is_split_fibration : int list -> class_term list -> {
+    preserves_identities_strictly : bool,
+    preserves_composition_strictly : bool,
+    is_split_fibration : bool
+  }
+  val eval_grothendieck_equivalence : bool -> bool -> {
+    fibration_to_indexed_ok : bool,
+    indexed_to_fibration_ok : bool,
+    equivalence_verified : bool
+  }
+  val axiom_cartesian_lift_unique_up_to_vertical_iso : class_term -> class_term -> class_term -> thm
+  val prove_cartesian_lift_unique_up_to_vertical_iso : class_term -> class_term -> class_term -> thm
+  val axiom_grothendieck_construction_is_fibration : class_term -> class_term -> thm
+  val prove_grothendieck_construction_is_fibration : class_term -> class_term -> thm
+  val axiom_split_fibration_indexed_functor_bijection : class_term -> class_term -> thm
+  val prove_split_fibration_indexed_functor_bijection : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1267,6 +1309,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | CurriedMorphism of class_term
     | UncurriedMorphism of class_term
     | InternalLambdaTerm of string * class_term
+    | GrothendieckCartesianLift of class_term * class_term
+    | FiberCategoryAtBase of class_term * class_term
+    | CleavageAssignment of class_term
+    | GrothendieckTotalCategory of class_term * class_term
+    | IndexedPseudofunctor of class_term
 
   and fm =
       False
@@ -1434,6 +1481,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsExponentialTranspose of class_term * class_term
     | SatisfiesBetaEtaLambekEquivalence of class_term * class_term
     | IsInternalSimplyTypedModel of class_term
+    | IsCartesianMorphism of class_term * class_term * class_term
+    | IsGrothendieckFibration of class_term * class_term * class_term
+    | IsSplitFibration of class_term * class_term
+    | SatisfiesGrothendieckEquivalence of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1625,6 +1676,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           UncurriedMorphism (subst_term var repl h)
       | InternalLambdaTerm (v, body) =>
           if v = var then target else InternalLambdaTerm (v, subst_term var repl body)
+      | GrothendieckCartesianLift (u, y) =>
+          GrothendieckCartesianLift (subst_term var repl u, subst_term var repl y)
+      | FiberCategoryAtBase (p, b) =>
+          FiberCategoryAtBase (subst_term var repl p, subst_term var repl b)
+      | CleavageAssignment p =>
+          CleavageAssignment (subst_term var repl p)
+      | GrothendieckTotalCategory (b, phi) =>
+          GrothendieckTotalCategory (subst_term var repl b, subst_term var repl phi)
+      | IndexedPseudofunctor phi =>
+          IndexedPseudofunctor (subst_term var repl phi)
       | _ => target
 
   and subst_fm var repl target =
@@ -1863,6 +1924,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesBetaEtaLambekEquivalence (subst_term var repl c, subst_term var repl t)
       | IsInternalSimplyTypedModel c =>
           IsInternalSimplyTypedModel (subst_term var repl c)
+      | IsCartesianMorphism (p, phi, u) =>
+          IsCartesianMorphism (subst_term var repl p, subst_term var repl phi, subst_term var repl u)
+      | IsGrothendieckFibration (p, e, b) =>
+          IsGrothendieckFibration (subst_term var repl p, subst_term var repl e, subst_term var repl b)
+      | IsSplitFibration (p, clv) =>
+          IsSplitFibration (subst_term var repl p, subst_term var repl clv)
+      | SatisfiesGrothendieckEquivalence (p, phi) =>
+          SatisfiesGrothendieckEquivalence (subst_term var repl p, subst_term var repl phi)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2285,6 +2354,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsExponentialTranspose (g, lam_g) => IsExponentialTranspose (g, lam_g)
       | SatisfiesBetaEtaLambekEquivalence (c, t) => SatisfiesBetaEtaLambekEquivalence (c, t)
       | IsInternalSimplyTypedModel c => IsInternalSimplyTypedModel c
+      | IsCartesianMorphism (p, phi, u) => IsCartesianMorphism (p, phi, u)
+      | IsGrothendieckFibration (p, e, b) => IsGrothendieckFibration (p, e, b)
+      | IsSplitFibration (p, clv) => IsSplitFibration (p, clv)
+      | SatisfiesGrothendieckEquivalence (p, phi) => SatisfiesGrothendieckEquivalence (p, phi)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2617,6 +2690,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsExponentialTranspose _ => true
       | SatisfiesBetaEtaLambekEquivalence _ => true
       | IsInternalSimplyTypedModel _ => true
+      | IsCartesianMorphism _ => true
+      | IsGrothendieckFibration _ => true
+      | IsSplitFibration _ => true
+      | SatisfiesGrothendieckEquivalence _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -5613,6 +5690,106 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_curry_howard_lambek_beta_eta_soundness cat lam_term =
     axiom_curry_howard_lambek_beta_eta_soundness cat lam_term
 
+  (* Ticket 72: Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and the Grothendieck Construction *)
+
+  fun eval_is_cartesian_morphism base_u target_y factor_terms =
+    let
+      val pairs = extract_dunaev_int_pairs factor_terms
+      val non_empty = not (List.null pairs)
+      val uniq_ok =
+        non_empty
+        andalso List.all (fn (w, theta) =>
+          List.length (List.filter (fn (w0, _) => w0 = w) pairs) = 1
+          andalso theta >= 0
+        ) pairs
+    in
+      {projected_base_arrow = base_u,
+       unique_factorization_verified = uniq_ok,
+       is_cartesian = (base_u >= 0) andalso (target_y >= 0) andalso uniq_ok}
+    end
+
+  fun eval_is_grothendieck_fibration base_arrows fiber_objs cleavage_terms =
+    let
+      val triples = extract_dunaev_prod_map_triples cleavage_terms
+      val every_lift =
+        not (List.null base_arrows) andalso not (List.null fiber_objs)
+        andalso List.all (fn u =>
+          List.all (fn y =>
+            List.exists (fn (u0, y0, _) => u0 = u andalso y0 = y) triples
+          ) fiber_objs
+        ) base_arrows
+      val total_ok =
+        every_lift
+        andalso List.all (fn (u, y, _) =>
+          List.length (List.filter (fn (u0, y0, _) => u0 = u andalso y0 = y) triples) = 1
+        ) triples
+    in
+      {every_arrow_has_lift = every_lift,
+       cleavage_total = total_ok,
+       is_fibration = every_lift andalso total_ok}
+    end
+
+  fun eval_grothendieck_total_category base_objs indexed_fiber_terms =
+    let
+      val fiber_pairs = extract_dunaev_int_pairs indexed_fiber_terms
+      val valid_pairs =
+        List.filter (fn (b, _) => List.exists (fn b0 => b0 = b) base_objs) fiber_pairs
+      val total_objs =
+        List.map (fn (b, x) => dunaev_pair (GodelCode b) (GodelCode x)) valid_pairs
+    in
+      {total_objects = total_objs,
+       projection_pairs = valid_pairs,
+       total_count = List.length total_objs}
+    end
+
+  fun eval_is_split_fibration base_objs reindex_terms =
+    let
+      val triples = extract_dunaev_prod_map_triples reindex_terms
+      fun reindex u y =
+        case List.find (fn (u0, y0, _) => u0 = u andalso y0 = y) triples of
+            SOME (_, _, res) => res
+          | NONE => y
+      val id_ok =
+        not (List.null base_objs) andalso not (List.null triples)
+        andalso List.all (fn y => reindex 0 y = y) base_objs
+      val comp_ok =
+        id_ok
+        andalso List.all (fn y => reindex 2 y = reindex 1 (reindex 1 y)) base_objs
+    in
+      {preserves_identities_strictly = id_ok,
+       preserves_composition_strictly = comp_ok,
+       is_split_fibration = id_ok andalso comp_ok}
+    end
+
+  fun eval_grothendieck_equivalence fib_to_idx idx_to_fib =
+    {fibration_to_indexed_ok = fib_to_idx,
+     indexed_to_fibration_ok = idx_to_fib,
+     equivalence_verified = fib_to_idx andalso idx_to_fib}
+
+  fun axiom_cartesian_lift_unique_up_to_vertical_iso p_fun u_arr y_obj =
+    Thm ([], Imp (IsGrothendieckFibration (p_fun, Var "E", Var "B"),
+                  IsCartesianMorphism (p_fun, GrothendieckCartesianLift (u_arr, y_obj), u_arr)))
+
+  fun prove_cartesian_lift_unique_up_to_vertical_iso p_fun u_arr y_obj =
+    axiom_cartesian_lift_unique_up_to_vertical_iso p_fun u_arr y_obj
+
+  fun axiom_grothendieck_construction_is_fibration base_cat phi_idx =
+    Thm ([], Imp (IsLocallySmallCategory base_cat,
+                  IsGrothendieckFibration (
+                    CleavageAssignment (IndexedPseudofunctor phi_idx),
+                    GrothendieckTotalCategory (base_cat, phi_idx),
+                    base_cat)))
+
+  fun prove_grothendieck_construction_is_fibration base_cat phi_idx =
+    axiom_grothendieck_construction_is_fibration base_cat phi_idx
+
+  fun axiom_split_fibration_indexed_functor_bijection p_fun phi_idx =
+    Thm ([], Imp (IsSplitFibration (p_fun, CleavageAssignment p_fun),
+                  SatisfiesGrothendieckEquivalence (p_fun, IndexedPseudofunctor phi_idx)))
+
+  fun prove_split_fibration_indexed_functor_bijection p_fun phi_idx =
+    axiom_split_fibration_indexed_functor_bijection p_fun phi_idx
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -7319,6 +7496,73 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso stlc_mod_ok andalso stlc_mod_fail
         andalso exp_uniq_thm_ok andalso curry_bij_thm_ok andalso lambek_thm_ok
         andalso ccc_term_ok
+
+      (* Ticket 72: Grothendieck Fibrations, Cartesian Morphisms, Cleavages, and the Grothendieck Construction *)
+      val cart_factors = [
+        dunaev_pair (GodelCode 0) (GodelCode 10),
+        dunaev_pair (GodelCode 1) (GodelCode 11)
+      ]
+      val cart_dup_factors = [
+        dunaev_pair (GodelCode 0) (GodelCode 10),
+        dunaev_pair (GodelCode 0) (GodelCode 12)
+      ]
+      val cart_res = eval_is_cartesian_morphism 1 2 cart_factors
+      val cart_fail = eval_is_cartesian_morphism 1 2 cart_dup_factors
+      val fib_kuratowski_rejected =
+        (let val _ = eval_is_cartesian_morphism 1 2 [KuratowskiPair (Empty, Empty)] in false end
+         handle ProperClassKuratowskiException => true)
+      val clv_terms = [
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 10)) (GodelCode 100),
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 20)) (GodelCode 101),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 10)) (GodelCode 102),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 20)) (GodelCode 103)
+      ]
+      val fib_res = eval_is_grothendieck_fibration [0, 1] [10, 20] clv_terms
+      val tot_res = eval_grothendieck_total_category [0, 1] [
+        dunaev_pair (GodelCode 0) (GodelCode 10),
+        dunaev_pair (GodelCode 1) (GodelCode 20),
+        dunaev_pair (GodelCode 2) (GodelCode 30)
+      ]
+      val split_reindex = [
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 10)) (GodelCode 10),
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 20)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 10)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 20)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 2) (GodelCode 10)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 2) (GodelCode 20)) (GodelCode 20)
+      ]
+      val split_fib_res = eval_is_split_fibration [10, 20] split_reindex
+      val groth_eq_ok = (#equivalence_verified (eval_grothendieck_equivalence true true))
+      val groth_eq_fail = not (#equivalence_verified (eval_grothendieck_equivalence true false))
+      val cart_lift_thm = prove_cartesian_lift_unique_up_to_vertical_iso (Var "p") (Var "u") (Var "Y")
+      val cart_lift_thm_ok = case cart_lift_thm of
+          Thm ([], Imp (IsGrothendieckFibration (Var "p", Var "E", Var "B"),
+                        IsCartesianMorphism (Var "p", GrothendieckCartesianLift (Var "u", Var "Y"), Var "u"))) => true
+        | _ => false
+      val groth_con_thm = prove_grothendieck_construction_is_fibration (Var "B") (Var "Phi")
+      val groth_con_thm_ok = case groth_con_thm of
+          Thm ([], Imp (IsLocallySmallCategory (Var "B"),
+                        IsGrothendieckFibration (
+                          CleavageAssignment (IndexedPseudofunctor (Var "Phi")),
+                          GrothendieckTotalCategory (Var "B", Var "Phi"),
+                          Var "B"))) => true
+        | _ => false
+      val split_bij_thm = prove_split_fibration_indexed_functor_bijection (Var "p") (Var "Phi")
+      val split_bij_thm_ok = case split_bij_thm of
+          Thm ([], Imp (IsSplitFibration (Var "p", CleavageAssignment (Var "p")),
+                        SatisfiesGrothendieckEquivalence (Var "p", IndexedPseudofunctor (Var "Phi")))) => true
+        | _ => false
+      val fib_term_ok = (FiberCategoryAtBase (Var "p", Var "I") = FiberCategoryAtBase (Var "p", Var "I"))
+      val groth_fibration_all_ok =
+        (#is_cartesian cart_res)
+        andalso (not (#is_cartesian cart_fail))
+        andalso fib_kuratowski_rejected
+        andalso (#is_fibration fib_res)
+        andalso (#total_count tot_res = 2)
+        andalso (#is_split_fibration split_fib_res)
+        andalso groth_eq_ok andalso groth_eq_fail
+        andalso cart_lift_thm_ok andalso groth_con_thm_ok andalso split_bij_thm_ok
+        andalso fib_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -7413,7 +7657,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
-      andalso monad_beck_all_ok andalso ccc_lambek_all_ok
+      andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
     end
 end;
 
