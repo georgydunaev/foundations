@@ -269,6 +269,13 @@ from foundations.classes import (
     eval_bval_equality,
     eval_bval_zfc_axioms_valid,
     proves_boolean_valued_models_and_ro_completion,
+    eval_is_normal_ordinal_function,
+    eval_veblen_fixed_point,
+    eval_is_club_in_regular,
+    eval_is_stationary_in_regular,
+    eval_diagonal_intersection_club,
+    eval_fodors_lemma_regressive_constant,
+    proves_ordinal_veblen_hierarchy_and_club_stationary_filters,
     proves_foundations_classes_and_families,
 )
 
@@ -538,5 +545,12 @@ __all__: list[str] = [
     "eval_bval_equality",
     "eval_bval_zfc_axioms_valid",
     "proves_boolean_valued_models_and_ro_completion",
+    "eval_is_normal_ordinal_function",
+    "eval_veblen_fixed_point",
+    "eval_is_club_in_regular",
+    "eval_is_stationary_in_regular",
+    "eval_diagonal_intersection_club",
+    "eval_fodors_lemma_regressive_constant",
+    "proves_ordinal_veblen_hierarchy_and_club_stationary_filters",
     "proves_foundations_classes_and_families",
 ]

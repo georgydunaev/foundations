@@ -1964,6 +1964,63 @@ class TestTypeSemantics(unittest.TestCase):
         self.assertEqual(master["status"], "RESOLVED")
         self.assertTrue(master["dunaev_pname_bval_equivalence_verified"])
 
+    def test_ticket_gl065_ordinal_veblen_hierarchy_and_club_stationary_filters(self):
+        """Ticket 65: Normal Ordinal Functions, Veblen Hierarchy, Club Filter, and Fodor's Lemma."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            dunaev_pair,
+            eval_diagonal_intersection_club,
+            eval_fodors_lemma_regressive_constant,
+            eval_is_club_in_regular,
+            eval_is_normal_ordinal_function,
+            eval_is_stationary_in_regular,
+            eval_veblen_fixed_point,
+            proves_ordinal_veblen_hierarchy_and_club_stationary_filters,
+        )
+
+        norm_ok = eval_is_normal_ordinal_function(
+            [dunaev_pair(0, 1), dunaev_pair(1, 2), dunaev_pair(2, 3)],
+            limit_points=[],
+        )
+        self.assertTrue(norm_ok["is_normal"])
+        with self.assertRaises(ProperClassError):
+            eval_is_normal_ordinal_function([KuratowskiPair(0, 1)])
+
+        veb_0_2 = eval_veblen_fixed_point(0, 2)
+        veb_1_1 = eval_veblen_fixed_point(1, 1)
+        self.assertTrue(veb_0_2["is_fixed_point_of_lower"])
+        self.assertTrue(veb_1_1["is_fixed_point_of_lower"])
+        self.assertGreater(veb_1_1["phi_alpha_beta"], veb_0_2["phi_alpha_beta"])
+
+        club_valid = eval_is_club_in_regular(5, [2, 4], [1, 2, 3, 4])
+        self.assertTrue(club_valid["is_club"])
+        self.assertFalse(eval_is_club_in_regular(5, [2, 4], [0, 1, 3, 4])["is_club"])
+
+        club_fam = [[1, 2, 3, 4], [2, 3, 4]]
+        self.assertTrue(eval_is_stationary_in_regular([1, 2], club_fam))
+        self.assertFalse(eval_is_stationary_in_regular([0, 1], club_fam))
+
+        diag_seq = [
+            dunaev_pair(0, [0, 1, 2, 3]),
+            dunaev_pair(1, [1, 2, 3]),
+            dunaev_pair(2, [2, 3]),
+            dunaev_pair(3, [3]),
+        ]
+        self.assertEqual(eval_diagonal_intersection_club(4, diag_seq), [0, 1, 2, 3])
+
+        fodor_res = eval_fodors_lemma_regressive_constant(
+            [1, 2, 3],
+            [dunaev_pair(1, 0), dunaev_pair(2, 0), dunaev_pair(3, 1)],
+            club_fam,
+        )
+        self.assertTrue(fodor_res["is_regressive"])
+        self.assertTrue(fodor_res["fiber_is_stationary"])
+        self.assertEqual(fodor_res["constant_value"], 0)
+
+        master = proves_ordinal_veblen_hierarchy_and_club_stationary_filters()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

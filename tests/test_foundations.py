@@ -491,6 +491,33 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["kuratowski_bname_rejected"])
         self.assertTrue(res["dunaev_pname_bval_equivalence_verified"])
 
+    def test_ticket_gl065_ordinal_veblen_hierarchy_and_club_stationary_filters(self):
+        """Ticket 65: verify Normal Ordinal Functions, Veblen Hierarchy, Club Filter, and Fodor's Lemma."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_normal_ordinal_function",
+            "eval_veblen_fixed_point",
+            "eval_is_club_in_regular",
+            "eval_is_stationary_in_regular",
+            "eval_diagonal_intersection_club",
+            "eval_fodors_lemma_regressive_constant",
+            "proves_ordinal_veblen_hierarchy_and_club_stationary_filters",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_ordinal_veblen_hierarchy_and_club_stationary_filters()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["normal_function_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["veblen_hierarchy_verified"])
+        self.assertTrue(res["club_filter_verified"])
+        self.assertTrue(res["stationary_verified"])
+        self.assertTrue(res["diagonal_intersection_verified"])
+        self.assertTrue(res["fodors_pressing_down_lemma_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

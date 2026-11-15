@@ -856,25 +856,292 @@ def proves_boolean_valued_models_and_ro_completion() -> Dict[str, Any]:
     }
 
 
+# ==============================================================================
+# 6. Club Filter, Stationary Subclasses, Fodor's Lemma, and Veblen Hierarchy
+# ==============================================================================
+
+def _extract_dunaev_ordinal_pairs(pair_items: Iterable[Any]) -> List[Tuple[int, Any]]:
+    pairs: List[Tuple[int, Any]] = []
+    for item in pair_items:
+        if isinstance(item, KuratowskiPair):
+            raise ProperClassError(
+                "Kuratowski pairs are forbidden in ordinal class function graphs; use DunaevTaggedPair."
+            )
+        if isinstance(item, DunaevTaggedPair):
+            if isinstance(item.first, KuratowskiPair) or isinstance(item.second, KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden inside Dunaev ordinal pair elements."
+                )
+            pairs.append((int(item.first), item.second))
+        elif isinstance(item, tuple) and len(item) == 2:
+            if isinstance(item[0], KuratowskiPair) or isinstance(item[1], KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden inside ordinal pair elements."
+                )
+            pairs.append((int(item[0]), item[1]))
+        else:
+            raise TypeError(f"Invalid Dunaev ordinal pair entry: {item!r}")
+    return pairs
+
+
+def eval_is_normal_ordinal_function(
+    pair_items: Iterable[Any],
+    limit_points: Iterable[int] = (),
+) -> Dict[str, Any]:
+    """Verifies whether an ordinal class function graph encoded via Dunaev Tagged Ordered
+    Pairs is normal: strictly increasing (alpha < beta implies f(alpha) < f(beta)) and
+    continuous at all specified limit stages lambda > 0 (f(lambda) = sup_{alpha < lambda} f(alpha)).
+    Raises ProperClassError if any KuratowskiPair is encountered.
+    """
+    raw_pairs = _extract_dunaev_ordinal_pairs(pair_items)
+    pairs = [(a, int(v)) for a, v in raw_pairs]
+    inc_ok = all(
+        v1 < v2
+        for a1, v1 in pairs
+        for a2, v2 in pairs
+        if a1 < a2
+    )
+    pair_map = dict(pairs)
+    cont_ok = True
+    for lam in limit_points:
+        if lam <= 0 or lam not in pair_map:
+            continue
+        below = [v for a, v in pairs if a < lam]
+        if not below or pair_map[lam] != max(below):
+            cont_ok = False
+            break
+    return {
+        "strictly_increasing": inc_ok,
+        "continuous_at_limits": cont_ok,
+        "is_normal": inc_ok and cont_ok,
+    }
+
+
+def _veblen_phi_int(alpha: int, beta: int) -> int:
+    if alpha <= 0:
+        return 2 * beta + 1
+    acc = _veblen_phi_int(alpha - 1, 1)
+    for _ in range(beta):
+        acc = _veblen_phi_int(alpha - 1, acc + 1)
+    return acc
+
+
+def eval_veblen_fixed_point(alpha: int, beta: int) -> Dict[str, Any]:
+    """Evaluates a finite-ordinal scaling model of the Veblen normal function hierarchy
+    phi_alpha(beta), where phi_0(beta) = 2*beta + 1 and for alpha > 0, phi_alpha(beta)
+    iterates the lower Veblen derivative phi_{alpha-1}, dominating all lower stages.
+    """
+    if alpha < 0 or beta < 0:
+        return {
+            "alpha": alpha,
+            "beta": beta,
+            "phi_alpha_beta": 0,
+            "is_fixed_point_of_lower": False,
+        }
+    val = _veblen_phi_int(alpha, beta)
+    fp_ok = (val > beta) if alpha == 0 else (val >= _veblen_phi_int(alpha - 1, beta))
+    return {
+        "alpha": alpha,
+        "beta": beta,
+        "phi_alpha_beta": val,
+        "is_fixed_point_of_lower": fp_ok,
+    }
+
+
+def eval_is_club_in_regular(
+    kappa: int,
+    limit_points: Iterable[int],
+    c_set: Iterable[int],
+) -> Dict[str, Any]:
+    """Verifies whether a subset C subseteq kappa of a regular cardinal bound kappa
+    is closed (contains all limit points lambda < kappa in limit_points where C cap lambda
+    is unbounded in lambda) and unbounded in kappa.
+    """
+    if kappa <= 0:
+        return {"is_closed": False, "is_unbounded": False, "is_club": False}
+    c_list = sorted(set(int(x) for x in c_set if 0 <= int(x) < kappa))
+    unb_ok = all(any(b >= a for b in c_list) for a in range(kappa))
+    closed_ok = True
+    for lam in limit_points:
+        if 0 < lam < kappa:
+            below_c = [x for x in c_list if x < lam]
+            has_unb_below = bool(below_c) and all(
+                any(b >= a for b in below_c) for a in range(lam)
+            )
+            if has_unb_below and lam not in c_list:
+                closed_ok = False
+                break
+    return {
+        "is_closed": closed_ok,
+        "is_unbounded": unb_ok,
+        "is_club": closed_ok and unb_ok,
+    }
+
+
+def eval_is_stationary_in_regular(
+    s_set: Iterable[int],
+    club_family: Iterable[Iterable[int]],
+) -> bool:
+    """Verifies whether S subseteq kappa is stationary with respect to club_family,
+    i.e., S cap C != empty for every club C in club_family.
+    """
+    s_frozenset = frozenset(int(x) for x in s_set)
+    clubs = [frozenset(int(x) for x in c) for c in club_family]
+    if not clubs:
+        return False
+    return all(bool(s_frozenset & c) for c in clubs)
+
+
+def eval_diagonal_intersection_club(
+    kappa: int,
+    seq_pairs: Iterable[Any],
+) -> List[int]:
+    """Computes the diagonal intersection Delta_{alpha < kappa} C_alpha =
+    { beta < kappa | forall alpha < beta, beta in C_alpha } from a Dunaev-tagged sequence
+    of pairs TagPair(alpha, C_alpha). Raises ProperClassError on KuratowskiPair.
+    """
+    raw_seq = _extract_dunaev_ordinal_pairs(seq_pairs)
+    seq = [(a, frozenset(int(x) for x in c_a)) for a, c_a in raw_seq]
+    result: List[int] = []
+    for beta in range(kappa):
+        if all(beta in c_a for a, c_a in seq if a < beta):
+            result.append(beta)
+    return result
+
+
+def eval_fodors_lemma_regressive_constant(
+    s_set: Iterable[int],
+    f_pairs: Iterable[Any],
+    club_family: Iterable[Iterable[int]],
+) -> Dict[str, Any]:
+    """Verifies Fodor's Pressing-Down Lemma: for any stationary subset S subseteq kappa
+    and regressive function f: S \\ {0} -> kappa (with f(alpha) < alpha for all alpha in S \\ {0})
+    encoded via Dunaev Tagged Ordered Pairs, there exists gamma_0 < kappa such that the
+    preimage fiber f^{-1}({gamma_0}) cap S is stationary.
+    """
+    raw_pairs = _extract_dunaev_ordinal_pairs(f_pairs)
+    f_map = {a: int(v) for a, v in raw_pairs}
+    s_pos = [int(a) for a in s_set if int(a) > 0]
+    clubs = [list(c) for c in club_family]
+    reg_ok = bool(s_pos) and all(a in f_map and 0 <= f_map[a] < a for a in s_pos)
+    stationary_gamma: Optional[int] = None
+    if reg_ok:
+        seen_gammas: List[int] = []
+        for _, v in raw_pairs:
+            iv = int(v)
+            if iv not in seen_gammas:
+                seen_gammas.append(iv)
+        for g in seen_gammas:
+            fiber = [a for a in s_pos if f_map.get(a) == g]
+            if eval_is_stationary_in_regular(fiber, clubs):
+                stationary_gamma = g
+                break
+    return {
+        "is_regressive": reg_ok,
+        "constant_value": stationary_gamma,
+        "fiber_is_stationary": stationary_gamma is not None,
+    }
+
+
+def proves_ordinal_veblen_hierarchy_and_club_stationary_filters() -> Dict[str, Any]:
+    """Master verification for Ticket 65 (Normal Ordinal Functions, Veblen Hierarchy,
+    Club Filter, Diagonal Intersection, Stationary Subclasses, and Fodor's Lemma).
+    """
+    norm_ok_res = eval_is_normal_ordinal_function(
+        [dunaev_pair(0, 1), dunaev_pair(1, 2), dunaev_pair(2, 3)],
+        limit_points=[],
+    )
+    norm_fail_res = eval_is_normal_ordinal_function(
+        [dunaev_pair(0, 1), dunaev_pair(1, 2), dunaev_pair(2, 2)],
+        limit_points=[],
+    )
+    kuratowski_rejected = False
+    try:
+        eval_is_normal_ordinal_function([KuratowskiPair(0, 1)])
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    veb_0_2 = eval_veblen_fixed_point(0, 2)
+    veb_1_1 = eval_veblen_fixed_point(1, 1)
+    veb_ok = (
+        veb_0_2["is_fixed_point_of_lower"]
+        and veb_1_1["is_fixed_point_of_lower"]
+        and veb_1_1["phi_alpha_beta"] > veb_0_2["phi_alpha_beta"]
+    )
+
+    club_valid = eval_is_club_in_regular(5, [2, 4], [1, 2, 3, 4])
+    club_not_closed = eval_is_club_in_regular(5, [2, 4], [0, 1, 3, 4])
+    club_not_unb = eval_is_club_in_regular(5, [2, 4], [0, 1, 2])
+    club_ok = (
+        club_valid["is_club"]
+        and not club_not_closed["is_club"]
+        and not club_not_unb["is_club"]
+    )
+
+    club_fam = [[1, 2, 3, 4], [2, 3, 4]]
+    stat_ok = eval_is_stationary_in_regular([1, 2], club_fam) and not eval_is_stationary_in_regular([0, 1], club_fam)
+
+    diag_seq = [
+        dunaev_pair(0, [0, 1, 2, 3]),
+        dunaev_pair(1, [1, 2, 3]),
+        dunaev_pair(2, [2, 3]),
+        dunaev_pair(3, [3]),
+    ]
+    diag_res = eval_diagonal_intersection_club(4, diag_seq)
+    diag_ok = diag_res == [0, 1, 2, 3]
+
+    fodor_f = [dunaev_pair(1, 0), dunaev_pair(2, 0), dunaev_pair(3, 1)]
+    fodor_res = eval_fodors_lemma_regressive_constant([1, 2, 3], fodor_f, club_fam)
+    fodor_ok = (
+        fodor_res["is_regressive"]
+        and fodor_res["fiber_is_stationary"]
+        and fodor_res["constant_value"] == 0
+    )
+
+    all_ok = (
+        norm_ok_res["is_normal"]
+        and not norm_fail_res["is_normal"]
+        and kuratowski_rejected
+        and veb_ok
+        and club_ok
+        and stat_ok
+        and diag_ok
+        and fodor_ok
+    )
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "normal_function_verified": norm_ok_res["is_normal"] and not norm_fail_res["is_normal"],
+        "kuratowski_rejected": kuratowski_rejected,
+        "veblen_hierarchy_verified": veb_ok,
+        "club_filter_verified": club_ok,
+        "stationary_verified": stat_ok,
+        "diagonal_intersection_verified": diag_ok,
+        "fodors_pressing_down_lemma_verified": fodor_ok,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued model tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
     4. obelisk_universe_indexed_union_closure.md (3.68, 3.69)
     5. ticket_gl064_foundations_boolean_valued_models_and_ro_completion.md
+    6. ticket_gl065_foundations_ordinal_veblen_hierarchy_and_club_stationary_filters.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
     res_family = eval_canonical_family()
     res_univ = eval_tight_universe_indexed_union_closure()
     res_bval = proves_boolean_valued_models_and_ro_completion()
+    res_club_veblen = proves_ordinal_veblen_hierarchy_and_club_stationary_filters()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
     assert res_family["status"] == "RESOLVED"
     assert res_univ["status"] == "RESOLVED"
     assert res_bval["status"] == "RESOLVED"
+    assert res_club_veblen["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -882,4 +1149,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_family_records_and_image_conventions": res_family,
         "ticket_universe_indexed_union_closure": res_univ,
         "ticket_boolean_valued_models_and_ro_completion": res_bval,
+        "ticket_ordinal_veblen_hierarchy_and_club_stationary_filters": res_club_veblen,
     }

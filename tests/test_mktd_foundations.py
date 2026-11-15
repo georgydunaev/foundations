@@ -621,6 +621,27 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_bval_dunaev_pname_equivalence", content)
         self.assertIn("prove_bval_dunaev_pname_equivalence", content)
 
+        # Ticket 65: Club Filter, Stationary Subclasses, Fodor's Lemma, and Veblen Hierarchy
+        self.assertIn("NormalOrdinalFn", content)
+        self.assertIn("VeblenPhi", content)
+        self.assertIn("DiagonalIntersection", content)
+        self.assertIn("IsNormalOrdinalFn", content)
+        self.assertIn("IsVeblenFixedPoint", content)
+        self.assertIn("IsClubIn", content)
+        self.assertIn("FodorsPressingDown", content)
+        self.assertIn("eval_is_normal_ordinal_function", content)
+        self.assertIn("eval_veblen_fixed_point", content)
+        self.assertIn("eval_is_club_in_regular", content)
+        self.assertIn("eval_is_stationary_in_regular", content)
+        self.assertIn("eval_diagonal_intersection_club", content)
+        self.assertIn("eval_fodors_lemma_regressive_constant", content)
+        self.assertIn("axiom_normal_function_has_fixed_points", content)
+        self.assertIn("prove_normal_function_has_fixed_points", content)
+        self.assertIn("axiom_club_diagonal_intersection_closed", content)
+        self.assertIn("prove_club_diagonal_intersection_closed", content)
+        self.assertIn("axiom_fodors_pressing_down_lemma", content)
+        self.assertIn("prove_fodors_pressing_down_lemma", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

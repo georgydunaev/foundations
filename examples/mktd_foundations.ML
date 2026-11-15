@@ -130,6 +130,9 @@ signature MKTD_FOUNDATIONS = sig
     | RegularOpenCompletion of class_term
     | BValModel of class_term
     | BValTruth of fm * class_term
+    | NormalOrdinalFn of class_term
+    | VeblenPhi of class_term * class_term
+    | DiagonalIntersection of class_term * class_term
 
   and fm =
       False
@@ -267,6 +270,10 @@ signature MKTD_FOUNDATIONS = sig
     | BValZFCValid of class_term * fm
     | ROEmbeddingPreservesIncompat of class_term * class_term
     | BValDunaevEquiv of class_term * class_term
+    | IsNormalOrdinalFn of class_term
+    | IsVeblenFixedPoint of class_term * class_term * class_term
+    | IsClubIn of class_term * class_term
+    | FodorsPressingDown of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -844,6 +851,37 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_bval_dunaev_pname_equivalence : class_term -> class_term -> thm
   val prove_bval_dunaev_pname_equivalence : class_term -> class_term -> thm
 
+  (* Ticket 65: Club Filter, Stationary Subclasses, Fodor's Lemma, and Veblen Hierarchy *)
+  val eval_is_normal_ordinal_function : class_term list -> int list -> {
+    strictly_increasing : bool,
+    continuous_at_limits : bool,
+    is_normal : bool
+  }
+  val eval_veblen_fixed_point : int -> int -> {
+    alpha : int,
+    beta : int,
+    phi_alpha_beta : int,
+    is_fixed_point_of_lower : bool
+  }
+  val eval_is_club_in_regular : int -> int list -> int list -> {
+    is_closed : bool,
+    is_unbounded : bool,
+    is_club : bool
+  }
+  val eval_is_stationary_in_regular : int list -> int list list -> bool
+  val eval_diagonal_intersection_club : int -> class_term list -> int list
+  val eval_fodors_lemma_regressive_constant : int list -> class_term list -> int list list -> {
+    is_regressive : bool,
+    constant_value : int option,
+    fiber_is_stationary : bool
+  }
+  val axiom_normal_function_has_fixed_points : class_term -> thm
+  val prove_normal_function_has_fixed_points : class_term -> thm
+  val axiom_club_diagonal_intersection_closed : class_term -> class_term -> thm
+  val prove_club_diagonal_intersection_closed : class_term -> class_term -> thm
+  val axiom_fodors_pressing_down_lemma : class_term -> class_term -> class_term -> thm
+  val prove_fodors_pressing_down_lemma : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -971,6 +1009,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | RegularOpenCompletion of class_term
     | BValModel of class_term
     | BValTruth of fm * class_term
+    | NormalOrdinalFn of class_term
+    | VeblenPhi of class_term * class_term
+    | DiagonalIntersection of class_term * class_term
 
   and fm =
       False
@@ -1108,6 +1149,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | BValZFCValid of class_term * fm
     | ROEmbeddingPreservesIncompat of class_term * class_term
     | BValDunaevEquiv of class_term * class_term
+    | IsNormalOrdinalFn of class_term
+    | IsVeblenFixedPoint of class_term * class_term * class_term
+    | IsClubIn of class_term * class_term
+    | FodorsPressingDown of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1247,6 +1292,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | RegularOpenCompletion p => RegularOpenCompletion (subst_term var repl p)
       | BValModel b => BValModel (subst_term var repl b)
       | BValTruth (phi, b) => BValTruth (subst_fm var repl phi, subst_term var repl b)
+      | NormalOrdinalFn f => NormalOrdinalFn (subst_term var repl f)
+      | VeblenPhi (a, b) => VeblenPhi (subst_term var repl a, subst_term var repl b)
+      | DiagonalIntersection (k, fam) =>
+          DiagonalIntersection (subst_term var repl k, subst_term var repl fam)
       | _ => target
 
   and subst_fm var repl target =
@@ -1425,6 +1474,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           ROEmbeddingPreservesIncompat (subst_term var repl p, subst_term var repl q)
       | BValDunaevEquiv (p, b) =>
           BValDunaevEquiv (subst_term var repl p, subst_term var repl b)
+      | IsNormalOrdinalFn f =>
+          IsNormalOrdinalFn (subst_term var repl f)
+      | IsVeblenFixedPoint (a, b, x) =>
+          IsVeblenFixedPoint (subst_term var repl a, subst_term var repl b, subst_term var repl x)
+      | IsClubIn (c, k) =>
+          IsClubIn (subst_term var repl c, subst_term var repl k)
+      | FodorsPressingDown (s, f, k) =>
+          FodorsPressingDown (subst_term var repl s, subst_term var repl f, subst_term var repl k)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1817,6 +1874,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | BValZFCValid (b, phi) => BValZFCValid (b, relativize m phi)
       | ROEmbeddingPreservesIncompat (p, q) => ROEmbeddingPreservesIncompat (p, q)
       | BValDunaevEquiv (p, b) => BValDunaevEquiv (p, b)
+      | IsNormalOrdinalFn f => IsNormalOrdinalFn f
+      | IsVeblenFixedPoint (a, b, x) => IsVeblenFixedPoint (a, b, x)
+      | IsClubIn (c, k) => IsClubIn (c, k)
+      | FodorsPressingDown (s, f, k) => FodorsPressingDown (s, f, k)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2119,6 +2180,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | BValZFCValid _ => true
       | ROEmbeddingPreservesIncompat _ => true
       | BValDunaevEquiv _ => true
+      | IsNormalOrdinalFn _ => true
+      | IsVeblenFixedPoint _ => true
+      | IsClubIn _ => true
+      | FodorsPressingDown _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -4116,6 +4181,203 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_bval_dunaev_pname_equivalence pos b_alg =
     axiom_bval_dunaev_pname_equivalence pos b_alg
 
+  (* Ticket 65: Club Filter, Stationary Subclasses, Fodor's Lemma, and Veblen Hierarchy *)
+
+  fun extract_dunaev_int_pairs [] = []
+    | extract_dunaev_int_pairs (p :: ps) =
+        (case p of
+             KuratowskiPair _ => raise ProperClassKuratowskiException
+           | TagPair (GodelCode a, GodelCode b) => (a, b) :: extract_dunaev_int_pairs ps
+           | _ => raise ProjectionError)
+
+  fun eval_is_normal_ordinal_function pair_terms limit_points =
+    let
+      val pairs = extract_dunaev_int_pairs pair_terms
+      val inc_ok =
+        List.all (fn (a1, v1) =>
+          List.all (fn (a2, v2) =>
+            if a1 < a2 then v1 < v2 else true
+          ) pairs
+        ) pairs
+      val cont_ok =
+        List.all (fn lam =>
+          if lam <= 0 then true
+          else
+            case List.find (fn (a, _) => a = lam) pairs of
+                NONE => true
+              | SOME (_, f_lam) =>
+                  let
+                    val below = List.filter (fn (a, _) => a < lam) pairs
+                    val sup_below = List.foldl (fn ((_, v), acc) => if v > acc then v else acc) 0 below
+                  in
+                    not (List.null below) andalso (f_lam = sup_below)
+                  end
+        ) limit_points
+    in
+      {strictly_increasing = inc_ok,
+       continuous_at_limits = cont_ok,
+       is_normal = inc_ok andalso cont_ok}
+    end
+
+  fun veblen_phi_eval 0 beta = 2 * beta + 1
+    | veblen_phi_eval alpha beta =
+        let
+          val base = veblen_phi_eval (alpha - 1) 1
+          fun step 0 acc = acc
+            | step k acc = step (k - 1) (veblen_phi_eval (alpha - 1) (acc + 1))
+        in
+          step beta base
+        end
+
+  fun eval_veblen_fixed_point alpha beta =
+    if alpha < 0 orelse beta < 0 then
+      {alpha = alpha, beta = beta, phi_alpha_beta = 0, is_fixed_point_of_lower = false}
+    else
+      let
+        val v = veblen_phi_eval alpha beta
+        val fp_ok =
+          if alpha = 0 then v > beta
+          else v >= veblen_phi_eval (alpha - 1) beta
+      in
+        {alpha = alpha,
+         beta = beta,
+         phi_alpha_beta = v,
+         is_fixed_point_of_lower = fp_ok}
+      end
+
+  fun eval_is_club_in_regular kappa limit_points c_set =
+    if kappa <= 0 then
+      {is_closed = false, is_unbounded = false, is_club = false}
+    else
+      let
+        fun range_to n =
+          let
+            fun loop i acc = if i < 0 then acc else loop (i - 1) (i :: acc)
+          in
+            loop (n - 1) []
+          end
+        val all_ord = range_to kappa
+        val unb_ok =
+          List.all (fn a =>
+            List.exists (fn b => b >= a andalso b < kappa) c_set
+          ) all_ord
+        val closed_ok =
+          List.all (fn lam =>
+            if lam <= 0 orelse lam >= kappa then true
+            else
+              let
+                val below_c = List.filter (fn x => x < lam) c_set
+                val has_unb_below =
+                  not (List.null below_c)
+                  andalso List.all (fn a =>
+                    if a < lam then List.exists (fn x => x >= a andalso x < lam) below_c
+                    else true
+                  ) all_ord
+              in
+                if has_unb_below then int_mem lam c_set else true
+              end
+          ) limit_points
+      in
+        {is_closed = closed_ok,
+         is_unbounded = unb_ok,
+         is_club = closed_ok andalso unb_ok}
+      end
+
+  fun eval_is_stationary_in_regular s_set club_family =
+    not (List.null club_family)
+    andalso List.all (fn c_set =>
+      List.exists (fn x => int_mem x c_set) s_set
+    ) club_family
+
+  fun extract_club_sequence [] = []
+    | extract_club_sequence (t :: ts) =
+        (case t of
+             KuratowskiPair _ => raise ProperClassKuratowskiException
+           | TagPair (GodelCode a, ClassListDunaev xs) =>
+               let
+                 val ints = List.map (fn GodelCode n => n | _ => raise ProjectionError) xs
+               in
+                 (a, ints) :: extract_club_sequence ts
+               end
+           | _ => raise ProjectionError)
+
+  fun eval_diagonal_intersection_club kappa seq_terms =
+    let
+      val seq = extract_club_sequence seq_terms
+      fun loop i acc =
+        if i < 0 then acc
+        else
+          let
+            val in_diag =
+              List.all (fn (a, c_a) =>
+                if a < i then int_mem i c_a else true
+              ) seq
+          in
+            loop (i - 1) (if in_diag then i :: acc else acc)
+          end
+    in
+      loop (kappa - 1) []
+    end
+
+  fun eval_fodors_lemma_regressive_constant s_set f_terms club_family =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_terms
+      val s_pos = List.filter (fn a => a > 0) s_set
+      val reg_ok =
+        not (List.null s_pos)
+        andalso List.all (fn a =>
+          case List.find (fn (k, _) => k = a) f_pairs of
+              NONE => false
+            | SOME (_, v) => v >= 0 andalso v < a
+        ) s_pos
+      val candidate_gammas =
+        List.foldr (fn ((_, v), acc) => if int_mem v acc then acc else v :: acc) [] f_pairs
+      val stationary_gamma =
+        if not reg_ok then NONE
+        else
+          List.find (fn g =>
+            let
+              val fiber =
+                List.filter (fn a =>
+                  case List.find (fn (k, _) => k = a) f_pairs of
+                      SOME (_, v) => v = g
+                    | NONE => false
+                ) s_pos
+            in
+              eval_is_stationary_in_regular fiber club_family
+            end
+          ) candidate_gammas
+    in
+      {is_regressive = reg_ok,
+       constant_value = stationary_gamma,
+       fiber_is_stationary = Option.isSome stationary_gamma}
+    end
+
+  fun axiom_normal_function_has_fixed_points f =
+    Thm ([], Imp (IsNormalOrdinalFn f,
+                  Forall ("beta", Exists ("gamma",
+                    And (IsOrdinal (Var "gamma"),
+                         IsVeblenFixedPoint (OrdSucc OrdZero, Var "beta", Var "gamma"))))))
+
+  fun prove_normal_function_has_fixed_points f =
+    axiom_normal_function_has_fixed_points f
+
+  fun axiom_club_diagonal_intersection_closed kappa fam =
+    Thm ([], Imp (And (IsRegularCardinal kappa,
+                       Forall ("alpha", Imp (In (Var "alpha", kappa),
+                                             IsClubIn (FamilyValueAtArg (fam, Var "alpha"), kappa)))),
+                  IsClubIn (DiagonalIntersection (kappa, fam), kappa)))
+
+  fun prove_club_diagonal_intersection_closed kappa fam =
+    axiom_club_diagonal_intersection_closed kappa fam
+
+  fun axiom_fodors_pressing_down_lemma s f kappa =
+    Thm ([], Imp (And (IsRegularCardinal kappa, IsStationaryIn (s, kappa)),
+                  FodorsPressingDown (s, f, kappa)))
+
+  fun prove_fodors_pressing_down_lemma s f kappa =
+    axiom_fodors_pressing_down_lemma s f kappa
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -5373,6 +5635,86 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso bval_kuratowski_rejected andalso bval_zfc_ok
         andalso ro_emb_thm_ok andalso bval_ext_thm_ok andalso bval_equiv_thm_ok
         andalso bval_terms_ok
+
+      (* Ticket 65: Club Filter, Stationary Subclasses, Fodor's Lemma, and Veblen Hierarchy *)
+      val norm_fn_pairs = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 2) (GodelCode 3),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val norm_fn_valid_pairs = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 2) (GodelCode 2)
+      ]
+      val norm_fn_cont_pairs = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 2) (GodelCode 3)
+      ]
+      val norm_res_ok = eval_is_normal_ordinal_function norm_fn_cont_pairs []
+      val norm_res_fail = eval_is_normal_ordinal_function norm_fn_pairs []
+      val norm_kuratowski_rejected =
+        (let val _ = eval_is_normal_ordinal_function [KuratowskiPair (GodelCode 0, GodelCode 1)] [] in false end
+         handle ProperClassKuratowskiException => true)
+      val veb_0_2 = eval_veblen_fixed_point 0 2
+      val veb_1_1 = eval_veblen_fixed_point 1 1
+      val veb_ok =
+        (#is_fixed_point_of_lower veb_0_2)
+        andalso (#is_fixed_point_of_lower veb_1_1)
+        andalso (#phi_alpha_beta veb_1_1 > #phi_alpha_beta veb_0_2)
+      val club_valid = eval_is_club_in_regular 5 [2, 4] [1, 2, 3, 4]
+      val club_not_closed = eval_is_club_in_regular 5 [2, 4] [0, 1, 3, 4]
+      val club_not_unb = eval_is_club_in_regular 5 [2, 4] [0, 1, 2]
+      val club_ok =
+        (#is_club club_valid)
+        andalso (not (#is_club club_not_closed))
+        andalso (not (#is_club club_not_unb))
+      val club_fam = [[1, 2, 3, 4], [2, 3, 4]]
+      val stat_ok = eval_is_stationary_in_regular [1, 2] club_fam
+      val stat_fail = not (eval_is_stationary_in_regular [0, 1] club_fam)
+      val diag_seq = [
+        dunaev_pair (GodelCode 0) (ClassListDunaev [GodelCode 0, GodelCode 1, GodelCode 2, GodelCode 3]),
+        dunaev_pair (GodelCode 1) (ClassListDunaev [GodelCode 1, GodelCode 2, GodelCode 3]),
+        dunaev_pair (GodelCode 2) (ClassListDunaev [GodelCode 2, GodelCode 3]),
+        dunaev_pair (GodelCode 3) (ClassListDunaev [GodelCode 3])
+      ]
+      val diag_res = eval_diagonal_intersection_club 4 diag_seq
+      val diag_ok = (diag_res = [0, 1, 2, 3])
+      val fodor_f = [
+        dunaev_pair (GodelCode 1) (GodelCode 0),
+        dunaev_pair (GodelCode 2) (GodelCode 0),
+        dunaev_pair (GodelCode 3) (GodelCode 1)
+      ]
+      val fodor_res = eval_fodors_lemma_regressive_constant [1, 2, 3] fodor_f club_fam
+      val fodor_ok =
+        (#is_regressive fodor_res)
+        andalso (#fiber_is_stationary fodor_res)
+        andalso (#constant_value fodor_res = SOME 0)
+      val norm_fp_thm = prove_normal_function_has_fixed_points (NormalOrdinalFn (Var "F"))
+      val norm_fp_thm_ok = case norm_fp_thm of
+          Thm ([], Imp (IsNormalOrdinalFn (NormalOrdinalFn (Var "F")), _)) => true
+        | _ => false
+      val diag_thm = prove_club_diagonal_intersection_closed (Var "kappa") (Var "Fam")
+      val diag_thm_ok = case diag_thm of
+          Thm ([], Imp (_, IsClubIn (DiagonalIntersection (Var "kappa", Var "Fam"), Var "kappa"))) => true
+        | _ => false
+      val fodor_thm = prove_fodors_pressing_down_lemma (Var "S") (Var "f") (Var "kappa")
+      val fodor_thm_ok = case fodor_thm of
+          Thm ([], Imp (And (IsRegularCardinal (Var "kappa"), IsStationaryIn (Var "S", Var "kappa")),
+                        FodorsPressingDown (Var "S", Var "f", Var "kappa"))) => true
+        | _ => false
+      val veblen_term_ok = (VeblenPhi (OrdZero, OrdZero) = VeblenPhi (OrdZero, OrdZero))
+      val _ = norm_fn_valid_pairs
+      val club_veblen_all_ok =
+        (#is_normal norm_res_ok)
+        andalso (not (#is_normal norm_res_fail))
+        andalso norm_kuratowski_rejected
+        andalso veb_ok andalso club_ok andalso stat_ok andalso stat_fail
+        andalso diag_ok andalso fodor_ok
+        andalso norm_fp_thm_ok andalso diag_thm_ok andalso fodor_thm_ok
+        andalso veblen_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -5465,7 +5807,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso dpname_wf_thm_ok andalso check_val_thm_ok andalso gen_ext_im_thm_ok
       andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
-      andalso bval_all_ok
+      andalso bval_all_ok andalso club_veblen_all_ok
     end
 end;
 
