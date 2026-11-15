@@ -1039,6 +1039,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl082_bicategories_interchange_law_and_benabou_coherence(self):
+        """Ticket 82: verify Bicategories, 2-Cell Interchange, Eckmann-Hilton, and Benabou Coherence in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "BicategoryStructure",
+            "TwoCellGlobe",
+            "VerticalComposition2Cell",
+            "HorizontalComposition2Cell",
+            "InternalBicategoryAdjunction",
+            "IsBicategory",
+            "SatisfiesTwoCellInterchangeLaw",
+            "IsInternalAdjunctionTriangle",
+            "SatisfiesBenabouStrictification",
+            "eval_is_bicategory",
+            "eval_two_cell_interchange_law",
+            "eval_internal_adjunction_triangle",
+            "eval_benabou_strictification",
+            "eval_eckmann_hilton_commutativity",
+            "axiom_two_cell_middle_four_interchange",
+            "prove_two_cell_middle_four_interchange",
+            "axiom_eckmann_hilton_braided_endomorphism_commutativity",
+            "prove_eckmann_hilton_braided_endomorphism_commutativity",
+            "axiom_benabou_bicategory_strictification_biequivalence",
+            "prove_benabou_bicategory_strictification_biequivalence",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

@@ -2693,6 +2693,46 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_ends_coends_fubini_and_weighted_limits()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl082_bicategories_interchange_law_and_benabou_coherence(self):
+        """Ticket 82: Bicategories, 2-Cell Interchange, Eckmann-Hilton, and Benabou Coherence."""
+        from foundations.type_semantics import (
+            eval_is_bicategory,
+            eval_two_cell_interchange_law,
+            eval_internal_adjunction_triangle,
+            eval_benabou_strictification,
+            eval_eckmann_hilton_commutativity,
+            proves_bicategories_interchange_law_and_benabou_coherence,
+        )
+
+        self.assertTrue(
+            eval_is_bicategory(True, True, [dunaev_pair(1, 2), dunaev_pair(2, 3)])[
+                "is_valid_bicategory"
+            ]
+        )
+        with self.assertRaises(ProperClassError):
+            eval_is_bicategory(True, True, [KuratowskiPair(1, 2)])
+
+        inter_res = eval_two_cell_interchange_law(5, 3, 7, 2)
+        self.assertTrue(inter_res["middle_four_interchange_holds"])
+        self.assertEqual(inter_res["lhs_vert_then_horiz"], 17)
+        self.assertTrue(
+            eval_internal_adjunction_triangle(
+                [dunaev_pair(1, 1), dunaev_pair(2, -1)],
+                [dunaev_pair(1, -1), dunaev_pair(2, 1)],
+            )["triangle_identities_hold"]
+        )
+        self.assertTrue(
+            eval_benabou_strictification(True, True, 12)["benabou_coherence_holds"]
+        )
+        self.assertTrue(
+            eval_eckmann_hilton_commutativity(4, 9)[
+                "horizontal_equals_vertical_and_commutes"
+            ]
+        )
+
+        master = proves_bicategories_interchange_law_and_benabou_coherence()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

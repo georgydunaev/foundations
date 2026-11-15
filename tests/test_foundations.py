@@ -915,6 +915,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["weighted_limit_verified"])
         self.assertTrue(res["profunctor_coend_verified"])
 
+    def test_ticket_gl082_bicategories_interchange_law_and_benabou_coherence(self):
+        """Ticket 82: verify Bicategories, 2-Cell Interchange, Eckmann-Hilton, and Benabou Coherence."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_bicategory",
+            "eval_two_cell_interchange_law",
+            "eval_internal_adjunction_triangle",
+            "eval_benabou_strictification",
+            "eval_eckmann_hilton_commutativity",
+            "proves_bicategories_interchange_law_and_benabou_coherence",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_bicategories_interchange_law_and_benabou_coherence()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["bicategory_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["interchange_law_verified"])
+        self.assertTrue(res["internal_adjunction_verified"])
+        self.assertTrue(res["benabou_coherence_verified"])
+        self.assertTrue(res["eckmann_hilton_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

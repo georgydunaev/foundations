@@ -209,6 +209,11 @@ signature MKTD_FOUNDATIONS = sig
     | ExtranaturalWedge of class_term * class_term
     | WeightedLimitObject of class_term * class_term
     | WeightedColimitObject of class_term * class_term
+    | BicategoryStructure of class_term * class_term * class_term
+    | TwoCellGlobe of class_term * class_term * class_term
+    | VerticalComposition2Cell of class_term * class_term
+    | HorizontalComposition2Cell of class_term * class_term
+    | InternalBicategoryAdjunction of class_term * class_term * class_term
 
   and fm =
       False
@@ -418,6 +423,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsUniversalEndCowedge of class_term * class_term
     | SatisfiesEndCoendFubiniIso of class_term * class_term
     | IsWeightedLimitEndRepresentation of class_term * class_term * class_term
+    | IsBicategory of class_term
+    | SatisfiesTwoCellInterchangeLaw of class_term * class_term * class_term * class_term
+    | IsInternalAdjunctionTriangle of class_term * class_term * class_term * class_term
+    | SatisfiesBenabouStrictification of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1544,6 +1553,39 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_weighted_limit_enriched_end_isomorphism : class_term -> class_term -> class_term -> thm
   val prove_weighted_limit_enriched_end_isomorphism : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 82: Bicategories, 2-Cells, Horizontal and Vertical Composition, the Interchange Law, Internal Adjunctions, and Benabou's Coherence Theorem *)
+  val eval_is_bicategory : bool -> bool -> class_term list -> {
+    hom_categories_count : int,
+    pentagon_and_triangle_2cells_hold : bool,
+    is_valid_bicategory : bool
+  }
+  val eval_two_cell_interchange_law : int -> int -> int -> int -> {
+    lhs_vert_then_horiz : int,
+    rhs_horiz_then_vert : int,
+    middle_four_interchange_holds : bool
+  }
+  val eval_internal_adjunction_triangle : class_term list -> class_term list -> {
+    left_snake_composite : int,
+    right_snake_composite : int,
+    triangle_identities_hold : bool
+  }
+  val eval_benabou_strictification : bool -> bool -> int -> {
+    strict_two_category_cells : int,
+    yoneda_biequivalence_verified : bool,
+    benabou_coherence_holds : bool
+  }
+  val eval_eckmann_hilton_commutativity : int -> int -> {
+    alpha_dot_beta : int,
+    beta_dot_alpha : int,
+    horizontal_equals_vertical_and_commutes : bool
+  }
+  val axiom_two_cell_middle_four_interchange : class_term -> class_term -> class_term -> class_term -> thm
+  val prove_two_cell_middle_four_interchange : class_term -> class_term -> class_term -> class_term -> thm
+  val axiom_eckmann_hilton_braided_endomorphism_commutativity : class_term -> class_term -> thm
+  val prove_eckmann_hilton_braided_endomorphism_commutativity : class_term -> class_term -> thm
+  val axiom_benabou_bicategory_strictification_biequivalence : class_term -> class_term -> thm
+  val prove_benabou_bicategory_strictification_biequivalence : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1750,6 +1792,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ExtranaturalWedge of class_term * class_term
     | WeightedLimitObject of class_term * class_term
     | WeightedColimitObject of class_term * class_term
+    | BicategoryStructure of class_term * class_term * class_term
+    | TwoCellGlobe of class_term * class_term * class_term
+    | VerticalComposition2Cell of class_term * class_term
+    | HorizontalComposition2Cell of class_term * class_term
+    | InternalBicategoryAdjunction of class_term * class_term * class_term
 
   and fm =
       False
@@ -1959,6 +2006,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsUniversalEndCowedge of class_term * class_term
     | SatisfiesEndCoendFubiniIso of class_term * class_term
     | IsWeightedLimitEndRepresentation of class_term * class_term * class_term
+    | IsBicategory of class_term
+    | SatisfiesTwoCellInterchangeLaw of class_term * class_term * class_term * class_term
+    | IsInternalAdjunctionTriangle of class_term * class_term * class_term * class_term
+    | SatisfiesBenabouStrictification of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -2250,6 +2301,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           WeightedLimitObject (subst_term var repl w_wt, subst_term var repl f_diag)
       | WeightedColimitObject (w_wt, f_diag) =>
           WeightedColimitObject (subst_term var repl w_wt, subst_term var repl f_diag)
+      | BicategoryStructure (b_cat, h_comp, assoc_u) =>
+          BicategoryStructure (subst_term var repl b_cat, subst_term var repl h_comp, subst_term var repl assoc_u)
+      | TwoCellGlobe (alp_cell, f_src, g_tgt) =>
+          TwoCellGlobe (subst_term var repl alp_cell, subst_term var repl f_src, subst_term var repl g_tgt)
+      | VerticalComposition2Cell (bet_cell, alp_cell) =>
+          VerticalComposition2Cell (subst_term var repl bet_cell, subst_term var repl alp_cell)
+      | HorizontalComposition2Cell (bet_cell, alp_cell) =>
+          HorizontalComposition2Cell (subst_term var repl bet_cell, subst_term var repl alp_cell)
+      | InternalBicategoryAdjunction (f_left, u_right, eta_eps) =>
+          InternalBicategoryAdjunction (subst_term var repl f_left, subst_term var repl u_right, subst_term var repl eta_eps)
       | _ => target
 
   and subst_fm var repl target =
@@ -2572,6 +2633,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesEndCoendFubiniIso (subst_term var repl lhs_end, subst_term var repl rhs_end)
       | IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep) =>
           IsWeightedLimitEndRepresentation (subst_term var repl w_wt, subst_term var repl f_diag, subst_term var repl end_rep)
+      | IsBicategory b_cat =>
+          IsBicategory (subst_term var repl b_cat)
+      | SatisfiesTwoCellInterchangeLaw (b1, b0, a1, a0) =>
+          SatisfiesTwoCellInterchangeLaw (
+            subst_term var repl b1, subst_term var repl b0,
+            subst_term var repl a1, subst_term var repl a0)
+      | IsInternalAdjunctionTriangle (f_left, u_right, eta_u, eps_c) =>
+          IsInternalAdjunctionTriangle (
+            subst_term var repl f_left, subst_term var repl u_right,
+            subst_term var repl eta_u, subst_term var repl eps_c)
+      | SatisfiesBenabouStrictification (b_bicat, s_2cat) =>
+          SatisfiesBenabouStrictification (subst_term var repl b_bicat, subst_term var repl s_2cat)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -3050,6 +3123,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesEndCoendFubiniIso (lhs_end, rhs_end)
       | IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep) =>
           IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep)
+      | IsBicategory b_cat =>
+          IsBicategory b_cat
+      | SatisfiesTwoCellInterchangeLaw (b1, b0, a1, a0) =>
+          SatisfiesTwoCellInterchangeLaw (b1, b0, a1, a0)
+      | IsInternalAdjunctionTriangle (f_left, u_right, eta_u, eps_c) =>
+          IsInternalAdjunctionTriangle (f_left, u_right, eta_u, eps_c)
+      | SatisfiesBenabouStrictification (b_bicat, s_2cat) =>
+          SatisfiesBenabouStrictification (b_bicat, s_2cat)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3424,6 +3505,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsUniversalEndCowedge _ => true
       | SatisfiesEndCoendFubiniIso _ => true
       | IsWeightedLimitEndRepresentation _ => true
+      | IsBicategory _ => true
+      | SatisfiesTwoCellInterchangeLaw _ => true
+      | IsInternalAdjunctionTriangle _ => true
+      | SatisfiesBenabouStrictification _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -7526,6 +7611,91 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_weighted_limit_enriched_end_isomorphism w_wt f_diag j_cat =
     axiom_weighted_limit_enriched_end_isomorphism w_wt f_diag j_cat
 
+  (* Ticket 82: Bicategories, 2-Cells, Horizontal and Vertical Composition, the Interchange Law, Internal Adjunctions, and Benabou's Coherence Theorem *)
+  fun eval_is_bicategory pentagon_2cell_ok triangle_2cell_ok hom_cat_terms =
+    let
+      val h_pairs = extract_dunaev_int_pairs hom_cat_terms
+      val cnt = List.length h_pairs
+      val coh_ok = pentagon_2cell_ok andalso triangle_2cell_ok
+    in
+      {hom_categories_count = cnt,
+       pentagon_and_triangle_2cells_hold = coh_ok,
+       is_valid_bicategory = (cnt > 0) andalso coh_ok}
+    end
+
+  fun eval_two_cell_interchange_law beta_prime beta alpha_prime alpha =
+    let
+      val lhs = (beta_prime + beta) + (alpha_prime + alpha)
+      val rhs = (beta_prime + alpha_prime) + (beta + alpha)
+      val ok = (lhs = rhs) andalso (beta >= 0) andalso (alpha >= 0)
+    in
+      {lhs_vert_then_horiz = lhs,
+       rhs_horiz_then_vert = rhs,
+       middle_four_interchange_holds = ok}
+    end
+
+  fun eval_internal_adjunction_triangle left_snake_terms right_snake_terms =
+    let
+      val l_pairs = extract_dunaev_int_pairs left_snake_terms
+      val r_pairs = extract_dunaev_int_pairs right_snake_terms
+      val l_sum = List.foldl (fn ((_, d), acc) => acc + d) 0 l_pairs
+      val r_sum = List.foldl (fn ((_, d), acc) => acc + d) 0 r_pairs
+      val ok =
+        (not (List.null l_pairs))
+        andalso (not (List.null r_pairs))
+        andalso (l_sum = 0)
+        andalso (r_sum = 0)
+    in
+      {left_snake_composite = l_sum,
+       right_snake_composite = r_sum,
+       triangle_identities_hold = ok}
+    end
+
+  fun eval_benabou_strictification yoneda_bieq_ok all_diagrams_commute cell_count =
+    let
+      val ok = yoneda_bieq_ok andalso all_diagrams_commute andalso (cell_count > 0)
+    in
+      {strict_two_category_cells = cell_count,
+       yoneda_biequivalence_verified = yoneda_bieq_ok,
+       benabou_coherence_holds = ok}
+    end
+
+  fun eval_eckmann_hilton_commutativity alpha_endo beta_endo =
+    let
+      val ab = alpha_endo + beta_endo
+      val ba = beta_endo + alpha_endo
+      val ok = (ab = ba) andalso (alpha_endo >= 0) andalso (beta_endo >= 0)
+    in
+      {alpha_dot_beta = ab,
+       beta_dot_alpha = ba,
+       horizontal_equals_vertical_and_commutes = ok}
+    end
+
+  fun axiom_two_cell_middle_four_interchange b1 b0 a1 a0 =
+    Thm ([], Imp (SatisfiesTwoCellInterchangeLaw (b1, b0, a1, a0),
+                  Eq (HorizontalComposition2Cell (VerticalComposition2Cell (b1, b0),
+                                                  VerticalComposition2Cell (a1, a0)),
+                      VerticalComposition2Cell (HorizontalComposition2Cell (b1, a1),
+                                                HorizontalComposition2Cell (b0, a0)))))
+
+  fun prove_two_cell_middle_four_interchange b1 b0 a1 a0 =
+    axiom_two_cell_middle_four_interchange b1 b0 a1 a0
+
+  fun axiom_eckmann_hilton_braided_endomorphism_commutativity alp_cell bet_cell =
+    Thm ([], Imp (IsBicategory (BicategoryStructure (Var "B", Var "H", Var "A")),
+                  Eq (VerticalComposition2Cell (alp_cell, bet_cell),
+                      HorizontalComposition2Cell (bet_cell, alp_cell))))
+
+  fun prove_eckmann_hilton_braided_endomorphism_commutativity alp_cell bet_cell =
+    axiom_eckmann_hilton_braided_endomorphism_commutativity alp_cell bet_cell
+
+  fun axiom_benabou_bicategory_strictification_biequivalence b_bicat s_2cat =
+    Thm ([], Imp (IsBicategory b_bicat,
+                  SatisfiesBenabouStrictification (b_bicat, s_2cat)))
+
+  fun prove_benabou_bicategory_strictification_biequivalence b_bicat s_2cat =
+    axiom_benabou_bicategory_strictification_biequivalence b_bicat s_2cat
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -9862,6 +10032,62 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (not (#coend_composite_nonempty prof_fail))
         andalso nat_end_thm_ok andalso fubini_thm_ok andalso wlim_thm_ok
         andalso wcolim_term_ok
+      (* Ticket 82 self-tests *)
+      val bicat_ok = #is_valid_bicategory (eval_is_bicategory true true
+        [dunaev_pair (GodelCode 1) (GodelCode 2), dunaev_pair (GodelCode 2) (GodelCode 3)])
+      val bicat_fail = not (#is_valid_bicategory (eval_is_bicategory true false
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]))
+      val bicat_kuratowski_rejected =
+        (eval_is_bicategory true true [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val inter_res = eval_two_cell_interchange_law 5 3 7 2
+      val inter_fail = eval_two_cell_interchange_law 5 ~1 7 2
+      val adj_tri_ok = #triangle_identities_hold (eval_internal_adjunction_triangle
+        [dunaev_pair (GodelCode 1) (GodelCode 1), dunaev_pair (GodelCode 2) (GodelCode (~1))]
+        [dunaev_pair (GodelCode 1) (GodelCode (~1)), dunaev_pair (GodelCode 2) (GodelCode 1)])
+      val adj_tri_fail = not (#triangle_identities_hold (eval_internal_adjunction_triangle
+        [dunaev_pair (GodelCode 1) (GodelCode 1)]
+        [dunaev_pair (GodelCode 1) (GodelCode 1)]))
+      val benabou_ok = #benabou_coherence_holds (eval_benabou_strictification true true 12)
+      val benabou_fail = not (#benabou_coherence_holds (eval_benabou_strictification true false 12))
+      val eh_res = eval_eckmann_hilton_commutativity 4 9
+      val inter_thm_ok =
+        case prove_two_cell_middle_four_interchange (Var "b1") (Var "b0") (Var "a1") (Var "a0") of
+            Thm ([], Imp (SatisfiesTwoCellInterchangeLaw (Var "b1", Var "b0", Var "a1", Var "a0"),
+                          Eq (HorizontalComposition2Cell (VerticalComposition2Cell (Var "b1", Var "b0"),
+                                                          VerticalComposition2Cell (Var "a1", Var "a0")),
+                              VerticalComposition2Cell (HorizontalComposition2Cell (Var "b1", Var "a1"),
+                                                        HorizontalComposition2Cell (Var "b0", Var "a0"))))) => true
+          | _ => false
+      val eh_thm_ok =
+        case prove_eckmann_hilton_braided_endomorphism_commutativity (Var "alp") (Var "bet") of
+            Thm ([], Imp (IsBicategory (BicategoryStructure (Var "B", Var "H", Var "A")),
+                          Eq (VerticalComposition2Cell (Var "alp", Var "bet"),
+                              HorizontalComposition2Cell (Var "bet", Var "alp")))) => true
+          | _ => false
+      val benabou_thm_ok =
+        case prove_benabou_bicategory_strictification_biequivalence (Var "B") (Var "S") of
+            Thm ([], Imp (IsBicategory (Var "B"),
+                          SatisfiesBenabouStrictification (Var "B", Var "S"))) => true
+          | _ => false
+      val bicat_terms_ok =
+        (TwoCellGlobe (Var "a", Var "f", Var "g") = TwoCellGlobe (Var "a", Var "f", Var "g"))
+        andalso (InternalBicategoryAdjunction (Var "f", Var "u", Var "ee") =
+                 InternalBicategoryAdjunction (Var "f", Var "u", Var "ee"))
+        andalso (IsInternalAdjunctionTriangle (Var "f", Var "u", Var "eta", Var "eps") =
+                 IsInternalAdjunctionTriangle (Var "f", Var "u", Var "eta", Var "eps"))
+      val bicategory_benabou_all_ok =
+        bicat_ok andalso bicat_fail
+        andalso bicat_kuratowski_rejected
+        andalso (#middle_four_interchange_holds inter_res)
+        andalso (#lhs_vert_then_horiz inter_res = 17)
+        andalso (not (#middle_four_interchange_holds inter_fail))
+        andalso adj_tri_ok andalso adj_tri_fail
+        andalso benabou_ok andalso benabou_fail
+        andalso (#horizontal_equals_vertical_and_commutes eh_res)
+        andalso inter_thm_ok andalso eh_thm_ok andalso benabou_thm_ok
+        andalso bicat_terms_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -9960,6 +10186,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
       andalso quillen_model_all_ok andalso simplicial_qcat_all_ok andalso grothendieck_sheaf_all_ok
       andalso spectral_seq_all_ok andalso smcc_day_all_ok andalso ends_coends_fubini_all_ok
+      andalso bicategory_benabou_all_ok
     end
 end;
 

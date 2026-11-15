@@ -372,6 +372,12 @@ from foundations.classes import (
     eval_weighted_limit_end_rep,
     eval_profunctor_coend_composition,
     proves_ends_coends_fubini_and_weighted_limits,
+    eval_is_bicategory,
+    eval_two_cell_interchange_law,
+    eval_internal_adjunction_triangle,
+    eval_benabou_strictification,
+    eval_eckmann_hilton_commutativity,
+    proves_bicategories_interchange_law_and_benabou_coherence,
     proves_foundations_classes_and_families,
 )
 
@@ -744,5 +750,11 @@ __all__: list[str] = [
     "eval_weighted_limit_end_rep",
     "eval_profunctor_coend_composition",
     "proves_ends_coends_fubini_and_weighted_limits",
+    "eval_is_bicategory",
+    "eval_two_cell_interchange_law",
+    "eval_internal_adjunction_triangle",
+    "eval_benabou_strictification",
+    "eval_eckmann_hilton_commutativity",
+    "proves_bicategories_interchange_law_and_benabou_coherence",
     "proves_foundations_classes_and_families",
 ]
