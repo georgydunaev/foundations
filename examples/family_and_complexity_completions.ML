@@ -305,7 +305,7 @@ struct
 
   (* AST constructor for Dunaev tagged pair [A, B] and binary product of families *)
   (* Resolves presentation.ML lines 233-239:                                  *)
-  (* (F times G) := (x |-> [F(x), G(x)])                                      *)
+  (* (F times G) := BigLam(x, [F(x), G(x)])                                   *)
   fun dunaev_tagged_pair_ast (a : Term, b : Term) : Term =
     DunaevTaggedPair (a, b)
 
