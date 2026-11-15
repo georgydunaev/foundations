@@ -591,6 +591,30 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["yoneda_embedding_fully_faithful_verified"])
         self.assertTrue(res["pointwise_kan_extensions_verified"])
 
+    def test_ticket_gl069_topos_subobject_classifier_and_lawvere_tierney_topologies(self):
+        """Ticket 69: verify Dunaev-Tagged Pullback Squares, Subobject Classifier Omega, and Lawvere-Tierney Topologies."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_pullback_square",
+            "eval_subobject_classifier",
+            "eval_characteristic_morphism",
+            "eval_lawvere_tierney_topology",
+            "eval_j_closed_subobject",
+            "proves_topos_subobject_classifier_and_lawvere_tierney_topologies",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["pullback_square_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["subobject_classifier_verified"])
+        self.assertTrue(res["lawvere_tierney_topology_verified"])
+        self.assertTrue(res["j_closed_subobject_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

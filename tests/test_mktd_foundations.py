@@ -705,6 +705,28 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_pointwise_kan_extension_universal", content)
         self.assertIn("prove_pointwise_kan_extension_universal", content)
 
+        # Ticket 69: Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies
+        self.assertIn("PullbackSquare", content)
+        self.assertIn("SubobjectClassifier", content)
+        self.assertIn("CharacteristicMorphism", content)
+        self.assertIn("LawvereTierneyTopology", content)
+        self.assertIn("SheafSubobjectClosure", content)
+        self.assertIn("IsPullbackSquare", content)
+        self.assertIn("IsSubobjectClassifier", content)
+        self.assertIn("IsLawvereTierneyTopology", content)
+        self.assertIn("IsJClosedSubobject", content)
+        self.assertIn("eval_pullback_square", content)
+        self.assertIn("eval_subobject_classifier", content)
+        self.assertIn("eval_characteristic_morphism", content)
+        self.assertIn("eval_lawvere_tierney_topology", content)
+        self.assertIn("eval_j_closed_subobject", content)
+        self.assertIn("axiom_subobject_classifier_uniqueness", content)
+        self.assertIn("prove_subobject_classifier_uniqueness", content)
+        self.assertIn("axiom_lawvere_tierney_closure_idempotent", content)
+        self.assertIn("prove_lawvere_tierney_closure_idempotent", content)
+        self.assertIn("axiom_lawvere_tierney_meet_preservation", content)
+        self.assertIn("prove_lawvere_tierney_meet_preservation", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

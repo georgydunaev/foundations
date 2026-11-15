@@ -677,4 +677,36 @@ invertible structure map is strictly less information than the relevant
 universal property.
 \end{example}
 
+\subsection{Locally Small Categories, the Yoneda Lemma, and Pointwise Kan Extensions}
+\label{subsec:yoneda_presheaves_and_kan_extensions}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, a locally small category $\mathcal{C}$ with a proper class of objects $\operatorname{Ob}(\mathcal{C}) \subseteq \V$ represents each hom-set $\operatorname{Hom}_{\mathcal{C}}(X, Y) \in \V$ via Dunaev Tagged Ordered Pairs $\pair{\pair{X}{Y}}{f}$ (rejecting Kuratowski pairs). For each object $A \in \operatorname{Ob}(\mathcal{C})$, the representable presheaf $h_A(X) = \operatorname{Hom}_{\mathcal{C}}(X, A)$ acts contravariantly by precomposition. Given any set-valued presheaf $F\colon \mathcal{C}^{\mathrm{op}} \to \mathbf{Set}$ encoded at the conglomerate level, the Yoneda evaluation map
+\[
+\Phi_{A,F}\colon \operatorname{Nat}(h_A, F) \longrightarrow F(A), \qquad \Phi_{A,F}(\eta) = \eta_A(1_A),
+\]
+is a bijection with inverse $\Psi_{A,F}(u)_X(f) = F(f)(u)$ for all $f \in \operatorname{Hom}_{\mathcal{C}}(X, A)$. Specializing to $F = h_B$ shows that the Yoneda embedding $Y(A) = h_A$ is full and faithful: $\operatorname{Nat}(h_A, h_B) \cong \operatorname{Hom}_{\mathcal{C}}(A, B)$. Furthermore, along a functor $K\colon \mathcal{C} \to \mathcal{D}$ and diagram $F\colon \mathcal{C} \to \mathcal{E}$ with Dunaev-tagged graphs $\pair{c}{K(c)}$ and $\pair{c}{F(c)}$, the pointwise left and right Kan extensions are given by the comma-category colimit and limit formulas
+\[
+(\operatorname{Lan}_K F)(d) \cong \varinjlim_{(K \downarrow d)} F \circ \pi, \qquad
+(\operatorname{Ran}_K F)(d) \cong \varprojlim_{(d \downarrow K)} F \circ \pi,
+\]
+satisfying the universal adjunction identities $\operatorname{Nat}(\operatorname{Lan}_K F, G) \cong \operatorname{Nat}(F, G \circ K)$ and $\operatorname{Nat}(G \circ K, F) \cong \operatorname{Nat}(G, \operatorname{Ran}_K F)$.
+
+\subsection{Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies}
+\label{subsec:topos_subobject_classifier_lawvere_tierney}
+
+An elementary topos $\mathcal{E}$ in \texttt{MKTD1-theory} and \texttt{MKTD2-theory} is a finitely complete, cartesian closed category equipped with a subobject classifier $\top\colon 1 \to \Omega$ such that for every monomorphism $m\colon S \rightarrowtail X$ there exists a unique characteristic morphism $\chi_m\colon X \to \Omega$ making the diagram
+\[
+\begin{aligned}
+S &\longrightarrow 1, \qquad m\colon S \rightarrowtail X, \qquad \chi_m \circ m = \top \circ {!_S}, \\
+S &\cong \cc{\pair{x}{u} \in X \times 1}{\chi_m(x) = \top(u)}
+\end{aligned}
+\]
+a pullback square over Dunaev Tagged Ordered Pairs $\pair{x}{u}$. A \emph{Lawvere-Tierney modal topology} on $\mathcal{E}$ is an endomorphism $j\colon \Omega \to \Omega$ satisfying three equational axioms:
+\begin{enumerate}
+  \item \textbf{Truth Preservation}: $j \circ \top = \top$.
+  \item \textbf{Idempotence}: $j \circ j = j$.
+  \item \textbf{Meet Preservation}: $j \circ \wedge = \wedge \circ (j \times j)$.
+\end{enumerate}
+Each Lawvere-Tierney topology $j$ induces a closure operator $S \mapsto \overline{S}^j$ on $\operatorname{Sub}_{\mathcal{E}}(X)$ with characteristic morphism $j \circ \chi_m$, and a subobject $m\colon S \rightarrowtail X$ is $j$-closed precisely when $j \circ \chi_m = \chi_m$.
+
 \input{END.tex}

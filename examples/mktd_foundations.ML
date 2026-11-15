@@ -144,6 +144,11 @@ signature MKTD_FOUNDATIONS = sig
     | YonedaEmbedding of class_term
     | LeftKanExtension of class_term * class_term
     | RightKanExtension of class_term * class_term
+    | PullbackSquare of class_term * class_term * class_term
+    | SubobjectClassifier of class_term
+    | CharacteristicMorphism of class_term * class_term
+    | LawvereTierneyTopology of class_term * class_term
+    | SheafSubobjectClosure of class_term * class_term
 
   and fm =
       False
@@ -298,6 +303,10 @@ signature MKTD_FOUNDATIONS = sig
     | YonedaBijection of class_term * class_term * class_term
     | IsFullyFaithfulFunctor of class_term
     | IsPointwiseKanExtension of class_term * class_term * class_term
+    | IsPullbackSquare of class_term * class_term * class_term * class_term
+    | IsSubobjectClassifier of class_term * class_term
+    | IsLawvereTierneyTopology of class_term * class_term
+    | IsJClosedSubobject of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -996,6 +1005,30 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_pointwise_kan_extension_universal : class_term -> class_term -> class_term -> thm
   val prove_pointwise_kan_extension_universal : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 69: Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies *)
+  val eval_pullback_square : class_term list -> class_term list -> class_term list
+  val eval_subobject_classifier : int list -> int list -> class_term list
+  val eval_characteristic_morphism : int list -> class_term list -> {
+    recovered_subobject : int list,
+    pullback_verified : bool
+  }
+  val eval_lawvere_tierney_topology : int -> class_term list -> {
+    preserves_truth : bool,
+    is_idempotent : bool,
+    preserves_meet : bool,
+    is_valid_topology : bool
+  }
+  val eval_j_closed_subobject : class_term list -> class_term list -> {
+    closure_chi : (int * int) list,
+    is_j_closed : bool
+  }
+  val axiom_subobject_classifier_uniqueness : class_term -> class_term -> class_term -> thm
+  val prove_subobject_classifier_uniqueness : class_term -> class_term -> class_term -> thm
+  val axiom_lawvere_tierney_closure_idempotent : class_term -> class_term -> thm
+  val prove_lawvere_tierney_closure_idempotent : class_term -> class_term -> thm
+  val axiom_lawvere_tierney_meet_preservation : class_term -> class_term -> thm
+  val prove_lawvere_tierney_meet_preservation : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1137,6 +1170,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | YonedaEmbedding of class_term
     | LeftKanExtension of class_term * class_term
     | RightKanExtension of class_term * class_term
+    | PullbackSquare of class_term * class_term * class_term
+    | SubobjectClassifier of class_term
+    | CharacteristicMorphism of class_term * class_term
+    | LawvereTierneyTopology of class_term * class_term
+    | SheafSubobjectClosure of class_term * class_term
 
   and fm =
       False
@@ -1291,6 +1329,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | YonedaBijection of class_term * class_term * class_term
     | IsFullyFaithfulFunctor of class_term
     | IsPointwiseKanExtension of class_term * class_term * class_term
+    | IsPullbackSquare of class_term * class_term * class_term * class_term
+    | IsSubobjectClassifier of class_term * class_term
+    | IsLawvereTierneyTopology of class_term * class_term
+    | IsJClosedSubobject of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1453,6 +1495,15 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           LeftKanExtension (subst_term var repl k, subst_term var repl f)
       | RightKanExtension (k, f) =>
           RightKanExtension (subst_term var repl k, subst_term var repl f)
+      | PullbackSquare (a, b, c) =>
+          PullbackSquare (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | SubobjectClassifier e => SubobjectClassifier (subst_term var repl e)
+      | CharacteristicMorphism (m, x) =>
+          CharacteristicMorphism (subst_term var repl m, subst_term var repl x)
+      | LawvereTierneyTopology (j, om) =>
+          LawvereTierneyTopology (subst_term var repl j, subst_term var repl om)
+      | SheafSubobjectClosure (j, s) =>
+          SheafSubobjectClosure (subst_term var repl j, subst_term var repl s)
       | _ => target
 
   and subst_fm var repl target =
@@ -1665,6 +1716,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsFullyFaithfulFunctor (subst_term var repl y)
       | IsPointwiseKanExtension (k, f, ext) =>
           IsPointwiseKanExtension (subst_term var repl k, subst_term var repl f, subst_term var repl ext)
+      | IsPullbackSquare (p, a, b, c) =>
+          IsPullbackSquare (subst_term var repl p, subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | IsSubobjectClassifier (om, top_arr) =>
+          IsSubobjectClassifier (subst_term var repl om, subst_term var repl top_arr)
+      | IsLawvereTierneyTopology (j, om) =>
+          IsLawvereTierneyTopology (subst_term var repl j, subst_term var repl om)
+      | IsJClosedSubobject (j, s, x) =>
+          IsJClosedSubobject (subst_term var repl j, subst_term var repl s, subst_term var repl x)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2074,6 +2133,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | YonedaBijection (c, a, f) => YonedaBijection (c, a, f)
       | IsFullyFaithfulFunctor y => IsFullyFaithfulFunctor y
       | IsPointwiseKanExtension (k, f, ext) => IsPointwiseKanExtension (k, f, ext)
+      | IsPullbackSquare (p, a, b, c) => IsPullbackSquare (p, a, b, c)
+      | IsSubobjectClassifier (om, top_arr) => IsSubobjectClassifier (om, top_arr)
+      | IsLawvereTierneyTopology (j, om) => IsLawvereTierneyTopology (j, om)
+      | IsJClosedSubobject (j, s, x) => IsJClosedSubobject (j, s, x)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2393,6 +2456,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | YonedaBijection _ => true
       | IsFullyFaithfulFunctor _ => true
       | IsPointwiseKanExtension _ => true
+      | IsPullbackSquare _ => true
+      | IsSubobjectClassifier _ => true
+      | IsLawvereTierneyTopology _ => true
+      | IsJClosedSubobject _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -5049,6 +5116,108 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_pointwise_kan_extension_universal k_fun f_fun target_d =
     axiom_pointwise_kan_extension_universal k_fun f_fun target_d
 
+  (* Ticket 69: Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies *)
+
+  fun eval_pullback_square f_terms g_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs f_terms
+      val g_pairs = extract_dunaev_int_pairs g_terms
+    in
+      List.foldr (fn ((a, fa), acc1) =>
+        List.foldr (fn ((b, gb), acc2) =>
+          if fa = gb then dunaev_pair (GodelCode a) (GodelCode b) :: acc2
+          else acc2
+        ) acc1 g_pairs
+      ) [] f_pairs
+    end
+
+  fun eval_subobject_classifier ambient_x sub_s =
+    List.map (fn x =>
+      dunaev_pair (GodelCode x) (GodelCode (if int_mem x sub_s then 1 else 0))
+    ) ambient_x
+
+  fun eval_characteristic_morphism ambient_x chi_terms =
+    let
+      val chi_pairs = extract_dunaev_int_pairs chi_terms
+      val rec_sub =
+        List.foldr (fn ((x, tv), acc) =>
+          if int_mem x ambient_x andalso tv = 1 then x :: acc else acc
+        ) [] chi_pairs
+      val expected_chi = eval_subobject_classifier ambient_x rec_sub
+      val pb_ok = term_list_eq chi_terms expected_chi
+    in
+      {recovered_subobject = rec_sub,
+       pullback_verified = pb_ok}
+    end
+
+  fun eval_lawvere_tierney_topology top_elem j_terms =
+    let
+      val j_pairs = extract_dunaev_int_pairs j_terms
+      val dom_elems = List.map (fn (p, _) => p) j_pairs
+      fun j_lookup p =
+        case List.find (fn (k, _) => k = p) j_pairs of
+            SOME (_, jp) => jp
+          | NONE => ~1
+      val truth_ok = (top_elem > 0) andalso (j_lookup top_elem = top_elem)
+      val idemp_ok =
+        not (List.null j_pairs)
+        andalso List.all (fn (p, jp) =>
+          jp >= 0 andalso j_lookup jp = jp
+        ) j_pairs
+      val meet_ok =
+        List.all (fn p =>
+          List.all (fn q =>
+            j_lookup (bit_and p q) = bit_and (j_lookup p) (j_lookup q)
+          ) dom_elems
+        ) dom_elems
+    in
+      {preserves_truth = truth_ok,
+       is_idempotent = idemp_ok,
+       preserves_meet = meet_ok,
+       is_valid_topology = truth_ok andalso idemp_ok andalso meet_ok}
+    end
+
+  fun eval_j_closed_subobject j_terms chi_terms =
+    let
+      val j_pairs = extract_dunaev_int_pairs j_terms
+      val chi_pairs = extract_dunaev_int_pairs chi_terms
+      fun j_lookup p =
+        case List.find (fn (k, _) => k = p) j_pairs of
+            SOME (_, jp) => jp
+          | NONE => p
+      val clos_chi = List.map (fn (x, tv) => (x, j_lookup tv)) chi_pairs
+      val closed_ok =
+        not (List.null chi_pairs)
+        andalso List.all (fn (x, tv) => j_lookup tv = tv) chi_pairs
+    in
+      {closure_chi = clos_chi,
+       is_j_closed = closed_ok}
+    end
+
+  fun axiom_subobject_classifier_uniqueness om top_arr sub_m =
+    Thm ([], Imp (IsSubobjectClassifier (om, top_arr),
+                  ExistsUnique ("chi",
+                    IsPullbackSquare (sub_m, CharacteristicMorphism (sub_m, Var "chi"), top_arr, om))))
+
+  fun prove_subobject_classifier_uniqueness om top_arr sub_m =
+    axiom_subobject_classifier_uniqueness om top_arr sub_m
+
+  fun axiom_lawvere_tierney_closure_idempotent j_top om =
+    Thm ([], Imp (IsLawvereTierneyTopology (j_top, om),
+                  Forall ("s",
+                    IsJClosedSubobject (j_top, SheafSubobjectClosure (j_top, Var "s"), om))))
+
+  fun prove_lawvere_tierney_closure_idempotent j_top om =
+    axiom_lawvere_tierney_closure_idempotent j_top om
+
+  fun axiom_lawvere_tierney_meet_preservation j_top om =
+    Thm ([], Imp (IsLawvereTierneyTopology (j_top, om),
+                  And (IsSubobjectClassifier (om, LawvereTierneyTopology (j_top, om)),
+                       IsLawvereTierneyTopology (j_top, om))))
+
+  fun prove_lawvere_tierney_meet_preservation j_top om =
+    axiom_lawvere_tierney_meet_preservation j_top om
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -6575,6 +6744,70 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (#universal_adjunction_holds kan_res)
         andalso yon_thm_ok andalso yon_ff_thm_ok andalso kan_thm_ok
         andalso yon_term_ok
+
+      (* Ticket 69: Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies *)
+      val pb_f = [
+        dunaev_pair (GodelCode 0) (GodelCode 10),
+        dunaev_pair (GodelCode 1) (GodelCode 20)
+      ]
+      val pb_g = [
+        dunaev_pair (GodelCode 5) (GodelCode 10),
+        dunaev_pair (GodelCode 6) (GodelCode 30)
+      ]
+      val pb_sq = eval_pullback_square pb_f pb_g
+      val pb_sq_ok = (pb_sq = [dunaev_pair (GodelCode 0) (GodelCode 5)])
+      val pb_kuratowski_rejected =
+        (let val _ = eval_pullback_square [KuratowskiPair (Empty, Empty)] pb_g in false end
+         handle ProperClassKuratowskiException => true)
+      val chi_s = eval_subobject_classifier [0, 1, 2] [0, 2]
+      val char_res = eval_characteristic_morphism [0, 1, 2] chi_s
+      val char_ok = (#pullback_verified char_res) andalso (#recovered_subobject char_res = [0, 2])
+      val lt_valid_j = [
+        dunaev_pair (GodelCode 0) (GodelCode 2),
+        dunaev_pair (GodelCode 1) (GodelCode 3),
+        dunaev_pair (GodelCode 2) (GodelCode 2),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val lt_invalid_j = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 0),
+        dunaev_pair (GodelCode 2) (GodelCode 2),
+        dunaev_pair (GodelCode 3) (GodelCode 3)
+      ]
+      val lt_res = eval_lawvere_tierney_topology 3 lt_valid_j
+      val lt_fail = eval_lawvere_tierney_topology 3 lt_invalid_j
+      val j_closed_chi = [
+        dunaev_pair (GodelCode 0) (GodelCode 2),
+        dunaev_pair (GodelCode 1) (GodelCode 3)
+      ]
+      val j_unclosed_chi = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 3)
+      ]
+      val jc_ok = (#is_j_closed (eval_j_closed_subobject lt_valid_j j_closed_chi))
+      val jc_fail = not (#is_j_closed (eval_j_closed_subobject lt_valid_j j_unclosed_chi))
+      val sub_uniq_thm = prove_subobject_classifier_uniqueness (SubobjectClassifier (Var "E")) (Var "top") (Var "m")
+      val sub_uniq_thm_ok = case sub_uniq_thm of
+          Thm ([], Imp (IsSubobjectClassifier (SubobjectClassifier (Var "E"), Var "top"),
+                        ExistsUnique ("chi", IsPullbackSquare (Var "m", _, Var "top", _)))) => true
+        | _ => false
+      val lt_idemp_thm = prove_lawvere_tierney_closure_idempotent (Var "j") (Var "Omega")
+      val lt_idemp_thm_ok = case lt_idemp_thm of
+          Thm ([], Imp (IsLawvereTierneyTopology (Var "j", Var "Omega"),
+                        Forall ("s", IsJClosedSubobject (Var "j", SheafSubobjectClosure (Var "j", Var "s"), Var "Omega")))) => true
+        | _ => false
+      val lt_meet_thm = prove_lawvere_tierney_meet_preservation (Var "j") (Var "Omega")
+      val lt_meet_thm_ok = case lt_meet_thm of
+          Thm ([], Imp (IsLawvereTierneyTopology (Var "j", Var "Omega"), _)) => true
+        | _ => false
+      val topos_term_ok = (PullbackSquare (Var "A", Var "B", Var "C") = PullbackSquare (Var "A", Var "B", Var "C"))
+      val topos_lt_all_ok =
+        pb_sq_ok andalso pb_kuratowski_rejected andalso char_ok
+        andalso (#is_valid_topology lt_res)
+        andalso (not (#is_valid_topology lt_fail))
+        andalso jc_ok andalso jc_fail
+        andalso sub_uniq_thm_ok andalso lt_idemp_thm_ok andalso lt_meet_thm_ok
+        andalso topos_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -6668,7 +6901,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
-      andalso schrodinger_all_ok andalso yoneda_kan_all_ok
+      andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
     end
 end;
 

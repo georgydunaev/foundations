@@ -1761,8 +1761,159 @@ def proves_yoneda_presheaf_conglomerate_and_kan_extensions() -> Dict[str, Any]:
     }
 
 
+# ==============================================================================
+# 10. Elementary Topoi, Subobject Classifiers, and Lawvere-Tierney Topologies
+# ==============================================================================
+
+def eval_pullback_square(
+    f_items: Iterable[Any],
+    g_items: Iterable[Any],
+) -> List[DunaevTaggedPair]:
+    """Computes the Dunaev-tagged pullback square P = { <a, b>_D | f(a) = g(b) }
+    from morphism graphs f and g encoded via DunaevTaggedPair (rejecting KuratowskiPair).
+    """
+    f_pairs = [(int(a), int(fa)) for a, fa in _extract_dunaev_ordinal_pairs(f_items)]
+    g_pairs = [(int(b), int(gb)) for b, gb in _extract_dunaev_ordinal_pairs(g_items)]
+    return [
+        dunaev_pair(a, b)
+        for a, fa in f_pairs
+        for b, gb in g_pairs
+        if fa == gb
+    ]
+
+
+def eval_subobject_classifier(
+    ambient_x: Iterable[int],
+    sub_s: Iterable[int],
+) -> List[DunaevTaggedPair]:
+    """Computes the characteristic morphism chi_S: X -> Omega = {0, 1} as a list of
+    DunaevTaggedPair(x, truth_val) where truth_val = 1 iff x in sub_s else 0.
+    """
+    s_set = {int(s) for s in sub_s}
+    return [
+        dunaev_pair(int(x), 1 if int(x) in s_set else 0)
+        for x in ambient_x
+    ]
+
+
+def eval_characteristic_morphism(
+    ambient_x: Iterable[int],
+    chi_items: Iterable[Any],
+) -> Dict[str, Any]:
+    """Recovers the pullback subobject S = { x in X | chi(x) = 1 } from a Dunaev-tagged
+    characteristic morphism chi_items and verifies the pullback square identity.
+    """
+    amb = [int(x) for x in ambient_x]
+    chi_pairs = [(int(x), int(tv)) for x, tv in _extract_dunaev_ordinal_pairs(chi_items)]
+    rec_sub = [x for x, tv in chi_pairs if x in amb and tv == 1]
+    expected = [(p.first, p.second) for p in eval_subobject_classifier(amb, rec_sub)]
+    return {
+        "recovered_subobject": rec_sub,
+        "pullback_verified": chi_pairs == expected,
+    }
+
+
+def eval_lawvere_tierney_topology(
+    top_elem: int,
+    j_items: Iterable[Any],
+) -> Dict[str, Any]:
+    """Verifies whether an operator j: Omega -> Omega encoded via DunaevTaggedPair(p, j(p))
+    (rejecting KuratowskiPair) is a Lawvere-Tierney modal topology:
+    1. j(top) = top (truth preservation)
+    2. j(j(p)) = j(p) (idempotence)
+    3. j(p & q) = j(p) & j(q) (meet preservation).
+    """
+    j_pairs = [(int(p), int(jp)) for p, jp in _extract_dunaev_ordinal_pairs(j_items)]
+    j_map = dict(j_pairs)
+    dom = [p for p, _ in j_pairs]
+    truth_ok = top_elem > 0 and j_map.get(top_elem, -1) == top_elem
+    idemp_ok = bool(j_pairs) and all(
+        jp >= 0 and j_map.get(jp, -1) == jp
+        for _, jp in j_pairs
+    )
+    meet_ok = all(
+        j_map.get(p & q, -1) == (j_map.get(p, -2) & j_map.get(q, -2))
+        for p in dom
+        for q in dom
+    )
+    return {
+        "preserves_truth": truth_ok,
+        "is_idempotent": idemp_ok,
+        "preserves_meet": meet_ok,
+        "is_valid_topology": truth_ok and idemp_ok and meet_ok,
+    }
+
+
+def eval_j_closed_subobject(
+    j_items: Iterable[Any],
+    chi_items: Iterable[Any],
+) -> Dict[str, Any]:
+    """Computes the j-closure characteristic morphism j o chi_m and verifies whether
+    the subobject is j-closed (j o chi_m = chi_m).
+    """
+    j_map = {int(p): int(jp) for p, jp in _extract_dunaev_ordinal_pairs(j_items)}
+    chi_pairs = [(int(x), int(tv)) for x, tv in _extract_dunaev_ordinal_pairs(chi_items)]
+    clos_chi = [(x, j_map.get(tv, tv)) for x, tv in chi_pairs]
+    closed_ok = bool(chi_pairs) and all(j_map.get(tv, tv) == tv for _, tv in chi_pairs)
+    return {
+        "closure_chi": clos_chi,
+        "is_j_closed": closed_ok,
+    }
+
+
+def proves_topos_subobject_classifier_and_lawvere_tierney_topologies() -> Dict[str, Any]:
+    """Master verification for Ticket 69 (Dunaev-Tagged Pullback Squares, Subobject
+    Classifier Omega, Characteristic Morphisms, and Lawvere-Tierney Modal Topologies).
+    """
+    pb_f = [dunaev_pair(0, 10), dunaev_pair(1, 20)]
+    pb_g = [dunaev_pair(5, 10), dunaev_pair(6, 30)]
+    pb_sq = eval_pullback_square(pb_f, pb_g)
+    pb_ok = pb_sq == [dunaev_pair(0, 5)]
+
+    kuratowski_rejected = False
+    try:
+        eval_pullback_square([KuratowskiPair(0, 10)], pb_g)
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    chi_s = eval_subobject_classifier([0, 1, 2], [0, 2])
+    char_res = eval_characteristic_morphism([0, 1, 2], chi_s)
+    char_ok = char_res["pullback_verified"] and char_res["recovered_subobject"] == [0, 2]
+
+    lt_valid_j = [
+        dunaev_pair(0, 2),
+        dunaev_pair(1, 3),
+        dunaev_pair(2, 2),
+        dunaev_pair(3, 3),
+    ]
+    lt_invalid_j = [
+        dunaev_pair(0, 1),
+        dunaev_pair(1, 0),
+        dunaev_pair(2, 2),
+        dunaev_pair(3, 3),
+    ]
+    lt_ok = (
+        eval_lawvere_tierney_topology(3, lt_valid_j)["is_valid_topology"]
+        and not eval_lawvere_tierney_topology(3, lt_invalid_j)["is_valid_topology"]
+    )
+    jc_ok = (
+        eval_j_closed_subobject(lt_valid_j, [dunaev_pair(0, 2), dunaev_pair(1, 3)])["is_j_closed"]
+        and not eval_j_closed_subobject(lt_valid_j, [dunaev_pair(0, 1), dunaev_pair(1, 3)])["is_j_closed"]
+    )
+
+    all_ok = pb_ok and kuratowski_rejected and char_ok and lt_ok and jc_ok
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "pullback_square_verified": pb_ok,
+        "kuratowski_rejected": kuratowski_rejected,
+        "subobject_classifier_verified": char_ok,
+        "lawvere_tierney_topology_verified": lt_ok,
+        "j_closed_subobject_verified": jc_ok,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
@@ -1772,6 +1923,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     7. ticket_gl066_foundations_borel_projective_determinacy_and_gale_stewart_games.md
     8. ticket_gl067_foundations_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac.md
     9. ticket_gl068_foundations_yoneda_presheaf_conglomerate_and_kan_extensions.md
+    10. ticket_gl069_foundations_topos_subobject_classifier_and_lawvere_tierney_topologies.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
@@ -1782,6 +1934,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_det = proves_borel_projective_determinacy_and_gale_stewart_games()
     res_schrod = proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac()
     res_yon_kan = proves_yoneda_presheaf_conglomerate_and_kan_extensions()
+    res_topos = proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -1792,6 +1945,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_det["status"] == "RESOLVED"
     assert res_schrod["status"] == "RESOLVED"
     assert res_yon_kan["status"] == "RESOLVED"
+    assert res_topos["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -1803,4 +1957,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_borel_projective_determinacy_and_gale_stewart_games": res_det,
         "ticket_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac": res_schrod,
         "ticket_yoneda_presheaf_conglomerate_and_kan_extensions": res_yon_kan,
+        "ticket_topos_subobject_classifier_and_lawvere_tierney_topologies": res_topos,
     }

@@ -294,6 +294,12 @@ from foundations.classes import (
     eval_yoneda_embedding_fully_faithful,
     eval_pointwise_kan_extension,
     proves_yoneda_presheaf_conglomerate_and_kan_extensions,
+    eval_pullback_square,
+    eval_subobject_classifier,
+    eval_characteristic_morphism,
+    eval_lawvere_tierney_topology,
+    eval_j_closed_subobject,
+    proves_topos_subobject_classifier_and_lawvere_tierney_topologies,
     proves_foundations_classes_and_families,
 )
 
@@ -588,5 +594,11 @@ __all__: list[str] = [
     "eval_yoneda_embedding_fully_faithful",
     "eval_pointwise_kan_extension",
     "proves_yoneda_presheaf_conglomerate_and_kan_extensions",
+    "eval_pullback_square",
+    "eval_subobject_classifier",
+    "eval_characteristic_morphism",
+    "eval_lawvere_tierney_topology",
+    "eval_j_closed_subobject",
+    "proves_topos_subobject_classifier_and_lawvere_tierney_topologies",
     "proves_foundations_classes_and_families",
 ]

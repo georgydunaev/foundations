@@ -2167,6 +2167,47 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_yoneda_presheaf_conglomerate_and_kan_extensions()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl069_topos_subobject_classifier_and_lawvere_tierney_topologies(self):
+        """Ticket 69: Dunaev-Tagged Pullback Squares, Subobject Classifier Omega, and Lawvere-Tierney Topologies."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            dunaev_pair,
+            eval_characteristic_morphism,
+            eval_j_closed_subobject,
+            eval_lawvere_tierney_topology,
+            eval_pullback_square,
+            eval_subobject_classifier,
+            proves_topos_subobject_classifier_and_lawvere_tierney_topologies,
+        )
+
+        pb_sq = eval_pullback_square(
+            [dunaev_pair(0, 10), dunaev_pair(1, 20)],
+            [dunaev_pair(5, 10), dunaev_pair(6, 30)],
+        )
+        self.assertEqual(pb_sq, [dunaev_pair(0, 5)])
+        with self.assertRaises(ProperClassError):
+            eval_pullback_square([KuratowskiPair(0, 10)], [dunaev_pair(5, 10)])
+
+        chi_s = eval_subobject_classifier([0, 1, 2], [0, 2])
+        char_res = eval_characteristic_morphism([0, 1, 2], chi_s)
+        self.assertTrue(char_res["pullback_verified"])
+        self.assertEqual(char_res["recovered_subobject"], [0, 2])
+
+        lt_valid_j = [
+            dunaev_pair(0, 2),
+            dunaev_pair(1, 3),
+            dunaev_pair(2, 2),
+            dunaev_pair(3, 3),
+        ]
+        self.assertTrue(eval_lawvere_tierney_topology(3, lt_valid_j)["is_valid_topology"])
+        self.assertTrue(
+            eval_j_closed_subobject(lt_valid_j, [dunaev_pair(0, 2), dunaev_pair(1, 3)])["is_j_closed"]
+        )
+
+        master = proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()
