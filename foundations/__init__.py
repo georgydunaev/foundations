@@ -360,6 +360,12 @@ from foundations.classes import (
     eval_exact_couple_derived,
     eval_grothendieck_spectral_convergence,
     proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence,
+    eval_mac_lane_coherence,
+    eval_is_symmetric_monoidal_closed,
+    eval_is_enriched_category,
+    eval_enriched_yoneda_iso,
+    eval_day_convolution_monoidal,
+    proves_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution,
     proves_foundations_classes_and_families,
 )
 
@@ -720,5 +726,11 @@ __all__: list[str] = [
     "eval_exact_couple_derived",
     "eval_grothendieck_spectral_convergence",
     "proves_spectral_sequences_filtered_complexes_and_grothendieck_convergence",
+    "eval_mac_lane_coherence",
+    "eval_is_symmetric_monoidal_closed",
+    "eval_is_enriched_category",
+    "eval_enriched_yoneda_iso",
+    "eval_day_convolution_monoidal",
+    "proves_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution",
     "proves_foundations_classes_and_families",
 ]

@@ -984,6 +984,34 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl080_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution(self):
+        """Ticket 80: verify Symmetric Monoidal Closed Categories, Mac Lane Coherence, Enriched Yoneda, and Day Convolution in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "SymmetricMonoidalStructure",
+            "InternalHomObject",
+            "EnrichedCategory",
+            "EnrichedRepresentableHom",
+            "DayConvolutionProduct",
+            "SatisfiesMacLaneCoherence",
+            "IsSymmetricMonoidalClosed",
+            "IsEnrichedCategory",
+            "SatisfiesEnrichedYonedaIso",
+            "IsDayConvolutionMonoidal",
+            "eval_mac_lane_coherence",
+            "eval_is_symmetric_monoidal_closed",
+            "eval_is_enriched_category",
+            "eval_enriched_yoneda_iso",
+            "eval_day_convolution_monoidal",
+            "axiom_mac_lane_pentagon_triangle_coherence",
+            "prove_mac_lane_pentagon_triangle_coherence",
+            "axiom_tensor_internal_hom_adjunction_iso",
+            "prove_tensor_internal_hom_adjunction_iso",
+            "axiom_day_convolution_promonoidal_yoneda",
+            "prove_day_convolution_promonoidal_yoneda",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

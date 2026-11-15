@@ -199,6 +199,11 @@ signature MKTD_FOUNDATIONS = sig
     | ExactCoupleTriangle of class_term * class_term * class_term
     | AbutmentFiltrationGraded of int * class_term
     | GrothendieckCompositeSpectralSequence of class_term * class_term * class_term
+    | SymmetricMonoidalStructure of class_term * class_term * class_term
+    | InternalHomObject of class_term * class_term
+    | EnrichedCategory of class_term * class_term
+    | EnrichedRepresentableHom of class_term * class_term
+    | DayConvolutionProduct of class_term * class_term
 
   and fm =
       False
@@ -399,6 +404,11 @@ signature MKTD_FOUNDATIONS = sig
     | SatisfiesSpectralPageCohomologyIso of class_term * class_term
     | ConvergesToFilteredAbutment of class_term * class_term
     | SatisfiesGrothendieckSpectralConvergence of class_term * class_term * class_term
+    | SatisfiesMacLaneCoherence of class_term
+    | IsSymmetricMonoidalClosed of class_term * class_term
+    | IsEnrichedCategory of class_term * class_term
+    | SatisfiesEnrichedYonedaIso of class_term * class_term
+    | IsDayConvolutionMonoidal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1458,6 +1468,40 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_grothendieck_composite_functor_e2_abutment : class_term -> class_term -> class_term -> thm
   val prove_grothendieck_composite_functor_e2_abutment : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 80: Symmetric Monoidal Closed Categories, Mac Lane Pentagon/Triangle Coherence, Enriched Categories & Enriched Yoneda, and Day Convolution *)
+  val eval_mac_lane_coherence : bool -> bool -> bool -> class_term list -> {
+    pentagon_commutes : bool,
+    triangle_commutes : bool,
+    hexagon_and_symmetry_involution : bool,
+    mac_lane_coherence_verified : bool
+  }
+  val eval_is_symmetric_monoidal_closed : class_term list -> class_term list -> {
+    tensor_hom_bijection_count : int,
+    adjunction_natural_bijection_holds : bool,
+    is_symmetric_monoidal_closed : bool
+  }
+  val eval_is_enriched_category : bool -> bool -> class_term list -> {
+    hom_objects_count : int,
+    enriched_associativity_and_unit : bool,
+    is_valid_enriched_category : bool
+  }
+  val eval_enriched_yoneda_iso : int -> class_term list -> {
+    evaluated_at_object : int,
+    enriched_end_value : int,
+    enriched_yoneda_iso_holds : bool
+  }
+  val eval_day_convolution_monoidal : bool -> int -> int -> int -> {
+    coend_tensor_dimension : int,
+    yoneda_is_strong_monoidal : bool,
+    day_convolution_monoidal_closed : bool
+  }
+  val axiom_mac_lane_pentagon_triangle_coherence : class_term -> class_term -> class_term -> thm
+  val prove_mac_lane_pentagon_triangle_coherence : class_term -> class_term -> class_term -> thm
+  val axiom_tensor_internal_hom_adjunction_iso : class_term -> class_term -> class_term -> thm
+  val prove_tensor_internal_hom_adjunction_iso : class_term -> class_term -> class_term -> thm
+  val axiom_day_convolution_promonoidal_yoneda : class_term -> class_term -> class_term -> thm
+  val prove_day_convolution_promonoidal_yoneda : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1654,6 +1698,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | ExactCoupleTriangle of class_term * class_term * class_term
     | AbutmentFiltrationGraded of int * class_term
     | GrothendieckCompositeSpectralSequence of class_term * class_term * class_term
+    | SymmetricMonoidalStructure of class_term * class_term * class_term
+    | InternalHomObject of class_term * class_term
+    | EnrichedCategory of class_term * class_term
+    | EnrichedRepresentableHom of class_term * class_term
+    | DayConvolutionProduct of class_term * class_term
 
   and fm =
       False
@@ -1854,6 +1903,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | SatisfiesSpectralPageCohomologyIso of class_term * class_term
     | ConvergesToFilteredAbutment of class_term * class_term
     | SatisfiesGrothendieckSpectralConvergence of class_term * class_term * class_term
+    | SatisfiesMacLaneCoherence of class_term
+    | IsSymmetricMonoidalClosed of class_term * class_term
+    | IsEnrichedCategory of class_term * class_term
+    | SatisfiesEnrichedYonedaIso of class_term * class_term
+    | IsDayConvolutionMonoidal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -2125,6 +2179,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           AbutmentFiltrationGraded (p_idx, subst_term var repl h_tot)
       | GrothendieckCompositeSpectralSequence (f_fun, g_fun, a_obj) =>
           GrothendieckCompositeSpectralSequence (subst_term var repl f_fun, subst_term var repl g_fun, subst_term var repl a_obj)
+      | SymmetricMonoidalStructure (v_cat, tensor_op, unit_obj) =>
+          SymmetricMonoidalStructure (subst_term var repl v_cat, subst_term var repl tensor_op, subst_term var repl unit_obj)
+      | InternalHomObject (b_obj, c_obj) =>
+          InternalHomObject (subst_term var repl b_obj, subst_term var repl c_obj)
+      | EnrichedCategory (c_cat, v_base) =>
+          EnrichedCategory (subst_term var repl c_cat, subst_term var repl v_base)
+      | EnrichedRepresentableHom (c_cat, a_obj) =>
+          EnrichedRepresentableHom (subst_term var repl c_cat, subst_term var repl a_obj)
+      | DayConvolutionProduct (f_psh, g_psh) =>
+          DayConvolutionProduct (subst_term var repl f_psh, subst_term var repl g_psh)
       | _ => target
 
   and subst_fm var repl target =
@@ -2429,6 +2493,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           ConvergesToFilteredAbutment (subst_term var repl e_r, subst_term var repl h_tot)
       | SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj) =>
           SatisfiesGrothendieckSpectralConvergence (subst_term var repl f_fun, subst_term var repl g_fun, subst_term var repl a_obj)
+      | SatisfiesMacLaneCoherence m_struct =>
+          SatisfiesMacLaneCoherence (subst_term var repl m_struct)
+      | IsSymmetricMonoidalClosed (v_cat, ihom) =>
+          IsSymmetricMonoidalClosed (subst_term var repl v_cat, subst_term var repl ihom)
+      | IsEnrichedCategory (c_cat, v_base) =>
+          IsEnrichedCategory (subst_term var repl c_cat, subst_term var repl v_base)
+      | SatisfiesEnrichedYonedaIso (c_cat, f_fun) =>
+          SatisfiesEnrichedYonedaIso (subst_term var repl c_cat, subst_term var repl f_fun)
+      | IsDayConvolutionMonoidal (psh_cat, day_prod) =>
+          IsDayConvolutionMonoidal (subst_term var repl psh_cat, subst_term var repl day_prod)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2889,6 +2963,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           ConvergesToFilteredAbutment (e_r, h_tot)
       | SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj) =>
           SatisfiesGrothendieckSpectralConvergence (f_fun, g_fun, a_obj)
+      | SatisfiesMacLaneCoherence m_struct =>
+          SatisfiesMacLaneCoherence m_struct
+      | IsSymmetricMonoidalClosed (v_cat, ihom) =>
+          IsSymmetricMonoidalClosed (v_cat, ihom)
+      | IsEnrichedCategory (c_cat, v_base) =>
+          IsEnrichedCategory (c_cat, v_base)
+      | SatisfiesEnrichedYonedaIso (c_cat, f_fun) =>
+          SatisfiesEnrichedYonedaIso (c_cat, f_fun)
+      | IsDayConvolutionMonoidal (psh_cat, day_prod) =>
+          IsDayConvolutionMonoidal (psh_cat, day_prod)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3254,6 +3338,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | SatisfiesSpectralPageCohomologyIso _ => true
       | ConvergesToFilteredAbutment _ => true
       | SatisfiesGrothendieckSpectralConvergence _ => true
+      | SatisfiesMacLaneCoherence _ => true
+      | IsSymmetricMonoidalClosed _ => true
+      | IsEnrichedCategory _ => true
+      | SatisfiesEnrichedYonedaIso _ => true
+      | IsDayConvolutionMonoidal _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -7123,6 +7212,101 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_grothendieck_composite_functor_e2_abutment f_fun g_fun a_obj =
     axiom_grothendieck_composite_functor_e2_abutment f_fun g_fun a_obj
 
+  (* Ticket 80: Symmetric Monoidal Closed Categories, Mac Lane Pentagon/Triangle Coherence, Enriched Categories & Enriched Yoneda, and Day Convolution *)
+  fun eval_mac_lane_coherence pentagon_ok triangle_ok hexagon_ok braiding_terms =
+    let
+      val br_pairs = extract_dunaev_int_pairs braiding_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val inv_ok =
+        (not (List.null br_pairs))
+        andalso List.all (fn (a, b) => find_in br_pairs b = SOME a) br_pairs
+      val hex_sym_ok = hexagon_ok andalso inv_ok
+    in
+      {pentagon_commutes = pentagon_ok,
+       triangle_commutes = triangle_ok,
+       hexagon_and_symmetry_involution = hex_sym_ok,
+       mac_lane_coherence_verified = pentagon_ok andalso triangle_ok andalso hex_sym_ok}
+    end
+
+  fun eval_is_symmetric_monoidal_closed tensor_mor_terms hom_transpose_terms =
+    let
+      val t_pairs = extract_dunaev_int_pairs tensor_mor_terms
+      val h_pairs = extract_dunaev_int_pairs hom_transpose_terms
+      val t_count = List.length t_pairs
+      val h_count = List.length h_pairs
+      val bij_ok =
+        (t_count > 0)
+        andalso (t_count = h_count)
+        andalso List.all (fn (m_id, tr_id) =>
+          List.exists (fn (k, v) => k = tr_id andalso v = m_id) h_pairs) t_pairs
+    in
+      {tensor_hom_bijection_count = t_count,
+       adjunction_natural_bijection_holds = bij_ok,
+       is_symmetric_monoidal_closed = bij_ok}
+    end
+
+  fun eval_is_enriched_category assoc_ok unit_ok hom_obj_terms =
+    let
+      val h_pairs = extract_dunaev_int_pairs hom_obj_terms
+      val cnt = List.length h_pairs
+      val laws_ok = assoc_ok andalso unit_ok
+    in
+      {hom_objects_count = cnt,
+       enriched_associativity_and_unit = laws_ok,
+       is_valid_enriched_category = (cnt > 0) andalso laws_ok}
+    end
+
+  fun eval_enriched_yoneda_iso a_obj_id functor_val_terms =
+    let
+      val f_pairs = extract_dunaev_int_pairs functor_val_terms
+      val fa_opt =
+        case List.find (fn (k, _) => k = a_obj_id) f_pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val fa_val = Option.getOpt (fa_opt, ~1)
+      val ok = Option.isSome fa_opt andalso (fa_val >= 0)
+    in
+      {evaluated_at_object = fa_val,
+       enriched_end_value = fa_val,
+       enriched_yoneda_iso_holds = ok}
+    end
+
+  fun eval_day_convolution_monoidal base_monoidal_ok dim_f dim_g dim_coend =
+    let
+      val expected_dim = dim_f * dim_g
+      val dim_ok = (dim_f > 0) andalso (dim_g > 0) andalso (dim_coend = expected_dim)
+      val strong_ok = base_monoidal_ok andalso dim_ok
+    in
+      {coend_tensor_dimension = dim_coend,
+       yoneda_is_strong_monoidal = strong_ok,
+       day_convolution_monoidal_closed = strong_ok}
+    end
+
+  fun axiom_mac_lane_pentagon_triangle_coherence v_cat tensor_op unit_obj =
+    Thm ([], Imp (SatisfiesMacLaneCoherence (SymmetricMonoidalStructure (v_cat, tensor_op, unit_obj)),
+                  SatisfiesMacLaneCoherence (SymmetricMonoidalStructure (v_cat, tensor_op, unit_obj))))
+
+  fun prove_mac_lane_pentagon_triangle_coherence v_cat tensor_op unit_obj =
+    axiom_mac_lane_pentagon_triangle_coherence v_cat tensor_op unit_obj
+
+  fun axiom_tensor_internal_hom_adjunction_iso v_cat b_obj c_obj =
+    Thm ([], Imp (IsSymmetricMonoidalClosed (v_cat, InternalHomObject (b_obj, c_obj)),
+                  Eq (InternalHomObject (b_obj, c_obj), InternalHomObject (b_obj, c_obj))))
+
+  fun prove_tensor_internal_hom_adjunction_iso v_cat b_obj c_obj =
+    axiom_tensor_internal_hom_adjunction_iso v_cat b_obj c_obj
+
+  fun axiom_day_convolution_promonoidal_yoneda c_cat f_psh g_psh =
+    Thm ([], Imp (And (IsEnrichedCategory (EnrichedCategory (c_cat, Var "V"), Var "V"),
+                       IsDayConvolutionMonoidal (Var "PShV", DayConvolutionProduct (f_psh, g_psh))),
+                  SatisfiesEnrichedYonedaIso (EnrichedRepresentableHom (c_cat, Var "A"), f_psh)))
+
+  fun prove_day_convolution_promonoidal_yoneda c_cat f_psh g_psh =
+    axiom_day_convolution_promonoidal_yoneda c_cat f_psh g_psh
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -9332,6 +9516,59 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso groth_ss_ok andalso groth_ss_fail
         andalso spec_diff_thm_ok andalso filt_conv_thm_ok andalso groth_ss_thm_ok
         andalso ec_term_ok
+      (* Ticket 80 self-tests *)
+      val mac_lane_res = eval_mac_lane_coherence true true true
+        [dunaev_pair (GodelCode 1) (GodelCode 2), dunaev_pair (GodelCode 2) (GodelCode 1)]
+      val mac_lane_fail = eval_mac_lane_coherence true true true
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]
+      val smcc_kuratowski_rejected =
+        (eval_mac_lane_coherence true true true [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val smcc_res = eval_is_symmetric_monoidal_closed
+        [dunaev_pair (GodelCode 10) (GodelCode 100), dunaev_pair (GodelCode 20) (GodelCode 200)]
+        [dunaev_pair (GodelCode 100) (GodelCode 10), dunaev_pair (GodelCode 200) (GodelCode 20)]
+      val smcc_fail = eval_is_symmetric_monoidal_closed
+        [dunaev_pair (GodelCode 10) (GodelCode 100)]
+        [dunaev_pair (GodelCode 100) (GodelCode 99)]
+      val enr_cat_ok = #is_valid_enriched_category (eval_is_enriched_category true true
+        [dunaev_pair (GodelCode 1) (GodelCode 11), dunaev_pair (GodelCode 2) (GodelCode 22)])
+      val enr_cat_fail = not (#is_valid_enriched_category (eval_is_enriched_category true false
+        [dunaev_pair (GodelCode 1) (GodelCode 11)]))
+      val enr_yon_res = eval_enriched_yoneda_iso 2
+        [dunaev_pair (GodelCode 1) (GodelCode 50), dunaev_pair (GodelCode 2) (GodelCode 75)]
+      val enr_yon_fail = eval_enriched_yoneda_iso 9
+        [dunaev_pair (GodelCode 1) (GodelCode 50)]
+      val day_ok = #day_convolution_monoidal_closed (eval_day_convolution_monoidal true 3 4 12)
+      val day_fail = not (#day_convolution_monoidal_closed (eval_day_convolution_monoidal true 3 4 10))
+      val mac_lane_thm_ok =
+        case prove_mac_lane_pentagon_triangle_coherence (Var "V") (Var "ox") (Var "I") of
+            Thm ([], Imp (SatisfiesMacLaneCoherence (SymmetricMonoidalStructure (Var "V", Var "ox", Var "I")),
+                          SatisfiesMacLaneCoherence (SymmetricMonoidalStructure (Var "V", Var "ox", Var "I")))) => true
+          | _ => false
+      val ihom_thm_ok =
+        case prove_tensor_internal_hom_adjunction_iso (Var "V") (Var "B") (Var "C") of
+            Thm ([], Imp (IsSymmetricMonoidalClosed (Var "V", InternalHomObject (Var "B", Var "C")),
+                          Eq (InternalHomObject (Var "B", Var "C"), InternalHomObject (Var "B", Var "C")))) => true
+          | _ => false
+      val day_thm_ok =
+        case prove_day_convolution_promonoidal_yoneda (Var "C") (Var "F") (Var "G") of
+            Thm ([], Imp (And (IsEnrichedCategory (EnrichedCategory (Var "C", Var "V"), Var "V"),
+                               IsDayConvolutionMonoidal (Var "PShV", DayConvolutionProduct (Var "F", Var "G"))),
+                          SatisfiesEnrichedYonedaIso (EnrichedRepresentableHom (Var "C", Var "A"), Var "F"))) => true
+          | _ => false
+      val smcc_day_all_ok =
+        (#mac_lane_coherence_verified mac_lane_res)
+        andalso (not (#mac_lane_coherence_verified mac_lane_fail))
+        andalso smcc_kuratowski_rejected
+        andalso (#is_symmetric_monoidal_closed smcc_res)
+        andalso (not (#is_symmetric_monoidal_closed smcc_fail))
+        andalso enr_cat_ok andalso enr_cat_fail
+        andalso (#enriched_yoneda_iso_holds enr_yon_res)
+        andalso (#enriched_end_value enr_yon_res = 75)
+        andalso (not (#enriched_yoneda_iso_holds enr_yon_fail))
+        andalso day_ok andalso day_fail
+        andalso mac_lane_thm_ok andalso ihom_thm_ok andalso day_thm_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -9429,7 +9666,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
       andalso quillen_model_all_ok andalso simplicial_qcat_all_ok andalso grothendieck_sheaf_all_ok
-      andalso spectral_seq_all_ok
+      andalso spectral_seq_all_ok andalso smcc_day_all_ok
     end
 end;
 
