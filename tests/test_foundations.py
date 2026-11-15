@@ -518,6 +518,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["diagonal_intersection_verified"])
         self.assertTrue(res["fodors_pressing_down_lemma_verified"])
 
+    def test_ticket_gl066_borel_projective_determinacy_and_gale_stewart_games(self):
+        """Ticket 66: verify Dunaev-Tagged Game Trees, Gale-Stewart Games, and Martin's Borel Determinacy."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_dunaev_game_tree",
+            "eval_is_winning_strategy_p1",
+            "eval_is_winning_strategy_p2",
+            "eval_strategy_exclusivity",
+            "eval_gale_stewart_closed_determinacy",
+            "eval_martin_borel_determinacy",
+            "proves_borel_projective_determinacy_and_gale_stewart_games",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_borel_projective_determinacy_and_gale_stewart_games()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["game_tree_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["strategy_exclusivity_verified"])
+        self.assertTrue(res["gale_stewart_determinacy_verified"])
+        self.assertTrue(res["martin_borel_determinacy_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

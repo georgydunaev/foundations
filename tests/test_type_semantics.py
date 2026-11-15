@@ -2021,6 +2021,72 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_ordinal_veblen_hierarchy_and_club_stationary_filters()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl066_borel_projective_determinacy_and_gale_stewart_games(self):
+        """Ticket 66: Dunaev-Tagged Game Trees, Gale-Stewart Games, and Martin's Borel Determinacy."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            dunaev_pair,
+            encode_class_list_dunaev,
+            eval_gale_stewart_closed_determinacy,
+            eval_is_dunaev_game_tree,
+            eval_martin_borel_determinacy,
+            eval_strategy_exclusivity,
+            proves_borel_projective_determinacy_and_gale_stewart_games,
+        )
+
+        gt_nodes = [
+            encode_class_list_dunaev([]),
+            encode_class_list_dunaev([0]),
+            encode_class_list_dunaev([1]),
+            encode_class_list_dunaev([0, 0]),
+            encode_class_list_dunaev([0, 1]),
+            encode_class_list_dunaev([1, 0]),
+            encode_class_list_dunaev([1, 1]),
+        ]
+        self.assertTrue(eval_is_dunaev_game_tree(gt_nodes, 2)["is_valid_game_tree"])
+        with self.assertRaises(ProperClassError):
+            eval_is_dunaev_game_tree([KuratowskiPair(0, 0)], 1)
+
+        plays = [
+            encode_class_list_dunaev([0, 0]),
+            encode_class_list_dunaev([0, 1]),
+            encode_class_list_dunaev([1, 0]),
+            encode_class_list_dunaev([1, 1]),
+        ]
+        payoff_p1 = [
+            encode_class_list_dunaev([0, 0]),
+            encode_class_list_dunaev([0, 1]),
+        ]
+        p1_strat_0 = [dunaev_pair(encode_class_list_dunaev([]), 0)]
+        p1_strat_1 = [dunaev_pair(encode_class_list_dunaev([]), 1)]
+        p2_strat_00 = [
+            dunaev_pair(encode_class_list_dunaev([0]), 0),
+            dunaev_pair(encode_class_list_dunaev([1]), 0),
+        ]
+        p2_strat_01 = [
+            dunaev_pair(encode_class_list_dunaev([0]), 1),
+            dunaev_pair(encode_class_list_dunaev([1]), 1),
+        ]
+
+        excl_res = eval_strategy_exclusivity(plays, payoff_p1, p1_strat_0, p2_strat_00)
+        self.assertTrue(excl_res["p1_wins"])
+        self.assertFalse(excl_res["p2_wins"])
+        self.assertTrue(excl_res["mutually_exclusive"])
+
+        gs_res = eval_gale_stewart_closed_determinacy(
+            plays, payoff_p1, [p1_strat_0, p1_strat_1], [p2_strat_00, p2_strat_01]
+        )
+        self.assertTrue(gs_res["is_determined"])
+
+        borel_res = eval_martin_borel_determinacy(
+            3, plays, payoff_p1, [p1_strat_0, p1_strat_1], [p2_strat_00, p2_strat_01]
+        )
+        self.assertTrue(borel_res["is_determined"])
+
+        master = proves_borel_projective_determinacy_and_gale_stewart_games()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

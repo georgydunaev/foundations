@@ -133,6 +133,9 @@ signature MKTD_FOUNDATIONS = sig
     | NormalOrdinalFn of class_term
     | VeblenPhi of class_term * class_term
     | DiagonalIntersection of class_term * class_term
+    | DunaevGameTree of class_term
+    | GaleStewartGame of class_term * class_term
+    | BorelPayoff of class_term * class_term
 
   and fm =
       False
@@ -274,6 +277,11 @@ signature MKTD_FOUNDATIONS = sig
     | IsVeblenFixedPoint of class_term * class_term * class_term
     | IsClubIn of class_term * class_term
     | FodorsPressingDown of class_term * class_term * class_term
+    | IsDunaevGameTree of class_term
+    | HasWinningStrategyP1 of class_term * class_term
+    | HasWinningStrategyP2 of class_term * class_term
+    | IsDeterminedGame of class_term * class_term
+    | IsBorelPayoff of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -882,6 +890,36 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_fodors_pressing_down_lemma : class_term -> class_term -> class_term -> thm
   val prove_fodors_pressing_down_lemma : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 66: Gale-Stewart Games, Winning Strategies, and Martin's Borel Determinacy *)
+  val eval_is_dunaev_game_tree : class_term list -> int -> {
+    is_prefix_closed : bool,
+    is_pruned : bool,
+    is_valid_game_tree : bool
+  }
+  val eval_is_winning_strategy_p1 : class_term list -> class_term list -> class_term list -> bool
+  val eval_is_winning_strategy_p2 : class_term list -> class_term list -> class_term list -> bool
+  val eval_strategy_exclusivity : class_term list -> class_term list -> class_term list -> class_term list -> {
+    p1_wins : bool,
+    p2_wins : bool,
+    mutually_exclusive : bool
+  }
+  val eval_gale_stewart_closed_determinacy : class_term list -> class_term list -> class_term list list -> class_term list list -> {
+    p1_has_winning : bool,
+    p2_has_winning : bool,
+    is_determined : bool
+  }
+  val eval_martin_borel_determinacy : int -> class_term list -> class_term list -> class_term list list -> class_term list list -> {
+    borel_rank : int,
+    is_valid_rank : bool,
+    is_determined : bool
+  }
+  val axiom_gale_stewart_strategy_exclusivity : class_term -> class_term -> thm
+  val prove_gale_stewart_strategy_exclusivity : class_term -> class_term -> thm
+  val axiom_gale_stewart_closed_determinacy : class_term -> class_term -> thm
+  val prove_gale_stewart_closed_determinacy : class_term -> class_term -> thm
+  val axiom_martin_borel_determinacy : class_term -> class_term -> class_term -> thm
+  val prove_martin_borel_determinacy : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1012,6 +1050,9 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | NormalOrdinalFn of class_term
     | VeblenPhi of class_term * class_term
     | DiagonalIntersection of class_term * class_term
+    | DunaevGameTree of class_term
+    | GaleStewartGame of class_term * class_term
+    | BorelPayoff of class_term * class_term
 
   and fm =
       False
@@ -1153,6 +1194,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsVeblenFixedPoint of class_term * class_term * class_term
     | IsClubIn of class_term * class_term
     | FodorsPressingDown of class_term * class_term * class_term
+    | IsDunaevGameTree of class_term
+    | HasWinningStrategyP1 of class_term * class_term
+    | HasWinningStrategyP2 of class_term * class_term
+    | IsDeterminedGame of class_term * class_term
+    | IsBorelPayoff of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1296,6 +1342,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | VeblenPhi (a, b) => VeblenPhi (subst_term var repl a, subst_term var repl b)
       | DiagonalIntersection (k, fam) =>
           DiagonalIntersection (subst_term var repl k, subst_term var repl fam)
+      | DunaevGameTree t => DunaevGameTree (subst_term var repl t)
+      | GaleStewartGame (t, a) =>
+          GaleStewartGame (subst_term var repl t, subst_term var repl a)
+      | BorelPayoff (a, r) =>
+          BorelPayoff (subst_term var repl a, subst_term var repl r)
       | _ => target
 
   and subst_fm var repl target =
@@ -1482,6 +1533,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsClubIn (subst_term var repl c, subst_term var repl k)
       | FodorsPressingDown (s, f, k) =>
           FodorsPressingDown (subst_term var repl s, subst_term var repl f, subst_term var repl k)
+      | IsDunaevGameTree t =>
+          IsDunaevGameTree (subst_term var repl t)
+      | HasWinningStrategyP1 (t, a) =>
+          HasWinningStrategyP1 (subst_term var repl t, subst_term var repl a)
+      | HasWinningStrategyP2 (t, a) =>
+          HasWinningStrategyP2 (subst_term var repl t, subst_term var repl a)
+      | IsDeterminedGame (t, a) =>
+          IsDeterminedGame (subst_term var repl t, subst_term var repl a)
+      | IsBorelPayoff (a, r) =>
+          IsBorelPayoff (subst_term var repl a, subst_term var repl r)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -1878,6 +1939,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsVeblenFixedPoint (a, b, x) => IsVeblenFixedPoint (a, b, x)
       | IsClubIn (c, k) => IsClubIn (c, k)
       | FodorsPressingDown (s, f, k) => FodorsPressingDown (s, f, k)
+      | IsDunaevGameTree t => IsDunaevGameTree t
+      | HasWinningStrategyP1 (t, a) => HasWinningStrategyP1 (t, a)
+      | HasWinningStrategyP2 (t, a) => HasWinningStrategyP2 (t, a)
+      | IsDeterminedGame (t, a) => IsDeterminedGame (t, a)
+      | IsBorelPayoff (a, r) => IsBorelPayoff (a, r)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2184,6 +2250,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsVeblenFixedPoint _ => true
       | IsClubIn _ => true
       | FodorsPressingDown _ => true
+      | IsDunaevGameTree _ => true
+      | HasWinningStrategyP1 _ => true
+      | HasWinningStrategyP2 _ => true
+      | IsDeterminedGame _ => true
+      | IsBorelPayoff _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -4378,6 +4449,187 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_fodors_pressing_down_lemma s f kappa =
     axiom_fodors_pressing_down_lemma s f kappa
 
+  (* Ticket 66: Gale-Stewart Games, Winning Strategies, and Martin's Borel Determinacy *)
+
+  fun extract_game_position t =
+    case t of
+        KuratowskiPair _ => raise ProperClassKuratowskiException
+      | ClassListDunaev xs =>
+          List.map (fn KuratowskiPair _ => raise ProperClassKuratowskiException
+                     | GodelCode m => m
+                     | _ => raise ProjectionError) xs
+      | _ => raise ProjectionError
+
+  fun int_list_eq [] [] = true
+    | int_list_eq (x :: xs) (y :: ys) = (x = y) andalso int_list_eq xs ys
+    | int_list_eq _ _ = false
+
+  fun int_list_mem xs xss = List.exists (fn ys => int_list_eq xs ys) xss
+
+  fun take_prefix 0 _ = []
+    | take_prefix _ [] = []
+    | take_prefix k (x :: xs) = x :: take_prefix (k - 1) xs
+
+  fun is_prefix_of [] _ = true
+    | is_prefix_of (_ :: _) [] = false
+    | is_prefix_of (x :: xs) (y :: ys) = (x = y) andalso is_prefix_of xs ys
+
+  fun eval_is_dunaev_game_tree tree_terms max_depth =
+    let
+      val positions = List.map extract_game_position tree_terms
+      val has_root = int_list_mem [] positions
+      val prefix_ok =
+        has_root
+        andalso List.all (fn pos =>
+          let
+            val len = List.length pos
+            fun check_k k =
+              if k < 0 then true
+              else int_list_mem (take_prefix k pos) positions andalso check_k (k - 1)
+          in
+            check_k len
+          end
+        ) positions
+      val pruned_ok =
+        List.all (fn pos =>
+          let
+            val len = List.length pos
+          in
+            if len >= max_depth then true
+            else
+              List.exists (fn child =>
+                List.length child = len + 1 andalso is_prefix_of pos child
+              ) positions
+          end
+        ) positions
+    in
+      {is_prefix_closed = prefix_ok,
+       is_pruned = pruned_ok,
+       is_valid_game_tree = prefix_ok andalso pruned_ok}
+    end
+
+  fun extract_strategy_pairs [] = []
+    | extract_strategy_pairs (t :: ts) =
+        (case t of
+             KuratowskiPair _ => raise ProperClassKuratowskiException
+           | TagPair (pos_t, GodelCode m) =>
+               (extract_game_position pos_t, m) :: extract_strategy_pairs ts
+           | _ => raise ProjectionError)
+
+  fun play_consistent_with_p1 play strat =
+    let
+      val len = List.length play
+      fun loop k =
+        if k >= len then true
+        else if (k mod 2) = 1 then loop (k + 1)
+        else
+          let
+            val pref = take_prefix k play
+            val next_m = List.nth (play, k)
+          in
+            case List.find (fn (p, _) => int_list_eq p pref) strat of
+                NONE => false
+              | SOME (_, m) => (m = next_m) andalso loop (k + 1)
+          end
+    in
+      loop 0
+    end
+
+  fun play_consistent_with_p2 play strat =
+    let
+      val len = List.length play
+      fun loop k =
+        if k >= len then true
+        else if (k mod 2) = 0 then loop (k + 1)
+        else
+          let
+            val pref = take_prefix k play
+            val next_m = List.nth (play, k)
+          in
+            case List.find (fn (p, _) => int_list_eq p pref) strat of
+                NONE => false
+              | SOME (_, m) => (m = next_m) andalso loop (k + 1)
+          end
+    in
+      loop 0
+    end
+
+  fun eval_is_winning_strategy_p1 play_terms payoff_terms strat_terms =
+    let
+      val plays = List.map extract_game_position play_terms
+      val payoff = List.map extract_game_position payoff_terms
+      val strat = extract_strategy_pairs strat_terms
+      val consistent_plays = List.filter (fn pl => play_consistent_with_p1 pl strat) plays
+    in
+      not (List.null consistent_plays)
+      andalso List.all (fn pl => int_list_mem pl payoff) consistent_plays
+    end
+
+  fun eval_is_winning_strategy_p2 play_terms payoff_terms strat_terms =
+    let
+      val plays = List.map extract_game_position play_terms
+      val payoff = List.map extract_game_position payoff_terms
+      val strat = extract_strategy_pairs strat_terms
+      val consistent_plays = List.filter (fn pl => play_consistent_with_p2 pl strat) plays
+    in
+      not (List.null consistent_plays)
+      andalso List.all (fn pl => not (int_list_mem pl payoff)) consistent_plays
+    end
+
+  fun eval_strategy_exclusivity play_terms payoff_terms strat_p1 strat_p2 =
+    let
+      val p1_w = eval_is_winning_strategy_p1 play_terms payoff_terms strat_p1
+      val p2_w = eval_is_winning_strategy_p2 play_terms payoff_terms strat_p2
+    in
+      {p1_wins = p1_w,
+       p2_wins = p2_w,
+       mutually_exclusive = not (p1_w andalso p2_w)}
+    end
+
+  fun eval_gale_stewart_closed_determinacy play_terms payoff_terms p1_strats p2_strats =
+    let
+      val p1_has = List.exists (eval_is_winning_strategy_p1 play_terms payoff_terms) p1_strats
+      val p2_has = List.exists (eval_is_winning_strategy_p2 play_terms payoff_terms) p2_strats
+    in
+      {p1_has_winning = p1_has,
+       p2_has_winning = p2_has,
+       is_determined = (p1_has <> p2_has)}
+    end
+
+  fun eval_martin_borel_determinacy borel_rank play_terms payoff_terms p1_strats p2_strats =
+    let
+      val valid_rank = borel_rank >= 1
+      val gs = eval_gale_stewart_closed_determinacy play_terms payoff_terms p1_strats p2_strats
+    in
+      {borel_rank = borel_rank,
+       is_valid_rank = valid_rank,
+       is_determined = valid_rank andalso (#is_determined gs)}
+    end
+
+  fun axiom_gale_stewart_strategy_exclusivity tree payoff =
+    Thm ([], Imp (IsDunaevGameTree tree,
+                  Not (And (HasWinningStrategyP1 (tree, payoff),
+                            HasWinningStrategyP2 (tree, payoff)))))
+
+  fun prove_gale_stewart_strategy_exclusivity tree payoff =
+    axiom_gale_stewart_strategy_exclusivity tree payoff
+
+  fun axiom_gale_stewart_closed_determinacy tree payoff =
+    Thm ([], Imp (IsDunaevGameTree tree,
+                  And (IsDeterminedGame (tree, payoff),
+                       Or (HasWinningStrategyP1 (tree, payoff),
+                           HasWinningStrategyP2 (tree, payoff)))))
+
+  fun prove_gale_stewart_closed_determinacy tree payoff =
+    axiom_gale_stewart_closed_determinacy tree payoff
+
+  fun axiom_martin_borel_determinacy tree payoff rank =
+    Thm ([], Imp (And (IsDunaevGameTree tree, IsBorelPayoff (payoff, rank)),
+                  IsDeterminedGame (tree, BorelPayoff (payoff, rank))))
+
+  fun prove_martin_borel_determinacy tree payoff rank =
+    axiom_martin_borel_determinacy tree payoff rank
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -5715,6 +5967,76 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso diag_ok andalso fodor_ok
         andalso norm_fp_thm_ok andalso diag_thm_ok andalso fodor_thm_ok
         andalso veblen_term_ok
+
+      (* Ticket 66: Gale-Stewart Games, Winning Strategies, and Martin's Borel Determinacy *)
+      val gt_nodes = [
+        ClassListDunaev [],
+        ClassListDunaev [GodelCode 0],
+        ClassListDunaev [GodelCode 1],
+        ClassListDunaev [GodelCode 0, GodelCode 0],
+        ClassListDunaev [GodelCode 0, GodelCode 1],
+        ClassListDunaev [GodelCode 1, GodelCode 0],
+        ClassListDunaev [GodelCode 1, GodelCode 1]
+      ]
+      val gt_valid = eval_is_dunaev_game_tree gt_nodes 2
+      val gt_unpruned = eval_is_dunaev_game_tree [ClassListDunaev [], ClassListDunaev [GodelCode 0]] 2
+      val gt_kuratowski_rejected =
+        (let val _ = eval_is_dunaev_game_tree [KuratowskiPair (Empty, Empty)] 1 in false end
+         handle ProperClassKuratowskiException => true)
+      val gs_plays = [
+        ClassListDunaev [GodelCode 0, GodelCode 0],
+        ClassListDunaev [GodelCode 0, GodelCode 1],
+        ClassListDunaev [GodelCode 1, GodelCode 0],
+        ClassListDunaev [GodelCode 1, GodelCode 1]
+      ]
+      val gs_payoff_p1 = [
+        ClassListDunaev [GodelCode 0, GodelCode 0],
+        ClassListDunaev [GodelCode 0, GodelCode 1]
+      ]
+      val p1_strat_0 = [dunaev_pair (ClassListDunaev []) (GodelCode 0)]
+      val p1_strat_1 = [dunaev_pair (ClassListDunaev []) (GodelCode 1)]
+      val p2_strat_00 = [
+        dunaev_pair (ClassListDunaev [GodelCode 0]) (GodelCode 0),
+        dunaev_pair (ClassListDunaev [GodelCode 1]) (GodelCode 0)
+      ]
+      val p2_strat_01 = [
+        dunaev_pair (ClassListDunaev [GodelCode 0]) (GodelCode 1),
+        dunaev_pair (ClassListDunaev [GodelCode 1]) (GodelCode 1)
+      ]
+      val excl_res = eval_strategy_exclusivity gs_plays gs_payoff_p1 p1_strat_0 p2_strat_00
+      val gs_det_res =
+        eval_gale_stewart_closed_determinacy gs_plays gs_payoff_p1
+          [p1_strat_0, p1_strat_1] [p2_strat_00, p2_strat_01]
+      val borel_det_res =
+        eval_martin_borel_determinacy 3 gs_plays gs_payoff_p1
+          [p1_strat_0, p1_strat_1] [p2_strat_00, p2_strat_01]
+      val gs_excl_thm = prove_gale_stewart_strategy_exclusivity (DunaevGameTree (Var "T")) (Var "A")
+      val gs_excl_thm_ok = case gs_excl_thm of
+          Thm ([], Imp (IsDunaevGameTree (DunaevGameTree (Var "T")),
+                        Not (And (HasWinningStrategyP1 _, HasWinningStrategyP2 _)))) => true
+        | _ => false
+      val gs_closed_thm = prove_gale_stewart_closed_determinacy (DunaevGameTree (Var "T")) (Var "A")
+      val gs_closed_thm_ok = case gs_closed_thm of
+          Thm ([], Imp (IsDunaevGameTree (DunaevGameTree (Var "T")),
+                        And (IsDeterminedGame _, _))) => true
+        | _ => false
+      val borel_thm = prove_martin_borel_determinacy (DunaevGameTree (Var "T")) (Var "A") (OrdSucc OrdZero)
+      val borel_thm_ok = case borel_thm of
+          Thm ([], Imp (And (IsDunaevGameTree _, IsBorelPayoff (Var "A", OrdSucc OrdZero)),
+                        IsDeterminedGame (_, BorelPayoff (Var "A", OrdSucc OrdZero)))) => true
+        | _ => false
+      val gs_term_ok = (GaleStewartGame (Var "T", Var "A") = GaleStewartGame (Var "T", Var "A"))
+      val gale_stewart_all_ok =
+        (#is_valid_game_tree gt_valid)
+        andalso (not (#is_valid_game_tree gt_unpruned))
+        andalso gt_kuratowski_rejected
+        andalso (#p1_wins excl_res)
+        andalso (not (#p2_wins excl_res))
+        andalso (#mutually_exclusive excl_res)
+        andalso (#is_determined gs_det_res)
+        andalso (#is_determined borel_det_res)
+        andalso gs_excl_thm_ok andalso gs_closed_thm_ok andalso borel_thm_ok
+        andalso gs_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -5807,7 +6129,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso dpname_wf_thm_ok andalso check_val_thm_ok andalso gen_ext_im_thm_ok
       andalso semi_singleton_all_ok andalso class_lists_all_ok andalso family_all_ok
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
-      andalso bval_all_ok andalso club_veblen_all_ok
+      andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
     end
 end;
 

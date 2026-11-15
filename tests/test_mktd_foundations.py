@@ -642,6 +642,28 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_fodors_pressing_down_lemma", content)
         self.assertIn("prove_fodors_pressing_down_lemma", content)
 
+        # Ticket 66: Gale-Stewart Games, Winning Strategies, and Martin's Borel Determinacy
+        self.assertIn("DunaevGameTree", content)
+        self.assertIn("GaleStewartGame", content)
+        self.assertIn("BorelPayoff", content)
+        self.assertIn("IsDunaevGameTree", content)
+        self.assertIn("HasWinningStrategyP1", content)
+        self.assertIn("HasWinningStrategyP2", content)
+        self.assertIn("IsDeterminedGame", content)
+        self.assertIn("IsBorelPayoff", content)
+        self.assertIn("eval_is_dunaev_game_tree", content)
+        self.assertIn("eval_is_winning_strategy_p1", content)
+        self.assertIn("eval_is_winning_strategy_p2", content)
+        self.assertIn("eval_strategy_exclusivity", content)
+        self.assertIn("eval_gale_stewart_closed_determinacy", content)
+        self.assertIn("eval_martin_borel_determinacy", content)
+        self.assertIn("axiom_gale_stewart_strategy_exclusivity", content)
+        self.assertIn("prove_gale_stewart_strategy_exclusivity", content)
+        self.assertIn("axiom_gale_stewart_closed_determinacy", content)
+        self.assertIn("prove_gale_stewart_closed_determinacy", content)
+        self.assertIn("axiom_martin_borel_determinacy", content)
+        self.assertIn("prove_martin_borel_determinacy", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

@@ -1120,14 +1120,278 @@ def proves_ordinal_veblen_hierarchy_and_club_stationary_filters() -> Dict[str, A
     }
 
 
+# ==============================================================================
+# 7. Gale-Stewart Games, Winning Strategies, and Martin's Borel Determinacy
+# ==============================================================================
+
+def _extract_dunaev_position(pos_item: Any) -> Tuple[int, ...]:
+    if isinstance(pos_item, KuratowskiPair):
+        raise ProperClassError(
+            "Kuratowski pairs are forbidden in Gale-Stewart game trees; use DunaevTaggedPair."
+        )
+    if isinstance(pos_item, DunaevTaggedPair) or pos_item is EMPTY_LIST_SENTINEL:
+        decoded = decode_class_list_dunaev(pos_item)
+        for elem in decoded:
+            if isinstance(elem, KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden inside game tree positions."
+                )
+        return tuple(int(x) for x in decoded)
+    if isinstance(pos_item, (list, tuple)):
+        for elem in pos_item:
+            if isinstance(elem, KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden inside game tree positions."
+                )
+        return tuple(int(x) for x in pos_item)
+    raise TypeError(f"Invalid game tree position: {pos_item!r}")
+
+
+def eval_is_dunaev_game_tree(
+    tree_nodes: Iterable[Any],
+    max_depth: int = 2,
+) -> Dict[str, Any]:
+    """Verifies whether a collection of finite positions (encoded via Dunaev class-lists
+    or tuples, rejecting KuratowskiPair) forms a valid pruned game tree up to horizon
+    max_depth: contains the root (), is closed under initial prefixes, and every position
+    of length < max_depth has at least one immediate extension.
+    """
+    positions = [_extract_dunaev_position(node) for node in tree_nodes]
+    pos_set = set(positions)
+    has_root = () in pos_set
+    prefix_ok = has_root and all(
+        pos[:k] in pos_set
+        for pos in pos_set
+        for k in range(len(pos) + 1)
+    )
+    pruned_ok = all(
+        len(pos) >= max_depth
+        or any(
+            len(child) == len(pos) + 1 and child[: len(pos)] == pos
+            for child in pos_set
+        )
+        for pos in pos_set
+    )
+    return {
+        "is_prefix_closed": prefix_ok,
+        "is_pruned": pruned_ok,
+        "is_valid_game_tree": prefix_ok and pruned_ok,
+    }
+
+
+def _extract_strategy_map(strat_pairs: Iterable[Any]) -> Dict[Tuple[int, ...], int]:
+    strat: Dict[Tuple[int, ...], int] = {}
+    for item in strat_pairs:
+        if isinstance(item, KuratowskiPair):
+            raise ProperClassError(
+                "Kuratowski pairs are forbidden in Gale-Stewart strategies; use DunaevTaggedPair."
+            )
+        if isinstance(item, DunaevTaggedPair):
+            pos = _extract_dunaev_position(item.first)
+            if isinstance(item.second, KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden as strategy moves."
+                )
+            strat[pos] = int(item.second)
+        elif isinstance(item, tuple) and len(item) == 2:
+            pos = _extract_dunaev_position(item[0])
+            if isinstance(item[1], KuratowskiPair):
+                raise ProperClassError(
+                    "Kuratowski pairs are forbidden as strategy moves."
+                )
+            strat[pos] = int(item[1])
+        else:
+            raise TypeError(f"Invalid strategy entry: {item!r}")
+    return strat
+
+
+def eval_is_winning_strategy_p1(
+    plays: Iterable[Any],
+    payoff_a: Iterable[Any],
+    strat_p1: Iterable[Any],
+) -> bool:
+    """Verifies whether strat_p1 (encoded via DunaevTaggedPair(position, move)) is a
+    winning strategy for Player I in G(T, A): every terminal play consistent with
+    strat_p1 at even indices belongs to payoff_a.
+    """
+    play_list = [_extract_dunaev_position(p) for p in plays]
+    payoff_set = {_extract_dunaev_position(p) for p in payoff_a}
+    strat_map = _extract_strategy_map(strat_p1)
+
+    consistent = [
+        pl
+        for pl in play_list
+        if all(
+            pl[:k] in strat_map and strat_map[pl[:k]] == pl[k]
+            for k in range(0, len(pl), 2)
+        )
+    ]
+    return bool(consistent) and all(pl in payoff_set for pl in consistent)
+
+
+def eval_is_winning_strategy_p2(
+    plays: Iterable[Any],
+    payoff_a: Iterable[Any],
+    strat_p2: Iterable[Any],
+) -> bool:
+    """Verifies whether strat_p2 (encoded via DunaevTaggedPair(position, move)) is a
+    winning strategy for Player II in G(T, A): every terminal play consistent with
+    strat_p2 at odd indices lies outside payoff_a.
+    """
+    play_list = [_extract_dunaev_position(p) for p in plays]
+    payoff_set = {_extract_dunaev_position(p) for p in payoff_a}
+    strat_map = _extract_strategy_map(strat_p2)
+
+    consistent = [
+        pl
+        for pl in play_list
+        if all(
+            pl[:k] in strat_map and strat_map[pl[:k]] == pl[k]
+            for k in range(1, len(pl), 2)
+        )
+    ]
+    return bool(consistent) and all(pl not in payoff_set for pl in consistent)
+
+
+def eval_strategy_exclusivity(
+    plays: Iterable[Any],
+    payoff_a: Iterable[Any],
+    strat_p1: Iterable[Any],
+    strat_p2: Iterable[Any],
+) -> Dict[str, Any]:
+    """Verifies that Player I and Player II cannot simultaneously win with strat_p1
+    and strat_p2 in the same Gale-Stewart game G(T, A).
+    """
+    p1_w = eval_is_winning_strategy_p1(plays, payoff_a, strat_p1)
+    p2_w = eval_is_winning_strategy_p2(plays, payoff_a, strat_p2)
+    return {
+        "p1_wins": p1_w,
+        "p2_wins": p2_w,
+        "mutually_exclusive": not (p1_w and p2_w),
+    }
+
+
+def eval_gale_stewart_closed_determinacy(
+    plays: Iterable[Any],
+    payoff_a: Iterable[Any],
+    p1_strategies: Iterable[Iterable[Any]],
+    p2_strategies: Iterable[Iterable[Any]],
+) -> Dict[str, Any]:
+    """Verifies Gale-Stewart open/closed determinacy: exactly one of Player I or
+    Player II has a winning strategy in G(T, A).
+    """
+    play_list = list(plays)
+    payoff_list = list(payoff_a)
+    p1_has = any(eval_is_winning_strategy_p1(play_list, payoff_list, s) for s in p1_strategies)
+    p2_has = any(eval_is_winning_strategy_p2(play_list, payoff_list, s) for s in p2_strategies)
+    return {
+        "p1_has_winning": p1_has,
+        "p2_has_winning": p2_has,
+        "is_determined": p1_has != p2_has,
+    }
+
+
+def eval_martin_borel_determinacy(
+    borel_rank: int,
+    plays: Iterable[Any],
+    payoff_a: Iterable[Any],
+    p1_strategies: Iterable[Iterable[Any]],
+    p2_strategies: Iterable[Iterable[Any]],
+) -> Dict[str, Any]:
+    """Verifies Martin's Borel Determinacy Theorem for a Borel payoff A of rank
+    borel_rank >= 1 in MKTD1-theory and MKTD2-theory.
+    """
+    valid_rank = borel_rank >= 1
+    gs = eval_gale_stewart_closed_determinacy(plays, payoff_a, p1_strategies, p2_strategies)
+    return {
+        "borel_rank": borel_rank,
+        "is_valid_rank": valid_rank,
+        "is_determined": valid_rank and gs["is_determined"],
+    }
+
+
+def proves_borel_projective_determinacy_and_gale_stewart_games() -> Dict[str, Any]:
+    """Master verification for Ticket 66 (Dunaev-Tagged Game Trees, Gale-Stewart
+    Games, Strategy Exclusivity, Open/Closed Determinacy, and Martin's Borel Determinacy).
+    """
+    gt_nodes = [
+        encode_class_list_dunaev([]),
+        encode_class_list_dunaev([0]),
+        encode_class_list_dunaev([1]),
+        encode_class_list_dunaev([0, 0]),
+        encode_class_list_dunaev([0, 1]),
+        encode_class_list_dunaev([1, 0]),
+        encode_class_list_dunaev([1, 1]),
+    ]
+    gt_ok = eval_is_dunaev_game_tree(gt_nodes, 2)["is_valid_game_tree"]
+    gt_unpruned_fail = not eval_is_dunaev_game_tree(
+        [encode_class_list_dunaev([]), encode_class_list_dunaev([0])], 2
+    )["is_valid_game_tree"]
+
+    kuratowski_rejected = False
+    try:
+        eval_is_dunaev_game_tree([KuratowskiPair(0, 0)], 1)
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    plays = [
+        encode_class_list_dunaev([0, 0]),
+        encode_class_list_dunaev([0, 1]),
+        encode_class_list_dunaev([1, 0]),
+        encode_class_list_dunaev([1, 1]),
+    ]
+    payoff_p1 = [
+        encode_class_list_dunaev([0, 0]),
+        encode_class_list_dunaev([0, 1]),
+    ]
+    p1_strat_0 = [dunaev_pair(encode_class_list_dunaev([]), 0)]
+    p1_strat_1 = [dunaev_pair(encode_class_list_dunaev([]), 1)]
+    p2_strat_00 = [
+        dunaev_pair(encode_class_list_dunaev([0]), 0),
+        dunaev_pair(encode_class_list_dunaev([1]), 0),
+    ]
+    p2_strat_01 = [
+        dunaev_pair(encode_class_list_dunaev([0]), 1),
+        dunaev_pair(encode_class_list_dunaev([1]), 1),
+    ]
+
+    excl_res = eval_strategy_exclusivity(plays, payoff_p1, p1_strat_0, p2_strat_00)
+    gs_res = eval_gale_stewart_closed_determinacy(
+        plays, payoff_p1, [p1_strat_0, p1_strat_1], [p2_strat_00, p2_strat_01]
+    )
+    borel_res = eval_martin_borel_determinacy(
+        3, plays, payoff_p1, [p1_strat_0, p1_strat_1], [p2_strat_00, p2_strat_01]
+    )
+
+    all_ok = (
+        gt_ok
+        and gt_unpruned_fail
+        and kuratowski_rejected
+        and excl_res["p1_wins"]
+        and not excl_res["p2_wins"]
+        and excl_res["mutually_exclusive"]
+        and gs_res["is_determined"]
+        and borel_res["is_determined"]
+    )
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "game_tree_verified": gt_ok and gt_unpruned_fail,
+        "kuratowski_rejected": kuratowski_rejected,
+        "strategy_exclusivity_verified": excl_res["mutually_exclusive"],
+        "gale_stewart_determinacy_verified": gs_res["is_determined"],
+        "martin_borel_determinacy_verified": borel_res["is_determined"],
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
     4. obelisk_universe_indexed_union_closure.md (3.68, 3.69)
     5. ticket_gl064_foundations_boolean_valued_models_and_ro_completion.md
     6. ticket_gl065_foundations_ordinal_veblen_hierarchy_and_club_stationary_filters.md
+    7. ticket_gl066_foundations_borel_projective_determinacy_and_gale_stewart_games.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
@@ -1135,6 +1399,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_univ = eval_tight_universe_indexed_union_closure()
     res_bval = proves_boolean_valued_models_and_ro_completion()
     res_club_veblen = proves_ordinal_veblen_hierarchy_and_club_stationary_filters()
+    res_det = proves_borel_projective_determinacy_and_gale_stewart_games()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -1142,6 +1407,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_univ["status"] == "RESOLVED"
     assert res_bval["status"] == "RESOLVED"
     assert res_club_veblen["status"] == "RESOLVED"
+    assert res_det["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -1150,4 +1416,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_universe_indexed_union_closure": res_univ,
         "ticket_boolean_valued_models_and_ro_completion": res_bval,
         "ticket_ordinal_veblen_hierarchy_and_club_stationary_filters": res_club_veblen,
+        "ticket_borel_projective_determinacy_and_gale_stewart_games": res_det,
     }

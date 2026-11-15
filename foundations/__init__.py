@@ -276,6 +276,13 @@ from foundations.classes import (
     eval_diagonal_intersection_club,
     eval_fodors_lemma_regressive_constant,
     proves_ordinal_veblen_hierarchy_and_club_stationary_filters,
+    eval_is_dunaev_game_tree,
+    eval_is_winning_strategy_p1,
+    eval_is_winning_strategy_p2,
+    eval_strategy_exclusivity,
+    eval_gale_stewart_closed_determinacy,
+    eval_martin_borel_determinacy,
+    proves_borel_projective_determinacy_and_gale_stewart_games,
     proves_foundations_classes_and_families,
 )
 
@@ -552,5 +559,12 @@ __all__: list[str] = [
     "eval_diagonal_intersection_club",
     "eval_fodors_lemma_regressive_constant",
     "proves_ordinal_veblen_hierarchy_and_club_stationary_filters",
+    "eval_is_dunaev_game_tree",
+    "eval_is_winning_strategy_p1",
+    "eval_is_winning_strategy_p2",
+    "eval_strategy_exclusivity",
+    "eval_gale_stewart_closed_determinacy",
+    "eval_martin_borel_determinacy",
+    "proves_borel_projective_determinacy_and_gale_stewart_games",
     "proves_foundations_classes_and_families",
 ]
