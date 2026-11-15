@@ -220,6 +220,13 @@ not modified; this file is documentation only.
 | `\boxn` | Foundations preamble macro / notation |
 | `\boxnp` | Foundations preamble macro / notation |
 | `\bunion` | Foundations preamble macro / notation |
+| `\BddExpr` | Foundations preamble macro / notation |
+| `\Fst` | Foundations preamble macro / notation |
+| `\Snd` | Foundations preamble macro / notation |
+| `\bmmax` | Foundations preamble macro / notation |
+| `\hmmax` | Foundations preamble macro / notation |
+| `\kuratowskipair` | Foundations preamble macro / notation |
+| `\pair` | Foundations preamble macro / notation |
 | `\cL` | Foundations preamble macro / notation |
 | `\can` | Foundations preamble macro / notation |
 | `\canonize` | Foundations preamble macro / notation |

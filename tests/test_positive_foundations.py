@@ -81,10 +81,9 @@ class TestPositiveFoundations(unittest.TestCase):
                 admitted_names.append(current_thm)
                 current_thm = None
 
-        # positive_sound is constructively proved; only ppc_pos remains in the experimental section
-        self.assertEqual(
-            set(admitted_names),
-            {"ppc_pos"},
+        # positive_sound is constructively proved; at most ppc_pos remains in the experimental section
+        self.assertTrue(
+            set(admitted_names).issubset({"ppc_pos"}),
             f"Unexpected admitted lemmas: {admitted_names}",
         )
 
