@@ -342,6 +342,12 @@ from foundations.classes import (
     eval_quillen_homotopy_category,
     eval_is_quillen_adjunction,
     proves_quillen_model_categories_lifting_and_homotopy_category,
+    eval_simplicial_identities,
+    eval_is_kan_complex,
+    eval_is_quasi_category_inner_horn,
+    eval_is_kan_fibration,
+    eval_homotopy_coherent_nerve,
+    proves_simplicial_sets_kan_complexes_and_quasi_categories,
     proves_foundations_classes_and_families,
 )
 
@@ -684,5 +690,11 @@ __all__: list[str] = [
     "eval_quillen_homotopy_category",
     "eval_is_quillen_adjunction",
     "proves_quillen_model_categories_lifting_and_homotopy_category",
+    "eval_simplicial_identities",
+    "eval_is_kan_complex",
+    "eval_is_quasi_category_inner_horn",
+    "eval_is_kan_fibration",
+    "eval_homotopy_coherent_nerve",
+    "proves_simplicial_sets_kan_complexes_and_quasi_categories",
     "proves_foundations_classes_and_families",
 ]

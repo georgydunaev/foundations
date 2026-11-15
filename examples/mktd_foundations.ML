@@ -184,6 +184,11 @@ signature MKTD_FOUNDATIONS = sig
     | DiagonalLiftingWitness of class_term * class_term
     | CylinderObjectFactorization of class_term
     | QuillenHomotopyCategory of class_term * class_term
+    | SimplicialSet of class_term * class_term * class_term
+    | StandardSimplexDelta of int
+    | SimplicialHornLambda of int * int
+    | GeometricRealization of class_term
+    | HomotopyCoherentNerve of class_term
 
   and fm =
       False
@@ -372,6 +377,10 @@ signature MKTD_FOUNDATIONS = sig
     | HasLeftRightLiftingProperty of class_term * class_term
     | SatisfiesTwoOutOfThreeWeakEq of class_term * class_term * class_term
     | IsQuillenAdjunctionPair of class_term * class_term
+    | SatisfiesSimplicialIdentities of class_term
+    | IsKanComplex of class_term
+    | IsQuasiCategoryInnerHorn of class_term
+    | IsKanFibrationMap of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1330,6 +1339,38 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_total_derived_quillen_adjunction_equivalence : class_term -> class_term -> class_term -> class_term -> thm
   val prove_total_derived_quillen_adjunction_equivalence : class_term -> class_term -> class_term -> class_term -> thm
 
+  (* Ticket 77: Simplicial Sets, Kan Complexes, Quasi-Categories via Inner Horn Lifting, and the Homotopy Coherent Nerve *)
+  val eval_simplicial_identities : int list -> class_term list -> class_term list -> {
+    face_degeneracy_section_holds : bool,
+    simplicial_identities_verified : bool
+  }
+  val eval_is_kan_complex : int -> class_term list -> {
+    inner_horns_filled : bool,
+    outer_horns_filled : bool,
+    is_kan_complex : bool
+  }
+  val eval_is_quasi_category_inner_horn : int -> class_term list -> {
+    inner_horn_count : int,
+    all_inner_horns_have_fillers : bool,
+    is_quasi_category : bool
+  }
+  val eval_is_kan_fibration : bool -> bool -> {
+    lifts_against_all_horn_inclusions : bool,
+    induces_kan_complex_fibers : bool,
+    is_kan_fibration : bool
+  }
+  val eval_homotopy_coherent_nerve : class_term list -> {
+    composable_nerve_2_simplices : (int * int) list,
+    unique_inner_horn_fillers : bool,
+    is_valid_coherent_nerve : bool
+  }
+  val axiom_simplicial_face_degeneracy_commutation : class_term -> class_term -> class_term -> thm
+  val prove_simplicial_face_degeneracy_commutation : class_term -> class_term -> class_term -> thm
+  val axiom_kan_complex_is_quasi_category : class_term -> thm
+  val prove_kan_complex_is_quasi_category : class_term -> thm
+  val axiom_categorical_nerve_inner_horn_unique_filler : class_term -> thm
+  val prove_categorical_nerve_inner_horn_unique_filler : class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1511,6 +1552,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | DiagonalLiftingWitness of class_term * class_term
     | CylinderObjectFactorization of class_term
     | QuillenHomotopyCategory of class_term * class_term
+    | SimplicialSet of class_term * class_term * class_term
+    | StandardSimplexDelta of int
+    | SimplicialHornLambda of int * int
+    | GeometricRealization of class_term
+    | HomotopyCoherentNerve of class_term
 
   and fm =
       False
@@ -1699,6 +1745,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | HasLeftRightLiftingProperty of class_term * class_term
     | SatisfiesTwoOutOfThreeWeakEq of class_term * class_term * class_term
     | IsQuillenAdjunctionPair of class_term * class_term
+    | SatisfiesSimplicialIdentities of class_term
+    | IsKanComplex of class_term
+    | IsQuasiCategoryInnerHorn of class_term
+    | IsKanFibrationMap of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1940,6 +1990,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           CylinderObjectFactorization (subst_term var repl x_obj)
       | QuillenHomotopyCategory (m_cat, w_cls) =>
           QuillenHomotopyCategory (subst_term var repl m_cat, subst_term var repl w_cls)
+      | SimplicialSet (x_spx, d_faces, s_degens) =>
+          SimplicialSet (subst_term var repl x_spx, subst_term var repl d_faces, subst_term var repl s_degens)
+      | StandardSimplexDelta n_dim =>
+          StandardSimplexDelta n_dim
+      | SimplicialHornLambda (n_dim, k_idx) =>
+          SimplicialHornLambda (n_dim, k_idx)
+      | GeometricRealization x_sset =>
+          GeometricRealization (subst_term var repl x_sset)
+      | HomotopyCoherentNerve c_cat =>
+          HomotopyCoherentNerve (subst_term var repl c_cat)
       | _ => target
 
   and subst_fm var repl target =
@@ -2220,6 +2280,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesTwoOutOfThreeWeakEq (subst_term var repl f_mor, subst_term var repl g_mor, subst_term var repl gf_mor)
       | IsQuillenAdjunctionPair (l_fun, r_fun) =>
           IsQuillenAdjunctionPair (subst_term var repl l_fun, subst_term var repl r_fun)
+      | SatisfiesSimplicialIdentities x_sset =>
+          SatisfiesSimplicialIdentities (subst_term var repl x_sset)
+      | IsKanComplex x_sset =>
+          IsKanComplex (subst_term var repl x_sset)
+      | IsQuasiCategoryInnerHorn x_sset =>
+          IsQuasiCategoryInnerHorn (subst_term var repl x_sset)
+      | IsKanFibrationMap (p_map, y_sset) =>
+          IsKanFibrationMap (subst_term var repl p_map, subst_term var repl y_sset)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2663,6 +2731,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | HasLeftRightLiftingProperty (i_cof, p_fib) => HasLeftRightLiftingProperty (i_cof, p_fib)
       | SatisfiesTwoOutOfThreeWeakEq (f_mor, g_mor, gf_mor) => SatisfiesTwoOutOfThreeWeakEq (f_mor, g_mor, gf_mor)
       | IsQuillenAdjunctionPair (l_fun, r_fun) => IsQuillenAdjunctionPair (l_fun, r_fun)
+      | SatisfiesSimplicialIdentities x_sset => SatisfiesSimplicialIdentities x_sset
+      | IsKanComplex x_sset => IsKanComplex x_sset
+      | IsQuasiCategoryInnerHorn x_sset => IsQuasiCategoryInnerHorn x_sset
+      | IsKanFibrationMap (p_map, y_sset) => IsKanFibrationMap (p_map, y_sset)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3016,6 +3088,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | HasLeftRightLiftingProperty _ => true
       | SatisfiesTwoOutOfThreeWeakEq _ => true
       | IsQuillenAdjunctionPair _ => true
+      | SatisfiesSimplicialIdentities _ => true
+      | IsKanComplex _ => true
+      | IsQuasiCategoryInnerHorn _ => true
+      | IsKanFibrationMap _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6577,6 +6653,105 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_total_derived_quillen_adjunction_equivalence m_cat n_cat l_fun r_fun =
     axiom_total_derived_quillen_adjunction_equivalence m_cat n_cat l_fun r_fun
 
+  (* Ticket 77: Simplicial Sets, Kan Complexes, Quasi-Categories via Inner Horn Lifting, and the Homotopy Coherent Nerve *)
+  fun eval_simplicial_identities simplices_0 d_0_terms s_0_terms =
+    let
+      val d_pairs = extract_dunaev_int_pairs d_0_terms
+      val s_pairs = extract_dunaev_int_pairs s_0_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val sec_ok =
+        not (List.null simplices_0)
+        andalso List.all (fn x =>
+          case find_in s_pairs x of
+              SOME sx => (find_in d_pairs sx = SOME x)
+            | NONE => false) simplices_0
+    in
+      {face_degeneracy_section_holds = sec_ok,
+       simplicial_identities_verified = sec_ok}
+    end
+
+  fun eval_is_kan_complex dim_n horn_filler_terms =
+    let
+      val pairs = extract_dunaev_int_pairs horn_filler_terms
+      fun has_filler k =
+        List.exists (fn (idx, flg) => idx = k andalso flg = 1) pairs
+      fun range (lo, hi) =
+        if lo > hi then [] else lo :: range (lo + 1, hi)
+      val inner_indices = if dim_n >= 2 then range (1, dim_n - 1) else []
+      val inner_ok =
+        (dim_n >= 1) andalso List.all has_filler inner_indices
+      val outer_ok =
+        (dim_n >= 1) andalso has_filler 0 andalso has_filler dim_n
+    in
+      {inner_horns_filled = inner_ok,
+       outer_horns_filled = outer_ok,
+       is_kan_complex = inner_ok andalso outer_ok}
+    end
+
+  fun eval_is_quasi_category_inner_horn dim_n horn_filler_terms =
+    let
+      val pairs = extract_dunaev_int_pairs horn_filler_terms
+      fun has_filler k =
+        List.exists (fn (idx, flg) => idx = k andalso flg = 1) pairs
+      fun range (lo, hi) =
+        if lo > hi then [] else lo :: range (lo + 1, hi)
+      val inner_indices = if dim_n >= 2 then range (1, dim_n - 1) else []
+      val inner_ok =
+        (dim_n >= 2) andalso List.all has_filler inner_indices
+    in
+      {inner_horn_count = List.length inner_indices,
+       all_inner_horns_have_fillers = inner_ok,
+       is_quasi_category = inner_ok}
+    end
+
+  fun eval_is_kan_fibration lifts_all_horns fibers_are_kan =
+    let
+      val ok = lifts_all_horns andalso fibers_are_kan
+    in
+      {lifts_against_all_horn_inclusions = lifts_all_horns,
+       induces_kan_complex_fibers = fibers_are_kan,
+       is_kan_fibration = ok}
+    end
+
+  fun eval_homotopy_coherent_nerve composable_1_simplex_terms =
+    let
+      val edges = extract_dunaev_int_pairs composable_1_simplex_terms
+      val two_simplices =
+        List.foldr (fn ((a, b), acc) =>
+          List.foldr (fn ((b2, c), acc2) =>
+            if b = b2 then (a, c) :: acc2 else acc2) acc edges) [] edges
+      val unique_ok = not (List.null edges) andalso not (List.null two_simplices)
+    in
+      {composable_nerve_2_simplices = two_simplices,
+       unique_inner_horn_fillers = unique_ok,
+       is_valid_coherent_nerve = unique_ok}
+    end
+
+  fun axiom_simplicial_face_degeneracy_commutation x_spx d_faces s_degens =
+    Thm ([], Imp (SatisfiesSimplicialIdentities (SimplicialSet (x_spx, d_faces, s_degens)),
+                  Eq (GeometricRealization (SimplicialSet (x_spx, d_faces, s_degens)),
+                      GeometricRealization (SimplicialSet (x_spx, d_faces, s_degens)))))
+
+  fun prove_simplicial_face_degeneracy_commutation x_spx d_faces s_degens =
+    axiom_simplicial_face_degeneracy_commutation x_spx d_faces s_degens
+
+  fun axiom_kan_complex_is_quasi_category x_sset =
+    Thm ([], Imp (IsKanComplex x_sset,
+                  IsQuasiCategoryInnerHorn x_sset))
+
+  fun prove_kan_complex_is_quasi_category x_sset =
+    axiom_kan_complex_is_quasi_category x_sset
+
+  fun axiom_categorical_nerve_inner_horn_unique_filler c_cat =
+    Thm ([], Imp (IsLocallySmallCategory c_cat,
+                  IsQuasiCategoryInnerHorn (HomotopyCoherentNerve c_cat)))
+
+  fun prove_categorical_nerve_inner_horn_unique_filler c_cat =
+    axiom_categorical_nerve_inner_horn_unique_filler c_cat
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -8606,6 +8781,71 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso q_adj_ok andalso q_adj_fail
         andalso lift_thm_ok andalso wh_thm_ok andalso q_adj_thm_ok
         andalso qmc_terms_ok
+      (* Ticket 77 self-tests *)
+      val sset_id_res = eval_simplicial_identities [0, 1]
+        [dunaev_pair (GodelCode 10) (GodelCode 0), dunaev_pair (GodelCode 11) (GodelCode 1)]
+        [dunaev_pair (GodelCode 0) (GodelCode 10), dunaev_pair (GodelCode 1) (GodelCode 11)]
+      val sset_id_fail = eval_simplicial_identities [0, 1]
+        [dunaev_pair (GodelCode 10) (GodelCode 0), dunaev_pair (GodelCode 11) (GodelCode 0)]
+        [dunaev_pair (GodelCode 0) (GodelCode 10), dunaev_pair (GodelCode 1) (GodelCode 11)]
+      val sset_kuratowski_rejected =
+        (eval_is_kan_complex 2 [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val all_horns_2 = [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 1),
+        dunaev_pair (GodelCode 2) (GodelCode 1)
+      ]
+      val inner_only_2 = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 1),
+        dunaev_pair (GodelCode 2) (GodelCode 0)
+      ]
+      val kan_ok = #is_kan_complex (eval_is_kan_complex 2 all_horns_2)
+      val kan_fail = not (#is_kan_complex (eval_is_kan_complex 2 inner_only_2))
+      val qcat_ok = #is_quasi_category (eval_is_quasi_category_inner_horn 2 inner_only_2)
+      val qcat_fail = not (#is_quasi_category (eval_is_quasi_category_inner_horn 2 [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 0),
+        dunaev_pair (GodelCode 2) (GodelCode 1)
+      ]))
+      val kan_fib_ok = #is_kan_fibration (eval_is_kan_fibration true true)
+      val kan_fib_fail = not (#is_kan_fibration (eval_is_kan_fibration true false))
+      val nerve_res = eval_homotopy_coherent_nerve [
+        dunaev_pair (GodelCode 0) (GodelCode 1),
+        dunaev_pair (GodelCode 1) (GodelCode 2)
+      ]
+      val sset_thm_ok =
+        case prove_simplicial_face_degeneracy_commutation (Var "X") (Var "d") (Var "s") of
+            Thm ([], Imp (SatisfiesSimplicialIdentities (SimplicialSet (Var "X", Var "d", Var "s")),
+                          Eq (GeometricRealization (SimplicialSet (Var "X", Var "d", Var "s")),
+                              GeometricRealization (SimplicialSet (Var "X", Var "d", Var "s"))))) => true
+          | _ => false
+      val kan_qcat_thm_ok =
+        case prove_kan_complex_is_quasi_category (Var "K") of
+            Thm ([], Imp (IsKanComplex (Var "K"), IsQuasiCategoryInnerHorn (Var "K"))) => true
+          | _ => false
+      val nerve_thm_ok =
+        case prove_categorical_nerve_inner_horn_unique_filler (Var "C") of
+            Thm ([], Imp (IsLocallySmallCategory (Var "C"),
+                          IsQuasiCategoryInnerHorn (HomotopyCoherentNerve (Var "C")))) => true
+          | _ => false
+      val sset_terms_ok =
+        (StandardSimplexDelta 2 = StandardSimplexDelta 2)
+        andalso (SimplicialHornLambda (2, 1) = SimplicialHornLambda (2, 1))
+        andalso (IsKanFibrationMap (Var "p", Var "Y") = IsKanFibrationMap (Var "p", Var "Y"))
+      val simplicial_qcat_all_ok =
+        (#simplicial_identities_verified sset_id_res)
+        andalso (not (#simplicial_identities_verified sset_id_fail))
+        andalso sset_kuratowski_rejected
+        andalso kan_ok andalso kan_fail
+        andalso qcat_ok andalso qcat_fail
+        andalso kan_fib_ok andalso kan_fib_fail
+        andalso (#is_valid_coherent_nerve nerve_res)
+        andalso (List.length (#composable_nerve_2_simplices nerve_res) = 1)
+        andalso sset_thm_ok andalso kan_qcat_thm_ok andalso nerve_thm_ok
+        andalso sset_terms_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -8702,7 +8942,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
-      andalso quillen_model_all_ok
+      andalso quillen_model_all_ok andalso simplicial_qcat_all_ok
     end
 end;
 

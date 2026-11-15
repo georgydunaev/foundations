@@ -903,6 +903,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl077_simplicial_sets_kan_complexes_and_quasi_categories(self):
+        """Ticket 77: verify Simplicial Sets, Kan Complexes, Quasi-Categories, and Homotopy Coherent Nerve in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "SimplicialSet",
+            "StandardSimplexDelta",
+            "SimplicialHornLambda",
+            "GeometricRealization",
+            "HomotopyCoherentNerve",
+            "SatisfiesSimplicialIdentities",
+            "IsKanComplex",
+            "IsQuasiCategoryInnerHorn",
+            "IsKanFibrationMap",
+            "eval_simplicial_identities",
+            "eval_is_kan_complex",
+            "eval_is_quasi_category_inner_horn",
+            "eval_is_kan_fibration",
+            "eval_homotopy_coherent_nerve",
+            "axiom_simplicial_face_degeneracy_commutation",
+            "prove_simplicial_face_degeneracy_commutation",
+            "axiom_kan_complex_is_quasi_category",
+            "prove_kan_complex_is_quasi_category",
+            "axiom_categorical_nerve_inner_horn_unique_filler",
+            "prove_categorical_nerve_inner_horn_unique_filler",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

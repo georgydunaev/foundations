@@ -2477,6 +2477,38 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_quillen_model_categories_lifting_and_homotopy_category()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl077_simplicial_sets_kan_complexes_and_quasi_categories(self):
+        """Ticket 77: Simplicial Sets, Kan Complexes, Quasi-Categories, and Homotopy Coherent Nerve."""
+        from foundations.type_semantics import (
+            eval_simplicial_identities,
+            eval_is_kan_complex,
+            eval_is_quasi_category_inner_horn,
+            eval_is_kan_fibration,
+            eval_homotopy_coherent_nerve,
+            proves_simplicial_sets_kan_complexes_and_quasi_categories,
+        )
+
+        self.assertTrue(
+            eval_simplicial_identities(
+                [0, 1],
+                [dunaev_pair(10, 0), dunaev_pair(11, 1)],
+                [dunaev_pair(0, 10), dunaev_pair(1, 11)],
+            )["simplicial_identities_verified"]
+        )
+        with self.assertRaises(ProperClassError):
+            eval_is_kan_complex(2, [KuratowskiPair(0, 1)])
+
+        all_horns_2 = [dunaev_pair(0, 1), dunaev_pair(1, 1), dunaev_pair(2, 1)]
+        inner_only_2 = [dunaev_pair(0, 0), dunaev_pair(1, 1), dunaev_pair(2, 0)]
+        self.assertTrue(eval_is_kan_complex(2, all_horns_2)["is_kan_complex"])
+        self.assertTrue(eval_is_quasi_category_inner_horn(2, inner_only_2)["is_quasi_category"])
+        self.assertTrue(eval_is_kan_fibration(True, True)["is_kan_fibration"])
+        nerve_res = eval_homotopy_coherent_nerve([dunaev_pair(0, 1), dunaev_pair(1, 2)])
+        self.assertTrue(nerve_res["is_valid_coherent_nerve"])
+
+        master = proves_simplicial_sets_kan_complexes_and_quasi_categories()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

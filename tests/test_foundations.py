@@ -790,6 +790,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["homotopy_category_verified"])
         self.assertTrue(res["quillen_adjunction_verified"])
 
+    def test_ticket_gl077_simplicial_sets_kan_complexes_and_quasi_categories(self):
+        """Ticket 77: verify Simplicial Sets, Kan Complexes, Quasi-Categories, and Homotopy Coherent Nerve."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_simplicial_identities",
+            "eval_is_kan_complex",
+            "eval_is_quasi_category_inner_horn",
+            "eval_is_kan_fibration",
+            "eval_homotopy_coherent_nerve",
+            "proves_simplicial_sets_kan_complexes_and_quasi_categories",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_simplicial_sets_kan_complexes_and_quasi_categories()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["simplicial_identities_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["kan_complex_verified"])
+        self.assertTrue(res["quasi_category_verified"])
+        self.assertTrue(res["kan_fibration_verified"])
+        self.assertTrue(res["homotopy_coherent_nerve_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()
