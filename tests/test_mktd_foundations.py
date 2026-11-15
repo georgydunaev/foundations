@@ -750,6 +750,28 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_beck_monadicity_equivalence", content)
         self.assertIn("prove_beck_monadicity_equivalence", content)
 
+        # Ticket 71: Cartesian Closed Categories, Exponentials, and Curry-Howard-Lambek Equivalence
+        self.assertIn("ExponentialObject", content)
+        self.assertIn("EvaluationMorphism", content)
+        self.assertIn("CurriedMorphism", content)
+        self.assertIn("UncurriedMorphism", content)
+        self.assertIn("InternalLambdaTerm", content)
+        self.assertIn("IsCartesianClosedCategory", content)
+        self.assertIn("IsExponentialTranspose", content)
+        self.assertIn("SatisfiesBetaEtaLambekEquivalence", content)
+        self.assertIn("IsInternalSimplyTypedModel", content)
+        self.assertIn("eval_is_cartesian_closed_category", content)
+        self.assertIn("eval_exponential_object", content)
+        self.assertIn("eval_curry_bijection", content)
+        self.assertIn("eval_beta_eta_lambek_equivalence", content)
+        self.assertIn("eval_internal_simply_typed_model", content)
+        self.assertIn("axiom_exponential_transpose_uniqueness", content)
+        self.assertIn("prove_exponential_transpose_uniqueness", content)
+        self.assertIn("axiom_curry_uncurry_bijection", content)
+        self.assertIn("prove_curry_uncurry_bijection", content)
+        self.assertIn("axiom_curry_howard_lambek_beta_eta_soundness", content)
+        self.assertIn("prove_curry_howard_lambek_beta_eta_soundness", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

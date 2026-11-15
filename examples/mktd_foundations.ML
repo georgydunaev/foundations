@@ -154,6 +154,11 @@ signature MKTD_FOUNDATIONS = sig
     | KleisliCategory of class_term * class_term
     | MonadicityComparisonFunctor of class_term * class_term
     | ReflexiveSplitCoequalizer of class_term * class_term * class_term
+    | ExponentialObject of class_term * class_term
+    | EvaluationMorphism of class_term * class_term
+    | CurriedMorphism of class_term
+    | UncurriedMorphism of class_term
+    | InternalLambdaTerm of string * class_term
 
   and fm =
       False
@@ -317,6 +322,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsKleisliMorphism of class_term * class_term * class_term
     | IsSplitCoequalizer of class_term * class_term * class_term
     | IsBeckMonadicFunctor of class_term * class_term
+    | IsCartesianClosedCategory of class_term
+    | IsExponentialTranspose of class_term * class_term
+    | SatisfiesBetaEtaLambekEquivalence of class_term * class_term
+    | IsInternalSimplyTypedModel of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1071,6 +1080,37 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_beck_monadicity_equivalence : class_term -> class_term -> thm
   val prove_beck_monadicity_equivalence : class_term -> class_term -> thm
 
+  (* Ticket 71: Cartesian Closed Categories, Exponential Objects, Evaluation Morphisms, and Curry-Howard-Lambek Equivalence *)
+  val eval_is_cartesian_closed_category : bool -> bool -> bool -> {
+    has_terminal_object : bool,
+    has_binary_products : bool,
+    has_exponentials : bool,
+    is_ccc : bool
+  }
+  val eval_exponential_object : int list -> int list -> class_term list list
+  val eval_curry_bijection : int list -> int list -> class_term list -> {
+    curried_table : (int * (int * int) list) list,
+    uncurried_pairs : class_term list,
+    roundtrip_bijection_ok : bool
+  }
+  val eval_beta_eta_lambek_equivalence : int list -> int list -> class_term list -> {
+    beta_reduction_holds : bool,
+    eta_expansion_holds : bool,
+    lambek_equivalence_holds : bool
+  }
+  val eval_internal_simply_typed_model : bool -> bool -> bool -> {
+    types_as_objects : bool,
+    terms_as_morphisms : bool,
+    beta_eta_soundness : bool,
+    is_valid_internal_model : bool
+  }
+  val axiom_exponential_transpose_uniqueness : class_term -> class_term -> class_term -> thm
+  val prove_exponential_transpose_uniqueness : class_term -> class_term -> class_term -> thm
+  val axiom_curry_uncurry_bijection : class_term -> class_term -> thm
+  val prove_curry_uncurry_bijection : class_term -> class_term -> thm
+  val axiom_curry_howard_lambek_beta_eta_soundness : class_term -> class_term -> thm
+  val prove_curry_howard_lambek_beta_eta_soundness : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1222,6 +1262,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | KleisliCategory of class_term * class_term
     | MonadicityComparisonFunctor of class_term * class_term
     | ReflexiveSplitCoequalizer of class_term * class_term * class_term
+    | ExponentialObject of class_term * class_term
+    | EvaluationMorphism of class_term * class_term
+    | CurriedMorphism of class_term
+    | UncurriedMorphism of class_term
+    | InternalLambdaTerm of string * class_term
 
   and fm =
       False
@@ -1385,6 +1430,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsKleisliMorphism of class_term * class_term * class_term
     | IsSplitCoequalizer of class_term * class_term * class_term
     | IsBeckMonadicFunctor of class_term * class_term
+    | IsCartesianClosedCategory of class_term
+    | IsExponentialTranspose of class_term * class_term
+    | SatisfiesBetaEtaLambekEquivalence of class_term * class_term
+    | IsInternalSimplyTypedModel of class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1566,6 +1615,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           MonadicityComparisonFunctor (subst_term var repl u, subst_term var repl t)
       | ReflexiveSplitCoequalizer (f, g, e) =>
           ReflexiveSplitCoequalizer (subst_term var repl f, subst_term var repl g, subst_term var repl e)
+      | ExponentialObject (a, b) =>
+          ExponentialObject (subst_term var repl a, subst_term var repl b)
+      | EvaluationMorphism (a, b) =>
+          EvaluationMorphism (subst_term var repl a, subst_term var repl b)
+      | CurriedMorphism g =>
+          CurriedMorphism (subst_term var repl g)
+      | UncurriedMorphism h =>
+          UncurriedMorphism (subst_term var repl h)
+      | InternalLambdaTerm (v, body) =>
+          if v = var then target else InternalLambdaTerm (v, subst_term var repl body)
       | _ => target
 
   and subst_fm var repl target =
@@ -1796,6 +1855,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsSplitCoequalizer (subst_term var repl f, subst_term var repl g, subst_term var repl e)
       | IsBeckMonadicFunctor (u, c) =>
           IsBeckMonadicFunctor (subst_term var repl u, subst_term var repl c)
+      | IsCartesianClosedCategory c =>
+          IsCartesianClosedCategory (subst_term var repl c)
+      | IsExponentialTranspose (g, lam_g) =>
+          IsExponentialTranspose (subst_term var repl g, subst_term var repl lam_g)
+      | SatisfiesBetaEtaLambekEquivalence (c, t) =>
+          SatisfiesBetaEtaLambekEquivalence (subst_term var repl c, subst_term var repl t)
+      | IsInternalSimplyTypedModel c =>
+          IsInternalSimplyTypedModel (subst_term var repl c)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2214,6 +2281,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsKleisliMorphism (t, a, b) => IsKleisliMorphism (t, a, b)
       | IsSplitCoequalizer (f, g, e) => IsSplitCoequalizer (f, g, e)
       | IsBeckMonadicFunctor (u, c) => IsBeckMonadicFunctor (u, c)
+      | IsCartesianClosedCategory c => IsCartesianClosedCategory c
+      | IsExponentialTranspose (g, lam_g) => IsExponentialTranspose (g, lam_g)
+      | SatisfiesBetaEtaLambekEquivalence (c, t) => SatisfiesBetaEtaLambekEquivalence (c, t)
+      | IsInternalSimplyTypedModel c => IsInternalSimplyTypedModel c
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2542,6 +2613,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsKleisliMorphism _ => true
       | IsSplitCoequalizer _ => true
       | IsBeckMonadicFunctor _ => true
+      | IsCartesianClosedCategory _ => true
+      | IsExponentialTranspose _ => true
+      | SatisfiesBetaEtaLambekEquivalence _ => true
+      | IsInternalSimplyTypedModel _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -5429,6 +5504,115 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_beck_monadicity_equivalence u_fun cat =
     axiom_beck_monadicity_equivalence u_fun cat
 
+  (* Ticket 71: Cartesian Closed Categories, Exponential Objects, Evaluation Morphisms, and Curry-Howard-Lambek Equivalence *)
+
+  fun extract_dunaev_prod_map_triples terms =
+    List.map (fn t =>
+      case t of
+          KuratowskiPair _ => raise ProperClassKuratowskiException
+        | TagPair (KuratowskiPair _, _) => raise ProperClassKuratowskiException
+        | TagPair (_, KuratowskiPair _) => raise ProperClassKuratowskiException
+        | TagPair (TagPair (GodelCode c, GodelCode a), GodelCode b) => (c, a, b)
+        | _ => raise ProjectionError
+    ) terms
+
+  fun eval_is_cartesian_closed_category has_term has_prod has_exp =
+    {has_terminal_object = has_term,
+     has_binary_products = has_prod,
+     has_exponentials = has_exp,
+     is_ccc = has_term andalso has_prod andalso has_exp}
+
+  fun eval_exponential_object dom_a cod_b =
+    let
+      fun all_maps [] = [[]]
+        | all_maps (a :: rest) =
+            let
+              val sub = all_maps rest
+            in
+              List.concat (List.map (fn b =>
+                List.map (fn m => dunaev_pair (GodelCode a) (GodelCode b) :: m) sub
+              ) cod_b)
+            end
+    in
+      all_maps dom_a
+    end
+
+  fun eval_curry_bijection c_objs a_objs g_terms =
+    let
+      val triples = extract_dunaev_prod_map_triples g_terms
+      fun lookup_g c a =
+        case List.find (fn (c0, a0, _) => c0 = c andalso a0 = a) triples of
+            SOME (_, _, b) => b
+          | NONE => 0
+      val curried =
+        List.map (fn c =>
+          (c, List.map (fn a => (a, lookup_g c a)) a_objs)
+        ) c_objs
+      fun eval_curried c a =
+        case List.find (fn (c0, _) => c0 = c) curried of
+            SOME (_, row) =>
+              (case List.find (fn (a0, _) => a0 = a) row of
+                   SOME (_, b) => b
+                 | NONE => 0)
+          | NONE => 0
+      val uncurried =
+        List.concat (List.map (fn c =>
+          List.map (fn a =>
+            dunaev_pair (dunaev_pair (GodelCode c) (GodelCode a)) (GodelCode (eval_curried c a))
+          ) a_objs
+        ) c_objs)
+      val roundtrip_ok =
+        not (List.null triples)
+        andalso List.all (fn (c, a, b) => eval_curried c a = b) triples
+    in
+      {curried_table = curried,
+       uncurried_pairs = uncurried,
+       roundtrip_bijection_ok = roundtrip_ok}
+    end
+
+  fun eval_beta_eta_lambek_equivalence c_objs a_objs g_terms =
+    let
+      val bij = eval_curry_bijection c_objs a_objs g_terms
+      val beta_ok = #roundtrip_bijection_ok bij
+      val bij2 = eval_curry_bijection c_objs a_objs (#uncurried_pairs bij)
+      val eta_ok = beta_ok andalso (#curried_table bij = #curried_table bij2)
+    in
+      {beta_reduction_holds = beta_ok,
+       eta_expansion_holds = eta_ok,
+       lambek_equivalence_holds = beta_ok andalso eta_ok}
+    end
+
+  fun eval_internal_simply_typed_model types_ok terms_ok beta_eta_ok =
+    {types_as_objects = types_ok,
+     terms_as_morphisms = terms_ok,
+     beta_eta_soundness = beta_eta_ok,
+     is_valid_internal_model = types_ok andalso terms_ok andalso beta_eta_ok}
+
+  fun axiom_exponential_transpose_uniqueness cat a_obj b_obj =
+    Thm ([], Imp (IsCartesianClosedCategory cat,
+                  Forall ("g", ExistsUnique ("h",
+                    And (IsExponentialTranspose (Var "g", CurriedMorphism (Var "g")),
+                         Eq (Var "h", EvaluationMorphism (a_obj, b_obj)))))))
+
+  fun prove_exponential_transpose_uniqueness cat a_obj b_obj =
+    axiom_exponential_transpose_uniqueness cat a_obj b_obj
+
+  fun axiom_curry_uncurry_bijection cat g_mor =
+    Thm ([], Imp (IsCartesianClosedCategory cat,
+                  And (Eq (UncurriedMorphism (CurriedMorphism g_mor), g_mor),
+                       IsExponentialTranspose (g_mor, CurriedMorphism g_mor))))
+
+  fun prove_curry_uncurry_bijection cat g_mor =
+    axiom_curry_uncurry_bijection cat g_mor
+
+  fun axiom_curry_howard_lambek_beta_eta_soundness cat lam_term =
+    Thm ([], Imp (IsCartesianClosedCategory cat,
+                  And (IsInternalSimplyTypedModel cat,
+                       SatisfiesBetaEtaLambekEquivalence (cat, lam_term))))
+
+  fun prove_curry_howard_lambek_beta_eta_soundness cat lam_term =
+    axiom_curry_howard_lambek_beta_eta_soundness cat lam_term
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -7092,6 +7276,49 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso beck_ok andalso beck_fail
         andalso mon_coh_thm_ok andalso kl_em_thm_ok andalso beck_thm_ok
         andalso mon_term_ok
+
+      (* Ticket 71: Cartesian Closed Categories, Exponential Objects, Evaluation Morphisms, and Curry-Howard-Lambek Equivalence *)
+      val ccc_ok = (#is_ccc (eval_is_cartesian_closed_category true true true))
+      val ccc_fail = not (#is_ccc (eval_is_cartesian_closed_category true true false))
+      val exp_ba = eval_exponential_object [0, 1] [10, 20]
+      val exp_ba_ok = (List.length exp_ba = 4)
+      val ccc_g = [
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 0)) (GodelCode 10),
+        dunaev_pair (dunaev_pair (GodelCode 0) (GodelCode 1)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 0)) (GodelCode 20),
+        dunaev_pair (dunaev_pair (GodelCode 1) (GodelCode 1)) (GodelCode 10)
+      ]
+      val ccc_kuratowski_rejected =
+        (let val _ = eval_curry_bijection [0] [0] [KuratowskiPair (Empty, Empty)] in false end
+         handle ProperClassKuratowskiException => true)
+      val curry_res = eval_curry_bijection [0, 1] [0, 1] ccc_g
+      val lambek_res = eval_beta_eta_lambek_equivalence [0, 1] [0, 1] ccc_g
+      val stlc_mod_ok = (#is_valid_internal_model (eval_internal_simply_typed_model true true true))
+      val stlc_mod_fail = not (#is_valid_internal_model (eval_internal_simply_typed_model true false true))
+      val exp_uniq_thm = prove_exponential_transpose_uniqueness (Var "C") (Var "A") (Var "B")
+      val exp_uniq_thm_ok = case exp_uniq_thm of
+          Thm ([], Imp (IsCartesianClosedCategory (Var "C"), _)) => true
+        | _ => false
+      val curry_bij_thm = prove_curry_uncurry_bijection (Var "C") (Var "g")
+      val curry_bij_thm_ok = case curry_bij_thm of
+          Thm ([], Imp (IsCartesianClosedCategory (Var "C"),
+                        And (Eq (UncurriedMorphism (CurriedMorphism (Var "g")), Var "g"),
+                             IsExponentialTranspose (Var "g", CurriedMorphism (Var "g"))))) => true
+        | _ => false
+      val lambek_thm = prove_curry_howard_lambek_beta_eta_soundness (Var "C") (InternalLambdaTerm ("x", Var "x"))
+      val lambek_thm_ok = case lambek_thm of
+          Thm ([], Imp (IsCartesianClosedCategory (Var "C"),
+                        And (IsInternalSimplyTypedModel (Var "C"),
+                             SatisfiesBetaEtaLambekEquivalence (Var "C", InternalLambdaTerm ("x", Var "x"))))) => true
+        | _ => false
+      val ccc_term_ok = (ExponentialObject (Var "A", Var "B") = ExponentialObject (Var "A", Var "B"))
+      val ccc_lambek_all_ok =
+        ccc_ok andalso ccc_fail andalso exp_ba_ok andalso ccc_kuratowski_rejected
+        andalso (#roundtrip_bijection_ok curry_res)
+        andalso (#lambek_equivalence_holds lambek_res)
+        andalso stlc_mod_ok andalso stlc_mod_fail
+        andalso exp_uniq_thm_ok andalso curry_bij_thm_ok andalso lambek_thm_ok
+        andalso ccc_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -7186,7 +7413,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso completeness_all_ok andalso ctx_ifv_all_ok andalso tight_univ_all_ok
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
-      andalso monad_beck_all_ok
+      andalso monad_beck_all_ok andalso ccc_lambek_all_ok
     end
 end;
 

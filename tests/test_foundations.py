@@ -640,6 +640,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["split_coequalizer_verified"])
         self.assertTrue(res["beck_monadicity_verified"])
 
+    def test_ticket_gl071_cartesian_closed_categories_exponentials_and_curry_howard_lambek(self):
+        """Ticket 71: verify Cartesian Closed Categories, Exponentials, and Curry-Howard-Lambek Equivalence."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_cartesian_closed_category",
+            "eval_exponential_object",
+            "eval_curry_bijection",
+            "eval_beta_eta_lambek_equivalence",
+            "eval_internal_simply_typed_model",
+            "proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["ccc_verified"])
+        self.assertTrue(res["exponential_object_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["curry_bijection_verified"])
+        self.assertTrue(res["beta_eta_lambek_verified"])
+        self.assertTrue(res["internal_simply_typed_model_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -306,6 +306,12 @@ from foundations.classes import (
     eval_is_split_coequalizer,
     eval_beck_monadicity,
     proves_monads_eilenberg_moore_kleisli_and_beck_monadicity,
+    eval_is_cartesian_closed_category,
+    eval_exponential_object,
+    eval_curry_bijection,
+    eval_beta_eta_lambek_equivalence,
+    eval_internal_simply_typed_model,
+    proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek,
     proves_foundations_classes_and_families,
 )
 
@@ -612,5 +618,11 @@ __all__: list[str] = [
     "eval_is_split_coequalizer",
     "eval_beck_monadicity",
     "proves_monads_eilenberg_moore_kleisli_and_beck_monadicity",
+    "eval_is_cartesian_closed_category",
+    "eval_exponential_object",
+    "eval_curry_bijection",
+    "eval_beta_eta_lambek_equivalence",
+    "eval_internal_simply_typed_model",
+    "proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek",
     "proves_foundations_classes_and_families",
 ]

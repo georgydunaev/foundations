@@ -2250,6 +2250,41 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl071_cartesian_closed_categories_exponentials_and_curry_howard_lambek(self):
+        """Ticket 71: Cartesian Closed Categories, Exponentials, and Curry-Howard-Lambek Equivalence."""
+        from foundations.type_semantics import (
+            eval_is_cartesian_closed_category,
+            eval_exponential_object,
+            eval_curry_bijection,
+            eval_beta_eta_lambek_equivalence,
+            eval_internal_simply_typed_model,
+            proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek,
+        )
+
+        self.assertTrue(eval_is_cartesian_closed_category(True, True, True)["is_ccc"])
+        self.assertFalse(eval_is_cartesian_closed_category(True, True, False)["is_ccc"])
+        self.assertEqual(len(eval_exponential_object([0, 1], [10, 20])), 4)
+
+        g_items = [
+            dunaev_pair(dunaev_pair(0, 0), 10),
+            dunaev_pair(dunaev_pair(0, 1), 20),
+            dunaev_pair(dunaev_pair(1, 0), 20),
+            dunaev_pair(dunaev_pair(1, 1), 10),
+        ]
+        with self.assertRaises(ProperClassError):
+            eval_curry_bijection([0], [0], [KuratowskiPair(0, 10)])
+
+        self.assertTrue(eval_curry_bijection([0, 1], [0, 1], g_items)["roundtrip_bijection_ok"])
+        self.assertTrue(
+            eval_beta_eta_lambek_equivalence([0, 1], [0, 1], g_items)["lambek_equivalence_holds"]
+        )
+        self.assertTrue(
+            eval_internal_simply_typed_model(True, True, True)["is_valid_internal_model"]
+        )
+
+        master = proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

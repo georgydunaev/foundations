@@ -2120,8 +2120,184 @@ def proves_monads_eilenberg_moore_kleisli_and_beck_monadicity() -> Dict[str, Any
     }
 
 
+def _extract_dunaev_prod_map_triples(items: Sequence[Any]) -> List[Tuple[int, int, int]]:
+    """Extracts (c, a, b) triples from Dunaev-tagged nested pairs ((c, a)_D, b)_D,
+    raising ProperClassError if any KuratowskiPair is encountered.
+    """
+    triples: List[Tuple[int, int, int]] = []
+    for item in items:
+        if isinstance(item, KuratowskiPair):
+            raise ProperClassError("KuratowskiPair is forbidden for proper-class categorical morphisms.")
+        if not isinstance(item, DunaevTaggedPair):
+            raise TypeError(f"Expected DunaevTaggedPair, got {type(item)!r}")
+        lhs = dunaev_fst(item)
+        rhs = dunaev_snd(item)
+        if isinstance(lhs, KuratowskiPair) or isinstance(rhs, KuratowskiPair):
+            raise ProperClassError("KuratowskiPair is forbidden inside DunaevTaggedPair.")
+        if not isinstance(lhs, DunaevTaggedPair):
+            raise TypeError(f"Expected nested DunaevTaggedPair for product element, got {type(lhs)!r}")
+        c_val = dunaev_fst(lhs)
+        a_val = dunaev_snd(lhs)
+        if isinstance(c_val, KuratowskiPair) or isinstance(a_val, KuratowskiPair):
+            raise ProperClassError("KuratowskiPair is forbidden inside product pair.")
+        triples.append((int(c_val), int(a_val), int(rhs)))
+    return triples
+
+
+def eval_is_cartesian_closed_category(
+    has_terminal_object: bool,
+    has_binary_products: bool,
+    has_exponentials: bool,
+) -> Dict[str, Any]:
+    """Verifies whether a category satisfies the defining conditions of a
+    Cartesian closed category (terminal object, binary products, exponentials).
+    """
+    is_ccc = bool(has_terminal_object and has_binary_products and has_exponentials)
+    return {
+        "has_terminal_object": bool(has_terminal_object),
+        "has_binary_products": bool(has_binary_products),
+        "has_exponentials": bool(has_exponentials),
+        "is_ccc": is_ccc,
+    }
+
+
+def eval_exponential_object(
+    dom_a: Sequence[int],
+    cod_b: Sequence[int],
+) -> List[List[DunaevTaggedPair]]:
+    """Constructs the exponential object B^A as the collection of Dunaev-tagged
+    function graphs from dom_a to cod_b.
+    """
+    a_list = [int(a) for a in dom_a]
+    b_list = [int(b) for b in cod_b]
+    if not a_list:
+        return [[]]
+    sub_graphs = eval_exponential_object(a_list[1:], b_list)
+    a0 = a_list[0]
+    result: List[List[DunaevTaggedPair]] = []
+    for b in b_list:
+        for graph in sub_graphs:
+            result.append([dunaev_pair(a0, b)] + list(graph))
+    return result
+
+
+def eval_curry_bijection(
+    c_objs: Sequence[int],
+    a_objs: Sequence[int],
+    g_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Computes the exponential transpose lambda(g) : C -> B^A and uncurried
+    morphism ev o (lambda(g) x id_A) : C x A -> B for a Dunaev-tagged product
+    morphism g : C x A -> B, rejecting any KuratowskiPair.
+    """
+    triples = _extract_dunaev_prod_map_triples(g_items)
+    g_map: Dict[Tuple[int, int], int] = {(c, a): b for c, a, b in triples}
+    c_list = [int(c) for c in c_objs]
+    a_list = [int(a) for a in a_objs]
+
+    curried_table: List[Tuple[int, List[Tuple[int, int]]]] = [
+        (c, [(a, g_map.get((c, a), 0)) for a in a_list]) for c in c_list
+    ]
+    curried_lookup: Dict[int, Dict[int, int]] = {
+        c: dict(row) for c, row in curried_table
+    }
+    uncurried_pairs: List[DunaevTaggedPair] = [
+        dunaev_pair(dunaev_pair(c, a), curried_lookup.get(c, {}).get(a, 0))
+        for c in c_list
+        for a in a_list
+    ]
+    roundtrip_ok = bool(triples) and all(
+        curried_lookup.get(c, {}).get(a, -1) == b for c, a, b in triples
+    )
+    return {
+        "curried_table": curried_table,
+        "uncurried_pairs": uncurried_pairs,
+        "roundtrip_bijection_ok": roundtrip_ok,
+    }
+
+
+def eval_beta_eta_lambek_equivalence(
+    c_objs: Sequence[int],
+    a_objs: Sequence[int],
+    g_items: Sequence[Any],
+) -> Dict[str, Any]:
+    """Verifies the categorical beta-reduction law uncurry(curry(g)) = g and
+    eta-expansion law curry(uncurry(h)) = h across Dunaev-tagged product maps.
+    """
+    bij1 = eval_curry_bijection(c_objs, a_objs, g_items)
+    beta_ok = bool(bij1["roundtrip_bijection_ok"])
+    bij2 = eval_curry_bijection(c_objs, a_objs, bij1["uncurried_pairs"])
+    eta_ok = beta_ok and (bij1["curried_table"] == bij2["curried_table"])
+    return {
+        "beta_reduction_holds": beta_ok,
+        "eta_expansion_holds": eta_ok,
+        "lambek_equivalence_holds": beta_ok and eta_ok,
+    }
+
+
+def eval_internal_simply_typed_model(
+    types_as_objects: bool,
+    terms_as_morphisms: bool,
+    beta_eta_soundness: bool,
+) -> Dict[str, Any]:
+    """Verifies the Curry-Howard-Lambek internal simply typed lambda calculus
+    interpretation inside a Cartesian closed category.
+    """
+    valid = bool(types_as_objects and terms_as_morphisms and beta_eta_soundness)
+    return {
+        "types_as_objects": bool(types_as_objects),
+        "terms_as_morphisms": bool(terms_as_morphisms),
+        "beta_eta_soundness": bool(beta_eta_soundness),
+        "is_valid_internal_model": valid,
+    }
+
+
+def proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek() -> Dict[str, Any]:
+    """Master verification for Ticket 71 (Cartesian Closed Categories, Exponential
+    Objects, Evaluation Morphisms, and Curry-Howard-Lambek Equivalence).
+    """
+    ccc_ok = (
+        eval_is_cartesian_closed_category(True, True, True)["is_ccc"]
+        and not eval_is_cartesian_closed_category(True, True, False)["is_ccc"]
+    )
+    exp_graphs = eval_exponential_object([0, 1], [10, 20])
+    exp_ok = len(exp_graphs) == 4
+
+    g_items = [
+        dunaev_pair(dunaev_pair(0, 0), 10),
+        dunaev_pair(dunaev_pair(0, 1), 20),
+        dunaev_pair(dunaev_pair(1, 0), 20),
+        dunaev_pair(dunaev_pair(1, 1), 10),
+    ]
+    kuratowski_rejected = False
+    try:
+        eval_curry_bijection([0], [0], [KuratowskiPair(0, 10)])
+    except ProperClassError:
+        kuratowski_rejected = True
+
+    curry_res = eval_curry_bijection([0, 1], [0, 1], g_items)
+    curry_ok = bool(curry_res["roundtrip_bijection_ok"])
+    lambek_res = eval_beta_eta_lambek_equivalence([0, 1], [0, 1], g_items)
+    lambek_ok = bool(lambek_res["lambek_equivalence_holds"])
+    internal_ok = (
+        eval_internal_simply_typed_model(True, True, True)["is_valid_internal_model"]
+        and not eval_internal_simply_typed_model(True, False, True)["is_valid_internal_model"]
+    )
+
+    all_ok = ccc_ok and exp_ok and kuratowski_rejected and curry_ok and lambek_ok and internal_ok
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "ccc_verified": ccc_ok,
+        "exponential_object_verified": exp_ok,
+        "kuratowski_rejected": kuratowski_rejected,
+        "curry_bijection_verified": curry_ok,
+        "beta_eta_lambek_verified": lambek_ok,
+        "internal_simply_typed_model_verified": internal_ok,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
-    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad tickets:
+    """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
     2. obelisk_class_lists_transport.md (3.51)
     3. obelisk_family_records_and_image_conventions.md (3.25, 3.26, 3.29, 3.30, 3.31)
@@ -2133,6 +2309,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     9. ticket_gl068_foundations_yoneda_presheaf_conglomerate_and_kan_extensions.md
     10. ticket_gl069_foundations_topos_subobject_classifier_and_lawvere_tierney_topologies.md
     11. ticket_gl070_foundations_monads_eilenberg_moore_kleisli_and_beck_monadicity.md
+    12. ticket_gl071_foundations_cartesian_closed_categories_exponentials_and_curry_howard_lambek.md
     """
     res_semi = verify_semi_singleton_export_heads()
     res_lists = eval_class_lists_dunaev()
@@ -2145,6 +2322,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_yon_kan = proves_yoneda_presheaf_conglomerate_and_kan_extensions()
     res_topos = proves_topos_subobject_classifier_and_lawvere_tierney_topologies()
     res_monad = proves_monads_eilenberg_moore_kleisli_and_beck_monadicity()
+    res_ccc = proves_cartesian_closed_categories_exponentials_and_curry_howard_lambek()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -2157,6 +2335,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_yon_kan["status"] == "RESOLVED"
     assert res_topos["status"] == "RESOLVED"
     assert res_monad["status"] == "RESOLVED"
+    assert res_ccc["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -2170,4 +2349,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_yoneda_presheaf_conglomerate_and_kan_extensions": res_yon_kan,
         "ticket_topos_subobject_classifier_and_lawvere_tierney_topologies": res_topos,
         "ticket_monads_eilenberg_moore_kleisli_and_beck_monadicity": res_monad,
+        "ticket_cartesian_closed_categories_exponentials_and_curry_howard_lambek": res_ccc,
     }

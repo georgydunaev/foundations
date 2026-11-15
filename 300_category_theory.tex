@@ -723,4 +723,22 @@ Each monad $(T, \eta, \mu)$ canonically determines two extremal adjunctions in t
 \end{enumerate}
 Given any adjunction $F \dashv U\colon \mathcal{D} \to \mathcal{C}$ inducing $T = UF$, the canonical comparison functor $K\colon \mathcal{D} \to \mathcal{C}^T$ sends $D \mapsto \pair{U(D)}{U(\varepsilon_D)}$. By Beck's Monadicity Theorem, $K$ is an equivalence of categories if and only if $U$ is conservative (reflects isomorphisms) and $\mathcal{D}$ has and $U$ preserves coequalizers of all $U$-split parallel pairs.
 
+\subsection{Cartesian Closed Categories, Exponential Objects, and Curry-Howard-Lambek Equivalence}
+\label{subsec:ccc_exponentials_curry_howard_lambek}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, a category $\mathcal{C}$ with finite products (terminal object $1$ and binary product $A \times B$ encoded via Dunaev Tagged Ordered Pairs $\pair{a}{b}$, rejecting Kuratowski pairs) is \emph{Cartesian closed} if for every pair of objects $A, B \in \operatorname{Ob}(\mathcal{C})$ there exists an \emph{exponential object} $B^A$ together with a canonical \emph{evaluation morphism} $\operatorname{ev}_{A,B}\colon B^A \times A \to B$ satisfying the universal property of exponentiation: for every morphism $g\colon C \times A \to B$, there exists a unique \emph{exponential transpose} (curried morphism) $\lambda(g)\colon C \to B^A$ such that
+\[
+\operatorname{ev}_{A,B} \circ (\lambda(g) \times 1_A) = g.
+\]
+Conversely, given $h\colon C \to B^A$, its \emph{uncurried morphism} is $\operatorname{uncurry}(h) = \operatorname{ev}_{A,B} \circ (h \times 1_A)\colon C \times A \to B$, establishing a natural bijection
+\[
+\operatorname{Hom}_{\mathcal{C}}(C \times A, B) \cong \operatorname{Hom}_{\mathcal{C}}(C, B^A)
+\]
+whose two-sided inverse equations mirror the $\beta$- and $\eta$-conversion laws of the simply typed $\lambda$-calculus:
+\begin{enumerate}
+  \item \textbf{Categorical $\beta$-Reduction Law}: $\operatorname{uncurry}(\lambda(g)) = \operatorname{ev}_{A,B} \circ (\lambda(g) \times 1_A) = g$.
+  \item \textbf{Categorical $\eta$-Expansion Law}: $\lambda(\operatorname{uncurry}(h)) = \lambda(\operatorname{ev}_{A,B} \circ (h \times 1_A)) = h$.
+\end{enumerate}
+Under the Curry-Howard-Lambek correspondence, Cartesian closed categories provide the sound and complete categorical semantics for intuitionistic propositional logic (`MKTD2-framework` formulas-as-types) and the simply typed $\lambda$-calculus, interpreting contexts $\Gamma$ as finite Dunaev-tagged products, implication $A \supset B$ as the exponential object $B^A$, modus ponens as $\operatorname{ev}_{A,B}$, and deduction-theorem abstraction as currying $\lambda(-)$.
+
 \input{END.tex}
