@@ -288,6 +288,12 @@ from foundations.classes import (
     eval_dyson_phillips_series_bound,
     eval_schrodinger_lipschitz_regularity,
     proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac,
+    eval_is_locally_small_category,
+    eval_representable_presheaf,
+    eval_yoneda_lemma_bijection,
+    eval_yoneda_embedding_fully_faithful,
+    eval_pointwise_kan_extension,
+    proves_yoneda_presheaf_conglomerate_and_kan_extensions,
     proves_foundations_classes_and_families,
 )
 
@@ -576,5 +582,11 @@ __all__: list[str] = [
     "eval_dyson_phillips_series_bound",
     "eval_schrodinger_lipschitz_regularity",
     "proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac",
+    "eval_is_locally_small_category",
+    "eval_representable_presheaf",
+    "eval_yoneda_lemma_bijection",
+    "eval_yoneda_embedding_fully_faithful",
+    "eval_pointwise_kan_extension",
+    "proves_yoneda_presheaf_conglomerate_and_kan_extensions",
     "proves_foundations_classes_and_families",
 ]

@@ -2123,6 +2123,50 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_schrodinger_semigroup_lipschitz_regularity_and_feynman_kac()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl068_yoneda_presheaf_conglomerate_and_kan_extensions(self):
+        """Ticket 68: Locally Small Categories, Representable Presheaves, Yoneda Lemma, and Kan Extensions."""
+        from foundations.type_semantics import (
+            KuratowskiPair,
+            ProperClassError,
+            dunaev_pair,
+            eval_is_locally_small_category,
+            eval_pointwise_kan_extension,
+            eval_representable_presheaf,
+            eval_yoneda_embedding_fully_faithful,
+            eval_yoneda_lemma_bijection,
+            proves_yoneda_presheaf_conglomerate_and_kan_extensions,
+        )
+
+        cat_mors = [
+            dunaev_pair(dunaev_pair(0, 0), 100),
+            dunaev_pair(dunaev_pair(1, 1), 101),
+            dunaev_pair(dunaev_pair(0, 1), 102),
+        ]
+        self.assertTrue(eval_is_locally_small_category([0, 1], cat_mors)["is_locally_small"])
+        with self.assertRaises(ProperClassError):
+            eval_is_locally_small_category([0], [KuratowskiPair(0, 0)])
+
+        rep_psh = eval_representable_presheaf(1, cat_mors)
+        self.assertEqual(len(rep_psh), 2)
+
+        yon_res = eval_yoneda_lemma_bijection(
+            1, cat_mors, [dunaev_pair(0, [10, 20, 30]), dunaev_pair(1, [40, 50])]
+        )
+        self.assertTrue(yon_res["bijection_verified"])
+        self.assertEqual(yon_res["fa_cardinality"], 2)
+        self.assertEqual(yon_res["nat_trans_cardinality"], 2)
+        self.assertTrue(eval_yoneda_embedding_fully_faithful([0, 1], cat_mors)["is_fully_faithful"])
+
+        kan_res = eval_pointwise_kan_extension(
+            [dunaev_pair(0, 0), dunaev_pair(1, 2)],
+            [dunaev_pair(0, 5), dunaev_pair(1, 15)],
+            [0, 1, 2],
+        )
+        self.assertTrue(kan_res["universal_adjunction_holds"])
+
+        master = proves_yoneda_presheaf_conglomerate_and_kan_extensions()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

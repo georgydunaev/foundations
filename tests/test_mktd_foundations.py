@@ -683,6 +683,28 @@ class TestMKTDML(unittest.TestCase):
         self.assertIn("axiom_schrodinger_kernel_lipschitz_regularity", content)
         self.assertIn("prove_schrodinger_kernel_lipschitz_regularity", content)
 
+        # Ticket 68: Locally Small Categories, Conglomerate Presheaves, Yoneda Lemma, and Kan Extensions
+        self.assertIn("LocallySmallCategory", content)
+        self.assertIn("RepresentablePresheaf", content)
+        self.assertIn("YonedaEmbedding", content)
+        self.assertIn("LeftKanExtension", content)
+        self.assertIn("RightKanExtension", content)
+        self.assertIn("IsLocallySmallCategory", content)
+        self.assertIn("YonedaBijection", content)
+        self.assertIn("IsFullyFaithfulFunctor", content)
+        self.assertIn("IsPointwiseKanExtension", content)
+        self.assertIn("eval_is_locally_small_category", content)
+        self.assertIn("eval_representable_presheaf", content)
+        self.assertIn("eval_yoneda_lemma_bijection", content)
+        self.assertIn("eval_yoneda_embedding_fully_faithful", content)
+        self.assertIn("eval_pointwise_kan_extension", content)
+        self.assertIn("axiom_yoneda_lemma_bijection", content)
+        self.assertIn("prove_yoneda_lemma_bijection", content)
+        self.assertIn("axiom_yoneda_embedding_fully_faithful", content)
+        self.assertIn("prove_yoneda_embedding_fully_faithful", content)
+        self.assertIn("axiom_pointwise_kan_extension_universal", content)
+        self.assertIn("prove_pointwise_kan_extension_universal", content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()
