@@ -2639,6 +2639,60 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl081_ends_coends_fubini_and_weighted_limits(self):
+        """Ticket 81: Ends and Coends, Dinatural Wedges, Fubini Theorem, and Weighted Limits/Colimits."""
+        from foundations.type_semantics import (
+            eval_is_extranatural_wedge,
+            eval_universal_end_cowedge,
+            eval_end_coend_fubini_iso,
+            eval_weighted_limit_end_rep,
+            eval_profunctor_coend_composition,
+            proves_ends_coends_fubini_and_weighted_limits,
+        )
+
+        self.assertTrue(
+            eval_is_extranatural_wedge(
+                [1, 2],
+                [dunaev_pair(1, 10), dunaev_pair(2, 20)],
+                [dunaev_pair(1, 10), dunaev_pair(2, 20)],
+            )["is_valid_extranatural_wedge"]
+        )
+        with self.assertRaises(ProperClassError):
+            eval_is_extranatural_wedge([1], [KuratowskiPair(1, 10)], [])
+
+        self.assertTrue(
+            eval_universal_end_cowedge(
+                [dunaev_pair(1, 5), dunaev_pair(2, 8)],
+                [dunaev_pair(1, 5), dunaev_pair(2, 9)],
+            )["universal_end_coend_verified"]
+        )
+        fub_res = eval_end_coend_fubini_iso(
+            [1, 2],
+            [1, 2],
+            [
+                dunaev_pair(11, 2),
+                dunaev_pair(12, 3),
+                dunaev_pair(21, 4),
+                dunaev_pair(22, 5),
+            ],
+        )
+        self.assertTrue(fub_res["fubini_interchange_holds"])
+        self.assertEqual(fub_res["iterated_ab_coend"], 14)
+        self.assertTrue(
+            eval_weighted_limit_end_rep(
+                [dunaev_pair(1, 2), dunaev_pair(2, 3)],
+                [dunaev_pair(1, 5), dunaev_pair(2, 7)],
+            )["enriched_end_matches_weighted_limit"]
+        )
+        self.assertTrue(
+            eval_profunctor_coend_composition(
+                1, 3, [1, 2, 3], [dunaev_pair(1, 2)], [dunaev_pair(2, 3)]
+            )["coend_composite_nonempty"]
+        )
+
+        master = proves_ends_coends_fubini_and_weighted_limits()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

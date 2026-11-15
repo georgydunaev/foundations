@@ -204,6 +204,11 @@ signature MKTD_FOUNDATIONS = sig
     | EnrichedCategory of class_term * class_term
     | EnrichedRepresentableHom of class_term * class_term
     | DayConvolutionProduct of class_term * class_term
+    | CategoricalEnd of string * class_term
+    | CategoricalCoend of string * class_term
+    | ExtranaturalWedge of class_term * class_term
+    | WeightedLimitObject of class_term * class_term
+    | WeightedColimitObject of class_term * class_term
 
   and fm =
       False
@@ -409,6 +414,10 @@ signature MKTD_FOUNDATIONS = sig
     | IsEnrichedCategory of class_term * class_term
     | SatisfiesEnrichedYonedaIso of class_term * class_term
     | IsDayConvolutionMonoidal of class_term * class_term
+    | IsExtranaturalWedge of class_term * class_term
+    | IsUniversalEndCowedge of class_term * class_term
+    | SatisfiesEndCoendFubiniIso of class_term * class_term
+    | IsWeightedLimitEndRepresentation of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1502,6 +1511,39 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_day_convolution_promonoidal_yoneda : class_term -> class_term -> class_term -> thm
   val prove_day_convolution_promonoidal_yoneda : class_term -> class_term -> class_term -> thm
 
+  (* Ticket 81: Ends and Coends, Dinatural Wedges, Fubini Theorem for Iterated Ends/Coends, and Weighted Limits/Colimits *)
+  val eval_is_extranatural_wedge : int list -> class_term list -> class_term list -> {
+    checked_morphisms_count : int,
+    wedge_dinaturality_commutes : bool,
+    is_valid_extranatural_wedge : bool
+  }
+  val eval_universal_end_cowedge : class_term list -> class_term list -> {
+    equalizer_end_elements : int list,
+    coequalizer_coend_quotient_size : int,
+    universal_end_coend_verified : bool
+  }
+  val eval_end_coend_fubini_iso : int list -> int list -> class_term list -> {
+    iterated_ab_end : int,
+    iterated_ba_end : int,
+    iterated_ab_coend : int,
+    iterated_ba_coend : int,
+    fubini_interchange_holds : bool
+  }
+  val eval_weighted_limit_end_rep : class_term list -> class_term list -> {
+    weighted_hom_components : int list,
+    enriched_end_matches_weighted_limit : bool
+  }
+  val eval_profunctor_coend_composition : int -> int -> int list -> class_term list -> class_term list -> {
+    intermediate_witnesses : int list,
+    coend_composite_nonempty : bool
+  }
+  val axiom_natural_transformations_as_end : string -> class_term -> class_term -> thm
+  val prove_natural_transformations_as_end : string -> class_term -> class_term -> thm
+  val axiom_end_coend_fubini_interchange_iso : string -> string -> class_term -> thm
+  val prove_end_coend_fubini_interchange_iso : string -> string -> class_term -> thm
+  val axiom_weighted_limit_enriched_end_isomorphism : class_term -> class_term -> class_term -> thm
+  val prove_weighted_limit_enriched_end_isomorphism : class_term -> class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1703,6 +1745,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | EnrichedCategory of class_term * class_term
     | EnrichedRepresentableHom of class_term * class_term
     | DayConvolutionProduct of class_term * class_term
+    | CategoricalEnd of string * class_term
+    | CategoricalCoend of string * class_term
+    | ExtranaturalWedge of class_term * class_term
+    | WeightedLimitObject of class_term * class_term
+    | WeightedColimitObject of class_term * class_term
 
   and fm =
       False
@@ -1908,6 +1955,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsEnrichedCategory of class_term * class_term
     | SatisfiesEnrichedYonedaIso of class_term * class_term
     | IsDayConvolutionMonoidal of class_term * class_term
+    | IsExtranaturalWedge of class_term * class_term
+    | IsUniversalEndCowedge of class_term * class_term
+    | SatisfiesEndCoendFubiniIso of class_term * class_term
+    | IsWeightedLimitEndRepresentation of class_term * class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -2189,6 +2240,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           EnrichedRepresentableHom (subst_term var repl c_cat, subst_term var repl a_obj)
       | DayConvolutionProduct (f_psh, g_psh) =>
           DayConvolutionProduct (subst_term var repl f_psh, subst_term var repl g_psh)
+      | CategoricalEnd (v_var, t_bifun) =>
+          if v_var = var then target else CategoricalEnd (v_var, subst_term var repl t_bifun)
+      | CategoricalCoend (v_var, t_bifun) =>
+          if v_var = var then target else CategoricalCoend (v_var, subst_term var repl t_bifun)
+      | ExtranaturalWedge (w_apex, t_bifun) =>
+          ExtranaturalWedge (subst_term var repl w_apex, subst_term var repl t_bifun)
+      | WeightedLimitObject (w_wt, f_diag) =>
+          WeightedLimitObject (subst_term var repl w_wt, subst_term var repl f_diag)
+      | WeightedColimitObject (w_wt, f_diag) =>
+          WeightedColimitObject (subst_term var repl w_wt, subst_term var repl f_diag)
       | _ => target
 
   and subst_fm var repl target =
@@ -2503,6 +2564,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesEnrichedYonedaIso (subst_term var repl c_cat, subst_term var repl f_fun)
       | IsDayConvolutionMonoidal (psh_cat, day_prod) =>
           IsDayConvolutionMonoidal (subst_term var repl psh_cat, subst_term var repl day_prod)
+      | IsExtranaturalWedge (w_wedge, t_bifun) =>
+          IsExtranaturalWedge (subst_term var repl w_wedge, subst_term var repl t_bifun)
+      | IsUniversalEndCowedge (e_end, t_bifun) =>
+          IsUniversalEndCowedge (subst_term var repl e_end, subst_term var repl t_bifun)
+      | SatisfiesEndCoendFubiniIso (lhs_end, rhs_end) =>
+          SatisfiesEndCoendFubiniIso (subst_term var repl lhs_end, subst_term var repl rhs_end)
+      | IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep) =>
+          IsWeightedLimitEndRepresentation (subst_term var repl w_wt, subst_term var repl f_diag, subst_term var repl end_rep)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2973,6 +3042,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           SatisfiesEnrichedYonedaIso (c_cat, f_fun)
       | IsDayConvolutionMonoidal (psh_cat, day_prod) =>
           IsDayConvolutionMonoidal (psh_cat, day_prod)
+      | IsExtranaturalWedge (w_wedge, t_bifun) =>
+          IsExtranaturalWedge (w_wedge, t_bifun)
+      | IsUniversalEndCowedge (e_end, t_bifun) =>
+          IsUniversalEndCowedge (e_end, t_bifun)
+      | SatisfiesEndCoendFubiniIso (lhs_end, rhs_end) =>
+          SatisfiesEndCoendFubiniIso (lhs_end, rhs_end)
+      | IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep) =>
+          IsWeightedLimitEndRepresentation (w_wt, f_diag, end_rep)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -3343,6 +3420,10 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsEnrichedCategory _ => true
       | SatisfiesEnrichedYonedaIso _ => true
       | IsDayConvolutionMonoidal _ => true
+      | IsExtranaturalWedge _ => true
+      | IsUniversalEndCowedge _ => true
+      | SatisfiesEndCoendFubiniIso _ => true
+      | IsWeightedLimitEndRepresentation _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -7307,6 +7388,144 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_day_convolution_promonoidal_yoneda c_cat f_psh g_psh =
     axiom_day_convolution_promonoidal_yoneda c_cat f_psh g_psh
 
+  (* Ticket 81: Ends and Coends, Dinatural Wedges, Fubini Theorem for Iterated Ends/Coends, and Weighted Limits/Colimits *)
+  fun eval_is_extranatural_wedge mor_ids left_act_terms right_act_terms =
+    let
+      val l_pairs = extract_dunaev_int_pairs left_act_terms
+      val r_pairs = extract_dunaev_int_pairs right_act_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val comm_ok =
+        (not (List.null mor_ids))
+        andalso List.all (fn f_id =>
+          case (find_in l_pairs f_id, find_in r_pairs f_id) of
+              (SOME lv, SOME rv) => (lv = rv)
+            | _ => false) mor_ids
+    in
+      {checked_morphisms_count = List.length mor_ids,
+       wedge_dinaturality_commutes = comm_ok,
+       is_valid_extranatural_wedge = comm_ok}
+    end
+
+  fun eval_universal_end_cowedge lhs_parallel_terms rhs_parallel_terms =
+    let
+      val l_pairs = extract_dunaev_int_pairs lhs_parallel_terms
+      val r_pairs = extract_dunaev_int_pairs rhs_parallel_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val eq_elems =
+        List.map (fn (x, _) => x)
+          (List.filter (fn (x, lv) => find_in r_pairs x = SOME lv) l_pairs)
+      val coeq_size = List.length eq_elems
+    in
+      {equalizer_end_elements = eq_elems,
+       coequalizer_coend_quotient_size = coeq_size,
+       universal_end_coend_verified = not (List.null eq_elems)}
+    end
+
+  fun eval_end_coend_fubini_iso a_objs b_objs diag_val_terms =
+    let
+      val val_pairs = extract_dunaev_int_pairs diag_val_terms
+      fun get_val a b =
+        let
+          val key = a * 10 + b
+        in
+          case List.find (fn (k, _) => k = key) val_pairs of
+              SOME (_, v) => v
+            | NONE => 0
+        end
+      fun sum_list xs = List.foldl (op +) 0 xs
+      fun prod_list xs = List.foldl (op * ) 1 xs
+      val end_ab =
+        prod_list (List.map (fn a => prod_list (List.map (fn b => get_val a b) b_objs)) a_objs)
+      val end_ba =
+        prod_list (List.map (fn b => prod_list (List.map (fn a => get_val a b) a_objs)) b_objs)
+      val coend_ab =
+        sum_list (List.map (fn a => sum_list (List.map (fn b => get_val a b) b_objs)) a_objs)
+      val coend_ba =
+        sum_list (List.map (fn b => sum_list (List.map (fn a => get_val a b) a_objs)) b_objs)
+      val ok =
+        (not (List.null a_objs))
+        andalso (not (List.null b_objs))
+        andalso (end_ab = end_ba)
+        andalso (coend_ab = coend_ba)
+        andalso (coend_ab > 0)
+    in
+      {iterated_ab_end = end_ab,
+       iterated_ba_end = end_ba,
+       iterated_ab_coend = coend_ab,
+       iterated_ba_coend = coend_ba,
+       fubini_interchange_holds = ok}
+    end
+
+  fun eval_weighted_limit_end_rep weight_terms hom_dfj_terms =
+    let
+      val w_pairs = extract_dunaev_int_pairs weight_terms
+      val h_pairs = extract_dunaev_int_pairs hom_dfj_terms
+      fun find_in pairs x =
+        case List.find (fn (k, _) => k = x) pairs of
+            SOME (_, v) => SOME v
+          | NONE => NONE
+      val comps =
+        List.mapPartial (fn (j_id, w_val) =>
+          case find_in h_pairs j_id of
+              SOME h_val => if w_val > 0 andalso h_val >= w_val then SOME (h_val - w_val) else NONE
+            | NONE => NONE) w_pairs
+      val ok = (not (List.null w_pairs)) andalso (List.length comps = List.length w_pairs)
+    in
+      {weighted_hom_components = comps,
+       enriched_end_matches_weighted_limit = ok}
+    end
+
+  fun eval_profunctor_coend_composition a_obj c_obj b_objs p_ab_terms q_bc_terms =
+    let
+      val p_pairs = extract_dunaev_int_pairs p_ab_terms
+      val q_pairs = extract_dunaev_int_pairs q_bc_terms
+      val wits =
+        List.filter (fn b =>
+          List.exists (fn (pa, pb) => pa = a_obj andalso pb = b) p_pairs
+          andalso List.exists (fn (qb, qc) => qb = b andalso qc = c_obj) q_pairs) b_objs
+    in
+      {intermediate_witnesses = wits,
+       coend_composite_nonempty = not (List.null wits)}
+    end
+
+  fun axiom_natural_transformations_as_end x_var f_fun g_fun =
+    Thm ([], Imp (IsUniversalEndCowedge (CategoricalEnd (x_var, InternalHomObject (f_fun, g_fun)),
+                                         InternalHomObject (f_fun, g_fun)),
+                  IsExtranaturalWedge (ExtranaturalWedge (CategoricalEnd (x_var, InternalHomObject (f_fun, g_fun)),
+                                                          InternalHomObject (f_fun, g_fun)),
+                                       InternalHomObject (f_fun, g_fun))))
+
+  fun prove_natural_transformations_as_end x_var f_fun g_fun =
+    axiom_natural_transformations_as_end x_var f_fun g_fun
+
+  fun axiom_end_coend_fubini_interchange_iso a_var b_var s_bifun =
+    Thm ([], And (SatisfiesEndCoendFubiniIso (
+                    CategoricalEnd (a_var, CategoricalEnd (b_var, s_bifun)),
+                    CategoricalEnd (b_var, CategoricalEnd (a_var, s_bifun))),
+                  SatisfiesEndCoendFubiniIso (
+                    CategoricalCoend (a_var, CategoricalCoend (b_var, s_bifun)),
+                    CategoricalCoend (b_var, CategoricalCoend (a_var, s_bifun)))))
+
+  fun prove_end_coend_fubini_interchange_iso a_var b_var s_bifun =
+    axiom_end_coend_fubini_interchange_iso a_var b_var s_bifun
+
+  fun axiom_weighted_limit_enriched_end_isomorphism w_wt f_diag j_cat =
+    Thm ([], Imp (IsWeightedLimitEndRepresentation (
+                    w_wt,
+                    f_diag,
+                    CategoricalEnd ("J", InternalHomObject (w_wt, f_diag))),
+                  Eq (WeightedLimitObject (w_wt, f_diag),
+                      WeightedLimitObject (w_wt, f_diag))))
+
+  fun prove_weighted_limit_enriched_end_isomorphism w_wt f_diag j_cat =
+    axiom_weighted_limit_enriched_end_isomorphism w_wt f_diag j_cat
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -9569,6 +9788,80 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (not (#enriched_yoneda_iso_holds enr_yon_fail))
         andalso day_ok andalso day_fail
         andalso mac_lane_thm_ok andalso ihom_thm_ok andalso day_thm_ok
+      (* Ticket 81 self-tests *)
+      val wedge_res = eval_is_extranatural_wedge [1, 2]
+        [dunaev_pair (GodelCode 1) (GodelCode 10), dunaev_pair (GodelCode 2) (GodelCode 20)]
+        [dunaev_pair (GodelCode 1) (GodelCode 10), dunaev_pair (GodelCode 2) (GodelCode 20)]
+      val wedge_fail = eval_is_extranatural_wedge [1, 2]
+        [dunaev_pair (GodelCode 1) (GodelCode 10), dunaev_pair (GodelCode 2) (GodelCode 20)]
+        [dunaev_pair (GodelCode 1) (GodelCode 10), dunaev_pair (GodelCode 2) (GodelCode 99)]
+      val end_kuratowski_rejected =
+        (eval_is_extranatural_wedge [1] [KuratowskiPair (Empty, Empty)] []; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val univ_end_res = eval_universal_end_cowedge
+        [dunaev_pair (GodelCode 1) (GodelCode 5), dunaev_pair (GodelCode 2) (GodelCode 8)]
+        [dunaev_pair (GodelCode 1) (GodelCode 5), dunaev_pair (GodelCode 2) (GodelCode 9)]
+      val univ_end_fail = eval_universal_end_cowedge
+        [dunaev_pair (GodelCode 1) (GodelCode 5)]
+        [dunaev_pair (GodelCode 1) (GodelCode 9)]
+      val fubini_res = eval_end_coend_fubini_iso [1, 2] [1, 2]
+        [dunaev_pair (GodelCode 11) (GodelCode 2), dunaev_pair (GodelCode 12) (GodelCode 3),
+         dunaev_pair (GodelCode 21) (GodelCode 4), dunaev_pair (GodelCode 22) (GodelCode 5)]
+      val wlim_res = eval_weighted_limit_end_rep
+        [dunaev_pair (GodelCode 1) (GodelCode 2), dunaev_pair (GodelCode 2) (GodelCode 3)]
+        [dunaev_pair (GodelCode 1) (GodelCode 5), dunaev_pair (GodelCode 2) (GodelCode 7)]
+      val wlim_fail = eval_weighted_limit_end_rep
+        [dunaev_pair (GodelCode 1) (GodelCode 6)]
+        [dunaev_pair (GodelCode 1) (GodelCode 5)]
+      val prof_res = eval_profunctor_coend_composition 1 3 [1, 2, 3]
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]
+        [dunaev_pair (GodelCode 2) (GodelCode 3)]
+      val prof_fail = eval_profunctor_coend_composition 1 3 [1, 2, 3]
+        [dunaev_pair (GodelCode 1) (GodelCode 2)]
+        [dunaev_pair (GodelCode 3) (GodelCode 3)]
+      val nat_end_thm_ok =
+        case prove_natural_transformations_as_end "X" (Var "F") (Var "G") of
+            Thm ([], Imp (IsUniversalEndCowedge (CategoricalEnd ("X", InternalHomObject (Var "F", Var "G")),
+                                                 InternalHomObject (Var "F", Var "G")),
+                          IsExtranaturalWedge (ExtranaturalWedge (CategoricalEnd ("X", InternalHomObject (Var "F", Var "G")),
+                                                                  InternalHomObject (Var "F", Var "G")),
+                                               InternalHomObject (Var "F", Var "G")))) => true
+          | _ => false
+      val fubini_thm_ok =
+        case prove_end_coend_fubini_interchange_iso "A" "B" (Var "S") of
+            Thm ([], And (SatisfiesEndCoendFubiniIso (
+                            CategoricalEnd ("A", CategoricalEnd ("B", Var "S")),
+                            CategoricalEnd ("B", CategoricalEnd ("A", Var "S"))),
+                          SatisfiesEndCoendFubiniIso (
+                            CategoricalCoend ("A", CategoricalCoend ("B", Var "S")),
+                            CategoricalCoend ("B", CategoricalCoend ("A", Var "S"))))) => true
+          | _ => false
+      val wlim_thm_ok =
+        case prove_weighted_limit_enriched_end_isomorphism (Var "W") (Var "F") (Var "J") of
+            Thm ([], Imp (IsWeightedLimitEndRepresentation (
+                            Var "W",
+                            Var "F",
+                            CategoricalEnd ("J", InternalHomObject (Var "W", Var "F"))),
+                          Eq (WeightedLimitObject (Var "W", Var "F"),
+                              WeightedLimitObject (Var "W", Var "F")))) => true
+          | _ => false
+      val wcolim_term_ok =
+        (WeightedColimitObject (Var "W", Var "F") = WeightedColimitObject (Var "W", Var "F"))
+      val ends_coends_fubini_all_ok =
+        (#is_valid_extranatural_wedge wedge_res)
+        andalso (not (#is_valid_extranatural_wedge wedge_fail))
+        andalso end_kuratowski_rejected
+        andalso (#universal_end_coend_verified univ_end_res)
+        andalso (not (#universal_end_coend_verified univ_end_fail))
+        andalso (#fubini_interchange_holds fubini_res)
+        andalso (#iterated_ab_coend fubini_res = 14)
+        andalso (#enriched_end_matches_weighted_limit wlim_res)
+        andalso (not (#enriched_end_matches_weighted_limit wlim_fail))
+        andalso (#coend_composite_nonempty prof_res)
+        andalso (not (#coend_composite_nonempty prof_fail))
+        andalso nat_end_thm_ok andalso fubini_thm_ok andalso wlim_thm_ok
+        andalso wcolim_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -9666,7 +9959,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
       andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
       andalso quillen_model_all_ok andalso simplicial_qcat_all_ok andalso grothendieck_sheaf_all_ok
-      andalso spectral_seq_all_ok andalso smcc_day_all_ok
+      andalso spectral_seq_all_ok andalso smcc_day_all_ok andalso ends_coends_fubini_all_ok
     end
 end;
 

@@ -865,4 +865,20 @@ Finally, if $\underline{\mathcal{C}}$ is a small symmetric monoidal $\mathcal{V}
 \]
 such that the enriched Yoneda embedding $\mathbf{y}\colon \underline{\mathcal{C}} \hookrightarrow [\underline{\mathcal{C}}^{\mathrm{op}}, \mathcal{V}]$ is strong symmetric monoidal: $\mathbf{y}(A \otimes_{\mathcal{C}} B) \cong \mathbf{y}(A) \star_{\mathrm{Day}} \mathbf{y}(B)$.
 
+\subsection{Ends, Coends, the Fubini Interchange Theorem, and Weighted Limits}
+\label{subsec:ends_coends_fubini_weighted_limits}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, let $\mathcal{C}$ and $\mathcal{D}$ be categories whose objects, morphisms, and bifunctor graphs $T\colon \mathcal{C}^{\mathrm{op}} \times \mathcal{C} \to \mathcal{D}$ are encoded via Dunaev Tagged Ordered Pairs (rejecting Kuratowski pairs). An \emph{extranatural wedge} from an object $W \in \operatorname{Ob}(\mathcal{D})$ to $T$ is a family of morphisms $\omega = (\omega_X\colon W \to T(X, X))_{X \in \operatorname{Ob}(\mathcal{C})}$ satisfying the dinaturality condition $T(\operatorname{id}_X, f) \circ \omega_X = T(f, \operatorname{id}_Y) \circ \omega_Y$ in $T(X, Y)$ for every morphism $f\colon X \to Y$ in $\mathcal{C}$. An \emph{end} of $T$, denoted $\int_{X \in \mathcal{C}} T(X, X)$, is a terminal wedge $(E, \pi_X\colon E \to T(X, X))$ characterized by the equalizer diagram (when $\mathcal{C}$ is small and $\mathcal{D}$ is complete)
+\[
+\int_{X \in \mathcal{C}} T(X, X) \;\hookrightarrow\; \prod_{X \in \operatorname{Ob}(\mathcal{C})} T(X, X) \;\rightrightarrows\; \prod_{f\colon X \to Y} T(X, Y).
+\]
+Dually, a \emph{coend} $\int^{X \in \mathcal{C}} T(X, X)$ is an initial cowedge $(\iota_X\colon T(X, X) \to C, C)$ characterized as the coequalizer of $\coprod_{f\colon X \to Y} T(Y, X) \rightrightarrows \coprod_{X \in \operatorname{Ob}(\mathcal{C})} T(X, X)$. In particular, the class of natural transformations between functors $F, G\colon \mathcal{C} \to \mathcal{D}$ is canonically represented as the end $\operatorname{Nat}(F, G) \cong \int_{X \in \mathcal{C}} \operatorname{Hom}_{\mathcal{D}}(F(X), G(X))$, and composition of profunctors (distributors) $P\colon \mathcal{A}^{\mathrm{op}} \times \mathcal{B} \to \mathbf{Set}$ and $Q\colon \mathcal{B}^{\mathrm{op}} \times \mathcal{C} \to \mathbf{Set}$ is given by the coend $(Q \odot P)(A, C) = \int^{B \in \mathcal{B}} P(A, B) \times Q(B, C)$. By the \emph{Fubini Interchange Theorem} for iterated ends and coends of $S\colon (\mathcal{A} \times \mathcal{B})^{\mathrm{op}} \times (\mathcal{A} \times \mathcal{B}) \to \mathcal{D}$, when the inner ends (respectively coends) exist, there are canonical isomorphisms
+\[
+\int_{A \in \mathcal{A}} \int_{B \in \mathcal{B}} S(A, B, A, B) \;\cong\; \int_{(A, B) \in \mathcal{A} \times \mathcal{B}} S(A, B, A, B) \;\cong\; \int_{B \in \mathcal{B}} \int_{A \in \mathcal{A}} S(A, B, A, B),
+\]
+and dually for iterated coends $\int^{A} \int^{B} \cong \int^{(A,B)} \cong \int^{B} \int^{A}$. Finally, in a $\mathcal{V}$-enriched category $\underline{\mathcal{D}}$ over a symmetric monoidal closed category $\mathcal{V}$, the \emph{$W$-weighted limit} $\{W, F\}$ of a $\mathcal{V}$-diagram $F\colon \underline{\mathcal{J}} \to \underline{\mathcal{D}}$ weighted by $W\colon \underline{\mathcal{J}} \to \mathcal{V}$ and the \emph{$W'$-weighted colimit} $W' \star F$ (with $W'\colon \underline{\mathcal{J}}^{\mathrm{op}} \to \mathcal{V}$) are represented by the enriched ends
+\[
+\underline{\mathcal{D}}\bigl(D, \{W, F\}\bigr) \;\cong\; \int_{J \in \underline{\mathcal{J}}} \bigl[W(J),\, \underline{\mathcal{D}}(D, F(J))\bigr], \qquad \underline{\mathcal{D}}\bigl(W' \star F, D\bigr) \;\cong\; \int_{J \in \underline{\mathcal{J}}} \bigl[W'(J),\, \underline{\mathcal{D}}(F(J), D)\bigr].
+\]
+
 \input{END.tex}

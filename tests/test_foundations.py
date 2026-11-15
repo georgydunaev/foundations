@@ -890,6 +890,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["enriched_yoneda_verified"])
         self.assertTrue(res["day_convolution_verified"])
 
+    def test_ticket_gl081_ends_coends_fubini_and_weighted_limits(self):
+        """Ticket 81: verify Ends and Coends, Dinatural Wedges, Fubini Theorem, and Weighted Limits/Colimits."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_extranatural_wedge",
+            "eval_universal_end_cowedge",
+            "eval_end_coend_fubini_iso",
+            "eval_weighted_limit_end_rep",
+            "eval_profunctor_coend_composition",
+            "proves_ends_coends_fubini_and_weighted_limits",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_ends_coends_fubini_and_weighted_limits()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["extranatural_wedge_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["universal_end_cowedge_verified"])
+        self.assertTrue(res["fubini_interchange_verified"])
+        self.assertTrue(res["weighted_limit_verified"])
+        self.assertTrue(res["profunctor_coend_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

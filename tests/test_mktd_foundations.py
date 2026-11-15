@@ -1012,6 +1012,33 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl081_ends_coends_fubini_and_weighted_limits(self):
+        """Ticket 81: verify Ends and Coends, Dinatural Wedges, Fubini Theorem, and Weighted Limits/Colimits in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "CategoricalEnd",
+            "CategoricalCoend",
+            "ExtranaturalWedge",
+            "WeightedLimitObject",
+            "WeightedColimitObject",
+            "IsExtranaturalWedge",
+            "IsUniversalEndCowedge",
+            "SatisfiesEndCoendFubiniIso",
+            "IsWeightedLimitEndRepresentation",
+            "eval_is_extranatural_wedge",
+            "eval_universal_end_cowedge",
+            "eval_end_coend_fubini_iso",
+            "eval_weighted_limit_end_rep",
+            "eval_profunctor_coend_composition",
+            "axiom_natural_transformations_as_end",
+            "prove_natural_transformations_as_end",
+            "axiom_end_coend_fubini_interchange_iso",
+            "prove_end_coend_fubini_interchange_iso",
+            "axiom_weighted_limit_enriched_end_isomorphism",
+            "prove_weighted_limit_enriched_end_isomorphism",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

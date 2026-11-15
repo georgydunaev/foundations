@@ -366,6 +366,12 @@ from foundations.classes import (
     eval_enriched_yoneda_iso,
     eval_day_convolution_monoidal,
     proves_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution,
+    eval_is_extranatural_wedge,
+    eval_universal_end_cowedge,
+    eval_end_coend_fubini_iso,
+    eval_weighted_limit_end_rep,
+    eval_profunctor_coend_composition,
+    proves_ends_coends_fubini_and_weighted_limits,
     proves_foundations_classes_and_families,
 )
 
@@ -732,5 +738,11 @@ __all__: list[str] = [
     "eval_enriched_yoneda_iso",
     "eval_day_convolution_monoidal",
     "proves_symmetric_monoidal_closed_categories_enriched_yoneda_and_day_convolution",
+    "eval_is_extranatural_wedge",
+    "eval_universal_end_cowedge",
+    "eval_end_coend_fubini_iso",
+    "eval_weighted_limit_end_rep",
+    "eval_profunctor_coend_composition",
+    "proves_ends_coends_fubini_and_weighted_limits",
     "proves_foundations_classes_and_families",
 ]
