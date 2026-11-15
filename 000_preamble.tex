@@ -74,6 +74,8 @@
 
 \newcommand{\quantifierthickness}{thin}
 
+\providecommand\hmmax{0}
+\providecommand\bmmax{0}
 \usepackage{bm}
 
 %%%%%%%%%%% MAKE ALL MATH BOLD
@@ -329,6 +331,63 @@
 \newtheorem*{note*}{Note*}
 \newtheorem{parameter}{Parameter}[section]
 \newtheorem*{parameter*}{Parameter}
+
+\makeatletter
+\@namedef{toclevel@constructor}{2}
+\@namedef{toclevel@constructor*}{2}
+\@namedef{toclevel@iaxiom}{2}
+\@namedef{toclevel@axiom}{2}
+\@namedef{toclevel@axiom*}{2}
+\@namedef{toclevel@metaaxiom}{2}
+\@namedef{toclevel@metaaxiom*}{2}
+\@namedef{toclevel@badaxiom}{2}
+\@namedef{toclevel@badaxiom*}{2}
+\@namedef{toclevel@definition}{2}
+\@namedef{toclevel@definition*}{2}
+\@namedef{toclevel@proposition}{2}
+\@namedef{toclevel@conjecture}{2}
+\@namedef{toclevel@conjecture*}{2}
+\@namedef{toclevel@inferencerule}{2}
+\@namedef{toclevel@inferencerule*}{2}
+\@namedef{toclevel@badinferencerule}{2}
+\@namedef{toclevel@badinferencerule*}{2}
+\@namedef{toclevel@baddefinition}{2}
+\@namedef{toclevel@baddefinition*}{2}
+\@namedef{toclevel@informaldefinition}{2}
+\@namedef{toclevel@informaldefinition*}{2}
+\@namedef{toclevel@remark}{2}
+\@namedef{toclevel@remark*}{2}
+\@namedef{toclevel@recall}{2}
+\@namedef{toclevel@recall*}{2}
+\@namedef{toclevel@notation}{2}
+\@namedef{toclevel@notation*}{2}
+\@namedef{toclevel@metanotation}{2}
+\@namedef{toclevel@metanotation*}{2}
+\@namedef{toclevel@metadefinition}{2}
+\@namedef{toclevel@metadefinition*}{2}
+\@namedef{toclevel@metainferencerule}{2}
+\@namedef{toclevel@metainferencerule*}{2}
+\@namedef{toclevel@lemma}{2}
+\@namedef{toclevel@lemma*}{2}
+\@namedef{toclevel@example}{2}
+\@namedef{toclevel@example*}{2}
+\@namedef{toclevel@theorem}{2}
+\@namedef{toclevel@theorem*}{2}
+\@namedef{toclevel@metatheorem}{2}
+\@namedef{toclevel@metatheorem*}{2}
+\@namedef{toclevel@corollary}{2}
+\@namedef{toclevel@corollary*}{2}
+\@namedef{toclevel@assumption}{2}
+\@namedef{toclevel@assumption*}{2}
+\@namedef{toclevel@premise}{2}
+\@namedef{toclevel@premise*}{2}
+\@namedef{toclevel@note}{2}
+\@namedef{toclevel@note*}{2}
+\@namedef{toclevel@parameter}{2}
+\@namedef{toclevel@parameter*}{2}
+\@namedef{toclevel@exercise}{2}
+\@namedef{toclevel@lstlisting}{2}
+\makeatother
 
 \iffalse
 % if a draft then ...
@@ -744,6 +803,11 @@
 \newcommand{\pr}{\mathrm{pr}}
 \newcommand{\fst}{\mathrm{fst}}
 \newcommand{\snd}{\mathrm{snd}}
+\providecommand{\Fst}{\operatorname{Fst}}
+\providecommand{\Snd}{\operatorname{Snd}}
+\providecommand{\kuratowskipair}[2]{(#1,#2)_K}
+\providecommand{\pair}[2]{(#1,#2)}
+\providecommand{\BddExpr}{\mathrm{BddExpr}}
 \newcommand{\AtomFuncSymb}{\mathrm{AtomFuncSymb}}
 \newcommand{\AtomPredSymb}{\mathrm{AtomPredSymb}}
 \newcommand{\PredSymb}{\mathrm{PredSymb}}
