@@ -19,7 +19,7 @@
 (*      - binter_func, binter_sound (Qed), binter                            *)
 (*   4. Positive Properties of Classes:                                      *)
 (*      - positive, positive_sound (Qed), ppc                                *)
-(*      - ppc_pos (Admitted: open research conjecture on self-positivity)    *)
+(*      - ppc_pos (Qed: verified self-positivity of ppc via absorption)      *)
 (*      - Axiom Positivity                                                   *)
 (* ========================================================================= *)
 
@@ -395,8 +395,39 @@ Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).
 Proof.
 unfold positive.
 unfold ppc.
-(*...*)
-Admitted.
+simpl.
+intros phi psi U [HphiU HposU].
+set (I := intersect_class (binter (ClassETOf (ClassETOf ET1)) phi
+            (Constr (ClassETOf (ClassETOf ET1)) positive positive_sound))).
+set (chi := binter (ClassETOf ET1) psi I).
+assert (Hpos_chi : Predicate U (intersect_class (binter (ClassETOf ET1) chi U))).
+{
+  exact (HposU chi).
+}
+assert (Heq : ClassEqOf ET1
+  (intersect_class (binter (ClassETOf ET1) chi U))
+  (intersect_class chi)).
+{
+  unfold ClassEqOf, intersect_class, intersect_func, binter, binter_func.
+  intro x. simpl.
+  split.
+  - intros Hlhs W [HpsiW HIW].
+    apply (Hlhs W).
+    split.
+    + split; [exact HpsiW | exact HIW].
+    + unfold I, intersect_class, intersect_func in HIW.
+      simpl in HIW.
+      apply (HIW U).
+      split; [exact HphiU | exact HposU].
+  - intros Hrhs W [[HpsiW HIW] _].
+    apply (Hrhs W).
+    split; [exact HpsiW | exact HIW].
+}
+destruct U as [fU pU].
+unfold SoundPredicate, SoundPredOf in pU.
+simpl in Hpos_chi, pU |- *.
+exact (pU _ _ Heq Hpos_chi).
+Qed.
 
 Axiom Positivity : forall (P:Menge CONGLOMERATE), (positive P) -> ((Predicate P) V).
 

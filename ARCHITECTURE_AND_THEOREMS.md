@@ -84,10 +84,11 @@ All theorem constructors in [`mktd_foundations.ML`](file:///hostramdisk/foundati
 - **Inner Models, Forcing, and Independence**: `prove_inner_model`, `prove_l_is_inner_model`, `prove_delta0_inner_model_absoluteness`, `prove_relative_consistency_ac_gch`, `prove_con_zf_implies_con_zfc_gch`, `prove_poset_compatibility`, `prove_antichain`, `prove_dense_subset`, `prove_generic_filter`, `prove_forcing_truth_lemma`, `prove_generic_model_existence`, `prove_ccc_preserves_cardinals`, `prove_cohen_reals_distinct`, `prove_continuum_at_least_aleph2`, `prove_generic_extension_neg_ch`, `prove_independence_of_ch`, `prove_ma_aleph1_implies_sh`, `prove_diamond_implies_neg_sh`, `prove_independence_of_sh`, `prove_easton_powers_theorem`, `prove_levy_collapses_to_omega1`, `prove_solovay_model_lebesgue`, `prove_inner_model_relativization_criterion`, `prove_forcing_poset_preorder`, `prove_ccc_antichain_condition`, `prove_dunaev_pname_well_formed`, `prove_check_name_generic_val`, `prove_generic_extension_inner_model`.
 - **Untyped de Bruijn Calculus (`examples/debruijn.ML`)**: Verified shifting (`shift`), capture-avoiding substitution (`replace`), beta-contraction (`contract`), and normal-order evaluation (`run`).
 
-### 4.2 Coq Formalization (`Coq/positive_foundations.v`)
+### 4.2 Coq Formalization (`Coq/positive_foundations.v` & `Coq/ppc_pos_helpers.v`)
 - `EQ_tran`, `EQ_sym`, `EQ_sound_left`, `EQ_sound_right`: Equivalence and predicate-soundness properties of extensional equality on `Ens`.
 - `Ens_EQ_sound_left`, `Ens_EQ_sound_right`, `A_eq_sound_left`, `A_eq_sound_right`, `ClassOf_T_eq_sound_left`, `ClassOf_T_eq_sound_right`: Soundness of equality across arbitrary levels of the `Universe n` hierarchy.
 - `intersect_sound`, `V_sound`, `binter_sound`, `positive_sound`: Soundness of conglomerate intersection, the universal class $V$, binary intersection, and the positivity predicate (`Qed.`).
+- `ppc_pos` (`positive (@ppc ET1)`): Self-positivity of the superconglomerate `ppc` of all positive conglomerates, constructively proved with `Qed.` in both [`positive_foundations.v`](file:///hostramdisk/foundations/Coq/positive_foundations.v#L394-L435) and [`ppc_pos_helpers.v`](file:///hostramdisk/foundations/Coq/ppc_pos_helpers.v) via the conglomerate absorption identity $\bigl(\psi \cap I_{\mathrm{ppc}}(\Phi)\bigr) \cap \mathcal{U} \equiv \psi \cap I_{\mathrm{ppc}}(\Phi)$ (analyzed in [`PPC_POS_PROOF_ANALYSIS.md`](file:///hostramdisk/foundations/Coq/PPC_POS_PROOF_ANALYSIS.md)).
 
 ### 4.3 Monograph Chapters (`001_foundations.tex` & `thesis_schrodinger.tex`)
 - **Logic, Types & Trees (`010_logic.tex`, `130_classes_as_types.tex`, `131_class_polynomial_trees.tex`, `198_debruijn_substitution.tex`, `199_languages.tex`)**: Deduction theorem with context freshness, conservative Henkin witness extensions, diagonal lemma and Löb's theorem, set-level W-types and M-types, class-valued initial algebras and final coalgebras for polynomial functors without Choice, and strong normalization and confluence of simply typed lambda calculus with Booleans.
@@ -99,8 +100,8 @@ All theorem constructors in [`mktd_foundations.ML`](file:///hostramdisk/foundati
 
 ## 5. Open Problems, Preserved Drafts, and Unfinished Items
 
-1. **Self-Positivity Conjecture in Coq (`Coq/positive_foundations.v:394`)**:
-   - `Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).` remains `Admitted.` as an open research conjecture on whether the superconglomerate of positive properties is itself positive without cyclic stratification assumptions.
+1. **Self-Positivity Conjecture in Coq (`Coq/positive_foundations.v:394`, Resolved)**:
+   - `Theorem ppc_pos {ET1: EqualityType} : positive (@ppc ET1).` was previously `Admitted.` and is now constructively closed with `Qed.` (zero `Admitted.` remain across `Coq/positive_foundations.v` and `Coq/ppc_pos_helpers.v`). See [`PPC_POS_PROOF_ANALYSIS.md`](file:///hostramdisk/foundations/Coq/PPC_POS_PROOF_ANALYSIS.md).
 2. **Upstream Obelisk Reconciliation Tickets (`tickets/obelisk_*.md`)**:
    - 24 tracked tickets document differences between the monograph's guarded/unguarded conventions and upstream generated exports (e.g., domain guards on `ThmFamilyEvaluation` when `DefValueAtArg` defaults to $V$, pointwise membership in `DefPiPredicateModel`, and fresh binders in uniqueness expansions).
 3. **Preserved Historical & Commented Explorations in LaTeX Sources**:
