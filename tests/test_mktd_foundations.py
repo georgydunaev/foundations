@@ -848,6 +848,34 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_ticket_gl075_triangulated_categories_octahedral_and_derived_categories(self):
+        """Ticket 75: verify Triangulated Categories, Distinguished Triangles, Octahedral Axiom, and Derived Categories in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "SuspensionShiftFunctor",
+            "DistinguishedTriangle",
+            "MappingConeComplex",
+            "QuasiIsomorphismRoof",
+            "DerivedCategoryLocalization",
+            "IsTriangulatedCategory",
+            "IsDistinguishedTriangle",
+            "SatisfiesOctahedralAxiom",
+            "IsMultiplicativeSystemOfQuasiIsos",
+            "IsDerivedCategoryUniversal",
+            "eval_is_triangulated_category",
+            "eval_distinguished_triangle_rotation",
+            "eval_octahedral_axiom",
+            "eval_quasi_iso_roof_calculus",
+            "eval_derived_category_localization",
+            "axiom_distinguished_triangle_rotation_invariance",
+            "prove_distinguished_triangle_rotation_invariance",
+            "axiom_octahedral_mapping_cone_coherence",
+            "prove_octahedral_mapping_cone_coherence",
+            "axiom_gabriel_zisman_derived_localization_universal",
+            "prove_gabriel_zisman_derived_localization_universal",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

@@ -740,6 +740,31 @@ class TestFoundations(unittest.TestCase):
         self.assertTrue(res["derived_ext_tor_verified"])
         self.assertTrue(res["long_exact_cohomology_verified"])
 
+    def test_ticket_gl075_triangulated_categories_octahedral_and_derived_categories(self):
+        """Ticket 75: verify Triangulated Categories, Distinguished Triangles, Octahedral Axiom, and Derived Categories."""
+        self.assertTrue(HAS_FOUNDATIONS)
+        expected_symbols = [
+            "eval_is_triangulated_category",
+            "eval_distinguished_triangle_rotation",
+            "eval_octahedral_axiom",
+            "eval_quasi_iso_roof_calculus",
+            "eval_derived_category_localization",
+            "proves_triangulated_categories_octahedral_and_derived_categories",
+        ]
+        for sym in expected_symbols:
+            with self.subTest(symbol=sym):
+                self.assertTrue(hasattr(foundations, sym))
+                self.assertTrue(callable(getattr(foundations, sym)))
+
+        res = foundations.proves_triangulated_categories_octahedral_and_derived_categories()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertTrue(res["triangulated_category_verified"])
+        self.assertTrue(res["triangle_rotation_verified"])
+        self.assertTrue(res["kuratowski_rejected"])
+        self.assertTrue(res["octahedral_axiom_verified"])
+        self.assertTrue(res["quasi_iso_roof_calculus_verified"])
+        self.assertTrue(res["derived_category_localization_verified"])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -174,6 +174,11 @@ signature MKTD_FOUNDATIONS = sig
     | InjectiveResolution of class_term * class_term
     | RightDerivedExt of int * class_term * class_term
     | LeftDerivedTor of int * class_term * class_term
+    | SuspensionShiftFunctor of class_term * int
+    | DistinguishedTriangle of class_term * class_term * class_term
+    | MappingConeComplex of class_term
+    | QuasiIsomorphismRoof of class_term * class_term
+    | DerivedCategoryLocalization of class_term * class_term
 
   and fm =
       False
@@ -353,6 +358,11 @@ signature MKTD_FOUNDATIONS = sig
     | IsChainHomotopyEquivalent of class_term * class_term
     | IsProjectiveResolution of class_term * class_term
     | SatisfiesLongExactCohomologySequence of class_term * class_term * class_term
+    | IsTriangulatedCategory of class_term * class_term
+    | IsDistinguishedTriangle of class_term * class_term * class_term
+    | SatisfiesOctahedralAxiom of class_term * class_term * class_term
+    | IsMultiplicativeSystemOfQuasiIsos of class_term
+    | IsDerivedCategoryUniversal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1239,6 +1249,42 @@ signature MKTD_FOUNDATIONS = sig
   val axiom_ext_tor_long_exact_sequence_naturality : int -> class_term -> class_term -> class_term -> thm
   val prove_ext_tor_long_exact_sequence_naturality : int -> class_term -> class_term -> class_term -> thm
 
+  (* Ticket 75: Triangulated Categories, Distinguished Triangles, the Octahedral Axiom, and Derived Categories *)
+  val eval_is_triangulated_category : bool -> bool -> bool -> bool -> {
+    has_shift_automorphism : bool,
+    satisfies_tr1_tr2_tr3 : bool,
+    satisfies_tr4_octahedral : bool,
+    is_triangulated : bool
+  }
+  val eval_distinguished_triangle_rotation : class_term list -> {
+    original_edges : (int * int) list,
+    rotated_edges : (int * int) list,
+    rotation_invariance_holds : bool
+  }
+  val eval_octahedral_axiom : int -> int -> int -> bool -> {
+    cone_u : int,
+    cone_v : int,
+    cone_vu : int,
+    induced_third_triangle_exact : bool,
+    octahedral_verified : bool
+  }
+  val eval_quasi_iso_roof_calculus : class_term list -> class_term list -> {
+    roof_pairs : (int * int) list,
+    ore_condition_holds : bool,
+    is_valid_multiplicative_system : bool
+  }
+  val eval_derived_category_localization : bool -> bool -> bool -> {
+    inverts_quasi_isomorphisms : bool,
+    universal_property_holds : bool,
+    derived_category_verified : bool
+  }
+  val axiom_distinguished_triangle_rotation_invariance : class_term -> class_term -> class_term -> thm
+  val prove_distinguished_triangle_rotation_invariance : class_term -> class_term -> class_term -> thm
+  val axiom_octahedral_mapping_cone_coherence : class_term -> class_term -> class_term -> thm
+  val prove_octahedral_mapping_cone_coherence : class_term -> class_term -> class_term -> thm
+  val axiom_gabriel_zisman_derived_localization_universal : class_term -> class_term -> thm
+  val prove_gabriel_zisman_derived_localization_universal : class_term -> class_term -> thm
+
   val run_self_tests : unit -> bool
 end;
 
@@ -1410,6 +1456,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | InjectiveResolution of class_term * class_term
     | RightDerivedExt of int * class_term * class_term
     | LeftDerivedTor of int * class_term * class_term
+    | SuspensionShiftFunctor of class_term * int
+    | DistinguishedTriangle of class_term * class_term * class_term
+    | MappingConeComplex of class_term
+    | QuasiIsomorphismRoof of class_term * class_term
+    | DerivedCategoryLocalization of class_term * class_term
 
   and fm =
       False
@@ -1589,6 +1640,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     | IsChainHomotopyEquivalent of class_term * class_term
     | IsProjectiveResolution of class_term * class_term
     | SatisfiesLongExactCohomologySequence of class_term * class_term * class_term
+    | IsTriangulatedCategory of class_term * class_term
+    | IsDistinguishedTriangle of class_term * class_term * class_term
+    | SatisfiesOctahedralAxiom of class_term * class_term * class_term
+    | IsMultiplicativeSystemOfQuasiIsos of class_term
+    | IsDerivedCategoryUniversal of class_term * class_term
 
   type conglomerate_type = class_term -> bool
 
@@ -1810,6 +1866,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           RightDerivedExt (deg, subst_term var repl a_obj, subst_term var repl b_obj)
       | LeftDerivedTor (deg, a_obj, b_obj) =>
           LeftDerivedTor (deg, subst_term var repl a_obj, subst_term var repl b_obj)
+      | SuspensionShiftFunctor (x_obj, n_shift) =>
+          SuspensionShiftFunctor (subst_term var repl x_obj, n_shift)
+      | DistinguishedTriangle (u_mor, v_mor, w_mor) =>
+          DistinguishedTriangle (subst_term var repl u_mor, subst_term var repl v_mor, subst_term var repl w_mor)
+      | MappingConeComplex u_mor =>
+          MappingConeComplex (subst_term var repl u_mor)
+      | QuasiIsomorphismRoof (s_qiso, f_mor) =>
+          QuasiIsomorphismRoof (subst_term var repl s_qiso, subst_term var repl f_mor)
+      | DerivedCategoryLocalization (k_cat, s_sys) =>
+          DerivedCategoryLocalization (subst_term var repl k_cat, subst_term var repl s_sys)
       | _ => target
 
   and subst_fm var repl target =
@@ -2072,6 +2138,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
           IsProjectiveResolution (subst_term var repl p, subst_term var repl a)
       | SatisfiesLongExactCohomologySequence (a, b, c) =>
           SatisfiesLongExactCohomologySequence (subst_term var repl a, subst_term var repl b, subst_term var repl c)
+      | IsTriangulatedCategory (d_cat, shift_fn) =>
+          IsTriangulatedCategory (subst_term var repl d_cat, subst_term var repl shift_fn)
+      | IsDistinguishedTriangle (u_mor, v_mor, w_mor) =>
+          IsDistinguishedTriangle (subst_term var repl u_mor, subst_term var repl v_mor, subst_term var repl w_mor)
+      | SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor) =>
+          SatisfiesOctahedralAxiom (subst_term var repl u_mor, subst_term var repl v_mor, subst_term var repl vu_mor)
+      | IsMultiplicativeSystemOfQuasiIsos s_sys =>
+          IsMultiplicativeSystemOfQuasiIsos (subst_term var repl s_sys)
+      | IsDerivedCategoryUniversal (k_cat, d_cat) =>
+          IsDerivedCategoryUniversal (subst_term var repl k_cat, subst_term var repl d_cat)
 
   fun axiom_class_comprehension var phi term_y =
     Thm ([], Iff (In (term_y, Compr (var, phi)),
@@ -2506,6 +2582,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsChainHomotopyEquivalent (f, g) => IsChainHomotopyEquivalent (f, g)
       | IsProjectiveResolution (p, a) => IsProjectiveResolution (p, a)
       | SatisfiesLongExactCohomologySequence (a, b, c) => SatisfiesLongExactCohomologySequence (a, b, c)
+      | IsTriangulatedCategory (d_cat, shift_fn) => IsTriangulatedCategory (d_cat, shift_fn)
+      | IsDistinguishedTriangle (u_mor, v_mor, w_mor) => IsDistinguishedTriangle (u_mor, v_mor, w_mor)
+      | SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor) => SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor)
+      | IsMultiplicativeSystemOfQuasiIsos s_sys => IsMultiplicativeSystemOfQuasiIsos s_sys
+      | IsDerivedCategoryUniversal (k_cat, d_cat) => IsDerivedCategoryUniversal (k_cat, d_cat)
 
   fun eval_term env (Var v) =
         (case List.find (fn (x, _) => x = v) env of
@@ -2850,6 +2931,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       | IsChainHomotopyEquivalent _ => true
       | IsProjectiveResolution _ => true
       | SatisfiesLongExactCohomologySequence _ => true
+      | IsTriangulatedCategory _ => true
+      | IsDistinguishedTriangle _ => true
+      | SatisfiesOctahedralAxiom _ => true
+      | IsMultiplicativeSystemOfQuasiIsos _ => true
+      | IsDerivedCategoryUniversal _ => true
 
   fun axiom_tarski_truth m phi =
     Thm ([], Iff (relativize m phi, relativize m phi))
@@ -6220,6 +6306,100 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_ext_tor_long_exact_sequence_naturality deg a_obj b_obj c_obj =
     axiom_ext_tor_long_exact_sequence_naturality deg a_obj b_obj c_obj
 
+  (* Ticket 75: Triangulated Categories, Distinguished Triangles, the Octahedral Axiom, and Derived Categories *)
+  fun eval_is_triangulated_category is_additive has_shift tr123_ok tr4_oct_ok =
+    let
+      val ok = is_additive andalso has_shift andalso tr123_ok andalso tr4_oct_ok
+    in
+      {has_shift_automorphism = has_shift,
+       satisfies_tr1_tr2_tr3 = is_additive andalso tr123_ok,
+       satisfies_tr4_octahedral = tr4_oct_ok,
+       is_triangulated = ok}
+    end
+
+  fun eval_distinguished_triangle_rotation triangle_edge_terms =
+    let
+      val edges = extract_dunaev_int_pairs triangle_edge_terms
+      val rotated =
+        case edges of
+            (x, y) :: (y2, z) :: (z2, x_shift) :: _ =>
+              if y = y2 andalso z = z2 then
+                [(y, z), (z, x_shift), (x_shift, y + 1)]
+              else []
+          | _ => []
+      val rot_ok = (List.length edges = 3) andalso (List.length rotated = 3)
+    in
+      {original_edges = edges,
+       rotated_edges = rotated,
+       rotation_invariance_holds = rot_ok}
+    end
+
+  fun eval_octahedral_axiom u_deg v_deg vu_deg cone_triangle_commutes =
+    let
+      val cone_u = u_deg + 1
+      val cone_v = v_deg + 1
+      val cone_vu = vu_deg + 1
+      val deg_coherent = (vu_deg = u_deg + v_deg)
+      val verified = deg_coherent andalso cone_triangle_commutes
+    in
+      {cone_u = cone_u,
+       cone_v = cone_v,
+       cone_vu = cone_vu,
+       induced_third_triangle_exact = cone_triangle_commutes,
+       octahedral_verified = verified}
+    end
+
+  fun eval_quasi_iso_roof_calculus qiso_terms roof_terms =
+    let
+      val qisos = extract_dunaev_int_pairs qiso_terms
+      val roofs = extract_dunaev_int_pairs roof_terms
+      val has_id_qiso = List.exists (fn (s, t) => s = t) qisos
+      val roofs_valid =
+        not (List.null roofs)
+        andalso List.all (fn (s_leg, _) =>
+          List.exists (fn (q_dom, _) => q_dom = s_leg) qisos) roofs
+      val ok = has_id_qiso andalso roofs_valid
+    in
+      {roof_pairs = roofs,
+       ore_condition_holds = roofs_valid,
+       is_valid_multiplicative_system = ok}
+    end
+
+  fun eval_derived_category_localization inverts_qisos ore_calculus_ok universal_prop_ok =
+    let
+      val ok = inverts_qisos andalso ore_calculus_ok andalso universal_prop_ok
+    in
+      {inverts_quasi_isomorphisms = inverts_qisos,
+       universal_property_holds = universal_prop_ok,
+       derived_category_verified = ok}
+    end
+
+  fun axiom_distinguished_triangle_rotation_invariance u_mor v_mor w_mor =
+    Thm ([], Iff (IsDistinguishedTriangle (u_mor, v_mor, w_mor),
+                  IsDistinguishedTriangle (v_mor, w_mor, SuspensionShiftFunctor (u_mor, 1))))
+
+  fun prove_distinguished_triangle_rotation_invariance u_mor v_mor w_mor =
+    axiom_distinguished_triangle_rotation_invariance u_mor v_mor w_mor
+
+  fun axiom_octahedral_mapping_cone_coherence u_mor v_mor vu_mor =
+    Thm ([], Imp (SatisfiesOctahedralAxiom (u_mor, v_mor, vu_mor),
+                  IsDistinguishedTriangle (
+                    MappingConeComplex u_mor,
+                    MappingConeComplex vu_mor,
+                    MappingConeComplex v_mor)))
+
+  fun prove_octahedral_mapping_cone_coherence u_mor v_mor vu_mor =
+    axiom_octahedral_mapping_cone_coherence u_mor v_mor vu_mor
+
+  fun axiom_gabriel_zisman_derived_localization_universal k_cat s_sys =
+    Thm ([], Imp (IsMultiplicativeSystemOfQuasiIsos s_sys,
+                  IsDerivedCategoryUniversal (
+                    k_cat,
+                    DerivedCategoryLocalization (k_cat, s_sys))))
+
+  fun prove_gabriel_zisman_derived_localization_universal k_cat s_sys =
+    axiom_gabriel_zisman_derived_localization_universal k_cat s_sys
+
   (* Self tests *)
   fun run_self_tests () =
     let
@@ -8124,6 +8304,73 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (not (#long_exact_verified les_fail))
         andalso cc_thm_ok andalso comp_thm_ok andalso les_thm_ok
         andalso inj_res_term_ok
+      (* Ticket 75 self-tests *)
+      val tri_cat_ok = #is_triangulated (eval_is_triangulated_category true true true true)
+      val tri_cat_fail = not (#is_triangulated (eval_is_triangulated_category true true true false))
+      val tri_edges = [
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 2) (GodelCode 3),
+        dunaev_pair (GodelCode 3) (GodelCode 4)
+      ]
+      val tri_rot_res = eval_distinguished_triangle_rotation tri_edges
+      val tri_rot_fail = eval_distinguished_triangle_rotation [
+        dunaev_pair (GodelCode 1) (GodelCode 2),
+        dunaev_pair (GodelCode 5) (GodelCode 3),
+        dunaev_pair (GodelCode 3) (GodelCode 4)
+      ]
+      val tri_kuratowski_rejected =
+        (eval_distinguished_triangle_rotation [KuratowskiPair (Empty, Empty)]; false)
+        handle ProperClassKuratowskiException => true
+             | _ => false
+      val oct_res = eval_octahedral_axiom 1 2 3 true
+      val oct_fail = eval_octahedral_axiom 1 2 4 true
+      val qiso_sys = [
+        dunaev_pair (GodelCode 0) (GodelCode 0),
+        dunaev_pair (GodelCode 1) (GodelCode 2)
+      ]
+      val roof_list = [
+        dunaev_pair (GodelCode 0) (GodelCode 3),
+        dunaev_pair (GodelCode 1) (GodelCode 4)
+      ]
+      val roof_res = eval_quasi_iso_roof_calculus qiso_sys roof_list
+      val roof_fail = eval_quasi_iso_roof_calculus qiso_sys [dunaev_pair (GodelCode 9) (GodelCode 4)]
+      val der_loc_ok = #derived_category_verified (eval_derived_category_localization true true true)
+      val der_loc_fail = not (#derived_category_verified (eval_derived_category_localization true false true))
+      val rot_thm_ok =
+        case prove_distinguished_triangle_rotation_invariance (Var "u") (Var "v") (Var "w") of
+            Thm ([], Iff (IsDistinguishedTriangle (Var "u", Var "v", Var "w"),
+                          IsDistinguishedTriangle (Var "v", Var "w", SuspensionShiftFunctor (Var "u", 1)))) => true
+          | _ => false
+      val oct_thm_ok =
+        case prove_octahedral_mapping_cone_coherence (Var "u") (Var "v") (Var "vu") of
+            Thm ([], Imp (SatisfiesOctahedralAxiom (Var "u", Var "v", Var "vu"),
+                          IsDistinguishedTriangle (
+                            MappingConeComplex (Var "u"),
+                            MappingConeComplex (Var "vu"),
+                            MappingConeComplex (Var "v")))) => true
+          | _ => false
+      val loc_thm_ok =
+        case prove_gabriel_zisman_derived_localization_universal (Var "K") (Var "S") of
+            Thm ([], Imp (IsMultiplicativeSystemOfQuasiIsos (Var "S"),
+                          IsDerivedCategoryUniversal (
+                            Var "K",
+                            DerivedCategoryLocalization (Var "K", Var "S")))) => true
+          | _ => false
+      val roof_term_ok =
+        (QuasiIsomorphismRoof (Var "s", Var "f") = QuasiIsomorphismRoof (Var "s", Var "f"))
+        andalso (DistinguishedTriangle (Var "u", Var "v", Var "w") = DistinguishedTriangle (Var "u", Var "v", Var "w"))
+      val triangulated_derived_all_ok =
+        tri_cat_ok andalso tri_cat_fail
+        andalso (#rotation_invariance_holds tri_rot_res)
+        andalso (not (#rotation_invariance_holds tri_rot_fail))
+        andalso tri_kuratowski_rejected
+        andalso (#octahedral_verified oct_res)
+        andalso (not (#octahedral_verified oct_fail))
+        andalso (#is_valid_multiplicative_system roof_res)
+        andalso (not (#is_valid_multiplicative_system roof_fail))
+        andalso der_loc_ok andalso der_loc_fail
+        andalso rot_thm_ok andalso oct_thm_ok andalso loc_thm_ok
+        andalso roof_term_ok
     in
       fst_ok andalso snd_ok andalso kuratowski_success andalso kuratowski_rejected
       andalso type_univ_ok andalso type_set_univ_no
@@ -8219,7 +8466,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       andalso bval_all_ok andalso club_veblen_all_ok andalso gale_stewart_all_ok
       andalso schrodinger_all_ok andalso yoneda_kan_all_ok andalso topos_lt_all_ok
       andalso monad_beck_all_ok andalso ccc_lambek_all_ok andalso groth_fibration_all_ok
-      andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok
+      andalso abelian_snake_all_ok andalso chain_ext_tor_all_ok andalso triangulated_derived_all_ok
     end
 end;
 

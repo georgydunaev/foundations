@@ -772,4 +772,16 @@ In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, let $\mathcal{A}$ be an Abel
 \]
 and every short exact sequence $0 \to A \to B \to C \to 0$ of chain complexes induces a natural \emph{long exact homology/cohomology sequence} via the Snake Lemma connecting homomorphisms $\partial_n\colon H_n(C_\bullet) \to H_{n-1}(A_\bullet)$.
 
+\subsection{Triangulated Categories, Distinguished Triangles, the Octahedral Axiom, and Derived Categories}
+\label{subsec:triangulated_categories_octahedral_derived_categories}
+
+In \texttt{MKTD1-theory} and \texttt{MKTD2-theory}, a \emph{triangulated category} $(\mathcal{D}, [1], \Delta)$ is an additive category $\mathcal{D}$ (whose objects, shift functors, and roof fractions are encoded via Dunaev Tagged Ordered Pairs, rejecting Kuratowski pairs) equipped with an additive automorphism $[1]\colon \mathcal{D} \xrightarrow{\;\sim\;} \mathcal{D}$ (the suspension or translation functor $X \mapsto X[1]$) and a class $\Delta$ of \emph{distinguished triangles} $X \xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]$ satisfying the four Verdier axioms \textup{(TR1)}--\textup{(TR4)}:
+\begin{enumerate}
+\item \textup{(TR1)} $\Delta$ is closed under isomorphism, contains $X \xrightarrow{1_X} X \to 0 \to X[1]$ for every $X$, and embeds every morphism $u\colon X \to Y$ into a distinguished triangle via the mapping cone $\operatorname{Cone}(u)$;
+\item \textup{(TR2)} \emph{Rotation}: $X \xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]$ is distinguished if and only if $Y \xrightarrow{v} Z \xrightarrow{w} X[1] \xrightarrow{-u[1]} Y[1]$ is distinguished;
+\item \textup{(TR3)} \emph{Morphism extension}: any commutative square between the first two arrows of two distinguished triangles extends to a morphism of triangles;
+\item \textup{(TR4)} \emph{Octahedral Axiom}: given composable morphisms $X \xrightarrow{u} Y \xrightarrow{v} Z$ and distinguished triangles on $u$, $v$, and $v \circ u$ with third objects $Z'$, $X'$, and $Y'$, there exists a distinguished triangle $Z' \to Y' \to X' \to Z'[1]$ making the octahedral diagram commute.
+\end{enumerate}
+Given an Abelian category $\mathcal{A}$ and its homotopy category of chain complexes $\mathbf{K}(\mathcal{A})$, the class $S$ of \emph{quasi-isomorphisms} (chain maps inducing isomorphisms on all homology objects $H_n$) forms a localizing multiplicative system in $\mathbf{K}(\mathcal{A})$ admitting a Gabriel--Zisman calculus of left and right fractions (where morphisms in the localization are represented by Dunaev-tagged roofs $X_\bullet \xleftarrow{s} W_\bullet \xrightarrow{f} Y_\bullet$ with $s \in S$), yielding the \emph{derived category} $\mathbf{D}(\mathcal{A}) = \mathbf{K}(\mathcal{A})[S^{-1}]$ together with the universal localization functor $Q\colon \mathbf{K}(\mathcal{A}) \to \mathbf{D}(\mathcal{A})$.
+
 \input{END.tex}

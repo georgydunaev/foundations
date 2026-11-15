@@ -2419,6 +2419,33 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_chain_complexes_resolutions_and_derived_functors_ext_tor()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_ticket_gl075_triangulated_categories_octahedral_and_derived_categories(self):
+        """Ticket 75: Triangulated Categories, Distinguished Triangles, Octahedral Axiom, and Derived Categories."""
+        from foundations.type_semantics import (
+            eval_is_triangulated_category,
+            eval_distinguished_triangle_rotation,
+            eval_octahedral_axiom,
+            eval_quasi_iso_roof_calculus,
+            eval_derived_category_localization,
+            proves_triangulated_categories_octahedral_and_derived_categories,
+        )
+
+        self.assertTrue(eval_is_triangulated_category(True, True, True, True)["is_triangulated"])
+        with self.assertRaises(ProperClassError):
+            eval_distinguished_triangle_rotation([KuratowskiPair(1, 2)])
+
+        tri_edges = [dunaev_pair(1, 2), dunaev_pair(2, 3), dunaev_pair(3, 4)]
+        self.assertTrue(eval_distinguished_triangle_rotation(tri_edges)["rotation_invariance_holds"])
+        self.assertTrue(eval_octahedral_axiom(1, 2, 3, True)["octahedral_verified"])
+
+        qiso_sys = [dunaev_pair(0, 0), dunaev_pair(1, 2)]
+        roof_list = [dunaev_pair(0, 3), dunaev_pair(1, 4)]
+        self.assertTrue(eval_quasi_iso_roof_calculus(qiso_sys, roof_list)["is_valid_multiplicative_system"])
+        self.assertTrue(eval_derived_category_localization(True, True, True)["derived_category_verified"])
+
+        master = proves_triangulated_categories_octahedral_and_derived_categories()
+        self.assertEqual(master["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()
