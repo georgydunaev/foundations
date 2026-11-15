@@ -195,6 +195,23 @@ PROBLEM: type ambihuity!
 %If $\varphi$ is a formula, $\vec{x}$ is a list of variables with types $\vv{X}$, $t$ is a class term, then $\ccc{\vec{x}}{t}{\varphi}$ is a class term.
 %\end{constructor}
 
+\begin{definition}[Disambiguated medium types versus class comprehension]
+\label{def:medium_type_disambiguation}
+In one-sorted class theory where all object variables range over $\Class$:
+\begin{enumerate}
+\item A \emph{medium type} (or \emph{ontological predicate / conglomerate specification}) is a unary formula constructor $\mathcal{T}$ assigning to each class term $A \in \ClassTerm$ a formula $\mathcal{T}(A) \in \Fm$ (written $(A : \mathcal{T})$). Unlike a class, a medium type may hold of proper classes (for example, $\Class(A) :\iff \top$, $\mathrm{Proper}(A) :\iff \lnot(A\set)$, or $\mathrm{ClassFn}(A)$).
+\item Given an existing medium type $\mathcal{T}$ and a formula $\varphi(x)$, the \emph{refined medium type specification}, denoted structurally by $\mathrm{SubType}(x : \mathcal{T},\ \varphi)$ (written $\llbracket x : \mathcal{T} \mid \varphi \rrbracket$ to avoid syntactic ambiguity with the class term $\cc{x}{\varphi}$), is the medium type defined on any class term $A \in \ClassTerm$ by
+\[
+\big(A : \llbracket x : \mathcal{T} \mid \varphi \rrbracket\big) \iffdef \mathcal{T}(A) \land \varphi[A/x].
+\]
+\item Conversely, every class term $C \in \ClassTerm$ induces a \emph{small/elementhood medium type} $\mathrm{Elem}(C)$ via $(A : \mathrm{Elem}(C)) \iffdef (A \in C)$, which automatically forces $(A\set)$.
+\item \emph{Class comprehension} $\cc{x}{\varphi} \in \ClassTerm$ always uses a default $\Class$ variable $x$ and collects exclusively the \emph{sets} satisfying $\varphi$:
+\[
+\forall (w : \Class),\ \big( w \in \cc{x}{\varphi} \iff (w\set) \land \varphi[w/x] \big).
+\]
+\end{enumerate}
+\end{definition}
+
 \begin{notation}[clearer notation]
 \[
 \ccc{{\vv{x}}}{t}{\phi}
@@ -349,6 +366,27 @@ Here $w$ is fresh for the bound-variable list, the terms, the formula,
 and the type expressions. Renaming bound variables before expansion keeps
 the same parameters free on both sides.
 \end{note}
+
+\begin{theorem}[Equivalence of generalized class term comprehension and variable comprehension]
+\label{thm:term_comprehension_derivable}
+Let $s \in \ClassTerm$ be a class term, $\varphi \in \Fm$ a formula, and $\vv{x} = (x_1, \dots, x_n)$ a list of distinct variables with medium types $\vv{\mathcal{T}} = (\mathcal{T}_1, \dots, \mathcal{T}_n)$. Choose $w := \mathrm{fresh}(\FV(s) \cup \FV(\varphi) \cup \{x_1, \dots, x_n\})$ and define
+\[
+\ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi} \eqdef \cc{w}{\exists (x_1 : \mathcal{T}_1) \dots \exists (x_n : \mathcal{T}_n),\ (w = s) \land \varphi}.
+\]
+Then from the single-variable class comprehension schema (\texttt{varComprehension}) and the substitutivity of equality, the generalized class term comprehension axiom (\texttt{termComprehension}) is derivable: for every class term $t \in \ClassTerm$ with $\FV(t) \cap \{x_1, \dots, x_n\} = \emptyclass$,
+\[
+\big( t \in \ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi} \big) \iff \Big( (t\set) \land \exists (x_1 : \mathcal{T}_1) \dots \exists (x_n : \mathcal{T}_n),\ (t = s) \land \varphi \Big).
+\]
+\end{theorem}
+
+\begin{proof}
+By fresh-variable selection, $w \notin \FV(s) \cup \FV(\varphi) \cup \{x_1, \dots, x_n\}$. Expanding the definition of $\ccc{\vv{x} : \vv{\mathcal{T}}}{s}{\varphi}$ and instantiating the variable comprehension axiom (\texttt{varComprehension}) at the class term $t$ gives
+\[
+t \in \cc{w}{\exists (\vv{x} : \vv{\mathcal{T}}),\ (w = s) \land \varphi}
+\iff (t\set) \land \Big(\exists (\vv{x} : \vv{\mathcal{T}}),\ (w = s) \land \varphi\Big)[t/w].
+\]
+Because $w \notin \{x_1, \dots, x_n\}$, $\FV(t) \cap \{x_1, \dots, x_n\} = \emptyclass$, and $w \notin \FV(s) \cup \FV(\varphi)$, the substitution $[t/w]$ distributes directly inside the existential quantifiers $\exists (\vv{x} : \vv{\mathcal{T}})$ without variable capture and leaves $s$ and $\varphi$ unchanged, transforming $(w = s) \land \varphi$ into $(t = s) \land \varphi$.
+\end{proof}
 
 %In particular, this explains the notation \myref{notation:cccxx}:
 \[

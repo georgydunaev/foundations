@@ -18,20 +18,45 @@ F(x) :\simeq \left(\begin{aligned}
 \]
 \end{definition}
 \subsection{Value} % of a function.
-The following notes explore how equality should interact with partial values. The first two entries are unfinished proposals, not axioms used in the later calculation:
+The following definitions specify how equality and semi-equality interact with partial and candidate-valued expressions (distinguishing underdefined, uniquely defined, and uncertain expressions):
 %(in the context of 3--valued logic)
+\begin{definition}[Candidate-set valuation and taxonomy of partial terms]
+\label{def:candidate_set_valuation}
+Let $D$ be a non-empty semantic domain of values. A \emph{candidate-set interpretation} $I_{\Term}$ assigns to each term $t$ a subset $S_t := I_{\Term}(t) \subseteq D$. We classify $t$ into three mutually exclusive states:
+\begin{enumerate}
+\item \textbf{Uniquely defined ($t \ldefined$):} $|S_t| = 1$, with unique value $v_t \in D$ such that $S_t = \{v_t\}$.
+\item \textbf{Underdefined ($t \text{ underdefined}$):} $S_t = \emptyclass$ (no candidate value exists, represented by $\lundef$).
+\item \textbf{Uncertain / multi-valued ($t \text{ uncertain}$):} $|S_t| \ge 2$ (multiple candidate values exist).
+\end{enumerate}
+A term $t$ is \emph{at most single-valued (functional)} if $|S_t| \le 1$, and \emph{non-empty (consistent)} if $S_t \ne \emptyclass$.
+\end{definition}
+
 \begin{definition}[semi--equality]
-The interpretation of $I_{\Fm}(s\approx t)$ remains to be specified.
-Its rule must distinguish the intended behavior when either argument lacks
-a unique value.
+\label{def:semi_equality_specification}
+Let $s, t$ be terms with candidate sets $S_s, S_t \subseteq D$. In the three-valued Lukasiewicz/Kleene valuation $I_{\Fm}^{3\mathrm{val}}(\cdot) \in \{\ltrue, \lfalse, \lundef\}$, the interpretation of semi-equality $s\approx t$ is given by:
+\[
+I_{\Fm}^{3\mathrm{val}}(s \approx t) :=
+\begin{cases}
+\ltrue & \text{if } |S_s| = 1,\ |S_t| = 1,\ \text{and } v_s = v_t, \\
+\lfalse & \text{if } S_s \ne \emptyclass,\ S_t \ne \emptyclass,\ \text{and } S_s \cap S_t = \emptyclass, \\
+\lundef & \text{otherwise (when } S_s = \emptyclass \text{ or } S_t = \emptyclass \text{ or } |S_s \cup S_t| \ge 2 \text{ with } S_s \cap S_t \ne \emptyclass\text{)}.
+\end{cases}
+\]
+At the two-valued classical assertion level, \emph{strong semi-equality} holds if and only if every selection $u \in S_s$ and $v \in S_t$ agrees and neither is asymmetrically empty:
+\[
+I_{\Fm}(s \approx t) = \ltrue \iff \big((\forall u \in S_s\, \forall v \in S_t,\ u = v) \land (S_s = \emptyclass \iff S_t = \emptyclass)\big),
+\]
+which restricts on functional partial terms ($|S_s| \le 1, |S_t| \le 1$) to Kleene equality.
 %(((s \ldefined)\lor(t \ldefined)) \implies (s=t))
 \end{definition}
 
-\begin{definition}[equality: specification pending]
-For candidate-valued expressions, the symbol $s=t$ still needs a rule
-specifying whether it compares unique values, candidate collections,
-or values under each admitted selection. The comparisons below make
-these alternatives explicit; this unfinished entry fixes none of them.
+\begin{definition}[equality on candidate-valued expressions]
+For candidate-valued expressions $s, t$ with candidate sets $S_s, S_t \subseteq D$, we distinguish:
+\begin{enumerate}
+\item \textbf{Strict equality ($s =_{\mathrm{strict}} t$):} $I_{\Fm}(s =_{\mathrm{strict}} t) = \ltrue \iff (|S_s| = 1 \land |S_t| = 1 \land S_s = S_t)$.
+\item \textbf{Candidate-set equality ($s \equiv_{\mathrm{cand}} t$):} $I_{\Fm}(s \equiv_{\mathrm{cand}} t) = \ltrue \iff S_s = S_t$.
+\item \textbf{Selection-universal equality:} Given a variable-candidate assignment $w : \Var \to \power \Un \setminus \{\emptyclass\}$, equality holds globally across selections if and only if $\forall \bigl(v : \prod_{x:\Var} w(x)\bigr),\ I_\Term^{\loc,v}(s) = I_\Term^{\loc,v}(t)$.
+\end{enumerate}
 %\[
 %(I^\loc,w_\Fm(s = t)=\ltrue) \IFF \forall \left(v:\prod_{x:Var}w(x)\right),\ I_\Term^{\loc,v}%(t)=I_\Term^{\loc,v}(s)
 %\]
@@ -110,6 +135,23 @@ requires a unique input and propagates undefinedness, behaves differently
 from taking the image of all candidates. The theorem identifies precisely
 when these two ways of forgetting information are compatible with the
 Kleene comparison; it does not prohibit either locally chosen semantics.
+
+\begin{theorem}[Characterization of congruence and reduction to total union evaluation]
+\label{thm:semi_equality_congruence_and_union_bridge}
+Under Definitions~\ref{def:candidate_set_valuation} and~\ref{def:semi_equality_specification}:
+\begin{enumerate}
+\item On the subuniverse of functional partial terms ($\mathcal{D}_{\le 1} = \{t : |S_t| \le 1\}$), directed quasi-equality $s \simeq t$, Kleene equality, strong semi-equality, and candidate-set equality $S_s = S_t$ all coincide and form a congruence with respect to strict partial function application
+\[
+f^{\mathrm{strict}}(S) := \begin{cases} \{f(v)\} & \text{if } S = \{v\} \text{ and } v \in \dom(f), \\ \emptyclass & \text{otherwise.} \end{cases}
+\]
+\item When $D = \mathcal{P}(U)$ consists of classes/sets and we pass from a candidate fiber $S_{F,x} = \cc{s}{(x, s) \in F}$ to total union evaluation $\mathrm{Val}_{\cup}(F, x) := \bigcup S_{F,x}$, the union operator $\bigcup : \mathcal{P}(D) \to D$ maps the underdefined fiber $S_{F,x} = \emptyclass$ to $\emptyclass$ and any singleton fiber $S_{F,x} = \{v\}$ to $\bigcup \{v\} = v$, thereby embedding uniquely defined partial evaluations faithfully into total class terms whenever $\emptyclass \notin \operatorname{ran}(F)$ (or when domain membership $x \in \dom(F)$ is tracked explicitly alongside $\mathrm{Val}_{\cup}(F, x)$).
+\end{enumerate}
+\end{theorem}
+\Proof
+For (1), if $|S_s| \le 1$ and $|S_t| \le 1$, then either both $S_s$ and $S_t$ are empty (so $S_s = S_t = \emptyclass$ and neither has size $1$), or at least one is a singleton, in which case $s \simeq t$ holds if and only if both are the same singleton $\{v\}$, i.e.\ $S_s = S_t$. Under strict partial application $f^{\mathrm{strict}}$, equal subsets $S_s = S_t$ have identical images $f^{\mathrm{strict}}(S_s) = f^{\mathrm{strict}}(S_t)$, proving congruence.
+
+For (2), by the elementary union definition $\bigcup A = \cc{z}{\exists a \in A,\ z \in a}$, we have $\bigcup \emptyclass = \emptyclass$ and $\bigcup \{v\} = \cc{z}{z \in v} = v$ for every class $v$ that is a set ($v \in \V$). If $F$ is a single-valued family on $\dom(F)$, then for every $x \in \dom(F)$ the fiber $S_{F,x} = \cc{s}{(x, s) \in F} = \{F(x)\}$ is a singleton set, so $\bigcup S_{F,x} = F(x)$, whereas for $x \notin \dom(F)$, $S_{F,x} = \emptyclass$ and $\bigcup S_{F,x} = \emptyclass$.
+\Done
 
 \begin{definition}[underdefined expression]
 An expression with no possible value is distinguished here from one with
