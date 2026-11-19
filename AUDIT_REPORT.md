@@ -21,17 +21,18 @@ This report documents the completed Bulk 3 audits and reconciliations across `/h
    - Line 12 and stage headers of [`export_theory_db.ML`](file:///hostramdisk/set_theory_prover/program/export_theory_db.ML#L11-L45) are aligned to explicit three-level `MKTD1`/`MKTD2` terminology:
      * Stage 1: `MKTD1-framework` / `MKTD1-system` (`MKTD1-prover`) / `MKTD1-theory` (`data/theory_db_raw.json`).
      * Stage 2: `MKTD2-framework` / `MKTD2-system` (`MKTD2-prover`) / `MKTD2-theory` (`data/nbg_library.json`).
-2. **Decoupling of Semantic Completeness (Omniscience) and Syntactic Negation-Completeness**:
-   - **Entry 3.73 (`AxmSemanticCompletenessOfFullTheory`, legacy alias `AxmCompletenessOfFullTheory`, kernel constructor `POmnis_prf`)**:
-     Defined in [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6040-L6070) by `completeness_of_F_axm_entry_fm` (`semantic_completeness_of_F_axm_entry_fm`). Its formula is:
+2. **Decoupling of Semantic Completeness (Omniscience, Entry 3.73) and Syntactic Negation-Completeness (Entry 3.74)**:
+   - **Root Cause Fixed by Decoupling**: A previous AI model had erroneously attached a syntactic negation-completeness specification comment to the semantic completeness formula $\forall (\phi:\mathrm{Fm}),\ \operatorname{eval}_M(\phi) \implies (\mathcal{F}, [] \vdash \phi)$. This is completely resolved by decoupling the two concepts into independent catalog entries with separate SML definitions, separate AST formulas, separate constructors, and separate specification comments:
+   - **Entry 3.73 (`AxmSemanticCompletenessOfFullTheory`, kernel constructor `POmnisSem_prf` / `POmnis_prf`)**:
+     Defined in [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6060-L6102) by `semantic_completeness_of_F_axm_entry_fm` (`semantic_completeness_of_F_axm_entry` in `program/types/entries.ML`). Its formula is:
      $$\forall (\phi:\mathrm{Fm}),\ \operatorname{eval}_M(\phi) \implies (\mathcal{F}, [] \vdash \phi)$$
-     where $\operatorname{eval}_M(\phi)$ is represented in the SML AST by `EEval (EVar vphi)`. This is a semantic omniscience principle stating that every sentence true under the evaluation operator $\operatorname{eval}_M$ is derivable in $\mathcal{F}$ with empty undischarged context $[]$.
-   - **Entry 3.74 (`AxmNegationCompletenessOfFullTheory`)**:
-     Defined in [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6072-L6125) by `negation_completeness_of_F_axm_entry_fm`. Its formula is:
+     where $\operatorname{eval}_M(\phi)$ is represented in the SML AST by `EEval (EVar vphi)`. Its specification comment exclusively describes semantic completeness (omniscience) relative to the background model $M$: every sentence true under $\operatorname{eval}_M$ is derivable in $\mathcal{F}$ with empty undischarged context $[]$.
+   - **Entry 3.74 (`AxmNegationCompletenessOfFullTheory`, kernel constructor `POmnisNeg_prf`)**:
+     Defined in [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6104-L6157) by `negation_completeness_of_F_axm_entry_fm` (`negation_completeness_of_F_axm_entry` in `program/types/entries.ML`). Its formula is:
      $$\forall (\phi:\mathrm{Fm}),\ \neg(\mathcal{F}, [] \vdash \neg\phi) \implies (\mathcal{F}, [] \vdash \phi)$$
-     This is a syntactic negation-completeness principle stating that if $\neg\phi$ is not derivable in $\mathcal{F}$ from $[]$, then $\phi$ is derivable in $\mathcal{F}$ from $[]$.
+     Its specification comment exclusively describes syntactic negation-completeness: if $\neg\phi$ is not derivable in $\mathcal{F}$ from $[]$, then $\phi$ is derivable in $\mathcal{F}$ from $[]$.
    - **Conditional Equivalence**:
-     Documented consistently across [`010_logic.tex`](file:///hostramdisk/foundations/010_logic.tex#L4704-L4766), [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6013-L6039), and [`export_theory_db.ML`](file:///hostramdisk/set_theory_prover/program/export_theory_db.ML#L16-L38):
+     Documented consistently across [`010_logic.tex`](file:///hostramdisk/foundations/010_logic.tex#L4849-L4891), [`foundations.ML`](file:///hostramdisk/set_theory_prover/program/types/foundations.ML#L6033-L6058), and [`export_theory_db.ML`](file:///hostramdisk/set_theory_prover/program/export_theory_db.ML#L16-L38):
      * Soundness of $\mathcal{F}$ (`AxmSoundnessOfFullTheory`, Entry 3.72: $(\mathcal{F}, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$) together with syntactic negation-completeness (`AxmNegationCompletenessOfFullTheory`, Entry 3.74) implies semantic completeness (`AxmSemanticCompletenessOfFullTheory`, Entry 3.73).
      * Semantic completeness (`AxmSemanticCompletenessOfFullTheory`, Entry 3.73) together with classical semantic bivalence ($\operatorname{eval}_M(\phi) \lor \operatorname{eval}_M(\neg\phi)$) implies syntactic negation-completeness (`AxmNegationCompletenessOfFullTheory`, Entry 3.74).
 

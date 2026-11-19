@@ -955,6 +955,8 @@ signature MKTD_FOUNDATIONS = sig
      arbitrary_henkin_mismatch_witness : bool}
   val axiom_semantic_completeness_of_fau : fm -> thm
   val prove_semantic_completeness_of_fau : fm -> thm
+  val axiom_negation_completeness_of_fau : fm -> thm
+  val prove_negation_completeness_of_fau : fm -> thm
   val axiom_semantic_vs_negation_completeness : class_term -> fm -> thm
   val prove_semantic_vs_negation_completeness : class_term -> fm -> thm
 
@@ -5141,7 +5143,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_value_at_arg_vs_relational_image f x =
     axiom_value_at_arg_vs_relational_image f x
 
-  (* 4. 3.74 AxmCompletenessOfFullTheory: Semantic Completeness vs Negation-Completeness *)
+  (* 4. Decoupled 3.73 AxmSemanticCompletenessOfFullTheory vs 3.74 AxmNegationCompletenessOfFullTheory *)
   fun eval_semantic_vs_negation_completeness is_sound is_bivalent is_neg_complete is_sem_complete =
     let
       val neg_implies_sem =
@@ -5167,6 +5169,11 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
     Thm ([], SemanticCompleteness (TheoryFau, phi))
 
   fun prove_semantic_completeness_of_fau phi = axiom_semantic_completeness_of_fau phi
+
+  fun axiom_negation_completeness_of_fau phi =
+    Thm ([], NegationCompleteness (TheoryFau, phi))
+
+  fun prove_negation_completeness_of_fau phi = axiom_negation_completeness_of_fau phi
 
   fun axiom_semantic_vs_negation_completeness w phi =
     Thm ([], Imp (ConsistencyOf w,
@@ -8842,12 +8849,16 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso can_fam_valid andalso can_fam_nonrecord_rejected
         andalso fam_can_thm_ok andalso fam_img_thm_ok
 
-      (* 4. Semantic completeness vs negation-completeness (Tau vs Fau) *)
+      (* 4. Decoupled semantic completeness (3.73) vs negation-completeness (3.74) (Tau vs Fau) *)
       val comp_fau = eval_semantic_vs_negation_completeness true true true true
       val comp_tau = eval_semantic_vs_negation_completeness true true false false
       val sem_fau_thm = prove_semantic_completeness_of_fau True
       val sem_fau_thm_ok = case sem_fau_thm of
           Thm ([], SemanticCompleteness (TheoryFau, True)) => true
+        | _ => false
+      val neg_fau_thm = prove_negation_completeness_of_fau True
+      val neg_fau_thm_ok = case neg_fau_thm of
+          Thm ([], NegationCompleteness (TheoryFau, True)) => true
         | _ => false
       val sem_neg_thm = prove_semantic_vs_negation_completeness TheoryFau True
       val sem_neg_thm_ok = case sem_neg_thm of
@@ -8861,7 +8872,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
         andalso (not (#negation_completeness_holds comp_tau))
         andalso (#tau_incomplete_witness comp_tau)
         andalso (#arbitrary_henkin_mismatch_witness comp_fau)
-        andalso sem_fau_thm_ok andalso sem_neg_thm_ok
+        andalso sem_fau_thm_ok andalso neg_fau_thm_ok andalso sem_neg_thm_ok
 
       (* 5. Fact 8 Ctx.IFV(x, Gamma) quantifier hygiene *)
       val qh_captured =

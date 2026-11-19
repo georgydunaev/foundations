@@ -388,6 +388,18 @@ class TestContextFreshnessAndCompleteness(unittest.TestCase):
         res = eval_semantic_vs_negation_completeness()
         self.assertEqual(res["status"], "RESOLVED")
         self.assertEqual(res["item_id"], "3.74")
+        self.assertEqual(res["semantic_completeness_item_id"], "3.73")
+        self.assertEqual(
+            res["semantic_completeness_entry"], "AxmSemanticCompletenessOfFullTheory"
+        )
+        self.assertEqual(res["semantic_completeness_constructor"], "POmnisSem_prf")
+        self.assertEqual(res["negation_completeness_item_id"], "3.74")
+        self.assertEqual(
+            res["negation_completeness_entry"], "AxmNegationCompletenessOfFullTheory"
+        )
+        self.assertEqual(res["negation_completeness_constructor"], "POmnisNeg_prf")
+        self.assertEqual(res["aligned_catalog_items"], ["3.73", "3.74"])
+        self.assertTrue(res["decoupled"])
         self.assertTrue(res["tau_is_recursively_enumerable"])
         self.assertFalse(res["fau_is_recursively_enumerable"])
         self.assertFalse(res["tau_syntactic_negation_complete"])

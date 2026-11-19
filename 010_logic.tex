@@ -4846,14 +4846,14 @@ $\Gamma$ when passing from $\Tau$ to $\Fau$. None of these displays asserts that
 $\Tau$ proves its own soundness; an internal version must name its ambient theory
 and the language interpreted by $\operatorname{eval}_M$.
 
-The third and fourth displays carefully distinguish \emph{semantic completeness}
+The third and fourth displays decouple \emph{semantic completeness}
 (\emph{omniscience}) from \emph{syntactic negation-completeness} for the full
-theory $\Fau$:
+theory $\Fau$ into two separate entries with distinct formulas, constructors,
+and specification comments:
 \begin{enumerate}
   \item \textbf{Semantic Completeness / Omniscience} (\texttt{AxmSemanticCompletenessOfFullTheory},
-  retained under the legacy alias \texttt{AxmCompletenessOfFullTheory}, Entry~3.73,
-  kernel constructor \texttt{POmnis\_prf}, defined in \texttt{program/types/foundations.ML}
-  by \texttt{completeness\_of\_F\_axm\_entry\_fm}):
+  Entry~3.73, kernel constructor \texttt{POmnisSem\_prf} / \texttt{POmnis\_prf}, defined in
+  \texttt{program/types/foundations.ML} by \texttt{semantic\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
   \forall (\phi:\Fm),\ \operatorname{eval}_M(\phi) \implies (\Fau, [] \vdash \phi).
   \]
@@ -4861,8 +4861,8 @@ theory $\Fau$:
   $\operatorname{eval}_M$ (\texttt{EEval}) to derivability in $\Fau$ with empty
   undischarged context $[]$.
   \item \textbf{Syntactic Negation-Completeness} (\texttt{AxmNegationCompletenessOfFullTheory},
-  Entry~3.74, defined in \texttt{program/types/foundations.ML} by
-  \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
+  Entry~3.74, kernel constructor \texttt{POmnisNeg\_prf}, defined in
+  \texttt{program/types/foundations.ML} by \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
   \forall (\phi:\Fm),\ \neg(\Fau, [] \vdash \neg\phi) \implies (\Fau, [] \vdash \phi).
   \]
@@ -4872,21 +4872,21 @@ theory $\Fau$:
   $(\Fau, [] \vdash \phi) \lor (\Fau, [] \vdash \neg\phi)$ of Definition~complete theory below).
 \end{enumerate}
 In a fixed classical interpretation $M$, soundness of $\Fau$
-($(\Fau, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$) together with
-syntactic negation-completeness implies semantic completeness (omniscience): if
+($(\Fau, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$, Entry~3.72 \texttt{AxmSoundnessOfFullTheory}) together with
+syntactic negation-completeness (Entry~3.74) implies semantic completeness (omniscience, Entry~3.73): if
 $\operatorname{eval}_M(\phi)$ holds, soundness rules out a derivation
 $(\Fau, [] \vdash \neg\phi)$, so syntactic negation-completeness supplies a
-derivation $(\Fau, [] \vdash \phi)$. Conversely, semantic completeness together
+derivation $(\Fau, [] \vdash \phi)$. Conversely, semantic completeness (Entry~3.73) together
 with classical semantic bivalence ($\operatorname{eval}_M(\phi) \lor \operatorname{eval}_M(\neg\phi)$)
-implies syntactic negation-completeness. Separating Entry~3.73
-(\texttt{AxmSemanticCompletenessOfFullTheory} / \texttt{AxmCompletenessOfFullTheory},
-\texttt{POmnis\_prf}) from Entry~3.74 (\texttt{AxmNegationCompletenessOfFullTheory})
-keeps these two notions distinct and records the exact hypotheses linking them.
+implies syntactic negation-completeness (Entry~3.74). Decoupling Entry~3.73
+(\texttt{AxmSemanticCompletenessOfFullTheory}, \texttt{POmnisSem\_prf}) from Entry~3.74
+(\texttt{AxmNegationCompletenessOfFullTheory}, \texttt{POmnisNeg\_prf})
+keeps these two notions strictly separate and records the exact hypotheses linking them.
 
 % Companion evidence: generated/metatheory.html and generated/theory_db.json,
-% AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory,
-% AxmSemanticCompletenessOfFullTheory (alias AxmCompletenessOfFullTheory, POmnis_prf),
-% AxmNegationCompletenessOfFullTheory, AxmBaseSubtheoryOfFull;
+% AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory (3.72),
+% AxmSemanticCompletenessOfFullTheory (3.73, POmnisSem_prf),
+% AxmNegationCompletenessOfFullTheory (3.74, POmnisNeg_prf), AxmBaseSubtheoryOfFull (3.75);
 % generated/symbols/theory-wau.html and theory-eau.html.
 % Local source-level discrepancies are tracked in tickets/obelisk_logic_*.md.
 
@@ -6001,23 +6001,21 @@ Let $\Wau$ be a theory, $\Gamma$ a context of formulas, $\phi(x)$ and $\psi$ for
 \end{enumerate}
 \end{proposition}
 
-\subsection{Semantic Adequacy in a Model vs.\ Syntactic Negation-Completeness (\texttt{3.74})}
+\subsection{Decoupled Semantic Adequacy (\texttt{3.73}) vs.\ Syntactic Negation-Completeness (\texttt{3.74})}
 \label{subsec:semantic_vs_negation_completeness}
 
-Catalog Item \texttt{3.74} (\texttt{AxmCompletenessOfFullTheory}) states the truth-to-provability implication for the full foundational theory $\Fau$:
-\[
-\forall \phi,\ \mathrm{eval}(\phi) \implies (\Fau, [] \vdash \phi).
-\]
-To avoid conflating distinct notions of completeness across the theory hierarchy $\Tau \subset \Fau$, we distinguish two properties of a theory $\Wau$:
+To avoid conflating distinct notions of completeness across the theory hierarchy $\Tau \subset \Fau$, the catalog decouples two distinct properties of the full foundational theory $\Fau$ (and, more generally, of any theory $\Wau$):
 \begin{enumerate}
-  \item \textbf{Semantic Adequacy (Truth-to-Provability in the Canonical Model $\mathcal{M}_{\Wau}$)}:
+  \item \textbf{Semantic Adequacy / Omniscience in the Canonical Model $\mathcal{M}_{\Wau}$ (Catalog Item \texttt{3.73}, \texttt{AxmSemanticCompletenessOfFullTheory}, constructor \texttt{POmnisSem\_prf})}:
   \[
-  \mathrm{SemComplete}(\Wau, \mathcal{M}_{\Wau}) \iff \forall \phi,\ \big(\mathrm{eval}_{\mathcal{M}_{\Wau}}(\phi) \implies (\Wau, [] \vdash \phi)\big).
+  \mathrm{SemComplete}(\Wau, \mathcal{M}_{\Wau}) \iff \forall (\phi:\Fm),\ \big(\mathrm{eval}_{\mathcal{M}_{\Wau}}(\phi) \implies (\Wau, [] \vdash \phi)\big),
   \]
-  \item \textbf{Syntactic Negation-Completeness (Maximal Consistency on Closed Sentences)}:
+  which for $\Wau = \Fau$ states the truth-to-provability implication $\forall (\phi:\Fm),\ \mathrm{eval}_M(\phi) \implies (\Fau, [] \vdash \phi)$.
+  \item \textbf{Syntactic Negation-Completeness on Closed Sentences (Catalog Item \texttt{3.74}, \texttt{AxmNegationCompletenessOfFullTheory}, constructor \texttt{POmnisNeg\_prf})}:
   \[
-  \mathrm{NegComplete}(\Wau) \iff \forall \phi\text{ closed},\ \big((\Wau, [] \vdash \phi) \lor (\Wau, [] \vdash \neg \phi)\big).
+  \mathrm{NegComplete}(\Wau) \iff \forall (\phi:\Fm)\text{ closed},\ \big(\neg(\Wau, [] \vdash \neg \phi) \implies (\Wau, [] \vdash \phi)\big),
   \]
+  which is classically equivalent to the disjunctive form $(\Wau, [] \vdash \phi) \lor (\Wau, [] \vdash \neg \phi)$.
 \end{enumerate}
 
 \begin{proposition}[Stratification of Completeness between $\Tau$ and $\Fau$]

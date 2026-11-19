@@ -1068,15 +1068,21 @@ def eval_ctx_ifv_quantifier_hygiene() -> dict[str, Any]:
 
 
 def eval_semantic_vs_negation_completeness() -> dict[str, Any]:
-    """Evaluates Item 3.74 (obelisk_logic_completeness.md):
-    Distinguishes semantic completeness in a model from syntactic negation-completeness
-    across the recursively enumerable base theory Tau versus the non-r.e. Henkin completion Fau.
+    """Evaluates decoupled Items 3.73 and 3.74 (obelisk_logic_completeness.md):
+    Decouples semantic completeness (omniscience) in a model (Item 3.73,
+    AxmSemanticCompletenessOfFullTheory, POmnisSem_prf) from syntactic
+    negation-completeness (Item 3.74, AxmNegationCompletenessOfFullTheory,
+    POmnisNeg_prf) across the recursively enumerable base theory Tau versus
+    the non-r.e. Henkin completion Fau.
 
-    Definitions:
-    - Semantic Adequacy (Truth-to-Provability in the Canonical Model):
-      forall phi. eval_M(phi) implies (W, [] |- phi)
-    - Syntactic Negation-Completeness (Maximal Consistency):
-      forall closed phi. (W, [] |- phi) or (W, [] |- ~phi)
+    Decoupled Catalog Entries:
+    - Entry 3.73 (AxmSemanticCompletenessOfFullTheory, POmnisSem_prf):
+      Semantic Adequacy / Omniscience (Truth-to-Provability in Model M):
+      forall (phi : Fm). eval_M(phi) implies (W, [] |- phi)
+    - Entry 3.74 (AxmNegationCompletenessOfFullTheory, POmnisNeg_prf):
+      Syntactic Negation-Completeness (Maximal Consistency):
+      forall closed (phi : Fm). ~(W, [] |- ~phi) implies (W, [] |- phi),
+      classically equivalent to (W, [] |- phi) or (W, [] |- ~phi).
 
     Key Metatheoretic Facts:
     1. By Godel's first incompleteness theorem, the consistent recursively enumerable
@@ -1085,8 +1091,8 @@ def eval_semantic_vs_negation_completeness() -> dict[str, Any]:
        cannot satisfy unrestricted truth-to-provability for the standard model.
     2. By Lindenbaum-Henkin completion in the ambient metatheory, the full foundational
        theory Fau (a non-recursively-enumerable maximal consistent Henkin extension of Tau)
-       satisfies both syntactic negation-completeness on closed sentences and semantic
-       adequacy with respect to its canonical term/Henkin model M_Fau:
+       satisfies both syntactic negation-completeness (3.74) on closed sentences and semantic
+       adequacy (3.73) with respect to its canonical term/Henkin model M_Fau:
        eval_{M_Fau}(phi) iff (Fau, [] |- phi).
     """
     theories = get_standard_theories()
@@ -1140,6 +1146,14 @@ def eval_semantic_vs_negation_completeness() -> dict[str, Any]:
     return {
         "status": "RESOLVED",
         "item_id": "3.74",
+        "semantic_completeness_item_id": "3.73",
+        "semantic_completeness_entry": "AxmSemanticCompletenessOfFullTheory",
+        "semantic_completeness_constructor": "POmnisSem_prf",
+        "negation_completeness_item_id": "3.74",
+        "negation_completeness_entry": "AxmNegationCompletenessOfFullTheory",
+        "negation_completeness_constructor": "POmnisNeg_prf",
+        "aligned_catalog_items": ["3.73", "3.74"],
+        "decoupled": True,
         "tau_is_recursively_enumerable": True,
         "fau_is_recursively_enumerable": False,
         "tau_syntactic_negation_complete": tau_negation_complete,
