@@ -1736,4 +1736,98 @@ etc ...
 ...(many standard definitions are ommited here)...
 \fi
 
+\subsection{Grothendieck--Tarski Universes and the Canonical Cumulative Hierarchy $U = V_{U \cap \On}$}
+
+We conclude this chapter by recording the complete formalization and mechanical verification in \texttt{MKTD1-system} (\texttt{program/types/universe\_definitions.ML}, Section~11, catalog entries \texttt{3.79}--\texttt{3.90}) of the structural characterization of Grothendieck--Tarski universes within the von Neumann cumulative hierarchy:
+\begin{quote}
+\emph{If $U$ is a universe, then $\kappa = U \cap \On$ is an ordinal and $U = V_\kappa = V_{U \cap \On}$.}
+\end{quote}
+
+Throughout this subsection, a \emph{universe} is a class $U$ (or nonempty set $U$ when working inside $\V$) that is transitive ($\Tr(U)$, i.e., $\forall x \in U,\ x \subseteq U$) and closed under:
+\begin{enumerate}
+\item[(i)] unordered pairing: $\forall x \in U,\ \forall y \in U,\ \{x, y\} \in U$;
+\item[(ii)] power set: $\forall x \in U,\ \power(x) \in U$; and
+\item[(iii)] indexed unions (\texttt{DefIndexedUnionClosed}, Entry \texttt{3.80}): for every index set $I \in U$ and every family $F$ sending elements of $I$ into $U$, $\bigcup\operatorname{Im}(F, I) \in U$.
+\end{enumerate}
+Whether $\omega \in U$ is required plays no role in the theorem below; only Regularity (Foundation) and Replacement (via indexed union closure and the canonical von Neumann stage and rank graphs) are used.
+
+\begin{definition}[Nonzero limit ordinal and indexed union closure]
+In \texttt{MKTD1-system} (Entries \texttt{3.79} and \texttt{3.80}), a \emph{nonzero limit ordinal} satisfies
+\[
+\operatorname{LimitOrd}(\kappa) \iffdef \Ord(\kappa) \land (\emptyset \in \kappa) \land (\forall \alpha \in \kappa,\ \operatorname{Succ}(\alpha) \in \kappa),
+\]
+and \emph{indexed union closure} on $U$ using Dunaev tagged pairs $(i, y)_D$ is defined by
+\[
+\operatorname{IndexedUnionClosed}(U) \iffdef \forall I,\ \forall F,\ \bigl((I \in U \land \forall i \in I,\ \forall y,\ ((i, y)_D \in F \implies y \in U)) \implies \bigcup\operatorname{Im}(F, I) \in U\bigr).
+\]
+\end{definition}
+
+\begin{definition}[Von Neumann hierarchy stages and set rank]
+In \texttt{MKTD1-system} (Entries \texttt{3.81}--\texttt{3.84}), a relation $V$ satisfies the \emph{von Neumann stage laws} $\operatorname{VStageLaws}(V)$ if:
+\begin{enumerate}
+\item $(\emptyset, \emptyset)_D \in V$ ($V_0 = \emptyset$);
+\item for all $\alpha, W$, if $(\alpha, W)_D \in V$ then $(\operatorname{Succ}(\alpha), \power(W))_D \in V$ ($V_{\alpha+1} = \power(V_\alpha)$);
+\item for every limit ordinal $\lambda$ and class $W$, if $(\lambda, W)_D \in V$ then $W = \bigcup\operatorname{Im}(V, \lambda)$ ($V_\lambda = \bigcup_{\beta \in \lambda} V_\beta$); and
+\item for every ordinal $\kappa$ and $x, W$, if $(\kappa, W)_D \in V$ and $x \in W$, then there exist $\alpha \in \kappa$ and $W_\alpha$ such that $(\alpha, W_\alpha)_D \in V$ and $x \in W_\alpha$.
+\end{enumerate}
+The \emph{canonical von Neumann stage graph} (\texttt{DefVonNeumannStageGraph}, Entry \texttt{3.82}) is the intersection of all relations satisfying $\operatorname{VStageLaws}(V)$:
+\[
+\operatorname{VStageGraph} \eqdef \{z \mid \forall V,\ (\operatorname{VStageLaws}(V) \implies z \in V)\},
+\qquad
+V_\alpha \eqdef \bigcup\operatorname{Im}(\operatorname{VStageGraph}, \{\alpha\}).
+\]
+Similarly, a relation $R$ satisfies the \emph{set rank laws} $\operatorname{SetRankLaws}(R)$ (\texttt{DefSetRankLaws}, Entry \texttt{3.83}) if for every $x$ and $\rho$ with $(x, \rho)_D \in R$:
+\begin{enumerate}
+\item $\rho \in \On$, and for every $y \in x$ and $\sigma$ with $(y, \sigma)_D \in R$, $\operatorname{Succ}(\sigma) \subseteq \rho$;
+\item every $\alpha \in \rho$ belongs to $\operatorname{Succ}(\sigma)$ for some $y \in x$ with $(y, \sigma)_D \in R$ ($\operatorname{rank}(x) = \bigcup_{y \in x} \operatorname{Succ}(\operatorname{rank}(y))$); and
+\item there exists $W$ such that $(\operatorname{Succ}(\rho), W)_D \in \operatorname{VStageGraph}$ and $x \in W$ ($x \in V_{\operatorname{rank}(x)+1}$).
+\end{enumerate}
+The \emph{canonical set rank graph} (\texttt{DefSetRankGraph}, Entry \texttt{3.84}) is
+\[
+\operatorname{SetRankGraph} \eqdef \{z \mid \forall R,\ (\operatorname{SetRankLaws}(R) \implies z \in R)\}.
+\]
+\end{definition}
+
+\begin{theorem}[Characterization of Universes as $U = V_{U \cap \On}$]
+Let $U$ be a universe and set $\kappa = U \cap \On$. Then $\Ord(\kappa)$ holds, and (\texttt{ThmUniverseEqVonNeumannStageInterOn}, Entry \texttt{3.90})
+\[
+U = V_\kappa = V_{U \cap \On}.
+\labeltagd{thm}{universeEqVKappa}
+\]
+\end{theorem}
+\begin{proof}
+The proof is decomposed into four steps, each mechanically verified by the \texttt{MKTD1-system} kernel in \texttt{program/types/universe\_definitions.ML} (45 kernel-checked theorems in total):
+
+\paragraph{Step 0: Trivial case, $\kappa = U \cap \On$ is an ordinal, and $\emptyset \in U$.}
+If $U = \emptyset$, then $\kappa = \emptyset \cap \On = \emptyset$ (\texttt{step0\_empty\_universe\_inter\_on\_eq\_emptyset\_thm}) and $V_0 = \emptyset = U$ (\texttt{step0\_trivial\_empty\_universe\_eq\_v0\_thm}). Assume $U \neq \emptyset$.
+If $\alpha \in \kappa = U \cap \On$ and $\beta \in \alpha$, then $\alpha \in U$ and $\alpha \in \On$. Since $U$ is transitive, $\beta \in U$; since $\On$ is transitive (\texttt{on\_is\_transitive\_thm}), $\beta \in \On$. Thus $\beta \in U \cap \On = \kappa$, so $\kappa$ is transitive (\texttt{step0\_universe\_inter\_on\_transitive\_thm}) and every element of $\kappa$ is transitive (\texttt{step0\_universe\_inter\_on\_elem\_tr\_thm}), giving $\Ord(\kappa)$ (\texttt{ThmUniverseInterOnIsOrdinal}, Entry \texttt{3.85}). Moreover, by Regularity applied to $U \neq \emptyset$, there exists $x \in U$ with $x \cap U = \emptyset$; since $x \subseteq U$ by transitivity of $U$, $x = \emptyset$, hence $\emptyset \in U$ (\texttt{universe\_contains\_emptyset\_thm}) and $\emptyset \in U \cap \On = \kappa$ (\texttt{step0\_emptyset\_in\_universe\_inter\_on\_thm}).
+
+\paragraph{Step 1: Closure facts and $\operatorname{LimitOrd}(\kappa)$.}
+\begin{enumerate}
+\item[(a)] \emph{If $x \in U$, then $\bigcup x \in U$} (\texttt{ThmUniverseUnionClosedFromIndexedUnion}, Entry \texttt{3.86}). Take $I = x \in U$ and the diagonal graph $F = \{(i, i)_D \mid i \in x\}$. For every $i \in x$ and $y$ with $(i, y)_D \in F$, Dunaev pair injectivity gives $y = i \in x \subseteq U$ by transitivity of $U$. Moreover, $\operatorname{Im}(F, x) = x$, so indexed union closure yields $\bigcup x = \bigcup\operatorname{Im}(F, x) \in U$.
+\item[(b)] \emph{If $\alpha \in U \cap \On$, then $\operatorname{Succ}(\alpha) = \alpha \cup \{\alpha\} \in U$} (\texttt{step1b\_succ\_in\_universe\_thm} and \texttt{step1b\_succ\_in\_universe\_inter\_on\_thm}). By pairing closure, $\{\alpha\} = \{\alpha, \alpha\} \in U$ and $\{\alpha, \{\alpha\}\} \in U$; by Step~1(a), $\operatorname{Succ}(\alpha) = \bigcup\{\alpha, \{\alpha\}\} \in U$. Since $\Ord(\alpha)$ implies $\Ord(\operatorname{Succ}(\alpha))$, we also have $\operatorname{Succ}(\alpha) \in U \cap \On = \kappa$.
+\item[(c)] \emph{$\kappa = U \cap \On$ is a nonzero limit ordinal} (\texttt{ThmUniverseInterOnIsLimitOrdinal}, Entry \texttt{3.87}). Combine $\Ord(\kappa)$, $\emptyset \in \kappa$, and closure of $\kappa$ under $\operatorname{Succ}$. In particular, $\kappa$ cannot be a successor ordinal $\operatorname{Succ}(\alpha)$ for any $\alpha \in U$, for otherwise Step~1(b) would give $\kappa = \operatorname{Succ}(\alpha) \in \kappa$, contradicting irreflexivity $\kappa \notin \kappa$ (\texttt{step1c\_kappa\_not\_succ\_in\_u\_thm}).
+\end{enumerate}
+
+\paragraph{Step 2: $V_\kappa \subseteq U$ (\texttt{ThmVonNeumannStageSubUniverse}, Entry \texttt{3.88}).}
+By transfinite induction along $\alpha \in \kappa$:
+\begin{itemize}
+\item Base case ($\alpha = 0$): $V_0 = \emptyset \in U$ by Step~0 (\texttt{step2\_base\_v0\_in\_u\_thm}).
+\item Successor step: if $V_\alpha \in U$, then $V_{\operatorname{Succ}(\alpha)} = \power(V_\alpha) \in U$ by power-set closure (\texttt{step2\_succ\_v\_alpha\_in\_u\_thm}).
+\item Limit step: if $\lambda \in \kappa$ is a limit ordinal and $V_\beta \in U$ for all $\beta \in \lambda$, then $\lambda \in U$ and indexed union closure applied to $V \upharpoonright \lambda$ yields $V_\lambda = \bigcup\operatorname{Im}(V, \lambda) \in U$ (\texttt{step2\_limit\_v\_lambda\_in\_u\_thm}).
+\end{itemize}
+Hence $V_\alpha \in U$ for every $\alpha \in \kappa$. Since $U$ is transitive, $V_\alpha \in U$ implies $V_\alpha \subseteq U$ (\texttt{step2\_v\_alpha\_in\_u\_imp\_sub\_u\_thm}), and therefore $V_\kappa = \bigcup_{\alpha \in \kappa} V_\alpha \subseteq U$ (\texttt{step2\_v\_kappa_sub\_u\_thm}).
+
+\paragraph{Step 3: $U \subseteq V_\kappa$ (\texttt{ThmUniverseSubVonNeumannStage}, Entry \texttt{3.89}).}
+By $\in$-induction on $x \in U$: if $x \in U$ and $\operatorname{rank}(y) \in U \cap \On$ for every $y \in x$, then $\operatorname{Succ}(\operatorname{rank}(y)) \in U$ for every $y \in x$ by Step~1(b), so indexed union closure over $I = x \in U$ gives
+\[
+\operatorname{rank}(x) = \bigcup_{y \in x} \operatorname{Succ}(\operatorname{rank}(y)) \in U \cap \On = \kappa
+\qquad (\texttt{step3\_rank\_ind\_step\_in\_u\_thm}).
+\]
+Since $\kappa$ is a limit ordinal by Step~1(c), $\operatorname{rank}(x) \in \kappa$ implies $\operatorname{Succ}(\operatorname{rank}(x)) \in \kappa$ (\texttt{step3\_rank\_in\_kappa\_imp\_succ\_in\_kappa\_thm}). Because $x \in V_{\operatorname{Succ}(\operatorname{rank}(x))} \subseteq V_\kappa$, we obtain $x \in V_\kappa$ for every $x \in U$, hence $U \subseteq V_\kappa$ (\texttt{step3\_u\_sub\_v\_kappa\_thm}).
+
+\paragraph{Conclusion.}
+Combining $V_\kappa \subseteq U$ (Step~2) and $U \subseteq V_\kappa$ (Step~3) by class extensionality gives $U = V_\kappa = V_{U \cap \On}$ (\texttt{universe\_eq\_v\_kappa\_conclusion\_thm} and \texttt{universe\_eq\_canonical\_v\_inter\_on\_thm}).
+\end{proof}
+
 \input{END.tex}
