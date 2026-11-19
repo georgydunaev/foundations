@@ -1066,6 +1066,17 @@ class TestMKTDML(unittest.TestCase):
         ):
             self.assertIn(sym, content)
 
+    def test_universe_equals_v_kappa_and_kleene_star_in_sml(self):
+        """Verify U = V_{U \\cap On} and Dunaev Kleene star disjointness in SML."""
+        content = MKTD_ML.read_text(encoding="utf-8")
+        for sym in (
+            "eval_dunaev_kleene_star_disjointness",
+            "eval_universe_equals_v_kappa",
+            "axiom_universe_equals_v_inter_on",
+            "prove_universe_equals_v_inter_on",
+        ):
+            self.assertIn(sym, content)
+
     def test_strict_cakeml_polyml_ascii_purity(self):
         """User Directive #16: Zero raw non-ASCII bytes in SML code for CakeML/PolyML portability."""
         raw_bytes = MKTD_ML.read_bytes()

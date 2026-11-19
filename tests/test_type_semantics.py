@@ -2733,6 +2733,32 @@ class TestTypeSemantics(unittest.TestCase):
         master = proves_bicategories_interchange_law_and_benabou_coherence()
         self.assertEqual(master["status"], "RESOLVED")
 
+    def test_universe_equals_v_kappa_and_dunaev_kleene_star_disjointness(self):
+        """Test U = V_{U cap On} (Entries 3.79-3.90) and Dunaev Kleene star X* disjointness + decoupled equality."""
+        from foundations.type_semantics import (
+            set_rank_hereditary,
+            eval_universe_equals_v_kappa,
+            eval_dunaev_kleene_star_and_decoupled_equality,
+            proves_foundations_classes_and_families,
+        )
+
+        self.assertEqual(set_rank_hereditary(frozenset()), 0)
+        self.assertEqual(set_rank_hereditary(frozenset([frozenset()])), 1)
+
+        res_u = eval_universe_equals_v_kappa(max_stage=3)
+        self.assertEqual(res_u["status"], "RESOLVED")
+        self.assertTrue(res_u["u_equals_v_u_inter_on"])
+        self.assertTrue(res_u["ranks_strictly_below_kappa"])
+
+        res_k = eval_dunaev_kleene_star_and_decoupled_equality()
+        self.assertEqual(res_k["status"], "RESOLVED")
+        self.assertTrue(res_k["dunaev_tuple_levels_pairwise_disjoint"])
+        self.assertTrue(res_k["kleene_star_unique_decoding_verified"])
+
+        master = proves_foundations_classes_and_families()
+        self.assertEqual(master["ticket_universe_equals_v_kappa"]["status"], "RESOLVED")
+        self.assertEqual(master["ticket_dunaev_kleene_star_and_decoupled_equality"]["status"], "RESOLVED")
+
 
 if __name__ == "__main__":
     unittest.main()

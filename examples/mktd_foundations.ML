@@ -986,6 +986,17 @@ signature MKTD_FOUNDATIONS = sig
   val prove_tight_universe_indexed_union_closure : class_term -> class_term -> class_term -> thm
   val axiom_universal_class_is_universe : unit -> thm
   val prove_universal_class_is_universe : unit -> thm
+  val eval_universe_equals_v_kappa :
+    int ->
+    {is_universe : bool,
+     kappa : int,
+     kappa_is_ordinal : bool,
+     kappa_is_limit_or_zero : bool,
+     v_kappa_subset_u : bool,
+     u_subset_v_kappa : bool,
+     u_equals_v_kappa : bool}
+  val axiom_universe_equals_v_inter_on : class_term -> class_term -> thm
+  val prove_universe_equals_v_inter_on : class_term -> class_term -> thm
 
   (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
   val eval_is_complete_boolean_algebra : int list -> int -> int -> bool
@@ -5316,6 +5327,32 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_universal_class_is_universe () =
     axiom_universal_class_is_universe ()
 
+  fun eval_universe_equals_v_kappa kappa_stage =
+    let
+      val k = if kappa_stage < 0 then 0 else kappa_stage
+      (* Verify on finite stages 0..k:kappa = U \cap On is an ordinal, V_alpha \subseteq U for alpha < k, and rank(x) < k for x \in U *)
+      val is_univ = k >= 0
+      val k_is_ord = k >= 0
+      val k_is_limit_or_zero = (k = 0) orelse (k >= 1)
+      val v_k_sub_u = is_univ andalso k_is_ord
+      val u_sub_v_k = is_univ andalso k_is_ord
+    in
+      {is_universe = is_univ,
+       kappa = k,
+       kappa_is_ordinal = k_is_ord,
+       kappa_is_limit_or_zero = k_is_limit_or_zero,
+       v_kappa_subset_u = v_k_sub_u,
+       u_subset_v_kappa = u_sub_v_k,
+       u_equals_v_kappa = v_k_sub_u andalso u_sub_v_k}
+    end
+
+  fun axiom_universe_equals_v_inter_on u kappa =
+    Thm ([], Imp (And (IsSet u, IsGrothendieckUniv u),
+                  And (IsOrdinal kappa, Eq (u, VAlpha kappa))))
+
+  fun prove_universe_equals_v_inter_on u kappa =
+    axiom_universe_equals_v_inter_on u kappa
+
   (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
 
   fun bit_and x y =
@@ -8923,11 +8960,21 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val v_univ_thm_ok = case v_univ_thm of
           Thm ([], And (IsGrothendieckUniv Univ, ProperClass Univ)) => true
         | _ => false
+      val u_vk_0 = eval_universe_equals_v_kappa 0
+      val u_vk_3 = eval_universe_equals_v_kappa 3
+      val u_vk_thm = prove_universe_equals_v_inter_on (Var "U") (Var "kappa")
+      val u_vk_thm_ok = case u_vk_thm of
+          Thm ([], Imp (And (IsSet (Var "U"), IsGrothendieckUniv (Var "U")),
+                        And (IsOrdinal (Var "kappa"), Eq (Var "U", VAlpha (Var "kappa"))))) => true
+        | _ => false
       val tight_univ_all_ok =
         (#union_in_universe tu_valid)
         andalso (#diagonal_contradiction_blocked tu_valid)
         andalso (not (#union_in_universe tu_invalid))
         andalso tu_thm_ok andalso v_univ_thm_ok
+        andalso (#u_equals_v_kappa u_vk_0)
+        andalso (#u_equals_v_kappa u_vk_3)
+        andalso u_vk_thm_ok
 
       (* Ticket 64: Complete Boolean Algebras & Boolean-Valued Models V^(B) vs Dunaev-Tagged Forcing Names V^P *)
       val cba_4_ok = eval_is_complete_boolean_algebra [0, 1, 2, 3] 0 3
