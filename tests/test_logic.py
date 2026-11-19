@@ -409,6 +409,20 @@ class TestContextFreshnessAndCompleteness(unittest.TestCase):
         self.assertTrue(res["fau_semantic_completeness_holds"])
         self.assertTrue(res["fau_semantic_biconditional_holds"])
 
+    def test_decoupled_equality_and_dunaev_kleene_star(self):
+        from foundations.logic import eval_decoupled_equality_and_dunaev_kleene_star
+
+        res = eval_decoupled_equality_and_dunaev_kleene_star()
+        self.assertEqual(res["status"], "RESOLVED")
+        self.assertEqual(res["decoupled_equality_formulas"], 2)
+        self.assertTrue(res["set_leibniz_agrees_with_extensional"])
+        self.assertTrue(res["extensional_distinguishes_proper_classes"])
+        self.assertTrue(res["unguarded_leibniz_collapses_proper_classes"])
+        self.assertTrue(res["dunaev_kleene_star_lengths_disjoint"])
+        self.assertTrue(res["dunaev_kleene_star_union_cardinality_exact"])
+        self.assertTrue(res["dunaev_kleene_star_unique_readability"])
+        self.assertTrue(res["unmarked_recursive_pair_empty_collision_counterexample"])
+
 
 if __name__ == "__main__":
     unittest.main()

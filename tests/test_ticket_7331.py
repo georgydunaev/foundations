@@ -170,6 +170,16 @@ class TestTicket7331(unittest.TestCase):
         self.assertIn("sets are ``terminal''", self.text)
         self.assertIn("Classes are properties of sets.", self.text)
 
+    def test_decoupled_equality_and_kleene_star_present(self):
+        """`060_axioms.tex` decouples extensional class equality from set-restricted
+        Leibniz membership-profile equality and defines the Kleene star of Dunaev tuples."""
+        self.assertIn("\\begin{definition}[extensional class equality]", self.text)
+        self.assertIn("(A=B) \\iffdef (\\forall Y\\mydot Y\\in A \\iff Y\\in B)", self.text)
+        self.assertIn("\\begin{theorem}[set-restricted Leibniz membership-profile equality]", self.text)
+        self.assertIn("\\forall A\\in\\V,\\ \\forall B\\in\\V,\\ \\big((A=B) \\iff (\\forall Y\\mydot A\\in Y \\iff B\\in Y)\\big)", self.text)
+        self.assertIn("\\forall (A, B)_D \\in \\V^*,\\ \\big((A = B) \\iff (\\forall Y\\mydot A \\in Y \\iff B \\in Y)\\big)", self.text)
+        self.assertIn("\\label{thm:dunaev_kleene_star_disjointness}", self.text)
+
     # --- cosmetic surface ----------------------------------------------------
 
     def test_no_trailing_whitespace(self):

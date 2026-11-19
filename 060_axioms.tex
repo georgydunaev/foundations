@@ -72,24 +72,185 @@ Let $A$ and $B$ be terms, and $x$ a variable free in neither $A$ nor $B$, then
 \]
 \end{definition}
 
-\paragraph{An equality experiment.}
-The next display records an attempt to define equality by membership
-profiles in a language without primitive equality. Its scope must be kept
-separate from the extensional identity used below: two proper classes have
-no containing classes, so the displayed membership-profile condition alone
-does not distinguish them. A language using this experiment needs an
-additional account of identity before it can support ordinary class equality.
-\begin{constructor}[equality]%\\
+\paragraph{Decoupling extensional class equality from set-restricted Leibniz membership-profile equality.}
+In a first-order language without primitive equality, one must distinguish two
+different formulas depending on which side of the membership sign $\in$ the
+quantified variable $Y$ occupies:
+\begin{enumerate}
+  \item \textbf{Unrestricted Extensional Class Equality ($Y$ on the left of $\in$):}
+  For arbitrary classes $A$ and $B$ (whether sets or proper classes), equality is
+  defined extensionally by comparing their elements $Y \in A$ and $Y \in B$.
+  \item \textbf{Set-Restricted Leibniz Membership-Profile Equality ($Y$ on the right of $\in$):}
+  Comparing which classes $Y$ contain $A$ and $B$ as members ($A \in Y \iff B \in Y$)
+  characterizes equality \emph{only when $A$ and $B$ are restricted to sets}
+  ($A \in \V$ and $B \in \V$). Because proper classes are never members of any
+  class ($\forall Y,\ P \notin Y$ whenever $P \notin \V$), leaving $A$ and $B$
+  unrestricted in $\forall Y,\ (A \in Y \iff B \in Y)$ would vacuously equate all
+  proper classes ($\V = \On = R$). Decoupling the unrestricted extensional
+  definition from the set-restricted membership-profile equivalence eliminates
+  this conflation.
+\end{enumerate}
+\begin{constructor}[equality]
 If $A$ and $B$ are terms, then $(A=B)$ is a formula.
 \end{constructor}
-\begin{definition}[equality]
-This proposed definition concerns first-order logic without primitive equality.\\
-If $Y$ is free in neither $A$ nor $B$, then:
+\begin{definition}[extensional class equality]
+In first-order class logic without primitive equality, if $Y$ is free in neither
+$A$ nor $B$, then for arbitrary classes $A$ and $B$:
 \[
-(A=B) \iffdef (\forall Y\mydot A\in Y \iff B\in Y)
+(A=B) \iffdef (\forall Y\mydot Y\in A \iff Y\in B)
 \labeltagd{def}{equality}
 \]
 \end{definition}
+\begin{theorem}[set-restricted Leibniz membership-profile equality]
+If $Y$ is free in neither $A$ nor $B$, then for all sets $A \in \V$ and $B \in \V$:
+\[
+\forall A\in\V,\ \forall B\in\V,\ \big((A=B) \iff (\forall Y\mydot A\in Y \iff B\in Y)\big)
+\labeltagd{thm}{set_leibniz_equality}
+\]
+\end{theorem}
+\begin{proof}
+Fix sets $A, B \in \V$. If $A = B$, then for every class $Y$, $A \in Y \iff B \in Y$
+holds by left-membership congruence (\texttt{AxmLeftInSound}). Conversely, assume
+$\forall Y,\ (A \in Y \iff B \in Y)$. Because $A \in \V$ is a set, the singleton
+class $\{A\} = \cc{x}{x = A}$ contains $A$ as a member ($A \in \{A\}$).
+Instantiating the hypothesis at $Y := \{A\}$ yields $B \in \{A\}$, whence $A = B$.
+(For proper classes $P, Q \notin \V$, $\{P\} = \emptyclass$ and $P \notin \{P\}$,
+so the restriction $A, B \in \V$ is indispensable.)
+\end{proof}
+
+\subsection{Kleene star of Dunaev tuples and tuple pattern-matching notation}
+\label{subsec:kleene_star_dunaev_tuples}
+To write multi-variable set restrictions such as $\forall A \in \V,\ \forall B \in \V$
+concisely as $\forall (A,B)_D \in \V^*$, we define the Kleene star $X^*$ as the
+plain union of Dunaev's marker-based $n$-tuples over all natural numbers
+$n \in \omega$, and prove that Dunaev's marker-tuples of distinct lengths are
+pairwise disjoint without requiring any additional outer length tag.
+
+\begin{definition}[Dunaev marker-tuples, Cartesian powers, and Kleene star]
+\label{def:dunaev_kleene_star}
+Let $0 \eqdef \emptyclass$, $1 \eqdef \{0\}$, $2 \eqdef \{0,1\}$, and let
+$\omega$ be the class of von Neumann natural numbers. For any set $a \in \V$,
+write $S_3(a) \eqdef \{\{\{a\}\}\}$.
+\begin{enumerate}
+  \item \textbf{Coordinate marker operator (\texttt{DefClassLists}, 3.51):}
+  For any class $A$ and positive natural number $i \in \omega \setminus \{0\}$,
+  define
+  \[
+  \operatorname{mark}(A, i) \eqdef \{\{0, i\}\} \cup \cc{\{S_3(a), i\}}{a \in A}.
+  \]
+  \item \textbf{Dunaev $n$-tuple and projections (\texttt{DefDunaevOrderedPair}, 3.76--3.78):}
+  For any $n \in \omega$ and classes $A_1, \dots, A_n$, the Dunaev $n$-tuple is
+  \[
+  (A_1, \dots, A_n)_D \equiv [A_1, \dots, A_n]_D \eqdef \bigcup_{i=1}^{n} \operatorname{mark}(A_i, i),
+  \]
+  so that $()_D = []_D = \emptyclass$ for $n = 0$, $(A)_D = \operatorname{mark}(A,1)$
+  for $n = 1$, and $(A,B)_D = \operatorname{mark}(A,1) \cup \operatorname{mark}(B,2)$
+  for $n = 2$. For any class $T$ and index $i \in \omega \setminus \{0\}$, define
+  the $i$-th coordinate projection and the index-set and length functionals by
+  \[
+  \pr_i(T) \eqdef \cc{a}{\{S_3(a), i\} \in T},\qquad
+  \operatorname{Idx}_D(T) \eqdef \cc{i \in \omega \setminus \{0\}}{\{0, i\} \in T},\qquad
+  \operatorname{len}_D(T) \eqdef \bigcup\cc{i \in \omega \setminus \{0\}}{\{0, i\} \in T}.
+  \]
+  \item \textbf{Dunaev Cartesian powers and Kleene star $X^*$:}
+  For any class $X$ and natural number $n \in \omega$, define the $n$-fold
+  Dunaev Cartesian power
+  \[
+  X^{\times_D n} \eqdef \cc{(a_1, \dots, a_n)_D}{a_1 \in X \land \dots \land a_n \in X}
+  \]
+  (with $X^{\times_D 0} \eqdef \{()_D\} = \{\emptyclass\}$), and define the
+  \emph{Kleene star} $X^*$ as the plain union over all finite lengths $n \in \omega$:
+  \[
+  X^* \eqdef \bigcup_{n \in \omega} X^{\times_D n},\qquad
+  \V^* \eqdef \bigcup_{n \in \omega} \V^{\times_D n}.
+  \labeltagd{def}{kleene_star}
+  \]
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Length-disjointness and unique readability of Dunaev tuples under plain union]
+\label{thm:dunaev_kleene_star_disjointness}
+Dunaev's marker-tuples $(A_1, \dots, A_m)_D$ can be united directly over all
+$m \in \omega$ without confusion between different tuple lengths:
+\begin{enumerate}
+  \item For every set $a \in \V$ and every ordinal $n \in \omega$, $S_3(a) \notin \omega$.
+  \item For all $a, b \in \V$ and all $i, j, r \in \omega \setminus \{0\}$,
+  \[
+  \{0, r\} \neq \{S_3(a), i\},\qquad
+  \{S_3(a), i\} = \{S_3(b), j\} \iff (a = b \land i = j).
+  \]
+  \item For any $m, k \in \omega$ and any classes $A_1, \dots, A_m$ and $B_1, \dots, B_k$,
+  \[
+  (A_1, \dots, A_m)_D = (B_1, \dots, B_k)_D
+  \iff
+  \big(m = k \land \forall i \in \{1, \dots, m\},\ A_i = B_i\big).
+  \]
+  In particular, for every class $X$ and all $m \neq k$ in $\omega$,
+  $X^{\times_D m} \cap X^{\times_D k} = \emptyclass$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(1) For any set $a \in \V$, $S_3(a) = \{\{\{a\}\}\}$ has the sole member
+$\{\{a\}\}$. Because $\{a\} \in \{\{a\}\}$, we have $\{\{a\}\} \neq \emptyclass = 0$.
+Thus $S_3(a) \neq 0$ and $0 \notin S_3(a)$. Every nonzero von Neumann natural
+number $n \in \omega \setminus \{0\}$ satisfies $0 \in n$, so $S_3(a) \neq n$
+for all $n \in \omega \setminus \{0\}$ as well. Hence $S_3(a) \notin \omega$.
+
+(2) Since $0 \in \{0, r\}$ whereas $0 \neq S_3(a)$ by (1) and $0 \neq i$ for
+$i \in \omega \setminus \{0\}$, $0 \notin \{S_3(a), i\}$, proving
+$\{0, r\} \neq \{S_3(a), i\}$. Next suppose $\{S_3(a), i\} = \{S_3(b), j\}$.
+If $i \neq j$, then $i \in \{S_3(b), j\}$ forces $i = S_3(b)$, contradicting
+$S_3(b) \notin \omega$ from (1). Hence $i = j$. Because $S_3(a) \neq i \neq S_3(b)$
+by (1), unordered-pair extensionality on $\{S_3(a), i\} = \{S_3(b), i\}$ yields
+$S_3(a) = S_3(b)$, and three applications of singleton injectivity give $a = b$.
+
+(3) Let $T = (A_1, \dots, A_m)_D = \bigcup_{i=1}^m \operatorname{mark}(A_i, i)$.
+For any $r \in \omega \setminus \{0\}$, $\{0, r\} \in T$ holds if and only if
+$\{0, r\} \in \operatorname{mark}(A_i, i)$ for some $1 \le i \le m$. By (2),
+$\{0, r\}$ cannot equal any payload element $\{S_3(a), i\}$, so $\{0, r\} = \{0, i\}$.
+Since $r \neq 0$ and $i \neq 0$, this holds if and only if $r = i \in \{1, \dots, m\}$.
+Thus $\operatorname{Idx}_D((A_1, \dots, A_m)_D) = \{1, \dots, m\}$, which uniquely
+determines the length $m = \operatorname{card}(\operatorname{Idx}_D(T))$.
+Moreover, for each $1 \le i \le m$, (2) ensures that $\{S_3(a), i\} \in T$
+if and only if $a \in A_i$, so $\pr_i((A_1, \dots, A_m)_D) = A_i$.
+Therefore $(A_1, \dots, A_m)_D = (B_1, \dots, B_k)_D$ implies $m = k$ and
+$A_i = \pr_i((A_1, \dots, A_m)_D) = \pr_i((B_1, \dots, B_k)_D) = B_i$ for all
+$1 \le i \le m$.
+\end{proof}
+
+\begin{note}[contrast with unmarked recursive pairs]
+The header markers $\{0, i\}$ in $\operatorname{mark}(A_i, i)$ are essential for
+length-disjointness. In the unmarked recursive pair
+$P(A, B) = \cc{L(a)}{a \in A} \cup \cc{R(b)}{b \in B}$ of
+Section~\ref{sec:dunaev_tagged_ordered_pair}, one has $P(\emptyclass, \emptyclass) = \emptyclass$.
+If $n$-tuples were defined by unmarked right-nested iteration
+$P(A_1, P(A_2, \dots, P(A_n, \emptyclass)))$, then at $A_i = \emptyclass$ the
+$0$-tuple $\emptyclass$, the $1$-tuple $P(\emptyclass, \emptyclass) = \emptyclass$,
+and the $2$-tuple $P(\emptyclass, P(\emptyclass, \emptyclass)) = \emptyclass$
+would all collide, and $P(A_1, \emptyclass) = P(A_1, P(\emptyclass, \emptyclass))$
+would confuse a $1$-tuple $(A_1)$ with a $2$-tuple $(A_1, \emptyclass)$.
+By contrast, in Dunaev's marker-tuple encoding,
+$()_D = \emptyclass$, $(\emptyclass)_D = \{\{0,1\}\}$, and
+$(\emptyclass, \emptyclass)_D = \{\{0,1\}, \{0,2\}\}$ are pairwise distinct.
+\end{note}
+
+\begin{notation}[tuple pattern-matching quantifier over $X^*$]
+For any fixed natural number $n \in \omega$, class $X$, and distinct variables
+$A_1, \dots, A_n$, we write
+\[
+\big(\forall (A_1, \dots, A_n)_D \in X^*,\ \varphi(A_1, \dots, A_n)\big)
+\iffdef
+\forall A_1 \in X \dots \forall A_n \in X,\ \varphi(A_1, \dots, A_n),
+\]
+which by Theorem~\ref{thm:dunaev_kleene_star_disjointness} is equivalent to
+$\forall t \in X^*,\ \big(\operatorname{Idx}_D(t) = \{1, \dots, n\} \implies \varphi(\pr_1(t), \dots, \pr_n(t))\big)$.
+In this notation, the set-restricted Leibniz membership-profile equivalence
+(\ref{thm:set_leibniz_equality}) takes the compact form:
+\[
+\forall (A, B)_D \in \V^*,\ \big((A = B) \iff (\forall Y\mydot A \in Y \iff B \in Y)\big).
+\labeltagd{thm}{set_leibniz_equality_vstar}
+\]
+\end{notation}
 \subsection{Extensionality}
 \begin{axiom}[extensionality]
 \[

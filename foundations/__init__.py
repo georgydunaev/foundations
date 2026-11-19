@@ -73,6 +73,7 @@ from foundations.logic import (
     check_forall_right_rule,
     check_exists_left_rule,
     eval_ctx_ifv_quantifier_hygiene,
+    eval_decoupled_equality_and_dunaev_kleene_star,
     eval_semantic_vs_negation_completeness,
     proves_foundations_logic_and_binder_hygiene,
 )
@@ -622,6 +623,7 @@ __all__: list[str] = [
     "check_forall_right_rule",
     "check_exists_left_rule",
     "eval_ctx_ifv_quantifier_hygiene",
+    "eval_decoupled_equality_and_dunaev_kleene_star",
     "eval_semantic_vs_negation_completeness",
     "EMPTY_LIST_SENTINEL",
     "eval_semi_singleton",

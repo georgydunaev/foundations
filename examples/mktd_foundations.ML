@@ -934,6 +934,7 @@ signature MKTD_FOUNDATIONS = sig
   val encode_class_list_dunaev : class_term list -> class_term
   val decode_class_list_dunaev : class_term -> class_term list
   val eval_class_lists_dunaev : class_term list -> (class_term -> 'a -> 'a) -> 'a -> class_term * int * bool * 'a
+  val eval_dunaev_kleene_star_disjointness : class_term list -> class_term list -> bool * int * int * bool
   val axiom_class_list_dunaev_transport : class_term -> class_term -> thm
   val prove_class_list_dunaev_transport : class_term -> class_term -> thm
 
@@ -5053,6 +5054,18 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       (encoded, len, roundtrip_ok, fold_res)
     end
 
+  fun eval_dunaev_kleene_star_disjointness xs ys =
+    let
+      val enc_x = ClassListDunaev xs
+      val enc_y = ClassListDunaev ys
+      val len_x = List.length xs
+      val len_y = List.length ys
+      val equal_tuples = (enc_x = enc_y)
+      val disjoint_when_diff_len = if len_x <> len_y then not equal_tuples else (equal_tuples = (xs = ys))
+    in
+      (equal_tuples, len_x, len_y, disjoint_when_diff_len)
+    end
+
   fun axiom_class_list_dunaev_transport h t =
     Thm ([], And (Eq (dunaev_fst (TagPair (h, t)), h),
                   Eq (dunaev_snd (TagPair (h, t)), t)))
@@ -8802,10 +8815,14 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
       val cl_thm_ok = case cl_thm of
           Thm ([], And (Eq (_, Univ), Eq (_, Empty))) => true
         | _ => false
+      val (_, _, _, ks_disj_1_2) = eval_dunaev_kleene_star_disjointness [Empty] [Empty, Empty]
+      val (_, _, _, ks_disj_0_1) = eval_dunaev_kleene_star_disjointness [] [Empty]
+      val (_, _, _, ks_same_2_2) = eval_dunaev_kleene_star_disjointness [Empty, Singleton Empty] [Empty, Singleton Empty]
       val class_lists_all_ok =
         (#1 cl_empty = Empty andalso #2 cl_empty = 0 andalso #3 cl_empty andalso #4 cl_empty = 0)
         andalso (#2 cl_mixed = 4 andalso #3 cl_mixed andalso #4 cl_mixed = 4)
         andalso cl_kuratowski_rejected andalso cl_thm_ok
+        andalso ks_disj_1_2 andalso ks_disj_0_1 andalso ks_same_2_2
 
       (* 3. Family value at argument F(a), relational image F[A] vs evaluated image, canonical family *)
       val fam_graph =
