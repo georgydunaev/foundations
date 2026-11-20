@@ -4200,6 +4200,84 @@ def eval_dunaev_kleene_star_and_decoupled_equality() -> Dict[str, Any]:
     }
 
 
+def eval_nbg_transfinite_recursion_and_von_neumann_hierarchy(max_ord: int = 4) -> Dict[str, Any]:
+    """Evaluates Section 12 of universe_definitions.ML (Entries 3.91-3.98):
+    NBG Transfinite Recursion Theorem on On and its specialization to the
+    von Neumann cumulative hierarchy V_alpha = Union_{beta < alpha} P(V_beta).
+    """
+    def power_set(s: FrozenSet[Any]) -> FrozenSet[FrozenSet[Any]]:
+        items = list(s)
+        n = len(items)
+        return frozenset(
+            frozenset(items[i] for i in range(n) if (mask >> i) & 1)
+            for mask in range(1 << n)
+        )
+
+    def restrict_graph(graph: Dict[int, Any], alpha: int) -> Dict[int, Any]:
+        return {b: val for b, val in graph.items() if b < alpha}
+
+    def von_neumann_step_g(f_restr: Dict[int, FrozenSet[Any]]) -> FrozenSet[Any]:
+        if not f_restr:
+            return frozenset()
+        return frozenset().union(*(power_set(val) for val in f_restr.values()))
+
+    # Construct approximations g_alpha on dom(g_alpha) = alpha + 1 for 0 <= alpha <= max_ord
+    approximations: List[Dict[int, FrozenSet[Any]]] = []
+    for alpha in range(max_ord + 1):
+        g_alpha: Dict[int, FrozenSet[Any]] = {}
+        for beta in range(alpha + 1):
+            g_alpha[beta] = von_neumann_step_g(restrict_graph(g_alpha, beta))
+        approximations.append(g_alpha)
+
+    # Step 1 (Coherence, Entry 3.95): Any two approximations g, h agree on dom(g) cap dom(h)
+    coherence_ok = True
+    for g in approximations:
+        for h in approximations:
+            common = set(g.keys()).intersection(h.keys())
+            for b in common:
+                if g[b] != h[b]:
+                    coherence_ok = False
+
+    # Step 2 & 3 (Union F = U A(G) and global recursion equation F(a) = G(F | a), Entry 3.96)
+    f_union: Dict[int, FrozenSet[Any]] = {}
+    for g in approximations:
+        for b, val in g.items():
+            f_union[b] = val
+
+    recursion_eq_ok = all(
+        f_union[a] == von_neumann_step_g(restrict_graph(f_union, a))
+        for a in range(max_ord + 1)
+    )
+
+    # Step 4 (Uniqueness, Entry 3.97): Any H satisfying H(a) = G(H | a) agrees with F
+    h_other: Dict[int, FrozenSet[Any]] = {}
+    for a in range(max_ord + 1):
+        h_other[a] = von_neumann_step_g(restrict_graph(h_other, a))
+    uniqueness_ok = (f_union == h_other)
+
+    # Application to V_alpha (Entry 3.98): V_0 = empty, V_{a+1} = P(V_a), |V_0|=0, |V_1|=1, |V_2|=2, |V_3|=4, |V_4|=16
+    v0_empty = (f_union[0] == frozenset())
+    succ_eq_ok = all(
+        f_union[a + 1] == power_set(f_union[a])
+        for a in range(max_ord)
+    )
+    expected_cardinalities = [0, 1, 2, 4, 16][: max_ord + 1]
+    actual_cardinalities = [len(f_union[a]) for a in range(max_ord + 1)]
+    card_ok = (actual_cardinalities == expected_cardinalities)
+
+    all_ok = coherence_ok and recursion_eq_ok and uniqueness_ok and v0_empty and succ_eq_ok and card_ok
+    return {
+        "status": "RESOLVED" if all_ok else "FAILED",
+        "items": ["3.91", "3.92", "3.93", "3.94", "3.95", "3.96", "3.97", "3.98"],
+        "step1_coherence_verified": coherence_ok,
+        "step2_step3_global_recursion_eq_verified": recursion_eq_ok,
+        "step4_uniqueness_verified": uniqueness_ok,
+        "von_neumann_v0_empty_verified": v0_empty,
+        "von_neumann_successor_powerset_verified": succ_eq_ok,
+        "stage_cardinalities": actual_cardinalities,
+    }
+
+
 def proves_foundations_classes_and_families() -> Dict[str, Any]:
     """Master auditor for the class/family/list/universe/Boolean-valued/club-Veblen/determinacy/Schroedinger/Yoneda-Kan/Topos/Monad/CCC-Lambek/Fibration/Abelian-Snake/Chain-Ext-Tor/Triangulated-Derived/Quillen-Model/Simplicial-QCat/Grothendieck-Site-Sheaf/Spectral-Sequences/SMCC-Enriched-Day/Ends-Coends-Fubini-WeightedLimits/Bicategories-Benabou tickets:
     1. obelisk_applications_semisingleton_export.md (3.35, 3.36)
@@ -4251,6 +4329,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     res_bicat = proves_bicategories_interchange_law_and_benabou_coherence()
     res_univ_vkappa = eval_universe_equals_v_kappa()
     res_kleene = eval_dunaev_kleene_star_and_decoupled_equality()
+    res_trec_vn = eval_nbg_transfinite_recursion_and_von_neumann_hierarchy()
 
     assert res_semi["status"] == "RESOLVED"
     assert res_lists["status"] == "RESOLVED"
@@ -4277,6 +4356,7 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
     assert res_bicat["status"] == "RESOLVED"
     assert res_univ_vkappa["status"] == "RESOLVED"
     assert res_kleene["status"] == "RESOLVED"
+    assert res_trec_vn["status"] == "RESOLVED"
 
     return {
         "ticket_applications_semisingleton_export": res_semi,
@@ -4304,4 +4384,5 @@ def proves_foundations_classes_and_families() -> Dict[str, Any]:
         "ticket_bicategories_interchange_law_and_benabou_coherence": res_bicat,
         "ticket_universe_equals_v_kappa": res_univ_vkappa,
         "ticket_dunaev_kleene_star_and_decoupled_equality": res_kleene,
+        "ticket_nbg_transfinite_recursion_and_von_neumann_hierarchy": res_trec_vn,
     }

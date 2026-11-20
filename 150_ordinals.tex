@@ -1830,4 +1830,71 @@ Since $\kappa$ is a limit ordinal by Step~1(c), $\operatorname{rank}(x) \in \kap
 Combining $V_\kappa \subseteq U$ (Step~2) and $U \subseteq V_\kappa$ (Step~3) by class extensionality gives $U = V_\kappa = V_{U \cap \On}$ (\texttt{universe\_eq\_v\_kappa\_conclusion\_thm} and \texttt{universe\_eq\_canonical\_v\_inter\_on\_thm}).
 \end{proof}
 
+\subsection{NBG Transfinite Recursion on $\On$ and Construction of the Von Neumann Hierarchy $V_\alpha$}
+
+We now record the direct NBG / \texttt{MKTD1-system} formalization and mechanical verification (\texttt{program/types/universe\_definitions.ML}, Section~12, catalog entries \texttt{3.91}--\texttt{3.98}, 17 kernel-verified theorems) of the global transfinite recursion theorem on $\On$ and its application to constructing the von Neumann cumulative hierarchy $V : \On \to \V$.
+
+\begin{definition}[Domain restriction, transfinite approximations, and the recursion graph]
+Let $F, G, A, g$ be classes. In \texttt{MKTD1-system} (Entries \texttt{3.91}--\texttt{3.94}):
+\begin{enumerate}
+\item The \emph{domain restriction} (\texttt{DefDomainRestriction}, Entry \texttt{3.91}) of $F$ to $A$ is
+\[
+\operatorname{Restrict}(F, A) \equiv F \upharpoonright A \eqdef \{z \mid (z \in F) \land (\operatorname{pr}_1(z) \in A)\}.
+\]
+\item A class $g$ is a \emph{$G$-approximation} (\texttt{DefTransfiniteApproximation}, Entry \texttt{3.92}), written $\operatorname{TransfiniteApprox}(G, g)$, if $g$ is a set-sized function ($\operatorname{function}(g)$), its domain is an ordinal set ($\operatorname{Dom}(g) \in \On$), and
+\[
+\forall \beta,\ \forall X,\ \bigl(((\beta \in \operatorname{Dom}(g)) \land (X = \operatorname{Restrict}(g, \beta))) \implies (g(\beta) = G(X))\bigr).
+\]
+Because $\operatorname{function}(g) \implies (g\ \set)$ by \texttt{DefSetFunction} (\texttt{3.34}), predicative comprehension in NBG forms the class $\mathcal{A}(G) \eqdef \{g \mid \operatorname{TransfiniteApprox}(G, g)\}$ of all $G$-approximations (\texttt{thm\_approx\_is\_set} and \texttt{thm\_in\_approx\_class\_iff}).
+\item The \emph{canonical transfinite recursion graph} (\texttt{DefTransfiniteRecursionGraph}, Entry \texttt{3.93}) is the unary union of all $G$-approximations:
+\[
+\operatorname{TransfiniteRec}(G) \eqdef \bigcup \{g \mid \operatorname{TransfiniteApprox}(G, g)\} = \bigcup \mathcal{A}(G).
+\]
+\item The \emph{von Neumann cumulative hierarchy step generator} (\texttt{DefVonNeumannStepGenerator}, Entry \texttt{3.94}) is
+\[
+\operatorname{VonNeumannStepG}(f) \eqdef \bigcup \{Y \mid \exists \beta,\ ((\beta \in \operatorname{Dom}(f)) \land (Y = \power(f(\beta))))\}.
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Transfinite Recursion on $\On$ in NBG and Application to $V_\alpha$]
+Let $G : \V \to \V$ be a total class-function on sets. Then $F = \operatorname{TransfiniteRec}(G) : \On \to \V$ is the unique class-function on $\On$ satisfying
+\[
+\forall \alpha \in \On,\quad F(\alpha) = G(F \upharpoonright \alpha).
+\labeltagd{thm}{nbgTransfiniteRecursionOn}
+\]
+In particular, taking $G = \operatorname{VonNeumannStepG}$ yields the von Neumann cumulative hierarchy $V : \On \to \V$ satisfying
+\[
+V_\alpha = \bigcup_{\beta \in \alpha} \power(V_\beta),\qquad
+V_0 = \emptyset,\qquad
+V_{\alpha+1} = \power(V_\alpha),\qquad
+V_\lambda = \bigcup_{\beta \in \lambda} V_\beta\quad (\lambda \text{ limit}).
+\]
+\end{theorem}
+\begin{proof}
+The proof proceeds in four steps (Entries \texttt{3.95}--\texttt{3.98}):
+
+\paragraph{Step 1: Coherence of approximations (\texttt{ThmTransfiniteApproxCoherence}, Entry \texttt{3.95}).}
+Let $g, h \in \mathcal{A}(G)$. We show that $g$ and $h$ agree on $\operatorname{Dom}(g) \cap \operatorname{Dom}(h)$. If not, the difference set $D = \{\beta \in \operatorname{Dom}(g) \cap \operatorname{Dom}(h) \mid g(\beta) \neq h(\beta)\}$ is a nonempty subset of an ordinal and therefore has a $\in$-least element $\beta_0$. By minimality of $\beta_0$, $\operatorname{Restrict}(g, \beta_0) = \operatorname{Restrict}(h, \beta_0)$. Applying \texttt{thm\_transfinite\_approx\_coherence} at $B = \beta_0$ gives
+\[
+g(\beta_0) = G(\operatorname{Restrict}(g, \beta_0)) = G(\operatorname{Restrict}(h, \beta_0)) = h(\beta_0),
+\]
+contradicting $\beta_0 \in D$. In particular, for each $\alpha \in \On$ there is at most one approximation $g_\alpha \in \mathcal{A}(G)$ with domain $\alpha + 1$.
+
+\paragraph{Step 2: Existence of approximations on every ordinal.}
+Suppose the class of ordinals $\alpha \in \On$ lacking an approximation $g_\alpha$ on $\alpha + 1$ were nonempty, and let $\alpha$ be its $\in$-minimal element. Then for every $\beta \in \alpha$, a unique approximation $g_\beta \in \mathcal{A}(G)$ on $\beta + 1$ exists. By Replacement and Union on the set $\{g_\beta \mid \beta \in \alpha\}$, the union $g' = \bigcup_{\beta \in \alpha} g_\beta$ is a set-sized function with domain $\alpha$ satisfying $g'(\beta) = G(g' \upharpoonright \beta)$ for all $\beta \in \alpha$. Since $G$ is total on $\V$, $G(g')$ is a set, and $g_\alpha = g' \cup \{(\alpha, G(g'))_D\}$ is an approximation in $\mathcal{A}(G)$ with domain $\alpha + 1$, contradicting the choice of $\alpha$.
+
+\paragraph{Step 3: Construction of $F = \operatorname{TransfiniteRec}(G) = \bigcup \mathcal{A}(G)$ (\texttt{ThmTransfiniteRecursionEquation}, Entry \texttt{3.96}).}
+By \texttt{thm\_approx\_is\_set} and \texttt{thm\_approx\_sub\_transfinite\_rec}, every approximation $g$ satisfies $(g\ \set) \land (g \subseteq \operatorname{TransfiniteRec}(G))$. By Step~1 coherence and \texttt{thm\_restrict\_agree\_from\_sub}, $F = \bigcup \mathcal{A}(G)$ is a class-function with domain $\On$, and for every $\alpha \in \On$, $F(\alpha) = g_\alpha(\alpha)$ and $\operatorname{Restrict}(F, \alpha) = \operatorname{Restrict}(g_\alpha, \alpha)$ (which is a set). Therefore \texttt{thm\_transfinite\_recursion\_equation} yields
+\[
+F(\alpha) = g_\alpha(\alpha) = G(\operatorname{Restrict}(g_\alpha, \alpha)) = G(\operatorname{Restrict}(F, \alpha)).
+\]
+
+\paragraph{Step 4: Uniqueness (\texttt{ThmTransfiniteRecursionUniqueness}, Entry \texttt{3.97}).}
+If $F$ and $H$ both satisfy the recursion equation on $\On$ and disagree at some ordinal, let $\alpha \in \On$ be the least ordinal where $F(\alpha) \neq H(\alpha)$. Then $\operatorname{Restrict}(F, \alpha) = \operatorname{Restrict}(H, \alpha)$, and \texttt{thm\_transfinite\_recursion\_uniqueness} yields $F(\alpha) = G(\operatorname{Restrict}(F, \alpha)) = H(\alpha)$, a contradiction.
+
+\paragraph{Application to $V_\alpha$ (\texttt{ThmVonNeumannHierarchyByTransfiniteRecursion}, Entry \texttt{3.98}).}
+For any set $f$, $\operatorname{VonNeumannStepG}(f) = \bigcup \{\power(f(\beta)) \mid \beta \in \operatorname{Dom}(f)\}$ is a set by Separation, Power Set, Replacement, and Union. Applying the transfinite recursion theorem to $G = \operatorname{VonNeumannStepG}$ produces $V : \On \to \V$ with $V_\alpha = \operatorname{VonNeumannStepG}(V \upharpoonright \alpha) = \bigcup_{\beta \in \alpha} \power(V_\beta)$. When $\alpha = 0$, $\operatorname{Dom}(V \upharpoonright 0) = \emptyset$, so \texttt{thm\_von\_neumann\_step\_g\_empty} gives $V_0 = \emptyset$. For $\alpha + 1 = \alpha \cup \{\alpha\}$, monotonicity $V_\beta \subseteq \power(V_\alpha)$ for $\beta \in \alpha$ gives $V_{\alpha+1} = \power(V_\alpha)$; for a nonzero limit ordinal $\lambda$, $\beta \in \lambda \implies \beta + 1 \in \lambda$ gives $V_\lambda = \bigcup_{\beta \in \lambda} \power(V_\beta) = \bigcup_{\beta \in \lambda} V_{\beta+1} = \bigcup_{\beta \in \lambda} V_\beta$.
+\end{proof}
+
 \input{END.tex}
