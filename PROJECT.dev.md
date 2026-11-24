@@ -17,12 +17,12 @@
 ## Verification & LaTeX Build Commands
 ```bash
 # Run Python unit test suite & preamble checks
-python3 /hostramdisk/foundations/run_tests.py
-bash /hostramdisk/foundations/tests/check_preamble.sh
+python3 /botworkspace/foundations/run_tests.py
+bash /botworkspace/foundations/tests/check_preamble.sh
 
 # Compile Foundations of Mathematics monograph (001_foundations.pdf)
-cd /hostramdisk/foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && biber 001_foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
+cd /botworkspace/foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && biber 001_foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
 
 # Compile Schroedinger Semigroups thesis (thesis_schrodinger.pdf)
-cd /hostramdisk/foundations && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && biber thesis_schrodinger && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex
+cd /botworkspace/foundations && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && biber thesis_schrodinger && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex
 ```

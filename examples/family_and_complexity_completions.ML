@@ -1,6 +1,6 @@
 (* Auto-generated SML'97 module completing presentation.ML Todo and WIP items *)
-(* Source file: /hostramdisk/foundations/presentation.ML (lines 51 and 233)   *)
-(* Companion LaTeX: /hostramdisk/foundations/unfinished_sections_completions.tex *)
+(* Source file: /botworkspace/foundations/presentation.ML (lines 51 and 233)   *)
+(* Companion LaTeX: /botworkspace/foundations/unfinished_sections_completions.tex *)
 (* Compatibility: Portable Standard ML (SML'97) for Poly/ML and CakeML        *)
 
 structure FamilyAndComplexityCompletions =

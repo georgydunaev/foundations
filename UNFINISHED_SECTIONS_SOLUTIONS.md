@@ -1,12 +1,12 @@
 # Mathematical Solutions and Completions for Unfinished Sections in `foundations`
 
-This document provides the self-contained mathematical formulations, definitions, theorems, and proofs completing the unfinished sections identified in `/hostramdisk/foundations`:
+This document provides the self-contained mathematical formulations, definitions, theorems, and proofs completing the unfinished sections identified in `/botworkspace/foundations`:
 1. **`010_logic.tex` (lines 862-1518):** `\section{Predicate calculus as an object language [unfinished section]}` (Object-language ASTs, `DottedString`, antiquotation fragments `Fragment`, unique parsing `#`, capture-avoiding substitution, and alignment with `MKTD1-framework` and `MKTD2-framework`).
 2. **`010_logic.tex` (lines 4359-4450):** `\section{Primitive definitions[ToDo]}` (Conservative extensions by definition, resolving bound-variable collisions in $A \subseteq B$ when instantiated with $x \subseteq y$, and eliminability of defined symbols).
 3. **`060_axioms.tex` (lines 185-350):** Medium type specification versus class comprehension $\cc{x}{\varphi}$, and derivation of generalized class term comprehension $\ccc{\vv{x}}{s}{\varphi}$ from single-variable class comprehension.
 4. **`110_family_evaluation.tex` (lines 11-125):** Partial values, candidate-set valuations, formal specification of semi-equality $I_{\Fm}(s \approx t)$, congruence under strict partial evaluation, and the bridge to total union evaluation.
 
-The companion LaTeX file ready for `\input{unfinished_sections_completions.tex}` is located at `/hostramdisk/foundations/unfinished_sections_completions.tex`.
+The companion LaTeX file ready for `\input{unfinished_sections_completions.tex}` is located at `/botworkspace/foundations/unfinished_sections_completions.tex`.
 
 ---
 

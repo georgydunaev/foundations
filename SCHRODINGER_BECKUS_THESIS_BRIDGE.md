@@ -1,17 +1,17 @@
-# Bridge Between `/hostramdisk/foundations/thesis_schrodinger.tex`, `schrodinger_kernel_verifier.py`, and `/botworkspace/thesis2027`
+# Bridge Between `/botworkspace/foundations/thesis_schrodinger.tex`, `schrodinger_kernel_verifier.py`, and `/botworkspace/thesis2027`
 
 ## 1. Overview and Purpose
 
 This document records the structural, mathematical, and computational correspondence connecting:
-1. **`/hostramdisk/foundations/thesis_schrodinger.tex`** (and its four component chapters `293_heat_equation.tex`, `294_kernel_criterion.tex`, `295_schrodinger_semigroups.tex`, and `296_dynamical_schrodinger_kernels.tex` inside the `foundations` repository),
-2. **`/hostramdisk/foundations/schrodinger_kernel_verifier.py`** (the pure Python standard-library numerical and symbolic verification engine for all five core analytical objects in the thesis programme), and
+1. **`/botworkspace/foundations/thesis_schrodinger.tex`** (and its four component chapters `293_heat_equation.tex`, `294_kernel_criterion.tex`, `295_schrodinger_semigroups.tex`, and `296_dynamical_schrodinger_kernels.tex` inside the `foundations` repository),
+2. **`/botworkspace/foundations/schrodinger_kernel_verifier.py`** (the pure Python standard-library numerical and symbolic verification engine for all five core analytical objects in the thesis programme), and
 3. **`/botworkspace/thesis2027`** (the dedicated University of Potsdam Master Thesis repository supervised by Prof. Dr. Siegfried Beckus).
 
 ---
 
 ## 2. Theorem and Chapter Mapping Across Repositories
 
-| Analytical Object in Prof. Dr. Siegfried Beckus's Programme | `/hostramdisk/foundations/` LaTeX Source | `/botworkspace/thesis2027/` Master Thesis Chapter | `schrodinger_kernel_verifier.py` Verification Function |
+| Analytical Object in Prof. Dr. Siegfried Beckus's Programme | `/botworkspace/foundations/` LaTeX Source | `/botworkspace/thesis2027/` Master Thesis Chapter | `schrodinger_kernel_verifier.py` Verification Function |
 | :--- | :--- | :--- | :--- |
 | **1. Abstract Integral Kernel Criterion & Dunford-Pettis Theory** (Simon Theorem A.1.3, weak-star measure extension $\mathcal{M}(X)$ to $C_b(X)$, uniqueness under full support) | `294_kernel_criterion.tex` (Chapter 2 of `thesis_schrodinger.tex`) | `paper/chapters/01_preliminaries_and_simon_kernel_continuity.tex` | Continuity and pointwise representative conventions verified across kernel evaluations |
 | **2. Free Nonnegative Laplacian $\Delta = -\sum_{j=1}^d \partial_j^2$ & Gaussian Heat Kernel** (Jost Theorem 5.1.2 maximum principle & Section 5.2 Gaussian kernel $p_t(x,y) = (4\pi t)^{-d/2}\exp(-\|x-y\|^2/(4t))$) | `293_heat_equation.tex` (Chapter 1 of `thesis_schrodinger.tex`) | `paper/chapters/02_free_laplacian_and_jost_heat_kernel.tex` | `gaussian_heat_kernel`, `heat_equation_exact_residual`, and `verify_chapman_kolmogorov_1d` |
@@ -23,7 +23,7 @@ This document records the structural, mathematical, and computational correspond
 
 ## 3. Consistent Normalization and Translation-Action Conventions
 
-Both `/hostramdisk/foundations/thesis_schrodinger.tex` and `/botworkspace/thesis2027` enforce two critical consistency invariants that are also verified directly by `schrodinger_kernel_verifier.py`:
+Both `/botworkspace/foundations/thesis_schrodinger.tex` and `/botworkspace/thesis2027` enforce two critical consistency invariants that are also verified directly by `schrodinger_kernel_verifier.py`:
 
 1. **Laplacian Normalization Convention**:
    - Throughout the thesis, the free Schrödinger operator is $H_0 = \Delta = -\sum_{j=1}^d \partial_j^2$ (without a factor of $\frac{1}{2}$), so the free Gaussian heat kernel is:
@@ -41,7 +41,7 @@ Both `/hostramdisk/foundations/thesis_schrodinger.tex` and `/botworkspace/thesis
 Execute `schrodinger_kernel_verifier.py` directly using Python 3 standard library:
 
 ```bash
-python3 /hostramdisk/foundations/schrodinger_kernel_verifier.py
+python3 /botworkspace/foundations/schrodinger_kernel_verifier.py
 ```
 
 All five analytical checks execute deterministically in under 0.2 seconds and output a structured JSON verification report confirming:
