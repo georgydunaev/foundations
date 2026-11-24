@@ -1,28 +1,37 @@
-# Project Development Context (`foundations`)
+# PROJECT.dev.md: foundations
 
-> **Tier 0 Global Ruleset**: Read `/botworkspace/AGENTS.md` and `/botworkspace/FACTBOOK.md` first. Do not duplicate global rules here.
+Workspace rules: `/botworkspace/AGENTS.md`. Definitions used by the book's Obelisk chapters:
+`/botworkspace/set_theory_prover/FACTBOOK.md`.
 
-## Treatise Modules & Boundaries
-1. **Foundations of Mathematics Monograph (`001_foundations.tex`)**:
-   - **Preamble & Entrypoint**: `000_preamble.tex`, `001_foundations.tex`, `references.bib`, `MACROS_INDEX.md`.
-   - **Syntax, Logic & Binders**: `010_logic.tex`, `020_descriptors.tex`, `archive/025_unified_descriptors.tex`, `archive/050_descriptor_systems.tex`.
-   - **Type Semantics & Proof Calculi (`MKTD1` / `MKTD2`)**: `030_alternative_semantics.tex`, `archive/035_unified_type_semantics.tex`, `050_prooftrees.tex`, `archive/050_unified_interface.tex`, `summary_of_approaches.tex`.
-   - **Class Axioms & Ordered Pairs**: `060_axioms.tex`, `archive/010_ordered_pairs.tex`, `070_ordered_pair.tex`.
-2. **Schroedinger Semigroups Thesis (`thesis_schrodinger.tex`)**:
-   - **Manuscript & Verifier**: `thesis_schrodinger.tex`, `schrodinger_kernel_verifier.py`, `scripts/plot_dynamical_potential.py`.
-3. **Mechanized SML & Python Verification Suite**:
-   - **SML Presentation Kernel**: `presentation.ML`, `PRESENTATION_ML_GUIDE.md`.
-   - **Python Foundational Models & Test Suite**: `foundations/` package and `tests/` (`test_foundations.py`, `test_mktd_foundations.py`, `test_type_semantics.py`, `test_logic.py`, `test_descriptors.py`, `test_preamble.py`).
+## Contents
 
-## Verification & LaTeX Build Commands
+- **The book** `001_foundations.tex`: preamble `000_preamble.tex`, chapters `0NN_*.tex` to
+  `3NN_*.tex` included with `\input`, bibliography `references.bib`. Only files reachable from
+  `001_foundations.tex` are part of the book. Unused drafts are in `archive/`.
+- **Schrödinger thesis** `thesis_schrodinger.tex` (separate document; plan in
+  `THESIS_RESEARCH_PLAN.md`).
+- **Python package** `foundations/`: finite executable illustrations, not proofs (see its
+  docstring). Tests are in `tests/`.
+- **SML** `presentation.ML` and `examples/*.ML`.
+
+## Commands
+
 ```bash
-# Run Python unit test suite & preamble checks
-python3 /botworkspace/foundations/run_tests.py
-bash /botworkspace/foundations/tests/check_preamble.sh
-
-# Compile Foundations of Mathematics monograph (001_foundations.pdf)
-cd /botworkspace/foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && biber 001_foundations && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex && pdflatex -synctex=1 -interaction=nonstopmode 001_foundations.tex
-
-# Compile Schroedinger Semigroups thesis (thesis_schrodinger.pdf)
-cd /botworkspace/foundations && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && biber thesis_schrodinger && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex && pdflatex -synctex=1 -interaction=nonstopmode thesis_schrodinger.tex
+cd /botworkspace/foundations
+python3 run_tests.py                                   # Python tests (about 10 s)
+bash tests/check_preamble.sh                           # LaTeX preamble checks
+# Build the book into a scratch directory (one pass about 1 min; run detached for the full build)
+pdflatex -interaction=nonstopmode -output-directory=<dir> 001_foundations.tex
+(cd <dir> && BIBINPUTS=/botworkspace/foundations biber 001_foundations)
+pdflatex -interaction=nonstopmode -output-directory=<dir> 001_foundations.tex
 ```
+
+After a successful build, copy the PDF to `/botworkspace/obeliskproofassistant.github.io/foundations.pdf`
+and commit that repository separately.
+
+## Rules
+
+- Statements of theorems that are machine-checked in `set_theory_prover` must match the kernel
+  statement exactly (GitLab #8088 will generate them).
+- Do not call a Python check a "formalization" or "verification".
+- Removed files are listed in `docs/REMOVED_DOCUMENTS.md`.

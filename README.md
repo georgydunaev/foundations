@@ -116,14 +116,10 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **examples/debruijn.ML**: Executable Standard ML formalization of untyped de Bruijn substitution, shifting, beta-contraction, and fuel-bounded normal-order evaluation. *(Active Verified SML)*
 - **Coq/positive_foundations.v**: Coq formalisation of positive foundations, including inductive definitions of ensembles and ordered pairs. *(Active Draft)*
 - **code/IFOLD.thy**: Isabelle/HOL theory implementing the IFOLD construction. *(Active Draft)*
-- **foundations/**: Python formalization modules (`__init__.py`, `logic.py`, `descriptors.py`, `pfol.py`, `type_semantics.py`, `classes.py`) implementing the `MKTD1` / `MKTD2` logical framework, quantifier and uniqueness binder hygiene, descriptor systems, Farmer's PFOL, predicates-as-types semantics, Dunaev Tagged Ordered Pairs, canonical families, finite class-lists, and tight Grothendieck universes. *(Active Python Reference)*
+- **foundations/**: Python modules (`logic.py`, `descriptors.py`, `pfol.py`, `type_semantics.py`, `classes.py`) with finite executable illustrations of the `MKTD1` / `MKTD2` framework. They check small finite examples; they are not formal proofs (see the package docstring). Machine-checked proofs are in `set_theory_prover`.
 
 ### Additional Resources
-- **ARCHITECTURE_AND_THEOREMS.md**: Comprehensive guide summarizing every formalization, theorem, axiom system, and unfinished problem in this repository.
-- **AUDIT_REPORT.md**: Reconciliation report for semantic completeness, quantifier context freshness, Dunaev tagged pairs, and Coq positive foundations.
 - **APPROACHES_INVENTORY.md**: Inventory, implementation status, and preservation boundary for the exact five approaches.
-- **COMPETING_APPROACHES.md**: Concise comparison and links to the approach inventory.
-- **LATEX_AUDIT_REPORT.md**: Report on LaTeX documentation status.
 - **MACROS_INDEX.md**: Index of custom LaTeX macros.
 - **PRESENTATION_ML_GUIDE.md**: Guide for `presentation.ML`.
 - **MECHANIZED_EXPERIMENTS.md**: Notes on mechanized experiments.
@@ -137,8 +133,7 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 
 ## Verification and Upstream Follow-Up
 
-[The audit report](LATEX_AUDIT_REPORT.md) records the source checks and their
-limits. [Mechanized experiments](MECHANIZED_EXPERIMENTS.md) distinguishes
+[Mechanized experiments](MECHANIZED_EXPERIMENTS.md) distinguishes
 current exported evidence from earlier reports of proof counts. The local
 Obelisk website was inspected read only; concrete upstream corrections and
 setting-dependent differences are recorded in `tickets/obelisk_*.md`.
