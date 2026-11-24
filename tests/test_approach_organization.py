@@ -23,7 +23,7 @@ class TestActiveApproachDecision(unittest.TestCase):
         self.assertLess(guide, logic)
 
     def test_active_pair_summary_uses_dunaev_tags(self):
-        content = read("010_ordered_pairs.tex")
+        content = read("archive/010_ordered_pairs.tex")
         self.assertIn(r"(a,b)\ceq(\{0\}\times a)\cup(\{1\}\times b)", content)
         self.assertIn("not the outer Kuratowski construction", content)
         self.assertNotIn(r"Ordered pair: $(x, y) = \{x, y\}$", content)
@@ -38,7 +38,7 @@ class TestActiveApproachDecision(unittest.TestCase):
             self.assertIn("uniqueness", normalized)
 
     def test_no_semantic_switch_is_claimed(self):
-        interface = read("050_unified_interface.tex")
+        interface = read("archive/050_unified_interface.tex")
         self.assertIn("not a unified semantics", interface)
         self.assertIn("No Semantic Switch", interface)
         self.assertNotIn("modifying the \\\\topic", interface)
@@ -89,22 +89,22 @@ class TestApproachDocumentation(unittest.TestCase):
         self.assertIn("**Status:** preserved `[OUTDATED]` alternative", content)
 
     def test_rejected_unification_drafts_are_non_normative(self):
-        for name in ("025_unified_descriptors.tex", "035_unified_type_semantics.tex"):
+        for name in ("archive/025_unified_descriptors.tex", "archive/035_unified_type_semantics.tex"):
             with self.subTest(name=name):
                 content = read(name)
                 self.assertIn("[OUTDATED]", content)
                 self.assertIn("non-normative", content)
                 self.assertNotIn("configuration parameter", content.split("Independent Alternatives")[0])
-        self.assertNotIn("A general descriptor is a tuple", read("025_unified_descriptors.tex"))
+        self.assertNotIn("A general descriptor is a tuple", read("archive/025_unified_descriptors.tex"))
 
     def test_navigation_tex_has_no_literal_newline_escape_artifacts(self):
         names = (
-            "010_ordered_pairs.tex",
-            "025_unified_descriptors.tex",
-            "035_unified_type_semantics.tex",
-            "040_partial_functions.tex",
-            "050_descriptor_systems.tex",
-            "050_unified_interface.tex",
+            "archive/010_ordered_pairs.tex",
+            "archive/025_unified_descriptors.tex",
+            "archive/035_unified_type_semantics.tex",
+            "archive/040_partial_functions.tex",
+            "archive/050_descriptor_systems.tex",
+            "archive/050_unified_interface.tex",
             "summary_of_approaches.tex",
         )
         for name in names:
@@ -112,7 +112,7 @@ class TestApproachDocumentation(unittest.TestCase):
                 self.assertIsNone(re.search(r"\\n(?![A-Za-z])", read(name)))
 
     def test_secondary_class_abstraction_draft_does_not_assert_sethood(self):
-        content = read("050_descriptor_systems.tex")
+        content = read("archive/050_descriptor_systems.tex")
         self.assertIn("not\nautomatically a set", content)
         self.assertIn("no\nset or class of all classes", content)
 

@@ -5,9 +5,9 @@
 ## Treatise Modules & Boundaries
 1. **Foundations of Mathematics Monograph (`001_foundations.tex`)**:
    - **Preamble & Entrypoint**: `000_preamble.tex`, `001_foundations.tex`, `references.bib`, `MACROS_INDEX.md`.
-   - **Syntax, Logic & Binders**: `010_logic.tex`, `020_descriptors.tex`, `025_unified_descriptors.tex`, `050_descriptor_systems.tex`.
-   - **Type Semantics & Proof Calculi (`MKTD1` / `MKTD2`)**: `030_alternative_semantics.tex`, `035_unified_type_semantics.tex`, `050_prooftrees.tex`, `050_unified_interface.tex`, `summary_of_approaches.tex`.
-   - **Class Axioms & Ordered Pairs**: `060_axioms.tex`, `010_ordered_pairs.tex`, `070_ordered_pair.tex`.
+   - **Syntax, Logic & Binders**: `010_logic.tex`, `020_descriptors.tex`, `archive/025_unified_descriptors.tex`, `archive/050_descriptor_systems.tex`.
+   - **Type Semantics & Proof Calculi (`MKTD1` / `MKTD2`)**: `030_alternative_semantics.tex`, `archive/035_unified_type_semantics.tex`, `050_prooftrees.tex`, `archive/050_unified_interface.tex`, `summary_of_approaches.tex`.
+   - **Class Axioms & Ordered Pairs**: `060_axioms.tex`, `archive/010_ordered_pairs.tex`, `070_ordered_pair.tex`.
 2. **Schroedinger Semigroups Thesis (`thesis_schrodinger.tex`)**:
    - **Manuscript & Verifier**: `thesis_schrodinger.tex`, `schrodinger_kernel_verifier.py`, `scripts/plot_dynamical_potential.py`.
 3. **Mechanized SML & Python Verification Suite**:

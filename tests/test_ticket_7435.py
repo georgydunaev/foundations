@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RELATIONS_PATH = ROOT / "200_relations.tex"
+RELATIONS_PATH = ROOT / "archive" / "200_relations.tex"
 PREAMBLE_PATH = ROOT / "000_preamble.tex"
 _MACRO_DEFINITION = re.compile(r"\\newcommand\*?\{\\([A-Za-z@]+)\}")
 

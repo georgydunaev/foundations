@@ -29,17 +29,17 @@ As documented in [`APPROACHES_INVENTORY.md`](file:///botworkspace/foundations/AP
 | 1 | Classical Two-Valued MK/NBG + Total Comprehension Evaluation + Dunaev Tagged Ordered Pairs | [`060_axioms.tex`](file:///botworkspace/foundations/060_axioms.tex), [`070_ordered_pair.tex`](file:///botworkspace/foundations/070_ordered_pair.tex), [`presentation.ML`](file:///botworkspace/foundations/presentation.ML), [`mktd_foundations.ML`](file:///botworkspace/foundations/examples/mktd_foundations.ML) | Active mainline |
 | 2 | Predicates/Formulas-as-Types, Classes-as-Expressions | [`001_foundations.tex`](file:///botworkspace/foundations/001_foundations.tex), [`130_classes_as_types.tex`](file:///botworkspace/foundations/130_classes_as_types.tex), [`type_semantics.py`](file:///botworkspace/foundations/foundations/type_semantics.py) | Active mainline (with historical drafts marked `[OUTDATED]`) |
 | 3 | Three-Valued / Uncertain Descriptor Calculus ($\tau, \epsilon, \varepsilon$) | [`020_descriptors.tex`](file:///botworkspace/foundations/020_descriptors.tex), [`180_many-valued.tex`](file:///botworkspace/foundations/180_many-valued.tex), [`descriptors.py`](file:///botworkspace/foundations/foundations/descriptors.py) | Preserved alternative |
-| 4 | Farmer's Partial First-Order Logic (PFOL) with $\iota$-definedness and Kleene equality | [`210_partial_functions_semantics.tex`](file:///botworkspace/foundations/210_partial_functions_semantics.tex), [`040_partial_functions.tex`](file:///botworkspace/foundations/040_partial_functions.tex), [`pfol.py`](file:///botworkspace/foundations/foundations/pfol.py) | Preserved alternative |
+| 4 | Farmer's Partial First-Order Logic (PFOL) with $\iota$-definedness and Kleene equality | [`210_partial_functions_semantics.tex`](file:///botworkspace/foundations/210_partial_functions_semantics.tex), [`archive/040_partial_functions.tex`](file:///botworkspace/foundations/040_partial_functions.tex), [`pfol.py`](file:///botworkspace/foundations/foundations/pfol.py) | Preserved alternative |
 | 5 | Conglomerate-Valued / Subset Assignment Semantics | [`030_alternative_semantics.tex`](file:///botworkspace/foundations/030_alternative_semantics.tex) | Preserved `[OUTDATED]` alternative |
 
-Rejected unification drafts ([`025_unified_descriptors.tex`](file:///botworkspace/foundations/025_unified_descriptors.tex) and [`035_unified_type_semantics.tex`](file:///botworkspace/foundations/035_unified_type_semantics.tex)) remain explicitly marked `[OUTDATED]` and non-normative.
+Rejected unification drafts ([`archive/025_unified_descriptors.tex`](file:///botworkspace/foundations/025_unified_descriptors.tex) and [`archive/035_unified_type_semantics.tex`](file:///botworkspace/foundations/035_unified_type_semantics.tex)) remain explicitly marked `[OUTDATED]` and non-normative.
 
 ---
 
 ## 3. Axiom Systems
 
 ### 3.1 Morse-Kelley (MK) and Von Neumann-Bernays-Gödel (NBG) Class Theory
-Defined across [`060_axioms.tex`](file:///botworkspace/foundations/060_axioms.tex), [`100_class_theory.tex`](file:///botworkspace/foundations/100_class_theory.tex), [`100_classes.tex`](file:///botworkspace/foundations/100_classes.tex), and [`mktd_foundations.ML`](file:///botworkspace/foundations/examples/mktd_foundations.ML):
+Defined across [`060_axioms.tex`](file:///botworkspace/foundations/060_axioms.tex), [`100_class_theory.tex`](file:///botworkspace/foundations/100_class_theory.tex), [`archive/100_classes.tex`](file:///botworkspace/foundations/100_classes.tex), and [`mktd_foundations.ML`](file:///botworkspace/foundations/examples/mktd_foundations.ML):
 - **Class Extensionality**: $\forall A\,\forall B,\, (\forall x,\, x \in A \iff x \in B) \implies A = B$.
 - **Universal Class of Sets**: $V \eqdef \{x \mid \top\}$, where $x \in V$ expresses sethood ($\mathrm{isSet}(x)$).
 - **Impredicative Class Comprehension (MK)**: For any formula $\phi(x)$ (whose quantifiers may range over all classes), $\forall z,\, z \in \{x \mid \phi(x)\} \iff (z \in V \land \phi(z))$. In NBG fragments, comprehension formulas are restricted to set quantifiers.

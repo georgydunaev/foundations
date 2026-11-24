@@ -60,22 +60,22 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **000_preamble.tex**: LaTeX preamble for the Foundations of Mathematics document. *(Active Draft)*
 - **001_foundations.tex**: Main book and active classical MK/NBG approach, including the front guide to all five approaches. *(Active Draft)*
 - **010_logic.tex**: Logical framework including conglomerate terms of all classes. *(Active Draft)*
-- **010_ordered_pairs.tex**: Navigation summary distinguishing the book's recursive pairing from the newer marker-tagged implementation. *(Active Draft)*
+- **archive/010_ordered_pairs.tex**: Navigation summary distinguishing the book's recursive pairing from the newer marker-tagged implementation. *(Active Draft)*
 - **020_descriptors.tex**: Three-valued/uncertain descriptor calculus with `tau`, `epsilon`, and partial `varepsilon`. *(Preserved Alternative 3)*
-- **025_unified_descriptors.tex**: Rejected attempt to combine descriptor systems without specifying their semantics. **[OUTDATED] Non-Normative**
+- **archive/025_unified_descriptors.tex**: Rejected attempt to combine descriptor systems without specifying their semantics. **[OUTDATED] Non-Normative**
 - **030_alternative_semantics.tex**: Conglomerate-valued/subset assignment semantics. **[OUTDATED] Preserved Alternative 5**
-- **035_unified_type_semantics.tex**: Rejected generic type/descriptor relation. **[OUTDATED] Non-Normative**
+- **archive/035_unified_type_semantics.tex**: Rejected generic type/descriptor relation. **[OUTDATED] Non-Normative**
 - **040_old_variant_of_iota_defs.tex**: Historical set descriptors and class-valued-family encodings, with scoped canonicalization results. **[OUTDATED] Historical**
-- **040_partial_functions.tex**: Secondary summary of the PFOL partial-function notation. *(Preserved Alternative 4 Draft)*
-- **050_descriptor_systems.tex**: Secondary descriptor and class-abstraction notes. *(Preserved Alternative Draft)*
+- **archive/040_partial_functions.tex**: Secondary summary of the PFOL partial-function notation. *(Preserved Alternative 4 Draft)*
+- **archive/050_descriptor_systems.tex**: Secondary descriptor and class-abstraction notes. *(Preserved Alternative Draft)*
 - **050_prooftrees.tex**: Proof-tree formalism for class-theoretic deductions. *(Active Draft)*
-- **050_unified_interface.tex**: Navigation between approaches; explicitly not a semantic switch. *(Active Navigation)*
+- **archive/050_unified_interface.tex**: Navigation between approaches; explicitly not a semantic switch. *(Active Navigation)*
 - **060_axioms.tex**: Core axioms of the Morse–Kelley framework. *(Active Draft)*
 - **070_ordered_pair.tex**: Kuratowski, recursive Dunaev, and marker-tagged pair constructions with separate scopes. *(Active Draft)*
 - **080_azriel_levi_union_thm.tex**: Azriel Lévy union argument with the boundedness proof reconstructed from the author's handwritten notes, under explicit prerequisites. *(Active Draft)*
 - **090_proving_limitation_of_size.tex**: Development of limitation-of-size results. *(Active Draft)*
 - **100_class_theory.tex**: Finite and hereditarily finite countermodels separating minimal class axioms from stronger existence principles, Dunaev Tagged Ordered Pairs, finite class-lists, and tight Grothendieck universes. *(Active Draft)*
-- **100_classes.tex**: Formal Morse–Kelley class comprehension schema, sethood guards, and class separation axioms. *(Active Draft)*
+- **archive/100_classes.tex**: Formal Morse–Kelley class comprehension schema, sethood guards, and class separation axioms. *(Active Draft)*
 - **110_family_evaluation.tex**: Theory of families, guarded evaluation maps, relational versus evaluated images, and semi-singleton predicate-head definitions. *(Active Draft)*
 - **120_induction_recursion.tex**: Induction and recursion principles for classes. *(Active Draft)*
 - **130_classes_as_types.tex**: Active predicates/formulas-as-types discipline, a scoped predicate/storage interface and option models, with older classes-as-types attempts explicitly marked outdated. *(Active Draft with Historical Sections)*
@@ -88,7 +88,7 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 - **190_union_intersection.tex**: Formal treatment of union and intersection operations on classes. *(Active Draft)*
 - **198_debruijn_substitution.tex**: Complete untyped de Bruijn substitution, scope and capture-avoidance proofs, and a fuel-bounded executable SML evaluator. *(Proved example, separate from the typed calculus)*
 - **199_languages.tex**: Simple-type checking, denotational semantics, strong normalization, confluence, and decidable conversion, including a proved Boolean conditional extension. *(Active Draft)*
-- **200_relations.tex**: Theory of relations between classes. *(Active Draft)*
+- **archive/200_relations.tex**: Theory of relations between classes. *(Active Draft)*
 - **200_uniqueness.tex**: Uniqueness principles and their applications. *(Active Draft)*
 - **210_partial_functions_semantics.tex**: Farmer's PFOL, iota-definedness, and Kleene equality. *(Preserved Alternative 4)*
 - **220_simpler_img_thms.tex**: Simpler image theorems for functions between classes. *(Active Draft)*
@@ -132,7 +132,7 @@ See [APPROACHES_INVENTORY.md](APPROACHES_INVENTORY.md) and the reader-facing
 
 - **Active mainline:** approaches (1) and (2), with no uncertain truth value or PFOL definedness imported implicitly.
 - **Preserved alternatives:** approaches (3), (4), and (5), retained with their own local assumptions. Several are included in the assembled book.
-- **Rejected unification drafts:** `025_unified_descriptors.tex` and `035_unified_type_semantics.tex`, retained only as `[OUTDATED]` non-normative documents.
+- **Rejected unification drafts:** `archive/025_unified_descriptors.tex` and `archive/035_unified_type_semantics.tex`, retained only as `[OUTDATED]` non-normative documents.
 - **Historical material:** files explicitly marked `[OUTDATED]` remain preserved rather than being silently modernised or deleted.
 
 ## Verification and Upstream Follow-Up

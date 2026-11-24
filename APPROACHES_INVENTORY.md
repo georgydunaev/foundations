@@ -94,7 +94,7 @@ They are not truth values of the classical active kernel.
 PFOL uses definedness and Kleene equality. Its central iota condition is
 `(iota x, φ)↓ iff (∃!x, φ)`, and function values use `≃` rather than being
 identified with the active total union evaluation. The shorter
-`040_partial_functions.tex` and `050_descriptor_systems.tex` files are only
+`archive/040_partial_functions.tex` and `archive/050_descriptor_systems.tex` files are only
 secondary drafts; the source above is authoritative for this alternative.
 
 ## 5. Conglomerate-Valued / Subset Semantics
@@ -118,9 +118,9 @@ conventions must not be mixed into the active classical semantics.
    book includes the many-valued, PFOL, and subset-semantics discussions;
    `020_descriptors.tex` supplies the included descriptor comparison. These are independent
    mathematical approaches, not kernel configuration options.
-4. `025_unified_descriptors.tex` and `035_unified_type_semantics.tex` are
+4. `archive/025_unified_descriptors.tex` and `archive/035_unified_type_semantics.tex` are
    retained only as explicitly `[OUTDATED]` rejected unification drafts.
-   `050_unified_interface.tex` is a navigation document, not a semantics or a
+   `archive/050_unified_interface.tex` is a navigation document, not a semantics or a
    switch between foundations.
 
 ## Preservation Boundary
@@ -146,10 +146,10 @@ Across the Obelisk and Foundations architecture (Tickets `7191` and `7305`), the
 
 | Approach / Variant | Primary Manuscript Files | Executable / Reference Modules | Role in `MKTD1` / `MKTD2` |
 | --- | --- | --- | --- |
-| Approach 1: Classical MK/NBG + Total Evaluation + Dunaev Pairs | `060_axioms.tex`, `070_ordered_pair.tex`, `100_class_theory.tex`, `100_classes.tex`, `110_family_evaluation.tex` | `presentation.ML`, `examples/mktd_foundations.ML`, `foundations/type_semantics.py`, `foundations/classes.py` | Active object-theory base of `MKTD1-theory` and `MKTD2-theory` |
+| Approach 1: Classical MK/NBG + Total Evaluation + Dunaev Pairs | `060_axioms.tex`, `070_ordered_pair.tex`, `100_class_theory.tex`, `archive/100_classes.tex`, `110_family_evaluation.tex` | `presentation.ML`, `examples/mktd_foundations.ML`, `foundations/type_semantics.py`, `foundations/classes.py` | Active object-theory base of `MKTD1-theory` and `MKTD2-theory` |
 | Approach 2: Predicates/Formulas-as-Types, Classes-as-Expressions | `001_foundations.tex`, `010_logic.tex`, `130_classes_as_types.tex`, `131_class_polynomial_trees.tex` | `examples/mktd_foundations.ML`, `foundations/logic.py`, `foundations/type_semantics.py` | Active type and proof discipline of `MKTD1-framework` and `MKTD2-framework` |
 | Historical Iota & Family Drafts | `040_old_variant_of_iota_defs.tex` | `foundations/descriptors.py`, `foundations/classes.py` | Preserved `[OUTDATED]` historical iota and class-family canonicalization notes |
 | Approach 3: Three-Valued / Uncertain Descriptors ($\tau, \epsilon, \varepsilon$) | `020_descriptors.tex`, `180_many-valued.tex` | `foundations/descriptors.py` | Independent preserved alternative (not imported into classical kernel) |
-| Approach 4: Farmer's PFOL ($\iota$-definedness & Kleene equality $\simeq$) | `210_partial_functions_semantics.tex`, `040_partial_functions.tex`, `050_descriptor_systems.tex` | `foundations/pfol.py` | Independent preserved alternative |
+| Approach 4: Farmer's PFOL ($\iota$-definedness & Kleene equality $\simeq$) | `210_partial_functions_semantics.tex`, `archive/040_partial_functions.tex`, `archive/050_descriptor_systems.tex` | `foundations/pfol.py` | Independent preserved alternative |
 | Approach 5: Conglomerate-Valued / Subset Semantics | `030_alternative_semantics.tex` | `foundations/type_semantics.py` | Independent `[OUTDATED]` historical alternative |
-| Rejected Unification Drafts | `025_unified_descriptors.tex`, `035_unified_type_semantics.tex`, `050_unified_interface.tex` | Tested in `tests/test_approach_organization.py` | Non-normative historical notes and navigation guide |
+| Rejected Unification Drafts | `archive/025_unified_descriptors.tex`, `archive/035_unified_type_semantics.tex`, `archive/050_unified_interface.tex` | Tested in `tests/test_approach_organization.py` | Non-normative historical notes and navigation guide |
