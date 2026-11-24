@@ -473,6 +473,7 @@ not modified; this file is documentation only.
 | `\valen` | Foundations preamble macro / notation |
 | `\var` | Foundations preamble macro / notation |
 | `\xdetokenize` | Foundations preamble macro / notation |
+| `\kernelstmt` | Includes generated plain-LaTeX kernel statement from `generated/latex/<EntryId>.tex` (GitLab #8088) |
 
 ## BEGIN.tex
 

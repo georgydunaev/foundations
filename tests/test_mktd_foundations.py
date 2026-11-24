@@ -1104,6 +1104,36 @@ class TestMKTDML(unittest.TestCase):
             f"Poly/ML execution failed:\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}",
         )
 
+    def test_kernelstmt_references_exist_in_theory_db_and_generated_latex(self):
+        """GitLab #8088: Every \\kernelstmt{EntryId} in foundations/*.tex exists in theory_db.json and is verified."""
+        import json
+        import re
+
+        db_path = ROOT.parent / "obeliskproofassistant.github.io" / "generated" / "theory_db.json"
+        self.assertTrue(db_path.is_file(), f"Missing {db_path}")
+        db = json.loads(db_path.read_text(encoding="utf-8"))
+        entries_by_id = {e["id"]: e for e in db.get("entries", [])}
+
+        pattern = re.compile(r"\\kernelstmt\{([A-Za-z0-9_]+)\}")
+        found_ids = []
+        for tex_file in sorted(ROOT.glob("*.tex")):
+            if tex_file.name == "000_preamble.tex":
+                continue
+            text = tex_file.read_text(encoding="utf-8")
+            for m in pattern.finditer(text):
+                found_ids.append((tex_file.name, m.group(1)))
+
+        self.assertGreaterEqual(len(found_ids), 3, "Expected at least 3 \\kernelstmt{...} invocations in foundations")
+        for tex_name, entry_id in found_ids:
+            self.assertIn(entry_id, entries_by_id, f"\\kernelstmt{{{entry_id}}} in {tex_name} not found in theory_db.json")
+            entry = entries_by_id[entry_id]
+            self.assertIn("Verified", entry.get("verification", ""), f"Entry {entry_id} is not marked Verified: {entry.get('verification')}")
+            ltx_file = ROOT / "generated" / "latex" / f"{entry_id}.tex"
+            self.assertTrue(ltx_file.is_file(), f"Missing generated LaTeX statement file {ltx_file}")
+            ltx_text = ltx_file.read_text(encoding="utf-8")
+            self.assertIn("\\ensuremath{", ltx_text)
+            self.assertNotIn("\\href{", ltx_text)
+
 
 if __name__ == "__main__":
     unittest.main()

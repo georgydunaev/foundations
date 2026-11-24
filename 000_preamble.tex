@@ -1301,6 +1301,19 @@
 }
 \makeatother\ExplSyntaxOff
 
+% Generated kernel statement macro (GitLab #8088):
+% Loads statement-exact LaTeX generated directly from set_theory_prover/program/ast_linked_printer.ML.
+\newcommand{\kernelstmt}[1]{%
+  \IfFileExists{generated/latex/#1.tex}{%
+    \input{generated/latex/#1.tex}%
+  }{%
+    \IfFileExists{../obeliskproofassistant.github.io/generated/latex/#1.tex}{%
+      \input{../obeliskproofassistant.github.io/generated/latex/#1.tex}%
+    }{%
+      \texttt{#1}%
+    }%
+  }%
+}
 
 
 
