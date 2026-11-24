@@ -140,7 +140,7 @@ Across the Obelisk and Foundations architecture (Tickets `7191` and `7305`), the
    - Sequent-calculus and typed-AST formulation built on classical Morse–Kelley / NBG statements about classes (`Class_Expre`, `Fm_Expre`, `Stmt`, `Ctx`, `Theory`, `Prf`).
    - Enforces the Off-by-One level invariant: SML code manipulates syntactic expressions of classes (`Class_Expre`), never raw semantic classes, while all class comprehensions bind `Class` variables (`TClass`) and class-level pairing uses Dunaev Tagged Ordered Pairs (`TagPair` / `DunaevTaggedPair`).
 2. **MKTD2 (`MKTD2-framework`, `MKTD2-system` / `MKTD2-prover`, `MKTD2-theory`)**:
-   - Constructive Curry–Howard / Formulas-as-Types variant in which formulas are types (implications as function spaces, universal/existential quantifiers as dependent $\Pi$/$\Sigma$ types) and proofs are $\lambda$-terms over the same Morse–Kelley / NBG class-theoretic base.
+   - Curry–Howard / Formulas-as-Types variant (classical: the context postulates `ax_dneg_elim` and `ax_peirce`; see `set_theory_prover/FACTBOOK.md` §1) in which formulas are types (implications as function spaces, universal/existential quantifiers as dependent $\Pi$/$\Sigma$ types) and proofs are $\lambda$-terms over the same Morse–Kelley / NBG class-theoretic base.
 
 ### Summary Matrix of Historical and Active Files
 
