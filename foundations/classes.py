@@ -508,10 +508,13 @@ def is_subset_tight_universe(
 
 
 def eval_tight_universe_indexed_union_closure() -> Dict[str, Any]:
-    """Evaluates Items 3.68 and 3.69 (obelisk_universe_indexed_union_closure.md):
-    Verifies that a tight Grothendieck universe U (Transitive, PowersetClosed, SubsetTight)
-    is closed under set-indexed unions Union_{i in I} A_i for I in U and family A from I to U,
-    and that the universal class V satisfies 3.69 ThmUniversalClassIsUniverse.
+    """Finite illustration of Items 3.68 and 3.69 (obelisk_universe_indexed_union_closure.md).
+
+    Checks, on the single finite stage V_3, that it is transitive and subset-tight and that one
+    indexed family inside V_3 has its indexed union in V_3.  This is an executable sanity check
+    on one finite example, NOT a proof of 3.68 or 3.69 (GitLab #8087).  The universal class V
+    is not a finite object and is not checked here: 3.69 ThmUniversalClassIsUniverse is proved
+    in the set_theory_prover MKTD1 kernel (v_universe_thm_proof, program/types/universe_definitions.ML).
     """
     # Finite stage V_3 inside ambient V_4
     v2 = cumulative_hierarchy_v(2)
@@ -546,7 +549,12 @@ def eval_tight_universe_indexed_union_closure() -> Dict[str, Any]:
     #   C in V by Limitation of Size / Replacement.
     # - IndexedUnionClosed(V): for every set I in V and family A from I to V,
     #   A[I] in V by Replacement and Union(A[I]) in V by Union Axiom.
-    v_is_universe_369 = True
+    # [WHY] #8087: 3.69 used to be reported as `v_is_universe_369 = True`, a literal that
+    # verified nothing.  It is now a pointer to the kernel proof and is excluded from all_ok.
+    kernel_proof_369 = (
+        "not checked by this finite illustration; proved in set_theory_prover MKTD1 kernel: "
+        "ThmUniversalClassIsUniverse (v_universe_thm_proof)"
+    )
 
     all_ok = (
         trans_v3
@@ -554,7 +562,6 @@ def eval_tight_universe_indexed_union_closure() -> Dict[str, Any]:
         and index_in_v3
         and fibers_in_v3
         and indexed_union_in_v3
-        and v_is_universe_369
     )
 
     return {
@@ -565,7 +572,7 @@ def eval_tight_universe_indexed_union_closure() -> Dict[str, Any]:
         "index_set_in_universe": index_in_v3,
         "all_fibers_in_universe": fibers_in_v3,
         "indexed_union_in_universe": indexed_union_in_v3,
-        "universal_class_is_universe_369": v_is_universe_369,
+        "universal_class_is_universe_369": kernel_proof_369,
         "derivation_bridge": [
             "Transitivity: A_i in U implies A_i subseteq U, hence Union_{i in I} A_i subseteq U",
             "Cardinal Comparability + Tightness: range A[I] and Union_{i in I} A_i inject into power/product bounds inside U",

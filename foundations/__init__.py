@@ -1,4 +1,13 @@
-"""Foundations package."""
+"""Foundations package: executable finite models and illustrations.
+
+Status of the code in this package (GitLab #8087):
+- The ``eval_*`` / ``verify_*`` / ``check_*`` functions run finite computations (finite stages
+  V_n, small sample sets, finite Boolean algebras).  A result such as ``"status": "RESOLVED"``
+  means the finite example behaved as the theorem predicts.  It is NOT a proof of the theorem
+  for classes, proper classes or infinite sets, and it is not a formalization.
+- Machine-checked proofs live in the set_theory_prover kernels (MKTD1: program/newchecker/,
+  MKTD2: program/dependent_typechecker.ML); the monograph should cite those entries.
+"""
 
 from foundations.descriptors import (
     EMPTY_CLASS,

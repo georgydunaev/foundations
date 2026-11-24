@@ -1906,7 +1906,8 @@ class TestTypeSemantics(unittest.TestCase):
         univ_res = eval_tight_universe_indexed_union_closure()
         self.assertEqual(univ_res["status"], "RESOLVED")
         self.assertTrue(univ_res["indexed_union_in_universe"])
-        self.assertTrue(univ_res["universal_class_is_universe_369"])
+        # 3.69 is not checked by the finite illustration; it must point to the kernel proof (#8087)
+        self.assertIn("ThmUniversalClassIsUniverse", univ_res["universal_class_is_universe_369"])
 
         master = proves_foundations_classes_and_families()
         self.assertEqual(master["ticket_applications_semisingleton_export"]["status"], "RESOLVED")

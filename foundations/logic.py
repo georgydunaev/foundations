@@ -1295,8 +1295,12 @@ def eval_decoupled_equality_and_dunaev_kleene_star() -> dict[str, Any]:
             if dunaev_tuple_proj(enc2, 1) != a or dunaev_tuple_proj(enc2, 2) != b:
                 unique_readability_ok = False
 
-    # Contrast: unmarked recursive pair P(0, 0) = 0 collapses lengths 0, 1, 2 at empty set
-    unmarked_recursive_p_0_0_is_empty = True
+    # Contrast: unmarked recursive pair P(A, B) = {L(a) | a in A} U {R(b) | b in B};
+    # P(0, 0) = 0 collapses lengths 0, 1, 2 at the empty set.  Computed, not asserted (#8087).
+    def unmarked_recursive_pair(a_set: frozenset, b_set: frozenset) -> frozenset:
+        return frozenset(("L", a) for a in a_set) | frozenset(("R", b) for b in b_set)
+
+    unmarked_recursive_p_0_0_is_empty = unmarked_recursive_pair(frozenset(), frozenset()) == frozenset()
 
     assert set_leibniz_agrees_with_extensional is True
     assert extensional_distinguishes_proper is True
