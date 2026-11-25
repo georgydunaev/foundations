@@ -4852,7 +4852,7 @@ theory $\Fau$ into two separate entries with distinct formulas, constructors,
 and specification comments:
 \begin{enumerate}
   \item \textbf{Semantic Completeness / Omniscience} (\texttt{AxmSemanticCompletenessOfFullTheory},
-  Entry~3.73, kernel constructor \texttt{POmnisSem\_prf} / \texttt{POmnis\_prf}, defined in
+  Entry~3.73, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{semantic\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
   \forall (\phi:\Fm),\ \operatorname{eval}_M(\phi) \implies (\Fau, [] \vdash \phi).
@@ -4861,7 +4861,7 @@ and specification comments:
   $\operatorname{eval}_M$ (\texttt{EEval}) to derivability in $\Fau$ with empty
   undischarged context $[]$.
   \item \textbf{Syntactic Negation-Completeness} (\texttt{AxmNegationCompletenessOfFullTheory},
-  Entry~3.74, kernel constructor \texttt{POmnisNeg\_prf}, defined in
+  Entry~3.74, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
   \forall (\phi:\Fm),\ \neg(\Fau, [] \vdash \neg\phi) \implies (\Fau, [] \vdash \phi).
@@ -4879,14 +4879,15 @@ $(\Fau, [] \vdash \neg\phi)$, so syntactic negation-completeness supplies a
 derivation $(\Fau, [] \vdash \phi)$. Conversely, semantic completeness (Entry~3.73) together
 with classical semantic bivalence ($\operatorname{eval}_M(\phi) \lor \operatorname{eval}_M(\neg\phi)$)
 implies syntactic negation-completeness (Entry~3.74). Decoupling Entry~3.73
-(\texttt{AxmSemanticCompletenessOfFullTheory}, \texttt{POmnisSem\_prf}) from Entry~3.74
-(\texttt{AxmNegationCompletenessOfFullTheory}, \texttt{POmnisNeg\_prf})
+(\texttt{AxmSemanticCompletenessOfFullTheory}) from Entry~3.74
+(\texttt{AxmNegationCompletenessOfFullTheory})
 keeps these two notions strictly separate and records the exact hypotheses linking them.
+Both hold for $\Fau$ by its definition as the theory of the intended model; the kernel has no
+rule for either.
 
 % Companion evidence: generated/metatheory.html and generated/theory_db.json,
 % AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory (3.72),
-% AxmSemanticCompletenessOfFullTheory (3.73, POmnisSem_prf),
-% AxmNegationCompletenessOfFullTheory (3.74, POmnisNeg_prf), AxmBaseSubtheoryOfFull (3.75);
+% AxmSemanticCompletenessOfFullTheory (3.73), AxmNegationCompletenessOfFullTheory (3.74), AxmBaseSubtheoryOfFull (3.75);
 % generated/symbols/theory-wau.html and theory-eau.html.
 % Local source-level discrepancies are tracked in tickets/obelisk_logic_*.md.
 
@@ -6006,12 +6007,12 @@ Let $\Wau$ be a theory, $\Gamma$ a context of formulas, $\phi(x)$ and $\psi$ for
 
 To avoid conflating distinct notions of completeness across the theory hierarchy $\Tau \subset \Fau$, the catalog decouples two distinct properties of the full foundational theory $\Fau$ (and, more generally, of any theory $\Wau$):
 \begin{enumerate}
-  \item \textbf{Semantic Adequacy / Omniscience in the Canonical Model $\mathcal{M}_{\Wau}$ (Catalog Item \texttt{3.73}, \texttt{AxmSemanticCompletenessOfFullTheory}, constructor \texttt{POmnisSem\_prf})}:
+  \item \textbf{Semantic Adequacy / Omniscience in the Canonical Model $\mathcal{M}_{\Wau}$ (Catalog Item \texttt{3.73}, \texttt{AxmSemanticCompletenessOfFullTheory})}:
   \[
   \mathrm{SemComplete}(\Wau, \mathcal{M}_{\Wau}) \iff \forall (\phi:\Fm),\ \big(\mathrm{eval}_{\mathcal{M}_{\Wau}}(\phi) \implies (\Wau, [] \vdash \phi)\big),
   \]
   which for $\Wau = \Fau$ states the truth-to-provability implication $\forall (\phi:\Fm),\ \mathrm{eval}_M(\phi) \implies (\Fau, [] \vdash \phi)$.
-  \item \textbf{Syntactic Negation-Completeness on Closed Sentences (Catalog Item \texttt{3.74}, \texttt{AxmNegationCompletenessOfFullTheory}, constructor \texttt{POmnisNeg\_prf})}:
+  \item \textbf{Syntactic Negation-Completeness on Closed Sentences (Catalog Item \texttt{3.74}, \texttt{AxmNegationCompletenessOfFullTheory})}:
   \[
   \mathrm{NegComplete}(\Wau) \iff \forall (\phi:\Fm)\text{ closed},\ \big(\neg(\Wau, [] \vdash \neg \phi) \implies (\Wau, [] \vdash \phi)\big),
   \]
@@ -6023,7 +6024,7 @@ To avoid conflating distinct notions of completeness across the theory hierarchy
 In the \textsf{MKTD1-theory} and \textsf{MKTD2-theory} reflection hierarchy:
 \begin{enumerate}
   \item The base theory $\Tau$ is recursively enumerable and consistent; by G\"odel's first incompleteness theorem, $\Tau$ is not syntactically negation-complete ($\neg \mathrm{NegComplete}(\Tau)$), and cannot satisfy unrestricted truth-to-provability with respect to the standard truth predicate $\mathrm{eval}$.
-  \item The full foundational theory $\Fau$ is constructed in the ambient metatheory as a non-recursively-enumerable Lindenbaum-Henkin maximal consistent extension of $\Tau$. Relative to its canonical Henkin model $\mathcal{M}_{\Fau}$, $\Fau$ satisfies both syntactic negation-completeness ($\mathrm{NegComplete}(\Fau)$) and the semantic adequacy biconditional $\mathrm{eval}_{\mathcal{M}_{\Fau}}(\phi) \iff (\Fau, [] \vdash \phi)$.
+  \item The full foundational theory $\Fau$ is the theory of the intended model $M$: the set of all sentences true in $M$. It is a non-recursively-enumerable complete extension of $\Tau$, and both $\mathrm{NegComplete}(\Fau)$ and $\mathrm{eval}_{M}(\phi) \iff (\Fau, [] \vdash \phi)$ hold by this definition. This rests on the foundational assumption, believed and not proved, that the axioms of $\Tau$ are true in $M$. An arbitrary Lindenbaum--Henkin completion of $\Tau$ would not do: by G\"odel's second theorem some consistent completion contains the sentence $\mathrm{Holds}(\Tau,[\,]\vdash\bot)$, and the rule Credo would then derive $(\Tau,[\,]\vdash\bot)$.
 \end{enumerate}
 \end{proposition}
 
