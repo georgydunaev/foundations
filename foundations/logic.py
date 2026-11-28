@@ -835,7 +835,7 @@ def apply_meta_conecessitation(
     inner_context: list[str],
     formula_str: str,
 ) -> tuple[str, list[str], str]:
-    """Execute DefMetaConecessitation (Item 4.03).
+    """Execute AxmMetaConecessitation (Item 4.03).
 
     Rule:
     forall Gamma, phi. ((F, [] |- <F, Gamma |- phi>) -> (F, Gamma |- phi))
@@ -1070,16 +1070,16 @@ def eval_ctx_ifv_quantifier_hygiene() -> dict[str, Any]:
 def eval_semantic_vs_negation_completeness() -> dict[str, Any]:
     """Evaluates decoupled Items 3.73 and 3.74 (obelisk_logic_completeness.md):
     Decouples semantic completeness (omniscience) in a model (Item 3.73,
-    AxmSemanticCompletenessOfFullTheory, POmnisSem_prf) from syntactic
-    negation-completeness (Item 3.74, AxmNegationCompletenessOfFullTheory,
+    StmSemanticCompletenessOfFullTheory, POmnisSem_prf) from syntactic
+    negation-completeness (Item 3.74, StmNegationCompletenessOfFullTheory,
     POmnisNeg_prf) across the recursively enumerable base theory Tau versus
     the non-r.e. Henkin completion Fau.
 
     Decoupled Catalog Entries:
-    - Entry 3.73 (AxmSemanticCompletenessOfFullTheory, POmnisSem_prf):
+    - Entry 3.73 (StmSemanticCompletenessOfFullTheory, POmnisSem_prf):
       Semantic Adequacy / Omniscience (Truth-to-Provability in Model M):
       forall (phi : Fm). eval_M(phi) implies (W, [] |- phi)
-    - Entry 3.74 (AxmNegationCompletenessOfFullTheory, POmnisNeg_prf):
+    - Entry 3.74 (StmNegationCompletenessOfFullTheory, POmnisNeg_prf):
       Syntactic Negation-Completeness (Maximal Consistency):
       forall closed (phi : Fm). ~(W, [] |- ~phi) implies (W, [] |- phi),
       classically equivalent to (W, [] |- phi) or (W, [] |- ~phi).
@@ -1147,10 +1147,10 @@ def eval_semantic_vs_negation_completeness() -> dict[str, Any]:
         "status": "RESOLVED",
         "item_id": "3.74",
         "semantic_completeness_item_id": "3.73",
-        "semantic_completeness_entry": "AxmSemanticCompletenessOfFullTheory",
+        "semantic_completeness_entry": "StmSemanticCompletenessOfFullTheory",
         "semantic_completeness_constructor": "POmnisSem_prf",
         "negation_completeness_item_id": "3.74",
-        "negation_completeness_entry": "AxmNegationCompletenessOfFullTheory",
+        "negation_completeness_entry": "StmNegationCompletenessOfFullTheory",
         "negation_completeness_constructor": "POmnisNeg_prf",
         "aligned_catalog_items": ["3.73", "3.74"],
         "decoupled": True,

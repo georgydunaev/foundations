@@ -5167,7 +5167,7 @@ structure MKTD_Foundations :> MKTD_FOUNDATIONS = struct
   fun prove_value_at_arg_vs_relational_image f x =
     axiom_value_at_arg_vs_relational_image f x
 
-  (* 4. Decoupled 3.73 AxmSemanticCompletenessOfFullTheory vs 3.74 AxmNegationCompletenessOfFullTheory *)
+  (* 4. Decoupled 3.73 StmSemanticCompletenessOfFullTheory vs 3.74 StmNegationCompletenessOfFullTheory *)
   fun eval_semantic_vs_negation_completeness is_sound is_bivalent is_neg_complete is_sem_complete =
     let
       val neg_implies_sem =

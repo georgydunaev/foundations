@@ -2126,7 +2126,7 @@ assumption context $\Gamma = []$. Accordingly, the short generalisation display
 holds vacuously when the undischarged context is empty and background axioms are
 closed), while 2.04 and 2.05 carry the formula freshness side condition
 $\operatorname{NFV}(X, x, \beta)$ ($x \notin \FV(\beta)$). By contrast, the
-context-indexed metatheoretic generalisation rule \texttt{DefMetaGeneralisation}
+context-indexed metatheoretic generalisation rule \texttt{AxmMetaGeneralisation}
 (4.02, \texttt{generalisation\_def\_entry\_fm}) and the primitive sequent kernel
 constructors \texttt{PForaR\_prf} and \texttt{PExisL\_prf} explicitly enforce the
 context freshness restriction $\neg\operatorname{Ctx.IFV}(v, \Gamma)$ ($v \notin \FV(\Gamma)$).
@@ -4829,15 +4829,15 @@ semantic operation that some of the earlier displays leave implicit. In the
 \texttt{program/export\_theory\_db.ML}, the companion metatheoretic entries 3.72--3.75
 are
 \begin{itemize}
-  \item 3.72: \kernelstmt{AxmSoundnessOfFullTheory},
-  \item 3.73: \kernelstmt{AxmSemanticCompletenessOfFullTheory},
-  \item 3.74: \kernelstmt{AxmNegationCompletenessOfFullTheory},
-  \item 3.75: \kernelstmt{AxmBaseSubtheoryOfFull}.
+  \item 3.72: \kernelstmt{RulSoundnessOfFullTheory},
+  \item 3.73: \kernelstmt{StmSemanticCompletenessOfFullTheory},
+  \item 3.74: \kernelstmt{StmNegationCompletenessOfFullTheory},
+  \item 3.75: \kernelstmt{StmBaseSubtheoryOfFull}.
 \end{itemize}
 Here $\operatorname{eval}$ is $\operatorname{eval}_M$ for the intended model $M$. The first
-is the soundness axiom of $\Fau$ (\texttt{AxmSoundnessOfFullTheory}); the other three
+is the soundness axiom of $\Fau$ (\texttt{RulSoundnessOfFullTheory}); the other three
 hold by the definition of $\Fau$. The last is the subtheory inclusion
-(\texttt{AxmBaseSubtheoryOfFull}), which preserves an assumption context
+(\texttt{StmBaseSubtheoryOfFull}), which preserves an assumption context
 $\Gamma$ when passing from $\Tau$ to $\Fau$. None of these displays asserts that
 $\Tau$ proves its own soundness; an internal version must name its ambient theory
 and the language interpreted by $\operatorname{eval}_M$.
@@ -4847,20 +4847,20 @@ The second and third statements decouple \emph{semantic completeness}
 theory $\Fau$ into two separate entries with distinct formulas, constructors,
 and specification comments:
 \begin{enumerate}
-  \item \textbf{Semantic Completeness / Omniscience} (\texttt{AxmSemanticCompletenessOfFullTheory},
+  \item \textbf{Semantic Completeness / Omniscience} (\texttt{StmSemanticCompletenessOfFullTheory},
   Entry~3.73, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{semantic\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
-  \kernelstmt{AxmSemanticCompletenessOfFullTheory}
+  \kernelstmt{StmSemanticCompletenessOfFullTheory}
   \]
   This semantic principle relates truth under the evaluation operator
   $\operatorname{eval}_M$ (\texttt{EEval}) to derivability in $\Fau$ with empty
   undischarged context $[]$.
-  \item \textbf{Syntactic Negation-Completeness} (\texttt{AxmNegationCompletenessOfFullTheory},
+  \item \textbf{Syntactic Negation-Completeness} (\texttt{StmNegationCompletenessOfFullTheory},
   Entry~3.74, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
-  \kernelstmt{AxmNegationCompletenessOfFullTheory}
+  \kernelstmt{StmNegationCompletenessOfFullTheory}
   \]
   This purely syntactic principle states that if the negation $\neg\phi$ is not
   derivable in $\Fau$ from the empty context $[]$, then $\phi$ itself is derivable
@@ -4868,22 +4868,22 @@ and specification comments:
   $(\Fau, [] \vdash \phi) \lor (\Fau, [] \vdash \neg\phi)$ of Definition~complete theory below).
 \end{enumerate}
 In a fixed classical interpretation $M$, soundness of $\Fau$
-($(\Fau, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$, Entry~3.72 \texttt{AxmSoundnessOfFullTheory}) together with
+($(\Fau, [] \vdash \psi) \implies \operatorname{eval}_M(\psi)$, Entry~3.72 \texttt{RulSoundnessOfFullTheory}) together with
 syntactic negation-completeness (Entry~3.74) implies semantic completeness (omniscience, Entry~3.73): if
 $\operatorname{eval}_M(\phi)$ holds, soundness rules out a derivation
 $(\Fau, [] \vdash \neg\phi)$, so syntactic negation-completeness supplies a
 derivation $(\Fau, [] \vdash \phi)$. Conversely, semantic completeness (Entry~3.73) together
 with classical semantic bivalence ($\operatorname{eval}_M(\phi) \lor \operatorname{eval}_M(\neg\phi)$)
 implies syntactic negation-completeness (Entry~3.74). Decoupling Entry~3.73
-(\texttt{AxmSemanticCompletenessOfFullTheory}) from Entry~3.74
-(\texttt{AxmNegationCompletenessOfFullTheory})
+(\texttt{StmSemanticCompletenessOfFullTheory}) from Entry~3.74
+(\texttt{StmNegationCompletenessOfFullTheory})
 keeps these two notions strictly separate and records the exact hypotheses linking them.
 Both hold for $\Fau$ by its definition as the theory of the intended model; the kernel has no
 rule for either.
 
 % Companion evidence: generated/metatheory.html and generated/theory_db.json,
-% AxmSoundnessOfBaseTheory, AxmSoundnessOfFullTheory (3.72),
-% AxmSemanticCompletenessOfFullTheory (3.73), AxmNegationCompletenessOfFullTheory (3.74), AxmBaseSubtheoryOfFull (3.75);
+% AxmSoundnessOfBaseTheory, RulSoundnessOfFullTheory (3.72),
+% StmSemanticCompletenessOfFullTheory (3.73), StmNegationCompletenessOfFullTheory (3.74), StmBaseSubtheoryOfFull (3.75);
 % generated/symbols/theory-wau.html and theory-eau.html.
 % Local source-level discrepancies are tracked in tickets/obelisk_logic_*.md.
 
@@ -6003,12 +6003,12 @@ Let $\Wau$ be a theory, $\Gamma$ a context of formulas, $\phi(x)$ and $\psi$ for
 
 To avoid conflating distinct notions of completeness across the theory hierarchy $\Tau \subset \Fau$, the catalog decouples two distinct properties of the full foundational theory $\Fau$ (and, more generally, of any theory $\Wau$):
 \begin{enumerate}
-  \item \textbf{Semantic Adequacy / Omniscience in the Canonical Model $\mathcal{M}_{\Wau}$ (Catalog Item \texttt{3.73}, \texttt{AxmSemanticCompletenessOfFullTheory})}:
+  \item \textbf{Semantic Adequacy / Omniscience in the Canonical Model $\mathcal{M}_{\Wau}$ (Catalog Item \texttt{3.73}, \texttt{StmSemanticCompletenessOfFullTheory})}:
   \[
   \mathrm{SemComplete}(\Wau, \mathcal{M}_{\Wau}) \iff \forall (\phi:\Fm),\ \big(\mathrm{eval}_{\mathcal{M}_{\Wau}}(\phi) \implies (\Wau, [] \vdash \phi)\big),
   \]
   which for $\Wau = \Fau$ states the truth-to-provability implication $\forall (\phi:\Fm),\ \mathrm{eval}_M(\phi) \implies (\Fau, [] \vdash \phi)$.
-  \item \textbf{Syntactic Negation-Completeness on Closed Sentences (Catalog Item \texttt{3.74}, \texttt{AxmNegationCompletenessOfFullTheory})}:
+  \item \textbf{Syntactic Negation-Completeness on Closed Sentences (Catalog Item \texttt{3.74}, \texttt{StmNegationCompletenessOfFullTheory})}:
   \[
   \mathrm{NegComplete}(\Wau) \iff \forall (\phi:\Fm)\text{ closed},\ \big(\neg(\Wau, [] \vdash \neg \phi) \implies (\Wau, [] \vdash \phi)\big),
   \]

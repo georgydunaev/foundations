@@ -55,7 +55,7 @@ class object. The term \emph{valuation homomorphism}
 can be used for the resulting semantic interpretation when preservation of
 the relevant constructors has been proved. That preservation is an
 obligation of the model, not a consequence of the map's displayed type.
-The companion catalog's comment on \texttt{DefMetaGeneralisation} (4.02)
+The companion catalog's comment on \texttt{AxmMetaGeneralisation} (4.02)
 likewise describes a typed expression translation. Its symbol page for
 $\mu_A$ instead uses $A$ for an assignment and describes semantic
 valuation. These are different local signatures; the notation here is
@@ -1608,7 +1608,7 @@ has been selected in this argument, so no choice axiom is used.
 \Done
 
 The newer catalog records the dependent-sum membership interface as
-\texttt{DefSigmaModel} (3.38). Projection and computation additionally
+\texttt{ThmSigmaModel} (3.38). Projection and computation additionally
 use the selected pairing model, as the proof shows. This carrier model
 has set-valued coordinates even when $A$ or a fibre is proper: membership
 in a class implies sethood. A predicate model allowing proper-class
@@ -1868,8 +1868,8 @@ Two families with the same domain need not form a section. For example,
 take $B=f=\{(0,\emptyclass)\}$. Both domains are $\{0\}$, but
 $f(0)=B(0)=\emptyclass$, and $\emptyclass\notin\emptyclass$. The pointwise
 membership condition must therefore be part of the section predicate. The
-Obelisk catalogue entry \texttt{DefPiPredicateModel} (3.39) includes it
-among the hypotheses: \kernelstmt{DefPiPredicateModel}.
+Obelisk catalogue entry \texttt{ThmPiPredicateModel} (3.39) includes it
+among the hypotheses: \kernelstmt{ThmPiPredicateModel}.
 The predicate defined below retains the same condition.
 \end{remark}
 
@@ -2082,7 +2082,7 @@ is a functional subclass of $\Sigma B$ with domain $\Dom(B)$, hence $((\lambda (
 \item \textbf{Elimination (Dependent Application):} If $(f \in \Pi B)$ and $(a \in \Dom(B))$, then the singleton fiber $\cc{y}{(a, y) \in f} = \{f(a)\}$ has unique element $f(a) = \mathrm{Value}(\cc{y}{(a, y) \in f}) = \bigcap\cc{y}{(a, y) \in f}$ satisfying $(f(a) \in B(a))$.
 \item \textbf{$\beta$- and $\eta$-Computation:} For all $(a \in \Dom(B))$, $(((\lambda (x \in \Dom(B)),\, t(x)))(a) = t(a))$, and for every $(f \in \Pi B)$, $((\lambda (x \in \Dom(B)),\, f(x)) = f)$ by functional extensionality.
 \end{enumerate}
-These rules use the explicitly restricted product defined in this theorem. They do not follow from the unrestricted same-domain implication in the generated \texttt{DefPiPredicateModel} record discussed above.
+These rules use the explicitly restricted product defined in this theorem. They do not follow from the unrestricted same-domain implication in the generated \texttt{ThmPiPredicateModel} record discussed above.
 \end{theorem}
 \Proof
 For a specified operation $t$, replacement on $A$ forms the set

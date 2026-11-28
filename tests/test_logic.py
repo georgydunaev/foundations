@@ -271,7 +271,7 @@ class TestLogicReflectionScope(unittest.TestCase):
         self.assertIn("Lob obstruction", msg_int)
 
     def test_meta_conecessitation_preserves_gamma_and_requires_empty_outer_context(self):
-        """Acceptance check: DefMetaConecessitation (4.03).
+        """Acceptance check: AxmMetaConecessitation (4.03).
 
         F, [] |- <F, Gamma |- phi>  ==>  F, Gamma |- phi.
         """
@@ -390,12 +390,12 @@ class TestContextFreshnessAndCompleteness(unittest.TestCase):
         self.assertEqual(res["item_id"], "3.74")
         self.assertEqual(res["semantic_completeness_item_id"], "3.73")
         self.assertEqual(
-            res["semantic_completeness_entry"], "AxmSemanticCompletenessOfFullTheory"
+            res["semantic_completeness_entry"], "StmSemanticCompletenessOfFullTheory"
         )
         self.assertEqual(res["semantic_completeness_constructor"], "POmnisSem_prf")
         self.assertEqual(res["negation_completeness_item_id"], "3.74")
         self.assertEqual(
-            res["negation_completeness_entry"], "AxmNegationCompletenessOfFullTheory"
+            res["negation_completeness_entry"], "StmNegationCompletenessOfFullTheory"
         )
         self.assertEqual(res["negation_completeness_constructor"], "POmnisNeg_prf")
         self.assertEqual(res["aligned_catalog_items"], ["3.73", "3.74"])

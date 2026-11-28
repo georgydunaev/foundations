@@ -1127,7 +1127,11 @@ class TestMKTDML(unittest.TestCase):
         for tex_name, entry_id in found_ids:
             self.assertIn(entry_id, entries_by_id, f"\\kernelstmt{{{entry_id}}} in {tex_name} not found in theory_db.json")
             entry = entries_by_id[entry_id]
-            self.assertIn("Verified", entry.get("verification", ""), f"Entry {entry_id} is not marked Verified: {entry.get('verification')}")
+            # [WHY] the book also cites axioms, rules and metatheorems (3.72-3.75); only a cited
+            # theorem must be Verified, and none may be without a kernel statement.
+            if entry.get("kind") == "Theorem":
+                self.assertIn("Verified", entry.get("verification", ""), f"Theorem {entry_id} is not marked Verified: {entry.get('verification')}")
+            self.assertNotIn("No Kernel Proof Linked", entry.get("verification", ""), f"Entry {entry_id}: {entry.get('verification')}")
             ltx_file = ROOT / "generated" / "latex" / f"{entry_id}.tex"
             self.assertTrue(ltx_file.is_file(), f"Missing generated LaTeX statement file {ltx_file}")
             ltx_text = ltx_file.read_text(encoding="utf-8")

@@ -91,8 +91,8 @@ edited chapters or of the current generated statements.
 | Semi-singleton subsets | `DefSemiSingletonSubclass`, 3.36 | 3.68 | The extra subclass condition matters; this is not the family predicate. |
 | Guarded evaluation in `060_axioms.tex` | `DefValueAtArg`, 3.25 | Source ID is more reliable than a catalog number | Uses `V` on an absent fibre. |
 | Family evaluation | `ThmFamilyEvaluation`, 3.37 | 3.69 | The displayed theorem needs a domain hypothesis with that guarded default. |
-| `130_classes_as_types.tex`: dependent sums | `DefSigmaModel`, 3.38 | 3.70 | Interpret under its stated family encoding and size assumptions. |
-| Dependent products | `DefPiPredicateModel`, 3.39 | 3.71 | Matching domains alone do not imply membership in the dependent product; pointwise membership is an additional condition. |
+| `130_classes_as_types.tex`: dependent sums | `ThmSigmaModel`, 3.38 | 3.70 | Interpret under its stated family encoding and size assumptions. |
+| Dependent products | `ThmPiPredicateModel`, 3.39 | 3.71 | Matching domains alone do not imply membership in the dependent product; pointwise membership is an additional condition. |
 | Metatheoretic principles | Use semantic IDs and hypotheses | 3.72–3.74 have changed meanings across catalogs | Do not carry over the old table's subclass/sethood descriptions solely by number. |
 
 The family-evaluation discrepancy has a concrete empty-family counterexample;
