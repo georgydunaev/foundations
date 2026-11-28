@@ -726,21 +726,20 @@ preserve length and decoded entries explicitly.
 %\subsection{Self--contained presentation of dependent types}
 %\subsection{Families of definable classes, abstraction and evaluation.}
 \subsubsection{Transport to the catalog's finite marker lists}
-The newer Obelisk catalog's \texttt{DefClassLists} (3.51), still marked
-\texttt{TBI}, proposes a different representation. Its displayed payload
-$\{\{\{a\}\},k\}$ is an \emph{unordered} pair: one member is
-$\{\{a\}\}$ and the other is the tag $k$. To keep the brace depth
+The Obelisk catalogue entry \texttt{DefClassLists} (3.51) uses a different
+representation; its kernel statement is \kernelstmt{DefClassLists}.
+Its payload $\{\{\{\{a\}\}\},k\}$ is an \emph{unordered} pair: one member is
+$\{\{\{a\}\}\}$ and the other is the tag $k$. To keep the brace depth
 explicit, put
 \[
-e(a)=\{\{a\}\},\qquad
+e(a)=\{\{\{a\}\}\},\qquad
 \operatorname{mark}_2(H,k)
  =\{\{0,k\}\}\cup\{\{e(a),k\}:a\in H\}.
 \]
 Here $a$ ranges over set members of $H$, while $k$ is a positive finite
-ordinal. The subscript records the two singleton operations in $e$.
-This is the convention of entry 3.51; the separate tagged-pair entry
-\texttt{DefDunaevOrderedPair} (3.76) uses three singleton operations
-in its payload. The two formulas are not asserted to be literally equal.
+ordinal. The subscript $2$ only names this marker function.
+This is the convention of entry 3.51; the tagged-pair entry
+\texttt{DefDunaevOrderedPair} (3.76) uses the same payload.
 We prove the finite-list interpretation of 3.51, rather than inferring
 its correctness from the generated entry's label.
 
@@ -758,7 +757,7 @@ For sets $a,b$ and positive natural ordinals $k,l$, the following hold:
 The set $e(a)$ is a singleton and cannot be an ordinal. Indeed, the
 only singleton ordinal is $1=\{0\}$: a nonempty ordinal contains zero,
 so its sole member must be zero. Equality $e(a)=1$ would force
-$\{a\}=0$, contrary to $a\in\{a\}$. Thus a payload
+$\{\{a\}\}=0$, contrary to $\{a\}\in\{\{a\}\}$. Thus a payload
 $\{e(a),k\}$ has exactly one natural-ordinal member, namely $k$,
 and exactly one nonordinal member, namely $e(a)$. Equality of two
 payloads identifies these members separately. Two applications of
@@ -1865,15 +1864,13 @@ $\Gamma \vdash f\equiv (\lambda ((x:A)\mapsto f(x))):\Pi_{(x:A)}B$%
 
 \subsubsection{The first model of $\Pi$--types as predicates on classes}
 \begin{remark}[a section needs more than a common domain]
-The newer Obelisk record \texttt{DefPiPredicateModel} (3.39) displays an
-implication from ``$B$ and $f$ are families with the same domain'' to
-$\forall x\in\Dom(B),\ f(x)\in B(x)$. The pointwise membership condition
-must instead be part of the section predicate or a typing hypothesis.
-For example, take $B=f=\{(0,\emptyclass)\}$. Both domains are $\{0\}$,
-but $f(0)=B(0)=\emptyclass$, so the claimed membership would be
-$\emptyclass\in\emptyclass$. The predicate defined below retains the
-necessary condition. The generated record's verification label alone does
-not resolve this discrepancy in its displayed statement.
+Two families with the same domain need not form a section. For example,
+take $B=f=\{(0,\emptyclass)\}$. Both domains are $\{0\}$, but
+$f(0)=B(0)=\emptyclass$, and $\emptyclass\notin\emptyclass$. The pointwise
+membership condition must therefore be part of the section predicate. The
+Obelisk catalogue entry \texttt{DefPiPredicateModel} (3.39) includes it
+among the hypotheses: \kernelstmt{DefPiPredicateModel}.
+The predicate defined below retains the same condition.
 \end{remark}
 
 Let $B$ be a family term. Its interpretation

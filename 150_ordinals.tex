@@ -1666,10 +1666,9 @@ this shorter condition, in a catalog that also assumes
 (3.71) consequently need not repeat foundedness in each statement.
 The extra hypothesis in this chapter's general induction theorem records
 a different local setting, rather than a contradiction between the results.
-The site's prose dossier \texttt{docs/axioms/ordinals.md} additionally
-restricts ``ordinal'' to sets, whereas the generated predicate and this
-chapter also admit ordinal classes. The set instances are collected in
-$\On$; the predicate itself must not be identified with membership in $\On$.
+The predicate $\mathrm{Ord}$ of the catalogue and of this chapter also
+admits ordinal classes. The set instances are collected in $\On$; the
+predicate itself must not be identified with membership in $\On$.
 \begin{definition} predicates on classes "is transitive" and "is ordinal"
 \[
 \tr(X) \iff (\forall Z\in X,\ Z\subseteq X)
@@ -1796,7 +1795,7 @@ U = V_\kappa = V_{U \cap \On}.
 \]
 \end{theorem}
 \begin{proof}
-The proof is decomposed into four steps, each mechanically verified by the \texttt{MKTD1-system} kernel in \texttt{program/types/universe\_definitions.ML} (45 kernel-checked theorems in total):
+The proof is decomposed into four steps, each mechanically verified by the \texttt{MKTD1-system} kernel in \texttt{program/types/universe\_definitions.ML}:
 
 \paragraph{Step 0: Trivial case, $\kappa = U \cap \On$ is an ordinal, and $\emptyset \in U$.}
 If $U = \emptyset$, then $\kappa = \emptyset \cap \On = \emptyset$ (\texttt{step0\_empty\_universe\_inter\_on\_eq\_emptyset\_thm}) and $V_0 = \emptyset = U$ (\texttt{step0\_trivial\_empty\_universe\_eq\_v0\_thm}). Assume $U \neq \emptyset$.

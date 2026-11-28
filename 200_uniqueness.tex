@@ -38,16 +38,11 @@ Restricted uniqueness quantifier for sets only
 %(\forall y_1\forall y_2,\ \varphi[y_1/y]\land\varphi[y_2/y]\implies y_1=y_2)
 \end{definition}
 
-\begin{note}[Predicate bodies in the Obelisk export]
-The newer catalog calls the property $(!x,\ x\in s)$
-``semi-singleton'' (\texttt{DefSemiSingleton}, 3.35), and combines it
-with $s\subseteq A$ in \texttt{DefSemiSingletonSubclass} (3.36).
-The exported formulas display universal closures of these predicate
-bodies without the predicate heads. Here they are read as the bodies of
-local definitions, rather than assertions that every class has at most
-one member or that every class is a subclass of every other class.
-For example, $\{\emptyclass,\{\emptyclass\}\}$ has two distinct members.
-The explicit at-most-one definition above avoids this ambiguity.
+\begin{note}[The Obelisk catalogue names]
+The catalogue calls the property $(!x,\ x\in s)$ ``semi-singleton''
+(\texttt{DefSemiSingleton}, 3.35) and combines it with $s\subseteq A$ in
+\texttt{DefSemiSingletonSubclass} (3.36): \kernelstmt{DefSemiSingleton} and
+\kernelstmt{DefSemiSingletonSubclass}.
 \end{note}
 
 \subsection{Singleton set}

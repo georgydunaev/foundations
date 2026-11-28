@@ -4813,7 +4813,8 @@ and arithmetic-strength hypotheses used below, $\Tau$ is incomplete.
 \subsection{Theory parameters and explicit evaluation}
 The companion Obelisk presentation distinguishes four roles that are useful
 here. $\Wau$ is a schematic variable ranging over theories; $\Tau$ is the
-chosen effective base theory; $\Fau$ is the proposed ideal extension; and
+chosen effective base theory; $\Fau$ is the theory of the intended model
+(all sentences true in it); and
 $\mathcal{E}$ denotes a metatheory in which a particular result about
 $\Tau$ is formalised. Choosing $\mathcal{E}$ requires the hypotheses of that
 result. These roles do not by themselves assign a fixed universe level to
@@ -4825,28 +4826,23 @@ chosen interpretation $M$. For an open formula, evaluation also needs an
 assignment, written $\operatorname{eval}_{M,s}(\phi)$. This makes explicit the
 semantic operation that some of the earlier displays leave implicit. In the
 \texttt{MKTD1-system} (\texttt{MKTD1-theory}) database exported by
-\texttt{program/export\_theory\_db.ML}, the companion metatheoretic entries have
-the explicit forms
-\[
-(\Tau,[]\vdash\phi)\implies\operatorname{eval}_M(\phi),
-\qquad
-(\Fau,[]\vdash\phi)\implies\operatorname{eval}_M(\phi),
-\]
-\[
-\operatorname{eval}_M(\phi)\implies(\Fau,[]\vdash\phi),
-\qquad
-\neg(\Fau,[]\vdash\neg\phi)\implies(\Fau,[]\vdash\phi),
-\qquad
-(\Tau,\Gamma\vdash\phi)\implies(\Fau,\Gamma\vdash\phi).
-\]
-The first two are the soundness axioms \texttt{AxmSoundnessOfBaseTheory} (3.71)
-and \texttt{AxmSoundnessOfFullTheory} (3.72); the fifth is the subtheory inclusion
-\texttt{AxmBaseSubtheoryOfFull} (3.75), which preserves an assumption context
+\texttt{program/export\_theory\_db.ML}, the companion metatheoretic entries 3.72--3.75
+are
+\begin{itemize}
+  \item 3.72: \kernelstmt{AxmSoundnessOfFullTheory},
+  \item 3.73: \kernelstmt{AxmSemanticCompletenessOfFullTheory},
+  \item 3.74: \kernelstmt{AxmNegationCompletenessOfFullTheory},
+  \item 3.75: \kernelstmt{AxmBaseSubtheoryOfFull}.
+\end{itemize}
+Here $\operatorname{eval}$ is $\operatorname{eval}_M$ for the intended model $M$. The first
+is the soundness axiom of $\Fau$ (\texttt{AxmSoundnessOfFullTheory}); the other three
+hold by the definition of $\Fau$. The last is the subtheory inclusion
+(\texttt{AxmBaseSubtheoryOfFull}), which preserves an assumption context
 $\Gamma$ when passing from $\Tau$ to $\Fau$. None of these displays asserts that
 $\Tau$ proves its own soundness; an internal version must name its ambient theory
 and the language interpreted by $\operatorname{eval}_M$.
 
-The third and fourth displays decouple \emph{semantic completeness}
+The second and third statements decouple \emph{semantic completeness}
 (\emph{omniscience}) from \emph{syntactic negation-completeness} for the full
 theory $\Fau$ into two separate entries with distinct formulas, constructors,
 and specification comments:
@@ -4855,7 +4851,7 @@ and specification comments:
   Entry~3.73, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{semantic\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
-  \forall (\phi:\Fm),\ \operatorname{eval}_M(\phi) \implies (\Fau, [] \vdash \phi).
+  \kernelstmt{AxmSemanticCompletenessOfFullTheory}
   \]
   This semantic principle relates truth under the evaluation operator
   $\operatorname{eval}_M$ (\texttt{EEval}) to derivability in $\Fau$ with empty
@@ -4864,7 +4860,7 @@ and specification comments:
   Entry~3.74, a metatheorem (not a kernel rule), formula defined in
   \texttt{program/types/foundations.ML} by \texttt{negation\_completeness\_of\_F\_axm\_entry\_fm}):
   \[
-  \forall (\phi:\Fm),\ \neg(\Fau, [] \vdash \neg\phi) \implies (\Fau, [] \vdash \phi).
+  \kernelstmt{AxmNegationCompletenessOfFullTheory}
   \]
   This purely syntactic principle states that if the negation $\neg\phi$ is not
   derivable in $\Fau$ from the empty context $[]$, then $\phi$ itself is derivable

@@ -8,6 +8,11 @@ Workspace rules: `/botworkspace/AGENTS.md`. Definitions used by the book's Obeli
 - **The book** `001_foundations.tex`: preamble `000_preamble.tex`, chapters `0NN_*.tex` to
   `3NN_*.tex` included with `\input`, bibliography `references.bib`. Only files reachable from
   `001_foundations.tex` are part of the book. Unused drafts are in `archive/`.
+- **Separate books** in subfolders, split from the main book on 2026-11-28. Each one is
+  `<folder>/<folder>.tex` and reuses `000_preamble.tex`, `BEGIN.tex` and `END.tex` through
+  `\def\mypath{../}`. They were drafted by an automated assistant and are not formalised in
+  Obelisk: `category_theory_topics/`, `set_theory_topics/` (forcing, clubs, determinacy) and
+  `schrodinger_kernel_estimates/`. Build one with `cd <folder> && pdflatex <folder>.tex`.
 - **Schrödinger thesis** `thesis_schrodinger.tex` (separate document; plan in
   `THESIS_RESEARCH_PLAN.md`).
 - **Python package** `foundations/`: finite executable illustrations, not proofs (see its

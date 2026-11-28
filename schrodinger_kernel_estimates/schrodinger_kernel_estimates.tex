@@ -1,0 +1,23 @@
+% Separate book (split from the main book 001_foundations.tex on 2026-11-28).
+% Build from this folder: pdflatex schrodinger_kernel_estimates.tex ; it reuses ../000_preamble.tex via ../BEGIN.tex.
+\def\mypath{../}
+\def\topic{Heat kernel estimates for bounded potentials}
+\input{../BEGIN.tex}
+\begin{note}[Origin of this text]
+This text was drafted by an automated assistant (2026-11-15) and has not been reviewed by the author.
+It is not formalised in the Obelisk proof assistant. Treat it as a reading list with summaries, not as
+proved results.
+\end{note}
+
+\section{Four estimates for the heat kernel with a bounded potential}
+\label{sec:schrodinger_kernel_estimates}
+
+This note states four estimates for the integral kernel $k_V(t,x,y)$ of the Schr\"odinger semigroup with a bounded potential $V$ on $\mathbb{R}^d$. They are stated, not proved here; the bounded-potential chapter of the main book (\texttt{295\_schrodinger\_semigroups.tex}) develops the setting.
+\begin{enumerate}
+  \item \textbf{Free Heat Semigroup Contraction}: For $t>0$, the free Gaussian kernel $p_t(x-y) = (4\pi t)^{-d/2}\exp(-|x-y|^2/(4t))$ is strictly positive, symmetric in $x$ and $y$, normalized in $L^1(\mathbb{R}^d)$, and contractive on $L^2(\mathbb{R}^d)$.
+  \item \textbf{Separately Continuous Integral Kernel Criterion}: Any bounded self-adjoint operator $T_t$ on $L^2(\mathbb{R}^d)$ induced by a continuous, symmetric, Gaussian-dominated kernel determines a unique pointwise kernel representative.
+  \item \textbf{Bounded-Potential Dyson-Phillips Perturbation Series}: For $\|V\|_\infty \leq M$, the $n$-th Dyson-Phillips iterate satisfies $|k_n(t,x,y)| \leq \frac{(Mt)^n}{n!}p_t(x-y)$, yielding absolute uniform convergence $\sum_{n=0}^\infty |k_n(t,x,y)| \leq e^{Mt}p_t(x-y)$ and the two-sided Feynman-Kac positivity sandwich $e^{-Mt}p_t(x-y) \leq k_V(t,x,y) \leq e^{Mt}p_t(x-y)$.
+  \item \textbf{Quantitative Lipschitz Regularity}: For $t>0$ and bounded potential $\|V\|_\infty \leq M$, spatial differences of the perturbed kernel satisfy the quantitative Lipschitz bound $|k_V(t,x,y) - k_V(t,x',y)| \leq L(t,M)|x-x'|$ on compact spatial domains.
+\end{enumerate}
+
+\input{../END.tex}
